@@ -1,0 +1,181 @@
+---
+title: "Dialog"
+description: "A window overlaid on either the primary window or another dialog window."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Dialog } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { XIcon } from "lucide-react";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Dialog } from "@/components/ui/dialog";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Dialog.Root>
+    <Dialog.Trigger asChild>
+      <Button>Open Dialog</Button>
+    </Dialog.Trigger>
+    <Dialog.Content>
+      <Dialog.Title>Dialog Title</Dialog.Title>
+      <Dialog.Description>
+        Make changes to your profile here. Click save when you're done.
+      </Dialog.Description>
+      <Dialog.CloseTrigger asChild>
+        <Button variant="ghost" size="icon" className="absolute right-4 top-4">
+          <XIcon className="h-4 w-4" />
+        </Button>
+      </Dialog.CloseTrigger>
+    </Dialog.Content>
+  </Dialog.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Dialog } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { XIcon } from "lucide-react";
+
+export function DialogDemo() {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Button>Open Dialog</Button>
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <Dialog.Title>Dialog Title</Dialog.Title>
+        <Dialog.Description>
+          Make changes to your profile here. Click save when you're done.
+        </Dialog.Description>
+        <Dialog.CloseTrigger asChild>
+          <Button variant="ghost" size="icon" className="absolute right-4 top-4">
+            <XIcon className="h-4 w-4" />
+          </Button>
+        </Dialog.CloseTrigger>
+      </Dialog.Content>
+    </Dialog.Root>
+  );
+}
+```
+</CodeBlock>
+
+### With Form
+
+<Preview>
+  <Dialog.Root>
+    <Dialog.Trigger asChild>
+      <Button>Edit Profile</Button>
+    </Dialog.Trigger>
+    <Dialog.Content>
+      <Dialog.Title>Edit Profile</Dialog.Title>
+      <Dialog.Description>
+        Make changes to your profile here. Click save when you're done.
+      </Dialog.Description>
+      <form className="space-y-4">
+        <div className="space-y-2">
+          <label htmlFor="name" className="text-sm font-medium">
+            Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter your name"
+            className="w-full px-3 py-2 border border-input rounded-md"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="email" className="text-sm font-medium">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            className="w-full px-3 py-2 border border-input rounded-md"
+          />
+        </div>
+        <div className="flex justify-end space-x-2">
+          <Dialog.CloseTrigger asChild>
+            <Button variant="outline">Cancel</Button>
+          </Dialog.CloseTrigger>
+          <Button>Save changes</Button>
+        </div>
+      </form>
+      <Dialog.CloseTrigger asChild>
+        <Button variant="ghost" size="icon" className="absolute right-4 top-4">
+          <XIcon className="h-4 w-4" />
+        </Button>
+      </Dialog.CloseTrigger>
+    </Dialog.Content>
+  </Dialog.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Dialog.Root>
+  <Dialog.Trigger asChild>
+    <Button>Edit Profile</Button>
+  </Dialog.Trigger>
+  <Dialog.Content>
+    <Dialog.Title>Edit Profile</Dialog.Title>
+    <Dialog.Description>
+      Make changes to your profile here. Click save when you're done.
+    </Dialog.Description>
+    <form className="space-y-4">
+      <div className="space-y-2">
+        <label htmlFor="name" className="text-sm font-medium">
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Enter your name"
+          className="w-full px-3 py-2 border border-input rounded-md"
+        />
+      </div>
+      <div className="space-y-2">
+        <label htmlFor="email" className="text-sm font-medium">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter your email"
+          className="w-full px-3 py-2 border border-input rounded-md"
+        />
+      </div>
+      <div className="flex justify-end space-x-2">
+        <Dialog.CloseTrigger asChild>
+          <Button variant="outline">Cancel</Button>
+        </Dialog.CloseTrigger>
+        <Button>Save changes</Button>
+      </div>
+    </form>
+    <Dialog.CloseTrigger asChild>
+      <Button variant="ghost" size="icon" className="absolute right-4 top-4">
+        <XIcon className="h-4 w-4" />
+      </Button>
+    </Dialog.CloseTrigger>
+  </Dialog.Content>
+</Dialog.Root>
+```
+</CodeBlock>
+
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |

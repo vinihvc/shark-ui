@@ -14,6 +14,12 @@ export const docs = defineDocs({
       includeProcessedMarkdown: true,
     },
   },
+  components: {
+    schema: frontmatterSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
+  },
   meta: {
     schema: metaSchema,
   },

@@ -1,0 +1,222 @@
+---
+title: "Checkbox"
+description: "A control that allows the user to toggle between checked and not checked."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Checkbox } from "@/components/ui/checkbox";
+import { CheckIcon } from "lucide-react";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <div className="flex items-center space-x-2">
+    <Checkbox.Root id="terms">
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon className="h-4 w-4" />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label htmlFor="terms">Accept terms and conditions</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+import { CheckIcon } from "lucide-react";
+
+export function CheckboxDemo() {
+  return (
+    <div className="flex items-center space-x-2">
+      <Checkbox.Root id="terms">
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            <CheckIcon className="h-4 w-4" />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label htmlFor="terms">Accept terms and conditions</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+    </div>
+  );
+}
+```
+</CodeBlock>
+
+### With Form
+
+<Preview>
+  <form className="space-y-4">
+    <div className="flex items-center space-x-2">
+      <Checkbox.Root id="newsletter" name="newsletter" value="newsletter">
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            <CheckIcon className="h-4 w-4" />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label htmlFor="newsletter">Subscribe to newsletter</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Checkbox.Root id="marketing" name="marketing" value="marketing">
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            <CheckIcon className="h-4 w-4" />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label htmlFor="marketing">Receive marketing emails</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+    </div>
+  </form>
+</Preview>
+
+<CodeBlock>
+```tsx
+<form className="space-y-4">
+  <div className="flex items-center space-x-2">
+    <Checkbox.Root id="newsletter" name="newsletter" value="newsletter">
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon className="h-4 w-4" />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label htmlFor="newsletter">Subscribe to newsletter</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </div>
+  <div className="flex items-center space-x-2">
+    <Checkbox.Root id="marketing" name="marketing" value="marketing">
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon className="h-4 w-4" />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label htmlFor="marketing">Receive marketing emails</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </div>
+</form>
+```
+</CodeBlock>
+
+### Disabled
+
+<Preview>
+  <div className="space-y-4">
+    <div className="flex items-center space-x-2">
+      <Checkbox.Root id="disabled" disabled>
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            <CheckIcon className="h-4 w-4" />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label htmlFor="disabled">Disabled checkbox</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Checkbox.Root id="disabled-checked" disabled defaultChecked>
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            <CheckIcon className="h-4 w-4" />
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Label htmlFor="disabled-checked">Disabled checked</Checkbox.Label>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+    </div>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="space-y-4">
+  <div className="flex items-center space-x-2">
+    <Checkbox.Root id="disabled" disabled>
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon className="h-4 w-4" />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label htmlFor="disabled">Disabled checkbox</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </div>
+  <div className="flex items-center space-x-2">
+    <Checkbox.Root id="disabled-checked" disabled defaultChecked>
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon className="h-4 w-4" />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label htmlFor="disabled-checked">Disabled checked</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </div>
+</div>
+```
+</CodeBlock>
+
+### Indeterminate
+
+<Preview>
+  <div className="flex items-center space-x-2">
+    <Checkbox.Root id="indeterminate" checked="indeterminate">
+      <Checkbox.Control>
+        <Checkbox.Indicator>
+          <CheckIcon className="h-4 w-4" />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label htmlFor="indeterminate">Indeterminate state</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="flex items-center space-x-2">
+  <Checkbox.Root id="indeterminate" checked="indeterminate">
+    <Checkbox.Control>
+      <Checkbox.Indicator>
+        <CheckIcon className="h-4 w-4" />
+      </Checkbox.Indicator>
+    </Checkbox.Control>
+    <Checkbox.Label htmlFor="indeterminate">Indeterminate state</Checkbox.Label>
+    <Checkbox.HiddenInput />
+  </Checkbox.Root>
+</div>
+```
+</CodeBlock>
+
+
+A group of checkboxes.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string[]` | - | The controlled value of the checkbox group. |
+| `defaultValue` | `string[]` | - | The initial value of the checkbox group. |
+| `onValueChange` | `(value: string[]) => void` | - | The callback to call when the value changes. |
+| `disabled` | `boolean` | - | If `true`, the checkbox group is disabled. |
+| `readOnly` | `boolean` | - | If `true`, the checkbox group is read-only. |
+| `name` | `string` | - | The name of the input fields in the checkbox group. |

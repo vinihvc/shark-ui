@@ -1,0 +1,150 @@
+---
+title: "Accordion"
+description: "A vertically stacked set of interactive headings that each reveal a section of content."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Accordion } from "@/components/ui/accordion";
+import { ChevronDownIcon } from "lucide-react";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Accordion } from "@/components/ui/accordion";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Accordion.Root defaultValue={['React']} className="w-full max-w-md">
+    {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
+      <Accordion.Item key={item} value={item}>
+        <Accordion.ItemTrigger>
+          What is {item}?
+          <Accordion.ItemIndicator>
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          {item} is a JavaScript library for building user interfaces.
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    ))}
+  </Accordion.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Accordion } from "@/components/ui/accordion";
+import { ChevronDownIcon } from "lucide-react";
+
+export function AccordionDemo() {
+  return (
+    <Accordion.Root defaultValue={['React']} className="w-full max-w-md">
+      {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
+        <Accordion.Item key={item} value={item}>
+          <Accordion.ItemTrigger>
+            What is {item}?
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>
+            {item} is a JavaScript library for building user interfaces.
+          </Accordion.ItemContent>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  );
+}
+```
+</CodeBlock>
+
+### Multiple
+
+<Preview>
+  <Accordion.Root multiple defaultValue={['React', 'Vue']} className="w-full max-w-md">
+    {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
+      <Accordion.Item key={item} value={item}>
+        <Accordion.ItemTrigger>
+          What is {item}?
+          <Accordion.ItemIndicator>
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          {item} is a JavaScript library for building user interfaces.
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    ))}
+  </Accordion.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Accordion.Root multiple defaultValue={['React', 'Vue']} className="w-full max-w-md">
+  {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
+    <Accordion.Item key={item} value={item}>
+      <Accordion.ItemTrigger>
+        What is {item}?
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        {item} is a JavaScript library for building user interfaces.
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
+</CodeBlock>
+
+### Collapsible
+
+<Preview>
+  <Accordion.Root collapsible className="w-full max-w-md">
+    {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
+      <Accordion.Item key={item} value={item}>
+        <Accordion.ItemTrigger>
+          What is {item}?
+          <Accordion.ItemIndicator>
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          {item} is a JavaScript library for building user interfaces.
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    ))}
+  </Accordion.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Accordion.Root collapsible className="w-full max-w-md">
+  {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
+    <Accordion.Item key={item} value={item}>
+      <Accordion.ItemTrigger>
+        What is {item}?
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        {item} is a JavaScript library for building user interfaces.
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
+</CodeBlock>

@@ -1,0 +1,212 @@
+---
+title: "Tooltip"
+description: "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Tooltip } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Tooltip } from "@/components/ui/tooltip";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Hover me</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Content>
+        <p>This is a tooltip</p>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Tooltip } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+export function TooltipDemo() {
+  return (
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline">Hover me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Positioner>
+        <Tooltip.Content>
+          <p>This is a tooltip</p>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
+  );
+}
+```
+</CodeBlock>
+
+### With Different Positions
+
+<Preview>
+  <div className="flex flex-wrap gap-4">
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline">Top</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Positioner>
+        <Tooltip.Content side="top">
+          <p>Tooltip on top</p>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
+
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline">Right</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Positioner>
+        <Tooltip.Content side="right">
+          <p>Tooltip on right</p>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
+
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline">Bottom</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Positioner>
+        <Tooltip.Content side="bottom">
+          <p>Tooltip on bottom</p>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
+
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline">Left</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Positioner>
+        <Tooltip.Content side="left">
+          <p>Tooltip on left</p>
+          <Tooltip.Arrow />
+        </Tooltip.Content>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="flex flex-wrap gap-4">
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Top</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Content side="top">
+        <p>Tooltip on top</p>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
+
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Right</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Content side="right">
+        <p>Tooltip on right</p>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
+
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Bottom</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Content side="bottom">
+        <p>Tooltip on bottom</p>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
+
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Left</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Content side="left">
+        <p>Tooltip on left</p>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
+</div>
+```
+</CodeBlock>
+
+### With Rich Content
+
+<Preview>
+  <Tooltip.Root>
+    <Tooltip.Trigger asChild>
+      <Button variant="outline">Rich Content</Button>
+    </Tooltip.Trigger>
+    <Tooltip.Positioner>
+      <Tooltip.Content className="max-w-xs">
+        <div className="space-y-2">
+          <h4 className="font-semibold">Tooltip Title</h4>
+          <p className="text-sm text-muted-foreground">
+            This tooltip contains rich content with a title and description.
+          </p>
+        </div>
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip.Positioner>
+  </Tooltip.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Tooltip.Root>
+  <Tooltip.Trigger asChild>
+    <Button variant="outline">Rich Content</Button>
+  </Tooltip.Trigger>
+  <Tooltip.Positioner>
+    <Tooltip.Content className="max-w-xs">
+      <div className="space-y-2">
+        <h4 className="font-semibold">Tooltip Title</h4>
+        <p className="text-sm text-muted-foreground">
+          This tooltip contains rich content with a title and description.
+        </p>
+      </div>
+      <Tooltip.Arrow />
+    </Tooltip.Content>
+  </Tooltip.Positioner>
+</Tooltip.Root>
+```
+</CodeBlock>

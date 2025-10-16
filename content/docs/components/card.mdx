@@ -1,0 +1,134 @@
+---
+title: "Card"
+description: "Displays a card with header, content, and footer."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Card className="w-[350px]">
+    <CardHeader>
+      <CardTitle>Create project</CardTitle>
+      <CardDescription>Deploy your new project in one-click.</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <p>Card Content</p>
+    </CardContent>
+    <CardFooter>
+      <Button>Deploy</Button>
+    </CardFooter>
+  </Card>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+export function CardDemo() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <Button>Deploy</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+</CodeBlock>
+
+### With Image
+
+<Preview>
+  <Card className="w-[350px]">
+    <CardHeader>
+      <CardTitle>Project Alpha</CardTitle>
+      <CardDescription>Next.js project with TypeScript</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="aspect-video bg-muted rounded-md mb-4 flex items-center justify-center">
+        <span className="text-muted-foreground">Project Preview</span>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        A modern web application built with Next.js and TypeScript.
+      </p>
+    </CardContent>
+    <CardFooter className="flex justify-between">
+      <Button variant="outline">View</Button>
+      <Button>Deploy</Button>
+    </CardFooter>
+  </Card>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Project Alpha</CardTitle>
+    <CardDescription>Next.js project with TypeScript</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <div className="aspect-video bg-muted rounded-md mb-4 flex items-center justify-center">
+      <span className="text-muted-foreground">Project Preview</span>
+    </div>
+    <p className="text-sm text-muted-foreground">
+      A modern web application built with Next.js and TypeScript.
+    </p>
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline">View</Button>
+    <Button>Deploy</Button>
+  </CardFooter>
+</Card>
+```
+</CodeBlock>
+
+### Simple Card
+
+<Preview>
+  <Card className="w-[350px]">
+    <CardContent className="pt-6">
+      <p className="text-sm text-muted-foreground">
+        This is a simple card with just content.
+      </p>
+    </CardContent>
+  </Card>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Card className="w-[350px]">
+  <CardContent className="pt-6">
+    <p className="text-sm text-muted-foreground">
+      This is a simple card with just content.
+    </p>
+  </CardContent>
+</Card>
+```
+</CodeBlock>

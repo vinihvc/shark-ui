@@ -1,0 +1,191 @@
+---
+title: "Radio Group"
+description: "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { RadioGroup } from "@/components/ui/radio-group";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { RadioGroup } from "@/components/ui/radio-group";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <RadioGroup.Root defaultValue="react">
+    <RadioGroup.Label>Framework</RadioGroup.Label>
+    <RadioGroup.Indicator />
+    <div className="space-y-2">
+      {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
+        <RadioGroup.Item key={framework} value={framework.toLowerCase()}>
+          <RadioGroup.ItemControl />
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemHiddenInput />
+        </RadioGroup.Item>
+      ))}
+    </div>
+  </RadioGroup.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { RadioGroup } from "@/components/ui/radio-group";
+
+export function RadioGroupDemo() {
+  return (
+    <RadioGroup.Root defaultValue="react">
+      <RadioGroup.Label>Framework</RadioGroup.Label>
+      <RadioGroup.Indicator />
+      <div className="space-y-2">
+        {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
+          <RadioGroup.Item key={framework} value={framework.toLowerCase()}>
+            <RadioGroup.ItemControl />
+            <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+            <RadioGroup.ItemHiddenInput />
+          </RadioGroup.Item>
+        ))}
+      </div>
+    </RadioGroup.Root>
+  );
+}
+```
+</CodeBlock>
+
+### With Form
+
+<Preview>
+  <form className="space-y-4">
+    <RadioGroup.Root name="size" defaultValue="medium">
+      <RadioGroup.Label>Size</RadioGroup.Label>
+      <RadioGroup.Indicator />
+      <div className="space-y-2">
+        {['Small', 'Medium', 'Large'].map((size) => (
+          <RadioGroup.Item key={size} value={size.toLowerCase()}>
+            <RadioGroup.ItemControl />
+            <RadioGroup.ItemText>{size}</RadioGroup.ItemText>
+            <RadioGroup.ItemHiddenInput />
+          </RadioGroup.Item>
+        ))}
+      </div>
+    </RadioGroup.Root>
+  </form>
+</Preview>
+
+<CodeBlock>
+```tsx
+<form className="space-y-4">
+  <RadioGroup.Root name="size" defaultValue="medium">
+    <RadioGroup.Label>Size</RadioGroup.Label>
+    <RadioGroup.Indicator />
+    <div className="space-y-2">
+      {['Small', 'Medium', 'Large'].map((size) => (
+        <RadioGroup.Item key={size} value={size.toLowerCase()}>
+          <RadioGroup.ItemControl />
+          <RadioGroup.ItemText>{size}</RadioGroup.ItemText>
+          <RadioGroup.ItemHiddenInput />
+        </RadioGroup.Item>
+      ))}
+    </div>
+  </RadioGroup.Root>
+</form>
+```
+</CodeBlock>
+
+### Disabled
+
+<Preview>
+  <RadioGroup.Root defaultValue="react" disabled>
+    <RadioGroup.Label>Framework (Disabled)</RadioGroup.Label>
+    <RadioGroup.Indicator />
+    <div className="space-y-2">
+      {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
+        <RadioGroup.Item key={framework} value={framework.toLowerCase()}>
+          <RadioGroup.ItemControl />
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemHiddenInput />
+        </RadioGroup.Item>
+      ))}
+    </div>
+  </RadioGroup.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<RadioGroup.Root defaultValue="react" disabled>
+  <RadioGroup.Label>Framework (Disabled)</RadioGroup.Label>
+  <RadioGroup.Indicator />
+  <div className="space-y-2">
+    {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
+      <RadioGroup.Item key={framework} value={framework.toLowerCase()}>
+        <RadioGroup.ItemControl />
+        <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+        <RadioGroup.ItemHiddenInput />
+      </RadioGroup.Item>
+    ))}
+  </div>
+</RadioGroup.Root>
+```
+</CodeBlock>
+
+### Horizontal
+
+<Preview>
+  <RadioGroup.Root defaultValue="react" orientation="horizontal">
+    <RadioGroup.Label>Framework</RadioGroup.Label>
+    <RadioGroup.Indicator />
+    <div className="flex space-x-4">
+      {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
+        <RadioGroup.Item key={framework} value={framework.toLowerCase()}>
+          <RadioGroup.ItemControl />
+          <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+          <RadioGroup.ItemHiddenInput />
+        </RadioGroup.Item>
+      ))}
+    </div>
+  </RadioGroup.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<RadioGroup.Root defaultValue="react" orientation="horizontal">
+  <RadioGroup.Label>Framework</RadioGroup.Label>
+  <RadioGroup.Indicator />
+  <div className="flex space-x-4">
+    {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
+      <RadioGroup.Item key={framework} value={framework.toLowerCase()}>
+        <RadioGroup.ItemControl />
+        <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
+        <RadioGroup.ItemHiddenInput />
+      </RadioGroup.Item>
+    ))}
+  </div>
+</RadioGroup.Root>
+```
+</CodeBlock>
+
+
+The text element of the radio item.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |
+
+### RadioGroup.ItemHiddenInput
+
+The hidden input element for form submission.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |

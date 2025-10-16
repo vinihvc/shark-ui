@@ -1,0 +1,136 @@
+---
+title: "Avatar"
+description: "An image element with a fallback for representing the user."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Avatar } from "@/components/ui/avatar";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Avatar } from "@/components/ui/avatar";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <div className="flex items-center space-x-4">
+    <Avatar.Root>
+      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+      <Avatar.Fallback>PA</Avatar.Fallback>
+    </Avatar.Root>
+    <Avatar.Root>
+      <Avatar.Image src="https://i.pravatar.cc/301" alt="avatar" />
+      <Avatar.Fallback>JD</Avatar.Fallback>
+    </Avatar.Root>
+    <Avatar.Root>
+      <Avatar.Image src="https://i.pravatar.cc/302" alt="avatar" />
+      <Avatar.Fallback>AB</Avatar.Fallback>
+    </Avatar.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Avatar } from "@/components/ui/avatar";
+
+export function AvatarDemo() {
+  return (
+    <div className="flex items-center space-x-4">
+      <Avatar.Root>
+        <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+        <Avatar.Fallback>PA</Avatar.Fallback>
+      </Avatar.Root>
+      <Avatar.Root>
+        <Avatar.Image src="https://i.pravatar.cc/301" alt="avatar" />
+        <Avatar.Fallback>JD</Avatar.Fallback>
+      </Avatar.Root>
+      <Avatar.Root>
+        <Avatar.Image src="https://i.pravatar.cc/302" alt="avatar" />
+        <Avatar.Fallback>AB</Avatar.Fallback>
+      </Avatar.Root>
+    </div>
+  );
+}
+```
+</CodeBlock>
+
+### Fallback Only
+
+<Preview>
+  <div className="flex items-center space-x-4">
+    <Avatar.Root>
+      <Avatar.Fallback>PA</Avatar.Fallback>
+    </Avatar.Root>
+    <Avatar.Root>
+      <Avatar.Fallback>JD</Avatar.Fallback>
+    </Avatar.Root>
+    <Avatar.Root>
+      <Avatar.Fallback>AB</Avatar.Fallback>
+    </Avatar.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="flex items-center space-x-4">
+  <Avatar.Root>
+    <Avatar.Fallback>PA</Avatar.Fallback>
+  </Avatar.Root>
+  <Avatar.Root>
+    <Avatar.Fallback>JD</Avatar.Fallback>
+  </Avatar.Root>
+  <Avatar.Root>
+    <Avatar.Fallback>AB</Avatar.Fallback>
+  </Avatar.Root>
+</div>
+```
+</CodeBlock>
+
+### Different Sizes
+
+<Preview>
+  <div className="flex items-center space-x-4">
+    <Avatar.Root className="h-8 w-8">
+      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+      <Avatar.Fallback className="text-xs">PA</Avatar.Fallback>
+    </Avatar.Root>
+    <Avatar.Root className="h-10 w-10">
+      <Avatar.Image src="https://i.pravatar.cc/301" alt="avatar" />
+      <Avatar.Fallback>JD</Avatar.Fallback>
+    </Avatar.Root>
+    <Avatar.Root className="h-12 w-12">
+      <Avatar.Image src="https://i.pravatar.cc/302" alt="avatar" />
+      <Avatar.Fallback className="text-lg">AB</Avatar.Fallback>
+    </Avatar.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="flex items-center space-x-4">
+  <Avatar.Root className="h-8 w-8">
+    <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    <Avatar.Fallback className="text-xs">PA</Avatar.Fallback>
+  </Avatar.Root>
+  <Avatar.Root className="h-10 w-10">
+    <Avatar.Image src="https://i.pravatar.cc/301" alt="avatar" />
+    <Avatar.Fallback>JD</Avatar.Fallback>
+  </Avatar.Root>
+  <Avatar.Root className="h-12 w-12">
+    <Avatar.Image src="https://i.pravatar.cc/302" alt="avatar" />
+    <Avatar.Fallback className="text-lg">AB</Avatar.Fallback>
+  </Avatar.Root>
+</div>
+```
+</CodeBlock>

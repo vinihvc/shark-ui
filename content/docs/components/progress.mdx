@@ -1,0 +1,172 @@
+---
+title: "Progress"
+description: "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Progress } from "@/components/ui/progress";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Progress } from "@/components/ui/progress";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-sm">
+      <Progress.Label>Progress</Progress.Label>
+      <Progress.ValueText />
+    </div>
+    <Progress.Root value={33} className="w-full">
+      <Progress.Track>
+        <Progress.Range />
+      </Progress.Track>
+    </Progress.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Progress } from "@/components/ui/progress";
+
+export function ProgressDemo() {
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between text-sm">
+        <Progress.Label>Progress</Progress.Label>
+        <Progress.ValueText />
+      </div>
+      <Progress.Root value={33} className="w-full">
+        <Progress.Track>
+          <Progress.Range />
+        </Progress.Track>
+      </Progress.Root>
+    </div>
+  );
+}
+```
+</CodeBlock>
+
+### With Different Values
+
+<Preview>
+  <div className="space-y-4">
+    <div className="space-y-2">
+      <div className="flex items-center justify-between text-sm">
+        <Progress.Label>Loading...</Progress.Label>
+        <Progress.ValueText />
+      </div>
+      <Progress.Root value={25} className="w-full">
+        <Progress.Track>
+          <Progress.Range />
+        </Progress.Track>
+      </Progress.Root>
+    </div>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between text-sm">
+        <Progress.Label>Processing...</Progress.Label>
+        <Progress.ValueText />
+      </div>
+      <Progress.Root value={60} className="w-full">
+        <Progress.Track>
+          <Progress.Range />
+        </Progress.Track>
+      </Progress.Root>
+    </div>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between text-sm">
+        <Progress.Label>Complete</Progress.Label>
+        <Progress.ValueText />
+      </div>
+      <Progress.Root value={100} className="w-full">
+        <Progress.Track>
+          <Progress.Range />
+        </Progress.Track>
+      </Progress.Root>
+    </div>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="space-y-4">
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-sm">
+      <Progress.Label>Loading...</Progress.Label>
+      <Progress.ValueText />
+    </div>
+    <Progress.Root value={25} className="w-full">
+      <Progress.Track>
+        <Progress.Range />
+      </Progress.Track>
+    </Progress.Root>
+  </div>
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-sm">
+      <Progress.Label>Processing...</Progress.Label>
+      <Progress.ValueText />
+    </div>
+    <Progress.Root value={60} className="w-full">
+      <Progress.Track>
+        <Progress.Range />
+      </Progress.Track>
+    </Progress.Root>
+  </div>
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-sm">
+      <Progress.Label>Complete</Progress.Label>
+      <Progress.ValueText />
+    </div>
+    <Progress.Root value={100} className="w-full">
+      <Progress.Track>
+        <Progress.Range />
+      </Progress.Track>
+    </Progress.Root>
+  </div>
+</div>
+```
+</CodeBlock>
+
+### Indeterminate
+
+<Preview>
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-sm">
+      <Progress.Label>Loading...</Progress.Label>
+      <Progress.ValueText />
+    </div>
+    <Progress.Root className="w-full">
+      <Progress.Track>
+        <Progress.Range />
+      </Progress.Track>
+    </Progress.Root>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="space-y-2">
+  <div className="flex items-center justify-between text-sm">
+    <Progress.Label>Loading...</Progress.Label>
+    <Progress.ValueText />
+  </div>
+  <Progress.Root className="w-full">
+    <Progress.Track>
+      <Progress.Range />
+    </Progress.Track>
+  </Progress.Root>
+</div>
+```
+</CodeBlock>

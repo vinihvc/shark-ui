@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "fumadocs-ui/utils/cn";
-import type * as React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonVariants = tv({

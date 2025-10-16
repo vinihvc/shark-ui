@@ -1,0 +1,105 @@
+---
+title: "Input"
+description: "Displays a form input field or a component that looks like an input field."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Label htmlFor="email">Email</Label>
+    <Input type="email" id="email" placeholder="Email" />
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+export function InputDemo() {
+  return (
+    <div className="grid w-full max-w-sm items-center gap-1.5">
+      <Label htmlFor="email">Email</Label>
+      <Input type="email" id="email" placeholder="Email" />
+    </div>
+  );
+}
+```
+</CodeBlock>
+
+### With Label
+
+<Preview>
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Label htmlFor="picture">Picture</Label>
+    <Input id="picture" type="file" />
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="picture">Picture</Label>
+  <Input id="picture" type="file" />
+</div>
+```
+</CodeBlock>
+
+### Disabled
+
+<Preview>
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+    <Label htmlFor="disabled">Disabled</Label>
+    <Input disabled type="text" id="disabled" placeholder="Disabled input" />
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="disabled">Disabled</Label>
+  <Input disabled type="text" id="disabled" placeholder="Disabled input" />
+</div>
+```
+</CodeBlock>
+
+### With Button
+
+<Preview>
+  <div className="flex w-full max-w-sm items-center space-x-2">
+    <Input type="email" placeholder="Email" />
+    <Button type="submit">Subscribe</Button>
+  </div>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+<div className="flex w-full max-w-sm items-center space-x-2">
+  <Input type="email" placeholder="Email" />
+  <Button type="submit">Subscribe</Button>
+</div>
+```
+</CodeBlock>

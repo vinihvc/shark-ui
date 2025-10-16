@@ -1,0 +1,244 @@
+---
+title: "Tabs"
+description: "A set of layered sections of content—known as tab panels—that are displayed one at a time."
+---
+
+import { Preview } from "@/components/preview";
+import { CodeBlock } from "@/components/code-block";
+import { Tabs } from "@/components/ui/tabs";
+
+## Installation
+
+```bash
+pnpm add @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Tabs } from "@/components/ui/tabs";
+```
+
+## Examples
+
+### Basic
+
+<Preview>
+  <Tabs.Root defaultValue="account" className="w-[400px]">
+    <Tabs.List>
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="password">Password</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="account">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Account</h3>
+        <p className="text-sm text-muted-foreground">
+          Make changes to your account here. Click save when you're done.
+        </p>
+      </div>
+    </Tabs.Content>
+    <Tabs.Content value="password">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Password</h3>
+        <p className="text-sm text-muted-foreground">
+          Change your password here. After saving, you'll be logged out.
+        </p>
+      </div>
+    </Tabs.Content>
+  </Tabs.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+import { Tabs } from "@/components/ui/tabs";
+
+export function TabsDemo() {
+  return (
+    <Tabs.Root defaultValue="account" className="w-[400px]">
+      <Tabs.List>
+        <Tabs.Trigger value="account">Account</Tabs.Trigger>
+        <Tabs.Trigger value="password">Password</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="account">
+        <div className="space-y-2">
+          <h3 className="text-lg font-medium">Account</h3>
+          <p className="text-sm text-muted-foreground">
+            Make changes to your account here. Click save when you're done.
+          </p>
+        </div>
+      </Tabs.Content>
+      <Tabs.Content value="password">
+        <div className="space-y-2">
+          <h3 className="text-lg font-medium">Password</h3>
+          <p className="text-sm text-muted-foreground">
+            Change your password here. After saving, you'll be logged out.
+          </p>
+        </div>
+      </Tabs.Content>
+    </Tabs.Root>
+  );
+}
+```
+</CodeBlock>
+
+### With Multiple Tabs
+
+<Preview>
+  <Tabs.Root defaultValue="overview" className="w-[400px]">
+    <Tabs.List>
+      <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+      <Tabs.Trigger value="analytics">Analytics</Tabs.Trigger>
+      <Tabs.Trigger value="reports">Reports</Tabs.Trigger>
+      <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="overview">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Overview</h3>
+        <p className="text-sm text-muted-foreground">
+          Get a high-level view of your business metrics and performance.
+        </p>
+      </div>
+    </Tabs.Content>
+    <Tabs.Content value="analytics">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Analytics</h3>
+        <p className="text-sm text-muted-foreground">
+          Dive deep into your data with detailed analytics and insights.
+        </p>
+      </div>
+    </Tabs.Content>
+    <Tabs.Content value="reports">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Reports</h3>
+        <p className="text-sm text-muted-foreground">
+          Generate and download comprehensive reports for your business.
+        </p>
+      </div>
+    </Tabs.Content>
+    <Tabs.Content value="notifications">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Notifications</h3>
+        <p className="text-sm text-muted-foreground">
+          Manage your notification preferences and settings.
+        </p>
+      </div>
+    </Tabs.Content>
+  </Tabs.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Tabs.Root defaultValue="overview" className="w-[400px]">
+  <Tabs.List>
+    <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+    <Tabs.Trigger value="analytics">Analytics</Tabs.Trigger>
+    <Tabs.Trigger value="reports">Reports</Tabs.Trigger>
+    <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="overview">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Overview</h3>
+      <p className="text-sm text-muted-foreground">
+        Get a high-level view of your business metrics and performance.
+      </p>
+    </div>
+  </Tabs.Content>
+  <Tabs.Content value="analytics">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Analytics</h3>
+      <p className="text-sm text-muted-foreground">
+        Dive deep into your data with detailed analytics and insights.
+      </p>
+    </div>
+  </Tabs.Content>
+  <Tabs.Content value="reports">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Reports</h3>
+      <p className="text-sm text-muted-foreground">
+        Generate and download comprehensive reports for your business.
+      </p>
+    </div>
+  </Tabs.Content>
+  <Tabs.Content value="notifications">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Notifications</h3>
+      <p className="text-sm text-muted-foreground">
+        Manage your notification preferences and settings.
+      </p>
+    </div>
+  </Tabs.Content>
+</Tabs.Root>
+```
+</CodeBlock>
+
+### Disabled Tabs
+
+<Preview>
+  <Tabs.Root defaultValue="account" className="w-[400px]">
+    <Tabs.List>
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="password" disabled>Password</Tabs.Trigger>
+      <Tabs.Trigger value="billing">Billing</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="account">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Account</h3>
+        <p className="text-sm text-muted-foreground">
+          Make changes to your account here. Click save when you're done.
+        </p>
+      </div>
+    </Tabs.Content>
+    <Tabs.Content value="password">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Password</h3>
+        <p className="text-sm text-muted-foreground">
+          This tab is disabled.
+        </p>
+      </div>
+    </Tabs.Content>
+    <Tabs.Content value="billing">
+      <div className="space-y-2">
+        <h3 className="text-lg font-medium">Billing</h3>
+        <p className="text-sm text-muted-foreground">
+          Manage your billing information and subscription.
+        </p>
+      </div>
+    </Tabs.Content>
+  </Tabs.Root>
+</Preview>
+
+<CodeBlock>
+```tsx
+<Tabs.Root defaultValue="account" className="w-[400px]">
+  <Tabs.List>
+    <Tabs.Trigger value="account">Account</Tabs.Trigger>
+    <Tabs.Trigger value="password" disabled>Password</Tabs.Trigger>
+    <Tabs.Trigger value="billing">Billing</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="account">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Account</h3>
+      <p className="text-sm text-muted-foreground">
+        Make changes to your account here. Click save when you're done.
+      </p>
+    </div>
+  </Tabs.Content>
+  <Tabs.Content value="password">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Password</h3>
+      <p className="text-sm text-muted-foreground">
+        This tab is disabled.
+      </p>
+    </div>
+  </Tabs.Content>
+  <Tabs.Content value="billing">
+    <div className="space-y-2">
+      <h3 className="text-lg font-medium">Billing</h3>
+      <p className="text-sm text-muted-foreground">
+        Manage your billing information and subscription.
+      </p>
+    </div>
+  </Tabs.Content>
+</Tabs.Root>
+```
+</CodeBlock>
