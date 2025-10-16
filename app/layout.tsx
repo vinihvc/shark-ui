@@ -1,17 +1,42 @@
-import '@/app/global.css';
-import { RootProvider } from 'fumadocs-ui/provider/next';
-import { Inter } from 'next/font/google';
+import "@/styles/global.css";
+import { RootProvider } from "fumadocs-ui/provider/next";
+import type { Metadata } from "next";
+import { Footer } from "@/components/layout/footer";
+import { SITE_CONFIG } from "@/config/site";
+import { fontSans } from "@/lib/fonts";
 
-const inter = Inter({
-  subsets: ['latin'],
-});
+export const metadata: Metadata = {
+  title: {
+    default: SITE_CONFIG.name,
+    template: `%s | ${SITE_CONFIG.name}`,
+  },
+  creator: SITE_CONFIG.creator,
+  description: SITE_CONFIG.description,
+  openGraph: {
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.ogImage],
+    url: SITE_CONFIG.url,
+    type: "website",
+    locale: "en_US",
+    siteName: SITE_CONFIG.name,
+  },
+};
 
-export default function Layout({ children }: LayoutProps<'/'>) {
+const RootLayout = (props: LayoutProps<"/">) => {
+  const { children } = props;
+
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
-        <RootProvider>{children}</RootProvider>
+    <html className={fontSans.variable} lang="en" suppressHydrationWarning>
+      <body className="flex min-h-svh flex-col">
+        <RootProvider>
+          {children}
+
+          <Footer />
+        </RootProvider>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

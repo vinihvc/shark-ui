@@ -1,7 +1,28 @@
 {
   "name": "shark-ui",
-  "version": "0.0.0",
+  "description": "shadcn components powered by ark-ui",
+  "version": "1.0.0",
   "private": true,
+  "author": "Vinicius Vicentini <viniciusvicentini@live.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinihvc/shark-ui"
+  },
+  "homepage": "https://shark-ui.vercel.app",
+  "keywords": [
+    "shadcn",
+    "ark-ui",
+    "ui",
+    "components"
+  ],
+  "contributors": [
+    {
+      "name": "Vinicius Vicentini",
+      "email": "viniciusvicentini@live.com",
+      "url": "https://github.com/vinihvc"
+    }
+  ],
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbo",
@@ -11,23 +32,33 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "next": "15.5.4",
+    "@ark-ui/react": "^5.26.1",
+    "@radix-ui/react-slot": "^1.2.3",
+    "fumadocs-core": "15.8.5",
+    "fumadocs-mdx": "12.0.3",
+    "fumadocs-ui": "15.8.5",
+    "lucide-react": "^0.546.0",
+    "next": "15.5.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "lucide-react": "^0.544.0",
-    "fumadocs-ui": "15.8.5",
-    "fumadocs-core": "15.8.5",
-    "fumadocs-mdx": "12.0.3"
+    "tailwind-variants": "^3.1.1"
   },
   "devDependencies": {
-    "@types/node": "24.6.2",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "typescript": "^5.9.3",
-    "@types/mdx": "^2.0.13",
+    "@biomejs/biome": "2.2.6",
     "@tailwindcss/postcss": "^4.1.14",
-    "tailwindcss": "^4.1.14",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "24.8.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "lint-staged": "^16.2.4",
     "postcss": "^8.5.6",
-    "@biomejs/biome": "^2.2.5"
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3",
+    "ultracite": "5.6.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+      "pnpm dlx ultracite fix"
+    ]
   }
 }
