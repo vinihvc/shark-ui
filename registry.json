@@ -7,12 +7,10 @@
     {
       "name": "accordion",
       "type": "components:ui",
-      "description": "A vertically stacked set of interactive headings that each reveal a section of content",
+      "description": "A accordion component built with Ark UI",
       "category": "ui",
       "tags": [
-        "accordion",
-        "collapsible",
-        "layout"
+        "accordion"
       ],
       "dependencies": [
         "@ark-ui/react"
@@ -21,7 +19,7 @@
       "files": [
         {
           "name": "accordion.tsx",
-          "content": "import { Accordion as ArkAccordion } from \"@ark-ui/react/accordion\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst accordionVariants = tv({\n  slots: {\n    root: \"w-full\",\n    item: \"border-border border-b\",\n    trigger: [\n      \"flex w-full items-center justify-between py-4 font-medium transition-all\",\n      \"hover:bg-accent/50\",\n      \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      \"[&[data-state=open]>svg]:rotate-180\",\n    ],\n    content: [\n      \"overflow-hidden text-sm transition-all\",\n      \"data-[state=closed]:animate-accordion-up\",\n      \"data-[state=open]:animate-accordion-down\",\n    ],\n    indicator: \"h-4 w-4 shrink-0 transition-transform duration-200\",\n  },\n});\n\nconst { root, item, trigger, content, indicator } = accordionVariants();\n\nexport interface AccordionProps\n  extends React.ComponentProps<typeof ArkAccordion.Root>,\n    VariantProps<typeof accordionVariants> {}\n\nconst AccordionRoot = React.forwardRef<\n  React.ElementRef<typeof ArkAccordion.Root>,\n  AccordionProps\n>(({ className, ...props }, ref) => (\n  <ArkAccordion.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nAccordionRoot.displayName = \"Accordion\";\n\nconst AccordionItem = React.forwardRef<\n  React.ElementRef<typeof ArkAccordion.Item>,\n  React.ComponentProps<typeof ArkAccordion.Item>\n>(({ className, ...props }, ref) => (\n  <ArkAccordion.Item className={cn(item(), className)} ref={ref} {...props} />\n));\nAccordionItem.displayName = \"AccordionItem\";\n\nconst AccordionTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkAccordion.ItemTrigger>,\n  React.ComponentProps<typeof ArkAccordion.ItemTrigger>\n>(({ className, children, ...props }, ref) => (\n  <ArkAccordion.ItemTrigger\n    className={cn(trigger(), className)}\n    ref={ref}\n    {...props}\n  >\n    {children}\n  </ArkAccordion.ItemTrigger>\n));\nAccordionTrigger.displayName = \"AccordionTrigger\";\n\nconst AccordionContent = React.forwardRef<\n  React.ElementRef<typeof ArkAccordion.ItemContent>,\n  React.ComponentProps<typeof ArkAccordion.ItemContent>\n>(({ className, children, ...props }, ref) => (\n  <ArkAccordion.ItemContent\n    className={cn(content(), className)}\n    ref={ref}\n    {...props}\n  >\n    <div className=\"pt-0 pb-4\">{children}</div>\n  </ArkAccordion.ItemContent>\n));\nAccordionContent.displayName = \"AccordionContent\";\n\nconst AccordionIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkAccordion.ItemIndicator>,\n  React.ComponentProps<typeof ArkAccordion.ItemIndicator>\n>(({ className, ...props }, ref) => (\n  <ArkAccordion.ItemIndicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nAccordionIndicator.displayName = \"AccordionIndicator\";\n\nexport const Accordion = {\n  Root: AccordionRoot,\n  Item: AccordionItem,\n  ItemTrigger: AccordionTrigger,\n  ItemContent: AccordionContent,\n  ItemIndicator: AccordionIndicator,\n};\n"
+          "content": "import { Accordion as ArkAccordion } from \"@ark-ui/react/accordion\";\nimport { ChevronDown } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Accordion = (\n  props: React.ComponentProps<typeof ArkAccordion.Root>\n) => <ArkAccordion.Root data-slot=\"accordion\" {...props} />;\n\nexport const AccordionItem = (\n  props: React.ComponentProps<typeof ArkAccordion.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAccordion.Item\n      className={cn(\"flex flex-col border-b last:border-b-0\", className)}\n      data-slot=\"accordion-item\"\n      {...rest}\n    />\n  );\n};\n\nexport const AccordionTrigger = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemTrigger>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemTrigger\n      className={cn(\n        \"flex flex-1 items-start justify-between gap-4\",\n        \"py-4\",\n        \"text-left font-medium text-sm\",\n        \"rounded-md\",\n        \"outline-none\",\n        \"transition-all\",\n        \"hover:underline\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n        \"[&_[data-state=open]>svg]:rotate-180\",\n        className\n      )}\n      data-slot=\"accordion-trigger\"\n      {...rest}\n    >\n      {children}\n\n      <AccordionIndicator>\n        <ChevronDown className=\"pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200\" />\n      </AccordionIndicator>\n    </ArkAccordion.ItemTrigger>\n  );\n};\n\nexport const AccordionIndicator = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemIndicator>\n) => <ArkAccordion.ItemIndicator data-slot=\"accordion-indicator\" {...props} />;\n\nexport const AccordionContent = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemContent>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemContent\n      className={cn(\n        \"overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\",\n        className\n      )}\n      data-slot=\"accordion-content\"\n      {...rest}\n    >\n      <div className=\"pt-0 pb-4\">{children}</div>\n    </ArkAccordion.ItemContent>\n  );\n};\n"
         }
       ],
       "categories": [
@@ -30,9 +28,7 @@
       "meta": {
         "category": "ui",
         "tags": [
-          "accordion",
-          "collapsible",
-          "layout"
+          "accordion"
         ],
         "dependencies": [
           "@ark-ui/react"
@@ -89,7 +85,7 @@
       "files": [
         {
           "name": "avatar.tsx",
-          "content": "\"use client\";\n\nimport { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Root\n      className={cn(\n        \"relative\",\n        \"size-8\",\n        \"flex shrink-0\",\n        \"overflow-hidden\",\n        \"rounded-full\",\n        className\n      )}\n      data-slot=\"avatar\"\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarImage = (\n  props: React.ComponentProps<typeof ArkAvatar.Image>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Image\n      className={cn(\"aspect-square size-full object-cover\", className)}\n      data-slot=\"avatar-image\"\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarFallback = (\n  props: React.ComponentProps<typeof ArkAvatar.Fallback>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Fallback\n      className={cn(\n        \"flex size-full items-center justify-center rounded-full bg-muted\",\n        className\n      )}\n      data-slot=\"avatar-fallback\"\n      {...rest}\n    />\n  );\n};\n"
+          "content": "\"use client\";\n\nimport { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Root\n      className={cn(\n        \"relative\",\n        \"size-8\",\n        \"flex shrink-0\",\n        \"overflow-hidden\",\n        \"rounded-full\",\n        className\n      )}\n      data-slot=\"avatar\"\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarImage = (\n  props: React.ComponentProps<typeof ArkAvatar.Image>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Image\n      className={cn(\"size-full\", \"aspect-square object-cover\", className)}\n      data-slot=\"avatar-image\"\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarFallback = (\n  props: React.ComponentProps<typeof ArkAvatar.Fallback>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Fallback\n      className={cn(\n        \"size-full\",\n        \"flex items-center justify-center\",\n        \"bg-muted\",\n        \"rounded-full\",\n        className\n      )}\n      data-slot=\"avatar-fallback\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
       "categories": [
@@ -143,22 +139,19 @@
     {
       "name": "button",
       "type": "components:ui",
-      "description": "Displays a button or a component that looks like a button with multiple variants",
+      "description": "A button component built with Ark UI",
       "category": "ui",
       "tags": [
-        "button",
-        "interactive",
-        "form"
+        "button"
       ],
       "dependencies": [
-        "@ark-ui/react",
-        "@radix-ui/react-slot"
+        "@ark-ui/react"
       ],
       "registryDependencies": [],
       "files": [
         {
           "name": "button.tsx",
-          "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const buttonVariants = tv({\n  base: \"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  variants: {\n    variant: {\n      default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n      destructive:\n        \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40\",\n      outline:\n        \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50\",\n      secondary: \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n      ghost:\n        \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n      link: \"text-primary underline-offset-4 hover:underline\",\n    },\n    size: {\n      default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n      sm: \"h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5\",\n      lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n      icon: \"size-9\",\n      \"icon-sm\": \"size-8\",\n      \"icon-lg\": \"size-10\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n  },\n});\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  /**\n   * If `true`, the button will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Button = (props: ButtonProps) => {\n  const { asChild, variant, size, className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(buttonVariants({ variant, size, className }))}\n      data-slot=\"button\"\n      {...rest}\n    />\n  );\n};\n"
+          "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const buttonVariants = tv({\n  base: \"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  variants: {\n    variant: {\n      default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n      destructive:\n        \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40\",\n      outline:\n        \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50\",\n      secondary: \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n      ghost:\n        \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n      link: \"text-primary underline-offset-4 hover:underline\",\n    },\n    size: {\n      default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n      sm: \"h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5\",\n      lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n      icon: \"size-9\",\n      \"icon-sm\": \"size-8\",\n      \"icon-lg\": \"size-10\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n  },\n});\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  /**\n   * If `true`, the button will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Button = (props: ButtonProps) => {\n  const { asChild, variant, size, className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(buttonVariants({ variant, size }), className)}\n      data-slot=\"button\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
       "categories": [
@@ -167,13 +160,10 @@
       "meta": {
         "category": "ui",
         "tags": [
-          "button",
-          "interactive",
-          "form"
+          "button"
         ],
         "dependencies": [
-          "@ark-ui/react",
-          "@radix-ui/react-slot"
+          "@ark-ui/react"
         ]
       }
     },
@@ -246,22 +236,19 @@
     {
       "name": "dialog",
       "type": "components:ui",
-      "description": "A window overlaid on either the primary window or another dialog window",
+      "description": "A dialog component built with Ark UI",
       "category": "ui",
       "tags": [
-        "dialog",
-        "modal",
-        "overlay"
+        "dialog"
       ],
       "dependencies": [
-        "@ark-ui/react",
-        "@ark-ui/react/portal"
+        "@ark-ui/react"
       ],
       "registryDependencies": [],
       "files": [
         {
           "name": "dialog.tsx",
-          "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst dialogVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: \"inline-flex\",\n    backdrop: [\n      \"fixed inset-0 z-50\",\n      \"bg-background/80 backdrop-blur-sm\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n    ],\n    positioner: [\"fixed inset-0 z-50 flex items-center justify-center\", \"p-4\"],\n    content: [\n      \"relative z-50 grid w-full max-w-lg gap-4 border bg-background p-6 shadow-lg\",\n      \"sm:rounded-lg\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]\",\n      \"data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]\",\n    ],\n    title: [\"font-semibold text-lg leading-none tracking-tight\"],\n    description: [\"text-muted-foreground text-sm\"],\n    closeTrigger: [\n      \"absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background\",\n      \"transition-opacity hover:opacity-100\",\n      \"focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:pointer-events-none\",\n      \"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground\",\n    ],\n  },\n});\n\nconst {\n  root,\n  trigger,\n  backdrop,\n  positioner,\n  content,\n  title,\n  description,\n  closeTrigger,\n} = dialogVariants();\n\nexport interface DialogProps\n  extends React.ComponentProps<typeof ArkDialog.Root>,\n    VariantProps<typeof dialogVariants> {}\n\nconst DialogRoot = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Root>,\n  DialogProps\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nDialogRoot.displayName = \"Dialog\";\n\nconst DialogTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Trigger>,\n  React.ComponentProps<typeof ArkDialog.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Trigger\n    className={cn(trigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nDialogTrigger.displayName = \"DialogTrigger\";\n\nconst DialogBackdrop = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Backdrop>,\n  React.ComponentProps<typeof ArkDialog.Backdrop>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Backdrop\n    className={cn(backdrop(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nDialogBackdrop.displayName = \"DialogBackdrop\";\n\nconst DialogPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Positioner>,\n  React.ComponentProps<typeof ArkDialog.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nDialogPositioner.displayName = \"DialogPositioner\";\n\nconst DialogContent = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Content>,\n  React.ComponentProps<typeof ArkDialog.Content>\n>(({ className, children, ...props }, ref) => (\n  <Portal>\n    <DialogBackdrop />\n    <DialogPositioner>\n      <ArkDialog.Content\n        className={cn(content(), className)}\n        ref={ref}\n        {...props}\n      >\n        {children}\n      </ArkDialog.Content>\n    </DialogPositioner>\n  </Portal>\n));\nDialogContent.displayName = \"DialogContent\";\n\nconst DialogTitle = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Title>,\n  React.ComponentProps<typeof ArkDialog.Title>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Title className={cn(title(), className)} ref={ref} {...props} />\n));\nDialogTitle.displayName = \"DialogTitle\";\n\nconst DialogDescription = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Description>,\n  React.ComponentProps<typeof ArkDialog.Description>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Description\n    className={cn(description(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nDialogDescription.displayName = \"DialogDescription\";\n\nconst DialogCloseTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.CloseTrigger>,\n  React.ComponentProps<typeof ArkDialog.CloseTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.CloseTrigger\n    className={cn(closeTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nDialogCloseTrigger.displayName = \"DialogCloseTrigger\";\n\nexport const Dialog = {\n  Root: DialogRoot,\n  Trigger: DialogTrigger,\n  Backdrop: DialogBackdrop,\n  Positioner: DialogPositioner,\n  Content: DialogContent,\n  Title: DialogTitle,\n  Description: DialogDescription,\n  CloseTrigger: DialogCloseTrigger,\n};\n"
+          "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { X } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\n\nexport const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => (\n  <ArkDialog.Root data-slot=\"dialog\" {...props} />\n);\n\nexport const DialogTrigger = (\n  props: React.ComponentProps<typeof ArkDialog.Trigger>\n) => <ArkDialog.Trigger data-slot=\"dialog-trigger\" {...props} />;\n\nexport const DialogBackdrop = (\n  props: React.ComponentProps<typeof ArkDialog.Backdrop>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Backdrop\n      className={cn(\n        \"fixed inset-0 z-50 bg-background/50 backdrop-blur-xs\",\n        className\n      )}\n      data-slot=\"dialog-backdrop\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogPositioner = (\n  props: React.ComponentProps<typeof ArkDialog.Positioner>\n) => <ArkDialog.Positioner data-slot=\"dialog-positioner\" {...props} />;\n\ninterface DialogContentProps\n  extends React.ComponentProps<typeof ArkDialog.Content> {\n  /**\n   * If `true`, the close button will be shown.\n   *\n   * @default true\n   */\n  showCloseButton?: boolean;\n}\n\nexport const DialogContent = (props: DialogContentProps) => {\n  const { showCloseButton = true, className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <DialogBackdrop />\n\n      <DialogPositioner>\n        <ArkDialog.Content\n          className={cn(\n            \"z-50\",\n            \"-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2\",\n            \"flex flex-col\",\n            \"p-6\",\n            \"bg-background\",\n            \"w-full max-w-[calc(100%-2rem)] sm:max-w-lg\",\n            \"border shadow-lg\",\n            \"rounded-lg\",\n            \"focus:outline-none focus:ring-0\",\n            \"duration-200\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            className\n          )}\n          data-slot=\"dialog-content\"\n          {...rest}\n        >\n          {children}\n\n          {showCloseButton && (\n            <DialogClose asChild className=\"absolute top-4 right-4\">\n              <Button\n                className=\"size-8 border-none opacity-70 hover:opacity-100\"\n                size=\"icon\"\n                variant=\"ghost\"\n              >\n                <X />\n\n                <span className=\"sr-only\">Close</span>\n              </Button>\n            </DialogClose>\n          )}\n        </ArkDialog.Content>\n      </DialogPositioner>\n    </Portal>\n  );\n};\n\nexport const DialogHeader = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2\", className)}\n      data-slot=\"dialog-header\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogTitle = (\n  props: React.ComponentProps<typeof ArkDialog.Title>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Title\n      className={cn(\n        \"font-semibold text-lg leading-none tracking-tight\",\n        className\n      )}\n      data-slot=\"dialog-title\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogDescription = (\n  props: React.ComponentProps<typeof ArkDialog.Description>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Description\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      data-slot=\"dialog-description\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogClose = (\n  props: React.ComponentProps<typeof ArkDialog.CloseTrigger>\n) => <ArkDialog.CloseTrigger data-slot=\"dialog-close-trigger\" {...props} />;\n\nexport const DialogFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"mt-4 flex flex-row-reverse gap-2\", className)}\n      data-slot=\"dialog-footer\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
       "categories": [
@@ -270,13 +257,10 @@
       "meta": {
         "category": "ui",
         "tags": [
-          "dialog",
-          "modal",
-          "overlay"
+          "dialog"
         ],
         "dependencies": [
-          "@ark-ui/react",
-          "@ark-ui/react/portal"
+          "@ark-ui/react"
         ]
       }
     },
@@ -808,22 +792,19 @@
     {
       "name": "tooltip",
       "type": "components:ui",
-      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it",
+      "description": "A tooltip component built with Ark UI",
       "category": "ui",
       "tags": [
-        "tooltip",
-        "popup",
-        "help"
+        "tooltip"
       ],
       "dependencies": [
-        "@ark-ui/react",
-        "@ark-ui/react/portal"
+        "@ark-ui/react"
       ],
       "registryDependencies": [],
       "files": [
         {
           "name": "tooltip.tsx",
-          "content": "import { Tooltip as ArkTooltip } from \"@ark-ui/react/tooltip\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst tooltipVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: \"inline-flex\",\n    positioner: [\n      \"z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-popover-foreground text-sm shadow-md\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    content:\n      \"z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-popover-foreground text-sm shadow-md\",\n    arrow: \"fill-popover\",\n  },\n});\n\nconst { root, trigger, positioner, content, arrow } = tooltipVariants();\n\nexport interface TooltipProps\n  extends React.ComponentProps<typeof ArkTooltip.Root>,\n    VariantProps<typeof tooltipVariants> {}\n\nconst TooltipRoot = React.forwardRef<\n  React.ElementRef<typeof ArkTooltip.Root>,\n  TooltipProps\n>(({ className, ...props }, ref) => (\n  <ArkTooltip.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nTooltipRoot.displayName = \"Tooltip\";\n\nconst TooltipTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkTooltip.Trigger>,\n  React.ComponentProps<typeof ArkTooltip.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkTooltip.Trigger\n    className={cn(trigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nTooltipTrigger.displayName = \"TooltipTrigger\";\n\nconst TooltipPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkTooltip.Positioner>,\n  React.ComponentProps<typeof ArkTooltip.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkTooltip.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nTooltipPositioner.displayName = \"TooltipPositioner\";\n\nconst TooltipContent = React.forwardRef<\n  React.ElementRef<typeof ArkTooltip.Content>,\n  React.ComponentProps<typeof ArkTooltip.Content>\n>(({ className, ...props }, ref) => (\n  <ArkTooltip.Content\n    className={cn(content(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nTooltipContent.displayName = \"TooltipContent\";\n\nconst TooltipArrow = React.forwardRef<\n  React.ElementRef<typeof ArkTooltip.Arrow>,\n  React.ComponentProps<typeof ArkTooltip.Arrow>\n>(({ className, ...props }, ref) => (\n  <ArkTooltip.Arrow className={cn(arrow(), className)} ref={ref} {...props} />\n));\nTooltipArrow.displayName = \"TooltipArrow\";\n\nexport const Tooltip = {\n  Root: TooltipRoot,\n  Trigger: TooltipTrigger,\n  Positioner: TooltipPositioner,\n  Content: TooltipContent,\n  Arrow: TooltipArrow,\n};\n"
+          "content": "import { Portal } from \"@ark-ui/react/portal\";\nimport { Tooltip as ArkTooltip } from \"@ark-ui/react/tooltip\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Tooltip = (\n  props: React.ComponentProps<typeof ArkTooltip.Root>\n) => {\n  const {\n    positioning = {\n      placement: \"top\",\n    },\n    closeDelay = 100,\n    openDelay = 0,\n    ...rest\n  } = props;\n\n  return (\n    <ArkTooltip.Root\n      closeDelay={closeDelay}\n      data-slot=\"tooltip\"\n      openDelay={openDelay}\n      positioning={positioning}\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipPortal = (props: React.ComponentProps<typeof Portal>) => (\n  <Portal data-slot=\"tooltip-portal\" {...props} />\n);\n\nexport const TooltipTrigger = (\n  props: React.ComponentProps<typeof ArkTooltip.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTooltip.Trigger\n      className={cn(className)}\n      data-slot=\"tooltip-trigger\"\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipPositioner = (\n  props: React.ComponentProps<typeof ArkTooltip.Positioner>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTooltip.Positioner\n      className={cn(className)}\n      data-slot=\"tooltip-positioner\"\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipContent = (\n  props: React.ComponentProps<typeof ArkTooltip.Content>\n) => {\n  const { className, children, ...rest } = props;\n  return (\n    <TooltipPortal>\n      <TooltipPositioner>\n        <ArkTooltip.Content\n          className={cn(\n            \"z-50 w-fit origin-(--radix-tooltip-content-transform-origin)\",\n            \"px-3 py-1.5\",\n            \"bg-foreground\",\n            \"rounded-md\",\n            \"text-pretty text-background text-xs\",\n            \"animate-in\",\n            \"fade-in-0 zoom-in-95\",\n            \"data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\",\n            \"data-[state=closed]:animate-out\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          data-slot=\"tooltip-content\"\n          {...rest}\n        >\n          <TooltipArrow />\n\n          {children}\n        </ArkTooltip.Content>\n      </TooltipPositioner>\n    </TooltipPortal>\n  );\n};\n\nexport const TooltipArrow = (\n  props: React.ComponentProps<typeof ArkTooltip.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkTooltip.Arrow\n      data-slot=\"tooltip-arrow\"\n      style={\n        {\n          \"--arrow-background\": \"var(--foreground)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <TooltipArrowTip />\n    </ArkTooltip.Arrow>\n  );\n};\n\nexport const TooltipArrowTip = (\n  props: React.ComponentProps<typeof ArkTooltip.ArrowTip>\n) => <ArkTooltip.ArrowTip data-slot=\"tooltip-arrow-tip\" {...props} />;\n"
         }
       ],
       "categories": [
@@ -832,13 +813,41 @@
       "meta": {
         "category": "ui",
         "tags": [
-          "tooltip",
-          "popup",
-          "help"
+          "tooltip"
         ],
         "dependencies": [
-          "@ark-ui/react",
-          "@ark-ui/react/portal"
+          "@ark-ui/react"
+        ]
+      }
+    },
+    {
+      "name": "carousel",
+      "type": "components:ui",
+      "description": "A carousel component built with Ark UI",
+      "category": "ui",
+      "tags": [
+        "carousel"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "name": "carousel.tsx",
+          "content": "import { Carousel as ArkCarousel } from \"@ark-ui/react/carousel\";\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\";\nimport type React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Carousel = (\n  props: React.ComponentProps<typeof ArkCarousel.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Root\n      className={cn(\"relative\", className)}\n      data-slot=\"carousel\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselControl = (\n  props: React.ComponentProps<typeof ArkCarousel.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Control\n      className={cn(className)}\n      data-slot=\"carousel-context\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselPrevious = (\n  props: React.ComponentProps<typeof ArkCarousel.PrevTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.PrevTrigger\n      asChild\n      className={cn(\n        \"-left-12 -translate-y-1/2 absolute top-1/2\",\n        \"size-8 rounded-full\",\n        className\n      )}\n      data-slot=\"carousel-previous\"\n      {...rest}\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronLeftIcon />\n        <span className=\"sr-only\">Previous</span>\n      </Button>\n    </ArkCarousel.PrevTrigger>\n  );\n};\n\nexport const CarouselNext = (\n  props: React.ComponentProps<typeof ArkCarousel.NextTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.NextTrigger\n      className={cn(\"-right-12 -translate-y-1/2 absolute top-1/2\", className)}\n      data-slot=\"carousel-next\"\n      {...rest}\n      asChild\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronRightIcon />\n        <span className=\"sr-only\">Next</span>\n      </Button>\n    </ArkCarousel.NextTrigger>\n  );\n};\n\nexport const CarouselIndicatorGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.IndicatorGroup>\n) => (\n  <ArkCarousel.IndicatorGroup\n    className=\"-translate-x-1/2 absolute bottom-2 left-1/2 flex gap-2 rounded-lg bg-background/80 px-3 py-3 backdrop-blur-sm\"\n    data-slot=\"carousel-indicator-group\"\n    {...props}\n  />\n);\n\nexport const CarouselIndicator = (\n  props: React.ComponentProps<typeof ArkCarousel.Indicator>\n) => (\n  <ArkCarousel.Indicator\n    className=\"size-2 rounded-full bg-foreground opacity-50 data-[current]:opacity-100\"\n    data-slot=\"carousel-indicator\"\n    {...props}\n  />\n);\n\nexport const CarouselItemGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.ItemGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.ItemGroup\n      className={cn(\"flex\", className)}\n      data-slot=\"carousel-item-group\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselItem = (\n  props: React.ComponentProps<typeof ArkCarousel.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Item\n      className={cn(\"min-w-0 shrink-0 grow-0 basis-full\", className)}\n      data-slot=\"carousel-item\"\n      {...rest}\n    />\n  );\n};\n"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "category": "ui",
+        "tags": [
+          "carousel"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
         ]
       }
     }

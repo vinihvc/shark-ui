@@ -1,0 +1,31 @@
+{
+  "name": "dialog",
+  "type": "components:ui",
+  "description": "A dialog component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "dialog"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "dialog.tsx",
+      "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { X } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\n\nexport const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => (\n  <ArkDialog.Root data-slot=\"dialog\" {...props} />\n);\n\nexport const DialogTrigger = (\n  props: React.ComponentProps<typeof ArkDialog.Trigger>\n) => <ArkDialog.Trigger data-slot=\"dialog-trigger\" {...props} />;\n\nexport const DialogBackdrop = (\n  props: React.ComponentProps<typeof ArkDialog.Backdrop>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Backdrop\n      className={cn(\n        \"fixed inset-0 z-50 bg-background/50 backdrop-blur-xs\",\n        className\n      )}\n      data-slot=\"dialog-backdrop\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogPositioner = (\n  props: React.ComponentProps<typeof ArkDialog.Positioner>\n) => <ArkDialog.Positioner data-slot=\"dialog-positioner\" {...props} />;\n\ninterface DialogContentProps\n  extends React.ComponentProps<typeof ArkDialog.Content> {\n  /**\n   * If `true`, the close button will be shown.\n   *\n   * @default true\n   */\n  showCloseButton?: boolean;\n}\n\nexport const DialogContent = (props: DialogContentProps) => {\n  const { showCloseButton = true, className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <DialogBackdrop />\n\n      <DialogPositioner>\n        <ArkDialog.Content\n          className={cn(\n            \"z-50\",\n            \"-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2\",\n            \"flex flex-col\",\n            \"p-6\",\n            \"bg-background\",\n            \"w-full max-w-[calc(100%-2rem)] sm:max-w-lg\",\n            \"border shadow-lg\",\n            \"rounded-lg\",\n            \"focus:outline-none focus:ring-0\",\n            \"duration-200\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            className\n          )}\n          data-slot=\"dialog-content\"\n          {...rest}\n        >\n          {children}\n\n          {showCloseButton && (\n            <DialogClose asChild className=\"absolute top-4 right-4\">\n              <Button\n                className=\"size-8 border-none opacity-70 hover:opacity-100\"\n                size=\"icon\"\n                variant=\"ghost\"\n              >\n                <X />\n\n                <span className=\"sr-only\">Close</span>\n              </Button>\n            </DialogClose>\n          )}\n        </ArkDialog.Content>\n      </DialogPositioner>\n    </Portal>\n  );\n};\n\nexport const DialogHeader = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2\", className)}\n      data-slot=\"dialog-header\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogTitle = (\n  props: React.ComponentProps<typeof ArkDialog.Title>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Title\n      className={cn(\n        \"font-semibold text-lg leading-none tracking-tight\",\n        className\n      )}\n      data-slot=\"dialog-title\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogDescription = (\n  props: React.ComponentProps<typeof ArkDialog.Description>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Description\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      data-slot=\"dialog-description\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogClose = (\n  props: React.ComponentProps<typeof ArkDialog.CloseTrigger>\n) => <ArkDialog.CloseTrigger data-slot=\"dialog-close-trigger\" {...props} />;\n\nexport const DialogFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"mt-4 flex flex-row-reverse gap-2\", className)}\n      data-slot=\"dialog-footer\"\n      {...rest}\n    />\n  );\n};\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "dialog"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}

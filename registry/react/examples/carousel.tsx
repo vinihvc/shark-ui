@@ -33,7 +33,7 @@ const CarouselDemo = () => {
           <CarouselItem index={index} key={image}>
             <img
               alt={`Slide ${index}`}
-              className="h-full w-full object-cover"
+              className="h-full w-full rounded-md object-cover"
               src={image}
             />
           </CarouselItem>

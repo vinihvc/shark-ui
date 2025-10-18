@@ -21,7 +21,7 @@ export const DialogBackdrop = (
   return (
     <ArkDialog.Backdrop
       className={cn(
-        "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm",
+        "fixed inset-0 z-50 bg-background/50 backdrop-blur-xs",
         className
       )}
       data-slot="dialog-backdrop"
@@ -75,14 +75,11 @@ export const DialogContent = (props: DialogContentProps) => {
           {children}
 
           {showCloseButton && (
-            <DialogClose
-              asChild
-              className="absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-            >
+            <DialogClose asChild className="absolute top-4 right-4">
               <Button
-                className="size-8 border-none bg-transparent"
+                className="size-8 border-none opacity-70 hover:opacity-100"
                 size="icon"
-                variant="outline"
+                variant="ghost"
               >
                 <X />
 

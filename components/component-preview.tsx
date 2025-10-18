@@ -47,7 +47,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
           <TabsIndicator />
         </TabsList>
 
-        <div className="**:[figure]:!m-0 relative rounded-lg border **:[figure]:h-[400px] **:[figure]:border-none">
+        <div className="**:[figure]:!m-0 relative rounded-lg border **:[figure]:border-none">
           <TabsContent
             className="preview flex h-[400px] w-full items-center justify-center p-10"
             value="preview"
@@ -55,7 +55,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
             <Example.default />
           </TabsContent>
 
-          <TabsContent className="" value="code">
+          <TabsContent className="**:[div]:max-h-[400px]" value="code">
             <DynamicCodeBlock code={sourceCode} lang="tsx" />
           </TabsContent>
         </div>

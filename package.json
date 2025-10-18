@@ -24,6 +24,7 @@
     }
   ],
   "scripts": {
+    "prebuild": "pnpm registry:build",
     "build": "next build",
     "dev": "next dev --turbo",
     "start": "next start",

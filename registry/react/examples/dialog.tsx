@@ -1,3 +1,4 @@
+import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
   DialogClose,
@@ -8,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/react/components/dialog";
-import { Button } from "../components/button";
 
 const DialogDemo = () => (
   <Dialog>

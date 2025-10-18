@@ -1,6 +1,6 @@
 import {
   JetBrains_Mono as FontMono,
-  Geist as FontSans,
+  Outfit as FontSans,
 } from "next/font/google";
 
 export const fontSans = FontSans({
