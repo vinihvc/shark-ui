@@ -50,7 +50,7 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <Comp
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), className)}
       data-slot="button"
       {...rest}
     />

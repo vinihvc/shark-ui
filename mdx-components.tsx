@@ -6,5 +6,6 @@ export const getMDXComponents = (
   components?: MDXComponents
 ): MDXComponents => ({
   ...defaultMdxComponents,
+
   ...components,
 });

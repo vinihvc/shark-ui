@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import Link from "fumadocs-core/link";
 import { usePathname } from "next/navigation";
-import type { source } from "@/lib/source";
 import {
   Sidebar,
   SidebarContent,
@@ -12,13 +11,15 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "../ui/sidebar";
+} from "@/components/ui/sidebar";
+import type { source } from "@/lib/source";
 
 const TOP_LEVEL_SECTIONS = [
-  { name: "Get Started", href: "/docs" },
+  { name: "Installation", href: "/docs", exact: true },
   {
     name: "Components",
     href: "/docs/components",
+    exact: true,
   },
   {
     name: "Changelog",
@@ -48,7 +49,7 @@ export function DocsSidebar({
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {TOP_LEVEL_SECTIONS.map(({ name, href }) => {
+              {TOP_LEVEL_SECTIONS.map(({ name, href, exact }) => {
                 if (href.includes("/mcp")) {
                   return null;
                 }
@@ -59,9 +60,7 @@ export function DocsSidebar({
                       asChild
                       className="after:-inset-y-1 relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
                       isActive={
-                        href === "/docs"
-                          ? pathname === href
-                          : pathname.startsWith(href)
+                        exact ? pathname === href : pathname.startsWith(href)
                       }
                     >
                       <Link href={href}>
@@ -88,23 +87,26 @@ export function DocsSidebar({
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
-                    {item.children.map((item) => {
-                      if (item.type === "page" && item.url?.includes("/mcp")) {
+                    {item.children.map((subitem) => {
+                      if (
+                        subitem.type === "page" &&
+                        subitem.url?.includes("/mcp")
+                      ) {
                         return null;
                       }
 
                       return (
-                        item.type === "page" &&
-                        !EXCLUDED_PAGES.includes(item.url) && (
-                          <SidebarMenuItem key={item.url}>
+                        subitem.type === "page" &&
+                        !EXCLUDED_PAGES.includes(subitem.url) && (
+                          <SidebarMenuItem key={subitem.url}>
                             <SidebarMenuButton
                               asChild
                               className="after:-inset-y-1 relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
-                              isActive={item.url === pathname}
+                              isActive={subitem.url === pathname}
                             >
-                              <Link href={item.url}>
+                              <Link href={subitem.url}>
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                                {item.name}
+                                {subitem.name}
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>

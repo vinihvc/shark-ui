@@ -49,7 +49,9 @@ const {
 
 export interface DialogProps
   extends React.ComponentProps<typeof ArkDialog.Root>,
-    VariantProps<typeof dialogVariants> {}
+    VariantProps<typeof dialogVariants> {
+  className?: string;
+}
 
 const DialogRoot = React.forwardRef<
   React.ElementRef<typeof ArkDialog.Root>,

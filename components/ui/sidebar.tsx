@@ -10,12 +10,12 @@ import { PanelLeftIcon } from "lucide-react";
 import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { useIsMobile } from "@/hooks/use-is-mobile";
+import { Tooltip } from "../../registry/react/components/tooltip";
 import { Button } from "./button";
 import { Input } from "./input";
 import { Separator } from "./separator";
 import { Sheet } from "./sheet";
 import { Skeleton } from "./skeleton";
-import { Tooltip } from "./tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
