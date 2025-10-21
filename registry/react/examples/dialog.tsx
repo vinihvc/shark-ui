@@ -25,7 +25,7 @@ const DialogDemo = () => (
       </DialogHeader>
       <DialogFooter>
         <DialogClose asChild>
-          <Button variant="default">Yes, I agree</Button>
+          <Button>Yes, I agree</Button>
         </DialogClose>
 
         <DialogClose asChild>

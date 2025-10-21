@@ -78,7 +78,7 @@ export const DialogContent = (props: DialogContentProps) => {
             <DialogClose asChild className="absolute top-4 right-4">
               <Button
                 className="size-8 border-none opacity-70 hover:opacity-100"
-                size="icon"
+                size="icon-md"
                 variant="ghost"
               >
                 <X />

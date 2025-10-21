@@ -1,7 +1,7 @@
 import { StarIcon } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/react/components/button";
 
 const HomePage = () => (
   <>

@@ -5,11 +5,7 @@ import type React from "react";
 export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
   const { className, ...rest } = props;
   return (
-    <ArkTabs.Root
-      className={cn("flex flex-col gap-2", className)}
-      data-slot="tabs"
-      {...rest}
-    />
+    <ArkTabs.Root className={cn("flex flex-col gap-2", className)} {...rest} />
   );
 };
 
@@ -27,7 +23,6 @@ export const TabsList = (props: React.ComponentProps<typeof ArkTabs.List>) => {
         "rounded-lg",
         className
       )}
-      data-slot="tab-list"
       {...rest}
     />
   );
@@ -53,7 +48,6 @@ export const TabsTrigger = (
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
-      data-slot="tab-trigger"
       {...rest}
     />
   );
@@ -70,7 +64,6 @@ export const TabsIndicator = (
         "absolute bottom-0 h-0.5 w-[var(--width)] bg-primary",
         className
       )}
-      data-slot="tab-indicator"
       {...rest}
     />
   );
@@ -84,7 +77,6 @@ export const TabsContent = (
   return (
     <ArkTabs.Content
       className={cn("flex-1 outline-none", className)}
-      data-slot="tab-content"
       {...rest}
     />
   );

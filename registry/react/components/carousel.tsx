@@ -1,8 +1,10 @@
+"use client";
+
 import { Carousel as ArkCarousel } from "@ark-ui/react/carousel";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import type React from "react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/react/components/button";
 
 export const Carousel = (
   props: React.ComponentProps<typeof ArkCarousel.Root>
@@ -48,7 +50,7 @@ export const CarouselPrevious = (
       data-slot="carousel-previous"
       {...rest}
     >
-      <Button className="size-8 rounded-full" size="icon">
+      <Button className="rounded-full" size="icon-sm">
         <ChevronLeftIcon />
         <span className="sr-only">Previous</span>
       </Button>
@@ -68,7 +70,7 @@ export const CarouselNext = (
       {...rest}
       asChild
     >
-      <Button className="size-8 rounded-full" size="icon">
+      <Button className="rounded-full" size="icon-sm">
         <ChevronRightIcon />
         <span className="sr-only">Next</span>
       </Button>

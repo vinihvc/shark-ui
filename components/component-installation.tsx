@@ -2,15 +2,15 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 import type React from "react";
+import { REGISTRY_PATH } from "@/config/constants";
+import { SITE_CONFIG } from "@/config/site";
 import {
   Tabs,
   TabsContent,
   TabsIndicator,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs";
-import { REGISTRY_PATH } from "@/config/constants";
-import { SITE_CONFIG } from "@/config/site";
+} from "@/registry/react/components/tabs";
 
 const cliCommand = `pnpm dlx shadcn@latest add ${SITE_CONFIG.url}/r`;
 

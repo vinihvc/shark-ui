@@ -9,12 +9,8 @@
       "type": "components:ui",
       "description": "A accordion component built with Ark UI",
       "category": "ui",
-      "tags": [
-        "accordion"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["accordion"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -22,17 +18,11 @@
           "content": "import { Accordion as ArkAccordion } from \"@ark-ui/react/accordion\";\nimport { ChevronDown } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Accordion = (\n  props: React.ComponentProps<typeof ArkAccordion.Root>\n) => <ArkAccordion.Root data-slot=\"accordion\" {...props} />;\n\nexport const AccordionItem = (\n  props: React.ComponentProps<typeof ArkAccordion.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAccordion.Item\n      className={cn(\"flex flex-col border-b last:border-b-0\", className)}\n      data-slot=\"accordion-item\"\n      {...rest}\n    />\n  );\n};\n\nexport const AccordionTrigger = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemTrigger>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemTrigger\n      className={cn(\n        \"flex flex-1 items-start justify-between gap-4\",\n        \"py-4\",\n        \"text-left font-medium text-sm\",\n        \"rounded-md\",\n        \"outline-none\",\n        \"transition-all\",\n        \"hover:underline\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n        \"[&_[data-state=open]>svg]:rotate-180\",\n        className\n      )}\n      data-slot=\"accordion-trigger\"\n      {...rest}\n    >\n      {children}\n\n      <AccordionIndicator>\n        <ChevronDown className=\"pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200\" />\n      </AccordionIndicator>\n    </ArkAccordion.ItemTrigger>\n  );\n};\n\nexport const AccordionIndicator = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemIndicator>\n) => <ArkAccordion.ItemIndicator data-slot=\"accordion-indicator\" {...props} />;\n\nexport const AccordionContent = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemContent>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemContent\n      className={cn(\n        \"overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\",\n        className\n      )}\n      data-slot=\"accordion-content\"\n      {...rest}\n    >\n      <div className=\"pt-0 pb-4\">{children}</div>\n    </ArkAccordion.ItemContent>\n  );\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "accordion"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["accordion"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -40,14 +30,8 @@
       "type": "components:ui",
       "description": "Displays a callout for user attention with different variants",
       "category": "ui",
-      "tags": [
-        "alert",
-        "notification",
-        "feedback"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["alert", "notification", "feedback"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -55,19 +39,11 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst alertVariants = tv({\n  base: \"relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:top-4 [&>svg]:left-4 [&>svg]:text-foreground [&>svg~*]:pl-7\",\n  variants: {\n    variant: {\n      default: \"bg-background text-foreground\",\n      destructive:\n        \"border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\nexport interface AlertProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof alertVariants> {}\n\nconst Alert = React.forwardRef<HTMLDivElement, AlertProps>(\n  ({ className, variant, ...props }, ref) => (\n    <div\n      className={cn(alertVariants({ variant }), className)}\n      ref={ref}\n      role=\"alert\"\n      {...props}\n    />\n  )\n);\nAlert.displayName = \"Alert\";\n\nconst AlertTitle = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h5\n    className={cn(\"mb-1 font-medium leading-none tracking-tight\", className)}\n    ref={ref}\n    {...props}\n  />\n));\nAlertTitle.displayName = \"AlertTitle\";\n\nconst AlertDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <div\n    className={cn(\"text-sm [&_p]:leading-relaxed\", className)}\n    ref={ref}\n    {...props}\n  />\n));\nAlertDescription.displayName = \"AlertDescription\";\n\nexport { Alert, AlertTitle, AlertDescription };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "alert",
-          "notification",
-          "feedback"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["alert", "notification", "feedback"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -75,12 +51,8 @@
       "type": "components:ui",
       "description": "A avatar component built with Ark UI",
       "category": "ui",
-      "tags": [
-        "avatar"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["avatar"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -88,17 +60,11 @@
           "content": "\"use client\";\n\nimport { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Root\n      className={cn(\n        \"relative\",\n        \"size-8\",\n        \"flex shrink-0\",\n        \"overflow-hidden\",\n        \"rounded-full\",\n        className\n      )}\n      data-slot=\"avatar\"\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarImage = (\n  props: React.ComponentProps<typeof ArkAvatar.Image>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Image\n      className={cn(\"size-full\", \"aspect-square object-cover\", className)}\n      data-slot=\"avatar-image\"\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarFallback = (\n  props: React.ComponentProps<typeof ArkAvatar.Fallback>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Fallback\n      className={cn(\n        \"size-full\",\n        \"flex items-center justify-center\",\n        \"bg-muted\",\n        \"rounded-full\",\n        className\n      )}\n      data-slot=\"avatar-fallback\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "avatar"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["avatar"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -106,14 +72,8 @@
       "type": "components:ui",
       "description": "Small status descriptors for UI elements with multiple variants",
       "category": "ui",
-      "tags": [
-        "badge",
-        "status",
-        "label"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["badge", "status", "label"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -121,19 +81,11 @@
           "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const badgeVariants = tv({\n  base: [\n    \"w-fit\",\n    \"inline-flex shrink-0 items-center justify-center gap-1\",\n    \"px-2 py-0.5\",\n    \"rounded-md border\",\n    \"whitespace-nowrap font-medium text-xs\",\n    \"overflow-hidden outline-none\",\n    \"transition-[color,box-shadow]\",\n    \"focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n    \"aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40\",\n    \"[&>svg]:pointer-events-none [&>svg]:size-3\",\n  ],\n  variants: {\n    variant: {\n      default: [\n        \"border-transparent\",\n        \"bg-primary\",\n        \"text-primary-foreground\",\n        \"[a&]:hover:bg-primary/90\",\n      ],\n      secondary: [\n        \"border-transparent\",\n        \"bg-secondary\",\n        \"text-secondary-foreground\",\n        \"[a&]:hover:bg-secondary/90\",\n      ],\n      destructive: [\n        \"border-transparent\",\n        \"bg-destructive\",\n        \"text-white\",\n        \"focus-visible:ring-destructive/20\",\n        \"dark:bg-destructive/60\",\n        \"dark:focus-visible:ring-destructive/40\",\n        \"[a&]:hover:bg-destructive/90\",\n      ],\n      outline: [\n        \"text-foreground\",\n        \"[a&]:hover:bg-accent\",\n        \"[a&]:hover:text-accent-foreground\",\n      ],\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\nexport interface BadgeProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof badgeVariants> {\n  /**\n   * If `true`, the badge will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Badge = (props: BadgeProps) => {\n  const { asChild, variant, className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"span\";\n\n  return (\n    <Comp\n      className={cn(badgeVariants({ variant }), className)}\n      data-slot=\"badge\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "badge",
-          "status",
-          "label"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["badge", "status", "label"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -141,12 +93,8 @@
       "type": "components:ui",
       "description": "A button component built with Ark UI",
       "category": "ui",
-      "tags": [
-        "button"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["button"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -154,17 +102,11 @@
           "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const buttonVariants = tv({\n  base: \"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  variants: {\n    variant: {\n      default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n      destructive:\n        \"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40\",\n      outline:\n        \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50\",\n      secondary: \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n      ghost:\n        \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\",\n      link: \"text-primary underline-offset-4 hover:underline\",\n    },\n    size: {\n      default: \"h-9 px-4 py-2 has-[>svg]:px-3\",\n      sm: \"h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5\",\n      lg: \"h-10 rounded-md px-6 has-[>svg]:px-4\",\n      icon: \"size-9\",\n      \"icon-sm\": \"size-8\",\n      \"icon-lg\": \"size-10\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n  },\n});\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  /**\n   * If `true`, the button will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Button = (props: ButtonProps) => {\n  const { asChild, variant, size, className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(buttonVariants({ variant, size }), className)}\n      data-slot=\"button\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "button"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["button"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -172,11 +114,7 @@
       "type": "components:ui",
       "description": "A flexible container for grouping related content and actions",
       "category": "ui",
-      "tags": [
-        "card",
-        "layout",
-        "container"
-      ],
+      "tags": ["card", "layout", "container"],
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -185,16 +123,10 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst cardVariants = tv({\n  slots: {\n    root: \"rounded-lg border bg-card text-card-foreground shadow-sm\",\n    header: \"flex flex-col space-y-1.5 p-6\",\n    title: \"text-2xl font-semibold leading-none tracking-tight\",\n    description: \"text-sm text-muted-foreground\",\n    content: \"p-6 pt-0\",\n    footer: \"flex items-center p-6 pt-0\",\n  },\n});\n\nconst { root, header, title, description, content, footer } = cardVariants();\n\nexport interface CardProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof cardVariants> {}\n\nexport interface CardHeaderProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof cardVariants> {}\n\nexport interface CardTitleProps\n  extends React.HTMLAttributes<HTMLHeadingElement>,\n    VariantProps<typeof cardVariants> {}\n\nexport interface CardDescriptionProps\n  extends React.HTMLAttributes<HTMLParagraphElement>,\n    VariantProps<typeof cardVariants> {}\n\nexport interface CardContentProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof cardVariants> {}\n\nexport interface CardFooterProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof cardVariants> {}\n\nconst Card = React.forwardRef<HTMLDivElement, CardProps>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(root(), className)} {...props} />\n  )\n);\nCard.displayName = \"Card\";\n\nconst CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(header(), className)} {...props} />\n  )\n);\nCardHeader.displayName = \"CardHeader\";\n\nconst CardTitle = React.forwardRef<HTMLParagraphElement, CardTitleProps>(\n  ({ className, ...props }, ref) => (\n    <h3 ref={ref} className={cn(title(), className)} {...props} />\n  )\n);\nCardTitle.displayName = \"CardTitle\";\n\nconst CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(\n  ({ className, ...props }, ref) => (\n    <p ref={ref} className={cn(description(), className)} {...props} />\n  )\n);\nCardDescription.displayName = \"CardDescription\";\n\nconst CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(content(), className)} {...props} />\n  )\n);\nCardContent.displayName = \"CardContent\";\n\nconst CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(footer(), className)} {...props} />\n  )\n);\nCardFooter.displayName = \"CardFooter\";\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "card",
-          "layout",
-          "container"
-        ],
+        "tags": ["card", "layout", "container"],
         "dependencies": []
       }
     },
@@ -203,34 +135,20 @@
       "type": "components:ui",
       "description": "A control that allows the user to toggle between checked and not checked",
       "category": "ui",
-      "tags": [
-        "checkbox",
-        "form",
-        "input"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["checkbox", "form", "input"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
           "name": "checkbox.tsx",
-          "content": "import { Checkbox as ArkCheckbox } from \"@ark-ui/react/checkbox\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst checkboxVariants = tv({\n  slots: {\n    root: [\n      \"group peer inline-flex items-center space-x-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n    ],\n    control: [\n      \"peer h-4 w-4 shrink-0 rounded-sm border border-primary\",\n      \"ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\",\n      \"data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground\",\n    ],\n    indicator: [\n      \"flex items-center justify-center text-current\",\n      \"data-[state=checked]:fade-in-0 data-[state=checked]:animate-in\",\n      \"data-[state=unchecked]:fade-out-0 data-[state=unchecked]:animate-out\",\n    ],\n    label: [\n      \"font-medium text-sm leading-none\",\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    ],\n    hiddenInput: \"sr-only\",\n  },\n});\n\nconst { root, control, indicator, label, hiddenInput } = checkboxVariants();\n\nexport interface CheckboxProps\n  extends React.ComponentProps<typeof ArkCheckbox.Root>,\n    VariantProps<typeof checkboxVariants> {}\n\nconst CheckboxRoot = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Root>,\n  CheckboxProps\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nCheckboxRoot.displayName = \"Checkbox\";\n\nconst CheckboxControl = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Control>,\n  React.ComponentProps<typeof ArkCheckbox.Control>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Control\n    className={cn(control(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxControl.displayName = \"CheckboxControl\";\n\nconst CheckboxIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Indicator>,\n  React.ComponentProps<typeof ArkCheckbox.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxIndicator.displayName = \"CheckboxIndicator\";\n\nconst CheckboxLabel = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Label>,\n  React.ComponentProps<typeof ArkCheckbox.Label>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nCheckboxLabel.displayName = \"CheckboxLabel\";\n\nconst CheckboxHiddenInput = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.HiddenInput>,\n  React.ComponentProps<typeof ArkCheckbox.HiddenInput>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.HiddenInput\n    className={cn(hiddenInput(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxHiddenInput.displayName = \"CheckboxHiddenInput\";\n\nconst CheckboxGroup = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Group>,\n  React.ComponentProps<typeof ArkCheckbox.Group>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Group\n    className={cn(\"space-y-2\", className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxGroup.displayName = \"CheckboxGroup\";\n\nexport const Checkbox = {\n  Root: CheckboxRoot,\n  Control: CheckboxControl,\n  Indicator: CheckboxIndicator,\n  Label: CheckboxLabel,\n  HiddenInput: CheckboxHiddenInput,\n  Group: CheckboxGroup,\n};\n"
+          "content": "import { Checkbox as ArkCheckbox } from \"@ark-ui/react/checkbox\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst checkboxVariants = tv({\n  slots: {\n    root: [\n      \"group peer inline-flex items-center space-x-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n    ],\n    control: [\n      \"peer size-4 shrink-0 rounded-sm border border-primary\",\n      \"ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\",\n      \"data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground\",\n    ],\n    indicator: [\n      \"flex items-center justify-center text-current\",\n      \"data-[state=checked]:fade-in-0 data-[state=checked]:animate-in\",\n      \"data-[state=unchecked]:fade-out-0 data-[state=unchecked]:animate-out\",\n    ],\n    label: [\n      \"font-medium text-sm leading-none\",\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    ],\n    hiddenInput: \"sr-only\",\n  },\n});\n\nconst { root, control, indicator, label, hiddenInput } = checkboxVariants();\n\nexport interface CheckboxProps\n  extends React.ComponentProps<typeof ArkCheckbox.Root>,\n    VariantProps<typeof checkboxVariants> {}\n\nconst CheckboxRoot = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Root>,\n  CheckboxProps\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nCheckboxRoot.displayName = \"Checkbox\";\n\nconst CheckboxControl = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Control>,\n  React.ComponentProps<typeof ArkCheckbox.Control>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Control\n    className={cn(control(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxControl.displayName = \"CheckboxControl\";\n\nconst CheckboxIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Indicator>,\n  React.ComponentProps<typeof ArkCheckbox.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxIndicator.displayName = \"CheckboxIndicator\";\n\nconst CheckboxLabel = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Label>,\n  React.ComponentProps<typeof ArkCheckbox.Label>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nCheckboxLabel.displayName = \"CheckboxLabel\";\n\nconst CheckboxHiddenInput = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.HiddenInput>,\n  React.ComponentProps<typeof ArkCheckbox.HiddenInput>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.HiddenInput\n    className={cn(hiddenInput(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxHiddenInput.displayName = \"CheckboxHiddenInput\";\n\nconst CheckboxGroup = React.forwardRef<\n  React.ElementRef<typeof ArkCheckbox.Group>,\n  React.ComponentProps<typeof ArkCheckbox.Group>\n>(({ className, ...props }, ref) => (\n  <ArkCheckbox.Group\n    className={cn(\"space-y-2\", className)}\n    ref={ref}\n    {...props}\n  />\n));\nCheckboxGroup.displayName = \"CheckboxGroup\";\n\nexport const Checkbox = {\n  Root: CheckboxRoot,\n  Control: CheckboxControl,\n  Indicator: CheckboxIndicator,\n  Label: CheckboxLabel,\n  HiddenInput: CheckboxHiddenInput,\n  Group: CheckboxGroup,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "checkbox",
-          "form",
-          "input"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["checkbox", "form", "input"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -238,12 +156,8 @@
       "type": "components:ui",
       "description": "A dialog component built with Ark UI",
       "category": "ui",
-      "tags": [
-        "dialog"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["dialog"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -251,17 +165,11 @@
           "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { X } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\n\nexport const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => (\n  <ArkDialog.Root data-slot=\"dialog\" {...props} />\n);\n\nexport const DialogTrigger = (\n  props: React.ComponentProps<typeof ArkDialog.Trigger>\n) => <ArkDialog.Trigger data-slot=\"dialog-trigger\" {...props} />;\n\nexport const DialogBackdrop = (\n  props: React.ComponentProps<typeof ArkDialog.Backdrop>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Backdrop\n      className={cn(\n        \"fixed inset-0 z-50 bg-background/50 backdrop-blur-xs\",\n        className\n      )}\n      data-slot=\"dialog-backdrop\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogPositioner = (\n  props: React.ComponentProps<typeof ArkDialog.Positioner>\n) => <ArkDialog.Positioner data-slot=\"dialog-positioner\" {...props} />;\n\ninterface DialogContentProps\n  extends React.ComponentProps<typeof ArkDialog.Content> {\n  /**\n   * If `true`, the close button will be shown.\n   *\n   * @default true\n   */\n  showCloseButton?: boolean;\n}\n\nexport const DialogContent = (props: DialogContentProps) => {\n  const { showCloseButton = true, className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <DialogBackdrop />\n\n      <DialogPositioner>\n        <ArkDialog.Content\n          className={cn(\n            \"z-50\",\n            \"-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2\",\n            \"flex flex-col\",\n            \"p-6\",\n            \"bg-background\",\n            \"w-full max-w-[calc(100%-2rem)] sm:max-w-lg\",\n            \"border shadow-lg\",\n            \"rounded-lg\",\n            \"focus:outline-none focus:ring-0\",\n            \"duration-200\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            className\n          )}\n          data-slot=\"dialog-content\"\n          {...rest}\n        >\n          {children}\n\n          {showCloseButton && (\n            <DialogClose asChild className=\"absolute top-4 right-4\">\n              <Button\n                className=\"size-8 border-none opacity-70 hover:opacity-100\"\n                size=\"icon\"\n                variant=\"ghost\"\n              >\n                <X />\n\n                <span className=\"sr-only\">Close</span>\n              </Button>\n            </DialogClose>\n          )}\n        </ArkDialog.Content>\n      </DialogPositioner>\n    </Portal>\n  );\n};\n\nexport const DialogHeader = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2\", className)}\n      data-slot=\"dialog-header\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogTitle = (\n  props: React.ComponentProps<typeof ArkDialog.Title>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Title\n      className={cn(\n        \"font-semibold text-lg leading-none tracking-tight\",\n        className\n      )}\n      data-slot=\"dialog-title\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogDescription = (\n  props: React.ComponentProps<typeof ArkDialog.Description>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Description\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      data-slot=\"dialog-description\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogClose = (\n  props: React.ComponentProps<typeof ArkDialog.CloseTrigger>\n) => <ArkDialog.CloseTrigger data-slot=\"dialog-close-trigger\" {...props} />;\n\nexport const DialogFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"mt-4 flex flex-row-reverse gap-2\", className)}\n      data-slot=\"dialog-footer\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "dialog"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["dialog"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -269,14 +177,8 @@
       "type": "components:ui",
       "description": "Displays a form input field with various styling options",
       "category": "ui",
-      "tags": [
-        "input",
-        "form",
-        "field"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["input", "form", "field"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -284,19 +186,11 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {}\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, type, ...props }, ref) => (\n    <input\n      className={cn(\n        \"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:font-medium file:text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      ref={ref}\n      type={type}\n      {...props}\n    />\n  )\n);\nInput.displayName = \"Input\";\n\nexport { Input };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "input",
-          "form",
-          "field"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["input", "form", "field"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -304,14 +198,8 @@
       "type": "components:ui",
       "description": "Renders an accessible label associated with controls",
       "category": "ui",
-      "tags": [
-        "label",
-        "form",
-        "accessibility"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["label", "form", "accessibility"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -319,19 +207,11 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\n\nexport interface LabelProps\n  extends React.LabelHTMLAttributes<HTMLLabelElement> {}\n\nconst Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n  ({ className, ...props }, ref) => (\n    <label\n      className={cn(\n        \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n        className\n      )}\n      ref={ref}\n      {...props}\n    />\n  )\n);\nLabel.displayName = \"Label\";\n\nexport { Label };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "label",
-          "form",
-          "accessibility"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["label", "form", "accessibility"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -339,36 +219,20 @@
       "type": "components:ui",
       "description": "Displays a menu to the user triggered by a button with support for groups, checkboxes, and radio items",
       "category": "ui",
-      "tags": [
-        "menu",
-        "dropdown",
-        "navigation"
-      ],
-      "dependencies": [
-        "@ark-ui/react",
-        "@ark-ui/react/portal"
-      ],
+      "tags": ["menu", "dropdown", "navigation"],
+      "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"],
       "registryDependencies": [],
       "files": [
         {
           "name": "menu.tsx",
-          "content": "import { Menu as ArkMenu } from \"@ark-ui/react/menu\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst menuVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: [\n      \"inline-flex items-center justify-center rounded-md font-medium text-sm\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      \"bg-background hover:bg-accent hover:text-accent-foreground\",\n      \"h-10 px-4 py-2\",\n    ],\n    contextTrigger: [\n      \"inline-flex items-center justify-center rounded-md font-medium text-sm\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      \"bg-background hover:bg-accent hover:text-accent-foreground\",\n      \"h-10 px-4 py-2\",\n    ],\n    positioner: \"relative z-50\",\n    content: [\n      \"z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    item: [\n      \"relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none\",\n      \"transition-colors focus:bg-accent focus:text-accent-foreground\",\n      \"data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n    ],\n    itemText: \"flex-1\",\n    itemIndicator: \"ml-auto h-4 w-4\",\n    itemGroup: \"px-1 py-1.5\",\n    itemGroupLabel: [\n      \"px-2 py-1.5 font-semibold text-foreground text-sm\",\n      \"first:mt-0 last:mb-0\",\n    ],\n    separator: \"my-1 h-px bg-muted\",\n    arrow: \"fill-popover\",\n    arrowTip: \"fill-popover\",\n  },\n});\n\nconst {\n  root,\n  trigger,\n  contextTrigger,\n  positioner,\n  content,\n  item,\n  itemText,\n  itemIndicator,\n  itemGroup,\n  itemGroupLabel,\n  separator,\n  arrow,\n  arrowTip,\n} = menuVariants();\n\nexport interface MenuProps\n  extends React.ComponentProps<typeof ArkMenu.Root>,\n    VariantProps<typeof menuVariants> {}\n\nconst MenuRoot = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Root>,\n  MenuProps\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nMenuRoot.displayName = \"Menu\";\n\nconst MenuTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Trigger>,\n  React.ComponentProps<typeof ArkMenu.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Trigger className={cn(trigger(), className)} ref={ref} {...props} />\n));\nMenuTrigger.displayName = \"MenuTrigger\";\n\nconst MenuContextTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ContextTrigger>,\n  React.ComponentProps<typeof ArkMenu.ContextTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ContextTrigger\n    className={cn(contextTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuContextTrigger.displayName = \"MenuContextTrigger\";\n\nconst MenuPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Positioner>,\n  React.ComponentProps<typeof ArkMenu.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuPositioner.displayName = \"MenuPositioner\";\n\nconst MenuContent = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Content>,\n  React.ComponentProps<typeof ArkMenu.Content>\n>(({ className, ...props }, ref) => (\n  <Portal>\n    <ArkMenu.Content\n      className={cn(content(), className)}\n      ref={ref}\n      {...props}\n    />\n  </Portal>\n));\nMenuContent.displayName = \"MenuContent\";\n\nconst MenuItem = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Item>,\n  React.ComponentProps<typeof ArkMenu.Item>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Item className={cn(item(), className)} ref={ref} {...props} />\n));\nMenuItem.displayName = \"MenuItem\";\n\nconst MenuItemText = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemText>,\n  React.ComponentProps<typeof ArkMenu.ItemText>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemText\n    className={cn(itemText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemText.displayName = \"MenuItemText\";\n\nconst MenuItemIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemIndicator>,\n  React.ComponentProps<typeof ArkMenu.ItemIndicator>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemIndicator\n    className={cn(itemIndicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemIndicator.displayName = \"MenuItemIndicator\";\n\nconst MenuItemGroup = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemGroup>,\n  React.ComponentProps<typeof ArkMenu.ItemGroup>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemGroup\n    className={cn(itemGroup(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemGroup.displayName = \"MenuItemGroup\";\n\nconst MenuItemGroupLabel = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemGroupLabel>,\n  React.ComponentProps<typeof ArkMenu.ItemGroupLabel>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemGroupLabel\n    className={cn(itemGroupLabel(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemGroupLabel.displayName = \"MenuItemGroupLabel\";\n\nconst MenuSeparator = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Separator>,\n  React.ComponentProps<typeof ArkMenu.Separator>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Separator\n    className={cn(separator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuSeparator.displayName = \"MenuSeparator\";\n\nconst MenuArrow = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Arrow>,\n  React.ComponentProps<typeof ArkMenu.Arrow>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Arrow className={cn(arrow(), className)} ref={ref} {...props} />\n));\nMenuArrow.displayName = \"MenuArrow\";\n\nconst MenuArrowTip = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ArrowTip>,\n  React.ComponentProps<typeof ArkMenu.ArrowTip>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ArrowTip\n    className={cn(arrowTip(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuArrowTip.displayName = \"MenuArrowTip\";\n\n// Checkbox and Radio components\nconst MenuCheckboxItem = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.CheckboxItem>,\n  React.ComponentProps<typeof ArkMenu.CheckboxItem>\n>(({ className, children, ...props }, ref) => (\n  <ArkMenu.CheckboxItem className={cn(item(), className)} ref={ref} {...props}>\n    <MenuItemIndicator>\n      <svg\n        className=\"h-4 w-4\"\n        fill=\"none\"\n        stroke=\"currentColor\"\n        viewBox=\"0 0 24 24\"\n      >\n        <path\n          d=\"M5 13l4 4L19 7\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          strokeWidth={2}\n        />\n      </svg>\n    </MenuItemIndicator>\n    <MenuItemText>{children}</MenuItemText>\n  </ArkMenu.CheckboxItem>\n));\nMenuCheckboxItem.displayName = \"MenuCheckboxItem\";\n\nconst MenuRadioItemGroup = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.RadioItemGroup>,\n  React.ComponentProps<typeof ArkMenu.RadioItemGroup>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.RadioItemGroup\n    className={cn(itemGroup(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuRadioItemGroup.displayName = \"MenuRadioItemGroup\";\n\nconst MenuRadioItem = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.RadioItem>,\n  React.ComponentProps<typeof ArkMenu.RadioItem>\n>(({ className, children, ...props }, ref) => (\n  <ArkMenu.RadioItem className={cn(item(), className)} ref={ref} {...props}>\n    <MenuItemIndicator>\n      <div className=\"h-2 w-2 rounded-full bg-current\" />\n    </MenuItemIndicator>\n    <MenuItemText>{children}</MenuItemText>\n  </ArkMenu.RadioItem>\n));\nMenuRadioItem.displayName = \"MenuRadioItem\";\n\nexport const Menu = {\n  Root: MenuRoot,\n  Trigger: MenuTrigger,\n  ContextTrigger: MenuContextTrigger,\n  Positioner: MenuPositioner,\n  Content: MenuContent,\n  Item: MenuItem,\n  ItemText: MenuItemText,\n  ItemIndicator: MenuItemIndicator,\n  ItemGroup: MenuItemGroup,\n  ItemGroupLabel: MenuItemGroupLabel,\n  Separator: MenuSeparator,\n  Arrow: MenuArrow,\n  ArrowTip: MenuArrowTip,\n  CheckboxItem: MenuCheckboxItem,\n  RadioItemGroup: MenuRadioItemGroup,\n  RadioItem: MenuRadioItem,\n};\n"
+          "content": "import { Menu as ArkMenu } from \"@ark-ui/react/menu\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst menuVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: [\n      \"inline-flex items-center justify-center rounded-md font-medium text-sm\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      \"bg-background hover:bg-accent hover:text-accent-foreground\",\n      \"h-10 px-4 py-2\",\n    ],\n    contextTrigger: [\n      \"inline-flex items-center justify-center rounded-md font-medium text-sm\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      \"bg-background hover:bg-accent hover:text-accent-foreground\",\n      \"h-10 px-4 py-2\",\n    ],\n    positioner: \"relative z-50\",\n    content: [\n      \"z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    item: [\n      \"relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none\",\n      \"transition-colors focus:bg-accent focus:text-accent-foreground\",\n      \"data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n    ],\n    itemText: \"flex-1\",\n    itemIndicator: \"ml-auto size-4\",\n    itemGroup: \"px-1 py-1.5\",\n    itemGroupLabel: [\n      \"px-2 py-1.5 font-semibold text-foreground text-sm\",\n      \"first:mt-0 last:mb-0\",\n    ],\n    separator: \"my-1 h-px bg-muted\",\n    arrow: \"fill-popover\",\n    arrowTip: \"fill-popover\",\n  },\n});\n\nconst {\n  root,\n  trigger,\n  contextTrigger,\n  positioner,\n  content,\n  item,\n  itemText,\n  itemIndicator,\n  itemGroup,\n  itemGroupLabel,\n  separator,\n  arrow,\n  arrowTip,\n} = menuVariants();\n\nexport interface MenuProps\n  extends React.ComponentProps<typeof ArkMenu.Root>,\n    VariantProps<typeof menuVariants> {}\n\nconst MenuRoot = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Root>,\n  MenuProps\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nMenuRoot.displayName = \"Menu\";\n\nconst MenuTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Trigger>,\n  React.ComponentProps<typeof ArkMenu.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Trigger className={cn(trigger(), className)} ref={ref} {...props} />\n));\nMenuTrigger.displayName = \"MenuTrigger\";\n\nconst MenuContextTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ContextTrigger>,\n  React.ComponentProps<typeof ArkMenu.ContextTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ContextTrigger\n    className={cn(contextTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuContextTrigger.displayName = \"MenuContextTrigger\";\n\nconst MenuPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Positioner>,\n  React.ComponentProps<typeof ArkMenu.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuPositioner.displayName = \"MenuPositioner\";\n\nconst MenuContent = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Content>,\n  React.ComponentProps<typeof ArkMenu.Content>\n>(({ className, ...props }, ref) => (\n  <Portal>\n    <ArkMenu.Content\n      className={cn(content(), className)}\n      ref={ref}\n      {...props}\n    />\n  </Portal>\n));\nMenuContent.displayName = \"MenuContent\";\n\nconst MenuItem = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Item>,\n  React.ComponentProps<typeof ArkMenu.Item>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Item className={cn(item(), className)} ref={ref} {...props} />\n));\nMenuItem.displayName = \"MenuItem\";\n\nconst MenuItemText = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemText>,\n  React.ComponentProps<typeof ArkMenu.ItemText>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemText\n    className={cn(itemText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemText.displayName = \"MenuItemText\";\n\nconst MenuItemIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemIndicator>,\n  React.ComponentProps<typeof ArkMenu.ItemIndicator>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemIndicator\n    className={cn(itemIndicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemIndicator.displayName = \"MenuItemIndicator\";\n\nconst MenuItemGroup = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemGroup>,\n  React.ComponentProps<typeof ArkMenu.ItemGroup>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemGroup\n    className={cn(itemGroup(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemGroup.displayName = \"MenuItemGroup\";\n\nconst MenuItemGroupLabel = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ItemGroupLabel>,\n  React.ComponentProps<typeof ArkMenu.ItemGroupLabel>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ItemGroupLabel\n    className={cn(itemGroupLabel(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuItemGroupLabel.displayName = \"MenuItemGroupLabel\";\n\nconst MenuSeparator = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Separator>,\n  React.ComponentProps<typeof ArkMenu.Separator>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Separator\n    className={cn(separator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuSeparator.displayName = \"MenuSeparator\";\n\nconst MenuArrow = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.Arrow>,\n  React.ComponentProps<typeof ArkMenu.Arrow>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.Arrow className={cn(arrow(), className)} ref={ref} {...props} />\n));\nMenuArrow.displayName = \"MenuArrow\";\n\nconst MenuArrowTip = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.ArrowTip>,\n  React.ComponentProps<typeof ArkMenu.ArrowTip>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.ArrowTip\n    className={cn(arrowTip(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuArrowTip.displayName = \"MenuArrowTip\";\n\n// Checkbox and Radio components\nconst MenuCheckboxItem = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.CheckboxItem>,\n  React.ComponentProps<typeof ArkMenu.CheckboxItem>\n>(({ className, children, ...props }, ref) => (\n  <ArkMenu.CheckboxItem className={cn(item(), className)} ref={ref} {...props}>\n    <MenuItemIndicator>\n      <svg\n        className=\"size-4\"\n        fill=\"none\"\n        stroke=\"currentColor\"\n        viewBox=\"0 0 24 24\"\n      >\n        <path\n          d=\"M5 13l4 4L19 7\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          strokeWidth={2}\n        />\n      </svg>\n    </MenuItemIndicator>\n    <MenuItemText>{children}</MenuItemText>\n  </ArkMenu.CheckboxItem>\n));\nMenuCheckboxItem.displayName = \"MenuCheckboxItem\";\n\nconst MenuRadioItemGroup = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.RadioItemGroup>,\n  React.ComponentProps<typeof ArkMenu.RadioItemGroup>\n>(({ className, ...props }, ref) => (\n  <ArkMenu.RadioItemGroup\n    className={cn(itemGroup(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nMenuRadioItemGroup.displayName = \"MenuRadioItemGroup\";\n\nconst MenuRadioItem = React.forwardRef<\n  React.ElementRef<typeof ArkMenu.RadioItem>,\n  React.ComponentProps<typeof ArkMenu.RadioItem>\n>(({ className, children, ...props }, ref) => (\n  <ArkMenu.RadioItem className={cn(item(), className)} ref={ref} {...props}>\n    <MenuItemIndicator>\n      <div className=\"h-2 w-2 rounded-full bg-current\" />\n    </MenuItemIndicator>\n    <MenuItemText>{children}</MenuItemText>\n  </ArkMenu.RadioItem>\n));\nMenuRadioItem.displayName = \"MenuRadioItem\";\n\nexport const Menu = {\n  Root: MenuRoot,\n  Trigger: MenuTrigger,\n  ContextTrigger: MenuContextTrigger,\n  Positioner: MenuPositioner,\n  Content: MenuContent,\n  Item: MenuItem,\n  ItemText: MenuItemText,\n  ItemIndicator: MenuItemIndicator,\n  ItemGroup: MenuItemGroup,\n  ItemGroupLabel: MenuItemGroupLabel,\n  Separator: MenuSeparator,\n  Arrow: MenuArrow,\n  ArrowTip: MenuArrowTip,\n  CheckboxItem: MenuCheckboxItem,\n  RadioItemGroup: MenuRadioItemGroup,\n  RadioItem: MenuRadioItem,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "menu",
-          "dropdown",
-          "navigation"
-        ],
-        "dependencies": [
-          "@ark-ui/react",
-          "@ark-ui/react/portal"
-        ]
+        "tags": ["menu", "dropdown", "navigation"],
+        "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"]
       }
     },
     {
@@ -376,36 +240,20 @@
       "type": "components:ui",
       "description": "Displays rich content in a portal, triggered by a button",
       "category": "ui",
-      "tags": [
-        "popover",
-        "tooltip",
-        "overlay"
-      ],
-      "dependencies": [
-        "@ark-ui/react",
-        "@ark-ui/react/portal"
-      ],
+      "tags": ["popover", "tooltip", "overlay"],
+      "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"],
       "registryDependencies": [],
       "files": [
         {
           "name": "popover.tsx",
-          "content": "import { Popover as ArkPopover } from \"@ark-ui/react/popover\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst popoverVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: \"inline-flex\",\n    indicator: \"ml-1 h-4 w-4\",\n    positioner: [\n      \"z-50\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    content: [\n      \"z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    title: \"font-semibold text-sm\",\n    description: \"text-muted-foreground text-sm\",\n    closeTrigger: [\n      \"absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background\",\n      \"transition-opacity hover:opacity-100\",\n      \"focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:pointer-events-none\",\n      \"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground\",\n    ],\n    arrow: \"fill-popover\",\n  },\n});\n\nconst {\n  root,\n  trigger,\n  indicator,\n  positioner,\n  content,\n  title,\n  description,\n  closeTrigger,\n  arrow,\n} = popoverVariants();\n\nexport interface PopoverProps\n  extends React.ComponentProps<typeof ArkPopover.Root>,\n    VariantProps<typeof popoverVariants> {}\n\nconst PopoverRoot = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Root>,\n  PopoverProps\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nPopoverRoot.displayName = \"Popover\";\n\nconst PopoverTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Trigger>,\n  React.ComponentProps<typeof ArkPopover.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Trigger\n    className={cn(trigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverTrigger.displayName = \"PopoverTrigger\";\n\nconst PopoverIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Indicator>,\n  React.ComponentProps<typeof ArkPopover.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverIndicator.displayName = \"PopoverIndicator\";\n\nconst PopoverPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Positioner>,\n  React.ComponentProps<typeof ArkPopover.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverPositioner.displayName = \"PopoverPositioner\";\n\nconst PopoverContent = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Content>,\n  React.ComponentProps<typeof ArkPopover.Content>\n>(({ className, children, ...props }, ref) => (\n  <ArkPopover.Content className={cn(content(), className)} ref={ref} {...props}>\n    {children}\n  </ArkPopover.Content>\n));\nPopoverContent.displayName = \"PopoverContent\";\n\nconst PopoverTitle = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Title>,\n  React.ComponentProps<typeof ArkPopover.Title>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Title className={cn(title(), className)} ref={ref} {...props} />\n));\nPopoverTitle.displayName = \"PopoverTitle\";\n\nconst PopoverDescription = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Description>,\n  React.ComponentProps<typeof ArkPopover.Description>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Description\n    className={cn(description(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverDescription.displayName = \"PopoverDescription\";\n\nconst PopoverCloseTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.CloseTrigger>,\n  React.ComponentProps<typeof ArkPopover.CloseTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.CloseTrigger\n    className={cn(closeTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverCloseTrigger.displayName = \"PopoverCloseTrigger\";\n\nconst PopoverArrow = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Arrow>,\n  React.ComponentProps<typeof ArkPopover.Arrow>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Arrow className={cn(arrow(), className)} ref={ref} {...props} />\n));\nPopoverArrow.displayName = \"PopoverArrow\";\n\nexport const Popover = {\n  Root: PopoverRoot,\n  Trigger: PopoverTrigger,\n  Indicator: PopoverIndicator,\n  Positioner: PopoverPositioner,\n  Content: PopoverContent,\n  Title: PopoverTitle,\n  Description: PopoverDescription,\n  CloseTrigger: PopoverCloseTrigger,\n  Arrow: PopoverArrow,\n};\n"
+          "content": "import { Popover as ArkPopover } from \"@ark-ui/react/popover\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst popoverVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: \"inline-flex\",\n    indicator: \"ml-1 size-4\",\n    positioner: [\n      \"z-50\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    content: [\n      \"z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    title: \"font-semibold text-sm\",\n    description: \"text-muted-foreground text-sm\",\n    closeTrigger: [\n      \"absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background\",\n      \"transition-opacity hover:opacity-100\",\n      \"focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:pointer-events-none\",\n      \"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground\",\n    ],\n    arrow: \"fill-popover\",\n  },\n});\n\nconst {\n  root,\n  trigger,\n  indicator,\n  positioner,\n  content,\n  title,\n  description,\n  closeTrigger,\n  arrow,\n} = popoverVariants();\n\nexport interface PopoverProps\n  extends React.ComponentProps<typeof ArkPopover.Root>,\n    VariantProps<typeof popoverVariants> {}\n\nconst PopoverRoot = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Root>,\n  PopoverProps\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nPopoverRoot.displayName = \"Popover\";\n\nconst PopoverTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Trigger>,\n  React.ComponentProps<typeof ArkPopover.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Trigger\n    className={cn(trigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverTrigger.displayName = \"PopoverTrigger\";\n\nconst PopoverIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Indicator>,\n  React.ComponentProps<typeof ArkPopover.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverIndicator.displayName = \"PopoverIndicator\";\n\nconst PopoverPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Positioner>,\n  React.ComponentProps<typeof ArkPopover.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverPositioner.displayName = \"PopoverPositioner\";\n\nconst PopoverContent = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Content>,\n  React.ComponentProps<typeof ArkPopover.Content>\n>(({ className, children, ...props }, ref) => (\n  <ArkPopover.Content className={cn(content(), className)} ref={ref} {...props}>\n    {children}\n  </ArkPopover.Content>\n));\nPopoverContent.displayName = \"PopoverContent\";\n\nconst PopoverTitle = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Title>,\n  React.ComponentProps<typeof ArkPopover.Title>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Title className={cn(title(), className)} ref={ref} {...props} />\n));\nPopoverTitle.displayName = \"PopoverTitle\";\n\nconst PopoverDescription = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Description>,\n  React.ComponentProps<typeof ArkPopover.Description>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Description\n    className={cn(description(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverDescription.displayName = \"PopoverDescription\";\n\nconst PopoverCloseTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.CloseTrigger>,\n  React.ComponentProps<typeof ArkPopover.CloseTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.CloseTrigger\n    className={cn(closeTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nPopoverCloseTrigger.displayName = \"PopoverCloseTrigger\";\n\nconst PopoverArrow = React.forwardRef<\n  React.ElementRef<typeof ArkPopover.Arrow>,\n  React.ComponentProps<typeof ArkPopover.Arrow>\n>(({ className, ...props }, ref) => (\n  <ArkPopover.Arrow className={cn(arrow(), className)} ref={ref} {...props} />\n));\nPopoverArrow.displayName = \"PopoverArrow\";\n\nexport const Popover = {\n  Root: PopoverRoot,\n  Trigger: PopoverTrigger,\n  Indicator: PopoverIndicator,\n  Positioner: PopoverPositioner,\n  Content: PopoverContent,\n  Title: PopoverTitle,\n  Description: PopoverDescription,\n  CloseTrigger: PopoverCloseTrigger,\n  Arrow: PopoverArrow,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "popover",
-          "tooltip",
-          "overlay"
-        ],
-        "dependencies": [
-          "@ark-ui/react",
-          "@ark-ui/react/portal"
-        ]
+        "tags": ["popover", "tooltip", "overlay"],
+        "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"]
       }
     },
     {
@@ -413,34 +261,20 @@
       "type": "components:ui",
       "description": "Displays an indicator showing the completion progress of a task",
       "category": "ui",
-      "tags": [
-        "progress",
-        "loading",
-        "indicator"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["progress", "loading", "indicator"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
           "name": "progress.tsx",
-          "content": "import { Progress as ArkProgress } from \"@ark-ui/react/progress\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst progressVariants = tv({\n  slots: {\n    root: \"relative h-4 w-full overflow-hidden rounded-full bg-secondary\",\n    track: \"h-full w-full bg-secondary\",\n    range: \"h-full bg-primary transition-all\",\n    label: \"font-medium text-foreground text-sm\",\n    valueText: \"text-muted-foreground text-sm\",\n  },\n});\n\nconst { root, track, range, label, valueText } = progressVariants();\n\nexport interface ProgressProps\n  extends React.ComponentProps<typeof ArkProgress.Root>,\n    VariantProps<typeof progressVariants> {}\n\nconst ProgressRoot = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Root>,\n  ProgressProps\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nProgressRoot.displayName = \"Progress\";\n\nconst ProgressTrack = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Track>,\n  React.ComponentProps<typeof ArkProgress.Track>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Track className={cn(track(), className)} ref={ref} {...props} />\n));\nProgressTrack.displayName = \"ProgressTrack\";\n\nconst ProgressRange = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Range>,\n  React.ComponentProps<typeof ArkProgress.Range>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Range className={cn(range(), className)} ref={ref} {...props} />\n));\nProgressRange.displayName = \"ProgressRange\";\n\nconst ProgressLabel = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Label>,\n  React.ComponentProps<typeof ArkProgress.Label>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nProgressLabel.displayName = \"ProgressLabel\";\n\nconst ProgressValueText = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.ValueText>,\n  React.ComponentProps<typeof ArkProgress.ValueText>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.ValueText\n    className={cn(valueText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nProgressValueText.displayName = \"ProgressValueText\";\n\nexport const Progress = {\n  Root: ProgressRoot,\n  Track: ProgressTrack,\n  Range: ProgressRange,\n  Label: ProgressLabel,\n  ValueText: ProgressValueText,\n};\n"
+          "content": "import { Progress as ArkProgress } from \"@ark-ui/react/progress\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst progressVariants = tv({\n  slots: {\n    root: \"relative h-4 w-full overflow-hidden rounded-full bg-secondary\",\n    track: \"size-full bg-secondary\",\n    range: \"h-full bg-primary transition-all\",\n    label: \"font-medium text-foreground text-sm\",\n    valueText: \"text-muted-foreground text-sm\",\n  },\n});\n\nconst { root, track, range, label, valueText } = progressVariants();\n\nexport interface ProgressProps\n  extends React.ComponentProps<typeof ArkProgress.Root>,\n    VariantProps<typeof progressVariants> {}\n\nconst ProgressRoot = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Root>,\n  ProgressProps\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nProgressRoot.displayName = \"Progress\";\n\nconst ProgressTrack = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Track>,\n  React.ComponentProps<typeof ArkProgress.Track>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Track className={cn(track(), className)} ref={ref} {...props} />\n));\nProgressTrack.displayName = \"ProgressTrack\";\n\nconst ProgressRange = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Range>,\n  React.ComponentProps<typeof ArkProgress.Range>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Range className={cn(range(), className)} ref={ref} {...props} />\n));\nProgressRange.displayName = \"ProgressRange\";\n\nconst ProgressLabel = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Label>,\n  React.ComponentProps<typeof ArkProgress.Label>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nProgressLabel.displayName = \"ProgressLabel\";\n\nconst ProgressValueText = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.ValueText>,\n  React.ComponentProps<typeof ArkProgress.ValueText>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.ValueText\n    className={cn(valueText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nProgressValueText.displayName = \"ProgressValueText\";\n\nexport const Progress = {\n  Root: ProgressRoot,\n  Track: ProgressTrack,\n  Range: ProgressRange,\n  Label: ProgressLabel,\n  ValueText: ProgressValueText,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "progress",
-          "loading",
-          "indicator"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["progress", "loading", "indicator"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -448,34 +282,20 @@
       "type": "components:ui",
       "description": "A set of checkable buttons where no more than one can be checked at a time",
       "category": "ui",
-      "tags": [
-        "radio",
-        "form",
-        "input"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["radio", "form", "input"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
           "name": "radio-group.tsx",
-          "content": "import { RadioGroup as ArkRadioGroup } from \"@ark-ui/react/radio-group\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst radioGroupVariants = tv({\n  slots: {\n    root: \"grid gap-2\",\n    label:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    indicator: \"flex items-center space-x-2\",\n    item: [\n      \"flex items-center space-x-2\",\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n    ],\n    itemControl: [\n      \"aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background\",\n      \"focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground\",\n    ],\n    itemText:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    itemHiddenInput: \"sr-only\",\n  },\n});\n\nconst { root, label, indicator, item, itemControl, itemText, itemHiddenInput } =\n  radioGroupVariants();\n\nexport interface RadioGroupProps\n  extends React.ComponentProps<typeof ArkRadioGroup.Root>,\n    VariantProps<typeof radioGroupVariants> {}\n\nconst RadioGroupRoot = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Root>,\n  RadioGroupProps\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nRadioGroupRoot.displayName = \"RadioGroup\";\n\nconst RadioGroupLabel = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Label>,\n  React.ComponentProps<typeof ArkRadioGroup.Label>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Label\n    className={cn(label(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupLabel.displayName = \"RadioGroupLabel\";\n\nconst RadioGroupIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Indicator>,\n  React.ComponentProps<typeof ArkRadioGroup.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupIndicator.displayName = \"RadioGroupIndicator\";\n\nconst RadioGroupItem = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Item>,\n  React.ComponentProps<typeof ArkRadioGroup.Item>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Item className={cn(item(), className)} ref={ref} {...props} />\n));\nRadioGroupItem.displayName = \"RadioGroupItem\";\n\nconst RadioGroupItemControl = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.ItemControl>,\n  React.ComponentProps<typeof ArkRadioGroup.ItemControl>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.ItemControl\n    className={cn(itemControl(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupItemControl.displayName = \"RadioGroupItemControl\";\n\nconst RadioGroupItemText = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.ItemText>,\n  React.ComponentProps<typeof ArkRadioGroup.ItemText>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.ItemText\n    className={cn(itemText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupItemText.displayName = \"RadioGroupItemText\";\n\nconst RadioGroupItemHiddenInput = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.ItemHiddenInput>,\n  React.ComponentProps<typeof ArkRadioGroup.ItemHiddenInput>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.ItemHiddenInput\n    className={cn(itemHiddenInput(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupItemHiddenInput.displayName = \"RadioGroupItemHiddenInput\";\n\nexport const RadioGroup = {\n  Root: RadioGroupRoot,\n  Label: RadioGroupLabel,\n  Indicator: RadioGroupIndicator,\n  Item: RadioGroupItem,\n  ItemControl: RadioGroupItemControl,\n  ItemText: RadioGroupItemText,\n  ItemHiddenInput: RadioGroupItemHiddenInput,\n};\n"
+          "content": "import { RadioGroup as ArkRadioGroup } from \"@ark-ui/react/radio-group\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst radioGroupVariants = tv({\n  slots: {\n    root: \"grid gap-2\",\n    label:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    indicator: \"flex items-center space-x-2\",\n    item: [\n      \"flex items-center space-x-2\",\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n    ],\n    itemControl: [\n      \"aspect-square size-4 rounded-full border border-primary text-primary ring-offset-background\",\n      \"focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground\",\n    ],\n    itemText:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    itemHiddenInput: \"sr-only\",\n  },\n});\n\nconst { root, label, indicator, item, itemControl, itemText, itemHiddenInput } =\n  radioGroupVariants();\n\nexport interface RadioGroupProps\n  extends React.ComponentProps<typeof ArkRadioGroup.Root>,\n    VariantProps<typeof radioGroupVariants> {}\n\nconst RadioGroupRoot = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Root>,\n  RadioGroupProps\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nRadioGroupRoot.displayName = \"RadioGroup\";\n\nconst RadioGroupLabel = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Label>,\n  React.ComponentProps<typeof ArkRadioGroup.Label>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Label\n    className={cn(label(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupLabel.displayName = \"RadioGroupLabel\";\n\nconst RadioGroupIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Indicator>,\n  React.ComponentProps<typeof ArkRadioGroup.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupIndicator.displayName = \"RadioGroupIndicator\";\n\nconst RadioGroupItem = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.Item>,\n  React.ComponentProps<typeof ArkRadioGroup.Item>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.Item className={cn(item(), className)} ref={ref} {...props} />\n));\nRadioGroupItem.displayName = \"RadioGroupItem\";\n\nconst RadioGroupItemControl = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.ItemControl>,\n  React.ComponentProps<typeof ArkRadioGroup.ItemControl>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.ItemControl\n    className={cn(itemControl(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupItemControl.displayName = \"RadioGroupItemControl\";\n\nconst RadioGroupItemText = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.ItemText>,\n  React.ComponentProps<typeof ArkRadioGroup.ItemText>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.ItemText\n    className={cn(itemText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupItemText.displayName = \"RadioGroupItemText\";\n\nconst RadioGroupItemHiddenInput = React.forwardRef<\n  React.ElementRef<typeof ArkRadioGroup.ItemHiddenInput>,\n  React.ComponentProps<typeof ArkRadioGroup.ItemHiddenInput>\n>(({ className, ...props }, ref) => (\n  <ArkRadioGroup.ItemHiddenInput\n    className={cn(itemHiddenInput(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nRadioGroupItemHiddenInput.displayName = \"RadioGroupItemHiddenInput\";\n\nexport const RadioGroup = {\n  Root: RadioGroupRoot,\n  Label: RadioGroupLabel,\n  Indicator: RadioGroupIndicator,\n  Item: RadioGroupItem,\n  ItemControl: RadioGroupItemControl,\n  ItemText: RadioGroupItemText,\n  ItemHiddenInput: RadioGroupItemHiddenInput,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "radio",
-          "form",
-          "input"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["radio", "form", "input"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -483,36 +303,20 @@
       "type": "components:ui",
       "description": "Displays a collapsible list of options and allows the user to select one or more options",
       "category": "ui",
-      "tags": [
-        "select",
-        "dropdown",
-        "form"
-      ],
-      "dependencies": [
-        "@ark-ui/react",
-        "@ark-ui/react/portal"
-      ],
+      "tags": ["select", "dropdown", "form"],
+      "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"],
       "registryDependencies": [],
       "files": [
         {
           "name": "select.tsx",
-          "content": "import { Portal } from \"@ark-ui/react/portal\";\nimport {\n  Select as ArkSelect,\n  createListCollection,\n} from \"@ark-ui/react/select\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport { CheckIcon, ChevronDownIcon } from \"lucide-react\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst selectVariants = tv({\n  slots: {\n    root: \"w-full\",\n    label:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    control: \"relative\",\n    trigger: [\n      \"flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background\",\n      \"placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n    ],\n    valueText: \"text-left\",\n    indicator: \"h-4 w-4 opacity-50\",\n    clearTrigger: [\n      \"-translate-y-1/2 absolute top-1/2 right-8 rounded-sm opacity-70 ring-offset-background\",\n      \"hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n    ],\n    positioner: \"relative z-50\",\n    content: [\n      \"relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    itemGroup: \"p-1\",\n    itemGroupLabel: [\n      \"px-2 py-1.5 font-semibold text-sm\",\n      \"text-muted-foreground\",\n    ],\n    item: [\n      \"relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-none\",\n      \"focus:bg-accent focus:text-accent-foreground\",\n      \"data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n    ],\n    itemText: \"block truncate\",\n    itemIndicator:\n      \"absolute left-2 flex h-3.5 w-3.5 items-center justify-center\",\n    hiddenSelect: \"sr-only\",\n  },\n});\n\nconst {\n  root,\n  label,\n  control,\n  trigger,\n  valueText,\n  indicator,\n  clearTrigger,\n  positioner,\n  content,\n  itemGroup,\n  itemGroupLabel,\n  item,\n  itemText,\n  itemIndicator,\n  hiddenSelect,\n} = selectVariants();\n\nexport interface SelectProps\n  extends React.ComponentProps<typeof ArkSelect.Root>,\n    VariantProps<typeof selectVariants> {}\n\nconst SelectRoot = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Root>,\n  SelectProps\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nSelectRoot.displayName = \"Select\";\n\nconst SelectLabel = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Label>,\n  React.ComponentProps<typeof ArkSelect.Label>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nSelectLabel.displayName = \"SelectLabel\";\n\nconst SelectControl = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Control>,\n  React.ComponentProps<typeof ArkSelect.Control>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Control\n    className={cn(control(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectControl.displayName = \"SelectControl\";\n\nconst SelectTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Trigger>,\n  React.ComponentProps<typeof ArkSelect.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <ArkSelect.Trigger className={cn(trigger(), className)} ref={ref} {...props}>\n    {children}\n  </ArkSelect.Trigger>\n));\nSelectTrigger.displayName = \"SelectTrigger\";\n\nconst SelectValueText = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ValueText>,\n  React.ComponentProps<typeof ArkSelect.ValueText>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ValueText\n    className={cn(valueText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectValueText.displayName = \"SelectValueText\";\n\nconst SelectIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Indicator>,\n  React.ComponentProps<typeof ArkSelect.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  >\n    <ChevronDownIcon className=\"h-4 w-4\" />\n  </ArkSelect.Indicator>\n));\nSelectIndicator.displayName = \"SelectIndicator\";\n\nconst SelectClearTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ClearTrigger>,\n  React.ComponentProps<typeof ArkSelect.ClearTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ClearTrigger\n    className={cn(clearTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectClearTrigger.displayName = \"SelectClearTrigger\";\n\nconst SelectPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Positioner>,\n  React.ComponentProps<typeof ArkSelect.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectPositioner.displayName = \"SelectPositioner\";\n\nconst SelectContent = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Content>,\n  React.ComponentProps<typeof ArkSelect.Content>\n>(({ className, children, ...props }, ref) => (\n  <Portal>\n    <SelectPositioner>\n      <ArkSelect.Content\n        className={cn(content(), className)}\n        ref={ref}\n        {...props}\n      >\n        {children}\n      </ArkSelect.Content>\n    </SelectPositioner>\n  </Portal>\n));\nSelectContent.displayName = \"SelectContent\";\n\nconst SelectItemGroup = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemGroup>,\n  React.ComponentProps<typeof ArkSelect.ItemGroup>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemGroup\n    className={cn(itemGroup(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectItemGroup.displayName = \"SelectItemGroup\";\n\nconst SelectItemGroupLabel = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemGroupLabel>,\n  React.ComponentProps<typeof ArkSelect.ItemGroupLabel>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemGroupLabel\n    className={cn(itemGroupLabel(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectItemGroupLabel.displayName = \"SelectItemGroupLabel\";\n\nconst SelectItem = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Item>,\n  React.ComponentProps<typeof ArkSelect.Item>\n>(({ className, children, ...props }, ref) => (\n  <ArkSelect.Item className={cn(item(), className)} ref={ref} {...props}>\n    {children}\n  </ArkSelect.Item>\n));\nSelectItem.displayName = \"SelectItem\";\n\nconst SelectItemText = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemText>,\n  React.ComponentProps<typeof ArkSelect.ItemText>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemText\n    className={cn(itemText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectItemText.displayName = \"SelectItemText\";\n\nconst SelectItemIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemIndicator>,\n  React.ComponentProps<typeof ArkSelect.ItemIndicator>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemIndicator\n    className={cn(itemIndicator(), className)}\n    ref={ref}\n    {...props}\n  >\n    <CheckIcon className=\"h-4 w-4\" />\n  </ArkSelect.ItemIndicator>\n));\nSelectItemIndicator.displayName = \"SelectItemIndicator\";\n\nconst SelectHiddenSelect = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.HiddenSelect>,\n  React.ComponentProps<typeof ArkSelect.HiddenSelect>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.HiddenSelect\n    className={cn(hiddenSelect(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectHiddenSelect.displayName = \"SelectHiddenSelect\";\n\nexport const Select = {\n  Root: SelectRoot,\n  Label: SelectLabel,\n  Control: SelectControl,\n  Trigger: SelectTrigger,\n  ValueText: SelectValueText,\n  Indicator: SelectIndicator,\n  ClearTrigger: SelectClearTrigger,\n  Positioner: SelectPositioner,\n  Content: SelectContent,\n  ItemGroup: SelectItemGroup,\n  ItemGroupLabel: SelectItemGroupLabel,\n  Item: SelectItem,\n  ItemText: SelectItemText,\n  ItemIndicator: SelectItemIndicator,\n  HiddenSelect: SelectHiddenSelect,\n  createListCollection,\n};\n"
+          "content": "import { Portal } from \"@ark-ui/react/portal\";\nimport {\n  Select as ArkSelect,\n  createListCollection,\n} from \"@ark-ui/react/select\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport { CheckIcon, ChevronDownIcon } from \"lucide-react\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst selectVariants = tv({\n  slots: {\n    root: \"w-full\",\n    label:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    control: \"relative\",\n    trigger: [\n      \"flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background\",\n      \"placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n    ],\n    valueText: \"text-left\",\n    indicator: \"size-4 opacity-50\",\n    clearTrigger: [\n      \"-translate-y-1/2 absolute top-1/2 right-8 rounded-sm opacity-70 ring-offset-background\",\n      \"hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n    ],\n    positioner: \"relative z-50\",\n    content: [\n      \"relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n      \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n      \"data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2\",\n      \"data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n    ],\n    itemGroup: \"p-1\",\n    itemGroupLabel: [\n      \"px-2 py-1.5 font-semibold text-sm\",\n      \"text-muted-foreground\",\n    ],\n    item: [\n      \"relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-none\",\n      \"focus:bg-accent focus:text-accent-foreground\",\n      \"data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n    ],\n    itemText: \"block truncate\",\n    itemIndicator:\n      \"absolute left-2 flex h-3.5 w-3.5 items-center justify-center\",\n    hiddenSelect: \"sr-only\",\n  },\n});\n\nconst {\n  root,\n  label,\n  control,\n  trigger,\n  valueText,\n  indicator,\n  clearTrigger,\n  positioner,\n  content,\n  itemGroup,\n  itemGroupLabel,\n  item,\n  itemText,\n  itemIndicator,\n  hiddenSelect,\n} = selectVariants();\n\nexport interface SelectProps\n  extends React.ComponentProps<typeof ArkSelect.Root>,\n    VariantProps<typeof selectVariants> {}\n\nconst SelectRoot = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Root>,\n  SelectProps\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nSelectRoot.displayName = \"Select\";\n\nconst SelectLabel = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Label>,\n  React.ComponentProps<typeof ArkSelect.Label>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nSelectLabel.displayName = \"SelectLabel\";\n\nconst SelectControl = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Control>,\n  React.ComponentProps<typeof ArkSelect.Control>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Control\n    className={cn(control(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectControl.displayName = \"SelectControl\";\n\nconst SelectTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Trigger>,\n  React.ComponentProps<typeof ArkSelect.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <ArkSelect.Trigger className={cn(trigger(), className)} ref={ref} {...props}>\n    {children}\n  </ArkSelect.Trigger>\n));\nSelectTrigger.displayName = \"SelectTrigger\";\n\nconst SelectValueText = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ValueText>,\n  React.ComponentProps<typeof ArkSelect.ValueText>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ValueText\n    className={cn(valueText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectValueText.displayName = \"SelectValueText\";\n\nconst SelectIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Indicator>,\n  React.ComponentProps<typeof ArkSelect.Indicator>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Indicator\n    className={cn(indicator(), className)}\n    ref={ref}\n    {...props}\n  >\n    <ChevronDownIcon className=\"size-4\" />\n  </ArkSelect.Indicator>\n));\nSelectIndicator.displayName = \"SelectIndicator\";\n\nconst SelectClearTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ClearTrigger>,\n  React.ComponentProps<typeof ArkSelect.ClearTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ClearTrigger\n    className={cn(clearTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectClearTrigger.displayName = \"SelectClearTrigger\";\n\nconst SelectPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Positioner>,\n  React.ComponentProps<typeof ArkSelect.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectPositioner.displayName = \"SelectPositioner\";\n\nconst SelectContent = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Content>,\n  React.ComponentProps<typeof ArkSelect.Content>\n>(({ className, children, ...props }, ref) => (\n  <Portal>\n    <SelectPositioner>\n      <ArkSelect.Content\n        className={cn(content(), className)}\n        ref={ref}\n        {...props}\n      >\n        {children}\n      </ArkSelect.Content>\n    </SelectPositioner>\n  </Portal>\n));\nSelectContent.displayName = \"SelectContent\";\n\nconst SelectItemGroup = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemGroup>,\n  React.ComponentProps<typeof ArkSelect.ItemGroup>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemGroup\n    className={cn(itemGroup(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectItemGroup.displayName = \"SelectItemGroup\";\n\nconst SelectItemGroupLabel = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemGroupLabel>,\n  React.ComponentProps<typeof ArkSelect.ItemGroupLabel>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemGroupLabel\n    className={cn(itemGroupLabel(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectItemGroupLabel.displayName = \"SelectItemGroupLabel\";\n\nconst SelectItem = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.Item>,\n  React.ComponentProps<typeof ArkSelect.Item>\n>(({ className, children, ...props }, ref) => (\n  <ArkSelect.Item className={cn(item(), className)} ref={ref} {...props}>\n    {children}\n  </ArkSelect.Item>\n));\nSelectItem.displayName = \"SelectItem\";\n\nconst SelectItemText = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemText>,\n  React.ComponentProps<typeof ArkSelect.ItemText>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemText\n    className={cn(itemText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectItemText.displayName = \"SelectItemText\";\n\nconst SelectItemIndicator = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.ItemIndicator>,\n  React.ComponentProps<typeof ArkSelect.ItemIndicator>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.ItemIndicator\n    className={cn(itemIndicator(), className)}\n    ref={ref}\n    {...props}\n  >\n    <CheckIcon className=\"size-4\" />\n  </ArkSelect.ItemIndicator>\n));\nSelectItemIndicator.displayName = \"SelectItemIndicator\";\n\nconst SelectHiddenSelect = React.forwardRef<\n  React.ElementRef<typeof ArkSelect.HiddenSelect>,\n  React.ComponentProps<typeof ArkSelect.HiddenSelect>\n>(({ className, ...props }, ref) => (\n  <ArkSelect.HiddenSelect\n    className={cn(hiddenSelect(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSelectHiddenSelect.displayName = \"SelectHiddenSelect\";\n\nexport const Select = {\n  Root: SelectRoot,\n  Label: SelectLabel,\n  Control: SelectControl,\n  Trigger: SelectTrigger,\n  ValueText: SelectValueText,\n  Indicator: SelectIndicator,\n  ClearTrigger: SelectClearTrigger,\n  Positioner: SelectPositioner,\n  Content: SelectContent,\n  ItemGroup: SelectItemGroup,\n  ItemGroupLabel: SelectItemGroupLabel,\n  Item: SelectItem,\n  ItemText: SelectItemText,\n  ItemIndicator: SelectItemIndicator,\n  HiddenSelect: SelectHiddenSelect,\n  createListCollection,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "select",
-          "dropdown",
-          "form"
-        ],
-        "dependencies": [
-          "@ark-ui/react",
-          "@ark-ui/react/portal"
-        ]
+        "tags": ["select", "dropdown", "form"],
+        "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"]
       }
     },
     {
@@ -520,14 +324,8 @@
       "type": "components:ui",
       "description": "Visually or semantically separates content with a thin line",
       "category": "ui",
-      "tags": [
-        "separator",
-        "divider",
-        "layout"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["separator", "divider", "layout"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -535,19 +333,11 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\n\nexport interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {\n  orientation?: \"horizontal\" | \"vertical\";\n  decorative?: boolean;\n}\n\nconst Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(\n  (\n    { className, orientation = \"horizontal\", decorative = true, ...props },\n    ref\n  ) => (\n    <div\n      aria-orientation={orientation}\n      className={cn(\n        \"shrink-0 bg-border\",\n        orientation === \"horizontal\" ? \"h-[1px] w-full\" : \"h-full w-[1px]\",\n        className\n      )}\n      ref={ref}\n      role={decorative ? \"none\" : \"separator\"}\n      {...props}\n    />\n  )\n);\nSeparator.displayName = \"Separator\";\n\nexport { Separator };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "separator",
-          "divider",
-          "layout"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["separator", "divider", "layout"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -555,15 +345,8 @@
       "type": "components:ui",
       "description": "Extends the Dialog component to display content that slides out from the edge of the screen",
       "category": "ui",
-      "tags": [
-        "sheet",
-        "drawer",
-        "overlay"
-      ],
-      "dependencies": [
-        "@ark-ui/react",
-        "@ark-ui/react/portal"
-      ],
+      "tags": ["sheet", "drawer", "overlay"],
+      "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"],
       "registryDependencies": [],
       "files": [
         {
@@ -571,20 +354,11 @@
           "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst sheetVariants = tv({\n  slots: {\n    root: \"relative\",\n    trigger: \"inline-flex\",\n    backdrop: [\n      \"fixed inset-0 z-50\",\n      \"bg-background/80 backdrop-blur-sm\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n      \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n    ],\n    positioner: \"fixed inset-0 z-50\",\n    content: [\n      \"fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out\",\n      \"data-[state=closed]:duration-300 data-[state=open]:duration-500\",\n      \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n    ],\n    variants: {\n      side: {\n        top: [\n          \"inset-x-0 top-0 border-b\",\n          \"data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top\",\n        ],\n        bottom: [\n          \"inset-x-0 bottom-0 border-t\",\n          \"data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom\",\n        ],\n        left: [\n          \"inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm\",\n          \"data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left\",\n        ],\n        right: [\n          \"inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm\",\n          \"data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right\",\n        ],\n      },\n    },\n    defaultVariants: {\n      side: \"right\",\n    },\n    title: [\"font-semibold text-lg leading-none tracking-tight\"],\n    description: [\"text-muted-foreground text-sm\"],\n    closeTrigger: [\n      \"absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background\",\n      \"transition-opacity hover:opacity-100\",\n      \"focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\n      \"disabled:pointer-events-none\",\n      \"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground\",\n    ],\n    header: \"flex flex-col space-y-2 text-center sm:text-left\",\n    footer: \"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2\",\n    body: \"flex-1 overflow-auto py-4\",\n  },\n});\n\nconst {\n  root,\n  trigger,\n  backdrop,\n  positioner,\n  content,\n  title,\n  description,\n  closeTrigger,\n  header,\n  footer,\n  body,\n} = sheetVariants();\n\nexport interface SheetProps\n  extends React.ComponentProps<typeof ArkDialog.Root>,\n    VariantProps<typeof sheetVariants> {}\n\nexport interface SheetContentProps\n  extends React.ComponentProps<typeof ArkDialog.Content>,\n    VariantProps<typeof sheetVariants> {}\n\nconst SheetRoot = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Root>,\n  SheetProps\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nSheetRoot.displayName = \"Sheet\";\n\nconst SheetTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Trigger>,\n  React.ComponentProps<typeof ArkDialog.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Trigger\n    className={cn(trigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSheetTrigger.displayName = \"SheetTrigger\";\n\nconst SheetBackdrop = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Backdrop>,\n  React.ComponentProps<typeof ArkDialog.Backdrop>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Backdrop\n    className={cn(backdrop(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSheetBackdrop.displayName = \"SheetBackdrop\";\n\nconst SheetPositioner = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Positioner>,\n  React.ComponentProps<typeof ArkDialog.Positioner>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Positioner\n    className={cn(positioner(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSheetPositioner.displayName = \"SheetPositioner\";\n\nconst SheetContent = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Content>,\n  SheetContentProps\n>(({ className, side = \"right\", children, ...props }, ref) => (\n  <Portal>\n    <SheetBackdrop />\n    <SheetPositioner>\n      <ArkDialog.Content\n        className={cn(content({ side }), className)}\n        ref={ref}\n        {...props}\n      >\n        {children}\n      </ArkDialog.Content>\n    </SheetPositioner>\n  </Portal>\n));\nSheetContent.displayName = \"SheetContent\";\n\nconst SheetTitle = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Title>,\n  React.ComponentProps<typeof ArkDialog.Title>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Title className={cn(title(), className)} ref={ref} {...props} />\n));\nSheetTitle.displayName = \"SheetTitle\";\n\nconst SheetDescription = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.Description>,\n  React.ComponentProps<typeof ArkDialog.Description>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.Description\n    className={cn(description(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSheetDescription.displayName = \"SheetDescription\";\n\nconst SheetCloseTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkDialog.CloseTrigger>,\n  React.ComponentProps<typeof ArkDialog.CloseTrigger>\n>(({ className, ...props }, ref) => (\n  <ArkDialog.CloseTrigger\n    className={cn(closeTrigger(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSheetCloseTrigger.displayName = \"SheetCloseTrigger\";\n\nconst SheetHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div className={cn(header(), className)} ref={ref} {...props} />\n));\nSheetHeader.displayName = \"SheetHeader\";\n\nconst SheetFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div className={cn(footer(), className)} ref={ref} {...props} />\n));\nSheetFooter.displayName = \"SheetFooter\";\n\nconst SheetBody = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div className={cn(body(), className)} ref={ref} {...props} />\n));\nSheetBody.displayName = \"SheetBody\";\n\nexport const Sheet = {\n  Root: SheetRoot,\n  Trigger: SheetTrigger,\n  Backdrop: SheetBackdrop,\n  Positioner: SheetPositioner,\n  Content: SheetContent,\n  Title: SheetTitle,\n  Description: SheetDescription,\n  CloseTrigger: SheetCloseTrigger,\n  Header: SheetHeader,\n  Footer: SheetFooter,\n  Body: SheetBody,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "sheet",
-          "drawer",
-          "overlay"
-        ],
-        "dependencies": [
-          "@ark-ui/react",
-          "@ark-ui/react/portal"
-        ]
+        "tags": ["sheet", "drawer", "overlay"],
+        "dependencies": ["@ark-ui/react", "@ark-ui/react/portal"]
       }
     },
     {
@@ -592,30 +366,20 @@
       "type": "components:ui",
       "description": "A sidebar component",
       "category": "ui",
-      "tags": [
-        "sidebar"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["sidebar"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
           "name": "sidebar.tsx",
-          "content": "/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */\n/** biome-ignore-all lint/style/noMagicNumbers: <explanation> */\n/** biome-ignore-all lint/nursery/noShadow: <explanation> */\n/** biome-ignore-all lint/suspicious/noDocumentCookie: <explanation> */\n\"use client\";\n\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport { PanelLeftIcon } from \"lucide-react\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { useIsMobile } from \"@/hooks/use-is-mobile\";\nimport { Button } from \"./button\";\nimport { Input } from \"./input\";\nimport { Separator } from \"./separator\";\nimport { Sheet } from \"./sheet\";\nimport { Skeleton } from \"./skeleton\";\nimport { Tooltip } from \"./tooltip\";\n\nconst SIDEBAR_COOKIE_NAME = \"sidebar_state\";\nconst SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;\nconst SIDEBAR_WIDTH = \"16rem\";\nconst SIDEBAR_WIDTH_MOBILE = \"18rem\";\nconst SIDEBAR_WIDTH_ICON = \"3rem\";\nconst SIDEBAR_KEYBOARD_SHORTCUT = \"b\";\n\ntype SidebarContextProps = {\n  state: \"expanded\" | \"collapsed\";\n  open: boolean;\n  setOpen: (open: boolean) => void;\n  openMobile: boolean;\n  setOpenMobile: (open: boolean) => void;\n  isMobile: boolean;\n  toggleSidebar: () => void;\n};\n\nconst SidebarContext = React.createContext<SidebarContextProps | null>(null);\n\nfunction useSidebar() {\n  const context = React.useContext(SidebarContext);\n  if (!context) {\n    throw new Error(\"useSidebar must be used within a SidebarProvider.\");\n  }\n\n  return context;\n}\n\nfunction SidebarProvider({\n  defaultOpen = true,\n  open: openProp,\n  onOpenChange: setOpenProp,\n  className,\n  style,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  defaultOpen?: boolean;\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n}) {\n  const isMobile = useIsMobile();\n  const [openMobile, setOpenMobile] = React.useState(false);\n\n  // This is the internal state of the sidebar.\n  // We use openProp and setOpenProp for control from outside the component.\n  const [_open, _setOpen] = React.useState(defaultOpen);\n  const open = openProp ?? _open;\n  const setOpen = React.useCallback(\n    (value: boolean | ((value: boolean) => boolean)) => {\n      const openState = typeof value === \"function\" ? value(open) : value;\n      if (setOpenProp) {\n        setOpenProp(openState);\n      } else {\n        _setOpen(openState);\n      }\n\n      // This sets the cookie to keep the sidebar state.\n      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;\n    },\n    [setOpenProp, open]\n  );\n\n  // Helper to toggle the sidebar.\n  const toggleSidebar = React.useCallback(\n    () =>\n      isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open),\n    [isMobile, setOpen, setOpenMobile]\n  );\n\n  // Adds a keyboard shortcut to toggle the sidebar.\n  React.useEffect(() => {\n    const handleKeyDown = (event: KeyboardEvent) => {\n      if (\n        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&\n        (event.metaKey || event.ctrlKey)\n      ) {\n        event.preventDefault();\n        toggleSidebar();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [toggleSidebar]);\n\n  // We add a state so that we can do data-state=\"expanded\" or \"collapsed\".\n  // This makes it easier to style the sidebar with Tailwind classes.\n  const state = open ? \"expanded\" : \"collapsed\";\n\n  const contextValue = React.useMemo<SidebarContextProps>(\n    () => ({\n      state,\n      open,\n      setOpen,\n      isMobile,\n      openMobile,\n      setOpenMobile,\n      toggleSidebar,\n    }),\n    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]\n  );\n\n  return (\n    <SidebarContext.Provider value={contextValue}>\n      <div\n        className={cn(\n          \"group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar\",\n          className\n        )}\n        data-slot=\"sidebar-wrapper\"\n        style={\n          {\n            \"--sidebar-width\": SIDEBAR_WIDTH,\n            \"--sidebar-width-icon\": SIDEBAR_WIDTH_ICON,\n            ...style,\n          } as React.CSSProperties\n        }\n        {...props}\n      >\n        {children}\n      </div>\n    </SidebarContext.Provider>\n  );\n}\n\nfunction Sidebar({\n  side = \"left\",\n  variant = \"sidebar\",\n  collapsible = \"offcanvas\",\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  side?: \"left\" | \"right\";\n  variant?: \"sidebar\" | \"floating\" | \"inset\";\n  collapsible?: \"offcanvas\" | \"icon\" | \"none\";\n}) {\n  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();\n\n  if (collapsible === \"none\") {\n    return (\n      <div\n        className={cn(\n          \"flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground\",\n          className\n        )}\n        data-slot=\"sidebar\"\n        {...props}\n      >\n        {children}\n      </div>\n    );\n  }\n\n  if (isMobile) {\n    return (\n      <Sheet.Root onOpenChange={setOpenMobile} open={openMobile} {...props}>\n        <Sheet.Content\n          className=\"w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden\"\n          data-mobile=\"true\"\n          data-sidebar=\"sidebar\"\n          data-slot=\"sidebar\"\n          style={\n            {\n              \"--sidebar-width\": SIDEBAR_WIDTH_MOBILE,\n            } as React.CSSProperties\n          }\n        >\n          <Sheet.Header className=\"sr-only\">\n            <Sheet.Title>Sidebar</Sheet.Title>\n            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>\n          </Sheet.Header>\n          <div className=\"flex h-full w-full flex-col\">{children}</div>\n        </Sheet.Content>\n      </Sheet.Root>\n    );\n  }\n\n  return (\n    <div\n      className=\"group peer hidden text-sidebar-foreground md:block\"\n      data-collapsible={state === \"collapsed\" ? collapsible : \"\"}\n      data-side={side}\n      data-slot=\"sidebar\"\n      data-state={state}\n      data-variant={variant}\n    >\n      {/* This is what handles the sidebar gap on desktop */}\n      <div\n        className={cn(\n          \"relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear\",\n          \"group-data-[collapsible=offcanvas]:w-0\",\n          \"group-data-[side=right]:rotate-180\",\n          variant === \"floating\" || variant === \"inset\"\n            ? \"group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]\"\n            : \"group-data-[collapsible=icon]:w-(--sidebar-width-icon)\"\n        )}\n        data-slot=\"sidebar-gap\"\n      />\n      <div\n        className={cn(\n          \"fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex\",\n          side === \"left\"\n            ? \"left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]\"\n            : \"right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]\",\n          // Adjust the padding for floating and inset variants.\n          variant === \"floating\" || variant === \"inset\"\n            ? \"p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]\"\n            : \"group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l\",\n          className\n        )}\n        data-slot=\"sidebar-container\"\n        {...props}\n      >\n        <div\n          className=\"flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm\"\n          data-sidebar=\"sidebar\"\n          data-slot=\"sidebar-inner\"\n        >\n          {children}\n        </div>\n      </div>\n    </div>\n  );\n}\n\nfunction SidebarTrigger({\n  className,\n  onClick,\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  const { toggleSidebar } = useSidebar();\n\n  return (\n    <Button\n      className={cn(\"size-7\", className)}\n      data-sidebar=\"trigger\"\n      data-slot=\"sidebar-trigger\"\n      onClick={(event) => {\n        onClick?.(event);\n        toggleSidebar();\n      }}\n      size=\"icon\"\n      variant=\"ghost\"\n      {...props}\n    >\n      <PanelLeftIcon />\n      <span className=\"sr-only\">Toggle Sidebar</span>\n    </Button>\n  );\n}\n\nfunction SidebarRail({ className, ...props }: React.ComponentProps<\"button\">) {\n  const { toggleSidebar } = useSidebar();\n\n  return (\n    <button\n      aria-label=\"Toggle Sidebar\"\n      className={cn(\n        \"-translate-x-1/2 group-data-[side=left]:-right-4 absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=right]:left-0 sm:flex\",\n        \"in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize\",\n        \"[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize\",\n        \"group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:after:left-full\",\n        \"[[data-side=left][data-collapsible=offcanvas]_&]:-right-2\",\n        \"[[data-side=right][data-collapsible=offcanvas]_&]:-left-2\",\n        className\n      )}\n      data-sidebar=\"rail\"\n      data-slot=\"sidebar-rail\"\n      onClick={toggleSidebar}\n      tabIndex={-1}\n      title=\"Toggle Sidebar\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarInset({ className, ...props }: React.ComponentProps<\"main\">) {\n  return (\n    <main\n      className={cn(\n        \"relative flex w-full flex-1 flex-col bg-background\",\n        \"md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm\",\n        className\n      )}\n      data-slot=\"sidebar-inset\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof Input>) {\n  return (\n    <Input\n      className={cn(\"h-8 w-full bg-background shadow-none\", className)}\n      data-sidebar=\"input\"\n      data-slot=\"sidebar-input\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-2\", className)}\n      data-sidebar=\"header\"\n      data-slot=\"sidebar-header\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-2\", className)}\n      data-sidebar=\"footer\"\n      data-slot=\"sidebar-footer\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Separator>) {\n  return (\n    <Separator\n      className={cn(\"mx-2 w-auto bg-sidebar-border\", className)}\n      data-sidebar=\"separator\"\n      data-slot=\"sidebar-separator\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden\",\n        className\n      )}\n      data-sidebar=\"content\"\n      data-slot=\"sidebar-content\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"relative flex w-full min-w-0 flex-col p-2\", className)}\n      data-sidebar=\"group\"\n      data-slot=\"sidebar-group\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupLabel({\n  className,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"div\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"div\";\n\n  return (\n    <Comp\n      className={cn(\n        \"flex h-8 shrink-0 items-center rounded-md px-2 font-medium text-sidebar-foreground/70 text-xs outline-hidden ring-sidebar-ring transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0\",\n        \"group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0\",\n        className\n      )}\n      data-sidebar=\"group-label\"\n      data-slot=\"sidebar-group-label\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupAction({\n  className,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(\n        \"absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0\",\n        // Increases the hit area of the button on mobile.\n        \"after:-inset-2 after:absolute md:after:hidden\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"group-action\"\n      data-slot=\"sidebar-group-action\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"w-full text-sm\", className)}\n      data-sidebar=\"group-content\"\n      data-slot=\"sidebar-group-content\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenu({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      className={cn(\"flex w-full min-w-0 flex-col gap-1\", className)}\n      data-sidebar=\"menu\"\n      data-slot=\"sidebar-menu\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuItem({ className, ...props }: React.ComponentProps<\"li\">) {\n  return (\n    <li\n      className={cn(\"group/menu-item relative\", className)}\n      data-sidebar=\"menu-item\"\n      data-slot=\"sidebar-menu-item\"\n      {...props}\n    />\n  );\n}\n\nconst sidebarMenuButtonVariants = tv({\n  base: \"peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0\",\n  variants: {\n    variant: {\n      default: \"hover:bg-sidebar-accent hover:text-sidebar-accent-foreground\",\n      outline:\n        \"bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]\",\n    },\n    size: {\n      default: \"h-8 text-sm\",\n      sm: \"h-7 text-xs\",\n      lg: \"h-12 text-sm group-data-[collapsible=icon]:p-0!\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n  },\n});\n\nfunction SidebarMenuButton({\n  asChild = false,\n  isActive = false,\n  variant = \"default\",\n  size = \"default\",\n  tooltip,\n  className,\n  ...props\n}: React.ComponentProps<\"button\"> & {\n  asChild?: boolean;\n  isActive?: boolean;\n  tooltip?: string | React.ComponentProps<typeof Tooltip.Content>;\n} & VariantProps<typeof sidebarMenuButtonVariants>) {\n  const Comp = asChild ? Slot : \"button\";\n  const { isMobile, state } = useSidebar();\n\n  const button = (\n    <Comp\n      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}\n      data-active={isActive}\n      data-sidebar=\"menu-button\"\n      data-size={size}\n      data-slot=\"sidebar-menu-button\"\n      {...props}\n    />\n  );\n\n  if (!tooltip) {\n    return button;\n  }\n\n  if (typeof tooltip === \"string\") {\n    tooltip = {\n      children: tooltip,\n    };\n  }\n\n  return (\n    <Tooltip.Root>\n      <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>\n      <Tooltip.Content\n        hidden={state !== \"collapsed\" || isMobile}\n        {...tooltip}\n      />\n    </Tooltip.Root>\n  );\n}\n\nfunction SidebarMenuAction({\n  className,\n  asChild = false,\n  showOnHover = false,\n  ...props\n}: React.ComponentProps<\"button\"> & {\n  asChild?: boolean;\n  showOnHover?: boolean;\n}) {\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(\n        \"absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0\",\n        // Increases the hit area of the button on mobile.\n        \"after:-inset-2 after:absolute md:after:hidden\",\n        \"peer-data-[size=sm]/menu-button:top-1\",\n        \"peer-data-[size=default]/menu-button:top-1.5\",\n        \"peer-data-[size=lg]/menu-button:top-2.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        showOnHover &&\n          \"group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0\",\n        className\n      )}\n      data-sidebar=\"menu-action\"\n      data-slot=\"sidebar-menu-action\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuBadge({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 font-medium text-sidebar-foreground text-xs tabular-nums\",\n        \"peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground\",\n        \"peer-data-[size=sm]/menu-button:top-1\",\n        \"peer-data-[size=default]/menu-button:top-1.5\",\n        \"peer-data-[size=lg]/menu-button:top-2.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"menu-badge\"\n      data-slot=\"sidebar-menu-badge\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSkeleton({\n  className,\n  showIcon = false,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  showIcon?: boolean;\n}) {\n  // Random width between 50 to 90%.\n  const width = React.useMemo(\n    () => `${Math.floor(Math.random() * 40) + 50}%`,\n    []\n  );\n\n  return (\n    <div\n      className={cn(\"flex h-8 items-center gap-2 rounded-md px-2\", className)}\n      data-sidebar=\"menu-skeleton\"\n      data-slot=\"sidebar-menu-skeleton\"\n      {...props}\n    >\n      {showIcon && (\n        <Skeleton\n          className=\"size-4 rounded-md\"\n          data-sidebar=\"menu-skeleton-icon\"\n        />\n      )}\n      <Skeleton\n        className=\"h-4 max-w-(--skeleton-width) flex-1\"\n        data-sidebar=\"menu-skeleton-text\"\n        style={\n          {\n            \"--skeleton-width\": width,\n          } as React.CSSProperties\n        }\n      />\n    </div>\n  );\n}\n\nfunction SidebarMenuSub({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      className={cn(\n        \"mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-sidebar-border border-l px-2.5 py-0.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"menu-sub\"\n      data-slot=\"sidebar-menu-sub\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSubItem({\n  className,\n  ...props\n}: React.ComponentProps<\"li\">) {\n  return (\n    <li\n      className={cn(\"group/menu-sub-item relative\", className)}\n      data-sidebar=\"menu-sub-item\"\n      data-slot=\"sidebar-menu-sub-item\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSubButton({\n  asChild = false,\n  size = \"md\",\n  isActive = false,\n  className,\n  ...props\n}: React.ComponentProps<\"a\"> & {\n  asChild?: boolean;\n  size?: \"sm\" | \"md\";\n  isActive?: boolean;\n}) {\n  const Comp = asChild ? Slot : \"a\";\n\n  return (\n    <Comp\n      className={cn(\n        \"-translate-x-px flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-hidden ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground\",\n        \"data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground\",\n        size === \"sm\" && \"text-xs\",\n        size === \"md\" && \"text-sm\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-active={isActive}\n      data-sidebar=\"menu-sub-button\"\n      data-size={size}\n      data-slot=\"sidebar-menu-sub-button\"\n      {...props}\n    />\n  );\n}\n\nexport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarGroup,\n  SidebarGroupAction,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarHeader,\n  SidebarInput,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuAction,\n  SidebarMenuBadge,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarMenuSkeleton,\n  SidebarMenuSub,\n  SidebarMenuSubButton,\n  SidebarMenuSubItem,\n  SidebarProvider,\n  SidebarRail,\n  SidebarSeparator,\n  SidebarTrigger,\n  useSidebar,\n};\n"
+          "content": "/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */\n/** biome-ignore-all lint/style/noMagicNumbers: <explanation> */\n/** biome-ignore-all lint/nursery/noShadow: <explanation> */\n/** biome-ignore-all lint/suspicious/noDocumentCookie: <explanation> */\n\"use client\";\n\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport { PanelLeftIcon } from \"lucide-react\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { useIsMobile } from \"@/hooks/use-is-mobile\";\nimport { Button } from \"./button\";\nimport { Input } from \"./input\";\nimport { Separator } from \"./separator\";\nimport { Sheet } from \"./sheet\";\nimport { Skeleton } from \"./skeleton\";\nimport { Tooltip } from \"./tooltip\";\n\nconst SIDEBAR_COOKIE_NAME = \"sidebar_state\";\nconst SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;\nconst SIDEBAR_WIDTH = \"16rem\";\nconst SIDEBAR_WIDTH_MOBILE = \"18rem\";\nconst SIDEBAR_WIDTH_ICON = \"3rem\";\nconst SIDEBAR_KEYBOARD_SHORTCUT = \"b\";\n\ntype SidebarContextProps = {\n  state: \"expanded\" | \"collapsed\";\n  open: boolean;\n  setOpen: (open: boolean) => void;\n  openMobile: boolean;\n  setOpenMobile: (open: boolean) => void;\n  isMobile: boolean;\n  toggleSidebar: () => void;\n};\n\nconst SidebarContext = React.createContext<SidebarContextProps | null>(null);\n\nfunction useSidebar() {\n  const context = React.useContext(SidebarContext);\n  if (!context) {\n    throw new Error(\"useSidebar must be used within a SidebarProvider.\");\n  }\n\n  return context;\n}\n\nfunction SidebarProvider({\n  defaultOpen = true,\n  open: openProp,\n  onOpenChange: setOpenProp,\n  className,\n  style,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  defaultOpen?: boolean;\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n}) {\n  const isMobile = useIsMobile();\n  const [openMobile, setOpenMobile] = React.useState(false);\n\n  // This is the internal state of the sidebar.\n  // We use openProp and setOpenProp for control from outside the component.\n  const [_open, _setOpen] = React.useState(defaultOpen);\n  const open = openProp ?? _open;\n  const setOpen = React.useCallback(\n    (value: boolean | ((value: boolean) => boolean)) => {\n      const openState = typeof value === \"function\" ? value(open) : value;\n      if (setOpenProp) {\n        setOpenProp(openState);\n      } else {\n        _setOpen(openState);\n      }\n\n      // This sets the cookie to keep the sidebar state.\n      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;\n    },\n    [setOpenProp, open]\n  );\n\n  // Helper to toggle the sidebar.\n  const toggleSidebar = React.useCallback(\n    () =>\n      isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open),\n    [isMobile, setOpen, setOpenMobile]\n  );\n\n  // Adds a keyboard shortcut to toggle the sidebar.\n  React.useEffect(() => {\n    const handleKeyDown = (event: KeyboardEvent) => {\n      if (\n        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&\n        (event.metaKey || event.ctrlKey)\n      ) {\n        event.preventDefault();\n        toggleSidebar();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [toggleSidebar]);\n\n  // We add a state so that we can do data-state=\"expanded\" or \"collapsed\".\n  // This makes it easier to style the sidebar with Tailwind classes.\n  const state = open ? \"expanded\" : \"collapsed\";\n\n  const contextValue = React.useMemo<SidebarContextProps>(\n    () => ({\n      state,\n      open,\n      setOpen,\n      isMobile,\n      openMobile,\n      setOpenMobile,\n      toggleSidebar,\n    }),\n    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]\n  );\n\n  return (\n    <SidebarContext.Provider value={contextValue}>\n      <div\n        className={cn(\n          \"group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar\",\n          className\n        )}\n        data-slot=\"sidebar-wrapper\"\n        style={\n          {\n            \"--sidebar-width\": SIDEBAR_WIDTH,\n            \"--sidebar-width-icon\": SIDEBAR_WIDTH_ICON,\n            ...style,\n          } as React.CSSProperties\n        }\n        {...props}\n      >\n        {children}\n      </div>\n    </SidebarContext.Provider>\n  );\n}\n\nfunction Sidebar({\n  side = \"left\",\n  variant = \"sidebar\",\n  collapsible = \"offcanvas\",\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  side?: \"left\" | \"right\";\n  variant?: \"sidebar\" | \"floating\" | \"inset\";\n  collapsible?: \"offcanvas\" | \"icon\" | \"none\";\n}) {\n  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();\n\n  if (collapsible === \"none\") {\n    return (\n      <div\n        className={cn(\n          \"flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground\",\n          className\n        )}\n        data-slot=\"sidebar\"\n        {...props}\n      >\n        {children}\n      </div>\n    );\n  }\n\n  if (isMobile) {\n    return (\n      <Sheet.Root onOpenChange={setOpenMobile} open={openMobile} {...props}>\n        <Sheet.Content\n          className=\"w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden\"\n          data-mobile=\"true\"\n          data-sidebar=\"sidebar\"\n          data-slot=\"sidebar\"\n          style={\n            {\n              \"--sidebar-width\": SIDEBAR_WIDTH_MOBILE,\n            } as React.CSSProperties\n          }\n        >\n          <Sheet.Header className=\"sr-only\">\n            <Sheet.Title>Sidebar</Sheet.Title>\n            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>\n          </Sheet.Header>\n          <div className=\"flex size-full flex-col\">{children}</div>\n        </Sheet.Content>\n      </Sheet.Root>\n    );\n  }\n\n  return (\n    <div\n      className=\"group peer hidden text-sidebar-foreground md:block\"\n      data-collapsible={state === \"collapsed\" ? collapsible : \"\"}\n      data-side={side}\n      data-slot=\"sidebar\"\n      data-state={state}\n      data-variant={variant}\n    >\n      {/* This is what handles the sidebar gap on desktop */}\n      <div\n        className={cn(\n          \"relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear\",\n          \"group-data-[collapsible=offcanvas]:w-0\",\n          \"group-data-[side=right]:rotate-180\",\n          variant === \"floating\" || variant === \"inset\"\n            ? \"group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]\"\n            : \"group-data-[collapsible=icon]:w-(--sidebar-width-icon)\"\n        )}\n        data-slot=\"sidebar-gap\"\n      />\n      <div\n        className={cn(\n          \"fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex\",\n          side === \"left\"\n            ? \"left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]\"\n            : \"right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]\",\n          // Adjust the padding for floating and inset variants.\n          variant === \"floating\" || variant === \"inset\"\n            ? \"p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]\"\n            : \"group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l\",\n          className\n        )}\n        data-slot=\"sidebar-container\"\n        {...props}\n      >\n        <div\n          className=\"flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm\"\n          data-sidebar=\"sidebar\"\n          data-slot=\"sidebar-inner\"\n        >\n          {children}\n        </div>\n      </div>\n    </div>\n  );\n}\n\nfunction SidebarTrigger({\n  className,\n  onClick,\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  const { toggleSidebar } = useSidebar();\n\n  return (\n    <Button\n      className={cn(\"size-7\", className)}\n      data-sidebar=\"trigger\"\n      data-slot=\"sidebar-trigger\"\n      onClick={(event) => {\n        onClick?.(event);\n        toggleSidebar();\n      }}\n      size=\"icon\"\n      variant=\"ghost\"\n      {...props}\n    >\n      <PanelLeftIcon />\n      <span className=\"sr-only\">Toggle Sidebar</span>\n    </Button>\n  );\n}\n\nfunction SidebarRail({ className, ...props }: React.ComponentProps<\"button\">) {\n  const { toggleSidebar } = useSidebar();\n\n  return (\n    <button\n      aria-label=\"Toggle Sidebar\"\n      className={cn(\n        \"-translate-x-1/2 group-data-[side=left]:-right-4 absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=right]:left-0 sm:flex\",\n        \"in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize\",\n        \"[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize\",\n        \"group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:after:left-full\",\n        \"[[data-side=left][data-collapsible=offcanvas]_&]:-right-2\",\n        \"[[data-side=right][data-collapsible=offcanvas]_&]:-left-2\",\n        className\n      )}\n      data-sidebar=\"rail\"\n      data-slot=\"sidebar-rail\"\n      onClick={toggleSidebar}\n      tabIndex={-1}\n      title=\"Toggle Sidebar\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarInset({ className, ...props }: React.ComponentProps<\"main\">) {\n  return (\n    <main\n      className={cn(\n        \"relative flex w-full flex-1 flex-col bg-background\",\n        \"md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm\",\n        className\n      )}\n      data-slot=\"sidebar-inset\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof Input>) {\n  return (\n    <Input\n      className={cn(\"h-8 w-full bg-background shadow-none\", className)}\n      data-sidebar=\"input\"\n      data-slot=\"sidebar-input\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-2\", className)}\n      data-sidebar=\"header\"\n      data-slot=\"sidebar-header\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-2\", className)}\n      data-sidebar=\"footer\"\n      data-slot=\"sidebar-footer\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Separator>) {\n  return (\n    <Separator\n      className={cn(\"mx-2 w-auto bg-sidebar-border\", className)}\n      data-sidebar=\"separator\"\n      data-slot=\"sidebar-separator\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden\",\n        className\n      )}\n      data-sidebar=\"content\"\n      data-slot=\"sidebar-content\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"relative flex w-full min-w-0 flex-col p-2\", className)}\n      data-sidebar=\"group\"\n      data-slot=\"sidebar-group\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupLabel({\n  className,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"div\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"div\";\n\n  return (\n    <Comp\n      className={cn(\n        \"flex h-8 shrink-0 items-center rounded-md px-2 font-medium text-sidebar-foreground/70 text-xs outline-hidden ring-sidebar-ring transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0\",\n        \"group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0\",\n        className\n      )}\n      data-sidebar=\"group-label\"\n      data-slot=\"sidebar-group-label\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupAction({\n  className,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(\n        \"absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0\",\n        // Increases the hit area of the button on mobile.\n        \"after:-inset-2 after:absolute md:after:hidden\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"group-action\"\n      data-slot=\"sidebar-group-action\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"w-full text-sm\", className)}\n      data-sidebar=\"group-content\"\n      data-slot=\"sidebar-group-content\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenu({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      className={cn(\"flex w-full min-w-0 flex-col gap-1\", className)}\n      data-sidebar=\"menu\"\n      data-slot=\"sidebar-menu\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuItem({ className, ...props }: React.ComponentProps<\"li\">) {\n  return (\n    <li\n      className={cn(\"group/menu-item relative\", className)}\n      data-sidebar=\"menu-item\"\n      data-slot=\"sidebar-menu-item\"\n      {...props}\n    />\n  );\n}\n\nconst sidebarMenuButtonVariants = tv({\n  base: \"peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0\",\n  variants: {\n    variant: {\n      default: \"hover:bg-sidebar-accent hover:text-sidebar-accent-foreground\",\n      outline:\n        \"bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]\",\n    },\n    size: {\n      default: \"h-8 text-sm\",\n      sm: \"h-7 text-xs\",\n      lg: \"h-12 text-sm group-data-[collapsible=icon]:p-0!\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n  },\n});\n\nfunction SidebarMenuButton({\n  asChild = false,\n  isActive = false,\n  variant = \"default\",\n  size = \"default\",\n  tooltip,\n  className,\n  ...props\n}: React.ComponentProps<\"button\"> & {\n  asChild?: boolean;\n  isActive?: boolean;\n  tooltip?: string | React.ComponentProps<typeof Tooltip.Content>;\n} & VariantProps<typeof sidebarMenuButtonVariants>) {\n  const Comp = asChild ? Slot : \"button\";\n  const { isMobile, state } = useSidebar();\n\n  const button = (\n    <Comp\n      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}\n      data-active={isActive}\n      data-sidebar=\"menu-button\"\n      data-size={size}\n      data-slot=\"sidebar-menu-button\"\n      {...props}\n    />\n  );\n\n  if (!tooltip) {\n    return button;\n  }\n\n  if (typeof tooltip === \"string\") {\n    tooltip = {\n      children: tooltip,\n    };\n  }\n\n  return (\n    <Tooltip.Root>\n      <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>\n      <Tooltip.Content\n        hidden={state !== \"collapsed\" || isMobile}\n        {...tooltip}\n      />\n    </Tooltip.Root>\n  );\n}\n\nfunction SidebarMenuAction({\n  className,\n  asChild = false,\n  showOnHover = false,\n  ...props\n}: React.ComponentProps<\"button\"> & {\n  asChild?: boolean;\n  showOnHover?: boolean;\n}) {\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(\n        \"absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0\",\n        // Increases the hit area of the button on mobile.\n        \"after:-inset-2 after:absolute md:after:hidden\",\n        \"peer-data-[size=sm]/menu-button:top-1\",\n        \"peer-data-[size=default]/menu-button:top-1.5\",\n        \"peer-data-[size=lg]/menu-button:top-2.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        showOnHover &&\n          \"group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0\",\n        className\n      )}\n      data-sidebar=\"menu-action\"\n      data-slot=\"sidebar-menu-action\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuBadge({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 font-medium text-sidebar-foreground text-xs tabular-nums\",\n        \"peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground\",\n        \"peer-data-[size=sm]/menu-button:top-1\",\n        \"peer-data-[size=default]/menu-button:top-1.5\",\n        \"peer-data-[size=lg]/menu-button:top-2.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"menu-badge\"\n      data-slot=\"sidebar-menu-badge\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSkeleton({\n  className,\n  showIcon = false,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  showIcon?: boolean;\n}) {\n  // Random width between 50 to 90%.\n  const width = React.useMemo(\n    () => `${Math.floor(Math.random() * 40) + 50}%`,\n    []\n  );\n\n  return (\n    <div\n      className={cn(\"flex h-8 items-center gap-2 rounded-md px-2\", className)}\n      data-sidebar=\"menu-skeleton\"\n      data-slot=\"sidebar-menu-skeleton\"\n      {...props}\n    >\n      {showIcon && (\n        <Skeleton\n          className=\"size-4 rounded-md\"\n          data-sidebar=\"menu-skeleton-icon\"\n        />\n      )}\n      <Skeleton\n        className=\"h-4 max-w-(--skeleton-width) flex-1\"\n        data-sidebar=\"menu-skeleton-text\"\n        style={\n          {\n            \"--skeleton-width\": width,\n          } as React.CSSProperties\n        }\n      />\n    </div>\n  );\n}\n\nfunction SidebarMenuSub({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      className={cn(\n        \"mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-sidebar-border border-l px-2.5 py-0.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"menu-sub\"\n      data-slot=\"sidebar-menu-sub\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSubItem({\n  className,\n  ...props\n}: React.ComponentProps<\"li\">) {\n  return (\n    <li\n      className={cn(\"group/menu-sub-item relative\", className)}\n      data-sidebar=\"menu-sub-item\"\n      data-slot=\"sidebar-menu-sub-item\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSubButton({\n  asChild = false,\n  size = \"md\",\n  isActive = false,\n  className,\n  ...props\n}: React.ComponentProps<\"a\"> & {\n  asChild?: boolean;\n  size?: \"sm\" | \"md\";\n  isActive?: boolean;\n}) {\n  const Comp = asChild ? Slot : \"a\";\n\n  return (\n    <Comp\n      className={cn(\n        \"-translate-x-px flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-hidden ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground\",\n        \"data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground\",\n        size === \"sm\" && \"text-xs\",\n        size === \"md\" && \"text-sm\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-active={isActive}\n      data-sidebar=\"menu-sub-button\"\n      data-size={size}\n      data-slot=\"sidebar-menu-sub-button\"\n      {...props}\n    />\n  );\n}\n\nexport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarGroup,\n  SidebarGroupAction,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarHeader,\n  SidebarInput,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuAction,\n  SidebarMenuBadge,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarMenuSkeleton,\n  SidebarMenuSub,\n  SidebarMenuSubButton,\n  SidebarMenuSubItem,\n  SidebarProvider,\n  SidebarRail,\n  SidebarSeparator,\n  SidebarTrigger,\n  useSidebar,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "sidebar"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["sidebar"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -623,11 +387,7 @@
       "type": "components:ui",
       "description": "Use to show a placeholder while content is loading",
       "category": "ui",
-      "tags": [
-        "skeleton",
-        "loading",
-        "placeholder"
-      ],
+      "tags": ["skeleton", "loading", "placeholder"],
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -636,16 +396,10 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\n\nexport interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nconst Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(\n  ({ className, ...props }, ref) => (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      ref={ref}\n      {...props}\n    />\n  )\n);\nSkeleton.displayName = \"Skeleton\";\n\nexport { Skeleton };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "skeleton",
-          "loading",
-          "placeholder"
-        ],
+        "tags": ["skeleton", "loading", "placeholder"],
         "dependencies": []
       }
     },
@@ -654,14 +408,8 @@
       "type": "components:ui",
       "description": "An input where the user selects a value from within a given range",
       "category": "ui",
-      "tags": [
-        "slider",
-        "range",
-        "input"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["slider", "range", "input"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -669,19 +417,11 @@
           "content": "import { Slider as ArkSlider } from \"@ark-ui/react/slider\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst sliderVariants = tv({\n  slots: {\n    root: \"relative flex w-full touch-none select-none flex-col\",\n    label:\n      \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    valueText: \"text-muted-foreground text-sm\",\n    control: \"relative flex w-full touch-none select-none items-center\",\n    track: \"relative h-2 w-full grow overflow-hidden rounded-full bg-secondary\",\n    range: \"absolute h-full bg-primary\",\n    thumb: [\n      \"block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n    ],\n    hiddenInput: \"sr-only\",\n  },\n});\n\nconst { root, label, valueText, control, track, range, thumb, hiddenInput } =\n  sliderVariants();\n\nexport interface SliderProps\n  extends React.ComponentProps<typeof ArkSlider.Root>,\n    VariantProps<typeof sliderVariants> {}\n\nconst SliderRoot = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.Root>,\n  SliderProps\n>(({ className, ...props }, ref) => (\n  <ArkSlider.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nSliderRoot.displayName = \"Slider\";\n\nconst SliderLabel = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.Label>,\n  React.ComponentProps<typeof ArkSlider.Label>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nSliderLabel.displayName = \"SliderLabel\";\n\nconst SliderValueText = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.ValueText>,\n  React.ComponentProps<typeof ArkSlider.ValueText>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.ValueText\n    className={cn(valueText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSliderValueText.displayName = \"SliderValueText\";\n\nconst SliderControl = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.Control>,\n  React.ComponentProps<typeof ArkSlider.Control>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.Control\n    className={cn(control(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSliderControl.displayName = \"SliderControl\";\n\nconst SliderTrack = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.Track>,\n  React.ComponentProps<typeof ArkSlider.Track>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.Track className={cn(track(), className)} ref={ref} {...props} />\n));\nSliderTrack.displayName = \"SliderTrack\";\n\nconst SliderRange = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.Range>,\n  React.ComponentProps<typeof ArkSlider.Range>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.Range className={cn(range(), className)} ref={ref} {...props} />\n));\nSliderRange.displayName = \"SliderRange\";\n\nconst SliderThumb = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.Thumb>,\n  React.ComponentProps<typeof ArkSlider.Thumb>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.Thumb className={cn(thumb(), className)} ref={ref} {...props} />\n));\nSliderThumb.displayName = \"SliderThumb\";\n\nconst SliderHiddenInput = React.forwardRef<\n  React.ElementRef<typeof ArkSlider.HiddenInput>,\n  React.ComponentProps<typeof ArkSlider.HiddenInput>\n>(({ className, ...props }, ref) => (\n  <ArkSlider.HiddenInput\n    className={cn(hiddenInput(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSliderHiddenInput.displayName = \"SliderHiddenInput\";\n\nexport const Slider = {\n  Root: SliderRoot,\n  Label: SliderLabel,\n  ValueText: SliderValueText,\n  Control: SliderControl,\n  Track: SliderTrack,\n  Range: SliderRange,\n  Thumb: SliderThumb,\n  HiddenInput: SliderHiddenInput,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "slider",
-          "range",
-          "input"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["slider", "range", "input"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -689,14 +429,8 @@
       "type": "components:ui",
       "description": "A control that allows the user to toggle between on and off",
       "category": "ui",
-      "tags": [
-        "switch",
-        "toggle",
-        "form"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["switch", "toggle", "form"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -704,19 +438,11 @@
           "content": "import { Switch as ArkSwitch } from \"@ark-ui/react/switch\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst switchVariants = tv({\n  slots: {\n    root: [\n      \"group peer inline-flex items-center space-x-2\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n    ],\n    control: [\n      \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent\",\n      \"transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n      \"disabled:cursor-not-allowed disabled:opacity-50\",\n      \"data-[state=checked]:bg-primary data-[state=unchecked]:bg-input\",\n    ],\n    thumb: [\n      \"pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform\",\n      \"data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0\",\n    ],\n    label: [\n      \"font-medium text-sm leading-none\",\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n    ],\n    hiddenInput: \"sr-only\",\n  },\n});\n\nconst { root, control, thumb, label, hiddenInput } = switchVariants();\n\nexport interface SwitchProps\n  extends React.ComponentProps<typeof ArkSwitch.Root>,\n    VariantProps<typeof switchVariants> {}\n\nconst SwitchRoot = React.forwardRef<\n  React.ElementRef<typeof ArkSwitch.Root>,\n  SwitchProps\n>(({ className, ...props }, ref) => (\n  <ArkSwitch.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nSwitchRoot.displayName = \"Switch\";\n\nconst SwitchControl = React.forwardRef<\n  React.ElementRef<typeof ArkSwitch.Control>,\n  React.ComponentProps<typeof ArkSwitch.Control>\n>(({ className, ...props }, ref) => (\n  <ArkSwitch.Control\n    className={cn(control(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSwitchControl.displayName = \"SwitchControl\";\n\nconst SwitchThumb = React.forwardRef<\n  React.ElementRef<typeof ArkSwitch.Thumb>,\n  React.ComponentProps<typeof ArkSwitch.Thumb>\n>(({ className, ...props }, ref) => (\n  <ArkSwitch.Thumb className={cn(thumb(), className)} ref={ref} {...props} />\n));\nSwitchThumb.displayName = \"SwitchThumb\";\n\nconst SwitchLabel = React.forwardRef<\n  React.ElementRef<typeof ArkSwitch.Label>,\n  React.ComponentProps<typeof ArkSwitch.Label>\n>(({ className, ...props }, ref) => (\n  <ArkSwitch.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nSwitchLabel.displayName = \"SwitchLabel\";\n\nconst SwitchHiddenInput = React.forwardRef<\n  React.ElementRef<typeof ArkSwitch.HiddenInput>,\n  React.ComponentProps<typeof ArkSwitch.HiddenInput>\n>(({ className, ...props }, ref) => (\n  <ArkSwitch.HiddenInput\n    className={cn(hiddenInput(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nSwitchHiddenInput.displayName = \"SwitchHiddenInput\";\n\nexport const Switch = {\n  Root: SwitchRoot,\n  Control: SwitchControl,\n  Thumb: SwitchThumb,\n  Label: SwitchLabel,\n  HiddenInput: SwitchHiddenInput,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "switch",
-          "toggle",
-          "form"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["switch", "toggle", "form"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -724,14 +450,8 @@
       "type": "components:ui",
       "description": "A set of layered sections of content that are displayed one at a time",
       "category": "ui",
-      "tags": [
-        "tabs",
-        "navigation",
-        "layout"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["tabs", "navigation", "layout"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -739,19 +459,11 @@
           "content": "import { Tabs as ArkTabs } from \"@ark-ui/react/tabs\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst tabsVariants = tv({\n  slots: {\n    root: \"w-full\",\n    list: [\n      \"inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground\",\n    ],\n    trigger: [\n      \"inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium text-sm ring-offset-background transition-all\",\n      \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n      \"disabled:pointer-events-none disabled:opacity-50\",\n      \"data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm\",\n    ],\n    content: [\n      \"mt-2 ring-offset-background\",\n      \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n    ],\n  },\n});\n\nconst { root, list, trigger, content } = tabsVariants();\n\nexport interface TabsProps\n  extends React.ComponentProps<typeof ArkTabs.Root>,\n    VariantProps<typeof tabsVariants> {}\n\nconst TabsRoot = React.forwardRef<\n  React.ElementRef<typeof ArkTabs.Root>,\n  TabsProps\n>(({ className, ...props }, ref) => (\n  <ArkTabs.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nTabsRoot.displayName = \"Tabs\";\n\nconst TabsList = React.forwardRef<\n  React.ElementRef<typeof ArkTabs.List>,\n  React.ComponentProps<typeof ArkTabs.List>\n>(({ className, ...props }, ref) => (\n  <ArkTabs.List className={cn(list(), className)} ref={ref} {...props} />\n));\nTabsList.displayName = \"TabsList\";\n\nconst TabsTrigger = React.forwardRef<\n  React.ElementRef<typeof ArkTabs.Trigger>,\n  React.ComponentProps<typeof ArkTabs.Trigger>\n>(({ className, ...props }, ref) => (\n  <ArkTabs.Trigger className={cn(trigger(), className)} ref={ref} {...props} />\n));\nTabsTrigger.displayName = \"TabsTrigger\";\n\nconst TabsContent = React.forwardRef<\n  React.ElementRef<typeof ArkTabs.Content>,\n  React.ComponentProps<typeof ArkTabs.Content>\n>(({ className, ...props }, ref) => (\n  <ArkTabs.Content className={cn(content(), className)} ref={ref} {...props} />\n));\nTabsContent.displayName = \"TabsContent\";\n\nexport const Tabs = {\n  Root: TabsRoot,\n  List: TabsList,\n  Trigger: TabsTrigger,\n  Content: TabsContent,\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "tabs",
-          "navigation",
-          "layout"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["tabs", "navigation", "layout"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -759,14 +471,8 @@
       "type": "components:ui",
       "description": "A multi-line text input element with auto-resize functionality",
       "category": "ui",
-      "tags": [
-        "textarea",
-        "form",
-        "input"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["textarea", "form", "input"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -774,19 +480,11 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\n\nexport interface TextareaProps\n  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}\n\nconst Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(\n  ({ className, ...props }, ref) => (\n    <textarea\n      className={cn(\n        \"flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      ref={ref}\n      {...props}\n    />\n  )\n);\nTextarea.displayName = \"Textarea\";\n\nexport { Textarea };\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "textarea",
-          "form",
-          "input"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["textarea", "form", "input"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -794,12 +492,8 @@
       "type": "components:ui",
       "description": "A tooltip component built with Ark UI",
       "category": "ui",
-      "tags": [
-        "tooltip"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["tooltip"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -807,17 +501,11 @@
           "content": "import { Portal } from \"@ark-ui/react/portal\";\nimport { Tooltip as ArkTooltip } from \"@ark-ui/react/tooltip\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Tooltip = (\n  props: React.ComponentProps<typeof ArkTooltip.Root>\n) => {\n  const {\n    positioning = {\n      placement: \"top\",\n    },\n    closeDelay = 100,\n    openDelay = 0,\n    ...rest\n  } = props;\n\n  return (\n    <ArkTooltip.Root\n      closeDelay={closeDelay}\n      data-slot=\"tooltip\"\n      openDelay={openDelay}\n      positioning={positioning}\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipPortal = (props: React.ComponentProps<typeof Portal>) => (\n  <Portal data-slot=\"tooltip-portal\" {...props} />\n);\n\nexport const TooltipTrigger = (\n  props: React.ComponentProps<typeof ArkTooltip.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTooltip.Trigger\n      className={cn(className)}\n      data-slot=\"tooltip-trigger\"\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipPositioner = (\n  props: React.ComponentProps<typeof ArkTooltip.Positioner>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTooltip.Positioner\n      className={cn(className)}\n      data-slot=\"tooltip-positioner\"\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipContent = (\n  props: React.ComponentProps<typeof ArkTooltip.Content>\n) => {\n  const { className, children, ...rest } = props;\n  return (\n    <TooltipPortal>\n      <TooltipPositioner>\n        <ArkTooltip.Content\n          className={cn(\n            \"z-50 w-fit origin-(--radix-tooltip-content-transform-origin)\",\n            \"px-3 py-1.5\",\n            \"bg-foreground\",\n            \"rounded-md\",\n            \"text-pretty text-background text-xs\",\n            \"animate-in\",\n            \"fade-in-0 zoom-in-95\",\n            \"data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\",\n            \"data-[state=closed]:animate-out\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          data-slot=\"tooltip-content\"\n          {...rest}\n        >\n          <TooltipArrow />\n\n          {children}\n        </ArkTooltip.Content>\n      </TooltipPositioner>\n    </TooltipPortal>\n  );\n};\n\nexport const TooltipArrow = (\n  props: React.ComponentProps<typeof ArkTooltip.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkTooltip.Arrow\n      data-slot=\"tooltip-arrow\"\n      style={\n        {\n          \"--arrow-background\": \"var(--foreground)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <TooltipArrowTip />\n    </ArkTooltip.Arrow>\n  );\n};\n\nexport const TooltipArrowTip = (\n  props: React.ComponentProps<typeof ArkTooltip.ArrowTip>\n) => <ArkTooltip.ArrowTip data-slot=\"tooltip-arrow-tip\" {...props} />;\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "tooltip"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["tooltip"],
+        "dependencies": ["@ark-ui/react"]
       }
     },
     {
@@ -825,12 +513,8 @@
       "type": "components:ui",
       "description": "A carousel component built with Ark UI",
       "category": "ui",
-      "tags": [
-        "carousel"
-      ],
-      "dependencies": [
-        "@ark-ui/react"
-      ],
+      "tags": ["carousel"],
+      "dependencies": ["@ark-ui/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -838,17 +522,11 @@
           "content": "import { Carousel as ArkCarousel } from \"@ark-ui/react/carousel\";\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\";\nimport type React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Carousel = (\n  props: React.ComponentProps<typeof ArkCarousel.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Root\n      className={cn(\"relative\", className)}\n      data-slot=\"carousel\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselControl = (\n  props: React.ComponentProps<typeof ArkCarousel.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Control\n      className={cn(className)}\n      data-slot=\"carousel-context\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselPrevious = (\n  props: React.ComponentProps<typeof ArkCarousel.PrevTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.PrevTrigger\n      asChild\n      className={cn(\n        \"-left-12 -translate-y-1/2 absolute top-1/2\",\n        \"size-8 rounded-full\",\n        className\n      )}\n      data-slot=\"carousel-previous\"\n      {...rest}\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronLeftIcon />\n        <span className=\"sr-only\">Previous</span>\n      </Button>\n    </ArkCarousel.PrevTrigger>\n  );\n};\n\nexport const CarouselNext = (\n  props: React.ComponentProps<typeof ArkCarousel.NextTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.NextTrigger\n      className={cn(\"-right-12 -translate-y-1/2 absolute top-1/2\", className)}\n      data-slot=\"carousel-next\"\n      {...rest}\n      asChild\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronRightIcon />\n        <span className=\"sr-only\">Next</span>\n      </Button>\n    </ArkCarousel.NextTrigger>\n  );\n};\n\nexport const CarouselIndicatorGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.IndicatorGroup>\n) => (\n  <ArkCarousel.IndicatorGroup\n    className=\"-translate-x-1/2 absolute bottom-2 left-1/2 flex gap-2 rounded-lg bg-background/80 px-3 py-3 backdrop-blur-sm\"\n    data-slot=\"carousel-indicator-group\"\n    {...props}\n  />\n);\n\nexport const CarouselIndicator = (\n  props: React.ComponentProps<typeof ArkCarousel.Indicator>\n) => (\n  <ArkCarousel.Indicator\n    className=\"size-2 rounded-full bg-foreground opacity-50 data-[current]:opacity-100\"\n    data-slot=\"carousel-indicator\"\n    {...props}\n  />\n);\n\nexport const CarouselItemGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.ItemGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.ItemGroup\n      className={cn(\"flex\", className)}\n      data-slot=\"carousel-item-group\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselItem = (\n  props: React.ComponentProps<typeof ArkCarousel.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Item\n      className={cn(\"min-w-0 shrink-0 grow-0 basis-full\", className)}\n      data-slot=\"carousel-item\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": [
-        "ui"
-      ],
+      "categories": ["ui"],
       "meta": {
         "category": "ui",
-        "tags": [
-          "carousel"
-        ],
-        "dependencies": [
-          "@ark-ui/react"
-        ]
+        "tags": ["carousel"],
+        "dependencies": ["@ark-ui/react"]
       }
     }
   ]

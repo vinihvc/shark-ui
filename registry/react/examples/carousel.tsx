@@ -1,8 +1,11 @@
 import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/react/components/card";
+import {
   Carousel,
   CarouselControl,
-  CarouselIndicator,
-  CarouselIndicatorGroup,
   CarouselItem,
   CarouselItemGroup,
   CarouselNext,
@@ -10,32 +13,32 @@ import {
 } from "@/registry/react/components/carousel";
 
 const CarouselDemo = () => {
-  const images = Array.from(
-    { length: 8 },
-    (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`
-  );
+  const items = Array.from({ length: 8 }, (_, index) => `Slide ${index}`);
 
   return (
-    <Carousel allowMouseDrag slideCount={images.length}>
+    <Carousel
+      allowMouseDrag
+      slideCount={items.length}
+      slidesPerPage={2}
+      spacing="24px"
+    >
       <CarouselControl>
         <CarouselPrevious>Previous</CarouselPrevious>
         <CarouselNext>Next</CarouselNext>
       </CarouselControl>
 
-      <CarouselIndicatorGroup>
-        {images.map((_, index) => (
-          <CarouselIndicator index={index} key={index} />
-        ))}
-      </CarouselIndicatorGroup>
-
       <CarouselItemGroup>
-        {images.map((image, index) => (
-          <CarouselItem index={index} key={image}>
-            <img
-              alt={`Slide ${index}`}
-              className="h-full w-full rounded-md object-cover"
-              src={image}
-            />
+        {items.map((item, index) => (
+          <CarouselItem index={index} key={item}>
+            <Card title={`Slide ${index}`}>
+              <CardHeader
+                description={`Slide ${index}`}
+                title={`Slide ${index}`}
+              />
+              <CardContent>
+                Check out the documentation to get started.
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
       </CarouselItemGroup>

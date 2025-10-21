@@ -8,7 +8,7 @@ import {
   TabsIndicator,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs";
+} from "@/registry/react/components/tabs";
 
 const registryPath = "registry/react/examples";
 
@@ -49,7 +49,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
 
         <div className="**:[figure]:!m-0 relative rounded-lg border **:[figure]:border-none">
           <TabsContent
-            className="preview flex h-[400px] w-full items-center justify-center p-10"
+            className="preview flex h-[400px] w-full items-center justify-center overflow-y-auto p-14"
             value="preview"
           >
             <Example.default />

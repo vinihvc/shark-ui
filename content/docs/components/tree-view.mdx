@@ -1,0 +1,74 @@
+---
+title: Tree View
+description: A component for displaying hierarchical data in a tree structure.
+links:
+  doc: https://ark-ui.com/docs/components/tree-view
+  api: https://ark-ui.com/docs/components/tree-view#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="tree-view" />
+
+## Installation
+
+<ComponentInstallation componentName="tree-view" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react lucide-react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { createTreeCollection } from "@ark-ui/react/tree-view";
+import { 
+  TreeView,
+  TreeViewLabel,
+  TreeViewTree,
+  TreeViewNodeProvider,
+  TreeViewBranch,
+  TreeViewBranchControl,
+  TreeViewBranchText,
+  TreeViewBranchIndicator,
+  TreeViewBranchContent,
+  TreeViewBranchIndentGuide,
+  TreeViewItem,
+  TreeViewItemText
+} from "@/components/ui/tree-view";
+```
+
+```tsx lineNumbers
+const collection = createTreeCollection({
+  nodeToValue: (node) => node.id,
+  nodeToString: (node) => node.name,
+  rootNode: {
+    id: "ROOT",
+    name: "",
+    children: [
+      {
+        id: "src",
+        name: "src",
+        children: [
+          { id: "src/app.tsx", name: "app.tsx" },
+          { id: "src/index.ts", name: "index.ts" },
+        ],
+      },
+      { id: "package.json", name: "package.json" },
+    ],
+  },
+});
+
+<TreeView collection={collection}>
+  <TreeViewLabel>File Explorer</TreeViewLabel>
+  <TreeViewTree>
+    {collection.rootNode.children?.map((node, index) => (
+      <TreeNode key={node.id} node={node} indexPath={[index]} />
+    ))}
+  </TreeViewTree>
+</TreeView>
+```
+

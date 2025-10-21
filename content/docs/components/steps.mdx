@@ -1,0 +1,56 @@
+---
+title: Steps
+description: A component that displays a list of steps in a wizard-like format.
+links:
+  doc: https://ark-ui.com/docs/components/steps
+  api: https://ark-ui.com/docs/components/steps#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="steps" />
+
+## Installation
+
+<ComponentInstallation componentName="steps" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Steps, 
+  StepsList, 
+  StepsItem, 
+  StepsTrigger, 
+  StepsSeparator, 
+  StepsIndicator, 
+  StepsContent, 
+  StepsCompletedContent, 
+  StepsNext, 
+  StepsPrevious 
+} from "@/registry/react/components/steps";
+```
+
+```tsx lineNumbers
+<Steps>
+  <StepsList>
+    <StepsItem index={0}>
+      <StepsTrigger>Step 1</StepsTrigger>
+    </StepsItem>
+  </StepsList>
+
+  <StepsContent index={0}>Content 1</StepsContent>
+
+  <StepsCompletedContent>Completed Content</StepsCompletedContent>
+
+  <StepsNext>Next</StepsNext>
+  <StepsPrevious>Previous</StepsPrevious>
+</Steps>
+```

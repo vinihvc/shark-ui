@@ -1,0 +1,43 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from
+links:
+  doc: https://ark-ui.com/docs/components/select
+  api: https://ark-ui.com/docs/components/select#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="select" />
+
+## Installation
+
+<ComponentInstallation componentName="select" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Select,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/react/components/select";
+```
+
+```tsx lineNumbers
+  <Select>
+    <SelectTrigger>
+      <SelectValueText placeholder="Select an option" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="1">Option 1</SelectItem>
+    </SelectContent>
+  </Select>
+```

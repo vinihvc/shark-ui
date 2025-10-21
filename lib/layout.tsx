@@ -1,5 +1,7 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { Logo } from "@/components/logo";
 import { SITE_CONFIG } from "@/config/site";
+import { Button } from "@/registry/react/components/button";
 
 /**
  * Shared layout configurations
@@ -11,7 +13,15 @@ import { SITE_CONFIG } from "@/config/site";
 export const baseOptions = (): BaseLayoutProps => {
   return {
     nav: {
-      title: <>{SITE_CONFIG.name}</>,
+      title: (
+        <>
+          <Button size="icon" variant="ghost">
+            <Logo className="size-6" />
+          </Button>
+
+          {SITE_CONFIG.name}
+        </>
+      ),
     },
     // see https://fumadocs.dev/docs/ui/navigation/links
     links: [

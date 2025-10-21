@@ -88,10 +88,10 @@
   --color-radius-3xl: var(--radius-3xl);
   --color-radius-4xl: var(--radius-4xl);
 
-  --animate-accordion-up: accordionUp 0.2s ease-out;
-  --animate-accordion-down: accordionDown 0.2s ease-out;
+  --animate-slide-up: slideUp 0.2s ease-out;
+  --animate-slide-down: slideDown 0.2s ease-out;
   
-  @keyframes accordionUp {
+  @keyframes slideUp {
     from {
       height: var(--height);
     }
@@ -100,7 +100,7 @@
     }
   }
 
-  @keyframes accordionDown {
+  @keyframes slideDown {
     from {
       height: 0;
     }

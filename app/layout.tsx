@@ -12,16 +12,36 @@ export const metadata: Metadata = {
     default: SITE_CONFIG.name,
     template: `%s | ${SITE_CONFIG.name}`,
   },
+  keywords: ["shadcn", "components", "nextjs", "react", "ark", "ui"],
   creator: SITE_CONFIG.creator,
   description: SITE_CONFIG.description,
   openGraph: {
     title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
-    images: [SITE_CONFIG.ogImage],
+    images: [
+      {
+        url: `${SITE_CONFIG.url}/opengraph-image.png`,
+        width: 1200,
+        height: 630,
+        alt: SITE_CONFIG.name,
+      },
+    ],
     url: SITE_CONFIG.url,
     type: "website",
     locale: "en_US",
     siteName: SITE_CONFIG.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    images: [`${SITE_CONFIG.url}/opengraph-image.png`],
+    creator: SITE_CONFIG.creator,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 

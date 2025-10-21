@@ -3,8 +3,13 @@
 import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react";
 import React from "react";
 // import { copyToClipboardWithMeta } from "@/components/copy-button";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/registry/react/components/button";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/react/components/tabs";
 import {
   Tooltip,
   TooltipContent,
@@ -108,9 +113,9 @@ export function CodeBlockCommand({
         <TooltipTrigger asChild>
           <Button
             className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-            data-slot="copy-button"
+            data-part="copy-button"
             onClick={copyCommand}
-            size="icon"
+            size="icon-md"
             variant="ghost"
           >
             <span className="sr-only">Copy</span>

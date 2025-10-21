@@ -1,19 +1,29 @@
 import { MapPin } from "lucide-react";
-import { Button } from "@/registry/react/components/button";
+import { cn } from "@/lib/utils";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/react/components/avatar";
+import { buttonVariants } from "@/registry/react/components/button";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/react/components/hover-card";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/avatar";
 
 const HoverCardDemo = () => (
   <HoverCard>
     <HoverCardTrigger asChild>
-      <Button className="gap-0" variant="link">
+      <a
+        className={cn(buttonVariants({ variant: "link" }), "gap-0")}
+        href="https://github.com/vinihvc"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         <span className="text-ark">@</span>
         vinihvc
-      </Button>
+      </a>
     </HoverCardTrigger>
     <HoverCardContent>
       <div className="flex gap-4">

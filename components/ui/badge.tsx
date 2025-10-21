@@ -70,7 +70,7 @@ export const Badge = (props: BadgeProps) => {
   return (
     <Comp
       className={cn(badgeVariants({ variant }), className)}
-      data-slot="badge"
+      data-part="badge"
       {...rest}
     />
   );

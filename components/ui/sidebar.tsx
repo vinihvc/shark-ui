@@ -1,7 +1,7 @@
-/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */
-/** biome-ignore-all lint/style/noMagicNumbers: <explanation> */
-/** biome-ignore-all lint/nursery/noShadow: <explanation> */
-/** biome-ignore-all lint/suspicious/noDocumentCookie: <explanation> */
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: fix after */
+/** biome-ignore-all lint/style/noMagicNumbers: fix after */
+/** biome-ignore-all lint/nursery/noShadow: fix after */
+/** biome-ignore-all lint/suspicious/noDocumentCookie: fix after */
 "use client";
 
 import { Slot } from "@radix-ui/react-slot";
@@ -10,8 +10,8 @@ import { PanelLeftIcon } from "lucide-react";
 import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { useIsMobile } from "@/hooks/use-is-mobile";
-import { Tooltip } from "../../registry/react/components/tooltip";
-import { Button } from "./button";
+import { Button } from "@/registry/react/components/button";
+import { Tooltip } from "@/registry/react/components/tooltip";
 import { Input } from "./input";
 import { Separator } from "./separator";
 import { Sheet } from "./sheet";
@@ -127,7 +127,6 @@ function SidebarProvider({
           "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
           className
         )}
-        data-slot="sidebar-wrapper"
         style={
           {
             "--sidebar-width": SIDEBAR_WIDTH,
@@ -164,7 +163,6 @@ function Sidebar({
           "flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground",
           className
         )}
-        data-slot="sidebar"
         {...props}
       >
         {children}
@@ -179,7 +177,6 @@ function Sidebar({
           className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
           data-mobile="true"
           data-sidebar="sidebar"
-          data-slot="sidebar"
           style={
             {
               "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -201,7 +198,6 @@ function Sidebar({
       className="group peer hidden text-sidebar-foreground md:block"
       data-collapsible={state === "collapsed" ? collapsible : ""}
       data-side={side}
-      data-slot="sidebar"
       data-state={state}
       data-variant={variant}
     >
@@ -215,7 +211,6 @@ function Sidebar({
             ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
         )}
-        data-slot="sidebar-gap"
       />
       <div
         className={cn(
@@ -229,13 +224,11 @@ function Sidebar({
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
           className
         )}
-        data-slot="sidebar-container"
         {...props}
       >
         <div
           className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm"
           data-sidebar="sidebar"
-          data-slot="sidebar-inner"
         >
           {children}
         </div>
@@ -255,7 +248,6 @@ function SidebarTrigger({
     <Button
       className={cn("size-7", className)}
       data-sidebar="trigger"
-      data-slot="sidebar-trigger"
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
@@ -286,7 +278,6 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
         className
       )}
       data-sidebar="rail"
-      data-slot="sidebar-rail"
       onClick={toggleSidebar}
       tabIndex={-1}
       title="Toggle Sidebar"
@@ -303,7 +294,6 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
         "md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm",
         className
       )}
-      data-slot="sidebar-inset"
       {...props}
     />
   );
@@ -317,7 +307,6 @@ function SidebarInput({
     <Input
       className={cn("h-8 w-full bg-background shadow-none", className)}
       data-sidebar="input"
-      data-slot="sidebar-input"
       {...props}
     />
   );
@@ -328,7 +317,6 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       className={cn("flex flex-col gap-2 p-2", className)}
       data-sidebar="header"
-      data-slot="sidebar-header"
       {...props}
     />
   );
@@ -339,7 +327,6 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       className={cn("flex flex-col gap-2 p-2", className)}
       data-sidebar="footer"
-      data-slot="sidebar-footer"
       {...props}
     />
   );
@@ -353,7 +340,6 @@ function SidebarSeparator({
     <Separator
       className={cn("mx-2 w-auto bg-sidebar-border", className)}
       data-sidebar="separator"
-      data-slot="sidebar-separator"
       {...props}
     />
   );
@@ -367,7 +353,6 @@ function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
         className
       )}
       data-sidebar="content"
-      data-slot="sidebar-content"
       {...props}
     />
   );
@@ -378,7 +363,6 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
       data-sidebar="group"
-      data-slot="sidebar-group"
       {...props}
     />
   );
@@ -399,7 +383,6 @@ function SidebarGroupLabel({
         className
       )}
       data-sidebar="group-label"
-      data-slot="sidebar-group-label"
       {...props}
     />
   );
@@ -422,7 +405,6 @@ function SidebarGroupAction({
         className
       )}
       data-sidebar="group-action"
-      data-slot="sidebar-group-action"
       {...props}
     />
   );
@@ -436,7 +418,6 @@ function SidebarGroupContent({
     <div
       className={cn("w-full text-sm", className)}
       data-sidebar="group-content"
-      data-slot="sidebar-group-content"
       {...props}
     />
   );
@@ -447,7 +428,6 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
     <ul
       className={cn("flex w-full min-w-0 flex-col gap-1", className)}
       data-sidebar="menu"
-      data-slot="sidebar-menu"
       {...props}
     />
   );
@@ -458,7 +438,6 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
     <li
       className={cn("group/menu-item relative", className)}
       data-sidebar="menu-item"
-      data-slot="sidebar-menu-item"
       {...props}
     />
   );
@@ -506,7 +485,6 @@ function SidebarMenuButton({
       data-active={isActive}
       data-sidebar="menu-button"
       data-size={size}
-      data-slot="sidebar-menu-button"
       {...props}
     />
   );
@@ -558,7 +536,6 @@ function SidebarMenuAction({
         className
       )}
       data-sidebar="menu-action"
-      data-slot="sidebar-menu-action"
       {...props}
     />
   );
@@ -580,7 +557,6 @@ function SidebarMenuBadge({
         className
       )}
       data-sidebar="menu-badge"
-      data-slot="sidebar-menu-badge"
       {...props}
     />
   );
@@ -603,7 +579,6 @@ function SidebarMenuSkeleton({
     <div
       className={cn("flex h-8 items-center gap-2 rounded-md px-2", className)}
       data-sidebar="menu-skeleton"
-      data-slot="sidebar-menu-skeleton"
       {...props}
     >
       {showIcon && (
@@ -634,7 +609,6 @@ function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
         className
       )}
       data-sidebar="menu-sub"
-      data-slot="sidebar-menu-sub"
       {...props}
     />
   );
@@ -648,7 +622,6 @@ function SidebarMenuSubItem({
     <li
       className={cn("group/menu-sub-item relative", className)}
       data-sidebar="menu-sub-item"
-      data-slot="sidebar-menu-sub-item"
       {...props}
     />
   );
@@ -680,7 +653,6 @@ function SidebarMenuSubButton({
       data-active={isActive}
       data-sidebar="menu-sub-button"
       data-size={size}
-      data-slot="sidebar-menu-sub-button"
       {...props}
     />
   );

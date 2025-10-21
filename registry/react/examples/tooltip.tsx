@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/registry/react/components/button";
 import {
   Tooltip,
   TooltipContent,

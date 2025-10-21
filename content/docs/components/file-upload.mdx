@@ -1,0 +1,53 @@
+---
+title: File Upload
+description: A component that allows users to upload files.
+links:
+  doc: https://ark-ui.com/docs/components/file-upload
+  api: https://ark-ui.com/docs/components/file-upload#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="file-upload" />
+
+## Installation
+
+<ComponentInstallation componentName="file-upload" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  FileUpload,
+  FileUploadTrigger,
+  FileUploadItemGroup,
+  FileUploadContext,
+  FileUploadItem,
+  FileUploadItemPreview,
+  FileUploadItemPreviewImage,
+} from "@/components/ui/file-upload";
+```
+
+```tsx lineNumbers
+<FileUpload maxFiles={4}>
+  <FileUploadTrigger>Upload</FileUploadTrigger>
+  <FileUploadItemGroup>
+    <FileUploadContext>
+      {({ acceptedFiles }) => (
+        <FileUploadItem file={acceptedFiles[0]}>
+          <FileUploadItemPreview>
+            <FileUploadItemPreviewImage src={acceptedFiles[0].name} />
+          </FileUploadItemPreview>
+        </FileUploadItem>
+      )}
+    </FileUploadContext>
+  </FileUploadItemGroup>
+</FileUpload>
+```

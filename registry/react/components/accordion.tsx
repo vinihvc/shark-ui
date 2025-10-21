@@ -65,7 +65,10 @@ export const AccordionContent = (
   return (
     <ArkAccordion.ItemContent
       className={cn(
-        "overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        "text-sm",
+        "overflow-hidden",
+        "data-[state=open]:animate-slide-down",
+        "data-[state=closed]:animate-slide-up",
         className
       )}
       data-slot="accordion-content"
