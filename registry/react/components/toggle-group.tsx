@@ -13,7 +13,7 @@ interface ToggleGroupProps
   extends React.ComponentProps<typeof ArkToggleGroup.Root>,
     Pick<ToggleProps, "variant" | "size"> {
   /**
-   * The spacing between the toggle group items
+   * The spacing variable value
    */
   spacing?: number;
 }
@@ -34,7 +34,6 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
           "group/toggle-group flex w-fit items-center gap-(--toggle-group-spacing) rounded-md",
           className
         )}
-        data-slot="toggle-group"
         data-spacing={spacing}
         style={
           {
@@ -69,7 +68,6 @@ export const ToggleGroupItem = (
           "group-data-[spacing=0]/toggle-group:first:border-l",
           className
         )}
-        data-slot="toggle-group-item"
         size={size}
         variant={variant}
         {...rest}

@@ -3,29 +3,19 @@
   "type": "components:ui",
   "description": "A carousel component built with Ark UI",
   "category": "ui",
-  "tags": [
-    "carousel"
-  ],
-  "dependencies": [
-    "@ark-ui/react"
-  ],
+  "tags": ["carousel"],
+  "dependencies": ["@ark-ui/react"],
   "registryDependencies": [],
   "files": [
     {
       "name": "carousel.tsx",
-      "content": "import { Carousel as ArkCarousel } from \"@ark-ui/react/carousel\";\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\";\nimport type React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Carousel = (\n  props: React.ComponentProps<typeof ArkCarousel.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Root\n      className={cn(\"relative\", className)}\n      data-slot=\"carousel\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselControl = (\n  props: React.ComponentProps<typeof ArkCarousel.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Control\n      className={cn(className)}\n      data-slot=\"carousel-context\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselPrevious = (\n  props: React.ComponentProps<typeof ArkCarousel.PrevTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.PrevTrigger\n      asChild\n      className={cn(\n        \"-left-12 -translate-y-1/2 absolute top-1/2\",\n        \"size-8 rounded-full\",\n        className\n      )}\n      data-slot=\"carousel-previous\"\n      {...rest}\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronLeftIcon />\n        <span className=\"sr-only\">Previous</span>\n      </Button>\n    </ArkCarousel.PrevTrigger>\n  );\n};\n\nexport const CarouselNext = (\n  props: React.ComponentProps<typeof ArkCarousel.NextTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.NextTrigger\n      className={cn(\"-right-12 -translate-y-1/2 absolute top-1/2\", className)}\n      data-slot=\"carousel-next\"\n      {...rest}\n      asChild\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronRightIcon />\n        <span className=\"sr-only\">Next</span>\n      </Button>\n    </ArkCarousel.NextTrigger>\n  );\n};\n\nexport const CarouselIndicatorGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.IndicatorGroup>\n) => (\n  <ArkCarousel.IndicatorGroup\n    className=\"-translate-x-1/2 absolute bottom-2 left-1/2 flex gap-2 rounded-lg bg-background/80 px-3 py-3 backdrop-blur-sm\"\n    data-slot=\"carousel-indicator-group\"\n    {...props}\n  />\n);\n\nexport const CarouselIndicator = (\n  props: React.ComponentProps<typeof ArkCarousel.Indicator>\n) => (\n  <ArkCarousel.Indicator\n    className=\"size-2 rounded-full bg-foreground opacity-50 data-[current]:opacity-100\"\n    data-slot=\"carousel-indicator\"\n    {...props}\n  />\n);\n\nexport const CarouselItemGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.ItemGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.ItemGroup\n      className={cn(\"flex\", className)}\n      data-slot=\"carousel-item-group\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselItem = (\n  props: React.ComponentProps<typeof ArkCarousel.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Item\n      className={cn(\"min-w-0 shrink-0 grow-0 basis-full\", className)}\n      data-slot=\"carousel-item\"\n      {...rest}\n    />\n  );\n};\n"
+      "content": "import { Carousel as ArkCarousel } from \"@ark-ui/react/carousel\";\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\";\nimport type React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Carousel = (\n  props: React.ComponentProps<typeof ArkCarousel.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Root\n      className={cn(\"relative\", className)}\n      data-slot=\"carousel\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselControl = (\n  props: React.ComponentProps<typeof ArkCarousel.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Control\n      className={cn(className)}\n      data-slot=\"carousel-context\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselPrevious = (\n  props: React.ComponentProps<typeof ArkCarousel.PrevTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.PrevTrigger\n      asChild\n      className={cn(\n        \"-left-12 -translate-y-1/2 absolute top-1/2\",\n        \"size-8 rounded-full\",\n        className\n      )}\n      data-slot=\"carousel-previous\"\n      {...rest}\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronLeftIcon />\n        <span className=\"sr-only\">Previous</span>\n      </Button>\n    </ArkCarousel.PrevTrigger>\n  );\n};\n\nexport const CarouselNext = (\n  props: React.ComponentProps<typeof ArkCarousel.NextTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.NextTrigger\n      className={cn(\"-right-12 -translate-y-1/2 absolute top-1/2\", className)}\n      data-slot=\"carousel-next\"\n      {...rest}\n      asChild\n    >\n      <Button className=\"size-8 rounded-full\" size=\"icon\">\n        <ChevronRightIcon />\n        <span className=\"sr-only\">Next</span>\n      </Button>\n    </ArkCarousel.NextTrigger>\n  );\n};\n\nexport const CarouselIndicatorGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.IndicatorGroup>\n) => (\n  <ArkCarousel.IndicatorGroup\n    className=\"-translate-x-1/2 absolute bottom-2 left-1/2 flex gap-2 rounded-lg bg-background/80 px-3 py-3 backdrop-blur-sm\"\n    data-slot=\"carousel-indicator-group\"\n    {...props}\n  />\n);\n\nexport const CarouselIndicator = (\n  props: React.ComponentProps<typeof ArkCarousel.Indicator>\n) => (\n  <ArkCarousel.Indicator\n    className=\"size-2 rounded-full bg-foreground opacity-50 data-current:opacity-100\"\n    data-slot=\"carousel-indicator\"\n    {...props}\n  />\n);\n\nexport const CarouselItemGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.ItemGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.ItemGroup\n      className={cn(\"flex\", className)}\n      data-slot=\"carousel-item-group\"\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselItem = (\n  props: React.ComponentProps<typeof ArkCarousel.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Item\n      className={cn(\"min-w-0 shrink-0 grow-0 basis-full\", className)}\n      data-slot=\"carousel-item\"\n      {...rest}\n    />\n  );\n};\n"
     }
   ],
-  "categories": [
-    "ui"
-  ],
+  "categories": ["ui"],
   "meta": {
     "category": "ui",
-    "tags": [
-      "carousel"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
+    "tags": ["carousel"],
+    "dependencies": ["@ark-ui/react"]
   }
 }

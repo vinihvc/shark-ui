@@ -1,0 +1,45 @@
+---
+title: PIN Input
+description: For pin or verification codes with auto-focus transfer and masking options
+links:
+  doc: https://ark-ui.com/docs/components/pin-input
+  api: https://ark-ui.com/docs/components/pin-input#api-reference
+---
+
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="pin-input" />
+
+## Installation
+
+<ComponentInstallation componentName="pin-input">
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  PinInput, 
+  PinInputSeparator, 
+  PinInputSlot, 
+} from "@/components/ui/pin-input";
+```
+
+```tsx lineNumbers
+<PinInput>
+  <PinInputSlot index={0} />
+  <PinInputSlot index={1} />
+  <PinInputSlot index={2} />
+  <PinInputSeparator />
+  <PinInputSlot index={3} />
+  <PinInputSlot index={4} />
+  <PinInputSlot index={5} />
+</PinInput>
+```

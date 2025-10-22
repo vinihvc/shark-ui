@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+import { Step, Steps } from "fumadocs-ui/components/steps";
 import type React from "react";
 import { REGISTRY_PATH } from "@/config/constants";
 import { SITE_CONFIG } from "@/config/site";
@@ -51,15 +52,18 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
           </TabsContent>
 
           <TabsContent value="manual">
-            {children}
+            <Steps>
+              <Step>{children}</Step>
 
-            <p>Copy and paste the following code into your project.</p>
+              <p>Copy and paste the following code into your project.</p>
+              <Step>
+                <div className="py-4 **:[div]:max-h-[650px]">
+                  <DynamicCodeBlock code={sourceCode} lang="tsx" />
+                </div>
 
-            <div className="py-4 **:[div]:max-h-[650px]">
-              <DynamicCodeBlock code={sourceCode} lang="tsx" />
-            </div>
-
-            <p>Update the import paths to match your project setup.</p>
+                <p>Update the import paths to match your project setup.</p>
+              </Step>
+            </Steps>
           </TabsContent>
         </div>
       </Tabs>

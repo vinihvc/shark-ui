@@ -1,3 +1,10 @@
+import { Button } from "@/registry/react/components/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/registry/react/components/card";
 import {
   Tabs,
   TabsContent,
@@ -5,8 +12,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
-import { Button } from "../components/button";
-import { Card, CardContent, CardFooter, CardHeader } from "../components/card";
 
 const TabsDemo = () => (
   <Tabs className="size-full" defaultValue="1">

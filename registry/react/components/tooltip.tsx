@@ -10,6 +10,8 @@ export const Tooltip = (
     positioning = {
       placement: "top",
     },
+    lazyMount = true,
+    unmountOnExit = true,
     closeDelay = 100,
     openDelay = 0,
     ...rest
@@ -18,8 +20,10 @@ export const Tooltip = (
   return (
     <ArkTooltip.Root
       closeDelay={closeDelay}
+      lazyMount={lazyMount}
       openDelay={openDelay}
       positioning={positioning}
+      unmountOnExit={unmountOnExit}
       {...rest}
     />
   );

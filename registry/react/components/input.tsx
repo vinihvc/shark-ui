@@ -9,7 +9,7 @@ export const Input = (props: React.ComponentProps<"input">) => {
       className={cn(
         "h-9 w-full min-w-0",
         "px-3 py-1",
-        "bg-transparent",
+        "bg-transparent dark:bg-input/30",
         "text-base md:text-sm",
         "rounded-md border border-input shadow-xs",
         "placeholder:text-muted-foreground",

@@ -12,7 +12,6 @@ export const Steps = (props: React.ComponentProps<typeof ArkSteps.Root>) => {
         "data-[orientation=horizontal]:flex-col",
         className
       )}
-      data-slot="steps"
       {...rest}
     />
   );
@@ -31,7 +30,6 @@ export const StepsList = (
         "data-[orientation=horizontal]:items-center",
         className
       )}
-      data-slot="steps-list"
       style={
         {
           "--steps-gutter": "12px",
@@ -55,10 +53,9 @@ export const StepsItem = (
         "relative flex flex-1",
         "data-[orientation=vertical]:items-start",
         "data-[orientation=horizontal]:items-center",
-        "last:flex-initial last:[&_[data-part=separator]]:hidden",
+        "last:flex-initial last:**:data-[part=separator]:hidden",
         className
       )}
-      data-slot="steps-item"
       {...rest}
     />
   );
@@ -72,7 +69,6 @@ export const StepsTrigger = (
   return (
     <ArkSteps.Trigger
       className={cn("flex items-center gap-3 rounded-md", className)}
-      data-slot="steps-trigger"
       {...rest}
     />
   );
@@ -87,16 +83,15 @@ export const StepsIndicator = (
     <ArkSteps.Indicator
       className={cn(
         "flex shrink-0 items-center justify-center",
-        "size-[var(--steps-size)]",
+        "size-(--steps-size)",
         "font-semibold",
         "rounded-full",
         "border",
-        "data-[current]:bg-border",
-        "data-[complete]:bg-primary data-[complete]:text-primary-foreground",
-        "[&_svg:shrink-0 [&_svg:size-[var(--steps-icon-size)]",
+        "data-current:bg-border",
+        "data-complete:bg-primary data-complete:text-primary-foreground",
+        "[&_svg]:size-(--steps-icon-size) [&_svg]:shrink-0",
         className
       )}
-      data-slot="steps-indicator"
       {...rest}
     />
   );
@@ -111,9 +106,14 @@ export const StepsSeparator = (
     <ArkSteps.Separator
       className={cn(
         "flex-1 bg-border",
-        "data-[orientation=vertical]:absolute data-[orientation=vertical]:top-[calc(var(--steps-size)_+_var(--steps-gutter))] data-[orientation=vertical]:left-[calc(var(--steps-size)_/_2_-_1px)] data-[orientation=vertical]:h-full data-[orientation=vertical]:max-h-[calc(100%_-_var(--steps-size)_-_var(--steps-gutter)_*_2)] data-[orientation=vertical]:w-0.5",
-        "data-[orientation=horizontal]:mx-[var(--steps-gutter)] data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-full",
-        "data-[complete]:bg-primary",
+        "data-complete:bg-primary",
+        "data-[orientation=vertical]:absolute data-[orientation=vertical]:top-[calc(var(--steps-size)+var(--steps-gutter))]",
+        "data-[orientation=vertical]:left-[calc(var(--steps-size)/2-1px)]",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:max-h-[calc(100%-(var(--steps-size)+var(--steps-gutter)*2))]",
+        "data-[orientation=vertical]:w-0.5",
+        "data-[orientation=horizontal]:mx-(--steps-gutter)",
+        "data-[orientation=horizontal]:h-0.5",
+        "data-[orientation=horizontal]:w-full",
         className
       )}
       {...rest}
@@ -123,18 +123,16 @@ export const StepsSeparator = (
 
 export const StepsContent = (
   props: React.ComponentProps<typeof ArkSteps.Content>
-) => <ArkSteps.Content data-slot="steps-content" {...props} />;
+) => <ArkSteps.Content {...props} />;
 
 export const StepsCompletedContent = (
   props: React.ComponentProps<typeof ArkSteps.CompletedContent>
-) => (
-  <ArkSteps.CompletedContent data-slot="steps-completed-content" {...props} />
-);
+) => <ArkSteps.CompletedContent {...props} />;
 
 export const StepsPrevious = (
   props: React.ComponentProps<typeof ArkSteps.PrevTrigger>
-) => <ArkSteps.PrevTrigger data-slot="steps-previous-trigger" {...props} />;
+) => <ArkSteps.PrevTrigger {...props} />;
 
 export const StepsNext = (
   props: React.ComponentProps<typeof ArkSteps.NextTrigger>
-) => <ArkSteps.NextTrigger data-slot="steps-next-trigger" {...props} />;
+) => <ArkSteps.NextTrigger {...props} />;

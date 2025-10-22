@@ -1,0 +1,42 @@
+---
+title: Popover
+description: An overlay that displays additional information or options when triggered
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="popover" />
+
+## Installation
+
+<ComponentInstallation componentName="popover">
+Install the following dependencies:
+
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger, 
+  PopoverTitle, 
+  PopoverDescription,
+} from "@/components/ui/popover";
+```
+
+```tsx lineNumbers
+<Popover>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
+  <PopoverContent>
+    <PopoverTitle>Popover Title</PopoverTitle>
+    <PopoverDescription>Popover Description</PopoverDescription>
+    {/* ... */}
+  </PopoverContent>
+</Popover>
+```

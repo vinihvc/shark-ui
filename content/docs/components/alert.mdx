@@ -1,0 +1,36 @@
+---
+title: Alert
+description: Displays a alert for user attention with different variants
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="alert" />
+
+## Installation
+
+<ComponentInstallation componentName="alert" >
+Install the following dependencies:
+
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Alert, 
+  AlertDescription, 
+  AlertTitle 
+} from "@/components/ui/alert";
+```
+
+```tsx lineNumbers
+<Alert>
+  <AlertTitle>Alert</AlertTitle>
+  <AlertDescription>This is an alert</AlertDescription>
+</Alert>
+```

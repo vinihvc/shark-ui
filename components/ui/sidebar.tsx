@@ -11,11 +11,11 @@ import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { Button } from "@/registry/react/components/button";
+import { Input } from "@/registry/react/components/input";
+import { Separator } from "@/registry/react/components/separator";
+import { Sheet } from "@/registry/react/components/sheet";
+import { Skeleton } from "@/registry/react/components/skeleton";
 import { Tooltip } from "@/registry/react/components/tooltip";
-import { Input } from "./input";
-import { Separator } from "./separator";
-import { Sheet } from "./sheet";
-import { Skeleton } from "./skeleton";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -187,7 +187,7 @@ function Sidebar({
             <Sheet.Title>Sidebar</Sheet.Title>
             <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
           </Sheet.Header>
-          <div className="flex h-full w-full flex-col">{children}</div>
+          <div className="flex size-full flex-col">{children}</div>
         </Sheet.Content>
       </Sheet.Root>
     );
@@ -227,7 +227,7 @@ function Sidebar({
         {...props}
       >
         <div
-          className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm"
+          className="flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm"
           data-sidebar="sidebar"
         >
           {children}

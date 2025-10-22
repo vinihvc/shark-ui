@@ -6,7 +6,7 @@ import {
   PaginationItem,
   PaginationNext,
   PaginationPrevious,
-} from "../components/pagination";
+} from "@/registry/react/components/pagination";
 
 const PaginationDemo = () => (
   <Pagination count={50} pageSize={10} siblingCount={3}>

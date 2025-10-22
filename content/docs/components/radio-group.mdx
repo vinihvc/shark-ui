@@ -1,0 +1,39 @@
+---
+title: Radio Group
+description: A set of checkable buttons where no more than one can be checked at a time
+links:
+  doc: https://ark-ui.com/docs/components/radio-group
+  api: https://ark-ui.com/docs/components/radio-group#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="radio-group" />
+
+## Installation
+
+<ComponentInstallation componentName="radio-group">
+Install the following dependencies:
+
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  RadioGroup, 
+  RadioGroupItem 
+} from "@/components/ui/radio-group";
+```
+
+```tsx lineNumbers
+<RadioGroup>
+  <RadioGroupItem value="1">Option 1</RadioGroupItem>
+  <RadioGroupItem value="2">Option 2</RadioGroupItem>
+  <RadioGroupItem value="3">Option 3</RadioGroupItem>
+</RadioGroup>
+```

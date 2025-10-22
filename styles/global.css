@@ -193,7 +193,7 @@
   }
 
   body {
-    @apply overflow-y-scroll flex min-h-svh flex-col [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)];
+    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)];
   }
 }
 

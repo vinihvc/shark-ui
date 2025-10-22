@@ -19,14 +19,26 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
         "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
         className
       )}
-      data-slot="switch"
       {...rest}
     >
       <ArkSwitch.Control>
-        <ArkSwitch.Thumb className="pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground" />
+        <ArkSwitch.Thumb
+          className={cn(
+            "block",
+            "size-4",
+            "pointer-events-none",
+            "bg-background",
+            "rounded-full",
+            "transition-transform",
+            "ring-0",
+            "data-[state=checked]:translate-x-[calc(100%-2px)] dark:data-[state=checked]:bg-primary-foreground",
+            "dark:data-[state=unchecked]:bg-foreground",
+            "data-[state=unchecked]:translate-x-0"
+          )}
+        />
       </ArkSwitch.Control>
 
-      <ArkSwitch.HiddenInput data-slot="switch-hidden-input" />
+      <ArkSwitch.HiddenInput />
     </ArkSwitch.Root>
   );
 };

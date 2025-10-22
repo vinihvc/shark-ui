@@ -1,13 +1,20 @@
 import { twMerge } from "tailwind-merge";
 import { cn } from "@/lib/utils";
 
-export const Card = (props: React.ComponentProps<"div">) => {
-  const { className, ...rest } = props;
+interface CardProps extends React.ComponentProps<"div"> {
+  /**
+   * The spacing variable value
+   */
+  spacing?: number;
+}
+
+export const Card = (props: CardProps) => {
+  const { spacing = 6, className, style, ...rest } = props;
 
   return (
     <div
       className={cn(
-        "group/card [--card-spacing:--spacing(6)]",
+        "group/card",
         "py-(--card-spacing)",
         "flex flex-col gap-(--card-spacing)",
         "bg-background",
@@ -18,7 +25,13 @@ export const Card = (props: React.ComponentProps<"div">) => {
         "**:data-[slot=table-header]:bg-muted/50",
         className
       )}
-      data-slot="card"
+      data-spacing={spacing}
+      style={
+        {
+          "--card-spacing": `calc(${spacing} * var(--spacing))`,
+          ...style,
+        } as React.CSSProperties
+      }
       {...rest}
     />
   );
@@ -44,7 +57,6 @@ export const CardHeader = (props: HeaderProps) => {
         "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
       )}
-      data-slot="card-header"
       {...rest}
     >
       {title && <CardTitle>{title}</CardTitle>}
@@ -66,7 +78,6 @@ export const CardTitle = (props: React.ComponentProps<"div">) => {
         "text-pretty font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
       )}
-      data-slot="card-title"
       {...rest}
     />
   );
@@ -81,7 +92,6 @@ export const CardDescription = (props: React.ComponentProps<"div">) => {
         "row-start-2 text-pretty text-muted-foreground text-sm",
         className
       )}
-      data-slot="card-description"
       {...rest}
     />
   );
@@ -95,7 +105,6 @@ export const CardAction = (props: React.ComponentProps<"div">) => {
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
         className
       )}
-      data-slot="card-action"
       {...rest}
     />
   );
@@ -106,7 +115,6 @@ export const CardContent = (props: React.ComponentProps<"div">) => {
   return (
     <div
       className={cn("px-(--card-spacing) has-[table]:border-t", className)}
-      data-slot="card-content"
       {...rest}
     />
   );
@@ -120,7 +128,6 @@ export const CardFooter = (props: React.ComponentProps<"div">) => {
         "flex items-center px-(--card-spacing) group-has-[table]/card:pt-(--card-spacing) [.border-t]:pt-6",
         className
       )}
-      data-slot="card-footer"
       {...rest}
     />
   );

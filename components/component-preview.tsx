@@ -47,9 +47,9 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
           <TabsIndicator />
         </TabsList>
 
-        <div className="**:[figure]:!m-0 relative rounded-lg border **:[figure]:border-none">
+        <div className="**:figure:!m-0 relative rounded-lg border **:[figure]:border-none">
           <TabsContent
-            className="preview flex h-[400px] w-full items-center justify-center overflow-y-auto p-14"
+            className="flex h-[400px] w-full items-center justify-center overflow-y-hidden p-14"
             value="preview"
           >
             <Example.default />

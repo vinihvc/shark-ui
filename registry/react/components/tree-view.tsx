@@ -7,7 +7,18 @@ import { cn } from "@/lib/utils";
 
 export const TreeView = (
   props: React.ComponentProps<typeof ArkTreeView.Root>
-) => <ArkTreeView.Root {...props} />;
+) => {
+  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;
+
+  return (
+    <ArkTreeView.Root
+      className={cn("text-sm", className)}
+      lazyMount={lazyMount}
+      unmountOnExit={unmountOnExit}
+      {...rest}
+    />
+  );
+};
 
 export const TreeViewLabel = (
   props: React.ComponentProps<typeof ArkTreeView.Label>
@@ -16,7 +27,7 @@ export const TreeViewLabel = (
 
   return (
     <ArkTreeView.Label
-      className={cn("font-semibold text-sm", className)}
+      className={cn("font-semibold text-xs", className)}
       {...rest}
     />
   );
@@ -52,8 +63,8 @@ export const TreeViewBranchControl = (
         "select-none",
         "rounded-sm",
         "hover:bg-accent/50",
-        "focus:outline-1 focus:outline-muted-foreground focus:outline-offset-[-1px]",
-        "data-[selected]:bg-accent",
+        "focus:-outline-offset-1 focus:outline-1 focus:outline-muted-foreground",
+        "data-selected:bg-accent",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-50",
         className
       )}
@@ -146,9 +157,9 @@ export const TreeViewItem = (
         "ps-[calc(var(--depth)*var(--spacing)*4)] pe-4",
         "select-none",
         "rounded-sm",
-        "focus:outline-1 focus:outline-muted-foreground focus:outline-offset-[-1px]",
+        "focus:-outline-offset-1 focus:outline-1 focus:outline-muted-foreground",
         "hover:bg-accent/50",
-        "data-[selected]:bg-accent",
+        "data-selected:bg-accent",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-50",
         className
       )}

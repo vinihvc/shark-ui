@@ -2,6 +2,7 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "tailwindCSS.classFunctions": ["tv", "cn"],
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },

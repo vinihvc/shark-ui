@@ -1,3 +1,4 @@
+import { Button } from "@/registry/react/components/button";
 import {
   Steps,
   StepsCompletedContent,
@@ -10,7 +11,6 @@ import {
   StepsSeparator,
   StepsTrigger,
 } from "@/registry/react/components/steps";
-import { Button } from "../components/button";
 
 const StepsDemo = () => {
   const items = [

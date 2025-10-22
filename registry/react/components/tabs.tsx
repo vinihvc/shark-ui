@@ -3,9 +3,15 @@ import { cn } from "fumadocs-ui/utils/cn";
 import type React from "react";
 
 export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
-  const { className, ...rest } = props;
+  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;
+
   return (
-    <ArkTabs.Root className={cn("flex flex-col gap-2", className)} {...rest} />
+    <ArkTabs.Root
+      className={cn("flex flex-col gap-2", className)}
+      lazyMount={lazyMount}
+      unmountOnExit={unmountOnExit}
+      {...rest}
+    />
   );
 };
 
@@ -44,7 +50,6 @@ export const TabsTrigger = (
         "focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "disabled:pointer-events-none disabled:opacity-50",
         "aria-selected:text-foreground",
-        // "aria-selected:bg-background aria-selected:shadow-sm",
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
@@ -61,7 +66,7 @@ export const TabsIndicator = (
   return (
     <ArkTabs.Indicator
       className={cn(
-        "absolute bottom-0 h-0.5 w-[var(--width)] bg-primary",
+        "absolute bottom-0 h-0.5 w-(--width) bg-primary",
         className
       )}
       {...rest}

@@ -1,0 +1,40 @@
+---
+title: Skeleton
+description: A skeleton is a component that displays a loading state.
+links:
+  doc: https://ark-ui.com/docs/components/skeleton
+  api: https://ark-ui.com/docs/components/skeleton#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="skeleton" />
+
+## Installation
+
+<ComponentInstallation componentName="skeleton">
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+} from "@/registry/react/components/skeleton";
+```
+
+```tsx lineNumbers
+<div className="flex w-full items-center gap-5">
+  <SkeletonCircle className="size-16" />
+  <SkeletonText lines={3} />
+  <Skeleton className="h-16 w-full" />
+</div>
+```

@@ -1,0 +1,56 @@
+---
+title: Context Menu
+description: A menu that appears when a user right-clicks on an element
+links:
+  doc: https://ark-ui.com/docs/components/context-menu
+  api: https://ark-ui.com/docs/components/context-menu#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+import { Callout } from "@/components/callout";
+import { InfoIcon } from "lucide-react";
+import Link from "fumadocs-core/link";
+
+<Callout>
+  This component is built on top of the <Link href="/docs/components/menu">Menu component</Link>. Check the documentation for more examples.
+</Callout>
+ 
+
+<ComponentPreview componentName="context-menu" />
+
+## Installation
+
+<ComponentInstallation componentName="context-menu" >
+Install the following dependencies:
+
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  ContextMenu, 
+  ContextMenuTrigger, 
+  ContextMenuContent, 
+  ContextMenuItemGroup,
+  ContextMenuItemGroupLabel,
+  ContextMenuItem,
+} from "@/components/ui/context-menu";
+```
+
+```tsx lineNumbers
+<ContextMenu>
+  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItemGroup>
+      <ContextMenuItem value="action-1">Action 1</ContextMenuItem>
+      <ContextMenuItem value="action-2">Action 2</ContextMenuItem>
+      <ContextMenuItem value="action-3">Action 3</ContextMenuItem>
+    </ContextMenuItemGroup>
+  </ContextMenuContent>
+</ContextMenu>
+```

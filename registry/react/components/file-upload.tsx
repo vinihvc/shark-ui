@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
 export const ERROR_MESSAGES: Record<FileUploadFileError, string> = {
-  TOO_MANY_FILES: "📊 Too many files selected (max 3 allowed)",
-  FILE_INVALID_TYPE: "🚫 Invalid file type (only images and PDFs allowed)",
-  FILE_TOO_LARGE: "📏 File too large (max 1MB)",
-  FILE_TOO_SMALL: "📐 File too small (min 1KB)",
-  FILE_INVALID: "⚠️ Invalid file",
-  FILE_EXISTS: "🔄 File already exists",
+  TOO_MANY_FILES: "Too many files selected (max 3 allowed)",
+  FILE_INVALID_TYPE: "Invalid file type (only images and PDFs allowed)",
+  FILE_TOO_LARGE: "File too large (max 1MB)",
+  FILE_TOO_SMALL: "File too small (min 1KB)",
+  FILE_INVALID: "Invalid file",
+  FILE_EXISTS: "File already exists",
 };
 
 export const FileUpload = (
@@ -58,11 +58,11 @@ export const FileUploadDropzone = (
       className={cn(
         "p-6",
         "flex flex-col items-center justify-center gap-4",
-        "rounded-md border-2 border-border border-dashed",
+        "rounded-md border-2 border-dashed",
         "cursor-pointer",
-        "data-[cover]:absolute data-[cover]:inset-0 data-[cover]:flex data-[cover]:items-center data-[cover]:justify-center",
-        "data-[dragging]:border-primary data-[dragging]:bg-primary/10",
-        "data-[invalid]:border-destructive data-[invalid]:bg-destructive/10",
+        "data-cover:absolute data-cover:inset-0 data-cover:flex data-cover:items-center data-cover:justify-center",
+        "data-dragging:border-primary data-dragging:bg-primary/10",
+        "data-invalid:border-destructive data-invalid:bg-destructive/10",
         className
       )}
       {...rest}

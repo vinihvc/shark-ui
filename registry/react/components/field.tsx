@@ -6,7 +6,7 @@ export const Field = (props: React.ComponentProps<typeof ArkField.Root>) => {
   const { className, ...rest } = props;
 
   return (
-    <ArkField.Root className={cn("flex flex-col gap-1", className)} {...rest} />
+    <ArkField.Root className={cn("flex flex-col gap-2", className)} {...rest} />
   );
 };
 
@@ -32,7 +32,7 @@ export const FieldLabel = (
 
 export const FieldInput = (
   props: React.ComponentProps<typeof ArkField.Input>
-) => <ArkField.Input {...props} />;
+) => <ArkField.Input {...props} asChild />;
 
 export const FieldHelper = (
   props: React.ComponentProps<typeof ArkField.HelperText>

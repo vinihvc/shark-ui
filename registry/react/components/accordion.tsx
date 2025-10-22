@@ -5,7 +5,17 @@ import { cn } from "@/lib/utils";
 
 export const Accordion = (
   props: React.ComponentProps<typeof ArkAccordion.Root>
-) => <ArkAccordion.Root data-slot="accordion" {...props} />;
+) => {
+  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+
+  return (
+    <ArkAccordion.Root
+      lazyMount={lazyMount}
+      unmountOnExit={unmountOnExit}
+      {...rest}
+    />
+  );
+};
 
 export const AccordionItem = (
   props: React.ComponentProps<typeof ArkAccordion.Item>
@@ -15,7 +25,6 @@ export const AccordionItem = (
   return (
     <ArkAccordion.Item
       className={cn("flex flex-col border-b last:border-b-0", className)}
-      data-slot="accordion-item"
       {...rest}
     />
   );
@@ -41,7 +50,6 @@ export const AccordionTrigger = (
         "[&_[data-state=open]>svg]:rotate-180",
         className
       )}
-      data-slot="accordion-trigger"
       {...rest}
     >
       {children}
@@ -55,7 +63,7 @@ export const AccordionTrigger = (
 
 export const AccordionIndicator = (
   props: React.ComponentProps<typeof ArkAccordion.ItemIndicator>
-) => <ArkAccordion.ItemIndicator data-slot="accordion-indicator" {...props} />;
+) => <ArkAccordion.ItemIndicator {...props} />;
 
 export const AccordionContent = (
   props: React.ComponentProps<typeof ArkAccordion.ItemContent>
@@ -71,7 +79,6 @@ export const AccordionContent = (
         "data-[state=closed]:animate-slide-up",
         className
       )}
-      data-slot="accordion-content"
       {...rest}
     >
       <div className="pt-0 pb-4">{children}</div>

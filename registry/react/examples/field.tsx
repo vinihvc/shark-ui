@@ -5,7 +5,7 @@ import {
   FieldInput,
   FieldLabel,
 } from "@/registry/react/components/field";
-import { Input } from "../components/input";
+import { Input } from "@/registry/react/components/input";
 
 const FieldDemo = () => (
   <Field className="w-64">

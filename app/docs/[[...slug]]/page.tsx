@@ -3,9 +3,9 @@ import { createRelativeLink } from "fumadocs-ui/mdx";
 import { ArrowUpRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
 import { getPageImage, source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
+import { Badge } from "@/registry/react/components/badge";
 
 export const generateStaticParams = () => source.generateParams();
 

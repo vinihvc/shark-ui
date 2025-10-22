@@ -62,7 +62,7 @@ export const PaginationItem = (
       <Button
         className={cn(
           "w-12",
-          "data-[selected]:not-[hover]:bg-primary data-[selected]:not-[hover]:text-primary-foreground",
+          "data-selected:not-[hover]:bg-primary data-selected:not-[hover]:text-primary-foreground",
           className
         )}
         variant="ghost"
