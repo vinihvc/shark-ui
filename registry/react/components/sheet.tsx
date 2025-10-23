@@ -13,7 +13,6 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogPositioner,
   DialogTitle,
   dialogContentVariants,
 } from "@/registry/react/components/dialog";
@@ -88,7 +87,7 @@ export const SheetContent = (props: SheetContentProps) => {
     <Portal>
       <DialogBackdrop data-scope="sheet" />
 
-      <DialogPositioner data-scope="sheet">
+      <ArkDialog.Positioner data-scope="sheet">
         <ArkDialog.Content
           className={cn(
             dialogContentVariants(),
@@ -119,7 +118,7 @@ export const SheetContent = (props: SheetContentProps) => {
             </ArkDialog.CloseTrigger>
           )}
         </ArkDialog.Content>
-      </DialogPositioner>
+      </ArkDialog.Positioner>
     </Portal>
   );
 };

@@ -15,7 +15,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/react/components/tooltip";
-import { type PackageManager, useConfig } from "@/store/config";
+import { useConfig } from "@/store/config";
 
 export function CodeBlockCommand({
   __npm__,
@@ -73,7 +73,8 @@ export function CodeBlockCommand({
         onValueChange={(value) => {
           setConfig({
             ...config,
-            packageManager: value as PackageManager,
+            // biome-ignore lint/suspicious/noExplicitAny: fix later
+            packageManager: value as any,
           });
         }}
         value={packageManager}

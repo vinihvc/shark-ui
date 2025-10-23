@@ -21,10 +21,6 @@ export const MenuTrigger = (
   props: React.ComponentProps<typeof ArkMenu.Trigger>
 ) => <ArkMenu.Trigger {...props} />;
 
-export const MenuPositioner = (
-  props: React.ComponentProps<typeof ArkMenu.Positioner>
-) => <ArkMenu.Positioner {...props} />;
-
 export const menuContentVariants = tv({
   base: [
     "z-(--z-index)",
@@ -193,14 +189,14 @@ export const MenuRadioItem = (
   );
 };
 
-export const MenuSub = (props: React.ComponentProps<typeof ArkMenu.Root>) => (
-  <ArkMenu.Root data-part="sub" {...props} />
+export const MenuSub = (props: React.ComponentProps<typeof Menu>) => (
+  <Menu data-part="sub" {...props} />
 );
 
 export const MenuSubContent = (
   props: React.ComponentProps<typeof ArkMenu.Content>
 ) => {
-  const { className, style, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Portal>
@@ -208,10 +204,6 @@ export const MenuSubContent = (
         <ArkMenu.Content
           className={cn(menuContentVariants(), className)}
           data-part="sub-content"
-          style={{
-            zIndex: 60,
-            ...style,
-          }}
           {...rest}
         />
       </ArkMenu.Positioner>

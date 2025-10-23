@@ -4,7 +4,7 @@ import { Pagination as ArkPagination } from "@ark-ui/react/pagination";
 import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/registry/react/components/button";
 
 export const Pagination = (
   props: React.ComponentProps<typeof ArkPagination.Root>

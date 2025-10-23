@@ -1,6 +1,7 @@
 import { Field as ArkField } from "@ark-ui/react/field";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/registry/react/components/input";
 
 export const Field = (props: React.ComponentProps<typeof ArkField.Root>) => {
   const { className, ...rest } = props;
@@ -18,7 +19,6 @@ export const FieldLabel = (
   return (
     <ArkField.Label
       className={cn(
-        "flex items-center gap-2",
         "font-medium text-sm leading-none",
         "select-none",
         "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
@@ -32,7 +32,15 @@ export const FieldLabel = (
 
 export const FieldInput = (
   props: React.ComponentProps<typeof ArkField.Input>
-) => <ArkField.Input {...props} asChild />;
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <ArkField.Input {...rest} asChild={!!children}>
+      {children || <Input />}
+    </ArkField.Input>
+  );
+};
 
 export const FieldHelper = (
   props: React.ComponentProps<typeof ArkField.HelperText>

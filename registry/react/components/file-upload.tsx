@@ -7,7 +7,7 @@ import {
 import { Trash2 } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/registry/react/components/button";
 
 export const ERROR_MESSAGES: Record<FileUploadFileError, string> = {
   TOO_MANY_FILES: "Too many files selected (max 3 allowed)",

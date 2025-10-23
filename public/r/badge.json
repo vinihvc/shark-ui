@@ -1,0 +1,31 @@
+{
+  "name": "badge",
+  "type": "components:ui",
+  "description": "A badge component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "badge"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "badge.tsx",
+      "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nconst badgeVariants = tv({\n  base: [\n    \"inline-flex items-center justify-center gap-1\",\n    \"px-1 py-0.5\",\n    \"rounded-md border\",\n    \"select-none font-medium text-xs\",\n    \"overflow-hidden\",\n    \"outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n    \"[&>svg]:pointer-events-none [&>svg]:size-3\",\n  ],\n  variants: {\n    variant: {\n      default: [\n        \"bg-primary text-primary-foreground\",\n        \"[a&]:hover:bg-primary/90\",\n      ],\n      secondary: [\n        \"bg-secondary text-secondary-foreground\",\n        \"[a&]:hover:bg-secondary/90\",\n      ],\n      destructive: [\n        \"bg-destructive dark:bg-destructive/60\",\n        \"text-destructive-foreground\",\n        \"focus-visible:ring-destructive/20\",\n        \"dark:focus-visible:ring-destructive/40\",\n        \"[a&]:hover:bg-destructive/90\",\n      ],\n      outline: [\"[a&]:hover:bg-accent\", \"[a&]:hover:text-accent-foreground\"],\n    },\n  },\n});\n\ninterface BadgeProps\n  extends React.ComponentProps<\"span\">,\n    VariantProps<typeof badgeVariants> {\n  /**\n   * If `true`, the badge will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Badge = (props: BadgeProps) => {\n  const { asChild, variant = \"default\", className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"span\";\n\n  return (\n    <Comp\n      className={cn(badgeVariants({ variant }), className)}\n      data-part=\"badge\"\n      {...rest}\n    />\n  );\n};\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "badge"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}

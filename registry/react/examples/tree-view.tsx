@@ -106,7 +106,7 @@ const TreeNode = (props: TreeNodeProps) => {
   );
 };
 
-export const TreeViewExample = () => (
+export const TreeViewDemo = () => (
   <TreeView className="overflow-hidden" collection={collection as never}>
     <TreeViewLabel>File Explorer</TreeViewLabel>
     <TreeViewTree>
@@ -117,4 +117,4 @@ export const TreeViewExample = () => (
   </TreeView>
 );
 
-export default TreeViewExample;
+export default TreeViewDemo;

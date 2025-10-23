@@ -3,7 +3,7 @@
 import { ToggleGroup as ArkToggleGroup } from "@ark-ui/react/toggle-group";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Toggle, type ToggleProps } from "./toggle";
+import { Toggle, type ToggleProps } from "@/registry/react/components/toggle";
 
 type ToggleGroupContextProps = Pick<ToggleProps, "variant" | "size">;
 

@@ -3,6 +3,14 @@ import { Check } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
+export const CheckboxGroup = (
+  props: React.ComponentProps<typeof ArkCheckbox.Group>
+) => {
+  const { className, ...rest } = props;
+
+  return <ArkCheckbox.Group className={cn("space-y-2", className)} {...rest} />;
+};
+
 export const Checkbox = (
   props: React.ComponentProps<typeof ArkCheckbox.Root>
 ) => {

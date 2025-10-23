@@ -1,4 +1,3 @@
-import { twMerge } from "tailwind-merge";
 import { cn } from "@/lib/utils";
 
 interface CardProps extends React.ComponentProps<"div"> {
@@ -25,6 +24,8 @@ export const Card = (props: CardProps) => {
         "**:data-[slot=table-header]:bg-muted/50",
         className
       )}
+      data-part="root"
+      data-scope="card"
       data-spacing={spacing}
       style={
         {
@@ -54,9 +55,14 @@ export const CardHeader = (props: HeaderProps) => {
   return (
     <div
       className={cn(
-        "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto]",
+        "grid auto-rows-min grid-rows-[auto_auto] gap-1",
+        "px-(--card-spacing)",
+        "items-start",
+        "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
       )}
+      data-part="header"
+      data-scope="card"
       {...rest}
     >
       {title && <CardTitle>{title}</CardTitle>}
@@ -72,12 +78,15 @@ export const CardHeader = (props: HeaderProps) => {
 
 export const CardTitle = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
+
   return (
     <div
-      className={twMerge(
+      className={cn(
         "text-pretty font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
       )}
+      data-part="title"
+      data-scope="card"
       {...rest}
     />
   );
@@ -89,9 +98,12 @@ export const CardDescription = (props: React.ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        "row-start-2 text-pretty text-muted-foreground text-sm",
+        "row-start-2",
+        "text-pretty text-muted-foreground text-sm",
         className
       )}
+      data-part="description"
+      data-scope="card"
       {...rest}
     />
   );
@@ -99,12 +111,15 @@ export const CardDescription = (props: React.ComponentProps<"div">) => {
 
 export const CardAction = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
+
   return (
     <div
       className={cn(
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
         className
       )}
+      data-part="action"
+      data-scope="card"
       {...rest}
     />
   );
@@ -112,9 +127,12 @@ export const CardAction = (props: React.ComponentProps<"div">) => {
 
 export const CardContent = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
+
   return (
     <div
       className={cn("px-(--card-spacing) has-[table]:border-t", className)}
+      data-part="content"
+      data-scope="card"
       {...rest}
     />
   );
@@ -122,12 +140,18 @@ export const CardContent = (props: React.ComponentProps<"div">) => {
 
 export const CardFooter = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
+
   return (
     <div
       className={cn(
-        "flex items-center px-(--card-spacing) group-has-[table]/card:pt-(--card-spacing) [.border-t]:pt-6",
+        "flex items-center",
+        "px-(--card-spacing)",
+        "group-has-[table]/card:pt-(--card-spacing)",
+        "[.border-t]:pt-(--card-spacing)",
         className
       )}
+      data-part="footer"
+      data-scope="card"
       {...rest}
     />
   );

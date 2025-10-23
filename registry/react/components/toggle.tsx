@@ -2,7 +2,10 @@ import { Toggle as ArkToggle } from "@ark-ui/react/toggle";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { type ButtonProps, buttonVariants } from "./button";
+import {
+  type ButtonProps,
+  buttonVariants,
+} from "@/registry/react/components/button";
 
 export const toggleVariants = tv({
   base: "",

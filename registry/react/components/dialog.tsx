@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/registry/react/components/button";
 
 export const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {
   const { lazyMount = true, unmountOnExit = true, ...rest } = props;
@@ -22,6 +22,16 @@ export const DialogTrigger = (
   props: React.ComponentProps<typeof ArkDialog.Trigger>
 ) => <ArkDialog.Trigger {...props} />;
 
+export const dialogBackdropVariants = tv({
+  base: [
+    "z-50",
+    "fixed inset-0",
+    "bg-background/50 backdrop-blur-xs",
+    "data-[state=closed]:animate-out data-[state=open]:animate-in",
+    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+  ],
+});
+
 export const DialogBackdrop = (
   props: React.ComponentProps<typeof ArkDialog.Backdrop>
 ) => {
@@ -29,32 +39,21 @@ export const DialogBackdrop = (
 
   return (
     <ArkDialog.Backdrop
-      className={cn(
-        "z-50",
-        "fixed inset-0",
-        "bg-background/50 backdrop-blur-xs",
-        className
-      )}
+      className={cn(dialogBackdropVariants(), className)}
       {...rest}
     />
   );
 };
 
-export const DialogPositioner = (
-  props: React.ComponentProps<typeof ArkDialog.Positioner>
-) => <ArkDialog.Positioner {...props} />;
-
 export const dialogContentVariants = tv({
   base: [
     "z-50",
     "-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2",
-    "flex flex-col",
+    "flex flex-col gap-4",
     "bg-background",
     "w-full max-w-[calc(100%-2rem)] sm:max-w-lg",
-    "border shadow-lg",
-    "rounded-lg",
+    "rounded-lg border shadow-lg",
     "focus:outline-none focus:ring-0",
-    "duration-200",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",
     "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
     "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
@@ -104,7 +103,7 @@ export const DialogContent = (props: DialogContentProps) => {
     <Portal>
       <DialogBackdrop />
 
-      <DialogPositioner>
+      <ArkDialog.Positioner>
         <ArkDialog.Content
           className={cn(dialogContentVariants({ size }), className)}
           {...rest}
@@ -125,7 +124,7 @@ export const DialogContent = (props: DialogContentProps) => {
             </DialogClose>
           )}
         </ArkDialog.Content>
-      </DialogPositioner>
+      </ArkDialog.Positioner>
     </Portal>
   );
 };
@@ -193,7 +192,7 @@ export const DialogFooter = (props: React.ComponentProps<"div">) => {
 
   return (
     <div
-      className={cn("mt-4 flex flex-row-reverse gap-2 p-6", className)}
+      className={cn("flex flex-row-reverse gap-2 p-6 pt-0", className)}
       data-part="footer"
       data-scope="dialog"
       {...rest}

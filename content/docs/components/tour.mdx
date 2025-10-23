@@ -1,0 +1,58 @@
+---
+title: Tour
+description: A component that displays a tour of the application
+links:
+  doc: https://ark-ui.com/docs/components/tour
+  api: https://ark-ui.com/docs/components/tour#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="tour" />
+
+## Installation
+
+<ComponentInstallation componentName="tour" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Tour, 
+  TourTrigger, 
+  TourContent, 
+  TourHeader,
+  TourProgressText,
+  TourTitle,
+  TourDescription,
+  TourFooter,
+  TourNextStep,
+  TourPreviousStep,
+} from "@/components/ui/tour";
+```
+
+```tsx lineNumbers
+<Tour steps={steps}>
+  <TourTrigger>Open Tour</TourTrigger>
+
+  <TourContent>
+    <TourHeader>
+      <TourProgressText />
+      <TourTitle />
+      <TourDescription />
+    </TourHeader>
+  </TourContent>
+
+  <TourFooter>
+    <TourNextStep />
+    <TourPreviousStep />
+  </TourFooter>
+</Tour>
+```

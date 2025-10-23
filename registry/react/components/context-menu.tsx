@@ -6,7 +6,6 @@ import {
   MenuItem,
   MenuItemGroup,
   MenuItemGroupLabel,
-  MenuPositioner,
   MenuSeparator,
   MenuShortcut,
   MenuSub,
@@ -26,12 +25,6 @@ export const ContextMenuTrigger = (
     data-scope="context-menu"
     {...props}
   />
-);
-
-export const ContextMenuPositioner = (
-  props: React.ComponentProps<typeof MenuPositioner>
-) => (
-  <MenuPositioner data-part="positioner" data-scope="context-menu" {...props} />
 );
 
 export const ContextMenuContent = (

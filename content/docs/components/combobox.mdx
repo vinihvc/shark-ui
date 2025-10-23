@@ -1,0 +1,59 @@
+---
+title: Combobox
+description: A searchable select input that allows users to filter and select from a list of options
+links:
+  doc: https://ark-ui.com/docs/components/combobox
+  api: https://ark-ui.com/docs/components/combobox#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="combobox" />
+
+## Installation
+
+<ComponentInstallation componentName="combobox" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Combobox,
+  ComboboxLabel,
+  ComboboxControl,
+  ComboboxInput,
+  ComboboxTrigger,
+  ComboboxClearTrigger,
+  ComboboxContent,
+  ComboboxItem,
+  ComboboxItemGroup,
+  ComboboxItemGroupLabel,
+} from "@/components/ui/combobox";
+```
+
+```tsx lineNumbers
+<Combobox>
+  <ComboboxControl>
+    <ComboboxInput />
+    <ComboboxClearTrigger />
+    <ComboboxTrigger />
+  </ComboboxControl>
+  <ComboboxContent>
+    <ComboboxItemGroup>
+      <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
+      {collection.items.map((item) => (
+        <ComboboxItem item={item} key={item}>
+          {item}
+        </ComboboxItem>
+      ))}
+    </ComboboxItemGroup>
+  </ComboboxContent>
+</Combobox>
+```

@@ -15,7 +15,7 @@ export const baseOptions = (): BaseLayoutProps => {
     nav: {
       title: (
         <>
-          <Button size="icon" variant="ghost">
+          <Button size="icon-md" variant="ghost">
             <Logo className="size-6" />
           </Button>
 

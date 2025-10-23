@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const badgeVariants = tv({
   base: [
     "inline-flex items-center justify-center gap-1",
-    "px-2 py-0.5",
+    "px-1 py-0.5",
     "rounded-md border",
     "select-none font-medium text-xs",
     "overflow-hidden",

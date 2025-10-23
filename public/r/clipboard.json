@@ -1,0 +1,31 @@
+{
+  "name": "clipboard",
+  "type": "components:ui",
+  "description": "A clipboard component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "clipboard"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "clipboard.tsx",
+      "content": "import { Clipboard as ArkClipboard } from \"@ark-ui/react/clipboard\";\nimport { Check, ClipboardCopy } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Clipboard = (\n  props: React.ComponentProps<typeof ArkClipboard.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Root {...rest}>\n      <ArkClipboard.Control\n        className={cn(\"flex items-center gap-2\", className)}\n      >\n        {children}\n      </ArkClipboard.Control>\n    </ArkClipboard.Root>\n  );\n};\n\nexport const ClipboardContext = (\n  props: React.ComponentProps<typeof ArkClipboard.Context>\n) => <ArkClipboard.Context {...props} />;\n\nexport const ClipboardTrigger = (\n  props: React.ComponentProps<typeof ArkClipboard.Trigger>\n) => <ArkClipboard.Trigger {...props} />;\n\nexport const ClipboardInput = (\n  props: React.ComponentProps<typeof ArkClipboard.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Input {...rest} asChild={!children}>\n      {children || <Input />}\n    </ArkClipboard.Input>\n  );\n};\n\nexport const ClipboardIndicator = (\n  props: React.ComponentProps<typeof ArkClipboard.Indicator>\n) => {\n  const { copied = <Check />, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Indicator {...rest} copied={copied}>\n      {children || <ClipboardCopy />}\n    </ArkClipboard.Indicator>\n  );\n};\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "clipboard"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}

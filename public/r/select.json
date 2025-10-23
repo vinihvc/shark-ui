@@ -1,0 +1,31 @@
+{
+  "name": "select",
+  "type": "components:ui",
+  "description": "A select component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "select"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "select.tsx",
+      "content": "import { Portal } from \"@ark-ui/react\";\nimport { Select as ArkSelect } from \"@ark-ui/react/select\";\nimport { CheckIcon, ChevronsUpDown, X } from \"lucide-react\";\nimport type React from \"react\";\nimport type { VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\nimport { inputVariants } from \"./input\";\n\nexport const Select = <T,>(\n  props: React.ComponentProps<typeof ArkSelect.Root<T>>\n) => {\n  const { lazyMount = true, unmountOnExit = true, children, ...rest } = props;\n\n  return (\n    <ArkSelect.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    >\n      {children}\n\n      <ArkSelect.HiddenSelect />\n    </ArkSelect.Root>\n  );\n};\n\nexport const SelectControl = (\n  props: React.ComponentProps<typeof ArkSelect.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkSelect.Control className={cn(\"relative\", className)} {...rest} />;\n};\n\ninterface SelectTriggerProps\n  extends React.ComponentProps<typeof ArkSelect.Trigger>,\n    VariantProps<typeof inputVariants> {}\n\nexport const SelectTrigger = (props: SelectTriggerProps) => {\n  const { size = \"md\", className, children, ...rest } = props;\n\n  return (\n    <ArkSelect.Trigger\n      className={cn(\n        inputVariants({ size }),\n        \"w-fit\",\n        \"flex items-center justify-between gap-2\",\n        \"data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50\",\n        \"data-placeholder-shown:text-muted-foreground\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        className\n      )}\n      {...rest}\n    >\n      {children}\n\n      <ArkSelect.Indicator>\n        <ChevronsUpDown />\n      </ArkSelect.Indicator>\n    </ArkSelect.Trigger>\n  );\n};\n\nexport const SelectValueText = (\n  props: React.ComponentProps<typeof ArkSelect.ValueText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSelect.ValueText\n      className={cn(\"line-clamp-1 flex items-center gap-2\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const SelectClearTrigger = (\n  props: React.ComponentProps<typeof ArkSelect.ClearTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSelect.ClearTrigger\n      className={cn(\"-translate-y-1/2 absolute top-1/2 right-8\", className)}\n      {...rest}\n      asChild\n    >\n      <Button\n        className={cn(\n          \"h-6 w-4\",\n          \"text-muted-foreground\",\n          \"hover:bg-transparent hover:text-foreground\"\n        )}\n        variant=\"ghost\"\n      >\n        <X />\n      </Button>\n    </ArkSelect.ClearTrigger>\n  );\n};\n\nexport const SelectContent = (\n  props: React.ComponentProps<typeof ArkSelect.Content>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkSelect.Positioner>\n        <ArkSelect.Content\n          className={cn(\n            \"z-50\",\n            \"relative\",\n            \"max-h-96 min-w-48\",\n            \"p-1\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"rounded-md border shadow-md\",\n            \"overflow-hidden\",\n            \"outline-none\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            className\n          )}\n          {...rest}\n        />\n      </ArkSelect.Positioner>\n    </Portal>\n  );\n};\n\nexport const SelectItemGroup = (\n  props: React.ComponentProps<typeof ArkSelect.ItemGroup>\n) => <ArkSelect.ItemGroup {...props} />;\n\nexport const SelectItemGroupLabel = (\n  props: React.ComponentProps<typeof ArkSelect.ItemGroupLabel>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSelect.ItemGroupLabel\n      className={cn(\n        \"px-2 py-1.5 font-semibold text-muted-foreground text-xs\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const SelectItem = (\n  props: React.ComponentProps<typeof ArkSelect.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkSelect.Item\n      className={cn(\n        \"relative\",\n        \"py-1.5 pr-8 pl-2\",\n        \"text-sm\",\n        \"flex w-full items-center gap-2\",\n        \"rounded-sm\",\n        \"select-none\",\n        \"cursor-default\",\n        \"outline-hidden\",\n        \"data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground\",\n        \"data-highlighted:bg-accent data-highlighted:text-accent-foreground\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-50\",\n        \"[&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkSelect.ItemText>{children}</ArkSelect.ItemText>\n\n      <span className=\"absolute right-2 flex size-3.5 items-center justify-center\">\n        <ArkSelect.ItemIndicator>\n          <CheckIcon />\n        </ArkSelect.ItemIndicator>\n      </span>\n    </ArkSelect.Item>\n  );\n};\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "select"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}

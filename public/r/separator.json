@@ -1,0 +1,31 @@
+{
+  "name": "separator",
+  "type": "components:ui",
+  "description": "A separator component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "separator"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "separator.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface SeparatorProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The orientation of the separator.\n   *\n   * @default \"horizontal\"\n   */\n  orientation?: \"horizontal\" | \"vertical\";\n}\n\nexport const Separator = (props: SeparatorProps) => {\n  const { orientation = \"horizontal\", className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"my-4 shrink-0\",\n        \"bg-border\",\n        \"data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full\",\n        \"data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px\",\n        className\n      )}\n      data-orientation={orientation}\n      data-part=\"separator\"\n      data-scope=\"separator\"\n      role=\"none\"\n      {...rest}\n    />\n  );\n};\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "separator"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}

@@ -20,7 +20,7 @@ export const QrCodeFrame = (
 
   return (
     <ArkQrCode.Frame
-      className={cn("size-full bg-white text-black", className)}
+      className={cn("size-full rounded-md bg-white text-black", className)}
       {...rest}
     >
       <ArkQrCode.Pattern />

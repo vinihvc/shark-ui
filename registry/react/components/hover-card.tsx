@@ -27,10 +27,6 @@ export const HoverCardTrigger = (
   props: React.ComponentProps<typeof ArkHoverCard.Trigger>
 ) => <ArkHoverCard.Trigger {...props} />;
 
-export const HoverCardPositioner = (
-  props: React.ComponentProps<typeof ArkHoverCard.Positioner>
-) => <ArkHoverCard.Positioner {...props} />;
-
 export const HoverCardContent = (
   props: React.ComponentProps<typeof ArkHoverCard.Content>
 ) => {
@@ -38,7 +34,7 @@ export const HoverCardContent = (
 
   return (
     <Portal>
-      <HoverCardPositioner>
+      <ArkHoverCard.Positioner>
         <ArkHoverCard.Content
           className={cn(
             "z-50",
@@ -65,7 +61,7 @@ export const HoverCardContent = (
 
           {children}
         </ArkHoverCard.Content>
-      </HoverCardPositioner>
+      </ArkHoverCard.Positioner>
     </Portal>
   );
 };
@@ -86,20 +82,7 @@ export const HoverCardArrow = (
       }
       {...rest}
     >
-      <HoverCardArrowTip />
+      <ArkHoverCard.ArrowTip className="border-t border-l" />
     </ArkHoverCard.Arrow>
-  );
-};
-
-export const HoverCardArrowTip = (
-  props: React.ComponentProps<typeof ArkHoverCard.ArrowTip>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkHoverCard.ArrowTip
-      className={cn("border-t border-l", className)}
-      {...rest}
-    />
   );
 };

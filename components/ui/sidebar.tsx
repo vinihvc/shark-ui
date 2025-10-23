@@ -13,9 +13,19 @@ import { useIsMobile } from "@/hooks/use-is-mobile";
 import { Button } from "@/registry/react/components/button";
 import { Input } from "@/registry/react/components/input";
 import { Separator } from "@/registry/react/components/separator";
-import { Sheet } from "@/registry/react/components/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/registry/react/components/sheet";
 import { Skeleton } from "@/registry/react/components/skeleton";
-import { Tooltip } from "@/registry/react/components/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/react/components/tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -142,6 +152,13 @@ function SidebarProvider({
   );
 }
 
+interface SidebarProps extends React.ComponentProps<typeof Sheet> {
+  side?: "left" | "right";
+  variant?: "sidebar" | "floating" | "inset";
+  collapsible?: "offcanvas" | "icon" | "none";
+  className?: string;
+}
+
 function Sidebar({
   side = "left",
   variant = "sidebar",
@@ -149,11 +166,7 @@ function Sidebar({
   className,
   children,
   ...props
-}: React.ComponentProps<"div"> & {
-  side?: "left" | "right";
-  variant?: "sidebar" | "floating" | "inset";
-  collapsible?: "offcanvas" | "icon" | "none";
-}) {
+}: SidebarProps) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
   if (collapsible === "none") {
@@ -172,8 +185,12 @@ function Sidebar({
 
   if (isMobile) {
     return (
-      <Sheet.Root onOpenChange={setOpenMobile} open={openMobile} {...props}>
-        <Sheet.Content
+      <Sheet
+        {...props}
+        onOpenChange={({ open }) => setOpenMobile(open)}
+        open={openMobile}
+      >
+        <SheetContent
           className="w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
           data-mobile="true"
           data-sidebar="sidebar"
@@ -183,13 +200,13 @@ function Sidebar({
             } as React.CSSProperties
           }
         >
-          <Sheet.Header className="sr-only">
-            <Sheet.Title>Sidebar</Sheet.Title>
-            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
-          </Sheet.Header>
+          <SheetHeader className="sr-only">
+            <SheetTitle>Sidebar</SheetTitle>
+            <SheetDescription>Displays the mobile sidebar.</SheetDescription>
+          </SheetHeader>
           <div className="flex size-full flex-col">{children}</div>
-        </Sheet.Content>
-      </Sheet.Root>
+        </SheetContent>
+      </Sheet>
     );
   }
 
@@ -252,7 +269,7 @@ function SidebarTrigger({
         onClick?.(event);
         toggleSidebar();
       }}
-      size="icon"
+      size="icon-md"
       variant="ghost"
       {...props}
     >
@@ -474,7 +491,7 @@ function SidebarMenuButton({
 }: React.ComponentProps<"button"> & {
   asChild?: boolean;
   isActive?: boolean;
-  tooltip?: string | React.ComponentProps<typeof Tooltip.Content>;
+  tooltip?: string | React.ComponentProps<typeof TooltipContent>;
 } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const Comp = asChild ? Slot : "button";
   const { isMobile, state } = useSidebar();
@@ -500,13 +517,10 @@ function SidebarMenuButton({
   }
 
   return (
-    <Tooltip.Root>
-      <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
-      <Tooltip.Content
-        hidden={state !== "collapsed" || isMobile}
-        {...tooltip}
-      />
-    </Tooltip.Root>
+    <Tooltip>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent hidden={state !== "collapsed" || isMobile} {...tooltip} />
+    </Tooltip>
   );
 }
 

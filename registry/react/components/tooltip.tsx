@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal } from "@ark-ui/react";
 import { Tooltip as ArkTooltip } from "@ark-ui/react/tooltip";
 import type React from "react";
 import { cn } from "@/lib/utils";
@@ -29,36 +29,20 @@ export const Tooltip = (
   );
 };
 
-export const TooltipPortal = (props: React.ComponentProps<typeof Portal>) => (
-  <Portal {...props} />
-);
-
 export const TooltipTrigger = (
   props: React.ComponentProps<typeof ArkTooltip.Trigger>
-) => {
-  const { className, ...rest } = props;
-
-  return <ArkTooltip.Trigger className={cn(className)} {...rest} />;
-};
-
-export const TooltipPositioner = (
-  props: React.ComponentProps<typeof ArkTooltip.Positioner>
-) => {
-  const { className, ...rest } = props;
-
-  return <ArkTooltip.Positioner className={cn(className)} {...rest} />;
-};
+) => <ArkTooltip.Trigger {...props} />;
 
 export const TooltipContent = (
   props: React.ComponentProps<typeof ArkTooltip.Content>
 ) => {
   const { className, children, ...rest } = props;
   return (
-    <TooltipPortal>
-      <TooltipPositioner>
+    <Portal>
+      <ArkTooltip.Positioner>
         <ArkTooltip.Content
           className={cn(
-            "z-50 w-fit origin-(--radix-tooltip-content-transform-origin)",
+            "z-50 w-fit origin-(--transform-origin)",
             "px-3 py-1.5",
             "bg-foreground",
             "rounded-md",
@@ -79,8 +63,8 @@ export const TooltipContent = (
 
           {children}
         </ArkTooltip.Content>
-      </TooltipPositioner>
-    </TooltipPortal>
+      </ArkTooltip.Positioner>
+    </Portal>
   );
 };
 
@@ -100,11 +84,7 @@ export const TooltipArrow = (
       }
       {...rest}
     >
-      <TooltipArrowTip />
+      <ArkTooltip.ArrowTip />
     </ArkTooltip.Arrow>
   );
 };
-
-export const TooltipArrowTip = (
-  props: React.ComponentProps<typeof ArkTooltip.ArrowTip>
-) => <ArkTooltip.ArrowTip {...props} />;

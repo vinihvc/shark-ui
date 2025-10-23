@@ -33,7 +33,7 @@ export const PopoverTrigger = (
 export const PopoverContent = (
   props: React.ComponentProps<typeof ArkPopover.Content>
 ) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -54,13 +54,37 @@ export const PopoverContent = (
             "data-[side=left]:slide-in-from-right-2",
             "data-[side=right]:slide-in-from-left-2",
             "data-[side=top]:slide-in-from-bottom-2",
-
             className
           )}
           {...rest}
-        />
+        >
+          <PopoverArrow />
+
+          {children}
+        </ArkPopover.Content>
       </ArkPopover.Positioner>
     </Portal>
+  );
+};
+
+export const PopoverArrow = (
+  props: React.ComponentProps<typeof ArkPopover.Arrow>
+) => {
+  const { style, ...rest } = props;
+
+  return (
+    <ArkPopover.Arrow
+      style={
+        {
+          "--arrow-background": "var(--popover)",
+          "--arrow-size": "calc(1.5 * var(--spacing))",
+          ...style,
+        } as React.CSSProperties
+      }
+      {...rest}
+    >
+      <ArkPopover.ArrowTip className="border-t border-l" />
+    </ArkPopover.Arrow>
   );
 };
 

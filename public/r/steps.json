@@ -1,0 +1,31 @@
+{
+  "name": "steps",
+  "type": "components:ui",
+  "description": "A steps component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "steps"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "steps.tsx",
+      "content": "import { Steps as ArkSteps } from \"@ark-ui/react/steps\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Steps = (props: React.ComponentProps<typeof ArkSteps.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Root\n      className={cn(\n        \"flex gap-4\",\n        \"data-[orientation=horizontal]:flex-col\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsList = (\n  props: React.ComponentProps<typeof ArkSteps.List>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.List\n      className={cn(\n        \"flex justify-between\",\n        \"data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start\",\n        \"data-[orientation=horizontal]:items-center\",\n        className\n      )}\n      style={\n        {\n          \"--steps-gutter\": \"12px\",\n          \"--steps-size\": \"40px\",\n          \"--steps-icon-size\": \"20px\",\n        } as React.CSSProperties\n      }\n      {...rest}\n    />\n  );\n};\n\nexport const StepsItem = (\n  props: React.ComponentProps<typeof ArkSteps.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Item\n      className={cn(\n        \"relative flex flex-1\",\n        \"data-[orientation=vertical]:items-start\",\n        \"data-[orientation=horizontal]:items-center\",\n        \"last:flex-initial last:**:data-[part=separator]:hidden\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsTrigger = (\n  props: React.ComponentProps<typeof ArkSteps.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Trigger\n      className={cn(\"flex items-center gap-3 rounded-md\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsIndicator = (\n  props: React.ComponentProps<typeof ArkSteps.Indicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Indicator\n      className={cn(\n        \"flex shrink-0 items-center justify-center\",\n        \"size-(--steps-size)\",\n        \"font-semibold\",\n        \"rounded-full\",\n        \"border\",\n        \"data-current:bg-border\",\n        \"data-complete:bg-primary data-complete:text-primary-foreground\",\n        \"[&_svg]:size-(--steps-icon-size) [&_svg]:shrink-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsSeparator = (\n  props: React.ComponentProps<typeof ArkSteps.Separator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Separator\n      className={cn(\n        \"flex-1 bg-border\",\n        \"data-complete:bg-primary\",\n        \"data-[orientation=vertical]:absolute data-[orientation=vertical]:top-[calc(var(--steps-size)+var(--steps-gutter))]\",\n        \"data-[orientation=vertical]:left-[calc(var(--steps-size)/2-1px)]\",\n        \"data-[orientation=vertical]:h-full data-[orientation=vertical]:max-h-[calc(100%-(var(--steps-size)+var(--steps-gutter)*2))]\",\n        \"data-[orientation=vertical]:w-0.5\",\n        \"data-[orientation=horizontal]:mx-(--steps-gutter)\",\n        \"data-[orientation=horizontal]:h-0.5\",\n        \"data-[orientation=horizontal]:w-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsContent = (\n  props: React.ComponentProps<typeof ArkSteps.Content>\n) => <ArkSteps.Content {...props} />;\n\nexport const StepsCompletedContent = (\n  props: React.ComponentProps<typeof ArkSteps.CompletedContent>\n) => <ArkSteps.CompletedContent {...props} />;\n\nexport const StepsPrevious = (\n  props: React.ComponentProps<typeof ArkSteps.PrevTrigger>\n) => <ArkSteps.PrevTrigger {...props} />;\n\nexport const StepsNext = (\n  props: React.ComponentProps<typeof ArkSteps.NextTrigger>\n) => <ArkSteps.NextTrigger {...props} />;\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "steps"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}

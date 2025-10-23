@@ -3,7 +3,9 @@
 import { createListCollection } from "@ark-ui/react";
 import {
   Select,
+  SelectClearTrigger,
   SelectContent,
+  SelectControl,
   SelectItem,
   SelectItemGroup,
   SelectItemGroupLabel,
@@ -12,15 +14,18 @@ import {
 } from "@/registry/react/components/select";
 
 const SelectDemo = () => {
-  const collection = createListCollection<string>({
+  const collection = createListCollection({
     items: ["Banana", "Apple", "Orange", "Pineapple"],
   });
 
   return (
     <Select collection={collection}>
-      <SelectTrigger className="w-48">
-        <SelectValueText placeholder="Select a fruit" />
-      </SelectTrigger>
+      <SelectControl>
+        <SelectTrigger className="w-48">
+          <SelectValueText placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectClearTrigger />
+      </SelectControl>
 
       <SelectContent>
         <SelectItemGroup>

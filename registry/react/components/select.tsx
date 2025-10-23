@@ -1,10 +1,15 @@
 import { Portal } from "@ark-ui/react";
 import { Select as ArkSelect } from "@ark-ui/react/select";
-import { CheckIcon, ChevronsUpDown } from "lucide-react";
+import { CheckIcon, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
+import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import { Button } from "./button";
+import { inputVariants } from "./input";
 
-export const Select = (props: React.ComponentProps<typeof ArkSelect.Root>) => {
+export const Select = <T,>(
+  props: React.ComponentProps<typeof ArkSelect.Root<T>>
+) => {
   const { lazyMount = true, unmountOnExit = true, children, ...rest } = props;
 
   return (
@@ -20,73 +25,40 @@ export const Select = (props: React.ComponentProps<typeof ArkSelect.Root>) => {
   );
 };
 
-export const SelectLabel = (
-  props: React.ComponentProps<typeof ArkSelect.Label>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkSelect.Label
-      className={cn(
-        "font-medium text-sm leading-none",
-        "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-        className
-      )}
-      {...rest}
-    />
-  );
-};
-
 export const SelectControl = (
   props: React.ComponentProps<typeof ArkSelect.Control>
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkSelect.Control className={cn(className)} {...rest} />;
+  return <ArkSelect.Control className={cn("relative", className)} {...rest} />;
 };
 
 interface SelectTriggerProps
-  extends React.ComponentProps<typeof ArkSelect.Trigger> {
-  /**
-   * The size of the select trigger
-   *
-   * @default "md"
-   */
-  size?: "md" | "sm" | "lg";
-}
+  extends React.ComponentProps<typeof ArkSelect.Trigger>,
+    VariantProps<typeof inputVariants> {}
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
   const { size = "md", className, children, ...rest } = props;
 
   return (
-    <SelectControl>
-      <ArkSelect.Trigger
-        className={cn(
-          "flex w-fit items-center justify-between gap-2",
-          "rounded-md px-3 py-2",
-          "whitespace-nowrap text-sm",
-          "border border-input bg-transparent",
-          "shadow-xs outline-none transition-[color,box-shadow]",
-          "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
-          "data-placeholder-shown:text-muted-foreground",
-          "data-[size=lg]:h-10 data-[size=md]:h-9 data-[size=sm]:h-8",
-          "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-          "disabled:cursor-not-allowed disabled:opacity-50",
-          "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
-          "*:data-[part=value-text]:line-clamp-1 *:data-[part=value-text]:flex *:data-[part=value-text]:items-center *:data-[part=value-text]:gap-2",
-          "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
-          className
-        )}
-        data-size={size}
-        {...rest}
-      >
-        {children}
+    <ArkSelect.Trigger
+      className={cn(
+        inputVariants({ size }),
+        "w-fit",
+        "flex items-center justify-between gap-2",
+        "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
+        "data-placeholder-shown:text-muted-foreground",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className
+      )}
+      {...rest}
+    >
+      {children}
 
-        <ArkSelect.Indicator>
-          <ChevronsUpDown />
-        </ArkSelect.Indicator>
-      </ArkSelect.Trigger>
-    </SelectControl>
+      <ArkSelect.Indicator>
+        <ChevronsUpDown />
+      </ArkSelect.Indicator>
+    </ArkSelect.Trigger>
   );
 };
 
@@ -96,7 +68,10 @@ export const SelectValueText = (
   const { className, ...rest } = props;
 
   return (
-    <ArkSelect.ValueText className={cn("text-left", className)} {...rest} />
+    <ArkSelect.ValueText
+      className={cn("line-clamp-1 flex items-center gap-2", className)}
+      {...rest}
+    />
   );
 };
 
@@ -105,28 +80,38 @@ export const SelectClearTrigger = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkSelect.ClearTrigger className={cn(className)} {...rest} />;
-};
-
-export const SelectPositioner = (
-  props: React.ComponentProps<typeof ArkSelect.Positioner>
-) => {
-  const { className, ...rest } = props;
-
-  return <ArkSelect.Positioner className={cn(className)} {...rest} />;
+  return (
+    <ArkSelect.ClearTrigger
+      className={cn("-translate-y-1/2 absolute top-1/2 right-8", className)}
+      {...rest}
+      asChild
+    >
+      <Button
+        className={cn(
+          "h-6 w-4",
+          "text-muted-foreground",
+          "hover:bg-transparent hover:text-foreground"
+        )}
+        variant="ghost"
+      >
+        <X />
+      </Button>
+    </ArkSelect.ClearTrigger>
+  );
 };
 
 export const SelectContent = (
   props: React.ComponentProps<typeof ArkSelect.Content>
 ) => {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <Portal>
-      <SelectPositioner>
+      <ArkSelect.Positioner>
         <ArkSelect.Content
           className={cn(
-            "relative z-50",
+            "z-50",
+            "relative",
             "max-h-96 min-w-48",
             "p-1",
             "bg-popover",
@@ -144,10 +129,8 @@ export const SelectContent = (
             className
           )}
           {...rest}
-        >
-          {children}
-        </ArkSelect.Content>
-      </SelectPositioner>
+        />
+      </ArkSelect.Positioner>
     </Portal>
   );
 };

@@ -1,0 +1,31 @@
+{
+  "name": "toggle",
+  "type": "components:ui",
+  "description": "A toggle component built with Ark UI",
+  "category": "ui",
+  "tags": [
+    "toggle"
+  ],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "toggle.tsx",
+      "content": "import { Toggle as ArkToggle } from \"@ark-ui/react/toggle\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  type ButtonProps,\n  buttonVariants,\n} from \"@/registry/react/components/button\";\n\nexport const toggleVariants = tv({\n  base: \"\",\n  variants: {\n    size: {\n      md: \"h-9 min-w-9 px-2\",\n      sm: \"h-8 min-w-8 px-1.5\",\n      lg: \"h-10 min-w-10 px-2.5\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport interface ToggleProps\n  extends React.ComponentProps<typeof ArkToggle.Root>,\n    VariantProps<typeof toggleVariants>,\n    Pick<ButtonProps, \"variant\"> {}\n\nexport const Toggle = (props: ToggleProps) => {\n  const { variant = \"outline\", size = \"md\", className, ...rest } = props;\n\n  return (\n    <ArkToggle.Root\n      className={cn(\n        \"data-[state=on]:bg-accent data-[state=on]:text-accent-foreground\",\n        buttonVariants({ variant, size }),\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const ToggleIndicator = (\n  props: React.ComponentProps<typeof ArkToggle.Indicator>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkToggle.Indicator className=\"flex items-center gap-2\" {...rest}>\n      {children}\n    </ArkToggle.Indicator>\n  );\n};\n"
+    }
+  ],
+  "categories": [
+    "ui"
+  ],
+  "meta": {
+    "category": "ui",
+    "tags": [
+      "toggle"
+    ],
+    "dependencies": [
+      "@ark-ui/react"
+    ]
+  }
+}
