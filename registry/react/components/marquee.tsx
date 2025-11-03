@@ -46,7 +46,7 @@ export const Marquee = (props: MarqueeProps) => {
             "data-[side=end]:animate-marquee-x data-[side=start]:animate-marquee-x",
             "data-[orientation=horizontal]:flex-row",
             "data-[orientation=vertical]:flex-col",
-            "data-reverse:[animation-direction:reverse]",
+            "data-reverse:direction-[reverse]",
             "group-data-paused:paused!"
           )}
         >
