@@ -1,24 +1,23 @@
 "use client";
 
-import { Portal } from "@ark-ui/react";
+import { ark, Portal } from "@ark-ui/react";
 import {
   Tour as ArkTour,
   type TourStepDetails,
   type UseTourReturn,
   useTour,
 } from "@ark-ui/react/tour";
-import { Slot } from "@radix-ui/react-slot";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
+import { Button } from "@/registry/react/components/button";
 import {
   type DialogBackdrop,
   DialogBody,
   DialogFooter,
   DialogHeader,
   dialogBackdropVariants,
-} from "./dialog";
+} from "@/registry/react/components/dialog";
 
 export type TourStepType = TourStepDetails;
 
@@ -83,17 +82,10 @@ export const Tour = (props: TourProps) => {
   );
 };
 
-interface TourTriggerProps extends React.ComponentProps<"button"> {
-  /**
-   * If `true`, the trigger will render the child as a slot.
-   *
-   * @default false
-   */
-  asChild?: boolean;
-}
+interface TourTriggerProps extends React.ComponentProps<"button"> {}
 
 export const TourTrigger = (props: TourTriggerProps) => {
-  const { asChild, onClick, ...rest } = props;
+  const { onClick, ...rest } = props;
 
   const { handleStart } = useTourContext();
 
@@ -102,10 +94,8 @@ export const TourTrigger = (props: TourTriggerProps) => {
     handleStart();
   };
 
-  const Comp = asChild ? Slot : "button";
-
   return (
-    <Comp
+    <ark.button
       data-part="trigger"
       data-scope="tour"
       type="button"

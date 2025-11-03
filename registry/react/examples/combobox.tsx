@@ -7,17 +7,24 @@ import {
   ComboboxClearTrigger,
   ComboboxContent,
   ComboboxControl,
+  ComboboxEmpty,
   ComboboxInput,
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxTrigger,
 } from "../components/combobox";
+import {
+  Field,
+  FieldHelper,
+  FieldInput,
+  FieldLabel,
+} from "../components/field";
 
 const ComboboxDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    initialItems: ["React", "Solid", "Vue", "Svelte"],
+    initialItems: ["Apple", "Banana", "Cherry", "Date"],
     filter: contains,
   });
 
@@ -26,27 +33,38 @@ const ComboboxDemo = () => {
   };
 
   return (
-    <Combobox
-      className="w-64"
-      collection={collection}
-      onInputValueChange={handleInputChange}
-    >
-      <ComboboxControl>
-        <ComboboxInput placeholder="Select a framework..." />
-        <ComboboxClearTrigger />
-        <ComboboxTrigger />
-      </ComboboxControl>
+    <Field>
+      <FieldLabel>Choose a fruit</FieldLabel>
+      <Combobox
+        className="w-64"
+        collection={collection}
+        onInputValueChange={handleInputChange}
+        placeholder="e.g. Apple"
+      >
+        <ComboboxControl>
+          <FieldInput>
+            <ComboboxInput />
+          </FieldInput>
 
-      <ComboboxContent>
-        <ComboboxItemGroup>
-          {collection.items.map((item) => (
-            <ComboboxItem item={item} key={item}>
-              {item}
-            </ComboboxItem>
-          ))}
-        </ComboboxItemGroup>
-      </ComboboxContent>
-    </Combobox>
+          <ComboboxClearTrigger />
+          <ComboboxTrigger />
+        </ComboboxControl>
+
+        <ComboboxContent>
+          <ComboboxEmpty />
+
+          <ComboboxItemGroup>
+            {collection.items.map((item) => (
+              <ComboboxItem item={item} key={item}>
+                {item}
+              </ComboboxItem>
+            ))}
+          </ComboboxItemGroup>
+        </ComboboxContent>
+      </Combobox>
+
+      <FieldHelper>Select a fruit from the list</FieldHelper>
+    </Field>
   );
 };
 

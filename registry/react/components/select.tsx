@@ -4,8 +4,8 @@ import { CheckIcon, ChevronsUpDown, X } from "lucide-react";
 import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { inputVariants } from "./input";
+import { Button } from "@/registry/react/components/button";
+import { inputVariants } from "@/registry/react/components/input";
 
 export const Select = <T,>(
   props: React.ComponentProps<typeof ArkSelect.Root<T>>

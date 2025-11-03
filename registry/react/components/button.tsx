@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { ark } from "@ark-ui/react";
 import { cn } from "fumadocs-ui/utils/cn";
 import type * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -54,24 +54,18 @@ export const buttonVariants = tv({
 });
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  /**
-   * If `true`, the button will render the child as a slot.
-   *
-   * @default false
-   */
-  asChild?: boolean;
-}
+  extends React.ComponentProps<typeof ark.button>,
+    VariantProps<typeof buttonVariants> {}
 
 export const Button = (props: ButtonProps) => {
-  const { asChild, variant, size, className, ...rest } = props;
-
-  const Comp = asChild ? Slot : "button";
+  const { type = "button", variant, size, className, ...rest } = props;
 
   return (
-    <Comp
+    <ark.button
       className={cn(buttonVariants({ variant, size }), className)}
+      data-part="root"
+      data-scope="button"
+      type={type}
       {...rest}
     />
   );

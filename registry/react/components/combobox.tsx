@@ -3,8 +3,8 @@ import { Portal } from "@ark-ui/react/portal";
 import { CheckIcon, ChevronDownIcon, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { Input } from "./input";
+import { Button } from "@/registry/react/components/button";
+import { Input } from "@/registry/react/components/input";
 
 export const Combobox = <T,>(
   props: React.ComponentProps<typeof ArkCombobox.Root<T>>
@@ -39,7 +39,7 @@ export const ComboboxInput = (props: ComboboxInputProps) => {
 
   return (
     <ArkCombobox.Input asChild {...rest}>
-      <Input className={cn("pr-20", className)} size={size} />
+      <Input className={cn("[input]:pr-16", className)} size={size} />
     </ArkCombobox.Input>
   );
 };
@@ -186,5 +186,20 @@ export const ComboboxItem = (
         </ArkCombobox.ItemIndicator>
       </span>
     </ArkCombobox.Item>
+  );
+};
+
+export const ComboboxEmpty = (
+  props: React.ComponentProps<typeof ArkCombobox.Empty>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <ArkCombobox.Empty
+      className={cn("px-2 py-1.5 text-muted-foreground text-sm", className)}
+      {...rest}
+    >
+      {children || "No results found."}
+    </ArkCombobox.Empty>
   );
 };

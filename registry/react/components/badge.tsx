@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { ark } from "@ark-ui/react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ const badgeVariants = tv({
   ],
   variants: {
     variant: {
-      default: [
+      primary: [
         "bg-primary text-primary-foreground",
         "[a&]:hover:bg-primary/90",
       ],
@@ -35,25 +35,17 @@ const badgeVariants = tv({
 });
 
 interface BadgeProps
-  extends React.ComponentProps<"span">,
-    VariantProps<typeof badgeVariants> {
-  /**
-   * If `true`, the badge will render the child as a slot.
-   *
-   * @default false
-   */
-  asChild?: boolean;
-}
+  extends React.ComponentProps<typeof ark.span>,
+    VariantProps<typeof badgeVariants> {}
 
 export const Badge = (props: BadgeProps) => {
-  const { asChild, variant = "default", className, ...rest } = props;
-
-  const Comp = asChild ? Slot : "span";
+  const { variant = "primary", className, ...rest } = props;
 
   return (
-    <Comp
+    <ark.span
       className={cn(badgeVariants({ variant }), className)}
-      data-part="badge"
+      data-part="root"
+      data-scope="badge"
       {...rest}
     />
   );

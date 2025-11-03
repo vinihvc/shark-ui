@@ -90,7 +90,10 @@
 
   --animate-slide-up: slideUp 0.2s ease-out;
   --animate-slide-down: slideDown 0.2s ease-out;
-  
+
+  --animate-marquee-x: marqueeX var(--marquee-duration) linear infinite var(--marquee-delay);
+  --animate-marquee-y: marqueeY var(--marquee-duration) linear infinite var(--marquee-delay);
+
   @keyframes slideUp {
     from {
       height: var(--height);
@@ -106,6 +109,24 @@
     }
     to {
       height: var(--height);
+    }
+  }
+
+  @keyframes marqueeX {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(var(--marquee-translate));
+    }
+  }
+
+  @keyframes marqueeY {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(var(--marquee-translate));
     }
   }
 }
@@ -186,6 +207,10 @@
 @layer base {
   ::selection {
     @apply bg-ark text-foreground;
+  }
+
+  * {
+    @apply ring-ring;
   }
 
   html {

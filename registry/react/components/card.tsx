@@ -20,8 +20,8 @@ export const Card = (props: CardProps) => {
         "text-foreground",
         "rounded-lg border shadow-xs",
         "has-[table]:overflow-hidden **:[table]:overflow-hidden",
-        "has-[table]:not-has-data-[slot=card-footer]:pb-0 has-[table]:**:data-[slot=card-footer]:border-t",
-        "**:data-[slot=table-header]:bg-muted/50",
+        "has-[table]:not-has-data-[part=footer]:pb-0 has-[table]:**:data-[part=footer]:border-t",
+        "**:data-[part=header]:bg-muted/50",
         className
       )}
       data-part="root"
@@ -58,7 +58,7 @@ export const CardHeader = (props: HeaderProps) => {
         "grid auto-rows-min grid-rows-[auto_auto] gap-1",
         "px-(--card-spacing)",
         "items-start",
-        "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
+        "has-data-[part=card-action]:grid-cols-[1fr_auto]",
         className
       )}
       data-part="header"

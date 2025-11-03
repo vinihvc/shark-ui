@@ -22,7 +22,7 @@ export const alertVariants = tv({
         "text-destructive",
         "dark:border-destructive",
         "[&>svg]:text-destructive",
-        "*:data-[slot=alert-description]:text-destructive/90",
+        "*:data-[part=alert-description]:text-destructive/90",
       ],
     },
   },

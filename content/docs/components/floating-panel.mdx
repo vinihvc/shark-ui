@@ -1,0 +1,46 @@
+---
+title: Floating Panel
+description: Used to display content in a non-modal floating window
+links:
+  doc: https://ark-ui.com/docs/components/floating-panel
+  api: https://ark-ui.com/docs/components/floating-panel#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="floating-panel" />
+
+## Installation
+
+<ComponentInstallation componentName="floating-panel">
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  FloatingPanel,
+  FloatingPanelTrigger,
+  FloatingPanelContent,
+  FloatingPanelHeader,
+  FloatingPanelTitle,
+  FloatingPanelBody,
+} from "@/components/ui/floating-panel";
+```
+
+```tsx lineNumbers
+<FloatingPanel>
+  <FloatingPanelTrigger />
+  <FloatingPanelContent>
+    <FloatingPanelHeader>
+      <FloatingPanelTitle />
+    </FloatingPanelHeader>
+    <FloatingPanelBody />
+  </FloatingPanelContent>
+</FloatingPanel>

@@ -37,16 +37,7 @@ export const FileUpload = (
 
 export const FileUploadTrigger = (
   props: React.ComponentProps<typeof ArkFileUpload.Trigger>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkFileUpload.Trigger
-      className={cn("cursor-pointer", className)}
-      {...rest}
-    />
-  );
-};
+) => <ArkFileUpload.Trigger {...props} />;
 
 export const FileUploadDropzone = (
   props: React.ComponentProps<typeof ArkFileUpload.Dropzone>

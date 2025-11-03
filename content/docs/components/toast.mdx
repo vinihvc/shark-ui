@@ -1,0 +1,42 @@
+---
+title: Toast
+description: A toast is a component that displays a message to the user.
+links:
+  doc: https://ark-ui.com/docs/components/toast
+  api: https://ark-ui.com/docs/components/toast#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="toast" />
+
+## Installation
+
+<ComponentInstallation componentName="toast" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { Toaster } from "@/components/ui/toast";
+```
+
+```tsx lineNumbers
+const toaster = useToast();
+
+// add the toaster to the layout
+<Toaster toaster={toaster} />
+
+// show a toast
+toaster.create({
+  title: "Show Info Toast",
+  description: "This is a info toast",
+  type: "error",
+});
+```

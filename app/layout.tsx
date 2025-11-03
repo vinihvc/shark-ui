@@ -6,6 +6,7 @@ import { MediaQuery } from "@/components/debug/media-query";
 import { Footer } from "@/components/layout/footer";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
+import { Toaster } from "@/registry/react/components/toast";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -60,6 +61,8 @@ const RootLayout = (props: LayoutProps<"/">) => {
           {children}
 
           <Footer />
+
+          <Toaster />
         </RootProvider>
 
         <MediaQuery />
