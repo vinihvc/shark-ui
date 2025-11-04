@@ -10,6 +10,7 @@ import {
   ComboboxItemGroupLabel,
   ComboboxTrigger,
 } from "@/registry/react/components/combobox";
+import { Input } from "./input";
 
 export const Autocomplete = <T,>(
   props: React.ComponentProps<typeof Combobox<T>>
@@ -21,7 +22,11 @@ export const AutocompleteControl = (
 
 export const AutocompleteInput = (
   props: React.ComponentProps<typeof ComboboxInput>
-) => <ComboboxInput {...props} />;
+) => (
+  <ComboboxInput {...props} asChild>
+    <Input />
+  </ComboboxInput>
+);
 
 export const AutocompleteItemGroupLabel = (
   props: React.ComponentProps<typeof ComboboxItemGroupLabel>

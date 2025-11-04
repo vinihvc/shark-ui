@@ -41,7 +41,12 @@ const FileUploadDemo = () => (
                 </FileUploadItemPreview>
 
                 <FileUploadItemPreview type="application/pdf">
-                  <div data-type="pdf">PDF</div>
+                  <div
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 font-medium text-[10px] text-primary"
+                    data-type="pdf"
+                  >
+                    PDF
+                  </div>
                 </FileUploadItemPreview>
 
                 <div className="flex flex-col gap-1">

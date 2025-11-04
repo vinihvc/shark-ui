@@ -1,3 +1,4 @@
+import { FieldInput } from "@ark-ui/react/field";
 import type * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -32,17 +33,15 @@ export const inputVariants = tv({
 });
 
 export interface InputProps
-  extends Omit<React.ComponentProps<"input">, "size">,
+  extends Omit<React.ComponentProps<typeof FieldInput>, "size">,
     VariantProps<typeof inputVariants> {}
 
 export const Input = (props: InputProps) => {
   const { size = "md", type = "text", className, ...rest } = props;
 
   return (
-    <input
+    <FieldInput
       className={cn(inputVariants({ size }), className)}
-      data-part="input"
-      data-scope="input"
       data-size={size}
       type={type}
       {...rest}

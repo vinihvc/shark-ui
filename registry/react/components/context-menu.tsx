@@ -3,9 +3,8 @@ import type React from "react";
 import {
   Menu,
   MenuContent,
+  MenuGroup,
   MenuItem,
-  MenuItemGroup,
-  MenuItemGroupLabel,
   MenuSeparator,
   MenuShortcut,
   MenuSub,
@@ -31,21 +30,9 @@ export const ContextMenuContent = (
   props: React.ComponentProps<typeof MenuContent>
 ) => <MenuContent data-part="content" data-scope="context-menu" {...props} />;
 
-export const ContextMenuItemGroup = (
-  props: React.ComponentProps<typeof MenuItemGroup>
-) => (
-  <MenuItemGroup data-part="item-group" data-scope="context-menu" {...props} />
-);
-
-export const ContextMenuItemGroupLabel = (
-  props: React.ComponentProps<typeof MenuItemGroupLabel>
-) => (
-  <MenuItemGroupLabel
-    data-part="item-group-label"
-    data-scope="context-menu"
-    {...props}
-  />
-);
+export const ContextMenuGroup = (
+  props: React.ComponentProps<typeof MenuGroup>
+) => <MenuGroup data-part="item-group" data-scope="context-menu" {...props} />;
 
 export const ContextMenuSeparator = (
   props: React.ComponentProps<typeof MenuSeparator>

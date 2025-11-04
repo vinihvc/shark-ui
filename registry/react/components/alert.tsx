@@ -22,7 +22,7 @@ export const alertVariants = tv({
         "text-destructive",
         "dark:border-destructive",
         "[&>svg]:text-destructive",
-        "*:data-[part=alert-description]:text-destructive/90",
+        "*:data-[part=description]:text-destructive/90",
       ],
     },
   },
@@ -57,7 +57,7 @@ export const AlertTitle = (props: React.ComponentProps<"div">) => {
         "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
         className
       )}
-      data-part="alert-title"
+      data-part="title"
       data-scope="alert"
       {...rest}
     />
@@ -73,7 +73,7 @@ export const AlertDescription = (props: React.ComponentProps<"div">) => {
         "col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed",
         className
       )}
-      data-part="alert-description"
+      data-part="description"
       data-scope="alert"
       {...rest}
     />

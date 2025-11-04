@@ -1,5 +1,6 @@
 import {
   ComboboxContent,
+  ComboboxInput,
   ComboboxItem,
   ComboboxItemText,
   ComboboxList,
@@ -10,7 +11,6 @@ import {
   Combobox,
   ComboboxControl,
   ComboboxEmpty,
-  ComboboxInput,
   ComboboxItemGroup,
   ComboboxItemGroupLabel,
 } from "./combobox";

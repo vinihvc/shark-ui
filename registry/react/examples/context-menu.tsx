@@ -15,9 +15,8 @@ import {
 import {
   ContextMenu,
   ContextMenuContent,
+  ContextMenuGroup,
   ContextMenuItem,
-  ContextMenuItemGroup,
-  ContextMenuItemGroupLabel,
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuSub,
@@ -32,11 +31,7 @@ const ContextMenuDemo = () => (
       Right click here
     </ContextMenuTrigger>
     <ContextMenuContent className="w-56">
-      <ContextMenuItemGroup>
-        <ContextMenuItemGroupLabel>Actions</ContextMenuItemGroupLabel>
-
-        <ContextMenuSeparator />
-
+      <ContextMenuGroup>
         <ContextMenuItem value="forward">
           <Send /> Forward
           <ContextMenuShortcut>⇧⌘F</ContextMenuShortcut>
@@ -100,7 +95,7 @@ const ContextMenuDemo = () => (
           <Trash2 /> Delete
           <ContextMenuShortcut>⌫</ContextMenuShortcut>
         </ContextMenuItem>
-      </ContextMenuItemGroup>
+      </ContextMenuGroup>
     </ContextMenuContent>
   </ContextMenu>
 );

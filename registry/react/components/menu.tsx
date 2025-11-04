@@ -62,20 +62,23 @@ export const MenuContent = (props: MenuContentProps) => {
   );
 };
 
-export const MenuItemGroup = (
-  props: React.ComponentProps<typeof ArkMenu.ItemGroup>
-) => <ArkMenu.ItemGroup {...props} />;
+interface MenuGroupProps
+  extends React.ComponentProps<typeof ArkMenu.ItemGroup> {
+  /**
+   * The heading of the menu item group.
+   */
+  heading?: string;
+}
 
-export const MenuItemGroupLabel = (
-  props: React.ComponentProps<typeof ArkMenu.ItemGroupLabel>
-) => {
-  const { className, ...rest } = props;
+export const MenuGroup = (props: MenuGroupProps) => {
+  const { heading, children, ...rest } = props;
 
   return (
-    <ArkMenu.ItemGroupLabel
-      className={cn("px-2 py-1.5 font-medium text-sm", className)}
-      {...rest}
-    />
+    <ArkMenu.ItemGroup data-part="item-group" data-scope="menu" {...rest}>
+      {heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
+
+      {children}
+    </ArkMenu.ItemGroup>
   );
 };
 
@@ -162,9 +165,40 @@ export const MenuCheckboxItem = (
   );
 };
 
-export const MenuRadioGroup = (
-  props: React.ComponentProps<typeof ArkMenu.RadioItemGroup>
-) => <ArkMenu.RadioItemGroup {...props} />;
+interface MenuRadioGroupProps
+  extends React.ComponentProps<typeof ArkMenu.RadioItemGroup> {
+  /**
+   * The heading of the menu radio item group.
+   */
+  heading?: string;
+}
+
+export const MenuRadioGroup = (props: MenuRadioGroupProps) => {
+  const { heading, children, ...rest } = props;
+
+  return (
+    <ArkMenu.RadioItemGroup data-part="item-group" data-scope="menu" {...rest}>
+      {heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
+
+      {children}
+    </ArkMenu.RadioItemGroup>
+  );
+};
+
+const MenuGroupLabel = (
+  props: React.ComponentProps<typeof ArkMenu.ItemGroupLabel>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <ArkMenu.ItemGroupLabel
+      className={cn("px-2 py-1.5 font-medium text-sm", className)}
+      {...rest}
+    >
+      {children}
+    </ArkMenu.ItemGroupLabel>
+  );
+};
 
 export const MenuRadioItem = (
   props: React.ComponentProps<typeof ArkMenu.RadioItem>

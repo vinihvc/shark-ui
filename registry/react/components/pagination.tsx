@@ -34,7 +34,7 @@ export const PaginationPrevious = (
   props: React.ComponentProps<typeof ArkPagination.PrevTrigger>
 ) => (
   <ArkPagination.PrevTrigger asChild {...props}>
-    <Button variant="ghost">
+    <Button size="sm" variant="ghost">
       <ChevronLeft />
       Previous
     </Button>
@@ -45,7 +45,7 @@ export const PaginationNext = (
   props: React.ComponentProps<typeof ArkPagination.NextTrigger>
 ) => (
   <ArkPagination.NextTrigger asChild {...props}>
-    <Button variant="ghost">
+    <Button size="sm" variant="ghost">
       Next
       <ChevronRight />
     </Button>
@@ -61,10 +61,11 @@ export const PaginationItem = (
     <ArkPagination.Item asChild {...rest}>
       <Button
         className={cn(
-          "w-12",
-          "data-selected:not-[hover]:bg-primary data-selected:not-[hover]:text-primary-foreground",
+          "data-selected:not-[hover]:bg-primary",
+          "data-selected:not-[hover]:text-primary-foreground",
           className
         )}
+        size="icon-sm"
         variant="ghost"
       >
         {children}

@@ -19,9 +19,8 @@ import {
   Menu,
   MenuCheckboxItem,
   MenuContent,
+  MenuGroup,
   MenuItem,
-  MenuItemGroup,
-  MenuItemGroupLabel,
   MenuRadioGroup,
   MenuRadioItem,
   MenuSeparator,
@@ -42,7 +41,7 @@ const MenuDemo = () => {
         <Button>Open menu</Button>
       </MenuTrigger>
       <MenuContent className="w-56">
-        <MenuItemGroup>
+        <MenuGroup>
           <MenuItem value="forward">
             <Send /> Forward
             <MenuShortcut>⇧⌘F</MenuShortcut>
@@ -98,11 +97,10 @@ const MenuDemo = () => {
           <MenuSeparator />
 
           <MenuRadioGroup
+            heading="Priority"
             onValueChange={(e) => setPriority(e.value)}
             value={priority}
           >
-            <MenuItemGroupLabel>Priority</MenuItemGroupLabel>
-
             <MenuRadioItem value="low">Low</MenuRadioItem>
             <MenuRadioItem value="medium">Medium</MenuRadioItem>
             <MenuRadioItem value="high">High</MenuRadioItem>
@@ -124,7 +122,7 @@ const MenuDemo = () => {
             <Trash2 /> Delete
             <MenuShortcut>⌫</MenuShortcut>
           </MenuItem>
-        </MenuItemGroup>
+        </MenuGroup>
       </MenuContent>
     </Menu>
   );

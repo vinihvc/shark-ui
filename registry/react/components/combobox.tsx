@@ -2,8 +2,10 @@ import { Combobox as ArkCombobox } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CheckIcon, ChevronDown, X } from "lucide-react";
 import type React from "react";
+import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
+import { inputVariants } from "./input";
 
 export const Combobox = <T,>(
   props: React.ComponentProps<typeof ArkCombobox.Root<T>>
@@ -30,13 +32,17 @@ export const ComboboxControl = (
 };
 
 interface ComboboxInputProps
-  extends React.ComponentProps<typeof ArkCombobox.Input> {}
+  extends Omit<React.ComponentProps<typeof ArkCombobox.Input>, "size">,
+    VariantProps<typeof inputVariants> {}
 
 export const ComboboxInput = (props: ComboboxInputProps) => {
-  const { className, ...rest } = props;
+  const { size = "md", className, ...rest } = props;
 
   return (
-    <ArkCombobox.Input className={cn("[input]:pr-16", className)} {...rest} />
+    <ArkCombobox.Input
+      className={cn("[input]:pr-16", inputVariants({ size }), className)}
+      {...rest}
+    />
   );
 };
 

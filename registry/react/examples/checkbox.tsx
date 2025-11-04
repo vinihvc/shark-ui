@@ -10,6 +10,7 @@ const CheckboxDemo = () => {
     {
       label: "Receive notifications",
       value: "notifications",
+      disabled: true,
     },
     {
       label: "Receive marketing emails",
@@ -20,8 +21,12 @@ const CheckboxDemo = () => {
   return (
     <CheckboxGroup className="space-y-3" defaultValue={["marketing"]}>
       {options.map((option) => (
-        <Field className="flex-row" key={option.value}>
-          <Checkbox value={option.value} />
+        <Field
+          className="flex-row"
+          disabled={option.disabled}
+          key={option.value}
+        >
+          <Checkbox disabled={option.disabled} value={option.value} />
 
           <FieldLabel>{option.label}</FieldLabel>
         </Field>
