@@ -16,12 +16,11 @@ export const Card = (props: CardProps) => {
         "group/card",
         "py-(--card-spacing)",
         "flex flex-col gap-(--card-spacing)",
-        "bg-background",
+        "bg-card",
         "text-foreground",
         "rounded-lg border shadow-xs",
         "has-[table]:overflow-hidden **:[table]:overflow-hidden",
         "has-[table]:not-has-data-[part=footer]:pb-0 has-[table]:**:data-[part=footer]:border-t",
-        "**:data-[part=header]:bg-muted/50",
         className
       )}
       data-part="root"

@@ -1,10 +1,10 @@
-import { StarIcon } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, StarIcon } from "lucide-react";
+import { NavLink } from "@/components/nav-link";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 
 const HomePage = () => (
-  <>
+  <main>
     <div
       className="-z-10 absolute inset-0 min-h-screen bg-repeat-x"
       style={{ backgroundImage: "url(https://ark-ui.com/images/pattern.svg)" }}
@@ -20,10 +20,10 @@ const HomePage = () => (
     >
       <div>
         <Badge asChild className="text-ark" variant="secondary">
-          <Link href="/docs">
+          <NavLink href="/docs">
             <StarIcon />
             Now in Beta
-          </Link>
+          </NavLink>
         </Badge>
       </div>
 
@@ -42,15 +42,18 @@ const HomePage = () => (
 
       <div className="flex gap-4">
         <Button asChild size="lg">
-          <Link href="/docs">Get Started</Link>
+          <NavLink href="/docs">Get Started</NavLink>
         </Button>
 
         <Button asChild size="lg" variant="outline">
-          <Link href="https://github.com/vinihvc/shark-ui">GitHub</Link>
+          <NavLink href="/docs/components">
+            View components
+            <ArrowRight />
+          </NavLink>
         </Button>
       </div>
     </section>
-  </>
+  </main>
 );
 
 export default HomePage;

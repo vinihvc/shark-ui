@@ -1,10 +1,9 @@
 import { Combobox as ArkCombobox } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
-import { CheckIcon, ChevronDownIcon, X } from "lucide-react";
+import { CheckIcon, ChevronDown, X } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
-import { Input } from "@/registry/react/components/input";
 
 export const Combobox = <T,>(
   props: React.ComponentProps<typeof ArkCombobox.Root<T>>
@@ -31,16 +30,13 @@ export const ComboboxControl = (
 };
 
 interface ComboboxInputProps
-  extends Omit<React.ComponentProps<typeof ArkCombobox.Input>, "size">,
-    React.ComponentProps<typeof Input> {}
+  extends React.ComponentProps<typeof ArkCombobox.Input> {}
 
 export const ComboboxInput = (props: ComboboxInputProps) => {
-  const { size, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
-    <ArkCombobox.Input asChild {...rest}>
-      <Input className={cn("[input]:pr-16", className)} size={size} />
-    </ArkCombobox.Input>
+    <ArkCombobox.Input className={cn("[input]:pr-16", className)} {...rest} />
   );
 };
 
@@ -64,7 +60,7 @@ export const ComboboxTrigger = (
         )}
         variant="ghost"
       >
-        <ChevronDownIcon />
+        <ChevronDown />
       </Button>
     </ArkCombobox.Trigger>
   );

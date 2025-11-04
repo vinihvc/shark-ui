@@ -30,10 +30,16 @@ export const PopoverTrigger = (
   props: React.ComponentProps<typeof ArkPopover.Trigger>
 ) => <ArkPopover.Trigger {...props} />;
 
-export const PopoverContent = (
-  props: React.ComponentProps<typeof ArkPopover.Content>
-) => {
-  const { className, children, ...rest } = props;
+interface PopoverContentProps
+  extends React.ComponentProps<typeof ArkPopover.Content> {
+  /**
+   * Whether to show the arrow
+   */
+  showArrow?: boolean;
+}
+
+export const PopoverContent = (props: PopoverContentProps) => {
+  const { showArrow, className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -58,7 +64,7 @@ export const PopoverContent = (
           )}
           {...rest}
         >
-          <PopoverArrow />
+          {showArrow && <PopoverArrow />}
 
           {children}
         </ArkPopover.Content>
@@ -155,3 +161,7 @@ export const PopoverFooter = (props: React.ComponentProps<"div">) => {
     />
   );
 };
+
+export const PopoverClose = (
+  props: React.ComponentProps<typeof ArkPopover.CloseTrigger>
+) => <ArkPopover.CloseTrigger {...props} />;

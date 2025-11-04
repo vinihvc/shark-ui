@@ -90,7 +90,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
         {page.data.toc && page.data.toc.length > 0 ? (
-          <div className="no-scrollbar overflow-y-auto px-8">
+          <div className="overflow-y-auto px-8">
             <InlineTOC defaultOpen items={page.data.toc} />
             <div className="h-12" />
           </div>

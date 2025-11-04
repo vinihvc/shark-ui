@@ -22,7 +22,7 @@ export const Separator = (props: SeparatorProps) => {
         className
       )}
       data-orientation={orientation}
-      data-part="separator"
+      data-part="root"
       data-scope="separator"
       role="none"
       {...rest}

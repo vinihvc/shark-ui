@@ -4,9 +4,11 @@ import { cn } from "fumadocs-ui/utils/cn";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
 import { Footer } from "@/components/layout/footer";
+import { SiteHeader } from "@/components/layout/header/header";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { Toaster } from "@/registry/react/components/toast";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -57,15 +59,23 @@ const RootLayout = (props: LayoutProps<"/">) => {
       suppressHydrationWarning
     >
       <body>
-        <RootProvider>
-          {children}
+        <Providers>
+          <RootProvider
+            search={{
+              enabled: false,
+            }}
+          >
+            <SiteHeader />
 
-          <Footer />
+            {children}
 
-          <Toaster />
-        </RootProvider>
+            <Footer />
 
-        <MediaQuery />
+            <Toaster />
+
+            <MediaQuery />
+          </RootProvider>
+        </Providers>
       </body>
     </html>
   );

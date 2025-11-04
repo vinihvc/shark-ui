@@ -95,7 +95,7 @@ export function CodeBlockCommand({
             ))}
           </TabsList>
         </div>
-        <div className="no-scrollbar overflow-x-auto">
+        <div className="overflow-x-auto">
           {Object.entries(tabs).map(([key, value]) => (
             <TabsContent className="mt-0 px-4 py-3.5" key={key} value={key}>
               <pre>

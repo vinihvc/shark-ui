@@ -41,7 +41,7 @@ export function DocsSidebar({
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden px-2 pb-12">
+      <SidebarContent className="overflow-x-hidden px-2 pb-12">
         <div className="h-(--top-spacing) shrink-0" />
         <SidebarGroup>
           <SidebarGroupLabel className="font-medium text-muted-foreground">
