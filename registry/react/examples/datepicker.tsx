@@ -2,7 +2,6 @@
 
 import {
   DatePicker,
-  DatePickerContent,
   DatePickerContext,
   DatePickerMonthSelect,
   DatePickerNextTrigger,
@@ -20,49 +19,47 @@ import {
 } from "@/registry/react/components/datepicker";
 
 const DatePickerDemo = () => (
-  <DatePicker open selectionMode="range">
-    <DatePickerContent>
-      <DatePickerView view="day">
-        <DatePickerContext>
-          {(datePicker) => (
-            <>
-              <DatePickerViewControl>
-                <DatePickerPrevTrigger />
-                <DatePickerMonthSelect />
-                <DatePickerYearSelect />
-                <DatePickerNextTrigger />
-              </DatePickerViewControl>
+  <DatePicker className="rounded-lg border p-2" selectionMode="range">
+    <DatePickerView view="day">
+      <DatePickerContext>
+        {(datePicker) => (
+          <>
+            <DatePickerViewControl>
+              <DatePickerPrevTrigger />
+              <DatePickerMonthSelect />
+              <DatePickerYearSelect />
+              <DatePickerNextTrigger />
+            </DatePickerViewControl>
 
-              <DatePickerTable>
-                <DatePickerTableHead>
-                  <DatePickerTableRow>
-                    {datePicker.weekDays.map((weekDay, id) => (
-                      <DatePickerTableHeader key={id}>
-                        {weekDay.short}
-                      </DatePickerTableHeader>
+            <DatePickerTable>
+              <DatePickerTableHead>
+                <DatePickerTableRow>
+                  {datePicker.weekDays.map((weekDay, id) => (
+                    <DatePickerTableHeader key={id}>
+                      {weekDay.narrow}
+                    </DatePickerTableHeader>
+                  ))}
+                </DatePickerTableRow>
+              </DatePickerTableHead>
+
+              <DatePickerTableBody>
+                {datePicker.weeks.map((week, id) => (
+                  <DatePickerTableRow key={id}>
+                    {week.map((day) => (
+                      <DatePickerTableCell key={day.day} value={day}>
+                        <DatePickerTableCellTrigger>
+                          {day.day}
+                        </DatePickerTableCellTrigger>
+                      </DatePickerTableCell>
                     ))}
                   </DatePickerTableRow>
-                </DatePickerTableHead>
-
-                <DatePickerTableBody>
-                  {datePicker.weeks.map((week, id) => (
-                    <DatePickerTableRow key={id}>
-                      {week.map((day, id) => (
-                        <DatePickerTableCell key={id} value={day}>
-                          <DatePickerTableCellTrigger>
-                            {day.day}
-                          </DatePickerTableCellTrigger>
-                        </DatePickerTableCell>
-                      ))}
-                    </DatePickerTableRow>
-                  ))}
-                </DatePickerTableBody>
-              </DatePickerTable>
-            </>
-          )}
-        </DatePickerContext>
-      </DatePickerView>
-    </DatePickerContent>
+                ))}
+              </DatePickerTableBody>
+            </DatePickerTable>
+          </>
+        )}
+      </DatePickerContext>
+    </DatePickerView>
   </DatePicker>
 );
 

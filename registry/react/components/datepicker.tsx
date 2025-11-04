@@ -11,14 +11,26 @@ import { Button } from "./button";
 export const DatePicker = (
   props: React.ComponentProps<typeof ArkDatePicker.Root>
 ) => {
-  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    open = true,
+    lazyMount = true,
+    unmountOnExit = true,
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <ArkDatePicker.Root
       lazyMount={lazyMount}
+      open={open}
       unmountOnExit={unmountOnExit}
       {...rest}
-    />
+    >
+      <ArkDatePicker.Content className={cn("min-w-72", className)}>
+        {children}
+      </ArkDatePicker.Content>
+    </ArkDatePicker.Root>
   );
 };
 
@@ -50,27 +62,6 @@ export const DatePickerInput = (props: DatePickerInputProps) => {
   );
 };
 
-export const DatePickerTrigger = (
-  props: React.ComponentProps<typeof ArkDatePicker.Trigger>
-) => {
-  const { className, ...rest } = props;
-
-  return <ArkDatePicker.Trigger asChild className={cn(className)} {...rest} />;
-};
-
-export const DatePickerContent = (
-  props: React.ComponentProps<typeof ArkDatePicker.Content>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkDatePicker.Content
-      className={cn("min-w-72 rounded-lg border p-2", className)}
-      {...rest}
-    />
-  );
-};
-
 export const DatePickerYearSelect = (
   props: React.ComponentProps<typeof ArkDatePicker.YearSelect>
 ) => {
@@ -80,13 +71,23 @@ export const DatePickerYearSelect = (
     <span className="relative">
       <ArkDatePicker.YearSelect
         className={cn(
-          "appearance-none rounded-md border px-2 py-1 pr-6 text-sm",
+          "appearance-none",
+          "px-2 py-1 pr-6",
+          "text-sm",
+          "rounded-md border",
+          "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
           className
         )}
         {...rest}
       />
 
-      <span className="absolute inset-y-0 right-1 flex items-center [&_svg]:size-3.5 [&_svg]:text-muted-foreground">
+      <span
+        className={cn(
+          "absolute inset-y-0 right-1",
+          "flex items-center",
+          "[&_svg]:size-3.5 [&_svg]:text-muted-foreground"
+        )}
+      >
         <ChevronDown />
       </span>
     </span>
@@ -102,13 +103,23 @@ export const DatePickerMonthSelect = (
     <span className="relative">
       <ArkDatePicker.MonthSelect
         className={cn(
-          "appearance-none rounded-md border px-2 py-1 pr-6 text-sm",
+          "appearance-none",
+          "px-2 py-1 pr-6",
+          "text-sm",
+          "rounded-md border",
+          "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
           className
         )}
         {...rest}
       />
 
-      <span className="absolute inset-y-0 right-1 flex items-center [&_svg]:size-3.5 [&_svg]:text-muted-foreground">
+      <span
+        className={cn(
+          "absolute inset-y-0 right-1",
+          "flex items-center",
+          "[&_svg]:size-3.5 [&_svg]:text-muted-foreground"
+        )}
+      >
         <ChevronDown />
       </span>
     </span>
