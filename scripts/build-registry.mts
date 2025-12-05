@@ -1,67 +1,50 @@
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { z } from "zod";
+import { pathToFileURL } from "node:url";
+import type { RegistryItemType } from "../lib/registry";
 
-const componentMetadataSchema = z.object({
-  name: z.string(),
-  type: z.string(),
-  description: z.string(),
-  category: z.string(),
-  tags: z.array(z.string()),
-  dependencies: z.array(z.string()),
-  registryDependencies: z.array(z.string()),
-  files: z.array(
-    z.object({
-      name: z.string(),
-      content: z.string(),
-    })
-  ),
-  categories: z.array(z.string()),
-  meta: z.object({
-    category: z.string(),
-    tags: z.array(z.string()),
-    dependencies: z.array(z.string()),
-  }),
-});
+const extractComponentMetadata = async (
+  framework: "react",
+  componentName: string,
+  sourceCode: string
+) => {
+  const manifestFilePath = join(
+    process.cwd(),
+    "registry",
+    "manifest",
+    `${componentName}.ts`
+  );
 
-const componentRegistrySchema = z.object({
-  name: z.string(),
-  version: z.string(),
-  description: z.string(),
-  url: z.string(),
-  items: z.array(componentMetadataSchema),
-});
+  let manifestData: RegistryItemType;
 
-type ComponentMetadata = z.infer<typeof componentMetadataSchema>;
-type ComponentRegistry = z.infer<typeof componentRegistrySchema>;
+  try {
+    // Check if manifest file exists
+    await access(manifestFilePath);
 
-const extractComponentMetadata = (
-  sourceCode: string,
-  componentName: string
-): ComponentMetadata => {
-  const metadata = {
-    name: componentName,
-    type: "components:ui",
-    description: `A ${componentName} component built with Ark UI`,
-    category: "ui",
-    tags: [componentName],
-    dependencies: ["@ark-ui/react"],
-    registryDependencies: [],
+    // Dynamically import the TypeScript manifest file using file:// URL
+    const manifestUrl = pathToFileURL(manifestFilePath).href;
+    const manifestModule = await import(manifestUrl);
+    manifestData = manifestModule.default as RegistryItemType;
+  } catch {
+    // If manifest doesn't exist, create a default one
+    manifestData = {
+      name: componentName,
+      type: "registry:ui",
+      dependencies: ["@ark-ui/react"],
+    };
+  }
+
+  return {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    ...manifestData,
     files: [
       {
-        name: `${componentName}.tsx`,
+        path: `registry/${framework}/components/${componentName}.tsx`,
         content: sourceCode,
+        type: "text/tsx",
       },
     ],
-    categories: ["ui"],
-    meta: {
-      category: "ui",
-      tags: [componentName],
-      dependencies: ["@ark-ui/react"],
-    },
   };
-
-  return componentMetadataSchema.parse(metadata);
 };
 
 const ensureDirectoryExists = async (dirPath: string) => {
@@ -72,14 +55,17 @@ const ensureDirectoryExists = async (dirPath: string) => {
   }
 };
 
-const buildRegistry = async (framework = "react", component = "avatar") => {
+const buildRegistry = async (
+  framework: "react" = "react",
+  componentName = "avatar"
+) => {
   try {
     const filePath = join(
       process.cwd(),
       "registry",
       framework,
       "components",
-      `${component}.tsx`
+      `${componentName}.tsx`
     );
 
     // Check if file exists before reading
@@ -94,49 +80,31 @@ const buildRegistry = async (framework = "react", component = "avatar") => {
     const sourceCode = await readFile(filePath, "utf-8");
 
     // Extract metadata from source code
-    const metadata = extractComponentMetadata(sourceCode, component);
+    const metadata = await extractComponentMetadata(
+      framework,
+      componentName,
+      sourceCode
+    );
 
     // Ensure public/r directory exists
     const publicRDir = join(process.cwd(), "public", "r");
     await ensureDirectoryExists(publicRDir);
 
     // Create individual component JSON file
-    const componentFilePath = join(publicRDir, `${component}.json`);
+    const componentFilePath = join(publicRDir, `${componentName}.json`);
     await writeFile(componentFilePath, JSON.stringify(metadata, null, 2));
-    console.log(`✅ Generated ${component}.json`);
+    console.log(`✅ Generated ${componentName}.json`);
 
     // Update main registry.json
     const registryPath = join(process.cwd(), "registry.json");
-    let registry: ComponentRegistry;
+    let registry: { items: unknown[] };
 
     try {
       const registryContent = await readFile(registryPath, "utf-8");
       const parsedRegistry = JSON.parse(registryContent);
-      registry = componentRegistrySchema.parse(parsedRegistry);
+      registry = parsedRegistry as { items: unknown[] };
     } catch {
-      // Create new registry if it doesn't exist
-      registry = {
-        name: "shark-ui",
-        version: "1.0.0",
-        description: "shadcn components powered by ark-ui",
-        url: "https://github.com/vinihvc/shark-ui",
-        items: [],
-      };
-    }
-
-    // Check if component already exists in registry
-    const existingIndex = registry.items.findIndex(
-      (item: ComponentMetadata) => item.name === component
-    );
-
-    if (existingIndex >= 0) {
-      // Update existing component
-      registry.items[existingIndex] = metadata;
-      console.log(`🔄 Updated ${component} in registry`);
-    } else {
-      // Add new component
-      registry.items.push(metadata);
-      console.log(`➕ Added ${component} to registry`);
+      throw new Error("Failed to read registry.json");
     }
 
     // Write updated registry
@@ -150,7 +118,7 @@ const buildRegistry = async (framework = "react", component = "avatar") => {
   }
 };
 
-const processAllComponents = async (framework = "react") => {
+const processAllComponents = async (framework: "react" = "react") => {
   try {
     const componentsDir = join(
       process.cwd(),
@@ -169,7 +137,7 @@ const processAllComponents = async (framework = "react") => {
     for (const file of componentFiles) {
       const componentName = file.replace(".tsx", "");
       console.log(`\n📦 Processing ${componentName}...`);
-      await buildRegistry(framework, componentName);
+      await buildRegistry("react", componentName);
     }
 
     console.log(
@@ -185,4 +153,4 @@ const processAllComponents = async (framework = "react") => {
 // For all components: processAllComponents("react").catch(console.error);
 
 // Default: process all components
-processAllComponents().catch(console.error);
+buildRegistry("react", "button").catch(console.error);
