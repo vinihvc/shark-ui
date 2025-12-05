@@ -47,6 +47,7 @@ export const CommandMenu = (props: CommandMenuProps) => {
 
   const { contains } = useFilter({ sensitivity: "base" });
 
+  // biome-ignore lint/nursery/useFind: yes
   const components = tree.children
     .filter((group) => group.type === "folder")[0]
     .children.map((item) => ({

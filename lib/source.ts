@@ -19,6 +19,8 @@ export const getPageImage = (page: InferPageType<typeof source>) => {
 };
 
 export const getLLMText = async (page: InferPageType<typeof source>) => {
+  // biome-ignore lint/suspicious/noTsIgnore: idk
+  // @ts-ignore fumadocs type error
   const processed = await page.data.getText("processed");
 
   return `# ${page.data.title} (${page.url})

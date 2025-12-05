@@ -64,8 +64,8 @@ export const CardHeader = (props: HeaderProps) => {
       data-scope="card"
       {...rest}
     >
-      {title && <CardTitle>{title}</CardTitle>}
-      {description && <CardDescription>{description}</CardDescription>}
+      {!!title && <CardTitle>{title}</CardTitle>}
+      {!!description && <CardDescription>{description}</CardDescription>}
       {!title && typeof children === "string" ? (
         <CardTitle>{children}</CardTitle>
       ) : (
