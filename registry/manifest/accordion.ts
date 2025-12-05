@@ -10,8 +10,22 @@ const cssVars = {
 };
 
 const css = {
-	"@keyframes slideUp": "from { height: var(--height); } to { height: 0; }",
-	"@keyframes slideDown": "from { height: 0; } to { height: var(--height); }",
+	"@keyframes slideUp": {
+		from: {
+			height: "var(--height)",
+		},
+		to: {
+			height: "0",
+		},
+	},
+	"@keyframes slideDown": {
+		from: {
+			height: "0",
+		},
+		to: {
+			height: "var(--height)",
+		},
+	},
 };
 
 const manifest: RegistryItemType = {

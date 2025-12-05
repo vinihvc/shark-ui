@@ -10,10 +10,22 @@ const cssVars = {
 };
 
 const css = {
-	"@keyframes marqueeX":
-		"from { transform: translateX(0); } to { transform: translateX(var(--marquee-translate)); }",
-	"@keyframes marqueeY":
-		"from { transform: translateY(0); } to { transform: translateY(var(--marquee-translate)); }",
+	"@keyframes marqueeX": {
+		from: {
+			transform: "translateX(0)",
+		},
+		to: {
+			transform: "translateX(var(--marquee-translate))",
+		},
+	},
+	"@keyframes marqueeY": {
+		from: {
+			transform: "translateY(0)",
+		},
+		to: {
+			transform: "translateY(var(--marquee-translate))",
+		},
+	},
 };
 
 const manifest: RegistryItemType = {

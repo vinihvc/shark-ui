@@ -6,7 +6,9 @@ export const registryItemSchema = z.object({
 	dependencies: z.array(z.string()),
 	registryDependencies: z.array(z.string()).optional(),
 	cssVars: z.record(z.string(), z.record(z.string(), z.string())).optional(),
-	css: z.record(z.string(), z.string()).optional(),
+	css: z
+		.record(z.string(), z.record(z.string(), z.record(z.string(), z.string())))
+		.optional(),
 });
 
 export type RegistryItemType = z.infer<typeof registryItemSchema>;
