@@ -1,153 +1,23 @@
 ---
-title: "Button"
-description: "Displays a button or a component that looks like a button."
+title: Button
+description: Render a button or an element styled as a button, used to trigger an action or event
 ---
 
-import { Preview } from "@/components/preview";
-import { CodeBlock } from "@/components/code-block";
-import { Button } from "@/components/ui/button";
-import { Download, Heart, Settings, User } from "lucide-react";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="button" />
 
 ## Installation
 
-```bash
-pnpm add @ark-ui/react
-```
+<ComponentInstallation componentName="button" />
 
 ## Usage
 
-```tsx
+```tsx lineNumbers
 import { Button } from "@/components/ui/button";
 ```
 
-## Examples
-
-### Default
-
-<Preview>
-  <div className="flex flex-wrap gap-4">
-    <Button>Button</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="outline">Outline</Button>
-    <Button variant="ghost">Ghost</Button>
-    <Button variant="link">Link</Button>
-    <Button variant="destructive">Destructive</Button>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Button } from "@/components/ui/button";
-
-export function ButtonDemo() {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Button>Button</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="link">Link</Button>
-      <Button variant="destructive">Destructive</Button>
-    </div>
-  );
-}
+```tsx lineNumbers
+<Button>Click me</Button>
 ```
-</CodeBlock>
-
-### With Icons
-
-<Preview>
-  <div className="flex flex-wrap gap-4">
-    <Button>
-      <Download className="mr-2 h-4 w-4" />
-      Download
-    </Button>
-    <Button variant="outline">
-      <Settings className="mr-2 h-4 w-4" />
-      Settings
-    </Button>
-    <Button variant="ghost">
-      <Heart className="mr-2 h-4 w-4" />
-      Like
-    </Button>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Button } from "@/components/ui/button";
-import { Download, Heart, Settings } from "lucide-react";
-
-export function ButtonWithIcons() {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Button>
-        <Download className="mr-2 h-4 w-4" />
-        Download
-      </Button>
-      <Button variant="outline">
-        <Settings className="mr-2 h-4 w-4" />
-        Settings
-      </Button>
-      <Button variant="ghost">
-        <Heart className="mr-2 h-4 w-4" />
-        Like
-      </Button>
-    </div>
-  );
-}
-```
-</CodeBlock>
-
-### Sizes
-
-<Preview>
-  <div className="flex flex-wrap items-center gap-4">
-    <Button size="sm">Small</Button>
-    <Button size="default">Default</Button>
-    <Button size="lg">Large</Button>
-    <Button size="icon">
-      <User className="h-4 w-4" />
-    </Button>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Button } from "@/components/ui/button";
-import { User } from "lucide-react";
-
-export function ButtonSizes() {
-  return (
-    <div className="flex flex-wrap items-center gap-4">
-      <Button size="sm">Small</Button>
-      <Button size="default">Default</Button>
-      <Button size="lg">Large</Button>
-      <Button size="icon">
-        <User className="h-4 w-4" />
-      </Button>
-    </div>
-  );
-}
-```
-</CodeBlock>
-
-### Disabled
-
-<Preview>
-  <div className="flex flex-wrap gap-4">
-    <Button disabled>Disabled</Button>
-    <Button variant="outline" disabled>Disabled Outline</Button>
-    <Button variant="ghost" disabled>Disabled Ghost</Button>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-<div className="flex flex-wrap gap-4">
-  <Button disabled>Disabled</Button>
-  <Button variant="outline" disabled>Disabled Outline</Button>
-  <Button variant="ghost" disabled>Disabled Ghost</Button>
-</div>
-```
-</CodeBlock>

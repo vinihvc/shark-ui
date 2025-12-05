@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/tabs.tsx",
+      "content": "import { Tabs as ArkTabs } from \"@ark-ui/react/tabs\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type React from \"react\";\n\nexport const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {\n  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;\n\n  return (\n    <ArkTabs.Root\n      className={cn(\"flex flex-col gap-2\", className)}\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsList = (props: React.ComponentProps<typeof ArkTabs.List>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.List\n      className={cn(\n        \"relative\",\n        \"h-9 w-fit p-1\",\n        \"inline-flex items-center justify-center\",\n        \"bg-muted\",\n        \"text-muted-foreground\",\n        \"rounded-lg\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsTrigger = (\n  props: React.ComponentProps<typeof ArkTabs.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.Trigger\n      className={cn(\n        \"h-[calc(100%-1px)] px-2 py-1\",\n        \"inline-flex flex-1 items-center justify-center gap-1.5\",\n        \"whitespace-nowrap font-medium text-muted-foreground text-sm\",\n        \"rounded-md border border-transparent\",\n        \"transition-[color,box-shadow]\",\n        \"focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"aria-selected:text-foreground\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsIndicator = (\n  props: React.ComponentProps<typeof ArkTabs.Indicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.Indicator\n      className={cn(\n        \"absolute bottom-0 h-0.5 w-(--width) bg-primary\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsContent = (\n  props: React.ComponentProps<typeof ArkTabs.Content>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.Content\n      className={cn(\"flex-1 outline-none\", className)}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

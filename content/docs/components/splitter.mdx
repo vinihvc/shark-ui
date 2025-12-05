@@ -1,0 +1,40 @@
+---
+title: Splitter
+description: A splitter is a component that splits content into two or more panels.
+links:
+  doc: https://ark-ui.com/docs/components/splitter
+  api: https://ark-ui.com/docs/components/splitter#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="splitter" />
+
+## Installation
+
+<ComponentInstallation componentName="splitter">
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Splitter, 
+  SplitterPanel, 
+  SplitterResizeTrigger 
+} from "@/components/ui/splitter";
+```
+
+```tsx lineNumbers
+<Splitter>
+  <SplitterPanel id="1">Panel 1</SplitterPanel>
+  <SplitterResizeTrigger id="1:2" withHandle />
+  <SplitterPanel id="2">Panel 2</SplitterPanel>
+</Splitter>
+```

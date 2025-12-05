@@ -1,140 +1,27 @@
 ---
-title: "Separator"
-description: "Visually or semantically separates content."
+title: Separator  
+description: A separator is a component that separates content with a thin line.
+links:
+  doc: https://ark-ui.com/docs/components/separator
+  api: https://ark-ui.com/docs/components/separator#api-reference
 ---
 
-import { Preview } from "@/components/preview";
-import { CodeBlock } from "@/components/code-block";
-import { Separator } from "@/components/ui/separator";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="separator" />
 
 ## Installation
 
-```bash
-pnpm add @ark-ui/react
-```
+<ComponentInstallation componentName="separator" />
+
 
 ## Usage
 
-```tsx
+```tsx lineNumbers
 import { Separator } from "@/components/ui/separator";
 ```
 
-## Examples
-
-### Basic
-
-<Preview>
-  <div>
-    <div className="space-y-1">
-      <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-      <p className="text-sm text-muted-foreground">
-        An open-source UI component library.
-      </p>
-    </div>
-    <Separator className="my-4" />
-    <div className="flex h-5 items-center space-x-4 text-sm">
-      <div>Blog</div>
-      <Separator orientation="vertical" />
-      <div>Docs</div>
-      <Separator orientation="vertical" />
-      <div>Source</div>
-    </div>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Separator } from "@/components/ui/separator";
-
-export function SeparatorDemo() {
-  return (
-    <div>
-      <div className="space-y-1">
-        <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-        <p className="text-sm text-muted-foreground">
-          An open-source UI component library.
-        </p>
-      </div>
-      <Separator className="my-4" />
-      <div className="flex h-5 items-center space-x-4 text-sm">
-        <div>Blog</div>
-        <Separator orientation="vertical" />
-        <div>Docs</div>
-        <Separator orientation="vertical" />
-        <div>Source</div>
-      </div>
-    </div>
-  );
-}
+```tsx lineNumbers
+<Separator />
 ```
-</CodeBlock>
-
-### Horizontal
-
-<Preview>
-  <div className="space-y-4">
-    <div>
-      <h4 className="text-sm font-medium">Section 1</h4>
-      <p className="text-sm text-muted-foreground">Content for section 1</p>
-    </div>
-    <Separator />
-    <div>
-      <h4 className="text-sm font-medium">Section 2</h4>
-      <p className="text-sm text-muted-foreground">Content for section 2</p>
-    </div>
-    <Separator />
-    <div>
-      <h4 className="text-sm font-medium">Section 3</h4>
-      <p className="text-sm text-muted-foreground">Content for section 3</p>
-    </div>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-<div className="space-y-4">
-  <div>
-    <h4 className="text-sm font-medium">Section 1</h4>
-    <p className="text-sm text-muted-foreground">Content for section 1</p>
-  </div>
-  <Separator />
-  <div>
-    <h4 className="text-sm font-medium">Section 2</h4>
-    <p className="text-sm text-muted-foreground">Content for section 2</p>
-  </div>
-  <Separator />
-  <div>
-    <h4 className="text-sm font-medium">Section 3</h4>
-    <p className="text-sm text-muted-foreground">Content for section 3</p>
-  </div>
-</div>
-```
-</CodeBlock>
-
-### Vertical
-
-<Preview>
-  <div className="flex h-5 items-center space-x-4 text-sm">
-    <div>Home</div>
-    <Separator orientation="vertical" />
-    <div>Components</div>
-    <Separator orientation="vertical" />
-    <div>Hooks</div>
-    <Separator orientation="vertical" />
-    <div>Docs</div>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-<div className="flex h-5 items-center space-x-4 text-sm">
-  <div>Home</div>
-  <Separator orientation="vertical" />
-  <div>Components</div>
-  <Separator orientation="vertical" />
-  <div>Hooks</div>
-  <Separator orientation="vertical" />
-  <div>Docs</div>
-</div>
-```
-</CodeBlock>

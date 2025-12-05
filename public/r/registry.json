@@ -1,0 +1,29 @@
+{
+  "name": "shark-ui",
+  "version": "1.0.0",
+  "description": "shadcn components powered by ark-ui",
+  "url": "https://github.com/vinihvc/shark-ui",
+  "items": [
+    {
+      "name": "avatar",
+      "type": "components:ui",
+      "description": "An image element with a fallback to represent a user or entity",
+      "category": "ui",
+      "tags": ["avatar", "image", "user"],
+      "dependencies": ["@ark-ui/react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "name": "avatar.tsx",
+          "content": "import { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst avatarVariants = tv({\n  slots: {\n    root: \"relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full\",\n    image: \"aspect-square size-full\",\n    fallback: [\n      \"flex size-full items-center justify-center rounded-full\",\n      \"bg-muted text-muted-foreground\",\n      \"font-medium text-sm\",\n    ],\n  },\n});\n\nconst { root, image, fallback } = avatarVariants();\n\nexport interface AvatarProps\n  extends React.ComponentProps<typeof ArkAvatar.Root>,\n    VariantProps<typeof avatarVariants> {}\n\nconst AvatarRoot = React.forwardRef<\n  React.ElementRef<typeof ArkAvatar.Root>,\n  AvatarProps\n>(({ className, ...props }, ref) => (\n  <ArkAvatar.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nAvatarRoot.displayName = \"Avatar\";\n\nconst AvatarImage = React.forwardRef<\n  React.ElementRef<typeof ArkAvatar.Image>,\n  React.ComponentProps<typeof ArkAvatar.Image>\n>(({ className, ...props }, ref) => (\n  <ArkAvatar.Image className={cn(image(), className)} ref={ref} {...props} />\n));\nAvatarImage.displayName = \"AvatarImage\";\n\nconst AvatarFallback = React.forwardRef<\n  React.ElementRef<typeof ArkAvatar.Fallback>,\n  React.ComponentProps<typeof ArkAvatar.Fallback>\n>(({ className, ...props }, ref) => (\n  <ArkAvatar.Fallback\n    className={cn(fallback(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nAvatarFallback.displayName = \"AvatarFallback\";\n\nexport const Avatar = {\n  Root: AvatarRoot,\n  Image: AvatarImage,\n  Fallback: AvatarFallback,\n};\n"
+        }
+      ],
+      "categories": ["ui"],
+      "meta": {
+        "category": "ui",
+        "tags": ["avatar", "image", "user"],
+        "dependencies": ["@ark-ui/react"]
+      }
+    }
+  ]
+}

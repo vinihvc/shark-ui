@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/switch.tsx",
+      "content": "import { Switch as ArkSwitch } from \"@ark-ui/react/switch\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSwitch.Root\n      className={cn(\n        \"peer\",\n        \"h-[1.15rem] w-8\",\n        \"inline-flex shrink-0 items-center\",\n        \"rounded-full border border-transparent shadow-xs\",\n        \"transition-all\",\n        \"outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\n        \"data-[state=checked]:bg-primary\",\n        \"data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkSwitch.Control>\n        <ArkSwitch.Thumb\n          className={cn(\n            \"block\",\n            \"size-4\",\n            \"pointer-events-none\",\n            \"bg-background\",\n            \"rounded-full\",\n            \"transition-transform\",\n            \"ring-0\",\n            \"data-[state=checked]:translate-x-[calc(100%-2px)] dark:data-[state=checked]:bg-primary-foreground\",\n            \"dark:data-[state=unchecked]:bg-foreground\",\n            \"data-[state=unchecked]:translate-x-0\"\n          )}\n        />\n      </ArkSwitch.Control>\n\n      <ArkSwitch.HiddenInput />\n    </ArkSwitch.Root>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

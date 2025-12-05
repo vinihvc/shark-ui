@@ -1,174 +1,32 @@
 ---
-title: "Switch"
-description: "A control that allows the user to toggle between checked and not checked."
+title: Switch
+description: A control element that allows for a binary selection
+links:
+  doc: https://ark-ui.com/docs/components/switch
+  api: https://ark-ui.com/docs/components/switch#api-reference
 ---
 
-import { Preview } from "@/components/preview";
-import { CodeBlock } from "@/components/code-block";
-import { Switch } from "@/components/ui/switch";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="switch" />
 
 ## Installation
 
+<ComponentInstallation componentName="switch" >
+Install the following dependencies:
+  
 ```bash
 pnpm add @ark-ui/react
 ```
+</ComponentInstallation>
 
 ## Usage
 
-```tsx
+```tsx lineNumbers
 import { Switch } from "@/components/ui/switch";
 ```
 
-## Examples
-
-### Basic
-
-<Preview>
-  <div className="flex items-center space-x-2">
-    <Switch.Root id="airplane-mode">
-      <Switch.Control>
-        <Switch.Thumb />
-      </Switch.Control>
-      <Switch.Label htmlFor="airplane-mode">Airplane Mode</Switch.Label>
-      <Switch.HiddenInput />
-    </Switch.Root>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Switch } from "@/components/ui/switch";
-
-export function SwitchDemo() {
-  return (
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="airplane-mode">
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="airplane-mode">Airplane Mode</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-  );
-}
+```tsx lineNumbers
+<Switch />
 ```
-</CodeBlock>
-
-### With Form
-
-<Preview>
-  <form className="space-y-4">
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="notifications" name="notifications">
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="notifications">Email notifications</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="marketing" name="marketing">
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="marketing">Marketing emails</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="updates" name="updates">
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="updates">Product updates</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-  </form>
-</Preview>
-
-<CodeBlock>
-```tsx
-<form className="space-y-4">
-  <div className="flex items-center space-x-2">
-    <Switch.Root id="notifications" name="notifications">
-      <Switch.Control>
-        <Switch.Thumb />
-      </Switch.Control>
-      <Switch.Label htmlFor="notifications">Email notifications</Switch.Label>
-      <Switch.HiddenInput />
-    </Switch.Root>
-  </div>
-  <div className="flex items-center space-x-2">
-    <Switch.Root id="marketing" name="marketing">
-      <Switch.Control>
-        <Switch.Thumb />
-      </Switch.Control>
-      <Switch.Label htmlFor="marketing">Marketing emails</Switch.Label>
-      <Switch.HiddenInput />
-    </Switch.Root>
-  </div>
-  <div className="flex items-center space-x-2">
-    <Switch.Root id="updates" name="updates">
-      <Switch.Control>
-        <Switch.Thumb />
-      </Switch.Control>
-      <Switch.Label htmlFor="updates">Product updates</Switch.Label>
-      <Switch.HiddenInput />
-    </Switch.Root>
-  </div>
-</form>
-```
-</CodeBlock>
-
-### Disabled
-
-<Preview>
-  <div className="space-y-4">
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="disabled" disabled>
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="disabled">Disabled switch</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="disabled-checked" disabled defaultChecked>
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="disabled-checked">Disabled checked</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-<div className="space-y-4">
-  <div className="flex items-center space-x-2">
-    <Switch.Root id="disabled" disabled>
-      <Switch.Control>
-        <Switch.Thumb />
-      </Switch.Control>
-      <Switch.Label htmlFor="disabled">Disabled switch</Switch.Label>
-      <Switch.HiddenInput />
-    </div>
-    <div className="flex items-center space-x-2">
-      <Switch.Root id="disabled-checked" disabled defaultChecked>
-        <Switch.Control>
-          <Switch.Thumb />
-        </Switch.Control>
-        <Switch.Label htmlFor="disabled-checked">Disabled checked</Switch.Label>
-        <Switch.HiddenInput />
-      </Switch.Root>
-    </div>
-  </div>
-</div>
-```
-</CodeBlock>

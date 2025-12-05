@@ -1,29 +1,31 @@
-import { StarIcon } from "lucide-react";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, StarIcon } from "lucide-react";
+import { NavLink } from "@/components/nav-link";
+import { Badge } from "@/registry/react/components/badge";
+import { Button } from "@/registry/react/components/button";
 
 const HomePage = () => (
-  <>
+  <main>
     <div
       className="-z-10 absolute inset-0 min-h-screen bg-repeat-x"
       style={{ backgroundImage: "url(https://ark-ui.com/images/pattern.svg)" }}
     />
 
-    <div className="-z-10 absolute inset-0 hidden h-[830px] bg-[radial-gradient(42.48%_42.48%_at_calc(50%_+_100vw_/_2)_center,#EB5E41_0,rgba(235,94,65,0)_100%)] blur-2xl sm:block" />
+    <div className="-z-10 absolute inset-0 hidden h-[830px] bg-[radial-gradient(42.48%_42.48%_at_calc(50%+100vw/2)_center,#EB5E41_0,rgba(235,94,65,0)_100%)] blur-2xl sm:block" />
 
     <section
-      className="container flex flex-col gap-4 bg-[calc(50%_+_250px)_25px] bg-none bg-no-repeat py-20 md:py-32"
+      className="container flex flex-col gap-4 bg-none bg-position-[calc(50%+250px)_25px] bg-no-repeat py-20 md:py-32"
       style={{
         backgroundImage: "url(https://ark-ui.com/images/hero_dark.svg)",
       }}
     >
-      <Badge asChild className="text-ark" variant="secondary">
-        <Link href="/docs">
-          <StarIcon />
-          Now in Beta
-        </Link>
-      </Badge>
+      <div>
+        <Badge asChild className="text-ark" variant="secondary">
+          <NavLink href="/docs">
+            <StarIcon />
+            Now in Beta
+          </NavLink>
+        </Badge>
+      </div>
 
       <h1 className="text-balance font-semibold text-4xl leading-tight sm:text-5xl md:text-6xl">
         shadcn/ui Components <br />
@@ -40,15 +42,18 @@ const HomePage = () => (
 
       <div className="flex gap-4">
         <Button asChild size="lg">
-          <Link href="/docs">Get Started</Link>
+          <NavLink href="/docs">Get Started</NavLink>
         </Button>
 
         <Button asChild size="lg" variant="outline">
-          <Link href="https://github.com/vinihvc/shark-ui">GitHub</Link>
+          <NavLink href="/docs/components">
+            View components
+            <ArrowRight />
+          </NavLink>
         </Button>
       </div>
     </section>
-  </>
+  </main>
 );
 
 export default HomePage;

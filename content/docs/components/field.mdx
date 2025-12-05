@@ -1,0 +1,43 @@
+---
+title: Field
+description: Provides a flexible container for form inputs, labels, and helper text
+links:
+  doc: https://ark-ui.com/docs/components/field
+  api: https://ark-ui.com/docs/components/field#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="field" />
+
+## Installation
+
+<ComponentInstallation componentName="field" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Field, 
+  FieldLabel, 
+  FieldInput, 
+  FieldHelper, 
+  FieldError 
+} from "@/components/ui/field";
+```
+
+```tsx lineNumbers
+<Field>
+  <FieldLabel>Email</FieldLabel>
+  <FieldInput />
+  <FieldHelper>Enter your email address</FieldHelper>
+  <FieldError>Email is required</FieldError>
+</Field>
+```

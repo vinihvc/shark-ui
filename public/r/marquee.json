@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/marquee.tsx",
+      "content": "import { Marquee as ArkMarquee } from \"@ark-ui/react/marquee\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface MarqueeProps\n  extends Omit<React.ComponentProps<typeof ArkMarquee.Root>, \"spacing\"> {\n  /**\n   * The spacing variable value\n   */\n  spacing?: number;\n}\n\nexport const Marquee = (props: MarqueeProps) => {\n  const {\n    spacing = 6,\n    autoFill = true,\n    speed = 50,\n    className,\n    children,\n    style,\n    ...rest\n  } = props;\n\n  return (\n    <ArkMarquee.Root\n      autoFill={autoFill}\n      className={cn(\"relative\", \"group\", \"w-full max-w-full\", className)}\n      speed={speed}\n      style={\n        {\n          \"--marquee-spacing\": `calc(${spacing} * var(--spacing))`,\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <MarqueeEdge side=\"start\" />\n\n      <ArkMarquee.Viewport className=\"flex overflow-hidden\">\n        <ArkMarquee.Content\n          className={cn(\n            \"flex\",\n            \"min-w-max\",\n            \"delay-(--marquee-delay)\",\n            \"data-[side=bottom]:animate-marquee-y data-[side=top]:animate-marquee-y\",\n            \"data-[side=end]:animate-marquee-x data-[side=start]:animate-marquee-x\",\n            \"data-[orientation=horizontal]:flex-row\",\n            \"data-[orientation=vertical]:flex-col\",\n            \"data-reverse:direction-[reverse]\",\n            \"group-data-paused:paused!\"\n          )}\n        >\n          {children}\n        </ArkMarquee.Content>\n      </ArkMarquee.Viewport>\n\n      <MarqueeEdge side=\"end\" />\n    </ArkMarquee.Root>\n  );\n};\n\nexport const MarqueeItem = (\n  props: React.ComponentProps<typeof ArkMarquee.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkMarquee.Item\n      className={cn(\"w-full text-nowrap\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const MarqueeEdge = (\n  props: React.ComponentProps<typeof ArkMarquee.Edge>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkMarquee.Edge\n      className={cn(\n        \"absolute z-10\",\n        \"w-1/5\",\n        \"pointer-events-none\",\n        \"from-background to-transparent\",\n        \"data-[side=start]:bg-linear-to-r\",\n        \"data-[side=end]:bg-linear-to-l\",\n        \"data-[side=top]:bg-linear-to-b\",\n        \"data-[side=bottom]:bg-linear-to-t\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

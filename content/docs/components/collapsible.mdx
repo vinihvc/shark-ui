@@ -1,0 +1,39 @@
+---
+title: Collapsible
+description: A collapsible component for displaying content in a vertical stack.
+links:
+  doc: https://ark-ui.com/docs/components/collapsible
+  api: https://ark-ui.com/docs/components/collapsible#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="collapsible" />
+
+## Installation
+
+<ComponentInstallation componentName="collapsible">
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Collapsible, 
+  CollapsibleTrigger, 
+  CollapsibleContent 
+} from "@/components/ui/collapsible";
+```
+
+```tsx lineNumbers
+<Collapsible>
+  <CollapsibleTrigger>Open Collapsible</CollapsibleTrigger>
+  <CollapsibleContent>Collapsible Content</CollapsibleContent>
+</Collapsible>
+```

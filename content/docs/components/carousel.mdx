@@ -1,0 +1,50 @@
+---
+title: Carousel
+description: An interactive slideshow component for cycling through elements.
+links:
+  doc: https://ark-ui.com/docs/components/carousel
+  api: https://ark-ui.com/docs/components/carousel#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="carousel" />
+
+## Installation
+
+<ComponentInstallation componentName="carousel" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Carousel,
+  CarouselControl,
+  CarouselItem,
+  CarouselItemGroup,
+  CarouselIndicator,
+  CarouselIndicatorGroup,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"; 
+```
+
+```tsx lineNumbers
+<Carousel>
+  <CarouselControl>
+    <CarouselPrevious>Previous</CarouselPrevious>
+    <CarouselNext>Next</CarouselNext>
+  </CarouselControl>
+
+  <CarouselItemGroup>
+    <CarouselItem />
+  </CarouselItemGroup>
+</Carousel>
+```

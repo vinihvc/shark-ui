@@ -1,0 +1,39 @@
+---
+title: Hover Card
+description: A card that appears when a user hovers over an element.
+links:
+  doc: https://ark-ui.com/docs/components/hover-card
+  api: https://ark-ui.com/docs/components/hover-card#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="hover-card" />
+
+## Installation
+
+<ComponentInstallation componentName="hover-card" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  HoverCard, 
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+```
+
+```tsx lineNumbers
+<HoverCard>
+  <HoverCardTrigger>Hover me</HoverCardTrigger>
+  <HoverCardContent>Hover Card Content</HoverCardContent>
+</HoverCard>
+``` 

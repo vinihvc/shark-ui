@@ -1,317 +1,42 @@
 ---
-title: "Popover"
-description: "Displays rich content in a portal, triggered by a button."
+title: Popover
+description: An overlay that displays additional information or options when triggered
 ---
 
-import { Preview } from "@/components/preview";
-import { CodeBlock } from "@/components/code-block";
-import { Popover } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { ChevronRightIcon, XIcon } from "lucide-react";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="popover" />
 
 ## Installation
+
+<ComponentInstallation componentName="popover">
+Install the following dependencies:
 
 ```bash
 pnpm add @ark-ui/react
 ```
+</ComponentInstallation>
 
 ## Usage
 
-```tsx
-import { Popover } from "@/components/ui/popover";
+```tsx lineNumbers
+import { 
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger, 
+  PopoverTitle, 
+  PopoverDescription,
+} from "@/components/ui/popover";
 ```
 
-## Examples
-
-### Basic
-
-<Preview>
-  <Popover.Root>
-    <Popover.Trigger asChild>
-      <Button variant="outline">
-        Open Popover
-        <Popover.Indicator>
-          <ChevronRightIcon className="h-4 w-4" />
-        </Popover.Indicator>
-      </Button>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content>
-        <Popover.Title>Popover Title</Popover.Title>
-        <Popover.Description>
-          This is a popover with a title and description.
-        </Popover.Description>
-        <Popover.CloseTrigger asChild>
-          <Button variant="ghost" size="icon" className="absolute right-2 top-2 h-6 w-6">
-            <XIcon className="h-4 w-4" />
-          </Button>
-        </Popover.CloseTrigger>
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Popover } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { ChevronRightIcon, XIcon } from "lucide-react";
-
-export function PopoverDemo() {
-  return (
-    <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="outline">
-          Open Popover
-          <Popover.Indicator>
-            <ChevronRightIcon className="h-4 w-4" />
-          </Popover.Indicator>
-        </Button>
-      </Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content>
-          <Popover.Title>Popover Title</Popover.Title>
-          <Popover.Description>
-            This is a popover with a title and description.
-          </Popover.Description>
-          <Popover.CloseTrigger asChild>
-            <Button variant="ghost" size="icon" className="absolute right-2 top-2 h-6 w-6">
-              <XIcon className="h-4 w-4" />
-            </Button>
-          </Popover.CloseTrigger>
-        </Popover.Content>
-      </Popover.Positioner>
-    </Popover.Root>
-  );
-}
+```tsx lineNumbers
+<Popover>
+  <PopoverTrigger>Open Popover</PopoverTrigger>
+  <PopoverContent>
+    <PopoverTitle>Popover Title</PopoverTitle>
+    <PopoverDescription>Popover Description</PopoverDescription>
+    {/* ... */}
+  </PopoverContent>
+</Popover>
 ```
-</CodeBlock>
-
-### With Rich Content
-
-<Preview>
-  <Popover.Root>
-    <Popover.Trigger asChild>
-      <Button variant="outline">Settings</Button>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content className="w-80">
-        <div className="space-y-4">
-          <div>
-            <Popover.Title>Settings</Popover.Title>
-            <Popover.Description>
-              Manage your account settings and preferences.
-            </Popover.Description>
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Notifications</span>
-              <Button variant="outline" size="sm">Toggle</Button>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Privacy</span>
-              <Button variant="outline" size="sm">Configure</Button>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Security</span>
-              <Button variant="outline" size="sm">Update</Button>
-            </div>
-          </div>
-        </div>
-        <Popover.CloseTrigger asChild>
-          <Button variant="ghost" size="icon" className="absolute right-2 top-2 h-6 w-6">
-            <XIcon className="h-4 w-4" />
-          </Button>
-        </Popover.CloseTrigger>
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-</Preview>
-
-<CodeBlock>
-```tsx
-<Popover.Root>
-  <Popover.Trigger asChild>
-    <Button variant="outline">Settings</Button>
-  </Popover.Trigger>
-  <Popover.Positioner>
-    <Popover.Content className="w-80">
-      <div className="space-y-4">
-        <div>
-          <Popover.Title>Settings</Popover.Title>
-          <Popover.Description>
-            Manage your account settings and preferences.
-          </Popover.Description>
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Notifications</span>
-            <Button variant="outline" size="sm">Toggle</Button>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Privacy</span>
-            <Button variant="outline" size="sm">Configure</Button>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Security</span>
-            <Button variant="outline" size="sm">Update</Button>
-          </div>
-        </div>
-      </div>
-      <Popover.CloseTrigger asChild>
-        <Button variant="ghost" size="icon" className="absolute right-2 top-2 h-6 w-6">
-          <XIcon className="h-4 w-4" />
-        </Button>
-      </Popover.CloseTrigger>
-    </Popover.Content>
-  </Popover.Positioner>
-</Popover.Root>
-```
-</CodeBlock>
-
-### With Different Positions
-
-<Preview>
-  <div className="flex flex-wrap gap-4">
-    <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="outline">Top</Button>
-      </Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content side="top">
-          <Popover.Title>Top Popover</Popover.Title>
-          <Popover.Description>This popover appears on top.</Popover.Description>
-          <Popover.Arrow />
-        </Popover.Content>
-      </Popover.Positioner>
-    </Popover.Root>
-
-    <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="outline">Right</Button>
-      </Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content side="right">
-          <Popover.Title>Right Popover</Popover.Title>
-          <Popover.Description>This popover appears on the right.</Popover.Description>
-          <Popover.Arrow />
-        </Popover.Content>
-      </Popover.Positioner>
-    </Popover.Root>
-
-    <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="outline">Bottom</Button>
-      </Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content side="bottom">
-          <Popover.Title>Bottom Popover</Popover.Title>
-          <Popover.Description>This popover appears on the bottom.</Popover.Description>
-          <Popover.Arrow />
-        </Popover.Content>
-      </Popover.Positioner>
-    </Popover.Root>
-
-    <Popover.Root>
-      <Popover.Trigger asChild>
-        <Button variant="outline">Left</Button>
-      </Popover.Trigger>
-      <Popover.Positioner>
-        <Popover.Content side="left">
-          <Popover.Title>Left Popover</Popover.Title>
-          <Popover.Description>This popover appears on the left.</Popover.Description>
-          <Popover.Arrow />
-        </Popover.Content>
-      </Popover.Positioner>
-    </Popover.Root>
-  </div>
-</Preview>
-
-<CodeBlock>
-```tsx
-<div className="flex flex-wrap gap-4">
-  <Popover.Root>
-    <Popover.Trigger asChild>
-      <Button variant="outline">Top</Button>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content side="top">
-        <Popover.Title>Top Popover</Popover.Title>
-        <Popover.Description>This popover appears on top.</Popover.Description>
-        <Popover.Arrow />
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-
-  <Popover.Root>
-    <Popover.Trigger asChild>
-      <Button variant="outline">Right</Button>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content side="right">
-        <Popover.Title>Right Popover</Popover.Title>
-        <Popover.Description>This popover appears on the right.</Popover.Description>
-        <Popover.Arrow />
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-
-  <Popover.Root>
-    <Popover.Trigger asChild>
-      <Button variant="outline">Bottom</Button>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content side="bottom">
-        <Popover.Title>Bottom Popover</Popover.Title>
-        <Popover.Description>This popover appears on the bottom.</Popover.Description>
-        <Popover.Arrow />
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-
-  <Popover.Root>
-    <Popover.Trigger asChild>
-      <Button variant="outline">Left</Button>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content side="left">
-        <Popover.Title>Left Popover</Popover.Title>
-        <Popover.Description>This popover appears on the left.</Popover.Description>
-        <Popover.Arrow />
-      </Popover.Content>
-    </Popover.Positioner>
-  </Popover.Root>
-</div>
-```
-</CodeBlock>
-
-
-The title element of the popover.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |
-
-### Popover.Description
-
-The description element of the popover.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |
-
-### Popover.CloseTrigger
-
-The close trigger element of the popover.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |
-
-### Popover.Arrow
-
-The arrow element of the popover.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `asChild` | `boolean` | - | Use the provided child element as the default rendered element. |

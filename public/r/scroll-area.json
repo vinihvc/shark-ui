@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/scroll-area.tsx",
+      "content": "import { ScrollArea as ArkScrollArea } from \"@ark-ui/react/scroll-area\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const ScrollArea = (\n  props: React.ComponentProps<typeof ArkScrollArea.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <>\n      <style>\n        {`\n        [data-scope='scroll-area'][data-part='viewport'] {\n          scrollbar-width: none;\n          &::-webkit-scrollbar {\n            display: none;\n          }\n        }\n}`}\n      </style>\n\n      <ArkScrollArea.Root className={cn(\"flex size-full\", className)} {...rest}>\n        <ArkScrollArea.Viewport\n          className={cn(\n            \"size-full\",\n            \"rounded-md\",\n            \"-outline-offset-1 outline-1 outline-gray-300\",\n            \"transition-[color,box-shadow]\",\n            \"outline-none focus-visible:outline-1 focus-visible:ring-[3px] focus-visible:ring-ring/50\"\n          )}\n        >\n          <ArkScrollArea.Content>{children}</ArkScrollArea.Content>\n        </ArkScrollArea.Viewport>\n\n        <ScrollAreaScrollbar orientation=\"vertical\" />\n\n        <ArkScrollArea.Corner />\n      </ArkScrollArea.Root>\n    </>\n  );\n};\n\nexport const ScrollAreaScrollbar = (\n  props: React.ComponentProps<typeof ArkScrollArea.Scrollbar>\n) => {\n  const { orientation, className, ...rest } = props;\n\n  return (\n    <ArkScrollArea.Scrollbar\n      className={cn(\n        \"m-2 flex rounded-md bg-muted opacity-0 transition-opacity delay-300 duration-150\",\n        \"hover:opacity-100 hover:delay-0 hover:duration-75 data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-75\",\n        \"before:absolute before:content-['']\",\n        orientation === \"vertical\" &&\n          \"h-full w-1 justify-center before:h-full before:w-5 data-[overflow-y=false]:hidden\",\n        orientation === \"horizontal\" &&\n          \"h-1 w-full items-center before:h-5 before:w-full data-[overflow-x=false]:hidden\",\n        className\n      )}\n      orientation={orientation}\n      {...rest}\n    >\n      <ArkScrollArea.Thumb className=\"relative flex-1 rounded-md bg-primary\" />\n    </ArkScrollArea.Scrollbar>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

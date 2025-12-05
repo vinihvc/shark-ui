@@ -1,0 +1,49 @@
+---
+title: Menu
+description: A list of options that appears when a user interacts with a button
+links:
+  doc: https://ark-ui.com/docs/components/menu
+  api: https://ark-ui.com/docs/components/menu#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="menu" />
+
+## Installation
+
+<ComponentInstallation componentName="menu" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Menu, 
+  MenuTrigger, 
+  MenuContent, 
+  MenuItemGroup, 
+  MenuItemGroupLabel, 
+  MenuItem 
+} from "@/components/ui/menu";
+```
+
+```tsx lineNumbers
+<Menu>
+  <MenuTrigger>Open menu</MenuTrigger>
+  <MenuContent>
+    <MenuItemGroup>
+      <MenuItemGroupLabel>Group 1</MenuItemGroupLabel>
+      <MenuItem value="item-1">Item 1</MenuItem>
+      <MenuItem value="item-2">Item 2</MenuItem>
+      <MenuItem value="item-3">Item 3</MenuItem>
+    </MenuItemGroup>
+  </MenuContent>
+</Menu>
+```

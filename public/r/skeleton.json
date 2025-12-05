@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/skeleton.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\nexport const Skeleton = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-accent\", className)}\n      data-part=\"skeleton\"\n      data-scope=\"skeleton\"\n      {...rest}\n    />\n  );\n};\n\nexport const SkeletonCircle = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"size-10 shrink-0 animate-pulse rounded-full bg-accent\",\n        className\n      )}\n      data-part=\"skeleton-circle\"\n      data-scope=\"skeleton\"\n      {...rest}\n    />\n  );\n};\n\ninterface SkeletonTextProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The number of lines of the skeleton text.\n   *\n   * @default 1\n   */\n  lines?: number;\n}\n\nexport const SkeletonText = (props: SkeletonTextProps) => {\n  const { className, lines = 1, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex w-full animate-pulse flex-col gap-2\", className)}\n      data-part=\"skeleton-text\"\n      data-scope=\"skeleton\"\n      {...rest}\n    >\n      {Array.from({ length: lines }).map((_, index) => (\n        <div\n          className=\"h-4 w-full rounded-md bg-accent last:w-3/4\"\n          key={index}\n        />\n      ))}\n    </div>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+---
+title: Clipboard  
+description: A component to copy text to the clipboard
+links:
+  doc: https://ark-ui.com/docs/components/clipboard 
+  api: https://ark-ui.com/docs/components/clipboard#api-reference
+---
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="clipboard" />
+
+## Installation
+
+<ComponentInstallation componentName="clipboard">
+Install the following dependencies:
+  
+```bash pnpm add @ark-ui/react 
+```
+
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Clipboard, 
+  ClipboardTrigger, 
+  ClipboardIndicator 
+} from "@/components/ui/clipboard";
+```
+
+```tsx lineNumbers
+<Clipboard value="https://x.com/vinihvc">
+  <ClipboardTrigger>
+    <ClipboardIndicator />
+  </ClipboardTrigger>
+</Clipboard>
+```

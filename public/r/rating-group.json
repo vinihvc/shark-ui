@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/rating-group.tsx",
+      "content": "\"use client\";\n\nimport { RatingGroup as ArkRatingGroup } from \"@ark-ui/react/rating-group\";\nimport { Star } from \"lucide-react\";\nimport type React from \"react\";\n\nexport const RatingGroup = (\n  props: React.ComponentProps<typeof ArkRatingGroup.Root>\n) => {\n  const { allowHalf = false, count = 5, ...rest } = props;\n\n  return (\n    <ArkRatingGroup.Root\n      allowHalf={allowHalf}\n      className=\"text-primary\"\n      count={count}\n      {...rest}\n    >\n      <ArkRatingGroup.Control className=\"inline-flex gap-1\">\n        <ArkRatingGroup.Context>\n          {({ items }) =>\n            items.map((item) => (\n              <ArkRatingGroup.Item\n                className=\"outline-none\"\n                index={item}\n                key={item}\n              >\n                <ArkRatingGroup.ItemContext>\n                  {({ half, highlighted }) => {\n                    if (half) {\n                      return (\n                        <div className=\"relative\">\n                          <Star className=\"stroke-current\" />\n\n                          <div className=\"absolute inset-0 w-1/2 overflow-hidden\">\n                            <Star className=\"fill-current\" />\n                          </div>\n                        </div>\n                      );\n                    }\n\n                    if (highlighted) {\n                      return <Star className=\"fill-current\" />;\n                    }\n\n                    return <Star />;\n                  }}\n                </ArkRatingGroup.ItemContext>\n              </ArkRatingGroup.Item>\n            ))\n          }\n        </ArkRatingGroup.Context>\n\n        <ArkRatingGroup.HiddenInput />\n      </ArkRatingGroup.Control>\n    </ArkRatingGroup.Root>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

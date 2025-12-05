@@ -1,150 +1,47 @@
 ---
-title: "Accordion"
-description: "A vertically stacked set of interactive headings that each reveal a section of content."
+title: Accordion
+description: A collapsible component for displaying content in a vertical stack.
+links:
+  doc: https://ark-ui.com/docs/components/accordion
+  api: https://ark-ui.com/docs/components/accordion#api-reference
 ---
 
-import { Preview } from "@/components/preview";
-import { CodeBlock } from "@/components/code-block";
-import { Accordion } from "@/components/ui/accordion";
-import { ChevronDownIcon } from "lucide-react";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="accordion" />
 
 ## Installation
 
+<ComponentInstallation componentName="accordion" >
+Install the following dependencies:
+  
 ```bash
 pnpm add @ark-ui/react
 ```
+</ComponentInstallation>
 
 ## Usage
 
-```tsx
-import { Accordion } from "@/components/ui/accordion";
+```tsx lineNumbers
+import { 
+  Accordion, 
+  AccordionItem, 
+  AccordionTrigger, 
+  AccordionContent 
+} from "@/components/ui/accordion";
 ```
 
-## Examples
+```tsx lineNumbers
+<Accordion collapsible>
+  <AccordionItem value="1">
+    <AccordionTrigger>Accordion Item 1</AccordionTrigger>
+    <AccordionContent>Accordion Content 1</AccordionContent>
+  </AccordionItem>
 
-### Basic
-
-<Preview>
-  <Accordion.Root defaultValue={['React']} className="w-full max-w-md">
-    {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
-      <Accordion.Item key={item} value={item}>
-        <Accordion.ItemTrigger>
-          What is {item}?
-          <Accordion.ItemIndicator>
-            <ChevronDownIcon />
-          </Accordion.ItemIndicator>
-        </Accordion.ItemTrigger>
-        <Accordion.ItemContent>
-          {item} is a JavaScript library for building user interfaces.
-        </Accordion.ItemContent>
-      </Accordion.Item>
-    ))}
-  </Accordion.Root>
-</Preview>
-
-<CodeBlock>
-```tsx
-import { Accordion } from "@/components/ui/accordion";
-import { ChevronDownIcon } from "lucide-react";
-
-export function AccordionDemo() {
-  return (
-    <Accordion.Root defaultValue={['React']} className="w-full max-w-md">
-      {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
-        <Accordion.Item key={item} value={item}>
-          <Accordion.ItemTrigger>
-            What is {item}?
-            <Accordion.ItemIndicator>
-              <ChevronDownIcon />
-            </Accordion.ItemIndicator>
-          </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
-            {item} is a JavaScript library for building user interfaces.
-          </Accordion.ItemContent>
-        </Accordion.Item>
-      ))}
-    </Accordion.Root>
-  );
-}
+  <AccordionItem value="2">
+    <AccordionTrigger>Accordion Item 2</AccordionTrigger>
+    <AccordionContent>Accordion Content 2</AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
-</CodeBlock>
-
-### Multiple
-
-<Preview>
-  <Accordion.Root multiple defaultValue={['React', 'Vue']} className="w-full max-w-md">
-    {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
-      <Accordion.Item key={item} value={item}>
-        <Accordion.ItemTrigger>
-          What is {item}?
-          <Accordion.ItemIndicator>
-            <ChevronDownIcon />
-          </Accordion.ItemIndicator>
-        </Accordion.ItemTrigger>
-        <Accordion.ItemContent>
-          {item} is a JavaScript library for building user interfaces.
-        </Accordion.ItemContent>
-      </Accordion.Item>
-    ))}
-  </Accordion.Root>
-</Preview>
-
-<CodeBlock>
-```tsx
-<Accordion.Root multiple defaultValue={['React', 'Vue']} className="w-full max-w-md">
-  {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
-    <Accordion.Item key={item} value={item}>
-      <Accordion.ItemTrigger>
-        What is {item}?
-        <Accordion.ItemIndicator>
-          <ChevronDownIcon />
-        </Accordion.ItemIndicator>
-      </Accordion.ItemTrigger>
-      <Accordion.ItemContent>
-        {item} is a JavaScript library for building user interfaces.
-      </Accordion.ItemContent>
-    </Accordion.Item>
-  ))}
-</Accordion.Root>
-```
-</CodeBlock>
-
-### Collapsible
-
-<Preview>
-  <Accordion.Root collapsible className="w-full max-w-md">
-    {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
-      <Accordion.Item key={item} value={item}>
-        <Accordion.ItemTrigger>
-          What is {item}?
-          <Accordion.ItemIndicator>
-            <ChevronDownIcon />
-          </Accordion.ItemIndicator>
-        </Accordion.ItemTrigger>
-        <Accordion.ItemContent>
-          {item} is a JavaScript library for building user interfaces.
-        </Accordion.ItemContent>
-      </Accordion.Item>
-    ))}
-  </Accordion.Root>
-</Preview>
-
-<CodeBlock>
-```tsx
-<Accordion.Root collapsible className="w-full max-w-md">
-  {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
-    <Accordion.Item key={item} value={item}>
-      <Accordion.ItemTrigger>
-        What is {item}?
-        <Accordion.ItemIndicator>
-          <ChevronDownIcon />
-        </Accordion.ItemIndicator>
-      </Accordion.ItemTrigger>
-      <Accordion.ItemContent>
-        {item} is a JavaScript library for building user interfaces.
-      </Accordion.ItemContent>
-    </Accordion.Item>
-  ))}
-</Accordion.Root>
-```
-</CodeBlock>

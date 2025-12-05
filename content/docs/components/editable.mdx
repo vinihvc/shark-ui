@@ -1,0 +1,34 @@
+---
+title: Editable
+description: A component that allows users to edit text in place.
+links:
+  doc: https://ark-ui.com/docs/components/editable
+  api: https://ark-ui.com/docs/components/editable#api-reference
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="editable" />
+
+## Installation
+
+<ComponentInstallation componentName="editable">
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>  
+
+## Usage
+
+```tsx lineNumbers
+import { Editable } from "@/components/ui/editable";
+```
+
+```tsx lineNumbers
+<Editable>
+  <EditableContent>Editable Content</EditableContent>
+</Editable>
+```
