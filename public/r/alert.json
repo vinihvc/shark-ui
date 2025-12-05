@@ -1,31 +1,16 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert",
-  "type": "components:ui",
-  "description": "A alert component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "alert"
-  ],
+  "type": "registry:ui",
   "dependencies": [
-    "@ark-ui/react"
+    "@ark-ui/react",
+    "tailwind-variants"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "alert.tsx",
-      "content": "import type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const alertVariants = tv({\n  base: [\n    \"relative\",\n    \"w-full\",\n    \"px-4 py-3\",\n    \"grid grid-cols-[0_1fr] items-start gap-y-0.5\",\n    \"text-sm\",\n    \"rounded-lg border\",\n    \"has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3\",\n    \"[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current\",\n  ],\n  variants: {\n    variant: {\n      solid: [\"bg-card\", \"text-card-foreground\"],\n      outline: [\"border-border\", \"bg-background\", \"text-foreground\"],\n      destructive: [\n        \"border-destructive/50\",\n        \"text-destructive\",\n        \"dark:border-destructive\",\n        \"[&>svg]:text-destructive\",\n        \"*:data-[slot=alert-description]:text-destructive/90\",\n      ],\n    },\n  },\n  defaultVariants: {\n    variant: \"solid\",\n  },\n});\n\ninterface AlertProps\n  extends React.ComponentProps<\"div\">,\n    VariantProps<typeof alertVariants> {}\n\nexport const Alert = (props: AlertProps) => {\n  const { variant, className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(alertVariants({ variant }), className)}\n      data-part=\"root\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n\nexport const AlertTitle = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight\",\n        className\n      )}\n      data-part=\"alert-title\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n\nexport const AlertDescription = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed\",\n        className\n      )}\n      data-part=\"alert-description\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n"
+      "path": "registry/react/components/alert.tsx",
+      "content": "import type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const alertVariants = tv({\n  base: [\n    \"relative\",\n    \"w-full\",\n    \"px-4 py-3\",\n    \"grid grid-cols-[0_1fr] items-start gap-y-0.5\",\n    \"text-sm\",\n    \"rounded-lg border\",\n    \"has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3\",\n    \"[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current\",\n  ],\n  variants: {\n    variant: {\n      solid: [\"bg-card\", \"text-card-foreground\"],\n      outline: [\"border-border\", \"bg-background\", \"text-foreground\"],\n      destructive: [\n        \"border-destructive/50\",\n        \"text-destructive\",\n        \"dark:border-destructive\",\n        \"[&>svg]:text-destructive\",\n        \"*:data-[part=description]:text-destructive/90\",\n      ],\n    },\n  },\n  defaultVariants: {\n    variant: \"solid\",\n  },\n});\n\ninterface AlertProps\n  extends React.ComponentProps<\"div\">,\n    VariantProps<typeof alertVariants> {}\n\nexport const Alert = (props: AlertProps) => {\n  const { variant, className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(alertVariants({ variant }), className)}\n      data-part=\"root\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n\nexport const AlertTitle = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight\",\n        className\n      )}\n      data-part=\"title\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n\nexport const AlertDescription = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed\",\n        className\n      )}\n      data-part=\"description\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "alert"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

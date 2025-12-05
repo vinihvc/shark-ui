@@ -17,18 +17,21 @@ export const buttonVariants = tv({
   variants: {
     variant: {
       solid: ["bg-primary", "text-primary-foreground", "hover:bg-primary/90"],
+      outline: [
+        "bg-background",
+        "border shadow-xs",
+        "hover:bg-accent hover:text-accent-foreground",
+        "dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+      ],
+      success: ["bg-success", "text-success-foreground", "hover:bg-success/90"],
+      info: ["bg-info", "text-info-foreground", "hover:bg-info/90"],
+      warning: ["bg-warning", "text-warning-foreground", "hover:bg-warning/90"],
       destructive: [
         "bg-destructive",
         "text-white",
         "hover:bg-destructive/90",
         "focus-visible:ring-destructive/20",
         "dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
-      ],
-      outline: [
-        "bg-background",
-        "border shadow-xs",
-        "hover:bg-accent hover:text-accent-foreground",
-        "dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
       ],
       secondary: [
         "bg-secondary",

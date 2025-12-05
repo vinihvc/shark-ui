@@ -1,31 +1,15 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hover-card",
-  "type": "components:ui",
-  "description": "A hover-card component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "hover-card"
-  ],
+  "type": "registry:ui",
   "dependencies": [
     "@ark-ui/react"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "hover-card.tsx",
-      "content": "import { Portal } from \"@ark-ui/react\";\nimport { HoverCard as ArkHoverCard } from \"@ark-ui/react/hover-card\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const HoverCard = (\n  props: React.ComponentProps<typeof ArkHoverCard.Root>\n) => {\n  const {\n    lazyMount = true,\n    unmountOnExit = true,\n    positioning = { placement: \"top\" },\n    ...rest\n  } = props;\n\n  return (\n    <ArkHoverCard.Root\n      lazyMount={lazyMount}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const HoverCardTrigger = (\n  props: React.ComponentProps<typeof ArkHoverCard.Trigger>\n) => <ArkHoverCard.Trigger {...props} />;\n\nexport const HoverCardContent = (\n  props: React.ComponentProps<typeof ArkHoverCard.Content>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkHoverCard.Positioner>\n        <ArkHoverCard.Content\n          className={cn(\n            \"z-50\",\n            \"w-64\",\n            \"p-4\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"origin-(--transform-origin)\",\n            \"rounded-md border\",\n            \"shadow-md\",\n            \"outline-hidden\",\n            \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <HoverCardArrow />\n\n          {children}\n        </ArkHoverCard.Content>\n      </ArkHoverCard.Positioner>\n    </Portal>\n  );\n};\n\nexport const HoverCardArrow = (\n  props: React.ComponentProps<typeof ArkHoverCard.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkHoverCard.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--popover)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkHoverCard.ArrowTip className=\"border-t border-l\" />\n    </ArkHoverCard.Arrow>\n  );\n};\n"
+      "path": "registry/react/components/hover-card.tsx",
+      "content": "import { Portal } from \"@ark-ui/react\";\nimport { HoverCard as ArkHoverCard } from \"@ark-ui/react/hover-card\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const HoverCard = (\n  props: React.ComponentProps<typeof ArkHoverCard.Root>\n) => {\n  const {\n    lazyMount = true,\n    unmountOnExit = true,\n    positioning = { placement: \"top\" },\n    ...rest\n  } = props;\n\n  return (\n    <ArkHoverCard.Root\n      lazyMount={lazyMount}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const HoverCardTrigger = (\n  props: React.ComponentProps<typeof ArkHoverCard.Trigger>\n) => <ArkHoverCard.Trigger {...props} />;\n\nexport const HoverCardContent = (\n  props: React.ComponentProps<typeof ArkHoverCard.Content>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkHoverCard.Positioner>\n        <ArkHoverCard.Content\n          className={cn(\n            \"z-50\",\n            \"w-64\",\n            \"p-4\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"origin-(--transform-origin)\",\n            \"rounded-md border\",\n            \"shadow-md\",\n            \"outline-hidden\",\n            \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <HoverCardArrow />\n\n          {children}\n        </ArkHoverCard.Content>\n      </ArkHoverCard.Positioner>\n    </Portal>\n  );\n};\n\nexport const HoverCardArrow = (\n  props: React.ComponentProps<typeof ArkHoverCard.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkHoverCard.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--popover)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkHoverCard.ArrowTip className=\"border-t border-l\" />\n    </ArkHoverCard.Arrow>\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "hover-card"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

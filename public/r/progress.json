@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/progress.tsx",
+      "content": "import { Progress as ArkProgress } from \"@ark-ui/react/progress\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Progress = (\n  props: React.ComponentProps<typeof ArkProgress.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkProgress.Root className={cn(\"w-full\", className)} {...rest}>\n      <ArkProgress.Track\n        className={cn(\n          \"h-2 w-full overflow-hidden rounded-full bg-primary/20\",\n          className\n        )}\n      >\n        <ArkProgress.Range\n          className={cn(\n            \"h-full bg-primary transition-all duration-300 ease-out\"\n          )}\n        />\n      </ArkProgress.Track>\n    </ArkProgress.Root>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

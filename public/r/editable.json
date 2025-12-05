@@ -1,31 +1,18 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "editable",
-  "type": "components:ui",
-  "description": "A editable component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "editable"
-  ],
+  "type": "registry:ui",
   "dependencies": [
     "@ark-ui/react"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "input"
+  ],
   "files": [
     {
-      "name": "editable.tsx",
-      "content": "import { Editable as ArkEditable } from \"@ark-ui/react/editable\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Editable = (\n  props: React.ComponentProps<typeof ArkEditable.Root>\n) => {\n  const { activationMode = \"dblclick\", ...rest } = props;\n\n  return <ArkEditable.Root activationMode={activationMode} {...rest} />;\n};\n\nexport const EditableArea = (\n  props: React.ComponentProps<typeof ArkEditable.Area>\n) => <ArkEditable.Area {...props} />;\n\nexport const EditableInput = (\n  props: React.ComponentProps<typeof ArkEditable.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkEditable.Input {...rest} asChild={!children}>\n      {children || <Input />}\n    </ArkEditable.Input>\n  );\n};\n\nexport const EditablePreview = (\n  props: React.ComponentProps<typeof ArkEditable.Preview>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkEditable.Preview\n      className={cn(\n        \"relative\",\n        \"text-base md:text-sm\",\n        \"flex items-center\",\n        \"h-9 peer-data-[size=lg]:h-10 peer-data-[size=sm]:h-8\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n"
+      "path": "registry/react/components/editable.tsx",
+      "content": "import { Editable as ArkEditable } from \"@ark-ui/react/editable\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Editable = (\n  props: React.ComponentProps<typeof ArkEditable.Root>\n) => {\n  const { activationMode = \"dblclick\", ...rest } = props;\n\n  return <ArkEditable.Root activationMode={activationMode} {...rest} />;\n};\n\nexport const EditableArea = (\n  props: React.ComponentProps<typeof ArkEditable.Area>\n) => <ArkEditable.Area {...props} />;\n\nexport const EditableInput = (\n  props: React.ComponentProps<typeof ArkEditable.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkEditable.Input {...rest} asChild={!children}>\n      {children || <Input />}\n    </ArkEditable.Input>\n  );\n};\n\nexport const EditablePreview = (\n  props: React.ComponentProps<typeof ArkEditable.Preview>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkEditable.Preview\n      className={cn(\n        \"relative\",\n        \"text-base md:text-sm\",\n        \"flex items-center\",\n        \"h-9 peer-data-[size=lg]:h-10 peer-data-[size=sm]:h-8\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "editable"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

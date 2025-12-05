@@ -1,31 +1,15 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slider",
-  "type": "components:ui",
-  "description": "A slider component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "slider"
-  ],
+  "type": "registry:ui",
   "dependencies": [
     "@ark-ui/react"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "slider.tsx",
-      "content": "import { Slider as ArkSlider } from \"@ark-ui/react/slider\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Slider = (props: React.ComponentProps<typeof ArkSlider.Root>) => {\n  const { value, defaultValue, min = 0, max = 100, children, ...rest } = props;\n\n  const _values = React.useMemo(\n    () =>\n      Array.isArray(value)\n        ? value\n        : Array.isArray(defaultValue)\n          ? defaultValue\n          : [min, max],\n    [value, defaultValue, min, max]\n  );\n\n  return (\n    <ArkSlider.Root\n      className=\"flex w-full flex-col gap-1\"\n      defaultValue={defaultValue}\n      max={max}\n      min={min}\n      value={value}\n      {...rest}\n    >\n      <ArkSlider.Control className=\"relative flex h-4 items-center\">\n        <ArkSlider.Track\n          className={cn(\"h-1.5 flex-1 overflow-hidden rounded-full bg-muted\")}\n        >\n          <ArkSlider.Range\n            className={cn(\n              \"absolute\",\n              \"bg-primary\",\n              \"data-[orientation=horizontal]:h-full\",\n              'data-[orientation=vertical]:w-full\"'\n            )}\n          />\n        </ArkSlider.Track>\n\n        {Array.from({ length: _values.length }, (_, index) => (\n          <ArkSlider.Thumb\n            className={cn(\n              \"relative\",\n              \"size-4\",\n              \"border\",\n              \"bg-primary\",\n              \"rounded-full\",\n              \"transition-[color,box-shadow]\",\n              \"shadow-sm\",\n              \"ring-ring/50\",\n              \"data-dragging:ring-4\",\n              \"hover:ring-4\",\n              \"focus-visible:outline-hidden focus-visible:ring-4\",\n              \"disabled:pointer-events-none disabled:opacity-50\"\n            )}\n            index={index}\n            key={index}\n          >\n            <ArkSlider.HiddenInput />\n          </ArkSlider.Thumb>\n        ))}\n      </ArkSlider.Control>\n\n      {children}\n    </ArkSlider.Root>\n  );\n};\n\nexport const SliderValueText = (\n  props: React.ComponentProps<typeof ArkSlider.ValueText>\n) => <ArkSlider.ValueText {...props} />;\n"
+      "path": "registry/react/components/slider.tsx",
+      "content": "import { Slider as ArkSlider } from \"@ark-ui/react/slider\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Slider = (props: React.ComponentProps<typeof ArkSlider.Root>) => {\n  const { value, defaultValue, min = 0, max = 100, children, ...rest } = props;\n\n  const _values = React.useMemo(\n    () =>\n      Array.isArray(value)\n        ? value\n        : Array.isArray(defaultValue)\n          ? defaultValue\n          : [min, max],\n    [value, defaultValue, min, max]\n  );\n\n  return (\n    <ArkSlider.Root\n      className=\"flex w-full flex-col gap-1\"\n      defaultValue={defaultValue}\n      max={max}\n      min={min}\n      value={value}\n      {...rest}\n    >\n      <ArkSlider.Control className=\"relative flex h-4 items-center\">\n        <ArkSlider.Track\n          className={cn(\"h-1.5 flex-1 overflow-hidden rounded-full bg-muted\")}\n        >\n          <ArkSlider.Range\n            className={cn(\n              \"absolute\",\n              \"bg-primary\",\n              \"data-[orientation=horizontal]:h-full\",\n              'data-[orientation=vertical]:w-full\"'\n            )}\n          />\n        </ArkSlider.Track>\n\n        {Array.from({ length: _values.length }, (_, index) => (\n          <ArkSlider.Thumb\n            className={cn(\n              \"relative\",\n              \"size-4\",\n              \"border\",\n              \"bg-primary\",\n              \"rounded-full\",\n              \"transition-[color,box-shadow]\",\n              \"shadow-sm\",\n              \"ring-ring/50\",\n              \"data-dragging:ring-4\",\n              \"hover:ring-4\",\n              \"focus-visible:outline-hidden focus-visible:ring-4\",\n              \"disabled:pointer-events-none disabled:opacity-50\"\n            )}\n            index={index}\n            key={index}\n          >\n            <ArkSlider.HiddenInput />\n          </ArkSlider.Thumb>\n        ))}\n      </ArkSlider.Control>\n\n      {children}\n    </ArkSlider.Root>\n  );\n};\n\nexport const SliderValueText = (\n  props: React.ComponentProps<typeof ArkSlider.ValueText>\n) => <ArkSlider.ValueText {...props} />;\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "slider"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

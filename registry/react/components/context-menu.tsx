@@ -1,3 +1,4 @@
+import { ark } from "@ark-ui/react/factory";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import type React from "react";
 import {
@@ -18,13 +19,20 @@ export const ContextMenu = (props: React.ComponentProps<typeof Menu>) => (
 
 export const ContextMenuTrigger = (
   props: React.ComponentProps<typeof ArkMenu.ContextTrigger>
-) => (
-  <ArkMenu.ContextTrigger
-    data-part="trigger"
-    data-scope="context-menu"
-    {...props}
-  />
-);
+) => {
+  const { children, asChild, ...rest } = props;
+
+  return (
+    <ArkMenu.ContextTrigger
+      asChild
+      data-part="trigger"
+      data-scope="context-menu"
+      {...rest}
+    >
+      <ark.span asChild={asChild}>{children}</ark.span>
+    </ArkMenu.ContextTrigger>
+  );
+};
 
 export const ContextMenuContent = (
   props: React.ComponentProps<typeof MenuContent>

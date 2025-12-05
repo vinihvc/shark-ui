@@ -1,31 +1,15 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "radio-group",
-  "type": "components:ui",
-  "description": "A radio-group component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "radio-group"
-  ],
+  "type": "registry:ui",
   "dependencies": [
     "@ark-ui/react"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "radio-group.tsx",
-      "content": "import { RadioGroup as ArkRadioGroup } from \"@ark-ui/react/radio-group\";\nimport { Circle } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const RadioGroup = (\n  props: React.ComponentProps<typeof ArkRadioGroup.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkRadioGroup.Root className={cn(\"grid gap-3\", className)} {...rest}>\n      <ArkRadioGroup.Indicator />\n\n      {children}\n    </ArkRadioGroup.Root>\n  );\n};\n\nexport const RadioGroupItem = (\n  props: React.ComponentProps<typeof ArkRadioGroup.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkRadioGroup.Item\n      className={cn(\n        \"relative inline-flex items-center gap-2\",\n        \"data-disabled:cursor-not-allowed\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkRadioGroup.ItemControl\n        className={cn(\n          \"group/radio-item\",\n          \"size-4\",\n          \"flex items-center justify-center\",\n          \"bg-background\",\n          \"data-hover:bg-accent\",\n          \"dark:bg-input/30\",\n          \"text-background\",\n          \"rounded-full border\",\n          \"transition-all\"\n        )}\n      >\n        <Circle className=\"size-2.5 fill-primary opacity-0 transition-opacity group-data-[state=checked]/radio-item:opacity-100\" />\n      </ArkRadioGroup.ItemControl>\n\n      <ArkRadioGroup.ItemText\n        className={cn(\"font-medium text-sm\", \"data-disabled:opacity-40\")}\n      >\n        {children}\n      </ArkRadioGroup.ItemText>\n\n      <ArkRadioGroup.ItemHiddenInput />\n    </ArkRadioGroup.Item>\n  );\n};\n"
+      "path": "registry/react/components/radio-group.tsx",
+      "content": "import { RadioGroup as ArkRadioGroup } from \"@ark-ui/react/radio-group\";\nimport { Circle } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const RadioGroup = (\n  props: React.ComponentProps<typeof ArkRadioGroup.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkRadioGroup.Root className={cn(\"grid gap-3\", className)} {...rest}>\n      <ArkRadioGroup.Indicator />\n\n      {children}\n    </ArkRadioGroup.Root>\n  );\n};\n\nexport const RadioGroupItem = (\n  props: React.ComponentProps<typeof ArkRadioGroup.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkRadioGroup.Item\n      className={cn(\n        \"relative inline-flex items-center gap-2\",\n        \"data-disabled:cursor-not-allowed\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkRadioGroup.ItemControl\n        className={cn(\n          \"group/radio-item\",\n          \"size-4\",\n          \"flex items-center justify-center\",\n          \"bg-background\",\n          \"data-hover:bg-accent\",\n          \"dark:bg-input/30\",\n          \"text-background\",\n          \"rounded-full border\",\n          \"transition-all\"\n        )}\n      >\n        <Circle className=\"size-2.5 fill-primary opacity-0 transition-opacity group-data-[state=checked]/radio-item:opacity-100\" />\n      </ArkRadioGroup.ItemControl>\n\n      <ArkRadioGroup.ItemText\n        className={cn(\"font-medium text-sm\", \"data-disabled:opacity-40\")}\n      >\n        {children}\n      </ArkRadioGroup.ItemText>\n\n      <ArkRadioGroup.ItemHiddenInput />\n    </ArkRadioGroup.Item>\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "radio-group"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

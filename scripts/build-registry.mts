@@ -41,7 +41,7 @@ const extractComponentMetadata = async (
       {
         path: `registry/${framework}/components/${componentName}.tsx`,
         content: sourceCode,
-        type: "text/tsx",
+        type: "registry:ui",
       },
     ],
   };
@@ -153,4 +153,4 @@ const processAllComponents = async (framework: "react" = "react") => {
 // For all components: processAllComponents("react").catch(console.error);
 
 // Default: process all components
-buildRegistry("react", "button").catch(console.error);
+processAllComponents().catch(console.error);

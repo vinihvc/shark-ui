@@ -82,7 +82,7 @@ export const Tour = (props: TourProps) => {
   );
 };
 
-interface TourTriggerProps extends React.ComponentProps<"button"> {}
+interface TourTriggerProps extends React.ComponentProps<typeof ark.button> {}
 
 export const TourTrigger = (props: TourTriggerProps) => {
   const { onClick, ...rest } = props;

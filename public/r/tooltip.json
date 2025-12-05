@@ -1,31 +1,15 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip",
-  "type": "components:ui",
-  "description": "A tooltip component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "tooltip"
-  ],
+  "type": "registry:ui",
   "dependencies": [
     "@ark-ui/react"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "tooltip.tsx",
-      "content": "import { Portal } from \"@ark-ui/react\";\nimport { Tooltip as ArkTooltip } from \"@ark-ui/react/tooltip\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Tooltip = (\n  props: React.ComponentProps<typeof ArkTooltip.Root>\n) => {\n  const {\n    positioning = {\n      placement: \"top\",\n    },\n    lazyMount = true,\n    unmountOnExit = true,\n    closeDelay = 100,\n    openDelay = 0,\n    ...rest\n  } = props;\n\n  return (\n    <ArkTooltip.Root\n      closeDelay={closeDelay}\n      lazyMount={lazyMount}\n      openDelay={openDelay}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipTrigger = (\n  props: React.ComponentProps<typeof ArkTooltip.Trigger>\n) => <ArkTooltip.Trigger {...props} />;\n\nexport const TooltipContent = (\n  props: React.ComponentProps<typeof ArkTooltip.Content>\n) => {\n  const { className, children, ...rest } = props;\n  return (\n    <Portal>\n      <ArkTooltip.Positioner>\n        <ArkTooltip.Content\n          className={cn(\n            \"z-50 w-fit origin-(--transform-origin)\",\n            \"px-3 py-1.5\",\n            \"bg-foreground\",\n            \"rounded-md\",\n            \"text-pretty text-background text-xs\",\n            \"animate-in\",\n            \"fade-in-0 zoom-in-95\",\n            \"data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\",\n            \"data-[state=closed]:animate-out\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <TooltipArrow />\n\n          {children}\n        </ArkTooltip.Content>\n      </ArkTooltip.Positioner>\n    </Portal>\n  );\n};\n\nexport const TooltipArrow = (\n  props: React.ComponentProps<typeof ArkTooltip.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkTooltip.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--foreground)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkTooltip.ArrowTip />\n    </ArkTooltip.Arrow>\n  );\n};\n"
+      "path": "registry/react/components/tooltip.tsx",
+      "content": "import { Portal } from \"@ark-ui/react\";\nimport { Tooltip as ArkTooltip } from \"@ark-ui/react/tooltip\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Tooltip = (\n  props: React.ComponentProps<typeof ArkTooltip.Root>\n) => {\n  const {\n    positioning = {\n      placement: \"top\",\n    },\n    lazyMount = true,\n    unmountOnExit = true,\n    closeDelay = 100,\n    openDelay = 0,\n    ...rest\n  } = props;\n\n  return (\n    <ArkTooltip.Root\n      closeDelay={closeDelay}\n      lazyMount={lazyMount}\n      openDelay={openDelay}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipTrigger = (\n  props: React.ComponentProps<typeof ArkTooltip.Trigger>\n) => <ArkTooltip.Trigger {...props} />;\n\nexport const TooltipContent = (\n  props: React.ComponentProps<typeof ArkTooltip.Content>\n) => {\n  const { className, children, ...rest } = props;\n  return (\n    <Portal>\n      <ArkTooltip.Positioner>\n        <ArkTooltip.Content\n          className={cn(\n            \"z-50 w-fit origin-(--transform-origin)\",\n            \"px-3 py-1.5\",\n            \"bg-foreground\",\n            \"rounded-md\",\n            \"text-pretty text-background text-xs\",\n            \"animate-in\",\n            \"fade-in-0 zoom-in-95\",\n            \"data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\",\n            \"data-[state=closed]:animate-out\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <TooltipArrow />\n\n          {children}\n        </ArkTooltip.Content>\n      </ArkTooltip.Positioner>\n    </Portal>\n  );\n};\n\nexport const TooltipArrow = (\n  props: React.ComponentProps<typeof ArkTooltip.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkTooltip.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--foreground)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkTooltip.ArrowTip />\n    </ArkTooltip.Arrow>\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "tooltip"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

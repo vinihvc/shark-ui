@@ -141,8 +141,19 @@ export const DialogBody = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const DialogHeader = (props: React.ComponentProps<"div">) => {
-  const { className, ...rest } = props;
+interface DialogHeaderProps extends React.ComponentProps<"div"> {
+  /**
+   * The title of the dialog
+   */
+  title?: string;
+  /**
+   * The description of the dialog
+   */
+  description?: string;
+}
+
+export const DialogHeader = (props: DialogHeaderProps) => {
+  const { className, title, description, children, ...rest } = props;
 
   return (
     <div
@@ -150,7 +161,15 @@ export const DialogHeader = (props: React.ComponentProps<"div">) => {
       data-part="header"
       data-scope="dialog"
       {...rest}
-    />
+    >
+      {title && <DialogTitle>{title}</DialogTitle>}
+      {description && <DialogDescription>{description}</DialogDescription>}
+      {!title && typeof children === "string" ? (
+        <DialogTitle>{children}</DialogTitle>
+      ) : (
+        children
+      )}
+    </div>
   );
 };
 

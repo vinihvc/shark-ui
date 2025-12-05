@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "autocomplete",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "combobox",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/autocomplete.tsx",
+      "content": "import {\n  Combobox,\n  ComboboxClearTrigger,\n  ComboboxContent,\n  ComboboxControl,\n  ComboboxEmpty,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxItemGroup,\n  ComboboxItemGroupLabel,\n  ComboboxTrigger,\n} from \"@/registry/react/components/combobox\";\nimport { Input } from \"./input\";\n\nexport const Autocomplete = <T,>(\n  props: React.ComponentProps<typeof Combobox<T>>\n) => <Combobox allowCustomValue inputBehavior=\"autocomplete\" {...props} />;\n\nexport const AutocompleteControl = (\n  props: React.ComponentProps<typeof ComboboxControl>\n) => <ComboboxControl {...props} />;\n\nexport const AutocompleteInput = (\n  props: React.ComponentProps<typeof ComboboxInput>\n) => (\n  <ComboboxInput {...props} asChild>\n    <Input />\n  </ComboboxInput>\n);\n\nexport const AutocompleteItemGroupLabel = (\n  props: React.ComponentProps<typeof ComboboxItemGroupLabel>\n) => <ComboboxItemGroupLabel {...props} />;\n\nexport const AutocompleteItem = (\n  props: React.ComponentProps<typeof ComboboxItem>\n) => <ComboboxItem {...props} />;\n\nexport const AutocompleteContent = (\n  props: React.ComponentProps<typeof ComboboxContent>\n) => <ComboboxContent {...props} />;\n\nexport const AutocompleteTrigger = (\n  props: React.ComponentProps<typeof ComboboxTrigger>\n) => <ComboboxTrigger {...props} />;\n\nexport const AutocompleteClearTrigger = (\n  props: React.ComponentProps<typeof ComboboxClearTrigger>\n) => <ComboboxClearTrigger {...props} />;\n\nexport const AutocompleteItemGroup = (\n  props: React.ComponentProps<typeof ComboboxItemGroup>\n) => <ComboboxItemGroup {...props} />;\n\nexport const AutocompleteEmpty = (\n  props: React.ComponentProps<typeof ComboboxEmpty>\n) => <ComboboxEmpty {...props} />;\n",
+      "type": "registry:ui"
+    }
+  ]
+}

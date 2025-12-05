@@ -1,31 +1,15 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "field",
-  "type": "components:ui",
-  "description": "A field component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "field"
-  ],
+  "type": "registry:ui",
   "dependencies": [
     "@ark-ui/react"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "field.tsx",
-      "content": "import { Field as ArkField } from \"@ark-ui/react/field\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Field = (props: React.ComponentProps<typeof ArkField.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.Root className={cn(\"flex flex-col gap-2\", className)} {...rest} />\n  );\n};\n\nexport const FieldLabel = (\n  props: React.ComponentProps<typeof ArkField.Label>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.Label\n      className={cn(\n        \"font-medium text-sm leading-none\",\n        \"select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        \"group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const FieldInput = (\n  props: React.ComponentProps<typeof ArkField.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkField.Input {...rest} asChild={!!children}>\n      {children || <Input />}\n    </ArkField.Input>\n  );\n};\n\nexport const FieldHelper = (\n  props: React.ComponentProps<typeof ArkField.HelperText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.HelperText\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FieldError = (\n  props: React.ComponentProps<typeof ArkField.ErrorText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.ErrorText\n      className={cn(\"text-destructive text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n"
+      "path": "registry/react/components/field.tsx",
+      "content": "import { Field as ArkField } from \"@ark-ui/react/field\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Field = (props: React.ComponentProps<typeof ArkField.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.Root className={cn(\"flex flex-col gap-2\", className)} {...rest} />\n  );\n};\n\nexport const FieldLabel = (\n  props: React.ComponentProps<typeof ArkField.Label>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.Label\n      className={cn(\n        \"font-medium text-sm leading-none\",\n        \"select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\n        \"peer-data-disabled:cursor-not-allowed peer-data-disabled:opacity-50\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const FieldInput = (\n  props: React.ComponentProps<typeof ArkField.Input>\n) => <ArkField.Input {...props} asChild />;\n\nexport const FieldHelper = (\n  props: React.ComponentProps<typeof ArkField.HelperText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.HelperText\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FieldError = (\n  props: React.ComponentProps<typeof ArkField.ErrorText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.ErrorText\n      className={cn(\"text-destructive text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "field"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

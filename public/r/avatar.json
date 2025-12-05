@@ -1,31 +1,16 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "avatar",
-  "type": "components:ui",
-  "description": "A avatar component built with Ark UI",
-  "category": "ui",
-  "tags": [
-    "avatar"
-  ],
+  "type": "registry:ui",
   "dependencies": [
-    "@ark-ui/react"
+    "@ark-ui/react",
+    "tailwind-variants"
   ],
-  "registryDependencies": [],
   "files": [
     {
-      "name": "avatar.tsx",
-      "content": "\"use client\";\n\nimport { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Root\n      className={cn(\n        \"relative\",\n        \"size-8\",\n        \"flex shrink-0\",\n        \"overflow-hidden\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarImage = (\n  props: React.ComponentProps<typeof ArkAvatar.Image>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Image\n      className={cn(\"size-full\", \"aspect-square object-cover\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarFallback = (\n  props: React.ComponentProps<typeof ArkAvatar.Fallback>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Fallback\n      className={cn(\n        \"size-full\",\n        \"flex items-center justify-center\",\n        \"bg-muted\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n"
+      "path": "registry/react/components/avatar.tsx",
+      "content": "\"use client\";\n\nimport { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Root\n      className={cn(\n        \"relative\",\n        \"size-8\",\n        \"flex shrink-0\",\n        \"overflow-hidden\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarImage = (\n  props: React.ComponentProps<typeof ArkAvatar.Image>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Image\n      className={cn(\"size-full\", \"aspect-square object-cover\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarFallback = (\n  props: React.ComponentProps<typeof ArkAvatar.Fallback>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Fallback\n      className={cn(\n        \"size-full\",\n        \"flex items-center justify-center\",\n        \"bg-muted\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
     }
-  ],
-  "categories": [
-    "ui"
-  ],
-  "meta": {
-    "category": "ui",
-    "tags": [
-      "avatar"
-    ],
-    "dependencies": [
-      "@ark-ui/react"
-    ]
-  }
+  ]
 }

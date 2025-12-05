@@ -27,7 +27,7 @@ import {
 import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 
 type CommandMenuItem = {
-  label: string | React.ReactNode;
+  label: string;
   value: string;
 };
 
@@ -50,8 +50,8 @@ export const CommandMenu = (props: CommandMenuProps) => {
   const components = tree.children
     .filter((group) => group.type === "folder")[0]
     .children.map((item) => ({
-      label: item.name,
-      value: item.url,
+      label: item.name as string,
+      value: item.name as string,
     }));
 
   const { collection, filter } = useListCollection<CommandMenuItem>({
@@ -66,7 +66,9 @@ export const CommandMenu = (props: CommandMenuProps) => {
         setIsOpen(true);
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };

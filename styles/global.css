@@ -38,26 +38,14 @@
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
 
-  --color-success-subtle: var(--success-subtle);
-  --color-success-subtle-foreground: var(--success-subtle-foreground);
-
-  --color-info-subtle: var(--info-subtle);
-  --color-info-subtle-foreground: var(--info-subtle-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
 
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
 
-  --color-warning-subtle: var(--warning-subtle);
-  --color-warning-subtle-foreground: var(--warning-subtle-foreground);
-
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-danger: var(--danger);
-  --color-danger-foreground: var(--danger-foreground);
-
-  --color-danger-subtle: var(--danger-subtle);
-  --color-danger-subtle-foreground: var(--danger-subtle-foreground);
 
   --color-border: var(--border);
   --color-input: var(--input);
@@ -159,7 +147,17 @@
   --accent: oklch(0.92 0.004 286.32);
   --accent-foreground: oklch(0.141 0.005 285.823);
 
+  --success: oklch(0.596 0.145 163.225);
+  --success-foreground: oklch(1 0 0);
+
+  --info: oklch(0.685 0.169 237.323 / 0.15);
+  --info-foreground: oklch(0.5 0.134 242.749);
+
+  --warning: oklch(0.828 0.189 84.429);
+  --warning-foreground: oklch(0.279 0.077 45.635);
+
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
 
   --border: oklch(0.911 0.006 286.286);
 
@@ -167,14 +165,15 @@
 
   --ring: oklch(0.141 0.005 285.823);
 
-  --radius-lg: 0.275rem;
-  --radius-xs: calc(var(--radius-lg) * 0.5);
-  --radius-sm: calc(var(--radius-lg) * 0.75);
-  --radius-md: calc(var(--radius-lg) * 0.9);
-  --radius-xl: calc(var(--radius-lg) * 1.25);
-  --radius-2xl: calc(var(--radius-lg) * 1.5);
-  --radius-3xl: calc(var(--radius-lg) * 2);
-  --radius-4xl: calc(var(--radius-lg) * 3);
+  --radius: 0.275rem;
+  --radius-xs: calc(var(--radius) * 0.5);
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: calc(var(--radius) * 0.9);
+  --radius-lg: calc(var(--radius) * 1.125);
+  --radius-xl: calc(var(--radius) * 1.25);
+  --radius-2xl: calc(var(--radius) * 1.5);
+  --radius-3xl: calc(var(--radius) * 2);
+  --radius-4xl: calc(var(--radius) * 3);
 }
 
 .dark {
@@ -199,7 +198,17 @@
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
 
+  --success: oklch(0.596 0.145 163.225);
+  --success-foreground: oklch(1 0 0);
+
+  --info: oklch(0.685 0.169 237.323 / 0.1);
+  --info-foreground: oklch(0.828 0.111 230.318);
+
+  --warning: oklch(0.828 0.189 84.429);
+  --warning-foreground: oklch(0.279 0.077 45.635);
+
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
 
   --border: oklch(0.27 0.013 285.805);
 
@@ -227,6 +236,11 @@
 
   main {
     @apply flex-1 flex flex-col;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }
 
