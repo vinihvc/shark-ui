@@ -1,12 +1,16 @@
+import { SITE_CONFIG } from "@/config/site";
 import type { RegistryItemType } from "@/lib/registry";
 
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "number-input",
-  type: "registry:ui",
-  dependencies,
-  registryDependencies: ["button", "input"],
+	name: "number-input",
+	type: "registry:ui",
+	dependencies,
+	registryDependencies: [
+		`${SITE_CONFIG.url}/r/button.json`,
+		`${SITE_CONFIG.url}/r/input.json`,
+	],
 };
 
 export default manifest;
