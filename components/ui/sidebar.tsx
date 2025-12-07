@@ -4,11 +4,11 @@
 "use client";
 
 import { ark } from "@ark-ui/react";
-import { cn } from "fumadocs-ui/utils/cn";
 import { PanelLeftIcon } from "lucide-react";
 import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { useIsMobile } from "@/hooks/use-is-mobile";
+import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Input } from "@/registry/react/components/input";
 import { Separator } from "@/registry/react/components/separator";
