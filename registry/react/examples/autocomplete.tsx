@@ -10,13 +10,13 @@ import {
   AutocompleteInput,
   AutocompleteItem,
   AutocompleteItemGroup,
-} from "../components/autocomplete";
+} from "@/registry/react/components/autocomplete";
 import {
   Field,
   FieldHelper,
   FieldInput,
   FieldLabel,
-} from "../components/field";
+} from "@/registry/react/components/field";
 
 const AutocompleteDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });

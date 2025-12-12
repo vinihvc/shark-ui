@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "../components/button";
+import { Button } from "@/registry/react/components/button";
 import {
   Tour,
   TourContent,
@@ -13,7 +13,7 @@ import {
   type TourStepType,
   TourTitle,
   TourTrigger,
-} from "../components/tour";
+} from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
   {

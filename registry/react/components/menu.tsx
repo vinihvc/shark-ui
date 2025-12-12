@@ -25,7 +25,6 @@ export const menuContentVariants = tv({
   base: [
     "z-(--z-index)",
     "h-auto min-w-32",
-    "relative",
     "p-1",
     "bg-popover",
     "text-popover-foreground",
@@ -45,10 +44,17 @@ export const menuContentVariants = tv({
 
 interface MenuContentProps
   extends React.ComponentProps<typeof ArkMenu.Content>,
-    VariantProps<typeof menuContentVariants> {}
+    VariantProps<typeof menuContentVariants> {
+  /**
+   * Whether to show the arrow
+   *
+   * @default true
+   */
+  showArrow?: boolean;
+}
 
 export const MenuContent = (props: MenuContentProps) => {
-  const { className, ...rest } = props;
+  const { showArrow = true, className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -56,7 +62,11 @@ export const MenuContent = (props: MenuContentProps) => {
         <ArkMenu.Content
           className={cn(menuContentVariants(), className)}
           {...rest}
-        />
+        >
+          {children}
+        </ArkMenu.Content>
+
+        {showArrow && <MenuArrow />}
       </ArkMenu.Positioner>
     </Portal>
   );
@@ -280,5 +290,27 @@ export const MenuShortcut = (props: React.ComponentProps<"span">) => {
       data-scope="menu"
       {...rest}
     />
+  );
+};
+
+export const MenuArrow = (
+  props: React.ComponentProps<typeof ArkMenu.Arrow>
+) => {
+  const { style, ...rest } = props;
+
+  return (
+    <ArkMenu.Arrow
+      style={
+        {
+          "--arrow-background": "var(--popover)",
+          "--arrow-size": "calc(1.5 * var(--spacing))",
+          ...style,
+          left: "20px",
+        } as React.CSSProperties
+      }
+      {...rest}
+    >
+      <ArkMenu.ArrowTip className="border-t border-l" />
+    </ArkMenu.Arrow>
   );
 };

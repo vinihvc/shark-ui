@@ -1,10 +1,9 @@
 import { Portal } from "@ark-ui/react";
 import { Select as ArkSelect } from "@ark-ui/react/select";
-import { CheckIcon, ChevronsUpDown, X } from "lucide-react";
+import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
 import { inputVariants } from "@/registry/react/components/input";
 
 export const Select = <T,>(
@@ -25,14 +24,6 @@ export const Select = <T,>(
   );
 };
 
-export const SelectControl = (
-  props: React.ComponentProps<typeof ArkSelect.Control>
-) => {
-  const { className, ...rest } = props;
-
-  return <ArkSelect.Control className={cn("relative", className)} {...rest} />;
-};
-
 interface SelectTriggerProps
   extends React.ComponentProps<typeof ArkSelect.Trigger>,
     VariantProps<typeof inputVariants> {}
@@ -41,24 +32,26 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
   const { size = "md", className, children, ...rest } = props;
 
   return (
-    <ArkSelect.Trigger
-      className={cn(
-        inputVariants({ size }),
-        "w-fit",
-        "flex items-center justify-between gap-2",
-        "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
-        "data-placeholder-shown:text-muted-foreground",
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        className
-      )}
-      {...rest}
-    >
-      {children}
+    <ArkSelect.Control>
+      <ArkSelect.Trigger
+        className={cn(
+          inputVariants({ size }),
+          "w-fit",
+          "flex items-center justify-between gap-2",
+          "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
+          "data-placeholder-shown:text-muted-foreground",
+          "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          className
+        )}
+        {...rest}
+      >
+        {children}
 
-      <ArkSelect.Indicator>
-        <ChevronsUpDown />
-      </ArkSelect.Indicator>
-    </ArkSelect.Trigger>
+        <ArkSelect.Indicator>
+          <ChevronsUpDown />
+        </ArkSelect.Indicator>
+      </ArkSelect.Trigger>
+    </ArkSelect.Control>
   );
 };
 
@@ -69,34 +62,12 @@ export const SelectValueText = (
 
   return (
     <ArkSelect.ValueText
-      className={cn("line-clamp-1 flex items-center gap-2", className)}
+      className={cn(
+        "flex min-w-0 items-center gap-2 truncate text-nowrap",
+        className
+      )}
       {...rest}
     />
-  );
-};
-
-export const SelectClearTrigger = (
-  props: React.ComponentProps<typeof ArkSelect.ClearTrigger>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkSelect.ClearTrigger
-      className={cn("-translate-y-1/2 absolute top-1/2 right-8", className)}
-      {...rest}
-      asChild
-    >
-      <Button
-        className={cn(
-          "h-6 w-4",
-          "text-muted-foreground",
-          "hover:bg-transparent hover:text-foreground"
-        )}
-        variant="ghost"
-      >
-        <X />
-      </Button>
-    </ArkSelect.ClearTrigger>
   );
 };
 
@@ -180,7 +151,9 @@ export const SelectItem = (
       )}
       {...rest}
     >
-      <ArkSelect.ItemText>{children}</ArkSelect.ItemText>
+      <ArkSelect.ItemText className="flex w-full items-center gap-2">
+        {children}
+      </ArkSelect.ItemText>
 
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <ArkSelect.ItemIndicator>

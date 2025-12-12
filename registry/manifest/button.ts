@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from "@/config/site";
 import type { RegistryItemType } from "@/lib/registry";
 
 const dependencies = ["@ark-ui/react", "tailwind-variants"];
@@ -26,6 +27,7 @@ const manifest: RegistryItemType = {
   type: "registry:ui",
   dependencies,
   cssVars,
+  registryDependencies: [`${SITE_CONFIG.url}/r/spinner.json`],
 };
 
 export default manifest;

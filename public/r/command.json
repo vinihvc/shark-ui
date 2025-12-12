@@ -7,7 +7,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "combobox"
+    "https://shark.vini.one/r/combobox.json"
   ],
   "files": [
     {

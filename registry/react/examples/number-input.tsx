@@ -1,5 +1,9 @@
-import { Field, FieldInput, FieldLabel } from "../components/field";
-import { NumberInput } from "../components/number-input";
+import {
+  Field,
+  FieldInput,
+  FieldLabel,
+} from "@/registry/react/components/field";
+import { NumberInput } from "@/registry/react/components/number-input";
 
 const NumberInputDemo = () => (
   <Field>

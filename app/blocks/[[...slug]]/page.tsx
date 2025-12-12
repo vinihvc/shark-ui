@@ -49,7 +49,7 @@ const BlocksPage = async (props: PageProps<"/blocks/[[...slug]]">) => {
           )}
         </div>
       </div>
-      <div className="prose w-full flex-1 *:data-[part=alert]:first:mt-0">
+      <div className="prose w-full flex-1">
         <MDX
           components={getMDXComponents({
             // this allows you to link to other pages with relative file paths

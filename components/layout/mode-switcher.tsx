@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 
-export function ModeSwitcher() {
+export const ModeSwitcher = () => {
   const { setTheme, resolvedTheme } = useTheme();
 
   const toggleTheme = React.useCallback(() => {
@@ -41,4 +41,4 @@ export function ModeSwitcher() {
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
-}
+};

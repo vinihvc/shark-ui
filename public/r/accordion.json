@@ -6,6 +6,30 @@
     "@ark-ui/react",
     "lucide-react"
   ],
+  "cssVars": {
+    "theme": {
+      "--animate-slide-up": "slideUp 0.2s ease-out",
+      "--animate-slide-down": "slideDown 0.2s ease-out"
+    }
+  },
+  "css": {
+    "@keyframes slideUp": {
+      "from": {
+        "height": "var(--height)"
+      },
+      "to": {
+        "height": "0"
+      }
+    },
+    "@keyframes slideDown": {
+      "from": {
+        "height": "0"
+      },
+      "to": {
+        "height": "var(--height)"
+      }
+    }
+  },
   "files": [
     {
       "path": "registry/react/components/accordion.tsx",

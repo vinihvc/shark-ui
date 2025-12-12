@@ -6,7 +6,7 @@
     "@ark-ui/react"
   ],
   "registryDependencies": [
-    "input"
+    "https://shark.vini.one/r/input.json"
   ],
   "files": [
     {

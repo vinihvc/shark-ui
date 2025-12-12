@@ -21,11 +21,14 @@ export const SiteHeader = (props: SiteHeaderProps) => {
 
   return (
     <header
-      className={cn("sticky top-0 z-50 w-full bg-background", className)}
+      className={cn(
+        "sticky top-0 z-50 w-full border-b bg-background",
+        className
+      )}
       {...rest}
     >
       <div className="container px-6">
-        <div className="flex h-(--header-height) items-center **:data-[scope=separator]:h-4!">
+        <div className="flex h-(--header-height) items-center">
           <MobileNav
             className="flex lg:hidden"
             items={NAV_ITEMS}

@@ -7,7 +7,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "button"
+    "https://shark.vini.one/r/button.json"
   ],
   "files": [
     {

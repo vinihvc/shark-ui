@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 interface CardProps extends React.ComponentProps<"div"> {
   /**
    * The spacing variable value
+   *
+   * @default 6
    */
   spacing?: number;
 }
@@ -14,8 +16,8 @@ export const Card = (props: CardProps) => {
     <div
       className={cn(
         "group/card",
-        "py-(--card-spacing)",
-        "flex flex-col gap-(--card-spacing)",
+        "py-(--gap)",
+        "flex flex-col gap-(--gap)",
         "bg-card",
         "text-foreground",
         "rounded-lg border shadow-xs",
@@ -25,10 +27,9 @@ export const Card = (props: CardProps) => {
       )}
       data-part="root"
       data-scope="card"
-      data-spacing={spacing}
       style={
         {
-          "--card-spacing": `calc(${spacing} * var(--spacing))`,
+          "--gap": `calc(${spacing} * var(--spacing))`,
           ...style,
         } as React.CSSProperties
       }
@@ -55,7 +56,7 @@ export const CardHeader = (props: HeaderProps) => {
     <div
       className={cn(
         "grid auto-rows-min grid-rows-[auto_auto] gap-1",
-        "px-(--card-spacing)",
+        "px-(--gap)",
         "items-start",
         "has-data-[part=card-action]:grid-cols-[1fr_auto]",
         className
@@ -129,7 +130,7 @@ export const CardContent = (props: React.ComponentProps<"div">) => {
 
   return (
     <div
-      className={cn("px-(--card-spacing) has-[table]:border-t", className)}
+      className={cn("px-(--gap) has-[table]:border-t", className)}
       data-part="content"
       data-scope="card"
       {...rest}
@@ -144,9 +145,9 @@ export const CardFooter = (props: React.ComponentProps<"div">) => {
     <div
       className={cn(
         "flex items-center",
-        "px-(--card-spacing)",
-        "group-has-[table]/card:pt-(--card-spacing)",
-        "[.border-t]:pt-(--card-spacing)",
+        "px-(--gap)",
+        "group-has-[table]/card:pt-(--gap)",
+        "[.border-t]:pt-(--gap)",
         className
       )}
       data-part="footer"

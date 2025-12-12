@@ -11,7 +11,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "../components/command";
+} from "@/registry/react/components/command";
 
 const CommandDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });

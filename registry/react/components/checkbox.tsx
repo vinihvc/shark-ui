@@ -8,7 +8,12 @@ export const CheckboxGroup = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCheckbox.Group className={cn("space-y-2", className)} {...rest} />;
+  return (
+    <ArkCheckbox.Group
+      className={cn("flex flex-col gap-2", className)}
+      {...rest}
+    />
+  );
 };
 
 export const Checkbox = (

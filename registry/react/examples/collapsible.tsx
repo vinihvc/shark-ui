@@ -34,7 +34,7 @@ const CollapsibleDemo = () => (
       </div>
 
       <CollapsibleContent className="text-sm">
-        <div className="mt-(--card-spacing) grid gap-2 px-(--card-spacing)">
+        <div className="mt-(--gap) grid gap-2 px-(--gap)">
           <div className="grid grid-cols-3 items-center gap-4">
             <div className="col-span-2">Google</div>
             <div className="text-right text-muted-foreground">22.3%</div>

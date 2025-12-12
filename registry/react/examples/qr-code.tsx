@@ -1,4 +1,4 @@
-import { QrCode, QrCodeFrame } from "../components/qr-code";
+import { QrCode, QrCodeFrame } from "@/registry/react/components/qr-code";
 
 const QrCodeDemo = () => (
   <QrCode value="https://www.x.com/vinihvc">

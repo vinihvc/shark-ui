@@ -7,19 +7,19 @@ const HomePage = () => (
   <main>
     <div
       className="-z-10 absolute inset-0 min-h-screen bg-repeat-x"
-      style={{ backgroundImage: "url(https://ark-ui.com/images/pattern.svg)" }}
+      style={{ backgroundImage: "url(/images/pattern.svg)" }}
     />
 
-    <div className="-z-10 absolute inset-0 hidden h-[830px] bg-[radial-gradient(42.48%_42.48%_at_calc(50%+100vw/2)_center,#EB5E41_0,rgba(235,94,65,0)_100%)] blur-2xl sm:block" />
+    <div className="-z-10 absolute inset-0 hidden h-[830px] bg-[radial-gradient(42.48%_42.48%_at_calc(50%+100vw/2)_center,#3b82f650,rgba(235,94,65,0)_100%)] blur-2xl sm:block" />
 
     <section
       className="container flex flex-col gap-4 bg-none bg-position-[calc(50%+250px)_25px] bg-no-repeat py-20 md:py-32"
       style={{
-        backgroundImage: "url(https://ark-ui.com/images/hero_dark.svg)",
+        backgroundImage: "url(/images/hero.svg)",
       }}
     >
       <div>
-        <Badge asChild className="text-ark" variant="secondary">
+        <Badge asChild className="text-primary" variant="secondary">
           <NavLink href="/docs">
             <StarIcon />
             Now in Beta
@@ -30,7 +30,7 @@ const HomePage = () => (
       <h1 className="text-balance font-semibold text-4xl leading-tight sm:text-5xl md:text-6xl">
         shadcn/ui Components <br />
         Powered by{" "}
-        <span className="inline-block rounded-md bg-ark px-4 py-1 text-primary-foreground leading-none">
+        <span className="inline-block rounded-md bg-primary px-4 py-1 text-primary-foreground leading-none">
           Ark UI
         </span>
       </h1>

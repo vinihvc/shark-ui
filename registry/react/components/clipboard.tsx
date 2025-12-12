@@ -1,8 +1,8 @@
 import { Clipboard as ArkClipboard } from "@ark-ui/react/clipboard";
-import { Check, ClipboardCopy } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/registry/react/components/input";
+import { inputVariants } from "./input";
 
 export const Clipboard = (
   props: React.ComponentProps<typeof ArkClipboard.Root>
@@ -28,15 +28,14 @@ export const ClipboardTrigger = (
   props: React.ComponentProps<typeof ArkClipboard.Trigger>
 ) => <ArkClipboard.Trigger {...props} />;
 
-export const ClipboardInput = (
-  props: React.ComponentProps<typeof ArkClipboard.Input>
-) => {
-  const { children, ...rest } = props;
+interface ClipboardInputProps
+  extends React.ComponentProps<typeof ArkClipboard.Input> {}
+
+export const ClipboardInput = (props: ClipboardInputProps) => {
+  const { className, ...rest } = props;
 
   return (
-    <ArkClipboard.Input {...rest} asChild={!children}>
-      {children || <Input />}
-    </ArkClipboard.Input>
+    <ArkClipboard.Input {...rest} className={cn(inputVariants(), className)} />
   );
 };
 
@@ -46,8 +45,8 @@ export const ClipboardIndicator = (
   const { copied = <Check />, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Indicator {...rest} copied={copied}>
-      {children || <ClipboardCopy />}
+    <ArkClipboard.Indicator {...rest} asChild copied={copied}>
+      {children || <Copy />}
     </ArkClipboard.Indicator>
   );
 };

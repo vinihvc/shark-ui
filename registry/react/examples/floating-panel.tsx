@@ -1,109 +1,97 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import { Cog, Maximize, Minus, SquareArrowOutUpRight, X } from "lucide-react";
-import { Button } from "../components/button";
-import { Field, FieldInput, FieldLabel } from "../components/field";
+import { Cog, X } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
-  FloatingPanel,
-  FloatingPanelBody,
-  FloatingPanelClose,
-  FloatingPanelContent,
-  FloatingPanelControl,
-  FloatingPanelHeader,
-  FloatingPanelStageTrigger,
-  FloatingPanelTitle,
-  FloatingPanelTrigger,
-} from "../components/floating-panel";
-import { NumberInput } from "../components/number-input";
+	Field,
+	FieldInput,
+	FieldLabel,
+} from "@/registry/react/components/field";
 import {
-  Select,
-  SelectContent,
-  SelectControl,
-  SelectItem,
-  SelectTrigger,
-  SelectValueText,
-} from "../components/select";
+	FloatingPanel,
+	FloatingPanelBody,
+	FloatingPanelClose,
+	FloatingPanelContent,
+	FloatingPanelControl,
+	FloatingPanelHeader,
+	FloatingPanelMaximize,
+	FloatingPanelMinimize,
+	FloatingPanelRestore,
+	FloatingPanelTitle,
+	FloatingPanelTrigger,
+} from "@/registry/react/components/floating-panel";
+import { NumberInput } from "@/registry/react/components/number-input";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValueText,
+} from "@/registry/react/components/select";
 
 const FloatingPanelDemo = () => {
-  const collection = createListCollection({
-    items: ["Inter", "Roboto", "Helvetica", "Geist"],
-  });
+	const collection = createListCollection({
+		items: ["Inter", "Roboto", "Helvetica", "Geist"],
+	});
 
-  return (
-    <FloatingPanel>
-      <FloatingPanelTrigger asChild>
-        <Button>Open Panel</Button>
-      </FloatingPanelTrigger>
+	return (
+		<FloatingPanel>
+			<FloatingPanelTrigger asChild>
+				<Button>Open Panel</Button>
+			</FloatingPanelTrigger>
 
-      <FloatingPanelContent>
-        <FloatingPanelHeader>
-          <Cog />
-          <FloatingPanelTitle>Settings</FloatingPanelTitle>
+			<FloatingPanelContent>
+				<FloatingPanelHeader>
+					<Cog />
+					<FloatingPanelTitle>Settings</FloatingPanelTitle>
 
-          <FloatingPanelControl>
-            <FloatingPanelStageTrigger asChild stage="minimized">
-              <Button size="icon-sm" variant="ghost">
-                <Minus />
-                <span className="sr-only">Minimize</span>
-              </Button>
-            </FloatingPanelStageTrigger>
+					<FloatingPanelControl>
+						<FloatingPanelMinimize />
 
-            <FloatingPanelStageTrigger asChild stage="maximized">
-              <Button size="icon-sm" variant="ghost">
-                <Maximize />
-                <span className="sr-only">Maximize</span>
-              </Button>
-            </FloatingPanelStageTrigger>
+						<FloatingPanelMaximize />
 
-            <FloatingPanelStageTrigger asChild stage="default">
-              <Button size="icon-sm" variant="outline">
-                <SquareArrowOutUpRight />
-                <span className="sr-only">Restore</span>
-              </Button>
-            </FloatingPanelStageTrigger>
+						<FloatingPanelRestore />
 
-            <FloatingPanelClose asChild>
-              <Button size="icon-sm" variant="solid">
-                <X />
-                <span className="sr-only">Close</span>
-              </Button>
-            </FloatingPanelClose>
-          </FloatingPanelControl>
-        </FloatingPanelHeader>
+						<FloatingPanelClose asChild>
+							<Button size="icon-sm" variant="solid">
+								<X />
+								<span className="sr-only">Close</span>
+							</Button>
+						</FloatingPanelClose>
+					</FloatingPanelControl>
+				</FloatingPanelHeader>
 
-        <FloatingPanelBody>
-          <Field>
-            <FieldLabel>Font family</FieldLabel>
-            <FieldInput>
-              <Select collection={collection} defaultValue={["Inter"]}>
-                <SelectControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValueText />
-                  </SelectTrigger>
-                </SelectControl>
+				<FloatingPanelBody>
+					<Field>
+						<FieldLabel>Font family</FieldLabel>
+						<FieldInput>
+							<Select collection={collection} defaultValue={["Inter"]}>
+								<SelectTrigger className="w-full">
+									<SelectValueText />
+								</SelectTrigger>
 
-                <SelectContent>
-                  {collection.items.map((item) => (
-                    <SelectItem item={item} key={item}>
-                      {item}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </FieldInput>
-          </Field>
+								<SelectContent>
+									{collection.items.map((item) => (
+										<SelectItem item={item} key={item}>
+											{item}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</FieldInput>
+					</Field>
 
-          <Field>
-            <FieldLabel>Font size</FieldLabel>
-            <FieldInput>
-              <NumberInput className="w-full" defaultValue="16" />
-            </FieldInput>
-          </Field>
-        </FloatingPanelBody>
-      </FloatingPanelContent>
-    </FloatingPanel>
-  );
+					<Field>
+						<FieldLabel>Font size</FieldLabel>
+						<FieldInput>
+							<NumberInput className="w-full" defaultValue="16" />
+						</FieldInput>
+					</Field>
+				</FloatingPanelBody>
+			</FloatingPanelContent>
+		</FloatingPanel>
+	);
 };
 
 export default FloatingPanelDemo;

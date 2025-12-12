@@ -5,6 +5,30 @@
   "dependencies": [
     "@ark-ui/react"
   ],
+  "cssVars": {
+    "theme": {
+      "--animate-marquee-x": "marqueeX 10s linear infinite",
+      "--animate-marquee-y": "marqueeY 10s linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes marqueeX": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(var(--marquee-translate))"
+      }
+    },
+    "@keyframes marqueeY": {
+      "from": {
+        "transform": "translateY(0)"
+      },
+      "to": {
+        "transform": "translateY(var(--marquee-translate))"
+      }
+    }
+  },
   "files": [
     {
       "path": "registry/react/components/marquee.tsx",

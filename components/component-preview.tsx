@@ -1,3 +1,6 @@
+/** biome-ignore-all lint/correctness/noConstAssign: it's ok */
+/** biome-ignore-all lint/style/noParameterAssign: it's ok */
+
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
@@ -33,6 +36,8 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     "utf-8"
   );
 
+  const replacedCode = replaceContent(sourceCode);
+
   if (!Example.default) {
     throw new Error(`Component ${componentName} not found`);
   }
@@ -56,10 +61,18 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
           </TabsContent>
 
           <TabsContent className="**:[div]:max-h-[400px]" value="code">
-            <DynamicCodeBlock code={sourceCode} lang="tsx" />
+            <DynamicCodeBlock code={replacedCode} lang="tsx" />
           </TabsContent>
         </div>
       </Tabs>
     </div>
   );
+};
+
+const replaceContent = (code: string) => {
+  code = code.replaceAll("@/registry/react/components", "@/components/ui");
+  code = code.replaceAll(/const (\w+) =/g, "export const $1 =");
+  code = code.replaceAll(/export default (\w+);/g, "");
+
+  return code;
 };

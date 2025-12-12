@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "../components/button";
-import { useToast } from "../components/toast";
+import { Button } from "@/registry/react/components/button";
+import { useToast } from "@/registry/react/components/toast";
 
 const ToastDemo = () => {
   const toast = useToast();

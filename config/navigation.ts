@@ -7,4 +7,12 @@ export const NAV_ITEMS = [
     href: "/blocks",
     label: "Blocks",
   },
+  {
+    href: "/templates",
+    label: "Templates",
+  },
+  {
+    href: "/themes",
+    label: "Themes",
+  },
 ];

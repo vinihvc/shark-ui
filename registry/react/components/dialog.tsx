@@ -47,6 +47,7 @@ export const DialogBackdrop = (
 
 export const dialogContentVariants = tv({
   base: [
+    "relative",
     "z-50",
     "-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2",
     "flex flex-col gap-4",
@@ -111,9 +112,9 @@ export const DialogContent = (props: DialogContentProps) => {
           {children}
 
           {showCloseButton && (
-            <DialogClose asChild className="absolute top-4 right-4">
+            <DialogClose asChild>
               <Button
-                className="size-8 border-none opacity-70 hover:opacity-100"
+                className="absolute top-4 right-4 size-8 opacity-70 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >
@@ -204,7 +205,7 @@ export const DialogDescription = (
 
 export const DialogClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
-) => <ArkDialog.CloseTrigger {...props} />;
+) => <ArkDialog.CloseTrigger asChild {...props} />;
 
 export const DialogFooter = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;

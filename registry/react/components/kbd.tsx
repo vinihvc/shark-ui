@@ -1,13 +1,27 @@
 import { cn } from "@/lib/utils";
 
-export const KbdGroup = (props: React.ComponentProps<"div">) => {
-  const { className, ...rest } = props;
+interface KbdGroupProps extends React.ComponentProps<"div"> {
+  /**
+   * The spacing variable value
+   *
+   * @default 1
+   */
+  spacing?: number;
+}
+
+export const KbdGroup = (props: KbdGroupProps) => {
+  const { spacing = 1, className, ...rest } = props;
 
   return (
     <kbd
-      className={cn("inline-flex items-center gap-1", className)}
+      className={cn("inline-flex items-center gap-(--gap)", className)}
       data-part="group"
       data-scope="kbd"
+      style={
+        {
+          "--gap": `calc(${spacing} * var(--spacing))`,
+        } as React.CSSProperties
+      }
       {...rest}
     />
   );
@@ -23,9 +37,9 @@ export const Kbd = (props: React.ComponentProps<"kbd">) => {
         "inline-flex items-center justify-center gap-1",
         "px-1",
         "bg-muted",
-        "select-none font-medium font-sans text-muted-foreground text-xs",
+        "font-medium font-sans text-muted-foreground text-xs",
         "rounded-sm",
-        "pointer-events-none",
+        "pointer-events-none select-none",
         "[&_svg:not([class*='size-'])]:size-3",
         className
       )}

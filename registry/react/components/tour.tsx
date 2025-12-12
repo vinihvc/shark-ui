@@ -156,7 +156,7 @@ export const TourContent = (props: TourContentProps) => {
         >
           {children}
 
-          {showCloseButton && (
+          {!!showCloseButton && (
             <TourClose asChild className="absolute top-4 right-4">
               <Button
                 className="size-8 border-none opacity-70 hover:opacity-100"
@@ -172,7 +172,7 @@ export const TourContent = (props: TourContentProps) => {
         </ArkTour.Content>
       </ArkTour.Positioner>
 
-      <ArkTour.Spotlight className="z-50 border-2 border-ark" />
+      <ArkTour.Spotlight className="z-50 border-2 border-primary" />
     </Portal>
   );
 };

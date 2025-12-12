@@ -12,13 +12,13 @@ import {
   ComboboxItem,
   ComboboxItemGroup,
   ComboboxTrigger,
-} from "../components/combobox";
+} from "@/registry/react/components/combobox";
 import {
   Field,
   FieldHelper,
   FieldInput,
   FieldLabel,
-} from "../components/field";
+} from "@/registry/react/components/field";
 
 const ComboboxDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });

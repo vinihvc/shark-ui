@@ -1,4 +1,4 @@
-import { Marquee, MarqueeItem } from "../components/marquee";
+import { Marquee, MarqueeItem } from "@/registry/react/components/marquee";
 
 const MarqueeDemo = () => {
   const items = Array.from({ length: 10 }, (_, index) => `Item ${index}`);
