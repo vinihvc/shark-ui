@@ -1,7 +1,7 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import { useTheme } from "next-themes";
+import React from "react";
 import { GRAY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
@@ -20,15 +20,21 @@ import {
 import { DEFAULT_GRAY_COLOR, type GrayColor, useConfig } from "@/store/config";
 
 export const ThemeSelectorGray = () => {
-  const { resolvedTheme } = useTheme();
-
-  const isLight = resolvedTheme === "light";
-
   const [config, setConfig] = useConfig();
 
   const collection = createListCollection({
     items: GRAY_COLORS,
   });
+
+  const [selectedColor, setSelectedColor] = React.useState(config.grayColor);
+
+  const handleSelectColor = (color: GrayColor) => {
+    setSelectedColor(color);
+    setConfig({
+      ...config,
+      grayColor: color,
+    });
+  };
 
   return (
     <Field>
@@ -37,16 +43,18 @@ export const ThemeSelectorGray = () => {
         <Select
           collection={collection}
           onValueChange={({ value }) =>
-            setConfig({
-              ...config,
-              grayColor: value[0] as GrayColor,
-            })
+            handleSelectColor(value[0] as GrayColor)
           }
-          value={[config.grayColor]}
+          value={[selectedColor]}
         >
           <SelectTrigger className="w-full">
             <div className="flex items-center gap-2">
-              <div className="size-4 rounded-md bg-background" />
+              <div
+                className={cn(
+                  "size-4 rounded-md border",
+                  `bg-${selectedColor}-900`
+                )}
+              />
               <SelectValueText placeholder="Select a theme" />
             </div>
           </SelectTrigger>
@@ -55,15 +63,12 @@ export const ThemeSelectorGray = () => {
             {collection.items.map((item) => (
               <SelectItem item={item.value} key={item.value}>
                 <div className="flex items-center gap-2">
-                  <div
-                    className={cn(
-                      "size-4 rounded-md border",
-                      item.hex[isLight ? "light" : "dark"]
-                    )}
-                  />
+                  <div className={cn("size-4 rounded-md border", item.hex)} />
                   {item.label}
                   {item.value === DEFAULT_GRAY_COLOR && (
-                    <Badge variant="info">Default</Badge>
+                    <Badge size="sm" variant="info">
+                      Default
+                    </Badge>
                   )}
                 </div>
               </SelectItem>

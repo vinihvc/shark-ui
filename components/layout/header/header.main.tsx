@@ -14,7 +14,7 @@ export const MainNav = (props: MainNavProps) => {
     <nav className={cn("items-center", className)} {...rest}>
       {items.map((item) => (
         <NavLink
-          className="px-3 py-2 text-muted-foreground text-sm hover:text-foreground [&.active]:text-primary"
+          className="px-3 py-2 text-muted-foreground text-sm hover:text-foreground/80 [&.active]:text-foreground"
           href={item.href}
           key={item.href}
         >

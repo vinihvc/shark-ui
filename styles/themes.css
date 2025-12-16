@@ -207,16 +207,32 @@
 .bg-slate {
   --background: var(--color-slate-50);
   --foreground: var(--color-slate-950);
+
   --card: var(--color-slate-50);
   --card-foreground: var(--color-slate-950);
+
+  --popover: var(--color-slate-50);
+  --popover-foreground: var(--color-slate-950);
+
+  --accent: var(--color-slate-100);
+  --accent-foreground: var(--color-slate-950);
+
   --border: var(--color-slate-200);
   --input: var(--color-slate-300);
 
   @variant dark {
     --background: var(--color-slate-950);
     --foreground: var(--color-slate-50);
+
     --card: var(--color-slate-950);
     --card-foreground: var(--color-slate-50);
+
+    --accent: var(--color-slate-900);
+    --accent-foreground: var(--color-slate-50);
+
+    --popover: var(--color-slate-950);
+    --popover-foreground: var(--color-slate-50);
+
     --border: var(--color-slate-800);
     --input: var(--color-slate-700);
   }
@@ -225,16 +241,32 @@
 .bg-gray {
   --background: var(--color-gray-50);
   --foreground: var(--color-gray-950);
+
   --card: var(--color-gray-50);
   --card-foreground: var(--color-gray-950);
+
+  --popover: var(--color-gray-50);
+  --popover-foreground: var(--color-gray-950);
+
+  --accent: var(--color-gray-100);
+  --accent-foreground: var(--color-gray-950);
+
   --border: var(--color-gray-200);
   --input: var(--color-gray-300);
 
   @variant dark {
     --background: var(--color-gray-950);
     --foreground: var(--color-gray-50);
+
     --card: var(--color-gray-950);
     --card-foreground: var(--color-gray-50);
+
+    --popover: var(--color-gray-950);
+    --popover-foreground: var(--color-gray-50);
+
+    --accent: var(--color-gray-900);
+    --accent-foreground: var(--color-gray-50);
+
     --border: var(--color-gray-800);
     --input: var(--color-gray-700);
   }
@@ -243,52 +275,66 @@
 .bg-zinc {
   --background: var(--color-zinc-50);
   --foreground: var(--color-zinc-950);
+
   --card: var(--color-zinc-50);
   --card-foreground: var(--color-zinc-950);
+
+  --popover: var(--color-zinc-50);
+  --popover-foreground: var(--color-zinc-950);
+
+  --accent: var(--color-zinc-100);
+  --accent-foreground: var(--color-zinc-950);
+
   --border: var(--color-zinc-200);
   --input: var(--color-zinc-300);
 
   @variant dark {
     --background: var(--color-zinc-950);
     --foreground: var(--color-zinc-50);
+
     --card: var(--color-zinc-950);
     --card-foreground: var(--color-zinc-50);
+
+    --popover: var(--color-zinc-950);
+    --popover-foreground: var(--color-zinc-50);
+
+    --accent: var(--color-zinc-900);
+    --accent-foreground: var(--color-zinc-50);
+
     --border: var(--color-zinc-800);
     --input: var(--color-zinc-700);
-  }
-}
-
-.bg-neutral {
-  --background: var(--color-neutral-50);
-  --foreground: var(--color-neutral-950);
-  --card: var(--color-neutral-50);
-  --card-foreground: var(--color-neutral-950);
-  --border: var(--color-neutral-200);
-  --input: var(--color-neutral-300);
-
-  @variant dark {
-    --background: var(--color-neutral-950);
-    --foreground: var(--color-neutral-50);
-    --card: var(--color-neutral-950);
-    --card-foreground: var(--color-neutral-50);
-    --border: var(--color-neutral-800);
-    --input: var(--color-neutral-700);
   }
 }
 
 .bg-stone {
   --background: var(--color-stone-50);
   --foreground: var(--color-stone-950);
+
   --card: var(--color-stone-50);
   --card-foreground: var(--color-stone-950);
+
+  --popover: var(--color-stone-50);
+  --popover-foreground: var(--color-stone-950);
+
+  --accent: var(--color-stone-100);
+  --accent-foreground: var(--color-stone-950);
+
   --border: var(--color-stone-200);
   --input: var(--color-stone-300);
 
   @variant dark {
     --background: var(--color-stone-950);
     --foreground: var(--color-stone-50);
+
     --card: var(--color-stone-950);
     --card-foreground: var(--color-stone-50);
+
+    --popover: var(--color-stone-950);
+    --popover-foreground: var(--color-stone-50);
+
+    --accent: var(--color-stone-900);
+    --accent-foreground: var(--color-stone-50);
+
     --border: var(--color-stone-800);
     --input: var(--color-stone-700);
   }
@@ -306,10 +352,6 @@
 
 .radius-sm {
   --radius: 0.25rem;
-}
-
-.radius-md {
-  --radius: 0.5rem;
 }
 
 .radius-lg {

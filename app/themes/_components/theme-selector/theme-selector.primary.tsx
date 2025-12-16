@@ -65,7 +65,9 @@ export const ThemeSelectorPrimary = () => {
                     <div className={cn("size-3 rounded-md", hex)} />
                     {item.label}
                     {item.value === DEFAULT_PRIMARY_COLOR && (
-                      <Badge variant="info">Default</Badge>
+                      <Badge size="sm" variant="info">
+                        Default
+                      </Badge>
                     )}
                   </div>
                 </SelectItem>

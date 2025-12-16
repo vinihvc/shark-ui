@@ -19,10 +19,10 @@ const HomePage = () => (
       }}
     >
       <div>
-        <Badge asChild className="text-primary" variant="secondary">
+        <Badge asChild variant="secondary">
           <NavLink href="/docs">
             <StarIcon />
-            Now in Beta
+            Beta Version
           </NavLink>
         </Badge>
       </div>

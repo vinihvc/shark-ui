@@ -33,7 +33,7 @@ export type InstallationMethod = "cli" | "manual";
 
 export const DEFAULT_PRIMARY_COLOR = "default";
 export const DEFAULT_GRAY_COLOR = "neutral";
-export const DEFAULT_BORDER_RADIUS = "md";
+export const DEFAULT_BORDER_RADIUS = "sm";
 export const DEFAULT_PACKAGE_MANAGER = "pnpm";
 export const DEFAULT_INSTALLATION_METHOD = "cli";
 

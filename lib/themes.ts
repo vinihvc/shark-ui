@@ -98,42 +98,27 @@ export const GRAY_COLORS = [
   {
     label: "Slate",
     value: "slate",
-    hex: {
-      dark: "bg-slate-900",
-      light: "bg-slate-50",
-    },
+    hex: "bg-slate-900",
   },
   {
     label: "Gray",
     value: "gray",
-    hex: {
-      dark: "bg-gray-900",
-      light: "bg-gray-50",
-    },
+    hex: "bg-gray-900",
   },
   {
     label: "Zinc",
     value: "zinc",
-    hex: {
-      dark: "bg-zinc-900",
-      light: "bg-zinc-50",
-    },
+    hex: "bg-zinc-900",
   },
   {
     label: "Neutral",
     value: "neutral",
-    hex: {
-      dark: "bg-neutral-900",
-      light: "bg-neutral-50",
-    },
+    hex: "bg-neutral-900",
   },
   {
     label: "Stone",
     value: "stone",
-    hex: {
-      dark: "bg-stone-900",
-      light: "bg-stone-50",
-    },
+    hex: "bg-stone-900",
   },
 ];
 

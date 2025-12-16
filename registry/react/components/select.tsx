@@ -142,7 +142,6 @@ export const SelectItem = (
         "select-none",
         "cursor-default",
         "outline-hidden",
-        "data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground",
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0",

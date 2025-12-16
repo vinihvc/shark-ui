@@ -44,7 +44,7 @@ export const ThemeCopy = (props: React.ComponentProps<typeof ButtonGroup>) => {
       <Dialog>
         <DialogTrigger asChild>
           <Button size="sm" variant="outline">
-            Get theme <ChevronDown className="opacity-50" />
+            Open theme <ChevronDown className="opacity-50" />
           </Button>
         </DialogTrigger>
 

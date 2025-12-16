@@ -49,7 +49,9 @@ export const ThemeSelectorRadius = () => {
                 {item.label}
 
                 {item.value === DEFAULT_BORDER_RADIUS && (
-                  <Badge variant="info">Default</Badge>
+                  <Badge size="sm" variant="info">
+                    Default
+                  </Badge>
                 )}
               </SelectItem>
             ))}
