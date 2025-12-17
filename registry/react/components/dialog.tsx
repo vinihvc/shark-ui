@@ -1,3 +1,4 @@
+import { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { X } from "lucide-react";
@@ -111,7 +112,7 @@ export const DialogContent = (props: DialogContentProps) => {
         >
           {children}
 
-          {showCloseButton && (
+          {!!showCloseButton && (
             <DialogClose asChild>
               <Button
                 className="absolute top-4 right-4 size-8 opacity-70 hover:opacity-100"
@@ -130,11 +131,11 @@ export const DialogContent = (props: DialogContentProps) => {
   );
 };
 
-export const DialogBody = (props: React.ComponentProps<"div">) => {
+export const DialogBody = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("flex-1 overflow-auto p-6", className)}
       data-part="body"
       {...rest}
@@ -142,7 +143,7 @@ export const DialogBody = (props: React.ComponentProps<"div">) => {
   );
 };
 
-interface DialogHeaderProps extends React.ComponentProps<"div"> {
+interface DialogHeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The title of the dialog
    */
@@ -157,20 +158,22 @@ export const DialogHeader = (props: DialogHeaderProps) => {
   const { className, title, description, children, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("flex flex-col gap-2 p-6 pb-0", className)}
       data-part="header"
       data-scope="dialog"
       {...rest}
     >
-      {title && <DialogTitle>{title}</DialogTitle>}
-      {description && <DialogDescription>{description}</DialogDescription>}
+      {!!title && <DialogTitle>{title}</DialogTitle>}
+
+      {!!description && <DialogDescription>{description}</DialogDescription>}
+
       {!title && typeof children === "string" ? (
         <DialogTitle>{children}</DialogTitle>
       ) : (
         children
       )}
-    </div>
+    </ark.div>
   );
 };
 
@@ -207,11 +210,11 @@ export const DialogClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
 ) => <ArkDialog.CloseTrigger asChild {...props} />;
 
-export const DialogFooter = (props: React.ComponentProps<"div">) => {
+export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("flex flex-row-reverse gap-2 p-6 pt-0", className)}
       data-part="footer"
       data-scope="dialog"

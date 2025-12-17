@@ -5,11 +5,7 @@ import { useTheme } from "next-themes";
 import { PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
-import {
-  Field,
-  FieldInput,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
   Select,
   SelectContent,
@@ -37,45 +33,43 @@ export const ThemeSelectorPrimary = () => {
   return (
     <Field>
       <FieldLabel>Primary</FieldLabel>
-      <FieldInput>
-        <Select
-          collection={collection}
-          onValueChange={({ value }) =>
-            setConfig({ ...config, primaryColor: value[0] as PrimaryColor })
-          }
-          value={[config.primaryColor]}
-        >
-          <SelectTrigger className="w-full">
-            <div className="flex items-center gap-2">
-              <div className="size-4 rounded-md border bg-primary" />
-              <SelectValueText placeholder="Select a theme" />
-            </div>
-          </SelectTrigger>
+      <Select
+        collection={collection}
+        onValueChange={({ value }) =>
+          setConfig({ ...config, primaryColor: value[0] as PrimaryColor })
+        }
+        value={[config.primaryColor]}
+      >
+        <SelectTrigger className="w-full">
+          <div className="flex items-center gap-2">
+            <div className="size-4 rounded-md border bg-primary" />
+            <SelectValueText placeholder="Select a theme" />
+          </div>
+        </SelectTrigger>
 
-          <SelectContent>
-            {collection.items.map((item) => {
-              const hex =
-                typeof item.hex === "string"
-                  ? item.hex
-                  : item.hex[isLight ? "light" : "dark"];
+        <SelectContent>
+          {collection.items.map((item) => {
+            const hex =
+              typeof item.hex === "string"
+                ? item.hex
+                : item.hex[isLight ? "light" : "dark"];
 
-              return (
-                <SelectItem item={item.value} key={item.value}>
-                  <div className="flex items-center gap-2">
-                    <div className={cn("size-3 rounded-md", hex)} />
-                    {item.label}
-                    {item.value === DEFAULT_PRIMARY_COLOR && (
-                      <Badge size="sm" variant="info">
-                        Default
-                      </Badge>
-                    )}
-                  </div>
-                </SelectItem>
-              );
-            })}
-          </SelectContent>
-        </Select>
-      </FieldInput>
+            return (
+              <SelectItem item={item.value} key={item.value}>
+                <div className="flex items-center gap-2">
+                  <div className={cn("size-3 rounded-md", hex)} />
+                  {item.label}
+                  {item.value === DEFAULT_PRIMARY_COLOR && (
+                    <Badge size="sm" variant="info">
+                      Default
+                    </Badge>
+                  )}
+                </div>
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
     </Field>
   );
 };

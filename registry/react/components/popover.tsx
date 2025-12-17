@@ -1,3 +1,4 @@
+import { ark } from "@ark-ui/react";
 import { Popover as ArkPopover } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { cn } from "@/lib/utils";
@@ -64,7 +65,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
           )}
           {...rest}
         >
-          {showArrow && <PopoverArrow />}
+          {!!showArrow && <PopoverArrow />}
 
           {children}
         </ArkPopover.Content>
@@ -94,11 +95,11 @@ export const PopoverArrow = (
   );
 };
 
-export const PopoverHeader = (props: React.ComponentProps<"div">) => {
+export const PopoverHeader = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("flex flex-col gap-2 p-4 pb-0", className)}
       data-part="popover-header"
       data-scope="popover"
@@ -136,11 +137,11 @@ export const PopoverDescription = (
   );
 };
 
-export const PopoverBody = (props: React.ComponentProps<"div">) => {
+export const PopoverBody = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("p-4", className)}
       data-part="popover-body"
       data-scope="popover"
@@ -149,11 +150,11 @@ export const PopoverBody = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const PopoverFooter = (props: React.ComponentProps<"div">) => {
+export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("mt-4 flex flex-row-reverse gap-2 p-4", className)}
       data-part="popover-footer"
       data-scope="popover"

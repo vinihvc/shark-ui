@@ -126,7 +126,7 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
   --background: var(--color-white);
   --foreground: var(--color-neutral-950);
@@ -234,6 +234,6 @@
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto px-4;
+    @apply max-w-7xl mx-auto px-4 w-full;
   }
 }

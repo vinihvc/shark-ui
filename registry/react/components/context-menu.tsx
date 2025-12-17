@@ -57,6 +57,6 @@ export const ContextMenuSubTrigger = (
   props: React.ComponentProps<typeof MenuSubTrigger>
 ) => <MenuSubTrigger data-scope="context-menu" {...props} />;
 
-export const ContextMenuShortcut = (props: React.ComponentProps<"span">) => (
-  <MenuShortcut data-scope="context-menu" {...props} />
-);
+export const ContextMenuShortcut = (
+  props: React.ComponentProps<typeof MenuShortcut>
+) => <MenuShortcut data-scope="context-menu" {...props} />;

@@ -1,3 +1,4 @@
+import { ark } from "@ark-ui/react";
 import type * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -32,14 +33,14 @@ export const alertVariants = tv({
 });
 
 interface AlertProps
-  extends React.ComponentProps<"div">,
+  extends React.ComponentProps<typeof ark.div>,
     VariantProps<typeof alertVariants> {}
 
 export const Alert = (props: AlertProps) => {
   const { variant, className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(alertVariants({ variant }), className)}
       data-part="root"
       data-scope="alert"
@@ -48,11 +49,11 @@ export const Alert = (props: AlertProps) => {
   );
 };
 
-export const AlertTitle = (props: React.ComponentProps<"div">) => {
+export const AlertTitle = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
         className
@@ -64,11 +65,13 @@ export const AlertTitle = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const AlertDescription = (props: React.ComponentProps<"div">) => {
+export const AlertDescription = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed",
         className

@@ -1,6 +1,7 @@
+import { ark } from "@ark-ui/react";
 import { cn } from "@/lib/utils";
 
-interface SeparatorProps extends React.ComponentProps<"div"> {
+interface SeparatorProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The orientation of the separator.
    *
@@ -13,7 +14,7 @@ export const Separator = (props: SeparatorProps) => {
   const { orientation = "horizontal", className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "my-4 shrink-0",
         "bg-border",

@@ -1,6 +1,7 @@
+import { ark } from "@ark-ui/react";
 import { cn } from "@/lib/utils";
 
-interface CardProps extends React.ComponentProps<"div"> {
+interface CardProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The spacing variable value
    *
@@ -13,7 +14,7 @@ export const Card = (props: CardProps) => {
   const { spacing = 6, className, style, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "group/card",
         "py-(--gap)",
@@ -38,7 +39,7 @@ export const Card = (props: CardProps) => {
   );
 };
 
-interface HeaderProps extends React.ComponentProps<"div"> {
+interface HeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The title of the card
    */
@@ -53,7 +54,7 @@ export const CardHeader = (props: HeaderProps) => {
   const { className, title, description, children, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "grid auto-rows-min grid-rows-[auto_auto] gap-1",
         "px-(--gap)",
@@ -72,15 +73,15 @@ export const CardHeader = (props: HeaderProps) => {
       ) : (
         children
       )}
-    </div>
+    </ark.div>
   );
 };
 
-export const CardTitle = (props: React.ComponentProps<"div">) => {
+export const CardTitle = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "text-pretty font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
@@ -92,11 +93,13 @@ export const CardTitle = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const CardDescription = (props: React.ComponentProps<"div">) => {
+export const CardDescription = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "row-start-2",
         "text-pretty text-muted-foreground text-sm",
@@ -109,11 +112,11 @@ export const CardDescription = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const CardAction = (props: React.ComponentProps<"div">) => {
+export const CardAction = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
         className
@@ -125,11 +128,11 @@ export const CardAction = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const CardContent = (props: React.ComponentProps<"div">) => {
+export const CardContent = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("px-(--gap) has-[table]:border-t", className)}
       data-part="content"
       data-scope="card"
@@ -138,11 +141,11 @@ export const CardContent = (props: React.ComponentProps<"div">) => {
   );
 };
 
-export const CardFooter = (props: React.ComponentProps<"div">) => {
+export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "flex items-center",
         "px-(--gap)",

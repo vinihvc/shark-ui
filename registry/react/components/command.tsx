@@ -1,3 +1,4 @@
+import { ark } from "@ark-ui/react";
 import {
   ComboboxContent,
   ComboboxInput,
@@ -154,7 +155,7 @@ export const CommandGroup = (props: CommandGroupProps) => {
       data-scope="command"
       {...rest}
     >
-      {heading && (
+      {!!heading && (
         <ComboboxItemGroupLabel
           className="px-2 py-1.5 font-medium text-muted-foreground text-xs"
           data-scope="command"
@@ -169,11 +170,13 @@ export const CommandGroup = (props: CommandGroupProps) => {
   );
 };
 
-export const CommandShortcut = (props: React.ComponentProps<"span">) => {
+export const CommandShortcut = (
+  props: React.ComponentProps<typeof ark.span>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <span
+    <ark.span
       className={cn(
         "ml-auto text-muted-foreground text-xs tracking-widest",
         className

@@ -16,7 +16,6 @@ import {
 import {
   Field,
   FieldHelper,
-  FieldInput,
   FieldLabel,
 } from "@/registry/react/components/field";
 
@@ -42,9 +41,7 @@ const ComboboxDemo = () => {
         placeholder="e.g. Apple"
       >
         <ComboboxControl>
-          <FieldInput>
-            <ComboboxInput />
-          </FieldInput>
+          <ComboboxInput />
 
           <ComboboxClearTrigger />
           <ComboboxTrigger />

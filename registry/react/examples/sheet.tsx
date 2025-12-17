@@ -1,9 +1,5 @@
 import { Button } from "@/registry/react/components/button";
-import {
-  Field,
-  FieldInput,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 import {
   Sheet,
@@ -35,17 +31,13 @@ const SheetDemo = () => (
         <Field>
           <FieldLabel>Name</FieldLabel>
 
-          <FieldInput>
-            <Input defaultValue="Vinicius Vicentini" />
-          </FieldInput>
+          <Input defaultValue="Vinicius Vicentini" />
         </Field>
 
         <Field>
           <FieldLabel>Username</FieldLabel>
 
-          <FieldInput>
-            <Input defaultValue="@vinihvc" />
-          </FieldInput>
+          <Input defaultValue="@vinihvc" />
         </Field>
       </SheetBody>
 

@@ -106,9 +106,25 @@ export const SelectContent = (
   );
 };
 
-export const SelectItemGroup = (
-  props: React.ComponentProps<typeof ArkSelect.ItemGroup>
-) => <ArkSelect.ItemGroup {...props} />;
+interface SelectItemGroupProps
+  extends React.ComponentProps<typeof ArkSelect.ItemGroup> {
+  /**
+   * The heading of the group
+   */
+  heading?: string | React.ReactNode;
+}
+
+export const SelectItemGroup = (props: SelectItemGroupProps) => {
+  const { heading, className, children, ...rest } = props;
+
+  return (
+    <ArkSelect.ItemGroup className={cn(className)} {...rest}>
+      {!!heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
+
+      {children}
+    </ArkSelect.ItemGroup>
+  );
+};
 
 export const SelectItemGroupLabel = (
   props: React.ComponentProps<typeof ArkSelect.ItemGroupLabel>

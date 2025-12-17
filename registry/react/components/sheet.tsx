@@ -1,3 +1,4 @@
+import type { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { X } from "lucide-react";
@@ -100,7 +101,7 @@ export const SheetContent = (props: SheetContentProps) => {
         >
           {children}
 
-          {showCloseButton && (
+          {!!showCloseButton && (
             <ArkDialog.CloseTrigger
               asChild
               className="absolute top-4 right-4"
@@ -123,11 +124,11 @@ export const SheetContent = (props: SheetContentProps) => {
   );
 };
 
-export const SheetBody = (props: React.ComponentProps<"div">) => (
+export const SheetBody = (props: React.ComponentProps<typeof ark.div>) => (
   <DialogBody data-scope="sheet" {...props} />
 );
 
-export const SheetHeader = (props: React.ComponentProps<"div">) => (
+export const SheetHeader = (props: React.ComponentProps<typeof ark.div>) => (
   <DialogHeader data-scope="sheet" {...props} />
 );
 
@@ -143,7 +144,7 @@ export const SheetClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
 ) => <DialogClose data-scope="sheet" {...props} />;
 
-export const SheetFooter = (props: React.ComponentProps<"div">) => {
+export const SheetFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (

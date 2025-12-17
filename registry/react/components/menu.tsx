@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react";
+import { ark, Portal } from "@ark-ui/react";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
@@ -66,7 +66,7 @@ export const MenuContent = (props: MenuContentProps) => {
           {children}
         </ArkMenu.Content>
 
-        {showArrow && <MenuArrow />}
+        {!!showArrow && <MenuArrow />}
       </ArkMenu.Positioner>
     </Portal>
   );
@@ -85,7 +85,7 @@ export const MenuGroup = (props: MenuGroupProps) => {
 
   return (
     <ArkMenu.ItemGroup data-part="item-group" data-scope="menu" {...rest}>
-      {heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
+      {!!heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
 
       {children}
     </ArkMenu.ItemGroup>
@@ -188,7 +188,7 @@ export const MenuRadioGroup = (props: MenuRadioGroupProps) => {
 
   return (
     <ArkMenu.RadioItemGroup data-part="item-group" data-scope="menu" {...rest}>
-      {heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
+      {!!heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
 
       {children}
     </ArkMenu.RadioItemGroup>
@@ -275,11 +275,11 @@ export const MenuSubTrigger = (
   );
 };
 
-export const MenuShortcut = (props: React.ComponentProps<"span">) => {
+export const MenuShortcut = (props: React.ComponentProps<typeof ark.span>) => {
   const { className, ...rest } = props;
 
   return (
-    <span
+    <ark.span
       className={cn(
         "ml-auto",
         "text-muted-foreground text-xs tracking-widest",

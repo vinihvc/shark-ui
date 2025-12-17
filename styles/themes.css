@@ -1,3 +1,5 @@
+/* Default theme goes here, but it's the default */
+
 .theme-red {
   --primary: var(--color-red-600);
   --primary-foreground: var(--color-red-50);
@@ -203,10 +205,15 @@
 }
 
 /* Background Colors */
-
 .bg-slate {
   --background: var(--color-slate-50);
   --foreground: var(--color-slate-950);
+
+  --secondary: var(--color-slate-100);
+  --secondary-foreground: var(--color-slate-950);
+
+  --muted: var(--color-slate-100);
+  --muted-foreground: var(--color-slate-500);
 
   --card: var(--color-slate-50);
   --card-foreground: var(--color-slate-950);
@@ -223,6 +230,12 @@
   @variant dark {
     --background: var(--color-slate-950);
     --foreground: var(--color-slate-50);
+
+    --secondary: var(--color-slate-900);
+    --secondary-foreground: var(--color-slate-50);
+
+    --muted: var(--color-slate-900);
+    --muted-foreground: var(--color-slate-400);
 
     --card: var(--color-slate-950);
     --card-foreground: var(--color-slate-50);
@@ -242,6 +255,12 @@
   --background: var(--color-gray-50);
   --foreground: var(--color-gray-950);
 
+  --secondary: var(--color-gray-100);
+  --secondary-foreground: var(--color-gray-950);
+
+  --muted: var(--color-gray-100);
+  --muted-foreground: var(--color-gray-500);
+
   --card: var(--color-gray-50);
   --card-foreground: var(--color-gray-950);
 
@@ -257,6 +276,12 @@
   @variant dark {
     --background: var(--color-gray-950);
     --foreground: var(--color-gray-50);
+
+    --secondary: var(--color-gray-900);
+    --secondary-foreground: var(--color-gray-50);
+
+    --muted: var(--color-gray-900);
+    --muted-foreground: var(--color-gray-400);
 
     --card: var(--color-gray-950);
     --card-foreground: var(--color-gray-50);
@@ -276,6 +301,12 @@
   --background: var(--color-zinc-50);
   --foreground: var(--color-zinc-950);
 
+  --secondary: var(--color-zinc-100);
+  --secondary-foreground: var(--color-zinc-950);
+
+  --muted: var(--color-zinc-100);
+  --muted-foreground: var(--color-zinc-500);
+
   --card: var(--color-zinc-50);
   --card-foreground: var(--color-zinc-950);
 
@@ -292,6 +323,12 @@
     --background: var(--color-zinc-950);
     --foreground: var(--color-zinc-50);
 
+    --secondary: var(--color-zinc-900);
+    --secondary-foreground: var(--color-zinc-50);
+
+    --muted: var(--color-zinc-900);
+    --muted-foreground: var(--color-zinc-400);
+
     --card: var(--color-zinc-950);
     --card-foreground: var(--color-zinc-50);
 
@@ -306,9 +343,17 @@
   }
 }
 
+/* Neutral background goes here, but it's the default */
+
 .bg-stone {
   --background: var(--color-stone-50);
   --foreground: var(--color-stone-950);
+
+  --secondary: var(--color-stone-100);
+  --secondary-foreground: var(--color-stone-950);
+
+  --muted: var(--color-stone-100);
+  --muted-foreground: var(--color-stone-500);
 
   --card: var(--color-stone-50);
   --card-foreground: var(--color-stone-950);
@@ -326,6 +371,12 @@
     --background: var(--color-stone-950);
     --foreground: var(--color-stone-50);
 
+    --secondary: var(--color-stone-900);
+    --secondary-foreground: var(--color-stone-50);
+
+    --muted: var(--color-stone-900);
+    --muted-foreground: var(--color-stone-400);
+
     --card: var(--color-stone-950);
     --card-foreground: var(--color-stone-50);
 
@@ -341,7 +392,6 @@
 }
 
 /* Border Radius */
-
 .radius-none {
   --radius: 0rem;
 }
@@ -350,9 +400,7 @@
   --radius: 0.125rem;
 }
 
-.radius-sm {
-  --radius: 0.25rem;
-}
+/* Radius md goes here, but it's the default */
 
 .radius-lg {
   --radius: 0.75rem;

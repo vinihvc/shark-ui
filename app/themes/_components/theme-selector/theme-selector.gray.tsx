@@ -5,11 +5,7 @@ import React from "react";
 import { GRAY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
-import {
-  Field,
-  FieldInput,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
   Select,
   SelectContent,
@@ -39,43 +35,39 @@ export const ThemeSelectorGray = () => {
   return (
     <Field>
       <FieldLabel>Gray</FieldLabel>
-      <FieldInput>
-        <Select
-          collection={collection}
-          onValueChange={({ value }) =>
-            handleSelectColor(value[0] as GrayColor)
-          }
-          value={[selectedColor]}
-        >
-          <SelectTrigger className="w-full">
-            <div className="flex items-center gap-2">
-              <div
-                className={cn(
-                  "size-4 rounded-md border",
-                  `bg-${selectedColor}-900`
-                )}
-              />
-              <SelectValueText placeholder="Select a theme" />
-            </div>
-          </SelectTrigger>
+      <Select
+        collection={collection}
+        onValueChange={({ value }) => handleSelectColor(value[0] as GrayColor)}
+        value={[selectedColor]}
+      >
+        <SelectTrigger className="w-full">
+          <div className="flex items-center gap-2">
+            <div
+              className={cn(
+                "size-4 rounded-md border",
+                `bg-${selectedColor}-900`
+              )}
+            />
+            <SelectValueText placeholder="Select a theme" />
+          </div>
+        </SelectTrigger>
 
-          <SelectContent>
-            {collection.items.map((item) => (
-              <SelectItem item={item.value} key={item.value}>
-                <div className="flex items-center gap-2">
-                  <div className={cn("size-4 rounded-md border", item.hex)} />
-                  {item.label}
-                  {item.value === DEFAULT_GRAY_COLOR && (
-                    <Badge size="sm" variant="info">
-                      Default
-                    </Badge>
-                  )}
-                </div>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </FieldInput>
+        <SelectContent>
+          {collection.items.map((item) => (
+            <SelectItem item={item.value} key={item.value}>
+              <div className="flex items-center gap-2">
+                <div className={cn("size-4 rounded-md border", item.hex)} />
+                {item.label}
+                {item.value === DEFAULT_GRAY_COLOR && (
+                  <Badge size="sm" variant="info">
+                    Default
+                  </Badge>
+                )}
+              </div>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </Field>
   );
 };

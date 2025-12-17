@@ -14,7 +14,6 @@ import {
 import {
   Field,
   FieldHelper,
-  FieldInput,
   FieldLabel,
 } from "@/registry/react/components/field";
 
@@ -38,9 +37,7 @@ const AutocompleteDemo = () => {
         onInputValueChange={handleInputChange}
       >
         <AutocompleteControl>
-          <FieldInput>
-            <AutocompleteInput />
-          </FieldInput>
+          <AutocompleteInput />
         </AutocompleteControl>
 
         <AutocompleteContent>
