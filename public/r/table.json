@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/table.tsx",
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Table = (props: React.ComponentProps<typeof ark.table>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div className=\"relative w-full overflow-auto\" data-slot=\"table-wrapper\">\n      <ark.table\n        className={cn(\n          \"w-full\",\n          \"caption-bottom\",\n          \"text-foreground text-sm\",\n          className\n        )}\n        data-slot=\"table\"\n        {...rest}\n      />\n    </div>\n  );\n};\n\nexport const TableHeader = (props: React.ComponentProps<typeof ark.thead>) => {\n  const { className, ...rest } = props;\n\n  return <ark.thead className={cn(\"[&_tr]:border-b\", className)} {...rest} />;\n};\n\nexport const TableBody = (props: React.ComponentProps<typeof ark.tbody>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.tbody\n      className={cn(\"[&_tr:last-child]:border-0\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const TableFooter = (props: React.ComponentProps<typeof ark.tfoot>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.tfoot\n      className={cn(\n        \"border-t\",\n        \"bg-muted/50\",\n        \"font-medium\",\n        \"last:[&>tr]:border-b-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TableRow = (props: React.ComponentProps<typeof ark.tr>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.tr\n      className={cn(\n        \"border-b\",\n        \"data-[state=selected]:bg-muted\",\n        \"[&:has(td):hover]:bg-muted/50\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TableHead = (props: React.ComponentProps<typeof ark.th>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.th\n      className={cn(\n        \"h-12 px-4\",\n        \"text-left align-middle\",\n        \"font-normal text-muted-foreground\",\n        \"rtl:text-right\",\n        \"[&:has([role=checkbox])]:pe-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TableCell = (props: React.ComponentProps<typeof ark.td>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.td\n      className={cn(\n        \"p-4 align-middle [&:has([role=checkbox])]:pe-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TableCaption = (\n  props: React.ComponentProps<typeof ark.caption>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.caption\n      className={cn(\"mt-4\", \"text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

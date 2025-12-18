@@ -1,6 +1,3 @@
-// import { CardsActivityGoal } from "@/components/cards/activity-goal";
-// import { CardsCalendar } from "@/components/cards/calendar";
-
 import { cn } from "@/lib/utils";
 import { CardsPayments } from "./card.payments";
 import { CardsActivityGoal } from "./cards.activity";
@@ -8,14 +5,8 @@ import { CardsCalendar } from "./cards.calendar";
 import { CardsChat } from "./cards.chat";
 import { CardsCookie } from "./cards.cookie";
 import { CardsCreateAccount } from "./cards.create-account";
-// import { CardsExerciseMinutes } from "@/components/cards/exercise-minutes";
 import { CardsForms } from "./cards.forms";
 import { CardsTeamMembers } from "./cards.members";
-// import { CardsPayments } from "@/components/cards/payments";
-// import { CardsReportIssue } from "@/components/cards/report-issue";
-// import { CardsShare } from "@/components/cards/share";
-// import { CardsStats } from "@/components/cards/stats";
-// import { CardsTeamMembers } from "@/components/cards/team-members";
 
 export const CardsDemo = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
@@ -29,26 +20,23 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
       {...rest}
     >
       <div className="grid gap-4 lg:col-span-4 xl:col-span-6">
-        {/* <CardsStats /> */}
         <div className="grid gap-1 sm:grid-cols-[auto_1fr] md:hidden">
           <CardsCalendar />
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
             <CardsActivityGoal />
-          </div>
-          <div className="pt-3 sm:col-span-2 xl:pt-4">
-            {/* <CardsExerciseMinutes /> */}
           </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           <div className="flex flex-col gap-4">
             <CardsForms />
             <CardsTeamMembers />
-            <CardsCookie />
           </div>
           <div className="flex flex-col gap-4">
             <CardsCreateAccount />
             <CardsChat />
-            <div className="hidden xl:block">{/* <CardsReportIssue /> */}</div>
+            <div className="hidden xl:block">
+              <CardsCookie />
+            </div>
           </div>
         </div>
       </div>
@@ -58,15 +46,14 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-3">
             <CardsActivityGoal />
           </div>
-          <div className="pt-3 sm:col-span-2 xl:pt-3">
-            {/* <CardsExerciseMinutes /> */}
-          </div>
         </div>
         <div className="hidden md:block">
           <CardsPayments />
         </div>
-        {/* <CardsShare /> */}
-        <div className="xl:hidden">{/* <CardsReportIssue /> */}</div>
+
+        <div className="xl:hidden">
+          <CardsCookie />
+        </div>
       </div>
     </div>
   );

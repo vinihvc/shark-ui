@@ -25,6 +25,7 @@ export const InputGroup = (props: React.ComponentProps<typeof ark.div>) => {
         className
       )}
       data-slot="input-group"
+      role="group"
       {...rest}
     />
   );
@@ -59,6 +60,7 @@ export const InputGroupAddon = (props: InputGroupAddonProps) => {
   return (
     <ark.div
       className={cn(inputGroupAddonVariants({ align }), className)}
+      data-align={align}
       data-slot="input-group-addon"
       onClick={(e) => {
         if ((e.target as HTMLElement).closest("button")) {
@@ -93,10 +95,10 @@ interface InputGroupButtonProps
 
 export const InputGroupButton = (props: InputGroupButtonProps) => {
   const {
+    className,
     type = "button",
     variant = "ghost",
     size = "xs",
-    className,
     ...rest
   } = props;
 
@@ -104,7 +106,6 @@ export const InputGroupButton = (props: InputGroupButtonProps) => {
     <Button
       className={cn(inputGroupButtonVariants({ size }), className)}
       data-size={size}
-      data-slot="input-group-button"
       type={type}
       variant={variant}
       {...rest}
@@ -120,13 +121,9 @@ export const InputGroupText = (
   return (
     <ark.span
       className={cn(
-        "group",
-        "flex items-center gap-2",
-        "text-muted-foreground text-sm",
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+        "flex items-center gap-2 text-muted-foreground text-sm [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
         className
       )}
-      data-slot="input-group-text"
       {...rest}
     />
   );
@@ -138,14 +135,10 @@ export const InputGroupInput = (props: React.ComponentProps<typeof Input>) => {
   return (
     <Input
       className={cn(
-        "flex-1",
-        "bg-transparent",
-        "rounded-none border-0 shadow-none",
-        "focus-visible:ring-0",
-        "dark:bg-transparent",
+        "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
         className
       )}
-      data-slot="input-group-input"
+      data-slot="input-group-control"
       {...rest}
     />
   );
@@ -159,15 +152,10 @@ export const InputGroupTextarea = (
   return (
     <Textarea
       className={cn(
-        "flex-1",
-        "resize-none",
-        "rounded-none border-0 bg-transparent py-3",
-        "shadow-none",
-        "focus-visible:ring-0",
-        "dark:bg-transparent",
+        "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
         className
       )}
-      data-slot="input-group-textarea"
+      data-slot="input-group-control"
       {...rest}
     />
   );

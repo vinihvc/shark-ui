@@ -136,7 +136,7 @@ export const DialogBody = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn("flex-1 overflow-auto p-6", className)}
+      className={cn("flex-1 overflow-auto px-6 py-1", className)}
       data-slot="dialog-body"
       {...rest}
     />

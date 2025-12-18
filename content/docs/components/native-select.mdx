@@ -1,0 +1,33 @@
+---
+title: Native Select
+description: A native select component built with Ark UI
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="native-select" />
+
+## Installation
+
+<ComponentInstallation componentName="native-select" />
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  NativeSelect, 
+  NativeSelectOptGroup, 
+  NativeSelectOption, 
+} from "@/components/ui/native-select";
+```
+
+```tsx lineNumbers
+<NativeSelect>
+  <NativeSelectOptGroup label="Group 1">
+    <NativeSelectOption value="1">Option 1</NativeSelectOption>
+    <NativeSelectOption value="2">Option 2</NativeSelectOption>
+    <NativeSelectOption value="3">Option 3</NativeSelectOption>
+  </NativeSelectOptGroup>
+</NativeSelect>
+```

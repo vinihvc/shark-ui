@@ -18,6 +18,7 @@ export const Popover = (
 
   return (
     <ArkPopover.Root
+      data-slot="popover"
       lazyMount={lazyMount}
       modal={modal}
       positioning={positioning}
@@ -29,7 +30,7 @@ export const Popover = (
 
 export const PopoverTrigger = (
   props: React.ComponentProps<typeof ArkPopover.Trigger>
-) => <ArkPopover.Trigger {...props} />;
+) => <ArkPopover.Trigger data-slot="popover-trigger" {...props} />;
 
 interface PopoverContentProps
   extends React.ComponentProps<typeof ArkPopover.Content> {
@@ -44,7 +45,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
 
   return (
     <Portal>
-      <ArkPopover.Positioner>
+      <ArkPopover.Positioner data-slot="popover-positioner">
         <ArkPopover.Content
           className={cn(
             "z-50",
@@ -63,6 +64,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
             "data-[side=top]:slide-in-from-bottom-2",
             className
           )}
+          data-slot="popover-content"
           {...rest}
         >
           {!!showArrow && <PopoverArrow />}
@@ -81,6 +83,7 @@ export const PopoverArrow = (
 
   return (
     <ArkPopover.Arrow
+      data-slot="popover-arrow"
       style={
         {
           "--arrow-background": "var(--popover)",
@@ -95,15 +98,34 @@ export const PopoverArrow = (
   );
 };
 
-export const PopoverHeader = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
+interface PopoverHeaderProps extends React.ComponentProps<typeof ark.div> {
+  /**
+   * The title of the popover header
+   */
+  title?: string;
+  /**
+   * The description of the popover header
+   */
+  description?: string;
+}
+
+export const PopoverHeader = (props: PopoverHeaderProps) => {
+  const { title, description, children, className, ...rest } = props;
 
   return (
-    <ark.div
+    <div
       className={cn("flex flex-col gap-2 p-4 pb-0", className)}
       data-slot="popover-header"
       {...rest}
-    />
+    >
+      {!!title && <PopoverTitle>{title}</PopoverTitle>}
+      {!!description && <PopoverDescription>{description}</PopoverDescription>}
+      {!title && typeof children === "string" ? (
+        <PopoverTitle>{children}</PopoverTitle>
+      ) : (
+        children
+      )}
+    </div>
   );
 };
 
@@ -118,6 +140,7 @@ export const PopoverTitle = (
         "font-semibold text-base leading-none tracking-tight",
         className
       )}
+      data-slot="popover-title"
       {...rest}
     />
   );
@@ -131,6 +154,7 @@ export const PopoverDescription = (
   return (
     <ArkPopover.Description
       className={cn("text-muted-foreground text-sm", className)}
+      data-slot="popover-description"
       {...rest}
     />
   );
@@ -162,4 +186,4 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
 
 export const PopoverClose = (
   props: React.ComponentProps<typeof ArkPopover.CloseTrigger>
-) => <ArkPopover.CloseTrigger {...props} />;
+) => <ArkPopover.CloseTrigger data-slot="popover-close-trigger" {...props} />;

@@ -15,7 +15,6 @@ export const inputVariants = tv({
     "file:inline-flex file:h-7 file:border-0 file:bg-transparent",
     "file:font-medium file:text-foreground file:text-sm",
     "transition-[color,box-shadow]",
-    "selection:bg-primary selection:text-primary-foreground",
     "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",

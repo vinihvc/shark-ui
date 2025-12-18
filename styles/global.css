@@ -152,7 +152,7 @@
   --accent: var(--color-neutral-100);
   --accent-foreground: var(--color-neutral-900);
 
-  --success: var(--color-emerald-500);
+  --success: var(--color-emerald-600);
   --success-foreground: var(--color-green-50);
 
   --info: var(--color-sky-600);
@@ -237,4 +237,10 @@
 
 @utility container {
   @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
+}
+
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
 }

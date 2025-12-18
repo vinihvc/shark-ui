@@ -2,7 +2,9 @@ import { Slider as ArkSlider } from "@ark-ui/react/slider";
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export const Slider = (props: React.ComponentProps<typeof ArkSlider.Root>) => {
+interface SliderProps extends React.ComponentProps<typeof ArkSlider.Root> {}
+
+export const Slider = (props: SliderProps) => {
   const { value, defaultValue, min = 0, max = 100, children, ...rest } = props;
 
   const _values = React.useMemo(
@@ -42,6 +44,7 @@ export const Slider = (props: React.ComponentProps<typeof ArkSlider.Root>) => {
           <ArkSlider.Thumb
             className={cn(
               "relative",
+              "cursor-grab",
               "size-4",
               "border",
               "bg-primary",
@@ -49,7 +52,7 @@ export const Slider = (props: React.ComponentProps<typeof ArkSlider.Root>) => {
               "transition-[color,box-shadow]",
               "shadow-sm",
               "ring-ring/50",
-              "data-dragging:ring-4",
+              "data-dragging:cursor-grabbing data-dragging:ring-4",
               "hover:ring-4",
               "focus-visible:outline-hidden focus-visible:ring-4",
               "disabled:pointer-events-none disabled:opacity-50"

@@ -24,6 +24,7 @@ export const Textarea = (
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
         className
       )}
+      data-slot="textarea"
       {...rest}
     />
   );

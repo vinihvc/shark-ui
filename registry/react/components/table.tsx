@@ -64,7 +64,6 @@ export const TableRow = (props: React.ComponentProps<typeof ark.tr>) => {
     <ark.tr
       className={cn(
         "border-b",
-        "transition-colors",
         "data-[state=selected]:bg-muted",
         "[&:has(td):hover]:bg-muted/50",
         className

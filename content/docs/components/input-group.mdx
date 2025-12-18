@@ -1,0 +1,35 @@
+---
+title: Input Group
+description: A component that allows you to group input elements together.
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="input-group" />
+
+## Installation
+
+<ComponentInstallation componentName="input-group" />
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+```
+
+```tsx lineNumbers
+<InputGroup>
+  <InputGroupInput />
+  <InputGroupAddon>
+    <InputGroupText>https://</InputGroupText>
+  </InputGroupAddon>
+</InputGroup>
+```

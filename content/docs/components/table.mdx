@@ -1,0 +1,50 @@
+---
+title: Table  
+description: A component that displays data in a tabular format
+---
+
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreview componentName="table" />
+
+## Installation
+
+<ComponentInstallation componentName="table" />
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Table, 
+  TableBody, 
+  TableCaption, 
+  TableCell, 
+  TableHead, 
+  TableHeader, 
+  TableRow,
+  TableFooter,
+} from "@/components/ui/table";
+```
+
+```tsx lineNumbers
+<Table>
+  <TableCaption>A list of users in your workspace.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Email</TableHead>
+      <TableHead>Role</TableHead>
+      <TableHead>Status</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Vinicius</TableCell>
+      <TableCell>vinicius@example.com</TableCell>
+      <TableCell>Developer</TableCell>
+      <TableCell>Active</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```

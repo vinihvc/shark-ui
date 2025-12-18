@@ -8,26 +8,26 @@
   ],
   "cssVars": {
     "light": {
-      "success": "oklch(0.596 0.145 163.225)",
-      "success-foreground": "oklch(1 0 0)",
-      "info": "oklch(0.685 0.169 237.323 / 0.15)",
-      "info-foreground": "oklch(0.5 0.134 242.749)",
-      "warning": "oklch(0.828 0.189 84.429)",
-      "warning-foreground": "oklch(0.279 0.077 45.635)"
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-400)",
+      "warning-foreground": "var(--color-yellow-950)"
     },
     "dark": {
-      "success": "oklch(0.596 0.145 163.225)",
-      "success-foreground": "oklch(1 0 0)",
-      "info": "oklch(0.685 0.169 237.323 / 0.1)",
-      "info-foreground": "oklch(0.828 0.111 230.318)",
-      "warning": "oklch(0.828 0.189 84.429)",
-      "warning-foreground": "oklch(0.279 0.077 45.635)"
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-600)",
+      "warning-foreground": "var(--color-yellow-50)"
     }
   },
   "files": [
     {
       "path": "registry/react/components/badge.tsx",
-      "content": "import { ark } from \"@ark-ui/react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nconst badgeVariants = tv({\n  base: [\n    \"inline-flex items-center justify-center gap-1\",\n    \"px-1 py-0.5\",\n    \"rounded-md border\",\n    \"select-none font-medium text-xs\",\n    \"overflow-hidden\",\n    \"outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n    \"[&>svg]:pointer-events-none [&>svg]:size-3\",\n  ],\n  variants: {\n    variant: {\n      primary: [\n        \"bg-primary\",\n        \"text-primary-foreground\",\n        \"focus-visible:border-primary focus-visible:ring-primary/20\",\n        \"dark:focus-visible:ring-primary/40\",\n        \"[a&]:hover:bg-primary/90\",\n      ],\n      secondary: [\n        \"bg-secondary\",\n        \"text-secondary-foreground\",\n        \"focus-visible:border-secondary focus-visible:ring-secondary/20\",\n        \"dark:focus-visible:ring-secondary/40\",\n        \"[a&]:hover:bg-secondary/90\",\n      ],\n      outline: [\"[a&]:hover:bg-accent\", \"[a&]:hover:text-accent-foreground\"],\n      success: [\n        \"bg-success\",\n        \"text-success-foreground\",\n        \"focus-visible:border-success focus-visible:ring-success/20\",\n        \"dark:focus-visible:ring-success/40\",\n        \"[a&]:hover:bg-success/90\",\n      ],\n      info: [\n        \"bg-info\",\n        \"text-info-foreground\",\n        \"focus-visible:border-info focus-visible:ring-info/20\",\n        \"dark:focus-visible:ring-info/40\",\n        \"[a&]:hover:bg-info/90\",\n      ],\n      warning: [\n        \"bg-warning\",\n        \"text-warning-foreground\",\n        \"focus-visible:border-warning focus-visible:ring-warning/20\",\n        \"dark:focus-visible:ring-warning/40\",\n        \"[a&]:hover:bg-warning/90\",\n      ],\n      destructive: [\n        \"bg-destructive dark:bg-destructive/60\",\n        \"text-destructive-foreground\",\n        \"focus-visible:border-destructive focus-visible:ring-destructive/20\",\n        \"dark:focus-visible:ring-destructive/40\",\n        \"[a&]:hover:bg-destructive/90\",\n      ],\n    },\n  },\n});\n\ninterface BadgeProps\n  extends React.ComponentProps<typeof ark.span>,\n    VariantProps<typeof badgeVariants> {}\n\nexport const Badge = (props: BadgeProps) => {\n  const { variant = \"primary\", className, ...rest } = props;\n\n  return (\n    <ark.span\n      className={cn(badgeVariants({ variant }), className)}\n      data-part=\"root\"\n      data-scope=\"badge\"\n      {...rest}\n    />\n  );\n};\n",
+      "content": "import { ark } from \"@ark-ui/react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nconst badgeVariants = tv({\n  base: [\n    \"inline-flex items-center justify-center gap-1\",\n    \"rounded-md border border-transparent\",\n    \"select-none font-medium\",\n    \"overflow-hidden\",\n    \"outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\",\n    \"[&>svg]:pointer-events-none [&>svg]:size-3\",\n  ],\n  variants: {\n    variant: {\n      default: [\n        \"bg-foreground\",\n        \"text-background\",\n        \"focus-visible:border-foreground focus-visible:ring-foreground/20\",\n        \"dark:focus-visible:ring-foreground/40\",\n        \"[a&]:hover:bg-foreground/90\",\n      ],\n      secondary: [\n        \"bg-secondary\",\n        \"text-secondary-foreground\",\n        \"focus-visible:border-secondary focus-visible:ring-secondary/50\",\n        \"[a&]:hover:bg-secondary/90\",\n      ],\n      outline: [\n        \"border-border\",\n        \"[a&]:hover:bg-accent\",\n        \"[a&]:hover:text-accent-foreground\",\n      ],\n      success: [\n        \"bg-success\",\n        \"text-success-foreground\",\n        \"focus-visible:border-success focus-visible:ring-success/20\",\n        \"[a&]:hover:bg-success/90\",\n      ],\n      info: [\n        \"bg-info\",\n        \"text-info-foreground\",\n        \"focus-visible:border-info focus-visible:ring-info/50\",\n        \"[a&]:hover:bg-info/90\",\n      ],\n      warning: [\n        \"bg-warning\",\n        \"text-warning-foreground\",\n        \"focus-visible:border-warning focus-visible:ring-warning/20\",\n        \"dark:focus-visible:ring-warning/40\",\n        \"[a&]:hover:bg-warning/90\",\n      ],\n      destructive: [\n        \"bg-destructive dark:bg-destructive/60\",\n        \"text-destructive-foreground\",\n        \"border-destructive\",\n        \"focus-visible:border-destructive focus-visible:ring-destructive/20\",\n        \"dark:focus-visible:ring-destructive/40\",\n        \"[a&]:hover:bg-destructive/90\",\n      ],\n    },\n    size: {\n      sm: [\"text-[0.625rem]\", \"px-1 py-px\"],\n      md: [\"text-xs\", \"px-2 py-0.5\"],\n      lg: [\"text-base\", \"px-2 py-1\"],\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"md\",\n  },\n});\n\ninterface BadgeProps\n  extends React.ComponentProps<typeof ark.span>,\n    VariantProps<typeof badgeVariants> {}\n\nexport const Badge = (props: BadgeProps) => {\n  const { variant = \"default\", size = \"md\", className, ...rest } = props;\n\n  return (\n    <ark.span\n      className={cn(badgeVariants({ variant, size }), className)}\n      data-slot=\"badge\"\n      {...rest}\n    />\n  );\n};\n",
       "type": "registry:ui"
     }
   ]

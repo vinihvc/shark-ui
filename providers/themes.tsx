@@ -29,8 +29,6 @@ export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
   const [{ primaryColor, grayColor, borderRadius }] = useConfig();
 
   React.useEffect(() => {
-    console.log(Array.from(document.body.classList));
-
     for (const className of Array.from(document.body.classList)) {
       document.body.classList.remove(className);
     }

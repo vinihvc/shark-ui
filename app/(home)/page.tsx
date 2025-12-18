@@ -6,18 +6,13 @@ import { Button } from "@/registry/react/components/button";
 const HomePage = () => (
   <main>
     <div
-      className="-z-10 absolute inset-0 min-h-screen bg-repeat-x"
+      className="-z-10 absolute inset-0 bg-repeat-x"
       style={{ backgroundImage: "url(/images/pattern.svg)" }}
     />
 
-    <div className="-z-10 absolute inset-0 hidden h-[830px] bg-[radial-gradient(42.48%_42.48%_at_calc(50%+100vw/2)_center,#3b82f650,rgba(235,94,65,0)_100%)] blur-2xl sm:block" />
+    <div className="-z-10 absolute inset-0 hidden h-[calc(100vh-var(--header-height))] bg-[radial-gradient(42.48%_42.48%_at_calc(50%+100vw/2)_center,theme(colors.primary),theme(colors.background))] opacity-30 blur-2xl sm:block" />
 
-    <section
-      className="container flex flex-col gap-4 bg-none bg-position-[calc(50%+250px)_25px] bg-no-repeat py-20 md:py-32"
-      style={{
-        backgroundImage: "url(/images/hero.svg)",
-      }}
-    >
+    <section className="container flex flex-col gap-4 bg-none bg-position-[calc(50%+250px)_25px] bg-no-repeat py-20 md:py-32">
       <div>
         <Badge asChild variant="secondary">
           <NavLink href="/docs">

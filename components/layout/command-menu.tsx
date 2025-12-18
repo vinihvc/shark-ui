@@ -99,7 +99,7 @@ export const CommandMenu = (props: CommandMenuProps) => {
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden sm:flex">
-            <KbdGroup spacing={0.5}>
+            <KbdGroup className="[--gap:spacing(0.5)]">
               <Kbd className="border">⌘</Kbd>
               <Kbd className="border">K</Kbd>
             </KbdGroup>
