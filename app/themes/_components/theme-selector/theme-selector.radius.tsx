@@ -9,7 +9,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValueText,
+  SelectValue,
 } from "@/registry/react/components/select";
 import {
   type BorderRadius,
@@ -35,7 +35,7 @@ export const ThemeSelectorRadius = () => {
         value={[config.borderRadius]}
       >
         <SelectTrigger className="w-full">
-          <SelectValueText placeholder="Select a radius" />
+          <SelectValue placeholder="Select a radius" />
         </SelectTrigger>
 
         <SelectContent>

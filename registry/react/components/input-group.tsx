@@ -1,7 +1,7 @@
 "use client";
 
 import { ark } from "@ark-ui/react";
-import type * as React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -24,8 +24,7 @@ export const InputGroup = (props: React.ComponentProps<typeof ark.div>) => {
         "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
         className
       )}
-      data-part="root"
-      data-scope="input-group"
+      data-slot="input-group"
       {...rest}
     />
   );
@@ -60,8 +59,7 @@ export const InputGroupAddon = (props: InputGroupAddonProps) => {
   return (
     <ark.div
       className={cn(inputGroupAddonVariants({ align }), className)}
-      data-part="addon"
-      data-scope="input-group"
+      data-slot="input-group-addon"
       onClick={(e) => {
         if ((e.target as HTMLElement).closest("button")) {
           return;
@@ -105,9 +103,8 @@ export const InputGroupButton = (props: InputGroupButtonProps) => {
   return (
     <Button
       className={cn(inputGroupButtonVariants({ size }), className)}
-      data-part="button"
-      data-scope="input-group"
       data-size={size}
+      data-slot="input-group-button"
       type={type}
       variant={variant}
       {...rest}
@@ -129,8 +126,7 @@ export const InputGroupText = (
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
         className
       )}
-      data-part="text"
-      data-scope="input-group"
+      data-slot="input-group-text"
       {...rest}
     />
   );
@@ -149,8 +145,7 @@ export const InputGroupInput = (props: React.ComponentProps<typeof Input>) => {
         "dark:bg-transparent",
         className
       )}
-      data-part="input"
-      data-scope="input-group"
+      data-slot="input-group-input"
       {...rest}
     />
   );
@@ -172,8 +167,7 @@ export const InputGroupTextarea = (
         "dark:bg-transparent",
         className
       )}
-      data-part="textarea"
-      data-scope="input-group"
+      data-slot="input-group-textarea"
       {...rest}
     />
   );

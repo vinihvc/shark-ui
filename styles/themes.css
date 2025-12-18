@@ -3,7 +3,7 @@
 .theme-red {
   --primary: var(--color-red-600);
   --primary-foreground: var(--color-red-50);
-  --ring: var(--color-red-400);
+  --ring: var(--color-red-500);
 
   @variant dark {
     --primary: var(--color-red-600);
@@ -27,7 +27,7 @@
 .theme-amber {
   --primary: var(--color-amber-600);
   --primary-foreground: var(--color-amber-50);
-  --ring: var(--color-amber-400);
+  --ring: var(--color-amber-500);
 
   @variant dark {
     --primary: var(--color-amber-600);
@@ -39,7 +39,7 @@
 .theme-yellow {
   --primary: var(--color-yellow-600);
   --primary-foreground: var(--color-yellow-50);
-  --ring: var(--color-yellow-400);
+  --ring: var(--color-yellow-500);
 
   @variant dark {
     --primary: var(--color-yellow-600);
@@ -51,7 +51,7 @@
 .theme-lime {
   --primary: var(--color-lime-600);
   --primary-foreground: var(--color-lime-50);
-  --ring: var(--color-lime-400);
+  --ring: var(--color-lime-600);
 
   @variant dark {
     --primary: var(--color-lime-600);
@@ -63,7 +63,7 @@
 .theme-green {
   --primary: var(--color-green-600);
   --primary-foreground: var(--color-green-50);
-  --ring: var(--color-green-400);
+  --ring: var(--color-green-600);
 
   @variant dark {
     --primary: var(--color-green-600);
@@ -75,7 +75,7 @@
 .theme-emerald {
   --primary: var(--color-emerald-600);
   --primary-foreground: var(--color-emerald-50);
-  --ring: var(--color-emerald-400);
+  --ring: var(--color-emerald-600);
 
   @variant dark {
     --primary: var(--color-emerald-600);
@@ -87,7 +87,7 @@
 .theme-teal {
   --primary: var(--color-teal-600);
   --primary-foreground: var(--color-teal-50);
-  --ring: var(--color-teal-400);
+  --ring: var(--color-teal-600);
 
   @variant dark {
     --primary: var(--color-teal-600);
@@ -99,7 +99,7 @@
 .theme-cyan {
   --primary: var(--color-cyan-600);
   --primary-foreground: var(--color-cyan-50);
-  --ring: var(--color-cyan-400);
+  --ring: var(--color-cyan-600);
 
   @variant dark {
     --primary: var(--color-cyan-600);
@@ -111,7 +111,7 @@
 .theme-sky {
   --primary: var(--color-sky-600);
   --primary-foreground: var(--color-sky-50);
-  --ring: var(--color-sky-400);
+  --ring: var(--color-sky-600);
 
   @variant dark {
     --primary: var(--color-sky-600);

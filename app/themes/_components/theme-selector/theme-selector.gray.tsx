@@ -11,7 +11,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValueText,
+  SelectValue,
 } from "@/registry/react/components/select";
 import { DEFAULT_GRAY_COLOR, type GrayColor, useConfig } from "@/store/config";
 
@@ -48,7 +48,7 @@ export const ThemeSelectorGray = () => {
                 `bg-${selectedColor}-900`
               )}
             />
-            <SelectValueText placeholder="Select a theme" />
+            <SelectValue placeholder="Select a theme" />
           </div>
         </SelectTrigger>
 

@@ -49,7 +49,7 @@ const TemplatesPage = async (props: PageProps<"/templates/[[...slug]]">) => {
           )}
         </div>
       </div>
-      <div className="prose w-full flex-1 *:data-[part=alert]:first:mt-0">
+      <div className="prose w-full flex-1 *:data-[slot=alert]:first:mt-0">
         <MDX
           components={getMDXComponents({
             // this allows you to link to other pages with relative file paths

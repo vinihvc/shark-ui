@@ -26,6 +26,7 @@ export const FileUpload = (
   return (
     <ArkFileUpload.Root
       className={cn("relative flex flex-col items-start gap-4", className)}
+      data-slot="file-upload"
       {...rest}
     >
       {children}
@@ -37,7 +38,7 @@ export const FileUpload = (
 
 export const FileUploadTrigger = (
   props: React.ComponentProps<typeof ArkFileUpload.Trigger>
-) => <ArkFileUpload.Trigger {...props} />;
+) => <ArkFileUpload.Trigger data-slot="file-upload-trigger" {...props} />;
 
 export const FileUploadDropzone = (
   props: React.ComponentProps<typeof ArkFileUpload.Dropzone>
@@ -56,6 +57,7 @@ export const FileUploadDropzone = (
         "data-invalid:border-destructive data-invalid:bg-destructive/10",
         className
       )}
+      data-slot="file-upload-dropzone"
       {...rest}
     />
   );
@@ -69,12 +71,13 @@ export const FileUploadLabel = (
   return (
     <ArkFileUpload.Label
       className={cn("font-medium text-muted-foreground text-sm", className)}
+      data-slot="file-upload-label"
       {...rest}
     />
   );
 };
 
-export const FileUploadItemGroup = (
+export const FileUploadGroup = (
   props: React.ComponentProps<typeof ArkFileUpload.ItemGroup>
 ) => {
   const { className, ...rest } = props;
@@ -82,6 +85,7 @@ export const FileUploadItemGroup = (
   return (
     <ArkFileUpload.ItemGroup
       className={cn("flex flex-col gap-2", className)}
+      data-slot="file-upload-group"
       {...rest}
     />
   );
@@ -89,7 +93,7 @@ export const FileUploadItemGroup = (
 
 export const FileUploadContext = (
   props: React.ComponentProps<typeof ArkFileUpload.Context>
-) => <ArkFileUpload.Context {...props} />;
+) => <ArkFileUpload.Context data-slot="file-upload-context" {...props} />;
 
 export const FileUploadItem = (
   props: React.ComponentProps<typeof ArkFileUpload.Item>
@@ -106,6 +110,7 @@ export const FileUploadItem = (
         "fade-in-0 slide-in-from-top-5 animate-in",
         className
       )}
+      data-slot="file-upload-item"
       {...rest}
     />
   );
@@ -116,7 +121,13 @@ export const FileUploadItemPreview = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkFileUpload.ItemPreview className={cn(className)} {...rest} />;
+  return (
+    <ArkFileUpload.ItemPreview
+      className={cn(className)}
+      data-slot="file-upload-item-preview"
+      {...rest}
+    />
+  );
 };
 
 export const FileUploadItemPreviewImage = (
@@ -127,6 +138,7 @@ export const FileUploadItemPreviewImage = (
   return (
     <ArkFileUpload.ItemPreviewImage
       className={cn("aspect-square h-10 rounded-md object-cover", className)}
+      data-slot="file-upload-item-preview-image"
       {...rest}
     />
   );
@@ -140,6 +152,7 @@ export const FileUploadItemName = (
   return (
     <ArkFileUpload.ItemName
       className={cn("line-clamp-1 min-w-0 truncate text-sm", className)}
+      data-slot="file-upload-item-name"
       {...rest}
     />
   );
@@ -153,6 +166,7 @@ export const FileUploadItemSizeText = (
   return (
     <ArkFileUpload.ItemSizeText
       className={cn("text-muted-foreground text-xs", className)}
+      data-slot="file-upload-item-size-text"
       {...rest}
     />
   );
@@ -166,6 +180,7 @@ export const FileUploadItemDeleteTrigger = (
   return (
     <ArkFileUpload.ItemDeleteTrigger
       className={cn(className)}
+      data-slot="file-upload-item-delete-trigger"
       {...rest}
       asChild
     >

@@ -1,0 +1,117 @@
+"use client";
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/react/components/avatar";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/react/components/card";
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemTitle,
+} from "@/registry/react/components/item";
+import {
+  createCollection,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/react/components/select";
+
+const teamMembers = [
+  {
+    name: "Sofia Davis",
+    email: "m@example.com",
+    avatar: "/avatars/01.png",
+    role: "Owner",
+  },
+  {
+    name: "Jackson Lee",
+    email: "p@example.com",
+    avatar: "/avatars/02.png",
+    role: "Developer",
+  },
+  {
+    name: "Isabella Nguyen",
+    email: "i@example.com",
+    avatar: "/avatars/03.png",
+    role: "Billing",
+  },
+];
+
+export const CardsTeamMembers = () => {
+  const collection = createCollection({
+    items: [
+      {
+        value: "Viewer",
+        description: "Can view and comment.",
+      },
+      {
+        value: "Developer",
+        description: "Can view, comment and edit.",
+      },
+      {
+        value: "Billing",
+        description: "Can view, comment and manage billing.",
+      },
+      {
+        value: "Owner",
+        description: "Admin-level access to all resources.",
+      },
+    ],
+  });
+
+  return (
+    <Card className="gap-4">
+      <CardHeader
+        description="Invite your team members to collaborate."
+        title="Team Members"
+      />
+
+      <CardContent>
+        {teamMembers.map((member) => (
+          <Item className="gap-4 px-0" key={member.name} size="sm">
+            <Avatar className="shrink-0 self-start border">
+              <AvatarImage alt="Image" src={member.avatar} />
+              <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+            </Avatar>
+
+            <ItemContent>
+              <ItemTitle>{member.name}</ItemTitle>
+              <ItemDescription>{member.email}</ItemDescription>
+            </ItemContent>
+
+            <ItemActions>
+              <Select collection={collection} defaultValue={[member.role]}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select role..." />
+                </SelectTrigger>
+
+                <SelectContent>
+                  {collection.items.map((role) => (
+                    <SelectItem item={role} key={role.value}>
+                      <div className="flex flex-col">
+                        <p className="font-medium text-sm">{role.value}</p>
+                        <p className="text-muted-foreground">
+                          {role.description}
+                        </p>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </ItemActions>
+          </Item>
+        ))}
+      </CardContent>
+    </Card>
+  );
+};

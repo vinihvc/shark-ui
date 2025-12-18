@@ -7,6 +7,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 2000px;
+
   --header-height: calc(var(--spacing) * 14);
 
   --color-background: var(--background);
@@ -194,11 +197,11 @@
   --info: var(--color-sky-600);
   --info-foreground: var(--color-sky-50);
 
-  --warning: var(--color-yellow-900);
-  --warning-foreground: var(--color-yellow-300);
+  --warning: var(--color-yellow-600);
+  --warning-foreground: var(--color-yellow-50);
 
-  --destructive: var(--color-red-900);
-  --destructive-foreground: var(--color-red-300);
+  --destructive: var(--color-red-700);
+  --destructive-foreground: var(--color-red-50);
 
   --border: var(--color-neutral-800);
   --input: var(--color-neutral-800);
@@ -232,8 +235,6 @@
   }
 }
 
-@layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 w-full;
-  }
+@utility container {
+  @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
 }

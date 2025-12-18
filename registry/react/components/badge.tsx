@@ -81,8 +81,7 @@ export const Badge = (props: BadgeProps) => {
   return (
     <ark.span
       className={cn(badgeVariants({ variant, size }), className)}
-      data-part="root"
-      data-scope="badge"
+      data-slot="badge"
       {...rest}
     />
   );

@@ -18,7 +18,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValueText,
+  SelectValue,
 } from "@/registry/react/components/select";
 import { Textarea } from "@/registry/react/components/textarea";
 
@@ -57,7 +57,7 @@ const FieldDemo = () => {
   });
 
   return (
-    <div className="w-full max-w-md py-5">
+    <div className="w-full max-w-md">
       <form>
         <FieldGroup>
           <FieldSet>
@@ -91,15 +91,10 @@ const FieldDemo = () => {
               </Field>
               <div className="grid grid-cols-3 gap-4">
                 <Field>
-                  <FieldLabel htmlFor="checkout-exp-month-ts6">
-                    Month
-                  </FieldLabel>
-                  <Select collection={collectionMonth} defaultValue={[""]}>
-                    <SelectTrigger
-                      className="w-full"
-                      id="checkout-exp-month-ts6"
-                    >
-                      <SelectValueText placeholder="MM" />
+                  <FieldLabel>Month</FieldLabel>
+                  <Select collection={collectionMonth}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="MM" />
                     </SelectTrigger>
                     <SelectContent>
                       {collectionMonth.items.map((item) => (
@@ -111,15 +106,10 @@ const FieldDemo = () => {
                   </Select>
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
-                    Year
-                  </FieldLabel>
-                  <Select collection={collectionYear} defaultValue={[""]}>
-                    <SelectTrigger
-                      className="w-full"
-                      id="checkout-7j9-exp-year-f59"
-                    >
-                      <SelectValueText placeholder="YYYY" />
+                  <FieldLabel>Year</FieldLabel>
+                  <Select collection={collectionYear}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="YYYY" />
                     </SelectTrigger>
                     <SelectContent>
                       {collectionYear.items.map((item) => (

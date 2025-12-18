@@ -6,6 +6,50 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Separator } from "./separator";
 
+const fieldVariants = tv({
+  base: [
+    "group/field",
+    "w-full",
+    "flex gap-3",
+    "data-[invalid=true]:text-destructive",
+  ],
+  variants: {
+    orientation: {
+      vertical: ["flex-col *:w-full [&>.sr-only]:w-auto"],
+      horizontal: [
+        "flex-row items-center",
+        "*:data-[slot=field-label]:flex-auto",
+        "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+      ],
+      responsive: [
+        "@md/field-group:flex-row flex-col @md/field-group:items-center *:w-full @md/field-group:*:w-auto [&>.sr-only]:w-auto",
+        "@md/field-group:*:data-[slot=field-label]:flex-auto",
+        "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+      ],
+    },
+  },
+  defaultVariants: {
+    orientation: "vertical",
+  },
+});
+
+interface FieldProps
+  extends React.ComponentProps<typeof ArkField.Root>,
+    VariantProps<typeof fieldVariants> {}
+
+export const Field = (props: FieldProps) => {
+  const { orientation = "vertical", className, ...rest } = props;
+
+  return (
+    <ArkField.Root
+      className={cn(fieldVariants({ orientation }), className)}
+      data-orientation={orientation}
+      data-slot="field"
+      {...rest}
+    />
+  );
+};
+
 export const FieldSet = (
   props: React.ComponentProps<typeof ArkFieldset.Root>
 ) => {
@@ -18,8 +62,7 @@ export const FieldSet = (
         "has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
         className
       )}
-      data-part="root"
-      data-scope="field"
+      data-slot="field-set"
       {...rest}
     />
   );
@@ -44,8 +87,7 @@ export const FieldLegend = (props: FieldLegendProps) => {
         "data-[variant=label]:text-sm",
         className
       )}
-      data-part="legend"
-      data-scope="field"
+      data-slot="field-legend"
       data-variant={variant}
       {...rest}
     />
@@ -60,50 +102,11 @@ export const FieldGroup = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "group/field-group @container/field-group",
         "flex w-full flex-col gap-7",
-        "data-[data-part=checkbox-group]:gap-3",
-        "*:data-[data-part=field-group]:gap-4",
+        "data-[data-slot=checkbox-group]:gap-3",
+        "*:data-[slot=field-group]:gap-4",
         className
       )}
-      data-part="group"
-      data-scope="field"
-      {...rest}
-    />
-  );
-};
-
-const fieldVariants = tv({
-  base: "group/field flex w-full gap-3 data-[invalid=true]:text-destructive",
-  variants: {
-    orientation: {
-      vertical: ["flex-col *:w-full [&>.sr-only]:w-auto"],
-      horizontal: [
-        "flex-row items-center",
-        "*:data-[part=field-label]:flex-auto",
-        "has-[>[data-part=field-content]]:items-start has-[>[data-part=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-      ],
-      responsive: [
-        "@md/field-group:flex-row flex-col @md/field-group:items-center *:w-full @md/field-group:*:w-auto [&>.sr-only]:w-auto",
-        "@md/field-group:*:data-[part=field-label]:flex-auto",
-        "@md/field-group:has-[>[data-part=field-content]]:items-start @md/field-group:has-[>[data-part=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-      ],
-    },
-  },
-  defaultVariants: {
-    orientation: "vertical",
-  },
-});
-
-interface FieldProps
-  extends React.ComponentProps<typeof ArkField.Root>,
-    VariantProps<typeof fieldVariants> {}
-
-export const Field = (props: FieldProps) => {
-  const { orientation = "vertical", className, ...rest } = props;
-
-  return (
-    <ArkField.Root
-      className={cn(fieldVariants({ orientation }), className)}
-      data-orientation={orientation}
+      data-slot="field-group"
       {...rest}
     />
   );
@@ -118,8 +121,7 @@ export const FieldContent = (props: React.ComponentProps<typeof ark.div>) => {
         "group/field-content flex flex-1 flex-col gap-1.5 leading-snug",
         className
       )}
-      data-part="content"
-      data-scope="field"
+      data-slot="field-content"
       {...rest}
     />
   );
@@ -133,11 +135,16 @@ export const FieldLabel = (
   return (
     <ArkField.Label
       className={cn(
-        "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50",
-        "has-[>[data-part=field]]:w-full has-[>[data-part=field]]:flex-col has-[>[data-part=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
-        "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10",
+        "group/field-label peer/field-label",
+        "font-medium text-sm leading-snug",
+        "flex w-fit gap-2",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
+        "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
+        "group-data-[disabled=true]/field:opacity-50",
+        "dark:has-data-[state=checked]:bg-primary/10",
         className
       )}
+      data-slot="field-label"
       {...rest}
     />
   );
@@ -155,6 +162,7 @@ export const FieldTitle = (props: React.ComponentProps<typeof ark.div>) => {
         "group-data-[disabled=true]/field:opacity-50",
         className
       )}
+      data-slot="field-title"
       {...rest}
     />
   );
@@ -172,6 +180,7 @@ export const FieldDescription = (props: React.ComponentProps<typeof ark.p>) => {
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
         className
       )}
+      data-slot="field-description"
       {...rest}
     />
   );
@@ -190,6 +199,7 @@ export const FieldSeparator = (props: React.ComponentProps<typeof ark.div>) => {
         className
       )}
       data-content={!!children}
+      data-slot="field-separator"
       {...rest}
     >
       <Separator className="absolute inset-0 top-1/2" />
@@ -219,6 +229,7 @@ export const FieldHelper = (
   return (
     <ArkField.HelperText
       className={cn("text-muted-foreground text-sm", className)}
+      data-slot="field-helper"
       {...rest}
     />
   );
@@ -232,6 +243,7 @@ export const FieldError = (
   return (
     <ArkField.ErrorText
       className={cn("font-normal text-destructive text-sm", className)}
+      data-slot="field-error"
       {...rest}
     />
   );

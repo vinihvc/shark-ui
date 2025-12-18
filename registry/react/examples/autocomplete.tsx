@@ -7,9 +7,9 @@ import {
   AutocompleteContent,
   AutocompleteControl,
   AutocompleteEmpty,
+  AutocompleteGroup,
   AutocompleteInput,
   AutocompleteItem,
-  AutocompleteItemGroup,
 } from "@/registry/react/components/autocomplete";
 import {
   Field,
@@ -42,13 +42,13 @@ const AutocompleteDemo = () => {
 
         <AutocompleteContent>
           <AutocompleteEmpty />
-          <AutocompleteItemGroup>
+          <AutocompleteGroup>
             {collection.items.map((item) => (
               <AutocompleteItem item={item} key={item}>
                 {item}
               </AutocompleteItem>
             ))}
-          </AutocompleteItemGroup>
+          </AutocompleteGroup>
         </AutocompleteContent>
       </Autocomplete>
 

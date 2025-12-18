@@ -9,8 +9,7 @@ export const Spinner = (props: React.ComponentProps<"svg">) => {
     <Loader2Icon
       aria-label={ariaLabel ?? "Loading"}
       className={cn("size-4 animate-spin", className)}
-      data-part="root"
-      data-scope="spinner"
+      data-slot="spinner"
       role="status"
       {...rest}
     />

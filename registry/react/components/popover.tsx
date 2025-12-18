@@ -48,7 +48,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
         <ArkPopover.Content
           className={cn(
             "z-50",
-            "w-72",
+            "w-auto",
             "bg-popover",
             "text-popover-foreground",
             "rounded-md border shadow-md",
@@ -101,8 +101,7 @@ export const PopoverHeader = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn("flex flex-col gap-2 p-4 pb-0", className)}
-      data-part="popover-header"
-      data-scope="popover"
+      data-slot="popover-header"
       {...rest}
     />
   );
@@ -143,8 +142,7 @@ export const PopoverBody = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn("p-4", className)}
-      data-part="popover-body"
-      data-scope="popover"
+      data-slot="popover-body"
       {...rest}
     />
   );
@@ -156,8 +154,7 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn("mt-4 flex flex-row-reverse gap-2 p-4", className)}
-      data-part="popover-footer"
-      data-scope="popover"
+      data-slot="popover-footer"
       {...rest}
     />
   );

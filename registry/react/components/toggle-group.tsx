@@ -12,17 +12,11 @@ const ToggleGroupContext = React.createContext({} as ToggleGroupContextProps);
 
 interface ToggleGroupProps
   extends React.ComponentProps<typeof ArkToggleGroup.Root>,
-    Pick<ToggleProps, "variant" | "size"> {
-  /**
-   * The spacing variable value
-   */
-  spacing?: number;
-}
+    Pick<ToggleProps, "variant" | "size"> {}
 
 export const ToggleGroup = (props: ToggleGroupProps) => {
   const {
     multiple = true,
-    spacing = 0,
     variant = "outline",
     size = "md",
     className,
@@ -33,16 +27,10 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
     <ToggleGroupContext value={{ variant, size }}>
       <ArkToggleGroup.Root
         className={cn(
-          "group/toggle-group flex w-fit items-center gap-(--gap) rounded-md",
+          "group/toggle-group flex w-fit items-center gap-(--gap) rounded-md [--gap:--spacing(0)]",
           className
         )}
-        data-spacing={spacing}
         multiple={multiple}
-        style={
-          {
-            "--gap": `calc(${spacing} * var(--spacing))`,
-          } as React.CSSProperties
-        }
         {...rest}
       />
     </ToggleGroupContext>

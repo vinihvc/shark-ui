@@ -53,7 +53,7 @@ export const StepsItem = (
         "relative flex flex-1",
         "data-[orientation=vertical]:items-start",
         "data-[orientation=horizontal]:items-center",
-        "last:flex-initial last:**:data-[part=separator]:hidden",
+        "last:flex-initial last:**:data-[slot=separator]:hidden",
         className
       )}
       {...rest}

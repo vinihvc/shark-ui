@@ -11,7 +11,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValueText,
+  SelectValue,
 } from "@/registry/react/components/select";
 import {
   DEFAULT_PRIMARY_COLOR,
@@ -43,7 +43,7 @@ export const ThemeSelectorPrimary = () => {
         <SelectTrigger className="w-full">
           <div className="flex items-center gap-2">
             <div className="size-4 rounded-md border bg-primary" />
-            <SelectValueText placeholder="Select a theme" />
+            <SelectValue placeholder="Select a theme" />
           </div>
         </SelectTrigger>
 

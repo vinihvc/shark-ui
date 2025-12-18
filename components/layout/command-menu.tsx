@@ -86,10 +86,11 @@ export const CommandMenu = (props: CommandMenuProps) => {
         <Button
           className={cn(
             "relative",
+            "border",
             "justify-start",
             "h-8 w-full md:w-48 lg:w-56 xl:w-64",
             "pl-3 sm:pr-12",
-            "font-normal text-foreground",
+            "font-normal",
             "shadow-none"
           )}
           variant="secondary"

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react";
-import type * as React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Spinner } from "./spinner";
@@ -30,10 +30,9 @@ export const buttonVariants = tv({
       warning: ["bg-warning", "text-warning-foreground", "hover:bg-warning/90"],
       destructive: [
         "bg-destructive",
-        "text-white",
+        "text-destructive-foreground",
         "hover:bg-destructive/90",
         "focus-visible:ring-destructive/20",
-        "dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
       ],
       secondary: [
         "bg-secondary",
@@ -83,8 +82,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <ark.button
       className={cn(buttonVariants({ variant, size }), className)}
-      data-part="root"
-      data-scope="button"
+      data-slot="button"
       data-state={isLoading ? "loading" : "idle"}
       type={type}
       {...rest}

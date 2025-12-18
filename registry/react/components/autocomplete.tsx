@@ -4,10 +4,10 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxGroupLabel,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
   ComboboxTrigger,
 } from "@/registry/react/components/combobox";
 import { Input } from "./input";
@@ -28,9 +28,9 @@ export const AutocompleteInput = (
   </ComboboxInput>
 );
 
-export const AutocompleteItemGroupLabel = (
-  props: React.ComponentProps<typeof ComboboxItemGroupLabel>
-) => <ComboboxItemGroupLabel {...props} />;
+export const AutocompleteGroupLabel = (
+  props: React.ComponentProps<typeof ComboboxGroupLabel>
+) => <ComboboxGroupLabel {...props} />;
 
 export const AutocompleteItem = (
   props: React.ComponentProps<typeof ComboboxItem>
@@ -48,9 +48,9 @@ export const AutocompleteClearTrigger = (
   props: React.ComponentProps<typeof ComboboxClearTrigger>
 ) => <ComboboxClearTrigger {...props} />;
 
-export const AutocompleteItemGroup = (
-  props: React.ComponentProps<typeof ComboboxItemGroup>
-) => <ComboboxItemGroup {...props} />;
+export const AutocompleteGroup = (
+  props: React.ComponentProps<typeof ComboboxGroup>
+) => <ComboboxGroup {...props} />;
 
 export const AutocompleteEmpty = (
   props: React.ComponentProps<typeof ComboboxEmpty>

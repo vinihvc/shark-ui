@@ -7,8 +7,7 @@ export const Skeleton = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn("animate-pulse rounded-md bg-accent", className)}
-      data-part="skeleton"
-      data-scope="skeleton"
+      data-slot="skeleton"
       {...rest}
     />
   );
@@ -23,8 +22,7 @@ export const SkeletonCircle = (props: React.ComponentProps<typeof ark.div>) => {
         "size-10 shrink-0 animate-pulse rounded-full bg-accent",
         className
       )}
-      data-part="skeleton-circle"
-      data-scope="skeleton"
+      data-slot="skeleton-circle"
       {...rest}
     />
   );
@@ -45,8 +43,7 @@ export const SkeletonText = (props: SkeletonTextProps) => {
   return (
     <ark.div
       className={cn("flex w-full animate-pulse flex-col gap-2", className)}
-      data-part="skeleton-text"
-      data-scope="skeleton"
+      data-slot="skeleton-text"
       {...rest}
     >
       {Array.from({ length: lines }).map((_, index) => {

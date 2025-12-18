@@ -43,8 +43,7 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
     <ark.fieldset
       className={cn(buttonGroupVariants({ orientation }), className)}
       data-orientation={orientation}
-      data-part="root"
-      data-scope="button-group"
+      data-slot="button-group"
       {...rest}
     />
   );
@@ -64,8 +63,7 @@ export const ButtonGroupText = (
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
         className
       )}
-      data-part="text"
-      data-scope="button-group"
+      data-slot="button-group-text"
       {...rest}
     />
   );
@@ -86,8 +84,7 @@ export const ButtonGroupSeparator = (
         "m-0!",
         className
       )}
-      data-part="separator"
-      data-scope="button-group"
+      data-slot="button-group-separator"
       orientation={orientation}
       {...rest}
     />

@@ -8,9 +8,9 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
+  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemGroup,
   ComboboxTrigger,
 } from "@/registry/react/components/combobox";
 import {
@@ -50,13 +50,13 @@ const ComboboxDemo = () => {
         <ComboboxContent>
           <ComboboxEmpty />
 
-          <ComboboxItemGroup>
+          <ComboboxGroup>
             {collection.items.map((item) => (
               <ComboboxItem item={item} key={item}>
                 {item}
               </ComboboxItem>
             ))}
-          </ComboboxItemGroup>
+          </ComboboxGroup>
         </ComboboxContent>
       </Combobox>
 

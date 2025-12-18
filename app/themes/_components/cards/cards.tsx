@@ -2,12 +2,15 @@
 // import { CardsCalendar } from "@/components/cards/calendar";
 
 import { cn } from "@/lib/utils";
+import { CardsPayments } from "./card.payments";
+import { CardsActivityGoal } from "./cards.activity";
 import { CardsCalendar } from "./cards.calendar";
 import { CardsChat } from "./cards.chat";
-// import { CardsCookieSettings } from "@/components/cards/cookie-settings";
-// import { CardsCreateAccount } from "@/components/cards/create-account";
+import { CardsCookie } from "./cards.cookie";
+import { CardsCreateAccount } from "./cards.create-account";
 // import { CardsExerciseMinutes } from "@/components/cards/exercise-minutes";
 import { CardsForms } from "./cards.forms";
+import { CardsTeamMembers } from "./cards.members";
 // import { CardsPayments } from "@/components/cards/payments";
 // import { CardsReportIssue } from "@/components/cards/report-issue";
 // import { CardsShare } from "@/components/cards/share";
@@ -30,7 +33,7 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
         <div className="grid gap-1 sm:grid-cols-[auto_1fr] md:hidden">
           <CardsCalendar />
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
-            {/* <CardsActivityGoal /> */}
+            <CardsActivityGoal />
           </div>
           <div className="pt-3 sm:col-span-2 xl:pt-4">
             {/* <CardsExerciseMinutes /> */}
@@ -39,11 +42,11 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           <div className="flex flex-col gap-4">
             <CardsForms />
-            {/* <CardsTeamMembers /> */}
-            {/* <CardsCookieSettings /> */}
+            <CardsTeamMembers />
+            <CardsCookie />
           </div>
           <div className="flex flex-col gap-4">
-            {/* <CardsCreateAccount /> */}
+            <CardsCreateAccount />
             <CardsChat />
             <div className="hidden xl:block">{/* <CardsReportIssue /> */}</div>
           </div>
@@ -53,13 +56,15 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
         <div className="hidden gap-1 sm:grid-cols-[auto_1fr] md:grid">
           <CardsCalendar />
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-3">
-            {/* <CardsActivityGoal /> */}
+            <CardsActivityGoal />
           </div>
           <div className="pt-3 sm:col-span-2 xl:pt-3">
             {/* <CardsExerciseMinutes /> */}
           </div>
         </div>
-        <div className="hidden md:block">{/* <CardsPayments /> */}</div>
+        <div className="hidden md:block">
+          <CardsPayments />
+        </div>
         {/* <CardsShare /> */}
         <div className="xl:hidden">{/* <CardsReportIssue /> */}</div>
       </div>

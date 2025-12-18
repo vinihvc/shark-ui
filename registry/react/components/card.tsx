@@ -1,39 +1,22 @@
 import { ark } from "@ark-ui/react";
 import { cn } from "@/lib/utils";
 
-interface CardProps extends React.ComponentProps<typeof ark.div> {
-  /**
-   * The spacing variable value
-   *
-   * @default 6
-   */
-  spacing?: number;
-}
-
-export const Card = (props: CardProps) => {
-  const { spacing = 6, className, style, ...rest } = props;
+export const Card = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
 
   return (
     <ark.div
       className={cn(
+        "[--gap:--spacing(6)]",
         "group/card",
         "py-(--gap)",
         "flex flex-col gap-(--gap)",
         "bg-card",
         "text-foreground",
         "rounded-lg border shadow-xs",
-        "has-[table]:overflow-hidden **:[table]:overflow-hidden",
-        "has-[table]:not-has-data-[part=footer]:pb-0 has-[table]:**:data-[part=footer]:border-t",
         className
       )}
-      data-part="root"
-      data-scope="card"
-      style={
-        {
-          "--gap": `calc(${spacing} * var(--spacing))`,
-          ...style,
-        } as React.CSSProperties
-      }
+      data-slot="card"
       {...rest}
     />
   );
@@ -59,11 +42,10 @@ export const CardHeader = (props: HeaderProps) => {
         "grid auto-rows-min grid-rows-[auto_auto] gap-1",
         "px-(--gap)",
         "items-start",
-        "has-data-[part=card-action]:grid-cols-[1fr_auto]",
+        "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
       )}
-      data-part="header"
-      data-scope="card"
+      data-slot="card-header"
       {...rest}
     >
       {!!title && <CardTitle>{title}</CardTitle>}
@@ -86,8 +68,7 @@ export const CardTitle = (props: React.ComponentProps<typeof ark.div>) => {
         "text-pretty font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
       )}
-      data-part="title"
-      data-scope="card"
+      data-slot="card-title"
       {...rest}
     />
   );
@@ -105,8 +86,7 @@ export const CardDescription = (
         "text-pretty text-muted-foreground text-sm",
         className
       )}
-      data-part="description"
-      data-scope="card"
+      data-slot="card-description"
       {...rest}
     />
   );
@@ -121,8 +101,7 @@ export const CardAction = (props: React.ComponentProps<typeof ark.div>) => {
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
         className
       )}
-      data-part="action"
-      data-scope="card"
+      data-slot="card-action"
       {...rest}
     />
   );
@@ -133,9 +112,8 @@ export const CardContent = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn("px-(--gap) has-[table]:border-t", className)}
-      data-part="content"
-      data-scope="card"
+      className={cn("px-(--gap)", className)}
+      data-slot="card-content"
       {...rest}
     />
   );
@@ -149,12 +127,10 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "flex items-center",
         "px-(--gap)",
-        "group-has-[table]/card:pt-(--gap)",
         "[.border-t]:pt-(--gap)",
         className
       )}
-      data-part="footer"
-      data-scope="card"
+      data-slot="card-footer"
       {...rest}
     />
   );

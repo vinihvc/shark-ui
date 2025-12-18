@@ -99,7 +99,7 @@ export const CarouselIndicator = (
   );
 };
 
-export const CarouselItemGroup = (
+export const CarouselGroup = (
   props: React.ComponentProps<typeof ArkCarousel.ItemGroup>
 ) => {
   const { className, ...rest } = props;

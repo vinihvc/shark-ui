@@ -96,8 +96,7 @@ export const TourTrigger = (props: TourTriggerProps) => {
 
   return (
     <ark.button
-      data-part="trigger"
-      data-scope="tour"
+      data-slot="tour-trigger"
       type="button"
       {...rest}
       onClick={handleClick}
@@ -178,12 +177,12 @@ export const TourContent = (props: TourContentProps) => {
 };
 
 export const TourBody = (props: React.ComponentProps<typeof DialogBody>) => (
-  <DialogBody data-scope="tour" {...props} />
+  <DialogBody data-slot="tour-body" {...props} />
 );
 
 export const TourHeader = (
   props: React.ComponentProps<typeof DialogHeader>
-) => <DialogHeader data-scope="tour" {...props} />;
+) => <DialogHeader data-slot="tour-header" {...props} />;
 
 export const TourTitle = (
   props: React.ComponentProps<typeof ArkTour.Title>
@@ -250,7 +249,7 @@ export const TourFooter = (
 
   return (
     <ArkTour.Control {...rest} asChild>
-      <DialogFooter data-scope="tour">{children}</DialogFooter>
+      <DialogFooter data-slot="tour-footer">{children}</DialogFooter>
     </ArkTour.Control>
   );
 };

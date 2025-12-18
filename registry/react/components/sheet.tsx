@@ -19,12 +19,12 @@ import {
 } from "@/registry/react/components/dialog";
 
 export const Sheet = (props: React.ComponentProps<typeof ArkDialog.Root>) => (
-  <Dialog data-part="sheet" {...props} />
+  <Dialog data-slot="sheet" {...props} />
 );
 
 export const SheetTrigger = (
   props: React.ComponentProps<typeof ArkDialog.Trigger>
-) => <ArkDialog.Trigger data-scope="sheet" {...props} />;
+) => <ArkDialog.Trigger data-slot="sheet" {...props} />;
 
 const sheetContentVariants = tv({
   base: [
@@ -86,17 +86,17 @@ export const SheetContent = (props: SheetContentProps) => {
 
   return (
     <Portal>
-      <DialogBackdrop data-scope="sheet" />
+      <DialogBackdrop data-slot="sheet" />
 
-      <ArkDialog.Positioner data-scope="sheet">
+      <ArkDialog.Positioner data-slot="sheet">
         <ArkDialog.Content
           className={cn(
             dialogContentVariants(),
             sheetContentVariants({ side }),
             className
           )}
-          data-scope="sheet"
           data-side={side}
+          data-slot="sheet"
           {...rest}
         >
           {children}
@@ -105,7 +105,7 @@ export const SheetContent = (props: SheetContentProps) => {
             <ArkDialog.CloseTrigger
               asChild
               className="absolute top-4 right-4"
-              data-scope="sheet"
+              data-slot="sheet"
             >
               <Button
                 className="size-8 border-none opacity-70 hover:opacity-100"
@@ -125,24 +125,24 @@ export const SheetContent = (props: SheetContentProps) => {
 };
 
 export const SheetBody = (props: React.ComponentProps<typeof ark.div>) => (
-  <DialogBody data-scope="sheet" {...props} />
+  <DialogBody data-slot="sheet" {...props} />
 );
 
 export const SheetHeader = (props: React.ComponentProps<typeof ark.div>) => (
-  <DialogHeader data-scope="sheet" {...props} />
+  <DialogHeader data-slot="sheet" {...props} />
 );
 
 export const SheetTitle = (
   props: React.ComponentProps<typeof ArkDialog.Title>
-) => <DialogTitle data-scope="sheet" {...props} />;
+) => <DialogTitle data-slot="sheet" {...props} />;
 
 export const SheetDescription = (
   props: React.ComponentProps<typeof ArkDialog.Description>
-) => <DialogDescription data-scope="sheet" {...props} />;
+) => <DialogDescription data-slot="sheet" {...props} />;
 
 export const SheetClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
-) => <DialogClose data-scope="sheet" {...props} />;
+) => <DialogClose data-slot="sheet" {...props} />;
 
 export const SheetFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
@@ -150,7 +150,7 @@ export const SheetFooter = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <DialogFooter
       className={cn("mt-auto flex flex-col gap-2", className)}
-      data-scope="sheet"
+      data-slot="sheet"
       {...rest}
     />
   );

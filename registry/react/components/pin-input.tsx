@@ -74,8 +74,7 @@ export const PinInputSeparator = (
   return (
     <ark.hr
       className={cn("h-0.5 w-2 rounded-full bg-foreground", className)}
-      data-part="separator"
-      data-scope="pin-input"
+      data-slot="pin-input-separator"
       {...rest}
     />
   );

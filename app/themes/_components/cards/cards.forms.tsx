@@ -51,6 +51,7 @@ export function CardsForms() {
           access to all features.
         </CardDescription>
       </CardHeader>
+
       <CardContent>
         <form>
           <FieldGroup>
@@ -59,11 +60,13 @@ export function CardsForms() {
                 <FieldLabel htmlFor="name">Name</FieldLabel>
                 <Input id="name" placeholder="Max Leiter" />
               </Field>
+
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input id="email" placeholder="mail@acme.com" />
               </Field>
             </FieldGroup>
+
             <FieldGroup className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
               <Field>
                 <FieldLabel htmlFor="card-number">Card Number</FieldLabel>
@@ -73,22 +76,26 @@ export function CardsForms() {
                   placeholder="1234 1234 1234 1234"
                 />
               </Field>
+
               <Field>
                 <FieldLabel htmlFor="card-number-expiry">
                   Expiry Date
                 </FieldLabel>
                 <Input id="card-number-expiry" placeholder="MM/YY" />
               </Field>
+
               <Field>
                 <FieldLabel htmlFor="card-number-cvc">CVC</FieldLabel>
                 <Input id="card-number-cvc" placeholder="CVC" />
               </Field>
             </FieldGroup>
+
             <FieldSet>
               <FieldLegend>Plan</FieldLegend>
               <FieldDescription>
                 Select the plan that best fits your needs.
               </FieldDescription>
+
               <RadioGroup
                 className="grid grid-cols-2 gap-2"
                 defaultValue="starter"
@@ -108,10 +115,12 @@ export function CardsForms() {
                 ))}
               </RadioGroup>
             </FieldSet>
+
             <Field>
               <FieldLabel htmlFor="notes">Notes</FieldLabel>
               <Textarea id="notes" placeholder="Enter notes" />
             </Field>
+
             <Field>
               <Field orientation="horizontal">
                 <Checkbox id="terms" />
@@ -119,6 +128,7 @@ export function CardsForms() {
                   I agree to the terms and conditions
                 </FieldLabel>
               </Field>
+
               <Field orientation="horizontal">
                 <Checkbox defaultChecked id="newsletter" />
                 <FieldLabel className="font-normal" htmlFor="newsletter">
@@ -126,11 +136,12 @@ export function CardsForms() {
                 </FieldLabel>
               </Field>
             </Field>
-            <Field orientation="horizontal">
+
+            <Field className="flex-row-reverse" orientation="horizontal">
+              <Button size="sm">Upgrade Plan</Button>
               <Button size="sm" variant="outline">
                 Cancel
               </Button>
-              <Button size="sm">Upgrade Plan</Button>
             </Field>
           </FieldGroup>
         </form>

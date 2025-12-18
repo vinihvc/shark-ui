@@ -5,6 +5,7 @@ import {
   CardContent,
   CardHeader,
 } from "@/registry/react/components/card";
+import { CardsButtons } from "../cards/cards.buttons";
 import { ThemeCopy } from "./theme-selector.copy";
 import { ThemeSelectorGray } from "./theme-selector.gray";
 import { ThemeSelectorPrimary } from "./theme-selector.primary";
@@ -34,7 +35,7 @@ export const ThemeSelector = (props: React.ComponentProps<typeof Card>) => {
         </CardContent>
       </Card>
 
-      <div />
+      <CardsButtons />
     </div>
   );
 };

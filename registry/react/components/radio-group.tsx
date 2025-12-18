@@ -38,7 +38,7 @@ export const RadioGroupItem = (
           "flex items-center justify-center",
           "bg-background",
           "data-hover:bg-accent",
-          "dark:bg-input/30",
+          "dark:bg-input/60",
           "text-background",
           "rounded-full border",
           "transition-all"

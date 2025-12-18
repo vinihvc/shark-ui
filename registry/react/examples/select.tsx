@@ -1,37 +1,32 @@
-"use client";
-
-import { createListCollection } from "@ark-ui/react";
 import {
+  createCollection,
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
   SelectTrigger,
-  SelectValueText,
+  SelectValue,
 } from "@/registry/react/components/select";
 
 const SelectDemo = () => {
-  const collection = createListCollection({
+  const collection = createCollection({
     items: ["Banana", "Apple", "Orange", "Pineapple"],
   });
 
   return (
     <Select collection={collection}>
       <SelectTrigger className="w-48">
-        <SelectValueText placeholder="Select a fruit" />
+        <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
 
       <SelectContent>
-        <SelectItemGroup>
-          <SelectItemGroupLabel>Fruits</SelectItemGroupLabel>
-
+        <SelectGroup heading="Fruits">
           {collection.items.map((item) => (
             <SelectItem item={item} key={item}>
               {item}
             </SelectItem>
           ))}
-        </SelectItemGroup>
+        </SelectGroup>
       </SelectContent>
     </Select>
   );

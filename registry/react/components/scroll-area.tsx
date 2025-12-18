@@ -11,7 +11,7 @@ export const ScrollArea = (
     <>
       <style>
         {`
-        [data-scope='scroll-area'][data-part='viewport'] {
+        [data-slot='scroll-area-viewport'] {
           scrollbar-width: none;
           &::-webkit-scrollbar {
             display: none;

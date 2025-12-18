@@ -5,9 +5,9 @@ import {
   FileUpload,
   FileUploadContext,
   FileUploadDropzone,
+  FileUploadGroup,
   FileUploadItem,
   FileUploadItemDeleteTrigger,
-  FileUploadItemGroup,
   FileUploadItemName,
   FileUploadItemPreview,
   FileUploadItemPreviewImage,
@@ -26,7 +26,7 @@ const FileUploadDemo = () => (
       </FileUploadTrigger>
     </FileUploadDropzone>
 
-    <FileUploadItemGroup>
+    <FileUploadGroup>
       <FileUploadContext>
         {({ acceptedFiles }) =>
           acceptedFiles.map((file) => (
@@ -60,7 +60,7 @@ const FileUploadDemo = () => (
           ))
         }
       </FileUploadContext>
-    </FileUploadItemGroup>
+    </FileUploadGroup>
   </FileUpload>
 );
 

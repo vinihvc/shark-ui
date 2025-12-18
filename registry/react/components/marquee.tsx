@@ -3,35 +3,21 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 interface MarqueeProps
-  extends Omit<React.ComponentProps<typeof ArkMarquee.Root>, "spacing"> {
-  /**
-   * The spacing variable value
-   */
-  spacing?: number;
-}
+  extends Omit<React.ComponentProps<typeof ArkMarquee.Root>, "spacing"> {}
 
 export const Marquee = (props: MarqueeProps) => {
-  const {
-    spacing = 6,
-    autoFill = true,
-    speed = 50,
-    className,
-    children,
-    style,
-    ...rest
-  } = props;
+  const { autoFill = true, speed = 50, className, children, ...rest } = props;
 
   return (
     <ArkMarquee.Root
       autoFill={autoFill}
-      className={cn("relative", "group", "w-full max-w-full", className)}
+      className={cn(
+        "relative",
+        "group",
+        "w-full max-w-full [--gap:--spacing(6)] [--marquee-spacing:var(--gap)]",
+        className
+      )}
       speed={speed}
-      style={
-        {
-          "--marquee-spacing": `calc(${spacing} * var(--spacing))`,
-          ...style,
-        } as React.CSSProperties
-      }
       {...rest}
     >
       <MarqueeEdge side="start" />

@@ -1,28 +1,19 @@
 import { ark } from "@ark-ui/react";
 import { cn } from "@/lib/utils";
 
-interface KbdGroupProps extends React.ComponentProps<typeof ark.div> {
-  /**
-   * The spacing variable value
-   *
-   * @default 1
-   */
-  spacing?: number;
-}
+interface KbdGroupProps extends React.ComponentProps<typeof ark.div> {}
 
 export const KbdGroup = (props: KbdGroupProps) => {
-  const { spacing = 1, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <ark.div
-      className={cn("inline-flex items-center gap-(--gap)", className)}
-      data-part="group"
-      data-scope="kbd"
-      style={
-        {
-          "--gap": `calc(${spacing} * var(--spacing))`,
-        } as React.CSSProperties
-      }
+      className={cn(
+        "[--gap:--spacing(1)]",
+        "inline-flex items-center gap-(--gap)",
+        className
+      )}
+      data-slot="kbd-group"
       {...rest}
     />
   );
@@ -44,8 +35,7 @@ export const Kbd = (props: React.ComponentProps<typeof ark.kbd>) => {
         "[&_svg:not([class*='size-'])]:size-3",
         className
       )}
-      data-part="root"
-      data-scope="kbd"
+      data-slot="kbd"
       {...rest}
     />
   );

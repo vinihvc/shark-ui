@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react";
-import type * as React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ export const alertVariants = tv({
         "text-destructive",
         "dark:border-destructive",
         "[&>svg]:text-destructive",
-        "*:data-[part=description]:text-destructive/90",
+        "*:data-[slot=alert-description]:text-destructive/90",
       ],
     },
   },
@@ -42,8 +42,7 @@ export const Alert = (props: AlertProps) => {
   return (
     <ark.div
       className={cn(alertVariants({ variant }), className)}
-      data-part="root"
-      data-scope="alert"
+      data-slot="alert"
       {...rest}
     />
   );
@@ -58,8 +57,7 @@ export const AlertTitle = (props: React.ComponentProps<typeof ark.div>) => {
         "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
         className
       )}
-      data-part="title"
-      data-scope="alert"
+      data-slot="alert-title"
       {...rest}
     />
   );
@@ -76,8 +74,7 @@ export const AlertDescription = (
         "col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed",
         className
       )}
-      data-part="description"
-      data-scope="alert"
+      data-slot="alert-description"
       {...rest}
     />
   );

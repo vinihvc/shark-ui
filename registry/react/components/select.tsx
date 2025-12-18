@@ -1,10 +1,17 @@
+"use client";
+
 import { Portal } from "@ark-ui/react";
-import { Select as ArkSelect } from "@ark-ui/react/select";
+import {
+  Select as ArkSelect,
+  createListCollection,
+} from "@ark-ui/react/select";
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { inputVariants } from "@/registry/react/components/input";
+
+export const createCollection = createListCollection;
 
 export const Select = <T,>(
   props: React.ComponentProps<typeof ArkSelect.Root<T>>
@@ -13,6 +20,7 @@ export const Select = <T,>(
 
   return (
     <ArkSelect.Root
+      data-slot="select"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -32,22 +40,23 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
   const { size = "md", className, children, ...rest } = props;
 
   return (
-    <ArkSelect.Control>
+    <ArkSelect.Control data-slot="select-control">
       <ArkSelect.Trigger
         className={cn(
           inputVariants({ size }),
           "w-fit",
           "flex items-center justify-between gap-2",
+          "*:data-placeholder-shown:text-muted-foreground",
           "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
-          "data-placeholder-shown:text-muted-foreground",
           "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
         )}
+        data-slot="select-trigger"
         {...rest}
       >
         {children}
 
-        <ArkSelect.Indicator>
+        <ArkSelect.Indicator data-slot="select-indicator">
           <ChevronsUpDown />
         </ArkSelect.Indicator>
       </ArkSelect.Trigger>
@@ -55,7 +64,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
   );
 };
 
-export const SelectValueText = (
+export const SelectValue = (
   props: React.ComponentProps<typeof ArkSelect.ValueText>
 ) => {
   const { className, ...rest } = props;
@@ -78,17 +87,18 @@ export const SelectContent = (
 
   return (
     <Portal>
-      <ArkSelect.Positioner>
+      <ArkSelect.Positioner data-slot="select-positioner">
         <ArkSelect.Content
           className={cn(
             "z-50",
             "relative",
-            "max-h-96 min-w-48",
+            "max-h-96 min-w-(--reference-width)",
+
             "p-1",
             "bg-popover",
             "text-popover-foreground",
             "rounded-md border shadow-md",
-            "overflow-hidden",
+            "overflow-auto",
             "outline-none",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -99,6 +109,7 @@ export const SelectContent = (
             "data-[side=left]:slide-in-from-right-2",
             className
           )}
+          data-slot="select-content"
           {...rest}
         />
       </ArkSelect.Positioner>
@@ -106,7 +117,7 @@ export const SelectContent = (
   );
 };
 
-interface SelectItemGroupProps
+interface SelectGroupProps
   extends React.ComponentProps<typeof ArkSelect.ItemGroup> {
   /**
    * The heading of the group
@@ -114,19 +125,23 @@ interface SelectItemGroupProps
   heading?: string | React.ReactNode;
 }
 
-export const SelectItemGroup = (props: SelectItemGroupProps) => {
+export const SelectGroup = (props: SelectGroupProps) => {
   const { heading, className, children, ...rest } = props;
 
   return (
-    <ArkSelect.ItemGroup className={cn(className)} {...rest}>
-      {!!heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
+    <ArkSelect.ItemGroup
+      className={cn(className)}
+      data-slot="select-group"
+      {...rest}
+    >
+      {!!heading && <SelectGroupLabel>{heading}</SelectGroupLabel>}
 
       {children}
     </ArkSelect.ItemGroup>
   );
 };
 
-export const SelectItemGroupLabel = (
+export const SelectGroupLabel = (
   props: React.ComponentProps<typeof ArkSelect.ItemGroupLabel>
 ) => {
   const { className, ...rest } = props;
@@ -137,6 +152,7 @@ export const SelectItemGroupLabel = (
         "px-2 py-1.5 font-semibold text-muted-foreground text-xs",
         className
       )}
+      data-slot="select-group-label"
       {...rest}
     />
   );
@@ -164,14 +180,18 @@ export const SelectItem = (
         "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
         className
       )}
+      data-slot="select-item"
       {...rest}
     >
-      <ArkSelect.ItemText className="flex w-full items-center gap-2">
+      <ArkSelect.ItemText
+        className="flex w-full items-center gap-2"
+        data-slot="select-item-text"
+      >
         {children}
       </ArkSelect.ItemText>
 
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
-        <ArkSelect.ItemIndicator>
+        <ArkSelect.ItemIndicator data-slot="select-item-indicator">
           <CheckIcon />
         </ArkSelect.ItemIndicator>
       </span>

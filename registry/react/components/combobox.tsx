@@ -14,6 +14,7 @@ export const Combobox = <T,>(
 
   return (
     <ArkCombobox.Root
+      data-slot="combobox"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -27,7 +28,11 @@ export const ComboboxControl = (
   const { className, ...rest } = props;
 
   return (
-    <ArkCombobox.Control className={cn("relative", className)} {...rest} />
+    <ArkCombobox.Control
+      className={cn("relative", className)}
+      data-slot="combobox-control"
+      {...rest}
+    />
   );
 };
 
@@ -41,6 +46,7 @@ export const ComboboxInput = (props: ComboboxInputProps) => {
   return (
     <ArkCombobox.Input
       className={cn("[input]:pr-16", inputVariants({ size }), className)}
+      data-slot="combobox-input"
       {...rest}
     />
   );
@@ -54,6 +60,7 @@ export const ComboboxTrigger = (
   return (
     <ArkCombobox.Trigger
       className={cn("absolute inset-y-0 right-1", className)}
+      data-slot="combobox-trigger"
       {...rest}
       asChild
     >
@@ -80,6 +87,7 @@ export const ComboboxClearTrigger = (
   return (
     <ArkCombobox.ClearTrigger
       className={cn("absolute inset-y-0 right-8", className)}
+      data-slot="combobox-clear-trigger"
       {...rest}
       asChild
     >
@@ -98,6 +106,10 @@ export const ComboboxClearTrigger = (
   );
 };
 
+export const ComboboxPositioner = (
+  props: React.ComponentProps<typeof ArkCombobox.Positioner>
+) => <ArkCombobox.Positioner data-slot="combobox-positioner" {...props} />;
+
 export const ComboboxContent = (
   props: React.ComponentProps<typeof ArkCombobox.Content>
 ) => {
@@ -105,7 +117,7 @@ export const ComboboxContent = (
 
   return (
     <Portal>
-      <ArkCombobox.Positioner>
+      <ComboboxPositioner>
         <ArkCombobox.Content
           className={cn(
             "relative z-50",
@@ -126,20 +138,37 @@ export const ComboboxContent = (
             "data-[side=left]:slide-in-from-right-2",
             className
           )}
+          data-slot="combobox-content"
           {...rest}
         >
           {children}
         </ArkCombobox.Content>
-      </ArkCombobox.Positioner>
+      </ComboboxPositioner>
     </Portal>
   );
 };
 
-export const ComboboxItemGroup = (
-  props: React.ComponentProps<typeof ArkCombobox.ItemGroup>
-) => <ArkCombobox.ItemGroup {...props} />;
+interface ComboboxGroupProps
+  extends React.ComponentProps<typeof ArkCombobox.ItemGroup> {
+  /**
+   * The heading of the group
+   */
+  heading?: string | React.ReactNode;
+}
 
-export const ComboboxItemGroupLabel = (
+export const ComboboxGroup = (props: ComboboxGroupProps) => {
+  const { heading, children, ...rest } = props;
+
+  return (
+    <ArkCombobox.ItemGroup data-slot="combobox-group" {...rest}>
+      {!!heading && <ComboboxGroupLabel>{heading}</ComboboxGroupLabel>}
+
+      {children}
+    </ArkCombobox.ItemGroup>
+  );
+};
+
+export const ComboboxGroupLabel = (
   props: React.ComponentProps<typeof ArkCombobox.ItemGroupLabel>
 ) => {
   const { className, ...rest } = props;
@@ -150,6 +179,7 @@ export const ComboboxItemGroupLabel = (
         "px-2 py-1.5 font-semibold text-muted-foreground text-xs",
         className
       )}
+      data-slot="combobox-group-label"
       {...rest}
     />
   );

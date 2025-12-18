@@ -137,7 +137,7 @@ export const DialogBody = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn("flex-1 overflow-auto p-6", className)}
-      data-part="body"
+      data-slot="dialog-body"
       {...rest}
     />
   );
@@ -160,8 +160,7 @@ export const DialogHeader = (props: DialogHeaderProps) => {
   return (
     <ark.div
       className={cn("flex flex-col gap-2 p-6 pb-0", className)}
-      data-part="header"
-      data-scope="dialog"
+      data-slot="dialog-header"
       {...rest}
     >
       {!!title && <DialogTitle>{title}</DialogTitle>}
@@ -216,8 +215,7 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn("flex flex-row-reverse gap-2 p-6 pt-0", className)}
-      data-part="footer"
-      data-scope="dialog"
+      data-slot="dialog-footer"
       {...rest}
     />
   );

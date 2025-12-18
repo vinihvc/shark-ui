@@ -23,7 +23,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValueText,
+  SelectValue,
 } from "@/registry/react/components/select";
 
 const FloatingPanelDemo = () => {
@@ -63,7 +63,7 @@ const FloatingPanelDemo = () => {
             <FieldLabel>Font family</FieldLabel>
             <Select collection={collection} defaultValue={["Inter"]}>
               <SelectTrigger className="w-full">
-                <SelectValueText />
+                <SelectValue />
               </SelectTrigger>
 
               <SelectContent>
