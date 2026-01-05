@@ -50,10 +50,10 @@ export const dialogContentVariants = tv({
   base: [
     "relative",
     "z-50",
-    "-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2",
+    "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
     "flex flex-col gap-4",
     "bg-background",
-    "w-full max-w-[calc(100%-2rem)] sm:max-w-lg",
+    "w-full max-sm:max-w-[calc(100%-2rem)]",
     "rounded-lg border shadow-lg",
     "focus:outline-none focus:ring-0",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",

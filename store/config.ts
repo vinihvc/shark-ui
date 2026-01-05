@@ -37,13 +37,13 @@ export const DEFAULT_BORDER_RADIUS = "sm";
 export const DEFAULT_PACKAGE_MANAGER = "pnpm";
 export const DEFAULT_INSTALLATION_METHOD = "cli";
 
-export type Config = {
+export interface Config {
   primaryColor: PrimaryColor;
   grayColor: GrayColor;
   borderRadius: BorderRadius;
   packageManager: PackageManager;
   installationMethod: InstallationMethod;
-};
+}
 
 const configAtom = atomWithStorage<Config>("config", {
   primaryColor: DEFAULT_PRIMARY_COLOR,

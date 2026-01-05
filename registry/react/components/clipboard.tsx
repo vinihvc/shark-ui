@@ -10,9 +10,10 @@ export const Clipboard = (
   const { className, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Root {...rest}>
+    <ArkClipboard.Root data-slot="clipboard-root" {...rest}>
       <ArkClipboard.Control
         className={cn("flex items-center gap-2", className)}
+        data-slot="clipboard-control"
       >
         {children}
       </ArkClipboard.Control>
@@ -22,20 +23,23 @@ export const Clipboard = (
 
 export const ClipboardContext = (
   props: React.ComponentProps<typeof ArkClipboard.Context>
-) => <ArkClipboard.Context {...props} />;
+) => <ArkClipboard.Context data-slot="clipboard-context" {...props} />;
 
 export const ClipboardTrigger = (
   props: React.ComponentProps<typeof ArkClipboard.Trigger>
-) => <ArkClipboard.Trigger {...props} />;
+) => <ArkClipboard.Trigger data-slot="clipboard-trigger" {...props} />;
 
-interface ClipboardInputProps
-  extends React.ComponentProps<typeof ArkClipboard.Input> {}
-
-export const ClipboardInput = (props: ClipboardInputProps) => {
+export const ClipboardInput = (
+  props: React.ComponentProps<typeof ArkClipboard.Input>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <ArkClipboard.Input {...rest} className={cn(inputVariants(), className)} />
+    <ArkClipboard.Input
+      data-slot="clipboard-input"
+      {...rest}
+      className={cn(inputVariants(), className)}
+    />
   );
 };
 
@@ -45,7 +49,11 @@ export const ClipboardIndicator = (
   const { copied = <Check />, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Indicator {...rest} asChild copied={copied}>
+    <ArkClipboard.Indicator
+      data-slot="clipboard-indicator"
+      {...rest}
+      copied={copied}
+    >
       {children || <Copy />}
     </ArkClipboard.Indicator>
   );

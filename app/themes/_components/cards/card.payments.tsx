@@ -14,6 +14,7 @@ import {
 } from "@tanstack/react-table";
 import { MoreHorizontalIcon } from "lucide-react";
 import React from "react";
+import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -78,12 +79,12 @@ const data: Payment[] = [
   },
 ];
 
-export type Payment = {
+export interface Payment {
   id: string;
   amount: number;
   status: "pending" | "processing" | "success" | "failed";
   email: string;
-};
+}
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -111,9 +112,22 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "status",
     header: "Status",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
-    ),
+    cell: ({ row }) => {
+      const status = row.original.status;
+
+      const variant = {
+        pending: "warning",
+        processing: "info",
+        success: "success",
+        failed: "destructive",
+      } as const;
+
+      return (
+        <Badge className="capitalize" variant={variant[status]}>
+          {status}
+        </Badge>
+      );
+    },
   },
   {
     accessorKey: "email",

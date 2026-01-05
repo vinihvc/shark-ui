@@ -1,0 +1,39 @@
+---
+title: Installation
+description: This guide will help you install Shark UI in your project.
+---
+
+import { FrameworksList } from "@/components/layout/frameworks-list";
+
+## Prerequisites
+
+All components are built with [Tailwind CSS](https://tailwindcss.com) and [Ark UI](https://ark-ui.com), so you need to have these dependencies installed in your project.
+
+## Frameworks
+
+<FrameworksList />
+
+## Adding components
+
+To add a component you can **install it automatically using shadcn CLI** or **manually copying the files**.
+
+## Styling
+
+All the colors uses predefined colors from [Tailwind CSS](https://tailwindcss.com/docs/colors) and set on the `global.css` file. It follows the color naming convention from shadcn/ui .
+
+## Extended colors
+
+We've introduced additional color variables beyond the standard `shadcn/ui` palette to provide more control for specific components like badges and alerts:
+
+- `--destructive-foreground` : Foreground color for destructive actions
+- `--info` : Information state color
+- `--info-foreground` : Foreground color for information states
+- `--success` : Success state color
+- `--success-foreground`: Foreground color for success states
+- `--warning`: Warning state color
+- `--warning-foreground`: Foreground color for warning states
+
+These additional variables ensure consistent styling across components that need to communicate different states or levels of importance.
+
+
+

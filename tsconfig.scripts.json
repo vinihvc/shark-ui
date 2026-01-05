@@ -8,9 +8,7 @@
     "esModuleInterop": true,
     "isolatedModules": false,
     "allowImportingTsExtensions": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "strictNullChecks": true
   },
   "include": ["scripts/**/*.{ts,mts}"],

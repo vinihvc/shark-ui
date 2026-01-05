@@ -1,8 +1,15 @@
+import { highlight } from "fumadocs-core/highlight";
+import {
+  CodeBlock as BaseCodeBlock,
+  Pre as BasePre,
+} from "fumadocs-ui/components/codeblock";
 import { Code } from "lucide-react";
-import { type BundledLanguage, codeToHtml } from "shiki";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/registry/react/components/badge";
+import { Button } from "@/registry/react/components/button";
 import {
   Clipboard,
+  ClipboardIndicator,
   ClipboardTrigger,
 } from "@/registry/react/components/clipboard";
 
@@ -16,55 +23,85 @@ export interface CodeBlockProps extends React.ComponentProps<"figure"> {
    */
   code: string;
   /**
+   * The icon to display in the code block
+   */
+  icon?: React.ReactNode;
+  /**
+   * Whether to show the line numbers
+   *
+   * @default true
+   */
+  lineNumbers?: boolean;
+  /**
    * Whether to show the copy button
    *
    * @default true
    */
   copyButton?: boolean;
-  /**
-   * The language of the code
-   * @default "typescript"
-   */
-  language?: BundledLanguage;
 }
 
 export const CodeBlock = async (props: CodeBlockProps) => {
   const {
     title,
     code,
+    lineNumbers = true,
     copyButton = true,
-    language = "typescript",
+    icon = <Code />,
+    lang = "tsx",
     className,
     ...rest
   } = props;
 
-  const highlightedCode = await codeToHtml(code, {
-    lang: language,
-    theme: "github-dark",
+  const rendered = await highlight(code, {
+    lang,
+    components: {
+      pre: (props) => <BasePre {...props} />,
+    },
   });
 
   return (
-    <figure className={cn("", className)} {...rest}>
+    <BaseCodeBlock
+      allowCopy={false}
+      className={cn("relative my-0", className)}
+      {...(lineNumbers
+        ? { "data-line-numbers": true }
+        : { "data-line-numbers": undefined })}
+      data-slot="code-block"
+      {...rest}
+    >
       {!!title && (
         <figcaption
           className={cn(
+            "-mt-3",
+            "px-2 py-1",
             "flex items-center gap-2",
             "text-code-foreground",
+            "bg-input",
             "[&_svg]:size-5 [&_svg]:text-code-foreground sm:[&_svg]:size-4"
           )}
         >
-          <Code />
+          <Badge className="p-1" variant="outline">
+            {icon}
+          </Badge>
+
           {title}
         </figcaption>
       )}
 
-      {!!copyButton && (
-        <Clipboard value={code}>
-          <ClipboardTrigger />
+      {copyButton && (
+        <Clipboard
+          className="absolute top-2 right-2 z-10"
+          value="https://x.com/vinihvc"
+        >
+          <ClipboardTrigger asChild>
+            <Button size="icon-sm" variant="ghost">
+              <ClipboardIndicator />
+            </Button>
+          </ClipboardTrigger>
         </Clipboard>
       )}
-      {/** biome-ignore lint/security/noDangerouslySetInnerHtml: Shiki generates safe HTML */}
-      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-    </figure>
+
+      {rendered}
+    </BaseCodeBlock>
   );
 };

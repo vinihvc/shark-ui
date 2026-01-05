@@ -213,7 +213,10 @@ const MenuGroupLabel = (
 
   return (
     <ArkMenu.ItemGroupLabel
-      className={cn("px-2 py-1.5 font-medium text-sm", className)}
+      className={cn(
+        "pointer-events-none px-2 py-1.5 font-medium text-muted-foreground text-sm",
+        className
+      )}
       data-slot="menu-group-label"
       {...rest}
     >

@@ -29,7 +29,7 @@ export const buttonVariants = tv({
         "border shadow-xs",
         "hover:bg-accent hover:text-accent-foreground",
         "dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
-        "focus-visible:border-foreground focus-visible:ring-foreground/30",
+        "focus-visible:border-foreground focus-visible:ring-foreground/10",
       ],
       success: [
         "bg-success",
@@ -80,16 +80,27 @@ export const buttonVariants = tv({
       "icon-md": "size-9",
       "icon-lg": "size-10",
     },
+    clickEffect: {
+      true: "active:translate-y-px",
+      false: "",
+    },
   },
   defaultVariants: {
     variant: "solid",
     size: "md",
+    clickEffect: true,
   },
 });
 
 export interface ButtonProps
   extends React.ComponentProps<typeof ark.button>,
     VariantProps<typeof buttonVariants> {
+  /**
+   * Apply a click effect to the button
+   *
+   * @default true
+   */
+  clickEffect?: boolean;
   /**
    * Show a loading indicator
    *
@@ -100,8 +111,8 @@ export interface ButtonProps
 
 export const Button = (props: ButtonProps) => {
   const {
+    clickEffect = true,
     isLoading,
-    type = "button",
     variant,
     size,
     className,
@@ -111,10 +122,10 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <ark.button
-      className={cn(buttonVariants({ variant, size }), className)}
+      className={cn(buttonVariants({ variant, size, clickEffect }), className)}
       data-slot="button"
       data-state={isLoading ? "loading" : "idle"}
-      type={type}
+      type="button"
       {...rest}
     >
       {isLoading ? (

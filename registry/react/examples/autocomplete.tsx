@@ -21,7 +21,7 @@ const AutocompleteDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    initialItems: ["React", "Solid", "Vue", "Svelte"],
+    initialItems: ["Apple", "Banana", "Cherry", "Date"],
     filter: contains,
   });
 
@@ -30,30 +30,32 @@ const AutocompleteDemo = () => {
   };
 
   return (
-    <Field>
-      <FieldLabel>Choose a fruit</FieldLabel>
-      <Autocomplete
-        collection={collection}
-        onInputValueChange={handleInputChange}
-      >
-        <AutocompleteControl>
-          <AutocompleteInput />
-        </AutocompleteControl>
+    <div className="mx-auto w-full max-w-64">
+      <Field>
+        <FieldLabel>Choose a fruit</FieldLabel>
+        <Autocomplete
+          collection={collection}
+          onInputValueChange={handleInputChange}
+        >
+          <AutocompleteControl>
+            <AutocompleteInput />
+          </AutocompleteControl>
 
-        <AutocompleteContent>
-          <AutocompleteEmpty />
-          <AutocompleteGroup>
-            {collection.items.map((item) => (
-              <AutocompleteItem item={item} key={item}>
-                {item}
-              </AutocompleteItem>
-            ))}
-          </AutocompleteGroup>
-        </AutocompleteContent>
-      </Autocomplete>
+          <AutocompleteContent>
+            <AutocompleteEmpty />
+            <AutocompleteGroup>
+              {collection.items.map((item) => (
+                <AutocompleteItem item={item} key={item}>
+                  {item}
+                </AutocompleteItem>
+              ))}
+            </AutocompleteGroup>
+          </AutocompleteContent>
+        </Autocomplete>
 
-      <FieldHelper>Select a fruit or type a new one</FieldHelper>
-    </Field>
+        <FieldHelper>Select a fruit or type a new one</FieldHelper>
+      </Field>
+    </div>
   );
 };
 

@@ -27,10 +27,10 @@ import {
 import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 import { slugify } from "@/utils/formatter";
 
-type CommandMenuItem = {
+interface CommandMenuItem {
   label: string;
   value: string;
-};
+}
 
 interface CommandMenuProps extends React.ComponentProps<typeof Dialog> {
   /**
@@ -93,13 +93,14 @@ export const CommandMenu = (props: CommandMenuProps) => {
             "font-normal",
             "shadow-none"
           )}
+          clickEffect={false}
           variant="secondary"
           {...props}
         >
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden sm:flex">
-            <KbdGroup className="[--gap:spacing(0.5)]">
+            <KbdGroup className="[--gap:--spacing(0.5)]">
               <Kbd className="border">⌘</Kbd>
               <Kbd className="border">K</Kbd>
             </KbdGroup>

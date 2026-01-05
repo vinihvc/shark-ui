@@ -42,7 +42,7 @@ export const TooltipContent = (
       <ArkTooltip.Positioner>
         <ArkTooltip.Content
           className={cn(
-            "z-50 w-fit origin-(--transform-origin)",
+            "z-40 w-fit origin-(--transform-origin)",
             "px-3 py-1.5",
             "bg-foreground",
             "rounded-md",

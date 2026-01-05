@@ -9,9 +9,7 @@ import { Button } from "@/registry/react/components/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/registry/react/components/card";
 import { Input } from "@/registry/react/components/input";
 import {
@@ -39,12 +37,11 @@ const collection = createCollection({
 
 export const CardsShare = () => (
   <Card>
-    <CardHeader>
-      <CardTitle>Share this document</CardTitle>
-      <CardDescription>
-        Anyone with the link can view this document.
-      </CardDescription>
-    </CardHeader>
+    <CardHeader
+      description="Anyone with the link can view this document."
+      title="Share this document"
+    />
+
     <CardContent>
       <div className="flex space-x-2">
         <Input readOnly value="http://example.com/link/to/document" />
@@ -52,7 +49,9 @@ export const CardsShare = () => (
           Copy Link
         </Button>
       </div>
+
       <Separator className="my-4" />
+
       <div className="space-y-4">
         <div className="font-medium text-sm">People with access</div>
         <div className="grid gap-6">

@@ -25,7 +25,7 @@ export const ScrollArea = (
           className={cn(
             "size-full",
             "rounded-md",
-            "-outline-offset-1 outline-1 outline-gray-300",
+            "outline-1 outline-gray-300 -outline-offset-1",
             "transition-[color,box-shadow]",
             "outline-none focus-visible:outline-1 focus-visible:ring-[3px] focus-visible:ring-ring/50"
           )}

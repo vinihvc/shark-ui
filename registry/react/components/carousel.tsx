@@ -29,7 +29,7 @@ export const CarouselPrevious = (
 
   return (
     <ArkCarousel.PrevTrigger
-      className={cn("-left-12 -translate-y-1/2 absolute top-1/2", className)}
+      className={cn("absolute top-1/2 -left-12 -translate-y-1/2", className)}
       {...rest}
       asChild
     >
@@ -48,7 +48,7 @@ export const CarouselNext = (
 
   return (
     <ArkCarousel.NextTrigger
-      className={cn("-right-12 -translate-y-1/2 absolute top-1/2", className)}
+      className={cn("absolute top-1/2 -right-12 -translate-y-1/2", className)}
       {...rest}
       asChild
     >
@@ -68,7 +68,7 @@ export const CarouselIndicatorGroup = (
   return (
     <ArkCarousel.IndicatorGroup
       className={cn(
-        "-translate-x-1/2 absolute bottom-2 left-1/2",
+        "absolute bottom-2 left-1/2 -translate-x-1/2",
         "flex gap-2",
         "px-3 py-3",
         "bg-background/80 backdrop-blur-sm",

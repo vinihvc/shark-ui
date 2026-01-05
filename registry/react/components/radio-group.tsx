@@ -36,12 +36,12 @@ export const RadioGroupItem = (
           "group/radio-item",
           "size-4",
           "flex items-center justify-center",
-          "bg-background",
+          "bg-input/60",
           "data-hover:bg-accent",
-          "dark:bg-input/60",
           "text-background",
           "rounded-full border",
-          "transition-all"
+          "transition-all",
+          "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50"
         )}
       >
         <Circle className="size-2.5 fill-primary opacity-0 transition-opacity group-data-[state=checked]/radio-item:opacity-100" />

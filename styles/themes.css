@@ -6,7 +6,7 @@
   --ring: var(--color-red-500);
 
   @variant dark {
-    --primary: var(--color-red-600);
+    --primary: var(--color-red-700);
     --primary-foreground: var(--color-red-50);
     --ring: var(--color-red-900);
   }
@@ -18,7 +18,7 @@
   --ring: var(--color-orange-400);
 
   @variant dark {
-    --primary: var(--color-orange-600);
+    --primary: var(--color-orange-700);
     --primary-foreground: var(--color-orange-50);
     --ring: var(--color-orange-900);
   }
@@ -30,7 +30,7 @@
   --ring: var(--color-amber-500);
 
   @variant dark {
-    --primary: var(--color-amber-600);
+    --primary: var(--color-amber-700);
     --primary-foreground: var(--color-amber-50);
     --ring: var(--color-amber-900);
   }
@@ -42,7 +42,7 @@
   --ring: var(--color-yellow-500);
 
   @variant dark {
-    --primary: var(--color-yellow-600);
+    --primary: var(--color-yellow-700);
     --primary-foreground: var(--color-yellow-50);
     --ring: var(--color-yellow-900);
   }
@@ -54,7 +54,7 @@
   --ring: var(--color-lime-600);
 
   @variant dark {
-    --primary: var(--color-lime-600);
+    --primary: var(--color-lime-700);
     --primary-foreground: var(--color-lime-50);
     --ring: var(--color-lime-900);
   }
@@ -66,7 +66,7 @@
   --ring: var(--color-green-600);
 
   @variant dark {
-    --primary: var(--color-green-600);
+    --primary: var(--color-green-700);
     --primary-foreground: var(--color-green-50);
     --ring: var(--color-green-900);
   }
@@ -78,7 +78,7 @@
   --ring: var(--color-emerald-600);
 
   @variant dark {
-    --primary: var(--color-emerald-600);
+    --primary: var(--color-emerald-700);
     --primary-foreground: var(--color-emerald-50);
     --ring: var(--color-emerald-900);
   }
@@ -90,7 +90,7 @@
   --ring: var(--color-teal-600);
 
   @variant dark {
-    --primary: var(--color-teal-600);
+    --primary: var(--color-teal-700);
     --primary-foreground: var(--color-teal-50);
     --ring: var(--color-teal-900);
   }
@@ -126,7 +126,7 @@
   --ring: var(--color-blue-400);
 
   @variant dark {
-    --primary: var(--color-blue-500);
+    --primary: var(--color-blue-600);
     --primary-foreground: var(--color-blue-50);
     --ring: var(--color-blue-900);
   }
@@ -174,7 +174,7 @@
   --ring: var(--color-fuchsia-400);
 
   @variant dark {
-    --primary: var(--color-fuchsia-500);
+    --primary: var(--color-fuchsia-600);
     --primary-foreground: var(--color-fuchsia-50);
     --ring: var(--color-fuchsia-900);
   }
@@ -186,7 +186,7 @@
   --ring: var(--color-pink-400);
 
   @variant dark {
-    --primary: var(--color-pink-500);
+    --primary: var(--color-pink-600);
     --primary-foreground: var(--color-pink-50);
     --ring: var(--color-pink-900);
   }
@@ -198,7 +198,7 @@
   --ring: var(--color-rose-400);
 
   @variant dark {
-    --primary: var(--color-rose-500);
+    --primary: var(--color-rose-600);
     --primary-foreground: var(--color-rose-50);
     --ring: var(--color-rose-900);
   }
@@ -240,11 +240,11 @@
     --card: var(--color-slate-950);
     --card-foreground: var(--color-slate-50);
 
-    --accent: var(--color-slate-800);
-    --accent-foreground: var(--color-slate-50);
-
     --popover: var(--color-slate-950);
     --popover-foreground: var(--color-slate-50);
+
+    --accent: var(--color-slate-800);
+    --accent-foreground: var(--color-slate-50);
 
     --border: var(--color-slate-800);
     --input: var(--color-slate-700);

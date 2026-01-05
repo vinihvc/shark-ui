@@ -27,14 +27,13 @@ export const Checkbox = (
         "peer",
         "size-4 shrink-0",
         "rounded-sm",
+        "bg-input/60",
         "border border-input shadow-xs outline-none",
         "transition-shadow",
-        "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50",
         "data-disabled:cursor-not-allowed data-disabled:opacity-50",
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
         "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-        "dark:data-[state=checked]:bg-primary",
-        "dark:bg-input/30",
         className
       )}
       {...rest}

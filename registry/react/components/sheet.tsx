@@ -1,21 +1,17 @@
 import type { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
-import { Portal } from "@ark-ui/react/portal";
-import { X } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
-  DialogBackdrop,
   DialogBody,
   DialogClose,
+  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  dialogContentVariants,
 } from "@/registry/react/components/dialog";
 
 export const Sheet = (props: React.ComponentProps<typeof ArkDialog.Root>) => (
@@ -71,56 +67,17 @@ const sheetContentVariants = tv({
 });
 
 interface SheetContentProps
-  extends React.ComponentProps<typeof ArkDialog.Content>,
-    VariantProps<typeof sheetContentVariants> {
-  /**
-   * Show close button at the top right corner
-   *
-   * @default true
-   */
-  showCloseButton?: boolean;
-}
+  extends React.ComponentProps<typeof DialogContent>,
+    VariantProps<typeof sheetContentVariants> {}
 
 export const SheetContent = (props: SheetContentProps) => {
-  const { side, showCloseButton = true, className, children, ...rest } = props;
+  const { side, className, ...rest } = props;
 
   return (
-    <Portal>
-      <DialogBackdrop data-slot="sheet" />
-
-      <ArkDialog.Positioner data-slot="sheet">
-        <ArkDialog.Content
-          className={cn(
-            dialogContentVariants(),
-            sheetContentVariants({ side }),
-            className
-          )}
-          data-side={side}
-          data-slot="sheet"
-          {...rest}
-        >
-          {children}
-
-          {!!showCloseButton && (
-            <ArkDialog.CloseTrigger
-              asChild
-              className="absolute top-4 right-4"
-              data-slot="sheet"
-            >
-              <Button
-                className="size-8 border-none opacity-70 hover:opacity-100"
-                size="icon-md"
-                variant="ghost"
-              >
-                <X />
-
-                <span className="sr-only">Close</span>
-              </Button>
-            </ArkDialog.CloseTrigger>
-          )}
-        </ArkDialog.Content>
-      </ArkDialog.Positioner>
-    </Portal>
+    <DialogContent
+      className={cn(sheetContentVariants({ side }), className)}
+      {...rest}
+    />
   );
 };
 

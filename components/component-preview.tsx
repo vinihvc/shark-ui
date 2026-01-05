@@ -3,7 +3,6 @@
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 import type React from "react";
 import {
   Tabs,
@@ -12,6 +11,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
+import { CodeBlock } from "./code-block";
 
 const registryPath = "registry/react/examples";
 
@@ -61,7 +61,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
           </TabsContent>
 
           <TabsContent className="**:[div]:max-h-[400px]" value="code">
-            <DynamicCodeBlock code={replacedCode} lang="tsx" />
+            <CodeBlock code={replacedCode} lang="tsx" />
           </TabsContent>
         </div>
       </Tabs>

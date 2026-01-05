@@ -7,10 +7,8 @@ import { Button } from "@/registry/react/components/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/registry/react/components/card";
 import {
   type ChartConfig,
@@ -75,10 +73,10 @@ export const CardsActivityGoal = () => {
 
   return (
     <Card className="h-full gap-5">
-      <CardHeader>
-        <CardTitle>Move Goal</CardTitle>
-        <CardDescription>Set your daily activity goal.</CardDescription>
-      </CardHeader>
+      <CardHeader
+        description="Set your daily activity goal."
+        title="Move Goal"
+      />
       <CardContent className="flex flex-1 flex-col">
         <div className="flex items-center justify-center gap-4">
           <Button

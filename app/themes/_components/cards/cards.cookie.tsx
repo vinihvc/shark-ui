@@ -23,14 +23,14 @@ export const CardsCookie = () => (
     <CardContent className="grid gap-6">
       <Field orientation="horizontal">
         <FieldContent>
-          <FieldLabel htmlFor="necessary">Strictly Necessary</FieldLabel>
+          <FieldLabel>Strictly Necessary</FieldLabel>
           <FieldDescription>
             These cookies are essential in order to use the website and use its
             features.
           </FieldDescription>
         </FieldContent>
 
-        <Switch aria-label="Necessary" defaultChecked id="necessary" />
+        <Switch aria-label="Necessary" defaultChecked />
       </Field>
 
       <Field>

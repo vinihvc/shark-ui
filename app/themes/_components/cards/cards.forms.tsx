@@ -4,9 +4,7 @@ import { Button } from "@/registry/react/components/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/registry/react/components/card";
 import { Checkbox } from "@/registry/react/components/checkbox";
 import {
@@ -44,13 +42,10 @@ const plans = [
 export function CardsForms() {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Upgrade your Subscription</CardTitle>
-        <CardDescription className="text-balance">
-          You are currently on the free plan. Upgrade to the pro plan to get
-          access to all features.
-        </CardDescription>
-      </CardHeader>
+      <CardHeader
+        description="You are currently on the free plan. Upgrade to the pro plan to get access to all features."
+        title="Upgrade your Subscription"
+      />
 
       <CardContent>
         <form>
@@ -123,15 +118,15 @@ export function CardsForms() {
 
             <Field>
               <Field orientation="horizontal">
-                <Checkbox id="terms" />
-                <FieldLabel className="font-normal" htmlFor="terms">
+                <Checkbox />
+                <FieldLabel className="font-normal">
                   I agree to the terms and conditions
                 </FieldLabel>
               </Field>
 
               <Field orientation="horizontal">
-                <Checkbox defaultChecked id="newsletter" />
-                <FieldLabel className="font-normal" htmlFor="newsletter">
+                <Checkbox defaultChecked />
+                <FieldLabel className="font-normal">
                   Allow us to send you emails
                 </FieldLabel>
               </Field>

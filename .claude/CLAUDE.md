@@ -190,8 +190,8 @@ Ultracite enforces strict type safety, accessibility standards, and consistent c
 - Use `as const` instead of literal types and type annotations.
 - Use either `T[]` or `Array<T>` consistently.
 - Initialize each enum member value explicitly.
-- Use `export type` for types.
-- Use `import type` for types.
+- Use `export interface` for types.
+- Use `import interface` for types.
 - Make sure all enum members are literal values.
 - Don't use TypeScript const enum.
 - Don't declare empty interfaces.

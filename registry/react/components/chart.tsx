@@ -24,9 +24,9 @@ export type ChartConfig = {
   );
 };
 
-type ChartContextProps = {
+interface ChartContextProps {
   config: ChartConfig;
-};
+}
 
 export type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
   className?: string;
@@ -50,17 +50,17 @@ export type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
   color?: string;
 };
 
-export type ChartLegendContentProps = {
+export interface ChartLegendContentProps {
   className?: string;
   hideIcon?: boolean;
   verticalAlign?: LegendProps["verticalAlign"];
   payload?: LegendPayload[];
   nameKey?: string;
-};
+}
 
 const ChartContext = React.createContext<ChartContextProps | null>(null);
 
-function useChart() {
+const useChart = () => {
   const context = React.useContext(ChartContext);
 
   if (!context) {
@@ -68,20 +68,18 @@ function useChart() {
   }
 
   return context;
-}
+};
 
-function ChartContainer({
-  id,
-  className,
-  children,
-  config,
-  ...props
-}: React.ComponentProps<"div"> & {
+interface ChartContainerProps extends React.ComponentProps<"div"> {
   config: ChartConfig;
   children: React.ComponentProps<
     typeof RechartsPrimitive.ResponsiveContainer
   >["children"];
-}) {
+}
+
+export const ChartContainer = (props: ChartContainerProps) => {
+  const { id, className, children, config, ...rest } = props;
+
   const uniqueId = React.useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
 
@@ -94,7 +92,7 @@ function ChartContainer({
         )}
         data-chart={chartId}
         data-slot="chart"
-        {...props}
+        {...rest}
       >
         <ChartStyle config={config} id={chartId} />
         <RechartsPrimitive.ResponsiveContainer>
@@ -103,9 +101,16 @@ function ChartContainer({
       </div>
     </ChartContext.Provider>
   );
+};
+
+interface ChartStyleProps {
+  id: string;
+  config: ChartConfig;
 }
 
-const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
+export const ChartStyle = (props: ChartStyleProps) => {
+  const { id, config } = props;
+
   const colorConfig = Object.entries(config).filter(
     ([, itemConfig]) => itemConfig.theme || itemConfig.color
   );
@@ -139,23 +144,25 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   );
 };
 
-const ChartTooltip = RechartsPrimitive.Tooltip;
+export const ChartTooltip = RechartsPrimitive.Tooltip;
 
-function ChartTooltipContent({
-  active,
-  payload,
-  label,
-  className,
-  indicator = "dot",
-  hideLabel = false,
-  hideIndicator = false,
-  labelFormatter,
-  formatter,
-  labelClassName,
-  color,
-  nameKey,
-  labelKey,
-}: CustomTooltipProps) {
+export const ChartTooltipContent = (props: CustomTooltipProps) => {
+  const {
+    active,
+    payload,
+    label,
+    className,
+    indicator = "dot",
+    hideLabel = false,
+    hideIndicator = false,
+    labelFormatter,
+    formatter,
+    labelClassName,
+    color,
+    nameKey,
+    labelKey,
+  } = props;
+
   const { config } = useChart();
 
   const tooltipLabel = React.useMemo(() => {
@@ -280,17 +287,19 @@ function ChartTooltipContent({
       </div>
     </div>
   );
-}
+};
 
-const ChartLegend = RechartsPrimitive.Legend;
+export const ChartLegend = RechartsPrimitive.Legend;
 
-function ChartLegendContent({
-  className,
-  hideIcon = false,
-  payload,
-  verticalAlign = "bottom",
-  nameKey,
-}: ChartLegendContentProps) {
+export const ChartLegendContent = (props: ChartLegendContentProps) => {
+  const {
+    className,
+    hideIcon = false,
+    payload,
+    verticalAlign = "bottom",
+    nameKey,
+  } = props;
+
   const { config } = useChart();
 
   if (!payload?.length) {
@@ -332,7 +341,7 @@ function ChartLegendContent({
       })}
     </div>
   );
-}
+};
 
 // Helper to extract item config from a payload.
 function getPayloadConfigFromPayload(
@@ -372,12 +381,3 @@ function getPayloadConfigFromPayload(
     ? config[configLabelKey]
     : config[key as keyof typeof config];
 }
-
-export {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
-  ChartStyle,
-};

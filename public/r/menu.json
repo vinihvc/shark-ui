@@ -2,11 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "menu",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "tailwind-variants",
-    "lucide-react"
-  ],
+  "dependencies": ["@ark-ui/react", "tailwind-variants", "lucide-react"],
   "files": [
     {
       "path": "registry/react/components/menu.tsx",
