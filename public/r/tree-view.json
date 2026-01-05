@@ -3,7 +3,8 @@
   "name": "tree-view",
   "type": "registry:ui",
   "dependencies": [
-    "@ark-ui/react"
+    "@ark-ui/react",
+    "lucide-react"
   ],
   "files": [
     {
