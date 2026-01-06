@@ -10,8 +10,11 @@ const SplitterDemo = () => (
     defaultSize={[50, 50]}
     panels={[{ id: "1" }, { id: "2" }]}
   >
-    <SplitterPanel className="flex items-center justify-center" id="1">
-      Panel 1
+    <SplitterPanel
+      className="flex h-[200px] items-center justify-center"
+      id="1"
+    >
+      One
     </SplitterPanel>
 
     <SplitterResizeTrigger id="1:2" />
@@ -23,13 +26,13 @@ const SplitterDemo = () => (
         panels={[{ id: "3" }, { id: "4" }]}
       >
         <SplitterPanel className="flex items-center justify-center" id="3">
-          Panel 2
+          Two
         </SplitterPanel>
 
         <SplitterResizeTrigger id="3:4" />
 
         <SplitterPanel className="flex items-center justify-center" id="4">
-          Panel 3
+          Three
         </SplitterPanel>
       </Splitter>
     </SplitterPanel>

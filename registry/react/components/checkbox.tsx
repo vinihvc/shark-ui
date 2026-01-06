@@ -11,6 +11,7 @@ export const CheckboxGroup = (
   return (
     <ArkCheckbox.Group
       className={cn("flex flex-col gap-2", className)}
+      data-slot="checkbox-group"
       {...rest}
     />
   );
@@ -36,6 +37,7 @@ export const Checkbox = (
         "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
         className
       )}
+      data-slot="checkbox"
       {...rest}
     >
       <ArkCheckbox.Control>

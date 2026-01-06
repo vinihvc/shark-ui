@@ -76,30 +76,31 @@ export const SheetContent = (props: SheetContentProps) => {
   return (
     <DialogContent
       className={cn(sheetContentVariants({ side }), className)}
+      data-slot="sheet-content"
       {...rest}
     />
   );
 };
 
 export const SheetBody = (props: React.ComponentProps<typeof ark.div>) => (
-  <DialogBody data-slot="sheet" {...props} />
+  <DialogBody data-slot="sheet-body" {...props} />
 );
 
 export const SheetHeader = (props: React.ComponentProps<typeof ark.div>) => (
-  <DialogHeader data-slot="sheet" {...props} />
+  <DialogHeader data-slot="sheet-header" {...props} />
 );
 
 export const SheetTitle = (
   props: React.ComponentProps<typeof ArkDialog.Title>
-) => <DialogTitle data-slot="sheet" {...props} />;
+) => <DialogTitle data-slot="sheet-title" {...props} />;
 
 export const SheetDescription = (
   props: React.ComponentProps<typeof ArkDialog.Description>
-) => <DialogDescription data-slot="sheet" {...props} />;
+) => <DialogDescription data-slot="sheet-description" {...props} />;
 
 export const SheetClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
-) => <DialogClose data-slot="sheet" {...props} />;
+) => <DialogClose data-slot="sheet-close" {...props} />;
 
 export const SheetFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
@@ -107,7 +108,7 @@ export const SheetFooter = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <DialogFooter
       className={cn("mt-auto flex flex-col gap-2", className)}
-      data-slot="sheet"
+      data-slot="sheet-footer"
       {...rest}
     />
   );

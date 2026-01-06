@@ -43,7 +43,7 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
           <TabsIndicator />
         </TabsList>
 
-        <div className="relative rounded-lg **:[figure]:border-none">
+        <div className="relative mt-4 rounded-lg **:[figure]:border-none">
           <TabsContent value="cli">
             <CodeBlock
               code={`${cliCommand}/${componentName}.json`}

@@ -33,11 +33,15 @@ export const PinInput = (props: PinInputProps) => {
     <ArkPinInput.Root
       className="group/pin-input"
       data-size={size}
+      data-slot="pin-input"
       {...(!withFakeCaret && { placeholder: "" })}
       otp={otp}
       {...rest}
     >
-      <ArkPinInput.Control className={cn("flex items-center gap-2", className)}>
+      <ArkPinInput.Control
+        className={cn("flex items-center gap-2", className)}
+        data-slot="pin-input-control"
+      >
         {children}
       </ArkPinInput.Control>
 
@@ -52,7 +56,7 @@ export const PinInputSlot = (
   const { className, ...rest } = props;
 
   return (
-    <ArkPinInput.Input asChild {...rest}>
+    <ArkPinInput.Input asChild data-slot="pin-input-input" {...rest}>
       <Input
         className={cn(
           "relative",
@@ -61,6 +65,7 @@ export const PinInputSlot = (
           "text-center",
           className
         )}
+        data-slot="pin-input-input"
       />
     </ArkPinInput.Input>
   );

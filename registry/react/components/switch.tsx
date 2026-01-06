@@ -19,9 +19,10 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
         "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
         className
       )}
+      data-slot="switch"
       {...rest}
     >
-      <ArkSwitch.Control>
+      <ArkSwitch.Control data-slot="switch-control">
         <ArkSwitch.Thumb
           className={cn(
             "block",
@@ -35,6 +36,7 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
             "dark:data-[state=unchecked]:bg-foreground",
             "data-[state=unchecked]:translate-x-0"
           )}
+          data-slot="switch-thumb"
         />
       </ArkSwitch.Control>
 

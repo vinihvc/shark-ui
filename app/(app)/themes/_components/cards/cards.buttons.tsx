@@ -69,10 +69,10 @@ export const CardsButtons = () => {
   return (
     <Card>
       <CardHeader
-        description="They are available in the following variants"
+        description="Available in the following styles"
         title="Variants"
       />
-      <CardContent className="flex flex-wrap gap-4">
+      <CardContent className="flex flex-wrap gap-2">
         <Popover>
           <PopoverTrigger asChild>
             <Button>Solid</Button>

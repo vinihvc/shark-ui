@@ -4,6 +4,7 @@ const dependencies = ["@ark-ui/react", "tailwind-variants"];
 
 const cssVars = {
   light: {
+    "destructive-foreground": "var(--color-red-50)",
     success: "var(--color-emerald-600)",
     "success-foreground": "var(--color-green-50)",
     info: "var(--color-sky-600)",
@@ -12,6 +13,7 @@ const cssVars = {
     "warning-foreground": "var(--color-yellow-950)",
   },
   dark: {
+    "destructive-foreground": "var(--color-red-50)",
     success: "var(--color-emerald-600)",
     "success-foreground": "var(--color-green-50)",
     info: "var(--color-sky-600)",

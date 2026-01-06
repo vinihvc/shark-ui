@@ -12,6 +12,7 @@ export const FloatingPanel = (
 
   return (
     <ArkFloatingPanel.Root
+      data-slot="floating-panel"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -21,7 +22,7 @@ export const FloatingPanel = (
 
 export const FloatingPanelTrigger = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Trigger>
-) => <ArkFloatingPanel.Trigger {...props} />;
+) => <ArkFloatingPanel.Trigger data-slot="floating-panel-trigger" {...props} />;
 
 interface FloatingPanelContentProps
   extends React.ComponentProps<typeof ArkFloatingPanel.Content> {
@@ -38,7 +39,10 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
 
   return (
     <Portal>
-      <ArkFloatingPanel.Positioner className="top-(--y) left-(--x) z-50">
+      <ArkFloatingPanel.Positioner
+        className="top-(--y) left-(--x) z-50"
+        data-slot="floating-panel-positioner"
+      >
         <ArkFloatingPanel.Content
           className={cn(
             "relative",
@@ -47,6 +51,7 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
             "rounded-lg border bg-background shadow-lg",
             className
           )}
+          data-slot="floating-panel-content"
           {...rest}
         >
           {children}
@@ -175,15 +180,30 @@ export const FloatingPanelTitle = (
 
 export const FloatingPanelResizeTrigger = (
   props: React.ComponentProps<typeof ArkFloatingPanel.ResizeTrigger>
-) => <ArkFloatingPanel.ResizeTrigger {...props} />;
+) => (
+  <ArkFloatingPanel.ResizeTrigger
+    data-slot="floating-panel-resize-trigger"
+    {...props}
+  />
+);
 
 export const FloatingPanelStageTrigger = (
   props: React.ComponentProps<typeof ArkFloatingPanel.StageTrigger>
-) => <ArkFloatingPanel.StageTrigger {...props} />;
+) => (
+  <ArkFloatingPanel.StageTrigger
+    data-slot="floating-panel-stage-trigger"
+    {...props}
+  />
+);
 
 export const FloatingPanelClose = (
   props: React.ComponentProps<typeof ArkFloatingPanel.CloseTrigger>
-) => <ArkFloatingPanel.CloseTrigger {...props} />;
+) => (
+  <ArkFloatingPanel.CloseTrigger
+    data-slot="floating-panel-close-trigger"
+    {...props}
+  />
+);
 
 export const FloatingPanelBody = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Body>
@@ -193,6 +213,7 @@ export const FloatingPanelBody = (
   return (
     <ArkFloatingPanel.Body
       className={cn("flex flex-col gap-4 p-4", className)}
+      data-slot="floating-panel-body"
       {...rest}
     />
   );

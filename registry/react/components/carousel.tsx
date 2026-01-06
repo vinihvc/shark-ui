@@ -11,7 +11,13 @@ export const Carousel = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCarousel.Root className={cn("relative", className)} {...rest} />;
+  return (
+    <ArkCarousel.Root
+      className={cn("relative", className)}
+      data-slot="carousel"
+      {...rest}
+    />
+  );
 };
 
 export const CarouselControl = (
@@ -19,7 +25,13 @@ export const CarouselControl = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCarousel.Control className={cn(className)} {...rest} />;
+  return (
+    <ArkCarousel.Control
+      className={cn(className)}
+      data-slot="carousel-control"
+      {...rest}
+    />
+  );
 };
 
 export const CarouselPrevious = (
@@ -30,6 +42,7 @@ export const CarouselPrevious = (
   return (
     <ArkCarousel.PrevTrigger
       className={cn("absolute top-1/2 -left-12 -translate-y-1/2", className)}
+      data-slot="carousel-previous"
       {...rest}
       asChild
     >
@@ -51,6 +64,7 @@ export const CarouselNext = (
       className={cn("absolute top-1/2 -right-12 -translate-y-1/2", className)}
       {...rest}
       asChild
+      data-slot="carousel-next"
     >
       <Button className="rounded-full" size="icon-sm">
         <ChevronRightIcon />
@@ -75,6 +89,7 @@ export const CarouselIndicatorGroup = (
         "rounded-lg",
         className
       )}
+      data-slot="carousel-indicator-group"
       {...rest}
     />
   );
@@ -94,6 +109,7 @@ export const CarouselIndicator = (
         "rounded-full",
         className
       )}
+      data-slot="carousel-indicator"
       {...rest}
     />
   );
@@ -104,7 +120,13 @@ export const CarouselGroup = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCarousel.ItemGroup className={cn("flex", className)} {...rest} />;
+  return (
+    <ArkCarousel.ItemGroup
+      className={cn("flex", className)}
+      data-slot="carousel-group"
+      {...rest}
+    />
+  );
 };
 
 export const CarouselItem = (
@@ -115,6 +137,7 @@ export const CarouselItem = (
   return (
     <ArkCarousel.Item
       className={cn("min-w-0 shrink-0 grow-0 basis-full", className)}
+      data-slot="carousel-item"
       {...rest}
     />
   );

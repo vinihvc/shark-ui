@@ -36,6 +36,7 @@ export const Toggle = (props: ToggleProps) => {
         toggleVariants({ size }),
         className
       )}
+      data-slot="toggle"
       {...rest}
     />
   );
@@ -47,7 +48,11 @@ export const ToggleIndicator = (
   const { children, ...rest } = props;
 
   return (
-    <ArkToggle.Indicator className="flex items-center gap-2" {...rest}>
+    <ArkToggle.Indicator
+      className="flex items-center gap-2"
+      data-slot="toggle-indicator"
+      {...rest}
+    >
       {children}
     </ArkToggle.Indicator>
   );

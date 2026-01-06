@@ -8,6 +8,7 @@ export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
   return (
     <ArkTabs.Root
       className={cn("flex flex-col gap-2", className)}
+      data-slot="tabs"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -29,6 +30,7 @@ export const TabsList = (props: React.ComponentProps<typeof ArkTabs.List>) => {
         "rounded-lg",
         className
       )}
+      data-slot="tabs-list"
       {...rest}
     />
   );
@@ -53,6 +55,7 @@ export const TabsTrigger = (
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
+      data-slot="tabs-trigger"
       {...rest}
     />
   );
@@ -69,6 +72,7 @@ export const TabsIndicator = (
         "absolute bottom-0 h-0.5 w-(--width) bg-primary",
         className
       )}
+      data-slot="tabs-indicator"
       {...rest}
     />
   );
@@ -82,6 +86,7 @@ export const TabsContent = (
   return (
     <ArkTabs.Content
       className={cn("flex-1 outline-none", className)}
+      data-slot="tabs-content"
       {...rest}
     />
   );

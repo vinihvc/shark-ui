@@ -12,6 +12,7 @@ export const Steps = (props: React.ComponentProps<typeof ArkSteps.Root>) => {
         "data-[orientation=horizontal]:flex-col",
         className
       )}
+      data-slot="steps"
       {...rest}
     />
   );
@@ -30,6 +31,7 @@ export const StepsList = (
         "data-[orientation=horizontal]:items-center",
         className
       )}
+      data-slot="steps-list"
       style={
         {
           "--steps-gutter": "12px",
@@ -56,6 +58,7 @@ export const StepsItem = (
         "last:flex-initial last:**:data-[slot=separator]:hidden",
         className
       )}
+      data-slot="steps-item"
       {...rest}
     />
   );
@@ -69,6 +72,7 @@ export const StepsTrigger = (
   return (
     <ArkSteps.Trigger
       className={cn("flex items-center gap-3 rounded-md", className)}
+      data-slot="steps-trigger"
       {...rest}
     />
   );
@@ -92,6 +96,7 @@ export const StepsIndicator = (
         "[&_svg]:size-(--steps-icon-size) [&_svg]:shrink-0",
         className
       )}
+      data-slot="steps-indicator"
       {...rest}
     />
   );
@@ -116,6 +121,7 @@ export const StepsSeparator = (
         "data-[orientation=horizontal]:w-full",
         className
       )}
+      data-slot="steps-separator"
       {...rest}
     />
   );
@@ -123,16 +129,18 @@ export const StepsSeparator = (
 
 export const StepsContent = (
   props: React.ComponentProps<typeof ArkSteps.Content>
-) => <ArkSteps.Content {...props} />;
+) => <ArkSteps.Content data-slot="steps-content" {...props} />;
 
 export const StepsCompletedContent = (
   props: React.ComponentProps<typeof ArkSteps.CompletedContent>
-) => <ArkSteps.CompletedContent {...props} />;
+) => (
+  <ArkSteps.CompletedContent data-slot="steps-completed-content" {...props} />
+);
 
 export const StepsPrevious = (
   props: React.ComponentProps<typeof ArkSteps.PrevTrigger>
-) => <ArkSteps.PrevTrigger {...props} />;
+) => <ArkSteps.PrevTrigger data-slot="steps-previous" {...props} />;
 
 export const StepsNext = (
   props: React.ComponentProps<typeof ArkSteps.NextTrigger>
-) => <ArkSteps.NextTrigger {...props} />;
+) => <ArkSteps.NextTrigger data-slot="steps-next" {...props} />;

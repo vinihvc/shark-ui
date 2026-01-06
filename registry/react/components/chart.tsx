@@ -219,6 +219,7 @@ export const ChartTooltipContent = (props: CustomTooltipProps) => {
       )}
     >
       {!nestLabel && tooltipLabel}
+
       <div className="grid gap-1.5">
         {payload.map((item, index) => {
           const key = `${nameKey || item.name || item.dataKey || "value"}`;

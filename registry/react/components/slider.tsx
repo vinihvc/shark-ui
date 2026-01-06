@@ -20,15 +20,20 @@ export const Slider = (props: SliderProps) => {
   return (
     <ArkSlider.Root
       className="flex w-full flex-col gap-1"
+      data-slot="slider"
       defaultValue={defaultValue}
       max={max}
       min={min}
       value={value}
       {...rest}
     >
-      <ArkSlider.Control className="relative flex h-4 items-center">
+      <ArkSlider.Control
+        className="relative flex h-4 items-center"
+        data-slot="slider-control"
+      >
         <ArkSlider.Track
           className={cn("h-1.5 flex-1 overflow-hidden rounded-full bg-muted")}
+          data-slot="slider-track"
         >
           <ArkSlider.Range
             className={cn(
@@ -37,32 +42,38 @@ export const Slider = (props: SliderProps) => {
               "data-[orientation=horizontal]:h-full",
               'data-[orientation=vertical]:w-full"'
             )}
+            data-slot="slider-range"
           />
         </ArkSlider.Track>
 
-        {Array.from({ length: _values.length }, (_, index) => (
-          <ArkSlider.Thumb
-            className={cn(
-              "relative",
-              "cursor-grab",
-              "size-4",
-              "border",
-              "bg-primary",
-              "rounded-full",
-              "transition-[color,box-shadow]",
-              "shadow-sm",
-              "ring-ring/50",
-              "data-dragging:cursor-grabbing data-dragging:ring-4",
-              "hover:ring-4",
-              "focus-visible:outline-hidden focus-visible:ring-4",
-              "disabled:pointer-events-none disabled:opacity-50"
-            )}
-            index={index}
-            key={index}
-          >
-            <ArkSlider.HiddenInput />
-          </ArkSlider.Thumb>
-        ))}
+        {Array.from({ length: _values.length }, (_, index) => {
+          const key = `slider-thumb-${index}`;
+
+          return (
+            <ArkSlider.Thumb
+              className={cn(
+                "relative",
+                "cursor-grab",
+                "size-4",
+                "border",
+                "bg-primary",
+                "rounded-full",
+                "transition-[color,box-shadow]",
+                "shadow-sm",
+                "ring-ring/50",
+                "data-dragging:cursor-grabbing data-dragging:ring-4",
+                "hover:ring-4",
+                "focus-visible:outline-hidden focus-visible:ring-4",
+                "disabled:pointer-events-none disabled:opacity-50"
+              )}
+              data-slot="slider-thumb"
+              index={index}
+              key={key}
+            >
+              <ArkSlider.HiddenInput />
+            </ArkSlider.Thumb>
+          );
+        })}
       </ArkSlider.Control>
 
       {children}

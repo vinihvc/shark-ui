@@ -30,6 +30,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
           "group/toggle-group flex w-fit items-center gap-(--gap) rounded-md [--gap:--spacing(0)]",
           className
         )}
+        data-slot="toggle-group"
         multiple={multiple}
         {...rest}
       />
@@ -61,7 +62,7 @@ export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
   const { variant, size } = useToggleGroupContext();
 
   return (
-    <ArkToggleGroup.Item asChild value={value}>
+    <ArkToggleGroup.Item asChild data-slot="toggle-group-item" value={value}>
       <Toggle
         className={cn(toggleGroupItemVariants(), className)}
         size={size}

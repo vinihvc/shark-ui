@@ -26,7 +26,13 @@ export const Table = (props: React.ComponentProps<typeof ark.table>) => {
 export const TableHeader = (props: React.ComponentProps<typeof ark.thead>) => {
   const { className, ...rest } = props;
 
-  return <ark.thead className={cn("[&_tr]:border-b", className)} {...rest} />;
+  return (
+    <ark.thead
+      className={cn("[&_tr]:border-b", className)}
+      data-slot="table-header"
+      {...rest}
+    />
+  );
 };
 
 export const TableBody = (props: React.ComponentProps<typeof ark.tbody>) => {
@@ -35,6 +41,7 @@ export const TableBody = (props: React.ComponentProps<typeof ark.tbody>) => {
   return (
     <ark.tbody
       className={cn("[&_tr:last-child]:border-0", className)}
+      data-slot="table-body"
       {...rest}
     />
   );
@@ -52,6 +59,7 @@ export const TableFooter = (props: React.ComponentProps<typeof ark.tfoot>) => {
         "last:[&>tr]:border-b-0",
         className
       )}
+      data-slot="table-footer"
       {...rest}
     />
   );
@@ -68,6 +76,7 @@ export const TableRow = (props: React.ComponentProps<typeof ark.tr>) => {
         "[&:has(td):hover]:bg-muted/50",
         className
       )}
+      data-slot="table-row"
       {...rest}
     />
   );
@@ -86,6 +95,7 @@ export const TableHead = (props: React.ComponentProps<typeof ark.th>) => {
         "[&:has([role=checkbox])]:pe-0",
         className
       )}
+      data-slot="table-head"
       {...rest}
     />
   );
@@ -100,6 +110,7 @@ export const TableCell = (props: React.ComponentProps<typeof ark.td>) => {
         "p-4 align-middle [&:has([role=checkbox])]:pe-0",
         className
       )}
+      data-slot="table-cell"
       {...rest}
     />
   );
@@ -113,6 +124,7 @@ export const TableCaption = (
   return (
     <ark.caption
       className={cn("mt-4", "text-muted-foreground text-sm", className)}
+      data-slot="table-caption"
       {...rest}
     />
   );

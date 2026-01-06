@@ -15,7 +15,10 @@ export const FrameworksList = () => {
           href={framework.href}
           key={framework.name}
         >
-          <Item className="w-full transition-all hover:bg-ring" variant="muted">
+          <Item
+            className="w-full transition-all hover:bg-primary"
+            variant="muted"
+          >
             <ItemMedia>{framework.icon}</ItemMedia>
             <ItemContent>
               <ItemTitle>{framework.name}</ItemTitle>

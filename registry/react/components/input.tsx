@@ -42,6 +42,7 @@ export const Input = (props: InputProps) => {
     <FieldInput
       className={cn(inputVariants({ size }), className)}
       data-size={size}
+      data-slot="input"
       type={type}
       {...rest}
     />

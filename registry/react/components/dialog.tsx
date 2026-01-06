@@ -41,6 +41,7 @@ export const DialogBackdrop = (
   return (
     <ArkDialog.Backdrop
       className={cn(dialogBackdropVariants(), className)}
+      data-slot="dialog-backdrop"
       {...rest}
     />
   );
@@ -108,6 +109,7 @@ export const DialogContent = (props: DialogContentProps) => {
       <ArkDialog.Positioner>
         <ArkDialog.Content
           className={cn(dialogContentVariants({ size }), className)}
+          data-slot="dialog-content"
           {...rest}
         >
           {children}
@@ -136,7 +138,7 @@ export const DialogBody = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn("flex-1 overflow-auto px-6 py-1", className)}
+      className={cn("flex-1 overflow-auto px-6 py-1 pb-6", className)}
       data-slot="dialog-body"
       {...rest}
     />
@@ -187,6 +189,7 @@ export const DialogTitle = (
         "font-semibold text-base leading-none tracking-tight",
         className
       )}
+      data-slot="dialog-title"
       {...rest}
     />
   );
@@ -200,6 +203,7 @@ export const DialogDescription = (
   return (
     <ArkDialog.Description
       className={cn("text-muted-foreground text-sm", className)}
+      data-slot="dialog-description"
       {...rest}
     />
   );
@@ -207,7 +211,9 @@ export const DialogDescription = (
 
 export const DialogClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
-) => <ArkDialog.CloseTrigger asChild {...props} />;
+) => (
+  <ArkDialog.CloseTrigger asChild data-slot="dialog-close-trigger" {...props} />
+);
 
 export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;

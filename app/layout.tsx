@@ -1,9 +1,6 @@
 import "@/styles/global.css";
-import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
-import { Footer } from "@/components/layout/footer";
-import { SiteHeader } from "@/components/layout/header/header";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -60,21 +57,11 @@ const RootLayout = (props: LayoutProps<"/">) => {
     >
       <body>
         <Providers>
-          <RootProvider
-            search={{
-              enabled: false,
-            }}
-          >
-            <SiteHeader />
+          {children}
 
-            {children}
+          <Toaster />
 
-            <Footer />
-
-            <Toaster />
-
-            <MediaQuery />
-          </RootProvider>
+          <MediaQuery />
         </Providers>
       </body>
     </html>

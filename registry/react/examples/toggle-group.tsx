@@ -5,7 +5,7 @@ import {
 } from "@/registry/react/components/toggle-group";
 
 const ToggleGroupDemo = () => (
-  <ToggleGroup className="[--spacing:spacing(0)]" multiple variant="ghost">
+  <ToggleGroup className="[--spacing:--spacing(0)]" multiple variant="ghost">
     <ToggleGroupItem value="1">
       <TextAlignStart />
     </ToggleGroupItem>

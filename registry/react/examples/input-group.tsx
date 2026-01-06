@@ -69,7 +69,8 @@ const InputGroupDemo = () => (
       </InputGroupAddon>
     </InputGroup>
     <InputGroup>
-      <InputGroupInput placeholder="@shadcn" />
+      <InputGroupInput placeholder="@vinihvc" />
+
       <InputGroupAddon align="inline-end">
         <div className="flex size-4 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Check className="size-3" />

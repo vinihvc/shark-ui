@@ -6,9 +6,9 @@ export const revalidate = false;
 
 const ThemesPage = () => {
   return (
-    <div className="container grid gap-4">
+    <main className="container flex flex-col gap-4">
       <div className="grid gap-2 pt-8 pb-4">
-        <h1 className="font-semibold text-4xl tracking-tight sm:text-3xl">
+        <h1 className="font-semibold text-3xl tracking-tight">
           Pick a Color. Make it yours.
         </h1>
 
@@ -20,7 +20,7 @@ const ThemesPage = () => {
       <ThemeSelector />
 
       <CardsDemo className="pb-8" />
-    </div>
+    </main>
   );
 };
 

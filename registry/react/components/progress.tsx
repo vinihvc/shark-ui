@@ -36,18 +36,18 @@ export const Progress = (props: ProgressProps) => {
   return (
     <ArkProgress.Root
       className={cn("w-full", className)}
-      data-slot="root"
+      data-slot="progress"
       {...rest}
     >
       <ArkProgress.Track
         className={cn(progressVariants({ variant, size }), className)}
-        data-slot="track"
+        data-slot="progress-track"
       >
         <ArkProgress.Range
           className={cn(
             "h-full bg-primary transition-all duration-300 ease-out"
           )}
-          data-slot="range"
+          data-slot="progress-range"
         />
       </ArkProgress.Track>
     </ArkProgress.Root>

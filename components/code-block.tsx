@@ -62,7 +62,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
   return (
     <BaseCodeBlock
       allowCopy={false}
-      className={cn("relative my-0", className)}
+      className={cn("relative my-0 leading-6", className)}
       {...(lineNumbers
         ? { "data-line-numbers": true }
         : { "data-line-numbers": undefined })}
@@ -75,9 +75,9 @@ export const CodeBlock = async (props: CodeBlockProps) => {
             "-mt-3",
             "px-2 py-1",
             "flex items-center gap-2",
-            "text-code-foreground",
+            "text-foreground",
             "bg-input",
-            "[&_svg]:size-5 [&_svg]:text-code-foreground sm:[&_svg]:size-4"
+            "[&_svg]:size-5 [&_svg]:text-foreground sm:[&_svg]:size-4"
           )}
         >
           <Badge className="p-1" variant="outline">

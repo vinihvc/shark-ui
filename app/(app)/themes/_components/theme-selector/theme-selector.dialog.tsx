@@ -32,7 +32,13 @@ export const ThemeSelectorDialog = (
 
   return (
     <ButtonGroup {...rest}>
-      <Clipboard value="a">
+      <Clipboard
+        value={createCssVars(
+          config.primaryColor,
+          config.grayColor,
+          config.borderRadius
+        )}
+      >
         <ClipboardTrigger asChild>
           <Button
             className="rounded-r-none rounded-l-md"
@@ -59,7 +65,7 @@ export const ThemeSelectorDialog = (
             title={`${colorLabel} Color`}
           />
 
-          <DialogBody className="pb-6">
+          <DialogBody className="pb-6 text-xs leading-10">
             <BlockColors
               borderRadius={config.borderRadius}
               grayColor={config.grayColor}
@@ -84,7 +90,7 @@ export const BlockColors = (props: BlockColorsProps) => {
     <DynamicCodeBlock
       code={createCssVars(primaryColor, grayColor, borderRadius)}
       data-line-numbers
-      lang="none"
+      lang="css"
     />
   );
 };
@@ -97,27 +103,27 @@ const createCssVars = (
   const primary = PRIMARY_COLORS.find(
     (item) => item.value === primaryColor
   )?.cssVars;
-  const gray = GRAY_COLORS.find((item) => item.value === grayColor)?.cssVars
-    .light.gray;
-  const radius = BORDER_RADIUS.find((item) => item.value === borderRadius)
-    ?.cssVars.radius;
+  const gray = GRAY_COLORS.find((item) => item.value === grayColor)?.cssVars;
+  const radius = BORDER_RADIUS.find(
+    (item) => item.value === borderRadius
+  )?.cssVars;
 
   return `:root {
-  --radius: ${radius};
-  --background: var(--color-white);
-  --foreground: var(--color-neutral-950);
+  --radius: ${radius?.radius};
+  --background: ${gray?.light.background};
+  --foreground: ${gray?.light.foreground};
   --card: var(--color-white);
-  --card-foreground: var(--color-neutral-950);
-  --popover: var(--color-white);
-  --popover-foreground: var(--color-neutral-950);
+  --card-foreground: ${gray?.light["card-foreground"]};
+  --popover: ${gray?.light.popover};
+  --popover-foreground: ${gray?.light["popover-foreground"]};
   --primary: var(--${primary?.light.primary});
   --primary-foreground: var(--${primary?.light["primary-foreground"]});
-  --secondary: var(--color-neutral-100);
-  --secondary-foreground: var(--color-neutral-900);
-  --muted: var(--color-neutral-100);
-  --muted-foreground: var(--color-neutral-500);
-  --accent: var(--color-neutral-100);
-  --accent-foreground: var(--color-neutral-900);
+  --secondary: ${gray?.light.secondary};
+  --secondary-foreground: ${gray?.light["secondary-foreground"]};
+  --muted: ${gray?.light.muted};
+  --muted-foreground: ${gray?.light["muted-foreground"]};
+  --accent: ${gray?.light.accent};
+  --accent-foreground: ${gray?.light["accent-foreground"]};
   --success: var(--color-emerald-600);
   --success-foreground: var(--color-green-50);
   --info: var(--color-sky-600);
@@ -126,9 +132,9 @@ const createCssVars = (
   --warning-foreground: var(--color-yellow-950);
   --destructive: var(--color-red-600);
   --destructive-foreground: var(--color-red-50);
-  --border: var(--color-neutral-200);
-  --input: var(--color-neutral-300);
-  --ring: var(--color-primary);
+  --border: ${gray?.light.border};
+  --input: ${gray?.light.input};
+  --ring: ${primary?.light.ring};
   --chart-1: var(--color-orange-600);
   --chart-2: var(--color-teal-600);
   --chart-3: var(--color-cyan-900);
@@ -137,20 +143,20 @@ const createCssVars = (
 }
 
 .dark {
-  --background: var(--color-neutral-950);
-  --foreground: var(--color-neutral-50);
-  --card: var(--color-neutral-950);
-  --card-foreground: var(--color-neutral-50);
-  --popover: var(--color-neutral-950);
-  --popover-foreground: var(--color-neutral-50);
-  --primary: var(--color-neutral-50);
-  --primary-foreground: var(--color-neutral-900);
-  --secondary: var(--color-neutral-800);
-  --secondary-foreground: var(--color-neutral-50);
-  --muted: var(--color-neutral-900);
-  --muted-foreground: var(--color-neutral-400);
-  --accent: var(--color-neutral-800);
-  --accent-foreground: var(--color-neutral-50);
+  --background: ${gray?.dark.background};
+  --foreground: ${gray?.dark.foreground};
+  --card: ${gray?.dark.card};
+  --card-foreground: ${gray?.dark["card-foreground"]};
+  --popover: ${gray?.dark.popover};
+  --popover-foreground: ${gray?.dark["popover-foreground"]};
+  --primary: ${primary?.dark.primary};
+  --primary-foreground: ${primary?.dark["primary-foreground"]};
+  --secondary: ${gray?.dark.secondary};
+  --secondary-foreground: ${gray?.dark["secondary-foreground"]};
+  --muted: ${gray?.dark.muted};
+  --muted-foreground: ${gray?.dark["muted-foreground"]};
+  --accent: ${gray?.dark.accent};
+  --accent-foreground: ${gray?.dark["accent-foreground"]};
   --success: var(--color-emerald-600);
   --success-foreground: var(--color-green-50);
   --info: var(--color-sky-600);
@@ -159,9 +165,9 @@ const createCssVars = (
   --warning-foreground: var(--color-yellow-50);
   --destructive: var(--color-red-700);
   --destructive-foreground: var(--color-red-50);
-  --border: var(--color-neutral-800);
-  --input: var(--color-neutral-800);
-  --ring: var(--color-primary);
+  --border: ${gray?.dark.border};
+  --input: ${gray?.dark.input};
+  --ring: ${primary?.dark.ring};
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
   --chart-3: var(--color-amber-500);

@@ -5,12 +5,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/react/components/tooltip";
+import { ButtonGroup } from "../components/button-group";
 
 const TooltipDemo = () => (
-  <div className="flex flex-wrap gap-2">
+  <ButtonGroup>
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button size="icon-md">
+        <Button clickEffect={false} size="icon-md" variant="outline">
           <Bold />
         </Button>
       </TooltipTrigger>
@@ -19,7 +20,7 @@ const TooltipDemo = () => (
 
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button size="icon-md">
+        <Button clickEffect={false} size="icon-md" variant="outline">
           <Italic />
         </Button>
       </TooltipTrigger>
@@ -28,7 +29,7 @@ const TooltipDemo = () => (
 
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button size="icon-md">
+        <Button clickEffect={false} size="icon-md" variant="outline">
           <Underline />
         </Button>
       </TooltipTrigger>
@@ -37,13 +38,13 @@ const TooltipDemo = () => (
 
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button size="icon-md">
+        <Button clickEffect={false} size="icon-md" variant="outline">
           <Strikethrough />
         </Button>
       </TooltipTrigger>
       <TooltipContent>Strikethrough</TooltipContent>
     </Tooltip>
-  </div>
+  </ButtonGroup>
 );
 
 export default TooltipDemo;

@@ -17,6 +17,7 @@ export const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {
         "rounded-full",
         className
       )}
+      data-slot="avatar"
       {...rest}
     />
   );
@@ -30,6 +31,7 @@ export const AvatarImage = (
   return (
     <ArkAvatar.Image
       className={cn("size-full", "aspect-square object-cover", className)}
+      data-slot="avatar-image"
       {...rest}
     />
   );
@@ -49,6 +51,7 @@ export const AvatarFallback = (
         "rounded-full",
         className
       )}
+      data-slot="avatar-fallback"
       {...rest}
     />
   );

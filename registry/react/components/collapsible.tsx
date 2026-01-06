@@ -10,6 +10,7 @@ export const Collapsible = (
 
   return (
     <ArkCollapsible.Root
+      data-slot="collapsible"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -19,7 +20,7 @@ export const Collapsible = (
 
 export const CollapsibleTrigger = (
   props: React.ComponentProps<typeof ArkCollapsible.Trigger>
-) => <ArkCollapsible.Trigger {...props} />;
+) => <ArkCollapsible.Trigger data-slot="collapsible-trigger" {...props} />;
 
 export const CollapsibleContent = (
   props: React.ComponentProps<typeof ArkCollapsible.Content>
@@ -35,6 +36,7 @@ export const CollapsibleContent = (
         "data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down",
         className
       )}
+      data-slot="collapsible-content"
       {...rest}
     />
   );
@@ -48,6 +50,7 @@ export const CollapsibleIndicator = (
   return (
     <ArkCollapsible.Indicator
       className={cn("data-[state=open]:[&_svg]:rotate-180", className)}
+      data-slot="collapsible-indicator"
       {...rest}
     >
       <ChevronDown className="transition-transform duration-200" />

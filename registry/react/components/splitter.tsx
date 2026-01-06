@@ -9,7 +9,11 @@ export const Splitter = (
   const { className, ...rest } = props;
 
   return (
-    <ArkSplitter.Root className={cn("flex size-full", className)} {...rest} />
+    <ArkSplitter.Root
+      className={cn("flex size-full", className)}
+      data-slot="splitter"
+      {...rest}
+    />
   );
 };
 
@@ -18,7 +22,13 @@ export const SplitterPanel = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkSplitter.Panel className={cn(className)} {...rest} />;
+  return (
+    <ArkSplitter.Panel
+      className={cn(className)}
+      data-slot="splitter-panel"
+      {...rest}
+    />
+  );
 };
 
 interface SplitterResizeTriggerProps
@@ -49,6 +59,7 @@ export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
         "[&[data-orientation=vertical]>div]:rotate-90",
         className
       )}
+      data-slot="splitter-resize-trigger"
       {...rest}
     >
       {withHandle && (

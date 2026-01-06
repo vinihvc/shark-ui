@@ -32,6 +32,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
         data-slot="native-select"
         {...rest}
       />
+
       <ChevronDown
         aria-hidden="true"
         className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 select-none text-muted-foreground opacity-50"

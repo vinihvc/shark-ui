@@ -9,8 +9,12 @@ export const RadioGroup = (
   const { className, children, ...rest } = props;
 
   return (
-    <ArkRadioGroup.Root className={cn("grid gap-3", className)} {...rest}>
-      <ArkRadioGroup.Indicator />
+    <ArkRadioGroup.Root
+      className={cn("grid gap-3", className)}
+      data-slot="radio-group"
+      {...rest}
+    >
+      <ArkRadioGroup.Indicator data-slot="radio-group-indicator" />
 
       {children}
     </ArkRadioGroup.Root>
@@ -29,6 +33,7 @@ export const RadioGroupItem = (
         "data-disabled:cursor-not-allowed",
         className
       )}
+      data-slot="radio-group-item"
       {...rest}
     >
       <ArkRadioGroup.ItemControl
@@ -43,12 +48,14 @@ export const RadioGroupItem = (
           "transition-all",
           "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50"
         )}
+        data-slot="radio-group-item-control"
       >
         <Circle className="size-2.5 fill-primary opacity-0 transition-opacity group-data-[state=checked]/radio-item:opacity-100" />
       </ArkRadioGroup.ItemControl>
 
       <ArkRadioGroup.ItemText
         className={cn("font-medium text-sm", "data-disabled:opacity-40")}
+        data-slot="radio-group-item-text"
       >
         {children}
       </ArkRadioGroup.ItemText>

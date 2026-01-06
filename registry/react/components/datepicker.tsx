@@ -22,12 +22,16 @@ export const DatePicker = (
 
   return (
     <ArkDatePicker.Root
+      data-slot="datepicker"
       lazyMount={lazyMount}
       open={open}
       unmountOnExit={unmountOnExit}
       {...rest}
     >
-      <ArkDatePicker.Content className={cn("min-w-72", className)}>
+      <ArkDatePicker.Content
+        className={cn("min-w-72", className)}
+        data-slot="datepicker-content"
+      >
         {children}
       </ArkDatePicker.Content>
     </ArkDatePicker.Root>
@@ -42,6 +46,7 @@ export const DatePickerControl = (
   return (
     <ArkDatePicker.Control
       className={cn("inline-flex gap-2.5", className)}
+      data-slot="datepicker-control"
       {...rest}
     />
   );
@@ -57,6 +62,7 @@ export const DatePickerInput = (props: DatePickerInputProps) => {
   return (
     <ArkDatePicker.Input
       className={cn(inputVariants({ size }), className)}
+      data-slot="datepicker-input"
       {...rest}
     />
   );
@@ -68,7 +74,7 @@ export const DatePickerYearSelect = (
   const { className, ...rest } = props;
 
   return (
-    <span className="relative">
+    <span className="relative" data-slot="datepicker-year-select-wrapper">
       <ArkDatePicker.YearSelect
         className={cn(
           "appearance-none",
@@ -78,6 +84,7 @@ export const DatePickerYearSelect = (
           "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
           className
         )}
+        data-slot="datepicker-year-select"
         {...rest}
       />
 
@@ -110,6 +117,7 @@ export const DatePickerMonthSelect = (
           "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
           className
         )}
+        data-slot="datepicker-month-select"
         {...rest}
       />
 
@@ -134,6 +142,7 @@ export const DatePickerView = (
   return (
     <ArkDatePicker.View
       className={cn("flex flex-col gap-2.5", className)}
+      data-slot="datepicker-view"
       {...rest}
     />
   );
@@ -141,7 +150,7 @@ export const DatePickerView = (
 
 export const DatePickerContext = (
   props: React.ComponentProps<typeof ArkDatePicker.Context>
-) => <ArkDatePicker.Context {...props} />;
+) => <ArkDatePicker.Context data-slot="datepicker-context" {...props} />;
 
 export const DatePickerViewControl = (
   props: React.ComponentProps<typeof ArkDatePicker.ViewControl>
@@ -151,6 +160,7 @@ export const DatePickerViewControl = (
   return (
     <ArkDatePicker.ViewControl
       className={cn("flex items-center justify-between", className)}
+      data-slot="datepicker-view-control"
       {...rest}
     />
   );
@@ -159,7 +169,11 @@ export const DatePickerViewControl = (
 export const DatePickerPrevTrigger = (
   props: React.ComponentProps<typeof ArkDatePicker.PrevTrigger>
 ) => (
-  <ArkDatePicker.PrevTrigger asChild {...props}>
+  <ArkDatePicker.PrevTrigger
+    asChild
+    data-slot="datepicker-prev-trigger"
+    {...props}
+  >
     <Button size="icon-sm" variant="ghost">
       <ChevronLeft />
     </Button>
@@ -169,7 +183,11 @@ export const DatePickerPrevTrigger = (
 export const DatePickerNextTrigger = (
   props: React.ComponentProps<typeof ArkDatePicker.NextTrigger>
 ) => (
-  <ArkDatePicker.NextTrigger asChild {...props}>
+  <ArkDatePicker.NextTrigger
+    asChild
+    data-slot="datepicker-next-trigger"
+    {...props}
+  >
     <Button size="icon-sm" variant="ghost">
       <ChevronRight />
     </Button>
@@ -184,6 +202,7 @@ export const DatePickerViewTrigger = (
   return (
     <ArkDatePicker.ViewTrigger
       className={cn("rounded border-0 px-5 py-1", className)}
+      data-slot="datepicker-view-trigger"
       {...rest}
     />
   );
@@ -194,7 +213,13 @@ export const DatePickerRangeText = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkDatePicker.RangeText className={cn(className)} {...rest} />;
+  return (
+    <ArkDatePicker.RangeText
+      className={cn(className)}
+      data-slot="datepicker-range-text"
+      {...rest}
+    />
+  );
 };
 
 export const DatePickerTable = (
@@ -205,6 +230,7 @@ export const DatePickerTable = (
   return (
     <ArkDatePicker.Table
       className={cn("w-full min-w-[240px] border-collapse", className)}
+      data-slot="datepicker-table"
       {...rest}
     />
   );
@@ -212,11 +238,17 @@ export const DatePickerTable = (
 
 export const DatePickerTableHead = (
   props: React.ComponentProps<typeof ArkDatePicker.TableHead>
-) => <ArkDatePicker.TableHead {...props} />;
+) => <ArkDatePicker.TableHead data-slot="datepicker-table-head" {...props} />;
 
 export const DatePickerTableRow = (
   props: React.ComponentProps<typeof ArkDatePicker.TableRow>
-) => <ArkDatePicker.TableRow className="mt-2 flex w-full" {...props} />;
+) => (
+  <ArkDatePicker.TableRow
+    className="mt-2 flex w-full"
+    data-slot="datepicker-table-row"
+    {...props}
+  />
+);
 
 export const DatePickerTableHeader = (
   props: React.ComponentProps<typeof ArkDatePicker.TableHeader>
@@ -229,6 +261,7 @@ export const DatePickerTableHeader = (
         "flex-1 select-none rounded-md font-normal text-[0.8rem] text-muted-foreground",
         className
       )}
+      data-slot="datepicker-table-header"
       {...rest}
     />
   );
@@ -239,7 +272,13 @@ export const DatePickerTableBody = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkDatePicker.TableBody className={cn(className)} {...rest} />;
+  return (
+    <ArkDatePicker.TableBody
+      className={cn(className)}
+      data-slot="datepicker-table-body"
+      {...rest}
+    />
+  );
 };
 
 export const DatePickerTableCell = (
@@ -259,6 +298,7 @@ export const DatePickerTableCell = (
         "[&:first-child[aria-selected=true]_div]:rounded-l-md [&:last-child[aria-selected=true]_div]:rounded-r-md",
         className
       )}
+      data-slot="datepicker-table-cell"
       {...rest}
     />
   );
@@ -291,6 +331,7 @@ export const DatePickerTableCellTrigger = (
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
+      data-slot="datepicker-table-cell-trigger"
       {...rest}
     />
   );

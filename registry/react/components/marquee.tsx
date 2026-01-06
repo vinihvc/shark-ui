@@ -12,17 +12,22 @@ export const Marquee = (props: MarqueeProps) => {
     <ArkMarquee.Root
       autoFill={autoFill}
       className={cn(
+        "[--gap:--spacing(6)] [--marquee-spacing:var(--gap)]",
         "relative",
         "group",
-        "w-full max-w-full [--gap:--spacing(6)] [--marquee-spacing:var(--gap)]",
+        "w-full max-w-full",
         className
       )}
+      data-slot="marquee"
       speed={speed}
       {...rest}
     >
       <MarqueeEdge side="start" />
 
-      <ArkMarquee.Viewport className="flex overflow-hidden">
+      <ArkMarquee.Viewport
+        className="flex overflow-hidden"
+        data-slot="marquee-viewport"
+      >
         <ArkMarquee.Content
           className={cn(
             "flex",
@@ -35,6 +40,7 @@ export const Marquee = (props: MarqueeProps) => {
             "data-reverse:direction-[reverse]",
             "group-data-paused:paused!"
           )}
+          data-slot="marquee-content"
         >
           {children}
         </ArkMarquee.Content>
@@ -53,6 +59,7 @@ export const MarqueeItem = (
   return (
     <ArkMarquee.Item
       className={cn("w-full text-nowrap", className)}
+      data-slot="marquee-item"
       {...rest}
     />
   );
@@ -76,6 +83,7 @@ export const MarqueeEdge = (
         "data-[side=bottom]:bg-linear-to-t",
         className
       )}
+      data-slot="marquee-edge"
       {...rest}
     />
   );
