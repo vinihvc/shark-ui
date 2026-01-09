@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datepicker",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://shark.vini.one/r/button.json",
     "https://shark.vini.one/r/input.json"
