@@ -16,7 +16,7 @@ export const Callout = (props: CalloutProps) => {
   const { title, children, icon, className, ...rest } = props;
 
   return (
-    <Alert className={cn("mb-4 py-0", className)} variant="outline" {...rest}>
+    <Alert className={cn("mb-4 py-0", className)} {...rest}>
       {icon}
 
       {title && <AlertTitle>{title}</AlertTitle>}
