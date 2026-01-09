@@ -7,22 +7,21 @@ import {
   AutocompleteContent,
   AutocompleteControl,
   AutocompleteEmpty,
+  AutocompleteGroup,
   AutocompleteInput,
   AutocompleteItem,
-  AutocompleteItemGroup,
-} from "../components/autocomplete";
+} from "@/registry/react/components/autocomplete";
 import {
   Field,
   FieldHelper,
-  FieldInput,
   FieldLabel,
-} from "../components/field";
+} from "@/registry/react/components/field";
 
 const AutocompleteDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    initialItems: ["React", "Solid", "Vue", "Svelte"],
+    initialItems: ["Apple", "Banana", "Cherry", "Date"],
     filter: contains,
   });
 
@@ -31,32 +30,32 @@ const AutocompleteDemo = () => {
   };
 
   return (
-    <Field>
-      <FieldLabel>Choose a fruit</FieldLabel>
-      <Autocomplete
-        collection={collection}
-        onInputValueChange={handleInputChange}
-      >
-        <AutocompleteControl>
-          <FieldInput>
+    <div className="mx-auto w-full max-w-64">
+      <Field>
+        <FieldLabel>Choose a fruit</FieldLabel>
+        <Autocomplete
+          collection={collection}
+          onInputValueChange={handleInputChange}
+        >
+          <AutocompleteControl>
             <AutocompleteInput />
-          </FieldInput>
-        </AutocompleteControl>
+          </AutocompleteControl>
 
-        <AutocompleteContent>
-          <AutocompleteEmpty />
-          <AutocompleteItemGroup>
-            {collection.items.map((item) => (
-              <AutocompleteItem item={item} key={item}>
-                {item}
-              </AutocompleteItem>
-            ))}
-          </AutocompleteItemGroup>
-        </AutocompleteContent>
-      </Autocomplete>
+          <AutocompleteContent>
+            <AutocompleteEmpty />
+            <AutocompleteGroup>
+              {collection.items.map((item) => (
+                <AutocompleteItem item={item} key={item}>
+                  {item}
+                </AutocompleteItem>
+              ))}
+            </AutocompleteGroup>
+          </AutocompleteContent>
+        </Autocomplete>
 
-      <FieldHelper>Select a fruit or type a new one</FieldHelper>
-    </Field>
+        <FieldHelper>Select a fruit or type a new one</FieldHelper>
+      </Field>
+    </div>
   );
 };
 

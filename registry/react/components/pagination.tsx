@@ -18,6 +18,7 @@ export const Pagination = (
         "flex flex-row justify-center gap-1",
         className
       )}
+      data-slot="pagination"
       {...rest}
     />
   );
@@ -27,13 +28,13 @@ interface PaginationContextProps
   extends React.ComponentProps<typeof ArkPagination.Context> {}
 
 export const PaginationContext = (props: PaginationContextProps) => (
-  <ArkPagination.Context {...props} />
+  <ArkPagination.Context data-slot="pagination-context" {...props} />
 );
 
 export const PaginationPrevious = (
   props: React.ComponentProps<typeof ArkPagination.PrevTrigger>
 ) => (
-  <ArkPagination.PrevTrigger asChild {...props}>
+  <ArkPagination.PrevTrigger asChild data-slot="pagination-previous" {...props}>
     <Button size="sm" variant="ghost">
       <ChevronLeft />
       Previous
@@ -44,7 +45,7 @@ export const PaginationPrevious = (
 export const PaginationNext = (
   props: React.ComponentProps<typeof ArkPagination.NextTrigger>
 ) => (
-  <ArkPagination.NextTrigger asChild {...props}>
+  <ArkPagination.NextTrigger asChild data-slot="pagination-next" {...props}>
     <Button size="sm" variant="ghost">
       Next
       <ChevronRight />
@@ -58,7 +59,7 @@ export const PaginationItem = (
   const { className, children, ...rest } = props;
 
   return (
-    <ArkPagination.Item asChild {...rest}>
+    <ArkPagination.Item asChild data-slot="pagination-item" {...rest}>
       <Button
         className={cn(
           "data-selected:not-[hover]:bg-primary",
@@ -88,6 +89,7 @@ export const PaginationEllipsis = (
         "[&_svg]:size-4",
         className
       )}
+      data-slot="pagination-ellipsis"
       {...rest}
     >
       <Ellipsis />

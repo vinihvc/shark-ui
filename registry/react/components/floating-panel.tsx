@@ -1,7 +1,9 @@
 import { Portal } from "@ark-ui/react";
 import { FloatingPanel as ArkFloatingPanel } from "@ark-ui/react/floating-panel";
+import { Maximize, Minus, SquareArrowOutUpRight } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "./button";
 
 export const FloatingPanel = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Root>
@@ -10,6 +12,7 @@ export const FloatingPanel = (
 
   return (
     <ArkFloatingPanel.Root
+      data-slot="floating-panel"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -19,7 +22,7 @@ export const FloatingPanel = (
 
 export const FloatingPanelTrigger = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Trigger>
-) => <ArkFloatingPanel.Trigger {...props} />;
+) => <ArkFloatingPanel.Trigger data-slot="floating-panel-trigger" {...props} />;
 
 interface FloatingPanelContentProps
   extends React.ComponentProps<typeof ArkFloatingPanel.Content> {
@@ -36,28 +39,33 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
 
   return (
     <Portal>
-      <ArkFloatingPanel.Positioner className="top-(--y) left-(--x) z-50">
+      <ArkFloatingPanel.Positioner
+        className="top-(--y) left-(--x) z-50"
+        data-slot="floating-panel-positioner"
+      >
         <ArkFloatingPanel.Content
           className={cn(
             "relative",
             "h-(--height) w-(--width)",
+            "ring-ring/40 focus-visible:outline-none focus-visible:ring-1",
             "rounded-lg border bg-background shadow-lg",
             className
           )}
+          data-slot="floating-panel-content"
           {...rest}
         >
           {children}
 
           {resizable && (
             <>
-              <ArkFloatingPanel.ResizeTrigger axis="n" />
-              <ArkFloatingPanel.ResizeTrigger axis="e" />
-              <ArkFloatingPanel.ResizeTrigger axis="w" />
-              <ArkFloatingPanel.ResizeTrigger axis="s" />
-              <ArkFloatingPanel.ResizeTrigger axis="ne" />
-              <ArkFloatingPanel.ResizeTrigger axis="se" />
-              <ArkFloatingPanel.ResizeTrigger axis="sw" />
-              <ArkFloatingPanel.ResizeTrigger axis="nw" />
+              <FloatingPanelResizeTrigger axis="n" />
+              <FloatingPanelResizeTrigger axis="e" />
+              <FloatingPanelResizeTrigger axis="w" />
+              <FloatingPanelResizeTrigger axis="s" />
+              <FloatingPanelResizeTrigger axis="ne" />
+              <FloatingPanelResizeTrigger axis="se" />
+              <FloatingPanelResizeTrigger axis="sw" />
+              <FloatingPanelResizeTrigger axis="nw" />
             </>
           )}
         </ArkFloatingPanel.Content>
@@ -75,7 +83,7 @@ export const FloatingPanelHeader = (
     <ArkFloatingPanel.DragTrigger>
       <ArkFloatingPanel.Header
         className={cn(
-          "relative flex items-center justify-between gap-2 bg-card p-2 [&_svg]:pointer-events-none [&_svg]:size-5",
+          "relative flex items-center justify-between gap-2 rounded-t-lg bg-card p-2 [&_svg]:pointer-events-none [&_svg]:size-5",
           className
         )}
         {...rest}
@@ -97,6 +105,63 @@ export const FloatingPanelControl = (
   );
 };
 
+interface FloatingPanelMinimizeProps
+  extends Omit<
+    React.ComponentProps<typeof ArkFloatingPanel.StageTrigger>,
+    "stage"
+  > {}
+
+export const FloatingPanelMinimize = (props: FloatingPanelMinimizeProps) => {
+  const { asChild, ...rest } = props;
+
+  return (
+    <ArkFloatingPanel.StageTrigger {...rest} asChild stage="minimized">
+      <Button asChild={asChild} size="icon-sm" variant="ghost">
+        <Minus />
+        <span className="sr-only">Minimize</span>
+      </Button>
+    </ArkFloatingPanel.StageTrigger>
+  );
+};
+
+interface FloatingPanelMaximizeProps
+  extends Omit<
+    React.ComponentProps<typeof ArkFloatingPanel.StageTrigger>,
+    "stage"
+  > {}
+
+export const FloatingPanelMaximize = (props: FloatingPanelMaximizeProps) => {
+  const { asChild, ...rest } = props;
+
+  return (
+    <ArkFloatingPanel.StageTrigger {...rest} asChild stage="maximized">
+      <Button asChild={asChild} size="icon-sm" variant="ghost">
+        <Maximize />
+        <span className="sr-only">Maximize</span>
+      </Button>
+    </ArkFloatingPanel.StageTrigger>
+  );
+};
+
+interface FloatingPanelRestoreProps
+  extends Omit<
+    React.ComponentProps<typeof ArkFloatingPanel.StageTrigger>,
+    "stage"
+  > {}
+
+export const FloatingPanelRestore = (props: FloatingPanelRestoreProps) => {
+  const { asChild, ...rest } = props;
+
+  return (
+    <ArkFloatingPanel.StageTrigger {...rest} asChild stage="default">
+      <Button asChild={asChild} size="icon-sm" variant="outline">
+        <SquareArrowOutUpRight />
+        <span className="sr-only">Restore</span>
+      </Button>
+    </ArkFloatingPanel.StageTrigger>
+  );
+};
+
 export const FloatingPanelTitle = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Title>
 ) => {
@@ -113,13 +178,32 @@ export const FloatingPanelTitle = (
   );
 };
 
+export const FloatingPanelResizeTrigger = (
+  props: React.ComponentProps<typeof ArkFloatingPanel.ResizeTrigger>
+) => (
+  <ArkFloatingPanel.ResizeTrigger
+    data-slot="floating-panel-resize-trigger"
+    {...props}
+  />
+);
+
 export const FloatingPanelStageTrigger = (
   props: React.ComponentProps<typeof ArkFloatingPanel.StageTrigger>
-) => <ArkFloatingPanel.StageTrigger {...props} />;
+) => (
+  <ArkFloatingPanel.StageTrigger
+    data-slot="floating-panel-stage-trigger"
+    {...props}
+  />
+);
 
 export const FloatingPanelClose = (
   props: React.ComponentProps<typeof ArkFloatingPanel.CloseTrigger>
-) => <ArkFloatingPanel.CloseTrigger {...props} />;
+) => (
+  <ArkFloatingPanel.CloseTrigger
+    data-slot="floating-panel-close-trigger"
+    {...props}
+  />
+);
 
 export const FloatingPanelBody = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Body>
@@ -129,6 +213,7 @@ export const FloatingPanelBody = (
   return (
     <ArkFloatingPanel.Body
       className={cn("flex flex-col gap-4 p-4", className)}
+      data-slot="floating-panel-body"
       {...rest}
     />
   );

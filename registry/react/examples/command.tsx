@@ -11,7 +11,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "../components/command";
+} from "@/registry/react/components/command";
 
 const CommandDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -59,30 +59,32 @@ const CommandDemo = () => {
   };
 
   return (
-    <Command
-      collection={collection}
-      onInputValueChange={handleInputChange}
-      placeholder="Type a command or search"
-    >
-      <CommandControl>
-        <CommandInput />
-      </CommandControl>
+    <div className="rounded-md border">
+      <Command
+        collection={collection}
+        onInputValueChange={handleInputChange}
+        placeholder="Type a command or search"
+      >
+        <CommandControl>
+          <CommandInput />
+        </CommandControl>
 
-      <CommandContent>
-        <CommandEmpty />
+        <CommandContent>
+          <CommandEmpty />
 
-        {collection.group().map(([type, group]) => (
-          <CommandGroup heading={type} key={type}>
-            {group.map((item) => (
-              <CommandItem item={item} key={item.value}>
-                {item.icon}
-                {item.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        ))}
-      </CommandContent>
-    </Command>
+          {collection.group().map(([type, group]) => (
+            <CommandGroup heading={type} key={type}>
+              {group.map((item) => (
+                <CommandItem item={item} key={item.value}>
+                  {item.icon}
+                  {item.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          ))}
+        </CommandContent>
+      </Command>
+    </div>
   );
 };
 

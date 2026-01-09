@@ -1,0 +1,40 @@
+---
+title: Native Select
+description: A native select component built with Ark UI
+---
+
+import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreviewFile componentName="native-select" />
+
+## Installation
+
+<ComponentInstallation componentName="native-select">
+
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react lucide-react tailwind-variants
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  NativeSelect, 
+  NativeSelectOptGroup, 
+  NativeSelectOption, 
+} from "@/components/ui/native-select";
+```
+
+```tsx lineNumbers
+<NativeSelect>
+  <NativeSelectOptGroup label="Group 1">
+    <NativeSelectOption value="1">Option 1</NativeSelectOption>
+    <NativeSelectOption value="2">Option 2</NativeSelectOption>
+    <NativeSelectOption value="3">Option 3</NativeSelectOption>
+  </NativeSelectOptGroup>
+</NativeSelect>
+```

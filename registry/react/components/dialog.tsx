@@ -1,3 +1,4 @@
+import { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { X } from "lucide-react";
@@ -40,6 +41,7 @@ export const DialogBackdrop = (
   return (
     <ArkDialog.Backdrop
       className={cn(dialogBackdropVariants(), className)}
+      data-slot="dialog-backdrop"
       {...rest}
     />
   );
@@ -47,11 +49,12 @@ export const DialogBackdrop = (
 
 export const dialogContentVariants = tv({
   base: [
+    "relative",
     "z-50",
-    "-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2",
+    "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
     "flex flex-col gap-4",
     "bg-background",
-    "w-full max-w-[calc(100%-2rem)] sm:max-w-lg",
+    "w-full max-sm:max-w-[calc(100%-2rem)]",
     "rounded-lg border shadow-lg",
     "focus:outline-none focus:ring-0",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",
@@ -106,14 +109,15 @@ export const DialogContent = (props: DialogContentProps) => {
       <ArkDialog.Positioner>
         <ArkDialog.Content
           className={cn(dialogContentVariants({ size }), className)}
+          data-slot="dialog-content"
           {...rest}
         >
           {children}
 
-          {showCloseButton && (
-            <DialogClose asChild className="absolute top-4 right-4">
+          {!!showCloseButton && (
+            <DialogClose asChild>
               <Button
-                className="size-8 border-none opacity-70 hover:opacity-100"
+                className="absolute top-4 right-4 size-8 opacity-70 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >
@@ -129,19 +133,19 @@ export const DialogContent = (props: DialogContentProps) => {
   );
 };
 
-export const DialogBody = (props: React.ComponentProps<"div">) => {
+export const DialogBody = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
-      className={cn("flex-1 overflow-auto p-6", className)}
-      data-part="body"
+    <ark.div
+      className={cn("flex-1 overflow-auto px-6 py-1 pb-6", className)}
+      data-slot="dialog-body"
       {...rest}
     />
   );
 };
 
-interface DialogHeaderProps extends React.ComponentProps<"div"> {
+interface DialogHeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The title of the dialog
    */
@@ -156,20 +160,21 @@ export const DialogHeader = (props: DialogHeaderProps) => {
   const { className, title, description, children, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("flex flex-col gap-2 p-6 pb-0", className)}
-      data-part="header"
-      data-scope="dialog"
+      data-slot="dialog-header"
       {...rest}
     >
-      {title && <DialogTitle>{title}</DialogTitle>}
-      {description && <DialogDescription>{description}</DialogDescription>}
+      {!!title && <DialogTitle>{title}</DialogTitle>}
+
+      {!!description && <DialogDescription>{description}</DialogDescription>}
+
       {!title && typeof children === "string" ? (
         <DialogTitle>{children}</DialogTitle>
       ) : (
         children
       )}
-    </div>
+    </ark.div>
   );
 };
 
@@ -184,6 +189,7 @@ export const DialogTitle = (
         "font-semibold text-base leading-none tracking-tight",
         className
       )}
+      data-slot="dialog-title"
       {...rest}
     />
   );
@@ -197,6 +203,7 @@ export const DialogDescription = (
   return (
     <ArkDialog.Description
       className={cn("text-muted-foreground text-sm", className)}
+      data-slot="dialog-description"
       {...rest}
     />
   );
@@ -204,16 +211,17 @@ export const DialogDescription = (
 
 export const DialogClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
-) => <ArkDialog.CloseTrigger {...props} />;
+) => (
+  <ArkDialog.CloseTrigger asChild data-slot="dialog-close-trigger" {...props} />
+);
 
-export const DialogFooter = (props: React.ComponentProps<"div">) => {
+export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn("flex flex-row-reverse gap-2 p-6 pt-0", className)}
-      data-part="footer"
-      data-scope="dialog"
+      data-slot="dialog-footer"
       {...rest}
     />
   );

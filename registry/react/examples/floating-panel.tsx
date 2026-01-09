@@ -1,9 +1,9 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import { Cog, Maximize, Minus, SquareArrowOutUpRight, X } from "lucide-react";
-import { Button } from "../components/button";
-import { Field, FieldInput, FieldLabel } from "../components/field";
+import { Cog, X } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
   FloatingPanel,
   FloatingPanelBody,
@@ -11,19 +11,20 @@ import {
   FloatingPanelContent,
   FloatingPanelControl,
   FloatingPanelHeader,
-  FloatingPanelStageTrigger,
+  FloatingPanelMaximize,
+  FloatingPanelMinimize,
+  FloatingPanelRestore,
   FloatingPanelTitle,
   FloatingPanelTrigger,
-} from "../components/floating-panel";
-import { NumberInput } from "../components/number-input";
+} from "@/registry/react/components/floating-panel";
+import { NumberInput } from "@/registry/react/components/number-input";
 import {
   Select,
   SelectContent,
-  SelectControl,
   SelectItem,
   SelectTrigger,
-  SelectValueText,
-} from "../components/select";
+  SelectValue,
+} from "@/registry/react/components/select";
 
 const FloatingPanelDemo = () => {
   const collection = createListCollection({
@@ -42,26 +43,11 @@ const FloatingPanelDemo = () => {
           <FloatingPanelTitle>Settings</FloatingPanelTitle>
 
           <FloatingPanelControl>
-            <FloatingPanelStageTrigger asChild stage="minimized">
-              <Button size="icon-sm" variant="ghost">
-                <Minus />
-                <span className="sr-only">Minimize</span>
-              </Button>
-            </FloatingPanelStageTrigger>
+            <FloatingPanelMinimize />
 
-            <FloatingPanelStageTrigger asChild stage="maximized">
-              <Button size="icon-sm" variant="ghost">
-                <Maximize />
-                <span className="sr-only">Maximize</span>
-              </Button>
-            </FloatingPanelStageTrigger>
+            <FloatingPanelMaximize />
 
-            <FloatingPanelStageTrigger asChild stage="default">
-              <Button size="icon-sm" variant="outline">
-                <SquareArrowOutUpRight />
-                <span className="sr-only">Restore</span>
-              </Button>
-            </FloatingPanelStageTrigger>
+            <FloatingPanelRestore />
 
             <FloatingPanelClose asChild>
               <Button size="icon-sm" variant="solid">
@@ -75,30 +61,24 @@ const FloatingPanelDemo = () => {
         <FloatingPanelBody>
           <Field>
             <FieldLabel>Font family</FieldLabel>
-            <FieldInput>
-              <Select collection={collection} defaultValue={["Inter"]}>
-                <SelectControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValueText />
-                  </SelectTrigger>
-                </SelectControl>
+            <Select collection={collection} defaultValue={["Inter"]}>
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
 
-                <SelectContent>
-                  {collection.items.map((item) => (
-                    <SelectItem item={item} key={item}>
-                      {item}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </FieldInput>
+              <SelectContent>
+                {collection.items.map((item) => (
+                  <SelectItem item={item} key={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </Field>
 
           <Field>
             <FieldLabel>Font size</FieldLabel>
-            <FieldInput>
-              <NumberInput className="w-full" defaultValue="16" />
-            </FieldInput>
+            <NumberInput className="w-full" defaultValue="16" />
           </Field>
         </FloatingPanelBody>
       </FloatingPanelContent>

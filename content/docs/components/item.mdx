@@ -1,0 +1,40 @@
+---
+title: Item
+description: A versatile component that you can use to display any content.
+---
+
+import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreviewFile componentName="item" />
+
+## Installation
+
+<ComponentInstallation componentName="item">
+
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react tailwind-variants
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Item,
+  ItemContent,
+  ItemTitle,
+  ItemDescription,
+} from "@/components/ui/item";
+```
+
+```tsx lineNumbers
+<Item>
+  <ItemContent>
+    <ItemTitle>Item Title</ItemTitle>
+    <ItemDescription>Item Description</ItemDescription>
+  </ItemContent>
+</Item>
+```

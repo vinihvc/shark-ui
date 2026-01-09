@@ -21,7 +21,7 @@ const HoverCardDemo = () => (
         rel="noopener noreferrer"
         target="_blank"
       >
-        <span className="text-ark">@</span>
+        <span className="text-primary">@</span>
         vinihvc
       </a>
     </HoverCardTrigger>

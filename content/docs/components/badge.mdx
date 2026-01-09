@@ -3,14 +3,25 @@ title: Badge
 description: Small status descriptors for UI elements with multiple variants
 ---
 
-import { ComponentPreview } from "@/components/component-preview";
+import { ComponentPreviewFile } from "@/components/component-preview-file";
 import { ComponentInstallation } from "@/components/component-installation";
+import { ComponentVariants } from '@/components/component-variants'
+import { TabsContent } from "@/registry/react/components/tabs";
+import { Badge } from "@/registry/react/components/badge";
+import { Star, Heart, Settings, Check, CheckCheck, AlertTriangle, Trash } from "lucide-react";
 
-<ComponentPreview componentName="badge" />
+<ComponentPreviewFile componentName="badge" />
 
 ## Installation
 
-<ComponentInstallation componentName="badge" />
+<ComponentInstallation componentName="badge">
+
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react tailwind-variants
+```
+</ComponentInstallation>
 
 ## Usage
 
@@ -19,5 +30,115 @@ import { Badge } from "@/components/ui/badge";
 ```
 
 ```tsx lineNumbers
-<Badge>Badge</Badge>
+<Badge>New</Badge>
 ```
+
+## Variants
+
+You can change the variant of the badge using the `variant` prop. 
+
+Available variants are: `solid`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive`.
+
+<ComponentVariants 
+  variants={['solid', 'secondary', 'outline', 'success', 'info', 'warning', 'destructive']} 
+>
+  <TabsContent value="solid">
+    <Badge>
+      <Star />
+      Favorite
+    </Badge>
+  </TabsContent>
+
+  <TabsContent value="secondary">
+    <Badge variant="secondary">
+      <Heart />
+      Like
+    </Badge>
+  </TabsContent>
+
+  <TabsContent value="outline">
+    <Badge variant="outline">
+      <Settings />
+      Settings
+    </Badge>
+  </TabsContent>
+
+  <TabsContent value="success">
+    <Badge variant="success">
+      <CheckCheck />
+      Completed
+    </Badge>
+  </TabsContent>
+
+  <TabsContent value="info">
+    <Badge variant="info">
+      <Check />
+       Checked
+    </Badge>
+  </TabsContent>
+
+  <TabsContent value="warning">
+    <Badge variant="warning">
+      <AlertTriangle />
+      2 Warnings
+    </Badge>
+  </TabsContent>
+
+  <TabsContent value="destructive">
+    <Badge variant="destructive">
+      <Trash />
+      Delete
+    </Badge>
+  </TabsContent>
+</ComponentVariants>
+
+## Sizes
+
+You can change the size of the badge using the `size` prop.
+
+Available sizes are: `sm`, `md`, `lg`.
+
+<ComponentVariants 
+  variants={['small', 'medium', 'large']} 
+  defaultValue="medium"
+>
+  <TabsContent value="small">
+    <Badge size="sm">
+      <Star />
+      Favorite
+    </Badge>
+  </TabsContent>
+
+ <TabsContent value="medium">
+    <Badge size="md">
+      <Star />
+      Favorite
+    </Badge>
+  </TabsContent>
+
+   <TabsContent value="large">
+    <Badge size="lg">
+      <Star />
+      Favorite
+    </Badge>
+  </TabsContent>
+</ComponentVariants>
+
+## Link
+
+You can use `asChild` prop to wrap the badge in a link.
+
+```tsx lineNumbers
+<Badge asChild>
+  <a href="/">
+    <Star />
+    Favorite
+  </a>
+</Badge>
+```
+
+
+
+
+
+

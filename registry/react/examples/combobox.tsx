@@ -8,17 +8,16 @@ import {
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
+  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
-  ComboboxItemGroup,
   ComboboxTrigger,
-} from "../components/combobox";
+} from "@/registry/react/components/combobox";
 import {
   Field,
   FieldHelper,
-  FieldInput,
   FieldLabel,
-} from "../components/field";
+} from "@/registry/react/components/field";
 
 const ComboboxDemo = () => {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -42,9 +41,7 @@ const ComboboxDemo = () => {
         placeholder="e.g. Apple"
       >
         <ComboboxControl>
-          <FieldInput>
-            <ComboboxInput />
-          </FieldInput>
+          <ComboboxInput />
 
           <ComboboxClearTrigger />
           <ComboboxTrigger />
@@ -53,13 +50,13 @@ const ComboboxDemo = () => {
         <ComboboxContent>
           <ComboboxEmpty />
 
-          <ComboboxItemGroup>
+          <ComboboxGroup>
             {collection.items.map((item) => (
               <ComboboxItem item={item} key={item}>
                 {item}
               </ComboboxItem>
             ))}
-          </ComboboxItemGroup>
+          </ComboboxGroup>
         </ComboboxContent>
       </Combobox>
 

@@ -8,6 +8,7 @@ const SeparatorDemo = () => (
         A set of primitive components for building UI.
       </p>
     </div>
+
     <Separator className="my-4" />
     <div className="flex h-5 items-center space-x-4 text-sm">
       <div>Examples</div>

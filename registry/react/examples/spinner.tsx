@@ -1,7 +1,5 @@
-import { Spinner } from "../components/spinner";
+import { Spinner } from "@/registry/react/components/spinner";
 
-const SpinnerDemo = () => {
-	return <Spinner />;
-};
+const SpinnerDemo = () => <Spinner className="size-12" />;
 
 export default SpinnerDemo;

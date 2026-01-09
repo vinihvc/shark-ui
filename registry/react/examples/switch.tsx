@@ -7,11 +7,11 @@ import { Switch } from "@/registry/react/components/switch";
 
 const SwitchDemo = () => (
   <Field>
-    <div className="flex items-center gap-2">
+    <Field orientation="horizontal">
       <Switch />
 
       <FieldLabel>Receive notifications</FieldLabel>
-    </div>
+    </Field>
 
     <FieldHelper>
       You'll receive a notification when someone posts a comment

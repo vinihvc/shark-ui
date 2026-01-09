@@ -11,7 +11,13 @@ export const Carousel = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCarousel.Root className={cn("relative", className)} {...rest} />;
+  return (
+    <ArkCarousel.Root
+      className={cn("relative", className)}
+      data-slot="carousel"
+      {...rest}
+    />
+  );
 };
 
 export const CarouselControl = (
@@ -19,7 +25,13 @@ export const CarouselControl = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCarousel.Control className={cn(className)} {...rest} />;
+  return (
+    <ArkCarousel.Control
+      className={cn(className)}
+      data-slot="carousel-control"
+      {...rest}
+    />
+  );
 };
 
 export const CarouselPrevious = (
@@ -29,7 +41,8 @@ export const CarouselPrevious = (
 
   return (
     <ArkCarousel.PrevTrigger
-      className={cn("-left-12 -translate-y-1/2 absolute top-1/2", className)}
+      className={cn("absolute top-1/2 -left-12 -translate-y-1/2", className)}
+      data-slot="carousel-previous"
       {...rest}
       asChild
     >
@@ -48,9 +61,10 @@ export const CarouselNext = (
 
   return (
     <ArkCarousel.NextTrigger
-      className={cn("-right-12 -translate-y-1/2 absolute top-1/2", className)}
+      className={cn("absolute top-1/2 -right-12 -translate-y-1/2", className)}
       {...rest}
       asChild
+      data-slot="carousel-next"
     >
       <Button className="rounded-full" size="icon-sm">
         <ChevronRightIcon />
@@ -68,13 +82,14 @@ export const CarouselIndicatorGroup = (
   return (
     <ArkCarousel.IndicatorGroup
       className={cn(
-        "-translate-x-1/2 absolute bottom-2 left-1/2",
+        "absolute bottom-2 left-1/2 -translate-x-1/2",
         "flex gap-2",
         "px-3 py-3",
         "bg-background/80 backdrop-blur-sm",
         "rounded-lg",
         className
       )}
+      data-slot="carousel-indicator-group"
       {...rest}
     />
   );
@@ -94,17 +109,24 @@ export const CarouselIndicator = (
         "rounded-full",
         className
       )}
+      data-slot="carousel-indicator"
       {...rest}
     />
   );
 };
 
-export const CarouselItemGroup = (
+export const CarouselGroup = (
   props: React.ComponentProps<typeof ArkCarousel.ItemGroup>
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkCarousel.ItemGroup className={cn("flex", className)} {...rest} />;
+  return (
+    <ArkCarousel.ItemGroup
+      className={cn("flex", className)}
+      data-slot="carousel-group"
+      {...rest}
+    />
+  );
 };
 
 export const CarouselItem = (
@@ -115,6 +137,7 @@ export const CarouselItem = (
   return (
     <ArkCarousel.Item
       className={cn("min-w-0 shrink-0 grow-0 basis-full", className)}
+      data-slot="carousel-item"
       {...rest}
     />
   );

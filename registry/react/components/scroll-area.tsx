@@ -11,7 +11,7 @@ export const ScrollArea = (
     <>
       <style>
         {`
-        [data-scope='scroll-area'][data-part='viewport'] {
+        [data-slot='scroll-area-viewport'] {
           scrollbar-width: none;
           &::-webkit-scrollbar {
             display: none;
@@ -20,22 +20,29 @@ export const ScrollArea = (
 }`}
       </style>
 
-      <ArkScrollArea.Root className={cn("flex size-full", className)} {...rest}>
+      <ArkScrollArea.Root
+        className={cn("flex size-full", className)}
+        data-slot="scroll-area"
+        {...rest}
+      >
         <ArkScrollArea.Viewport
           className={cn(
             "size-full",
             "rounded-md",
-            "-outline-offset-1 outline-1 outline-gray-300",
+            "outline-1 outline-gray-300 -outline-offset-1",
             "transition-[color,box-shadow]",
             "outline-none focus-visible:outline-1 focus-visible:ring-[3px] focus-visible:ring-ring/50"
           )}
+          data-slot="scroll-area-viewport"
         >
-          <ArkScrollArea.Content>{children}</ArkScrollArea.Content>
+          <ArkScrollArea.Content data-slot="scroll-area-content">
+            {children}
+          </ArkScrollArea.Content>
         </ArkScrollArea.Viewport>
 
         <ScrollAreaScrollbar orientation="vertical" />
 
-        <ArkScrollArea.Corner />
+        <ArkScrollArea.Corner data-slot="scroll-area-corner" />
       </ArkScrollArea.Root>
     </>
   );
@@ -58,10 +65,14 @@ export const ScrollAreaScrollbar = (
           "h-1 w-full items-center before:h-5 before:w-full data-[overflow-x=false]:hidden",
         className
       )}
+      data-slot="scroll-area-scrollbar"
       orientation={orientation}
       {...rest}
     >
-      <ArkScrollArea.Thumb className="relative flex-1 rounded-md bg-primary" />
+      <ArkScrollArea.Thumb
+        className="relative flex-1 rounded-md bg-primary"
+        data-slot="scroll-area-thumb"
+      />
     </ArkScrollArea.Scrollbar>
   );
 };

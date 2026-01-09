@@ -8,7 +8,7 @@ import {
 } from "@/registry/react/components/button";
 
 export const toggleVariants = tv({
-  base: "",
+  base: ["data-state=on]:bg-accent", "data-[state=on]:text-accent-foreground"],
   variants: {
     size: {
       md: "h-9 min-w-9 px-2",
@@ -17,6 +17,7 @@ export const toggleVariants = tv({
     },
   },
   defaultVariants: {
+    variant: "solid",
     size: "md",
   },
 });
@@ -32,10 +33,11 @@ export const Toggle = (props: ToggleProps) => {
   return (
     <ArkToggle.Root
       className={cn(
-        "data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
-        buttonVariants({ variant, size }),
+        buttonVariants({ variant }),
+        toggleVariants({ size }),
         className
       )}
+      data-slot="toggle"
       {...rest}
     />
   );
@@ -47,7 +49,11 @@ export const ToggleIndicator = (
   const { children, ...rest } = props;
 
   return (
-    <ArkToggle.Indicator className="flex items-center gap-2" {...rest}>
+    <ArkToggle.Indicator
+      className="flex items-center gap-2"
+      data-slot="toggle-indicator"
+      {...rest}
+    >
       {children}
     </ArkToggle.Indicator>
   );

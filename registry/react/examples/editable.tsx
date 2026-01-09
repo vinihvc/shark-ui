@@ -3,8 +3,8 @@ import {
   EditableArea,
   EditableInput,
   EditablePreview,
-} from "../components/editable";
-import { Field, FieldLabel } from "../components/field";
+} from "@/registry/react/components/editable";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 
 const EditableDemo = () => (
   <Field className="w-80">

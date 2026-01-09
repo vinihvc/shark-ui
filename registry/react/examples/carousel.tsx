@@ -6,8 +6,8 @@ import {
 import {
   Carousel,
   CarouselControl,
+  CarouselGroup,
   CarouselItem,
-  CarouselItemGroup,
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/react/components/carousel";
@@ -27,7 +27,7 @@ const CarouselDemo = () => {
         <CarouselNext>Next</CarouselNext>
       </CarouselControl>
 
-      <CarouselItemGroup>
+      <CarouselGroup>
         {items.map((item, index) => (
           <CarouselItem index={index} key={item}>
             <Card title={`Slide ${index}`}>
@@ -41,7 +41,7 @@ const CarouselDemo = () => {
             </Card>
           </CarouselItem>
         ))}
-      </CarouselItemGroup>
+      </CarouselGroup>
     </Carousel>
   );
 };

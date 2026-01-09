@@ -1,29 +1,26 @@
+import type { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
-import { Portal } from "@ark-ui/react/portal";
-import { X } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
-  DialogBackdrop,
   DialogBody,
   DialogClose,
+  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  dialogContentVariants,
 } from "@/registry/react/components/dialog";
 
 export const Sheet = (props: React.ComponentProps<typeof ArkDialog.Root>) => (
-  <Dialog data-part="sheet" {...props} />
+  <Dialog data-slot="sheet" {...props} />
 );
 
 export const SheetTrigger = (
   props: React.ComponentProps<typeof ArkDialog.Trigger>
-) => <ArkDialog.Trigger data-scope="sheet" {...props} />;
+) => <ArkDialog.Trigger data-slot="sheet" {...props} />;
 
 const sheetContentVariants = tv({
   base: [
@@ -70,86 +67,48 @@ const sheetContentVariants = tv({
 });
 
 interface SheetContentProps
-  extends React.ComponentProps<typeof ArkDialog.Content>,
-    VariantProps<typeof sheetContentVariants> {
-  /**
-   * Show close button at the top right corner
-   *
-   * @default true
-   */
-  showCloseButton?: boolean;
-}
+  extends React.ComponentProps<typeof DialogContent>,
+    VariantProps<typeof sheetContentVariants> {}
 
 export const SheetContent = (props: SheetContentProps) => {
-  const { side, showCloseButton = true, className, children, ...rest } = props;
+  const { side, className, ...rest } = props;
 
   return (
-    <Portal>
-      <DialogBackdrop data-scope="sheet" />
-
-      <ArkDialog.Positioner data-scope="sheet">
-        <ArkDialog.Content
-          className={cn(
-            dialogContentVariants(),
-            sheetContentVariants({ side }),
-            className
-          )}
-          data-scope="sheet"
-          data-side={side}
-          {...rest}
-        >
-          {children}
-
-          {showCloseButton && (
-            <ArkDialog.CloseTrigger
-              asChild
-              className="absolute top-4 right-4"
-              data-scope="sheet"
-            >
-              <Button
-                className="size-8 border-none opacity-70 hover:opacity-100"
-                size="icon-md"
-                variant="ghost"
-              >
-                <X />
-
-                <span className="sr-only">Close</span>
-              </Button>
-            </ArkDialog.CloseTrigger>
-          )}
-        </ArkDialog.Content>
-      </ArkDialog.Positioner>
-    </Portal>
+    <DialogContent
+      className={cn(sheetContentVariants({ side }), className)}
+      data-slot="sheet-content"
+      {...rest}
+    />
   );
 };
 
-export const SheetBody = (props: React.ComponentProps<"div">) => (
-  <DialogBody data-scope="sheet" {...props} />
+export const SheetBody = (props: React.ComponentProps<typeof ark.div>) => (
+  <DialogBody data-slot="sheet-body" {...props} />
 );
 
-export const SheetHeader = (props: React.ComponentProps<"div">) => (
-  <DialogHeader data-scope="sheet" {...props} />
+export const SheetHeader = (props: React.ComponentProps<typeof ark.div>) => (
+  <DialogHeader data-slot="sheet-header" {...props} />
 );
 
 export const SheetTitle = (
   props: React.ComponentProps<typeof ArkDialog.Title>
-) => <DialogTitle data-scope="sheet" {...props} />;
+) => <DialogTitle data-slot="sheet-title" {...props} />;
 
 export const SheetDescription = (
   props: React.ComponentProps<typeof ArkDialog.Description>
-) => <DialogDescription data-scope="sheet" {...props} />;
+) => <DialogDescription data-slot="sheet-description" {...props} />;
 
 export const SheetClose = (
   props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
-) => <DialogClose data-scope="sheet" {...props} />;
+) => <DialogClose data-slot="sheet-close" {...props} />;
 
-export const SheetFooter = (props: React.ComponentProps<"div">) => {
+export const SheetFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
     <DialogFooter
       className={cn("mt-auto flex flex-col gap-2", className)}
-      data-scope="sheet"
+      data-slot="sheet-footer"
       {...rest}
     />
   );

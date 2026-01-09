@@ -20,6 +20,7 @@ export const Tooltip = (
   return (
     <ArkTooltip.Root
       closeDelay={closeDelay}
+      data-slot="tooltip"
       lazyMount={lazyMount}
       openDelay={openDelay}
       positioning={positioning}
@@ -31,7 +32,7 @@ export const Tooltip = (
 
 export const TooltipTrigger = (
   props: React.ComponentProps<typeof ArkTooltip.Trigger>
-) => <ArkTooltip.Trigger {...props} />;
+) => <ArkTooltip.Trigger data-slot="tooltip-trigger" {...props} />;
 
 export const TooltipContent = (
   props: React.ComponentProps<typeof ArkTooltip.Content>
@@ -39,10 +40,10 @@ export const TooltipContent = (
   const { className, children, ...rest } = props;
   return (
     <Portal>
-      <ArkTooltip.Positioner>
+      <ArkTooltip.Positioner data-slot="tooltip-positioner">
         <ArkTooltip.Content
           className={cn(
-            "z-50 w-fit origin-(--transform-origin)",
+            "z-40 w-fit origin-(--transform-origin)",
             "px-3 py-1.5",
             "bg-foreground",
             "rounded-md",
@@ -57,6 +58,7 @@ export const TooltipContent = (
             "data-[side=top]:slide-in-from-bottom-2",
             className
           )}
+          data-slot="tooltip-content"
           {...rest}
         >
           <TooltipArrow />
@@ -75,6 +77,7 @@ export const TooltipArrow = (
 
   return (
     <ArkTooltip.Arrow
+      data-slot="tooltip-arrow"
       style={
         {
           "--arrow-background": "var(--foreground)",

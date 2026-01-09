@@ -1,12 +1,10 @@
-import { Field, FieldInput, FieldLabel } from "../components/field";
-import { NumberInput } from "../components/number-input";
+import { Field, FieldLabel } from "@/registry/react/components/field";
+import { NumberInput } from "@/registry/react/components/number-input";
 
 const NumberInputDemo = () => (
   <Field>
     <FieldLabel>Amount</FieldLabel>
-    <FieldInput>
-      <NumberInput className="w-32" defaultValue="10" />
-    </FieldInput>
+    <NumberInput className="w-32" defaultValue="10" />
   </Field>
 );
 

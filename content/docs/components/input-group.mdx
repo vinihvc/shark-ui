@@ -1,0 +1,42 @@
+---
+title: Input Group
+description: A component that allows you to group input elements together.
+---
+
+import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreviewFile componentName="input-group" />
+
+## Installation
+
+<ComponentInstallation componentName="input-group">
+
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react tailwind-variants
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+```
+
+```tsx lineNumbers
+<InputGroup>
+  <InputGroupInput />
+  <InputGroupAddon>
+    <InputGroupText>https://</InputGroupText>
+  </InputGroupAddon>
+</InputGroup>
+```

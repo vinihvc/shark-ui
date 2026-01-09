@@ -1,0 +1,43 @@
+---
+title: Chart
+description: A component for displaying charts.
+links:
+  doc: https://recharts.github.io/en-US/guide/getting-started
+  api: https://recharts.github.io/en-US/api
+---
+
+import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreviewFile componentName="chart" />
+
+## Installation
+
+<ComponentInstallation componentName="chart">
+Install the following dependencies:
+  
+```bash
+pnpm add recharts
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  Bar, 
+  BarChart
+  } from "recharts"
+import { 
+  ChartContainer,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+```
+
+```tsx lineNumbers
+<ChartContainer>
+  <BarChart data={data}>
+    <Bar dataKey="value" />
+  </BarChart>
+</ChartContainer>
+```

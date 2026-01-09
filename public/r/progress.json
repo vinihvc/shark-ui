@@ -6,10 +6,28 @@
     "@ark-ui/react",
     "tailwind-variants"
   ],
+  "cssVars": {
+    "light": {
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-400)",
+      "warning-foreground": "var(--color-yellow-950)"
+    },
+    "dark": {
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-600)",
+      "warning-foreground": "var(--color-yellow-50)"
+    }
+  },
   "files": [
     {
       "path": "registry/react/components/progress.tsx",
-      "content": "import { Progress as ArkProgress } from \"@ark-ui/react/progress\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Progress = (\n  props: React.ComponentProps<typeof ArkProgress.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkProgress.Root className={cn(\"w-full\", className)} {...rest}>\n      <ArkProgress.Track\n        className={cn(\n          \"h-2 w-full overflow-hidden rounded-full bg-primary/20\",\n          className\n        )}\n      >\n        <ArkProgress.Range\n          className={cn(\n            \"h-full bg-primary transition-all duration-300 ease-out\"\n          )}\n        />\n      </ArkProgress.Track>\n    </ArkProgress.Root>\n  );\n};\n",
+      "content": "import { Progress as ArkProgress } from \"@ark-ui/react/progress\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const progressVariants = tv({\n  base: [\"w-full overflow-hidden rounded-full\", \"bg-primary/20\"],\n  variants: {\n    variant: {\n      primary: [\"*:data-[slot=rango]:bg-primary/20\", \"bg-primary/20\"],\n      secondary: [\"*:data-[slot=range]:bg-secondary\", \"bg-secondary\"],\n      success: [\"*:data-[slot=range]:bg-success\", \"bg-success\"],\n      info: [\"*:data-[slot=range]:bg-info\", \"bg-info\"],\n      warning: [\"*:data-[slot=range]:bg-warning\", \"bg-warning\"],\n      destructive: [\"*:data-[slot=range]:bg-destructive\", \"bg-destructive\"],\n    },\n    size: {\n      sm: [\"h-1\"],\n      md: [\"h-2\"],\n      lg: [\"h-3\"],\n    },\n  },\n  defaultVariants: {\n    variant: \"primary\",\n    size: \"md\",\n  },\n});\n\ninterface ProgressProps\n  extends React.ComponentProps<typeof ArkProgress.Root>,\n    VariantProps<typeof progressVariants> {}\n\nexport const Progress = (props: ProgressProps) => {\n  const { variant = \"primary\", size = \"md\", className, ...rest } = props;\n\n  return (\n    <ArkProgress.Root\n      className={cn(\"w-full\", className)}\n      data-slot=\"progress\"\n      {...rest}\n    >\n      <ArkProgress.Track\n        className={cn(progressVariants({ variant, size }), className)}\n        data-slot=\"progress-track\"\n      >\n        <ArkProgress.Range\n          className={cn(\n            \"h-full bg-primary transition-all duration-300 ease-out\"\n          )}\n          data-slot=\"progress-range\"\n        />\n      </ArkProgress.Track>\n    </ArkProgress.Root>\n  );\n};\n",
       "type": "registry:ui"
     }
   ]

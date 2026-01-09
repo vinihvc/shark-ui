@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "../components/kbd";
+import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 
 const KbdExample = () => (
   <KbdGroup>

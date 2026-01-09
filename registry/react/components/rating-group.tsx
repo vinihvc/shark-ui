@@ -12,16 +12,21 @@ export const RatingGroup = (
   return (
     <ArkRatingGroup.Root
       allowHalf={allowHalf}
-      className="text-primary"
+      className="text-warning"
       count={count}
+      data-slot="rating-group"
       {...rest}
     >
-      <ArkRatingGroup.Control className="inline-flex gap-1">
+      <ArkRatingGroup.Control
+        className="inline-flex gap-1"
+        data-slot="rating-group-control"
+      >
         <ArkRatingGroup.Context>
           {({ items }) =>
             items.map((item) => (
               <ArkRatingGroup.Item
                 className="outline-none"
+                data-slot="rating-group-item"
                 index={item}
                 key={item}
               >

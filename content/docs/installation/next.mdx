@@ -1,0 +1,30 @@
+---
+title: Next.js
+description: Instructions to install Shark UI in a Next.js project
+---
+
+## Create project
+
+To create a new Next.js project, you can use the following command:
+
+```bash
+pnpm create next-app@latest my-app --yes
+```
+
+## Adding css
+
+Replace everything in `app/globals.css` with the following:
+
+```css title="globals.css"
+@import "tailwindcss";
+```
+
+## Run the CLI
+
+Run the shadcn init command to setup your project:
+
+```bash
+npx shadcn@latest init
+```
+
+You will be asked a few questions to configure `components.json` file.

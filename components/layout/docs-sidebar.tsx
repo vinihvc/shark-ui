@@ -12,10 +12,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import type { source } from "@/lib/source";
+import type { source } from "@/lib/fumadocs";
 
 const TOP_LEVEL_SECTIONS = [
-  { name: "Installation", href: "/docs", exact: true },
+  { name: "Introduction", href: "/docs", exact: true },
+  { name: "Installation", href: "/docs/installation", exact: true },
   {
     name: "Components",
     href: "/docs/components",
@@ -58,7 +59,7 @@ export function DocsSidebar({
                   <SidebarMenuItem key={name}>
                     <SidebarMenuButton
                       asChild
-                      className="after:-inset-y-1 relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
+                      className="relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
                       isActive={
                         exact ? pathname === href : pathname.startsWith(href)
                       }
@@ -101,7 +102,7 @@ export function DocsSidebar({
                           <SidebarMenuItem key={subitem.url}>
                             <SidebarMenuButton
                               asChild
-                              className="after:-inset-y-1 relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
+                              className="relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
                               isActive={subitem.url === pathname}
                             >
                               <Link href={subitem.url}>

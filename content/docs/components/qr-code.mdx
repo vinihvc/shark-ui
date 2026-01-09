@@ -1,0 +1,37 @@
+---
+title: QR Code
+description: A component that displays a QR code
+links:
+  doc: https://ark-ui.com/docs/components/qr-code
+  api: https://ark-ui.com/docs/components/qr-code#api-reference
+---
+
+import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentInstallation } from "@/components/component-installation";
+
+<ComponentPreviewFile componentName="qr-code" />
+
+## Installation
+
+<ComponentInstallation componentName="qr-code" >
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  QrCode, 
+  QrCodeFrame
+} from "@/components/ui/qr-code";
+```
+
+```tsx lineNumbers
+<QrCode value="https://www.x.com/vinihvc">
+  <QrCodeFrame />
+</QrCode>
+``` 

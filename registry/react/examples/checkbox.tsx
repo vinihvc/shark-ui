@@ -19,12 +19,12 @@ const CheckboxDemo = () => {
   ];
 
   return (
-    <CheckboxGroup className="space-y-3" defaultValue={["marketing"]}>
+    <CheckboxGroup className="gap-3" defaultValue={["marketing"]}>
       {options.map((option) => (
         <Field
-          className="flex-row"
           disabled={option.disabled}
           key={option.value}
+          orientation="horizontal"
         >
           <Checkbox disabled={option.disabled} value={option.value} />
 

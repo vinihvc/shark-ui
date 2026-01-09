@@ -8,12 +8,18 @@ export const Editable = (
 ) => {
   const { activationMode = "dblclick", ...rest } = props;
 
-  return <ArkEditable.Root activationMode={activationMode} {...rest} />;
+  return (
+    <ArkEditable.Root
+      activationMode={activationMode}
+      data-slot="editable"
+      {...rest}
+    />
+  );
 };
 
 export const EditableArea = (
   props: React.ComponentProps<typeof ArkEditable.Area>
-) => <ArkEditable.Area {...props} />;
+) => <ArkEditable.Area data-slot="editable-area" {...props} />;
 
 export const EditableInput = (
   props: React.ComponentProps<typeof ArkEditable.Input>
@@ -21,7 +27,7 @@ export const EditableInput = (
   const { children, ...rest } = props;
 
   return (
-    <ArkEditable.Input {...rest} asChild={!children}>
+    <ArkEditable.Input data-slot="editable-input" {...rest} asChild={!children}>
       {children || <Input />}
     </ArkEditable.Input>
   );
@@ -41,6 +47,7 @@ export const EditablePreview = (
         "h-9 peer-data-[size=lg]:h-10 peer-data-[size=sm]:h-8",
         className
       )}
+      data-slot="editable-preview"
       {...rest}
     />
   );

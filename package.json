@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/vinihvc/shark-ui"
   },
-  "homepage": "https://shark-ui.vercel.app",
+  "homepage": "https://shark.vini.one",
   "keywords": [
     "shadcn",
     "ark-ui",
@@ -24,51 +24,53 @@
     }
   ],
   "scripts": {
-    "prebuild": "pnpm registry:build",
+    "prebuild": "bun run registry:build",
     "build": "next build",
     "dev": "next dev --turbo",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
-    "lint": "biome check",
-    "format": "biome format --write",
+    "lint:check": "ultracite check",
+    "lint:fix": "ultracite fix",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.27.1",
+    "@ark-ui/react": "^5.30.0",
+    "@tanstack/react-table": "^8.21.3",
     "clsx": "^2.1.1",
     "fumadocs-core": "16.0.7",
     "fumadocs-mdx": "13.0.5",
     "fumadocs-ui": "16.0.7",
-    "jotai": "^2.15.1",
-    "lucide-react": "^0.552.0",
-    "next": "16.0.10",
+    "jotai": "^2.16.1",
+    "lucide-react": "^0.562.0",
+    "next": "16.1.1",
     "next-themes": "^0.4.6",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "shiki": "^3.14.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwind-variants": "^3.1.1",
-    "zod": "^4.1.12"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "recharts": "^3.6.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwind-variants": "^3.2.2",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.3",
-    "@tailwindcss/postcss": "^4.1.16",
+    "@biomejs/biome": "2.3.11",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/mdx": "^2.0.13",
-    "@types/node": "24.10.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "lint-staged": "^16.2.6",
+    "@types/node": "25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "lint-staged": "^16.2.7",
     "postcss": "^8.5.6",
-    "rimraf": "^6.1.0",
-    "tailwindcss": "^4.1.16",
-    "tsx": "^4.20.6",
+    "rimraf": "^6.1.2",
+    "tailwindcss": "^4.1.18",
+    "tsx": "^4.21.0",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5.9.3",
-    "ultracite": "6.2.0"
+    "ultracite": "7.0.10"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
-      "pnpm dlx ultracite fix"
+      "bun registry:build",
+      "bun run lint:fix"
     ]
   }
 }

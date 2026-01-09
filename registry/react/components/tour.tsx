@@ -21,7 +21,7 @@ import {
 
 export type TourStepType = TourStepDetails;
 
-type TourProviderProps = {
+interface TourProviderProps {
   /**
    * The tour instance
    */
@@ -30,7 +30,7 @@ type TourProviderProps = {
    * The function to start the tour
    */
   handleStart: () => void;
-};
+}
 
 const TourProvider = React.createContext<TourProviderProps>(
   {} as TourProviderProps
@@ -73,6 +73,7 @@ export const Tour = (props: TourProps) => {
   return (
     <TourProvider.Provider value={{ tour, handleStart }}>
       <ArkTour.Root
+        data-slot="tour"
         lazyMount={lazyMount}
         tour={tour}
         unmountOnExit={unmountOnExit}
@@ -96,8 +97,7 @@ export const TourTrigger = (props: TourTriggerProps) => {
 
   return (
     <ark.button
-      data-part="trigger"
-      data-scope="tour"
+      data-slot="tour-trigger"
       type="button"
       {...rest}
       onClick={handleClick}
@@ -107,11 +107,17 @@ export const TourTrigger = (props: TourTriggerProps) => {
 
 export const TourActionTrigger = (
   props: React.ComponentProps<typeof ArkTour.ActionTrigger>
-) => <ArkTour.ActionTrigger {...props} />;
+) => <ArkTour.ActionTrigger data-slot="tour-action-trigger" {...props} />;
 
 export const TourBackdrop = (
   props: React.ComponentProps<typeof DialogBackdrop>
-) => <ArkTour.Backdrop className={dialogBackdropVariants()} {...props} />;
+) => (
+  <ArkTour.Backdrop
+    className={dialogBackdropVariants()}
+    data-slot="tour-backdrop"
+    {...props}
+  />
+);
 
 interface TourContentProps
   extends React.ComponentProps<typeof ArkTour.Content> {
@@ -137,6 +143,7 @@ export const TourContent = (props: TourContentProps) => {
           "data-[type=dialog]:fixed data-[type=dialog]:inset-0",
           "data-[type=tooltip]:absolute"
         )}
+        data-slot="tour-positioner"
       >
         <ArkTour.Content
           className={cn(
@@ -152,11 +159,12 @@ export const TourContent = (props: TourContentProps) => {
             "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
             className
           )}
+          data-slot="tour-content"
           {...rest}
         >
           {children}
 
-          {showCloseButton && (
+          {!!showCloseButton && (
             <TourClose asChild className="absolute top-4 right-4">
               <Button
                 className="size-8 border-none opacity-70 hover:opacity-100"
@@ -172,18 +180,18 @@ export const TourContent = (props: TourContentProps) => {
         </ArkTour.Content>
       </ArkTour.Positioner>
 
-      <ArkTour.Spotlight className="z-50 border-2 border-ark" />
+      <ArkTour.Spotlight className="z-50 border-2 border-primary" />
     </Portal>
   );
 };
 
 export const TourBody = (props: React.ComponentProps<typeof DialogBody>) => (
-  <DialogBody data-scope="tour" {...props} />
+  <DialogBody data-slot="tour-body" {...props} />
 );
 
 export const TourHeader = (
   props: React.ComponentProps<typeof DialogHeader>
-) => <DialogHeader data-scope="tour" {...props} />;
+) => <DialogHeader data-slot="tour-header" {...props} />;
 
 export const TourTitle = (
   props: React.ComponentProps<typeof ArkTour.Title>
@@ -198,6 +206,7 @@ export const TourTitle = (
         "font-semibold text-base leading-none tracking-tight",
         className
       )}
+      data-slot="tour-title"
       {...rest}
     >
       {tour.step?.title}
@@ -215,6 +224,7 @@ export const TourDescription = (
   return (
     <ArkTour.Description
       className={cn("text-muted-foreground text-sm", className)}
+      data-slot="tour-description"
       {...rest}
     >
       {tour.step?.description}
@@ -232,6 +242,7 @@ export const TourProgressText = (
   return (
     <ArkTour.ProgressText
       className={cn("text-muted-foreground text-sm", className)}
+      data-slot="tour-progress-text"
       {...rest}
     >
       {tour.getProgressText()}
@@ -241,7 +252,7 @@ export const TourProgressText = (
 
 export const TourClose = (
   props: React.ComponentProps<typeof ArkTour.CloseTrigger>
-) => <ArkTour.CloseTrigger {...props} />;
+) => <ArkTour.CloseTrigger data-slot="tour-close-trigger" {...props} />;
 
 export const TourFooter = (
   props: React.ComponentProps<typeof DialogFooter>
@@ -250,7 +261,7 @@ export const TourFooter = (
 
   return (
     <ArkTour.Control {...rest} asChild>
-      <DialogFooter data-scope="tour">{children}</DialogFooter>
+      <DialogFooter data-slot="tour-control">{children}</DialogFooter>
     </ArkTour.Control>
   );
 };
@@ -272,7 +283,12 @@ export const TourPreviousStep = (
   }
 
   return (
-    <TourActionTrigger {...rest} action={prevAction} asChild>
+    <TourActionTrigger
+      data-slot="tour-previous-step"
+      {...rest}
+      action={prevAction}
+      asChild
+    >
       <Button size="sm" variant="outline">
         <ChevronLeft />
         {prevAction.label}
@@ -303,7 +319,12 @@ export const TourNextStep = (
   }
 
   return (
-    <TourActionTrigger {...rest} action={action} asChild>
+    <TourActionTrigger
+      data-slot="tour-next-step"
+      {...rest}
+      action={action}
+      asChild
+    >
       <Button size="sm">
         {action.label}
 

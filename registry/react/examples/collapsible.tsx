@@ -18,8 +18,8 @@ const CollapsibleDemo = () => (
       <div className="flex items-center justify-between gap-2">
         <CardHeader title="Total visits">
           <div className="flex items-center gap-2">
-            <span>56,4%</span>
-            <Badge variant="secondary">+14,2%</Badge>
+            <span className="text-xs">56,4%</span>
+            <Badge variant="success">+14,2%</Badge>
           </div>
         </CardHeader>
 
@@ -34,19 +34,25 @@ const CollapsibleDemo = () => (
       </div>
 
       <CollapsibleContent className="text-sm">
-        <div className="mt-(--card-spacing) grid gap-2 px-(--card-spacing)">
+        <div className="mt-(--gap) grid gap-2 px-(--gap)">
           <div className="grid grid-cols-3 items-center gap-4">
             <div className="col-span-2">Google</div>
-            <div className="text-right text-muted-foreground">22.3%</div>
+            <div className="text-right text-muted-foreground">
+              <Badge variant="success">22.3%</Badge>
+            </div>
           </div>
           <div className="grid grid-cols-3 items-center gap-4">
             <div className="col-span-2">Facebook</div>
-            <div className="text-right text-muted-foreground">18.7%</div>
+            <div className="text-right text-muted-foreground">
+              <Badge variant="destructive">-10.1%</Badge>
+            </div>
           </div>
 
           <div className="grid grid-cols-3 items-center gap-4">
             <div className="col-span-2">Instagram</div>
-            <div className="text-right text-muted-foreground">15.4%</div>
+            <div className="text-right text-muted-foreground">
+              <Badge variant="info">1.4%</Badge>
+            </div>
           </div>
         </div>
       </CollapsibleContent>

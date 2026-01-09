@@ -92,29 +92,41 @@ export const Toaster = (props: ToasterProps) => {
             : undefined;
 
           return (
-            <ArkToast.Root className={cn(toastVariants(), className)}>
+            <ArkToast.Root
+              className={cn(toastVariants(), className)}
+              data-slot="toast"
+            >
               {ToastIcon}
 
               <div className="flex flex-col gap-0.5">
-                <ArkToast.Title className="font-medium text-sm leading-none tracking-tight">
+                <ArkToast.Title
+                  className="font-medium text-sm leading-none tracking-tight"
+                  data-slot="toast-title"
+                >
                   {toast.title}
                 </ArkToast.Title>
 
                 {toast.description && (
-                  <ArkToast.Description className="text-muted-foreground text-xs">
+                  <ArkToast.Description
+                    className="text-muted-foreground text-xs"
+                    data-slot="toast-description"
+                  >
                     {toast.description}
                   </ArkToast.Description>
                 )}
               </div>
 
               {toast.action && (
-                <ArkToast.ActionTrigger onClick={toast.action.onClick}>
+                <ArkToast.ActionTrigger
+                  data-slot="toast-action-trigger"
+                  onClick={toast.action.onClick}
+                >
                   {toast.action.label}
                 </ArkToast.ActionTrigger>
               )}
 
               {showCloseButton && (
-                <ArkToast.CloseTrigger asChild>
+                <ArkToast.CloseTrigger asChild data-slot="toast-close-trigger">
                   <Button
                     className="absolute top-2 right-2 opacity-70 hover:opacity-100"
                     size="icon-sm"

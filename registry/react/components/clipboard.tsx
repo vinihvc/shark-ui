@@ -1,8 +1,8 @@
 import { Clipboard as ArkClipboard } from "@ark-ui/react/clipboard";
-import { Check, ClipboardCopy } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/registry/react/components/input";
+import { inputVariants } from "./input";
 
 export const Clipboard = (
   props: React.ComponentProps<typeof ArkClipboard.Root>
@@ -10,9 +10,10 @@ export const Clipboard = (
   const { className, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Root {...rest}>
+    <ArkClipboard.Root data-slot="clipboard-root" {...rest}>
       <ArkClipboard.Control
         className={cn("flex items-center gap-2", className)}
+        data-slot="clipboard-control"
       >
         {children}
       </ArkClipboard.Control>
@@ -22,21 +23,23 @@ export const Clipboard = (
 
 export const ClipboardContext = (
   props: React.ComponentProps<typeof ArkClipboard.Context>
-) => <ArkClipboard.Context {...props} />;
+) => <ArkClipboard.Context data-slot="clipboard-context" {...props} />;
 
 export const ClipboardTrigger = (
   props: React.ComponentProps<typeof ArkClipboard.Trigger>
-) => <ArkClipboard.Trigger {...props} />;
+) => <ArkClipboard.Trigger data-slot="clipboard-trigger" {...props} />;
 
 export const ClipboardInput = (
   props: React.ComponentProps<typeof ArkClipboard.Input>
 ) => {
-  const { children, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
-    <ArkClipboard.Input {...rest} asChild={!children}>
-      {children || <Input />}
-    </ArkClipboard.Input>
+    <ArkClipboard.Input
+      data-slot="clipboard-input"
+      {...rest}
+      className={cn(inputVariants(), className)}
+    />
   );
 };
 
@@ -46,8 +49,12 @@ export const ClipboardIndicator = (
   const { copied = <Check />, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Indicator {...rest} copied={copied}>
-      {children || <ClipboardCopy />}
+    <ArkClipboard.Indicator
+      data-slot="clipboard-indicator"
+      {...rest}
+      copied={copied}
+    >
+      {children || <Copy />}
     </ArkClipboard.Indicator>
   );
 };

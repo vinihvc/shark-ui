@@ -13,6 +13,7 @@ export const TreeView = (
   return (
     <ArkTreeView.Root
       className={cn("text-sm", className)}
+      data-slot="tree-view"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -28,6 +29,7 @@ export const TreeViewLabel = (
   return (
     <ArkTreeView.Label
       className={cn("font-semibold text-xs", className)}
+      data-slot="tree-view-label"
       {...rest}
     />
   );
@@ -38,16 +40,24 @@ export const TreeViewTree = (
 ) => {
   const { className, ...rest } = props;
 
-  return <ArkTreeView.Tree className={cn("mt-5 w-60", className)} {...rest} />;
+  return (
+    <ArkTreeView.Tree
+      className={cn("mt-5 w-60", className)}
+      data-slot="tree-view-tree"
+      {...rest}
+    />
+  );
 };
 
 export const TreeViewNodeProvider = (
   props: React.ComponentProps<typeof ArkTreeView.NodeProvider>
-) => <ArkTreeView.NodeProvider {...props} />;
+) => (
+  <ArkTreeView.NodeProvider data-slot="tree-view-node-provider" {...props} />
+);
 
 export const TreeViewBranch = (
   props: React.ComponentProps<typeof ArkTreeView.Branch>
-) => <ArkTreeView.Branch {...props} />;
+) => <ArkTreeView.Branch data-slot="tree-view-branch" {...props} />;
 
 export const TreeViewBranchControl = (
   props: React.ComponentProps<typeof ArkTreeView.BranchControl>
@@ -63,11 +73,12 @@ export const TreeViewBranchControl = (
         "select-none",
         "rounded-sm",
         "hover:bg-accent/50",
-        "focus:-outline-offset-1 focus:outline-1 focus:outline-muted-foreground",
+        "focus:outline-1 focus:outline-muted-foreground focus:-outline-offset-1",
         "data-selected:bg-accent",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-50",
         className
       )}
+      data-slot="tree-view-branch-control"
       {...rest}
     />
   );
@@ -81,6 +92,7 @@ export const TreeViewBranchText = (
   return (
     <ArkTreeView.BranchText
       className={cn("flex flex-1 items-center gap-2", className)}
+      data-slot="tree-view-branch-text"
       {...rest}
     />
   );
@@ -97,6 +109,7 @@ export const TreeViewBranchIndicator = (
         "flex items-center data-[state=open]:[&_svg]:rotate-90",
         className
       )}
+      data-slot="tree-view-branch-indicator"
       {...rest}
     >
       <ChevronRight />
@@ -119,6 +132,7 @@ export const TreeViewBranchContent = (
         "data-[state=open]:animate-slide-down",
         className
       )}
+      data-slot="tree-view-branch-content"
       {...rest}
     />
   );
@@ -138,6 +152,7 @@ export const TreeViewBranchIndentGuide = (
         "translate-x-[calc(var(--depth)*1.25rem)]",
         className
       )}
+      data-slot="tree-view-branch-indent-guide"
       {...rest}
     />
   );
@@ -157,12 +172,13 @@ export const TreeViewItem = (
         "ps-[calc(var(--depth)*var(--spacing)*4)] pe-4",
         "select-none",
         "rounded-sm",
-        "focus:-outline-offset-1 focus:outline-1 focus:outline-muted-foreground",
+        "focus:outline-1 focus:outline-muted-foreground focus:-outline-offset-1",
         "hover:bg-accent/50",
         "data-selected:bg-accent",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-50",
         className
       )}
+      data-slot="tree-view-item"
       {...rest}
     />
   );
@@ -176,6 +192,7 @@ export const TreeViewItemIndicator = (
   return (
     <ArkTreeView.ItemIndicator
       className={cn("flex items-center justify-center", className)}
+      data-slot="tree-view-item-indicator"
       {...rest}
     />
   );
@@ -189,6 +206,7 @@ export const TreeViewItemText = (
   return (
     <ArkTreeView.ItemText
       className={cn("flex flex-1 items-center gap-2", className)}
+      data-slot="tree-view-item-text"
       {...rest}
     />
   );

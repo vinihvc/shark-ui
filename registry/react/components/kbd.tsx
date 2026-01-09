@@ -1,36 +1,41 @@
+import { ark } from "@ark-ui/react";
 import { cn } from "@/lib/utils";
 
-export const KbdGroup = (props: React.ComponentProps<"div">) => {
+interface KbdGroupProps extends React.ComponentProps<typeof ark.div> {}
+
+export const KbdGroup = (props: KbdGroupProps) => {
   const { className, ...rest } = props;
 
   return (
-    <kbd
-      className={cn("inline-flex items-center gap-1", className)}
-      data-part="group"
-      data-scope="kbd"
+    <ark.div
+      className={cn(
+        "[--gap:--spacing(1)]",
+        "inline-flex items-center gap-(--gap)",
+        className
+      )}
+      data-slot="kbd-group"
       {...rest}
     />
   );
 };
 
-export const Kbd = (props: React.ComponentProps<"kbd">) => {
+export const Kbd = (props: React.ComponentProps<typeof ark.kbd>) => {
   const { className, ...rest } = props;
 
   return (
-    <kbd
+    <ark.kbd
       className={cn(
         "h-5 w-fit min-w-5",
         "inline-flex items-center justify-center gap-1",
         "px-1",
         "bg-muted",
-        "select-none font-medium font-sans text-muted-foreground text-xs",
+        "font-medium font-sans text-muted-foreground text-xs",
         "rounded-sm",
-        "pointer-events-none",
+        "pointer-events-none select-none",
         "[&_svg:not([class*='size-'])]:size-3",
         className
       )}
-      data-part="root"
-      data-scope="kbd"
+      data-slot="kbd"
       {...rest}
     />
   );

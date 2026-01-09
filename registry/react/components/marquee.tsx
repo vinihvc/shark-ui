@@ -3,40 +3,31 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 interface MarqueeProps
-  extends Omit<React.ComponentProps<typeof ArkMarquee.Root>, "spacing"> {
-  /**
-   * The spacing variable value
-   */
-  spacing?: number;
-}
+  extends Omit<React.ComponentProps<typeof ArkMarquee.Root>, "spacing"> {}
 
 export const Marquee = (props: MarqueeProps) => {
-  const {
-    spacing = 6,
-    autoFill = true,
-    speed = 50,
-    className,
-    children,
-    style,
-    ...rest
-  } = props;
+  const { autoFill = true, speed = 50, className, children, ...rest } = props;
 
   return (
     <ArkMarquee.Root
       autoFill={autoFill}
-      className={cn("relative", "group", "w-full max-w-full", className)}
+      className={cn(
+        "[--gap:--spacing(6)] [--marquee-spacing:var(--gap)]",
+        "relative",
+        "group",
+        "w-full max-w-full",
+        className
+      )}
+      data-slot="marquee"
       speed={speed}
-      style={
-        {
-          "--marquee-spacing": `calc(${spacing} * var(--spacing))`,
-          ...style,
-        } as React.CSSProperties
-      }
       {...rest}
     >
       <MarqueeEdge side="start" />
 
-      <ArkMarquee.Viewport className="flex overflow-hidden">
+      <ArkMarquee.Viewport
+        className="flex overflow-hidden"
+        data-slot="marquee-viewport"
+      >
         <ArkMarquee.Content
           className={cn(
             "flex",
@@ -49,6 +40,7 @@ export const Marquee = (props: MarqueeProps) => {
             "data-reverse:direction-[reverse]",
             "group-data-paused:paused!"
           )}
+          data-slot="marquee-content"
         >
           {children}
         </ArkMarquee.Content>
@@ -67,6 +59,7 @@ export const MarqueeItem = (
   return (
     <ArkMarquee.Item
       className={cn("w-full text-nowrap", className)}
+      data-slot="marquee-item"
       {...rest}
     />
   );
@@ -90,6 +83,7 @@ export const MarqueeEdge = (
         "data-[side=bottom]:bg-linear-to-t",
         className
       )}
+      data-slot="marquee-edge"
       {...rest}
     />
   );

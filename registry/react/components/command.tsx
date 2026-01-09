@@ -1,9 +1,13 @@
+"use client";
+
+import { ark } from "@ark-ui/react";
 import {
   ComboboxContent,
   ComboboxInput,
   ComboboxItem,
   ComboboxItemText,
   ComboboxList,
+  createListCollection,
 } from "@ark-ui/react/combobox";
 import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,9 +15,11 @@ import {
   Combobox,
   ComboboxControl,
   ComboboxEmpty,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
+  ComboboxGroup,
+  ComboboxGroupLabel,
 } from "./combobox";
+
+export const createCollection = createListCollection;
 
 export const Command = <T,>(
   props: React.ComponentProps<typeof Combobox<T>>
@@ -27,10 +33,10 @@ export const Command = <T,>(
         "size-full md:min-w-[450px]",
         "bg-popover",
         "text-popover-foreground",
-        "rounded-lg border shadow-md",
+        "rounded-lg",
         "overflow-hidden"
       )}
-      data-scope="command"
+      data-slot="command"
       disableLayer
       inputBehavior="autohighlight"
       loopFocus={false}
@@ -52,7 +58,7 @@ export const CommandContent = (
         "max-h-[300px] scroll-py-1 overflow-y-auto overflow-x-hidden",
         className
       )}
-      data-scope="command"
+      data-slot="command"
       {...rest}
     >
       <ComboboxList className="flex flex-col">{children}</ComboboxList>
@@ -66,7 +72,7 @@ export const CommandItem = (
   const { className, children, ...rest } = props;
 
   return (
-    <ComboboxItem data-scope="command" persistFocus {...rest}>
+    <ComboboxItem data-slot="command-item" persistFocus {...rest}>
       <ComboboxItemText
         className={cn(
           "relative",
@@ -81,7 +87,7 @@ export const CommandItem = (
           "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
         )}
-        data-scope="command"
+        data-slot="command-item-text"
       >
         {children}
       </ComboboxItemText>
@@ -91,7 +97,7 @@ export const CommandItem = (
 
 export const CommandControl = (
   props: React.ComponentProps<typeof ComboboxControl>
-) => <ComboboxControl data-scope="command" {...props} />;
+) => <ComboboxControl data-slot="command-control" {...props} />;
 
 export const CommandInput = (
   props: React.ComponentProps<typeof ComboboxInput>
@@ -114,6 +120,7 @@ export const CommandInput = (
           "disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
+        data-slot="command-input"
         {...rest}
       />
     </div>
@@ -128,14 +135,13 @@ export const CommandEmpty = (
   return (
     <ComboboxEmpty
       className={cn("py-6 text-center text-sm", className)}
-      data-scope="command"
+      data-slot="command-empty"
       {...rest}
     />
   );
 };
 
-interface CommandGroupProps
-  extends React.ComponentProps<typeof ComboboxItemGroup> {
+interface CommandGroupProps extends React.ComponentProps<typeof ComboboxGroup> {
   /**
    * The heading of the group
    */
@@ -146,40 +152,41 @@ export const CommandGroup = (props: CommandGroupProps) => {
   const { heading, className, children, ...rest } = props;
 
   return (
-    <ComboboxItemGroup
+    <ComboboxGroup
       className={cn(
         "overflow-hidden p-1 text-foreground data-empty:hidden",
         className
       )}
-      data-scope="command"
+      data-slot="command-group"
       {...rest}
     >
-      {heading && (
-        <ComboboxItemGroupLabel
+      {!!heading && (
+        <ComboboxGroupLabel
           className="px-2 py-1.5 font-medium text-muted-foreground text-xs"
-          data-scope="command"
+          data-slot="command-group-label"
           {...props}
         >
           {heading}
-        </ComboboxItemGroupLabel>
+        </ComboboxGroupLabel>
       )}
 
       {children}
-    </ComboboxItemGroup>
+    </ComboboxGroup>
   );
 };
 
-export const CommandShortcut = (props: React.ComponentProps<"span">) => {
+export const CommandShortcut = (
+  props: React.ComponentProps<typeof ark.span>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <span
+    <ark.span
       className={cn(
         "ml-auto text-muted-foreground text-xs tracking-widest",
         className
       )}
-      data-part="shortcut"
-      data-scope="command"
+      data-slot="command-shortcut"
       {...rest}
     />
   );

@@ -2,6 +2,7 @@
 
 import { ToggleGroup as ArkToggleGroup } from "@ark-ui/react/toggle-group";
 import React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Toggle, type ToggleProps } from "@/registry/react/components/toggle";
 
@@ -11,16 +12,11 @@ const ToggleGroupContext = React.createContext({} as ToggleGroupContextProps);
 
 interface ToggleGroupProps
   extends React.ComponentProps<typeof ArkToggleGroup.Root>,
-    Pick<ToggleProps, "variant" | "size"> {
-  /**
-   * The spacing variable value
-   */
-  spacing?: number;
-}
+    Pick<ToggleProps, "variant" | "size"> {}
 
 export const ToggleGroup = (props: ToggleGroupProps) => {
   const {
-    spacing = 0,
+    multiple = true,
     variant = "outline",
     size = "md",
     className,
@@ -31,43 +27,39 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
     <ToggleGroupContext value={{ variant, size }}>
       <ArkToggleGroup.Root
         className={cn(
-          "group/toggle-group flex w-fit items-center gap-(--toggle-group-spacing) rounded-md",
+          "group/toggle-group flex w-fit items-center gap-(--gap) rounded-md [--gap:--spacing(0)]",
           className
         )}
-        data-spacing={spacing}
-        style={
-          {
-            "--toggle-group-spacing": `calc(${spacing} * var(--spacing))`,
-          } as React.CSSProperties
-        }
+        data-slot="toggle-group"
+        multiple={multiple}
         {...rest}
       />
     </ToggleGroupContext>
   );
 };
 
-export const ToggleGroupItem = (
-  props: React.ComponentProps<typeof ArkToggleGroup.Item>
-) => {
+const toggleGroupItemVariants = tv({
+  base: [
+    "shrink-0",
+    "w-auto min-w-0",
+    "data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
+    "focus:z-10 focus-visible:z-10",
+  ],
+});
+
+interface ToggleGroupItemProps
+  extends React.ComponentProps<typeof ArkToggleGroup.Item>,
+    VariantProps<typeof toggleGroupItemVariants> {}
+
+export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
   const { value, className, ...rest } = props;
 
   const { variant, size } = useToggleGroupContext();
 
   return (
-    <ArkToggleGroup.Item asChild value={value}>
+    <ArkToggleGroup.Item asChild data-slot="toggle-group-item" value={value}>
       <Toggle
-        className={cn(
-          "shrink-0",
-          "w-auto min-w-0",
-          "focus:z-10 focus-visible:z-10",
-          "group-data-[spacing=0]/toggle-group:rounded-none",
-          "group-data-[spacing=0]/toggle-group:border-l-0",
-          "group-data-[spacing=0]/toggle-group:shadow-none",
-          "group-data-[spacing=0]/toggle-group:first:rounded-l-md",
-          "group-data-[spacing=0]/toggle-group:last:rounded-r-md",
-          "group-data-[spacing=0]/toggle-group:first:border-l",
-          className
-        )}
+        className={cn(toggleGroupItemVariants(), className)}
         size={size}
         variant={variant}
         {...rest}

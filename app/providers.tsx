@@ -1,14 +1,22 @@
 "use client";
 
+import { RootProvider } from "fumadocs-ui/provider/next";
 import { ThemeProvider } from "next-themes";
+import type React from "react";
+import { ThemesProvider } from "@/providers/themes";
 
-interface ProvidersProps extends React.ComponentProps<typeof ThemeProvider> {}
+export const Providers = (props: React.PropsWithChildren) => {
+  const { children } = props;
 
-export const Providers = (props: ProvidersProps) => (
-  <ThemeProvider
-    attribute="class"
-    defaultTheme="system"
-    enableSystem
-    {...props}
-  />
-);
+  return (
+    <RootProvider
+      search={{
+        enabled: false,
+      }}
+    >
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemesProvider>{children}</ThemesProvider>
+      </ThemeProvider>
+    </RootProvider>
+  );
+};

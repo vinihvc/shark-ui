@@ -15,6 +15,7 @@ export const HoverCard = (
 
   return (
     <ArkHoverCard.Root
+      data-slot="hover-card"
       lazyMount={lazyMount}
       positioning={positioning}
       unmountOnExit={unmountOnExit}
@@ -25,7 +26,7 @@ export const HoverCard = (
 
 export const HoverCardTrigger = (
   props: React.ComponentProps<typeof ArkHoverCard.Trigger>
-) => <ArkHoverCard.Trigger {...props} />;
+) => <ArkHoverCard.Trigger data-slot="hover-card-trigger" {...props} />;
 
 export const HoverCardContent = (
   props: React.ComponentProps<typeof ArkHoverCard.Content>
@@ -34,7 +35,7 @@ export const HoverCardContent = (
 
   return (
     <Portal>
-      <ArkHoverCard.Positioner>
+      <ArkHoverCard.Positioner data-slot="hover-card-positioner">
         <ArkHoverCard.Content
           className={cn(
             "z-50",
@@ -55,6 +56,7 @@ export const HoverCardContent = (
             "data-[side=top]:slide-in-from-bottom-2",
             className
           )}
+          data-slot="hover-card-content"
           {...rest}
         >
           <HoverCardArrow />
@@ -73,6 +75,7 @@ export const HoverCardArrow = (
 
   return (
     <ArkHoverCard.Arrow
+      data-slot="hover-card-arrow"
       style={
         {
           "--arrow-background": "var(--popover)",

@@ -3,14 +3,21 @@ title: Card
 description: A flexible container for grouping related content and actions
 ---
 
-import { ComponentPreview } from "@/components/component-preview";
+import { ComponentPreviewFile } from "@/components/component-preview-file";
 import { ComponentInstallation } from "@/components/component-installation";
 
-<ComponentPreview componentName="card" />
+<ComponentPreviewFile componentName="card" />
 
 ## Installation
 
-<ComponentInstallation componentName="card" />
+<ComponentInstallation componentName="card">
+
+Install the following dependencies:
+  
+```bash
+pnpm add @ark-ui/react
+```
+</ComponentInstallation>
 
 ## Usage
 
@@ -19,19 +26,21 @@ import {
   Card, 
   CardContent, 
   CardDescription, 
-  CardTitle, 
-  CardHeader, 
   CardFooter, 
+  CardHeader, 
+  CardTitle, 
+  CardActions,
 } from "@/components/ui/card";
 ```
 
 ```tsx lineNumbers
 <Card>
   <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card Description</CardDescription>
+    <CardTitle />
+    <CardDescription />
+    <CardActions />
   </CardHeader>
-  <CardContent>Card Content</CardContent>
-  <CardFooter>Card Footer</CardFooter>
+  <CardContent />
+  <CardFooter />
 </Card>
 ```

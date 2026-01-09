@@ -15,15 +15,22 @@ export const NumberInput = (props: NumberInputProps) => {
   return (
     <ArkNumberInput.Root
       className={cn("flex", className)}
+      data-slot="number-input"
       focusInputOnChange={focusInputOnChange}
       {...rest}
     >
-      <ArkNumberInput.Input asChild>
+      <ArkNumberInput.Input asChild data-slot="number-input-input">
         <Input className="rounded-r-none border-r-0 focus:z-1" size={size} />
       </ArkNumberInput.Input>
 
-      <ArkNumberInput.Control className="flex flex-col items-center">
-        <ArkNumberInput.IncrementTrigger asChild>
+      <ArkNumberInput.Control
+        className="flex flex-col items-center"
+        data-slot="number-input-control"
+      >
+        <ArkNumberInput.IncrementTrigger
+          asChild
+          data-slot="number-input-increment-trigger"
+        >
           <Button
             className="flex-1 rounded-l-none rounded-br-none border-b-0"
             size={`icon-${size}`}
@@ -34,7 +41,10 @@ export const NumberInput = (props: NumberInputProps) => {
           </Button>
         </ArkNumberInput.IncrementTrigger>
 
-        <ArkNumberInput.DecrementTrigger asChild>
+        <ArkNumberInput.DecrementTrigger
+          asChild
+          data-slot="number-input-decrement-trigger"
+        >
           <Button
             className="flex-1 rounded-l-none rounded-tr-none"
             size={`icon-${size}`}

@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react";
+import { ark, Portal } from "@ark-ui/react";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
@@ -10,6 +10,7 @@ export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
 
   return (
     <ArkMenu.Root
+      data-slot="menu"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -19,13 +20,12 @@ export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
 
 export const MenuTrigger = (
   props: React.ComponentProps<typeof ArkMenu.Trigger>
-) => <ArkMenu.Trigger {...props} />;
+) => <ArkMenu.Trigger data-slot="menu-trigger" {...props} />;
 
 export const menuContentVariants = tv({
   base: [
     "z-(--z-index)",
     "h-auto min-w-32",
-    "relative",
     "p-1",
     "bg-popover",
     "text-popover-foreground",
@@ -45,19 +45,35 @@ export const menuContentVariants = tv({
 
 interface MenuContentProps
   extends React.ComponentProps<typeof ArkMenu.Content>,
-    VariantProps<typeof menuContentVariants> {}
+    VariantProps<typeof menuContentVariants> {
+  /**
+   * Whether to show the arrow
+   *
+   * @default true
+   */
+  showArrow?: boolean;
+}
+
+export const MenuPositioner = (
+  props: React.ComponentProps<typeof ArkMenu.Positioner>
+) => <ArkMenu.Positioner data-slot="menu-positioner" {...props} />;
 
 export const MenuContent = (props: MenuContentProps) => {
-  const { className, ...rest } = props;
+  const { showArrow = true, className, children, ...rest } = props;
 
   return (
     <Portal>
-      <ArkMenu.Positioner>
+      <MenuPositioner>
         <ArkMenu.Content
           className={cn(menuContentVariants(), className)}
+          data-slot="menu-content"
           {...rest}
-        />
-      </ArkMenu.Positioner>
+        >
+          {children}
+        </ArkMenu.Content>
+
+        {!!showArrow && <MenuArrow />}
+      </MenuPositioner>
     </Portal>
   );
 };
@@ -74,8 +90,8 @@ export const MenuGroup = (props: MenuGroupProps) => {
   const { heading, children, ...rest } = props;
 
   return (
-    <ArkMenu.ItemGroup data-part="item-group" data-scope="menu" {...rest}>
-      {heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
+    <ArkMenu.ItemGroup data-slot="menu-group" {...rest}>
+      {!!heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
 
       {children}
     </ArkMenu.ItemGroup>
@@ -90,6 +106,7 @@ export const MenuSeparator = (
   return (
     <ArkMenu.Separator
       className={cn("-mx-1 my-1 h-px bg-border", className)}
+      data-slot="menu-separator"
       {...rest}
     />
   );
@@ -177,8 +194,12 @@ export const MenuRadioGroup = (props: MenuRadioGroupProps) => {
   const { heading, children, ...rest } = props;
 
   return (
-    <ArkMenu.RadioItemGroup data-part="item-group" data-scope="menu" {...rest}>
-      {heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
+    <ArkMenu.RadioItemGroup data-slot="menu-radio-group" {...rest}>
+      {!!heading && (
+        <MenuGroupLabel data-slot="menu-radio-group-label">
+          {heading}
+        </MenuGroupLabel>
+      )}
 
       {children}
     </ArkMenu.RadioItemGroup>
@@ -192,7 +213,11 @@ const MenuGroupLabel = (
 
   return (
     <ArkMenu.ItemGroupLabel
-      className={cn("px-2 py-1.5 font-medium text-sm", className)}
+      className={cn(
+        "pointer-events-none px-2 py-1.5 font-medium text-muted-foreground text-sm",
+        className
+      )}
+      data-slot="menu-group-label"
       {...rest}
     >
       {children}
@@ -212,19 +237,25 @@ export const MenuRadioItem = (
         "pl-8",
         className
       )}
+      data-slot="menu-radio-item"
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <ArkMenu.ItemIndicator
+        className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center"
+        data-slot="menu-radio-item-indicator"
+      >
         <Circle className="size-2 fill-current" />
       </ArkMenu.ItemIndicator>
 
-      <ArkMenu.ItemText>{children}</ArkMenu.ItemText>
+      <ArkMenu.ItemText data-slot="menu-radio-item-text">
+        {children}
+      </ArkMenu.ItemText>
     </ArkMenu.RadioItem>
   );
 };
 
 export const MenuSub = (props: React.ComponentProps<typeof Menu>) => (
-  <Menu data-part="sub" {...props} />
+  <Menu data-slot="menu-sub" {...props} />
 );
 
 export const MenuSubContent = (
@@ -234,13 +265,13 @@ export const MenuSubContent = (
 
   return (
     <Portal>
-      <ArkMenu.Positioner data-part="sub-positioner">
+      <MenuPositioner data-slot="menu-sub-positioner">
         <ArkMenu.Content
           className={cn(menuContentVariants(), className)}
-          data-part="sub-content"
+          data-slot="menu-sub-content"
           {...rest}
         />
-      </ArkMenu.Positioner>
+      </MenuPositioner>
     </Portal>
   );
 };
@@ -253,7 +284,7 @@ export const MenuSubTrigger = (
   return (
     <ArkMenu.TriggerItem
       className={cn(menuItemVariants({ variant: "default" }), className)}
-      data-part="sub-trigger"
+      data-slot="menu-sub-trigger"
       {...rest}
     >
       {children}
@@ -265,20 +296,41 @@ export const MenuSubTrigger = (
   );
 };
 
-export const MenuShortcut = (props: React.ComponentProps<"span">) => {
+export const MenuShortcut = (props: React.ComponentProps<typeof ark.span>) => {
   const { className, ...rest } = props;
 
   return (
-    <span
+    <ark.span
       className={cn(
         "ml-auto",
         "text-muted-foreground text-xs tracking-widest",
         "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive",
         className
       )}
-      data-part="shortcut"
-      data-scope="menu"
+      data-slot="menu-shortcut"
       {...rest}
     />
+  );
+};
+
+export const MenuArrow = (
+  props: React.ComponentProps<typeof ArkMenu.Arrow>
+) => {
+  const { style, ...rest } = props;
+
+  return (
+    <ArkMenu.Arrow
+      style={
+        {
+          "--arrow-background": "var(--popover)",
+          "--arrow-size": "calc(1.5 * var(--spacing))",
+          ...style,
+          left: "20px",
+        } as React.CSSProperties
+      }
+      {...rest}
+    >
+      <ArkMenu.ArrowTip className="border-t border-l" />
+    </ArkMenu.Arrow>
   );
 };

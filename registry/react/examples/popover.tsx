@@ -1,9 +1,5 @@
 import { Button } from "@/registry/react/components/button";
-import {
-  Field,
-  FieldInput,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 import {
   Popover,
@@ -32,49 +28,39 @@ const PopoverDemo = () => (
       <PopoverBody className="grid gap-4">
         <Field className="grid grid-cols-3 items-center gap-4">
           <FieldLabel htmlFor="width">Width</FieldLabel>
-          <FieldInput>
-            <Input className="col-span-2 h-8" defaultValue="100%" id="width" />
-          </FieldInput>
+          <Input className="col-span-2 h-8" defaultValue="100%" id="width" />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
           <FieldLabel htmlFor="maxWidth">Max. width</FieldLabel>
-          <FieldInput>
-            <Input
-              className="col-span-2 h-8"
-              defaultValue="300px"
-              id="maxWidth"
-            />
-          </FieldInput>
+          <Input
+            className="col-span-2 h-8"
+            defaultValue="300px"
+            id="maxWidth"
+          />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
           <FieldLabel htmlFor="height">Height</FieldLabel>
-          <FieldInput>
-            <Input className="col-span-2 h-8" defaultValue="25px" id="height" />
-          </FieldInput>
+          <Input className="col-span-2 h-8" defaultValue="25px" id="height" />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
           <FieldLabel htmlFor="maxHeight">Max. height</FieldLabel>
-          <FieldInput>
-            <Input
-              className="col-span-2 h-8"
-              defaultValue="none"
-              id="maxHeight"
-            />
-          </FieldInput>
+          <Input
+            className="col-span-2 h-8"
+            defaultValue="none"
+            id="maxHeight"
+          />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
           <FieldLabel htmlFor="width">Width</FieldLabel>
-          <FieldInput>
-            <Input
-              className="col-span-2 h-8"
-              defaultValue="none"
-              id="maxHeight"
-            />
-          </FieldInput>
+          <Input
+            className="col-span-2 h-8"
+            defaultValue="none"
+            id="maxHeight"
+          />
         </Field>
       </PopoverBody>
     </PopoverContent>

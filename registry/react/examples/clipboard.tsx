@@ -5,11 +5,7 @@ import {
   ClipboardInput,
   ClipboardTrigger,
 } from "@/registry/react/components/clipboard";
-import {
-  Field,
-  FieldInput,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 
 const ClipboardDemo = () => (
   <Field>
@@ -19,9 +15,7 @@ const ClipboardDemo = () => (
       className="flex items-center gap-2"
       value="https://x.com/vinihvc"
     >
-      <FieldInput>
-        <ClipboardInput />
-      </FieldInput>
+      <ClipboardInput />
 
       <ClipboardTrigger asChild>
         <Button size="icon-md">

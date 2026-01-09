@@ -1,4 +1,5 @@
-import type * as React from "react";
+import { ark } from "@ark-ui/react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
@@ -15,14 +16,34 @@ export const alertVariants = tv({
   ],
   variants: {
     variant: {
-      solid: ["bg-card", "text-card-foreground"],
-      outline: ["border-border", "bg-background", "text-foreground"],
+      solid: [
+        "bg-card",
+        "text-card-foreground",
+        "*:data-[slot=alert-description]:text-card-foreground/80",
+      ],
       destructive: [
-        "border-destructive/50",
+        "bg-destructive/5",
         "text-destructive",
-        "dark:border-destructive",
-        "[&>svg]:text-destructive",
-        "*:data-[part=description]:text-destructive/90",
+        "border-destructive",
+        "*:data-[slot=alert-description]:text-destructive/90",
+      ],
+      info: [
+        "bg-info/5",
+        "text-info",
+        "border-info",
+        "*:data-[slot=alert-description]:text-info/80",
+      ],
+      warning: [
+        "bg-warning/10",
+        "text-warning-foreground dark:text-foreground",
+        "border-warning",
+        "*:data-[slot=alert-description]:text-warning-foreground/80",
+      ],
+      success: [
+        "bg-success/5",
+        "text-success",
+        "border-success",
+        "*:data-[slot=alert-description]:text-success/80",
       ],
     },
   },
@@ -32,49 +53,48 @@ export const alertVariants = tv({
 });
 
 interface AlertProps
-  extends React.ComponentProps<"div">,
+  extends React.ComponentProps<typeof ark.div>,
     VariantProps<typeof alertVariants> {}
 
 export const Alert = (props: AlertProps) => {
   const { variant, className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(alertVariants({ variant }), className)}
-      data-part="root"
-      data-scope="alert"
+      data-slot="alert"
       {...rest}
     />
   );
 };
 
-export const AlertTitle = (props: React.ComponentProps<"div">) => {
+export const AlertTitle = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
         className
       )}
-      data-part="title"
-      data-scope="alert"
+      data-slot="alert-title"
       {...rest}
     />
   );
 };
 
-export const AlertDescription = (props: React.ComponentProps<"div">) => {
+export const AlertDescription = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
-        "col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed",
+        "col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
         className
       )}
-      data-part="description"
-      data-scope="alert"
+      data-slot="alert-description"
       {...rest}
     />
   );
