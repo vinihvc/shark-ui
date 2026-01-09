@@ -125,7 +125,7 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "flex items-center",
+        "flex items-center gap-2",
         "px-(--gap)",
         "[.border-t]:pt-(--gap)",
         className

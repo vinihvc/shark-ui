@@ -32,35 +32,3 @@ export const docs = defineDocs({
     schema: metaSchema,
   },
 });
-
-export const blocks = defineDocs({
-  dir: "./content/blocks",
-  docs: {
-    schema: z.object({
-      title: z.string(),
-      description: z.string(),
-    }),
-    postprocess: {
-      includeProcessedMarkdown: true,
-    },
-  },
-  meta: {
-    schema: metaSchema,
-  },
-});
-
-export const templates = defineDocs({
-  dir: "./content/templates",
-  docs: {
-    schema: z.object({
-      title: z.string(),
-      description: z.string(),
-    }),
-    postprocess: {
-      includeProcessedMarkdown: true,
-    },
-  },
-  meta: {
-    schema: metaSchema,
-  },
-});

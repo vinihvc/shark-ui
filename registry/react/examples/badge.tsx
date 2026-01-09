@@ -1,12 +1,4 @@
-import {
-  AlertTriangle,
-  Check,
-  Heart,
-  Info,
-  Settings,
-  Star,
-  Trash,
-} from "lucide-react";
+import { Star } from "lucide-react";
 import { Badge } from "@/registry/react/components/badge";
 
 const BadgeDemo = () => (
@@ -14,33 +6,6 @@ const BadgeDemo = () => (
     <Badge>
       <Star />
       Favorite
-    </Badge>
-    <Badge variant="secondary">
-      <Heart />
-      Like
-    </Badge>
-    <Badge variant="outline">
-      <Settings />
-      Settings
-    </Badge>
-    <Badge variant="success">
-      <Check />
-      Success
-    </Badge>
-    <Badge asChild variant="info">
-      <a href="https://example.com">
-        <Info />
-        Info
-      </a>
-    </Badge>
-    <Badge variant="warning">
-      <AlertTriangle />
-      Warning
-    </Badge>
-
-    <Badge variant="destructive">
-      <Trash />
-      Delete
     </Badge>
   </div>
 );

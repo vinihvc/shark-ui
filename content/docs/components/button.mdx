@@ -3,10 +3,14 @@ title: Button
 description: Render a button or an element styled as a button, used to trigger an action or event
 ---
 
-import { ComponentPreview } from "@/components/component-preview";
+import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentVariants } from "@/components/component-variants";
+import { TabsContent } from "@/registry/react/components/tabs";
+import { Button } from "@/registry/react/components/button";
 import { ComponentInstallation } from "@/components/component-installation";
+import { Plus } from "lucide-react";
 
-<ComponentPreview componentName="button" />
+<ComponentPreviewFile componentName="button" />
 
 ## Installation
 
@@ -28,3 +32,117 @@ import { Button } from "@/components/ui/button";
 ```tsx lineNumbers
 <Button>Click me</Button>
 ```
+
+## Variants
+
+You can change the variant of the button using the `variant` prop.
+
+Available variants are: `solid`, `outline`, `success`, `info`, `warning`, `destructive`.
+
+<ComponentVariants variants={['solid', 'outline', 'secondary', 'ghost', 'link', 'success', 'info', 'warning', 'destructive']} defaultValue="solid">
+  <TabsContent value="solid">
+    <Button>Solid Button</Button>
+  </TabsContent>
+
+  <TabsContent value="outline">
+    <Button variant="outline">Outline Button</Button>
+  </TabsContent>
+
+  <TabsContent value="secondary">
+    <Button variant="secondary">Secondary Button</Button>
+  </TabsContent>
+
+  <TabsContent value="ghost">
+    <Button variant="ghost">Ghost Button</Button>
+  </TabsContent>
+
+  <TabsContent value="link">
+    <Button variant="link">Link Button</Button>
+  </TabsContent>
+
+  <TabsContent value="success">
+    <Button variant="success">Success Button</Button>
+  </TabsContent>
+
+  <TabsContent value="info">
+    <Button variant="info">Info Button</Button>
+  </TabsContent>
+
+  <TabsContent value="warning">
+    <Button variant="warning">Warning Button</Button>
+  </TabsContent>
+
+  <TabsContent value="destructive">
+    <Button variant="destructive">Destructive Button</Button>
+  </TabsContent>
+</ComponentVariants>
+
+## Sizes
+
+You can change the size of the button using the `size` prop.
+
+Available sizes are: `sm`, `md`, `lg`, `icon-sm`, `icon-md`, `icon-lg`.
+
+<ComponentVariants variants={['sm', 'md', 'lg', 'icon-sm', 'icon-md', 'icon-lg']} defaultValue="md">
+  <TabsContent value="sm">
+    <Button size="sm">Small Button</Button>
+  </TabsContent>
+
+  <TabsContent value="md">
+    <Button size="md">Medium Button</Button>
+  </TabsContent>
+
+  <TabsContent value="lg">
+    <Button size="lg">Large Button</Button>
+  </TabsContent>
+
+  <TabsContent value="icon-sm">
+    <Button size="icon-sm">
+      <Plus />
+    </Button>
+  </TabsContent>
+
+  <TabsContent value="icon-md">
+    <Button size="icon-md">
+      <Plus />
+    </Button>
+  </TabsContent>
+
+  <TabsContent value="icon-lg">
+    <Button size="icon-lg">
+      <Plus />
+    </Button>
+  </TabsContent>
+</ComponentVariants>
+
+## Click Effect
+
+You can change the click effect of the button using the `clickEffect` prop.
+
+Available click effects are: `true`, `false`.
+
+<ComponentVariants variants={['true', 'false']} defaultValue="true">
+  <TabsContent value="true">
+    <Button clickEffect={true}>Move 1px down when clicked</Button>
+  </TabsContent>
+
+  <TabsContent value="false">
+    <Button clickEffect={false}>No click effect</Button>
+  </TabsContent>
+</ComponentVariants>
+
+## Loading
+
+You can show a loading indicator when the button is loading using the `isLoading` prop.
+
+Available loading states are: `true`, `false`.
+
+<ComponentVariants variants={['true', 'false']}>
+  <TabsContent value="true">
+    <Button isLoading={true}>Submit</Button>
+  </TabsContent>
+
+  <TabsContent value="false">
+    <Button isLoading={false}>Submit</Button>
+  </TabsContent>
+</ComponentVariants>

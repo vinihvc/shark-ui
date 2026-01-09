@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../components/table";
+} from "@/registry/react/components/table";
 
 const TableDemo = () => {
   const users = [

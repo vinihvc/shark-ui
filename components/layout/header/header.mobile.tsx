@@ -1,9 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import React from "react";
+import type React from "react";
 import { NavLink } from "@/components/nav-link";
-import type { source } from "@/lib/source";
+import type { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -14,15 +13,10 @@ import {
 } from "@/registry/react/components/popover";
 
 const TOP_LEVEL_SECTIONS = [
-  { name: "Get Started", href: "/docs" },
-  {
-    name: "Components",
-    href: "/docs/components",
-  },
-  {
-    name: "Changelog",
-    href: "/docs/changelog",
-  },
+  { name: "Introduction", href: "/docs" },
+  { name: "Installation", href: "/docs/installation" },
+  { name: "Components", href: "/docs/components" },
+  { name: "Changelog", href: "/docs/changelog" },
 ];
 
 interface MobileNavProps extends React.ComponentProps<typeof Popover> {
@@ -34,20 +28,12 @@ interface MobileNavProps extends React.ComponentProps<typeof Popover> {
 export function MobileNav(props: MobileNavProps) {
   const { tree, items, className, ...rest } = props;
 
-  const router = useRouter();
-
-  const [isOpen, setIsOpen] = React.useState(false);
-
   return (
-    <Popover
-      onOpenChange={({ open }) => setIsOpen(open)}
-      open={isOpen}
-      {...rest}
-    >
+    <Popover {...rest}>
       <PopoverTrigger asChild>
         <Button
           className={cn(
-            "extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+            "group extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
             className
           )}
           variant="ghost"
@@ -57,13 +43,13 @@ export function MobileNav(props: MobileNavProps) {
               <span
                 className={cn(
                   "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
-                  isOpen ? "top-[0.4rem] -rotate-45" : "top-1"
+                  "top-1 group-data-[state=open]:top-[0.4rem] group-data-[state=open]:-rotate-45"
                 )}
               />
               <span
                 className={cn(
                   "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
-                  isOpen ? "top-[0.4rem] rotate-45" : "top-2.5"
+                  "top-2.5 group-data-[state=open]:top-[0.4rem] group-data-[state=open]:rotate-45"
                 )}
               />
             </div>
@@ -74,6 +60,7 @@ export function MobileNav(props: MobileNavProps) {
           </span>
         </Button>
       </PopoverTrigger>
+
       <PopoverContent
         className="h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100"
         showArrow={false}
@@ -113,7 +100,6 @@ export function MobileNav(props: MobileNavProps) {
                               <NavLink
                                 className="flex items-center gap-2 font-medium text-2xl"
                                 href={item.url}
-                                onClick={() => router.push(item.url.toString())}
                               >
                                 {item.name}
                               </NavLink>

@@ -2,12 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "field",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react"
-  ],
-  "registryDependencies": [
-    "https://shark.vini.one/r/separator.json"
-  ],
+  "dependencies": ["@ark-ui/react"],
+  "registryDependencies": ["https://shark.vini.one/r/separator.json"],
   "files": [
     {
       "path": "registry/react/components/field.tsx",

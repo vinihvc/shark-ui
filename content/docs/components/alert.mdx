@@ -3,10 +3,14 @@ title: Alert
 description: Displays a alert for user attention with different variants
 ---
 
-import { ComponentPreview } from "@/components/component-preview";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/react/components/alert";
+import { ComponentPreviewFile } from "@/components/component-preview-file";
 import { ComponentInstallation } from "@/components/component-installation";
+import { ComponentVariants } from '@/components/component-variants'
+import { TabsContent } from "@/registry/react/components/tabs";
+import { Info, AlertCircle, AlertTriangle, CheckCircle } from "lucide-react";
 
-<ComponentPreview componentName="alert" />
+<ComponentPreviewFile componentName="alert" />
 
 ## Installation
 
@@ -18,7 +22,7 @@ pnpm add @ark-ui/react tailwind-variants
 ```
 </ComponentInstallation>
 
-## Usage
+## Basic usage
 
 ```tsx lineNumbers
 import { 
@@ -34,3 +38,61 @@ import {
   <AlertDescription>This is an alert</AlertDescription>
 </Alert>
 ```
+
+## Variants
+
+You can change the variant of the alert using the `variant` prop. 
+
+Available variants are: `solid`, `info`, `warning`, `success`, `destructive`.
+
+<ComponentVariants variants={['solid', 'info', 'success', 'warning', 'destructive']}>
+  <TabsContent value="solid">
+    <Alert variant="solid">
+      <Info />
+      <AlertTitle>Deployment successful</AlertTitle>
+      <AlertDescription>
+        You can now start building your next great project.
+      </AlertDescription>
+    </Alert>
+  </TabsContent>
+
+  <TabsContent value="info">
+    <Alert variant="info">
+      <Info />
+      <AlertTitle>Deployment information</AlertTitle>
+      <AlertDescription>
+        You can now start building your next great project.
+      </AlertDescription>
+    </Alert>
+  </TabsContent>
+
+  <TabsContent value="warning">
+    <Alert variant="warning">
+      <AlertTriangle />
+      <AlertTitle>Deployment warning</AlertTitle>
+      <AlertDescription>
+        You can now start building your next great project.
+      </AlertDescription>
+    </Alert>
+  </TabsContent>
+
+  <TabsContent value="success">
+    <Alert variant="success">
+      <CheckCircle />
+      <AlertTitle>Deployment success</AlertTitle>
+      <AlertDescription>
+        You can now start building your next great project.
+      </AlertDescription>
+    </Alert>
+  </TabsContent>
+
+  <TabsContent value="destructive">
+    <Alert variant="destructive">
+      <AlertCircle />
+      <AlertTitle>Deployment failed</AlertTitle>
+      <AlertDescription>
+        You can now start building your next great project.
+      </AlertDescription>
+    </Alert>
+  </TabsContent>
+</ComponentVariants>

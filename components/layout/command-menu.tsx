@@ -4,7 +4,7 @@ import { useFilter, useListCollection } from "@ark-ui/react";
 import { Component } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
-import type { source } from "@/lib/source";
+import type { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -100,7 +100,7 @@ export const CommandMenu = (props: CommandMenuProps) => {
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden sm:flex">
-            <KbdGroup className="[--gap:--spacing(0.5)]">
+            <KbdGroup>
               <Kbd className="border">⌘</Kbd>
               <Kbd className="border">K</Kbd>
             </KbdGroup>
@@ -108,16 +108,14 @@ export const CommandMenu = (props: CommandMenuProps) => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent
-        className="rounded-xl bg-clip-padding shadow-2xl"
-        showCloseButton={false}
-      >
+      <DialogContent className="border-none" showCloseButton={false}>
         <DialogHeader className="sr-only">
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
 
         <Command
+          className="rounded-md border"
           collection={collection}
           onInputValueChange={({ inputValue }) => filter(inputValue)}
           onSelect={({ itemValue }) => {

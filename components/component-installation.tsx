@@ -58,7 +58,7 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
               <p>Copy and paste the following code into your project.</p>
 
               <Step>
-                <div className="**:[div]:max-h-[650px]">
+                <div className="my-4 **:[div]:max-h-[650px]">
                   <CodeBlock code={sourceCode} lang="tsx" />
                 </div>
 

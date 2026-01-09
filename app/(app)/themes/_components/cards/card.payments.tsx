@@ -45,37 +45,37 @@ const data: Payment[] = [
     id: "m5gr84i9",
     amount: 316,
     status: "success",
-    email: "ken99@example.com",
+    email: "alex.rivera@techflow.io",
   },
   {
     id: "3u1reuv4",
     amount: 242,
     status: "success",
-    email: "Abe45@example.com",
+    email: "maya.chen@designstudio.com",
   },
   {
     id: "derv1ws0",
     amount: 837,
     status: "processing",
-    email: "Monserrat44@example.com",
+    email: "james.mitchell@cloudworks.net",
   },
   {
     id: "bhqecj4p",
     amount: 721,
     status: "failed",
-    email: "carmella@example.com",
+    email: "sophia.anderson@digitalhub.co",
   },
   {
     id: "k9f2m3n4",
     amount: 450,
     status: "pending",
-    email: "jason78@example.com",
+    email: "david.kim@innovate.space",
   },
   {
     id: "p5q6r7s8",
     amount: 1280,
     status: "success",
-    email: "sarah23@example.com",
+    email: "emma.williams@nexuslabs.ai",
   },
 ];
 

@@ -1,6 +1,6 @@
 import { ArrowRight, StarIcon } from "lucide-react";
 import { NavLink } from "@/components/nav-link";
-import { source } from "@/lib/source";
+import { source } from "@/lib/fumadocs";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 

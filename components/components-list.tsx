@@ -1,6 +1,6 @@
 import Link from "fumadocs-core/link";
 import React from "react";
-import { source } from "@/lib/source";
+import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 
 interface ComponentsListProps extends React.ComponentProps<"div"> {}

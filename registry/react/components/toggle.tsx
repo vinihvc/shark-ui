@@ -17,6 +17,7 @@ export const toggleVariants = tv({
     },
   },
   defaultVariants: {
+    variant: "solid",
     size: "md",
   },
 });

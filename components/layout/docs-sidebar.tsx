@@ -12,7 +12,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import type { source } from "@/lib/source";
+import type { source } from "@/lib/fumadocs";
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs", exact: true },

@@ -42,12 +42,7 @@ const toggleGroupItemVariants = tv({
   base: [
     "shrink-0",
     "w-auto min-w-0",
-    "data-[state=on]:bg-current data-[state=on]:text-current",
-    "group-data-[spacing=0]/toggle-group:rounded-none",
-    "group-data-[spacing=0]/toggle-group:border-border",
-    "group-data-[spacing=0]/toggle-group:shadow-none",
-    "group-data-[spacing=0]/toggle-group:first:rounded-l-md",
-    "group-data-[spacing=0]/toggle-group:last:rounded-r-md",
+    "data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
     "focus:z-10 focus-visible:z-10",
   ],
 });

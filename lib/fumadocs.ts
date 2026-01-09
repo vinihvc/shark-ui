@@ -1,23 +1,11 @@
 import { type InferPageType, loader } from "fumadocs-core/source";
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons";
-import { blocks, docs, templates } from "@/.source";
+import { docs } from "@/.source";
 
 // See https://fumadocs.dev/docs/headless/source-api for more info
 export const source = loader({
   baseUrl: "/docs",
   source: docs.toFumadocsSource(),
-  plugins: [lucideIconsPlugin()],
-});
-
-export const blocksSource = loader({
-  baseUrl: "/blocks",
-  source: blocks.toFumadocsSource(),
-  plugins: [lucideIconsPlugin()],
-});
-
-export const templatesSource = loader({
-  baseUrl: "/templates",
-  source: templates.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
 });
 
@@ -27,28 +15,6 @@ export const getPageImage = (page: InferPageType<typeof source>) => {
   return {
     segments,
     url: `/og/docs/${segments.join("/")}`,
-  };
-};
-
-export const getBlocksPageImage = (
-  page: InferPageType<typeof blocksSource>
-) => {
-  const segments = [...page.slugs, "image.png"];
-
-  return {
-    segments,
-    url: `/og/blocks/${segments.join("/")}`,
-  };
-};
-
-export const getTemplatesPageImage = (
-  page: InferPageType<typeof templatesSource>
-) => {
-  const segments = [...page.slugs, "image.png"];
-
-  return {
-    segments,
-    url: `/og/templates/${segments.join("/")}`,
   };
 };
 

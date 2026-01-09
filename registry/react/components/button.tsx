@@ -28,7 +28,7 @@ export const buttonVariants = tv({
         "bg-background",
         "border shadow-xs",
         "hover:bg-accent hover:text-accent-foreground",
-        "dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+        "dark:border-input dark:bg-input/60 dark:hover:bg-input/70",
         "focus-visible:border-foreground focus-visible:ring-foreground/10",
       ],
       success: [

@@ -13,7 +13,7 @@ const badgeVariants = tv({
   ],
   variants: {
     variant: {
-      default: [
+      solid: [
         "bg-foreground",
         "text-background",
         "focus-visible:border-foreground focus-visible:ring-foreground/20",
@@ -32,41 +32,40 @@ const badgeVariants = tv({
         "[a&]:hover:text-accent-foreground",
       ],
       success: [
-        "bg-success",
-        "text-success-foreground",
+        "bg-success/10",
+        "text-success",
         "focus-visible:border-success focus-visible:ring-success/20",
-        "[a&]:hover:bg-success/90",
+        "[a&]:hover:bg-success/20",
       ],
       info: [
-        "bg-info",
-        "text-info-foreground",
+        "bg-info/10",
+        "text-info",
         "focus-visible:border-info focus-visible:ring-info/50",
-        "[a&]:hover:bg-info/90",
+        "[a&]:hover:bg-info/20",
       ],
       warning: [
-        "bg-warning",
-        "text-warning-foreground",
+        "bg-warning/10",
+        "text-warning",
         "focus-visible:border-warning focus-visible:ring-warning/20",
         "dark:focus-visible:ring-warning/40",
-        "[a&]:hover:bg-warning/90",
+        "[a&]:hover:bg-warning/20",
       ],
       destructive: [
-        "bg-destructive dark:bg-destructive/60",
-        "text-destructive-foreground",
-        "border-destructive",
+        "bg-destructive/10 dark:bg-destructive/5",
+        "text-destructive",
         "focus-visible:border-destructive focus-visible:ring-destructive/20",
         "dark:focus-visible:ring-destructive/40",
-        "[a&]:hover:bg-destructive/90",
+        "[a&]:hover:bg-destructive/20",
       ],
     },
     size: {
-      sm: ["text-[0.625rem]", "px-1 py-px"],
+      sm: ["text-[0.625rem] leading-none", "px-1 py-px"],
       md: ["text-xs", "px-2 py-0.5"],
-      lg: ["text-base", "px-2 py-1"],
+      lg: ["text-sm", "px-3 py-1", "[&>svg]:size-4"],
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: "solid",
     size: "md",
   },
 });
@@ -76,7 +75,7 @@ interface BadgeProps
     VariantProps<typeof badgeVariants> {}
 
 export const Badge = (props: BadgeProps) => {
-  const { variant = "default", size = "md", className, ...rest } = props;
+  const { variant = "solid", size = "md", className, ...rest } = props;
 
   return (
     <ark.span

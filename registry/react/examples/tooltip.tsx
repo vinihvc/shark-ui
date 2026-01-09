@@ -1,11 +1,11 @@
 import { Bold, Italic, Strikethrough, Underline } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
+import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/react/components/tooltip";
-import { ButtonGroup } from "../components/button-group";
 
 const TooltipDemo = () => (
   <ButtonGroup>

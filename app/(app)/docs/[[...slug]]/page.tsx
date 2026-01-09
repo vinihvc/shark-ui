@@ -3,7 +3,7 @@ import { createRelativeLink } from "fumadocs-ui/mdx";
 import { ArrowUpRightIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getPageImage, source } from "@/lib/source";
+import { getPageImage, source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 

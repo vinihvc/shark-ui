@@ -16,14 +16,34 @@ export const alertVariants = tv({
   ],
   variants: {
     variant: {
-      solid: ["bg-card", "text-card-foreground"],
-      outline: ["border-border", "bg-background", "text-foreground"],
+      solid: [
+        "bg-card",
+        "text-card-foreground",
+        "*:data-[slot=alert-description]:text-card-foreground/80",
+      ],
       destructive: [
-        "border-destructive/50",
+        "bg-destructive/5",
         "text-destructive",
-        "dark:border-destructive",
-        "[&>svg]:text-destructive",
+        "border-destructive",
         "*:data-[slot=alert-description]:text-destructive/90",
+      ],
+      info: [
+        "bg-info/5",
+        "text-info",
+        "border-info",
+        "*:data-[slot=alert-description]:text-info/80",
+      ],
+      warning: [
+        "bg-warning/10",
+        "text-warning-foreground dark:text-foreground",
+        "border-warning",
+        "*:data-[slot=alert-description]:text-warning-foreground/80",
+      ],
+      success: [
+        "bg-success/5",
+        "text-success",
+        "border-success",
+        "*:data-[slot=alert-description]:text-success/80",
       ],
     },
   },
@@ -71,7 +91,7 @@ export const AlertDescription = (
   return (
     <ark.div
       className={cn(
-        "col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed",
+        "col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
         className
       )}
       data-slot="alert-description"

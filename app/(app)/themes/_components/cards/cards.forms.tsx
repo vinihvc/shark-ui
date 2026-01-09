@@ -53,7 +53,7 @@ export function CardsForms() {
             <FieldGroup className="grid grid-cols-2">
               <Field>
                 <FieldLabel htmlFor="name">Name</FieldLabel>
-                <Input id="name" placeholder="Max Leiter" />
+                <Input id="name" placeholder="Vinicius Vicentini" />
               </Field>
 
               <Field>

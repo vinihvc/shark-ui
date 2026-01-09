@@ -7,13 +7,18 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/registry/react/components/input-group";
+import {
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuTrigger,
+} from "@/registry/react/components/menu";
 import { Separator } from "@/registry/react/components/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/react/components/tooltip";
-import { Menu, MenuContent, MenuItem, MenuTrigger } from "../components/menu";
 
 const InputGroupDemo = () => (
   <div className="grid w-full max-w-sm gap-6">

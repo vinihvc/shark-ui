@@ -1,16 +1,16 @@
 import { GithubIcon } from "lucide-react";
+import { CommandMenu } from "@/components/layout/command-menu";
+import { MainNav } from "@/components/layout/header/header.main";
+import { MobileNav } from "@/components/layout/header/header.mobile";
+import { ModeSwitcher } from "@/components/layout/mode-switcher";
+import { Logo } from "@/components/logo";
 import { NavLink } from "@/components/nav-link";
 import { NAV_ITEMS } from "@/config/navigation";
 import { SITE_CONFIG } from "@/config/site";
-import { source } from "@/lib/source";
+import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Separator } from "@/registry/react/components/separator";
-import { Logo } from "../../logo";
-import { CommandMenu } from "../command-menu";
-import { ModeSwitcher } from "../mode-switcher";
-import { MainNav } from "./header.main";
-import { MobileNav } from "./header.mobile";
 
 interface SiteHeaderProps extends React.ComponentProps<"header"> {}
 

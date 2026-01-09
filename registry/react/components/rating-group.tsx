@@ -12,7 +12,7 @@ export const RatingGroup = (
   return (
     <ArkRatingGroup.Root
       allowHalf={allowHalf}
-      className="text-primary"
+      className="text-warning"
       count={count}
       data-slot="rating-group"
       {...rest}
