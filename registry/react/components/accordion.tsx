@@ -46,7 +46,6 @@ export const AccordionTrigger = (
         "rounded-md",
         "outline-none",
         "transition-all",
-        "hover:underline",
         "disabled:pointer-events-none disabled:opacity-50",
         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "[&_[data-state=open]>svg]:rotate-180",

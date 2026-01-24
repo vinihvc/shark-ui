@@ -4,11 +4,11 @@ import {
   AvatarImage,
 } from "@/registry/react/components/avatar";
 
-const AvatarDemo = () => (
-  <Avatar className="size-12">
+const Example = () => (
+  <Avatar size="lg">
     <AvatarImage src="https://github.com/vinihvc.png" />
     <AvatarFallback>VV</AvatarFallback>
   </Avatar>
 );
 
-export default AvatarDemo;
+export default Example;

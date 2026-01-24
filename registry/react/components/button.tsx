@@ -25,33 +25,15 @@ export const buttonVariants = tv({
         "focus-visible:ring-ring/50",
       ],
       outline: [
-        "bg-background",
+        "bg-transparent",
         "border shadow-xs",
         "hover:bg-accent hover:text-accent-foreground",
-        "dark:border-input dark:bg-input/60 dark:hover:bg-input/70",
+        "dark:border-input dark:bg-input/32 dark:hover:bg-input/7300",
         "focus-visible:border-foreground focus-visible:ring-foreground/10",
-      ],
-      success: [
-        "bg-success",
-        "text-success-foreground",
-        "focus-visible:ring-success/50",
-        "hover:bg-success/90",
-      ],
-      info: [
-        "bg-info",
-        "text-info-foreground",
-        "focus-visible:ring-info/50",
-        "hover:bg-info/90",
-      ],
-      warning: [
-        "bg-warning",
-        "text-warning-foreground",
-        "focus-visible:ring-warning/50",
-        "hover:bg-warning/90",
       ],
       destructive: [
         "bg-destructive",
-        "text-destructive-foreground",
+        "text-white",
         "hover:bg-destructive/90",
         "focus-visible:ring-destructive/50",
       ],
@@ -73,12 +55,30 @@ export const buttonVariants = tv({
       ],
     },
     size: {
-      sm: ["h-8", "gap-1.5", "rounded-md", "px-3", "has-[>svg]:px-2.5"],
-      md: ["h-9", "px-4", "py-2", "has-[>svg]:px-3"],
-      lg: ["h-10", "rounded-md", "px-6", "has-[>svg]:px-4"],
-      "icon-sm": "size-8",
-      "icon-md": "size-9",
-      "icon-lg": "size-10",
+      xs: [
+        "h-6",
+        "gap-1.5",
+        "rounded-sm",
+        "px-3",
+        "has-[>svg]:px-2.5",
+        "[&_svg:not([class*='size-'])]:size-3",
+      ],
+      sm: [
+        "h-7",
+        "px-3",
+        "gap-1.5",
+        "rounded-md",
+        "has-[>svg]:px-2.5",
+        "[&_svg:not([class*='size-'])]:size-3.5",
+      ],
+      md: ["h-8", "px-4", "py-2", "has-[>svg]:px-3"],
+      lg: ["h-9", "rounded-md", "px-6", "has-[>svg]:px-4"],
+      xl: ["h-11", "text-lg", "rounded-md", "px-8", "has-[>svg]:px-5"],
+      "icon-xs": "size-6",
+      "icon-sm": "size-7",
+      "icon-md": "size-8",
+      "icon-lg": "size-9",
+      "icon-xl": "size-11 [&_svg:not([class*='size-'])]:size-5",
     },
     clickEffect: {
       true: "active:translate-y-px",
@@ -125,6 +125,7 @@ export const Button = (props: ButtonProps) => {
       className={cn(buttonVariants({ variant, size, clickEffect }), className)}
       data-slot="button"
       data-state={isLoading ? "loading" : "idle"}
+      data-variant={variant}
       type="button"
       {...rest}
     >

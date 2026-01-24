@@ -61,8 +61,6 @@ export const TooltipContent = (
           data-slot="tooltip-content"
           {...rest}
         >
-          <TooltipArrow />
-
           {children}
         </ArkTooltip.Content>
       </ArkTooltip.Positioner>

@@ -85,8 +85,6 @@ export const CommandMenu = (props: CommandMenuProps) => {
       <DialogTrigger asChild>
         <Button
           className={cn(
-            "relative",
-            "border",
             "justify-start",
             "h-8 w-full md:w-48 lg:w-56 xl:w-64",
             "pl-3 sm:pr-12",
@@ -94,7 +92,7 @@ export const CommandMenu = (props: CommandMenuProps) => {
             "shadow-none"
           )}
           clickEffect={false}
-          variant="secondary"
+          variant="outline"
           {...props}
         >
           <span className="hidden lg:inline-flex">Search documentation...</span>

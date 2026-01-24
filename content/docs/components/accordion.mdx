@@ -1,13 +1,10 @@
 ---
 title: Accordion
-description: A collapsible component for displaying content in a vertical stack.
+description: A collapsible for displaying content.
 links:
   doc: https://ark-ui.com/docs/components/accordion
   api: https://ark-ui.com/docs/components/accordion#api-reference
 ---
-
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
 
 <ComponentPreviewFile componentName="accordion" />
 
@@ -33,13 +30,13 @@ import {
 ```
 
 ```tsx lineNumbers
-<Accordion collapsible>
-  <AccordionItem value="1">
+<Accordion>
+  <AccordionItem value="item-1">
     <AccordionTrigger>Accordion Item 1</AccordionTrigger>
     <AccordionContent>Accordion Content 1</AccordionContent>
   </AccordionItem>
 
-  <AccordionItem value="2">
+  <AccordionItem value="item-2">
     <AccordionTrigger>Accordion Item 2</AccordionTrigger>
     <AccordionContent>Accordion Content 2</AccordionContent>
   </AccordionItem>

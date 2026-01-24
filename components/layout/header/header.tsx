@@ -3,7 +3,6 @@ import { CommandMenu } from "@/components/layout/command-menu";
 import { MainNav } from "@/components/layout/header/header.main";
 import { MobileNav } from "@/components/layout/header/header.mobile";
 import { ModeSwitcher } from "@/components/layout/mode-switcher";
-import { Logo } from "@/components/logo";
 import { NavLink } from "@/components/nav-link";
 import { NAV_ITEMS } from "@/config/navigation";
 import { SITE_CONFIG } from "@/config/site";
@@ -28,19 +27,16 @@ export const SiteHeader = (props: SiteHeaderProps) => {
       {...rest}
     >
       <div className="container px-6">
-        <div className="flex h-(--header-height) items-center">
+        <div className="flex h-(--header-height) items-center gap-4">
           <MobileNav
             className="flex lg:hidden"
             items={NAV_ITEMS}
             tree={pageTree}
           />
 
-          <Button asChild className="hidden lg:flex" variant="ghost">
-            <NavLink href="/">
-              <Logo />
-              <span>{SITE_CONFIG.name}</span>
-            </NavLink>
-          </Button>
+          <NavLink className="hidden font-medium text-base lg:flex" href="/">
+            {SITE_CONFIG.name}
+          </NavLink>
 
           <MainNav className="hidden lg:flex" items={NAV_ITEMS} />
 

@@ -1,10 +1,5 @@
 import { cn } from "@/lib/utils";
-import {
-  Tabs,
-  TabsIndicator,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/react/components/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/registry/react/components/tabs";
 
 interface ComponentVariantsProps extends React.ComponentProps<typeof Tabs> {
   /**
@@ -26,8 +21,6 @@ export const ComponentVariants = (props: ComponentVariantsProps) => {
         {variants.map((variant) => (
           <TabsTrigger className="capitalize" key={variant} value={variant}>
             {variant}
-
-            <TabsIndicator />
           </TabsTrigger>
         ))}
       </TabsList>

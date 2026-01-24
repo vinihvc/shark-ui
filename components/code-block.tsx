@@ -62,7 +62,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
   return (
     <BaseCodeBlock
       allowCopy={false}
-      className={cn("relative my-0 leading-6", className)}
+      className={cn("relative my-0 leading-relaxed", className)}
       {...(lineNumbers
         ? { "data-line-numbers": true }
         : { "data-line-numbers": undefined })}

@@ -6,9 +6,6 @@ links:
   api: https://ark-ui.com/docs/components/tabs#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
 <ComponentPreviewFile componentName="tabs" />
 
 ## Installation
@@ -42,3 +39,35 @@ import {
   <TabsContent value="2">Tab 2 content</TabsContent>
 </Tabs>
 ```
+
+## Variants
+
+You can change the variant of the tabs using the `variant` prop on `TabsList`.
+
+Available variants are: `default`, `underline`.
+
+### Default
+
+<ComponentPreviewFile componentName="tabs" fileName="variant-default" />
+
+### Underline
+
+<ComponentPreviewFile componentName="tabs" fileName="variant-underline" />
+
+## Orientation
+
+You can change the orientation of the tabs using the `orientation` prop on `Tabs`.
+
+Available orientations are: `horizontal`, `vertical`.
+
+### Horizontal
+
+<ComponentPreviewFile componentName="tabs" fileName="orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreviewFile componentName="tabs" fileName="orientation-vertical" />
+
+## Vertical with Underline variant
+
+<ComponentPreviewFile componentName="tabs" fileName="variant-underline-orientation-vertical" />

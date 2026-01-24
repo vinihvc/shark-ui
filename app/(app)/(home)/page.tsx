@@ -20,7 +20,7 @@ const HomePage = () => {
       <section className="container flex flex-col gap-4 bg-none bg-position-[calc(50%+250px)_25px] bg-no-repeat py-20 md:py-32">
         <div>
           <Badge asChild variant="secondary">
-            <NavLink href="/docs">
+            <NavLink href="/docs/changelog">
               <StarIcon />
               Beta Version
             </NavLink>

@@ -7,7 +7,6 @@ import type React from "react";
 import {
   Tabs,
   TabsContent,
-  TabsIndicator,
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
@@ -22,19 +21,25 @@ export interface ComponentPreviewFileProps extends React.ComponentProps<"div"> {
    * @default ""
    */
   componentName: string;
+  /**
+   *
+   */
+  fileName?: string;
 }
 
 export const ComponentPreviewFile = async (
   props: ComponentPreviewFileProps
 ) => {
-  const { componentName, ...rest } = props;
+  const { componentName, fileName = "default", ...rest } = props;
 
   // Dynamically import the example component
-  const Example = await import(`${registryPath}/${componentName}.tsx`);
+  const Example = await import(
+    `${registryPath}/${componentName}/${fileName}.tsx`
+  );
 
   // Read the source code from the example file
   const sourceCode = readFileSync(
-    join(process.cwd(), registryPath, `${componentName}.tsx`),
+    join(process.cwd(), registryPath, componentName, `${fileName}.tsx`),
     "utf-8"
   );
 
@@ -50,19 +55,20 @@ export const ComponentPreviewFile = async (
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
-
-          <TabsIndicator />
         </TabsList>
 
         <div className="**:figure:!m-0 relative rounded-lg border **:[figure]:border-none">
           <TabsContent
-            className="flex min-h-[400px] w-full items-center justify-center overflow-y-hidden p-14"
+            className="flex min-h-[350px] w-full items-center justify-center overflow-y-hidden p-14"
             value="preview"
           >
             <Example.default />
           </TabsContent>
 
-          <TabsContent className="**:[div]:max-h-[400px]" value="code">
+          <TabsContent
+            className="min-h-[350px] overflow-hidden bg-card **:[div]:max-h-[350px] **:[figure]:bg-card"
+            value="code"
+          >
             <CodeBlock code={replacedCode} lang="tsx" />
           </TabsContent>
         </div>
@@ -75,6 +81,9 @@ const replaceContent = (code: string) => {
   code = code.replaceAll("@/registry/react/components", "@/components/ui");
   code = code.replaceAll(/const (\w+) =/g, "export const $1 =");
   code = code.replaceAll(/export default (\w+);/g, "");
+  code = code.replaceAll(/\n$/g, "");
+  code = code.replaceAll(/\n$/g, "");
+  code = code.replaceAll(/\n$/g, "");
 
   return code;
 };

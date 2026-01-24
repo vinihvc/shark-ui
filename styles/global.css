@@ -65,14 +65,14 @@
   --color-chart-5: var(--chart-5);
 
   --radius: var(--radius);
-  --radius-xs: calc(var(--radius) * 0.5);
-  --radius-sm: calc(var(--radius) * 0.75);
-  --radius-md: calc(var(--radius) * 0.9);
-  --radius-lg: calc(var(--radius) * 1.125);
-  --radius-xl: calc(var(--radius) * 1.25);
-  --radius-2xl: calc(var(--radius) * 1.5);
-  --radius-3xl: calc(var(--radius) * 2);
-  --radius-4xl: calc(var(--radius) * 3);
+  --radius-xs: calc(var(--radius) * 0.2);
+  --radius-sm: calc(var(--radius) * 0.4);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2.1);
+  --radius-2xl: calc(var(--radius) * 3);
+  --radius-3xl: calc(var(--radius) * 4);
+  --radius-4xl: calc(var(--radius) * 5);
 
   --animate-slide-up: slideUp 0.2s ease-out;
   --animate-slide-down: slideDown 0.2s ease-out;
@@ -120,15 +120,15 @@
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.65rem;
 
-  --background: var(--color-white);
+  --background: var(--color-neutral-100);
   --foreground: var(--color-neutral-950);
 
-  --card: var(--color-white);
+  --card: var(--color-neutral-50);
   --card-foreground: var(--color-neutral-950);
 
-  --popover: var(--color-white);
+  --popover: var(--color-neutral-50);
   --popover-foreground: var(--color-neutral-950);
 
   --primary: var(--color-neutral-900);
@@ -143,21 +143,21 @@
   --accent: var(--color-neutral-100);
   --accent-foreground: var(--color-neutral-900);
 
-  --success: var(--color-emerald-600);
-  --success-foreground: var(--color-green-50);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-green-700);
 
-  --info: var(--color-sky-600);
-  --info-foreground: var(--color-sky-50);
+  --info: var(--color-sky-500);
+  --info-foreground: var(--color-sky-700);
 
-  --warning: var(--color-yellow-400);
-  --warning-foreground: var(--color-yellow-950);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
 
-  --destructive: var(--color-red-600);
-  --destructive-foreground: var(--color-red-50);
+  --destructive: var(--color-red-500);
+  --destructive-foreground: var(--color-red-700);
 
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-300);
-  --ring: var(--color-primary);
+  --ring: var(--primary);
 
   --chart-1: var(--color-orange-600);
   --chart-2: var(--color-teal-600);
@@ -185,24 +185,24 @@
   --muted: var(--color-neutral-900);
   --muted-foreground: var(--color-neutral-400);
 
-  --accent: var(--color-neutral-800);
+  --accent: var(--color-neutral-900);
   --accent-foreground: var(--color-neutral-50);
 
-  --success: var(--color-emerald-600);
-  --success-foreground: var(--color-green-50);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-green-400);
 
-  --info: var(--color-sky-600);
-  --info-foreground: var(--color-sky-50);
+  --info: var(--color-sky-500);
+  --info-foreground: var(--color-sky-400);
 
-  --warning: var(--color-yellow-600);
-  --warning-foreground: var(--color-yellow-50);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
 
   --destructive: var(--color-red-700);
-  --destructive-foreground: var(--color-red-50);
+  --destructive-foreground: var(--color-red-400);
 
   --border: var(--color-neutral-800);
-  --input: var(--color-neutral-900);
-  --ring: var(--color-primary);
+  --input: var(--color-neutral-800);
+  --ring: var(--primary);
 
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
@@ -225,7 +225,7 @@
   }
 
   body {
-    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)];
+    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col;
   }
 
   main {
@@ -245,5 +245,13 @@
 @utility extend-touch-target {
   @media (pointer: coarse) {
     @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

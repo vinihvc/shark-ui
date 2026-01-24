@@ -1,6 +1,6 @@
 ---
 title: Button
-description: Render a button or an element styled as a button, used to trigger an action or event
+description: A button or an element styled as a button.
 ---
 
 import { ComponentPreviewFile } from "@/components/component-preview-file";
@@ -30,8 +30,14 @@ import { Button } from "@/components/ui/button";
 ```
 
 ```tsx lineNumbers
-<Button>Click me</Button>
+<Button>Button</Button>
 ```
+
+## Link
+
+You can use [asChild](/docs/as-child) prop on `<Button />` to make another element styled as a button.
+
+<ComponentPreviewFile componentName="button" fileName="state-as-child" />
 
 ## Variants
 
@@ -39,97 +45,62 @@ You can change the variant of the button using the `variant` prop.
 
 Available variants are: `solid`, `outline`, `success`, `info`, `warning`, `destructive`.
 
-<ComponentVariants variants={['solid', 'outline', 'secondary', 'ghost', 'link', 'success', 'info', 'warning', 'destructive']} defaultValue="solid">
-  <TabsContent value="solid">
-    <Button>Solid Button</Button>
-  </TabsContent>
+### Solid
 
-  <TabsContent value="outline">
-    <Button variant="outline">Outline Button</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="variant-solid" />
 
-  <TabsContent value="secondary">
-    <Button variant="secondary">Secondary Button</Button>
-  </TabsContent>
+### Outline
 
-  <TabsContent value="ghost">
-    <Button variant="ghost">Ghost Button</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="variant-outline" />
 
-  <TabsContent value="link">
-    <Button variant="link">Link Button</Button>
-  </TabsContent>
+### Secondary
 
-  <TabsContent value="success">
-    <Button variant="success">Success Button</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="variant-secondary" />
 
-  <TabsContent value="info">
-    <Button variant="info">Info Button</Button>
-  </TabsContent>
+### Ghost
 
-  <TabsContent value="warning">
-    <Button variant="warning">Warning Button</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="variant-ghost" />
 
-  <TabsContent value="destructive">
-    <Button variant="destructive">Destructive Button</Button>
-  </TabsContent>
-</ComponentVariants>
+### Link
+
+<ComponentPreviewFile componentName="button" fileName="variant-link" />
+
+### Destructive
+
+<ComponentPreviewFile componentName="button" fileName="variant-destructive" />
 
 ## Sizes
 
 You can change the size of the button using the `size` prop.
 
-Available sizes are: `sm`, `md`, `lg`, `icon-sm`, `icon-md`, `icon-lg`.
+Available sizes are: `xs`, `sm`, `md`, `lg`, `icon-xs`, `icon-sm`, `icon-md`, `icon-lg`.
 
-<ComponentVariants variants={['sm', 'md', 'lg', 'icon-sm', 'icon-md', 'icon-lg']} defaultValue="md">
-  <TabsContent value="sm">
-    <Button size="sm">Small Button</Button>
-  </TabsContent>
+### Extra Small
 
-  <TabsContent value="md">
-    <Button size="md">Medium Button</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="size-xs" />
 
-  <TabsContent value="lg">
-    <Button size="lg">Large Button</Button>
-  </TabsContent>
+### Small
 
-  <TabsContent value="icon-sm">
-    <Button size="icon-sm">
-      <Plus />
-    </Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="size-sm" />
 
-  <TabsContent value="icon-md">
-    <Button size="icon-md">
-      <Plus />
-    </Button>
-  </TabsContent>
+### Medium
 
-  <TabsContent value="icon-lg">
-    <Button size="icon-lg">
-      <Plus />
-    </Button>
-  </TabsContent>
-</ComponentVariants>
+<ComponentPreviewFile componentName="button" fileName="size-md" />
 
-## Click Effect
+### Large
 
-You can change the click effect of the button using the `clickEffect` prop.
+<ComponentPreviewFile componentName="button" fileName="size-lg" />
 
-Available click effects are: `true`, `false`.
+### Extra Large
 
-<ComponentVariants variants={['true', 'false']} defaultValue="true">
-  <TabsContent value="true">
-    <Button clickEffect={true}>Move 1px down when clicked</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="size-xl" />
 
-  <TabsContent value="false">
-    <Button clickEffect={false}>No click effect</Button>
-  </TabsContent>
-</ComponentVariants>
+## Disabling click effect
+
+You can disable the click effect of the button using the `clickEffect` prop.
+
+<ComponentPreviewFile componentName="button" fileName="state-click-effect-false" />
+
 
 ## Loading
 
@@ -137,12 +108,13 @@ You can show a loading indicator when the button is loading using the `isLoading
 
 Available loading states are: `true`, `false`.
 
-<ComponentVariants variants={['true', 'false']}>
-  <TabsContent value="true">
-    <Button isLoading={true}>Submit</Button>
-  </TabsContent>
+<ComponentPreviewFile componentName="button" fileName="state-loading-true" />
 
-  <TabsContent value="false">
-    <Button isLoading={false}>Submit</Button>
-  </TabsContent>
-</ComponentVariants>
+## API Reference
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `solid`, `outline`, `secondary`, `ghost`, `link`, `destructive` | `solid` | 
+| `size` | `xs`, `sm`, `md`, `lg`, `xl`, `icon-xs`, `icon-sm`, `icon-md`, `icon-lg`, `icon-xl` | `md` | 
+| `clickEffect` | `boolean` | `true` | 
+| `isLoading` | `boolean` | `false` | 

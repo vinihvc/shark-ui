@@ -33,15 +33,10 @@ export const PopoverTrigger = (
 ) => <ArkPopover.Trigger data-slot="popover-trigger" {...props} />;
 
 interface PopoverContentProps
-  extends React.ComponentProps<typeof ArkPopover.Content> {
-  /**
-   * Whether to show the arrow
-   */
-  showArrow?: boolean;
-}
+  extends React.ComponentProps<typeof ArkPopover.Content> {}
 
 export const PopoverContent = (props: PopoverContentProps) => {
-  const { showArrow, className, children, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -67,8 +62,6 @@ export const PopoverContent = (props: PopoverContentProps) => {
           data-slot="popover-content"
           {...rest}
         >
-          {!!showArrow && <PopoverArrow />}
-
           {children}
         </ArkPopover.Content>
       </ArkPopover.Positioner>

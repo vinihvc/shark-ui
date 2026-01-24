@@ -6,44 +6,45 @@ import { cn } from "@/lib/utils";
 export const alertVariants = tv({
   base: [
     "relative",
-    "w-full",
-    "px-4 py-3",
-    "grid grid-cols-[0_1fr] items-start gap-y-0.5",
-    "text-sm",
+    "px-3.5 py-3",
+    "grid w-full items-start gap-x-2 gap-y-0.5",
+    "text-card-foreground text-sm",
     "rounded-lg border",
-    "has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3",
-    "[&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+    "has-[>svg]:has-data-[slot=alert-action]:grid-cols-[calc(var(--spacing)*4)_1fr_auto] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr]",
+    "has-[>svg]:gap-x-2 [&>svg]:h-lh [&>svg]:w-4",
+    "has-data-[slot=alert-action]:grid-cols-[1fr_auto]",
   ],
   variants: {
     variant: {
       solid: [
-        "bg-card",
-        "text-card-foreground",
-        "*:data-[slot=alert-description]:text-card-foreground/80",
+        "bg-input/4",
+        "dark:bg-input/32",
+        "[&>svg]:text-muted-foreground",
+        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-muted",
       ],
       destructive: [
-        "bg-destructive/5",
-        "text-destructive",
-        "border-destructive",
-        "*:data-[slot=alert-description]:text-destructive/90",
+        "bg-destructive/4",
+        "border-destructive/32",
+        "[&>svg]:text-destructive",
+        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-destructive/10",
       ],
       info: [
-        "bg-info/5",
-        "text-info",
-        "border-info",
-        "*:data-[slot=alert-description]:text-info/80",
+        "bg-info/4",
+        "border-info/32",
+        "[&>svg]:text-info",
+        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-info/10",
       ],
       warning: [
-        "bg-warning/10",
-        "text-warning-foreground dark:text-foreground",
-        "border-warning",
-        "*:data-[slot=alert-description]:text-warning-foreground/80",
+        "bg-warning/4",
+        "border-warning/32",
+        "[&>svg]:text-warning",
+        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-warning/10",
       ],
       success: [
-        "bg-success/5",
-        "text-success",
-        "border-success",
-        "*:data-[slot=alert-description]:text-success/80",
+        "bg-success/4",
+        "border-success/32",
+        "[&>svg]:text-success",
+        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-success/10",
       ],
     },
   },
@@ -91,10 +92,33 @@ export const AlertDescription = (
   return (
     <ark.div
       className={cn(
-        "col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        "col-start-2 grid justify-items-start gap-1",
+        "text-muted-foreground text-sm [&_p]:leading-relaxed",
         className
       )}
       data-slot="alert-description"
+      {...rest}
+    />
+  );
+};
+
+export const AlertAction = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn(
+        "flex gap-1",
+        "max-sm:col-start-2 max-sm:mt-2",
+        "sm:[svg~[data-slot=alert-title]~&]:col-start-3",
+        "sm:row-start-1 sm:row-end-3 sm:self-center",
+        "sm:[[data-slot=alert-description]~&]:col-start-2",
+        "sm:[[data-slot=alert-title]~&]:col-start-2",
+        "sm:[svg~&]:col-start-2",
+        "sm:[svg~[data-slot=alert-description]~&]:col-start-3",
+        className
+      )}
+      data-slot="alert-action"
       {...rest}
     />
   );

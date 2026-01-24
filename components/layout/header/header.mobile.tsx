@@ -16,6 +16,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
   { name: "Installation", href: "/docs/installation" },
   { name: "Components", href: "/docs/components" },
+  { name: "asChild prop", href: "/docs/as-child" },
   { name: "Changelog", href: "/docs/changelog" },
 ];
 

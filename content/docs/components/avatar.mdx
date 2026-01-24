@@ -6,14 +6,12 @@ links:
   api: https://ark-ui.com/docs/components/avatar#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
 <ComponentPreviewFile componentName="avatar" />
 
 ## Installation
 
 <ComponentInstallation componentName="avatar">
+
 Install the following dependencies:
   
 ```bash
@@ -37,3 +35,68 @@ import {
   <AvatarFallback>VV</AvatarFallback>
 </Avatar>
 ```
+
+## Sizes
+
+Use the `size` prop to change the size of the avatar.
+
+Available sizes are: `sm`, `md`, `lg`.
+
+### Small
+
+<ComponentPreviewFile componentName="avatar" fileName="size-sm" />
+
+### Medium
+
+<ComponentPreviewFile componentName="avatar" fileName="size-md" />
+
+### Large
+
+<ComponentPreviewFile componentName="avatar" fileName="size-lg" />
+
+## Examples
+
+### Custom Size
+
+If you want to use a custom size, you can use the `className` prop to set the size.
+
+<ComponentPreviewFile componentName="avatar" fileName="size-custom" />
+
+### Fallback Only
+
+You can use just the `<AvatarFallback>` to display a icon or text.
+
+<ComponentPreviewFile componentName="avatar" fileName="example-fallback-only" />
+
+### Avatar Group
+
+Use the `<AvatarGroup>` to add a group of avatars.
+
+<ComponentPreviewFile componentName="avatar" fileName="example-group" />
+
+### Avatar Group Count
+
+Use `<AvatarGroupCount>` to add a count to the group.
+
+<ComponentPreviewFile componentName="avatar" fileName="example-group-count" />
+
+### Avatar Group Count Icon
+
+You can also add an icon to the `<AvatarGroupCount>`
+
+<ComponentPreviewFile componentName="avatar" fileName="example-group-count-icon" />
+
+## API Reference
+
+### Avatar
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `size` | `sm`, `md`, `lg` | `md` | 
+| `variant` | `success`, `info`, `warning`, `destructive` | `success` | 
+
+### AvatarBadge
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `success`, `info`, `warning`, `destructive` | `success` | 

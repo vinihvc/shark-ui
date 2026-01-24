@@ -23,6 +23,11 @@ const TOP_LEVEL_SECTIONS = [
     exact: true,
   },
   {
+    name: "asChild prop",
+    href: "/docs/as-child",
+    exact: true,
+  },
+  {
     name: "Changelog",
     href: "/docs/changelog",
   },
@@ -42,7 +47,7 @@ export function DocsSidebar({
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="overflow-x-hidden px-2 pb-12">
+      <SidebarContent className="no-scrollbar overflow-x-hidden px-2 pb-12">
         <div className="h-(--top-spacing) shrink-0" />
         <SidebarGroup>
           <SidebarGroupLabel className="font-medium text-muted-foreground">
@@ -75,6 +80,7 @@ export function DocsSidebar({
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
         {tree.children.map((item) => {
           if (EXCLUDED_SECTIONS.includes(item.$id ?? "")) {
             return null;
@@ -85,6 +91,7 @@ export function DocsSidebar({
               <SidebarGroupLabel className="font-medium text-muted-foreground">
                 {item.name}
               </SidebarGroupLabel>
+
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">

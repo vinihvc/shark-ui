@@ -59,8 +59,6 @@ export const HoverCardContent = (
           data-slot="hover-card-content"
           {...rest}
         >
-          <HoverCardArrow />
-
           {children}
         </ArkHoverCard.Content>
       </ArkHoverCard.Positioner>

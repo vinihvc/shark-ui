@@ -10,7 +10,7 @@ export const Clipboard = (
   const { className, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Root data-slot="clipboard-root" {...rest}>
+    <ArkClipboard.Root data-slot="clipboard" {...rest}>
       <ArkClipboard.Control
         className={cn("flex items-center gap-2", className)}
         data-slot="clipboard-control"
@@ -20,10 +20,6 @@ export const Clipboard = (
     </ArkClipboard.Root>
   );
 };
-
-export const ClipboardContext = (
-  props: React.ComponentProps<typeof ArkClipboard.Context>
-) => <ArkClipboard.Context data-slot="clipboard-context" {...props} />;
 
 export const ClipboardTrigger = (
   props: React.ComponentProps<typeof ArkClipboard.Trigger>

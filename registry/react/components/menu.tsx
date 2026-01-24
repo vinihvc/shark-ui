@@ -59,7 +59,7 @@ export const MenuPositioner = (
 ) => <ArkMenu.Positioner data-slot="menu-positioner" {...props} />;
 
 export const MenuContent = (props: MenuContentProps) => {
-  const { showArrow = true, className, children, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -71,8 +71,6 @@ export const MenuContent = (props: MenuContentProps) => {
         >
           {children}
         </ArkMenu.Content>
-
-        {!!showArrow && <MenuArrow />}
       </MenuPositioner>
     </Portal>
   );

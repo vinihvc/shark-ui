@@ -7,7 +7,6 @@ import { SITE_CONFIG } from "@/config/site";
 import {
   Tabs,
   TabsContent,
-  TabsIndicator,
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
@@ -39,12 +38,13 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
         <TabsList>
           <TabsTrigger value="cli">CLI</TabsTrigger>
           <TabsTrigger value="manual">Manual</TabsTrigger>
-
-          <TabsIndicator />
         </TabsList>
 
         <div className="relative mt-4 rounded-lg **:[figure]:border-none">
-          <TabsContent value="cli">
+          <TabsContent
+            className="overflow-hidden bg-card **:[div]:max-h-[350px] **:[figure]:bg-card"
+            value="cli"
+          >
             <CodeBlock
               code={`${cliCommand}/${componentName}.json`}
               lang="bash"

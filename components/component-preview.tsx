@@ -2,7 +2,6 @@ import type React from "react";
 import {
   Tabs,
   TabsContent,
-  TabsIndicator,
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
@@ -26,8 +25,6 @@ export const ComponentPreview = (props: ComponentPreviewProps) => {
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
-
-          <TabsIndicator />
         </TabsList>
 
         <div className="**:figure:!m-0 relative rounded-lg border **:[figure]:border-none">

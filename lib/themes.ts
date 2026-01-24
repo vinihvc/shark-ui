@@ -1,7 +1,7 @@
 export const PRIMARY_COLORS = [
   {
-    label: "Default",
-    value: "default",
+    label: "Neutral",
+    value: "neutral",
     hex: {
       light: "bg-black",
       dark: "bg-white",
@@ -537,10 +537,10 @@ export const BORDER_RADIUS = [
     },
   },
   {
-    label: "0.75",
+    label: "0.65",
     value: "lg",
     cssVars: {
-      radius: "0.75rem",
+      radius: "0.65rem",
     },
   },
   {
