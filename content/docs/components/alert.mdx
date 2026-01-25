@@ -4,8 +4,6 @@ description: Displays a alert for user attention with different variants
 ---
 
 import { Alert, AlertDescription, AlertTitle } from "@/registry/react/components/alert";
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentVariants } from '@/components/component-variants'
 import { TabsContent } from "@/registry/react/components/tabs";
 import { Info, AlertCircle, AlertTriangle, CheckCircle } from "lucide-react";
@@ -77,8 +75,6 @@ import {
 
 You can change the variant of the alert using the `variant` prop. 
 
-Available variants are: `solid`, `info`, `warning`, `success`, `destructive`.
-
 ### Solid
 
 <ComponentPreviewFile componentName="alert" fileName="variant-solid" />
@@ -99,6 +95,55 @@ Available variants are: `solid`, `info`, `warning`, `success`, `destructive`.
 
 <ComponentPreviewFile componentName="alert" fileName="variant-destructive" />
 
-## With action buttons
+## Examples
+
+### With icon
+
+You can add icons to alerts to provide visual context and improve user experience.
+
+<ComponentPreviewFile componentName="alert" fileName="with-icon" />
+
+### Custom color
+
+You can use the `className` prop to customize the alert colors to match your design system.
+
+<ComponentPreviewFile componentName="alert" fileName="custom-color" />
+
+### With action buttons
 
 <ComponentPreviewFile componentName="alert" fileName="with-action" />
+
+## API Reference
+
+### Alert
+
+Root element of the alert. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"solid", "info", "warning", "success", "destructive"` | `"solid"` |
+| `className` | `string` | `-` |
+
+### AlertTitle
+
+Styled title of the alert. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### AlertDescription
+
+Styled description with muted foreground text color. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### AlertAction
+
+Container for action buttons. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |

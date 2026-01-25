@@ -8,9 +8,10 @@ import {
 const Example = () => (
   <Alert variant="success">
     <CheckCircle />
-    <AlertTitle>Success</AlertTitle>
+    <AlertTitle>Payment successful</AlertTitle>
     <AlertDescription>
-      Your changes have been saved successfully.
+      Your payment has been processed successfully. You will receive a receipt
+      in your email.
     </AlertDescription>
   </Alert>
 );

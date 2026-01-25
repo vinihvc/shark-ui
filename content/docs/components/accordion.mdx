@@ -42,3 +42,64 @@ import {
   </AccordionItem>
 </Accordion>
 ```
+
+## Examples
+
+### Single
+
+By default, only one item can be open at a time. Use the `collapsible` prop to allow closing the open item.
+
+<ComponentPreviewFile componentName="accordion" fileName="single" />
+
+### Multiple
+
+Use the `multiple` prop to allow multiple items to be open simultaneously.
+
+<ComponentPreviewFile componentName="accordion" fileName="multiple" />
+
+### Controlled
+
+Use the `value` and `onValueChange` props to control the accordion state programmatically.
+
+<ComponentPreviewFile componentName="accordion" fileName="controlled" />
+
+## API Reference
+
+### Accordion
+
+Root element of the accordion. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `collapsible` | `boolean` | `false` |
+| `multiple` | `boolean` | `false` |
+| `value` | `string[]` | `-` |
+| `defaultValue` | `string[]` | `-` |
+| `onValueChange` | `ValueChangeDetails` | `-` |
+| `className` | `string` | `-` |
+
+### AccordionItem
+
+Container for a single accordion item. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `string` | **required** |
+| `className` | `string` | `-` |
+
+### AccordionTrigger
+
+Button that toggles the accordion item. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### AccordionContent
+
+Container for the accordion item content. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |

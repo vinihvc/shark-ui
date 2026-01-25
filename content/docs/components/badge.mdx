@@ -3,13 +3,6 @@ title: Badge
 description: Small status descriptors for UI elements with multiple variants
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-import { ComponentVariants } from '@/components/component-variants'
-import { TabsContent } from "@/registry/react/components/tabs";
-import { Badge } from "@/registry/react/components/badge";
-import { Star, Heart, Settings, Check, CheckCheck, AlertTriangle, Trash } from "lucide-react";
-
 <ComponentPreviewFile componentName="badge" />
 
 ## Installation
@@ -35,107 +28,77 @@ import { Badge } from "@/components/ui/badge";
 
 ## Variants
 
-You can change the variant of the badge using the `variant` prop. 
+You can change the variant of the badge using the `variant` prop.
 
-Available variants are: `solid`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive`.
+### Solid
 
-<ComponentVariants 
-  variants={['solid', 'secondary', 'outline', 'success', 'info', 'warning', 'destructive']} 
->
-  <TabsContent value="solid">
-    <Badge>
-      <Star />
-      Favorite
-    </Badge>
-  </TabsContent>
+<ComponentPreviewFile componentName="badge" fileName="variant-solid" />
 
-  <TabsContent value="secondary">
-    <Badge variant="secondary">
-      <Heart />
-      Like
-    </Badge>
-  </TabsContent>
+### Secondary
 
-  <TabsContent value="outline">
-    <Badge variant="outline">
-      <Settings />
-      Settings
-    </Badge>
-  </TabsContent>
+<ComponentPreviewFile componentName="badge" fileName="variant-secondary" />
 
-  <TabsContent value="success">
-    <Badge variant="success">
-      <CheckCheck />
-      Completed
-    </Badge>
-  </TabsContent>
+### Outline
 
-  <TabsContent value="info">
-    <Badge variant="info">
-      <Check />
-       Checked
-    </Badge>
-  </TabsContent>
+<ComponentPreviewFile componentName="badge" fileName="variant-outline" />
 
-  <TabsContent value="warning">
-    <Badge variant="warning">
-      <AlertTriangle />
-      2 Warnings
-    </Badge>
-  </TabsContent>
+### Success
 
-  <TabsContent value="destructive">
-    <Badge variant="destructive">
-      <Trash />
-      Delete
-    </Badge>
-  </TabsContent>
-</ComponentVariants>
+<ComponentPreviewFile componentName="badge" fileName="variant-success" />
+
+### Info
+
+<ComponentPreviewFile componentName="badge" fileName="variant-info" />
+
+### Warning
+
+<ComponentPreviewFile componentName="badge" fileName="variant-warning" />
+
+### Destructive
+
+<ComponentPreviewFile componentName="badge" fileName="variant-destructive" />
 
 ## Sizes
 
 You can change the size of the badge using the `size` prop.
 
-Available sizes are: `sm`, `md`, `lg`.
+### Small
 
-<ComponentVariants 
-  variants={['small', 'medium', 'large']} 
-  defaultValue="medium"
->
-  <TabsContent value="small">
-    <Badge size="sm">
-      <Star />
-      Favorite
-    </Badge>
-  </TabsContent>
+<ComponentPreviewFile componentName="badge" fileName="size-sm" />
 
- <TabsContent value="medium">
-    <Badge size="md">
-      <Star />
-      Favorite
-    </Badge>
-  </TabsContent>
+### Medium
 
-   <TabsContent value="large">
-    <Badge size="lg">
-      <Star />
-      Favorite
-    </Badge>
-  </TabsContent>
-</ComponentVariants>
+<ComponentPreviewFile componentName="badge" fileName="size-md" />
 
-## Link
+### Large
 
-You can use `asChild` prop to wrap the badge in a link.
+<ComponentPreviewFile componentName="badge" fileName="size-lg" />
 
-```tsx lineNumbers
-<Badge asChild>
-  <a href="/">
-    <Star />
-    Favorite
-  </a>
-</Badge>
-```
+## Examples
+
+### With link
+
+You can use [asChild](/docs/as-child) prop on `<Badge />` to make another element styled as a badge.
+
+<ComponentPreviewFile componentName="badge" fileName="example-with-link" />
+
+### Custom color
+
+You can use the `className` prop to add custom colors to the badge.
+
+<ComponentPreviewFile componentName="badge" fileName="example-custom-color" />
+
+### With icon
+
+You can add icons to badges to provide visual context.
+
+<ComponentPreviewFile componentName="badge" fileName="example-with-icon" />
+
+### With count
+
+Badges can display counts or numbers for notifications and indicators.
+
+<ComponentPreviewFile componentName="badge" fileName="example-with-count" />
 
 
 

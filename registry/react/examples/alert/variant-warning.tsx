@@ -8,9 +8,10 @@ import {
 const Example = () => (
   <Alert variant="warning">
     <AlertTriangle />
-    <AlertTitle>Warning</AlertTitle>
+    <AlertTitle>Storage almost full</AlertTitle>
     <AlertDescription>
-      Your storage is almost full. Consider upgrading your plan.
+      Your storage is almost full. Consider upgrading your plan to avoid losing
+      data.
     </AlertDescription>
   </Alert>
 );

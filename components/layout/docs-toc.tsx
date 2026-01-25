@@ -36,7 +36,17 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
       <div className="relative ms-3.5 flex flex-col gap-0.5 before:absolute before:inset-y-0 before:-left-3.25 before:w-px before:bg-border">
         {data.map((item) => (
           <a
-            className="relative py-1 text-sidebar-foreground leading-4.5 no-underline transition-colors before:absolute before:inset-y-px before:-left-3.25 before:w-px before:rounded-full hover:bg-transparent hover:text-foreground data-[active=true]:bg-transparent data-[depth=3]:ps-3.5 data-[depth=4]:ps-5.5 data-[active=true]:text-foreground data-[active=true]:before:w-0.5 data-[active=true]:before:bg-primary"
+            className={cn(
+              "relative py-1 leading-4.5 no-underline",
+              "text-muted-foreground",
+              "transition-colors",
+              "before:absolute before:inset-y-px before:-left-3.25 before:w-px before:rounded-full",
+              "hover:text-foreground",
+              "data-[active=true]:text-foreground",
+              "data-[active=true]:before:w-0.5 data-[active=true]:before:bg-primary",
+              "data-[depth=3]:ps-3.5",
+              "data-[depth=4]:ps-5.5"
+            )}
             data-active={item.url === `#${activeHeading}`}
             data-depth={item.depth}
             href={item.url}

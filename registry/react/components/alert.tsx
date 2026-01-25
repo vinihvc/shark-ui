@@ -18,7 +18,6 @@ export const alertVariants = tv({
     variant: {
       solid: [
         "bg-input/4",
-        "dark:bg-input/32",
         "[&>svg]:text-muted-foreground",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-muted",
       ],
@@ -74,10 +73,7 @@ export const AlertTitle = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
-        className
-      )}
+      className={cn("font-medium", "[svg~&]:col-start-2", className)}
       data-slot="alert-title"
       {...rest}
     />
@@ -92,8 +88,9 @@ export const AlertDescription = (
   return (
     <ark.div
       className={cn(
-        "col-start-2 grid justify-items-start gap-1",
-        "text-muted-foreground text-sm [&_p]:leading-relaxed",
+        "flex flex-col gap-2.5",
+        "text-pretty text-muted-foreground",
+        "[svg~&]:col-start-2",
         className
       )}
       data-slot="alert-description"

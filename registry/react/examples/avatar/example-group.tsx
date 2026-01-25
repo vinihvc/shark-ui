@@ -17,18 +17,18 @@ const Example = () => {
           alt="@segunadebayo"
           src="https://github.com/segunadebayo.png"
         />
-        <AvatarFallback>VV</AvatarFallback>
+        <AvatarFallback>SA</AvatarFallback>
       </Avatar>
       <Avatar>
         <AvatarImage
           alt="@pasqualevitiello"
           src="https://github.com/pasqualevitiello.png"
         />
-        <AvatarFallback>VV</AvatarFallback>
+        <AvatarFallback>PV</AvatarFallback>
       </Avatar>
       <Avatar>
         <AvatarImage alt="@irsyadadl" src="https://github.com/irsyadadl.png" />
-        <AvatarFallback>VV</AvatarFallback>
+        <AvatarFallback>IA</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   );

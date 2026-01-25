@@ -1,4 +1,4 @@
-import { Info } from "lucide-react";
+import { History } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,8 +7,8 @@ import {
 
 const Example = () => (
   <Alert variant="info">
-    <Info />
-    <AlertTitle>Information</AlertTitle>
+    <History />
+    <AlertTitle>New update available</AlertTitle>
     <AlertDescription>
       A new update is available. Check it out now.
     </AlertDescription>

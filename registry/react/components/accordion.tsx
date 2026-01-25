@@ -56,16 +56,12 @@ export const AccordionTrigger = (
     >
       {children}
 
-      <AccordionIndicator>
+      <ArkAccordion.ItemIndicator data-slot="accordion-indicator">
         <ChevronDown className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200" />
-      </AccordionIndicator>
+      </ArkAccordion.ItemIndicator>
     </ArkAccordion.ItemTrigger>
   );
 };
-
-export const AccordionIndicator = (
-  props: React.ComponentProps<typeof ArkAccordion.ItemIndicator>
-) => <ArkAccordion.ItemIndicator data-slot="accordion-indicator" {...props} />;
 
 export const AccordionContent = (
   props: React.ComponentProps<typeof ArkAccordion.ItemContent>

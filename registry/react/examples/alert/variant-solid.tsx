@@ -1,4 +1,4 @@
-import { Info } from "lucide-react";
+import { CheckCheck } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,7 +7,7 @@ import {
 
 const Example = () => (
   <Alert variant="solid">
-    <Info />
+    <CheckCheck />
     <AlertTitle>Deployment successful</AlertTitle>
     <AlertDescription>
       You can now start building your next great project.

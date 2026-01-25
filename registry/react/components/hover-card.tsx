@@ -9,12 +9,14 @@ export const HoverCard = (
   const {
     lazyMount = true,
     unmountOnExit = true,
+    closeDelay = 100,
     positioning = { placement: "top" },
     ...rest
   } = props;
 
   return (
     <ArkHoverCard.Root
+      closeDelay={closeDelay}
       data-slot="hover-card"
       lazyMount={lazyMount}
       positioning={positioning}

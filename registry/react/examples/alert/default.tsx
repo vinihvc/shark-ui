@@ -1,4 +1,3 @@
-import { Info } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,10 +6,10 @@ import {
 
 const AlertDemo = () => (
   <Alert>
-    <Info />
-    <AlertTitle>Deployment successful</AlertTitle>
+    <AlertTitle>Heads up!</AlertTitle>
     <AlertDescription>
-      You can now start building your next great project.
+      You can add icons to alerts to provide visual context and improve user
+      experience.
     </AlertDescription>
   </Alert>
 );

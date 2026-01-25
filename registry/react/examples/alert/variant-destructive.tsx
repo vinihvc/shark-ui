@@ -1,4 +1,4 @@
-import { AlertCircle } from "lucide-react";
+import { TriangleAlert } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,8 +7,8 @@ import {
 
 const Example = () => (
   <Alert variant="destructive">
-    <AlertCircle />
-    <AlertTitle>Error</AlertTitle>
+    <TriangleAlert />
+    <AlertTitle>Session expired</AlertTitle>
     <AlertDescription>
       Your session has expired. Please log in again.
     </AlertDescription>

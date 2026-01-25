@@ -1,4 +1,4 @@
-import { Info } from "lucide-react";
+import { History } from "lucide-react";
 import {
   Alert,
   AlertAction,
@@ -8,17 +8,17 @@ import {
 import { Button } from "@/registry/react/components/button";
 
 const Example = () => (
-  <Alert>
-    <Info />
-    <AlertTitle>Information</AlertTitle>
+  <Alert variant="info">
+    <History />
+    <AlertTitle>New update available</AlertTitle>
     <AlertDescription>
       A new update is available. Check it out now.
     </AlertDescription>
     <AlertAction>
       <Button size="xs" variant="ghost">
-        Dismiss
+        Ignore
       </Button>
-      <Button size="xs">Ok</Button>
+      <Button size="xs">Update</Button>
     </AlertAction>
   </Alert>
 );

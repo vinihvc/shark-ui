@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -137,37 +137,16 @@ export const CardsButtons = () => {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-        <Button size="icon-md" variant="success">
-          <CheckCircle2 />
-        </Button>
-        <Button
-          onClick={() =>
-            toast.create({
-              title: "You found the easter egg!",
-              description: "Congratulations!",
-              type: "success",
-            })
-          }
-          variant="warning"
-        >
-          Warning
-        </Button>
+
         <Tooltip open={isLoading} positioning={{ placement: "bottom" }}>
           <TooltipTrigger asChild>
-            <Button isLoading={isLoading} variant="info">
-              Info
+            <Button isLoading={isLoading} variant="destructive">
+              Delete account
             </Button>
           </TooltipTrigger>
           <TooltipContent>I have isLoading state</TooltipContent>
         </Tooltip>
 
-        <Tooltip defaultOpen>
-          <TooltipTrigger asChild>
-            <Button variant="destructive">Delete account</Button>
-          </TooltipTrigger>
-
-          <TooltipContent>I'm a tooltip</TooltipContent>
-        </Tooltip>
         <Clipboard value="something">
           <ClipboardTrigger asChild>
             <Button variant="secondary">
@@ -176,7 +155,19 @@ export const CardsButtons = () => {
             </Button>
           </ClipboardTrigger>
         </Clipboard>
-        <Button variant="ghost"> Ghost</Button>
+        <Button
+          onClick={() =>
+            toast.create({
+              title: "You found the easter egg!",
+              description: "Congratulations!",
+              type: "success",
+            })
+          }
+          variant="ghost"
+        >
+          {" "}
+          Ghost
+        </Button>
         <Button variant="link"> Visit website</Button>
       </CardContent>
     </Card>
