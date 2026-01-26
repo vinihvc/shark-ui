@@ -1,34 +1,16 @@
 import Link from "fumadocs-core/link";
+import { findNeighbour } from "fumadocs-core/page-tree";
 import { createRelativeLink } from "fumadocs-ui/mdx";
-import {
-  ArrowUpRightIcon,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowUpRightIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChatGptIcon } from "@/components/icons/chat-gpt";
-import { ClaudeIcon } from "@/components/icons/claude";
-import { GithubIcon } from "@/components/icons/github";
-import { MarkdownIcon } from "@/components/icons/markdown";
+import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
 import { getPageImage, source } from "@/lib/fumadocs";
 import { getMDXComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
-import { ButtonGroup } from "@/registry/react/components/button-group";
-import {
-  Clipboard,
-  ClipboardIndicator,
-  ClipboardTrigger,
-} from "@/registry/react/components/clipboard";
-import {
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
-} from "@/registry/react/components/menu";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const generateStaticParams = () => source.generateParams();
 
@@ -60,6 +42,13 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
     notFound();
   }
 
+  const rawContent = await page.data.getText("raw");
+
+  const isChangelog = params.slug?.[0] === "changelog";
+  const neighbours = isChangelog
+    ? { previous: null, next: null }
+    : findNeighbour(source.pageTree, page.url);
+
   const MDX = page.data.body;
 
   const links = page.data.links;
@@ -78,79 +67,27 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                         {page.data.title}
                       </h1>
 
-                      <ButtonGroup className="hidden sm:flex">
-                        <ButtonGroup>
-                          <Clipboard>
-                            <ClipboardTrigger asChild>
-                              <Button
-                                className="rounded-r-none"
-                                size="sm"
-                                variant="outline"
-                              >
-                                <ClipboardIndicator />
-                                Copy Markdown
-                              </Button>
-                            </ClipboardTrigger>
-                          </Clipboard>
+                      <div className="flex items-center gap-2">
+                        <DocsCopyPage data={rawContent} url={page.url} />
 
-                          <Menu
-                            positioning={{
-                              placement: "bottom-start",
-                              strategy: "absolute",
-                            }}
-                          >
-                            <MenuTrigger asChild>
-                              <Button size="icon-sm" variant="outline">
-                                <ChevronDown />
-                              </Button>
-                            </MenuTrigger>
+                        <div className="flex items-center gap-2">
+                          {neighbours.previous && (
+                            <Button asChild size="icon-sm" variant="outline">
+                              <Link href={neighbours.previous.url}>
+                                <ChevronLeft />
+                              </Link>
+                            </Button>
+                          )}
 
-                            <MenuContent>
-                              <MenuItem asChild value="edit">
-                                <Link href="">
-                                  <MarkdownIcon />
-                                  View as Markdown
-                                </Link>
-                              </MenuItem>
-
-                              <MenuItem asChild value="github">
-                                <Link href="">
-                                  <GithubIcon />
-                                  Open in GitHub
-                                </Link>
-                              </MenuItem>
-
-                              <MenuItem asChild value="gpt">
-                                <Link href="">
-                                  <ChatGptIcon />
-                                  Open in ChatGPT
-                                </Link>
-                              </MenuItem>
-
-                              <MenuItem asChild value="claude">
-                                <Link href="">
-                                  <ClaudeIcon />
-                                  Open in Claude
-                                </Link>
-                              </MenuItem>
-                            </MenuContent>
-                          </Menu>
-                        </ButtonGroup>
-
-                        <ButtonGroup>
-                          <Button asChild size="icon-sm" variant="outline">
-                            <Link href="/">
-                              <ChevronLeft />
-                            </Link>
-                          </Button>
-
-                          <Button asChild size="icon-sm" variant="outline">
-                            <Link href="">
-                              <ChevronRight />
-                            </Link>
-                          </Button>
-                        </ButtonGroup>
-                      </ButtonGroup>
+                          {neighbours.next && (
+                            <Button asChild size="icon-sm" variant="outline">
+                              <Link href={neighbours.next.url}>
+                                <ChevronRight />
+                              </Link>
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
                     {page.data.description && (
@@ -162,7 +99,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                     {links && (
                       <div className="flex items-center gap-2 pt-4">
                         {links?.doc && (
-                          <Badge asChild pill variant="outline">
+                          <Badge asChild pill variant="secondary">
                             <a
                               href={links.doc}
                               rel="noreferrer"
@@ -174,7 +111,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                         )}
 
                         {links?.api && (
-                          <Badge asChild pill variant="outline">
+                          <Badge asChild pill variant="secondary">
                             <a
                               href={links.api}
                               rel="noreferrer"
@@ -203,12 +140,14 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
         </div>
 
         <div className="sticky top-(--header-height) z-30 ms-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col overflow-hidden overscroll-none xl:flex">
-          {page.data.toc && page.data.toc.length > 0 && (
-            <div className="no-scrollbar flex min-h-0 flex-col gap-2 overflow-auto py-2">
+          <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:hidden">
+            <div className="flex min-h-0 flex-col gap-2 overflow-auto py-2">
               <div className="h-(--top-spacing) shrink-0" />
-              <DocsTableOfContents data={page.data.toc} />
+              {page.data.toc && page.data.toc.length > 0 && (
+                <DocsTableOfContents data={page.data.toc} />
+              )}
             </div>
-          )}
+          </ScrollArea>
         </div>
       </div>
     </div>

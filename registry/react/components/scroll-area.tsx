@@ -1,11 +1,29 @@
 import { ScrollArea as ArkScrollArea } from "@ark-ui/react/scroll-area";
 import type React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-export const ScrollArea = (
-  props: React.ComponentProps<typeof ArkScrollArea.Root>
-) => {
-  const { className, children, ...rest } = props;
+const scrollAreaVariants = tv({
+  base: [
+    "h-full",
+    "rounded-[inherit] outline-none",
+    "transition-shadows",
+    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+    "data-has-overflow-x:overscroll-x-contain",
+  ],
+  variants: {
+    scrollbarGutter: {
+      true: ["data-has-overflow-y:pe-2.5", "data-has-overflow-x:pb-2.5"],
+    },
+  },
+});
+
+interface ScrollAreaProps
+  extends React.ComponentProps<typeof ArkScrollArea.Root>,
+    VariantProps<typeof scrollAreaVariants> {}
+
+export const ScrollArea = (props: ScrollAreaProps) => {
+  const { scrollbarGutter = false, className, children, ...rest } = props;
 
   return (
     <>
@@ -21,17 +39,12 @@ export const ScrollArea = (
       </style>
 
       <ArkScrollArea.Root
-        className={cn("flex size-full", className)}
+        className={cn("size-full min-h-0", className)}
         data-slot="scroll-area"
         {...rest}
       >
         <ArkScrollArea.Viewport
-          className={cn(
-            "size-full",
-            "outline-1 outline-gray-300 -outline-offset-1",
-            "transition-[color,box-shadow]",
-            "outline-none focus-visible:outline-1 focus-visible:ring-[3px] focus-visible:ring-ring/50"
-          )}
+          className={cn(scrollAreaVariants({ scrollbarGutter }))}
           data-slot="scroll-area-viewport"
         >
           <ArkScrollArea.Content data-slot="scroll-area-content">
@@ -40,6 +53,7 @@ export const ScrollArea = (
         </ArkScrollArea.Viewport>
 
         <ScrollAreaScrollbar orientation="vertical" />
+        <ScrollAreaScrollbar orientation="horizontal" />
 
         <ArkScrollArea.Corner data-slot="scroll-area-corner" />
       </ArkScrollArea.Root>
@@ -55,13 +69,14 @@ export const ScrollAreaScrollbar = (
   return (
     <ArkScrollArea.Scrollbar
       className={cn(
-        "m-2 flex rounded-md bg-muted opacity-0 transition-opacity delay-300 duration-150",
-        "hover:opacity-100 hover:delay-0 hover:duration-75 data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-75",
-        "before:absolute before:content-['']",
-        orientation === "vertical" &&
-          "h-full w-1 justify-center before:h-full before:w-5 data-[overflow-y=false]:hidden",
-        orientation === "horizontal" &&
-          "h-1 w-full items-center before:h-5 before:w-full data-[overflow-x=false]:hidden",
+        "flex",
+        "m-1",
+        "opacity-0 transition-opacity delay-300",
+        "data-[orientation=vertical]:w-1.5",
+        "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:flex-col",
+        "data-hovering:opacity-100 data-scrolling:opacity-100",
+        "data-hovering:delay-0 data-scrolling:delay-0",
+        "data-hovering:duration-100 data-scrolling:duration-100",
         className
       )}
       data-slot="scroll-area-scrollbar"
@@ -69,7 +84,7 @@ export const ScrollAreaScrollbar = (
       {...rest}
     >
       <ArkScrollArea.Thumb
-        className="relative flex-1 rounded-md bg-primary"
+        className="relative flex-1 rounded-full bg-foreground/20"
         data-slot="scroll-area-thumb"
       />
     </ArkScrollArea.Scrollbar>

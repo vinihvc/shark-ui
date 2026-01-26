@@ -10,13 +10,42 @@ links:
 
 ## Installation
 
-<ComponentInstallation componentName="rating-group">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/rating-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the dependencies:</Step>
 
 ```bash
-pnpm add @ark-ui/react lucide-react
+npm install @ark-ui/react lucide-react
 ```
-</ComponentInstallation>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="rating-group.tsx" fileName="rating-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -27,3 +56,9 @@ import { RatingGroup } from "@/components/ui/rating-group";
 ```tsx lineNumbers
 <RatingGroup />
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreviewFile componentName="rating-group" fileName="default" />

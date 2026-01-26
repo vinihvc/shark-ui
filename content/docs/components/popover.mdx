@@ -7,13 +7,42 @@ description: An overlay that displays additional information or options when tri
 
 ## Installation
 
-<ComponentInstallation componentName="popover">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/popover
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
-pnpm add @ark-ui/react
+npm install @ark-ui/react
 ```
-</ComponentInstallation>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="popover.tsx" fileName="popover.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -37,3 +66,9 @@ import {
   </PopoverContent>
 </Popover>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreviewFile componentName="popover" fileName="default" />

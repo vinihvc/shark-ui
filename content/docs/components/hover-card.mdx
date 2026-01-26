@@ -10,13 +10,42 @@ links:
 
 ## Installation
 
-<ComponentInstallation componentName="hover-card" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/hover-card
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="hover-card.tsx" fileName="hover-card.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -33,4 +62,10 @@ import {
   <HoverCardTrigger>Hover me</HoverCardTrigger>
   <HoverCardContent>Hover Card Content</HoverCardContent>
 </HoverCard>
-``` 
+```
+
+## Examples
+
+### Default
+
+<ComponentPreviewFile componentName="hover-card" fileName="default" /> 

@@ -12,8 +12,32 @@ import { Info, AlertCircle, AlertTriangle, CheckCircle } from "lucide-react";
 
 ## Installation
 
-<ComponentInstallation componentName="alert" >
-Import the following variables into your CSS file
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/alert
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Add the following CSS variables to your CSS file:</Step>
 
 ```css
 @theme inline {
@@ -47,12 +71,17 @@ Import the following variables into your CSS file
 }
 ```
 
-Install the following dependencies:
+<Step>Copy and paste the following code into your project.</Step>
 
-```bash
-pnpm add @ark-ui/react tailwind-variants
-```
-</ComponentInstallation>
+<ComponentSource title="alert.tsx" fileName="alert.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Basic usage
 

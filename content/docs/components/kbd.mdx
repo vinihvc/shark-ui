@@ -7,14 +7,42 @@ description: A keyboard shortcut component
 
 ## Installation
 
-<ComponentInstallation componentName="kbd">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/kbd
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="kbd.tsx" fileName="kbd.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -31,3 +59,9 @@ import {
   <Kbd>K</Kbd>
 </KbdGroup>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreviewFile componentName="kbd" fileName="default" />

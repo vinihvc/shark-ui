@@ -5,6 +5,14 @@ const withMDX = createMDX();
 
 const config: NextConfig = {
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        destination: "/api/raw/docs/:path*",
+        source: "/docs/:path*.md",
+      },
+    ];
+  },
 };
 
 export default withMDX(config);

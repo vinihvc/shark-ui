@@ -10,13 +10,42 @@ links:
 
 ## Installation
 
-<ComponentInstallation componentName="toggle-group" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npx shadcn@latest add @shark-ui/toggle-group
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="toggle-group.tsx" fileName="toggle-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -33,3 +62,9 @@ import {
   <ToggleGroupItem value="2">Item 2</ToggleGroupItem>
 </ToggleGroup>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreviewFile componentName="toggle-group" fileName="default" />
