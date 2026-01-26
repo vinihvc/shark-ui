@@ -84,10 +84,14 @@ const badgeVariants = tv({
         "[&_svg]:size-3.5",
       ],
     },
+    pill: {
+      true: "rounded-full",
+    },
   },
   defaultVariants: {
     variant: "solid",
     size: "md",
+    pill: false,
   },
 });
 
@@ -96,11 +100,17 @@ interface BadgeProps
     VariantProps<typeof badgeVariants> {}
 
 export const Badge = (props: BadgeProps) => {
-  const { variant = "solid", size = "md", className, ...rest } = props;
+  const {
+    variant = "solid",
+    size = "md",
+    pill = false,
+    className,
+    ...rest
+  } = props;
 
   return (
     <ark.span
-      className={cn(badgeVariants({ variant, size }), className)}
+      className={cn(badgeVariants({ variant, size, pill }), className)}
       data-slot="badge"
       {...rest}
     />

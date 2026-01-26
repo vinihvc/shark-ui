@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { transformerNotationWordHighlight } from "@shikijs/transformers";
 import { LRUCache } from "lru-cache";
 import type { ShikiTransformer } from "shiki";
 import { codeToHtml } from "shiki";
@@ -59,7 +60,11 @@ export const transformers = [
   },
 ] as ShikiTransformer[];
 
-export async function highlightCode(code: string, language = "tsx") {
+export async function highlightCode(
+  code: string,
+  language = "tsx",
+  options?: { showLineNumbers?: boolean }
+) {
   // Create cache key from code content and language.
   const cacheKey = createHash("sha256")
     .update(`${language}:${code}`)
@@ -71,6 +76,8 @@ export async function highlightCode(code: string, language = "tsx") {
     return cached;
   }
 
+  const { showLineNumbers = true } = options ?? {};
+
   const html = await codeToHtml(code, {
     lang: language,
     themes: {
@@ -80,11 +87,20 @@ export async function highlightCode(code: string, language = "tsx") {
     defaultColor: false,
     transformers: [
       {
+        code(node) {
+          if (showLineNumbers) {
+            node.properties["data-line-numbers"] = "";
+          }
+        },
+        line(node) {
+          node.properties["data-line"] = "";
+        },
         pre(node) {
           node.properties.class =
-            "no-scrollbar min-w-0 overflow-x-auto overscroll-none rounded-lg leading-relaxed outline-none bg-transparent!";
+            "text-[.8125rem] min-w-0 w-max px-4 py-3.5 outline-none has-data-[highlighted-line]:px-0 has-data-[line-numbers]:ps-0 has-data-[slot=tabs]:p-0 !bg-transparent";
         },
       },
+      transformerNotationWordHighlight(),
     ],
   });
 

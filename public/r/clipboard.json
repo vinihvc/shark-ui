@@ -2,12 +2,17 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clipboard",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "lucide-react"],
-  "registryDependencies": ["https://shark.vini.one/r/input.json"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://shark.vini.one/r/input.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/clipboard.tsx",
-      "content": "import { Clipboard as ArkClipboard } from \"@ark-ui/react/clipboard\";\nimport { Check, Copy } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { inputVariants } from \"./input\";\n\nexport const Clipboard = (\n  props: React.ComponentProps<typeof ArkClipboard.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Root data-slot=\"clipboard\" {...rest}>\n      <ArkClipboard.Control\n        className={cn(\"flex items-center gap-2\", className)}\n        data-slot=\"clipboard-control\"\n      >\n        {children}\n      </ArkClipboard.Control>\n    </ArkClipboard.Root>\n  );\n};\n\nexport const ClipboardTrigger = (\n  props: React.ComponentProps<typeof ArkClipboard.Trigger>\n) => <ArkClipboard.Trigger data-slot=\"clipboard-trigger\" {...props} />;\n\nexport const ClipboardInput = (\n  props: React.ComponentProps<typeof ArkClipboard.Input>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkClipboard.Input\n      data-slot=\"clipboard-input\"\n      {...rest}\n      className={cn(inputVariants(), className)}\n    />\n  );\n};\n\nexport const ClipboardIndicator = (\n  props: React.ComponentProps<typeof ArkClipboard.Indicator>\n) => {\n  const { copied = <Check />, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Indicator\n      data-slot=\"clipboard-indicator\"\n      {...rest}\n      copied={copied}\n    >\n      {children || <Copy />}\n    </ArkClipboard.Indicator>\n  );\n};\n",
+      "content": "import { Clipboard as ArkClipboard } from \"@ark-ui/react/clipboard\";\nimport { Check, ClipboardIcon } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { inputVariants } from \"./input\";\n\nexport const Clipboard = (\n  props: React.ComponentProps<typeof ArkClipboard.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Root data-slot=\"clipboard\" {...rest}>\n      <ArkClipboard.Control\n        className={cn(\"flex items-center gap-2\", className)}\n        data-slot=\"clipboard-control\"\n      >\n        {children}\n      </ArkClipboard.Control>\n    </ArkClipboard.Root>\n  );\n};\n\nexport const ClipboardTrigger = (\n  props: React.ComponentProps<typeof ArkClipboard.Trigger>\n) => <ArkClipboard.Trigger data-slot=\"clipboard-trigger\" {...props} />;\n\nexport const ClipboardInput = (\n  props: React.ComponentProps<typeof ArkClipboard.Input>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkClipboard.Input\n      data-slot=\"clipboard-input\"\n      {...rest}\n      className={cn(inputVariants(), className)}\n    />\n  );\n};\n\nexport const ClipboardIndicator = (\n  props: React.ComponentProps<typeof ArkClipboard.Indicator>\n) => {\n  const { copied = <Check />, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Indicator\n      data-slot=\"clipboard-indicator\"\n      {...rest}\n      copied={copied}\n    >\n      {children || <ClipboardIcon />}\n    </ArkClipboard.Indicator>\n  );\n};\n",
       "type": "registry:ui"
     }
   ]

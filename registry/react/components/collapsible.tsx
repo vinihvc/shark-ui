@@ -20,7 +20,17 @@ export const Collapsible = (
 
 export const CollapsibleTrigger = (
   props: React.ComponentProps<typeof ArkCollapsible.Trigger>
-) => <ArkCollapsible.Trigger data-slot="collapsible-trigger" {...props} />;
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkCollapsible.Trigger
+      className={cn("cursor-pointer", className)}
+      data-slot="collapsible-trigger"
+      {...rest}
+    />
+  );
+};
 
 export const CollapsibleContent = (
   props: React.ComponentProps<typeof ArkCollapsible.Content>
@@ -30,10 +40,11 @@ export const CollapsibleContent = (
   return (
     <ArkCollapsible.Content
       className={cn(
+        "h-(--collapsed-height)",
+        "transition-[height] duration-200",
         "overflow-hidden",
-        "data-[state=closed]:animate-in data-[state=open]:animate-out",
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-        "data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down",
+        "data-[state=open]:animate-expand",
+        "data-[state=closed]:animate-collapse",
         className
       )}
       data-slot="collapsible-content"

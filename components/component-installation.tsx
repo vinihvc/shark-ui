@@ -33,7 +33,7 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
   );
 
   return (
-    <div className="group not-prose flex flex-col gap-2">
+    <div className="group flex flex-col gap-2">
       <Tabs {...rest} defaultValue="cli">
         <TabsList>
           <TabsTrigger value="cli">CLI</TabsTrigger>

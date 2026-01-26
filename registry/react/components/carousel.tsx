@@ -46,7 +46,12 @@ export const CarouselPrevious = (
       {...rest}
       asChild
     >
-      <Button className="rounded-full" size="icon-sm">
+      <Button
+        className="rounded-full"
+        clickEffect={false}
+        size="icon-sm"
+        variant="outline"
+      >
         <ChevronLeftIcon />
         <span className="sr-only">Previous</span>
       </Button>
@@ -66,7 +71,12 @@ export const CarouselNext = (
       asChild
       data-slot="carousel-next"
     >
-      <Button className="rounded-full" size="icon-sm">
+      <Button
+        className="rounded-full"
+        clickEffect={false}
+        size="icon-sm"
+        variant="outline"
+      >
         <ChevronRightIcon />
         <span className="sr-only">Next</span>
       </Button>

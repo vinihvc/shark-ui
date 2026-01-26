@@ -20,7 +20,7 @@ export const ComponentPreview = (props: ComponentPreviewProps) => {
   const { code, children, ...rest } = props;
 
   return (
-    <div className="group not-prose flex flex-col gap-2">
+    <div className="group flex flex-col gap-2">
       <Tabs {...rest} defaultValue="preview">
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>

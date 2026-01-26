@@ -1,8 +1,7 @@
-import { CodeBlock as BaseCodeBlock } from "fumadocs-ui/components/codeblock";
-import { Code } from "lucide-react";
+import { getIconForLanguageExtension } from "@/lib/file-extension";
 import { highlightCode } from "@/lib/highlight-code";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/registry/react/components/badge";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
+import { CopyButton } from "./copy-button";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
@@ -14,15 +13,11 @@ export interface CodeBlockProps extends React.ComponentProps<"figure"> {
    */
   code: string;
   /**
-   * The icon to display in the code block
-   */
-  icon?: React.ReactNode;
-  /**
    * Whether to show the line numbers
    *
    * @default true
    */
-  lineNumbers?: boolean;
+  showLineNumbers?: boolean;
   /**
    * Whether to show the copy button
    *
@@ -35,9 +30,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
   const {
     title,
     code,
-    lineNumbers = true,
     copyButton = true,
-    icon = <Code />,
     lang = "tsx",
     className,
     ...rest
@@ -46,33 +39,23 @@ export const CodeBlock = async (props: CodeBlockProps) => {
   const highlightedCode = await highlightCode(code, lang);
 
   return (
-    <BaseCodeBlock
-      className={cn("relative my-0 rounded-lg bg-muted", className)}
-      {...(lineNumbers && { "data-line-numbers": true })}
-      data-slot="code-block"
-      {...rest}
-    >
+    <figure data-rehype-pretty-code-figure="" data-slot="code-block" {...rest}>
       {!!title && (
         <figcaption
-          className={cn(
-            "-mt-3",
-            "px-2 py-1",
-            "flex items-center gap-2",
-            "text-foreground",
-            "bg-input",
-            "[&_svg]:size-5 [&_svg]:text-foreground sm:[&_svg]:size-4"
-          )}
+          className="flex items-center gap-2 text-[.8125rem] text-code-foreground [&_svg]:size-4.5 [&_svg]:text-code-foreground sm:[&_svg]:size-4"
+          data-language={lang}
+          data-rehype-pretty-code-title=""
         >
-          <Badge className="p-1" variant="outline">
-            {icon}
-          </Badge>
-
+          {getIconForLanguageExtension(lang)}
           {title}
         </figcaption>
       )}
 
-      {/** biome-ignore lint/security/noDangerouslySetInnerHtml: shiki is safe */}
-      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-    </BaseCodeBlock>
+      {copyButton && <CopyButton value={code} />}
+
+      <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:data-[orientation=horizontal]:mx-2 **:data-[slot=scroll-area-scrollbar]:data-[orientation=vertical]:my-2">
+        <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      </ScrollArea>
+    </figure>
   );
 };
