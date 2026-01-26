@@ -1,6 +1,6 @@
 ---
 title: Badge
-description: Small status descriptors for UI elements with multiple variants
+description: A badge or an element styled as a badge.
 ---
 
 <ComponentPreviewFile componentName="badge" />
@@ -94,14 +94,27 @@ You can add icons to badges to provide visual context.
 
 <ComponentPreviewFile componentName="badge" fileName="example-with-icon" />
 
+### With spinner
+
+You can add a `<Spinner />` to badges to indicate loading states.
+
+<ComponentPreviewFile componentName="badge" fileName="example-with-spinner" />
+
 ### With count
 
 Badges can display counts or numbers for notifications and indicators.
 
 <ComponentPreviewFile componentName="badge" fileName="example-with-count" />
 
+## API Reference
 
+### Badge
 
+Root element of the badge. Renders a `span`
 
-
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `solid`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive` | `solid` | 
+| `size` | `sm`, `md`, `lg` | `md` | 
+| `className` | `string` | `-` | 
 

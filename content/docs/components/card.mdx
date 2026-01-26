@@ -26,18 +26,129 @@ import {
   CardFooter, 
   CardHeader, 
   CardTitle, 
-  CardActions,
+  CardAction,
+  CardMedia,
 } from "@/components/ui/card";
 ```
 
 ```tsx lineNumbers
 <Card>
+  <CardMedia />
   <CardHeader>
     <CardTitle />
     <CardDescription />
-    <CardActions />
+    <CardAction />
   </CardHeader>
   <CardContent />
   <CardFooter />
 </Card>
 ```
+
+## Using Card Header
+
+You can use `<CardHeader />` in two ways:
+
+### Using props
+
+You can pass `title` and `description` props directly to `<CardHeader />`. In this case, you don't need to use `<CardTitle />` and `<CardDescription />` components.
+
+```tsx lineNumbers
+<CardHeader title="Card Title" description="Card description">
+  <CardAction />
+</CardHeader>
+```
+
+### Using components
+
+Alternatively, you can use `<CardTitle />` and `<CardDescription />` as children for more control.
+
+```tsx lineNumbers
+<CardHeader>
+  <CardTitle>Card Title</CardTitle>
+  <CardDescription>Card description</CardDescription>
+  <CardAction />
+</CardHeader>
+```
+
+## Examples
+
+### Product card
+
+A product card with image, title, description, price, and action buttons.
+
+<ComponentPreviewFile componentName="card" fileName="example-product" />
+
+### Icon card
+
+A card with an icon at the top and title, description, and action button at the bottom.
+
+<ComponentPreviewFile componentName="card" fileName="example-icon" />
+
+## API Reference
+
+### Card
+
+Root element of the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardMedia
+
+Media container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `default`, `icon`, `image` | `default` | 
+| `className` | `string` | `-` | 
+
+### CardHeader
+
+Header container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `title` | `string` | `-` | 
+| `description` | `string` | `-` | 
+| `className` | `string` | `-` | 
+
+### CardTitle
+
+Title element for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardDescription
+
+Description element for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardAction
+
+Action element for the card header. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardContent
+
+Content container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardFooter
+
+Footer container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` |

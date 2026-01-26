@@ -52,7 +52,7 @@ const Example = () => {
       </Accordion>
 
       <div className="text-muted-foreground text-sm">
-        Open items: {value.length === 0 ? "None" : value.join(", ")}
+        Open item: {value.length === 0 ? "None" : value.join(", ")}
       </div>
     </div>
   );

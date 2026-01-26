@@ -1,5 +1,5 @@
 import { Clipboard as ArkClipboard } from "@ark-ui/react/clipboard";
-import { Check, Copy } from "lucide-react";
+import { Check, ClipboardIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { inputVariants } from "./input";
@@ -50,7 +50,7 @@ export const ClipboardIndicator = (
       {...rest}
       copied={copied}
     >
-      {children || <Copy />}
+      {children || <ClipboardIcon />}
     </ArkClipboard.Indicator>
   );
 };

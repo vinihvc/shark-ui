@@ -1,5 +1,5 @@
 import { FieldInput } from "@ark-ui/react";
-import { Ellipsis } from "lucide-react";
+import { GoogleIcon } from "@/components/icons/google";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -12,42 +12,34 @@ import { Field, FieldLabel, FieldSet } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 
 const CardDemo = () => (
-  <div className="w-full max-w-lg">
+  <div className="w-full max-w-sm">
     <Card className="w-full">
       <CardHeader
-        description="Manage your user account here"
-        title="User account"
+        description="Enter your email and check your inbox"
+        title="Login to your account"
       >
         <CardAction>
-          <Button size="icon-md" variant="ghost">
-            <Ellipsis />
-          </Button>
+          <Button variant="link">Sign Up</Button>
         </CardAction>
       </CardHeader>
 
       <CardContent>
         <FieldSet>
           <Field>
-            <FieldLabel>Name</FieldLabel>
-            <FieldInput asChild>
-              <Input defaultValue="Vinicius Vicentini" />
-            </FieldInput>
-          </Field>
-
-          <Field>
             <FieldLabel>Email</FieldLabel>
             <FieldInput asChild>
-              <Input defaultValue="vinihvc@gmail.com" />
+              <Input placeholder="john.doe@example.com" />
             </FieldInput>
           </Field>
         </FieldSet>
       </CardContent>
 
-      <CardFooter className="flex-row-reverse">
-        <Button size="lg">Save changes</Button>
+      <CardFooter className="flex-col">
+        <Button className="w-full">Login</Button>
 
-        <Button size="lg" variant="outline">
-          Cancel
+        <Button className="w-full" variant="outline">
+          <GoogleIcon />
+          Login with Google
         </Button>
       </CardFooter>
     </Card>

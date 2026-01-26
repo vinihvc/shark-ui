@@ -94,7 +94,6 @@ export const avatarBadgeVariants = tv({
   variants: {
     variant: {
       success: ["bg-success text-success-foreground"],
-      info: "bg-info text-info-foreground",
       warning: "bg-warning text-warning-foreground",
       destructive: "bg-destructive text-destructive-foreground",
     },

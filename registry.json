@@ -26,6 +26,27 @@
       }
     },
     {
+      "name": "native-select",
+      "type": "components:ui",
+      "description": "A native select component built with Ark UI",
+      "category": "ui",
+      "tags": ["native-select"],
+      "dependencies": ["@ark-ui/react"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "name": "native-select.tsx",
+          "content": "import { NativeSelect as ArkNativeSelect } from \"@ark-ui/react/native-select\";\nimport { ChevronDown } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const NativeSelect = (props: React.ComponentProps<typeof ArkNativeSelect.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkNativeSelect.Root\n      className={cn(\"relative w-fit has-[select:disabled]:opacity-50\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const NativeSelectOption = (props: React.ComponentProps<typeof ArkNativeSelect.Option>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkNativeSelect.Option\n      className={cn(\"relative w-fit has-[select:disabled]:opacity-50\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const NativeSelectOptGroup = (props: React.ComponentProps<typeof ArkNativeSelect.OptGroup>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkNativeSelect.OptGroup\n      className={cn(\"relative w-fit has-[select:disabled]:opacity-50\", className)}\n      {...rest}\n    />\n  );\n};\n"
+        }
+      ],
+      "categories": ["ui"],
+      "meta": {
+        "category": "ui",
+        "tags": ["native-select"],
+        "dependencies": ["@ark-ui/react"]
+      }
+    },
+    {
       "name": "alert",
       "type": "components:ui",
       "description": "A alert component built with Ark UI",

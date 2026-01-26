@@ -29,12 +29,12 @@ const MEDIA_QUERY = {
   desktop: "(min-width: 1025px)",
 };
 
+type MediaQuery = keyof typeof MEDIA_QUERY;
+
 export const ComponentResizer = (props: ComponentResizerProps) => {
   const { title, url, className, children, ...rest } = props;
 
-  const [mediaQuery, setMediaQuery] = React.useState<
-    "mobile" | "tablet" | "desktop"
-  >("desktop");
+  const [mediaQuery, setMediaQuery] = React.useState<MediaQuery>("desktop");
 
   const [count, setCount] = React.useState(0);
 

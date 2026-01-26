@@ -40,11 +40,8 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
           <TabsTrigger value="manual">Manual</TabsTrigger>
         </TabsList>
 
-        <div className="relative mt-4 rounded-lg **:[figure]:border-none">
-          <TabsContent
-            className="overflow-hidden bg-card **:[div]:max-h-[350px] **:[figure]:bg-card"
-            value="cli"
-          >
+        <div className="relative mt-4">
+          <TabsContent className="**:[div]:max-h-[350px]" value="cli">
             <CodeBlock
               code={`${cliCommand}/${componentName}.json`}
               lang="bash"

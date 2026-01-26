@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ArchiveIcon,
   ArrowLeftIcon,
@@ -11,7 +9,6 @@ import {
   TagIcon,
   Trash2Icon,
 } from "lucide-react";
-import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
@@ -29,8 +26,6 @@ import {
 } from "@/registry/react/components/menu";
 
 const ButtonGroupDemo = () => {
-  const [label, setLabel] = React.useState("personal");
-
   return (
     <ButtonGroup>
       <ButtonGroup className="hidden sm:flex">
@@ -81,10 +76,7 @@ const ButtonGroupDemo = () => {
                   Label As...
                 </MenuSubTrigger>
                 <MenuSubContent>
-                  <MenuRadioGroup
-                    onValueChange={({ value }) => setLabel(value)}
-                    value={label}
-                  >
+                  <MenuRadioGroup>
                     <MenuRadioItem value="personal">Personal</MenuRadioItem>
                     <MenuRadioItem value="work">Work</MenuRadioItem>
                     <MenuRadioItem value="other">Other</MenuRadioItem>

@@ -1,4 +1,4 @@
-import { User2 } from "lucide-react";
+import { Plus } from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
@@ -8,7 +8,11 @@ import {
 } from "@/registry/react/components/avatar";
 
 const Example = () => (
-  <AvatarGroup className="grayscale">
+  <AvatarGroup>
+    <Avatar>
+      <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
+      <AvatarFallback>VV</AvatarFallback>
+    </Avatar>
     <Avatar>
       <AvatarImage
         alt="@segunadebayo"
@@ -24,12 +28,11 @@ const Example = () => (
       <AvatarFallback>PV</AvatarFallback>
     </Avatar>
     <Avatar>
-      <AvatarImage alt="@irsyadadl" src="https://github.com/irsyadadl.png" />
+      <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
       <AvatarFallback>IA</AvatarFallback>
     </Avatar>
-
     <AvatarGroupCount>
-      <User2 />
+      <Plus />
     </AvatarGroupCount>
   </AvatarGroup>
 );

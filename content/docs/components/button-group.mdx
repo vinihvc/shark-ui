@@ -4,13 +4,7 @@ description: A component that allows you to group button elements together.
 ---
 
 import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentPreview } from "@/components/component-preview";
 import { ComponentInstallation } from "@/components/component-installation";
-import { ComponentVariants } from "@/components/component-variants";
-import { TabsContent } from "@/registry/react/components/tabs";
-import { ButtonGroup, ButtonGroupText, ButtonGroupSeparator } from "@/registry/react/components/button-group";
-import { Button } from "@/registry/react/components/button";
-import { SkipBack, Play, SkipForward, Plus, Minus, Bold, Italic, Underline, ImagePlus, Braces } from "lucide-react";
 
 <ComponentPreviewFile componentName="button-group" />
 
@@ -40,147 +34,102 @@ import {
   <Button />
   <ButtonGroupSeparator />
   <Button />
+  <ButtonGroupSeparator />
+  <ButtonGroupText />
 </ButtonGroup>
 ```
 
 ## Accessibility
 
-Use `aria-label` attribute to provide a label for the button group.
+- The `ButtonGroup` component has the `role` attribute set to `group`.
+- Use `Tab` to navigate between the controls in the group.
+- Use `aria-label` or `aria-labelledby` to label the group.
 
+```tsx lineNumbers
+<Group aria-label="Media controls">
+  <Button variant="outline">Play</Button>
+  <GroupSeparator />
+  <Button variant="outline">Pause</Button>
+</Group>
+```
 
 ## Orientation
 
 You can change the orientation of the button group using the `orientation` prop.
 
-<ComponentVariants variants={['horizontal', 'vertical']} defaultValue="horizontal">
-  <TabsContent value="horizontal">
-    <ButtonGroup>
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <SkipBack />
-      </Button>
+### Horizontal
 
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Play />
-      </Button>
+<ComponentPreviewFile componentName="button-group" fileName="orientation-horizontal" />
 
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <SkipForward />
-      </Button>
-    </ButtonGroup>
-  </TabsContent>
+### Vertical
 
-  <TabsContent value="vertical">
-    <ButtonGroup orientation="vertical">
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Plus />
-      </Button>
+<ComponentPreviewFile componentName="button-group" fileName="orientation-vertical" />
 
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Minus />
-      </Button>
-    </ButtonGroup>
-  </TabsContent>
-</ComponentVariants>
+## Examples
 
-## Nested
+### Nested
 
 You can nest button groups inside other button groups to have spacing between the buttons
 
-<ComponentPreview code={`<ButtonGroup>
-    <Button variant="outline" size="icon-md">
-      <Italic />
-    </Button>
-    
-    <Button variant="outline" size="icon-md">
-      <Bold />
-    </Button>
+<ComponentPreviewFile componentName="button-group" fileName="example-nested" />
 
-    <Button variant="outline" size="icon-md">
-      <Underline />
-    </Button>
+### Separator
 
-    <ButtonGroup>
-      <Button variant="outline" size="icon-md">
-        <ImagePlus />
-      </Button>
+You can add a separator between the buttons using the `<ButtonGroupSeparator />`.
 
-      <Button variant="outline" size="icon-md">
-        <Braces />
-      </Button>
-    </ButtonGroup>
-</ButtonGroup>`}>
-  <ButtonGroup>
-    <ButtonGroup>
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Italic />
-      </Button>
-      
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Bold />
-      </Button>
+Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
 
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Underline />
-      </Button>
-    </ButtonGroup>
+<ComponentPreviewFile componentName="button-group" fileName="example-separator" />
 
-    <ButtonGroup>
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <ImagePlus />
-      </Button>
+### With Text
 
-      <Button clickEffect={false} variant="outline" size="icon-md">
-        <Braces />
-      </Button>
-    </ButtonGroup>
-  </ButtonGroup>
-</ComponentPreview>
+You can add text between the buttons using the `<ButtonGroupText />`.
 
-## Separator
+<ComponentPreviewFile componentName="button-group" fileName="example-with-text" />
 
-You can add a separator between the buttons using the `ButtonGroupSeparator`.
+### With Input
 
-<ComponentPreview code={`<ButtonGroup>
-    <Button variant="secondary" size="icon-md">
-      <Plus />
-    </Button>
-    
-    <ButtonGroupSeparator />
-    
-    <Button variant="secondary" size="icon-md">
-      <Minus />
-    </Button>
-</ButtonGroup>
-`}>
-  <ButtonGroup>
-    <Button clickEffect={false} variant="secondary" size="icon-md">
-      <Minus />
-    </Button>
-    
-    <ButtonGroupSeparator />
-    
-    <Button clickEffect={false} variant="secondary" size="icon-md">
-      <Plus />
-    </Button>
-  </ButtonGroup>
-</ComponentPreview>
+You can combine buttons with input fields in a button group.
 
+<ComponentPreviewFile componentName="button-group" fileName="example-with-input" />
 
-## Text
+### With Menu
 
-You can add text between the buttons using the `ButtonGroupText` component.
+You can integrate a menu component within a button group for additional options.
 
-<ComponentPreview code={`<ButtonGroup>
-    <ButtonGroupText>Create user</ButtonGroupText>
-    <Button variant="secondary" size="icon-md">
-      <Plus />
-    </Button>
-</ButtonGroup>
-`}>
-  <ButtonGroup>
-    <ButtonGroupText>Create user</ButtonGroupText>
-    <Button clickEffect={false} variant="secondary" size="icon-md">
-      <Plus />
-    </Button>
-  </ButtonGroup>
-</ComponentPreview>
+<ComponentPreviewFile componentName="button-group" fileName="example-with-menu" />
+
+### With Popover
+
+You can add a popover trigger button to a button group for contextual information or actions.
+
+<ComponentPreviewFile componentName="button-group" fileName="example-with-popover" />
+
+## API Reference
+
+### ButtonGroup
+
+Root element of the button group. Renders a `fieldset`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `orientation` | `horizontal`, `vertical` | `horizontal` | 
+| `className` | `string` | `-` | 
+
+### ButtonGroupText
+
+Text element for the button group. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### ButtonGroupSeparator
+
+Separator element for the button group. Renders a [`<Separator />`](/docs/components/separator).
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `orientation` | `horizontal`, `vertical` | `vertical` | 
+| `className` | `string` | `-` | 
+

@@ -84,18 +84,68 @@ You can change the size of the button using the `size` prop.
 
 <ComponentPreviewFile componentName="button" fileName="size-xl" />
 
+## Pill
+
+You can use the `pill` prop to create fully rounded buttons.
+
+<ComponentPreviewFile componentName="button" fileName="state-pill-true" />
+
 ## Disabling click effect
 
 You can disable the click effect of the button using the `clickEffect` prop.
 
 <ComponentPreviewFile componentName="button" fileName="state-click-effect-false" />
 
-
 ## Loading
 
 You can show a loading indicator when the button is loading using the `isLoading` prop.
 
 <ComponentPreviewFile componentName="button" fileName="state-loading-true" />
+
+## Examples
+
+### Custom color
+
+You can use the `className` prop to add custom colors to the button.
+
+<ComponentPreviewFile componentName="button" fileName="example-custom-color" />
+
+### Icon
+
+You can create icon-only buttons using the `icon-*` size variants.
+
+<ComponentPreviewFile componentName="button" fileName="example-icon" />
+
+### With icon
+
+You can add icons to buttons alongside text to provide visual context.
+
+<ComponentPreviewFile componentName="button" fileName="example-with-icon" />
+
+## Touch hitbox
+
+You can change the touch hitbox of the button to improve the user experience on touch devices.
+
+Add a `.touch-target` utility to a element to extend the touch target.
+
+```css
+@utility touch-target {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-height: 44px;
+    min-width: 44px;
+    z-index: 9999;
+  }
+}
+```
 
 ## API Reference
 

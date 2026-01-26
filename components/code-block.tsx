@@ -1,17 +1,8 @@
-import { highlight } from "fumadocs-core/highlight";
-import {
-  CodeBlock as BaseCodeBlock,
-  Pre as BasePre,
-} from "fumadocs-ui/components/codeblock";
+import { CodeBlock as BaseCodeBlock } from "fumadocs-ui/components/codeblock";
 import { Code } from "lucide-react";
+import { highlightCode } from "@/lib/highlight-code";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
-import { Button } from "@/registry/react/components/button";
-import {
-  Clipboard,
-  ClipboardIndicator,
-  ClipboardTrigger,
-} from "@/registry/react/components/clipboard";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
@@ -52,20 +43,12 @@ export const CodeBlock = async (props: CodeBlockProps) => {
     ...rest
   } = props;
 
-  const rendered = await highlight(code, {
-    lang,
-    components: {
-      pre: (props) => <BasePre {...props} />,
-    },
-  });
+  const highlightedCode = await highlightCode(code, lang);
 
   return (
     <BaseCodeBlock
-      allowCopy={false}
-      className={cn("relative my-0 leading-relaxed", className)}
-      {...(lineNumbers
-        ? { "data-line-numbers": true }
-        : { "data-line-numbers": undefined })}
+      className={cn("relative my-0 rounded-lg bg-muted", className)}
+      {...(lineNumbers && { "data-line-numbers": true })}
       data-slot="code-block"
       {...rest}
     >
@@ -88,20 +71,8 @@ export const CodeBlock = async (props: CodeBlockProps) => {
         </figcaption>
       )}
 
-      {copyButton && (
-        <Clipboard
-          className="absolute top-2 right-2 z-10"
-          value="https://x.com/vinihvc"
-        >
-          <ClipboardTrigger asChild>
-            <Button size="icon-sm" variant="ghost">
-              <ClipboardIndicator />
-            </Button>
-          </ClipboardTrigger>
-        </Clipboard>
-      )}
-
-      {rendered}
+      {/** biome-ignore lint/security/noDangerouslySetInnerHtml: shiki is safe */}
+      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </BaseCodeBlock>
   );
 };

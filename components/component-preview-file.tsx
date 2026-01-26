@@ -57,16 +57,16 @@ export const ComponentPreviewFile = async (
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
 
-        <div className="**:figure:!m-0 relative rounded-lg border **:[figure]:border-none">
+        <div className="**:figure:!m-0 relative mt-4 rounded-lg border **:[figure]:border-none">
           <TabsContent
-            className="flex min-h-[350px] w-full items-center justify-center overflow-y-hidden p-14"
+            className="flex min-h-[350px] w-full items-center justify-center overflow-y-hidden px-20 py-14"
             value="preview"
           >
             <Example.default />
           </TabsContent>
 
           <TabsContent
-            className="min-h-[350px] overflow-hidden bg-card **:[div]:max-h-[350px] **:[figure]:bg-card"
+            className="min-h-[350px] **:[figure]:min-h-[350px]"
             value="code"
           >
             <CodeBlock code={replacedCode} lang="tsx" />

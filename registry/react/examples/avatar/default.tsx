@@ -39,11 +39,7 @@ const AvatarDemo = () => (
         />
         <AvatarFallback>PV</AvatarFallback>
       </Avatar>
-      <Avatar>
-        <AvatarImage alt="@irsyadadl" src="https://github.com/irsyadadl.png" />
-        <AvatarFallback>IA</AvatarFallback>
-      </Avatar>
-      <AvatarGroupCount>+5</AvatarGroupCount>
+      <AvatarGroupCount>+2</AvatarGroupCount>
     </AvatarGroup>
   </div>
 );

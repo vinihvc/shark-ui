@@ -87,7 +87,7 @@ export const getMDXComponents = (
     />
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
-    <p className={cn("not-first:mt-6 leading-relaxed", className)} {...props} />
+    <p className={cn("not-first:mt-6", className)} {...props} />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <strong className={cn("font-medium", className)} {...props} />
@@ -127,8 +127,8 @@ export const getMDXComponents = (
     return (
       <CodeBlock
         className={cn(
-          "no-scrollbar relative min-w-0 overflow-x-auto overscroll-none bg-card! outline-none",
-          className
+          className,
+          "no-scrollbar relative min-w-0 overflow-x-auto overscroll-none rounded-lg bg-muted! outline-none"
         )}
         {...props}
       >

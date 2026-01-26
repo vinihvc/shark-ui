@@ -27,7 +27,7 @@ const Example = () => {
         <AvatarFallback>PV</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage alt="@irsyadadl" src="https://github.com/irsyadadl.png" />
+        <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
         <AvatarFallback>IA</AvatarFallback>
       </Avatar>
     </AvatarGroup>

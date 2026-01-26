@@ -66,6 +66,18 @@ Use the `<AvatarGroup>` to add a group of avatars.
 
 <ComponentPreviewFile componentName="avatar" fileName="example-group" />
 
+### Custom Colors
+
+You can customize the avatar fallback colors using the `className` prop.
+
+<ComponentPreviewFile componentName="avatar" fileName="example-custom-colors" />
+
+### With Status
+
+Use `<AvatarBadge>` to show status indicators on avatars.
+
+<ComponentPreviewFile componentName="avatar" fileName="example-with-status" />
+
 ### Fallback Only
 
 You can use just the `<AvatarFallback>` to display a icon or text.
@@ -100,13 +112,50 @@ You can use with the `<HoverCard>` to show user information on hover.
 
 ### Avatar
 
+Root element of the avatar. Renders a `div`
+
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | `size` | `sm`, `md`, `lg` | `md` | 
-| `variant` | `success`, `info`, `warning`, `destructive` | `success` | 
+| `className` | `string` | `-` | 
 
-### AvatarBadge
+### AvatarImage
+
+Image element for the avatar. Renders an `img`
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
-| `variant` | `success`, `info`, `warning`, `destructive` | `success` | 
+| `className` | `string` | `-` | 
+
+### AvatarFallback
+
+Fallback content displayed when the image fails to load. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### AvatarGroup
+
+Container for grouping multiple avatars. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### AvatarGroupCount
+
+Element for displaying a count in avatar groups. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### AvatarBadge
+
+Badge element displayed on the avatar. Renders a `span`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `success`, `warning`, `destructive` | `success` | 
+| `className` | `string` | `-` | 

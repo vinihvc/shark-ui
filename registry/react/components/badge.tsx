@@ -56,8 +56,8 @@ const badgeVariants = tv({
       ],
       destructive: [
         "bg-destructive/10 dark:bg-destructive/5",
-        "text-destructive",
-        "border-destructive/20",
+        "text-destructive-foreground",
+        "border-destructive-foreground/20",
         "focus-visible:border-destructive focus-visible:ring-destructive/20",
         "dark:focus-visible:ring-destructive/40",
         "[a&]:hover:bg-destructive/20",
