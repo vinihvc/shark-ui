@@ -8,7 +8,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/react/components/collapsible";
-import { Separator } from "@/registry/react/components/separator";
 
 interface CodeCollapsibleWrapperProps
   extends React.ComponentProps<typeof Collapsible> {}
@@ -34,8 +33,6 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
             {isOpened ? "Collapse" : "Expand"}
           </Button>
         </CollapsibleTrigger>
-
-        <Separator className="mx-1.5 h-5" orientation="vertical" />
       </div>
 
       <CollapsibleContent className="relative mt-6 h-full overflow-hidden [&>figure]:mt-0 [&>figure]:md:mx-0!">
@@ -45,6 +42,7 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
       <CollapsibleTrigger
         className={cn(
           "absolute inset-x-0 -bottom-4",
+          "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
           "flex h-20 cursor-pointer items-center justify-center",
           "bg-linear-to-b from-transparent via-50% via-muted to-muted",
           "font-medium text-muted-foreground text-sm",

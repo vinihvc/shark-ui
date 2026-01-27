@@ -4,13 +4,23 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { inputVariants } from "./input";
 
-export const Clipboard = (
-  props: React.ComponentProps<typeof ArkClipboard.Root>
-) => {
-  const { className, children, ...rest } = props;
+interface ClipboardProps
+  extends React.ComponentProps<typeof ArkClipboard.Root> {
+  /**
+   * The children of the clipboard
+   */
+  rootClassName?: string;
+}
+
+export const Clipboard = (props: ClipboardProps) => {
+  const { rootClassName, className, children, ...rest } = props;
 
   return (
-    <ArkClipboard.Root data-slot="clipboard" {...rest}>
+    <ArkClipboard.Root
+      className={cn(rootClassName)}
+      data-slot="clipboard"
+      {...rest}
+    >
       <ArkClipboard.Control
         className={cn("flex items-center gap-2", className)}
         data-slot="clipboard-control"
@@ -42,12 +52,14 @@ export const ClipboardInput = (
 export const ClipboardIndicator = (
   props: React.ComponentProps<typeof ArkClipboard.Indicator>
 ) => {
-  const { copied = <Check />, children, ...rest } = props;
+  const { copied = <Check />, className, children, ...rest } = props;
 
   return (
     <ArkClipboard.Indicator
+      asChild
       data-slot="clipboard-indicator"
       {...rest}
+      className="pointer-events-none"
       copied={copied}
     >
       {children || <ClipboardIcon />}

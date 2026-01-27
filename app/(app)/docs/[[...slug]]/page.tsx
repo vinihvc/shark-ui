@@ -57,13 +57,13 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
     <div className="size-full">
       <div className="flex items-stretch xl:w-full" data-slot="docs">
         <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-8 lg:mr-4 lg:mb-8">
-          <div className="relative flex w-full flex-col rounded-2xl border bg-muted/64 text-card-foreground shadow-xs/5 max-lg:border-none">
+          <div className="relative flex w-full flex-col border bg-muted/64 text-card-foreground shadow-xs/5 max-lg:border-none lg:rounded-2xl">
             <div className="flex-1 p-6 px-4 py-6 sm:px-6 lg:p-8">
-              <div className="mx-auto w-full max-w-3xl">
+              <div className="mx-auto w-full">
                 <div className="flex min-w-0 flex-col gap-8">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between gap-2">
-                      <h1 className="scroll-m-20 font-semibold text-3xl xl:text-4xl">
+                      <h1 className="scroll-m-20 font-semibold text-3xl">
                         {page.data.title}
                       </h1>
 
@@ -71,19 +71,27 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                         <DocsCopyPage data={rawContent} url={page.url} />
 
                         <div className="flex items-center gap-2">
-                          {neighbours.previous && (
-                            <Button asChild size="icon-sm" variant="outline">
+                          {neighbours.previous ? (
+                            <Button size="icon-sm" variant="outline">
                               <Link href={neighbours.previous.url}>
                                 <ChevronLeft />
                               </Link>
                             </Button>
+                          ) : (
+                            <Button disabled size="icon-sm" variant="outline">
+                              <ChevronLeft />
+                            </Button>
                           )}
 
-                          {neighbours.next && (
+                          {neighbours.next ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.next.url}>
                                 <ChevronRight />
                               </Link>
+                            </Button>
+                          ) : (
+                            <Button disabled size="icon-sm" variant="outline">
+                              <ChevronRight />
                             </Button>
                           )}
                         </div>

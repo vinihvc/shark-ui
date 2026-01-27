@@ -1,25 +1,26 @@
-import fs from "node:fs/promises";
-import path from "node:path";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type React from "react";
 import { REGISTRY_PATH } from "@/config/constants";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "./code-block";
 import { CodeCollapsibleWrapper } from "./code-collapsible-wrapper";
+import { CopyButton } from "./copy-button";
 
 export interface ComponentSourceProps
   extends React.ComponentProps<typeof CodeBlock> {
   /**
    * The title of the code block
    */
-  title: string;
+  title?: string;
   /**
-   * The file name of the code block
+   * The source code to display
    */
-  fileName: string;
+  src?: string;
   /**
    * The language of the code block
    */
-  language: string;
+  language?: string;
   /**
    * Whether to make the code block collapsible
    *
@@ -28,35 +29,59 @@ export interface ComponentSourceProps
   isCollapsible?: boolean;
 }
 
-export const ComponentSource = async (props: ComponentSourceProps) => {
-  const { language, title, fileName, isCollapsible = true, className } = props;
+export const ComponentSource = (props: ComponentSourceProps) => {
+  const {
+    language = "tsx",
+    src,
+    code,
+    title,
+    isCollapsible = true,
+    className,
+  } = props;
 
-  if (!fileName) {
-    throw new Error("fileName is required");
+  let codeContent: string | undefined;
+
+  if (code) {
+    codeContent = code;
   }
 
-  const file = await fs.readFile(
-    path.join(process.cwd(), REGISTRY_PATH, fileName),
-    "utf-8"
-  );
+  if (src) {
+    codeContent = readFileSync(
+      join(process.cwd(), REGISTRY_PATH, src),
+      "utf-8"
+    );
+  }
 
-  if (!file) {
-    throw new Error(`File ${fileName} not found`);
+  if (!codeContent) {
+    throw new Error("Code content not found");
   }
 
   const lang = language ?? title?.split(".").pop() ?? "tsx";
 
   if (isCollapsible) {
     return (
-      <CodeCollapsibleWrapper className={className}>
-        <CodeBlock code={file} lang={lang} title={title} />
-      </CodeCollapsibleWrapper>
+      <div className="relative">
+        <CodeCollapsibleWrapper className={className}>
+          <CodeBlock
+            code={codeContent}
+            copyButton={false}
+            lang={lang}
+            title={title}
+          />
+        </CodeCollapsibleWrapper>
+
+        {/* 
+          Copy button here because of inert issue
+          https://ark-ui.com/docs/components/collapsible#partial-collapse
+        */}
+        <CopyButton className="top-2" value={codeContent} />
+      </div>
     );
   }
 
   return (
     <div className={cn("relative", className)}>
-      <CodeBlock code={file} lang={lang} title={title} />
+      <CodeBlock code={codeContent} lang={lang} title={title} />
     </div>
   );
 };

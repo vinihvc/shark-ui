@@ -27,14 +27,10 @@ interface DocsCopyPageProps extends React.ComponentProps<typeof ButtonGroup> {
    * The url of the page
    */
   url: string;
-  /**
-   * The name of the component
-   */
-  componentName: string;
 }
 
 export const DocsCopyPage = (props: DocsCopyPageProps) => {
-  const { data, url, componentName, className, ...rest } = props;
+  const { data, url, className, ...rest } = props;
 
   const pageUrl = `${SITE_CONFIG.url}${url}`;
 

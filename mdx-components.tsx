@@ -4,7 +4,7 @@ import type { MDXComponents } from "mdx/types";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentInstallation } from "@/components/component-installation";
-import { ComponentPreviewFile } from "@/components/component-preview-file";
+import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import { getIconForLanguageExtension } from "@/lib/file-extension";
 import { cn } from "@/lib/utils";
@@ -248,7 +248,13 @@ export const getMDXComponents = (
       {...props}
     />
   ),
-  pre: ({ className, children, ...props }: React.ComponentProps<"pre">) => {
+  pre: ({
+    className,
+    children,
+    tabIndex,
+    id: _id,
+    ...props
+  }: React.ComponentProps<"pre">) => {
     return (
       <ScrollArea>
         <pre
@@ -344,7 +350,7 @@ export const getMDXComponents = (
       {...props}
     />
   ),
-  ComponentPreviewFile,
+  ComponentPreview,
   ComponentInstallation,
   ComponentSource,
   CodeTabs,

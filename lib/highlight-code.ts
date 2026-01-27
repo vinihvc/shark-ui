@@ -60,11 +60,11 @@ export const transformers = [
   },
 ] as ShikiTransformer[];
 
-export async function highlightCode(
+export const highlightCode = async (
   code: string,
   language = "tsx",
   options?: { showLineNumbers?: boolean }
-) {
+) => {
   // Create cache key from code content and language.
   const cacheKey = createHash("sha256")
     .update(`${language}:${code}`)
@@ -97,7 +97,7 @@ export async function highlightCode(
         },
         pre(node) {
           node.properties.class =
-            "text-[.8125rem] min-w-0 w-max px-4 py-3.5 outline-none has-data-[highlighted-line]:px-0 has-data-[line-numbers]:ps-0 has-data-[slot=tabs]:p-0 !bg-transparent";
+            "text-[.8125rem] min-w-0 w-max px-4 py-3.5 outline-none has-data-[highlighted-line]:px-0 has-data-[line-numbers]:ps-0 has-data-[slot=tabs]:p-0 bg-transparent!";
         },
       },
       transformerNotationWordHighlight(),
@@ -108,4 +108,4 @@ export async function highlightCode(
   highlightCache.set(cacheKey, html);
 
   return html;
-}
+};

@@ -1,7 +1,7 @@
+import { CopyButton } from "@/components/copy-button";
 import { getIconForLanguageExtension } from "@/lib/file-extension";
 import { highlightCode } from "@/lib/highlight-code";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
-import { CopyButton } from "./copy-button";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
@@ -45,6 +45,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
           className="flex items-center gap-2 text-[.8125rem] text-code-foreground [&_svg]:size-4.5 [&_svg]:text-code-foreground sm:[&_svg]:size-4"
           data-language={lang}
           data-rehype-pretty-code-title=""
+          data-slot="code-block-title"
         >
           {getIconForLanguageExtension(lang)}
           {title}
@@ -54,6 +55,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
       {copyButton && <CopyButton value={code} />}
 
       <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:data-[orientation=horizontal]:mx-2 **:data-[slot=scroll-area-scrollbar]:data-[orientation=vertical]:my-2">
+        {/** biome-ignore lint/security/noDangerouslySetInnerHtml: it's ok */}
         <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
       </ScrollArea>
     </figure>

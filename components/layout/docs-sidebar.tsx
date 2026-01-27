@@ -13,6 +13,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { source } from "@/lib/fumadocs";
+import { cn } from "@/lib/utils";
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs", exact: true },
@@ -32,20 +33,27 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/changelog",
   },
 ];
-const EXCLUDED_SECTIONS = ["installation", "dark-mode"];
+const EXCLUDED_SECTIONS = ["installation", "(root)"];
 const EXCLUDED_PAGES = ["/docs", "/docs/changelog"];
 
-export function DocsSidebar({
-  tree,
-  ...props
-}: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
+export const DocsSidebar = (
+  props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }
+) => {
+  const { tree, className, ...rest } = props;
+
   const pathname = usePathname();
 
   return (
     <Sidebar
-      className="sticky top-(--header-height) z-30 hidden h-[calc(100svh-var(--header-height))] bg-transparent lg:flex"
+      className={cn(
+        "sticky top-(--header-height) z-30",
+        "h-[calc(100svh-var(--header-height))]",
+        "hidden lg:flex",
+        "bg-transparent",
+        className
+      )}
       collapsible="none"
-      {...props}
+      {...rest}
     >
       <SidebarContent className="overflow-x-hidden px-2 pb-12">
         <div className="h-(--top-spacing) shrink-0" />
@@ -56,23 +64,22 @@ export function DocsSidebar({
           <SidebarGroupContent>
             <SidebarMenu>
               {TOP_LEVEL_SECTIONS.map(({ name, href, exact }) => {
-                if (href.includes("/mcp")) {
-                  return null;
-                }
-
                 return (
                   <SidebarMenuItem key={name}>
                     <SidebarMenuButton
                       asChild
-                      className="relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
+                      className={cn(
+                        "relative",
+                        "h-[30px] w-fit",
+                        "font-medium text-[0.8rem]",
+                        "overflow-visible",
+                        "data-[active=true]:bg-muted-foreground/25"
+                      )}
                       isActive={
                         exact ? pathname === href : pathname.startsWith(href)
                       }
                     >
-                      <Link href={href}>
-                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                        {name}
-                      </Link>
+                      <Link href={href}>{name}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
@@ -109,13 +116,16 @@ export function DocsSidebar({
                           <SidebarMenuItem key={subitem.url}>
                             <SidebarMenuButton
                               asChild
-                              className="relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
+                              className={cn(
+                                "relative",
+                                "h-[30px] w-fit",
+                                "font-medium text-[0.8rem]",
+                                "overflow-visible",
+                                "data-[active=true]:bg-muted-foreground/25"
+                              )}
                               isActive={subitem.url === pathname}
                             >
-                              <Link href={subitem.url}>
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                                {subitem.name}
-                              </Link>
+                              <Link href={subitem.url}>{subitem.name}</Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
                         )
@@ -130,4 +140,4 @@ export function DocsSidebar({
       </SidebarContent>
     </Sidebar>
   );
-}
+};

@@ -11,7 +11,7 @@ export const CopyButton = (props: React.ComponentProps<typeof Clipboard>) => {
 
   return (
     <Clipboard
-      className={cn("absolute top-1.5 right-1.5 z-10", className)}
+      rootClassName={cn("absolute top-1.5 right-1.5 z-10", className)}
       {...rest}
     >
       <ClipboardTrigger asChild>
