@@ -366,18 +366,14 @@
   --radius: 0.125rem;
 }
 
+.radius-sm {
+  --radius: 0.25rem;
+}
+
 .radius-md {
   --radius: 0.5rem;
 }
 
 .radius-lg {
-  --radius: 0.65rem;
-}
-
-.radius-xl {
-  --radius: 1rem;
-}
-
-.radius-2xl {
-  --radius: 1.5rem;
+  --radius: 0.625rem;
 }

@@ -23,7 +23,7 @@ import {
 const DialogDemo = () => (
   <Dialog>
     <DialogTrigger asChild>
-      <Button>Open Dialog</Button>
+      <Button>Open dialog</Button>
     </DialogTrigger>
 
     <DialogContent>

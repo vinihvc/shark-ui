@@ -21,9 +21,11 @@ export const inputVariants = tv({
   ],
   variants: {
     size: {
+      xs: ["h-6"],
       sm: ["h-7"],
       md: ["h-8"],
       lg: ["h-9"],
+      xl: ["h-10"],
     },
   },
   defaultVariants: {

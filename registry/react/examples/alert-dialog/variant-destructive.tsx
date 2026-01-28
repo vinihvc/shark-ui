@@ -12,7 +12,7 @@ import { Button } from "@/registry/react/components/button";
 const Example = () => (
   <AlertDialog>
     <AlertDialogTrigger asChild>
-      <Button>Show Dialog</Button>
+      <Button>Open dialog</Button>
     </AlertDialogTrigger>
 
     <AlertDialogContent>

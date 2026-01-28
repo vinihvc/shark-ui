@@ -537,24 +537,10 @@ export const BORDER_RADIUS = [
     },
   },
   {
-    label: "0.65",
+    label: "0.625",
     value: "lg",
     cssVars: {
-      radius: "0.65rem",
-    },
-  },
-  {
-    label: "1",
-    value: "xl",
-    cssVars: {
-      radius: "1rem",
-    },
-  },
-  {
-    label: "1.5",
-    value: "2xl",
-    cssVars: {
-      radius: "1.5rem",
+      radius: "0.625rem",
     },
   },
 ];

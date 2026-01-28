@@ -1,5 +1,5 @@
 import { GithubIcon } from "lucide-react";
-import { CommandMenu } from "@/components/layout/command-menu";
+import { HeaderCommand } from "@/components/layout/header/header.command";
 import { MainNav } from "@/components/layout/header/header.main";
 import { MobileNav } from "@/components/layout/header/header.mobile";
 import { ModeSwitcher } from "@/components/layout/mode-switcher";
@@ -46,7 +46,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
 
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
-              <CommandMenu tree={pageTree} />
+              <HeaderCommand tree={pageTree} />
             </div>
 
             <Separator

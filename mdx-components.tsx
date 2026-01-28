@@ -26,9 +26,7 @@ import {
 import { CopyButton } from "./components/copy-button";
 
 // use this function to get MDX components, you will need it for rendering MDX
-export const getMDXComponents = (
-  components?: MDXComponents
-): MDXComponents => ({
+export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   ...defaultMdxComponents,
   ...components,
   Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (

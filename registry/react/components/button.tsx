@@ -28,8 +28,8 @@ export const buttonVariants = tv({
         "bg-transparent",
         "border shadow-xs",
         "hover:bg-accent hover:text-accent-foreground",
-        "dark:border-input dark:bg-input/32 dark:hover:bg-input/64",
-        "focus-visible:border-muted-foreground focus-visible:ring-foreground/10",
+        "dark:bg-input/32 dark:hover:bg-input/64",
+        "focus-visible:border-ring focus-visible:ring-ring/50",
       ],
       destructive: [
         "bg-destructive",
@@ -72,8 +72,8 @@ export const buttonVariants = tv({
         "[&_svg:not([class*='size-'])]:size-3.5",
       ],
       md: ["h-8", "px-4", "py-2", "has-[>svg]:px-3"],
-      lg: ["h-9", "px-6", "has-[>svg]:px-4"],
-      xl: ["h-10", "text-lg", "px-8", "has-[>svg]:px-5"],
+      lg: ["h-9", "px-5", "has-[>svg]:px-4"],
+      xl: ["h-10", "text-base", "px-6", "has-[>svg]:px-5"],
       "icon-xs": "size-6 rounded-[calc(var(--radius-md)-4px)]",
       "icon-sm": "size-7",
       "icon-md": "size-8",
@@ -130,6 +130,7 @@ export const Button = (props: ButtonProps) => {
         buttonVariants({ variant, size, clickEffect, pill }),
         className
       )}
+      data-size={size}
       data-slot="button"
       data-state={isLoading ? "loading" : "idle"}
       data-variant={variant}

@@ -8,7 +8,6 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogMedia,
   DialogTitle,
   DialogTrigger,
 } from "@/registry/react/components/dialog";
@@ -46,12 +45,6 @@ export const AlertDialogHeader = (
   props: React.ComponentProps<typeof DialogHeader>
 ) => {
   return <DialogHeader data-slot="alert-dialog-header" {...props} />;
-};
-
-export const AlertDialogMedia = (
-  props: React.ComponentProps<typeof DialogMedia>
-) => {
-  return <DialogMedia data-slot="alert-dialog-media" {...props} />;
 };
 
 export const AlertDialogTitle = (

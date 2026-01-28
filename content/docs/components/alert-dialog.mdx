@@ -73,7 +73,7 @@ import {
 
 ```tsx lineNumbers
 <AlertDialog>
-  <AlertDialogTrigger>Open Dialog</AlertDialogTrigger>
+  <AlertDialogTrigger>Open dialog</AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Dialog Title</AlertDialogTitle>
@@ -96,10 +96,118 @@ import {
 
 <ComponentPreview componentName="alert-dialog" fileName="variant-destructive" />
 
-### With media
-
-<ComponentPreview componentName="alert-dialog" fileName="example-with-media" />
-
 ## API Reference
 
-See the [Dialog component](/docs/components/dialog#api-reference) API reference for the available props.
+### AlertDialog
+
+Root element of the alert dialog. Renders a `div` with `role="alertdialog"`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `modal` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `closeOnInteractOutside` | `boolean` | `true` |
+| `initialFocusEl` | `() => MaybeElement` | `-` |
+| `finalFocusEl` | `() => MaybeElement` | `-` |
+| `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | `-` |
+| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | `-` |
+| `className` | `string` | `-` |
+
+### AlertDialogTrigger
+
+Button that opens the alert dialog. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### AlertDialogContent
+
+Container for the alert dialog content. Renders a `div`. Note: `showCloseButton` is set to `false` by default.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"md"` |
+| `showCloseButton` | `boolean` | `false` |
+| `bottomStickOnMobile` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### AlertDialogHeader
+
+Header container for the alert dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `title` | `string` | `-` |
+| `description` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### AlertDialogBody
+
+Content container for the alert dialog. Renders a `div` wrapped in a `ScrollArea`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### AlertDialogFooter
+
+Footer container for the alert dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### AlertDialogTitle
+
+Title element for the alert dialog. Renders an `h2`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### AlertDialogDescription
+
+Description element for the alert dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### AlertDialogAction
+
+Button that performs the primary action and closes the alert dialog. Renders a `button` with Button component styling.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"solid" \| "destructive"` | `"solid"` |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### AlertDialogCancel
+
+Button that cancels the action and closes the alert dialog. Renders a `button` with Button component styling (outline variant).
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### AlertDialogClose
+
+Button that closes the alert dialog. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/dialog#api-reference).

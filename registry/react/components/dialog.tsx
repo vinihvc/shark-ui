@@ -212,27 +212,6 @@ export const DialogHeader = (props: DialogHeaderProps) => {
   );
 };
 
-export const DialogMedia = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ark.div
-      className={cn(
-        "inline-flex items-center justify-center",
-        "mb-2",
-        "size-10",
-        "bg-muted",
-        "rounded-md",
-        "sm:group-data-[size=default]/alert-dialog-content:row-span-2",
-        "*:[svg:not([class*='size-'])]:size-6",
-        className
-      )}
-      data-slot="dialog-media"
-      {...rest}
-    />
-  );
-};
-
 export const DialogTitle = (
   props: React.ComponentProps<typeof ArkDialog.Title>
 ) => {

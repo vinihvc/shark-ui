@@ -12,18 +12,18 @@ import { Button } from "@/registry/react/components/button";
 const AlertDialogDemo = () => (
   <AlertDialog>
     <AlertDialogTrigger asChild>
-      <Button>Show Dialog</Button>
+      <Button>Open dialog</Button>
     </AlertDialogTrigger>
 
     <AlertDialogContent>
       <AlertDialogHeader
-        description="You can restore it later. You'll be able to access it from the activity history."
-        title="Archive project"
+        description="Do you want to allow the USB accessory to connect to this device?"
+        title="Allow accessory to connect?"
       />
       <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogCancel>Don't allow</AlertDialogCancel>
 
-        <AlertDialogAction>Archive project</AlertDialogAction>
+        <AlertDialogAction>Allow</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>

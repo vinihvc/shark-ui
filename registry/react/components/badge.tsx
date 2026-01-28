@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 const badgeVariants = tv({
   base: [
     "inline-flex items-center justify-center gap-1",
-    "rounded-md border border-transparent",
     "select-none font-medium",
+    "rounded-md border border-transparent",
     "overflow-hidden",
     "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 [button,a&]:cursor-pointer",
@@ -68,19 +68,16 @@ const badgeVariants = tv({
         "h-5 min-w-5 sm:h-4 sm:min-w-4",
         "px-1",
         "text-xs sm:text-[.625rem]",
-        "rounded-[calc(var(--radius-md)-6px)]",
       ],
       md: [
         "h-5.5 min-w-5.5 sm:h-4.5 sm:min-w-4.5",
         "px-1.5",
         "text-sm sm:text-xs",
-        "rounded-[calc(var(--radius-md)-6px)]",
       ],
       lg: [
         "h-6.5 min-w-6.5 sm:h-5.5 sm:min-w-5.5",
         "px-2",
         "text-base sm:text-sm",
-        "rounded-[calc(var(--radius-md)-4px)]",
         "[&_svg]:size-3.5",
       ],
     },

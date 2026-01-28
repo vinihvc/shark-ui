@@ -21,40 +21,17 @@ import {
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 
-const EditableDemo = () => (
+const Example = () => (
   <Card className="w-full max-w-sm">
     <CardHeader
-      description="Click in the field or edit button to start editing"
-      title="Edit user"
+      description="Focus the field to start editing (default activation mode)"
+      title="Edit with focus"
     />
     <CardContent>
       <FieldGroup>
         <Field>
           <FieldLabel>Name</FieldLabel>
-          <Editable defaultValue="Vinicius Vicentini">
-            <EditableArea>
-              <EditableInput asChild>
-                <Input className="w-full" />
-              </EditableInput>
-              <EditablePreview />
-            </EditableArea>
-            <EditableControl>
-              <EditableCancelTrigger asChild>
-                <Button size="icon-md" variant="outline">
-                  <X />
-                </Button>
-              </EditableCancelTrigger>
-              <EditableSubmitTrigger asChild>
-                <Button size="icon-md" variant="outline">
-                  <Check />
-                </Button>
-              </EditableSubmitTrigger>
-            </EditableControl>
-          </Editable>
-        </Field>
-        <Field>
-          <FieldLabel>Username</FieldLabel>
-          <Editable defaultValue="@vinihvc">
+          <Editable activationMode="focus" defaultValue="Vinicius Vicentini">
             <EditableArea>
               <EditableInput asChild>
                 <Input />
@@ -63,12 +40,35 @@ const EditableDemo = () => (
             </EditableArea>
             <EditableControl>
               <EditableCancelTrigger asChild>
-                <Button size="icon-md" variant="outline">
+                <Button aria-label="Cancel" size="icon-md" variant="outline">
                   <X />
                 </Button>
               </EditableCancelTrigger>
               <EditableSubmitTrigger asChild>
-                <Button size="icon-md" variant="outline">
+                <Button aria-label="Save" size="icon-md" variant="outline">
+                  <Check />
+                </Button>
+              </EditableSubmitTrigger>
+            </EditableControl>
+          </Editable>
+        </Field>
+        <Field>
+          <FieldLabel>Username</FieldLabel>
+          <Editable activationMode="focus" defaultValue="@vinihvc">
+            <EditableArea>
+              <EditableInput asChild>
+                <Input />
+              </EditableInput>
+              <EditablePreview />
+            </EditableArea>
+            <EditableControl>
+              <EditableCancelTrigger asChild>
+                <Button aria-label="Cancel" size="icon-md" variant="outline">
+                  <X />
+                </Button>
+              </EditableCancelTrigger>
+              <EditableSubmitTrigger asChild>
+                <Button aria-label="Save" size="icon-md" variant="outline">
                   <Check />
                 </Button>
               </EditableSubmitTrigger>
@@ -80,4 +80,4 @@ const EditableDemo = () => (
   </Card>
 );
 
-export default EditableDemo;
+export default Example;

@@ -25,21 +25,28 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
-import { slugify } from "@/utils/formatter";
 
-interface CommandMenuItem {
-  label: string;
+interface PageItem {
   value: string;
+  label: string;
+  url: string;
+  isComponent: boolean;
+  keywords?: string[];
 }
 
-interface CommandMenuProps extends React.ComponentProps<typeof Dialog> {
+interface PageGroup {
+  value: string;
+  items: PageItem[];
+}
+
+interface HeaderCommandProps extends React.ComponentProps<typeof Dialog> {
   /**
    * The tree of pages
    */
   tree: typeof source.pageTree;
 }
 
-export const CommandMenu = (props: CommandMenuProps) => {
+export const HeaderCommand = (props: HeaderCommandProps) => {
   const { tree, ...rest } = props;
 
   const router = useRouter();
@@ -48,15 +55,40 @@ export const CommandMenu = (props: CommandMenuProps) => {
 
   const { contains } = useFilter({ sensitivity: "base" });
 
-  const components = tree.children
-    .filter((group) => group.type === "folder")[0]
-    .children.map((item) => ({
-      label: item.name as string,
-      value: slugify(item.name as string),
-    }));
+  const components = React.useMemo<PageGroup[]>(() => {
+    const groups: PageGroup[] = [];
 
-  const { collection, filter } = useListCollection<CommandMenuItem>({
-    initialItems: components,
+    for (const group of tree.children) {
+      if (group.type === "folder") {
+        const items: PageItem[] = [];
+        for (const item of group.children) {
+          if (item.type === "page") {
+            const isComponent = item.url.includes("/components/");
+            const itemName = item.name?.toString() || "";
+            items.push({
+              isComponent,
+              keywords: isComponent ? ["component"] : undefined,
+              label: itemName,
+              url: item.url,
+              value: itemName ? `${group.name} ${itemName}` : "",
+            });
+          }
+        }
+        if (items.length > 0) {
+          groups.push({
+            items,
+            value:
+              typeof group.name === "string" ? group.name : String(group.name),
+          });
+        }
+      }
+    }
+
+    return groups;
+  }, [tree]);
+
+  const { collection, filter } = useListCollection<PageItem>({
+    initialItems: components.flatMap((group) => group.items),
     filter: contains,
   });
 

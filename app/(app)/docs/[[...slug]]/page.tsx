@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
 import { getPageImage, source } from "@/lib/fumadocs";
-import { getMDXComponents } from "@/mdx-components";
+import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
@@ -133,9 +133,9 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                     )}
                   </div>
 
-                  <div className="mt-6 w-full flex-1 *:data-[slot=alert]:first:mt-0">
+                  <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
                     <MDX
-                      components={getMDXComponents({
+                      components={mdxComponents({
                         // this allows you to link to other pages with relative file paths
                         a: createRelativeLink(source, page),
                       })}

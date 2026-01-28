@@ -11,10 +11,10 @@ import {
   HoverCardTrigger,
 } from "@/registry/react/components/hover-card";
 
-const HoverCardDemo = () => (
-  <HoverCard>
+const Example = () => (
+  <HoverCard closeDelay={300} openDelay={200}>
     <HoverCardTrigger asChild>
-      <Button variant="ghost">Hover here</Button>
+      <Button variant="outline">Hover here</Button>
     </HoverCardTrigger>
     <HoverCardContent>
       <div className="flex gap-4">
@@ -44,4 +44,4 @@ const HoverCardDemo = () => (
   </HoverCard>
 );
 
-export default HoverCardDemo;
+export default Example;

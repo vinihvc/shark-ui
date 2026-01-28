@@ -65,21 +65,43 @@ import {
 
 ```tsx lineNumbers
 <Dialog>
-  <DialogTrigger>Open Dialog</DialogTrigger>
+  <DialogTrigger>Open dialog</DialogTrigger>
   <DialogContent>
     <DialogHeader>
-      <DialogTitle>Dialog Title</DialogTitle>
-      <DialogDescription>Dialog Description</DialogDescription>
+      <DialogTitle />
+      <DialogDescription />
     </DialogHeader>
     <DialogBody>
       {/** your content here */}
     </DialogBody>
     <DialogFooter>
-      <DialogClose>Close</DialogClose>
-      <DialogClose>Save</DialogClose>
+      <DialogClose />
     </DialogFooter>
   </DialogContent>
 </Dialog>
+```
+
+## Title and Description
+
+You can use `<DialogHeader />` in two ways:
+
+### Using props
+
+You can pass `title` and `description` props directly to `<DialogHeader />`. In this case, you don't need to use `<DialogTitle />` and `<DialogDescription />` components.
+
+```tsx lineNumbers
+<DialogHeader title="Dialog Title" description="Dialog description" />
+```
+
+### Using components
+
+Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as children for more control.
+
+```tsx lineNumbers
+<DialogHeader>
+  <DialogTitle>Dialog Title</DialogTitle>
+  <DialogDescription>Dialog description</DialogDescription>
+</DialogHeader>
 ```
 
 ## Examples
@@ -224,14 +246,6 @@ Button that closes the dialog. Renders a `button`.
 ### DialogOverlay
 
 Backdrop overlay for the dialog. Renders a `div`.
-
-| Prop | Type | Default |
-|------|------|---------|
-| `className` | `string` | `-` |
-
-### DialogMedia
-
-Media container for the dialog. Renders a `div`.
 
 | Prop | Type | Default |
 |------|------|---------|

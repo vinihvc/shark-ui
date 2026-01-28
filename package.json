@@ -40,6 +40,7 @@
     "@shikijs/transformers": "^3.21.0",
     "@tanstack/react-table": "^8.21.3",
     "clsx": "^2.1.1",
+    "front-matter": "^4.0.2",
     "fumadocs-core": "16.0.7",
     "fumadocs-mdx": "13.0.5",
     "fumadocs-ui": "16.0.7",

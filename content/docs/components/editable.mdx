@@ -50,17 +50,210 @@ npm install @ark-ui/react
 ## Usage
 
 ```tsx lineNumbers
-import { Editable } from "@/components/ui/editable";
+import { 
+  Editable,
+  EditableArea,
+  EditableInput,
+  EditablePreview,
+  EditableControl,
+  EditableCancelTrigger,
+  EditableSubmitTrigger,
+  EditableEditTrigger,
+} from "@/components/ui/editable";
 ```
 
 ```tsx lineNumbers
-<Editable>
-  <EditableContent>Editable Content</EditableContent>
+<Editable defaultValue="Editable content">
+  <EditableArea>
+    <EditableInput />
+    <EditablePreview />
+  </EditableArea>
+  <EditableControl>
+    <EditableCancelTrigger/>
+    <EditableSubmitTrigger/>
+    <EditableEditTrigger/>
+  </EditableControl>
 </Editable>
 ```
 
+## Activation Modes
+
+The `activationMode` prop controls how editing is triggered. The default is `"focus"`.
+
+#### Focus
+
+Editing starts when the field receives focus.
+
+<ComponentPreview componentName="editable" fileName="example-activation-focus" />
+
+#### Click
+
+Editing starts with a single click on the preview.
+
+<ComponentPreview componentName="editable" fileName="example-activation-click" />
+
+#### Double-Click
+
+Editing starts with a double-click on the preview.
+
+<ComponentPreview componentName="editable" fileName="example-dblclick" />
+
+#### None
+
+No automatic activation. Use `EditableEditTrigger` to manually start editing.
+
+<ComponentPreview componentName="editable" fileName="example-activation-none" />
+
+## Sizes
+
+You can change the size of the editable preview using the `size` prop on `EditablePreview`.
+
+### Extra Small
+
+<ComponentPreview componentName="editable" fileName="size-xs" />
+
+### Small
+
+<ComponentPreview componentName="editable" fileName="size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="editable" fileName="size-md" />
+
+### Large
+
+<ComponentPreview componentName="editable" fileName="size-lg" />
+
+### Extra Large
+
+<ComponentPreview componentName="editable" fileName="size-xl" />
+
 ## Examples
 
-### Default
+### With Textarea
 
-<ComponentPreview componentName="editable" fileName="default" />
+<ComponentPreview componentName="editable" fileName="example-with-textarea" />
+
+### Without Controls
+
+Edit without control buttons. Press Enter to save, Escape to cancel.
+
+<ComponentPreview componentName="editable" fileName="example-without-controls" />
+
+### Controlled
+
+Make the entire form editable at once by using the `edit` prop.
+
+You can also use the `value` and `onValueChange` props to control the editable component.
+
+<ComponentPreview componentName="editable" fileName="example-controlled" />
+
+## Orientation
+
+The `orientation` prop controls the layout of the editable component and its controls.
+
+#### Horizontal
+
+Controls are displayed horizontally next to the editable area. This is the default.
+
+<ComponentPreview componentName="editable" fileName="example-orientation-horizontal" />
+
+#### Vertical
+
+Controls are displayed vertically next to the editable area. Useful for multi-line editable content.
+
+<ComponentPreview componentName="editable" fileName="example-orientation-vertical" />
+
+## API Reference
+
+### Editable
+
+Root element of the editable component. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `activationMode` | `'focus'` | `focus \| dblclick \| click \| none` |
+| `orientation` | `"horizontal"` | `"horizontal" \| "vertical"` |
+| `submitMode` | `'both'` | `both \| enter \| blur \| none` |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+| Attributes | Default | Type |
+|------------|---------|------|
+| `[data-mode]` | `activationMode` | `focus \| dblclick \| click \| none` |
+| `[data-orientation]` | `orientation` | `horizontal \| vertical` |
+| `[data-slot]` | `editable` | `-` |
+
+### EditableArea
+
+Container for the editable input and preview. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### EditableInput
+
+Input element for editing. Renders an `input` or custom element when using `asChild`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+| Attributes | Default | Type |
+|------------|---------|------|
+| `[data-slot]` | `editable-input` | `-` |
+
+### EditablePreview
+
+Preview element that displays the value when not editing. Renders a `span`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | `-` |
+| `size` | `"md"` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` |
+| `className` | `string` | `-` |
+
+| Attributes | Default | Type |
+|------------|---------|------|
+| `[data-slot]` | `editable-preview` | `-` |
+
+### EditableControl
+
+Container for the control buttons. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### EditableEditTrigger
+
+Button that triggers edit mode. Renders a `button`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### EditableCancelTrigger
+
+Button that cancels editing and reverts changes. Renders a `button`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+### EditableSubmitTrigger
+
+Button that submits the edited value. Renders a `button`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/editable#api-reference).

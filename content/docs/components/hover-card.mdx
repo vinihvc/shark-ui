@@ -59,13 +59,116 @@ import {
 
 ```tsx lineNumbers
 <HoverCard>
-  <HoverCardTrigger>Hover me</HoverCardTrigger>
-  <HoverCardContent>Hover Card Content</HoverCardContent>
+  <HoverCardTrigger />
+  <HoverCardContent>
+    {/* Content */}
+  </HoverCardContent>
 </HoverCard>
 ```
+## Triggers Delays
 
-## Examples
+The `openDelay` and `closeDelay` props control the delay before the hover card opens and closes respectively.
 
-### Default
+Default values are `100ms` for `closeDelay` and `10ms` for `openDelay`.
 
-<ComponentPreview componentName="hover-card" fileName="default" /> 
+<ComponentPreview componentName="hover-card" fileName="triggers-delays" />
+
+## Positioning
+
+Control the position of the hover card relative to the trigger using the `positioning` prop.
+
+<ComponentPreview componentName="hover-card" fileName="example-positioning" />
+
+## API Reference
+
+### HoverCard
+
+Root element of the hover card component. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `closeDelay` | `100` | `number` |
+| `defaultOpen` | `boolean` | - |
+| `disabled` | `boolean` | - |
+| `id` | `string` | - |
+| `ids` | `Partial<{ trigger: string; content: string; positioner: string; arrow: string }>` | - |
+| `immediate` | `boolean` | - |
+| `lazyMount` | `true` | `boolean` |
+| `onExitComplete` | `VoidFunction` | - |
+| `onFocusOutside` | `(event: FocusOutsideEvent) => void` | - |
+| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | - |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | - |
+| `onPointerDownOutside` | `(event: PointerDownOutsideEvent) => void` | - |
+| `open` | `boolean` | - |
+| `openDelay` | `10` | `number` |
+| `positioning` | `{ placement: "top" }` | `PositioningOptions` |
+| `present` | `boolean` | - |
+| `skipAnimationOnMount` | `false` | `boolean` |
+| `unmountOnExit` | `true` | `boolean` |
+| `className` | `string` | `-` |
+
+### HoverCardTrigger
+
+Button that triggers the hover card. Renders a `button`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+**Attributes:**
+
+- `[data-scope]` - hover-card
+- `[data-part]` - trigger
+- `[data-placement]` - The placement of the trigger
+- `[data-state]` - "open" | "closed"
+
+### HoverCardContent
+
+Content element that displays when the hover card is open. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+**Attributes:**
+
+- `[data-scope]` - hover-card
+- `[data-part]` - content
+- `[data-state]` - "open" | "closed"
+- `[data-nested]` - popover
+- `[data-has-nested]` - popover
+- `[data-placement]` - The placement of the content
+
+**CSS Variables:**
+
+- `--layer-index` - The index of the dismissable in the layer stack
+- `--nested-layer-count` - The number of nested hover-cards
+
+### HoverCardArrow
+
+Arrow element that points to the trigger. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+**CSS Variables:**
+
+- `--arrow-size` - The size of the arrow
+- `--arrow-size-half` - Half the size of the arrow
+- `--arrow-background` - Use this variable to style the arrow background
+- `--arrow-offset` - The offset position of the arrow
+
+### HoverCardArrowTip
+
+Tip of the arrow element. Renders a `div`.
+
+| Prop | Default | Type |
+|------|---------|------|
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/hover-card#api-reference).

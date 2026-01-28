@@ -1,4 +1,4 @@
-import { Check, X } from "lucide-react";
+import { Check, Edit, X } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -10,6 +10,7 @@ import {
   EditableArea,
   EditableCancelTrigger,
   EditableControl,
+  EditableEditTrigger,
   EditableInput,
   EditablePreview,
   EditableSubmitTrigger,
@@ -21,31 +22,36 @@ import {
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 
-const EditableDemo = () => (
+const Example = () => (
   <Card className="w-full max-w-sm">
     <CardHeader
-      description="Click in the field or edit button to start editing"
-      title="Edit user"
+      description="Use the edit button to start editing (no automatic activation)"
+      title="Edit with manual trigger"
     />
     <CardContent>
       <FieldGroup>
         <Field>
           <FieldLabel>Name</FieldLabel>
-          <Editable defaultValue="Vinicius Vicentini">
+          <Editable activationMode="none" defaultValue="Vinicius Vicentini">
             <EditableArea>
               <EditableInput asChild>
-                <Input className="w-full" />
+                <Input />
               </EditableInput>
               <EditablePreview />
             </EditableArea>
             <EditableControl>
+              <EditableEditTrigger asChild>
+                <Button aria-label="Edit" size="icon-md" variant="outline">
+                  <Edit />
+                </Button>
+              </EditableEditTrigger>
               <EditableCancelTrigger asChild>
-                <Button size="icon-md" variant="outline">
+                <Button aria-label="Cancel" size="icon-md" variant="outline">
                   <X />
                 </Button>
               </EditableCancelTrigger>
               <EditableSubmitTrigger asChild>
-                <Button size="icon-md" variant="outline">
+                <Button aria-label="Save" size="icon-md" variant="outline">
                   <Check />
                 </Button>
               </EditableSubmitTrigger>
@@ -54,7 +60,7 @@ const EditableDemo = () => (
         </Field>
         <Field>
           <FieldLabel>Username</FieldLabel>
-          <Editable defaultValue="@vinihvc">
+          <Editable activationMode="none" defaultValue="@vinihvc">
             <EditableArea>
               <EditableInput asChild>
                 <Input />
@@ -62,13 +68,18 @@ const EditableDemo = () => (
               <EditablePreview />
             </EditableArea>
             <EditableControl>
+              <EditableEditTrigger asChild>
+                <Button aria-label="Edit" size="icon-md" variant="outline">
+                  <Edit />
+                </Button>
+              </EditableEditTrigger>
               <EditableCancelTrigger asChild>
-                <Button size="icon-md" variant="outline">
+                <Button aria-label="Cancel" size="icon-md" variant="outline">
                   <X />
                 </Button>
               </EditableCancelTrigger>
               <EditableSubmitTrigger asChild>
-                <Button size="icon-md" variant="outline">
+                <Button aria-label="Save" size="icon-md" variant="outline">
                   <Check />
                 </Button>
               </EditableSubmitTrigger>
@@ -80,4 +91,4 @@ const EditableDemo = () => (
   </Card>
 );
 
-export default EditableDemo;
+export default Example;
