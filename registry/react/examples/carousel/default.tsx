@@ -1,40 +1,37 @@
 import { Card, CardContent } from "@/registry/react/components/card";
 import {
   Carousel,
+  CarouselContent,
   CarouselControl,
-  CarouselGroup,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/react/components/carousel";
 
 const CarouselDemo = () => {
+  const slides = Array.from({ length: 8 });
+
   return (
     <Carousel
-      allowMouseDrag
-      className="w-full max-w-48 sm:max-w-xs"
-      slideCount={8}
-      slidesPerPage={1}
-      spacing="20px"
+      className="w-full max-w-48 sm:max-w-64"
+      slideCount={slides.length}
     >
       <CarouselControl>
         <CarouselPrevious>Previous</CarouselPrevious>
         <CarouselNext>Next</CarouselNext>
       </CarouselControl>
 
-      <CarouselGroup>
-        {Array.from({ length: 8 }).map((_, index) => (
+      <CarouselContent>
+        {slides.map((_, index) => (
           <CarouselItem index={index} key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="font-semibold text-4xl">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
+            <Card>
+              <CardContent className="flex aspect-square items-center justify-center">
+                <span className="font-semibold text-4xl">{index + 1}</span>
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
-      </CarouselGroup>
+      </CarouselContent>
     </Carousel>
   );
 };

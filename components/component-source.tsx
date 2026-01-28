@@ -64,6 +64,7 @@ export const ComponentSource = (props: ComponentSourceProps) => {
         <CodeCollapsibleWrapper className={className}>
           <CodeBlock
             code={codeContent}
+            // Copy button is not working when the collapsible is closed
             copyButton={false}
             lang={lang}
             title={title}

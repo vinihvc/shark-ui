@@ -9,8 +9,8 @@ export const KbdGroup = (props: KbdGroupProps) => {
   return (
     <ark.div
       className={cn(
-        "[--gap:--spacing(1)]",
-        "inline-flex items-center gap-(--gap)",
+        "[--space:--spacing(1)]",
+        "inline-flex items-center gap-(--space)",
         className
       )}
       data-slot="kbd-group"

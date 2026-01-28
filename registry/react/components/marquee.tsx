@@ -12,7 +12,7 @@ export const Marquee = (props: MarqueeProps) => {
     <ArkMarquee.Root
       autoFill={autoFill}
       className={cn(
-        "[--gap:--spacing(6)] [--marquee-spacing:var(--gap)]",
+        "[--marquee-spacing:var(--space)] [--space:--spacing(6)]",
         "relative",
         "group",
         "w-full max-w-full",

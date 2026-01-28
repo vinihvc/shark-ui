@@ -9,12 +9,6 @@ import {
 
 interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
   /**
-   * The alignment of the component
-   *
-   * @default "center"
-   */
-  align?: "center" | "start" | "end";
-  /**
    * The component to display in the preview
    *
    */
@@ -27,7 +21,7 @@ interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
 }
 
 export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
-  const { className, align = "center", component, source, ...rest } = props;
+  const { className, component, source, ...rest } = props;
 
   return (
     <div
@@ -44,21 +38,14 @@ export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
           </TabsTrigger>
         </TabsList>
 
-        <div
-          className={cn(
-            "relative",
-            "rounded-lg border"
-            // "**:data-[slot=preview]:w-full sm:**:data-[slot=preview]:max-w-[80%]"
-          )}
-        >
+        <div className={cn("relative", "rounded-lg border")}>
           <TabsContent value="preview">
             <div
               className={cn(
-                "flex h-[450px] w-full justify-center overflow-y-auto p-10 data-[align=start]:items-start data-[align=end]:items-end data-[align=center]:items-center max-sm:px-6"
+                "flex h-[450px] w-full items-center justify-center overflow-y-auto p-10 max-sm:px-6"
               )}
-              data-align={align}
             >
-              <div data-slot="preview">{component}</div>
+              {component}
             </div>
           </TabsContent>
 

@@ -54,27 +54,187 @@ import {
   Dialog, 
   DialogTrigger, 
   DialogContent, 
+  DialogHeader,
   DialogTitle, 
   DialogDescription, 
-  DialogClose,
-  DialogHeader,
+  DialogBody,
   DialogFooter,
+  DialogClose,
 } from "@/components/ui/dialog";
 ```
 
 ```tsx lineNumbers
 <Dialog>
   <DialogTrigger>Open Dialog</DialogTrigger>
-
   <DialogContent>
-    <DialogTitle>Dialog Title</DialogTitle>
-    <DialogDescription>Dialog Description</DialogDescription>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>Dialog Description</DialogDescription>
+    </DialogHeader>
+    <DialogBody>
+      {/** your content here */}
+    </DialogBody>
+    <DialogFooter>
+      <DialogClose>Close</DialogClose>
+      <DialogClose>Save</DialogClose>
+    </DialogFooter>
   </DialogContent>
 </Dialog>
 ```
 
 ## Examples
 
-### Default
+### With ScrollArea
 
-<ComponentPreview componentName="dialog" fileName="default" />
+Make the content area scrollable while keeping header and footer fixed using ScrollArea.
+
+<ComponentPreview componentName="dialog" fileName="example-scrollarea" />
+
+### No Close Button
+
+Hide the close button in the top right corner by setting `showCloseButton={false}`.
+
+<ComponentPreview componentName="dialog" fileName="example-no-close-button" />
+
+### Open from Menu
+
+Open a dialog imperatively from a menu item using the `onClick` handler.
+
+<ComponentPreview componentName="dialog" fileName="example-open-from-menu" />
+
+### Confirmation
+
+Intercept close attempts to show confirmation prompts, preventing data loss from unsaved changes.
+
+<ComponentPreview componentName="dialog" fileName="example-confirmation" />
+
+### Non-Modal
+
+Use `modal={false}` to allow interaction with elements outside the dialog. Disables focus trapping and scroll prevention.
+
+<ComponentPreview componentName="dialog" fileName="example-non-modal" />
+
+### Initial Focus
+
+Use `initialFocusEl` to control which element receives focus when the dialog opens.
+
+<ComponentPreview componentName="dialog" fileName="example-initial-focus" />
+
+### Nested
+
+Nest dialogs within one another.
+
+<ComponentPreview componentName="dialog" fileName="example-nested" />
+
+## API Reference
+
+### Dialog
+
+Root element of the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `modal` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `closeOnInteractOutside` | `boolean` | `true` |
+| `initialFocusEl` | `() => MaybeElement` | `-` |
+| `finalFocusEl` | `() => MaybeElement` | `-` |
+| `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | `-` |
+| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | `-` |
+| `className` | `string` | `-` |
+
+### DialogTrigger
+
+Button that opens the dialog. Renders a `button`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogContent
+
+Container for the dialog content. Renders a `div`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"md"` |
+| `showCloseButton` | `boolean` | `true` |
+| `bottomStickOnMobile` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### DialogHeader
+
+Header container for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `title` | `string` | `-` |
+| `description` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### DialogBody
+
+Content container for the dialog. Renders a `div` wrapped in a `ScrollArea`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DialogFooter
+
+Footer container for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DialogTitle
+
+Title element for the dialog. Renders an `h2`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogDescription
+
+Description element for the dialog. Renders a `div`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogClose
+
+Button that closes the dialog. Renders a `button`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogOverlay
+
+Backdrop overlay for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DialogMedia
+
+Media container for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/dialog#api-reference).

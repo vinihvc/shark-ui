@@ -1,5 +1,6 @@
 import Link from "fumadocs-core/link";
 import defaultMdxComponents from "fumadocs-ui/mdx";
+import { Info } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeTabs } from "@/components/code-tabs";
@@ -350,6 +351,7 @@ export const getMDXComponents = (
       {...props}
     />
   ),
+  Info,
   ComponentPreview,
   ComponentInstallation,
   ComponentSource,

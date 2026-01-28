@@ -11,7 +11,7 @@ const fieldVariants = tv({
     "group/field",
     "w-full",
     "flex gap-3",
-    "data-[invalid=true]:text-destructive",
+    "data-invalid:text-destructive dark:data-invalid:text-destructive-foreground",
   ],
   variants: {
     orientation: {
@@ -101,7 +101,7 @@ export const FieldGroup = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "group/field-group @container/field-group",
-        "flex w-full flex-col gap-7",
+        "flex w-full flex-col gap-5",
         "data-[data-slot=checkbox-group]:gap-3",
         "*:data-[slot=field-group]:gap-4",
         className
@@ -140,7 +140,7 @@ export const FieldLabel = (
         "flex w-fit gap-2",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
         "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
-        "group-data-[disabled=true]/field:opacity-50",
+        "group-data-disabled/field:opacity-50",
         "dark:has-data-[state=checked]:bg-primary/10",
         className
       )}

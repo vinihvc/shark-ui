@@ -19,12 +19,10 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
 
   return (
     <Collapsible
-      className={cn("group/collapsible relative md:-mx-1", className)}
+      className={cn("relative md:-mx-1", className)}
       collapsedHeight="256px"
-      lazyMount={false}
       onOpenChange={({ open }) => setIsOpened(open)}
       open={isOpened}
-      unmountOnExit={false}
       {...rest}
     >
       <div className="absolute top-1.5 right-10 z-10 flex items-center">
@@ -35,9 +33,11 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
         </CollapsibleTrigger>
       </div>
 
-      <CollapsibleContent className="relative mt-6 h-full overflow-hidden [&>figure]:mt-0 [&>figure]:md:mx-0!">
-        {children}
-      </CollapsibleContent>
+      <div className="mt-6">
+        <CollapsibleContent className="relative overflow-hidden [&>figure]:mt-0 [&>figure]:md:mx-0!">
+          {children}
+        </CollapsibleContent>
+      </div>
 
       <CollapsibleTrigger
         className={cn(

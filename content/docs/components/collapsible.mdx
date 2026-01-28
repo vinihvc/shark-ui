@@ -66,6 +66,76 @@ import {
 
 ## Examples
 
-### Default
+### Nested
 
-<ComponentPreview componentName="collapsible" fileName="default" />
+You can nest collapsibles inside each other to create hierarchical structures.
+
+<ComponentPreview componentName="collapsible" fileName="example-nested" />
+
+### Disabled
+
+Use the `disabled` prop on the collapsible to disable it.
+
+<ComponentPreview componentName="collapsible" fileName="example-disabled" />
+
+### Controlled
+
+Use the `open` and `onOpenChange` props to control the collapsible state programmatically.
+
+<ComponentPreview componentName="collapsible" fileName="example-controlled" />
+
+### Partial Collapse
+
+Use the `collapsedHeight` prop to show a portion of the content when collapsed.
+
+<ComponentPreview componentName="collapsible" fileName="example-partial-collapse" />
+
+
+<Alert variant="warning">
+<Info />
+<AlertTitle>Accessibility Notice</AlertTitle>
+<AlertDescription>
+Interactive elements (links, buttons, inputs) within the collapsed area automatically become inaccesible to prevent keyboard navigation to hidden content.
+</AlertDescription>
+</Alert>
+
+## API Reference
+
+### Collapsible
+
+Root element of the collapsible. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `collapsedHeight` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### CollapsibleTrigger
+
+Button that toggles the collapsible. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### CollapsibleContent
+
+Container for the collapsible content. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### CollapsibleIndicator
+
+Indicator icon that rotates when the collapsible is open. Renders a `span`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |

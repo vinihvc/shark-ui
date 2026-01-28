@@ -4,18 +4,18 @@ import {
   AvatarGroup,
   AvatarImage,
 } from "@/registry/react/components/avatar";
+import { Button } from "@/registry/react/components/button";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/react/components/hover-card";
-import { Button } from "../../components/button";
 
 const Example = () => (
   <AvatarGroup>
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button className="rounded-full" size="icon-md" variant="ghost">
+        <Button pill size="icon-md" variant="ghost">
           <Avatar>
             <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
             <AvatarFallback>VV</AvatarFallback>
@@ -40,7 +40,7 @@ const Example = () => (
 
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button className="rounded-full" size="icon-md" variant="ghost">
+        <Button pill size="icon-md" variant="ghost">
           <Avatar>
             <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>

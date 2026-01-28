@@ -10,7 +10,7 @@ import {
 const Example = () => (
   <div className="w-full max-w-sm">
     <Card className="overflow-hidden">
-      <CardMedia className="h-48 w-full bg-muted" variant="image">
+      <CardMedia className="h-32 w-full bg-muted" variant="image">
         {/* Image hoes here */}
       </CardMedia>
       <CardHeader

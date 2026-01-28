@@ -89,7 +89,7 @@ export const AlertDescription = (
     <ark.div
       className={cn(
         "flex flex-col gap-2.5",
-        "text-pretty text-muted-foreground",
+        "text-balance text-muted-foreground",
         "[svg~&]:col-start-2",
         className
       )}

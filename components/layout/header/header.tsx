@@ -21,7 +21,11 @@ export const SiteHeader = (props: SiteHeaderProps) => {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm",
+        "z-40",
+        "sticky top-0",
+        "w-full",
+        "bg-background/80 backdrop-blur-sm",
+        "border-b",
         className
       )}
       {...rest}

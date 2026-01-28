@@ -1,0 +1,105 @@
+---
+title: Alert Dialog
+description: A modal window that appears on top of the main content. To display important content to the user.
+links:
+  doc: https://ark-ui.com/docs/components/dialog
+  api: https://ark-ui.com/docs/components/dialog#api-reference
+---
+
+<Alert variant="info">
+<Info />
+<AlertDescription>
+Built on top of the <Link href="/docs/components/dialog">Dialog component</Link>. Check it out for more examples.
+</AlertDescription>
+</Alert>
+
+<ComponentPreview componentName="alert-dialog" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/alert-dialog
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/alert-dialog.tsx" src="/alert-dialog.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx lineNumbers
+import { 
+  AlertDialog, 
+  AlertDialogTrigger, 
+  AlertDialogContent, 
+  AlertDialogBody,
+  AlertDialogTitle, 
+  AlertDialogDescription, 
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogHeader,
+  AlertDialogFooter,
+} from "@/components/ui/alert-dialog";
+```
+
+```tsx lineNumbers
+<AlertDialog>
+  <AlertDialogTrigger>Open Dialog</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Dialog Title</AlertDialogTitle>
+      <AlertDialogDescription>Dialog Description</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogBody>
+    {/** Your content here */}
+    </AlertDialogBody>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Close</AlertDialogCancel>
+      <AlertDialogAction>Action</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Examples
+
+### Destructive action
+
+<ComponentPreview componentName="alert-dialog" fileName="variant-destructive" />
+
+### With media
+
+<ComponentPreview componentName="alert-dialog" fileName="example-with-media" />
+
+## API Reference
+
+See the [Dialog component](/docs/components/dialog#api-reference) API reference for the available props.

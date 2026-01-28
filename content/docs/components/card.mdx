@@ -72,7 +72,7 @@ import {
 </Card>
 ```
 
-## Using Card Header
+## Title and Description
 
 You can use `<CardHeader />` in two ways:
 
@@ -111,6 +111,19 @@ A product card with image, title, description, price, and action buttons.
 A card with an icon at the top and title, description, and action button at the bottom.
 
 <ComponentPreview componentName="card" fileName="example-icon" />
+
+### Custom spacing
+
+You can use the `[--space:--spacing("value")]` utility class to change the spacing of the card.
+
+
+<ComponentPreview componentName="card" fileName="example-spacing" />
+
+You can also use breakpoint utilities to change the spacing of the card at different screen sizes.
+
+```css
+  md:[--space:--spacing(6)] lg:[--space:--spacing(8)]
+```
 
 ## API Reference
 

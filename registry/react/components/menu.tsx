@@ -1,9 +1,10 @@
 import { ark, Portal } from "@ark-ui/react";
-import { Menu as ArkMenu } from "@ark-ui/react/menu";
+import { Menu as ArkMenu, type MenuContentProps } from "@ark-ui/react/menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "./scroll-area";
 
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
   const { lazyMount = true, unmountOnExit = true, ...rest } = props;
@@ -25,7 +26,8 @@ export const MenuTrigger = (
 export const menuContentVariants = tv({
   base: [
     "z-(--z-index)",
-    "h-auto min-w-32",
+    "h-auto",
+    // "max-h-[min(var(--available-height),--spacing(72))] min-w-[max(var(--reference-width),--spacing(32))]",
     "p-1",
     "bg-popover",
     "text-popover-foreground",
@@ -33,20 +35,16 @@ export const menuContentVariants = tv({
     "origin-(--transform-origin)",
     "outline-none",
     "overflow-y-auto overflow-x-hidden",
+    "duration-100",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
     "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-    "data-[state=closed]:duration-100 data-[state=open]:duration-100",
     "data-[side=bottom]:slide-in-from-top-2",
     "data-[side=left]:slide-in-from-right-2",
     "data-[side=right]:slide-in-from-left-2",
     "data-[side=top]:slide-in-from-bottom-2",
   ],
 });
-
-interface MenuContentProps
-  extends React.ComponentProps<typeof ArkMenu.Content>,
-    VariantProps<typeof menuContentVariants> {}
 
 export const MenuPositioner = (
   props: React.ComponentProps<typeof ArkMenu.Positioner>
@@ -63,7 +61,7 @@ export const MenuContent = (props: MenuContentProps) => {
           data-slot="menu-content"
           {...rest}
         >
-          {children}
+          <ScrollArea>{children}</ScrollArea>
         </ArkMenu.Content>
       </MenuPositioner>
     </Portal>
@@ -123,10 +121,9 @@ const menuItemVariants = tv({
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
       ],
       destructive: [
-        "text-destructive",
-        "data-highlighted:bg-destructive/10",
-        "dark:data-highlighted:bg-destructive/20",
-        "*:[svg]:text-destructive!",
+        "text-destructive dark:text-destructive-foreground",
+        "data-highlighted:bg-destructive/10 dark:data-highlighted:bg-destructive-foreground/10",
+        "**:[svg]:text-destructive! dark:**:[svg]:text-destructive-foreground!",
       ],
     },
   },
@@ -296,7 +293,7 @@ export const MenuShortcut = (props: React.ComponentProps<typeof ark.span>) => {
       className={cn(
         "ml-auto",
         "text-muted-foreground text-xs tracking-widest",
-        "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive",
+        "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
         className
       )}
       data-slot="menu-shortcut"

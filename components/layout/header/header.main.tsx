@@ -1,7 +1,7 @@
 "use client";
 
+import { NavLink } from "@/components/nav-link";
 import { cn } from "@/lib/utils";
-import { NavLink } from "../../nav-link";
 
 interface MainNavProps extends React.ComponentProps<"nav"> {
   items: { href: string; label: string }[];

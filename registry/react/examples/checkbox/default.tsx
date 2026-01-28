@@ -1,37 +1,38 @@
-import { Checkbox, CheckboxGroup } from "@/registry/react/components/checkbox";
-import { Field, FieldLabel } from "@/registry/react/components/field";
+import { Checkbox } from "@/registry/react/components/checkbox";
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/react/components/field";
 
 const CheckboxDemo = () => {
-  const options = [
-    {
-      label: "Accept terms and conditions",
-      value: "terms",
-    },
-    {
-      label: "Receive notifications",
-      value: "notifications",
-      disabled: true,
-    },
-    {
-      label: "Receive marketing emails",
-      value: "marketing",
-    },
-  ];
-
   return (
-    <CheckboxGroup className="gap-3" defaultValue={["marketing"]}>
-      {options.map((option) => (
-        <Field
-          disabled={option.disabled}
-          key={option.value}
-          orientation="horizontal"
-        >
-          <Checkbox disabled={option.disabled} value={option.value} />
+    <FieldGroup className="max-w-sm">
+      <Field orientation="horizontal">
+        <Checkbox defaultChecked />
 
-          <FieldLabel>{option.label}</FieldLabel>
-        </Field>
-      ))}
-    </CheckboxGroup>
+        <FieldLabel>Accept terms and conditions</FieldLabel>
+      </Field>
+
+      <Field orientation="horizontal">
+        <Checkbox />
+        <FieldContent>
+          <FieldLabel>Receive notifications</FieldLabel>
+          <FieldDescription>
+            You'll receive a notification when someone posts a comment
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+
+      <Field orientation="horizontal">
+        <Checkbox disabled />
+        <FieldContent>
+          <FieldLabel>Receive marketing emails</FieldLabel>
+        </FieldContent>
+      </Field>
+    </FieldGroup>
   );
 };
 

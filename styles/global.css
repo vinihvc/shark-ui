@@ -286,8 +286,8 @@
   }
 
   [data-rehype-pretty-code-figure] {
-    background-color: var(--color-code);
-    color: var(--color-code-foreground);
+    background-color: var(--color-muted);
+    color: var(--color-muted-foreground);
     border-radius: var(--radius-lg);
     border-width: 1px;
     border-style: solid;
@@ -314,7 +314,7 @@
     padding-block: calc(var(--spacing) * 2.5);
     padding-inline: calc(var(--spacing) * 4);
     font-family: var(--font-mono);
-    color: var(--color-code-foreground);
+    color: var(--color-muted-foreground);
   }
 
   [data-line-numbers] {
@@ -336,13 +336,13 @@
     padding-right: calc(var(--spacing) * 6);
     text-align: right;
     color: var(--color-muted-foreground);
-    background-color: var(--color-code);
+    background-color: var(--color-muted);
     position: sticky;
     left: 0;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: var(--color-code-highlight);
+    background-color: var(--color-success);
   }
 
   [data-line] {
@@ -357,7 +357,6 @@
     color: var(--shiki-light);
 
     @variant dark {
-      /* biome-ignore lint(suspicious/noDuplicateProperties): knwon */
       color: var(--shiki-dark) !important;
     }
   }
@@ -365,7 +364,7 @@
   [data-highlighted-line],
   [data-highlighted-chars] {
     position: relative;
-    background-color: var(--color-code-highlight);
+    background-color: var(--color-success);
   }
 
   [data-highlighted-line] {
@@ -419,18 +418,6 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         right: 2px;
-      }
-    }
-
-    [data-lib="radix-ui"] & {
-      &::before {
-        background-color: --alpha(var(--color-destructive) / 20%);
-      }
-    }
-
-    [data-lib="base-ui"] & {
-      &::before {
-        background-color: --alpha(var(--color-success) / 20%);
       }
     }
   }

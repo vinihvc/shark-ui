@@ -57,8 +57,86 @@ import { Checkbox } from "@/components/ui/checkbox";
 <Checkbox />
 ```
 
+## Controlled
+
+Use the `checked` prop to control the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-controlled" />
+
+## Invalid State
+
+Use the `invalid` prop to indicate an invalid state.
+
+<ComponentPreview componentName="checkbox" fileName="example-invalid" />
+
+You can pass `invalid` prop to the `<Field />` to disable the label and description or `<Checkbox />` to disable just the checkbox.
+
 ## Examples
 
-### Default
+### With Description
 
-<ComponentPreview componentName="checkbox" fileName="default" />
+Use `<FieldDescription />` to add a description to the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-with-description" />
+
+### Disabled
+
+Use the `disabled` prop to disable the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-disabled" />
+
+### Indeterminate
+
+Use the `checked="indeterminate"` prop to set the checkbox to an indeterminate state.
+
+<ComponentPreview componentName="checkbox" fileName="example-indeterminate" />
+
+### Group
+
+Use `<CheckboxGroup />` to group multiple checkboxes together.
+
+<ComponentPreview componentName="checkbox" fileName="example-checkbox-group" />
+
+Use `defaultValue` to set the default checked values.
+
+```tsx lineNumbers
+<CheckboxGroup defaultValue={["value-1", "value-2"]}>
+  <Checkbox value="value-1" />
+  <Checkbox value="value-2" />
+  <Checkbox value="value-3" />
+</CheckboxGroup>
+```
+
+### Card Style
+
+Use `<FieldLabel />` to add a label to the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-card" />
+
+## API Reference
+
+### Checkbox
+
+Root element of the checkbox. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `checked` | `boolean \| 'indeterminate'` | `-` |
+| `defaultChecked` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `name` | `string` | `-` |
+| `value` | `string` | `-` |
+| `onCheckedChange` | `({ checked }: CheckedChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+### CheckboxGroup
+
+Container for a group of checkboxes. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `string[]` | `-` |
+| `defaultValue` | `string[]` | `-` |
+| `onValueChange` | `(checkedValues: string[]) => void` | `-` |
+| `name` | `string` | `-` |
+| `className` | `string` | `-` |

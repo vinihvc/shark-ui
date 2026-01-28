@@ -5,13 +5,13 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from "@/registry/react/components/avatar";
+import { Button } from "@/registry/react/components/button";
 import {
   Popover,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/react/components/popover";
-import { Button } from "../../components/button";
 
 const Example = () => (
   <AvatarGroup>
@@ -40,7 +40,7 @@ const Example = () => (
     <Popover positioning={{ placement: "bottom-end" }}>
       <AvatarGroupCount>
         <PopoverTrigger asChild>
-          <Button className="rounded-full" size="icon-md" variant="ghost">
+          <Button pill size="icon-md" variant="ghost">
             <AvatarGroupCount>+5</AvatarGroupCount>
           </Button>
         </PopoverTrigger>

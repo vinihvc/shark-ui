@@ -6,13 +6,22 @@ import { cn } from "@/lib/utils";
 export const Collapsible = (
   props: React.ComponentProps<typeof ArkCollapsible.Root>
 ) => {
-  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    collapsedHeight,
+    lazyMount = true,
+    unmountOnExit = true,
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkCollapsible.Root
+      className={cn("group/collapsible", className)}
+      collapsedHeight={collapsedHeight}
+      data-partial-collapse={collapsedHeight ? "" : undefined}
       data-slot="collapsible"
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
+      lazyMount={collapsedHeight ? false : lazyMount}
+      unmountOnExit={collapsedHeight ? false : unmountOnExit}
       {...rest}
     />
   );
@@ -25,7 +34,12 @@ export const CollapsibleTrigger = (
 
   return (
     <ArkCollapsible.Trigger
-      className={cn("cursor-pointer", className)}
+      className={cn(
+        "cursor-pointer",
+        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "has-data-[slot=collapsible-indicator]:[button]:justify-between",
+        className
+      )}
       data-slot="collapsible-trigger"
       {...rest}
     />
@@ -35,21 +49,23 @@ export const CollapsibleTrigger = (
 export const CollapsibleContent = (
   props: React.ComponentProps<typeof ArkCollapsible.Content>
 ) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <ArkCollapsible.Content
       className={cn(
         "h-(--collapsed-height)",
+        "group-data-partial-collapse/collapsible:h-full",
         "transition-[height] duration-200",
         "overflow-hidden",
         "data-[state=open]:animate-expand",
-        "data-[state=closed]:animate-collapse",
-        className
+        "data-[state=closed]:animate-collapse"
       )}
       data-slot="collapsible-content"
       {...rest}
-    />
+    >
+      <div className={className}>{children}</div>
+    </ArkCollapsible.Content>
   );
 };
 

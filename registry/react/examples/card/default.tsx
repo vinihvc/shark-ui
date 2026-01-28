@@ -1,4 +1,3 @@
-import { FieldInput } from "@ark-ui/react";
 import { GoogleIcon } from "@/components/icons/google";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -27,9 +26,7 @@ const CardDemo = () => (
         <FieldSet>
           <Field>
             <FieldLabel>Email</FieldLabel>
-            <FieldInput asChild>
-              <Input placeholder="john.doe@example.com" />
-            </FieldInput>
+            <Input placeholder="john.doe@example.com" />
           </Field>
         </FieldSet>
       </CardContent>

@@ -37,7 +37,7 @@ const InputGroupDemo = () => (
       <InputGroupAddon align="inline-end">
         <Tooltip>
           <TooltipTrigger asChild>
-            <InputGroupButton className="rounded-full" size="icon-xs">
+            <InputGroupButton pill size="icon-xs">
               <HelpCircle />
             </InputGroupButton>
           </TooltipTrigger>
@@ -67,7 +67,7 @@ const InputGroupDemo = () => (
         </Menu>
         <InputGroupText className="ml-auto">52% used</InputGroupText>
         <Separator className="h-4!" orientation="vertical" />
-        <InputGroupButton className="rounded-full" disabled size="icon-xs">
+        <InputGroupButton disabled pill size="icon-xs">
           <ArrowUp />
           <span className="sr-only">Send</span>
         </InputGroupButton>

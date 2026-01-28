@@ -1,16 +1,16 @@
+import { AstroIcon } from "@/components/icons/astro";
+import { NextIcon } from "@/components/icons/next";
+import { ReactIcon } from "@/components/icons/react";
+import { ReactRouterIcon } from "@/components/icons/react-router";
+import { TanstackIcon } from "@/components/icons/tanstack-start";
+import { ViteIcon } from "@/components/icons/vite";
+import { NavLink } from "@/components/nav-link";
 import {
   Item,
   ItemContent,
   ItemMedia,
   ItemTitle,
 } from "@/registry/react/components/item";
-import { AstroIcon } from "../icons/astro";
-import { NextIcon } from "../icons/next";
-import { ReactIcon } from "../icons/react";
-import { ReactRouterIcon } from "../icons/react-router";
-import { TanstackIcon } from "../icons/tanstack-start";
-import { ViteIcon } from "../icons/vite";
-import { NavLink } from "../nav-link";
 
 export const FrameworksList = () => {
   return (

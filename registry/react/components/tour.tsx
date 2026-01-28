@@ -12,11 +12,11 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
-  type DialogBackdrop,
   DialogBody,
   DialogFooter,
   DialogHeader,
-  dialogBackdropVariants,
+  type DialogOverlay,
+  dialogOverlayVariants,
 } from "@/registry/react/components/dialog";
 
 export type TourStepType = TourStepDetails;
@@ -109,12 +109,12 @@ export const TourActionTrigger = (
   props: React.ComponentProps<typeof ArkTour.ActionTrigger>
 ) => <ArkTour.ActionTrigger data-slot="tour-action-trigger" {...props} />;
 
-export const TourBackdrop = (
-  props: React.ComponentProps<typeof DialogBackdrop>
+export const TourOverlay = (
+  props: React.ComponentProps<typeof DialogOverlay>
 ) => (
   <ArkTour.Backdrop
-    className={dialogBackdropVariants()}
-    data-slot="tour-backdrop"
+    className={dialogOverlayVariants()}
+    data-slot="tour-overlay"
     {...props}
   />
 );
@@ -134,7 +134,7 @@ export const TourContent = (props: TourContentProps) => {
 
   return (
     <Portal>
-      <TourBackdrop />
+      <TourOverlay />
 
       <ArkTour.Positioner
         className={cn(

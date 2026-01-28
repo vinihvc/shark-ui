@@ -5,16 +5,10 @@ import {
   ClipboardInput,
   ClipboardTrigger,
 } from "@/registry/react/components/clipboard";
-import { Field, FieldLabel } from "@/registry/react/components/field";
 
 const ClipboardDemo = () => (
-  <Field>
-    <FieldLabel>Copy this value</FieldLabel>
-
-    <Clipboard
-      className="flex items-center gap-2"
-      value="https://x.com/vinihvc"
-    >
+  <div className="max-w-sm">
+    <Clipboard value="https://x.com/vinihvc">
       <ClipboardInput />
 
       <ClipboardTrigger asChild>
@@ -23,7 +17,7 @@ const ClipboardDemo = () => (
         </Button>
       </ClipboardTrigger>
     </Clipboard>
-  </Field>
+  </div>
 );
 
 export default ClipboardDemo;

@@ -8,10 +8,10 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "[--gap:--spacing(5)]",
+        "[--space:--spacing(4)]",
         "group/card",
-        "py-(--gap)",
-        "flex flex-col gap-(--gap)",
+        "py-(--space)",
+        "flex flex-col gap-4",
         "bg-card",
         "text-foreground",
         "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
@@ -28,7 +28,7 @@ const cardMediaVariants = tv({
   base: [
     "flex shrink-0 items-center gap-2",
     "[&_svg]:pointer-events-none",
-    "px-(--gap)",
+    "px-(--space)",
   ],
   variants: {
     variant: {
@@ -81,7 +81,7 @@ export const CardHeader = (props: HeaderProps) => {
     <ark.div
       className={cn(
         "grid auto-rows-min grid-rows-[auto_auto] gap-1",
-        "px-(--gap)",
+        "px-(--space)",
         "items-start",
         "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
@@ -106,7 +106,7 @@ export const CardTitle = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "text-pretty font-semibold text-foreground text-lg/6 sm:text-base/6",
+        "text-balance font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
       )}
       data-slot="card-title"
@@ -124,7 +124,7 @@ export const CardDescription = (
     <ark.div
       className={cn(
         "row-start-2",
-        "text-pretty text-muted-foreground text-sm",
+        "text-balance text-muted-foreground text-sm",
         className
       )}
       data-slot="card-description"
@@ -153,7 +153,7 @@ export const CardContent = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn("px-(--gap)", className)}
+      className={cn("px-(--space)", className)}
       data-slot="card-content"
       {...rest}
     />
@@ -167,10 +167,10 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex items-center gap-2",
-        "px-(--gap)",
+        "px-(--space)",
         "bg-muted/50",
         "border-t",
-        "py-(--gap)",
+        "py-(--space)",
         className
       )}
       data-slot="card-footer"

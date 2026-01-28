@@ -9,7 +9,7 @@ const Example = () => (
   <Accordion className="w-full" collapsible>
     <AccordionItem value="item-1">
       <AccordionTrigger>Product Information</AccordionTrigger>
-      <AccordionContent className="text-pretty text-muted-foreground">
+      <AccordionContent className="text-balance text-muted-foreground">
         <p>
           Our flagship product combines cutting-edge technology with sleek
           design. Built with premium materials, it offers unparalleled
@@ -20,7 +20,7 @@ const Example = () => (
 
     <AccordionItem value="item-2">
       <AccordionTrigger>Shipping Details</AccordionTrigger>
-      <AccordionContent className="text-pretty text-muted-foreground">
+      <AccordionContent className="text-balance text-muted-foreground">
         <p>
           We offer worldwide shipping through trusted courier partners. Standard
           delivery takes 3-5 business days.
@@ -30,7 +30,7 @@ const Example = () => (
 
     <AccordionItem value="item-3">
       <AccordionTrigger>Return Policy</AccordionTrigger>
-      <AccordionContent className="text-pretty text-muted-foreground">
+      <AccordionContent className="text-balance text-muted-foreground">
         <p>
           We stand behind our products with a comprehensive 30-day return
           policy. If you&apos;re not completely satisfied, simply return the
