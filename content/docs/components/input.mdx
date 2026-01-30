@@ -56,6 +56,74 @@ import { Input } from "@/components/ui/input";
 
 ## Examples
 
-### Default
+### Field
 
-<ComponentPreview componentName="input" fileName="default" />
+Use `Field`, `FieldLabel` and `FieldDescription` to create a input with a label and a description.
+
+<ComponentPreview componentName="input" fileName="example-field" />
+
+### Field Group
+
+Use `FieldGroup` to show multiple `Field` blocks and to build forms.
+
+<ComponentPreview componentName="input" fileName="example-field-group" />
+
+### Disabled
+
+Use the `disabled` prop to disable the input. To style the disabled state, add the `disabled` attribute to the `<Field />` component.
+
+<ComponentPreview componentName="input" fileName="example-disabled" />
+
+### Invalid
+
+Use the `aria-invalid` prop to mark the input as invalid. You can also pass `invalid` prop to the `<Field />` that will disable the label and the `<Input />` element or just the `<Input />` element.
+
+<ComponentPreview componentName="input" fileName="example-invalid" />
+
+### File
+
+Use the `type="file"` prop to create a file input.
+
+You can also use the <Link href="/docs/components/file-upload">`<FileUpload />`</Link> component to upload files.
+
+<ComponentPreview componentName="input" fileName="example-file" />
+
+### Inline
+
+Use the `orientation="horizontal"` prop to create a inline input.
+
+<ComponentPreview componentName="input" fileName="example-inline" />
+
+### Grid
+
+<ComponentPreview componentName="input" fileName="example-grid" />
+
+### Required
+
+Use the `required` prop to mark the input as required. You can pass `required` prop to the `<Field />` that will make the `<Input />` element required.
+
+<ComponentPreview componentName="input" fileName="example-required" />
+
+### Badge
+
+Use `<Badge />` in the label to highlight a recommended field.
+
+<ComponentPreview componentName="input" fileName="example-badge" />
+
+### Input Group
+
+Use [`<InputGroup />`](/docs/components/input-group) to create a input group.
+
+<ComponentPreview componentName="input" fileName="example-input-group" />
+
+### Button Group
+
+Use [`<ButtonGroup />`](/docs/components/button-group) to create a button group.
+
+<ComponentPreview componentName="input" fileName="example-button-group" />
+
+### Form
+
+A full form example with multiple inputs.
+
+<ComponentPreview componentName="input" fileName="example-form" />

@@ -10,7 +10,7 @@ const fieldVariants = tv({
   base: [
     "group/field",
     "w-full",
-    "flex gap-3",
+    "flex gap-2",
     "data-invalid:text-destructive dark:data-invalid:text-destructive-foreground",
   ],
   variants: {
@@ -27,9 +27,15 @@ const fieldVariants = tv({
         "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
       ],
     },
+    reverse: {
+      true: [
+        "data-[orientation=horizontal]:flex-row-reverse data-[orientation=vertical]:flex-col-reverse",
+      ],
+    },
   },
   defaultVariants: {
     orientation: "vertical",
+    reverse: false,
   },
 });
 
@@ -38,11 +44,16 @@ interface FieldProps
     VariantProps<typeof fieldVariants> {}
 
 export const Field = (props: FieldProps) => {
-  const { orientation = "vertical", className, ...rest } = props;
+  const {
+    orientation = "vertical",
+    reverse = false,
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkField.Root
-      className={cn(fieldVariants({ orientation }), className)}
+      className={cn(fieldVariants({ orientation, reverse }), className)}
       data-orientation={orientation}
       data-slot="field"
       {...rest}
@@ -150,6 +161,26 @@ export const FieldLabel = (
   );
 };
 
+export const FieldLabelRequired = (
+  props: React.ComponentProps<typeof ark.span>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <ark.span
+      aria-label="Required"
+      className={cn(
+        "text-destructive text-sm dark:text-destructive-foreground",
+        className
+      )}
+      data-slot="field-label-required"
+      {...rest}
+    >
+      {children ?? "*"}
+    </ark.span>
+  );
+};
+
 export const FieldTitle = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
@@ -242,7 +273,10 @@ export const FieldError = (
 
   return (
     <ArkField.ErrorText
-      className={cn("font-normal text-destructive text-sm", className)}
+      className={cn(
+        "font-normal text-destructive text-sm dark:text-destructive-foreground",
+        className
+      )}
       data-slot="field-error"
       {...rest}
     />

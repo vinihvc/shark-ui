@@ -115,7 +115,7 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     return (
       <figcaption
         className={cn(
-          "flex items-center gap-2 text-[.8125rem] text-code-foreground [&_svg]:size-4.5 [&_svg]:text-code-foreground [&_svg]:opacity-70 sm:[&_svg]:size-4",
+          "flex items-center gap-2 text-[.8125rem] text-muted-foreground [&_svg]:size-4.5 [&_svg]:text-muted-foreground [&_svg]:opacity-70 sm:[&_svg]:size-4",
           className
         )}
         {...props}

@@ -42,7 +42,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
     <figure data-rehype-pretty-code-figure="" data-slot="code-block" {...rest}>
       {!!title && (
         <figcaption
-          className="flex items-center gap-2 text-[.8125rem] text-code-foreground [&_svg]:size-4.5 [&_svg]:text-code-foreground sm:[&_svg]:size-4"
+          className="flex items-center gap-2 text-[.8125rem] text-muted-foreground [&_svg]:size-4.5 [&_svg]:text-muted-foreground sm:[&_svg]:size-4"
           data-language={lang}
           data-rehype-pretty-code-title=""
           data-slot="code-block-title"
