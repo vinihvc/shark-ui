@@ -27,40 +27,28 @@ const PopoverDemo = () => (
 
       <PopoverBody className="grid gap-4">
         <Field className="grid grid-cols-3 items-center gap-4">
-          <FieldLabel htmlFor="width">Width</FieldLabel>
-          <Input className="col-span-2 h-8" defaultValue="100%" id="width" />
+          <FieldLabel>Width</FieldLabel>
+          <Input className="col-span-2 h-8" defaultValue="100%" />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
-          <FieldLabel htmlFor="maxWidth">Max. width</FieldLabel>
-          <Input
-            className="col-span-2 h-8"
-            defaultValue="300px"
-            id="maxWidth"
-          />
+          <FieldLabel>Max. width</FieldLabel>
+          <Input className="col-span-2 h-8" defaultValue="300px" />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
-          <FieldLabel htmlFor="height">Height</FieldLabel>
-          <Input className="col-span-2 h-8" defaultValue="25px" id="height" />
+          <FieldLabel>Height</FieldLabel>
+          <Input className="col-span-2 h-8" defaultValue="25px" />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
-          <FieldLabel htmlFor="maxHeight">Max. height</FieldLabel>
-          <Input
-            className="col-span-2 h-8"
-            defaultValue="none"
-            id="maxHeight"
-          />
+          <FieldLabel>Max. height</FieldLabel>
+          <Input className="col-span-2 h-8" defaultValue="none" />
         </Field>
 
         <Field className="grid grid-cols-3 items-center gap-4">
-          <FieldLabel htmlFor="width">Width</FieldLabel>
-          <Input
-            className="col-span-2 h-8"
-            defaultValue="none"
-            id="maxHeight"
-          />
+          <FieldLabel>Width</FieldLabel>
+          <Input className="col-span-2 h-8" defaultValue="none" />
         </Field>
       </PopoverBody>
     </PopoverContent>

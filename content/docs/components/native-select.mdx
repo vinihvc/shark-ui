@@ -1,7 +1,14 @@
 ---
 title: Native Select
-description: A native select component built with Ark UI
+description: A styled native HTML select element with consistent design system integration.
 ---
+
+<Alert>
+  <Info />
+  <AlertDescription>
+    For a styled select component, use the <Link href="/docs/components/select">Select component</Link>.
+  </AlertDescription>
+</Alert>
 
 <ComponentPreview componentName="native-select" />
 
@@ -64,8 +71,67 @@ import {
 </NativeSelect>
 ```
 
+## Sizes
+
+Use the `size` prop to change the select height.
+
+### Small
+
+<ComponentPreview componentName="native-select" fileName="size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="native-select" fileName="size-md" />
+
+### Large
+
+<ComponentPreview componentName="native-select" fileName="size-lg" />
+
 ## Examples
 
 ### Default
 
 <ComponentPreview componentName="native-select" fileName="default" />
+
+### Groups
+
+Use `<NativeSelectOptGroup />` to group options with a label.
+
+<ComponentPreview componentName="native-select" fileName="example-groups" />
+
+### Disabled
+
+Use the `disabled` prop to disable the select.
+
+<ComponentPreview componentName="native-select" fileName="example-disabled" />
+
+### Invalid
+
+Use the `aria-invalid` to `<Select />` or `invalid` prop on the `<Field />` to mark the select as invalid and show error styling.
+
+<ComponentPreview componentName="native-select" fileName="example-invalid" />
+
+## Native Select vs Select
+
+- **NativeSelect** — Use for native browser behavior, better performance, or mobile-optimized dropdowns.
+- **Select** — Use for custom styling, animations, or complex interactions.
+
+## API Reference
+
+### NativeSelect
+
+Extends native `<select>` props. Additional props:
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `sm`, `md`, `lg` | `md` |
+| `disabled` | `boolean` | — |
+| `aria-invalid` | `boolean` | — |
+
+### NativeSelectOptGroup
+
+Extends native `<optgroup>` props. Use `label` for the group label.
+
+### NativeSelectOption
+
+Extends native `<option>` props. Use `value` and children for option value and label.

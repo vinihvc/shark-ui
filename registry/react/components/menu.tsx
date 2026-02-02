@@ -1,6 +1,6 @@
 import { ark, Portal } from "@ark-ui/react";
 import { Menu as ArkMenu, type MenuContentProps } from "@ark-ui/react/menu";
-import { Check, ChevronRight, Circle } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -48,7 +48,17 @@ export const menuContentVariants = tv({
 
 export const MenuPositioner = (
   props: React.ComponentProps<typeof ArkMenu.Positioner>
-) => <ArkMenu.Positioner data-slot="menu-positioner" {...props} />;
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkMenu.Positioner
+      className={cn("outline-none")}
+      data-slot="menu-positioner"
+      {...rest}
+    />
+  );
+};
 
 export const MenuContent = (props: MenuContentProps) => {
   const { className, children, ...rest } = props;
@@ -195,7 +205,7 @@ export const MenuRadioGroup = (props: MenuRadioGroupProps) => {
   );
 };
 
-const MenuGroupLabel = (
+export const MenuGroupLabel = (
   props: React.ComponentProps<typeof ArkMenu.ItemGroupLabel>
 ) => {
   const { className, children, ...rest } = props;
@@ -229,11 +239,8 @@ export const MenuRadioItem = (
       data-slot="menu-radio-item"
       {...rest}
     >
-      <ArkMenu.ItemIndicator
-        className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center"
-        data-slot="menu-radio-item-indicator"
-      >
-        <Circle className="size-2 fill-current" />
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+        <Check />
       </ArkMenu.ItemIndicator>
 
       <ArkMenu.ItemText data-slot="menu-radio-item-text">

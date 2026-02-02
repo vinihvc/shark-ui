@@ -1,11 +1,19 @@
+import { Card, CardContent } from "@/registry/react/components/card";
 import { Marquee, MarqueeItem } from "@/registry/react/components/marquee";
 
+const items = Array.from({ length: 10 });
+
 const MarqueeDemo = () => {
-  const items = Array.from({ length: 10 }, (_, index) => `Item ${index}`);
   return (
-    <Marquee className="[--spacing:spacing(12)]" pauseOnInteraction>
-      {items.map((item) => (
-        <MarqueeItem key={item}>{item}</MarqueeItem>
+    <Marquee>
+      {items.map((_, index) => (
+        <MarqueeItem key={index}>
+          <Card>
+            <CardContent>
+              <p>Sponsor {index + 1}</p>
+            </CardContent>
+          </Card>
+        </MarqueeItem>
       ))}
     </Marquee>
   );

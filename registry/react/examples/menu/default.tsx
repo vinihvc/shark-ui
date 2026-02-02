@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Archive,
   ArchiveX,
@@ -13,7 +11,6 @@ import {
   Trash,
   Trash2,
 } from "lucide-react";
-import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Menu,
@@ -32,49 +29,39 @@ import {
 } from "@/registry/react/components/menu";
 
 const MenuDemo = () => {
-  const [checked, setChecked] = React.useState(true);
-  const [priority, setPriority] = React.useState("medium");
-
   return (
     <Menu>
       <MenuTrigger asChild>
-        <Button>Open menu</Button>
+        <Button variant="outline">Open</Button>
       </MenuTrigger>
-      <MenuContent className="w-56">
+      <MenuContent className="w-40">
         <MenuGroup>
           <MenuItem value="forward">
             <Send /> Forward
             <MenuShortcut>⇧⌘F</MenuShortcut>
           </MenuItem>
-
           <MenuItem value="reply">
             <Reply /> Reply
             <MenuShortcut>⇧⌘R</MenuShortcut>
           </MenuItem>
-
           <MenuItem value="archive">
             <Archive /> Archive
             <MenuShortcut>⇧⌘Z</MenuShortcut>
           </MenuItem>
-
           <MenuSub>
             <MenuSubTrigger>
               <FolderInput /> Move to
             </MenuSubTrigger>
-
             <MenuSubContent>
               <MenuItem value="move-to-folder-1">
                 <ArchiveX /> Junk
               </MenuItem>
-
               <MenuItem value="move-to-folder-2">
                 <Trash /> Trash
               </MenuItem>
-
               <MenuItem value="move-to-folder-3">
                 <Bell /> Reminders
               </MenuItem>
-
               <MenuSub>
                 <MenuSubTrigger>
                   <CirclePlus />
@@ -93,31 +80,17 @@ const MenuDemo = () => {
               </MenuSub>
             </MenuSubContent>
           </MenuSub>
-
           <MenuSeparator />
-
-          <MenuRadioGroup
-            heading="Priority"
-            onValueChange={(e) => setPriority(e.value)}
-            value={priority}
-          >
+          <MenuRadioGroup heading="Priority" value="medium">
             <MenuRadioItem value="low">Low</MenuRadioItem>
             <MenuRadioItem value="medium">Medium</MenuRadioItem>
             <MenuRadioItem value="high">High</MenuRadioItem>
           </MenuRadioGroup>
-
           <MenuSeparator />
-
-          <MenuCheckboxItem
-            checked={checked}
-            onCheckedChange={setChecked}
-            value="block"
-          >
+          <MenuCheckboxItem checked value="block">
             Block sender
           </MenuCheckboxItem>
-
           <MenuSeparator />
-
           <MenuItem value="delete" variant="destructive">
             <Trash2 /> Delete
             <MenuShortcut>⌫</MenuShortcut>

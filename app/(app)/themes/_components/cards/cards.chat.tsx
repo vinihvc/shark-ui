@@ -100,7 +100,6 @@ export function CardsChat() {
           <InputGroup>
             <InputGroupInput
               autoComplete="off"
-              id="message"
               onChange={(event) => setInput(event.target.value)}
               placeholder="Type your message..."
               value={input}

@@ -1,6 +1,7 @@
 "use client";
 
 import type { TOCItemType } from "fumadocs-core/toc";
+import { AlignLeft } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +32,10 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
         className
       )}
     >
-      <p className="flex h-7 items-center font-medium">On This Page</p>
+      <p className="inline-flex h-7 items-center gap-2 font-medium text-xs [&_svg]:size-3">
+        <AlignLeft aria-hidden />
+        On This Page
+      </p>
 
       <div className="relative ms-3.5 flex flex-col gap-0.5 before:absolute before:inset-y-0 before:-left-3.25 before:w-px before:bg-border">
         {data.map((item) => (

@@ -24,7 +24,7 @@ const badgeVariants = tv({
         "bg-secondary",
         "text-secondary-foreground",
         "border-secondary/20",
-        "focus-visible:border-secondary focus-visible:ring-secondary/50",
+        "focus-visible:border-foreground focus-visible:ring-foreground/50",
         "[a&]:hover:bg-secondary/90",
       ],
       outline: [

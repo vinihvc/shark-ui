@@ -20,9 +20,10 @@ export const buttonVariants = tv({
     variant: {
       solid: [
         "bg-primary",
+        "border border-transparent",
         "text-primary-foreground",
         "hover:bg-primary/90",
-        "focus-visible:ring-ring/50",
+        "focus-visible:border-background focus-visible:ring-ring/50",
       ],
       outline: [
         "bg-transparent",
@@ -45,6 +46,7 @@ export const buttonVariants = tv({
       ],
       ghost: [
         "hover:bg-accent hover:text-accent-foreground",
+        "border border-transparent",
         "focus-visible:border-foreground focus-visible:ring-foreground/30",
       ],
       link: [
@@ -71,9 +73,9 @@ export const buttonVariants = tv({
         "has-[>svg]:px-2.5",
         "[&_svg:not([class*='size-'])]:size-3.5",
       ],
-      md: ["h-8", "px-4", "py-2", "has-[>svg]:px-3"],
-      lg: ["h-9", "px-5", "has-[>svg]:px-4"],
-      xl: ["h-10", "text-base", "px-6", "has-[>svg]:px-5"],
+      md: ["h-8", "px-3", "py-2", "has-[>svg]:px-2"],
+      lg: ["h-9", "px-4", "has-[>svg]:px-3"],
+      xl: ["h-10", "text-base", "px-5", "has-[>svg]:px-4"],
       "icon-xs": "size-6 rounded-[calc(var(--radius-md)-4px)]",
       "icon-sm": "size-7",
       "icon-md": "size-8",

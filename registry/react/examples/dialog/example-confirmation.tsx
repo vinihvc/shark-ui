@@ -72,9 +72,8 @@ const DialogConfirmationDemo = () => {
           />
           <DialogBody>
             <Field>
-              <FieldLabel htmlFor="project-name">Project Name</FieldLabel>
+              <FieldLabel>Project Name</FieldLabel>
               <Input
-                id="project-name"
                 onChange={() => setHasUnsavedChanges(true)}
                 placeholder="Enter project name"
               />

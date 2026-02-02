@@ -23,8 +23,8 @@ type CarouselProps = Omit<
 export const Carousel = (props: CarouselProps) => {
   const { spacing = 4, padding = 0, className, ...rest } = props;
 
-  const spacingValue = `${spacing * 4}px`;
-  const paddingValue = `${padding * 4}px`;
+  const spacingValue = `${(spacing * 4) / 16}rem`;
+  const paddingValue = `${(padding * 4) / 16}rem`;
 
   return (
     <ArkCarousel.Root

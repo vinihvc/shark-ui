@@ -28,7 +28,7 @@ const LoginBlockPage = () => {
 
               <Field>
                 <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
+                  <FieldLabel>Password</FieldLabel>
                   <a
                     className="ml-auto text-sm underline-offset-4 hover:underline"
                     href="#"

@@ -1,4 +1,5 @@
 import { ark } from "@ark-ui/react";
+import { Field as ArkField } from "@ark-ui/react/field";
 import { ChevronDown } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -10,14 +11,15 @@ const nativeSelectVariants = tv({
     "w-full min-w-0",
     "py-1 pr-8 pl-2.5",
     "select-none text-sm",
-    "bg-transparent dark:bg-input/30",
+    "bg-transparent dark:bg-input/20",
     "rounded-md border border-input",
     "dark:hover:bg-input/50",
     "transition-colors",
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
     "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
+    "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
   ],
   variants: {
     size: {
@@ -32,7 +34,7 @@ const nativeSelectVariants = tv({
 });
 
 interface NativeSelectProps
-  extends Omit<React.ComponentProps<typeof ark.select>, "size">,
+  extends Omit<React.ComponentProps<typeof ArkField.Select>, "size">,
     VariantProps<typeof nativeSelectVariants> {}
 
 export const NativeSelect = (props: NativeSelectProps) => {
@@ -46,7 +48,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
       )}
       data-slot="native-select-wrapper"
     >
-      <ark.select
+      <ArkField.Select
         className={cn(nativeSelectVariants({ size }))}
         data-slot="native-select"
         {...rest}

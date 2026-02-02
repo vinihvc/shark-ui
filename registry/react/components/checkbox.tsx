@@ -29,7 +29,7 @@ export const Checkbox = (
         "inline-flex shrink-0 items-center justify-center",
         "size-4",
         "bg-background",
-        "rounded-[calc(var(--radius)-6px)] border border-input shadow-xs/5",
+        "rounded-sm border border-input shadow-xs/5",
         "transition-shadow",
         "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
         "data-focus-visible:data-invalid:border-destructive/64 data-focus-visible:data-invalid:ring-destructive/48",
@@ -68,7 +68,7 @@ export const CheckboxIndicator = (
       className={cn(
         "absolute -inset-px",
         "flex items-center justify-center",
-        "rounded-[calc(var(--radius)-6px)]",
+        "rounded-sm",
         "text-primary-foreground",
         "data-[state=checked]:bg-primary",
         "data-[state=unchecked]:hidden",

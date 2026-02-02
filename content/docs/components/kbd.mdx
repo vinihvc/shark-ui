@@ -60,8 +60,57 @@ import {
 </KbdGroup>
 ```
 
+## Variant
+
+Use the `variant` prop to change the visual style of the kbd.
+
+### Outline
+
+<ComponentPreview componentName="kbd" fileName="variant-outline" />
+
 ## Examples
 
-### Default
+### Group
 
-<ComponentPreview componentName="kbd" fileName="default" />
+Use `<KbdGroup />` to group keys into a single shortcut.
+
+<ComponentPreview componentName="kbd" fileName="example-kbd-group" />
+
+### Input Group
+
+Use `<Kbd />` inside [InputGroup](/docs/components/input-group) addons to show shortcut hints next to inputs.
+
+<ComponentPreview componentName="kbd" fileName="example-input-group" />
+
+### Button
+
+Add shortcut hints to buttons with `<Kbd />` or `<KbdGroup />`.
+
+<ComponentPreview componentName="kbd" fileName="example-button" />
+
+### Tooltip
+
+Show keyboard shortcuts in [Tooltip](/docs/components/tooltip) content.
+
+<ComponentPreview componentName="kbd" fileName="example-tooltip" />
+
+## API Reference
+
+### Kbd
+
+Keyboard shortcut key. Renders a `kbd` element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `default`, `outline` | `default` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### KbdGroup
+
+Container for grouping multiple keys into one shortcut. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 const scrollAreaVariants = tv({
   base: [
     "h-full",
-    "rounded-[inherit] outline-none",
+    "rounded-[inherit]",
     "transition-shadows",
-    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+    "outline-none",
     "data-has-overflow-x:overscroll-x-contain",
   ],
   variants: {

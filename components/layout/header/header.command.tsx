@@ -25,6 +25,7 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
+import { slugify } from "@/utils/formatter";
 
 interface PageItem {
   value: string;
@@ -59,26 +60,33 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
     const groups: PageGroup[] = [];
 
     for (const group of tree.children) {
+      const groupName =
+        typeof group.name === "string" ? group.name : String(group.name);
+
       if (group.type === "folder") {
         const items: PageItem[] = [];
+
         for (const item of group.children) {
           if (item.type === "page") {
             const isComponent = item.url.includes("/components/");
             const itemName = item.name?.toString() || "";
+            const itemNameLower = itemName.toLowerCase();
             items.push({
               isComponent,
               keywords: isComponent ? ["component"] : undefined,
               label: itemName,
               url: item.url,
-              value: itemName ? `${group.name} ${itemName}` : "",
+              value: itemName
+                ? `${slugify(groupName)}/${slugify(itemNameLower)}`
+                : "",
             });
           }
         }
+
         if (items.length > 0) {
           groups.push({
             items,
-            value:
-              typeof group.name === "string" ? group.name : String(group.name),
+            value: slugify(groupName),
           });
         }
       }
@@ -118,7 +126,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
         <Button
           className={cn(
             "justify-start",
-            "h-8 w-full md:w-48 lg:w-56 xl:w-64",
+            "h-8 w-full md:w-48 lg:w-40 xl:w-64",
             "pl-3 sm:pr-12",
             "font-normal",
             "shadow-none"
@@ -149,7 +157,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           collection={collection}
           onInputValueChange={({ inputValue }) => filter(inputValue)}
           onSelect={({ itemValue }) => {
-            router.push(`/docs/components/${itemValue}`);
+            router.push(`/docs/${itemValue}`);
             setIsOpen(false);
           }}
           placeholder="Search documentation..."

@@ -18,14 +18,14 @@ import {
   MenuTrigger,
 } from "@/registry/react/components/menu";
 
-const DialogOpenFromMenuDemo = () => {
+const Example = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <>
       <Menu>
         <MenuTrigger asChild>
-          <Button>Open Menu</Button>
+          <Button variant="outline">Open</Button>
         </MenuTrigger>
         <MenuContent>
           <MenuItem onClick={() => setIsOpen(true)} value="settings">
@@ -69,4 +69,4 @@ const DialogOpenFromMenuDemo = () => {
   );
 };
 
-export default DialogOpenFromMenuDemo;
+export default Example;

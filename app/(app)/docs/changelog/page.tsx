@@ -70,7 +70,7 @@ const ChangelogPage = () => {
               );
             })}
             {olderPages.length > 0 && (
-              <div className="mb-24 scroll-mt-24" id="more-updates">
+              <div className="mb-24 scroll-mt-24">
                 <h2 className="mb-6 font-heading font-semibold text-xl tracking-tight">
                   More Updates
                 </h2>

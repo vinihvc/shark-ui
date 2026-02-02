@@ -30,7 +30,7 @@ const ContextMenuDemo = () => (
     <ContextMenuTrigger className="flex items-center justify-center rounded-md border-2 border-dashed p-10">
       Right click here
     </ContextMenuTrigger>
-    <ContextMenuContent className="w-56">
+    <ContextMenuContent className="w-40">
       <ContextMenuGroup>
         <ContextMenuItem value="forward">
           <Send /> Forward

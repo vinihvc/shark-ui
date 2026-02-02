@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 const avatarVariants = tv({
   base: [
+    "group/avatar",
     "relative",
     "size-8",
     "inline-flex shrink-0 items-center justify-center",
@@ -74,6 +75,7 @@ export const AvatarFallback = (
         "flex items-center justify-center",
         "bg-muted",
         "rounded-full",
+        "[&>svg]:size-4 group-data-[size=lg]/avatar:[&>svg]:size-4.5 group-data-[size=sm]/avatar:[&>svg]:size-3",
         className
       )}
       data-slot="avatar-fallback"

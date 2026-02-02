@@ -3,9 +3,9 @@ import { HeaderCommand } from "@/components/layout/header/header.command";
 import { MainNav } from "@/components/layout/header/header.main";
 import { MobileNav } from "@/components/layout/header/header.mobile";
 import { ModeSwitcher } from "@/components/layout/mode-switcher";
+import { Logo } from "@/components/logo";
 import { NavLink } from "@/components/nav-link";
 import { NAV_ITEMS } from "@/config/navigation";
-import { SITE_CONFIG } from "@/config/site";
 import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -38,8 +38,17 @@ export const SiteHeader = (props: SiteHeaderProps) => {
             tree={pageTree}
           />
 
-          <NavLink className="hidden font-medium text-base lg:flex" href="/">
-            {SITE_CONFIG.name}
+          <NavLink
+            className={cn(
+              "hidden gap-2 lg:flex",
+              "font-bold text-base",
+              "rounded-md border border-transparent",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            )}
+            href="/"
+          >
+            <Logo className="size-5 shrink-0" />
+            Shark
           </NavLink>
 
           <MainNav className="hidden lg:flex" items={NAV_ITEMS} />

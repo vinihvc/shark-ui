@@ -87,17 +87,17 @@ export const CardsButtons = () => {
             <PopoverBody>
               <FieldGroup>
                 <Field orientation="horizontal">
-                  <FieldLabel htmlFor="height">Height</FieldLabel>
+                  <FieldLabel>Height</FieldLabel>
                   <InputGroup>
-                    <InputGroupInput defaultValue="25px" id="height" />
+                    <InputGroupInput defaultValue="25px" />
                     <InputGroupAddon align="inline-end">px</InputGroupAddon>
                   </InputGroup>
                 </Field>
 
                 <Field orientation="horizontal">
-                  <FieldLabel htmlFor="width">Width</FieldLabel>
+                  <FieldLabel>Width</FieldLabel>
                   <InputGroup>
-                    <InputGroupInput defaultValue="100%" id="width" />
+                    <InputGroupInput defaultValue="100%" />
                     <InputGroupAddon align="inline-end">px</InputGroupAddon>
                   </InputGroup>
                 </Field>
@@ -123,8 +123,8 @@ export const CardsButtons = () => {
             />
             <DialogBody>
               <Field>
-                <FieldLabel htmlFor="username">Username</FieldLabel>
-                <Input id="username" placeholder="@vinihvc" />
+                <FieldLabel>Username</FieldLabel>
+                <Input placeholder="@vinihvc" />
               </Field>
             </DialogBody>
             <DialogFooter>
