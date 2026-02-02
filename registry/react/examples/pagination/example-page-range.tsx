@@ -7,12 +7,12 @@ import {
   PaginationPrevious,
 } from "@/registry/react/components/pagination";
 
-const PaginationDemo = () => (
-  <Pagination count={50} pageSize={10}>
+const Example = () => (
+  <Pagination count={100} page={6} pageSize={10}>
     <PaginationPrevious />
     <PaginationItems />
     <PaginationNext />
   </Pagination>
 );
 
-export default PaginationDemo;
+export default Example;

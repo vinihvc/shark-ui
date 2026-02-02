@@ -50,17 +50,99 @@ npm install @ark-ui/react lucide-react
 ## Usage
 
 ```tsx lineNumbers
-import { 
-  NumberInput,
-} from "@/components/ui/number-input";
+import { NumberField } from "@/components/ui/number-input";
 ```
 
 ```tsx lineNumbers
-<NumberInput />
+<NumberField />
 ```
+
+## Sizes
+
+Use the `size` prop to change the input height.
+
+### Small
+
+<ComponentPreview componentName="number-input" fileName="size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="number-input" fileName="size-md" />
+
+### Large
+
+<ComponentPreview componentName="number-input" fileName="size-lg" />
 
 ## Examples
 
-### Default
+### Disabled
 
-<ComponentPreview componentName="number-input" fileName="default" />
+Use the `disabled` prop to disable the number input.
+
+<ComponentPreview componentName="number-input" fileName="example-disabled" />
+
+### Invalid
+
+Use the `invalid` prop (or `aria-invalid`) to mark the number input as invalid and show error styling.
+
+<ComponentPreview componentName="number-input" fileName="example-invalid" />
+
+### With Scrub
+
+Render `<NumberField />` with the `scrubber` prop and a `label` to enable the scrubber interaction—drag the label to change the value.
+
+<ComponentPreview componentName="number-input" fileName="example-scrub" />
+
+### With Range
+
+Pass `min` and `max` to clamp the value. The input restricts the value to the specified range 
+
+Use `clampValueOnBlur={false}` to allow typing outside range until blur.
+
+<ComponentPreview componentName="number-input" fileName="example-range" />
+
+### With Formatted Value
+
+Use `formatOptions` with `Intl.NumberFormatOptions` to format the displayed value.
+
+<ComponentPreview componentName="number-input" fileName="example-formatted" />
+
+### With Step
+
+Use the `step` prop to set the increment/decrement amount.
+
+<ComponentPreview componentName="number-input" fileName="example-step" />
+
+### Mouse Wheel
+
+Use the `allowMouseWheel` prop to increment or decrement the value with the mouse wheel when the input is focused.
+
+<ComponentPreview componentName="number-input" fileName="example-mouse-wheel" />
+
+### Controlled
+
+Use `value` and `onValueChange` to control the number input. Keep the value as a string when using `formatOptions` to preserve locale formatting.
+
+<ComponentPreview componentName="number-input" fileName="example-controlled" />
+
+## API Reference
+
+### NumberField
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `sm`, `md`, `lg` | `md` |
+| `scrubber` | `boolean` | `false` |
+| `defaultValue` | `string` | — |
+| `value` | `string` | — |
+| `min` | `number` | `Number.MIN_SAFE_INTEGER` |
+| `max` | `number` | `Number.MAX_SAFE_INTEGER` |
+| `step` | `number` | `1` |
+| `formatOptions` | `Intl.NumberFormatOptions` | — |
+| `disabled` | `boolean` | — |
+| `invalid` | `boolean` | — |
+| `focusInputOnChange` | `boolean` | `true` |
+| `clampValueOnBlur` | `boolean` | `true` |
+| `allowMouseWheel` | `boolean` | `false`|
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/number-input#api-reference).

@@ -1,11 +1,5 @@
-import { Field, FieldLabel } from "@/registry/react/components/field";
-import { NumberInput } from "@/registry/react/components/number-input";
+import { NumberField } from "@/registry/react/components/number-input";
 
-const NumberInputDemo = () => (
-  <Field>
-    <FieldLabel>Amount</FieldLabel>
-    <NumberInput className="w-32" defaultValue="10" />
-  </Field>
-);
+const NumberInputDemo = () => <NumberField className="w-full max-w-40" />;
 
 export default NumberInputDemo;

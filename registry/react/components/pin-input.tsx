@@ -1,16 +1,14 @@
+"use client";
+
 import { ark } from "@ark-ui/react";
 import { PinInput as ArkPinInput } from "@ark-ui/react/pin-input";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/registry/react/components/input";
+import { Input, type InputProps } from "@/registry/react/components/input";
 
-interface PinInputProps extends React.ComponentProps<typeof ArkPinInput.Root> {
-  /**
-   * The size of the pin input
-   *
-   * @default "md"
-   */
-  size?: "sm" | "md" | "lg";
+interface PinInputProps
+  extends React.ComponentProps<typeof ArkPinInput.Root>,
+    Pick<InputProps, "size"> {
   /**
    * Adds a fake caret to the pin input
    *
@@ -20,19 +18,11 @@ interface PinInputProps extends React.ComponentProps<typeof ArkPinInput.Root> {
 }
 
 export const PinInput = (props: PinInputProps) => {
-  const {
-    size = "md",
-    withFakeCaret,
-    otp = true,
-    className,
-    children,
-    ...rest
-  } = props;
+  const { withFakeCaret, otp = true, className, children, ...rest } = props;
 
   return (
     <ArkPinInput.Root
       className="group/pin-input"
-      data-size={size}
       data-slot="pin-input"
       {...(!withFakeCaret && { placeholder: "" })}
       otp={otp}
@@ -57,16 +47,7 @@ export const PinInputSlot = (
 
   return (
     <ArkPinInput.Input asChild data-slot="pin-input-input" {...rest}>
-      <Input
-        className={cn(
-          "relative",
-          "size-9 group-data-[size=lg]/pin-input:size-10 group-data-[size=sm]/pin-input:size-8",
-          "p-0",
-          "text-center",
-          className
-        )}
-        data-slot="pin-input-input"
-      />
+      <Input className={cn("relative size-8 p-0 text-center", className)} />
     </ArkPinInput.Input>
   );
 };

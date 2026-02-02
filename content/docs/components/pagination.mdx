@@ -50,7 +50,7 @@ npm install @ark-ui/react lucide-react
 ## Usage
 
 ```tsx lineNumbers
-import { 
+import {
   Pagination,
   PaginationContext,
   PaginationEllipsis,
@@ -61,18 +61,62 @@ import {
 ```
 
 ```tsx lineNumbers
-  <Pagination>
-    <PaginationPrevious />
-    <PaginationContext>
-      <PaginationItem />
-      <PaginationEllipsis />
-    </PaginationContext>
-    <PaginationNext />
-  </Pagination>
+<Pagination count={50} pageSize={10} siblingCount={2}>
+  <PaginationPrevious />
+  <PaginationContext>
+    {({ pages }) =>
+      pages.map((page, index) =>
+        page.type === "page" ? (
+          <PaginationItem key={index} type="page" value={page.value}>
+            {page.value}
+          </PaginationItem>
+        ) : (
+          <PaginationEllipsis key={index} index={index} />
+        )
+      )
+    }
+  </PaginationContext>
+  <PaginationNext />
+</Pagination>
 ```
 
 ## Examples
 
-### Default
+### Controlled
 
-<ComponentPreview componentName="pagination" fileName="default" />
+Use `page` and `onPageChange` to control the current page.
+
+<ComponentPreview componentName="pagination" fileName="example-controlled" />
+
+### Page Range
+
+Use `page` and `pageSize` properties to show which items are visible.
+
+<ComponentPreview componentName="pagination" fileName="example-page-range" />
+
+### With Links
+
+> Under development
+
+### Table
+
+Use `<Pagination />` with `<Table />` to paginate a table.
+
+<ComponentPreview componentName="pagination" fileName="example-table" />
+
+## API Reference
+
+### Pagination
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `count` | `number` | — |
+| `page` | `number` | — |
+| `defaultPage` | `number` | `1` |
+| `pageSize` | `number` | — |
+| `defaultPageSize` | `number` | `10` |
+| `siblingCount` | `number` | `1` |
+| `onPageChange` | `(details: PageChangeDetails) => void` | — |
+| `onPageSizeChange` | `(details: PageSizeChangeDetails) => void` | — |
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/pagination#api-reference).

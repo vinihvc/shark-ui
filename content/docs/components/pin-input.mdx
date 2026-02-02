@@ -71,6 +71,72 @@ import {
 
 ## Examples
 
-### Default
+### Four Digits
 
-<ComponentPreview componentName="pin-input" fileName="default" />
+Use four `<PinInputSlot />` elements for a 4-digit PIN (e.g. card or short code).
+
+<ComponentPreview componentName="pin-input" fileName="example-four-digits" />
+
+### Separator
+
+Add `<PinInputSeparator />` between groups of slots (e.g. 3 + 3 digits).
+
+<ComponentPreview componentName="pin-input" fileName="example-separator" />
+
+### Disabled
+
+Use the `disabled` prop to disable the pin input.
+
+<ComponentPreview componentName="pin-input" fileName="example-disabled" />
+
+### Controlled
+
+Use `value` and `onValueChange` to control the pin input.
+
+<ComponentPreview componentName="pin-input" fileName="example-controlled" />
+
+### Invalid
+
+Use the `invalid` prop (or `aria-invalid`) to mark the pin input as invalid and show error styling.
+
+<ComponentPreview componentName="pin-input" fileName="example-invalid" />
+
+### With Fake Caret
+
+Use the `withFakeCaret` prop to show a fake caret in each slot for a more visible cursor when typing.
+
+<ComponentPreview componentName="pin-input" fileName="example-with-fake-caret" />
+
+## API Reference
+
+### PinInput (Root)
+
+Extends [Ark UI PinInput.Root](https://ark-ui.com/docs/components/pin-input#api-reference) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `withFakeCaret` | `boolean` | `false` |
+| `value` | `string` | — |
+| `defaultValue` | `string` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `disabled` | `boolean` | — |
+| `invalid` | `boolean` | — |
+| `otp` | `boolean` | `true` |
+| `blurOnComplete` | `boolean` | — |
+| `mask` | `boolean` | — |
+
+### PinInputSlot
+
+Renders a single pin input field. Use `index` to specify the slot position (0-based).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `index` | `number` | **required** |
+
+### PinInputSeparator
+
+Renders a visual separator between slots (e.g. dash). Extends native `<hr>` props.
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/pin-input#api-reference).
