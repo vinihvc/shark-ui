@@ -2,6 +2,7 @@ import { RadioGroup as ArkRadioGroup } from "@ark-ui/react/radio-group";
 import { Circle } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { FieldLabel } from "./field";
 
 export const RadioGroup = (
   props: React.ComponentProps<typeof ArkRadioGroup.Root>
@@ -10,12 +11,10 @@ export const RadioGroup = (
 
   return (
     <ArkRadioGroup.Root
-      className={cn("grid gap-3", className)}
+      className={cn("flex flex-col gap-3", className)}
       data-slot="radio-group"
       {...rest}
     >
-      <ArkRadioGroup.Indicator data-slot="radio-group-indicator" />
-
       {children}
     </ArkRadioGroup.Root>
   );
@@ -29,8 +28,9 @@ export const RadioGroupItem = (
   return (
     <ArkRadioGroup.Item
       className={cn(
-        "relative inline-flex items-center gap-2",
-        "data-disabled:cursor-not-allowed",
+        "relative",
+        "inline-flex items-center gap-2",
+        "data-disabled:opacity-50",
         className
       )}
       data-slot="radio-group-item"
@@ -38,29 +38,46 @@ export const RadioGroupItem = (
     >
       <ArkRadioGroup.ItemControl
         className={cn(
-          "group/radio-item",
-          "size-4",
-          "flex items-center justify-center",
-          "bg-input/60",
-          "data-hover:bg-accent",
-          "text-background",
-          "rounded-full border",
-          "transition-all",
-          "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50"
+          // Layout & Structure
+          "inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-muted",
+          "data-[state=checked]:bg-primary"
         )}
         data-slot="radio-group-item-control"
       >
         <Circle className="size-2.5 fill-primary opacity-0 transition-opacity group-data-[state=checked]/radio-item:opacity-100" />
       </ArkRadioGroup.ItemControl>
 
-      <ArkRadioGroup.ItemText
-        className={cn("font-medium text-sm", "data-disabled:opacity-40")}
-        data-slot="radio-group-item-text"
-      >
-        {children}
-      </ArkRadioGroup.ItemText>
+      <RadioGroupText>{children}</RadioGroupText>
 
       <ArkRadioGroup.ItemHiddenInput />
     </ArkRadioGroup.Item>
+  );
+};
+
+export const RadioGroupText = (
+  props: React.ComponentProps<typeof ArkRadioGroup.ItemText>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkRadioGroup.ItemText data-slot="radio-group-item-text" {...rest}>
+        {children}
+      </ArkRadioGroup.ItemText>
+    </FieldLabel>
+  );
+};
+
+export const RadioGroupLabel = (
+  props: React.ComponentProps<typeof ArkRadioGroup.Label>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkRadioGroup.Label data-slot="radio-group-label" {...rest}>
+        {children}
+      </ArkRadioGroup.Label>
+    </FieldLabel>
   );
 };

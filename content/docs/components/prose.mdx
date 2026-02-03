@@ -1,0 +1,570 @@
+---
+title: Prose
+description: Used to style remote HTML content.
+---
+import { Prose } from "@/registry/react/components/prose";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
+
+export function TypographyDemo() {
+  return (
+    <div className="overflow-hidden">
+      <ScrollArea className="h-[350px] border rounded-xl">
+        <Prose className="max-w-full p-8">
+            <h1 >
+              Taxing Laughter: The Joke Tax Chronicles
+            </h1>
+            <p >
+              Once upon a time, in a far-off land, there was a very lazy king who
+              spent all day lounging on his throne. One day, his advisors came to him
+              with a problem: the kingdom was running out of money.
+            </p>
+            <h2>
+              The King&apos;s Plan
+            </h2>
+            <p >
+              The king thought long and hard, and finally came up with{" "}
+              <a
+                href="#"
+              >
+                a brilliant plan
+              </a>
+              : he would tax the jokes in the kingdom.
+            </p>
+            <blockquote >
+              &quot;After all,&quot; he said, &quot;everyone enjoys a good joke, so
+              it&apos;s only fair that they should pay for the privilege.&quot;
+            </blockquote>
+            <h3 >
+              The Joke Tax
+            </h3>
+            <p >
+              The king&apos;s subjects were not amused. They grumbled and complained,
+              but the king was firm:
+            </p>
+            <ul >
+              <li>1st level of puns: 5 gold coins</li>
+              <li>2nd level of jokes: 10 gold coins</li>
+              <li>3rd level of one-liners : 20 gold coins</li>
+            </ul>
+            <p >
+              As a result, people stopped telling jokes, and the kingdom fell into a
+              gloom. But there was one person who refused to let the king&apos;s
+              foolishness get him down: a court jester named Jokester.
+            </p>
+            <h3 >
+              Jokester&apos;s Revolt
+            </h3>
+            <p >
+              Jokester began sneaking into the castle in the middle of the night and
+              leaving jokes all over the place: under the king&apos;s pillow, in his
+              soup, even in the royal toilet. The king was furious, but he
+              couldn&apos;t seem to stop Jokester.
+            </p>
+            <p >
+              And then, one day, the people of the kingdom discovered that the jokes
+              left by Jokester were so funny that they couldn&apos;t help but laugh.
+              And once they started laughing, they couldn&apos;t stop.
+            </p>
+            <h3 >
+              The People&apos;s Rebellion
+            </h3>
+            <p >
+              The people of the kingdom, feeling uplifted by the laughter, started to
+              tell jokes and puns again, and soon the entire kingdom was in on the
+              joke.
+            </p>
+            <div >
+              <table >
+                <thead>
+                  <tr >
+                    <th >
+                      King&apos;s Treasury
+                    </th>
+                    <th >
+                      People&apos;s happiness
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td >
+                      Empty
+                    </td>
+                    <td >
+                      Overflowing
+                    </td>
+                  </tr>
+                  <tr >
+                    <td >
+                      Modest
+                    </td>
+                    <td >
+                      Satisfied
+                    </td>
+                  </tr>
+                  <tr >
+                    <td >
+                      Full
+                    </td>
+                    <td >
+                      Ecstatic
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p >
+              The king, seeing how much happier his subjects were, realized the error
+              of his ways and repealed the joke tax. Jokester was declared a hero, and
+              the kingdom lived happily ever after.
+            </p>
+            <p >
+              The moral of the story is: never underestimate the power of a good laugh
+              and always be careful of bad ideas.
+            </p>
+        </Prose>
+      </ScrollArea>
+    </div>
+  )
+}
+
+<TypographyDemo />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/prose
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Import the following variables into your CSS file</Step>
+
+<CodeCollapsibleWrapper>
+```css
+.prose h1:not(.not-prose h1) {
+  scroll-margin: calc(var(--spacing) * 20);
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl--line-height);
+  font-weight: 800;
+  letter-spacing: var(--tracking-tight);
+}
+
+.prose h2:not(.not-prose h2) {
+  scroll-margin: calc(var(--spacing) * 20);
+  padding-bottom: calc(var(--spacing) * 2);
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-top: calc(var(--spacing) * 8);
+}
+
+.prose h2:not(.not-prose h2):first-child {
+  margin-top: 0;
+}
+
+.prose h3:not(.not-prose h3) {
+  scroll-margin: calc(var(--spacing) * 20);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-top: calc(var(--spacing) * 8);
+}
+
+.prose h3:not(.not-prose h3):first-child {
+  margin-top: 0;
+}
+
+.prose h4:not(.not-prose h4) {
+  scroll-margin: calc(var(--spacing) * 20);
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-top: calc(var(--spacing) * 8);
+}
+
+.prose h4:not(.not-prose h4):first-child {
+  margin-top: 0;
+}
+
+.prose h5:not(.not-prose h5) {
+  scroll-margin: calc(var(--spacing) * 20);
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-top: calc(var(--spacing) * 8);
+}
+
+.prose h5:not(.not-prose h5):first-child {
+  margin-top: 0;
+}
+
+.prose h6:not(.not-prose h6) {
+  scroll-margin: calc(var(--spacing) * 20);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin-top: calc(var(--spacing) * 8);
+}
+
+.prose h6:not(.not-prose h6):first-child {
+  margin-top: 0;
+}
+
+.prose h1:not(.not-prose h1) + p,
+.prose h2:not(.not-prose h2) + p,
+.prose h3:not(.not-prose h3) + p,
+.prose h4:not(.not-prose h4) + p,
+.prose h5:not(.not-prose h5) + p,
+.prose h6:not(.not-prose h6) + p {
+  margin-top: 0;
+}
+
+.prose p:not(.not-prose p) {
+  line-height: 1.75;
+}
+
+.prose p:not(.not-prose p):not(:first-child) {
+  margin-top: calc(var(--spacing) * 6);
+}
+
+.prose li:not(.not-prose li) {
+  line-height: 1.75;
+}
+
+.prose a:not(.not-prose a) {
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: var(--spacing);
+}
+
+.prose blockquote:not(.not-prose blockquote) {
+  margin-top: calc(var(--spacing) * 6);
+  border-left: 2px solid var(--color-border);
+  padding-left: calc(var(--spacing) * 6);
+  font-style: italic;
+}
+
+.prose table:not(.not-prose table) {
+  margin-top: calc(var(--spacing) * 6);
+  margin-bottom: calc(var(--spacing) * 6);
+  width: 100%;
+  overflow-y: auto;
+}
+
+.prose table:not(.not-prose table) thead tr {
+  margin: 0;
+  border-top: 1px solid var(--color-border);
+  padding: 0;
+}
+
+.prose table:not(.not-prose table) thead tr:nth-child(even) {
+  background-color: var(--color-muted);
+}
+
+.prose table:not(.not-prose table) th {
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  text-align: left;
+  font-weight: 700;
+}
+
+.prose table:not(.not-prose table) th[align="center"] {
+  text-align: center;
+}
+
+.prose table:not(.not-prose table) th[align="right"] {
+  text-align: right;
+}
+.prose table:not(.not-prose table) tbody tr {
+  margin: 0;
+  border-top: 1px solid var(--color-border);
+  padding: 0;
+}
+
+.prose table:not(.not-prose table) tbody tr:nth-child(even) {
+  background-color: var(--color-muted);
+}
+
+.prose table:not(.not-prose table) td {
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  text-align: left;
+}
+
+.prose table:not(.not-prose table) td[align="center"] {
+  text-align: center;
+}
+
+.prose table:not(.not-prose table) td[align="right"] {
+  text-align: right;
+}
+
+.prose ul:not(.not-prose ul) {
+  margin-top: calc(var(--spacing) * 6);
+  margin-left: calc(var(--spacing) * 6);
+  list-style: disc;
+}
+
+.prose ul:not(.not-prose ul) > li {
+  margin-top: calc(var(--spacing) * 2);
+}
+
+.prose ul:not(.not-prose ul) p {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: inline;
+}
+
+.prose ol:not(.not-prose ol) {
+  margin-top: calc(var(--spacing) * 6);
+  margin-left: calc(var(--spacing) * 6);
+  list-style: decimal;
+}
+
+.prose ol:not(.not-prose ol) > li {
+  margin-top: calc(var(--spacing) * 2);
+}
+
+.prose ol:not(.not-prose ol) p {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: inline;
+}
+
+.prose .lead:not(.not-prose .lead) {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  color: var(--color-muted-foreground);
+}
+
+.prose .large:not(.not-prose .large) {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: 600;
+}
+
+.prose .small:not(.not-prose .small) {
+  font-size: var(--text-sm);
+  line-height: 1;
+  font-weight: 500;
+}
+
+.prose .muted:not(.not-prose .muted) {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-muted-foreground);
+}
+
+.prose img:not(.not-prose img),
+.prose picture:not(.not-prose picture),
+.prose video:not(.not-prose video) {
+  margin-top: calc(var(--spacing) * 6);
+  margin-bottom: calc(var(--spacing) * 6);
+}
+
+.prose picture > img:not(.not-prose picture > img) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.prose kbd:not(.not-prose kbd) {
+  border-radius: calc(var(--radius) - 2px);
+  background-color: var(--color-muted);
+  padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1.5);
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 600;
+}
+
+.prose hr {
+  margin-top: calc(var(--spacing) * 10);
+  margin-bottom: calc(var(--spacing) * 10);
+}
+
+.prose dl:not(.not-prose dl) {
+  margin-top: calc(var(--spacing) * 6);
+  margin-bottom: calc(var(--spacing) * 6);
+}
+
+.prose dl:not(.not-prose dl) dt {
+  font-weight: 600;
+  margin-top: calc(var(--spacing) * 6);
+  letter-spacing: var(--tracking-tight);
+}
+
+.prose dl:not(.not-prose dl) dt:first-child {
+  margin-top: 0;
+}
+
+.prose details:not(.not-prose details) {
+  margin-top: calc(var(--spacing) * 6);
+}
+
+.prose details:not(.not-prose details) summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: calc(var(--spacing) * 6);
+  letter-spacing: var(--tracking-tight);
+}
+
+.prose details:not(.not-prose details) p:first-of-type {
+  margin-top: calc(var(--spacing) * 2);
+}
+
+.prose mark:not(.not-prose mark) {
+  background-color: var(--color-yellow-300);
+}
+
+.prose small:not(.not-prose small) {
+  font-size: var(--text-xs);
+  line-height: 1;
+}
+```
+</CodeCollapsibleWrapper>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/prose.tsx" src="/prose.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx lineNumbers
+import { Prose } from "@/components/ui/prose";
+```
+
+```tsx lineNumbers
+<Prose>
+ {/* content here */}
+</Prose>
+```
+
+## Undo prose styles
+
+Use the `not-prose` class in a child to exclude it from prose styles. Useful when using components to avoid unwanted styles.
+
+<ComponentPreview componentName="prose" fileName="example-not-prose" />
+
+## Examples
+
+### H1
+
+<ComponentPreview componentName="prose" fileName="example-h1" />
+
+### H2
+
+<ComponentPreview componentName="prose" fileName="example-h2" />
+
+### H3
+
+<ComponentPreview componentName="prose" fileName="example-h3" />
+
+### H4
+
+<ComponentPreview componentName="prose" fileName="example-h4" />
+
+### H5
+
+<ComponentPreview componentName="prose" fileName="example-h5" />
+
+### H6
+
+<ComponentPreview componentName="prose" fileName="example-h6" />
+
+### Paragraph
+
+<ComponentPreview componentName="prose" fileName="example-p" />
+
+### Blockquote
+
+<ComponentPreview componentName="prose" fileName="example-blockquote" />
+
+### Table
+
+<ComponentPreview componentName="prose" fileName="example-table" />
+
+### List
+
+<ComponentPreview componentName="prose" fileName="example-list" />
+
+### Ordered list
+
+<ComponentPreview componentName="prose" fileName="example-ol" />
+
+### Link
+
+<ComponentPreview componentName="prose" fileName="example-a" />
+
+### Media
+
+<ComponentPreview componentName="prose" fileName="example-media" />
+
+### Kbd
+
+<ComponentPreview componentName="prose" fileName="example-kbd" />
+
+### Inline code
+
+<ComponentPreview componentName="prose" fileName="example-inline-code" />
+
+### Separator
+
+<ComponentPreview componentName="prose" fileName="example-separator" />
+
+### Definition list
+
+<ComponentPreview componentName="prose" fileName="example-dl" />
+
+### Details
+
+<ComponentPreview componentName="prose" fileName="example-details" />
+
+### Mark
+
+<ComponentPreview componentName="prose" fileName="example-mark" />
+
+### Small
+
+<ComponentPreview componentName="prose" fileName="example-small" />
+
+## API Reference
+
+  ### Prose
+
+  Root wrapper. Renders a `div`
+
+  | Prop | Type | Default |
+  | --- | --- | --- |
+  | `className` | `string` | — |
+  | `asChild` | `boolean` | `false` |

@@ -3,6 +3,7 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Info } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
 import { CodeBlockCommand } from "@/components/code-block-command";
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentPreview } from "@/components/component-preview";
@@ -283,31 +284,6 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       {...props}
     />
   ),
-  Tab: ({ className, ...props }: React.ComponentProps<"div">) => (
-    <div className={cn(className)} {...props} />
-  ),
-  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
-    return <Tabs className={cn(className)} {...props} />;
-  },
-  TabsList: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsList>) => (
-    <TabsList className={cn("", className)} {...props} />
-  ),
-  TabsContent: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsContent>) => (
-    <TabsContent
-      className={cn(
-        "relative [&>.steps]:mt-6 [&_h3]:font-medium [&_h3]:text-base *:[figure]:first:mt-0",
-        className
-      )}
-      {...props}
-    />
-  ),
-  TabsTrigger,
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
     <ScrollArea className="my-6">
       <table
@@ -346,9 +322,25 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       {...props}
     />
   ),
+  Tabs,
+  TabsList,
+  TabsContent: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsContent>) => (
+    <TabsContent
+      className={cn(
+        "relative [&>.steps]:mt-6 [&_h3]:font-medium [&_h3]:text-base *:[figure]:first:mt-0",
+        className
+      )}
+      {...props}
+    />
+  ),
+  TabsTrigger,
   Info,
   ComponentPreview,
   ComponentInstallation,
   ComponentSource,
   CodeTabs,
+  CodeCollapsibleWrapper,
 });
