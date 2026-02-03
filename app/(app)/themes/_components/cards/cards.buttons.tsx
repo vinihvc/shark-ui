@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -87,17 +87,17 @@ export const CardsButtons = () => {
             <PopoverBody>
               <FieldGroup>
                 <Field orientation="horizontal">
-                  <FieldLabel htmlFor="height">Height</FieldLabel>
+                  <FieldLabel>Height</FieldLabel>
                   <InputGroup>
-                    <InputGroupInput defaultValue="25px" id="height" />
+                    <InputGroupInput defaultValue="25px" />
                     <InputGroupAddon align="inline-end">px</InputGroupAddon>
                   </InputGroup>
                 </Field>
 
                 <Field orientation="horizontal">
-                  <FieldLabel htmlFor="width">Width</FieldLabel>
+                  <FieldLabel>Width</FieldLabel>
                   <InputGroup>
-                    <InputGroupInput defaultValue="100%" id="width" />
+                    <InputGroupInput defaultValue="100%" />
                     <InputGroupAddon align="inline-end">px</InputGroupAddon>
                   </InputGroup>
                 </Field>
@@ -123,8 +123,8 @@ export const CardsButtons = () => {
             />
             <DialogBody>
               <Field>
-                <FieldLabel htmlFor="username">Username</FieldLabel>
-                <Input id="username" placeholder="@vinihvc" />
+                <FieldLabel>Username</FieldLabel>
+                <Input placeholder="@vinihvc" />
               </Field>
             </DialogBody>
             <DialogFooter>
@@ -137,37 +137,16 @@ export const CardsButtons = () => {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-        <Button size="icon-md" variant="success">
-          <CheckCircle2 />
-        </Button>
-        <Button
-          onClick={() =>
-            toast.create({
-              title: "You found the easter egg!",
-              description: "Congratulations!",
-              type: "success",
-            })
-          }
-          variant="warning"
-        >
-          Warning
-        </Button>
+
         <Tooltip open={isLoading} positioning={{ placement: "bottom" }}>
           <TooltipTrigger asChild>
-            <Button isLoading={isLoading} variant="info">
-              Info
+            <Button isLoading={isLoading} variant="destructive">
+              Delete account
             </Button>
           </TooltipTrigger>
           <TooltipContent>I have isLoading state</TooltipContent>
         </Tooltip>
 
-        <Tooltip defaultOpen>
-          <TooltipTrigger asChild>
-            <Button variant="destructive">Delete account</Button>
-          </TooltipTrigger>
-
-          <TooltipContent>I'm a tooltip</TooltipContent>
-        </Tooltip>
         <Clipboard value="something">
           <ClipboardTrigger asChild>
             <Button variant="secondary">
@@ -176,7 +155,19 @@ export const CardsButtons = () => {
             </Button>
           </ClipboardTrigger>
         </Clipboard>
-        <Button variant="ghost"> Ghost</Button>
+        <Button
+          onClick={() =>
+            toast.create({
+              title: "You found the easter egg!",
+              description: "Congratulations!",
+              type: "success",
+            })
+          }
+          variant="ghost"
+        >
+          {" "}
+          Ghost
+        </Button>
         <Button variant="link"> Visit website</Button>
       </CardContent>
     </Card>

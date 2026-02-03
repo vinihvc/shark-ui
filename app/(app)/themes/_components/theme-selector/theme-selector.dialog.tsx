@@ -59,7 +59,7 @@ export const ThemeSelectorDialog = (
           </Button>
         </DialogTrigger>
 
-        <DialogContent size="2xl">
+        <DialogContent size="xl">
           <DialogHeader
             description="Copy the CSS variables for this theme to use in your project."
             title={`${colorLabel} Color`}

@@ -1,41 +1,46 @@
 "use client";
 
-import { Pagination as ArkPagination } from "@ark-ui/react/pagination";
+import {
+  Pagination as ArkPagination,
+  usePaginationContext,
+} from "@ark-ui/react/pagination";
 import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
-import type React from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-export const Pagination = (
-  props: React.ComponentProps<typeof ArkPagination.Root>
-) => {
+type PaginationContextType = {};
+
+const PaginationContext = React.createContext({} as PaginationContextType);
+
+interface PaginationProps
+  extends React.ComponentProps<typeof ArkPagination.Root>,
+    PaginationContextType {}
+
+export const Pagination = (props: PaginationProps) => {
   const { className, ...rest } = props;
 
   return (
-    <ArkPagination.Root
-      className={cn(
-        "mx-auto w-full",
-        "flex flex-row justify-center gap-1",
-        className
-      )}
-      data-slot="pagination"
-      {...rest}
-    />
+    <PaginationContext.Provider value={{}}>
+      <ArkPagination.Root
+        className={cn(
+          "mx-auto",
+          "w-full",
+          "flex justify-center gap-1",
+          className
+        )}
+        data-slot="pagination"
+        {...rest}
+      />
+    </PaginationContext.Provider>
   );
 };
-
-interface PaginationContextProps
-  extends React.ComponentProps<typeof ArkPagination.Context> {}
-
-export const PaginationContext = (props: PaginationContextProps) => (
-  <ArkPagination.Context data-slot="pagination-context" {...props} />
-);
 
 export const PaginationPrevious = (
   props: React.ComponentProps<typeof ArkPagination.PrevTrigger>
 ) => (
   <ArkPagination.PrevTrigger asChild data-slot="pagination-previous" {...props}>
-    <Button size="sm" variant="ghost">
+    <Button variant="ghost">
       <ChevronLeft />
       Previous
     </Button>
@@ -46,7 +51,7 @@ export const PaginationNext = (
   props: React.ComponentProps<typeof ArkPagination.NextTrigger>
 ) => (
   <ArkPagination.NextTrigger asChild data-slot="pagination-next" {...props}>
-    <Button size="sm" variant="ghost">
+    <Button variant="ghost">
       Next
       <ChevronRight />
     </Button>
@@ -62,16 +67,76 @@ export const PaginationItem = (
     <ArkPagination.Item asChild data-slot="pagination-item" {...rest}>
       <Button
         className={cn(
-          "data-selected:not-[hover]:bg-primary",
-          "data-selected:not-[hover]:text-primary-foreground",
+          "data-selected:not-[hover]:bg-transparent dark:data-selected:not-[hover]:bg-input/30",
+          "data-selected:not-[hover]:text-foreground",
+          "data-selected:not-[hover]:border-border",
           className
         )}
-        size="icon-sm"
+        size="icon-md"
         variant="ghost"
       >
         {children}
       </Button>
     </ArkPagination.Item>
+  );
+};
+
+export const PaginationItems = (
+  props: Omit<React.ComponentProps<typeof ArkPagination.Context>, "children">
+) => {
+  return (
+    <ArkPagination.Context data-slot="pagination-item s" {...props}>
+      {({ pages }) =>
+        pages.map((page, index) =>
+          page.type === "page" ? (
+            <PaginationItem key={page.value} type="page" value={page.value}>
+              {page.value}
+            </PaginationItem>
+          ) : (
+            <PaginationEllipsis index={index} key={`ellipsis-${index}`} />
+          )
+        )
+      }
+    </ArkPagination.Context>
+  );
+};
+
+interface PaginationItemLinkProps extends React.ComponentProps<typeof Button> {
+  /**
+   * The page number to link to.
+   */
+  page?: "previous" | "next" | number;
+}
+
+export const PaginationItemLink = (props: PaginationItemLinkProps) => {
+  const { page, children, ...rest } = props;
+
+  const pagination = usePaginationContext();
+
+  const pageValue = () => {
+    if (page === "previous") {
+      return pagination.previousPage;
+    }
+
+    if (page === "next") {
+      return pagination.nextPage;
+    }
+
+    return page;
+  };
+
+  if (typeof page === "number") {
+    return (
+      <Button asChild variant="outline" {...rest}>
+        <a href={`?page=${pageValue()}`}>{children}</a>
+      </Button>
+    );
+  }
+
+  return (
+    <Button asChild variant="ghost" {...rest}>
+      <a href={`?page=${pageValue()}`}>{children}</a>
+    </Button>
   );
 };
 
@@ -95,4 +160,16 @@ export const PaginationEllipsis = (
       <Ellipsis />
     </ArkPagination.Ellipsis>
   );
+};
+
+const _usePaginationContext = () => {
+  const context = React.use(PaginationContext);
+
+  if (!context) {
+    throw new Error(
+      "usePaginationContext must be used within a PaginationProvider"
+    );
+  }
+
+  return context;
 };

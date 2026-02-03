@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/splitter#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="splitter" />
+<ComponentPreview componentName="splitter" />
 
 ## Installation
 
-<ComponentInstallation componentName="splitter">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react
+npx shadcn@latest add @shark-ui/splitter
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/splitter.tsx" src="/splitter.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -38,3 +64,9 @@ import {
   <SplitterPanel id="2">Panel 2</SplitterPanel>
 </Splitter>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="splitter" fileName="default" />

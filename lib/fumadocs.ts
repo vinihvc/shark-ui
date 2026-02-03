@@ -18,12 +18,14 @@ export const getPageImage = (page: InferPageType<typeof source>) => {
   };
 };
 
-export const getLLMText = async (page: InferPageType<typeof source>) => {
-  // biome-ignore lint/suspicious/noTsIgnore: idk
-  // @ts-ignore fumadocs type error
+export const getLLMFullText = async (page: InferPageType<typeof source>) => {
   const processed = await page.data.getText("processed");
 
   return `# ${page.data.title} (${page.url})
 
 ${processed}`;
+};
+
+export const getLLMText = (page: InferPageType<typeof source>) => {
+  return `- [${page.data.title}](${page.url}): ${page.data.description}`;
 };

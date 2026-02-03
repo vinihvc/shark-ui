@@ -1,26 +1,87 @@
 ---
 title: Alert
-description: Displays a alert for user attention with different variants
+description: Displays a alert for user attention.
 ---
 
 import { Alert, AlertDescription, AlertTitle } from "@/registry/react/components/alert";
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentVariants } from '@/components/component-variants'
 import { TabsContent } from "@/registry/react/components/tabs";
 import { Info, AlertCircle, AlertTriangle, CheckCircle } from "lucide-react";
 
-<ComponentPreviewFile componentName="alert" />
+<ComponentPreview componentName="alert" />
 
 ## Installation
 
-<ComponentInstallation componentName="alert" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/alert
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npm install @ark-ui/react tailwind-variants
 ```
-</ComponentInstallation>
+
+<Step>Add the following CSS variables to your CSS file:</Step>
+
+```css
+@theme inline {
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+ 
+:root {
+  --destructive-foreground: var(--color-red-400);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+}
+ 
+.dark {
+  --destructive-foreground: var(--color-red-400);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-400);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
+}
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/alert.tsx" src="/alert.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Basic usage
 
@@ -43,56 +104,75 @@ import {
 
 You can change the variant of the alert using the `variant` prop. 
 
-Available variants are: `solid`, `info`, `warning`, `success`, `destructive`.
+### Solid
 
-<ComponentVariants variants={['solid', 'info', 'success', 'warning', 'destructive']}>
-  <TabsContent value="solid">
-    <Alert variant="solid">
-      <Info />
-      <AlertTitle>Deployment successful</AlertTitle>
-      <AlertDescription>
-        You can now start building your next great project.
-      </AlertDescription>
-    </Alert>
-  </TabsContent>
+<ComponentPreview componentName="alert" fileName="variant-solid" />
 
-  <TabsContent value="info">
-    <Alert variant="info">
-      <Info />
-      <AlertTitle>Deployment information</AlertTitle>
-      <AlertDescription>
-        You can now start building your next great project.
-      </AlertDescription>
-    </Alert>
-  </TabsContent>
+### Info
 
-  <TabsContent value="warning">
-    <Alert variant="warning">
-      <AlertTriangle />
-      <AlertTitle>Deployment warning</AlertTitle>
-      <AlertDescription>
-        You can now start building your next great project.
-      </AlertDescription>
-    </Alert>
-  </TabsContent>
+<ComponentPreview componentName="alert" fileName="variant-info" />
 
-  <TabsContent value="success">
-    <Alert variant="success">
-      <CheckCircle />
-      <AlertTitle>Deployment success</AlertTitle>
-      <AlertDescription>
-        You can now start building your next great project.
-      </AlertDescription>
-    </Alert>
-  </TabsContent>
+### Warning
 
-  <TabsContent value="destructive">
-    <Alert variant="destructive">
-      <AlertCircle />
-      <AlertTitle>Deployment failed</AlertTitle>
-      <AlertDescription>
-        You can now start building your next great project.
-      </AlertDescription>
-    </Alert>
-  </TabsContent>
-</ComponentVariants>
+<ComponentPreview componentName="alert" fileName="variant-warning" />
+
+### Success
+
+<ComponentPreview componentName="alert" fileName="variant-success" />
+
+### Destructive
+
+<ComponentPreview componentName="alert" fileName="variant-destructive" />
+
+## Examples
+
+### With icon
+
+You can add icons to alerts to provide visual context and improve user experience.
+
+<ComponentPreview componentName="alert" fileName="with-icon" />
+
+### Custom color
+
+You can use the `className` prop to customize the alert colors to match your design system.
+
+<ComponentPreview componentName="alert" fileName="custom-color" />
+
+### With action buttons
+
+<ComponentPreview componentName="alert" fileName="with-action" />
+
+## API Reference
+
+### Alert
+
+Root element of the alert. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"solid", "info", "warning", "success", "destructive"` | `"solid"` |
+| `className` | `string` | `-` |
+
+### AlertTitle
+
+Styled title of the alert. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### AlertDescription
+
+Styled description with muted foreground text color. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### AlertAction
+
+Container for action buttons. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |

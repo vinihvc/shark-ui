@@ -10,8 +10,8 @@ const fieldVariants = tv({
   base: [
     "group/field",
     "w-full",
-    "flex gap-3",
-    "data-[invalid=true]:text-destructive",
+    "flex gap-2",
+    "data-invalid:text-destructive dark:data-invalid:text-destructive-foreground",
   ],
   variants: {
     orientation: {
@@ -27,9 +27,15 @@ const fieldVariants = tv({
         "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
       ],
     },
+    reverse: {
+      true: [
+        "data-[orientation=horizontal]:flex-row-reverse data-[orientation=vertical]:flex-col-reverse",
+      ],
+    },
   },
   defaultVariants: {
     orientation: "vertical",
+    reverse: false,
   },
 });
 
@@ -38,11 +44,16 @@ interface FieldProps
     VariantProps<typeof fieldVariants> {}
 
 export const Field = (props: FieldProps) => {
-  const { orientation = "vertical", className, ...rest } = props;
+  const {
+    orientation = "vertical",
+    reverse = false,
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkField.Root
-      className={cn(fieldVariants({ orientation }), className)}
+      className={cn(fieldVariants({ orientation, reverse }), className)}
       data-orientation={orientation}
       data-slot="field"
       {...rest}
@@ -101,7 +112,7 @@ export const FieldGroup = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "group/field-group @container/field-group",
-        "flex w-full flex-col gap-7",
+        "flex w-full flex-col gap-4",
         "data-[data-slot=checkbox-group]:gap-3",
         "*:data-[slot=field-group]:gap-4",
         className
@@ -140,13 +151,33 @@ export const FieldLabel = (
         "flex w-fit gap-2",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
         "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
-        "group-data-[disabled=true]/field:opacity-50",
+        "group-data-disabled/field:opacity-50",
         "dark:has-data-[state=checked]:bg-primary/10",
         className
       )}
       data-slot="field-label"
       {...rest}
     />
+  );
+};
+
+export const FieldLabelRequired = (
+  props: React.ComponentProps<typeof ark.span>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <ark.span
+      aria-label="Required"
+      className={cn(
+        "text-destructive text-sm dark:text-destructive-foreground",
+        className
+      )}
+      data-slot="field-label-required"
+      {...rest}
+    >
+      {children ?? "*"}
+    </ark.span>
   );
 };
 
@@ -242,7 +273,10 @@ export const FieldError = (
 
   return (
     <ArkField.ErrorText
-      className={cn("font-normal text-destructive text-sm", className)}
+      className={cn(
+        "font-normal text-destructive text-sm dark:text-destructive-foreground",
+        className
+      )}
       data-slot="field-error"
       {...rest}
     />

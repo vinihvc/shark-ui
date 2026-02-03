@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/select#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="select" />
+<ComponentPreview componentName="select" />
 
 ## Installation
 
-<ComponentInstallation componentName="select" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react tailwind-variants
+npx shadcn@latest add @shark-ui/select
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/select.tsx" src="/select.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -41,3 +67,9 @@ import {
     </SelectContent>
   </Select>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="select" fileName="default" />

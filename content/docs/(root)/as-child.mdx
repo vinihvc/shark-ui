@@ -1,0 +1,89 @@
+---
+title: The asChild prop
+description: Pass a child element to make it inherit the styles and props.
+---
+
+All components that support the `asChild` prop will inherit the styles and props of the parent component.
+
+## Creating new Components
+
+You can use the [ark factory](https://ark-ui.com/docs/guides/composition#the-ark-factory) to create your own elements that work just like the components in the library.
+
+```tsx lineNumbers
+import { ark } from '@ark-ui/react/factory'
+
+interface ButtonExampleProps extends 
+  React.ComponentProps<typeof ark.button> {}
+
+export const ButtonExample = (props: ButtonExampleProps) => (
+  <ark.button {...props} />
+)
+```
+
+```tsx lineNumbers
+import Link from "next/link";
+
+<ButtonExample asChild>
+  <Link href="/login">Login </Link>
+</ButtonExample>
+```
+
+## Example
+
+### Link
+
+You can use the `asChild` prop to make a link styled as a button.
+
+```tsx lineNumbers
+<Button asChild>
+  <Link href="/login">Login </Link>
+</Button>
+```
+
+### Badge
+
+You can use the `asChild` prop to make a badge styled as a button.
+
+```tsx lineNumbers
+<Badge asChild>
+  <Link href="/login">Login </Link>
+</Badge>
+```
+
+### Dialog
+
+You can use the `asChild` prop to make a dialog styled as a button.
+
+```tsx lineNumbers
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Open dialog</Button>
+  </DialogTrigger>
+  {/* ... */}
+</Dialog>
+```
+
+### Menu
+
+You can use the `asChild` prop to make a menu styled as a button.
+
+```tsx lineNumbers
+<Menu>
+  <MenuTrigger asChild>
+    <Button>Open</Button>
+  </MenuTrigger>
+  {/* ... */}
+</Menu>
+```
+
+### Popover
+
+You can use the `asChild` prop to make a popover styled as a button.
+
+```tsx lineNumbers
+<Popover>
+  <PopoverTrigger asChild>
+    <Button>Open Popover</Button>
+  </PopoverTrigger>
+  {/* ... */}
+</Popover>

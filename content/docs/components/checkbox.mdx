@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/checkbox#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="checkbox" />
+<ComponentPreview componentName="checkbox" />
 
 ## Installation
 
-<ComponentInstallation componentName="checkbox">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react
+npx shadcn@latest add @shark-ui/checkbox
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/checkbox.tsx" src="/checkbox.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -30,3 +56,91 @@ import { Checkbox } from "@/components/ui/checkbox";
 ```tsx lineNumbers
 <Checkbox />
 ```
+
+## Controlled
+
+Use the `checked` prop to control the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-controlled" />
+
+## Invalid State
+
+Use the `invalid` prop to indicate an invalid state.
+
+<ComponentPreview componentName="checkbox" fileName="example-invalid" />
+
+You can pass `invalid` prop to the `<Field />` to disable the label and description or `<Checkbox />` to disable just the checkbox.
+
+## Examples
+
+### With Description
+
+Use `<FieldDescription />` to add a description to the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-with-description" />
+
+### Disabled
+
+Use the `disabled` prop to disable the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-disabled" />
+
+### Indeterminate
+
+Use the `checked="indeterminate"` prop to set the checkbox to an indeterminate state.
+
+<ComponentPreview componentName="checkbox" fileName="example-indeterminate" />
+
+### Group
+
+Use `<CheckboxGroup />` to group multiple checkboxes together.
+
+<ComponentPreview componentName="checkbox" fileName="example-checkbox-group" />
+
+Use `defaultValue` to set the default checked values.
+
+```tsx lineNumbers
+<CheckboxGroup defaultValue={["value-1", "value-2"]}>
+  <Checkbox value="value-1" />
+  <Checkbox value="value-2" />
+  <Checkbox value="value-3" />
+</CheckboxGroup>
+```
+
+### Card Style
+
+Use `<FieldLabel />` to add a label to the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-card" />
+
+## API Reference
+
+### Checkbox
+
+Root element of the checkbox. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `checked` | `boolean \| 'indeterminate'` | `-` |
+| `defaultChecked` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `name` | `string` | `-` |
+| `value` | `string` | `-` |
+| `onCheckedChange` | `({ checked }: CheckedChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+### CheckboxGroup
+
+Container for a group of checkboxes. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `string[]` | `-` |
+| `defaultValue` | `string[]` | `-` |
+| `onValueChange` | `(checkedValues: string[]) => void` | `-` |
+| `name` | `string` | `-` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/checkbox#api-reference).

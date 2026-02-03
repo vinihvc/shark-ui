@@ -3,38 +3,239 @@ title: Item
 description: A versatile component that you can use to display any content.
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
+<ComponentPreview componentName="item" />
 
-<ComponentPreviewFile componentName="item" />
+The `Item` component is a straightforward flex container that can house nearly any type of content. Use it to display a title, description, and actions. Group it with the `ItemGroup` component to create a list of items.
 
 ## Installation
 
-<ComponentInstallation componentName="item">
+<CodeTabs>
 
-Install the following dependencies:
-  
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npx shadcn@latest add @shark-ui/item
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/item.tsx" src="/item.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
 ```tsx lineNumbers
-import { 
+import {
   Item,
+  ItemActions,
   ItemContent,
-  ItemTitle,
   ItemDescription,
+  ItemMedia,
+  ItemTitle,
 } from "@/components/ui/item";
 ```
 
 ```tsx lineNumbers
 <Item>
+  <ItemMedia />
   <ItemContent>
-    <ItemTitle>Item Title</ItemTitle>
-    <ItemDescription>Item Description</ItemDescription>
+    <ItemTitle />
+    <ItemDescription />
   </ItemContent>
+  <ItemActions />
 </Item>
 ```
+
+## Item vs Field
+
+Use `<Field />` if you need to display a form input such as a checkbox, input, radio, or select.
+
+If you only need to display content such as a title, description, and actions, use `<Item />`.
+
+## Variant
+
+Use the `variant` prop to change the visual style of the item.
+
+### Outline
+
+<ComponentPreview componentName="item" fileName="variant-outline" />
+
+### Muted
+
+<ComponentPreview componentName="item" fileName="variant-muted" />
+
+## Size
+
+Use the `size` prop to change the size of the item. 
+
+### Extra Small Size
+
+<ComponentPreview componentName="item" fileName="size-xs" />
+
+### Small Size
+
+<ComponentPreview componentName="item" fileName="size-sm" />
+
+## Examples
+
+### Icon
+
+Use `<ItemMedia />` with `variant="icon"` to display an icon.
+
+<ComponentPreview componentName="item" fileName="example-icon" />
+
+### Avatar
+
+You can use `<ItemMedia />` with `variant="default"` to display an avatar.
+
+<ComponentPreview componentName="item" fileName="example-avatar" />
+
+### Image
+
+Use `<ItemMedia />` with `variant="image"` to display an image.
+
+<ComponentPreview componentName="item" fileName="example-image" />
+
+### Group
+
+Use `<ItemGroup />` to group related items together.
+
+<ComponentPreview componentName="item" fileName="example-group" />
+
+### Header
+
+Use `<ItemHeader />` to add a header above the item content.
+
+<ComponentPreview componentName="item" fileName="example-header" />
+
+### Link
+
+Use the `asChild` prop to render the item as a link. The hover and focus states will be applied to the anchor element.
+
+<ComponentPreview componentName="item" fileName="example-link" />
+
+### Dropdown
+
+Use `<Item />` inside a menu or dropdown to display rich content in menu items.
+
+<ComponentPreview componentName="item" fileName="example-dropdown" />
+
+## API Reference
+
+### Item
+
+Main component for displaying content with media, title, description, and actions. Renders a `div` (or the child element when `asChild` is true).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `default`, `outline`, `muted` | `default` |
+| `size` | `xs`, `sm`, `md` | `md` |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### ItemGroup
+
+Container that groups related items with consistent spacing. Renders a `div` with `role="list"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemSeparator
+
+Separator between items in a group. Renders a horizontal separator.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemMedia
+
+Displays media (icon, image, or custom content) for the item. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `default`, `icon`, `image` | `default` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemContent
+
+Wraps the title and description of the item. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemTitle
+
+Displays the item title. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemDescription
+
+Displays the item description. Renders a `p`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemActions
+
+Container for action buttons or other controls. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemHeader
+
+Header above the item content (full-width row). Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ItemFooter
+
+Footer below the item content (full-width row). Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+

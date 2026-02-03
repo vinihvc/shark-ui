@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/hover-card#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="hover-card" />
+<ComponentPreview componentName="hover-card" />
 
 ## Installation
 
-<ComponentInstallation componentName="hover-card" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/hover-card
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/hover-card.tsx" src="/hover-card.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -33,7 +59,118 @@ import {
 
 ```tsx lineNumbers
 <HoverCard>
-  <HoverCardTrigger>Hover me</HoverCardTrigger>
-  <HoverCardContent>Hover Card Content</HoverCardContent>
+  <HoverCardTrigger />
+  <HoverCardContent>
+    {/* Content */}
+  </HoverCardContent>
 </HoverCard>
-``` 
+```
+## Triggers Delays
+
+The `openDelay` and `closeDelay` props control the delay before the hover card opens and closes respectively.
+
+Default values are `100ms` for `closeDelay` and `10ms` for `openDelay`.
+
+<ComponentPreview componentName="hover-card" fileName="triggers-delays" />
+
+## Positioning
+
+Control the position of the hover card relative to the trigger using the `positioning` prop.
+
+<ComponentPreview componentName="hover-card" fileName="example-positioning" />
+
+## API Reference
+
+### HoverCard
+
+Root element of the hover card component. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `closeDelay` | `number` | `100` |
+| `defaultOpen` | `boolean` | - |
+| `disabled` | `boolean` | - |
+| `id` | `string` | - |
+| `ids` | `Partial<{ trigger: string; content: string; positioner: string; arrow: string }>` | - |
+| `immediate` | `boolean` | - |
+| `lazyMount` | `boolean` | `true` |
+| `onExitComplete` | `VoidFunction` | - |
+| `onFocusOutside` | `(event: FocusOutsideEvent) => void` | - |
+| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | - |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | - |
+| `onPointerDownOutside` | `(event: PointerDownOutsideEvent) => void` | - |
+| `open` | `boolean` | - |
+| `openDelay` | `number` | `10` |
+| `positioning` | `PositioningOptions` | `{ placement: "top" }` |
+| `present` | `boolean` | - |
+| `skipAnimationOnMount` | `boolean` | `false` |
+| `unmountOnExit` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### HoverCardTrigger
+
+Button that triggers the hover card. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+**Attributes:**
+
+- `[data-scope]` - hover-card
+- `[data-part]` - trigger
+- `[data-placement]` - The placement of the trigger
+- `[data-state]` - "open" | "closed"
+
+### HoverCardContent
+
+Content element that displays when the hover card is open. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+**Attributes:**
+
+- `[data-scope]` - hover-card
+- `[data-part]` - content
+- `[data-state]` - "open" | "closed"
+- `[data-nested]` - popover
+- `[data-has-nested]` - popover
+- `[data-placement]` - The placement of the content
+
+**CSS Variables:**
+
+- `--layer-index` - The index of the dismissable in the layer stack
+- `--nested-layer-count` - The number of nested hover-cards
+
+### HoverCardArrow
+
+Arrow element that points to the trigger. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+**CSS Variables:**
+
+- `--arrow-size` - The size of the arrow
+- `--arrow-size-half` - Half the size of the arrow
+- `--arrow-background` - Use this variable to style the arrow background
+- `--arrow-offset` - The offset position of the arrow
+
+### HoverCardArrowTip
+
+Tip of the arrow element. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/hover-card#api-reference).

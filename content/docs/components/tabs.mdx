@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/tabs#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="tabs" />
+<ComponentPreview componentName="tabs" />
 
 ## Installation
 
-<ComponentInstallation componentName="tabs" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/tabs
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/tabs.tsx" src="/tabs.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -42,3 +68,31 @@ import {
   <TabsContent value="2">Tab 2 content</TabsContent>
 </Tabs>
 ```
+
+## Variants
+
+You can change the variant of the tabs using the `variant` prop on `TabsList`.
+
+### Default
+
+<ComponentPreview componentName="tabs" fileName="variant-default" />
+
+### Underline
+
+<ComponentPreview componentName="tabs" fileName="variant-underline" />
+
+## Orientation
+
+You can change the orientation of the tabs using the `orientation` prop on `Tabs`.
+
+### Horizontal
+
+<ComponentPreview componentName="tabs" fileName="orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="tabs" fileName="orientation-vertical" />
+
+## Vertical with Underline variant
+
+<ComponentPreview componentName="tabs" fileName="variant-underline-orientation-vertical" />

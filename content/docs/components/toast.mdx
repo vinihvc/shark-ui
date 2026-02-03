@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/toast#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="toast" />
+<ComponentPreview componentName="toast" />
 
 ## Installation
 
-<ComponentInstallation componentName="toast" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react tailwind-variants
+npx shadcn@latest add @shark-ui/toast
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/toast.tsx" src="/toast.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -40,3 +66,9 @@ toaster.create({
   type: "error",
 });
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="toast" fileName="default" />

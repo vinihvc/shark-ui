@@ -6,21 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/skeleton#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="skeleton" />
+<ComponentPreview componentName="skeleton" />
 
 ## Installation
 
-<ComponentInstallation componentName="skeleton">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/skeleton
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/skeleton.tsx" src="/skeleton.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -39,3 +64,9 @@ import {
   <Skeleton className="h-16 w-full" />
 </div>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="skeleton" fileName="default" />

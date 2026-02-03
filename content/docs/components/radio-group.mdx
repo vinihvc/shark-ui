@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/radio-group#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="radio-group" />
+<ComponentPreview componentName="radio-group" />
 
 ## Installation
 
-<ComponentInstallation componentName="radio-group">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/radio-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
-pnpm add @ark-ui/react lucide-react
+npm install @ark-ui/react lucide-react
 ```
-</ComponentInstallation>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/radio-group.tsx" src="/radio-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -37,3 +63,9 @@ import {
   <RadioGroupItem value="3">Option 3</RadioGroupItem>
 </RadioGroup>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="radio-group" fileName="default" />

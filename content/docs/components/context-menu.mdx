@@ -6,27 +6,53 @@ links:
   api: https://ark-ui.com/docs/components/context-menu#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-import { Callout } from "@/components/ui/callout";
-import Link from "fumadocs-core/link";
-
-<Callout>
-  Built on top of the <Link href="/docs/components/menu">Menu component</Link>. Check it out for more examples.
-</Callout>
+<Alert>
+  <Info />
+  <AlertDescription>
+    Built on top of the <Link href="/docs/components/menu">Menu component</Link>. Check it out for more examples.
+  </AlertDescription>
+</Alert>
  
-
-<ComponentPreviewFile componentName="context-menu" />
+<ComponentPreview componentName="context-menu" />
 
 ## Installation
 
-<ComponentInstallation componentName="context-menu" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/context-menu
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
-pnpm add @ark-ui/react
+npm install @ark-ui/react tailwind-variants lucide-react
 ```
-</ComponentInstallation>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/context-menu.tsx" src="/context-menu.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -53,3 +79,7 @@ import {
   </ContextMenuContent>
 </ContextMenu>
 ```
+
+## API Reference
+
+See the [Menu component](/docs/components/menu#api-reference) API reference for the available props.

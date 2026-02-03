@@ -3,21 +3,46 @@ title: Input Group
 description: A component that allows you to group input elements together.
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="input-group" />
+<ComponentPreview componentName="input-group" />
 
 ## Installation
 
-<ComponentInstallation componentName="input-group">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npx shadcn@latest add @shark-ui/input-group
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/input-group.tsx" src="/input-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -40,3 +65,9 @@ import {
   </InputGroupAddon>
 </InputGroup>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="input-group" fileName="default" />

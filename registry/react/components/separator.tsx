@@ -15,16 +15,17 @@ export const Separator = (props: SeparatorProps) => {
 
   return (
     <ark.div
+      aria-orientation={orientation}
       className={cn(
         "my-4 shrink-0",
         "bg-border",
-        "data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full",
-        "data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px",
+        "data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
         className
       )}
       data-orientation={orientation}
       data-slot="separator"
-      role="none"
+      role="separator"
       {...rest}
     />
   );

@@ -6,13 +6,22 @@ import { cn } from "@/lib/utils";
 export const Collapsible = (
   props: React.ComponentProps<typeof ArkCollapsible.Root>
 ) => {
-  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    collapsedHeight,
+    lazyMount = true,
+    unmountOnExit = true,
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkCollapsible.Root
+      className={cn("group/collapsible", className)}
+      collapsedHeight={collapsedHeight}
+      data-partial-collapse={collapsedHeight ? "" : undefined}
       data-slot="collapsible"
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
+      lazyMount={collapsedHeight ? false : lazyMount}
+      unmountOnExit={collapsedHeight ? false : unmountOnExit}
       {...rest}
     />
   );
@@ -20,25 +29,43 @@ export const Collapsible = (
 
 export const CollapsibleTrigger = (
   props: React.ComponentProps<typeof ArkCollapsible.Trigger>
-) => <ArkCollapsible.Trigger data-slot="collapsible-trigger" {...props} />;
-
-export const CollapsibleContent = (
-  props: React.ComponentProps<typeof ArkCollapsible.Content>
 ) => {
   const { className, ...rest } = props;
 
   return (
+    <ArkCollapsible.Trigger
+      className={cn(
+        "cursor-pointer",
+        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "has-data-[slot=collapsible-indicator]:[button]:justify-between",
+        className
+      )}
+      data-slot="collapsible-trigger"
+      {...rest}
+    />
+  );
+};
+
+export const CollapsibleContent = (
+  props: React.ComponentProps<typeof ArkCollapsible.Content>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
     <ArkCollapsible.Content
       className={cn(
+        "h-(--collapsed-height)",
+        "group-data-partial-collapse/collapsible:h-full",
+        "transition-[height] duration-200",
         "overflow-hidden",
-        "data-[state=closed]:animate-in data-[state=open]:animate-out",
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-        "data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down",
-        className
+        "data-[state=open]:animate-expand",
+        "data-[state=closed]:animate-collapse"
       )}
       data-slot="collapsible-content"
       {...rest}
-    />
+    >
+      <div className={className}>{children}</div>
+    </ArkCollapsible.Content>
   );
 };
 

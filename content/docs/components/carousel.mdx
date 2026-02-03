@@ -1,25 +1,51 @@
 ---
 title: Carousel
-description: An interactive slideshow component for cycling through elements.
+description: An interactive slideshow for cycling through content.
 links:
   doc: https://ark-ui.com/docs/components/carousel
   api: https://ark-ui.com/docs/components/carousel#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="carousel" />
+<ComponentPreview componentName="carousel" />
 
 ## Installation
 
-<ComponentInstallation componentName="carousel" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react
+npx shadcn@latest add @shark-ui/carousel
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/carousel.tsx" src="/carousel.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -28,7 +54,7 @@ import {
   Carousel,
   CarouselControl,
   CarouselItem,
-  CarouselItemGroup,
+  CarouselContent,
   CarouselIndicator,
   CarouselIndicatorGroup,
   CarouselNext,
@@ -42,9 +68,174 @@ import {
     <CarouselPrevious>Previous</CarouselPrevious>
     <CarouselNext>Next</CarouselNext>
   </CarouselControl>
-
-  <CarouselItemGroup>
+  <CarouselContent>
     <CarouselItem />
-  </CarouselItemGroup>
+    <CarouselItem />
+    <CarouselItem />
+  </CarouselContent>
 </Carousel>
 ```
+
+## Orientation
+
+You can change the orientation of the carousel using the `orientation` prop.
+
+### Horizontal
+
+<ComponentPreview componentName="carousel" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="carousel" fileName="example-orientation-vertical" />
+
+## Thumbnail Indicators
+
+Render each thumbnail inside `<CarouselIndicator />` to create a visual preview of each slide.
+
+Use the `orientation` prop to change the orientation of the thumbnail indicators.
+
+### Horizontal
+
+<ComponentPreview componentName="carousel" fileName="example-thumbnail-indicator" />
+
+###  Vertical
+
+<ComponentPreview componentName="carousel" fileName="example-thumbnail-indicator-vertical" />
+
+## Examples
+
+### Autoplay
+
+Use `autoplay` props on `<Carousel />` to make the carousel play automatically.
+
+<ComponentPreview componentName="carousel" fileName="example-autoplay" />
+
+### Loop
+
+Use the `loop` prop to make the carousel loop.
+
+<ComponentPreview componentName="carousel" fileName="example-loop" />
+
+### Controlled
+
+Use the `page` and `onPageChange` props to control the carousel state programmatically.
+
+<ComponentPreview componentName="carousel" fileName="example-controlled" />
+
+### Slides Per Page
+
+Display multiple slides simultaneously by setting the `slidesPerPage` prop on `<Carousel />`.
+
+<ComponentPreview componentName="carousel" fileName="example-slides-per-page" />
+
+### Spacing
+
+Control the gap between slides using the `spacing` prop on `<Carousel />`.
+
+Spacing is in multiples of `4px`. Example: `spacing={10}` will set the spacing to `40px`.
+
+<ComponentPreview componentName="carousel" fileName="example-spacing" />
+
+### Padding
+
+Control the padding around the carousel using the `padding` prop on `<Carousel />`.
+
+Padding is in multiples of `4px`. Example: `padding={10}` will set the padding to `40px`.
+
+<ComponentPreview componentName="carousel" fileName="example-padding" />
+
+### Mouse Drag
+
+To allow mouse drag, set the `allowMouseDrag` prop on `<Carousel />`.
+
+<ComponentPreview componentName="carousel" fileName="example-mouse-drag" />
+
+## API Reference
+
+### Carousel
+
+Root element of the carousel. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `slideCount` | `number` | **required** |
+| `allowMouseDrag` | `boolean` | `false` |
+| `autoplay` | `boolean \| { delay: number }` | `false` |
+| `defaultPage` | `number` | `0` |
+| `loop` | `boolean` | `false` |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `page` | `number` | `-` |
+| `slidesPerPage` | `number` | `1` |
+| `slidesPerMove` | `number \| 'auto'` | `'auto'` |
+| `snapType` | `'proximity' \| 'mandatory'` | `'mandatory'` |
+| `spacing` | `number` | `'4'` |
+| `padding` | `number` | `0` |
+| `inViewThreshold` | `number \| number[]` | `0.6` |
+| `className` | `string` | `-` |
+| `onPageChange` | `({ page }: PageChangeDetails) => void` | `-` |
+| `onAutoplayStatusChange` | `({ isPlaying, page, type }: AutoplayStatusDetails) => void` | `-` |
+| `onDragStatusChange` | `({ isDragging, page, type }: DragStatusDetails) => void` | `-` |
+
+### CarouselContent
+
+Container for carousel items. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### CarouselItem
+
+Container for a single carousel item. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `index` | `number` | **required** |
+| `snapAlign` | `'start' \| 'center' \| 'end'` | `'start'` |
+| `className` | `string` | `-` |
+
+### CarouselControl
+
+Container for carousel navigation controls. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### CarouselPrevious
+
+Button that navigates to the previous slide. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### CarouselNext
+
+Button that navigates to the next slide. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### CarouselIndicatorGroup
+
+Container for carousel indicators. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### CarouselIndicator
+
+Button that indicates and navigates to a specific slide. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `index` | `number` | **required** |
+| `readOnly` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/carousel#api-reference).

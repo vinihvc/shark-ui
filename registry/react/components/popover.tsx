@@ -1,15 +1,15 @@
 import { ark } from "@ark-ui/react";
 import { Popover as ArkPopover } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "./button";
+import { ScrollArea } from "./scroll-area";
 
 export const Popover = (
   props: React.ComponentProps<typeof ArkPopover.Root>
 ) => {
   const {
-    positioning = {
-      placement: "top",
-    },
     lazyMount = true,
     unmountOnExit = true,
     modal = true,
@@ -21,7 +21,6 @@ export const Popover = (
       data-slot="popover"
       lazyMount={lazyMount}
       modal={modal}
-      positioning={positioning}
       unmountOnExit={unmountOnExit}
       {...rest}
     />
@@ -32,24 +31,32 @@ export const PopoverTrigger = (
   props: React.ComponentProps<typeof ArkPopover.Trigger>
 ) => <ArkPopover.Trigger data-slot="popover-trigger" {...props} />;
 
+export const PopoverAnchor = (
+  props: React.ComponentProps<typeof ArkPopover.Anchor>
+) => <ArkPopover.Anchor data-slot="popover-anchor" {...props} />;
+
 interface PopoverContentProps
   extends React.ComponentProps<typeof ArkPopover.Content> {
   /**
-   * Whether to show the arrow
+   * Show close button at the top right corner
+   *
+   * @default true
    */
-  showArrow?: boolean;
+  showCloseButton?: boolean;
 }
 
 export const PopoverContent = (props: PopoverContentProps) => {
-  const { showArrow, className, children, ...rest } = props;
+  const { showCloseButton = false, className, children, ...rest } = props;
 
   return (
     <Portal>
       <ArkPopover.Positioner data-slot="popover-positioner">
         <ArkPopover.Content
           className={cn(
-            "z-50",
+            "relative",
+            "[--space:--spacing(4)]",
             "w-auto",
+            "flex flex-col",
             "bg-popover",
             "text-popover-foreground",
             "rounded-md border shadow-md",
@@ -67,34 +74,24 @@ export const PopoverContent = (props: PopoverContentProps) => {
           data-slot="popover-content"
           {...rest}
         >
-          {!!showArrow && <PopoverArrow />}
-
           {children}
+
+          {!!showCloseButton && (
+            <PopoverClose asChild>
+              <Button
+                className="absolute top-2 right-2 opacity-70 hover:opacity-100"
+                size="icon-md"
+                variant="ghost"
+              >
+                <X />
+
+                <span className="sr-only">Close</span>
+              </Button>
+            </PopoverClose>
+          )}
         </ArkPopover.Content>
       </ArkPopover.Positioner>
     </Portal>
-  );
-};
-
-export const PopoverArrow = (
-  props: React.ComponentProps<typeof ArkPopover.Arrow>
-) => {
-  const { style, ...rest } = props;
-
-  return (
-    <ArkPopover.Arrow
-      data-slot="popover-arrow"
-      style={
-        {
-          "--arrow-background": "var(--popover)",
-          "--arrow-size": "calc(1.5 * var(--spacing))",
-          ...style,
-        } as React.CSSProperties
-      }
-      {...rest}
-    >
-      <ArkPopover.ArrowTip className="border-t border-l" />
-    </ArkPopover.Arrow>
   );
 };
 
@@ -113,8 +110,12 @@ export const PopoverHeader = (props: PopoverHeaderProps) => {
   const { title, description, children, className, ...rest } = props;
 
   return (
-    <div
-      className={cn("flex flex-col gap-2 p-4 pb-0", className)}
+    <ark.div
+      className={cn(
+        "flex flex-col gap-2 p-(--space)",
+        "in-[[data-slot=popover-content]:has([data-slot=popover-body])]:pb-3",
+        className
+      )}
       data-slot="popover-header"
       {...rest}
     >
@@ -125,7 +126,7 @@ export const PopoverHeader = (props: PopoverHeaderProps) => {
       ) : (
         children
       )}
-    </div>
+    </ark.div>
   );
 };
 
@@ -136,10 +137,7 @@ export const PopoverTitle = (
 
   return (
     <ArkPopover.Title
-      className={cn(
-        "font-semibold text-base leading-none tracking-tight",
-        className
-      )}
+      className={cn("font-semibold text-base leading-none", className)}
       data-slot="popover-title"
       {...rest}
     />
@@ -164,11 +162,20 @@ export const PopoverBody = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <ark.div
-      className={cn("p-4", className)}
-      data-slot="popover-body"
-      {...rest}
-    />
+    <ScrollArea>
+      <ark.div
+        className={cn(
+          "flex-1",
+          "p-(--space)",
+          "overflow-auto",
+          "in-[[data-slot=popover-content]:has([data-slot=popover-header])]:pt-1",
+          "in-[[data-slot=popover-content]:has([data-slot=popover-footer]:not(.border-t))]:pb-1",
+          className
+        )}
+        data-slot="popover-body"
+        {...rest}
+      />
+    </ScrollArea>
   );
 };
 
@@ -177,7 +184,14 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn("mt-4 flex flex-row-reverse gap-2 p-4", className)}
+      className={cn(
+        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        "sm:rounded-b-[calc(var(--radius-lg)-1px)]",
+        "px-(--space) py-4",
+        "bg-muted/72",
+        "border-t",
+        className
+      )}
       data-slot="popover-footer"
       {...rest}
     />
@@ -187,3 +201,25 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
 export const PopoverClose = (
   props: React.ComponentProps<typeof ArkPopover.CloseTrigger>
 ) => <ArkPopover.CloseTrigger data-slot="popover-close-trigger" {...props} />;
+
+export const PopoverArrow = (
+  props: React.ComponentProps<typeof ArkPopover.Arrow>
+) => {
+  const { style, ...rest } = props;
+
+  return (
+    <ArkPopover.Arrow
+      data-slot="popover-arrow"
+      style={
+        {
+          "--arrow-background": "var(--popover)",
+          "--arrow-size": "calc(1.5 * var(--spacing))",
+          ...style,
+        } as React.CSSProperties
+      }
+      {...rest}
+    >
+      <ArkPopover.ArrowTip className="border-t border-l" />
+    </ArkPopover.Arrow>
+  );
+};

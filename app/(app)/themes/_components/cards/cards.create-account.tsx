@@ -49,16 +49,12 @@ export const CardsCreateAccount = () => (
           Or continue with
         </FieldSeparator>
         <Field>
-          <FieldLabel htmlFor="email-create-account">Email</FieldLabel>
-          <Input
-            id="email-create-account"
-            placeholder="m@example.com"
-            type="email"
-          />
+          <FieldLabel>Email</FieldLabel>
+          <Input placeholder="m@example.com" type="email" />
         </Field>
         <Field>
-          <FieldLabel htmlFor="password-create-account">Password</FieldLabel>
-          <Input id="password-create-account" type="password" />
+          <FieldLabel>Password</FieldLabel>
+          <Input type="password" />
         </Field>
         <Field>
           <Button>Create Account</Button>

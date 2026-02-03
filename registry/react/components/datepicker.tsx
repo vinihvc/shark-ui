@@ -1,12 +1,14 @@
+"use client";
+
 import { DatePicker as ArkDatePicker } from "@ark-ui/react/date-picker";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/react/components/button";
 import {
   type InputProps,
   inputVariants,
 } from "@/registry/react/components/input";
-import { Button } from "./button";
 
 export const DatePicker = (
   props: React.ComponentProps<typeof ArkDatePicker.Root>
@@ -318,7 +320,7 @@ export const DatePickerTableCellTrigger = (
         "transition-[background-color,color]",
         "rounded-md",
         "hover:bg-accent hover:text-accent-foreground",
-        "data-today:bg-primary/5 data-today:text-primary",
+        "data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-full data-today:after:bg-primary",
         "data-focus:bg-accent/30 data-focus:text-primary",
         "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "data-disabled:pointer-events-none data-disabled:opacity-20",

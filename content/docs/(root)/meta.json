@@ -1,0 +1,10 @@
+{
+  "title": "Get Started",
+  "pages": [
+    "index",
+    "[Installation](/docs/installation)",
+    "[Dark Mode](/docs/dark-mode)",
+    "[Changelog](/docs/changelog)",
+    "[llms.txt](/llms.txt)"
+  ]
+}

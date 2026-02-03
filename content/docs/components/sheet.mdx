@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/dialog#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="sheet" />
+<ComponentPreview componentName="sheet" />
 
 ## Installation
 
-<ComponentInstallation componentName="sheet">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npx shadcn@latest add @shark-ui/sheet
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/sheet.tsx" src="/sheet.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -45,3 +71,9 @@ import {
   </SheetContent>
 </Sheet>
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="sheet" fileName="default" />

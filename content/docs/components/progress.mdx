@@ -1,25 +1,51 @@
 ---
 title: Progress
-description: Displays the status of a task that takes a long time
+description: Displays the status of a task that takes a long time.
 links:
   doc: https://ark-ui.com/docs/components/progress-linear
   api: https://ark-ui.com/docs/components/progress-linear#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="progress" />
+<ComponentPreview componentName="progress" />
 
 ## Installation
 
-<ComponentInstallation componentName="progress">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npx shadcn@latest add @shark-ui/progress
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/progress.tsx" src="/progress.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -30,3 +56,56 @@ import { Progress } from "@/components/ui/progress";
 ```tsx lineNumbers
 <Progress value={50} />
 ```
+
+## Orientation
+
+Use the `orientation` prop to orient the progress bar horizontally or vertically.
+
+### Horizontal
+
+<ComponentPreview componentName="progress" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="progress" fileName="example-orientation-vertical" />
+
+## Examples
+
+### With label
+
+Use `<ProgressValue />` and `<FieldLabel />` to add a label to the progress bar.
+
+<ComponentPreview componentName="progress" fileName="example-with-label" />
+
+### Controlled
+
+Use `value` and to control the progress bar.
+
+<ComponentPreview componentName="progress" fileName="example-controlled" />
+
+### Indeterminate
+
+Use the `indeterminate` prop when the completion percentage is unknown. 
+
+<ComponentPreview componentName="progress" fileName="example-indeterminate" />
+
+## API Reference
+
+### Progress
+
+Root element of the progress bar.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| null` | — |
+| `defaultValue` | `number` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `indeterminate` | `boolean` | `false` |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/progress-linear#api-reference).

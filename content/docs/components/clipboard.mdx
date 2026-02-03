@@ -1,25 +1,50 @@
 ---
 title: Clipboard  
-description: A component to copy text to the clipboard
+description: A component to copy text to the clipboard.
 links:
   doc: https://ark-ui.com/docs/components/clipboard 
   api: https://ark-ui.com/docs/components/clipboard#api-reference
 ---
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="clipboard" />
+<ComponentPreview componentName="clipboard" />
 
 ## Installation
 
-<ComponentInstallation componentName="clipboard">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react
+npx shadcn@latest add @shark-ui/clipboard
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/clipboard.tsx" src="/clipboard.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -38,3 +63,87 @@ import {
   </ClipboardTrigger>
 </Clipboard>
 ```
+
+## Examples
+
+### Icon Only
+
+<ComponentPreview componentName="clipboard" fileName="example-icon-only" />
+
+### Different Icons
+
+Use the `copied` prop on `<ClipboardIndicator />` to customize the icon shown when copied.
+
+Add a `children` to the `<ClipboardIndicator />` to customize the icon shown when not copied.
+
+<ComponentPreview componentName="clipboard" fileName="example-different-icon" />
+
+### Custom Timeout
+
+Use the `timeout` prop on `<Clipboard />` to customize how long the copied state is shown.
+
+<ComponentPreview componentName="clipboard" fileName="example-custom-timeout" />
+
+### Controlled
+
+Use the `onStatusChange` prop to control the clipboard value programmatically.
+
+<ComponentPreview componentName="clipboard" fileName="example-controlled" />
+
+### Value Text
+
+Use `<ClipboardValueText />` to display the value as text instead of an input field.
+
+<ComponentPreview componentName="clipboard" fileName="example-value-text" />
+
+## API Reference
+
+### Clipboard
+
+Root element of the clipboard. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `string` | **required** |
+| `timeout` | `number` | `2000` |
+| `onStatusChange` | `({ copied }: StatusChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+### ClipboardTrigger
+
+Button that triggers the copy action. Renders a `button`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### ClipboardInput
+
+Input field that displays the value. Renders an `input`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### ClipboardIndicator
+
+Indicator that shows different icons based on the copied state. Renders a `span`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `copied` | `ReactNode` | `<Check />` |
+| `className` | `string` | `-` |
+
+### ClipboardValueText
+
+Text element that displays the value. Renders a `span`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `size` | `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"` | `"md"` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/clipboard#api-reference).

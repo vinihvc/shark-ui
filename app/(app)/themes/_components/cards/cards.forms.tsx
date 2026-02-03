@@ -52,36 +52,33 @@ export function CardsForms() {
           <FieldGroup>
             <FieldGroup className="grid grid-cols-2">
               <Field>
-                <FieldLabel htmlFor="name">Name</FieldLabel>
-                <Input id="name" placeholder="Vinicius Vicentini" />
+                <FieldLabel>Name</FieldLabel>
+                <Input placeholder="Vinicius Vicentini" />
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input id="email" placeholder="mail@acme.com" />
+                <FieldLabel>Email</FieldLabel>
+                <Input placeholder="mail@acme.com" />
               </Field>
             </FieldGroup>
 
             <FieldGroup className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
               <Field>
-                <FieldLabel htmlFor="card-number">Card Number</FieldLabel>
+                <FieldLabel>Card Number</FieldLabel>
                 <Input
                   className="col-span-2 md:col-span-1"
-                  id="card-number"
                   placeholder="1234 1234 1234 1234"
                 />
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="card-number-expiry">
-                  Expiry Date
-                </FieldLabel>
-                <Input id="card-number-expiry" placeholder="MM/YY" />
+                <FieldLabel>Expiry Date</FieldLabel>
+                <Input placeholder="MM/YY" />
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="card-number-cvc">CVC</FieldLabel>
-                <Input id="card-number-cvc" placeholder="CVC" />
+                <FieldLabel>CVC</FieldLabel>
+                <Input placeholder="CVC" />
               </Field>
             </FieldGroup>
 
@@ -104,7 +101,7 @@ export function CardsForms() {
                           {plan.description}
                         </FieldDescription>
                       </FieldContent>
-                      <RadioGroupItem id={plan.name} value={plan.id} />
+                      <RadioGroupItem value={plan.id} />
                     </Field>
                   </FieldLabel>
                 ))}
@@ -112,8 +109,8 @@ export function CardsForms() {
             </FieldSet>
 
             <Field>
-              <FieldLabel htmlFor="notes">Notes</FieldLabel>
-              <Textarea id="notes" placeholder="Enter notes" />
+              <FieldLabel>Notes</FieldLabel>
+              <Textarea placeholder="Enter notes" />
             </Field>
 
             <Field>

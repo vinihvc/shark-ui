@@ -6,21 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/separator#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="separator" />
+<ComponentPreview componentName="separator" />
 
 ## Installation
 
-<ComponentInstallation componentName="separator">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/separator
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/separator.tsx" src="/separator.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 
 ## Usage
@@ -32,3 +57,9 @@ import { Separator } from "@/components/ui/separator";
 ```tsx lineNumbers
 <Separator />
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="separator" fileName="default" />

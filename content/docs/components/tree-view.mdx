@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/tree-view#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="tree-view" />
+<ComponentPreview componentName="tree-view" />
 
 ## Installation
 
-<ComponentInstallation componentName="tree-view" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react
+npx shadcn@latest add @shark-ui/tree-view
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/tree-view.tsx" src="/tree-view.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -72,3 +98,8 @@ const collection = createTreeCollection({
 </TreeView>
 ```
 
+## Examples
+
+### Default
+
+<ComponentPreview componentName="tree-view" fileName="default" />

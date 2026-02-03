@@ -1,0 +1,104 @@
+import {
+  Archive,
+  ArchiveX,
+  Bell,
+  CirclePlus,
+  FolderInput,
+  MailX,
+  Reply,
+  Send,
+  SquarePen,
+  Trash,
+  Trash2,
+} from "lucide-react";
+import { Button } from "@/registry/react/components/button";
+import {
+  Menu,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuGroup,
+  MenuItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuShortcut,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
+  MenuTrigger,
+} from "@/registry/react/components/menu";
+
+const MenuDemo = () => {
+  return (
+    <Menu>
+      <MenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </MenuTrigger>
+      <MenuContent className="w-40">
+        <MenuGroup>
+          <MenuItem value="forward">
+            <Send /> Forward
+            <MenuShortcut>⇧⌘F</MenuShortcut>
+          </MenuItem>
+          <MenuItem value="reply">
+            <Reply /> Reply
+            <MenuShortcut>⇧⌘R</MenuShortcut>
+          </MenuItem>
+          <MenuItem value="archive">
+            <Archive /> Archive
+            <MenuShortcut>⇧⌘Z</MenuShortcut>
+          </MenuItem>
+          <MenuSub>
+            <MenuSubTrigger>
+              <FolderInput /> Move to
+            </MenuSubTrigger>
+            <MenuSubContent>
+              <MenuItem value="move-to-folder-1">
+                <ArchiveX /> Junk
+              </MenuItem>
+              <MenuItem value="move-to-folder-2">
+                <Trash /> Trash
+              </MenuItem>
+              <MenuItem value="move-to-folder-3">
+                <Bell /> Reminders
+              </MenuItem>
+              <MenuSub>
+                <MenuSubTrigger>
+                  <CirclePlus />
+                  More
+                </MenuSubTrigger>
+                <MenuSubContent>
+                  <MenuItem value="move-to-folder-4">
+                    <SquarePen />
+                    Drafts
+                  </MenuItem>
+                  <MenuItem value="move-to-folder-6">
+                    <MailX />
+                    Spam
+                  </MenuItem>
+                </MenuSubContent>
+              </MenuSub>
+            </MenuSubContent>
+          </MenuSub>
+          <MenuSeparator />
+          <MenuRadioGroup heading="Priority" value="medium">
+            <MenuRadioItem value="low">Low</MenuRadioItem>
+            <MenuRadioItem value="medium">Medium</MenuRadioItem>
+            <MenuRadioItem value="high">High</MenuRadioItem>
+          </MenuRadioGroup>
+          <MenuSeparator />
+          <MenuCheckboxItem checked value="block">
+            Block sender
+          </MenuCheckboxItem>
+          <MenuSeparator />
+          <MenuItem value="delete" variant="destructive">
+            <Trash2 /> Delete
+            <MenuShortcut>⌫</MenuShortcut>
+          </MenuItem>
+        </MenuGroup>
+      </MenuContent>
+    </Menu>
+  );
+};
+
+export default MenuDemo;

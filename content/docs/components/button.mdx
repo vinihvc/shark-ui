@@ -1,27 +1,48 @@
 ---
 title: Button
-description: Render a button or an element styled as a button, used to trigger an action or event
+description: A button or an element styled as a button.
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentVariants } from "@/components/component-variants";
-import { TabsContent } from "@/registry/react/components/tabs";
-import { Button } from "@/registry/react/components/button";
-import { ComponentInstallation } from "@/components/component-installation";
-import { Plus } from "lucide-react";
-
-<ComponentPreviewFile componentName="button" />
+<ComponentPreview componentName="button" />
 
 ## Installation
 
-<ComponentInstallation componentName="button">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react tailwind-variants
+npx shadcn@latest add @shark-ui/button
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/button.tsx" src="/button.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -30,119 +51,139 @@ import { Button } from "@/components/ui/button";
 ```
 
 ```tsx lineNumbers
-<Button>Click me</Button>
+<Button>Button</Button>
 ```
+
+## Link
+
+You can use [asChild](/docs/as-child) prop on `<Button />` to make another element styled as a button.
+
+<ComponentPreview componentName="button" fileName="state-as-child" />
 
 ## Variants
 
 You can change the variant of the button using the `variant` prop.
 
-Available variants are: `solid`, `outline`, `success`, `info`, `warning`, `destructive`.
+### Solid
 
-<ComponentVariants variants={['solid', 'outline', 'secondary', 'ghost', 'link', 'success', 'info', 'warning', 'destructive']} defaultValue="solid">
-  <TabsContent value="solid">
-    <Button>Solid Button</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="variant-solid" />
 
-  <TabsContent value="outline">
-    <Button variant="outline">Outline Button</Button>
-  </TabsContent>
+### Outline
 
-  <TabsContent value="secondary">
-    <Button variant="secondary">Secondary Button</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="variant-outline" />
 
-  <TabsContent value="ghost">
-    <Button variant="ghost">Ghost Button</Button>
-  </TabsContent>
+### Secondary
 
-  <TabsContent value="link">
-    <Button variant="link">Link Button</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="variant-secondary" />
 
-  <TabsContent value="success">
-    <Button variant="success">Success Button</Button>
-  </TabsContent>
+### Ghost
 
-  <TabsContent value="info">
-    <Button variant="info">Info Button</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="variant-ghost" />
 
-  <TabsContent value="warning">
-    <Button variant="warning">Warning Button</Button>
-  </TabsContent>
+### Link
 
-  <TabsContent value="destructive">
-    <Button variant="destructive">Destructive Button</Button>
-  </TabsContent>
-</ComponentVariants>
+<ComponentPreview componentName="button" fileName="variant-link" />
+
+### Destructive
+
+<ComponentPreview componentName="button" fileName="variant-destructive" />
 
 ## Sizes
 
 You can change the size of the button using the `size` prop.
 
-Available sizes are: `sm`, `md`, `lg`, `icon-sm`, `icon-md`, `icon-lg`.
+### Extra Small
 
-<ComponentVariants variants={['sm', 'md', 'lg', 'icon-sm', 'icon-md', 'icon-lg']} defaultValue="md">
-  <TabsContent value="sm">
-    <Button size="sm">Small Button</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="size-xs" />
 
-  <TabsContent value="md">
-    <Button size="md">Medium Button</Button>
-  </TabsContent>
+### Small
 
-  <TabsContent value="lg">
-    <Button size="lg">Large Button</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="size-sm" />
 
-  <TabsContent value="icon-sm">
-    <Button size="icon-sm">
-      <Plus />
-    </Button>
-  </TabsContent>
+### Large
 
-  <TabsContent value="icon-md">
-    <Button size="icon-md">
-      <Plus />
-    </Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="size-lg" />
 
-  <TabsContent value="icon-lg">
-    <Button size="icon-lg">
-      <Plus />
-    </Button>
-  </TabsContent>
-</ComponentVariants>
+### Extra Large
 
-## Click Effect
+<ComponentPreview componentName="button" fileName="size-xl" />
 
-You can change the click effect of the button using the `clickEffect` prop.
+## Pill
 
-Available click effects are: `true`, `false`.
+You can use the `pill` prop to create fully rounded buttons.
 
-<ComponentVariants variants={['true', 'false']} defaultValue="true">
-  <TabsContent value="true">
-    <Button clickEffect={true}>Move 1px down when clicked</Button>
-  </TabsContent>
+<ComponentPreview componentName="button" fileName="state-pill-true" />
 
-  <TabsContent value="false">
-    <Button clickEffect={false}>No click effect</Button>
-  </TabsContent>
-</ComponentVariants>
+## Disabling click effect
 
-## Loading
+You can disable the click effect of the button using the `clickEffect` prop.
+
+<ComponentPreview componentName="button" fileName="state-click-effect-false" />
+
+## States
+
+### Disabled
+
+You can disable the button using the `disabled` prop.
+
+<ComponentPreview componentName="button" fileName="state-disabled-true" />
+
+### Loading
 
 You can show a loading indicator when the button is loading using the `isLoading` prop.
 
-Available loading states are: `true`, `false`.
+<ComponentPreview componentName="button" fileName="state-loading-true" />
 
-<ComponentVariants variants={['true', 'false']}>
-  <TabsContent value="true">
-    <Button isLoading={true}>Submit</Button>
-  </TabsContent>
+## Examples
 
-  <TabsContent value="false">
-    <Button isLoading={false}>Submit</Button>
-  </TabsContent>
-</ComponentVariants>
+### Custom color
+
+You can use the `className` prop to add custom colors to the button.
+
+<ComponentPreview componentName="button" fileName="example-custom-color" />
+
+### Icon
+
+You can create icon-only buttons using the `icon-*` size variants.
+
+<ComponentPreview componentName="button" fileName="example-icon" />
+
+### With icon
+
+You can add icons to buttons alongside text to provide visual context.
+
+<ComponentPreview componentName="button" fileName="example-with-icon" />
+
+## Touch hitbox
+
+You can change the touch hitbox of the button to improve the user experience on touch devices.
+
+Add a `.touch-target` utility to a element to extend the touch target.
+
+```css
+@utility touch-target {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-height: 44px;
+    min-width: 44px;
+    z-index: 9999;
+  }
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `solid`, `outline`, `secondary`, `ghost`, `link`, `neutral`, `neutral-reverse`, `destructive` | `solid` | 
+| `size` | `xs`, `sm`, `md`, `lg`, `xl`, `icon-xs`, `icon-sm`, `icon-md`, `icon-lg`, `icon-xl` | `md` | 
+| `clickEffect` | `boolean` | `true` | 
+| `isLoading` | `boolean` | `false` | 

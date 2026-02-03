@@ -1,51 +1,79 @@
 import { ark } from "@ark-ui/react";
+import { Field as ArkField } from "@ark-ui/react/field";
 import { ChevronDown } from "lucide-react";
 import type React from "react";
-import type { VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { inputVariants } from "./input";
+
+const nativeSelectVariants = tv({
+  base: [
+    "appearance-none",
+    "w-full min-w-0",
+    "py-1 pr-8 pl-2.5",
+    "select-none text-sm",
+    "bg-transparent dark:bg-input/30",
+    "rounded-md border border-input",
+    "transition-colors",
+    "outline-none",
+    "disabled:pointer-events-none disabled:cursor-not-allowed",
+    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
+    "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
+  ],
+  variants: {
+    size: {
+      sm: ["h-7"],
+      md: ["h-8"],
+      lg: ["h-9"],
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
 
 interface NativeSelectProps
-  extends Omit<React.ComponentProps<typeof ark.select>, "size">,
-    VariantProps<typeof inputVariants> {}
+  extends Omit<React.ComponentProps<typeof ArkField.Select>, "size">,
+    VariantProps<typeof nativeSelectVariants> {}
 
 export const NativeSelect = (props: NativeSelectProps) => {
   const { size = "md", className, ...rest } = props;
 
   return (
-    <div
-      className="group/native-select relative w-fit has-[select:disabled]:opacity-50"
+    <ark.div
+      className={cn(
+        "group/native-select relative w-fit has-[select:disabled]:opacity-50",
+        className
+      )}
       data-slot="native-select-wrapper"
     >
-      <ark.select
-        className={cn(
-          inputVariants({ size }),
-          "w-fit",
-          "appearance-none px-3 py-2 pr-9 placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 dark:bg-input/30 dark:hover:bg-input/50",
-          "flex items-center justify-between gap-2",
-          "*:data-placeholder-shown:text-muted-foreground",
-          "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
-          "[&_svg:not([class*='text-'])]:text-muted-foreground",
-          className
-        )}
-        data-size={size}
+      <ArkField.Select
+        className={cn(nativeSelectVariants({ size }))}
         data-slot="native-select"
         {...rest}
       />
-
       <ChevronDown
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 select-none text-muted-foreground opacity-50"
+        className={cn(
+          "absolute top-1/2 right-2.5 -translate-y-1/2",
+          "size-4",
+          "select-none text-muted-foreground",
+          "pointer-events-none"
+        )}
         data-slot="native-select-icon"
       />
-    </div>
+    </ark.div>
   );
 };
 
 export const NativeSelectOption = (
   props: React.ComponentProps<typeof ark.option>
-) => <ark.option data-slot="native-select-option" {...props} />;
+) => {
+  return <ark.option data-slot="native-select-option" {...props} />;
+};
 
 export const NativeSelectOptGroup = (
   props: React.ComponentProps<typeof ark.optgroup>
-) => <ark.optgroup data-slot="native-select-optgroup" {...props} />;
+) => {
+  return <ark.optgroup data-slot="native-select-optgroup" {...props} />;
+};

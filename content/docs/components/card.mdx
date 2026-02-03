@@ -3,21 +3,46 @@ title: Card
 description: A flexible container for grouping related content and actions
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="card" />
+<ComponentPreview componentName="card" />
 
 ## Installation
 
-<ComponentInstallation componentName="card">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/card
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/card.tsx" src="/card.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -29,18 +54,142 @@ import {
   CardFooter, 
   CardHeader, 
   CardTitle, 
-  CardActions,
+  CardAction,
+  CardMedia,
 } from "@/components/ui/card";
 ```
 
 ```tsx lineNumbers
 <Card>
+  <CardMedia />
   <CardHeader>
     <CardTitle />
     <CardDescription />
-    <CardActions />
+    <CardAction />
   </CardHeader>
   <CardContent />
   <CardFooter />
 </Card>
 ```
+
+## Title and Description
+
+You can use `<CardHeader />` in two ways:
+
+### Using props
+
+You can pass `title` and `description` props directly to `<CardHeader />`. In this case, you don't need to use `<CardTitle />` and `<CardDescription />` components.
+
+```tsx lineNumbers
+<CardHeader title="Card Title" description="Card description">
+  <CardAction />
+</CardHeader>
+```
+
+### Using components
+
+Alternatively, you can use `<CardTitle />` and `<CardDescription />` as children for more control.
+
+```tsx lineNumbers
+<CardHeader>
+  <CardTitle>Card Title</CardTitle>
+  <CardDescription>Card description</CardDescription>
+  <CardAction />
+</CardHeader>
+```
+
+## Examples
+
+### Product card
+
+A product card with image, title, description, price, and action buttons.
+
+<ComponentPreview componentName="card" fileName="example-product" />
+
+### Icon card
+
+A card with an icon at the top and title, description, and action button at the bottom.
+
+<ComponentPreview componentName="card" fileName="example-icon" />
+
+### Custom spacing
+
+You can use the `[--space:--spacing("value")]` utility class to change the spacing of the card.
+
+
+<ComponentPreview componentName="card" fileName="example-spacing" />
+
+You can also use breakpoint utilities to change the spacing of the card at different screen sizes.
+
+```css
+  md:[--space:--spacing(6)] lg:[--space:--spacing(8)]
+```
+
+## API Reference
+
+### Card
+
+Root element of the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardMedia
+
+Media container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `variant` | `default`, `icon`, `image` | `default` | 
+| `className` | `string` | `-` | 
+
+### CardHeader
+
+Header container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `title` | `string` | `-` | 
+| `description` | `string` | `-` | 
+| `className` | `string` | `-` | 
+
+### CardTitle
+
+Title element for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardDescription
+
+Description element for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardAction
+
+Action element for the card header. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardContent
+
+Content container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` | 
+
+### CardFooter
+
+Footer container for the card. Renders a `div`
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `className` | `string` | `-` |

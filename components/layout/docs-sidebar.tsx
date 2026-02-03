@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "fumadocs-core/link";
 import { usePathname } from "next/navigation";
 import {
   Sidebar,
@@ -13,6 +12,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { source } from "@/lib/fumadocs";
+import { NavLink } from "../nav-link";
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs", exact: true },
@@ -23,104 +23,60 @@ const TOP_LEVEL_SECTIONS = [
     exact: true,
   },
   {
+    name: "asChild prop",
+    href: "/docs/as-child",
+    exact: true,
+  },
+  {
     name: "Changelog",
     href: "/docs/changelog",
   },
 ];
-const EXCLUDED_SECTIONS = ["installation", "dark-mode"];
-const EXCLUDED_PAGES = ["/docs", "/docs/changelog"];
 
-export function DocsSidebar({
-  tree,
-  ...props
-}: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
+export const DocsSidebar = (
+  props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }
+) => {
+  const { tree, className, ...rest } = props;
+
   const pathname = usePathname();
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] bg-transparent lg:flex"
+      className="sticky top-(--header-height) z-30 hidden h-[calc(100svh-var(--header-height))] bg-transparent lg:flex"
       collapsible="none"
-      {...props}
+      {...rest}
     >
-      <SidebarContent className="overflow-x-hidden px-2 pb-12">
+      <SidebarContent className="px-4 py-2">
         <div className="h-(--top-spacing) shrink-0" />
-        <SidebarGroup>
-          <SidebarGroupLabel className="font-medium text-muted-foreground">
-            Sections
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {TOP_LEVEL_SECTIONS.map(({ name, href, exact }) => {
-                if (href.includes("/mcp")) {
-                  return null;
-                }
-
-                return (
-                  <SidebarMenuItem key={name}>
-                    <SidebarMenuButton
-                      asChild
-                      className="relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
-                      isActive={
-                        exact ? pathname === href : pathname.startsWith(href)
-                      }
-                    >
-                      <Link href={href}>
-                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                        {name}
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        {tree.children.map((item) => {
-          if (EXCLUDED_SECTIONS.includes(item.$id ?? "")) {
-            return null;
-          }
-
-          return (
-            <SidebarGroup key={item.$id}>
-              <SidebarGroupLabel className="font-medium text-muted-foreground">
-                {item.name}
-              </SidebarGroupLabel>
-              <SidebarGroupContent>
-                {item.type === "folder" && (
-                  <SidebarMenu className="gap-0.5">
-                    {item.children.map((subitem) => {
-                      if (
-                        subitem.type === "page" &&
-                        subitem.url?.includes("/mcp")
-                      ) {
-                        return null;
-                      }
-
-                      return (
-                        subitem.type === "page" &&
-                        !EXCLUDED_PAGES.includes(subitem.url) && (
-                          <SidebarMenuItem key={subitem.url}>
-                            <SidebarMenuButton
-                              asChild
-                              className="relative h-[30px] 3xl:fixed:w-full w-fit 3xl:fixed:max-w-48 overflow-visible border border-transparent font-medium text-[0.8rem] after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent"
-                              isActive={subitem.url === pathname}
-                            >
-                              <Link href={subitem.url}>
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                                {subitem.name}
-                              </Link>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        )
-                      );
-                    })}
-                  </SidebarMenu>
-                )}
-              </SidebarGroupContent>
-            </SidebarGroup>
-          );
-        })}
+        {tree.children.map((item) => (
+          <SidebarGroup className="gap-1" key={item.$id}>
+            <SidebarGroupLabel className="h-7 px-0 text-sidebar-accent-foreground">
+              {item.name}
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              {item.type === "folder" && (
+                <SidebarMenu className="gap-0.5">
+                  {item.children.map((item) => {
+                    return (
+                      item.type === "page" && (
+                        <SidebarMenuItem key={item.url}>
+                          <SidebarMenuButton
+                            asChild
+                            className="ps-3.5 text-muted-foreground hover:bg-transparent [.active]:bg-muted"
+                            isActive={item.url === pathname}
+                          >
+                            <NavLink href={item.url}>{item.name}</NavLink>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      )
+                    );
+                  })}
+                </SidebarMenu>
+              )}
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
     </Sidebar>
   );
-}
+};

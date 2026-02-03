@@ -7,7 +7,6 @@ import { SITE_CONFIG } from "@/config/site";
 import {
   Tabs,
   TabsContent,
-  TabsIndicator,
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
@@ -34,17 +33,15 @@ export const ComponentInstallation = (props: ComponentInstallationProps) => {
   );
 
   return (
-    <div className="group not-prose flex flex-col gap-2">
+    <div className="group flex flex-col gap-2">
       <Tabs {...rest} defaultValue="cli">
         <TabsList>
           <TabsTrigger value="cli">CLI</TabsTrigger>
           <TabsTrigger value="manual">Manual</TabsTrigger>
-
-          <TabsIndicator />
         </TabsList>
 
-        <div className="relative mt-4 rounded-lg **:[figure]:border-none">
-          <TabsContent value="cli">
+        <div className="relative mt-4">
+          <TabsContent className="**:[div]:max-h-[350px]" value="cli">
             <CodeBlock
               code={`${cliCommand}/${componentName}.json`}
               lang="bash"

@@ -6,44 +6,254 @@ links:
   api: https://ark-ui.com/docs/components/menu#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="menu" />
+<ComponentPreview componentName="menu" />
 
 ## Installation
 
-<ComponentInstallation componentName="menu" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react tailwind-variants
+npx shadcn@latest add @shark-ui/menu
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/menu.tsx" src="/menu.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
 ```tsx lineNumbers
 import { 
-  Menu, 
-  MenuTrigger, 
-  MenuContent, 
-  MenuItemGroup, 
-  MenuItemGroupLabel, 
-  MenuItem 
+ Menu,
+  MenuCheckboxItem,
+  MenuContent,
+  MenuGroup,
+  MenuItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuShortcut,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
+  MenuTrigger,
 } from "@/components/ui/menu";
 ```
 
 ```tsx lineNumbers
 <Menu>
-  <MenuTrigger>Open menu</MenuTrigger>
+  <MenuTrigger />
   <MenuContent>
     <MenuItemGroup>
-      <MenuItemGroupLabel>Group 1</MenuItemGroupLabel>
-      <MenuItem value="item-1">Item 1</MenuItem>
-      <MenuItem value="item-2">Item 2</MenuItem>
-      <MenuItem value="item-3">Item 3</MenuItem>
+      <MenuItemGroupLabel />
+      <MenuItem value="item-1" />
+      <MenuSub>
+        <MenuSubTrigger />
+        <MenuSubContent>
+          <MenuItem />
+        </MenuSubContent>
+      </MenuSub>
+      <MenuSeparator />
+      <MenuItemGroup>
+        <MenuRadioItem />
+      </MenuItemGroup>
+      <MenuSeparator />
+      <MenuCheckboxItem />
     </MenuItemGroup>
   </MenuContent>
 </Menu>
 ```
+
+## Positioning
+
+Control the position of the menu relative to the trigger using the `positioning` prop.
+
+<ComponentPreview componentName="menu" fileName="example-positioning" />
+
+## Examples
+
+### Nested Menu
+
+Use `<MenuSub />`, `<MenuSubTrigger />`, and `<MenuSubContent />` for nested submenus.
+
+<ComponentPreview componentName="menu" fileName="example-nested" />
+
+### Icons
+
+Combine icons with labels for quick scanning.
+
+<ComponentPreview componentName="menu" fileName="example-icons" />
+
+### Shortcuts
+
+Use `<MenuShortcut />` to show keyboard hints next to menu items.
+
+<ComponentPreview componentName="menu" fileName="example-shortcuts" />
+
+### Checkboxes
+
+Use `<MenuCheckboxItem />` for toggles.
+
+<ComponentPreview componentName="menu" fileName="example-checkboxes" />
+
+### Radio Group
+
+Use `<MenuRadioGroup />` and `<MenuRadioItem />` for a single selection from a set of options.
+
+<ComponentPreview componentName="menu" fileName="example-radio-group" />
+
+### With Link
+
+Use the `asChild` prop on `<MenuItem />` with a `anchor` element to render a link.
+
+<ComponentPreview componentName="menu" fileName="example-link" />
+
+### With Group Label
+
+Use `<MenuGroup />` with  `<MenuGroupLabel />` or the `heading` prop to group related items under a label.
+
+<ComponentPreview componentName="menu" fileName="example-group-label" />
+
+### Open a Dialog
+
+Open a dialog from a `<MenuItem />` with the `onClick` prop and controlled state.
+
+<ComponentPreview componentName="menu" fileName="example-dialog" />
+
+### Destructive
+
+Use `variant="destructive"` on `<MenuItem />` for irreversible actions like delete.
+
+<ComponentPreview componentName="menu" fileName="example-destructive" />
+
+## API Reference
+
+### Menu
+
+Root element of the menu component.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `positioning` | `PositioningOptions` | — |
+| `open` | `boolean` | — |
+| `defaultOpen` | `boolean` | — |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
+| `onSelect` | `(details: SelectionDetails) => void` | — |
+| `closeOnSelect` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+
+### MenuTrigger
+
+Button that opens the menu. Renders a `button`. Use `asChild` to delegate to a child element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+### MenuContent
+
+Content container for menu items. Renders a `div` inside a portal.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### MenuItem
+
+A single menu option. Renders a `div` (or child when `asChild`).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `variant` | `"default" \| "destructive"` | `"default"` |
+| `asChild` | `boolean` | — |
+| `disabled` | `boolean` | — |
+| `closeOnSelect` | `boolean` | — |
+| `onSelect` | `VoidFunction` | — |
+
+### MenuCheckboxItem
+
+A menu option with a checkbox. Use `checked` and `onCheckedChange` for controlled state.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `checked` | `boolean` | — |
+| `onCheckedChange` | `(checked: boolean) => void` | — |
+| `disabled` | `boolean` | — |
+
+### MenuRadioGroup
+
+Group of mutually exclusive options. Use `value` and `onValueChange` for controlled state.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `heading` | `string` | — |
+
+### MenuRadioItem
+
+A single option in a radio group.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | — |
+
+### MenuGroup
+
+Groups related items. Use `heading` or `<MenuGroupLabel />` for a label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string` | — |
+
+### MenuGroupLabel
+
+Label for a group. Renders inside `<MenuGroup />`.
+
+### MenuSeparator
+
+Visual divider between items. Renders an `hr`.
+
+### MenuSub / MenuSubTrigger / MenuSubContent
+
+Submenu: wrap a nested `<Menu />`-like structure. `<MenuSubTrigger />` opens the submenu; `<MenuSubContent />` holds the nested items.
+
+### MenuShortcut
+
+Optional keyboard hint shown next to an item (e.g. `⌘S`). Renders a `span`.
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/menu#api-reference).

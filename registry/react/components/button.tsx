@@ -20,40 +20,23 @@ export const buttonVariants = tv({
     variant: {
       solid: [
         "bg-primary",
+        "border border-transparent",
         "text-primary-foreground",
         "hover:bg-primary/90",
-        "focus-visible:ring-ring/50",
+        "focus-visible:border-background focus-visible:ring-ring/50",
       ],
       outline: [
-        "bg-background",
+        "bg-transparent",
         "border shadow-xs",
         "hover:bg-accent hover:text-accent-foreground",
-        "dark:border-input dark:bg-input/60 dark:hover:bg-input/70",
-        "focus-visible:border-foreground focus-visible:ring-foreground/10",
-      ],
-      success: [
-        "bg-success",
-        "text-success-foreground",
-        "focus-visible:ring-success/50",
-        "hover:bg-success/90",
-      ],
-      info: [
-        "bg-info",
-        "text-info-foreground",
-        "focus-visible:ring-info/50",
-        "hover:bg-info/90",
-      ],
-      warning: [
-        "bg-warning",
-        "text-warning-foreground",
-        "focus-visible:ring-warning/50",
-        "hover:bg-warning/90",
+        "dark:bg-input/32 dark:hover:bg-input/64",
+        "focus-visible:border-ring focus-visible:ring-ring/50",
       ],
       destructive: [
         "bg-destructive",
-        "text-destructive-foreground",
+        "text-white",
         "hover:bg-destructive/90",
-        "focus-visible:ring-destructive/50",
+        "focus-visible:border-destructive-foreground focus-visible:ring-destructive-foreground/32",
       ],
       secondary: [
         "bg-secondary",
@@ -63,6 +46,7 @@ export const buttonVariants = tv({
       ],
       ghost: [
         "hover:bg-accent hover:text-accent-foreground",
+        "border border-transparent",
         "focus-visible:border-foreground focus-visible:ring-foreground/30",
       ],
       link: [
@@ -73,16 +57,36 @@ export const buttonVariants = tv({
       ],
     },
     size: {
-      sm: ["h-8", "gap-1.5", "rounded-md", "px-3", "has-[>svg]:px-2.5"],
-      md: ["h-9", "px-4", "py-2", "has-[>svg]:px-3"],
-      lg: ["h-10", "rounded-md", "px-6", "has-[>svg]:px-4"],
-      "icon-sm": "size-8",
-      "icon-md": "size-9",
-      "icon-lg": "size-10",
+      xs: [
+        "h-6",
+        "gap-1.5",
+        "px-3",
+        "rounded-[calc(var(--radius-md)-4px)]",
+        "has-[>svg]:px-2.5",
+        "[&_svg:not([class*='size-'])]:size-3",
+      ],
+      sm: [
+        "h-7",
+        "px-3",
+        "gap-1.5",
+        "has-[>svg]:px-2.5",
+        "[&_svg:not([class*='size-'])]:size-3.5",
+      ],
+      md: ["h-8", "px-3", "py-2", "has-[>svg]:px-2"],
+      lg: ["h-9", "px-4", "has-[>svg]:px-3"],
+      xl: ["h-10", "text-base", "px-5", "has-[>svg]:px-4"],
+      "icon-xs": "size-6 rounded-[calc(var(--radius-md)-4px)]",
+      "icon-sm": "size-7",
+      "icon-md": "size-8",
+      "icon-lg": "size-9",
+      "icon-xl": "size-10 [&_svg:not([class*='size-'])]:size-5",
     },
     clickEffect: {
       true: "active:translate-y-px",
       false: "",
+    },
+    pill: {
+      true: "rounded-full",
     },
   },
   defaultVariants: {
@@ -111,10 +115,11 @@ export interface ButtonProps
 
 export const Button = (props: ButtonProps) => {
   const {
-    clickEffect = true,
-    isLoading,
     variant,
     size,
+    clickEffect = true,
+    pill,
+    isLoading,
     className,
     children,
     ...rest
@@ -122,9 +127,14 @@ export const Button = (props: ButtonProps) => {
 
   return (
     <ark.button
-      className={cn(buttonVariants({ variant, size, clickEffect }), className)}
+      className={cn(
+        buttonVariants({ variant, size, clickEffect, pill }),
+        className
+      )}
+      data-size={size}
       data-slot="button"
       data-state={isLoading ? "loading" : "idle"}
+      data-variant={variant}
       type="button"
       {...rest}
     >

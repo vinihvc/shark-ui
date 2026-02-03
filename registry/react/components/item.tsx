@@ -6,9 +6,16 @@ import { Separator } from "@/registry/react/components/separator";
 
 export const ItemGroup = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
+
   return (
     <ark.div
-      className={cn("group/item-group flex flex-col", className)}
+      className={cn(
+        "[--space:--spacing(4)]",
+        "group/item-group",
+        "flex w-full flex-col",
+        "gap-4 has-[data-size=sm]:gap-2.5 has-[data-size=xs]:gap-2",
+        className
+      )}
       data-slot="item-group"
       role="list"
       {...rest}
@@ -23,7 +30,7 @@ export const ItemSeparator = (
 
   return (
     <Separator
-      className={cn("my-0", className)}
+      className={cn("my-2", className)}
       data-slot="item-separator"
       orientation="horizontal"
       {...rest}
@@ -34,22 +41,24 @@ export const ItemSeparator = (
 const itemVariants = tv({
   base: [
     "group/item",
-    "flex flex-wrap items-center gap-2.5",
+    "flex w-full flex-wrap items-center",
     "text-sm",
-    "rounded-md border border-transparent",
-    "[a]:transition-colors [a]:hover:bg-accent/50",
+    "rounded-lg border",
     "transition-colors duration-100",
+    "[a]:transition-colors [a]:hover:bg-muted",
     "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    "[&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
   ],
   variants: {
     variant: {
-      default: "bg-transparent",
+      default: "border-transparent",
       outline: "border-border",
-      muted: "bg-muted/50",
+      muted: "border-transparent bg-muted/50",
     },
     size: {
-      sm: "gap-2.5 px-4 py-3",
-      md: "gap-4 p-4",
+      xs: "gap-2 in-data-[slot=menu-content]:p-0 px-2.5 py-2",
+      sm: "gap-2.5 px-3 py-2.5",
+      md: "gap-2.5 px-3 py-2.5",
     },
   },
   defaultVariants: {
@@ -79,23 +88,19 @@ export const Item = (props: ItemProps) => {
 const itemMediaVariants = tv({
   base: [
     "flex shrink-0 items-center justify-center gap-2",
-    "group-has-data-[slot=item-description]/item:translate-y-0.5",
-    "group-has-data-[slot=item-description]/item:self-start",
+    "group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start",
     "[&_svg]:pointer-events-none",
   ],
   variants: {
     variant: {
       default: "bg-transparent",
-      icon: [
-        "size-8",
-        "rounded-sm border bg-muted",
-        "[&_svg:not([class*='size-'])]:size-4",
-      ],
+      icon: ["[&_svg:not([class*='size-'])]:size-4"],
       image: [
         "size-10",
-        "overflow-hidden rounded-sm",
-        "[&_img]:size-full",
-        "[&_img]:object-cover",
+        "rounded-sm",
+        "overflow-hidden",
+        "group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6",
+        "[&_img]:size-full [&_img]:object-cover",
       ],
     },
   },
@@ -128,6 +133,7 @@ export const ItemContent = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex flex-1 flex-col gap-1",
+        "group-data-[size=xs]/item:gap-0",
         "[&+[data-slot=item-content]]:flex-none",
         className
       )}
@@ -143,8 +149,10 @@ export const ItemTitle = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "flex w-fit items-center gap-2",
-        "font-medium text-sm leading-snug",
+        "w-fit",
+        "flex items-center gap-2",
+        "line-clamp-1 font-medium text-sm leading-snug",
+        "underline-offset-4",
         className
       )}
       data-slot="item-title"
@@ -159,8 +167,10 @@ export const ItemDescription = (props: React.ComponentProps<typeof ark.p>) => {
   return (
     <ark.p
       className={cn(
-        "line-clamp-2 text-balance font-normal text-muted-foreground text-sm leading-normal",
-        "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+        "line-clamp-2 text-left font-normal text-muted-foreground text-sm leading-normal",
+        "group-data-[size=xs]/item:text-xs",
+        "[&>a:hover]:text-primary",
+        "[&>a]:underline [&>a]:underline-offset-4",
         className
       )}
       data-slot="item-description"

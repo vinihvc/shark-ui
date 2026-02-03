@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/dialog#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="dialog" />
+<ComponentPreview componentName="dialog" />
 
 ## Installation
 
-<ComponentInstallation componentName="dialog" >
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react lucide-react tailwind-variants
+npx shadcn@latest add @shark-ui/dialog
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/dialog.tsx" src="/dialog.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -28,21 +54,209 @@ import {
   Dialog, 
   DialogTrigger, 
   DialogContent, 
+  DialogHeader,
   DialogTitle, 
   DialogDescription, 
-  DialogClose,
-  DialogHeader,
+  DialogBody,
   DialogFooter,
+  DialogClose,
 } from "@/components/ui/dialog";
 ```
 
 ```tsx lineNumbers
 <Dialog>
-  <DialogTrigger>Open Dialog</DialogTrigger>
-
+  <DialogTrigger>Open dialog</DialogTrigger>
   <DialogContent>
-    <DialogTitle>Dialog Title</DialogTitle>
-    <DialogDescription>Dialog Description</DialogDescription>
+    <DialogHeader>
+      <DialogTitle />
+      <DialogDescription />
+    </DialogHeader>
+    <DialogBody>
+      {/** your content here */}
+    </DialogBody>
+    <DialogFooter>
+      <DialogClose />
+    </DialogFooter>
   </DialogContent>
 </Dialog>
 ```
+
+## Title and Description
+
+You can use `<DialogHeader />` in two ways:
+
+### Using props
+
+You can pass `title` and `description` props directly to `<DialogHeader />`. In this case, you don't need to use `<DialogTitle />` and `<DialogDescription />` components.
+
+```tsx lineNumbers
+<DialogHeader title="Dialog Title" description="Dialog description" />
+```
+
+### Using components
+
+Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as children for more control.
+
+```tsx lineNumbers
+<DialogHeader>
+  <DialogTitle>Dialog Title</DialogTitle>
+  <DialogDescription>Dialog description</DialogDescription>
+</DialogHeader>
+```
+
+## Examples
+
+### With ScrollArea
+
+Make the content area scrollable while keeping header and footer fixed using ScrollArea.
+
+<ComponentPreview componentName="dialog" fileName="example-scroll-area" />
+
+### No Close Button
+
+Hide the close button in the top right corner by setting `showCloseButton={false}`.
+
+<ComponentPreview componentName="dialog" fileName="example-no-close-button" />
+
+### Close behavior
+
+Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on outside click and escape.
+
+<ComponentPreview componentName="dialog" fileName="example-close-behavior" />
+
+### Open from Menu
+
+Open a dialog imperatively from a menu item using the `onClick` handler.
+
+<ComponentPreview componentName="dialog" fileName="example-open-from-menu" />
+
+### Confirmation
+
+Intercept close attempts to show confirmation prompts, preventing data loss from unsaved changes.
+
+<ComponentPreview componentName="dialog" fileName="example-confirmation" />
+
+### Non-Modal
+
+Use `modal={false}` to allow interaction with elements outside the dialog. Disables focus trapping and scroll prevention.
+
+<ComponentPreview componentName="dialog" fileName="example-non-modal" />
+
+### Initial Focus
+
+Use `initialFocusEl` to control which element receives focus when the dialog opens.
+
+<ComponentPreview componentName="dialog" fileName="example-initial-focus" />
+
+### Nested
+
+Nest dialogs within one another.
+
+<ComponentPreview componentName="dialog" fileName="example-nested" />
+
+## API Reference
+
+### Dialog
+
+Root element of the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `modal` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `closeOnInteractOutside` | `boolean` | `true` |
+| `initialFocusEl` | `() => MaybeElement` | `-` |
+| `finalFocusEl` | `() => MaybeElement` | `-` |
+| `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | `-` |
+| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | `-` |
+| `className` | `string` | `-` |
+
+### DialogTrigger
+
+Button that opens the dialog. Renders a `button`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogContent
+
+Container for the dialog content. Renders a `div`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"md"` |
+| `showCloseButton` | `boolean` | `true` |
+| `bottomStickOnMobile` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### DialogHeader
+
+Header container for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `title` | `string` | `-` |
+| `description` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### DialogBody
+
+Content container for the dialog. Renders a `div` wrapped in a `ScrollArea`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DialogFooter
+
+Footer container for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DialogTitle
+
+Title element for the dialog. Renders an `h2`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogDescription
+
+Description element for the dialog. Renders a `div`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogClose
+
+Button that closes the dialog. Renders a `button`. 
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DialogOverlay
+
+Backdrop overlay for the dialog. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/dialog#api-reference).

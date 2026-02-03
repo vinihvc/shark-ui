@@ -4,11 +4,28 @@ import {
   frontmatterSchema,
   metaSchema,
 } from "fumadocs-mdx/config";
+import rehypePrettyCode from "rehype-pretty-code";
 import { z } from "zod";
+import { transformers } from "./lib/highlight-code";
 
 export default defineConfig({
   mdxOptions: {
-    // MDX options
+    rehypePlugins: (plugins) => {
+      plugins.shift();
+      plugins.push([
+        // biome-ignore lint/suspicious/noExplicitAny: known
+        rehypePrettyCode as any,
+        {
+          theme: {
+            dark: "github-dark",
+            light: "github-light-default",
+          },
+          transformers,
+        },
+      ]);
+
+      return plugins;
+    },
   },
 });
 

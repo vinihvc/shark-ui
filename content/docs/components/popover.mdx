@@ -1,42 +1,264 @@
 ---
 title: Popover
-description: An overlay that displays additional information or options when triggered
+description: An overlay that displays additional information or options when triggered.
+links:
+  doc: https://ark-ui.com/docs/components/popover
+  api: https://ark-ui.com/docs/components/popover#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="popover" />
+<ComponentPreview componentName="popover" />
 
 ## Installation
 
-<ComponentInstallation componentName="popover">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark-ui/popover
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
 
 ```bash
-pnpm add @ark-ui/react
+npm install @ark-ui/react
 ```
-</ComponentInstallation>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/popover.tsx" src="/popover.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
 ```tsx lineNumbers
 import { 
   Popover, 
-  PopoverContent, 
   PopoverTrigger, 
+  PopoverContent, 
+  PopoverHeader,
   PopoverTitle, 
   PopoverDescription,
+  PopoverBody,
+  PopoverFooter,
+  PopoverClose,
 } from "@/components/ui/popover";
 ```
 
 ```tsx lineNumbers
 <Popover>
-  <PopoverTrigger>Open Popover</PopoverTrigger>
+  <PopoverTrigger />
   <PopoverContent>
-    <PopoverTitle>Popover Title</PopoverTitle>
-    <PopoverDescription>Popover Description</PopoverDescription>
-    {/* ... */}
+    <PopoverHeader>
+      <PopoverTitle />
+      <PopoverDescription />
+    </PopoverHeader>
+    <PopoverBody>
+      {/* Your content here */}
+    </PopoverBody>
+    <PopoverFooter>
+      <PopoverClose />
+    </PopoverFooter>
   </PopoverContent>
 </Popover>
 ```
+
+## Title and Description
+
+You can use `<PopoverHeader />` in two ways:
+
+### Using props
+
+You can pass `title` and `description` props directly to `<PopoverHeader />`. In this case, you don't need to use `<PopoverTitle />` and `<PopoverDescription />` components.
+
+```tsx lineNumbers
+<PopoverHeader title="Popover Title" description="Popover description" />
+```
+
+### Using components
+
+Alternatively, you can use `<PopoverTitle />` and `<PopoverDescription />` as children for more control.
+
+```tsx lineNumbers
+<PopoverHeader>
+  <PopoverTitle>Popover Title</PopoverTitle>
+  <PopoverDescription>Popover description</PopoverDescription>
+</PopoverHeader>
+```
+
+## Positioning
+
+Control the position of the popover relative to the trigger using the `positioning` prop.
+
+<ComponentPreview componentName="popover" fileName="example-positioning" />
+
+## Examples
+
+### Non-modal
+
+To make the popover non-modal, set the `modal` prop to `false`.
+
+In some cases, you might want the popover to not trap focus or block interaction with the rest of the page.
+
+<ComponentPreview componentName="popover" fileName="example-non-modal" />
+
+### Nested
+
+Nest popovers within one another.
+
+<ComponentPreview componentName="popover" fileName="example-nested" />
+
+### Anchor
+
+Use `<PopoverAnchor />` to position the popover relative to a different element than the trigger.
+
+<ComponentPreview componentName="popover" fileName="example-anchor" />
+
+### Close button
+
+Use `showCloseButton` prop to show a close button in the top-right corner.
+
+<ComponentPreview componentName="popover" fileName="example-close-button" />
+
+### Close behavior
+
+Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on outside click and escape.
+
+<ComponentPreview componentName="popover" fileName="example-close-behavior" />
+
+### Scroll area
+
+Make the content area scrollable while keeping header and footer fixed using ScrollArea.
+
+<ComponentPreview componentName="popover" fileName="example-scroll-area" />
+
+### Inside dialog
+
+Render a popover inside a dialog.
+
+<ComponentPreview componentName="popover" fileName="example-dialog-integration" />
+
+## API Reference
+
+### Popover
+
+Root element of the popover.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | — |
+| `defaultOpen` | `boolean` | — |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
+| `positioning` | `PositioningOptions` | — |
+| `modal` | `boolean` | `true` |
+| `closeOnInteractOutside` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+
+### PopoverTrigger
+
+Button that opens the popover. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+### PopoverAnchor
+
+Element the popover is positioned relative to. Use when the reference is not the trigger.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+### PopoverContent
+
+Container for the popover content. Renders a `div` inside a portal.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showCloseButton` | `boolean` | `false` |
+| `className` | `string` | — |
+
+### PopoverHeader
+
+Header container. Accepts `title` and `description` props or children.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `title` | `string` | — |
+| `description` | `string` | — |
+| `className` | `string` | — |
+
+### PopoverTitle
+
+Title element. Renders a `div` (Ark: accessible title).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### PopoverDescription
+
+Description element. Renders a `div` (Ark: accessible description).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### PopoverBody
+
+Content area. Wrapped in ScrollArea. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### PopoverFooter
+
+Footer container. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### PopoverClose
+
+Button that closes the popover. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+### PopoverArrow
+
+Arrow pointing to the trigger. Renders a `div`. Optional.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props and more information, see the [Ark UI Popover documentation](https://ark-ui.com/docs/components/popover#api-reference).

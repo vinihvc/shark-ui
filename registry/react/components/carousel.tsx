@@ -6,15 +6,37 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-export const Carousel = (
-  props: React.ComponentProps<typeof ArkCarousel.Root>
-) => {
-  const { className, ...rest } = props;
+type CarouselProps = Omit<
+  React.ComponentProps<typeof ArkCarousel.Root>,
+  "spacing" | "padding"
+> & {
+  /**
+   * The amount of space between items.
+   */
+  spacing?: number;
+  /**
+   * The amount of padding around the carousel.
+   */
+  padding?: number;
+};
+
+export const Carousel = (props: CarouselProps) => {
+  const { spacing = 4, padding = 0, className, ...rest } = props;
+
+  const spacingValue = `${(spacing * 4) / 16}rem`;
+  const paddingValue = `${(padding * 4) / 16}rem`;
 
   return (
     <ArkCarousel.Root
-      className={cn("relative", className)}
+      className={cn(
+        "relative",
+        "flex flex-col",
+        "data-[orientation=vertical]:w-max data-[orientation=vertical]:flex-row",
+        className
+      )}
       data-slot="carousel"
+      padding={paddingValue}
+      spacing={spacingValue}
       {...rest}
     />
   );
@@ -27,7 +49,11 @@ export const CarouselControl = (
 
   return (
     <ArkCarousel.Control
-      className={cn(className)}
+      className={cn(
+        "flex items-center justify-between gap-2",
+        "data-[orientation=vertical]:flex-col",
+        className
+      )}
       data-slot="carousel-control"
       {...rest}
     />
@@ -41,12 +67,17 @@ export const CarouselPrevious = (
 
   return (
     <ArkCarousel.PrevTrigger
-      className={cn("absolute top-1/2 -left-12 -translate-y-1/2", className)}
+      className={cn(
+        "absolute",
+        "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-left-12 data-[orientation=horizontal]:-translate-y-1/2",
+        "data-[orientation=vertical]:-top-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
+        className
+      )}
       data-slot="carousel-previous"
       {...rest}
       asChild
     >
-      <Button className="rounded-full" size="icon-sm">
+      <Button clickEffect={false} pill size="icon-md" variant="outline">
         <ChevronLeftIcon />
         <span className="sr-only">Previous</span>
       </Button>
@@ -61,12 +92,17 @@ export const CarouselNext = (
 
   return (
     <ArkCarousel.NextTrigger
-      className={cn("absolute top-1/2 -right-12 -translate-y-1/2", className)}
+      className={cn(
+        "absolute",
+        "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-right-12 data-[orientation=horizontal]:-translate-y-1/2",
+        "data-[orientation=vertical]:-bottom-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
+        className
+      )}
       {...rest}
       asChild
       data-slot="carousel-next"
     >
-      <Button className="rounded-full" size="icon-sm">
+      <Button clickEffect={false} pill size="icon-md" variant="outline">
         <ChevronRightIcon />
         <span className="sr-only">Next</span>
       </Button>
@@ -82,11 +118,8 @@ export const CarouselIndicatorGroup = (
   return (
     <ArkCarousel.IndicatorGroup
       className={cn(
-        "absolute bottom-2 left-1/2 -translate-x-1/2",
-        "flex gap-2",
-        "px-3 py-3",
-        "bg-background/80 backdrop-blur-sm",
-        "rounded-lg",
+        "flex justify-center gap-2",
+        "data-[orientation=vertical]:flex-col",
         className
       )}
       data-slot="carousel-indicator-group"
@@ -104,8 +137,11 @@ export const CarouselIndicator = (
     <ArkCarousel.Indicator
       className={cn(
         "size-2",
+        "shrink-0",
         "bg-foreground",
-        "opacity-50 data-current:opacity-100",
+        "opacity-40 data-current:opacity-100",
+        "overflow-hidden",
+        "[&_img]:size-full [&_img]:rounded-md [&_img]:object-cover",
         "rounded-full",
         className
       )}
@@ -115,14 +151,19 @@ export const CarouselIndicator = (
   );
 };
 
-export const CarouselGroup = (
+export const CarouselContent = (
   props: React.ComponentProps<typeof ArkCarousel.ItemGroup>
 ) => {
   const { className, ...rest } = props;
 
   return (
     <ArkCarousel.ItemGroup
-      className={cn("flex", className)}
+      className={cn(
+        "min-w-0",
+        "flex flex-1",
+        "overflow-hidden rounded-md",
+        className
+      )}
       data-slot="carousel-group"
       {...rest}
     />
@@ -136,7 +177,12 @@ export const CarouselItem = (
 
   return (
     <ArkCarousel.Item
-      className={cn("min-w-0 shrink-0 grow-0 basis-full", className)}
+      className={cn(
+        "min-w-0",
+        "shrink-0 grow-0 basis-full",
+        "[&_img]:size-full [&_img]:rounded-md [&_img]:object-cover",
+        className
+      )}
       data-slot="carousel-item"
       {...rest}
     />

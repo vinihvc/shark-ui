@@ -6,20 +6,46 @@ links:
   api: https://ark-ui.com/docs/components/marquee#api-reference
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="marquee" />
+<ComponentPreview componentName="marquee" />
 
 ## Installation
 
-<ComponentInstallation componentName="marquee">
-Install the following dependencies:
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/marquee
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/marquee.tsx" src="/marquee.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -28,9 +54,97 @@ import { Marquee, MarqueeItem } from "@/components/ui/marquee";
 ```
 
 ```tsx lineNumbers
-<Marquee pauseOnInteraction>
-  <MarqueeItem>Shark UI</MarqueeItem>
-  <MarqueeItem>shadcn/ui</MarqueeItem>
-  <MarqueeItem>Tailwind</MarqueeItem>
+<Marquee>
+  <MarqueeItem />
+  <MarqueeItem />
+  <MarqueeItem />
 </Marquee>
 ```
+
+## Accessibility
+
+- **Enable pause-on-interaction:** Use `pauseOnInteraction` so users can pause the animation on hover or focus, improving accessibility and readability.
+- **Use descriptive labels:** Add a meaningful `aria-label` that describes the marquee content (e.g. "Partner logos", "Latest announcements").
+- **Avoid for critical information:** Do not use marquees for content users must read. Moving text is hard to process; use static content for important information.
+
+
+## Orientation
+
+Use the `orientation` prop to control the orientation of the marquee.
+
+### Horizontal
+
+<ComponentPreview componentName="marquee" fileName="orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="marquee" fileName="orientation-vertical" />
+
+## Examples
+
+### Pause on hover
+
+Use the `pauseOnInteraction` prop to pause the marquee on hover or focus.
+
+<ComponentPreview componentName="marquee" fileName="example-pause-on-hover" />
+
+### Reverse
+
+Use the `reverse` prop to scroll in the opposite direction.
+
+<ComponentPreview componentName="marquee" fileName="example-reverse" />
+
+### Custom speed
+
+Use the `speed` prop (pixels per second) to control scroll speed.
+
+<ComponentPreview componentName="marquee" fileName="example-custom-speed" />
+
+### Auto fill
+
+Use the `autoFill` prop to automatically duplicate content to fill the container.
+
+<ComponentPreview componentName="marquee" fileName="example-autofill" />
+
+### Spacing
+
+Use the `spacing` prop to control the gap between items.
+
+Spacing is in multiples of `4px`. Example: `spacing={10}` will set the spacing to `40px`.
+
+<ComponentPreview componentName="marquee" fileName="example-spacing" />
+
+### Fade
+
+Use the `showEdges` prop to show or hide the gradient fade at the start and end of the marquee.
+
+<ComponentPreview componentName="marquee" fileName="example-fade" />
+
+## API Reference
+
+### Marquee
+
+Root component for the scrolling marquee. Renders a `div` with viewport and content.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `horizontal`, `vertical` | `horizontal` |
+| `speed` | `number` (px/s) | `50` |
+| `spacing` | `number` | `4` |
+| `showEdges` | `boolean` | `true` |
+| `autoFill` | `boolean` | `false` |
+| `pauseOnInteraction` | `boolean` | `false` |
+| `reverse` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### MarqueeItem
+
+A single item in the marquee. Renders an item element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/marquee#api-reference). 

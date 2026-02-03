@@ -16,6 +16,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
   { name: "Installation", href: "/docs/installation" },
   { name: "Components", href: "/docs/components" },
+  { name: "asChild prop", href: "/docs/as-child" },
   { name: "Changelog", href: "/docs/changelog" },
 ];
 
@@ -61,10 +62,7 @@ export function MobileNav(props: MobileNavProps) {
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent
-        className="h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100"
-        showArrow={false}
-      >
+      <PopoverContent className="h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100">
         <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
           <div className="flex flex-col gap-4">
             <div className="font-medium text-muted-foreground text-sm">

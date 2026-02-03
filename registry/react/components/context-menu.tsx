@@ -31,7 +31,7 @@ export const ContextMenuTrigger = (
 
 export const ContextMenuContent = (
   props: React.ComponentProps<typeof MenuContent>
-) => <MenuContent data-slot="context-menu" showArrow={false} {...props} />;
+) => <MenuContent data-slot="context-menu" {...props} />;
 
 export const ContextMenuGroup = (
   props: React.ComponentProps<typeof MenuGroup>

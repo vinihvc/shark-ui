@@ -3,21 +3,46 @@ title: Kbd
 description: A keyboard shortcut component
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="kbd" />
+<ComponentPreview componentName="kbd" />
 
 ## Installation
 
-<ComponentInstallation componentName="kbd">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add @ark-ui/react
+npx shadcn@latest add @shark-ui/kbd
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/kbd.tsx" src="/kbd.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -34,3 +59,58 @@ import {
   <Kbd>K</Kbd>
 </KbdGroup>
 ```
+
+## Variant
+
+Use the `variant` prop to change the visual style of the kbd.
+
+### Outline
+
+<ComponentPreview componentName="kbd" fileName="variant-outline" />
+
+## Examples
+
+### Group
+
+Use `<KbdGroup />` to group keys into a single shortcut.
+
+<ComponentPreview componentName="kbd" fileName="example-kbd-group" />
+
+### Input Group
+
+Use `<Kbd />` inside [InputGroup](/docs/components/input-group) addons to show shortcut hints next to inputs.
+
+<ComponentPreview componentName="kbd" fileName="example-input-group" />
+
+### Button
+
+Add shortcut hints to buttons with `<Kbd />` or `<KbdGroup />`.
+
+<ComponentPreview componentName="kbd" fileName="example-button" />
+
+### Tooltip
+
+Show keyboard shortcuts in [Tooltip](/docs/components/tooltip) content.
+
+<ComponentPreview componentName="kbd" fileName="example-tooltip" />
+
+## API Reference
+
+### Kbd
+
+Keyboard shortcut key. Renders a `kbd` element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `default`, `outline` | `default` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### KbdGroup
+
+Container for grouping multiple keys into one shortcut. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

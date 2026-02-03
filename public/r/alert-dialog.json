@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/react", "tailwind-variants", "lucide-react"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/button.json",
+    "https://shark.vini.one/r/dialog.json"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/alert-dialog.tsx",
+      "content": "import type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  Dialog,\n  DialogBody,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/react/components/dialog\";\nimport { Button } from \"./button\";\n\nexport const AlertDialog = (props: React.ComponentProps<typeof Dialog>) => {\n  return <Dialog data-slot=\"alert-dialog-root\" role=\"alertdialog\" {...props} />;\n};\n\nexport const AlertDialogTrigger = (\n  props: React.ComponentProps<typeof DialogTrigger>\n) => {\n  return <DialogTrigger data-slot=\"alert-dialog-trigger\" {...props} />;\n};\n\nexport const AlertDialogContent = (\n  props: React.ComponentProps<typeof DialogContent>\n) => {\n  return (\n    <DialogContent\n      data-slot=\"alert-dialog-content\"\n      showCloseButton={false}\n      {...props}\n    />\n  );\n};\n\nexport const AlertDialogBody = (\n  props: React.ComponentProps<typeof DialogBody>\n) => {\n  return <DialogBody data-slot=\"alert-dialog-body\" {...props} />;\n};\n\nexport const AlertDialogHeader = (\n  props: React.ComponentProps<typeof DialogHeader>\n) => {\n  return <DialogHeader data-slot=\"alert-dialog-header\" {...props} />;\n};\n\nexport const AlertDialogTitle = (\n  props: React.ComponentProps<typeof DialogTitle>\n) => {\n  return <DialogTitle data-slot=\"alert-dialog-title\" {...props} />;\n};\n\nexport const AlertDialogDescription = (\n  props: React.ComponentProps<typeof DialogDescription>\n) => {\n  return <DialogDescription data-slot=\"alert-dialog-description\" {...props} />;\n};\n\nexport const AlertDialogClose = (\n  props: React.ComponentProps<typeof DialogClose>\n) => {\n  return <DialogClose data-slot=\"alert-dialog-close\" {...props} />;\n};\n\nexport const AlertDialogFooter = (\n  props: React.ComponentProps<typeof DialogFooter>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <DialogFooter\n      className={cn(\"\", className)}\n      data-slot=\"alert-dialog-footer\"\n      {...rest}\n    >\n      {children}\n    </DialogFooter>\n  );\n};\n\ninterface AlertDialogActionProps\n  extends React.ComponentProps<typeof DialogClose> {\n  /**\n   * The variant of the action button\n   *\n   * @default \"solid\"\n   */\n  variant?: \"solid\" | \"destructive\";\n}\n\nexport const AlertDialogAction = (props: AlertDialogActionProps) => {\n  const { variant = \"solid\", children, ...rest } = props;\n\n  return (\n    <DialogClose asChild data-slot=\"alert-dialog-action\" {...rest}>\n      <Button variant={variant}>{children}</Button>\n    </DialogClose>\n  );\n};\n\nexport const AlertDialogCancel = (\n  props: React.ComponentProps<typeof DialogClose>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <DialogClose asChild data-slot=\"alert-dialog-cancel\" {...rest}>\n      <Button variant=\"outline\">{children}</Button>\n    </DialogClose>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -3,20 +3,28 @@ import { HoverCard as ArkHoverCard } from "@ark-ui/react/hover-card";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export const HoverCard = (
-  props: React.ComponentProps<typeof ArkHoverCard.Root>
-) => {
+interface HoverCardProps
+  extends React.ComponentProps<typeof ArkHoverCard.Root> {}
+
+export const HoverCard = (props: HoverCardProps) => {
   const {
     lazyMount = true,
     unmountOnExit = true,
+    closeDelay = 100,
+    openDelay = 10,
     positioning = { placement: "top" },
     ...rest
   } = props;
 
+  // ajustar placement offset para ser
+  // side e align
+
   return (
     <ArkHoverCard.Root
+      closeDelay={closeDelay}
       data-slot="hover-card"
       lazyMount={lazyMount}
+      openDelay={openDelay}
       positioning={positioning}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -44,8 +52,7 @@ export const HoverCardContent = (
             "bg-popover",
             "text-popover-foreground",
             "origin-(--transform-origin)",
-            "rounded-md border",
-            "shadow-md",
+            "rounded-md border shadow-md",
             "outline-hidden",
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
             "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
@@ -59,8 +66,6 @@ export const HoverCardContent = (
           data-slot="hover-card-content"
           {...rest}
         >
-          <HoverCardArrow />
-
           {children}
         </ArkHoverCard.Content>
       </ArkHoverCard.Positioner>

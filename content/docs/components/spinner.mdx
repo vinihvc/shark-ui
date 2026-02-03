@@ -3,21 +3,46 @@ title: Spinner
 description: A spinner component for displaying a loading state
 ---
 
-import { ComponentPreviewFile } from "@/components/component-preview-file";
-import { ComponentInstallation } from "@/components/component-installation";
-
-<ComponentPreviewFile componentName="spinner" />
+<ComponentPreview componentName="spinner" />
 
 ## Installation
 
-<ComponentInstallation componentName="spinner">
+<CodeTabs>
 
-Install the following dependencies:
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
   
 ```bash
-pnpm add lucide-react
+npx shadcn@latest add @shark-ui/spinner
 ```
-</ComponentInstallation>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/spinner.tsx" src="/spinner.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
@@ -28,3 +53,9 @@ import { Spinner } from "@/components/ui/spinner";
 ```tsx lineNumbers
 <Spinner />
 ```
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="spinner" fileName="default" />

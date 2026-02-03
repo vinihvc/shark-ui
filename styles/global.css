@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "fumadocs-ui/css/neutral.css";
-@import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
 @import "./themes.css";
 
@@ -64,15 +62,15 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  --radius: var(--radius);
-  --radius-xs: calc(var(--radius) * 0.5);
-  --radius-sm: calc(var(--radius) * 0.75);
-  --radius-md: calc(var(--radius) * 0.9);
-  --radius-lg: calc(var(--radius) * 1.125);
-  --radius-xl: calc(var(--radius) * 1.25);
-  --radius-2xl: calc(var(--radius) * 1.5);
-  --radius-3xl: calc(var(--radius) * 2);
-  --radius-4xl: calc(var(--radius) * 3);
+  --radius: 0.5rem;
+  --radius-xs: calc(var(--radius) * 0.25);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: calc(var(--radius) * 1);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 3);
+  --radius-4xl: calc(var(--radius) * 4);
 
   --animate-slide-up: slideUp 0.2s ease-out;
   --animate-slide-down: slideDown 0.2s ease-out;
@@ -81,6 +79,10 @@
     var(--marquee-delay);
   --animate-marquee-y: marqueeY var(--marquee-duration) linear infinite
     var(--marquee-delay);
+  --animate-indeterminate: indeterminate 1.5s ease-in-out infinite;
+
+  --animate-expand: expand 0.2s ease-out;
+  --animate-collapse: collapse 0.2s ease-out;
 
   @keyframes slideUp {
     from {
@@ -117,24 +119,51 @@
       transform: translateY(var(--marquee-translate));
     }
   }
+
+  @keyframes expand {
+    from {
+      height: var(--collapsed-height, 0);
+    }
+    to {
+      height: var(--height);
+    }
+  }
+
+  @keyframes collapse {
+    from {
+      height: var(--height);
+    }
+    to {
+      height: var(--collapsed-height, 0);
+    }
+  }
+
+  @keyframes indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(400%);
+    }
+  }
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.65rem;
 
-  --background: var(--color-white);
+  --background: var(--color-neutral-100);
   --foreground: var(--color-neutral-950);
 
-  --card: var(--color-white);
+  --card: var(--color-neutral-50);
   --card-foreground: var(--color-neutral-950);
 
-  --popover: var(--color-white);
+  --popover: var(--color-neutral-50);
   --popover-foreground: var(--color-neutral-950);
 
   --primary: var(--color-neutral-900);
   --primary-foreground: var(--color-neutral-50);
 
-  --secondary: var(--color-neutral-100);
+  --secondary: var(--color-neutral-200);
   --secondary-foreground: var(--color-neutral-900);
 
   --muted: var(--color-neutral-100);
@@ -143,21 +172,21 @@
   --accent: var(--color-neutral-100);
   --accent-foreground: var(--color-neutral-900);
 
-  --success: var(--color-emerald-600);
-  --success-foreground: var(--color-green-50);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-green-700);
 
-  --info: var(--color-sky-600);
-  --info-foreground: var(--color-sky-50);
+  --info: var(--color-sky-500);
+  --info-foreground: var(--color-sky-700);
 
-  --warning: var(--color-yellow-400);
-  --warning-foreground: var(--color-yellow-950);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
 
-  --destructive: var(--color-red-600);
-  --destructive-foreground: var(--color-red-50);
+  --destructive: var(--color-red-500);
+  --destructive-foreground: var(--color-red-700);
 
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-300);
-  --ring: var(--color-primary);
+  --ring: var(--primary);
 
   --chart-1: var(--color-orange-600);
   --chart-2: var(--color-teal-600);
@@ -179,30 +208,30 @@
   --primary: var(--color-neutral-50);
   --primary-foreground: var(--color-neutral-900);
 
-  --secondary: var(--color-neutral-800);
+  --secondary: var(--color-neutral-700);
   --secondary-foreground: var(--color-neutral-50);
 
   --muted: var(--color-neutral-900);
   --muted-foreground: var(--color-neutral-400);
 
-  --accent: var(--color-neutral-800);
+  --accent: var(--color-neutral-900);
   --accent-foreground: var(--color-neutral-50);
 
-  --success: var(--color-emerald-600);
-  --success-foreground: var(--color-green-50);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-green-400);
 
-  --info: var(--color-sky-600);
-  --info-foreground: var(--color-sky-50);
+  --info: var(--color-sky-500);
+  --info-foreground: var(--color-sky-400);
 
-  --warning: var(--color-yellow-600);
-  --warning-foreground: var(--color-yellow-50);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
 
   --destructive: var(--color-red-700);
-  --destructive-foreground: var(--color-red-50);
+  --destructive-foreground: var(--color-red-400);
 
   --border: var(--color-neutral-800);
-  --input: var(--color-neutral-900);
-  --ring: var(--color-primary);
+  --input: var(--color-neutral-800);
+  --ring: var(--primary);
 
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
@@ -225,7 +254,7 @@
   }
 
   body {
-    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)];
+    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col;
   }
 
   main {
@@ -245,5 +274,162 @@
 @utility extend-touch-target {
   @media (pointer: coarse) {
     @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+@layer components {
+  .steps {
+    &:first-child {
+      @apply mt-0!;
+    }
+
+    &:first-child > h3:first-child {
+      @apply mt-0!;
+    }
+
+    > h3 {
+      @apply mt-16!;
+    }
+
+    > h3 + p {
+      @apply mt-2!;
+    }
+  }
+
+  [data-rehype-pretty-code-figure] {
+    background-color: var(--color-muted);
+    color: var(--color-muted-foreground);
+    border-radius: var(--radius-lg);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--border);
+    margin-top: calc(var(--spacing) * 6);
+    overflow: hidden;
+    outline: none;
+    position: relative;
+
+    &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
+      top: calc(var(--spacing) * 1.5);
+    }
+
+    :where(*[data-tab="code"]) & {
+      border-width: 0px;
+    }
+  }
+
+  [data-rehype-pretty-code-title] {
+    min-height: calc(var(--spacing) * 11);
+    border-bottom: --alpha(var(--border) / 64%);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-block: calc(var(--spacing) * 2.5);
+    padding-inline: calc(var(--spacing) * 4);
+    font-family: var(--font-mono);
+    color: var(--color-muted-foreground);
+  }
+
+  [data-line-numbers] {
+    display: grid;
+    min-width: 100%;
+    white-space: pre;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    counter-reset: line;
+    box-decoration-break: clone;
+  }
+
+  [data-line-numbers] [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: calc(var(--spacing) * 16);
+    padding-right: calc(var(--spacing) * 6);
+    text-align: right;
+    color: var(--color-muted-foreground);
+    background-color: var(--color-muted);
+    position: sticky;
+    left: 0;
+  }
+
+  [data-line-numbers] [data-highlighted-line][data-line]::before {
+    background-color: var(--color-success);
+  }
+
+  [data-line] {
+    padding-top: calc(var(--spacing) * 0.5);
+    padding-bottom: calc(var(--spacing) * 0.5);
+    min-height: calc(var(--spacing) * 1);
+    width: 100%;
+    display: inline-block;
+  }
+
+  [data-line] span {
+    color: var(--shiki-light);
+
+    @variant dark {
+      color: var(--shiki-dark) !important;
+    }
+  }
+
+  [data-highlighted-line],
+  [data-highlighted-chars] {
+    position: relative;
+    background-color: var(--color-success);
+  }
+
+  [data-highlighted-line] {
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      content: "";
+      background-color: color-mix(
+        in oklab,
+        var(--muted-foreground) 50%,
+        transparent
+      );
+    }
+  }
+
+  [data-highlighted-chars] {
+    border-radius: var(--radius-sm);
+    padding-inline: 0.3rem;
+    padding-block: 0.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  .highlighted-word {
+    position: relative;
+    padding: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: var(--radius-xs);
+      pointer-events: none;
+    }
+
+    + .highlighted-word {
+      &::before {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &:has(+ .highlighted-word) {
+      &::before {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        right: 2px;
+      }
+    }
   }
 }

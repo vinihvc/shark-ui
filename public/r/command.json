@@ -2,13 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "command",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "https://shark.vini.one/r/combobox.json"
-  ],
+  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "registryDependencies": ["https://shark.vini.one/r/combobox.json"],
   "files": [
     {
       "path": "registry/react/components/command.tsx",
