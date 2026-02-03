@@ -52,30 +52,16 @@ npm install @ark-ui/react lucide-react
 ```tsx lineNumbers
 import {
   Pagination,
-  PaginationContext,
-  PaginationEllipsis,
-  PaginationItem,
+  PaginationItems,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
 ```
 
 ```tsx lineNumbers
-<Pagination count={50} pageSize={10} siblingCount={2}>
+<Pagination>
   <PaginationPrevious />
-  <PaginationContext>
-    {({ pages }) =>
-      pages.map((page, index) =>
-        page.type === "page" ? (
-          <PaginationItem key={index} type="page" value={page.value}>
-            {page.value}
-          </PaginationItem>
-        ) : (
-          <PaginationEllipsis key={index} index={index} />
-        )
-      )
-    }
-  </PaginationContext>
+  <PaginationItems />
   <PaginationNext />
 </Pagination>
 ```
@@ -118,5 +104,7 @@ Use `<Pagination />` with `<Table />` to paginate a table.
 | `siblingCount` | `number` | `1` |
 | `onPageChange` | `(details: PageChangeDetails) => void` | — |
 | `onPageSizeChange` | `(details: PageSizeChangeDetails) => void` | — |
+
+---
 
 For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/pagination#api-reference).

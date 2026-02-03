@@ -2,6 +2,10 @@
 
 import React from "react";
 import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/registry/react/components/native-select";
+import {
   Pagination,
   PaginationNext,
   PaginationPrevious,
@@ -14,10 +18,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/react/components/table";
-import {
-  NativeSelect,
-  NativeSelectOption,
-} from "../../components/native-select";
 
 const users = Array.from({ length: 48 }, (_, i) => ({
   id: `user-${i + 1}`,

@@ -93,7 +93,7 @@ export const PaginationItems = (
               {page.value}
             </PaginationItem>
           ) : (
-            <PaginationEllipsis index={index} key={index} />
+            <PaginationEllipsis index={index} key={`ellipsis-${index}`} />
           )
         )
       }

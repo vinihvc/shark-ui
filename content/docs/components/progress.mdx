@@ -1,6 +1,6 @@
 ---
 title: Progress
-description: Displays the status of a task that takes a long time
+description: Displays the status of a task that takes a long time.
 links:
   doc: https://ark-ui.com/docs/components/progress-linear
   api: https://ark-ui.com/docs/components/progress-linear#api-reference
@@ -57,8 +57,55 @@ import { Progress } from "@/components/ui/progress";
 <Progress value={50} />
 ```
 
+## Orientation
+
+Use the `orientation` prop to orient the progress bar horizontally or vertically.
+
+### Horizontal
+
+<ComponentPreview componentName="progress" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="progress" fileName="example-orientation-vertical" />
+
 ## Examples
 
-### Default
+### With label
 
-<ComponentPreview componentName="progress" fileName="default" />
+Use `<ProgressValue />` and `<FieldLabel />` to add a label to the progress bar.
+
+<ComponentPreview componentName="progress" fileName="example-with-label" />
+
+### Controlled
+
+Use `value` and to control the progress bar.
+
+<ComponentPreview componentName="progress" fileName="example-controlled" />
+
+### Indeterminate
+
+Use the `indeterminate` prop when the completion percentage is unknown. 
+
+<ComponentPreview componentName="progress" fileName="example-indeterminate" />
+
+## API Reference
+
+### Progress
+
+Root element of the progress bar.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| null` | — |
+| `defaultValue` | `number` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `indeterminate` | `boolean` | `false` |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/progress-linear#api-reference).

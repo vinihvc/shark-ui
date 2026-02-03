@@ -52,18 +52,106 @@ npm install @ark-ui/react
 ```tsx lineNumbers
 import { 
   QrCode, 
-  QrCodeFrame
+  QrCodeFrame,
+  QrCodeOverlay,
+  QrCodeDownload,
 } from "@/components/ui/qr-code";
 ```
 
 ```tsx lineNumbers
-<QrCode value="https://www.x.com/vinihvc">
+<QrCode>
   <QrCodeFrame />
+  <QrCodeOverlay />
+  <QrCodeDownload />
 </QrCode>
 ```
 
+## Size
+
+Override the size with the `--qr-code-size` CSS variable on `<QrCode />` 
+
+For example, `--qr-code-size:6rem` for small, `--qr-code-size:10rem` for large
+
+<ComponentPreview componentName="qr-code" fileName="example-size" />
+
 ## Examples
 
-### Default
+### With an overlay
 
-<ComponentPreview componentName="qr-code" fileName="default" /> 
+Use `<QrCodeOverlay />` to add a overlay in the center.
+
+<ComponentPreview componentName="qr-code" fileName="example-overlay" />
+
+### Error correction
+
+In cases where the link is too long or the logo overlay covers a significant area, the error correction level can be increased.
+
+Use the `encoding.ecc` property to set the error correction level:
+
+- **L:** Allows recovery of up to 7% data loss (default)
+- **M:** Allows recovery of up to 15% data loss
+- **Q:** Allows recovery of up to 25% data loss
+- **H:** Allows recovery of up to 30% data loss
+
+<ComponentPreview componentName="qr-code" fileName="example-error-correction" />
+
+### Download
+
+Use `<QrCodeDownload />` with `fileName` and `mimeType` to let users download the QR code as an image.
+
+<ComponentPreview componentName="qr-code" fileName="example-download" />
+
+## API Reference
+
+### QrCode
+
+Root element. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `defaultValue` | `string` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `encoding` | `QrCodeGenerateOptions` | — |
+| `pixelSize` | `number` | — |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+| Attributes | Type | Default |
+| --- | --- | --- |
+| `[data-slot]` | `-` | `qr-code` |
+| `--qr-code-size` | `string` | `var(--spacing(32))` |
+| `--qr-code-overlay-size` | `string` | `calc(var(--qr-code-size)/3)` |
+
+### QrCodeFrame
+
+SVG frame that contains the QR pattern. Renders an `svg`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### QrCodeOverlay
+
+Overlay in the center of the QR code (e.g. logo). Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### QrCodeDownload
+
+Trigger to download the QR code as an image. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `fileName` | `string` | — |
+| `mimeType` | `DataUrlType` | — |
+| `quality` | `number` | — |
+| `asChild` | `boolean` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/qr-code#api-reference). 

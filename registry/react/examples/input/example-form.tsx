@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/registry/react/components/button";
 import {
   Field,
   FieldGroup,
@@ -7,7 +8,6 @@ import {
   FieldSet,
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
-import { Button } from "../../components/button";
 
 const Example = () => (
   <form className="w-full max-w-xs">

@@ -1,3 +1,4 @@
+import { Button } from "@/registry/react/components/button";
 import {
   Field,
   FieldDescription,
@@ -5,7 +6,6 @@ import {
   FieldLabel,
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
-import { Button } from "../../components/button";
 
 const Example = () => (
   <FieldGroup className="w-full max-w-64">

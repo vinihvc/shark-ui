@@ -9,7 +9,7 @@ import {
 const DialogNoCloseButtonDemo = () => (
   <Dialog>
     <DialogTrigger asChild>
-      <Button>No close button</Button>
+      <Button variant="outline">Open</Button>
     </DialogTrigger>
 
     <DialogContent showCloseButton={false}>

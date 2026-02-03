@@ -85,34 +85,34 @@ Control the position of the hover card relative to the trigger using the `positi
 
 Root element of the hover card component. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
-| `closeDelay` | `100` | `number` |
+| Prop | Type | Default |
+| --- | --- | --- |
+| `closeDelay` | `number` | `100` |
 | `defaultOpen` | `boolean` | - |
 | `disabled` | `boolean` | - |
 | `id` | `string` | - |
 | `ids` | `Partial<{ trigger: string; content: string; positioner: string; arrow: string }>` | - |
 | `immediate` | `boolean` | - |
-| `lazyMount` | `true` | `boolean` |
+| `lazyMount` | `boolean` | `true` |
 | `onExitComplete` | `VoidFunction` | - |
 | `onFocusOutside` | `(event: FocusOutsideEvent) => void` | - |
 | `onInteractOutside` | `(event: InteractOutsideEvent) => void` | - |
 | `onOpenChange` | `(details: OpenChangeDetails) => void` | - |
 | `onPointerDownOutside` | `(event: PointerDownOutsideEvent) => void` | - |
 | `open` | `boolean` | - |
-| `openDelay` | `10` | `number` |
-| `positioning` | `{ placement: "top" }` | `PositioningOptions` |
+| `openDelay` | `number` | `10` |
+| `positioning` | `PositioningOptions` | `{ placement: "top" }` |
 | `present` | `boolean` | - |
-| `skipAnimationOnMount` | `false` | `boolean` |
-| `unmountOnExit` | `true` | `boolean` |
+| `skipAnimationOnMount` | `boolean` | `false` |
+| `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
 ### HoverCardTrigger
 
 Button that triggers the hover card. Renders a `button`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
 
@@ -127,8 +127,8 @@ Button that triggers the hover card. Renders a `button`.
 
 Content element that displays when the hover card is open. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
 
@@ -150,8 +150,8 @@ Content element that displays when the hover card is open. Renders a `div`.
 
 Arrow element that points to the trigger. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
 
@@ -166,9 +166,11 @@ Arrow element that points to the trigger. Renders a `div`.
 
 Tip of the arrow element. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
+
+---
 
 For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/hover-card#api-reference).

@@ -1,6 +1,13 @@
 "use client";
 
 import React from "react";
+import {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+} from "@/registry/react/components/alert-dialog";
 import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
@@ -12,13 +19,6 @@ import {
 } from "@/registry/react/components/dialog";
 import { Field, FieldLabel } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
-import {
-  AlertDialog,
-  AlertDialogClose,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-} from "../../components/alert-dialog";
 
 const DialogConfirmationDemo = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -47,7 +47,9 @@ const DialogConfirmationDemo = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
+      <Button onClick={() => setIsOpen(true)} variant="outline">
+        Open
+      </Button>
 
       <Dialog
         onEscapeKeyDown={(e) => {

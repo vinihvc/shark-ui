@@ -1,55 +1,103 @@
 import { Progress as ArkProgress } from "@ark-ui/react/progress";
 import type React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-export const progressVariants = tv({
-  base: ["w-full overflow-hidden rounded-full", "bg-primary/20"],
-  variants: {
-    variant: {
-      primary: ["*:data-[slot=rango]:bg-primary/20", "bg-primary/20"],
-      secondary: ["*:data-[slot=range]:bg-secondary", "bg-secondary"],
-      success: ["*:data-[slot=range]:bg-success", "bg-success"],
-      info: ["*:data-[slot=range]:bg-info", "bg-info"],
-      warning: ["*:data-[slot=range]:bg-warning", "bg-warning"],
-      destructive: ["*:data-[slot=range]:bg-destructive", "bg-destructive"],
-    },
-    size: {
-      sm: ["h-1"],
-      md: ["h-2"],
-      lg: ["h-3"],
-    },
-  },
-  defaultVariants: {
-    variant: "primary",
-    size: "md",
-  },
-});
-
 interface ProgressProps
-  extends React.ComponentProps<typeof ArkProgress.Root>,
-    VariantProps<typeof progressVariants> {}
+  extends Omit<React.ComponentProps<typeof ArkProgress.Root>, "value"> {
+  /**
+   * The value of the progress bar
+   *
+   * @default 0
+   */
+  value?: number;
+  /**
+   * Shows indeterminate progress
+   *
+   * @default false
+   */
+  indeterminate?: boolean;
+}
 
 export const Progress = (props: ProgressProps) => {
-  const { variant = "primary", size = "md", className, ...rest } = props;
+  const {
+    value,
+    orientation = "horizontal",
+    indeterminate = false,
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <ArkProgress.Root
-      className={cn("w-full", className)}
+      className={cn(
+        "flex flex-wrap gap-3",
+        "data-[orientation=horizontal]:w-full",
+        "data-[orientation=vertical]:-scale-y-100",
+        className
+      )}
       data-slot="progress"
+      orientation={orientation}
+      value={indeterminate ? null : value}
       {...rest}
     >
-      <ArkProgress.Track
-        className={cn(progressVariants({ variant, size }), className)}
-        data-slot="progress-track"
-      >
-        <ArkProgress.Range
-          className={cn(
-            "h-full bg-primary transition-all duration-300 ease-out"
-          )}
-          data-slot="progress-range"
-        />
-      </ArkProgress.Track>
+      {children}
+      <ProgressTrack>
+        <ProgressRange />
+      </ProgressTrack>
     </ArkProgress.Root>
+  );
+};
+
+export const ProgressTrack = (
+  props: React.ComponentProps<typeof ArkProgress.Track>
+) => {
+  return (
+    <ArkProgress.Track
+      className={cn(
+        "bg-input",
+        "rounded-full",
+        "overflow-x-hidden",
+        "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2"
+      )}
+      data-slot="progress-track"
+      {...props}
+    />
+  );
+};
+
+export const ProgressRange = (
+  props: React.ComponentProps<typeof ArkProgress.Range>
+) => {
+  return (
+    <ArkProgress.Range
+      className={cn(
+        "bg-primary",
+        "transition-all duration-300 ease-out",
+        "data-[orientation=horizontal]:h-full",
+        "data-[orientation=vertical]:h-full",
+        "data-[state=indeterminate]:w-1/3 data-[state=indeterminate]:animate-indeterminate data-[state=indeterminate]:duration-100"
+      )}
+      data-slot="progress-range"
+      {...props}
+    />
+  );
+};
+
+export const ProgressValue = (
+  props: React.ComponentProps<typeof ArkProgress.ValueText>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkProgress.ValueText
+      className={cn(
+        "ml-auto text-muted-foreground text-sm tabular-nums",
+        className
+      )}
+      data-slot="progress-value"
+      {...rest}
+    />
   );
 };

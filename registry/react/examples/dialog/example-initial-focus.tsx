@@ -24,7 +24,7 @@ const DialogInitialFocusDemo = () => {
   return (
     <Dialog initialFocusEl={() => inputRef.current}>
       <DialogTrigger asChild>
-        <Button>Auto focus</Button>
+        <Button variant="outline">Open</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader

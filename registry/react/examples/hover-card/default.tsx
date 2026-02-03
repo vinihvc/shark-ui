@@ -14,7 +14,7 @@ import {
 const HoverCardDemo = () => (
   <HoverCard>
     <HoverCardTrigger asChild>
-      <Button variant="ghost">Hover here</Button>
+      <Button variant="link">Hover here</Button>
     </HoverCardTrigger>
     <HoverCardContent>
       <div className="flex gap-4">

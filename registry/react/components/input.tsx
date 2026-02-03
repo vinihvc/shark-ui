@@ -16,8 +16,8 @@ export const inputVariants = tv({
     "file:font-medium file:text-foreground file:text-sm",
     "transition-[color,box-shadow]",
     "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
-    "aria-invalid:border-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
+    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 data-invalid:text-destructive",
+    "dark:data-invalid:text-destructive-foreground dark:aria-invalid:border-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
   ],
   variants: {

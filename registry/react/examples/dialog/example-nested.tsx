@@ -21,7 +21,7 @@ const Example = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Open dialog</Button>
+        <Button variant="outline">Open</Button>
       </DialogTrigger>
 
       <DialogContent>

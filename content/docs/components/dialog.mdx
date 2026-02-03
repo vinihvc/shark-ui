@@ -110,13 +110,19 @@ Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as chil
 
 Make the content area scrollable while keeping header and footer fixed using ScrollArea.
 
-<ComponentPreview componentName="dialog" fileName="example-scrollarea" />
+<ComponentPreview componentName="dialog" fileName="example-scroll-area" />
 
 ### No Close Button
 
 Hide the close button in the top right corner by setting `showCloseButton={false}`.
 
 <ComponentPreview componentName="dialog" fileName="example-no-close-button" />
+
+### Close behavior
+
+Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on outside click and escape.
+
+<ComponentPreview componentName="dialog" fileName="example-close-behavior" />
 
 ### Open from Menu
 
@@ -250,5 +256,7 @@ Backdrop overlay for the dialog. Renders a `div`.
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+
+---
 
 For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/dialog#api-reference).

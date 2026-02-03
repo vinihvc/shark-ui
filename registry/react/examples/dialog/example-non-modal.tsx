@@ -12,7 +12,7 @@ import {
 const DialogNonModalDemo = () => (
   <Dialog modal={false}>
     <DialogTrigger asChild>
-      <Button>Open Non-Modal Dialog</Button>
+      <Button variant="outline">Open</Button>
     </DialogTrigger>
 
     <DialogContent>

@@ -79,6 +79,7 @@
     var(--marquee-delay);
   --animate-marquee-y: marqueeY var(--marquee-duration) linear infinite
     var(--marquee-delay);
+  --animate-indeterminate: indeterminate 1.5s ease-in-out infinite;
 
   --animate-expand: expand 0.2s ease-out;
   --animate-collapse: collapse 0.2s ease-out;
@@ -134,6 +135,15 @@
     }
     to {
       height: var(--collapsed-height, 0);
+    }
+  }
+
+  @keyframes indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(400%);
     }
   }
 }

@@ -11,7 +11,7 @@ const ProgressDemo = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  return <Progress value={progress} />;
+  return <Progress className="w-full max-w-64" value={progress} />;
 };
 
 export default ProgressDemo;

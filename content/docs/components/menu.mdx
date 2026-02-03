@@ -91,6 +91,12 @@ import {
 </Menu>
 ```
 
+## Positioning
+
+Control the position of the menu relative to the trigger using the `positioning` prop.
+
+<ComponentPreview componentName="menu" fileName="example-positioning" />
+
 ## Examples
 
 ### Nested Menu
@@ -146,3 +152,108 @@ Open a dialog from a `<MenuItem />` with the `onClick` prop and controlled state
 Use `variant="destructive"` on `<MenuItem />` for irreversible actions like delete.
 
 <ComponentPreview componentName="menu" fileName="example-destructive" />
+
+## API Reference
+
+### Menu
+
+Root element of the menu component.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `positioning` | `PositioningOptions` | — |
+| `open` | `boolean` | — |
+| `defaultOpen` | `boolean` | — |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
+| `onSelect` | `(details: SelectionDetails) => void` | — |
+| `closeOnSelect` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+
+### MenuTrigger
+
+Button that opens the menu. Renders a `button`. Use `asChild` to delegate to a child element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+### MenuContent
+
+Content container for menu items. Renders a `div` inside a portal.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### MenuItem
+
+A single menu option. Renders a `div` (or child when `asChild`).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `variant` | `"default" \| "destructive"` | `"default"` |
+| `asChild` | `boolean` | — |
+| `disabled` | `boolean` | — |
+| `closeOnSelect` | `boolean` | — |
+| `onSelect` | `VoidFunction` | — |
+
+### MenuCheckboxItem
+
+A menu option with a checkbox. Use `checked` and `onCheckedChange` for controlled state.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `checked` | `boolean` | — |
+| `onCheckedChange` | `(checked: boolean) => void` | — |
+| `disabled` | `boolean` | — |
+
+### MenuRadioGroup
+
+Group of mutually exclusive options. Use `value` and `onValueChange` for controlled state.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `heading` | `string` | — |
+
+### MenuRadioItem
+
+A single option in a radio group.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | — |
+
+### MenuGroup
+
+Groups related items. Use `heading` or `<MenuGroupLabel />` for a label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string` | — |
+
+### MenuGroupLabel
+
+Label for a group. Renders inside `<MenuGroup />`.
+
+### MenuSeparator
+
+Visual divider between items. Renders an `hr`.
+
+### MenuSub / MenuSubTrigger / MenuSubContent
+
+Submenu: wrap a nested `<Menu />`-like structure. `<MenuSubTrigger />` opens the submenu; `<MenuSubContent />` holds the nested items.
+
+### MenuShortcut
+
+Optional keyboard hint shown next to an item (e.g. `⌘S`). Renders a `span`.
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/menu#api-reference).

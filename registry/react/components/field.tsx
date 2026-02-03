@@ -112,7 +112,7 @@ export const FieldGroup = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "group/field-group @container/field-group",
-        "flex w-full flex-col gap-5",
+        "flex w-full flex-col gap-4",
         "data-[data-slot=checkbox-group]:gap-3",
         "*:data-[slot=field-group]:gap-4",
         className

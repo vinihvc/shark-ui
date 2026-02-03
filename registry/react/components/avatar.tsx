@@ -54,7 +54,9 @@ export const AvatarImage = (
   return (
     <ArkAvatar.Image
       className={cn(
-        "aspect-square size-full rounded-full object-cover",
+        "size-full",
+        "aspect-square object-cover",
+        "rounded-full",
         className
       )}
       data-slot="avatar-image"

@@ -14,7 +14,7 @@ import {
 const Example = () => (
   <HoverCard closeDelay={300} openDelay={200}>
     <HoverCardTrigger asChild>
-      <Button variant="outline">Hover here</Button>
+      <Button variant="link">Hover here</Button>
     </HoverCardTrigger>
     <HoverCardContent>
       <div className="flex gap-4">

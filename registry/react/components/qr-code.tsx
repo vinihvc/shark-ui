@@ -7,7 +7,13 @@ export const QrCode = (props: React.ComponentProps<typeof ArkQrCode.Root>) => {
 
   return (
     <ArkQrCode.Root
-      className={cn("bg-background text-foreground", className)}
+      className={cn(
+        "[--qr-code-overlay-size:calc(var(--qr-code-size)/4)] [--qr-code-size:--spacing(32)]",
+        "relative",
+        "w-fit",
+        "flex shrink-0 flex-col gap-4",
+        className
+      )}
       data-slot="qr-code"
       {...rest}
     />
@@ -21,11 +27,18 @@ export const QrCodeFrame = (
 
   return (
     <ArkQrCode.Frame
-      className={cn("size-full rounded-md fill-foreground", className)}
+      className={cn(
+        "size-(--qr-code-size)",
+        "bg-white",
+        "fill-black",
+        "rounded-md",
+        "overflow-hidden",
+        className
+      )}
       data-slot="qr-code-frame"
       {...rest}
     >
-      <ArkQrCode.Pattern data-slot="qr-code-pattern" />
+      <ArkQrCode.Pattern className="fill-inherit" data-slot="qr-code-pattern" />
     </ArkQrCode.Frame>
   );
 };
@@ -38,7 +51,14 @@ export const QrCodeOverlay = (
   return (
     <ArkQrCode.Overlay
       className={cn(
-        "flex size-10 items-center justify-center rounded-full bg-background outline-2",
+        "absolute inset-0",
+        "size-(--qr-code-overlay-size)",
+        "flex items-center justify-center",
+        "bg-black",
+        "text-white",
+        "rounded-full",
+        "p-2",
+        "[&_svg,img]:size-full [&_svg,img]:object-contain",
         className
       )}
       data-slot="qr-code-overlay"
@@ -47,7 +67,7 @@ export const QrCodeOverlay = (
   );
 };
 
-export const QrCodeDownloadTrigger = (
+export const QrCodeDownload = (
   props: React.ComponentProps<typeof ArkQrCode.DownloadTrigger>
 ) => (
   <ArkQrCode.DownloadTrigger data-slot="qr-code-download-trigger" {...props} />

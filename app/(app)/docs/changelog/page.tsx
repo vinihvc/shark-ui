@@ -60,7 +60,7 @@ const ChangelogPage = () => {
 
               return (
                 <article className="mb-12 border-b pb-12" key={page.url}>
-                  <h2 className="font-heading font-semibold text-xl tracking-tight">
+                  <h2 className="font-semibold text-xl tracking-tight">
                     {data.title}
                   </h2>
                   <div className="prose-changelog mt-6 *:first:mt-0">
@@ -71,7 +71,7 @@ const ChangelogPage = () => {
             })}
             {olderPages.length > 0 && (
               <div className="mb-24 scroll-mt-24">
-                <h2 className="mb-6 font-heading font-semibold text-xl tracking-tight">
+                <h2 className="mb-6 font-semibold text-xl tracking-tight">
                   More Updates
                 </h2>
                 <ul className="flex flex-col gap-4">

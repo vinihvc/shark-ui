@@ -166,26 +166,26 @@ Controls are displayed vertically next to the editable area. Useful for multi-li
 
 Root element of the editable component. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
-| `activationMode` | `'focus'` | `focus \| dblclick \| click \| none` |
-| `orientation` | `"horizontal"` | `"horizontal" \| "vertical"` |
-| `submitMode` | `'both'` | `both \| enter \| blur \| none` |
+| Prop | Type | Default |
+| --- | --- | --- |
+| `activationMode` | `focus \| dblclick \| click \| none` | `'focus'` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `submitMode` | `both \| enter \| blur \| none` | `'both'` |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
-| Attributes | Default | Type |
-|------------|---------|------|
-| `[data-mode]` | `activationMode` | `focus \| dblclick \| click \| none` |
-| `[data-orientation]` | `orientation` | `horizontal \| vertical` |
-| `[data-slot]` | `editable` | `-` |
+| Attributes | Type | Default |
+| --- | --- | --- |
+| `[data-mode]` | `focus \| dblclick \| click \| none` | `activationMode` |
+| `[data-orientation]` | `horizontal \| vertical` | `orientation` |
+| `[data-slot]` | `-` | `editable` |
 
 ### EditableArea
 
 Container for the editable input and preview. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
@@ -193,35 +193,35 @@ Container for the editable input and preview. Renders a `div`.
 
 Input element for editing. Renders an `input` or custom element when using `asChild`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
-| Attributes | Default | Type |
-|------------|---------|------|
-| `[data-slot]` | `editable-input` | `-` |
+| Attributes | Type | Default |
+| --- | --- | --- |
+| `[data-slot]` | `-` | `editable-input` |
 
 ### EditablePreview
 
 Preview element that displays the value when not editing. Renders a `span`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | `-` |
-| `size` | `"md"` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` |
 | `className` | `string` | `-` |
 
-| Attributes | Default | Type |
-|------------|---------|------|
-| `[data-slot]` | `editable-preview` | `-` |
+| Attributes | Type | Default |
+| --- | --- | --- |
+| `[data-slot]` | `-` | `editable-preview` |
 
 ### EditableControl
 
 Container for the control buttons. Renders a `div`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
@@ -229,8 +229,8 @@ Container for the control buttons. Renders a `div`.
 
 Button that triggers edit mode. Renders a `button`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
@@ -238,8 +238,8 @@ Button that triggers edit mode. Renders a `button`.
 
 Button that cancels editing and reverts changes. Renders a `button`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
 
@@ -247,9 +247,11 @@ Button that cancels editing and reverts changes. Renders a `button`.
 
 Button that submits the edited value. Renders a `button`.
 
-| Prop | Default | Type |
-|------|---------|------|
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
+
+---
 
 For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/editable#api-reference).

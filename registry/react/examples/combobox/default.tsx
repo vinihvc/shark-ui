@@ -38,7 +38,6 @@ const ComboboxDemo = () => {
         className="w-64"
         collection={collection}
         onInputValueChange={handleInputChange}
-        placeholder="e.g. Apple"
       >
         <ComboboxControl>
           <ComboboxInput />

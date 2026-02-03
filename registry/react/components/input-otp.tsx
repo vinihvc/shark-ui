@@ -6,31 +6,28 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Input, type InputProps } from "@/registry/react/components/input";
 
-interface PinInputProps
+interface InputOtpProps
   extends React.ComponentProps<typeof ArkPinInput.Root>,
-    Pick<InputProps, "size"> {
-  /**
-   * Adds a fake caret to the pin input
-   *
-   * @default false
-   */
-  withFakeCaret?: boolean;
-}
+    Pick<InputProps, "size"> {}
 
-export const PinInput = (props: PinInputProps) => {
-  const { withFakeCaret, otp = true, className, children, ...rest } = props;
+export const InputOtp = (props: InputOtpProps) => {
+  const { placeholder, otp = true, className, children, ...rest } = props;
 
   return (
     <ArkPinInput.Root
-      className="group/pin-input"
-      data-slot="pin-input"
-      {...(!withFakeCaret && { placeholder: "" })}
+      className="group/input-otp"
+      data-slot="input-otp"
       otp={otp}
+      placeholder={placeholder ?? ""}
       {...rest}
     >
       <ArkPinInput.Control
-        className={cn("flex items-center gap-2", className)}
-        data-slot="pin-input-control"
+        className={cn(
+          "flex items-center gap-2",
+          "*:data-[slot=input-otp-input]:size-9",
+          className
+        )}
+        data-slot="input-otp-control"
       >
         {children}
       </ArkPinInput.Control>
@@ -40,19 +37,19 @@ export const PinInput = (props: PinInputProps) => {
   );
 };
 
-export const PinInputSlot = (
+export const InputOtpSlot = (
   props: React.ComponentProps<typeof ArkPinInput.Input>
 ) => {
   const { className, ...rest } = props;
 
   return (
-    <ArkPinInput.Input asChild data-slot="pin-input-input" {...rest}>
-      <Input className={cn("relative size-8 p-0 text-center", className)} />
+    <ArkPinInput.Input asChild data-slot="input-otp-input" {...rest}>
+      <Input className={cn("relative p-0 text-center text-base", className)} />
     </ArkPinInput.Input>
   );
 };
 
-export const PinInputSeparator = (
+export const InputOtpSeparator = (
   props: React.ComponentProps<typeof ark.hr>
 ) => {
   const { className, ...rest } = props;
@@ -60,7 +57,7 @@ export const PinInputSeparator = (
   return (
     <ark.hr
       className={cn("h-0.5 w-2 rounded-full bg-foreground", className)}
-      data-slot="pin-input-separator"
+      data-slot="input-otp-separator"
       {...rest}
     />
   );

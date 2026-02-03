@@ -12,7 +12,7 @@ import {
 const DialogScrollAreaDemo = () => (
   <Dialog>
     <DialogTrigger asChild>
-      <Button>Terms & Conditions</Button>
+      <Button variant="outline">Open</Button>
     </DialogTrigger>
 
     <DialogContent size="lg">

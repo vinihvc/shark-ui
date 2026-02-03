@@ -6,7 +6,7 @@ import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
-import { ScrollArea } from "./scroll-area";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {
   const { lazyMount = true, unmountOnExit = true, ...rest } = props;
@@ -219,10 +219,7 @@ export const DialogTitle = (
 
   return (
     <ArkDialog.Title
-      className={cn(
-        "font-heading font-semibold text-xl leading-none",
-        className
-      )}
+      className={cn("font-semibold text-xl leading-none", className)}
       data-slot="dialog-title"
       {...rest}
     />
