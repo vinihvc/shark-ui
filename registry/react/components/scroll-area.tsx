@@ -9,33 +9,53 @@ const scrollAreaVariants = tv({
     "rounded-[inherit]",
     "transition-shadows",
     "outline-none",
-    "data-has-overflow-x:overscroll-x-contain",
+    "transition-all",
   ],
   variants: {
-    scrollbarGutter: {
-      true: ["data-has-overflow-y:pe-2.5", "data-has-overflow-x:pb-2.5"],
+    scrollFade: {
+      true: [
+        "[--fade-size:1.5rem]",
+        "data-at-top:mask-b-from-[calc(100%-var(--fade-size))]",
+        "data-at-bottom:mask-t-from-[calc(100%-var(--fade-size))]",
+      ],
     },
+  },
+  defaultVariants: {
+    scrollFade: false,
   },
 });
 
 interface ScrollAreaProps
   extends React.ComponentProps<typeof ArkScrollArea.Root>,
-    VariantProps<typeof scrollAreaVariants> {}
+    VariantProps<typeof scrollAreaVariants> {
+  /**
+   * The direction of the scroll area
+   *
+   * @default 'vertical'
+   */
+  direction?: "vertical" | "horizontal" | "both";
+}
 
 export const ScrollArea = (props: ScrollAreaProps) => {
-  const { scrollbarGutter = false, className, children, ...rest } = props;
+  const {
+    scrollFade = false,
+    direction = "vertical",
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <>
       <style>
         {`
-        [data-slot='scroll-area-viewport'] {
-          scrollbar-width: none;
-          &::-webkit-scrollbar {
+          [data-slot='scroll-area-viewport'] {
+            scrollbar-width: none;
+          }
+          [data-slot='scroll-area-viewport']::-webkit-scrollbar {
             display: none;
           }
-        }
-}`}
+        }`}
       </style>
 
       <ArkScrollArea.Root
@@ -44,7 +64,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
         {...rest}
       >
         <ArkScrollArea.Viewport
-          className={cn(scrollAreaVariants({ scrollbarGutter }))}
+          className={cn(scrollAreaVariants({ scrollFade }))}
           data-slot="scroll-area-viewport"
         >
           <ArkScrollArea.Content data-slot="scroll-area-content">
@@ -52,8 +72,12 @@ export const ScrollArea = (props: ScrollAreaProps) => {
           </ArkScrollArea.Content>
         </ArkScrollArea.Viewport>
 
-        <ScrollAreaScrollbar orientation="vertical" />
-        <ScrollAreaScrollbar orientation="horizontal" />
+        {(direction === "vertical" || direction === "both") && (
+          <ScrollAreaScrollbar orientation="vertical" />
+        )}
+        {(direction === "horizontal" || direction === "both") && (
+          <ScrollAreaScrollbar orientation="horizontal" />
+        )}
 
         <ArkScrollArea.Corner data-slot="scroll-area-corner" />
       </ArkScrollArea.Root>
@@ -71,12 +95,12 @@ export const ScrollAreaScrollbar = (
       className={cn(
         "flex",
         "m-1",
+        "bg-foreground/5",
         "opacity-0 transition-opacity delay-300",
-        "data-[orientation=vertical]:w-1.5",
-        "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:flex-col",
-        "data-hovering:opacity-100 data-scrolling:opacity-100",
-        "data-hovering:delay-0 data-scrolling:delay-0",
-        "data-hovering:duration-100 data-scrolling:duration-100",
+        "data-[orientation=vertical]:w-1",
+        "data-[orientation=horizontal]:h-1 data-[orientation=horizontal]:flex-col",
+        "data-hover:opacity-100 data-hover:delay-0 data-hover:duration-100",
+        "data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100",
         className
       )}
       data-slot="scroll-area-scrollbar"

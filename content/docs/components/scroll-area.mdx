@@ -54,15 +54,44 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 ```
 
 ```tsx lineNumbers
-<ScrollArea>
+<ScrollArea className="h-64">
   {/* Your content here */}
 </ScrollArea>
 ```
 
 ## Examples
 
-### Scrollbar Gutter
+### Scroll Fade
 
-Use the `scrollbarGutter` prop to add padding to accommodate scrollbars and prevent layout shift.
+Use `scrollFade` to mask the viewport edges so content subtly fades in and out as you scroll, hinting that more content is available.
 
-<ComponentPreview componentName="scroll-area" fileName="example-scrollbar-gutter" />
+<ComponentPreview componentName="scroll-area" fileName="example-scroll-fade" />
+
+### Horizontal Scroll
+
+<ComponentPreview componentName="scroll-area" fileName="example-horizontal" />
+
+### Both Scrollbars
+
+<ComponentPreview componentName="scroll-area" fileName="example-both-directions" />
+
+### Nested
+
+Scroll areas can be nested within each other for complex layouts.
+
+<ComponentPreview componentName="scroll-area" fileName="example-nested" />
+
+## API Reference
+
+### ScrollArea
+
+Root component. Styled wrapper for `ScrollArea.Root` from Ark UI with custom scrollbar styling.
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| direction | `vertical`, `horizontal`, `both` | `vertical` | 
+| scrollFade | `boolean` | `false` | 
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/scroll-area#api-reference). 

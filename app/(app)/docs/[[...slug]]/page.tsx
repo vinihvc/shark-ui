@@ -58,7 +58,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
       <div className="flex items-stretch xl:w-full" data-slot="docs">
         <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-8 lg:mr-4 lg:mb-8">
           <div className="relative flex w-full flex-col border bg-muted/32 text-card-foreground shadow-xs/5 max-lg:border-none lg:rounded-2xl">
-            <div className="flex-1 p-6 px-4 py-6 sm:px-6 lg:p-8">
+            <div className="flex-1 px-4 py-6 sm:px-6 lg:p-8">
               <div className="mx-auto w-full">
                 <div className="flex min-w-0 flex-col gap-8">
                   <div className="flex flex-col gap-2">
