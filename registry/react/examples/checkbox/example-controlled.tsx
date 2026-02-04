@@ -13,7 +13,7 @@ const Example = () => {
   const [checked, setChecked] = React.useState<CheckboxCheckedState>(false);
 
   return (
-    <FieldGroup className="mx-auto max-w-sm">
+    <FieldGroup className="mx-auto w-56">
       <Field orientation="horizontal">
         <Checkbox
           checked={checked}
@@ -22,9 +22,7 @@ const Example = () => {
         <FieldLabel>Accept terms and conditions</FieldLabel>
       </Field>
 
-      <p className="text-center text-muted-foreground text-sm">
-        Terms were {checked ? "accepted" : "not accepted"}
-      </p>
+      <p className="text-center">{checked ? "✅" : "❌"}</p>
     </FieldGroup>
   );
 };

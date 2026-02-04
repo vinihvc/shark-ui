@@ -28,15 +28,15 @@ export const Checkbox = (
         "relative",
         "inline-flex shrink-0 items-center justify-center",
         "size-4",
-        "bg-background",
+        "bg-transparent",
         "rounded-sm border border-input shadow-xs/5",
         "transition-shadow",
         "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
-        "data-focus-visible:data-invalid:border-destructive/64 data-focus-visible:data-invalid:ring-destructive/48",
         "dark:data-focus-visible:data-invalid:border-destructive-foreground/64 dark:data-focus-visible:data-invalid:ring-destructive-foreground/48",
         "data-disabled:opacity-64",
         "[[data-disabled],[data-checked],[data-invalid]]:shadow-none",
-        "data-invalid:border-destructive-foreground/36 data-invalid:ring-[3px] data-invalid:ring-destructive-foreground/20",
+        "data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/20",
+        "dark:data-invalid:border-destructive-foreground dark:data-invalid:text-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
         "dark:not-data-checked:bg-input/32 dark:data-invalid:ring-destructive-foreground/24",
         className
       )}

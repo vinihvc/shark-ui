@@ -2,7 +2,7 @@ import {
   Field,
   FieldContent,
   FieldDescription,
-  FieldTitle,
+  FieldLabel,
 } from "@/registry/react/components/field";
 import {
   RadioGroup,
@@ -11,19 +11,38 @@ import {
 
 const Example = () => {
   return (
-    <Field className="w-full max-w-sm" orientation="vertical">
-      <FieldContent>
-        <FieldTitle>Notification frequency</FieldTitle>
-        <FieldDescription>
-          Choose how often you want to receive notifications.
-        </FieldDescription>
-      </FieldContent>
-      <RadioGroup defaultValue="daily">
-        <RadioGroupItem value="realtime">Real-time</RadioGroupItem>
-        <RadioGroupItem value="daily">Daily digest</RadioGroupItem>
-        <RadioGroupItem value="weekly">Weekly summary</RadioGroupItem>
-      </RadioGroup>
-    </Field>
+    <RadioGroup className="w-full max-w-sm" defaultValue="r-1">
+      <FieldLabel>
+        <Field>
+          <FieldContent>
+            <RadioGroupItem value="r-1">Plus</RadioGroupItem>
+            <FieldDescription>
+              For individuals and small teams.
+            </FieldDescription>
+          </FieldContent>
+        </Field>
+      </FieldLabel>
+
+      <FieldLabel>
+        <Field>
+          <FieldContent>
+            <RadioGroupItem value="r-2">Pro</RadioGroupItem>
+            <FieldDescription>For growing businesses.</FieldDescription>
+          </FieldContent>
+        </Field>
+      </FieldLabel>
+
+      <FieldLabel>
+        <Field>
+          <FieldContent>
+            <RadioGroupItem value="r-3">Enterprise</RadioGroupItem>
+            <FieldDescription>
+              For large teams and enterprises.
+            </FieldDescription>
+          </FieldContent>
+        </Field>
+      </FieldLabel>
+    </RadioGroup>
   );
 };
 

@@ -50,7 +50,7 @@ const FloatingPanelDemo = () => {
             <FloatingPanelRestore />
 
             <FloatingPanelClose asChild>
-              <Button size="icon-sm" variant="solid">
+              <Button size="icon-sm">
                 <X />
                 <span className="sr-only">Close</span>
               </Button>

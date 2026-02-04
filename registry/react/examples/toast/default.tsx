@@ -16,7 +16,6 @@ const ToastDemo = () => {
             type: "error",
           });
         }}
-        type="button"
       >
         Show Toast
       </Button>

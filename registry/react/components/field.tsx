@@ -149,7 +149,7 @@ export const FieldLabel = (
         "group/field-label peer/field-label",
         "font-medium text-sm leading-snug",
         "flex w-fit gap-2",
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5",
         "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
         "group-data-disabled/field:opacity-50",
         "dark:has-data-[state=checked]:bg-primary/10",
@@ -208,6 +208,7 @@ export const FieldDescription = (props: React.ComponentProps<typeof ark.p>) => {
         "font-normal text-muted-foreground text-sm leading-normal",
         "group-has-data-[orientation=horizontal]/field:text-balance",
         "nth-last-2:-mt-1 last:mt-0 [[data-variant=legend]+&]:-mt-1.5",
+        "in-[[data-slot=field]:has([data-slot=radio-group-item])]:ml-6",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
         className
       )}

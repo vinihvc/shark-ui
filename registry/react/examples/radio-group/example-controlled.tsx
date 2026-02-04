@@ -7,19 +7,19 @@ import {
 } from "@/registry/react/components/radio-group";
 
 const Example = () => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState<string | null>(null);
+
+  const isCorrectOption = value === "comfortable";
 
   return (
-    <div className="mx-auto flex max-w-sm flex-col gap-4">
-      <RadioGroup onValueChange={(e) => setValue(e.value)} value={value}>
-        <RadioGroupItem value="1">Option 1</RadioGroupItem>
-        <RadioGroupItem value="2">Option 2</RadioGroupItem>
-        <RadioGroupItem value="3">Option 3</RadioGroupItem>
+    <div className="flex flex-col items-center gap-4 text-center text-sm">
+      <p>Select the option comfortable</p>
+      <RadioGroup onValueChange={({ value }) => setValue(value)} value={value}>
+        <RadioGroupItem value="default">Default</RadioGroupItem>
+        <RadioGroupItem value="comfortable">Comfortable</RadioGroupItem>
+        <RadioGroupItem value="compact">Compact</RadioGroupItem>
       </RadioGroup>
-
-      <p className="text-center text-muted-foreground text-sm">
-        Selected: {value}
-      </p>
+      <p className="text-center">{isCorrectOption ? "✅" : "❌"}</p>
     </div>
   );
 };

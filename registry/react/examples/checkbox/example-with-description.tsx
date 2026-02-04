@@ -9,7 +9,7 @@ import {
 
 const Example = () => {
   return (
-    <FieldGroup className="max-w-sm">
+    <FieldGroup className="mx-auto w-72">
       <Field orientation="horizontal">
         <Checkbox defaultChecked />
         <FieldContent>

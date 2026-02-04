@@ -1,5 +1,5 @@
 import { Button } from "@/registry/react/components/button";
 
-const Example = () => <Button variant="solid">Solid</Button>;
+const Example = () => <Button>Solid</Button>;
 
 export default Example;

@@ -6,7 +6,7 @@ import {
 } from "@/registry/react/components/alert";
 
 const Example = () => (
-  <Alert variant="solid">
+  <Alert>
     <CheckCheck />
     <AlertTitle>Deployment successful</AlertTitle>
     <AlertDescription>

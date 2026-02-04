@@ -1,10 +1,4 @@
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldDescription } from "@/registry/react/components/field";
 import {
   RadioGroup,
   RadioGroupItem,
@@ -12,21 +6,22 @@ import {
 
 const Example = () => {
   return (
-    <FieldGroup className="max-w-sm">
-      <Field orientation="vertical">
-        <FieldLabel>Notification preference</FieldLabel>
+    <RadioGroup defaultValue="all">
+      <Field>
+        <RadioGroupItem value="all">Default</RadioGroupItem>
         <FieldDescription>
-          Choose how you want to be notified about updates
+          Standard spacing for most use cases.
         </FieldDescription>
-        <FieldContent>
-          <RadioGroup defaultValue="all">
-            <RadioGroupItem value="all">All notifications</RadioGroupItem>
-            <RadioGroupItem value="mentions">Mentions only</RadioGroupItem>
-            <RadioGroupItem value="none">None</RadioGroupItem>
-          </RadioGroup>
-        </FieldContent>
       </Field>
-    </FieldGroup>
+      <Field>
+        <RadioGroupItem value="mentions">Comfortable</RadioGroupItem>
+        <FieldDescription>More space between elements.</FieldDescription>
+      </Field>
+      <Field>
+        <RadioGroupItem value="none">Compact</RadioGroupItem>
+        <FieldDescription>Minimal spacing for dense layouts.</FieldDescription>
+      </Field>
+    </RadioGroup>
   );
 };
 

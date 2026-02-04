@@ -58,25 +58,22 @@ import {
 
 ```tsx lineNumbers
 <RadioGroup>
-  <RadioGroupItem value="1">Option 1</RadioGroupItem>
-  <RadioGroupItem value="2">Option 2</RadioGroupItem>
-  <RadioGroupItem value="3">Option 3</RadioGroupItem>
+  <RadioGroupItem value="item-1">{/* label */}</RadioGroupItem>
+  <RadioGroupItem value="item-2">{/* label */}</RadioGroupItem>
 </RadioGroup>
 ```
 
 ## Controlled
 
-Use the `value` prop to control the radio group.
+Use the `value` and `onValueChange` props to control the radio group.
 
 <ComponentPreview componentName="radio-group" fileName="example-controlled" />
 
 ## Invalid State
 
-Use the `invalid` prop on `<Field />` to indicate an invalid state.
+Use the `invalid` prop on `<RadioGroup />` to indicate an invalid state.
 
 <ComponentPreview componentName="radio-group" fileName="example-invalid" />
-
-You can pass `invalid` to the `<Field />` to style the label and description or to individual `<RadioGroupItem />` for item-level validation.
 
 ## Examples
 
@@ -88,29 +85,13 @@ Use `<FieldDescription />` to add a description to the radio group.
 
 ### Disabled
 
-Use the `disabled` prop to disable the radio group.
+Use the `disabled` on `<RadioGroup />` to disable  all the radio group items or on `<RadioGroupItem />` to disable a single item.
 
 <ComponentPreview componentName="radio-group" fileName="example-disabled" />
 
-### Group
-
-Use `<RadioGroup />` with `<FieldSet />` and `<FieldLegend />` to group options with a legend.
-
-<ComponentPreview componentName="radio-group" fileName="example-radio-group" />
-
-Use `defaultValue` to set the default selected value.
-
-```tsx lineNumbers
-<RadioGroup defaultValue="comfortable">
-  <RadioGroupItem value="default" />
-  <RadioGroupItem value="comfortable" />
-  <RadioGroupItem value="compact" />
-</RadioGroup>
-```
-
 ### Card Style
 
-Use `<FieldTitle />` and `<FieldDescription />` for a card-style layout.
+Use `<FieldLabel />` to wrap the entire `<Field />` for a clickable card-style selection.
 
 <ComponentPreview componentName="radio-group" fileName="example-card" />
 
@@ -126,7 +107,6 @@ Root element of the radio group. Renders a `div`
 | `defaultValue` | `string` | `-` |
 | `disabled` | `boolean` | `false` |
 | `name` | `string` | `-` |
-| `orientation` | `'horizontal' \| 'vertical'` | `-` |
 | `onValueChange` | `(details: ValueChangeDetails) => void` | `-` |
 | `className` | `string` | `-` |
 

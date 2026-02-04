@@ -27,7 +27,7 @@ const Example = () => (
       </CardContent>
 
       <CardFooter className="flex-row-reverse">
-        <Button variant="solid">Copy code</Button>
+        <Button>Copy code</Button>
       </CardFooter>
     </Card>
   </div>
