@@ -1,6 +1,7 @@
 import { Progress as ArkProgress } from "@ark-ui/react/progress";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { FieldLabel } from "./field";
 
 interface ProgressProps
   extends Omit<React.ComponentProps<typeof ArkProgress.Root>, "value"> {
@@ -42,6 +43,7 @@ export const Progress = (props: ProgressProps) => {
       {...rest}
     >
       {children}
+
       <ProgressTrack>
         <ProgressRange />
       </ProgressTrack>
@@ -91,13 +93,12 @@ export const ProgressValue = (
   const { className, ...rest } = props;
 
   return (
-    <ArkProgress.ValueText
-      className={cn(
-        "ml-auto text-muted-foreground text-sm tabular-nums",
-        className
-      )}
-      data-slot="progress-value"
-      {...rest}
-    />
+    <FieldLabel asChild>
+      <ArkProgress.ValueText
+        className={cn("ml-auto tabular-nums", className)}
+        data-slot="progress-value"
+        {...rest}
+      />
+    </FieldLabel>
   );
 };

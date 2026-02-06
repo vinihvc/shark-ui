@@ -255,7 +255,7 @@
   }
 
   body {
-    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col;
+    @apply bg-background text-foreground flex min-h-svh flex-col;
   }
 
   main {

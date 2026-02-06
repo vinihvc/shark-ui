@@ -1,10 +1,7 @@
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 const Example = () => (
-  <ScrollArea
-    className="h-64 max-w-80 rounded-lg border **:[p]:min-w-100"
-    direction="both"
-  >
+  <ScrollArea className="h-64 max-w-80 rounded-lg border **:[p]:min-w-100">
     <div className="space-y-4 p-8">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut nulla

@@ -126,7 +126,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
         <Button
           className={cn(
             "justify-start",
-            "h-8 w-full md:w-48 lg:w-40 xl:w-64",
+            "h-8 w-full md:w-48 lg:w-40",
             "pl-3 sm:pr-12",
             "font-normal",
             "shadow-none"
@@ -135,8 +135,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           variant="outline"
           {...props}
         >
-          <span className="hidden lg:inline-flex">Search documentation...</span>
-          <span className="inline-flex lg:hidden">Search...</span>
+          <span className="inline-flex">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden sm:flex">
             <KbdGroup>
               <Kbd className="border">⌘</Kbd>

@@ -76,7 +76,7 @@ import {
 
 ### Collapsible
 
-Use the `collapsible` prop to allow closing the open item by clicking its trigger again.
+Use the `collapsible={false}` prop to disable the collapsible behavior and prevent closing the open item by clicking its trigger again.
 
 <ComponentPreview componentName="accordion" fileName="example-collapsible" />
 
@@ -100,13 +100,11 @@ Root element of the accordion. Renders a `div`
 
 | Prop | Type | Default |
 |------|------|---------|
-| `collapsible` | `boolean` | `false` |
+| `collapsible` | `boolean` | `true` |
 | `multiple` | `boolean` | `false` |
 | `value` | `string[]` | `-` |
 | `defaultValue` | `string[]` | `-` |
 | `onValueChange` | `ValueChangeDetails` | `-` |
-| `lazyMount` | `boolean` | `true` |
-| `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
 ### AccordionItem

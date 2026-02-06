@@ -12,7 +12,7 @@ export const buttonVariants = tv({
     "rounded-md",
     "transition-all",
     "outline-none focus-visible:border-ring focus-visible:ring-[3px]",
-    "disabled:pointer-events-none disabled:opacity-50",
+    "disabled:pointer-events-none disabled:opacity-64",
     "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],

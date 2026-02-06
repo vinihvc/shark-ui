@@ -30,7 +30,7 @@ const Example = () => {
           title="Manage team member"
         />
 
-        <DialogBody>
+        <DialogBody className="grid gap-4">
           <div className="grid gap-1">
             <p className="text-muted-foreground text-sm">Name</p>
             <p className="font-medium text-sm">Bora Baloglu</p>

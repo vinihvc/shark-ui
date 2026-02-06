@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
-import { X } from "lucide-react";
+import { XIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -26,12 +26,11 @@ export const DialogTrigger = (
 
 export const dialogOverlayVariants = tv({
   base: [
-    "z-[calc(40+var(--layer-index,0))]",
+    "fixed inset-0 z-40",
     "bg-black/32 backdrop-blur-sm",
-    "fixed inset-0",
-    "duration-200",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+    "peer peer-data-[slot=dialog-overlay]:hidden",
+    "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
+    "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
   ],
 });
 
@@ -49,25 +48,44 @@ export const DialogOverlay = (
   );
 };
 
+export const DialogPositioner = (
+  props: React.ComponentProps<typeof ArkDialog.Positioner>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkDialog.Positioner
+      className={cn(
+        "fixed inset-0 z-50",
+        "grid grid-rows-[1fr_auto_3fr] justify-items-center",
+        "p-4",
+        "overscroll-y-none [scrollbar-gutter:stable_both-edges]",
+        className
+      )}
+      data-slot="dialog-positioner"
+      {...rest}
+    />
+  );
+};
+
 export const dialogContentVariants = tv({
   base: [
     "[--space:--spacing(6)]",
     "z-[calc(50+var(--layer-index,0))]",
     "relative",
     "row-start-2",
-    "max-h-[calc(100vh-10rem)] min-h-0 w-full min-w-0",
+    "max-h-full min-h-0 w-full min-w-0",
     "flex flex-col",
     "bg-popover",
     "text-popover-foreground",
-    "rounded-lg border shadow-lg/5",
+    "rounded-xl border shadow-lg/5",
     "focus:outline-none focus:ring-0",
+    "-translate-y-[calc(1.25rem*var(--nested-layer-count))]",
     "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
-    "data-has-nested:scale-[calc(1-var(--nested-layer-count)*0.05)]",
-    "data-has-nested:origin-top data-has-nested:-translate-y-[calc(1.25rem*var(--nested-layer-count))] data-has-nested:scale-[calc(1-0.1*var(--nested-layer-count))]",
-    "opacity-[calc(1-0.2*var(--nested-layer-count))]",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
-    "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
+    "data-[nested=dialog]:data-[state=closed]:slide-in-from-bottom-10 data-[nested=dialog]:data-[state=open]:slide-in-from-bottom-10 data-[has-nested=dialog]:origin-top",
+    "scale-[calc(1-0.1*var(--nested-layer-count))] opacity-[calc(1-0.1*var(--nested-layer-count))]",
+    "data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
+    "data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0 data-[state=open]:animate-in",
   ],
   variants: {
     size: {
@@ -82,14 +100,12 @@ export const dialogContentVariants = tv({
         "max-sm:max-w-none",
         "max-sm:rounded-none max-sm:rounded-t-lg max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
         "max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))]",
-        "max-sm:slide-in-from-bottom-5",
-        "max-sm:slide-out-to-bottom-5",
+        "max-sm:data-[state=closed]:slide-out-to-bottom-5 max-sm:data-[state=open]:slide-in-from-bottom-5",
       ],
     },
   },
   defaultVariants: {
     size: "md",
-    bottomStickOnMobile: true,
   },
 });
 
@@ -102,14 +118,20 @@ interface DialogContentProps
    * @default true
    */
   showCloseButton?: boolean;
+  /**
+   * Stick the dialog to the bottom of the screen on mobile
+   *
+   * @default true
+   */
+  bottomStickOnMobile?: boolean;
 }
 
 export const DialogContent = (props: DialogContentProps) => {
   const {
     showCloseButton = true,
     bottomStickOnMobile = true,
-    className,
     size = "md",
+    className,
     children,
     ...rest
   } = props;
@@ -118,13 +140,11 @@ export const DialogContent = (props: DialogContentProps) => {
     <Portal>
       <DialogOverlay />
 
-      <ArkDialog.Positioner
+      <DialogPositioner
         className={cn(
-          "fixed inset-0 z-50 grid grid-rows-[1fr_auto_3fr] justify-items-center p-4",
           bottomStickOnMobile &&
             "max-sm:grid-rows-[1fr_auto] max-sm:p-0 max-sm:pt-12"
         )}
-        data-slot="dialog-positioner"
       >
         <ArkDialog.Content
           className={cn(
@@ -139,27 +159,35 @@ export const DialogContent = (props: DialogContentProps) => {
           {!!showCloseButton && (
             <DialogClose asChild>
               <Button
+                aria-label="Close"
                 className="absolute top-2 right-2 opacity-70 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >
-                <X />
-
-                <span className="sr-only">Close</span>
+                <XIcon />
               </Button>
             </DialogClose>
           )}
         </ArkDialog.Content>
-      </ArkDialog.Positioner>
+      </DialogPositioner>
     </Portal>
   );
 };
 
-export const DialogBody = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
+interface DialogBodyProps extends React.ComponentProps<typeof ark.div> {
+  /**
+   * Add a fade effect to the scroll area
+   *
+   * @default false
+   */
+  scrollFade?: boolean;
+}
+
+export const DialogBody = (props: DialogBodyProps) => {
+  const { scrollFade = false, className, ...rest } = props;
 
   return (
-    <ScrollArea>
+    <ScrollArea scrollFade={scrollFade}>
       <ark.div
         className={cn(
           "flex-1",

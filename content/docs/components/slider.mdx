@@ -59,6 +59,97 @@ import { Slider } from "@/components/ui/slider";
 
 ## Examples
 
-### Default
+### With label and value
 
-<ComponentPreview componentName="slider" fileName="default" />
+Use `<Field>`, `<SliderLabel>`, and `<SliderValue>` for accessible labelling and to show the current value.
+
+<ComponentPreview componentName="slider" fileName="example-with-label" />
+
+### Range
+
+Use an array with two values for a range slider.
+
+<ComponentPreview componentName="slider" fileName="example-range" />
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical slider.
+
+<ComponentPreview componentName="slider" fileName="example-vertical" />
+
+### Controlled
+
+Control the value with `value` and `onValueChange` for a controlled slider.
+
+<ComponentPreview componentName="slider" fileName="example-controlled" />
+
+### Disabled
+
+Use the `disabled` prop to disable the slider.
+
+<ComponentPreview componentName="slider" fileName="example-disabled" />
+
+### Min and max
+
+Set `min` and `max` to constrain the slider's value range.
+
+<ComponentPreview componentName="slider" fileName="example-min-max" />
+
+### Step
+
+Set `step` to control the slider's granularity.
+
+<ComponentPreview componentName="slider" fileName="example-step" />
+
+### Marks
+
+You can use the `showMarkers` and `markerInterval` props to show markers on the slider and control the interval between markers.
+
+<ComponentPreview componentName="slider" fileName="example-marks" />
+
+<Alert>
+  <Info />
+  <AlertDescription>
+    Marks are only supported for `horizontal` sliders.
+  </AlertDescription>
+</Alert>
+
+## API Reference
+
+### Slider
+
+Root element of the slider. Renders the track, range, and thumb(s).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number[]` | — |
+| `defaultValue` | `number[]` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `min` | `number` | `0` |
+| `max` | `number` | `100` |
+| `step` | `number` | `1` |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` |
+| `disabled` | `boolean` | `false` |
+| `showMarkers` | `boolean` | `false` |
+| `markerInterval` | `number` | `1` |
+| `className` | `string` | — |
+
+### SliderLabel
+
+Associates a label with the slider for accessibility. Renders a `label`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### SliderValue
+
+Displays the current slider value. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/slider#api-reference).

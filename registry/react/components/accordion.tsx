@@ -6,10 +6,16 @@ import { cn } from "@/lib/utils";
 export const Accordion = (
   props: React.ComponentProps<typeof ArkAccordion.Root>
 ) => {
-  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    collapsible = true,
+    lazyMount = true,
+    unmountOnExit = true,
+    ...rest
+  } = props;
 
   return (
     <ArkAccordion.Root
+      collapsible={collapsible}
       data-slot="accordion"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
@@ -46,7 +52,7 @@ export const AccordionTrigger = (
         "rounded-md",
         "outline-none",
         "transition-all",
-        "disabled:pointer-events-none disabled:opacity-50",
+        "disabled:pointer-events-none disabled:opacity-64",
         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "[&_[data-state=open]>svg]:rotate-180",
         className

@@ -55,7 +55,7 @@ export const ThemeSelectorDialog = (
       <Dialog>
         <DialogTrigger asChild>
           <Button size="sm" variant="outline">
-            Open theme <ChevronDown className="opacity-50" />
+            Open theme <ChevronDown className="opacity-64" />
           </Button>
         </DialogTrigger>
 

@@ -1,7 +1,4 @@
-import Link from "fumadocs-core/link";
-import { ArrowUpRightIcon } from "lucide-react";
 import { CopyButton } from "@/components/copy-button";
-import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -57,28 +54,6 @@ const Example = () => (
                   value="npm install @shark-ui/collapsible"
                 />
               </pre>
-            </CollapsibleContent>
-          </Collapsible>
-
-          <Collapsible>
-            <CollapsibleTrigger asChild>
-              <Button className="w-full" size="sm" variant="outline">
-                Check the documentation
-                <CollapsibleIndicator />
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="p-2">
-              <p className="text-muted-foreground text-sm">
-                You can find the documentation and examples here:{" "}
-                <Badge asChild variant="info">
-                  <Link
-                    className="text-muted-foreground text-sm"
-                    href="/docs/components"
-                  >
-                    Docs <ArrowUpRightIcon />
-                  </Link>
-                </Badge>
-              </p>
             </CollapsibleContent>
           </Collapsible>
         </CollapsibleContent>

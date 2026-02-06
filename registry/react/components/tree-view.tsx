@@ -75,7 +75,7 @@ export const TreeViewBranchControl = (
         "hover:bg-accent/50",
         "focus:outline-1 focus:outline-muted-foreground focus:-outline-offset-1",
         "data-selected:bg-accent",
-        "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-50",
+        "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-64",
         className
       )}
       data-slot="tree-view-branch-control"
@@ -175,7 +175,7 @@ export const TreeViewItem = (
         "focus:outline-1 focus:outline-muted-foreground focus:-outline-offset-1",
         "hover:bg-accent/50",
         "data-selected:bg-accent",
-        "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-50",
+        "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-64",
         className
       )}
       data-slot="tree-view-item"

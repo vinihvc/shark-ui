@@ -30,7 +30,7 @@ const Example = () => {
       </Collapsible>
 
       <p className="text-center text-muted-foreground text-sm">
-        State: {open ? "open" : "closed"}
+        {open ? "✅" : "❌"}
       </p>
     </div>
   );

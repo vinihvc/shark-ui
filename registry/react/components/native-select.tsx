@@ -42,7 +42,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
   return (
     <ark.div
       className={cn(
-        "group/native-select relative w-fit has-[select:disabled]:opacity-50",
+        "group/native-select relative w-fit has-[select:disabled]:opacity-64",
         className
       )}
       data-slot="native-select-wrapper"

@@ -6,7 +6,7 @@ export const Skeleton = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn("animate-pulse rounded-md bg-accent", className)}
+      className={cn("animate-pulse rounded-md bg-muted", className)}
       data-slot="skeleton"
       {...rest}
     />
@@ -19,7 +19,7 @@ export const SkeletonCircle = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "size-10 shrink-0 animate-pulse rounded-full bg-accent",
+        "size-10 shrink-0 animate-pulse rounded-full bg-muted",
         className
       )}
       data-slot="skeleton-circle"
@@ -38,11 +38,15 @@ interface SkeletonTextProps extends React.ComponentProps<typeof ark.div> {
 }
 
 export const SkeletonText = (props: SkeletonTextProps) => {
-  const { className, lines = 1, ...rest } = props;
+  const { className, lines = 2, ...rest } = props;
 
   return (
     <ark.div
-      className={cn("flex w-full animate-pulse flex-col gap-2", className)}
+      className={cn(
+        "flex w-full animate-pulse flex-col gap-2",
+        "**:[div]:h-4",
+        className
+      )}
       data-slot="skeleton-text"
       {...rest}
     >
@@ -50,10 +54,7 @@ export const SkeletonText = (props: SkeletonTextProps) => {
         const key = `skeleton-text-${index}`;
 
         return (
-          <div
-            className="h-4 w-full rounded-md bg-accent last:w-3/4"
-            key={key}
-          />
+          <div className="w-full rounded-md bg-muted last:w-3/4" key={key} />
         );
       })}
     </ark.div>

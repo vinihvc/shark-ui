@@ -28,14 +28,14 @@ const DialogDemo = () => (
 
     <DialogContent>
       <DialogHeader
-        description="Make changes to your project here. Click save when you're done."
+        description="Make changes to your project settings."
         title="Edit project"
       />
       <DialogBody>
         <FieldSet>
           <FieldGroup>
             <Field>
-              <FieldLabel>Project Name</FieldLabel>
+              <FieldLabel>Name</FieldLabel>
               <Input placeholder="My Project" />
             </Field>
 
@@ -61,7 +61,7 @@ const DialogDemo = () => (
         </DialogClose>
 
         <DialogClose asChild>
-          <Button>Save changes</Button>
+          <Button>Save</Button>
         </DialogClose>
       </DialogFooter>
     </DialogContent>

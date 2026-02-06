@@ -62,7 +62,7 @@ const NumberFieldGroup = (
         "rounded-lg border border-input shadow-xs ring-ring/24",
         "transition-shadow",
         "focus-within:border-ring focus-within:ring-[3px]",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
         "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
         className

@@ -14,25 +14,6 @@ import {
 import type { source } from "@/lib/fumadocs";
 import { NavLink } from "../nav-link";
 
-const TOP_LEVEL_SECTIONS = [
-  { name: "Introduction", href: "/docs", exact: true },
-  { name: "Installation", href: "/docs/installation", exact: true },
-  {
-    name: "Components",
-    href: "/docs/components",
-    exact: true,
-  },
-  {
-    name: "asChild prop",
-    href: "/docs/as-child",
-    exact: true,
-  },
-  {
-    name: "Changelog",
-    href: "/docs/changelog",
-  },
-];
-
 export const DocsSidebar = (
   props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }
 ) => {

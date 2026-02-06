@@ -36,7 +36,7 @@ export const CollapsibleTrigger = (
     <ArkCollapsible.Trigger
       className={cn(
         "cursor-pointer",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         "has-data-[slot=collapsible-indicator]:[button]:justify-between",
         className
       )}

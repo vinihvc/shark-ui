@@ -1,18 +1,19 @@
+import React from "react";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+import { Separator } from "@/registry/react/components/separator";
 
-const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-alpha.${i}`);
+const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);
 
 const Example = () => (
-  <ScrollArea className="h-64 w-48 rounded-lg border" scrollFade>
-    <div className="px-4 py-2">
-      <h4 className="mb-2 font-medium text-sm">Tags</h4>
-      <div className="flex flex-col gap-1">
-        {tags.map((tag) => (
-          <div className="text-sm" key={tag}>
-            {tag}
-          </div>
-        ))}
-      </div>
+  <ScrollArea className="h-64 w-48 rounded-md border" scrollFade>
+    <div className="p-4">
+      <h4 className="mb-4 font-medium text-sm leading-none">Tags</h4>
+      {tags.map((tag) => (
+        <React.Fragment key={tag}>
+          <div className="text-sm">{tag}</div>
+          <Separator className="my-2" />
+        </React.Fragment>
+      ))}
     </div>
   </ScrollArea>
 );

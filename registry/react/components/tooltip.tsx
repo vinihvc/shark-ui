@@ -46,7 +46,7 @@ export const TooltipContent = (
             "z-40 w-fit origin-(--transform-origin)",
             "px-3 py-1.5",
             "bg-popover",
-            "rounded-md border",
+            "rounded-md border shadow-md/5",
             "text-balance text-foreground text-xs",
             "animate-in",
             "fade-in-0 zoom-in-95",

@@ -65,7 +65,7 @@ import {
 
 ```tsx lineNumbers
 <Dialog>
-  <DialogTrigger>Open dialog</DialogTrigger>
+  <DialogTrigger />
   <DialogContent>
     <DialogHeader>
       <DialogTitle />
@@ -108,13 +108,13 @@ Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as chil
 
 ### With ScrollArea
 
-Make the content area scrollable while keeping header and footer fixed using ScrollArea.
+Use `<DialogBody />` to make the content area scrollable while keeping header and footer fixed.
 
 <ComponentPreview componentName="dialog" fileName="example-scroll-area" />
 
 ### No Close Button
 
-Hide the close button in the top right corner by setting `showCloseButton={false}`.
+Use the `showCloseButton` prop to hide the close button in the top right corner.
 
 <ComponentPreview componentName="dialog" fileName="example-no-close-button" />
 
@@ -165,8 +165,6 @@ Root element of the dialog. Renders a `div`.
 | `open` | `boolean` | `-` |
 | `defaultOpen` | `boolean` | `false` |
 | `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
-| `lazyMount` | `boolean` | `true` |
-| `unmountOnExit` | `boolean` | `true` |
 | `modal` | `boolean` | `true` |
 | `closeOnEscape` | `boolean` | `true` |
 | `closeOnInteractOutside` | `boolean` | `true` |
@@ -193,7 +191,6 @@ Container for the dialog content. Renders a `div`.
 |------|------|---------|
 | `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"md"` |
 | `showCloseButton` | `boolean` | `true` |
-| `bottomStickOnMobile` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
 ### DialogHeader
@@ -208,7 +205,7 @@ Header container for the dialog. Renders a `div`.
 
 ### DialogBody
 
-Content container for the dialog. Renders a `div` wrapped in a `ScrollArea`.
+Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
 
 | Prop | Type | Default |
 |------|------|---------|

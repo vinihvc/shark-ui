@@ -3,7 +3,7 @@ import type { RegistryItemType } from "@/lib/registry";
 const dependencies = ["@ark-ui/react"];
 
 const manifest: RegistryItemType = {
-  name: "splitter",
+  name: "resizable",
   type: "registry:ui",
   dependencies,
 };

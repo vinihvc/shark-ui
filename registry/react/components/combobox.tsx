@@ -203,7 +203,7 @@ export const ComboboxItem = (
         "outline-hidden",
         "data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground",
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0",
         "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
         className

@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
-  Splitter,
-  SplitterPanel,
-  SplitterResizeTrigger,
-} from "@/registry/react/components/splitter";
+  Resizable,
+  ResizablePanel,
+  ResizableResizeTrigger,
+} from "@/registry/react/components/resizable";
 
 interface ComponentResizerProps extends React.ComponentProps<"figure"> {
   /**
@@ -92,8 +92,8 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
         </div>
       </figcaption>
 
-      <Splitter defaultSize={[100, 0]} panels={[{ id: "1" }, { id: "2" }]}>
-        <SplitterPanel
+      <Resizable defaultSize={[100, 0]} panels={[{ id: "1" }, { id: "2" }]}>
+        <ResizablePanel
           id="1"
           key={count}
           style={{
@@ -101,14 +101,14 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
           }}
         >
           {children}
-        </SplitterPanel>
+        </ResizablePanel>
 
-        <SplitterResizeTrigger id="1:2" withHandle />
-        <SplitterPanel
+        <ResizableResizeTrigger id="1:2" withHandle />
+        <ResizablePanel
           className="relative z-10 flex h-full w-full after:absolute after:inset-0 after:right-3 after:z-0 after:bg-muted/50"
           id="2"
         />
-      </Splitter>
+      </Resizable>
     </figure>
   );
 };

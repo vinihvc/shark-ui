@@ -3,7 +3,7 @@ import { GripVertical } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export const Splitter = (
+export const Resizable = (
   props: React.ComponentProps<typeof ArkSplitter.Root>
 ) => {
   const { className, ...rest } = props;
@@ -11,13 +11,13 @@ export const Splitter = (
   return (
     <ArkSplitter.Root
       className={cn("flex size-full", className)}
-      data-slot="splitter"
+      data-slot="resizable"
       {...rest}
     />
   );
 };
 
-export const SplitterPanel = (
+export const ResizablePanel = (
   props: React.ComponentProps<typeof ArkSplitter.Panel>
 ) => {
   const { className, ...rest } = props;
@@ -25,13 +25,13 @@ export const SplitterPanel = (
   return (
     <ArkSplitter.Panel
       className={cn(className)}
-      data-slot="splitter-panel"
+      data-slot="resizable-panel"
       {...rest}
     />
   );
 };
 
-interface SplitterResizeTriggerProps
+interface ResizableResizeTriggerProps
   extends React.ComponentProps<typeof ArkSplitter.ResizeTrigger> {
   /**
    * Whether to show the handle
@@ -41,7 +41,7 @@ interface SplitterResizeTriggerProps
   withHandle?: boolean;
 }
 
-export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
+export const ResizableResizeTrigger = (props: ResizableResizeTriggerProps) => {
   const { withHandle = false, className, ...rest } = props;
 
   return (
@@ -59,7 +59,7 @@ export const SplitterResizeTrigger = (props: SplitterResizeTriggerProps) => {
         "[&[data-orientation=vertical]>div]:rotate-90",
         className
       )}
-      data-slot="splitter-resize-trigger"
+      data-slot="resizable-resize-trigger"
       {...rest}
     >
       {withHandle && (

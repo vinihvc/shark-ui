@@ -82,7 +82,7 @@ export const CommandItem = (
           "cursor-default",
           "outline-hidden",
           "rounded-sm",
-          "data-disabled:pointer-events-none data-disabled:opacity-50",
+          "data-disabled:pointer-events-none data-disabled:opacity-64",
           "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
           "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
@@ -106,7 +106,7 @@ export const CommandInput = (
 
   return (
     <div className="flex h-9 items-center gap-2 border-b px-3">
-      <SearchIcon className="size-4 shrink-0 opacity-50" />
+      <SearchIcon className="size-4 shrink-0 opacity-64" />
 
       <ComboboxInput
         className={cn(
@@ -117,7 +117,7 @@ export const CommandInput = (
           "text-sm",
           "outline-hidden",
           "placeholder:text-muted-foreground",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "disabled:cursor-not-allowed disabled:opacity-64",
           className
         )}
         data-slot="command-input"

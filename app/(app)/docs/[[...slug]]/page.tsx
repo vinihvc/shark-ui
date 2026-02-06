@@ -57,7 +57,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
     <div className="size-full">
       <div className="flex items-stretch xl:w-full" data-slot="docs">
         <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-8 lg:mr-4 lg:mb-8">
-          <div className="relative flex w-full flex-col border bg-muted/32 text-card-foreground shadow-xs/5 max-lg:border-none lg:rounded-2xl">
+          <div className="relative flex w-full flex-col border bg-muted/20 text-card-foreground shadow-lg/5 max-lg:border-none lg:rounded-2xl">
             <div className="flex-1 px-4 py-6 sm:px-6 lg:p-8">
               <div className="mx-auto w-full">
                 <div className="flex min-w-0 flex-col gap-8">
@@ -147,8 +147,11 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
           </div>
         </div>
 
-        <div className="sticky top-(--header-height) z-30 ms-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col overflow-hidden overscroll-none xl:flex">
-          <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:hidden">
+        <div className="sticky top-(--header-height) z-30 ms-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col overflow-hidden xl:flex">
+          <ScrollArea
+            className="[--fade-size:3rem] **:data-[slot=scroll-area-scrollbar]:hidden"
+            scrollFade
+          >
             <div className="flex min-h-0 flex-col gap-2 overflow-auto py-2">
               <div className="h-(--top-spacing) shrink-0" />
               {page.data.toc && page.data.toc.length > 0 && (

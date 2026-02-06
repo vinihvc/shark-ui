@@ -90,21 +90,11 @@ Root element of the hover card component. Renders a `div`.
 | `closeDelay` | `number` | `100` |
 | `defaultOpen` | `boolean` | - |
 | `disabled` | `boolean` | - |
-| `id` | `string` | - |
-| `ids` | `Partial<{ trigger: string; content: string; positioner: string; arrow: string }>` | - |
 | `immediate` | `boolean` | - |
-| `lazyMount` | `boolean` | `true` |
-| `onExitComplete` | `VoidFunction` | - |
-| `onFocusOutside` | `(event: FocusOutsideEvent) => void` | - |
-| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | - |
 | `onOpenChange` | `(details: OpenChangeDetails) => void` | - |
-| `onPointerDownOutside` | `(event: PointerDownOutsideEvent) => void` | - |
 | `open` | `boolean` | - |
 | `openDelay` | `number` | `10` |
 | `positioning` | `PositioningOptions` | `{ placement: "top" }` |
-| `present` | `boolean` | - |
-| `skipAnimationOnMount` | `boolean` | `false` |
-| `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
 ### HoverCardTrigger
@@ -116,13 +106,6 @@ Button that triggers the hover card. Renders a `button`.
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
 
-**Attributes:**
-
-- `[data-scope]` - hover-card
-- `[data-part]` - trigger
-- `[data-placement]` - The placement of the trigger
-- `[data-state]` - "open" | "closed"
-
 ### HoverCardContent
 
 Content element that displays when the hover card is open. Renders a `div`.
@@ -131,20 +114,6 @@ Content element that displays when the hover card is open. Renders a `div`.
 | --- | --- | --- |
 | `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
-
-**Attributes:**
-
-- `[data-scope]` - hover-card
-- `[data-part]` - content
-- `[data-state]` - "open" | "closed"
-- `[data-nested]` - popover
-- `[data-has-nested]` - popover
-- `[data-placement]` - The placement of the content
-
-**CSS Variables:**
-
-- `--layer-index` - The index of the dismissable in the layer stack
-- `--nested-layer-count` - The number of nested hover-cards
 
 ### HoverCardArrow
 

@@ -151,7 +151,7 @@ export const FieldLabel = (
         "flex w-fit gap-2",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5",
         "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
-        "group-data-disabled/field:opacity-50",
+        "group-data-disabled/field:opacity-64",
         "dark:has-data-[state=checked]:bg-primary/10",
         className
       )}
@@ -190,7 +190,7 @@ export const FieldTitle = (props: React.ComponentProps<typeof ark.div>) => {
         "w-fit",
         "flex items-center gap-2",
         "font-medium text-sm leading-snug",
-        "group-data-[disabled=true]/field:opacity-50",
+        "group-data-[disabled=true]/field:opacity-64",
         className
       )}
       data-slot="field-title"

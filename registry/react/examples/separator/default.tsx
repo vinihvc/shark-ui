@@ -1,21 +1,16 @@
 import { Separator } from "@/registry/react/components/separator";
 
 const SeparatorDemo = () => (
-  <div>
-    <div className="space-y-1">
-      <h4 className="font-medium text-sm leading-none">Ark UI Primitives</h4>
-      <p className="text-muted-foreground text-sm">
+  <div className="flex max-w-sm flex-col gap-4 text-sm">
+    <div className="flex flex-col gap-1">
+      <h4 className="font-medium leading-none">Shark UI</h4>
+      <p className="text-muted-foreground">
         A set of primitive components for building UI.
       </p>
     </div>
-
-    <Separator className="my-4" />
-    <div className="flex h-5 items-center space-x-4 text-sm">
-      <div>Examples</div>
-      <Separator orientation="vertical" />
-      <div>Documentation</div>
-      <Separator orientation="vertical" />
-      <div>GitHub</div>
+    <Separator />
+    <div>
+      A collection of accessible, beautiful, and customizable components.
     </div>
   </div>
 );
