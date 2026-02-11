@@ -354,7 +354,7 @@
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: var(--color-success);
+    background-color: --alpha(var(--color-card-foreground) / 4%);
   }
 
   [data-line] {
@@ -376,7 +376,7 @@
   [data-highlighted-line],
   [data-highlighted-chars] {
     position: relative;
-    background-color: var(--color-success);
+    background-color: --alpha(var(--color-card-foreground) / 4%);
   }
 
   [data-highlighted-line] {

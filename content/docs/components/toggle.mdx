@@ -18,7 +18,7 @@ links:
 </TabsList>
 
 <TabsContent value="cli">
-  
+
 ```bash
 npx shadcn@latest add @shark-ui/toggle
 ```
@@ -50,20 +50,56 @@ npm install @ark-ui/react tailwind-variants
 ## Usage
 
 ```tsx lineNumbers
-import { 
-  Toggle,   
-  ToggleIndicator 
-} from "@/components/ui/toggle"; 
+import { Toggle } from "@/components/ui/toggle";
 ```
 
 ```tsx lineNumbers
-<Toggle>
-  <ToggleIndicator />
-</Toggle>
+<Toggle>Toggle</Toggle>
 ```
+
+## Variants
+
+### Outline
+
+<ComponentPreview componentName="toggle" fileName="example-outline" />
+
+## Sizes
+
+### Small
+
+<ComponentPreview componentName="toggle" fileName="example-size-sm" />
+
+### Large
+
+<ComponentPreview componentName="toggle" fileName="example-size-lg" />
+
+## Controlled
+
+Use the `pressed` and `onPressedChange` props to control the toggle state programmatically.
+
+<ComponentPreview componentName="toggle" fileName="example-controlled" />
 
 ## Examples
 
-### Default
+### With Icon
 
-<ComponentPreview componentName="toggle" fileName="default" />
+<ComponentPreview componentName="toggle" fileName="example-with-icon" />
+
+### Disabled
+
+<ComponentPreview componentName="toggle" fileName="example-disabled" />
+
+### Icon Group
+
+<ComponentPreview componentName="toggle" fileName="example-icon-group" />
+
+## API Reference
+
+### Toggle
+
+Styled wrapper for the toggle with variant and size options.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"outline"` \| `"ghost"` | `"ghost"` | 
+| `size` | `"sm"` \| `"md"` \| `"lg"` | `"md"` |

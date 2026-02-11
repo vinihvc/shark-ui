@@ -41,7 +41,7 @@ import {
   PopoverHeader,
   PopoverTrigger,
 } from "@/registry/react/components/popover";
-import { useToast } from "@/registry/react/components/toast";
+import { toast } from "@/registry/react/components/toast";
 import {
   Tooltip,
   TooltipContent,
@@ -50,7 +50,6 @@ import {
 
 export const CardsButtons = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const toast = useToast();
 
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -158,6 +157,7 @@ export const CardsButtons = () => {
         <Button
           onClick={() =>
             toast.create({
+              id: "easter-egg",
               title: "You found the easter egg!",
               description: "Congratulations!",
               type: "success",

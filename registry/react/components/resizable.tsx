@@ -1,3 +1,5 @@
+"use client";
+
 import { Splitter as ArkSplitter } from "@ark-ui/react/splitter";
 import { GripVertical } from "lucide-react";
 import type React from "react";

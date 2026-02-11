@@ -6,7 +6,7 @@ import {
 
 const Example = () => (
   <Resizable
-    className="h-[200px] rounded-md border"
+    className="rounded-md border"
     defaultSize={[50, 50]}
     panels={[{ id: "1" }, { id: "2" }]}
   >

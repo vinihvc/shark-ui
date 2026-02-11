@@ -1,5 +1,8 @@
-import { Button } from "@/registry/react/components/button";
-import { Card, CardFooter, CardHeader } from "@/registry/react/components/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/react/components/card";
 import {
   Tabs,
   TabsContent,
@@ -22,22 +25,21 @@ const TabsDemo = () => (
           title="Profile"
         />
 
-        <CardFooter className="mt-auto">
-          <Button>Learn more</Button>
-        </CardFooter>
+        <CardContent className="text-muted-foreground text-sm">
+          View you shared information here, update you profile name, picture and
+          email.
+        </CardContent>
       </Card>
     </TabsContent>
 
     <TabsContent value="tab-2">
       <Card className="h-full w-sm">
-        <CardHeader
-          description="Update credentials and preferences"
-          title="Settings"
-        />
+        <CardHeader description="Update your preferences" title="Settings" />
 
-        <CardFooter className="mt-auto">
-          <Button>Learn more</Button>
-        </CardFooter>
+        <CardContent className="text-muted-foreground text-sm">
+          Customize how to handle notifications, update the theme and text
+          density.
+        </CardContent>
       </Card>
     </TabsContent>
 
@@ -47,10 +49,9 @@ const TabsDemo = () => (
           description="Protect your account and data"
           title="Security"
         />
-
-        <CardFooter className="mt-auto">
-          <Button>Learn more</Button>
-        </CardFooter>
+        <CardContent className="text-muted-foreground text-sm">
+          Update your security settings here, change your password and more.
+        </CardContent>
       </Card>
     </TabsContent>
   </Tabs>

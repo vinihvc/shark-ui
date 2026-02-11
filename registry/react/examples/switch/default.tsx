@@ -1,22 +1,13 @@
-import {
-  Field,
-  FieldHelper,
-  FieldLabel,
-} from "@/registry/react/components/field";
+import { Field, FieldLabel } from "@/registry/react/components/field";
 import { Switch } from "@/registry/react/components/switch";
 
 const SwitchDemo = () => (
-  <Field>
+  <div className="max-w-sm">
     <Field orientation="horizontal">
-      <Switch />
-
-      <FieldLabel>Receive notifications</FieldLabel>
+      <Switch defaultChecked />
+      <FieldLabel> Airplane mode</FieldLabel>
     </Field>
-
-    <FieldHelper>
-      You'll receive a notification when someone posts a comment
-    </FieldHelper>
-  </Field>
+  </div>
 );
 
 export default SwitchDemo;

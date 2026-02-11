@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-const badgeVariants = tv({
+export const badgeVariants = tv({
   base: [
     "inline-flex items-center justify-center gap-1",
     "select-none font-medium",
@@ -91,6 +91,8 @@ const badgeVariants = tv({
     pill: false,
   },
 });
+
+export type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
 
 interface BadgeProps
   extends React.ComponentProps<typeof ark.span>,

@@ -5,56 +5,44 @@ import {
   Toast as ArkToast,
   Toaster as ArkToaster,
   createToaster,
+  type ToastType,
 } from "@ark-ui/react/toast";
 import {
-  CircleAlert,
-  CircleCheck,
-  Loader,
-  TriangleAlert,
-  X,
+  CircleAlertIcon,
+  CircleCheckIcon,
+  InfoIcon,
+  TriangleAlertIcon,
+  XIcon,
 } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
+import { Spinner } from "./spinner";
 
-const TOAST_ICONS: {
-  [key: string]: React.ReactNode;
-} = {
-  loading: <Loader className="animate-spin" />,
-  success: <CircleCheck />,
-  error: <CircleAlert />,
-  info: <React.Fragment />,
-  warning: <TriangleAlert />,
-};
-
-const toaster = createToaster({
+export const toast = createToaster({
   placement: "bottom-end",
   overlap: true,
-  gap: 24,
-  duration: 50_000,
+  max: 3,
 });
-
-export const useToast = () => toaster;
 
 const toastVariants = tv({
   base: [
     "z-(--z-index) translate-x-(--x) translate-y-(--y)",
     "relative",
-    "flex items-center gap-2",
-    "w-full min-w-[356px] max-w-[420px] sm:max-w-[420px]",
-    "px-4 py-3",
-    "bg-card text-card-foreground",
-    "rounded-lg border shadow-lg",
+    "flex items-start justify-between gap-1.5",
+    "w-full min-w-90 max-sm:min-w-72",
+    "px-3.5 py-3",
+    "bg-popover",
+    "select-none text-card-foreground text-sm",
+    "rounded-lg border shadow-lg/5",
     "h-(--height)",
     "scale-(--scale) opacity-(--opacity)",
-    "will-change-[translate,opacity,scale]",
-    "transition-all duration-300",
+    "transition-all duration-250 will-change-[translate,opacity,scale]",
     "ease-[cubic-bezier(0.21,1.02,0.73,1)]",
     "data-[state=closed]:transition-[translate,scale,opacity]",
-    "data-[state=closed]:duration-[400ms,400ms,200ms]",
+    "data-[state=closed]:duration-[300ms,300ms,150ms]",
     "data-[state=closed]:ease-[cubic-bezier(0.06,0.71,0.55,1)]",
-    "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   ],
 });
 
@@ -67,81 +55,106 @@ interface ToasterProps
    * Toaster instance
    */
   toaster?: ReturnType<typeof createToaster>;
-  /**
-   * Show close button at the top right corner
-   *
-   * @default true
-   */
-  showCloseButton?: boolean;
 }
 
 export const Toaster = (props: ToasterProps) => {
-  const {
-    toaster: toasterInstance = toaster,
-    showCloseButton = true,
-    className,
-    ...rest
-  } = props;
+  const { toaster: toasterInstance = toast, className, ...rest } = props;
 
   return (
     <Portal>
       <ArkToaster toaster={toasterInstance} {...rest}>
-        {(toast) => {
-          const ToastIcon = toast.type
-            ? TOAST_ICONS[toast.type as keyof typeof TOAST_ICONS]
-            : undefined;
-
-          return (
-            <ArkToast.Root
-              className={cn(toastVariants(), className)}
-              data-slot="toast"
-            >
-              {ToastIcon}
-
-              <div className="flex flex-col gap-0.5">
-                <ArkToast.Title
-                  className="font-medium text-sm leading-none tracking-tight"
-                  data-slot="toast-title"
-                >
-                  {toast.title}
-                </ArkToast.Title>
-
-                {toast.description && (
-                  <ArkToast.Description
-                    className="text-muted-foreground text-xs"
-                    data-slot="toast-description"
-                  >
-                    {toast.description}
-                  </ArkToast.Description>
-                )}
-              </div>
-
-              {toast.action && (
-                <ArkToast.ActionTrigger
-                  data-slot="toast-action-trigger"
-                  onClick={toast.action.onClick}
-                >
-                  {toast.action.label}
-                </ArkToast.ActionTrigger>
-              )}
-
-              {showCloseButton && (
-                <ArkToast.CloseTrigger asChild data-slot="toast-close-trigger">
-                  <Button
-                    className="absolute top-2 right-2 opacity-70 hover:opacity-100"
-                    size="icon-sm"
-                    variant="ghost"
-                  >
-                    <X />
-
-                    <span className="sr-only">Close</span>
-                  </Button>
-                </ArkToast.CloseTrigger>
-              )}
-            </ArkToast.Root>
-          );
-        }}
+        {(toast) => <ToastItem toast={toast} />}
       </ArkToaster>
     </Portal>
+  );
+};
+
+const TOAST_ICONS: Record<ToastType, React.ReactNode> = {
+  loading: <Spinner />,
+  success: <CircleCheckIcon />,
+  error: <CircleAlertIcon />,
+  info: <InfoIcon />,
+  warning: <TriangleAlertIcon />,
+};
+
+interface ToastItemProps extends React.ComponentProps<typeof ArkToast.Root> {
+  /**
+   * The toast item data
+   */
+  toast: ArkToast.Options;
+}
+
+export const ToastItem = (props: ToastItemProps) => {
+  const { toast, className, ...rest } = props;
+
+  const ToastIcon = toast.type ? TOAST_ICONS[toast.type] : undefined;
+
+  return (
+    <ArkToast.Root
+      className={cn(toastVariants(), className)}
+      data-slot="toast"
+      {...rest}
+    >
+      <div className="flex items-start gap-1.5">
+        <div
+          className={cn(
+            "in-[[data-type=warning]]:text-warning",
+            "in-[[data-type=success]]:text-success",
+            "in-[[data-type=error]]:text-destructive",
+            "in-[[data-type=info]]:text-info",
+            "[&_svg]:pointer-events-none [&_svg]:h-lh [&_svg]:w-4 [&_svg]:shrink-0"
+          )}
+          data-slot="toast-icon"
+        >
+          {ToastIcon}
+        </div>
+
+        <div className="flex flex-col gap-0.5">
+          <ArkToast.Title
+            className="font-medium text-sm"
+            data-slot="toast-title"
+          >
+            {toast.title}
+          </ArkToast.Title>
+
+          {toast.description && (
+            <ArkToast.Description
+              className="text-muted-foreground text-sm"
+              data-slot="toast-description"
+            >
+              {toast.description}
+            </ArkToast.Description>
+          )}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2">
+        {toast.action && (
+          <ArkToast.ActionTrigger
+            asChild
+            data-slot="toast-action-trigger"
+            onClick={toast.action.onClick}
+          >
+            <Button size="sm" variant="ghost">
+              {toast.action.label}
+            </Button>
+          </ArkToast.ActionTrigger>
+        )}
+
+        {toast.closable && (
+          <ArkToast.CloseTrigger asChild data-slot="toast-close-trigger">
+            <Button
+              className="opacity-70 hover:opacity-100"
+              size="icon-sm"
+              variant="ghost"
+            >
+              <XIcon />
+
+              <span className="sr-only">Close</span>
+            </Button>
+          </ArkToast.CloseTrigger>
+        )}
+      </div>
+    </ArkToast.Root>
   );
 };

@@ -47,28 +47,145 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 </CodeTabs>
 
+<Step>Add the `Toaster` to your app.</Step>
+
+```tsx title="app/layout.tsx" {1,9} showLineNumbers
+import { Toaster } from "@/components/ui/toast"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en"> 
+      <head />
+      <body>
+        <main>{children}</main>
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
 ## Usage
 
 ```tsx lineNumbers
-import { Toaster } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 ```
 
 ```tsx lineNumbers
-const toaster = useToast();
-
-// add the toaster to the layout
-<Toaster toaster={toaster} />
-
-// show a toast
-toaster.create({
-  title: "Show Info Toast",
-  description: "This is a info toast",
-  type: "error",
+toast.create({
+  title: "Success!",
+  description: "User has been created.",
+  type: "success",
 });
 ```
 
+## Types
+
+<ComponentPreview componentName="toast" fileName="example-types" />
+
 ## Examples
 
-### Default
+### Promise
 
-<ComponentPreview componentName="toast" fileName="default" />
+<ComponentPreview componentName="toast" fileName="example-promise" />
+
+### Action
+
+<ComponentPreview componentName="toast" fileName="example-action" />
+
+### Duration
+
+Control how long a toast stays visible with the `duration` option.
+
+Use `Infinity` to keep the toast visible until the user dismisses it.
+
+<ComponentPreview componentName="toast" fileName="example-duration" />
+
+### Closable
+
+Use `closable: true` to show the close button.
+
+<ComponentPreview componentName="toast" fileName="example-closable" />
+
+### Placement
+
+<ComponentPreview componentName="toast" fileName="example-placement" />
+
+By default, the toaster is placed at the bottom right corner of the screen. 
+
+You can customize the placement of the toaster by updating the `placement` option in `createToaster()`.
+
+```tsx title="components/ui/toast.tsx" {2} showLineNumbers
+const toast = createToaster({
+  placement: "bottom-end",
+  overlap: true,
+  max: 3,
+});
+```
+
+### Max visible
+
+Any extra toasts will be queued and rendered when a toast has been dismissed.
+
+By default, the toaster can display up to 3 toasts at the same time. You can customize the maximum number of visible toasts by updating the `max` option in `createToaster()`.
+
+```tsx title="components/ui/toast.tsx" {4} showLineNumbers
+const toast = createToaster({
+  placement: "bottom-end",
+  overlap: true,
+  max: 3,
+});
+```
+
+### Prevent duplicates
+
+To prevent duplicate toasts, pass a `id` to the toast.  
+
+```tsx lineNumbers {2} showLineNumbers
+toast.create({
+  id: "save-success",
+  title: "Saved!",
+  description: "Your changes have been saved.",
+  type: "success",
+});
+```
+
+## API Reference
+
+### Toaster
+
+Renders the toast container. Place it once in your app layout.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `toaster` | `ReturnType<typeof createToaster>` | default `toast` | The toaster instance to render |
+| `className` | `string` | `-` | Optional class name for the toaster group |
+| `dir` | `"ltr"` \| `"rtl"` | `"ltr"` | Text direction |
+
+### ToastItem
+
+Renders a single toast. Used internally by `Toaster` for each toast. Renders a `div`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `-` | Optional class name for the toast root |
+
+### toast (instance methods)
+
+| Method | Description |
+|--------|-------------|
+| `toast.create` | Create a toast with the given options |
+| `toast.success` | Create a success toast |
+| `toast.error` | Create an error toast |
+| `toast.warning` | Create a warning toast |
+| `toast.info` | Create an info toast |
+| `toast.loading` | Create a loading toast |
+| `toast.promise` | Create a toast that tracks a promise (loading → success/error) |
+| `toast.update` | Update an existing toast by id |
+| `toast.dismiss` | Dismiss a toast by id, or all if no id |
+| `toast.pause` | Pause auto-dismiss timer |
+| `toast.resume` | Resume auto-dismiss timer |
+
+---
+
+For more details, see the [Ark UI Toast documentation](https://ark-ui.com/docs/components/toast#api-reference).   

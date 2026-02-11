@@ -5,11 +5,10 @@ import { cn } from "@/lib/utils";
 export const Textarea = (
   props: React.ComponentProps<typeof ArkField.Textarea>
 ) => {
-  const { autoresize = true, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <ArkField.Textarea
-      autoresize={autoresize}
       className={cn(
         "field-sizing-content min-h-16 w-full",
         "flex",
@@ -18,10 +17,11 @@ export const Textarea = (
         "text-base md:text-sm",
         "rounded-md border border-input shadow-xs",
         "placeholder:text-muted-foreground",
-        "outline-none transition-[color,box-shadow]",
-        "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        "disabled:cursor-not-allowed disabled:opacity-64",
-        "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
+        "transition-[color,box-shadow]",
+        "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 data-invalid:text-destructive",
+        "dark:data-invalid:text-destructive-foreground dark:aria-invalid:border-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
+        "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
         className
       )}
       data-slot="textarea"

@@ -6,7 +6,7 @@ import {
 
 const Example = () => (
   <Resizable
-    className="h-[200px] rounded-md border"
+    className="rounded-md border"
     defaultSize={[50, 50]}
     orientation="vertical"
     panels={[{ id: "1" }, { id: "2" }]}
@@ -15,7 +15,7 @@ const Example = () => (
       Top
     </ResizablePanel>
 
-    <ResizableResizeTrigger id="1:2" />
+    <ResizableResizeTrigger id="1:2" withHandle />
 
     <ResizablePanel className="flex items-center justify-center" id="2">
       Bottom

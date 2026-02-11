@@ -18,7 +18,7 @@ links:
 </TabsList>
 
 <TabsContent value="cli">
-  
+
 ```bash
 npx shadcn@latest add @shark-ui/steps
 ```
@@ -32,7 +32,7 @@ npx shadcn@latest add @shark-ui/steps
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @ark-ui/react
+npm install @ark-ui/react lucide-react
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -50,39 +50,90 @@ npm install @ark-ui/react
 ## Usage
 
 ```tsx lineNumbers
-import { 
-  Steps, 
-  StepsList, 
-  StepsItem, 
-  StepsTrigger, 
-  StepsSeparator, 
-  StepsIndicator, 
-  StepsContent, 
-  StepsCompletedContent, 
-  StepsNext, 
-  StepsPrevious 
+import {
+  Steps,
+  StepsList,
+  StepsItem,
+  StepsTrigger,
+  StepsSeparator,
+  StepsIndicator,
+  StepsTitle,
+  StepsDescription,
+  StepsContent,
+  StepsCompletedContent,
+  StepsNext,
+  StepsPrevious
 } from "@/components/ui/steps";
 ```
 
 ```tsx lineNumbers
 <Steps>
   <StepsList>
-    <StepsItem index={0}>
-      <StepsTrigger>Step 1</StepsTrigger>
+    <StepsItem>
+      <StepsTrigger>
+        <StepsIndicator />
+        <StepsTitle />
+      </StepsTrigger>
+      <StepsSeparator />
     </StepsItem>
   </StepsList>
-
-  <StepsContent index={0}>Content 1</StepsContent>
-
-  <StepsCompletedContent>Completed Content</StepsCompletedContent>
-
-  <StepsNext>Next</StepsNext>
-  <StepsPrevious>Previous</StepsPrevious>
+  <StepsContent />
+  <StepsCompletedContent />
+  <StepsPrevious />
+  <StepsNext />
 </Steps>
 ```
 
 ## Examples
 
-### Default
+### Title
 
-<ComponentPreview componentName="steps" fileName="default" />
+Use `<StepsTitle />` to display a description for each step.
+
+<ComponentPreview componentName="steps" fileName="example-title" />
+
+### Description
+
+Use `<StepsDescription />` to display a description for each step.
+
+<ComponentPreview componentName="steps" fileName="example-description" />
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical layout.
+
+<ComponentPreview componentName="steps" fileName="example-vertical" />
+
+### Custom Icon
+
+<ComponentPreview componentName="steps" fileName="example-icon" />
+
+### Loading
+
+<ComponentPreview componentName="steps" fileName="example-loading" />
+
+### Controlled
+
+Use the `step` and `onStepChange` props to control the active step programmatically.
+
+<ComponentPreview componentName="steps" fileName="example-controlled" />
+
+## API Reference
+
+### Steps
+
+Root element of the steps. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `count` | `number` | `-` |
+| `step` | `number` | `-` |
+| `defaultStep` | `number` | `-` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `linear` | `boolean` | `false` |
+| `onStepChange` | `(details: StepChangeDetails) => void` | `-` |
+| `onStepComplete` | `() => void` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/steps#api-reference).

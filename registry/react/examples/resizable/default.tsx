@@ -8,7 +8,10 @@ const ResizableDemo = () => (
   <Resizable
     className="rounded-md border"
     defaultSize={[50, 50]}
-    panels={[{ id: "1" }, { id: "2" }]}
+    panels={[
+      { id: "1", minSize: 10 },
+      { id: "2", minSize: 10 },
+    ]}
   >
     <ResizablePanel className="flex h-full items-center justify-center" id="1">
       One
@@ -20,7 +23,10 @@ const ResizableDemo = () => (
       <Resizable
         defaultSize={[50, 50]}
         orientation="vertical"
-        panels={[{ id: "3" }, { id: "4" }]}
+        panels={[
+          { id: "3", minSize: 10 },
+          { id: "4", minSize: 10 },
+        ]}
       >
         <ResizablePanel className="flex items-center justify-center" id="3">
           Two

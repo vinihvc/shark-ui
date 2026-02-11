@@ -12,17 +12,25 @@ const Example = () => (
       <TabsTrigger value="tab-2">Tab 2</TabsTrigger>
       <TabsTrigger value="tab-3">Tab 3</TabsTrigger>
     </TabsList>
-
-    <TabsContent value="tab-1">
-      <p className="p-4 text-center text-muted-foreground text-xs">Content 1</p>
+    <TabsContent
+      className="p-4 text-center text-muted-foreground text-xs"
+      value="tab-1"
+    >
+      Content 1
     </TabsContent>
 
-    <TabsContent value="tab-2">
-      <p className="p-4 text-center text-muted-foreground text-xs">Content 2</p>
+    <TabsContent
+      className="p-4 text-center text-muted-foreground text-xs"
+      value="tab-2"
+    >
+      Content 2
     </TabsContent>
 
-    <TabsContent value="tab-3">
-      <p className="p-4 text-center text-muted-foreground text-xs">Content 3</p>
+    <TabsContent
+      className="p-4 text-center text-muted-foreground text-xs"
+      value="tab-3"
+    >
+      Content 3
     </TabsContent>
   </Tabs>
 );

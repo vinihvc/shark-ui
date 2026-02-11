@@ -1,11 +1,15 @@
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/react/components/avatar";
+import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
 } from "@/registry/react/components/card";
 import { Rating } from "@/registry/react/components/rating";
-import { Avatar, AvatarFallback, AvatarImage } from "../../components/avatar";
 
 const Example = () => (
   <Card className="w-full max-w-xs">

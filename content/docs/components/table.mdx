@@ -1,6 +1,6 @@
 ---
 title: Table  
-description: A component that displays data in a tabular format
+description: A responsive table component.
 ---
 
 <ComponentPreview componentName="table" />
@@ -61,28 +61,128 @@ import {
 
 ```tsx lineNumbers
 <Table>
-  <TableCaption>A list of users in your workspace.</TableCaption>
+  <TableCaption />
   <TableHeader>
     <TableRow>
-      <TableHead>Name</TableHead>
-      <TableHead>Email</TableHead>
-      <TableHead>Role</TableHead>
-      <TableHead>Status</TableHead>
+      <TableHead />
+      <TableHead />
     </TableRow>
   </TableHeader>
   <TableBody>
     <TableRow>
-      <TableCell>Vinicius</TableCell>
-      <TableCell>vinicius@example.com</TableCell>
-      <TableCell>Developer</TableCell>
-      <TableCell>Active</TableCell>
+      <TableCell />
+      <TableCell />
     </TableRow>
   </TableBody>
+  <TableFooter />
+</Table>
+```
+
+## Accessibility
+
+Always use a `<TableCaption />` to help assistive technologies announce what the table represents. 
+
+Use with the `sr-only` class to make the caption screen-reader only if you don't want to show it.
+
+```tsx lineNumbers
+<Table>
+  <TableCaption className="sr-only">
+    Monthly revenue by product.
+  </TableCaption>
+  {/* ... */}
 </Table>
 ```
 
 ## Examples
 
-### Default
+### Striped
 
-<ComponentPreview componentName="table" fileName="default" />
+Use `variant="striped"` on `<Table />` for alternating row backgrounds.
+
+<ComponentPreview componentName="table" fileName="example-striped" />
+
+### With footer
+
+Use `<TableFooter />` for summary rows, totals, or notes.
+
+<ComponentPreview componentName="table" fileName="example-footer" />
+
+### With actions
+
+Add an actions column with buttons (e.g. Edit, Delete) per row.
+
+<ComponentPreview componentName="table" fileName="example-actions" />
+
+### Disable row hover
+
+Set `isHoverable={false}` on `<Table />` to disable the hover background on body rows.
+
+<ComponentPreview componentName="table" fileName="example-not-hoverable" />
+
+## API Reference
+
+### Table
+
+Root wrapper. Renders a scrollable container with a native `table` element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"plain"` \| `"striped"` | `"plain"` |
+| `isHoverable` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### TableHeader
+
+Header section. Renders a `thead`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TableBody
+
+Body section. Renders a `tbody`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TableFooter
+
+Footer section. Renders a `tfoot`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TableRow
+
+Row element. Renders a `tr`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TableHead
+
+Header cell. Renders a `th`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TableCell
+
+Body or footer cell. Renders a `td`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TableCaption
+
+Table caption. Renders a `caption`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |

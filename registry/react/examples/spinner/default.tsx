@@ -1,5 +1,10 @@
+import {
+  Item,
+  ItemContent,
+  ItemMedia,
+  ItemTitle,
+} from "@/registry/react/components/item";
 import { Spinner } from "@/registry/react/components/spinner";
-import { Item, ItemContent, ItemMedia, ItemTitle } from "../../components/item";
 
 const SpinnerDemo = () => (
   <div className="flex w-full max-w-xs flex-col gap-4">

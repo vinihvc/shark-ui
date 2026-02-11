@@ -57,8 +57,67 @@ import { Switch } from "@/components/ui/switch";
 <Switch />
 ```
 
+## Controlled
+
+Use the `checked` and `onCheckedChange` props to control the switch state programmatically.
+
+<ComponentPreview componentName="switch" fileName="example-controlled" />
+
+## Invalid State
+
+Use the `invalid` prop on the `<Field />` or in the `<Switch />` component to mark the switch as invalid.
+
+<ComponentPreview componentName="switch" fileName="example-invalid" />
+
 ## Examples
 
-### Default
+### Disabled
 
-<ComponentPreview componentName="switch" fileName="default" />
+Use the `disabled` prop to disable the switch.
+
+<ComponentPreview componentName="switch" fileName="example-disabled" />
+
+### With Description
+
+Use `<FieldDescription />` to add a description to the switch.
+
+<ComponentPreview componentName="switch" fileName="example-description" />
+
+### Customizing Size
+
+The switch size is controlled by the `[--size-*]` CSS variable.
+
+<ComponentPreview componentName="switch" fileName="example-size" />
+
+### Card Style
+
+Use a card-style layout with the switch for a more prominent display.
+
+<ComponentPreview componentName="switch" fileName="example-card" />
+
+### Form Integration
+
+Integrate the switch into a form with proper validation and error handling.
+
+<ComponentPreview componentName="switch" fileName="example-form" />
+
+## API Reference
+
+### Switch
+
+Root element of the switch. Renders a `label` element.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `checked` | `boolean` | `-` |
+| `defaultChecked` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `invalid` | `boolean` | `false` |
+| `name` | `string` | `-` |
+| `value` | `string \| number` | `"on"` |
+| `onCheckedChange` | `(details: CheckedChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/switch#api-reference).

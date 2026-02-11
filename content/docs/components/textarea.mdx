@@ -57,8 +57,53 @@ import { Textarea } from "@/components/ui/textarea";
 <Textarea />
 ```
 
+## Controlled
+
+Control the value with `value` and `onChange`.
+
+<ComponentPreview componentName="textarea" fileName="example-controlled" />
+
+## Invalid State
+
+Use the `invalid` prop on `<Field />` or `<Textarea />` to show invalid state.
+
+<ComponentPreview componentName="textarea" fileName="example-invalid" />
+
 ## Examples
 
-### Default
+### Autoresize
 
-<ComponentPreview componentName="textarea" fileName="default" />
+Use `autoresize` to make the textarea grow with content.
+
+<ComponentPreview componentName="textarea" fileName="example-autoresize" />
+
+### With title and description
+
+Wrap the textarea in a `<Field />` and add `<FieldLabel />` and `<FieldDescription />`.
+
+<ComponentPreview componentName="textarea" fileName="example-with-title-description" />
+
+### Form Integration
+
+<ComponentPreview componentName="textarea" fileName="example-form" />
+
+### Disabled
+
+Disable the textarea with the `disabled` prop. Use `Field` with `disabled` to disable the whole field (label + textarea).
+
+<ComponentPreview componentName="textarea" fileName="example-disabled" />
+
+## API Reference
+
+### Textarea
+
+Renders a `textarea`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `autoresize` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+---
+
+For more details, see the [Ark UI Field documentation](https://ark-ui.com/docs/components/field#api-reference).

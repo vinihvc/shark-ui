@@ -1,0 +1,21 @@
+import { Bold, Italic, Underline } from "lucide-react";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/react/components/toggle-group";
+
+const ToggleGroupSizeSmDemo = () => (
+  <ToggleGroup defaultValue={["bold"]} multiple size="sm">
+    <ToggleGroupItem aria-label="Toggle bold" value="bold">
+      <Bold />
+    </ToggleGroupItem>
+    <ToggleGroupItem aria-label="Toggle italic" value="italic">
+      <Italic />
+    </ToggleGroupItem>
+    <ToggleGroupItem aria-label="Toggle underline" value="underline">
+      <Underline />
+    </ToggleGroupItem>
+  </ToggleGroup>
+);
+
+export default ToggleGroupSizeSmDemo;
