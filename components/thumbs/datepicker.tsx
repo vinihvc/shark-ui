@@ -7,7 +7,7 @@ export const DatePickerThumb = ({
   title = "Date Picker",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="relative flex w-48 flex-col gap-2 rounded-lg border bg-card p-2 shadow-md/5">
+    <div className="relative flex w-48 flex-col gap-2 rounded-lg border bg-muted p-2 shadow-md/5">
       <div className="flex items-center justify-between gap-1">
         <div className="flex size-5 items-center justify-center rounded-sm border bg-muted">
           <span aria-hidden className="text-muted-foreground text-xs">
@@ -44,7 +44,7 @@ export const DatePickerThumb = ({
         ))}
       </div>
 
-      <div className="absolute inset-0 z-10 size-full rounded-b-lg bg-linear-to-b from-transparent via-transparent to-card" />
+      <div className="absolute inset-0 z-10 size-full rounded-b-lg bg-linear-to-b from-transparent via-transparent to-muted" />
     </div>
   </BlockThumbCard>
 );

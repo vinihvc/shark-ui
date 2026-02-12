@@ -6,12 +6,10 @@ export const SelectThumb = ({
   title = "Select",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="flex items-center gap-2 rounded-lg border bg-muted shadow-md/5">
-      <div className="flex h-8 flex-1 items-center justify-center">
-        <div className="h-2 w-16 rounded-full bg-muted-foreground/16" />
-      </div>
-      <div className="pr-2">
-        <span aria-hidden className="rotate-180 text-muted-foreground text-xs">
+    <div className="flex w-48 items-center rounded-lg border bg-muted p-1 px-2 shadow-md/5">
+      <div className="h-2 w-2/4 rounded-full bg-muted-foreground/16" />
+      <div className="ml-auto rotate-180">
+        <span aria-hidden className="text-muted-foreground/64 text-xs">
           ⌃
         </span>
       </div>

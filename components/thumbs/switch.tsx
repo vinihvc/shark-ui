@@ -6,8 +6,8 @@ export const SwitchThumb = ({
   title = "Switch",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="flex h-6 w-10 items-center rounded-full border bg-muted p-0.5 shadow-md/5">
-      <div className="size-5 rounded-full border bg-card" />
+    <div className="flex h-6 w-10 items-center rounded-full border bg-primary shadow-md/5">
+      <div className="size-4.5 translate-x-full rounded-full border bg-background" />
     </div>
   </BlockThumbCard>
 );

@@ -6,15 +6,15 @@ export const ToggleGroupThumb = ({
   title = "Toggle Group",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="flex overflow-hidden rounded-lg border bg-muted shadow-md/5">
-      <div className="flex h-8 flex-1 items-center justify-center border-border border-r">
-        <div className="h-2 w-6 rounded-full bg-muted-foreground/16" />
+    <div className="flex h-8 w-40 rounded-lg border bg-muted shadow-md/5">
+      <div className="flex size-full items-center justify-center border-r">
+        <div className="h-1.5 w-1/2 rounded-full bg-muted-foreground/16" />
       </div>
-      <div className="flex h-8 flex-1 items-center justify-center bg-primary">
-        <div className="h-2 w-5 rounded-full bg-muted-foreground/24" />
+      <div className="flex size-full items-center justify-center bg-muted-foreground/32">
+        <div className="h-1.5 w-1/2 rounded-full bg-primary" />
       </div>
-      <div className="flex h-8 flex-1 items-center justify-center border-border border-l">
-        <div className="h-2 w-6 rounded-full bg-muted-foreground/16" />
+      <div className="flex size-full items-center justify-center border-l">
+        <div className="h-1.5 w-1/2 rounded-full bg-muted-foreground/16" />
       </div>
     </div>
   </BlockThumbCard>

@@ -6,10 +6,10 @@ export const InputOtpThumb = ({
   title = "Input OTP",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="flex w-56 items-center justify-center gap-1">
+    <div className="flex items-center justify-center gap-1">
       {Array.from({ length: 3 }).map((_, index) => (
         <div
-          className="flex h-7 w-full items-center justify-center rounded border bg-muted-foreground/12"
+          className="flex h-8 w-full items-center justify-center rounded border shadow-md/5"
           key={index}
         >
           <div className="size-1.5 rounded-full bg-muted-foreground/32" />
@@ -20,7 +20,7 @@ export const InputOtpThumb = ({
 
       {Array.from({ length: 3 }).map((_, index) => (
         <div
-          className="flex h-7 w-full items-center justify-center rounded border bg-muted-foreground/12"
+          className="flex h-8 w-full items-center justify-center rounded border shadow-md/5"
           key={index}
         >
           <div className="size-1.5 rounded-full bg-muted-foreground/32" />

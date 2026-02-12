@@ -21,7 +21,7 @@ export const ModeSwitcher = () => {
         "transition-transform duration-500",
         "extend-touch-target"
       )}
-      data-mode={resolvedTheme}
+      data-mode={resolvedTheme ?? "light"}
       onClick={toggleTheme}
       size="icon-md"
       variant="ghost"

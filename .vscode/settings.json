@@ -1,10 +1,8 @@
 {
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
-  "workbench.editor.customLabels.patterns": {
-    "**/app/**/{page,layout,index}.{ts,tsx}": "(${dirname})/${filename}.${extname}",
-    "**/index.{ts,tsx}": "${dirname}/index.${extname}"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
   "tailwindCSS.classFunctions": ["tv", "cn"],
   "[javascript]": {
@@ -30,13 +28,6 @@
   },
   "[graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
   },
   "[html]": {
     "editor.defaultFormatter": "biomejs.biome"

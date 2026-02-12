@@ -6,8 +6,8 @@ export const ButtonThumb = ({
   title = "Button",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="flex w-24 items-center justify-center gap-2 rounded-lg border bg-primary p-3 shadow-md/5">
-      <div className="h-2 w-3/4 rounded-full bg-primary-foreground" />
+    <div className="flex h-8 w-24 items-center justify-center gap-2 rounded-lg border bg-primary shadow-md/5">
+      <div className="h-1 w-1/2 rounded-full bg-primary-foreground" />
     </div>
   </BlockThumbCard>
 );
