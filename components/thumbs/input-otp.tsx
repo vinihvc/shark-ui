@@ -9,10 +9,10 @@ export const InputOtpThumb = ({
     <div className="flex items-center justify-center gap-1">
       {Array.from({ length: 3 }).map((_, index) => (
         <div
-          className="flex h-8 w-full items-center justify-center rounded border shadow-md/5"
+          className="flex h-8 w-full items-center justify-center rounded-lg border bg-muted shadow-md/5"
           key={index}
         >
-          <div className="size-1.5 rounded-full bg-muted-foreground/32" />
+          <div className="size-1.5 rounded-full bg-muted-foreground/16" />
         </div>
       ))}
 
@@ -20,10 +20,10 @@ export const InputOtpThumb = ({
 
       {Array.from({ length: 3 }).map((_, index) => (
         <div
-          className="flex h-8 w-full items-center justify-center rounded border shadow-md/5"
+          className="flex h-8 w-full items-center justify-center rounded-lg border bg-muted shadow-md/5"
           key={index}
         >
-          <div className="size-1.5 rounded-full bg-muted-foreground/32" />
+          <div className="size-1.5 rounded-full bg-muted-foreground/16" />
         </div>
       ))}
     </div>

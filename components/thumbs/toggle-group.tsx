@@ -10,7 +10,7 @@ export const ToggleGroupThumb = ({
       <div className="flex size-full items-center justify-center border-r">
         <div className="h-1.5 w-1/2 rounded-full bg-muted-foreground/16" />
       </div>
-      <div className="flex size-full items-center justify-center bg-muted-foreground/32">
+      <div className="flex size-full items-center justify-center bg-muted-foreground/16">
         <div className="h-1.5 w-1/2 rounded-full bg-primary" />
       </div>
       <div className="flex size-full items-center justify-center border-l">

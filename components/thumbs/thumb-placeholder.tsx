@@ -5,7 +5,7 @@ export const ThumbPlaceholder = ({
   className,
   ...rest
 }: React.ComponentProps<"div">) => (
-  <div className={cn("rounded-md bg-muted", className)} {...rest} />
+  <div className={cn("rounded-lg bg-muted", className)} {...rest} />
 );
 
 export const ThumbPlaceholderCircle = ({
@@ -26,7 +26,7 @@ export const ThumbPlaceholderText = ({
 }: ThumbPlaceholderTextProps) => (
   <div className={cn("flex w-full flex-col gap-2", className)} {...rest}>
     {Array.from({ length: lines }, (_, i) => `line-${i}`).map((key) => (
-      <div className="h-4 w-full rounded-md bg-muted last:w-3/4" key={key} />
+      <div className="h-4 w-full rounded-lg bg-muted last:w-3/4" key={key} />
     ))}
   </div>
 );

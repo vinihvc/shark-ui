@@ -14,7 +14,7 @@ export const ScrollAreaThumb = ({
         <div className="h-2 w-full rounded-full bg-muted-foreground/16" />
         <div className="h-2 w-2/3 rounded-full bg-muted-foreground/8" />
       </div>
-      <div className="w-1 shrink-0 rounded-full bg-muted-foreground/24" />
+      <div className="w-1 shrink-0 rounded-full bg-muted-foreground/16" />
     </div>
   </BlockThumbCard>
 );

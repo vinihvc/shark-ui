@@ -15,7 +15,7 @@ export const InputGroupThumb = ({
         <div className="h-2 w-1/2 rounded-full bg-muted-foreground/16" />
       </div>
       <div className="flex size-8 shrink-0 items-center justify-center border-border border-l">
-        <div className="size-2.5 rounded-md bg-muted-foreground/24" />
+        <div className="size-2.5 rounded-lg bg-muted-foreground/16" />
       </div>
     </div>
   </BlockThumbCard>
