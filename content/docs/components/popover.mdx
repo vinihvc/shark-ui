@@ -49,7 +49,7 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Popover, 
   PopoverTrigger, 
@@ -63,7 +63,7 @@ import {
 } from "@/components/ui/popover";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Popover>
   <PopoverTrigger />
   <PopoverContent>
@@ -89,7 +89,7 @@ You can use `<PopoverHeader />` in two ways:
 
 You can pass `title` and `description` props directly to `<PopoverHeader />`. In this case, you don't need to use `<PopoverTitle />` and `<PopoverDescription />` components.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <PopoverHeader title="Popover Title" description="Popover description" />
 ```
 
@@ -97,7 +97,7 @@ You can pass `title` and `description` props directly to `<PopoverHeader />`. In
 
 Alternatively, you can use `<PopoverTitle />` and `<PopoverDescription />` as children for more control.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <PopoverHeader>
   <PopoverTitle>Popover Title</PopoverTitle>
   <PopoverDescription>Popover description</PopoverDescription>

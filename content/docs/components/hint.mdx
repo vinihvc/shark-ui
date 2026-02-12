@@ -1,0 +1,100 @@
+---
+title: Hint
+description: A lightweight, minimal tooltip that shows information on hover or focus.
+---
+
+<Alert>
+  <Info />
+  <AlertDescription>
+    For a complete component with collision detection and state management, use the <Link href="/docs/components/tooltip">Tooltip component</Link>.
+  </AlertDescription>
+</Alert>
+
+<ComponentPreview componentName="hint" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/hint
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/hint.tsx" src="/hint.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Hint, HintTrigger, HintContent } from "@/components/ui/hint";
+```
+
+```tsx showLineNumbers
+<Hint>
+  <HintTrigger />
+  <HintContent />
+</Hint>
+```
+
+## Examples
+
+### Positions
+
+<ComponentPreview componentName="hint" fileName="example-positions" />
+
+## Hint vs Tooltip
+
+ - **Hint**: A lightweight, minimal tooltip that shows information on hover or focus.
+
+- **Tooltip**: A more complex component that provides a more full-featured tooltip with a variety of options.
+
+## API Reference
+
+### Hint
+
+Root element that provides context and wraps the trigger and content.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` |
+| `offset` | `string` | `"1.5"` |
+| `className` | `string` | - |
+
+### HintTrigger
+
+The element that triggers the hint on hover or focus. Use `asChild` to merge props with a child component.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
+
+### HintContent
+
+The hint popup content displayed on hover or focus.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |

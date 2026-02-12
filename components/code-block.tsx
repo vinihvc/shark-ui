@@ -17,7 +17,7 @@ export interface CodeBlockProps extends React.ComponentProps<"figure"> {
    *
    * @default true
    */
-  showLineNumbers?: boolean;
+  showshowLineNumbers?: boolean;
   /**
    * Whether to show the copy button
    *

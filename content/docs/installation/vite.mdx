@@ -29,7 +29,7 @@ The current version of Vite splits TypeScript configuration into three files, tw
 Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` and
 `tsconfig.app.json` files:
 
-```ts title="tsconfig.json" lineNumbers
+```ts title="tsconfig.json" showLineNumbers
 {
   "files": [],
   "references": [
@@ -53,7 +53,7 @@ Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the
 
 Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
 
-```ts title="tsconfig.app.json" lineNumbers
+```ts title="tsconfig.app.json" showLineNumbers
 {
   "compilerOptions": {
     // ...
@@ -76,7 +76,7 @@ Add the following code to the vite.config.ts so your app can resolve paths witho
 npm install -D @types/node
 ```
 
-```typescript title="vite.config.ts" lineNumbers
+```typescript title="vite.config.ts" showLineNumbers
 import path from "path" // [!code highlight]
 import tailwindcss from "@tailwindcss/vite" // [!code highlight]
 import react from "@vitejs/plugin-react"
@@ -117,7 +117,7 @@ pnpm dlx shadcn@latest add https://shark.vini.one/r/button.json
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
-```tsx lineNumbers title="src/App.tsx"
+```tsx showLineNumbers title="src/App.tsx"
 import { Button } from "@/components/ui/button"
 
 function App() {

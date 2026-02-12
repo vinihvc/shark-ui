@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Dialog, 
   DialogTrigger, 
@@ -63,7 +63,7 @@ import {
 } from "@/components/ui/dialog";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Dialog>
   <DialogTrigger />
   <DialogContent>
@@ -89,7 +89,7 @@ You can use `<DialogHeader />` in two ways:
 
 You can pass `title` and `description` props directly to `<DialogHeader />`. In this case, you don't need to use `<DialogTitle />` and `<DialogDescription />` components.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <DialogHeader title="Dialog Title" description="Dialog description" />
 ```
 
@@ -97,7 +97,7 @@ You can pass `title` and `description` props directly to `<DialogHeader />`. In 
 
 Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as children for more control.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <DialogHeader>
   <DialogTitle>Dialog Title</DialogTitle>
   <DialogDescription>Dialog description</DialogDescription>

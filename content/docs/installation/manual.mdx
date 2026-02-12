@@ -21,7 +21,7 @@ pnpm add tailwind-variants clsx tailwind-merge lucide-react tw-animate-css
 
 Configure the path aliases in your `tsconfig.json` file.
 
-```json title="tsconfig.json" lineNumbers
+```json title="tsconfig.json" showLineNumbers
 {
   "compilerOptions": {
     "baseUrl": ".", // [!code highlight]
@@ -38,7 +38,7 @@ The `@` alias is a preference. You can use other aliases if you want.
 
 Add the following to your `globals.css` file.
 
-```css title="styles/globals.css" lineNumbers
+```css title="styles/globals.css" showLineNumbers
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -260,7 +260,7 @@ Add the following to your `globals.css` file.
 
 ### Add a cn helper
 
-```ts title="lib/utils.ts" lineNumbers
+```ts title="lib/utils.ts" showLineNumbers
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -271,7 +271,7 @@ export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
 Create a `components.json` file in the root of your project.
 
-```json title="components.json" lineNumbers
+```json title="components.json" showLineNumbers
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",

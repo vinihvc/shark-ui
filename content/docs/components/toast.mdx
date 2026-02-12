@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 <Step>Add the `Toaster` to your app.</Step>
 
-```tsx title="app/layout.tsx" {1,9} showLineNumbers
+```tsx title="app/layout.tsx" {1,9} showshowLineNumbers
 import { Toaster } from "@/components/ui/toast"
 
 export default function RootLayout({ children }) {
@@ -67,11 +67,11 @@ export default function RootLayout({ children }) {
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { toast } from "@/components/ui/toast";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 toast.create({
   title: "Success!",
   description: "User has been created.",
@@ -115,7 +115,7 @@ By default, the toaster is placed at the bottom right corner of the screen.
 
 You can customize the placement of the toaster by updating the `placement` option in `createToaster()`.
 
-```tsx title="components/ui/toast.tsx" {2} showLineNumbers
+```tsx title="components/ui/toast.tsx" {2} showshowLineNumbers
 const toast = createToaster({
   placement: "bottom-end",
   overlap: true,
@@ -129,7 +129,7 @@ Any extra toasts will be queued and rendered when a toast has been dismissed.
 
 By default, the toaster can display up to 3 toasts at the same time. You can customize the maximum number of visible toasts by updating the `max` option in `createToaster()`.
 
-```tsx title="components/ui/toast.tsx" {4} showLineNumbers
+```tsx title="components/ui/toast.tsx" {4} showshowLineNumbers
 const toast = createToaster({
   placement: "bottom-end",
   overlap: true,
@@ -141,7 +141,7 @@ const toast = createToaster({
 
 To prevent duplicate toasts, pass a `id` to the toast.  
 
-```tsx lineNumbers {2} showLineNumbers
+```tsx showLineNumbers {2} showshowLineNumbers
 toast.create({
   id: "save-success",
   title: "Saved!",

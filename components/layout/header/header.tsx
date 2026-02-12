@@ -1,9 +1,9 @@
 import { GithubIcon } from "lucide-react";
+import { Logo } from "@/components/icons/logo";
 import { HeaderCommand } from "@/components/layout/header/header.command";
 import { MainNav } from "@/components/layout/header/header.main";
 import { MobileNav } from "@/components/layout/header/header.mobile";
 import { ModeSwitcher } from "@/components/layout/mode-switcher";
-import { Logo } from "@/components/logo";
 import { NavLink } from "@/components/nav-link";
 import { NAV_ITEMS } from "@/config/navigation";
 import { source } from "@/lib/fumadocs";

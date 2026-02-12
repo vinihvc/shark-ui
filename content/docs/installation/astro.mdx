@@ -16,7 +16,7 @@ pnpm dlx create-astro@latest astro-app  --template with-tailwindcss --install --
 
 Add the following code to the `tsconfig.json` file to resolve paths:
 
-```ts title="tsconfig.json" lineNumbers
+```ts title="tsconfig.json" showLineNumbers
 {
   "compilerOptions": {
     // ...
@@ -49,7 +49,7 @@ pnpm dlx shadcn@latest add https://shark.vini.one/r/button.json
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
-```astro title="src/pages/index.astro" lineNumbers
+```astro title="src/pages/index.astro" showLineNumbers
 ---
 import { Button } from "@/components/ui/button"
 ---

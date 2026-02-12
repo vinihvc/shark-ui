@@ -46,7 +46,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Card, 
   CardContent, 
@@ -59,7 +59,7 @@ import {
 } from "@/components/ui/card";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Card>
   <CardMedia />
   <CardHeader>
@@ -80,7 +80,7 @@ You can use `<CardHeader />` in two ways:
 
 You can pass `title` and `description` props directly to `<CardHeader />`. In this case, you don't need to use `<CardTitle />` and `<CardDescription />` components.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <CardHeader title="Card Title" description="Card description">
   <CardAction />
 </CardHeader>
@@ -90,7 +90,7 @@ You can pass `title` and `description` props directly to `<CardHeader />`. In th
 
 Alternatively, you can use `<CardTitle />` and `<CardDescription />` as children for more control.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <CardHeader>
   <CardTitle>Card Title</CardTitle>
   <CardDescription>Card description</CardDescription>
