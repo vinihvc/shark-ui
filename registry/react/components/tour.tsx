@@ -32,9 +32,7 @@ interface TourProviderProps {
   handleStart: () => void;
 }
 
-const TourProvider = React.createContext<TourProviderProps>(
-  {} as TourProviderProps
-);
+const TourProvider = React.createContext({} as TourProviderProps);
 
 interface TourProps
   extends Omit<React.ComponentProps<typeof ArkTour.Root>, "tour"> {
@@ -167,7 +165,7 @@ export const TourContent = (props: TourContentProps) => {
           {!!showCloseButton && (
             <TourClose asChild className="absolute top-4 right-4">
               <Button
-                className="size-8 border-none opacity-70 hover:opacity-100"
+                className="size-8 border-none opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >

@@ -4,7 +4,7 @@ import { Check, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "./scroll-area";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
   const { lazyMount = true, unmountOnExit = true, ...rest } = props;
@@ -105,7 +105,7 @@ export const MenuSeparator = (
 
   return (
     <ArkMenu.Separator
-      className={cn("-mx-1 my-1 h-px bg-border", className)}
+      className={cn("my-1 h-px bg-border", className)}
       data-slot="menu-separator"
       {...rest}
     />

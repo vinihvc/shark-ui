@@ -24,6 +24,7 @@ export const ModeSwitcher = () => {
       data-mode={resolvedTheme ?? "light"}
       onClick={toggleTheme}
       size="icon-md"
+      suppressHydrationWarning
       variant="ghost"
     >
       <ToggleThemeIcon />

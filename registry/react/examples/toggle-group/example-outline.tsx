@@ -4,7 +4,7 @@ import {
   ToggleGroupItem,
 } from "@/registry/react/components/toggle-group";
 
-const ToggleGroupOutlineDemo = () => (
+const Example = () => (
   <ToggleGroup defaultValue={["bold"]} multiple variant="outline">
     <ToggleGroupItem aria-label="Toggle bold" value="bold">
       <Bold />
@@ -18,4 +18,4 @@ const ToggleGroupOutlineDemo = () => (
   </ToggleGroup>
 );
 
-export default ToggleGroupOutlineDemo;
+export default Example;

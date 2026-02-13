@@ -160,7 +160,7 @@ export const DialogContent = (props: DialogContentProps) => {
             <DialogClose asChild>
               <Button
                 aria-label="Close"
-                className="absolute top-2 right-2 opacity-70 hover:opacity-100"
+                className="absolute top-2 right-2 opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >

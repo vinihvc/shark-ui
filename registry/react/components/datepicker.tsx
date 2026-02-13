@@ -323,7 +323,7 @@ export const DatePickerTableCellTrigger = (
         "data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-full data-today:after:bg-primary",
         "data-focus:bg-accent/30 data-focus:text-primary",
         "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        "data-disabled:pointer-events-none data-disabled:opacity-20",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         "data-in-range:not-[data-selected]:bg-primary/10",
         "data-selected:bg-primary! data-selected:text-primary-foreground!",
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20",

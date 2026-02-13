@@ -1,6 +1,8 @@
 "use client";
 
+import { FileCode, FileJson, FileText } from "lucide-react";
 import {
+  createFileIcons,
   createTreeCollection,
   TreeView,
   TreeViewBranch,
@@ -12,9 +14,15 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
+const fileIcons = createFileIcons({
+  ".tsx": FileCode,
+  ".json": FileJson,
+  ".md": FileText,
+});
+
 const TreeViewDemo = () => (
   <div className="w-full max-w-40">
-    <TreeView collection={collection}>
+    <TreeView collection={collection} fileIcons={fileIcons}>
       <TreeViewTree>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode indexPath={[index]} key={node.id} node={node} />

@@ -139,7 +139,7 @@ export const CarouselIndicator = (
         "size-2",
         "shrink-0",
         "bg-foreground",
-        "opacity-40 data-current:opacity-100",
+        "opacity-64 data-current:opacity-100",
         "overflow-hidden",
         "[&_img]:size-full [&_img]:rounded-md [&_img]:object-cover",
         "rounded-full",

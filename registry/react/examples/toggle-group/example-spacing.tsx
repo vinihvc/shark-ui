@@ -4,7 +4,7 @@ import {
   ToggleGroupItem,
 } from "@/registry/react/components/toggle-group";
 
-const ToggleGroupWithSpacingDemo = () => (
+const Example = () => (
   <ToggleGroup defaultValue={["italic"]} multiple spacing={2} variant="outline">
     <ToggleGroupItem aria-label="Toggle bold" value="bold">
       <Bold />
@@ -18,4 +18,4 @@ const ToggleGroupWithSpacingDemo = () => (
   </ToggleGroup>
 );
 
-export default ToggleGroupWithSpacingDemo;
+export default Example;

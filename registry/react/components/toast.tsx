@@ -144,7 +144,7 @@ export const ToastItem = (props: ToastItemProps) => {
         {toast.closable && (
           <ArkToast.CloseTrigger asChild data-slot="toast-close-trigger">
             <Button
-              className="opacity-70 hover:opacity-100"
+              className="opacity-64 hover:opacity-100"
               size="icon-sm"
               variant="ghost"
             >

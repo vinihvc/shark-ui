@@ -23,7 +23,7 @@ export const CopyButton = (props: React.ComponentProps<typeof Clipboard>) => {
         <TooltipTrigger asChild>
           <ClipboardTrigger asChild>
             <Button
-              className="opacity-70 hover:opacity-100 focus-visible:opacity-100"
+              className="opacity-64 hover:opacity-100 focus-visible:opacity-100"
               size="icon-sm"
               variant="ghost"
             >

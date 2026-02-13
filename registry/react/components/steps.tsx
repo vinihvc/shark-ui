@@ -72,7 +72,7 @@ export const StepsTrigger = (props: StepsTriggerProps) => {
       className={cn(
         "inline-flex items-center gap-3",
         "cursor-pointer rounded-full outline-none",
-        "disabled:pointer-events-none disabled:opacity-60",
+        "disabled:pointer-events-none disabled:opacity-64",
         className
       )}
       data-slot="steps-trigger"

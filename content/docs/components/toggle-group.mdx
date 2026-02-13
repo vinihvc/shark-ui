@@ -50,16 +50,27 @@ npm install @ark-ui/react tailwind-variants
 ## Usage
 
 ```tsx
-import { 
-  ToggleGroup, 
-  ToggleGroupItem 
-} from "@/components/ui/toggle-group"; 
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+  ToggleGroupSeparator,
+} from "@/components/ui/toggle-group";
 ```
 
 ```tsx showLineNumbers
 <ToggleGroup>
   <ToggleGroupItem value="1">Item 1</ToggleGroupItem>
   <ToggleGroupItem value="2">Item 2</ToggleGroupItem>
+</ToggleGroup>
+```
+
+With separator:
+
+```tsx
+<ToggleGroup variant="outline">
+  <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
+  <ToggleGroupSeparator orientation="vertical" />
+  <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
 </ToggleGroup>
 ```
 
@@ -103,13 +114,13 @@ Use `orientation="vertical"` for a vertical layout.
 
 Use `spacing` to add space between buttons. When spacing is greater than 0, each button keeps its own border and rounded corners.
 
-<ComponentPreview componentName="toggle-group" fileName="example-with-spacing" />
+<ComponentPreview componentName="toggle-group" fileName="example-spacing" />
 
 ### With separator
 
-Add visual separators between toggle items using the Separator component.
+Add visual separators between toggle items using the `ToggleGroupSeparator` component.
 
-<ComponentPreview componentName="toggle-group" fileName="example-with-separator" />
+<ComponentPreview componentName="toggle-group" fileName="example-separator" />
 
 ### Disabled
 
@@ -133,22 +144,22 @@ Use `multiple={false}` to allow only one toggle to be selected at a time.
 
 Wrap items with Tooltip to show labels on hover.
 
-<ComponentPreview componentName="toggle-group" fileName="example-with-tooltips" />
+<ComponentPreview componentName="toggle-group" fileName="example-tooltips" />
 
 ### Custom
 
 A custom toggle group example with tooltips and custom styling for font weight selection.
 
-<ComponentPreview componentName="toggle-group" fileName="example-custom-font-weight" />
+<ComponentPreview componentName="toggle-group" fileName="example-custom" />
 
 ## API Reference
 
 ### ToggleGroup
 
-Root component. Provides shared variant and size to child toggles via context.
+Root component. Provides shared variant and size to child toggles via context. Renders a `div`.
 
 | Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `variant` | `"outline"` \| `"ghost"` | `"ghost"` | Controls the styling of all child toggles |
 | `size` | `"sm"` \| `"md"` \| `"lg"` | `"md"` | Controls the size of all child toggles |
 | `spacing` | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `8` \| `10` | `0` | Gap between items. Use 0 for segmented (merged) look; &gt;0 keeps each button's border and radius |
@@ -158,12 +169,30 @@ Root component. Provides shared variant and size to child toggles via context.
 | `onValueChange` | `(details: ValueChangeDetails) => void` | — | Callback when selection changes |
 | `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` | Layout direction of the group |
 | `disabled` | `boolean` | `false` | Whether the group is disabled |
+| `className` | `string` | — | Additional CSS classes |
+
+For more props, see [Ark UI Toggle Group](https://ark-ui.com/docs/components/toggle-group#api-reference).
 
 ### ToggleGroupItem
 
-Individual toggle button within the group. Inherits variant and size from parent ToggleGroup.
+Individual toggle button within the group. Inherits variant and size from parent ToggleGroup. Renders a [`<Toggle />`](/docs/components/toggle).
 
 | Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `value` | `string` | **required** | Unique value for the item |
 | `disabled` | `boolean` | `false` | Whether the item is disabled |
+| `className` | `string` | — | Additional CSS classes |
+| `aria-label` | `string` | — | Accessible label for screen readers |
+
+Accepts all [Toggle](/docs/components/toggle) and [Ark UI Toggle Group Item](https://ark-ui.com/docs/components/toggle-group#api-reference) props.
+
+### ToggleGroupSeparator
+
+Visual separator between toggle items. Use within `ToggleGroup` for a consistent styled divider. Renders a [`<Separator />`](/docs/components/separator).
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"vertical"` | Orientation of the separator |
+| `className` | `string` | — | Additional CSS classes |
+
+Accepts all [Separator](/docs/components/separator) props.

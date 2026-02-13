@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
 } from "@/registry/react/components/tooltip";
 
-const ToggleGroupWithTooltipsDemo = () => (
+const Example = () => (
   <ToggleGroup defaultValue={["bold"]} multiple>
     <Tooltip>
       <TooltipTrigger asChild>
@@ -38,4 +38,4 @@ const ToggleGroupWithTooltipsDemo = () => (
   </ToggleGroup>
 );
 
-export default ToggleGroupWithTooltipsDemo;
+export default Example;

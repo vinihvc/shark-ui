@@ -1,28 +1,47 @@
 "use client";
 
+import React from "react";
 import {
   createTreeCollection,
+  type TreeNodeType,
   TreeView,
   TreeViewBranch,
   TreeViewBranchContent,
   TreeViewBranchItem,
+  TreeViewCheckbox,
   TreeViewContent,
   TreeViewItem,
   TreeViewNode,
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const TreeViewDemo = () => (
-  <div className="w-full max-w-40">
-    <TreeView collection={collection}>
-      <TreeViewTree>
-        {collection.rootNode.children?.map((node, index) => (
-          <TreeNode indexPath={[index]} key={node.id} node={node} />
-        ))}
-      </TreeViewTree>
-    </TreeView>
-  </div>
-);
+const Example = () => {
+  const [checkedNodes, setCheckedNodes] = React.useState<string[]>([
+    "readme.md",
+  ]);
+
+  return (
+    <div className="flex w-full max-w-md items-center gap-4">
+      <div className="w-full max-w-52">
+        <TreeView
+          checkedValue={checkedNodes}
+          collection={collection}
+          onCheckedChange={({ checkedValue }) => setCheckedNodes(checkedValue)}
+        >
+          <TreeViewTree>
+            {collection.rootNode.children?.map((node, index) => (
+              <TreeNode indexPath={[index]} key={node.id} node={node} />
+            ))}
+          </TreeViewTree>
+        </TreeView>
+      </div>
+
+      <p className="whitespace-pre-wrap text-muted-foreground text-sm">
+        {JSON.stringify(checkedNodes, null, 2)}
+      </p>
+    </div>
+  );
+};
 
 const collection = createTreeCollection({
   rootNode: {
@@ -51,15 +70,17 @@ const collection = createTreeCollection({
   },
 });
 
-const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
-  const { node, indexPath, ...rest } = props;
+const TreeNode = (props: { node: TreeNodeType; indexPath: number[] }) => {
+  const { node, indexPath } = props;
 
   return (
-    <TreeViewNode indexPath={indexPath} node={node} {...rest}>
+    <TreeViewNode indexPath={indexPath} node={node}>
       {node.children ? (
         <TreeViewBranch>
-          <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
-
+          <TreeViewBranchItem>
+            <TreeViewCheckbox />
+            {node.name}
+          </TreeViewBranchItem>
           <TreeViewBranchContent>
             {node.children.map((child, index) => (
               <TreeNode
@@ -72,6 +93,7 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
         </TreeViewBranch>
       ) : (
         <TreeViewContent>
+          <TreeViewCheckbox />
           <TreeViewItem>{node.name}</TreeViewItem>
         </TreeViewContent>
       )}
@@ -79,4 +101,4 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
   );
 };
 
-export default TreeViewDemo;
+export default Example;

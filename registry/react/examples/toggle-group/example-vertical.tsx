@@ -4,7 +4,7 @@ import {
   ToggleGroupItem,
 } from "@/registry/react/components/toggle-group";
 
-const ToggleGroupVerticalDemo = () => (
+const Example = () => (
   <ToggleGroup defaultValue={["bold"]} orientation="vertical" variant="outline">
     <ToggleGroupItem aria-label="Toggle bold" value="bold">
       <Bold />
@@ -18,4 +18,4 @@ const ToggleGroupVerticalDemo = () => (
   </ToggleGroup>
 );
 
-export default ToggleGroupVerticalDemo;
+export default Example;

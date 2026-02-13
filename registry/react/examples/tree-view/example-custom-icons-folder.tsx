@@ -1,5 +1,6 @@
 "use client";
 
+import { PackageIcon, PackageOpenIcon } from "lucide-react";
 import {
   createTreeCollection,
   TreeView,
@@ -32,6 +33,8 @@ const collection = createTreeCollection({
       {
         id: "app",
         name: "app",
+        icon: PackageIcon,
+        expandedIcon: PackageOpenIcon,
         children: [
           { id: "app/page.tsx", name: "page.tsx" },
           { id: "app/layout.tsx", name: "layout.tsx" },
@@ -40,6 +43,8 @@ const collection = createTreeCollection({
       {
         id: "components",
         name: "components",
+        icon: null,
+        expandedIcon: null,
         children: [
           { id: "components/button.tsx", name: "button.tsx" },
           { id: "components/input.tsx", name: "input.tsx" },
@@ -58,7 +63,9 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
     <TreeViewNode indexPath={indexPath} node={node} {...rest}>
       {node.children ? (
         <TreeViewBranch>
-          <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
+          <TreeViewBranchItem expandedIcon={node.expandedIcon} icon={node.icon}>
+            {node.name}
+          </TreeViewBranchItem>
 
           <TreeViewBranchContent>
             {node.children.map((child, index) => (

@@ -4,7 +4,7 @@ import {
   ToggleGroupItem,
 } from "@/registry/react/components/toggle-group";
 
-const ToggleGroupSizeLgDemo = () => (
+const Example = () => (
   <ToggleGroup defaultValue={["bold"]} multiple size="lg">
     <ToggleGroupItem aria-label="Toggle bold" value="bold">
       <Bold />
@@ -18,4 +18,4 @@ const ToggleGroupSizeLgDemo = () => (
   </ToggleGroup>
 );
 
-export default ToggleGroupSizeLgDemo;
+export default Example;

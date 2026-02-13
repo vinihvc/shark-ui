@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   createTreeCollection,
   TreeView,
@@ -12,19 +13,38 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const TreeViewDemo = () => (
-  <div className="w-full max-w-40">
-    <TreeView collection={collection}>
-      <TreeViewTree>
-        {collection.rootNode.children?.map((node, index) => (
-          <TreeNode indexPath={[index]} key={node.id} node={node} />
-        ))}
-      </TreeViewTree>
-    </TreeView>
-  </div>
-);
+const Example = () => {
+  const [collection, setCollection] = React.useState(initialCollection);
 
-const collection = createTreeCollection({
+  return (
+    <div className="w-full max-w-40">
+      <TreeView
+        canRename={() => true}
+        collection={collection}
+        onRenameComplete={(details) => {
+          setCollection((prev) => {
+            const node = prev.at(details.indexPath);
+            if (!node) {
+              return prev;
+            }
+            return prev.replace(details.indexPath, {
+              ...node,
+              name: details.label,
+            });
+          });
+        }}
+      >
+        <TreeViewTree>
+          {collection.rootNode.children?.map((node, index) => (
+            <TreeNode indexPath={[index]} key={node.id} node={node} />
+          ))}
+        </TreeViewTree>
+      </TreeView>
+    </div>
+  );
+};
+
+const initialCollection = createTreeCollection({
   rootNode: {
     id: "ROOT",
     name: "",
@@ -79,4 +99,4 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
   );
 };
 
-export default TreeViewDemo;
+export default Example;

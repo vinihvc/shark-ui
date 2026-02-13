@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   createTreeCollection,
   TreeView,
@@ -12,31 +13,40 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const TreeViewDemo = () => (
-  <div className="w-full max-w-40">
-    <TreeView collection={collection}>
-      <TreeViewTree>
-        {collection.rootNode.children?.map((node, index) => (
-          <TreeNode indexPath={[index]} key={node.id} node={node} />
-        ))}
-      </TreeViewTree>
-    </TreeView>
-  </div>
-);
+const Example = () => {
+  const [selected, setSelected] = React.useState<string[]>([]);
+
+  const isCorrectSelection = selected[0] === "components/input.tsx";
+
+  return (
+    <div className="flex w-full max-w-40 flex-col items-center gap-4">
+      <p className="text-muted-foreground text-sm">Select input.tsx</p>
+
+      <TreeView
+        className="overflow-hidden"
+        collection={collection}
+        onSelectionChange={({ selectedValue }) => setSelected(selectedValue)}
+        selectedValue={selected}
+      >
+        <TreeViewTree>
+          {collection.rootNode.children?.map((node, index) => (
+            <TreeNode indexPath={[index]} key={node.id} node={node} />
+          ))}
+        </TreeViewTree>
+      </TreeView>
+
+      <p className="text-muted-foreground text-sm">
+        {isCorrectSelection ? "✅" : "❌"}
+      </p>
+    </div>
+  );
+};
 
 const collection = createTreeCollection({
   rootNode: {
     id: "ROOT",
     name: "",
     children: [
-      {
-        id: "app",
-        name: "app",
-        children: [
-          { id: "app/page.tsx", name: "page.tsx" },
-          { id: "app/layout.tsx", name: "layout.tsx" },
-        ],
-      },
       {
         id: "components",
         name: "components",
@@ -46,16 +56,15 @@ const collection = createTreeCollection({
         ],
       },
       { id: "package.json", name: "package.json" },
-      { id: "readme.md", name: "README.md" },
     ],
   },
 });
 
 const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
-  const { node, indexPath, ...rest } = props;
+  const { node, indexPath } = props;
 
   return (
-    <TreeViewNode indexPath={indexPath} node={node} {...rest}>
+    <TreeViewNode indexPath={indexPath} key={node.id} node={node}>
       {node.children ? (
         <TreeViewBranch>
           <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
@@ -79,4 +88,4 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
   );
 };
 
-export default TreeViewDemo;
+export default Example;

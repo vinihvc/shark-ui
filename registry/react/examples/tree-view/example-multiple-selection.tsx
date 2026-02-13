@@ -12,9 +12,9 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const TreeViewDemo = () => (
+const Example = () => (
   <div className="w-full max-w-40">
-    <TreeView collection={collection}>
+    <TreeView collection={collection} selectionMode="multiple">
       <TreeViewTree>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode indexPath={[index]} key={node.id} node={node} />
@@ -79,4 +79,4 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
   );
 };
 
-export default TreeViewDemo;
+export default Example;
