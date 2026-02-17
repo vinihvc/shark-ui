@@ -1,0 +1,88 @@
+---
+title: Aspect Ratio
+description: A wrapper that maintains a specific aspect ratio for its content.
+---
+
+<ComponentPreview componentName="aspect-ratio" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/aspect-ratio
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/aspect-ratio.tsx" src="/aspect-ratio.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+```
+
+```tsx showLineNumbers
+<AspectRatio ratio={16 / 9}>
+  <Image src="/image.jpg" alt="Description" fill />
+</AspectRatio>
+```
+
+## Examples
+
+### Square
+
+<ComponentPreview componentName="aspect-ratio" fileName="example-square" />
+
+### Portrait
+
+<ComponentPreview componentName="aspect-ratio" fileName="example-portrait" />
+
+### Video
+
+<ComponentPreview componentName="aspect-ratio" fileName="example-video" />
+
+### Responsive
+
+Use `[--ratio:*]` with Tailwind breakpoints to change the ratio at different screen sizes.
+
+<ComponentPreview componentName="aspect-ratio" fileName="example-responsive" />
+
+## API Reference
+
+### AspectRatio
+
+Root element. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

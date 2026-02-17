@@ -108,7 +108,7 @@ export const TableHead = (props: React.ComponentProps<typeof ark.th>) => {
   return (
     <ark.th
       className={cn(
-        "h-12 px-4",
+        "h-10 px-4",
         "text-left align-middle",
         "font-normal text-muted-foreground",
         "rtl:text-right",
@@ -127,7 +127,7 @@ export const TableCell = (props: React.ComponentProps<typeof ark.td>) => {
   return (
     <ark.td
       className={cn(
-        "p-4 align-middle [&:has([role=checkbox])]:pe-0",
+        "whitespace-nowrap p-2 align-middle [&:has([role=checkbox])]:pe-0",
         className
       )}
       data-slot="table-cell"

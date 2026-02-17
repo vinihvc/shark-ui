@@ -5,7 +5,7 @@ import {
 } from "@/registry/react/components/alert";
 
 const AlertDemo = () => (
-  <Alert>
+  <Alert className="max-w-md">
     <AlertTitle>Heads up!</AlertTitle>
     <AlertDescription>
       You can add icons to alerts to provide visual context and improve user

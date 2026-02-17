@@ -139,7 +139,7 @@ Use the `checkedValue` and `onCheckedChange` props to control the checked nodes.
 
 ### Links
 
-Tree items can be rendered as links to another page or website. This could be useful for documentation sites. Use the `asChild` prop to render tree items as links, passing the `href` prop to an `<a>` element.
+Tree items can be rendered as links. Use `asChild` on `TreeViewContent` and wrap an `<a>` element with `TreeViewItem` inside.
 
 <ComponentPreview componentName="tree-view" fileName="example-links" />
 
@@ -151,29 +151,27 @@ Use the tree view to create a file editor.
 
 ## Custom icons
 
-There are three ways to customize the icons in the tree view:
+There are three ways to customize icons:
 
-1. Using props (`icon` and `expandedIcon` for branches and `icon` for an item)
-2. With file extensions (using `createFileIcons`)
-3. Passing a custom icon component to the `createTreeCollection` function
+1. **Folder** — `icon` and `expandedIcon` props on `TreeViewBranchItem`, or per-node via `TreeNodeType`
+2. **Single item** — `icon` prop on `TreeViewItem`
+3. **By extension** — `fileIcons` prop on `TreeView` with `createFileIcons`
 
 ### Folder icons
 
-Use the `icon` and `expandedIcon` props on `TreeViewBranchItem` to customize icons for folders.
-
-You can pass `null` to the `icon` and `expandedIcon` props to not show an icon for the folder.
+Use the `icon` and `expandedIcon` props on `TreeViewBranchItem` to customize folder icons. Pass `null` to hide the icon.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons-folder" />
 
 ### Single item icon
 
-**Single item icon** — Pass the `icon` prop to `TreeViewItem` to override the icon for a specific item.
+Pass the `icon` prop to `TreeViewItem` to override the icon for a specific leaf node.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons-item" />
 
 ### With file extensions
 
-**List of file icons** — Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extensions to icon components. Icons are resolved from each node's id; unmatched extensions fall back to `FileIcon`.
+Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extensions (e.g. `".tsx"`, `".json"`) to icon components. Icons are resolved from each node's id; unmatched extensions fall back to `FileIcon`.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons" />
 
@@ -186,12 +184,12 @@ Root component for the tree structure. Provides tree context to children. Render
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `collection` | `TreeNodeType` | **required** |
+| `collection` | `TreeCollection` | **required** |
 | `fileIcons` | `Record<string, React.JSX.ElementType \| null>` | — |
 | `selectedValue` | `string[]` | — |
 | `checkedValue` | `string[]` | — |
 | `onCheckedChange` | `(details: CheckedChangeDetails) => void` | — |
-| `canRename` | `(details: RenameDetails) => boolean` | — |  
+| `canRename` | `(details: RenameDetails) => boolean` | — |
 | `onRenameComplete` | `(details: RenameCompleteDetails) => void` | — |
 | `defaultSelectedValue` | `string[]` | — |
 | `onSelectionChange` | `(details: SelectionChangeDetails) => void` | — |
@@ -199,6 +197,8 @@ Root component for the tree structure. Provides tree context to children. Render
 | `defaultExpandedValue` | `string[]` | — |
 | `onExpandedChange` | `(details: ExpandedChangeDetails) => void` | — |
 | `selectionMode` | `"single"` \| `"multiple"` | `"single"` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | — |
 
 ### TreeViewLabel
@@ -245,13 +245,22 @@ Clickable control for branch expand/collapse. Renders a `div`.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `asChild` | `boolean` | `false` |
-| `icon` | `React.JSX.ElementType \| null` | — |
-| `expandedIcon` | `React.JSX.ElementType \| null` | — |
+| `icon` | `React.JSX.ElementType \| null` | `FolderIcon` |
+| `expandedIcon` | `React.JSX.ElementType \| null` | `FolderOpenIcon` |
 | `className` | `string` | — |
 
 ### TreeViewBranchContent
 
 Expandable content container for branch children. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | — |
+
+### TreeViewContent
+
+Wrapper for leaf items. Use with `asChild` to render as a custom element (e.g. `<a>` for links). Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -279,13 +288,39 @@ Checkbox for node selection in multi-select mode. Renders a `span`.
 
 Creates a tree collection from node data. Use with `collection` prop on `TreeView`.
 
+**Options**
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `rootNode` | `T extends TreeNodeType` | **required** |
+| `nodeToValue` | `(node: T) => string` | `(node) => node.id` |
+| `nodeToString` | `(node: T) => string` | `(node) => node.name` |
+
+**TreeNodeType** — Shape of each node (extend with generic `T` for custom props):
+
 | Property | Type | Default |
 | --- | --- | --- |
-| `id` | `string` | **required** |
-| `name` | `string` | **required** |
-| `children` | `TreeNodeType<T>[]` | — |
-| `icon` | `React.JSX.ElementType \| null` | — |
-| `expandedIcon` | `React.JSX.ElementType \| null` | — |
+| `id` | `string` | — |
+| `name` | `string` | — |
+| `children` | `TreeNodeType<T>[]` | `undefined` |
+| `icon` | `React.JSX.ElementType \| null` | `undefined` |
+| `expandedIcon` | `React.JSX.ElementType \| null` | `undefined` |
+
+```tsx
+const collection = createTreeCollection({
+  rootNode: { id: "ROOT", name: "", children: [...] },
+});
+
+// With custom node props
+type LinkNode = TreeNodeType & { href?: string };
+const links = createTreeCollection<LinkNode>({
+  rootNode: {
+    id: "docs",
+    name: "Docs",
+    children: [{ id: "intro", name: "Intro", href: "/intro" }],
+  },
+});
+```
 
 ### createFileIcons
 

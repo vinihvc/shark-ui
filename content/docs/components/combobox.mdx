@@ -49,43 +49,108 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
+Pass an `items` array and use `ComboboxList` with a render prop. Filtering is handled internally. No type annotations needed for the common `{ label, value }` shape. For custom item shapes, type the callback parameter: `{(item: MyItemType) => ...}`.
+
 ```tsx
-import { 
+import {
   Combobox,
-  ComboboxLabel,
   ComboboxControl,
   ComboboxInput,
   ComboboxTrigger,
   ComboboxClearTrigger,
   ComboboxContent,
   ComboboxItem,
-  ComboboxItemGroup,
-  ComboboxItemGroupLabel,
+  ComboboxList,
 } from "@/components/ui/combobox";
-```
 
-```tsx showLineNumbers
-<Combobox>
+const items = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Cherry", value: "cherry" },
+];
+
+<Combobox items={items}>
   <ComboboxControl>
     <ComboboxInput />
     <ComboboxClearTrigger />
     <ComboboxTrigger />
   </ComboboxControl>
   <ComboboxContent>
-    <ComboboxItemGroup>
-      <ComboboxItemGroupLabel>Frameworks</ComboboxItemGroupLabel>
-      {collection.items.map((item) => (
-        <ComboboxItem item={item} key={item}>
-          {item}
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem item={item} key={item.value}>
+          {item.label}
         </ComboboxItem>
-      ))}
-    </ComboboxItemGroup>
+      )}
+    </ComboboxList>
   </ComboboxContent>
 </Combobox>
 ```
 
+## Size
+
+### Small
+
+<ComponentPreview componentName="combobox" fileName="size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="combobox" fileName="size-md" />
+
+### Large
+
+<ComponentPreview componentName="combobox" fileName="size-lg" />
+
 ## Examples
 
-### Default
+### Auto highlight
 
-<ComponentPreview componentName="combobox" fileName="default" />
+<ComponentPreview componentName="combobox" fileName="example-autohighlight" />
+
+### Group
+
+<ComponentPreview componentName="combobox" fileName="example-group" />
+
+### With Field
+
+<ComponentPreview componentName="combobox" fileName="example-with-field" />
+
+### With links
+
+<ComponentPreview componentName="combobox" fileName="example-with-links" />
+
+### Highlight text
+
+<ComponentPreview componentName="combobox" fileName="example-highlight-text" />
+
+### Async
+
+<ComponentPreview componentName="combobox" fileName="example-async" />
+
+### Virtualized
+
+<ComponentPreview componentName="combobox" fileName="example-virtualized" />
+
+### Invalid
+
+<ComponentPreview componentName="combobox" fileName="example-invalid" />
+
+### Multiple
+
+<ComponentPreview componentName="combobox" fileName="example-multiple" />
+
+### With clear button
+
+<ComponentPreview componentName="combobox" fileName="example-with-clear-button" />
+
+### Disabled
+
+<ComponentPreview componentName="combobox" fileName="example-disabled" />
+
+### With input group
+
+<ComponentPreview componentName="combobox" fileName="example-input-group" />
+
+### Popover with button trigger
+
+<ComponentPreview componentName="combobox" fileName="example-popover-button" />

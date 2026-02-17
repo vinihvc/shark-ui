@@ -69,8 +69,8 @@ const TourDemo = () => (
       </TourHeader>
 
       <TourFooter>
-        <TourNextStep />
         <TourPreviousStep />
+        <TourNextStep />
       </TourFooter>
     </TourContent>
   </Tour>

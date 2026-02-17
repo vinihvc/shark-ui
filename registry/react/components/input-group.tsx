@@ -106,6 +106,7 @@ export const InputGroupButton = (props: InputGroupButtonProps) => {
     <Button
       className={cn(inputGroupButtonVariants({ size }), className)}
       data-size={size}
+      data-slot="input-group-button"
       type={type}
       variant={variant}
       {...rest}
@@ -124,6 +125,7 @@ export const InputGroupText = (
         "flex items-center gap-2 text-muted-foreground text-sm [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
         className
       )}
+      data-slot="input-group-text"
       {...rest}
     />
   );

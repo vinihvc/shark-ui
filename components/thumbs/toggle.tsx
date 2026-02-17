@@ -7,9 +7,10 @@ export const ToggleThumb = ({
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
     <div className="flex w-full items-center justify-center gap-2">
-      <div className="flex size-9 items-center justify-center rounded-lg border bg-muted shadow-md/5">
+      <div className="flex size-9 items-center justify-center rounded-lg border bg-muted-foreground/16 shadow-md/5">
         <div className="h-1 w-1/3 rounded-full bg-primary" />
       </div>
+
       <div className="flex size-9 items-center justify-center rounded-lg border bg-muted shadow-md/5">
         <div className="h-1 w-1/3 rounded-full bg-muted-foreground/16" />
       </div>

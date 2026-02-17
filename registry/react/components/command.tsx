@@ -1,27 +1,20 @@
 "use client";
 
 import { ark } from "@ark-ui/react";
-import {
-  ComboboxContent,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemText,
-  ComboboxList,
-  createListCollection,
-} from "@ark-ui/react/combobox";
+import { ComboboxItem, ComboboxItemText } from "@ark-ui/react/combobox";
 import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Combobox,
+  ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
   ComboboxGroup,
   ComboboxGroupLabel,
+  ComboboxInput,
 } from "./combobox";
 
-export const createCollection = createListCollection;
-
-export const Command = <T,>(
+export const Command = <T extends { label: string; value: string }>(
   props: React.ComponentProps<typeof Combobox<T>>
 ) => {
   const { open = true, ...rest } = props;
@@ -61,7 +54,7 @@ export const CommandContent = (
       data-slot="command"
       {...rest}
     >
-      <ComboboxList className="flex flex-col">{children}</ComboboxList>
+      {children}
     </ComboboxContent>
   );
 };

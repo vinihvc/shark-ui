@@ -147,6 +147,33 @@
       transform: translateX(400%);
     }
   }
+
+  @keyframes toast-pulsate {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.05;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  @keyframes toast-shake {
+    20% {
+      translate: -4px 0;
+    }
+    40% {
+      translate: 4px 0;
+    }
+    60% {
+      translate: -4px 0;
+    }
+    80% {
+      translate: 4px 0;
+    }
+  }
 }
 
 :root {

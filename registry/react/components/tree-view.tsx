@@ -148,7 +148,7 @@ const treeViewControlVariants = tv({
     "cursor-pointer",
     "hover:bg-muted hover:text-foreground",
     "outline-none focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2",
-    "data-selected:bg-muted data-selected:text-foreground",
+    "data-selected:bg-accent data-selected:text-accent-foreground",
     "data-focus:bg-muted data-focus:text-foreground",
     "data-disabled:opacity-50 data-disabled:grayscale",
     "[&_svg]:size-4 [&_svg]:shrink-0",

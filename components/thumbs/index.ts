@@ -1,6 +1,7 @@
 export { AccordionThumb } from "./accordion";
 export { AlertThumb } from "./alert";
 export { AlertDialogThumb } from "./alert-dialog";
+export { AspectRatioThumb } from "./aspect-ratio";
 export { AutocompleteThumb } from "./autocomplete";
 export { AvatarThumb } from "./avatar";
 export { BadgeThumb } from "./badge";

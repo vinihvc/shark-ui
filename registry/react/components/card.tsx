@@ -166,7 +166,7 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
         "flex items-center gap-2",
         "px-(--space)",
         "bg-muted/50",
-        "border-t",
+        "rounded-b-lg border-t",
         "py-(--space)",
         className
       )}

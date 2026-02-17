@@ -25,6 +25,13 @@ import {
   TabsTrigger,
 } from "@/registry/react/components/tabs";
 import { CopyButton } from "./components/copy-button";
+import {
+  Table,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "./registry/react/components/table";
 
 // use this function to get MDX components, you will need it for rendering MDX
 export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
@@ -286,36 +293,23 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
     <ScrollArea className="my-6">
-      <table
-        className={cn("relative w-full border-none text-sm", className)}
+      <Table
+        className={cn("relative w-full rounded-lg border text-sm", className)}
+        isHoverable={false}
         {...props}
       />
     </ScrollArea>
   ),
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td
-      className={cn(
-        "whitespace-nowrap px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
+    <TableCell className={className} {...props} />
+  ),
+  thead: ({ className, ...props }: React.ComponentProps<"thead">) => (
+    <TableHeader className={cn("", className)} {...props} />
   ),
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
-    <th
-      className={cn(
-        "px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
+    <TableHead className={cn("font-medium", className)} {...props} />
   ),
-  tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
-    <tr
-      className={cn("m-0 border-b last:border-b-none", className)}
-      {...props}
-    />
-  ),
+  tr: (props: React.ComponentProps<"tr">) => <TableRow {...props} />,
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
     <ul
       className={cn("my-6 ms-6 list-disc text-muted-foreground", className)}

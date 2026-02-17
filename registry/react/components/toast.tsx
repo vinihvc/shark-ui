@@ -5,7 +5,6 @@ import {
   Toast as ArkToast,
   Toaster as ArkToaster,
   createToaster,
-  type ToastType,
 } from "@ark-ui/react/toast";
 import {
   CircleAlertIcon,
@@ -69,13 +68,13 @@ export const Toaster = (props: ToasterProps) => {
   );
 };
 
-const TOAST_ICONS: Record<ToastType, React.ReactNode> = {
+const TOAST_ICONS = {
   loading: <Spinner />,
   success: <CircleCheckIcon />,
   error: <CircleAlertIcon />,
   info: <InfoIcon />,
   warning: <TriangleAlertIcon />,
-};
+} as const;
 
 interface ToastItemProps extends React.ComponentProps<typeof ArkToast.Root> {
   /**
@@ -87,7 +86,9 @@ interface ToastItemProps extends React.ComponentProps<typeof ArkToast.Root> {
 export const ToastItem = (props: ToastItemProps) => {
   const { toast, className, ...rest } = props;
 
-  const ToastIcon = toast.type ? TOAST_ICONS[toast.type] : undefined;
+  const ToastIcon = toast.type
+    ? TOAST_ICONS[toast.type as keyof typeof TOAST_ICONS]
+    : null;
 
   return (
     <ArkToast.Root
@@ -98,10 +99,10 @@ export const ToastItem = (props: ToastItemProps) => {
       <div className="flex items-start gap-1.5">
         <div
           className={cn(
-            "in-[[data-type=warning]]:text-warning",
-            "in-[[data-type=success]]:text-success",
-            "in-[[data-type=error]]:text-destructive",
-            "in-[[data-type=info]]:text-info",
+            "in-data-[type=warning]:text-warning",
+            "in-data-[type=success]:text-success",
+            "in-data-[type=error]:text-destructive",
+            "in-data-[type=info]:text-info",
             "[&_svg]:pointer-events-none [&_svg]:h-lh [&_svg]:w-4 [&_svg]:shrink-0"
           )}
           data-slot="toast-icon"

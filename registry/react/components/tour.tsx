@@ -109,13 +109,17 @@ export const TourActionTrigger = (
 
 export const TourOverlay = (
   props: React.ComponentProps<typeof DialogOverlay>
-) => (
-  <ArkTour.Backdrop
-    className={dialogOverlayVariants()}
-    data-slot="tour-overlay"
-    {...props}
-  />
-);
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkTour.Backdrop
+      className={cn(dialogOverlayVariants(), className)}
+      data-slot="tour-overlay"
+      {...rest}
+    />
+  );
+};
 
 interface TourContentProps
   extends React.ComponentProps<typeof ArkTour.Content> {
@@ -145,6 +149,7 @@ export const TourContent = (props: TourContentProps) => {
       >
         <ArkTour.Content
           className={cn(
+            "[--space:--spacing(4)]",
             "z-50",
             "relative",
             "w-full max-w-md",

@@ -1,18 +1,17 @@
 "use client";
 
-import { useFilter, useListCollection } from "@ark-ui/react";
 import { Component } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import type { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
+import { ComboboxList } from "@/registry/react/components/combobox";
 import {
   Command,
   CommandContent,
   CommandControl,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandItem,
 } from "@/registry/react/components/command";
@@ -54,8 +53,6 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
 
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const { contains } = useFilter({ sensitivity: "base" });
-
   const components = React.useMemo<PageGroup[]>(() => {
     const groups: PageGroup[] = [];
 
@@ -95,10 +92,10 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
     return groups;
   }, [tree]);
 
-  const { collection, filter } = useListCollection<PageItem>({
-    initialItems: components.flatMap((group) => group.items),
-    filter: contains,
-  });
+  const items = React.useMemo(
+    () => components.flatMap((group) => group.items),
+    [components]
+  );
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -153,8 +150,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
 
         <Command
           className="rounded-md border"
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
+          items={items}
           onSelect={({ itemValue }) => {
             router.push(`/docs/${itemValue}`);
             setIsOpen(false);
@@ -168,8 +164,8 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           <CommandContent>
             <CommandEmpty />
 
-            <CommandGroup heading="Components">
-              {collection.items.map((item) => (
+            <ComboboxList<PageItem>>
+              {(item) => (
                 <CommandItem
                   className="border border-transparent data-highlighted:border-input"
                   item={item}
@@ -178,8 +174,8 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
                   <Component />
                   {item.label}
                 </CommandItem>
-              ))}
-            </CommandGroup>
+              )}
+            </ComboboxList>
           </CommandContent>
         </Command>
       </DialogContent>
