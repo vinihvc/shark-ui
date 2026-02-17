@@ -1,4 +1,10 @@
-import { ArrowUp, Check, HelpCircle, PlusCircle, Search } from "lucide-react";
+import {
+  ArrowUpIcon,
+  CheckIcon,
+  HelpCircleIcon,
+  PlusCircleIcon,
+  SearchIcon,
+} from "lucide-react";
 import {
   InputGroup,
   InputGroupAddon,
@@ -25,7 +31,7 @@ const InputGroupDemo = () => (
     <InputGroup>
       <InputGroupInput placeholder="Search..." />
       <InputGroupAddon>
-        <Search />
+        <SearchIcon />
       </InputGroupAddon>
       <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
     </InputGroup>
@@ -38,7 +44,7 @@ const InputGroupDemo = () => (
         <Tooltip>
           <TooltipTrigger asChild>
             <InputGroupButton pill size="icon-xs">
-              <HelpCircle />
+              <HelpCircleIcon />
             </InputGroupButton>
           </TooltipTrigger>
           <TooltipContent>This is content in a tooltip.</TooltipContent>
@@ -53,7 +59,7 @@ const InputGroupDemo = () => (
           size="icon-xs"
           variant="outline"
         >
-          <PlusCircle />
+          <PlusCircleIcon />
         </InputGroupButton>
         <Menu positioning={{ placement: "bottom-start" }}>
           <MenuTrigger asChild>
@@ -68,7 +74,7 @@ const InputGroupDemo = () => (
         <InputGroupText className="ml-auto">52% used</InputGroupText>
         <Separator className="h-4!" orientation="vertical" />
         <InputGroupButton disabled pill size="icon-xs">
-          <ArrowUp />
+          <ArrowUpIcon />
           <span className="sr-only">Send</span>
         </InputGroupButton>
       </InputGroupAddon>
@@ -78,7 +84,7 @@ const InputGroupDemo = () => (
 
       <InputGroupAddon align="inline-end">
         <div className="flex size-4 items-center justify-center rounded-full bg-primary text-primary-foreground">
-          <Check className="size-3" />
+          <CheckIcon className="size-3" />
         </div>
       </InputGroupAddon>
     </InputGroup>

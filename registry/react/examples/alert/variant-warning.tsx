@@ -1,4 +1,4 @@
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangleIcon } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,7 +7,7 @@ import {
 
 const Example = () => (
   <Alert variant="warning">
-    <AlertTriangle />
+    <AlertTriangleIcon />
     <AlertTitle>Storage almost full</AlertTitle>
     <AlertDescription>
       Your storage is almost full. Consider upgrading your plan to avoid losing

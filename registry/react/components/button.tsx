@@ -27,7 +27,7 @@ export const buttonVariants = tv({
       ],
       outline: [
         "bg-transparent",
-        "border shadow-xs",
+        "border border-input shadow-xs/5",
         "hover:bg-accent hover:text-accent-foreground",
         "dark:bg-input/32 dark:hover:bg-input/64",
         "focus-visible:border-ring focus-visible:ring-ring/50",
@@ -72,9 +72,9 @@ export const buttonVariants = tv({
         "has-[>svg]:px-2.5",
         "[&_svg:not([class*='size-'])]:size-3.5",
       ],
-      md: ["h-8", "px-3", "py-2", "has-[>svg]:px-2"],
-      lg: ["h-9", "px-4", "has-[>svg]:px-3"],
-      xl: ["h-10", "text-base", "px-5", "has-[>svg]:px-4"],
+      md: ["h-8", "px-3", "py-2"],
+      lg: ["h-9", "px-4"],
+      xl: ["h-10", "text-base", "px-5"],
       "icon-xs": "size-6 rounded-[calc(var(--radius-md)-4px)]",
       "icon-sm": "size-7",
       "icon-md": "size-8",
@@ -86,13 +86,14 @@ export const buttonVariants = tv({
       false: "",
     },
     pill: {
-      true: "rounded-full",
+      true: "rounded-full pe-4",
     },
   },
   defaultVariants: {
     variant: "solid",
     size: "md",
     clickEffect: true,
+    pill: false,
   },
 });
 

@@ -1,4 +1,9 @@
-import { Bold, Italic, Strikethrough, Underline } from "lucide-react";
+import {
+  BoldIcon,
+  ItalicIcon,
+  StrikethroughIcon,
+  UnderlineIcon,
+} from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
@@ -12,7 +17,7 @@ const TooltipDemo = () => (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button clickEffect={false} size="icon-md" variant="outline">
-          <Bold />
+          <BoldIcon />
         </Button>
       </TooltipTrigger>
       <TooltipContent>Bold</TooltipContent>
@@ -21,7 +26,7 @@ const TooltipDemo = () => (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button clickEffect={false} size="icon-md" variant="outline">
-          <Italic />
+          <ItalicIcon />
         </Button>
       </TooltipTrigger>
       <TooltipContent>Italic</TooltipContent>
@@ -30,7 +35,7 @@ const TooltipDemo = () => (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button clickEffect={false} size="icon-md" variant="outline">
-          <Underline />
+          <UnderlineIcon />
         </Button>
       </TooltipTrigger>
       <TooltipContent>Underline</TooltipContent>
@@ -39,7 +44,7 @@ const TooltipDemo = () => (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button clickEffect={false} size="icon-md" variant="outline">
-          <Strikethrough />
+          <StrikethroughIcon />
         </Button>
       </TooltipTrigger>
       <TooltipContent>Strikethrough</TooltipContent>

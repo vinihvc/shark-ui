@@ -1,4 +1,4 @@
-import { CheckCheck } from "lucide-react";
+import { CheckCheckIcon } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,7 +7,7 @@ import {
 
 const Example = () => (
   <Alert>
-    <CheckCheck />
+    <CheckCheckIcon />
     <AlertTitle>Deployment successful</AlertTitle>
     <AlertDescription>
       You can now start building your next great project.

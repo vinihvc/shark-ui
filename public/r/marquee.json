@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "marquee",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
   "cssVars": {
     "theme": {
       "--animate-marquee-x": "marqueeX var(--marquee-duration) linear infinite var(--marquee-delay)",

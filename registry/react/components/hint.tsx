@@ -7,6 +7,12 @@ import { cn } from "@/lib/utils";
 
 interface HintContextType {
   /**
+   * The id of the hint.
+   *
+   * @default "React.useId()"
+   */
+  id: string;
+  /**
    * Whether the hint is visible.
    */
   isVisible: boolean;
@@ -14,27 +20,21 @@ interface HintContextType {
    * Set the visibility of the hint.
    */
   setIsVisible: (value: boolean) => void;
-  /**
-   * The id of the hint.
-   *
-   * @default "React.useId()"
-   */
-  id: string;
 }
 
 interface HintProps extends React.ComponentProps<typeof ark.div> {
-  /**
-   * The side that the hint will appear from.
-   *
-   * @default "top"
-   */
-  side?: "top" | "bottom" | "left" | "right";
   /**
    * Spacing between the trigger and the hint.
    *
    * @default "1.5"
    */
   offset?: string;
+  /**
+   * The side that the hint will appear from.
+   *
+   * @default "top"
+   */
+  side?: "top" | "bottom" | "left" | "right";
 }
 
 const HintContext = React.createContext({} as HintContextType & HintProps);

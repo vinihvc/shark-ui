@@ -1,0 +1,44 @@
+---
+title: Locale
+description: Locale and internationalization utilities for formatting.
+links:
+  doc: https://ark-ui.com/docs/components/locale
+---
+
+<ComponentPreview componentName="locale" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+Wrap your app or a section with `LocaleProvider` to set the locale for formatting components like `Format.RelativeTime` and `Format.Byte`:
+
+```tsx
+import { LocaleProvider } from "@/components/ui/locale";
+import { Format } from "@/components/ui/format";
+
+<LocaleProvider locale="ar-BH">
+  <Format.RelativeTime value={new Date()} />
+</LocaleProvider>
+```
+
+## useLocale
+
+Access the current locale in your components:
+
+```tsx
+import { useLocale } from "@/components/ui/locale";
+
+const MyComponent = () => {
+  const locale = useLocale();
+  return <span>Current locale: {locale}</span>;
+};
+```
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/locale#api-reference).

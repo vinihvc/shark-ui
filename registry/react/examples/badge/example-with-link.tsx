@@ -1,12 +1,12 @@
-import { ArrowUpRight, CirclePlus } from "lucide-react";
+import { ArrowUpRightIcon, CirclePlusIcon } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/registry/react/components/badge";
 
 const Example = () => (
   <Badge asChild variant="info">
     <Link href="/">
-      <CirclePlus />
-      New components <ArrowUpRight />
+      <CirclePlusIcon />
+      New components <ArrowUpRightIcon />
     </Link>
   </Badge>
 );

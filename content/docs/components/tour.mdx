@@ -88,3 +88,113 @@ import {
 ### Default
 
 <ComponentPreview componentName="tour" fileName="default" />
+
+## API Reference
+
+### Tour
+
+Root component that wraps the tour. Provides the tour instance to child components via context.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `steps` | `TourStepDetails[]` | `[]` | The steps to display in the tour |
+| `lazyMount` | `boolean` | `true` | Whether to enable lazy mounting |
+| `unmountOnExit` | `boolean` | `true` | Whether to unmount on exit |
+| `immediate` | `boolean` | — | Whether to synchronize the present change immediately |
+| `present` | `boolean` | — | Whether the tour is present (controlled) |
+| `onExitComplete` | `() => void` | — | Called when the animation ends in the closed state |
+
+### TourTrigger
+
+Button that starts the tour. Renders a `button` element.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the trigger |
+
+### TourContent
+
+The main content container. Shows the tour dialog with optional close button.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `showCloseButton` | `boolean` | `true` | Show close button at the top right corner |
+| `className` | `string` | — | The class name for the content |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+### TourHeader
+
+Container for the tour step header. Renders dialog header layout.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the header |
+
+### TourTitle
+
+Displays the current step title. Renders an `h2` element.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the title |
+
+### TourDescription
+
+Displays the current step description. Renders a `p` element.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the description |
+
+### TourProgressText
+
+Displays the step progress (e.g., "1 of 5"). Renders a `span` element.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the progress text |
+
+### TourFooter
+
+Container for the tour navigation buttons. Renders dialog footer layout.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the footer |
+
+### TourPreviousStep
+
+Button that goes to the previous step. Renders when the step has a prev action.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+### TourNextStep
+
+Button that goes to the next step or dismisses the tour. Renders when the step has a next or dismiss action.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+### TourClose
+
+Trigger to close the tour. Used internally by the close button in `TourContent`.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+### useTourContext
+
+Returns the tour instance and start handler. Must be used within a Tour provider.
+
+| Return | Type | Description |
+| --- | --- | --- |
+| `tour` | `UseTourReturn` | The tour instance with step state and navigation methods |
+| `handleStart` | `() => void` | Function to start the tour |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/tour#api-reference).

@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
 import {
   Item,
   ItemContent,
@@ -30,7 +30,7 @@ const Example = () => (
             Opens in a new tab with security attributes.
           </ItemDescription>
         </ItemContent>
-        <ExternalLink />
+        <ExternalLinkIcon />
       </a>
     </Item>
   </div>

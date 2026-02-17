@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/highlight.tsx",
+      "content": "\"use client\";\n\nimport { Highlight as ArkHighlight } from \"@ark-ui/react/highlight\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst highlightMarkClass = cn(\n  \"rounded-sm bg-primary/20 font-medium text-primary\",\n  \"box-decoration-clone\"\n);\n\nconst Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {\n  const { className, ...rest } = props;\n  return (\n    <ArkHighlight\n      className={cn(highlightMarkClass, className)}\n      data-slot=\"highlight\"\n      {...rest}\n    />\n  );\n};\n\nexport { Highlight };\n",
+      "type": "registry:ui"
+    }
+  ]
+}

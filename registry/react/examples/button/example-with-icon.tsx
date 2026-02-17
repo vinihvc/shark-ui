@@ -1,22 +1,22 @@
-import { Download, Heart, Plus, Settings } from "lucide-react";
+import { DownloadIcon, HeartIcon, PlusIcon, SettingsIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 
 const Example = () => (
   <div className="flex flex-wrap gap-2">
     <Button>
-      <Plus />
+      <PlusIcon />
       Add
     </Button>
     <Button variant="outline">
-      <Settings />
+      <SettingsIcon />
       Settings
     </Button>
     <Button variant="secondary">
-      <Heart />
+      <HeartIcon />
       Favorite
     </Button>
     <Button variant="ghost">
-      <Download />
+      <DownloadIcon />
       Download
     </Button>
   </div>

@@ -1,0 +1,84 @@
+---
+title: Listbox
+description: A list of options for single or multiple selection without a dropdown trigger.
+links:
+  doc: https://ark-ui.com/docs/components/listbox
+  api: https://ark-ui.com/docs/components/listbox#api-reference
+---
+
+<ComponentPreview componentName="listbox" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/listbox
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/listbox.tsx" src="listbox.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Listbox,
+  createListCollection,
+} from "@/components/ui/listbox";
+
+const collection = createListCollection({
+  items: [
+    { label: "United States", value: "us" },
+    { label: "Canada", value: "ca" },
+  ],
+});
+
+<Listbox.Root collection={collection}>
+  <Listbox.Label>Select Country</Listbox.Label>
+  <Listbox.Content>
+    {collection.items.map((item) => (
+      <Listbox.Item item={item} key={item.value}>
+        <Listbox.ItemText>{item.label}</Listbox.ItemText>
+        <Listbox.ItemIndicator />
+      </Listbox.Item>
+    ))}
+  </Listbox.Content>
+</Listbox.Root>
+```
+
+## Examples
+
+### Multiple selection
+
+Allow selecting multiple items with `selectionMode="multiple"`.
+
+<ComponentPreview componentName="listbox" fileName="example-multiple" />

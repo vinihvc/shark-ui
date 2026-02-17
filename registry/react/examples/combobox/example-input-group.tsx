@@ -1,6 +1,6 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Combobox,
@@ -27,7 +27,7 @@ const ComboboxInputGroupDemo = () => {
       <ComboboxControl asChild>
         <InputGroup>
           <InputGroupAddon>
-            <Search className="size-4" />
+            <SearchIcon />
           </InputGroupAddon>
           <ComboboxInput
             className={cn(

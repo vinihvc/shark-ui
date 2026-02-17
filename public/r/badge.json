@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "cssVars": {
     "light": {
       "destructive-foreground": "var(--color-red-50)",

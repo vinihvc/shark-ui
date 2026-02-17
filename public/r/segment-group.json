@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segment-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/segment-group.tsx",
+      "content": "\"use client\";\n\nimport { SegmentGroup as ArkSegmentGroup } from \"@ark-ui/react/segment-group\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst segmentGroupRootClass = cn(\n  \"relative isolate inline-flex items-center rounded-lg bg-muted p-1\",\n  \"shadow-[inset_0_0_0_1px_hsl(var(--border))]\",\n  \"data-disabled:opacity-50 data-disabled:grayscale\"\n);\n\nconst segmentGroupItemClass = cn(\n  \"relative flex cursor-pointer select-none items-center justify-center gap-2 rounded-md px-3.5 py-2 font-medium text-foreground text-sm\",\n  \"data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start\",\n  \"data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n  \"data-[state=checked]:text-primary\",\n  \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\"\n);\n\nconst segmentGroupItemTextClass = cn(\"relative z-1\");\n\nconst segmentGroupIndicatorClass = cn(\n  \"absolute z-0 rounded-md bg-background shadow-sm\",\n  \"transition-[width,height,left,top] duration-150 ease-out\"\n);\n\nconst SegmentGroupRoot = (\n  props: React.ComponentProps<typeof ArkSegmentGroup.Root>\n) => {\n  const { className, ...rest } = props;\n  return (\n    <ArkSegmentGroup.Root\n      className={cn(segmentGroupRootClass, className)}\n      data-slot=\"segment-group\"\n      {...rest}\n    />\n  );\n};\n\nconst SegmentGroupIndicator = (\n  props: React.ComponentProps<typeof ArkSegmentGroup.Indicator>\n) => (\n  <ArkSegmentGroup.Indicator\n    className={cn(segmentGroupIndicatorClass, props.className)}\n    data-slot=\"segment-group-indicator\"\n    {...props}\n  />\n);\n\nconst SegmentGroupItem = (\n  props: React.ComponentProps<typeof ArkSegmentGroup.Item>\n) => (\n  <ArkSegmentGroup.Item\n    className={cn(segmentGroupItemClass, props.className)}\n    data-slot=\"segment-group-item\"\n    {...props}\n  />\n);\n\nconst SegmentGroupItemText = (\n  props: React.ComponentProps<typeof ArkSegmentGroup.ItemText>\n) => (\n  <ArkSegmentGroup.ItemText\n    className={cn(segmentGroupItemTextClass, props.className)}\n    data-slot=\"segment-group-item-text\"\n    {...props}\n  />\n);\n\nexport const SegmentGroup = {\n  Root: SegmentGroupRoot,\n  Indicator: SegmentGroupIndicator,\n  Item: SegmentGroupItem,\n  ItemText: SegmentGroupItemText,\n  ItemControl: ArkSegmentGroup.ItemControl,\n  ItemHiddenInput: ArkSegmentGroup.ItemHiddenInput,\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

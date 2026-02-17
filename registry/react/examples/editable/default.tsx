@@ -1,4 +1,4 @@
-import { Check, X } from "lucide-react";
+import { CheckIcon, XIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -41,12 +41,12 @@ const EditableDemo = () => (
             <EditableControl>
               <EditableCancelTrigger asChild>
                 <Button size="icon-md" variant="outline">
-                  <X />
+                  <XIcon />
                 </Button>
               </EditableCancelTrigger>
               <EditableSubmitTrigger asChild>
                 <Button size="icon-md" variant="outline">
-                  <Check />
+                  <CheckIcon />
                 </Button>
               </EditableSubmitTrigger>
             </EditableControl>
@@ -64,12 +64,12 @@ const EditableDemo = () => (
             <EditableControl>
               <EditableCancelTrigger asChild>
                 <Button size="icon-md" variant="outline">
-                  <X />
+                  <XIcon />
                 </Button>
               </EditableCancelTrigger>
               <EditableSubmitTrigger asChild>
                 <Button size="icon-md" variant="outline">
-                  <Check />
+                  <CheckIcon />
                 </Button>
               </EditableSubmitTrigger>
             </EditableControl>

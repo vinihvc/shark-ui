@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { UserIcon } from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
@@ -37,7 +37,7 @@ const Example = () => (
       <ItemMedia variant="default">
         <Avatar size="sm">
           <AvatarFallback>
-            <User />
+            <UserIcon />
           </AvatarFallback>
         </Avatar>
       </ItemMedia>

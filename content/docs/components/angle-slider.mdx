@@ -1,0 +1,90 @@
+---
+title: Angle Slider
+description: A circular slider for selecting angle/rotation values.
+links:
+  doc: https://ark-ui.com/docs/components/angle-slider
+  api: https://ark-ui.com/docs/components/angle-slider#api-reference
+---
+
+<ComponentPreview componentName="angle-slider" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/angle-slider
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/angle-slider.tsx" src="angle-slider.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  AngleSlider,
+} from "@/components/ui/angle-slider";
+
+<AngleSlider.Root defaultValue={0}>
+  <AngleSlider.Label>Rotation</AngleSlider.Label>
+  <AngleSlider.Control>
+    <AngleSlider.MarkerGroup>
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((value) => (
+        <AngleSlider.Marker key={value} value={value} />
+      ))}
+    </AngleSlider.MarkerGroup>
+    <AngleSlider.Thumb />
+  </AngleSlider.Control>
+  <AngleSlider.ValueText />
+  <AngleSlider.HiddenInput />
+</AngleSlider.Root>
+```
+
+## Examples
+
+### Controlled
+
+Control the angle value programmatically.
+
+<ComponentPreview componentName="angle-slider" fileName="example-controlled" />
+
+### Disabled
+
+Disable user interaction with the angle slider.
+
+<ComponentPreview componentName="angle-slider" fileName="example-disabled" />
+
+### With step
+
+Snap to specific angle increments (e.g., 15°).
+
+<ComponentPreview componentName="angle-slider" fileName="example-step" />

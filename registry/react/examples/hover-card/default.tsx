@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPinIcon } from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
@@ -35,7 +35,7 @@ const HoverCardDemo = () => (
           <p className="text-muted-foreground text-sm">Frontend Developer</p>
 
           <p className="flex items-center gap-1 text-muted-foreground text-xs">
-            <MapPin className="size-4" />
+            <MapPinIcon className="size-4" />
             Joined in 2016
           </p>
         </div>

@@ -1,0 +1,40 @@
+---
+title: Download Trigger
+description: Trigger file downloads from the browser.
+links:
+  doc: https://ark-ui.com/docs/components/download-trigger
+---
+
+<ComponentPreview componentName="download-trigger" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+## Usage
+
+```tsx
+import { DownloadTrigger } from "@/components/ui/download-trigger";
+
+<DownloadTrigger
+  data="File content"
+  fileName="document.txt"
+  mimeType="text/plain"
+>
+  Download
+</DownloadTrigger>
+```
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `data` | `string \| Blob \| Promise<string \| Blob>` | Content to download |
+| `fileName` | `string` | Name of the downloaded file |
+| `mimeType` | `string` | MIME type of the file |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/download-trigger#api-reference).

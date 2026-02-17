@@ -1,0 +1,40 @@
+---
+title: Client Only
+description: Render children only on the client side (useful for avoiding hydration mismatches).
+links:
+  doc: https://ark-ui.com/docs/components/client-only
+---
+
+<ComponentPreview componentName="client-only" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { ClientOnly } from "@/components/ui/client-only";
+
+<ClientOnly>
+  <div>This content only renders on the client.</div>
+</ClientOnly>
+```
+
+Use `ClientOnly` when you have components that use browser APIs, localStorage, or other client-only features that would cause hydration mismatches during server-side rendering.
+
+## With fallback
+
+Pass `fallback` to show content while the client-only content is loading:
+
+```tsx
+<ClientOnly fallback={<div>Loading...</div>}>
+  <ClientSideComponent />
+</ClientOnly>
+```
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/client-only#api-reference).

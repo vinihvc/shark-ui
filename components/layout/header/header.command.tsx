@@ -1,6 +1,6 @@
 "use client";
 
-import { Component } from "lucide-react";
+import { ComponentIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import type { source } from "@/lib/fumadocs";
@@ -27,16 +27,16 @@ import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 import { slugify } from "@/utils/formatter";
 
 interface PageItem {
-  value: string;
-  label: string;
-  url: string;
   isComponent: boolean;
   keywords?: string[];
+  label: string;
+  url: string;
+  value: string;
 }
 
 interface PageGroup {
-  value: string;
   items: PageItem[];
+  value: string;
 }
 
 interface HeaderCommandProps extends React.ComponentProps<typeof Dialog> {
@@ -171,7 +171,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
                   item={item}
                   key={item.value}
                 >
-                  <Component />
+                  <ComponentIcon />
                   {item.label}
                 </CommandItem>
               )}

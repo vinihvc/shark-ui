@@ -1,6 +1,6 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -21,7 +21,7 @@ const Example = () => {
             size="icon-sm"
             variant="outline"
           >
-            <Minus />
+            <MinusIcon />
           </Button>
           <Button
             clickEffect={false}
@@ -29,7 +29,7 @@ const Example = () => {
             size="icon-sm"
             variant="outline"
           >
-            <Plus />
+            <PlusIcon />
           </Button>
         </ButtonGroup>
       </FieldLabel>

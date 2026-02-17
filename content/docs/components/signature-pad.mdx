@@ -1,0 +1,63 @@
+---
+title: Signature Pad
+description: Capture hand-drawn signatures with a canvas-based input.
+links:
+  doc: https://ark-ui.com/docs/components/signature-pad
+  api: https://ark-ui.com/docs/components/signature-pad#api-reference
+---
+
+<ComponentPreview componentName="signature-pad" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/signature-pad
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/signature-pad.tsx" src="signature-pad.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { SignaturePad } from "@/components/ui/signature-pad";
+
+<SignaturePad.Root>
+  <SignaturePad.Label>Sign below</SignaturePad.Label>
+  <SignaturePad.Control>
+    <SignaturePad.Segment />
+    <SignaturePad.ClearTrigger />
+    <SignaturePad.Guide />
+  </SignaturePad.Control>
+</SignaturePad.Root>
+```

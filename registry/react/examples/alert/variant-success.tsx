@@ -1,4 +1,4 @@
-import { CheckCircle } from "lucide-react";
+import { CheckCircleIcon } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,7 +7,7 @@ import {
 
 const Example = () => (
   <Alert variant="success">
-    <CheckCircle />
+    <CheckCircleIcon />
     <AlertTitle>Payment successful</AlertTitle>
     <AlertDescription>
       Your payment has been processed successfully. You will receive a receipt

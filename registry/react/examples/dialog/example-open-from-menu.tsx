@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Settings, User } from "lucide-react";
+import { InfoIcon, SettingsIcon, UserIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -29,15 +29,15 @@ const Example = () => {
         </MenuTrigger>
         <MenuContent>
           <MenuItem onClick={() => setIsOpen(true)} value="settings">
-            <Settings />
+            <SettingsIcon />
             Open settings
           </MenuItem>
           <MenuItem disabled value="profile">
-            <User />
+            <UserIcon />
             View profile
           </MenuItem>
           <MenuItem disabled value="help">
-            <Info />
+            <InfoIcon />
             Help
           </MenuItem>
         </MenuContent>

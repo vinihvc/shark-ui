@@ -1,4 +1,4 @@
-import { ArrowRight, StarIcon } from "lucide-react";
+import { ArrowRightIcon, StarIcon } from "lucide-react";
 import { NavLink } from "@/components/nav-link";
 import { source } from "@/lib/fumadocs";
 import { Badge } from "@/registry/react/components/badge";
@@ -48,7 +48,7 @@ const HomePage = () => {
           <Button asChild size="lg" variant="outline">
             <NavLink href="/docs/components">
               View components
-              <ArrowRight />
+              <ArrowRightIcon />
             </NavLink>
           </Button>
         </div>

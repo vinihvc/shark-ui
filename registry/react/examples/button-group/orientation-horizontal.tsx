@@ -1,17 +1,17 @@
-import { Play, SkipBack, SkipForward } from "lucide-react";
+import { PlayIcon, SkipBackIcon, SkipForwardIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 
 const Example = () => (
   <ButtonGroup orientation="horizontal">
     <Button clickEffect={false} size="icon-md" variant="outline">
-      <SkipBack />
+      <SkipBackIcon />
     </Button>
     <Button clickEffect={false} size="icon-md" variant="outline">
-      <Play />
+      <PlayIcon />
     </Button>
     <Button clickEffect={false} size="icon-md" variant="outline">
-      <SkipForward />
+      <SkipForwardIcon />
     </Button>
   </ButtonGroup>
 );

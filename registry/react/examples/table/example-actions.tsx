@@ -1,4 +1,9 @@
-import { EllipsisVertical, Eye, Pencil, Trash2 } from "lucide-react";
+import {
+  EllipsisVerticalIcon,
+  EyeIcon,
+  PencilIcon,
+  Trash2Icon,
+} from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Menu,
@@ -45,22 +50,22 @@ const Example = () => {
               <Menu positioning={{ placement: "left-end" }}>
                 <MenuTrigger asChild>
                   <Button size="icon-sm" variant="outline">
-                    <EllipsisVertical />
+                    <EllipsisVerticalIcon />
                   </Button>
                 </MenuTrigger>
                 <MenuContent className="min-w-40">
                   <MenuItem value="view">
-                    <Eye />
+                    <EyeIcon />
                     View
                     <MenuShortcut>⌘ V</MenuShortcut>
                   </MenuItem>
                   <MenuItem value="edit">
-                    <Pencil />
+                    <PencilIcon />
                     Edit
                     <MenuShortcut>⌘ E</MenuShortcut>
                   </MenuItem>
                   <MenuItem value="delete" variant="destructive">
-                    <Trash2 />
+                    <Trash2Icon />
                     Delete
                     <MenuShortcut>⌘ ⌫</MenuShortcut>
                   </MenuItem>

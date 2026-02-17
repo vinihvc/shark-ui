@@ -1,6 +1,6 @@
 import Link from "fumadocs-core/link";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import { Info } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
@@ -331,7 +331,7 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     />
   ),
   TabsTrigger,
-  Info,
+  InfoIcon,
   ComponentPreview,
   ComponentInstallation,
   ComponentSource,

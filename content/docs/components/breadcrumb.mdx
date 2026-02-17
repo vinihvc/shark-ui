@@ -1,0 +1,155 @@
+---
+title: Breadcrumb
+description: A navigational component that shows the user's location within a hierarchy.
+---
+
+<ComponentPreview componentName="breadcrumb" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/breadcrumb
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/breadcrumb.tsx" src="breadcrumb.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Current Page</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+## Examples
+
+### With custom separator
+
+<ComponentPreview componentName="breadcrumb" fileName="example-custom-separator" />
+
+### With links
+
+<ComponentPreview componentName="breadcrumb" fileName="example-with-link" />
+
+### Collapsed
+
+<ComponentPreview componentName="breadcrumb" fileName="example-collapsed" />
+
+### With dropdown
+
+<ComponentPreview componentName="breadcrumb" fileName="example-with-dropdown" />
+
+## API Reference
+
+### Breadcrumb
+
+Root element. Renders a `nav` with `aria-label="breadcrumb"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BreadcrumbList
+
+Container for breadcrumb items. Renders an `ol`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BreadcrumbItem
+
+Wrapper for each breadcrumb segment. Renders an `li`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BreadcrumbLink
+
+Link for navigable breadcrumb items. Renders an `a`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `href` | `string` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BreadcrumbPage
+
+Current page indicator. Renders a `span` with `aria-current="page"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BreadcrumbSeparator
+
+Visual separator between items. Renders an `li` with `ChevronRight` icon by default.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `React.ReactNode` | `<ChevronRight />` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BreadcrumbEllipsis
+
+Ellipsis indicator for collapsed items. Renders a `span` with `MoreHorizontal` icon.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

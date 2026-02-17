@@ -1,21 +1,21 @@
-import { User } from "lucide-react";
+import { UserIcon } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
 
 const Example = () => (
   <div className="flex flex-wrap items-center gap-4">
     <Avatar>
       <AvatarFallback>
-        <User />
+        <UserIcon />
       </AvatarFallback>
     </Avatar>
     <Avatar size="sm">
       <AvatarFallback>
-        <User />
+        <UserIcon />
       </AvatarFallback>
     </Avatar>
     <Avatar size="lg">
       <AvatarFallback>
-        <User />
+        <UserIcon />
       </AvatarFallback>
     </Avatar>
   </div>

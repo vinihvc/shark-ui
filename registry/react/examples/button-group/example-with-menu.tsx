@@ -1,4 +1,9 @@
-import { Ban, MoreHorizontalIcon, Share2, Star } from "lucide-react";
+import {
+  BanIcon,
+  MoreHorizontalIcon,
+  Share2Icon,
+  StarIcon,
+} from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
@@ -12,7 +17,7 @@ import {
 const Example = () => (
   <ButtonGroup>
     <Button variant="outline">
-      <Star />
+      <StarIcon />
       Subscribe
     </Button>
     <Menu positioning={{ placement: "bottom-end" }}>
@@ -24,10 +29,10 @@ const Example = () => (
       <MenuContent className="w-48">
         <MenuGroup>
           <MenuItem value="share">
-            <Share2 /> Share Profile
+            <Share2Icon /> Share Profile
           </MenuItem>
           <MenuItem value="share">
-            <Ban />
+            <BanIcon />
             Report
           </MenuItem>
         </MenuGroup>

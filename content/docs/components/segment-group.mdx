@@ -1,0 +1,76 @@
+---
+title: Segment Group
+description: A set of mutually exclusive options displayed as a segmented control.
+links:
+  doc: https://ark-ui.com/docs/components/segment-group
+  api: https://ark-ui.com/docs/components/segment-group#api-reference
+---
+
+<ComponentPreview componentName="segment-group" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/segment-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/segment-group.tsx" src="segment-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { SegmentGroup } from "@/components/ui/segment-group";
+
+<SegmentGroup.Root defaultValue="React">
+  <SegmentGroup.Indicator />
+  <SegmentGroup.Item value="React">
+    <SegmentGroup.ItemText>React</SegmentGroup.ItemText>
+    <SegmentGroup.ItemControl />
+    <SegmentGroup.ItemHiddenInput />
+  </SegmentGroup.Item>
+  <SegmentGroup.Item value="Vue">
+    <SegmentGroup.ItemText>Vue</SegmentGroup.ItemText>
+    <SegmentGroup.ItemControl />
+    <SegmentGroup.ItemHiddenInput />
+  </SegmentGroup.Item>
+</SegmentGroup.Root>
+```
+
+## Examples
+
+### Controlled
+
+Control the selected value programmatically.
+
+<ComponentPreview componentName="segment-group" fileName="example-controlled" />

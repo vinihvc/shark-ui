@@ -1,10 +1,10 @@
-import { Send } from "lucide-react";
+import { SendIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 
 const Example = () => {
   return (
     <Button disabled>
-      Send <Send />
+      Send <SendIcon />
     </Button>
   );
 };

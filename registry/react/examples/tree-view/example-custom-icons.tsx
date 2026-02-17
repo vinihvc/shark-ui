@@ -1,6 +1,6 @@
 "use client";
 
-import { FileCode, FileJson, FileText } from "lucide-react";
+import { FileCodeIcon, FileJsonIcon, FileTextIcon } from "lucide-react";
 import {
   createFileIcons,
   createTreeCollection,
@@ -15,9 +15,9 @@ import {
 } from "@/registry/react/components/tree-view";
 
 const fileIcons = createFileIcons({
-  ".tsx": FileCode,
-  ".json": FileJson,
-  ".md": FileText,
+  ".tsx": FileCodeIcon,
+  ".json": FileJsonIcon,
+  ".md": FileTextIcon,
 });
 
 const TreeViewDemo = () => (

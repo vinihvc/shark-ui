@@ -1,6 +1,12 @@
 "use client";
 
-import { Computer, Fullscreen, Phone, RotateCw, Tablet } from "lucide-react";
+import {
+  ComputerIcon,
+  FullscreenIcon,
+  PhoneIcon,
+  RotateCwIcon,
+  TabletIcon,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils";
@@ -56,7 +62,7 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
               size="icon-sm"
               variant="outline"
             >
-              <Computer />
+              <ComputerIcon />
             </Button>
 
             <Button
@@ -64,7 +70,7 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
               size="icon-sm"
               variant="outline"
             >
-              <Tablet />
+              <TabletIcon />
             </Button>
 
             <Button
@@ -72,12 +78,12 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
               size="icon-sm"
               variant="outline"
             >
-              <Phone />
+              <PhoneIcon />
             </Button>
 
             <Button asChild size="icon-sm" variant="outline">
               <Link href={url} target="_blank">
-                <Fullscreen />
+                <FullscreenIcon />
               </Link>
             </Button>
 
@@ -86,7 +92,7 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
               size="icon-sm"
               variant="outline"
             >
-              <RotateCw />
+              <RotateCwIcon />
             </Button>
           </ButtonGroup>
         </div>

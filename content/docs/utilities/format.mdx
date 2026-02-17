@@ -1,0 +1,145 @@
+---
+title: Format
+description: Format numbers, bytes, and relative time with locale-aware formatting using the native Intl API.
+links:
+  doc: https://ark-ui.com/docs/components/format
+  api: https://ark-ui.com/docs/components/format
+---
+
+<ComponentPreview componentName="format" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+Format provides three components for locale-aware formatting. All use the native `Intl` API and are cached for performance.
+
+```tsx
+import { Format } from "@/components/ui/format";
+
+// Byte formatting (file sizes)
+<Format.Byte value={120_000} />
+// Renders: "120 KB"
+
+// Relative time
+<Format.RelativeTime value={new Date("2025-05-05")} />
+// Renders relative to now: "in X days" or "X days ago"
+
+// Number formatting
+<Format.Number value={1234567} />
+// Renders: "1,234,567"
+```
+
+You can also import individual components:
+
+```tsx
+import {
+  FormatByte,
+  FormatNumber,
+  FormatRelativeTime,
+} from "@/components/ui/format";
+```
+
+## Examples
+
+### Format Byte
+
+Format byte values as file sizes (e.g., 1.2 MB, 512 KB).
+
+<ComponentPreview componentName="format" fileName="example-byte" />
+
+#### Unit display
+
+Use the `unitDisplay` prop to control how the unit is displayed.
+
+<ComponentPreview componentName="format" fileName="example-byte-unit-display" />
+
+#### Unit system
+
+Use `unitSystem` to choose between decimal (1000 bytes) or binary (1024 bytes).
+
+<ComponentPreview componentName="format" fileName="example-byte-unit-system" />
+
+### Format Relative Time
+
+Format dates as relative time (e.g., 2 hours ago, in 3 days).
+
+<ComponentPreview componentName="format" fileName="example-relative-time" />
+
+#### Style
+
+Use the `style` prop for long, short, or narrow format.
+
+<ComponentPreview componentName="format" fileName="example-relative-time-short" />
+
+### Format Number
+
+Format numbers with locale-aware options.
+
+<ComponentPreview componentName="format" fileName="example-number" />
+
+#### Currency
+
+Use `style="currency"` with the `currency` prop for currency formatting.
+
+<ComponentPreview componentName="format" fileName="example-number-currency" />
+
+#### Percentage
+
+Use `style="percent"` to format numbers as percentages.
+
+<ComponentPreview componentName="format" fileName="example-number-percent" />
+
+#### Compact notation
+
+Use `notation="compact"` for compact display (e.g., 1.2M, 120K).
+
+<ComponentPreview componentName="format" fileName="example-number-compact" />
+
+## API Reference
+
+### Format.Byte
+
+Formats byte values with automatic unit conversion. Extends `Intl.NumberFormat` for byte-specific formatting.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `number` | — | The byte size to format (required) |
+| `unit` | `"byte"` \| `"bit"` | `"byte"` | The unit granularity to display |
+| `unitDisplay` | `"long"` \| `"short"` \| `"narrow"` | — | How to display the unit |
+| `unitSystem` | `"decimal"` \| `"binary"` | — | Use decimal (1000) or binary (1024) |
+| `locale` | `string` | — | BCP 47 locale string |
+
+### Format.RelativeTime
+
+Formats dates as relative time using `Intl.RelativeTimeFormat`.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `Date` \| `number` | — | The date to format (required) |
+| `numeric` | `"always"` \| `"auto"` | — | Numeric vs. verbal representation |
+| `style` | `"long"` \| `"short"` \| `"narrow"` | — | Format style |
+| `locale` | `string` | — | BCP 47 locale string |
+
+### Format.Number
+
+Formats numbers using `Intl.NumberFormat` with caching.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `number` | — | The number to format (required) |
+| `locale` | `string` | — | BCP 47 locale string |
+| `style` | `"decimal"` \| `"percent"` \| `"currency"` \| `"unit"` | `"decimal"` | Format style |
+| `currency` | `string` | — | ISO 4217 currency code (e.g., `"USD"`) when `style="currency"` |
+| `unit` | `string` | — | Unit for `style="unit"` (e.g., `"kilometer"`, `"liter"`) |
+| `notation` | `"standard"` \| `"compact"` \| `"scientific"` \| `"engineering"` | `"standard"` | Number notation |
+| `minimumFractionDigits` | `number` | — | Minimum decimal places |
+| `maximumFractionDigits` | `number` | — | Maximum decimal places |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/format#api-reference).

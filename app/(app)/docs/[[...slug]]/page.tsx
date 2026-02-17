@@ -1,7 +1,11 @@
 import Link from "fumadocs-core/link";
 import { findNeighbour } from "fumadocs-core/page-tree";
 import { createRelativeLink } from "fumadocs-ui/mdx";
-import { ArrowUpRightIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowUpRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
@@ -63,7 +67,10 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                 <div className="flex min-w-0 flex-col gap-8">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between gap-2">
-                      <h1 className="scroll-m-20 font-semibold text-3xl">
+                      <h1
+                        className="scroll-m-20 font-semibold text-3xl"
+                        id="page-title"
+                      >
                         {page.data.title}
                       </h1>
 
@@ -74,24 +81,24 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                           {neighbours.previous ? (
                             <Button size="icon-sm" variant="outline">
                               <Link href={neighbours.previous.url}>
-                                <ChevronLeft />
+                                <ChevronLeftIcon />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronLeft />
+                              <ChevronLeftIcon />
                             </Button>
                           )}
 
                           {neighbours.next ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.next.url}>
-                                <ChevronRight />
+                                <ChevronRightIcon />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronRight />
+                              <ChevronRightIcon />
                             </Button>
                           )}
                         </div>

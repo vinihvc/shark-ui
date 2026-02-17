@@ -1,7 +1,7 @@
 "use client";
 
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { BORDER_RADIUS, GRAY_COLORS, PRIMARY_COLORS } from "@/lib/themes";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -55,7 +55,7 @@ export const ThemeSelectorDialog = (
       <Dialog>
         <DialogTrigger asChild>
           <Button size="sm" variant="outline">
-            Open theme <ChevronDown className="opacity-64" />
+            Open theme <ChevronDownIcon className="opacity-64" />
           </Button>
         </DialogTrigger>
 

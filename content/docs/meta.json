@@ -1,4 +1,4 @@
 {
   "root": true,
-  "pages": ["(root)", "components", "forms", "dark-mode"]
+  "pages": ["(root)", "components", "utilities", "forms", "dark-mode"]
 }

@@ -460,4 +460,15 @@
       }
     }
   }
+
+  /* json-tree-view depth=1 overrides (data-depth=1 in Tailwind causes parse error, so we use CSS) */
+  .json-tree-view [data-part="branch-indent-guide"][data-depth="1"] {
+    left: calc(var(--spacing) * 3);
+  }
+  .json-tree-view [data-part="branch-control"][data-depth="1"] {
+    padding-left: calc(var(--spacing) * 1);
+  }
+  .json-tree-view [data-part="item"][data-depth="1"] {
+    padding-left: calc(var(--spacing) * 6);
+  }
 }

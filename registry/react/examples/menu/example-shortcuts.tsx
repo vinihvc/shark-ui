@@ -1,4 +1,4 @@
-import { Copy, LogOut, Settings, User } from "lucide-react";
+import { CopyIcon, LogOutIcon, SettingsIcon, UserIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Menu,
@@ -16,23 +16,23 @@ const Example = () => (
     </MenuTrigger>
     <MenuContent className="w-40">
       <MenuItem value="profile">
-        <User />
+        <UserIcon />
         Profile
         <MenuShortcut>⌘P</MenuShortcut>
       </MenuItem>
       <MenuItem value="settings">
-        <Settings />
+        <SettingsIcon />
         Settings
         <MenuShortcut>⌘S</MenuShortcut>
       </MenuItem>
       <MenuItem value="copy">
-        <Copy />
+        <CopyIcon />
         Copy
         <MenuShortcut>⌘C</MenuShortcut>
       </MenuItem>
       <MenuSeparator />
       <MenuItem value="logout">
-        <LogOut />
+        <LogOutIcon />
         Log out
         <MenuShortcut>⇧⌘Q</MenuShortcut>
       </MenuItem>

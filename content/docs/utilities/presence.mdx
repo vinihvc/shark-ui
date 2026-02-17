@@ -1,0 +1,44 @@
+---
+title: Presence
+description: Animate components on mount and unmount.
+links:
+  doc: https://ark-ui.com/docs/components/presence
+---
+
+<ComponentPreview componentName="presence" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import React from "react";
+import { Presence } from "@/components/ui/presence";
+
+const [visible, setVisible] = React.useState(false);
+
+<Presence present={visible}>
+  Content that animates in and out
+</Presence>
+```
+
+When `present` is `true`, the content animates in. When `false`, it animates out before unmounting (if `unmountOnExit` is true).
+
+## Props
+
+### Presence
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `present` | `boolean` | `false` |
+| `unmountOnExit` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/presence#api-reference).

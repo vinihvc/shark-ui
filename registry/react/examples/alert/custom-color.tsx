@@ -1,4 +1,4 @@
-import { WandSparkles } from "lucide-react";
+import { WandSparklesIcon } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,7 +7,7 @@ import {
 
 const Example = () => (
   <Alert className="border-purple-500/32 bg-purple-500/5 [&>svg]:text-purple-500">
-    <WandSparkles />
+    <WandSparklesIcon />
     <AlertTitle>Fancy alert, huh?</AlertTitle>
     <AlertDescription>
       This is a fancy alert with a custom color.

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "locale",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/locale.tsx",
+      "content": "\"use client\";\n\nimport {\n  LocaleProvider as ArkLocaleProvider,\n  useLocaleContext as useArkLocaleContext,\n} from \"@ark-ui/react/locale\";\n\nexport const LocaleProvider = ArkLocaleProvider;\n\nexport const useLocale = useArkLocaleContext;\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -2,8 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dialog",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants", "lucide-react"],
-  "registryDependencies": ["https://shark.vini.one/r/button.json"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://shark.vini.one/r/button.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/dialog.tsx",

@@ -1,4 +1,4 @@
-import { Settings, Shield, User } from "lucide-react";
+import { SettingsIcon, ShieldIcon, UserIcon } from "lucide-react";
 import {
   Tabs,
   TabsContent,
@@ -10,15 +10,15 @@ const Example = () => (
   <Tabs defaultValue="tab-1">
     <TabsList>
       <TabsTrigger value="tab-1">
-        <User />
+        <UserIcon />
         Profile
       </TabsTrigger>
       <TabsTrigger value="tab-2">
-        <Settings />
+        <SettingsIcon />
         Settings
       </TabsTrigger>
       <TabsTrigger value="tab-3">
-        <Shield />
+        <ShieldIcon />
         Security
       </TabsTrigger>
     </TabsList>

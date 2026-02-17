@@ -1,7 +1,7 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import { Cog, X } from "lucide-react";
+import { CogIcon, XIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
@@ -39,7 +39,7 @@ const FloatingPanelDemo = () => {
 
       <FloatingPanelContent>
         <FloatingPanelHeader>
-          <Cog />
+          <CogIcon />
           <FloatingPanelTitle>Settings</FloatingPanelTitle>
 
           <FloatingPanelControl>
@@ -51,7 +51,7 @@ const FloatingPanelDemo = () => {
 
             <FloatingPanelClose asChild>
               <Button size="icon-sm">
-                <X />
+                <XIcon />
                 <span className="sr-only">Close</span>
               </Button>
             </FloatingPanelClose>

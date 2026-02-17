@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react";
 import { Steps as ArkSteps } from "@ark-ui/react/steps";
-import { Check } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
@@ -105,7 +105,7 @@ export const StepsIndicator = (
       {...rest}
     >
       <span className="group-data-complete/step:hidden">{children}</span>
-      <Check className="hidden group-data-complete/step:block" />
+      <CheckIcon className="hidden group-data-complete/step:block" />
     </ArkSteps.Indicator>
   );
 };

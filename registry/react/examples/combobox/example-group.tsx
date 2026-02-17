@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe } from "lucide-react";
+import { GlobeIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Combobox,
@@ -52,9 +52,9 @@ const timezoneGroups = [
 ] as const;
 
 interface TimezoneItem {
+  group: string;
   label: string;
   value: string;
-  group: string;
 }
 
 const items: TimezoneItem[] = timezoneGroups.flatMap((group) =>
@@ -77,7 +77,7 @@ const ComboboxGroupDemo = () => {
       <ComboboxControl asChild>
         <InputGroup>
           <InputGroupAddon>
-            <Globe className="size-4" />
+            <GlobeIcon />
           </InputGroupAddon>
           <ComboboxInput
             className={cn(

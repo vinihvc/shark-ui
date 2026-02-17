@@ -2,8 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "item",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
-  "registryDependencies": ["https://shark.vini.one/r/separator.json"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "https://shark.vini.one/r/separator.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/item.tsx",

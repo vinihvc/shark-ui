@@ -1,0 +1,38 @@
+---
+title: Highlight
+description: Highlight search terms within text.
+links:
+  doc: https://ark-ui.com/docs/components/highlight
+---
+
+<ComponentPreview componentName="highlight" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Highlight } from "@/components/ui/highlight";
+
+<Highlight
+  query="component"
+  text="Ark UI is a headless component library for building accessible web applications."
+/>
+```
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `query` | `string \| string[]` | Term(s) to highlight |
+| `text` | `string` | The text to search and highlight within |
+| `ignoreCase` | `boolean` | Case-insensitive matching |
+| `exactMatch` | `boolean` | Match whole words only |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/highlight#api-reference).

@@ -1,11 +1,11 @@
-import { Plus } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 
 const Example = () => (
   <div className="flex items-center gap-2">
     <Button size="xs">Button</Button>
     <Button size="icon-xs">
-      <Plus />
+      <PlusIcon />
     </Button>
   </div>
 );

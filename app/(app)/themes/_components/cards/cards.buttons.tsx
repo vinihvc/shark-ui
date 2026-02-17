@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -110,7 +110,7 @@ export const CardsButtons = () => {
             <Button variant="outline">Outline</Button>
             <DialogTrigger asChild>
               <Button size="icon-md" variant="outline">
-                <Plus />
+                <PlusIcon />
               </Button>
             </DialogTrigger>
           </ButtonGroup>

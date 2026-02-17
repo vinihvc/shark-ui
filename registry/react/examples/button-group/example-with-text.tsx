@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   ButtonGroup,
@@ -9,7 +9,7 @@ const Example = () => (
   <ButtonGroup>
     <ButtonGroupText>Create user</ButtonGroupText>
     <Button clickEffect={false} size="icon-md" variant="secondary">
-      <Plus />
+      <PlusIcon />
     </Button>
   </ButtonGroup>
 );

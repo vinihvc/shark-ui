@@ -1,0 +1,85 @@
+---
+title: Image Cropper
+description: Crop and transform images with zoom, rotation, and aspect ratio controls.
+links:
+  doc: https://ark-ui.com/docs/components/image-cropper
+  api: https://ark-ui.com/docs/components/image-cropper#api-reference
+---
+
+<ComponentPreview componentName="image-cropper" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/image-cropper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/image-cropper.tsx" src="image-cropper.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ImageCropper } from "@/components/ui/image-cropper";
+
+<ImageCropper.Root>
+  <ImageCropper.Viewport>
+    <ImageCropper.Image alt="Crop me" src="/image.jpg" />
+    <ImageCropper.Selection>
+      <ImageCropper.Handle position="n" />
+      <ImageCropper.Handle position="e" />
+      <ImageCropper.Handle position="s" />
+      <ImageCropper.Handle position="w" />
+      <ImageCropper.Handle position="ne" />
+      <ImageCropper.Handle position="se" />
+      <ImageCropper.Handle position="sw" />
+      <ImageCropper.Handle position="nw" />
+      <ImageCropper.Grid />
+    </ImageCropper.Selection>
+  </ImageCropper.Viewport>
+</ImageCropper.Root>
+```
+
+## Examples
+
+### Aspect ratio
+
+Lock the crop area to a specific aspect ratio (e.g., 16:9).
+
+<ComponentPreview componentName="image-cropper" fileName="example-aspect-ratio" />
+
+### Circle crop
+
+Use `cropShape="circle"` for profile pictures or avatars.
+
+<ComponentPreview componentName="image-cropper" fileName="example-circle-crop" />

@@ -1,6 +1,12 @@
 "use client";
 
-import { Calculator, Calendar, CreditCard, Smile, User } from "lucide-react";
+import {
+  CalculatorIcon,
+  CalendarIcon,
+  CreditCardIcon,
+  SmileIcon,
+  UserIcon,
+} from "lucide-react";
 import { ComboboxList } from "@/registry/react/components/combobox";
 import {
   Command,
@@ -12,41 +18,41 @@ import {
 } from "@/registry/react/components/command";
 
 interface CommandItemData {
-  label: string;
-  value: string;
   icon: React.ReactNode;
+  label: string;
   type: string;
+  value: string;
 }
 
 const items: CommandItemData[] = [
   {
     label: "Calendar",
     value: "calendar",
-    icon: <Calendar />,
+    icon: <CalendarIcon />,
     type: "Suggestions",
   },
   {
     label: "Search Emoji",
     value: "search-emoji",
-    icon: <Smile />,
+    icon: <SmileIcon />,
     type: "Suggestions",
   },
   {
     label: "Calculator",
     value: "calculator",
-    icon: <Calculator />,
+    icon: <CalculatorIcon />,
     type: "Suggestions",
   },
   {
     label: "Profile",
     value: "profile",
-    icon: <User />,
+    icon: <UserIcon />,
     type: "Settings",
   },
   {
     label: "Billing",
     value: "billing",
-    icon: <CreditCard />,
+    icon: <CreditCardIcon />,
     type: "Settings",
   },
 ];

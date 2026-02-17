@@ -1,4 +1,4 @@
-import { TriangleAlert } from "lucide-react";
+import { TriangleAlertIcon } from "lucide-react";
 import {
   Alert,
   AlertDescription,
@@ -7,7 +7,7 @@ import {
 
 const Example = () => (
   <Alert variant="destructive">
-    <TriangleAlert />
+    <TriangleAlertIcon />
     <AlertTitle>Session expired</AlertTitle>
     <AlertDescription>
       Your session has expired. Please log in again.

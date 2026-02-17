@@ -1,0 +1,37 @@
+---
+title: JSON Tree View
+description: Display JSON data in an interactive, expandable tree.
+links:
+  doc: https://ark-ui.com/docs/components/json-tree-view
+---
+
+<ComponentPreview componentName="json-tree-view" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+## Usage
+
+```tsx
+import { JsonTreeView } from "@/components/ui/json-tree-view";
+
+const data = { name: "John", age: 30, address: { city: "NYC" } };
+
+<JsonTreeView.Root data={data} defaultExpandedDepth={1}>
+  <JsonTreeView.Tree />
+</JsonTreeView.Root>
+```
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | The JSON data to display |
+| `defaultExpandedDepth` | `number` | How many levels to expand by default |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/json-tree-view#api-reference).
