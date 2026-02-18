@@ -1,0 +1,95 @@
+---
+title: Link Overlay
+description: Stretch a link over a container so the entire card or article is clickable.
+links:
+  doc: https://chakra-ui.com/docs/components/link-overlay
+---
+
+<ComponentPreview componentName="link-overlay" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/link-overlay
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/link-overlay.tsx" src="/link-overlay.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+Wrap a container (e.g. Card) with `LinkBox` and add `LinkOverlay` with an `href` to make the whole area a link.
+
+```tsx
+import { LinkBox, LinkOverlay } from "@/components/ui/link-overlay";
+import { Card } from "@/components/ui/card";
+
+<LinkBox>
+  <Card>
+    <LinkOverlay href="/blog/post-1" />
+    <h2>Blog Post Title</h2>
+    <p>Some content...</p>
+  </Card>
+</LinkBox>
+```
+
+Inner links (e.g. "Read more") work by using `relative z-10` so they stay above the overlay.
+
+### With Next.js Link
+
+Use `asChild` on both `LinkBox` and `LinkOverlay` to compose with `next/link`:
+
+```tsx
+import Link from "next/link";
+import { LinkBox, LinkOverlay } from "@/components/ui/link-overlay";
+
+<LinkBox asChild>
+  <article>
+    <LinkOverlay asChild>
+      <Link href="/blog/post">Blog Post Title</Link>
+    </LinkOverlay>
+    <p>Content...</p>
+  </article>
+</LinkBox>
+```
+
+## API Reference
+
+### LinkBox
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### LinkOverlay
+
+| Prop | Type | Default |
+|------|------|---------|
+| `href` | `string` | required |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | - |

@@ -51,7 +51,7 @@ export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
 
           <TabsContent value="code">
             <div
-              className="overflow-hidden **:[figure]:m-0! **:[figure]:border-0 **:[figure]:bg-muted **:[pre]:h-[450px]"
+              className="overflow-hidden **:[figure]:m-0! **:[figure]:border-0 **:[pre]:h-[450px]"
               data-slot="code"
             >
               {source}

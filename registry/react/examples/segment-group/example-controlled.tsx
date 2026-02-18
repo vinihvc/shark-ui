@@ -1,25 +1,28 @@
 "use client";
 
-import { useState } from "react";
-import { SegmentGroup } from "@/registry/react/components/segment-group";
+import React from "react";
+import {
+  SegmentGroup,
+  SegmentGroupIndicator,
+  SegmentGroupItem,
+  SegmentGroupItemText,
+} from "@/registry/react/components/segment-group";
 
 const frameworks = ["React", "Solid", "Svelte", "Vue"];
 
-const SegmentGroupControlledDemo = () => {
-  const [value, setValue] = useState<string | null>(null);
+const Example = () => {
+  const [value, setValue] = React.useState<string | null>(null);
 
   return (
-    <SegmentGroup.Root onValueChange={(e) => setValue(e.value)} value={value}>
-      <SegmentGroup.Indicator />
+    <SegmentGroup onValueChange={(e) => setValue(e.value)} value={value}>
+      <SegmentGroupIndicator />
       {frameworks.map((framework) => (
-        <SegmentGroup.Item key={framework} value={framework}>
-          <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
-          <SegmentGroup.ItemControl />
-          <SegmentGroup.ItemHiddenInput />
-        </SegmentGroup.Item>
+        <SegmentGroupItem key={framework} value={framework}>
+          <SegmentGroupItemText>{framework}</SegmentGroupItemText>
+        </SegmentGroupItem>
       ))}
-    </SegmentGroup.Root>
+    </SegmentGroup>
   );
 };
 
-export default SegmentGroupControlledDemo;
+export default Example;

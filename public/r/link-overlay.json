@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link-overlay",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/link-overlay.tsx",
+      "content": "import { ark } from \"@ark-ui/react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface LinkBoxProps extends React.ComponentProps<typeof ark.div> {\n  asChild?: boolean;\n}\n\nexport const LinkBox = (props: LinkBoxProps) => {\n  const { asChild, className, ...rest } = props;\n\n  return (\n    <ark.div\n      asChild={asChild}\n      className={cn(\"relative\", className)}\n      data-slot=\"link-box\"\n      {...rest}\n    />\n  );\n};\n\nexport interface LinkOverlayProps extends React.ComponentProps<typeof ark.a> {\n  asChild?: boolean;\n}\n\nexport const LinkOverlay = (props: LinkOverlayProps) => {\n  const { asChild, className, ...rest } = props;\n\n  return (\n    <ark.a\n      asChild={asChild}\n      className={cn(\n        \"absolute inset-0 z-0\",\n        \"rounded-[inherit]\",\n        \"outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset\",\n        className\n      )}\n      data-slot=\"link-overlay\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

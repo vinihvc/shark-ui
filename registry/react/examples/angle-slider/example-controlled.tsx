@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import {
   AngleSlider,
   AngleSliderControl,
@@ -10,7 +10,7 @@ import {
 } from "@/registry/react/components/angle-slider";
 
 const Example = () => {
-  const [value, setValue] = useState(45);
+  const [value, setValue] = React.useState(45);
 
   return (
     <AngleSlider

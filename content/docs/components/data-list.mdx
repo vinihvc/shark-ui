@@ -1,0 +1,85 @@
+---
+title: Data List
+description: Display a list of similar data items with labels and values.
+links:
+  doc: https://chakra-ui.com/docs/components/data-list
+---
+
+<ComponentPreview componentName="data-list" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/data-list
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/data-list.tsx" src="/data-list.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { DataList } from "@/components/ui/data-list";
+
+<DataList.Root>
+  <DataList.Item>
+    <DataList.ItemLabel>Name</DataList.ItemLabel>
+    <DataList.ItemValue>John Doe</DataList.ItemValue>
+  </DataList.Item>
+  <DataList.Item>
+    <DataList.ItemLabel>Email</DataList.ItemLabel>
+    <DataList.ItemValue>john@example.com</DataList.ItemValue>
+  </DataList.Item>
+</DataList.Root>
+```
+
+## Orientation
+
+<ComponentPreview componentName="data-list" fileName="example-orientation" />
+
+## API Reference
+
+### DataList.Root
+
+| Prop | Type | Default |
+|------|------|---------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `variant` | `"subtle" \| "bold"` | `"subtle"` |
+| `className` | `string` | - |
+
+### DataList.Item
+
+Container for a single row. Inherits context from `DataList.Root`.
+
+### DataList.ItemLabel
+
+Label for the row (e.g. "Name", "Email").
+
+### DataList.ItemValue
+
+Value for the row.

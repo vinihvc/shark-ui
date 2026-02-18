@@ -1,0 +1,74 @@
+---
+title: Status
+description: Indicate the status of a process or state with a color-coded indicator.
+links:
+  doc: https://chakra-ui.com/docs/components/status
+---
+
+<ComponentPreview componentName="status" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/status
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/status.tsx" src="/status.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Status } from "@/components/ui/status";
+
+<Status.Root colorPalette="green">
+  <Status.Indicator />
+  Success
+</Status.Root>
+```
+
+## Variants
+
+<ComponentPreview componentName="status" fileName="example-variants" />
+
+## Sizes
+
+<ComponentPreview componentName="status" fileName="example-sizes" />
+
+## API Reference
+
+### Status.Root
+
+| Prop | Type | Default |
+|------|------|---------|
+| `colorPalette` | `"gray" \| "red" \| "orange" \| "yellow" \| "green" \| "teal" \| "blue" \| "cyan" \| "purple" \| "pink"` | `"gray"` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `className` | `string` | - |
+
+### Status.Indicator
+
+The status indicator dot. Inherits `colorPalette` and `size` from `Status.Root` context.

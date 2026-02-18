@@ -1,0 +1,69 @@
+---
+title: Float
+description: Anchor an element to the edge of a container.
+links:
+  doc: https://chakra-ui.com/docs/components/float
+---
+
+<ComponentPreview componentName="float" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/float
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/float.tsx" src="/float.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+Float requires a parent with `position: relative`. Place `Float` as a sibling of the anchored content.
+
+```tsx
+import { Float } from "@/components/ui/float";
+
+<div className="relative">
+  <Avatar />
+  <Float placement="top-end">
+    <Badge>New</Badge>
+  </Float>
+</div>
+```
+
+## Placement
+
+<ComponentPreview componentName="float" fileName="example-placement" />
+
+## API Reference
+
+### Float
+
+| Prop | Type | Default |
+|------|------|---------|
+| `placement` | `"top-start" \| "top-center" \| "top-end" \| "middle-start" \| "middle-center" \| "middle-end" \| "bottom-start" \| "bottom-center" \| "bottom-end"` | `"top-end"` |
+| `className` | `string` | - |

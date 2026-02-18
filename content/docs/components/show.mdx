@@ -1,0 +1,57 @@
+---
+title: Show
+description: Conditionally render content based on a boolean value.
+links:
+  doc: https://chakra-ui.com/docs/components/show
+---
+
+<ComponentPreview componentName="show" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/show
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/show.tsx" src="/show.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Show } from "@/components/ui/show";
+
+<Show when={isLoggedIn} fallback={<p>Please log in</p>}>
+  <Dashboard />
+</Show>
+```
+
+When `when` is truthy, children are rendered. Otherwise, `fallback` is rendered.
+
+## API Reference
+
+### Show
+
+| Prop | Type | Default |
+|------|------|---------|
+| `when` | `boolean` | required |
+| `fallback` | `React.ReactNode` | - |
+| `children` | `React.ReactNode` | required |

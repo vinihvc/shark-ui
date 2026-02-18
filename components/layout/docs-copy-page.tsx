@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { ChatGptIcon } from "@/components/icons/chat-gpt";
 import { ClaudeIcon } from "@/components/icons/claude";
 import { MarkdownIcon } from "@/components/icons/markdown";
@@ -46,14 +46,10 @@ export const DocsCopyPage = (props: DocsCopyPageProps) => {
           </ClipboardTrigger>
         </Clipboard>
 
-        <Menu
-          positioning={{
-            placement: "bottom-end",
-          }}
-        >
+        <Menu positioning={{ placement: "bottom-end" }}>
           <MenuTrigger asChild>
             <Button size="icon-sm" variant="outline">
-              <ChevronDown />
+              <ChevronDownIcon />
             </Button>
           </MenuTrigger>
 

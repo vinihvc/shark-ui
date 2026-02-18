@@ -6,9 +6,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --breakpoint-3xl: 1600px;
-  --breakpoint-4xl: 2000px;
-
   --header-height: calc(var(--spacing) * 14);
 
   --color-background: var(--background);
@@ -48,6 +45,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  --color-code: var(--code);
+  --color-code-highlight: var(--code-highlight);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -63,7 +63,6 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  --radius: 0.5rem;
   --radius-xs: calc(var(--radius) * 0.25);
   --radius-sm: calc(var(--radius) * 0.5);
   --radius-md: calc(var(--radius) * 0.75);
@@ -164,17 +163,17 @@
   --primary: var(--color-neutral-800);
   --primary-foreground: var(--color-neutral-50);
 
-  --secondary: --alpha(var(--color-black) / 4%);
+  --secondary: --alpha(var(--color-neutral-950) / 4%);
   --secondary-foreground: var(--color-neutral-800);
 
-  --muted: --alpha(var(--color-black) / 4%);
+  --muted: --alpha(var(--color-neutral-950) / 4%);
   --muted-foreground: color-mix(
     in srgb,
     var(--color-neutral-500) 90%,
-    var(--color-black)
+    var(--color-neutral-950)
   );
 
-  --accent: --alpha(var(--color-black) / 4%);
+  --accent: --alpha(var(--color-neutral-950) / 4%);
   --accent-foreground: var(--color-neutral-800);
 
   --destructive: var(--color-red-500);
@@ -189,15 +188,31 @@
   --warning: var(--color-amber-500);
   --warning-foreground: var(--color-amber-700);
 
-  --border: --alpha(var(--color-black) / 8%);
-  --input: --alpha(var(--color-black) / 10%);
+  --border: --alpha(var(--color-neutral-950) / 8%);
+  --input: --alpha(var(--color-neutral-950) / 10%);
   --ring: var(--color-neutral-400);
+
+  --sidebar: var(--color-neutral-50);
+  --sidebar-foreground: color-mix(
+    in srgb,
+    var(--color-neutral-800) 64%,
+    var(--sidebar)
+  );
+  --sidebar-primary: var(--color-neutral-800);
+  --sidebar-primary-foreground: var(--color-neutral-50);
+  --sidebar-accent: --alpha(var(--color-neutral-950) / 4%);
+  --sidebar-accent-foreground: var(--color-neutral-800);
+  --sidebar-border: --alpha(var(--color-neutral-950) / 6%);
+  --sidebar-ring: var(--color-neutral-400);
 
   --chart-1: var(--color-orange-600);
   --chart-2: var(--color-teal-600);
   --chart-3: var(--color-cyan-900);
   --chart-4: var(--color-amber-400);
   --chart-5: var(--color-amber-500);
+
+  --code: color-mix(in srgb, var(--background) 98%, var(--color-neutral-950));
+  --code-highlight: --alpha(var(--color-neutral-950) / 4%);
 }
 
 .dark {
@@ -236,7 +251,7 @@
 
   --destructive: color-mix(
     in srgb,
-    var(--color-red-500) 90%,
+    var(--color-red-600) 90%,
     var(--color-neutral-50)
   );
   --destructive-foreground: var(--color-red-400);
@@ -254,11 +269,31 @@
   --input: --alpha(var(--color-neutral-50) / 8%);
   --ring: var(--color-neutral-500);
 
+  --sidebar: color-mix(
+    in srgb,
+    var(--color-neutral-950) 97%,
+    var(--color-neutral-50)
+  );
+  --sidebar-foreground: color-mix(
+    in srgb,
+    var(--color-neutral-100) 64%,
+    var(--sidebar)
+  );
+  --sidebar-primary: var(--color-neutral-100);
+  --sidebar-primary-foreground: var(--color-neutral-800);
+  --sidebar-accent: --alpha(var(--color-neutral-50) / 4%);
+  --sidebar-accent-foreground: var(--color-neutral-100);
+  --sidebar-border: --alpha(var(--color-neutral-50) / 5%);
+  --sidebar-ring: var(--color-neutral-400);
+
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
   --chart-3: var(--color-amber-500);
   --chart-4: var(--color-purple-500);
   --chart-5: var(--color-rose-500);
+
+  --code: color-mix(in srgb, var(--background) 99%, var(--color-neutral-50));
+  --code-highlight: --alpha(var(--color-neutral-50) / 4%);
 }
 
 @layer base {
@@ -289,7 +324,7 @@
 }
 
 @utility container {
-  @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4;
+  @apply mx-auto max-w-[1400px] px-4;
 }
 
 @utility extend-touch-target {
@@ -323,11 +358,11 @@
     overflow: hidden;
     color: var(--color-muted-foreground);
     outline: none;
-    background-color: var(--color-muted);
     border-color: var(--border);
     border-style: solid;
     border-width: 1px;
     border-radius: var(--radius-lg);
+    @apply bg-code;
 
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5);
@@ -352,7 +387,7 @@
   [data-line-numbers] {
     display: grid;
     min-width: 100%;
-    neutral-50-space: pre;
+    white-space: pre;
     border: 0;
     background: transparent;
     padding: 0;
@@ -370,11 +405,11 @@
     text-align: right;
     content: counter(line);
     counter-increment: line;
-    background-color: var(--color-muted);
+    @apply bg-code;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: --alpha(var(--color-card-foreground) / 4%);
+    background-color: var(--color-code-highlight);
   }
 
   [data-line] {
@@ -396,7 +431,7 @@
   [data-highlighted-line],
   [data-highlighted-chars] {
     position: relative;
-    background-color: --alpha(var(--color-card-foreground) / 4%);
+    background-color: var(--color-code-highlight);
   }
 
   [data-highlighted-line] {
@@ -452,16 +487,5 @@
         border-bottom-right-radius: 0;
       }
     }
-  }
-
-  /* json-tree-view depth=1 overrides (data-depth=1 in Tailwind causes parse error, so we use CSS) */
-  .json-tree-view [data-part="branch-indent-guide"][data-depth="1"] {
-    left: calc(var(--spacing) * 3);
-  }
-  .json-tree-view [data-part="branch-control"][data-depth="1"] {
-    padding-left: calc(var(--spacing) * 1);
-  }
-  .json-tree-view [data-part="item"][data-depth="1"] {
-    padding-left: calc(var(--spacing) * 6);
   }
 }

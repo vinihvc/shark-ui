@@ -310,7 +310,7 @@ export const PRIMARY_COLORS = [
   },
 ];
 
-/* Gray scale – same structure as global.css, base name replaces "neutral" */
+/* Gray scale – same structure as globals.css, base name replaces "neutral" */
 export const GRAY_COLORS = [
   {
     label: "Slate",

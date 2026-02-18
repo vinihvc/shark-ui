@@ -1,0 +1,53 @@
+---
+title: Portal
+description: Render children into a DOM node outside the parent hierarchy (e.g. for modals, tooltips, popovers).
+---
+
+Portal renders its children into `document.body` (or a custom container) instead of in place. This avoids z-index and overflow issues when building overlays like dialogs, tooltips, and menus.
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+Import `Portal` from Ark UI and wrap content you want to render at the document root:
+
+```tsx
+import { Portal } from "@ark-ui/react";
+
+<Portal>
+  <div className="fixed inset-0 z-50 bg-black/50">
+    Modal or overlay content
+  </div>
+</Portal>
+```
+
+## Props
+
+| Prop | Type | Default |
+|------|------|---------|
+| `disabled` | `boolean` | `false` |
+| `container` | `RefObject<HTMLElement \| null>` | `document.body` |
+
+### disabled
+
+When `true`, children render in place instead of being portalled. Useful for testing or when you want to keep content in the DOM tree.
+
+### container
+
+A ref to the element that will host the portalled content. Defaults to `document.body`.
+
+```tsx
+const containerRef = useRef<HTMLDivElement>(null);
+
+<Portal container={containerRef}>
+  <p>Rendered inside the container</p>
+</Portal>
+```
+
+## Usage in Shark UI
+
+Shark UI components that use overlays (Dialog, Sheet, Menu, Popover, Tooltip, Combobox, HoverCard, Toast) use `Portal` internally to render their content at the document root. You typically do not need to use `Portal` directly unless you are building custom overlay components.

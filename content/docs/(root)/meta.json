@@ -2,6 +2,7 @@
   "title": "Get Started",
   "pages": [
     "index",
+    "rtl",
     "[Installation](/docs/installation)",
     "[Changelog](/docs/changelog)",
     "[llms.txt](/llms.txt)"

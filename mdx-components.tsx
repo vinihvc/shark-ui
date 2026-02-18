@@ -37,12 +37,15 @@ import {
 export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   ...defaultMdxComponents,
   ...components,
-  Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (
-    <Alert className={cn("my-6", className)} {...props} />
+  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn(
+        "font-medium text-foreground underline underline-offset-4",
+        className
+      )}
+      {...props}
+    />
   ),
-  AlertAction,
-  AlertDescription,
-  AlertTitle,
   a: ({ className, ...props }: React.ComponentProps<"a">) => {
     const isExternal = props.href?.startsWith("http");
 
@@ -62,7 +65,10 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
 
     return (
       <Link
-        className={cn("font-medium underline underline-offset-4", className)}
+        className={cn(
+          "font-medium text-foreground underline underline-offset-4",
+          className
+        )}
         {...props}
       />
     );
@@ -248,12 +254,7 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   img: ({ className, ...props }: React.ComponentProps<"img">) => (
     <img className={cn("rounded-md", className)} {...props} />
   ),
-  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
+
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
@@ -348,6 +349,12 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       {...props}
     />
   ),
+  Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (
+    <Alert className={cn("my-6", className)} {...props} />
+  ),
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
   Tabs,
   TabsList,
   TabsContent: ({

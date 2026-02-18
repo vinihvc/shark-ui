@@ -42,7 +42,7 @@ export const ThemeSelectorPrimary = () => {
       >
         <SelectTrigger className="w-full">
           <div className="flex items-center gap-2">
-            <div className="size-4 rounded-md border bg-primary" />
+            <div className="size-4 rounded-full border bg-primary" />
             <SelectValue placeholder="Select a theme" />
           </div>
         </SelectTrigger>
@@ -57,7 +57,7 @@ export const ThemeSelectorPrimary = () => {
             return (
               <SelectItem item={item.value} key={item.value}>
                 <div className="flex items-center gap-2">
-                  <div className={cn("size-3 rounded-md", hex)} />
+                  <div className={cn("size-3 rounded-full", hex)} />
                   {item.label}
                   {item.value === DEFAULT_PRIMARY_COLOR && (
                     <Badge size="sm" variant="info">

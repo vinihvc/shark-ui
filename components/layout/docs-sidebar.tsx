@@ -36,14 +36,14 @@ export const DocsSidebar = (
             </SidebarGroupLabel>
             <SidebarGroupContent>
               {item.type === "folder" && (
-                <SidebarMenu className="gap-0.5">
+                <SidebarMenu className="gap-1">
                   {item.children.map((item) => {
                     return (
                       item.type === "page" && (
                         <SidebarMenuItem key={item.url}>
                           <SidebarMenuButton
                             asChild
-                            className="ps-3.5 text-muted-foreground hover:bg-transparent [.active]:bg-muted"
+                            className="ps-3.5 text-muted-foreground hover:bg-muted [.active]:bg-muted [.active]:text-foreground"
                             isActive={item.url === pathname}
                           >
                             <NavLink href={item.url}>{item.name}</NavLink>

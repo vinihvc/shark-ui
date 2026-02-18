@@ -14,7 +14,7 @@ const Example = () => {
         label: "Undo",
         onClick() {
           toast.dismiss(id);
-          toast.create({
+          toast.success({
             id: "action-undone",
             title: "User has been restored.",
             type: "success",

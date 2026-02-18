@@ -18,6 +18,7 @@ export const badgeVariants = tv({
         "text-background",
         "focus-visible:border-foreground focus-visible:ring-foreground/20",
         "dark:focus-visible:ring-foreground/40",
+        "[a&]:shadow-primary/24 [a&]:shadow-xs",
         "[a&]:hover:bg-foreground/90",
       ],
       secondary: [
@@ -25,12 +26,14 @@ export const badgeVariants = tv({
         "text-secondary-foreground",
         "border-secondary/20",
         "focus-visible:border-foreground focus-visible:ring-foreground/50",
+        "[a&]:shadow-secondary/24 [a&]:shadow-xs",
         "[a&]:hover:bg-secondary/90",
       ],
       outline: [
         "border-border",
         "[a&]:hover:bg-accent",
         "[a&]:hover:text-accent-foreground",
+        "[a&]:shadow-border/24 [a&]:shadow-xs",
       ],
       success: [
         "bg-success/10",
@@ -38,6 +41,7 @@ export const badgeVariants = tv({
         "border-success/20",
         "focus-visible:border-success focus-visible:ring-success/20",
         "[a&]:hover:bg-success/20",
+        "[a&]:shadow-success/24 [a&]:shadow-xs",
       ],
       info: [
         "bg-info/10",
@@ -45,6 +49,7 @@ export const badgeVariants = tv({
         "border-info/20",
         "focus-visible:border-info focus-visible:ring-info/50",
         "[a&]:hover:bg-info/20",
+        "[a&]:shadow-info/24 [a&]:shadow-xs",
       ],
       warning: [
         "bg-warning/10",
@@ -53,6 +58,7 @@ export const badgeVariants = tv({
         "focus-visible:border-warning focus-visible:ring-warning/20",
         "dark:focus-visible:ring-warning/40",
         "[a&]:hover:bg-warning/20",
+        "[a&]:shadow-warning/24 [a&]:shadow-xs",
       ],
       destructive: [
         "bg-destructive/10 dark:bg-destructive/5",
@@ -61,6 +67,7 @@ export const badgeVariants = tv({
         "focus-visible:border-destructive focus-visible:ring-destructive/20",
         "dark:focus-visible:ring-destructive/40",
         "[a&]:hover:bg-destructive/20",
+        "[a&]:shadow-destructive/24 [a&]:shadow-xs",
       ],
     },
     size: {

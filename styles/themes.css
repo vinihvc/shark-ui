@@ -172,7 +172,7 @@
   }
 }
 
-/* Neutral goes here but it's the same as the default on global.css */
+/* Neutral goes here but it's the same as the default on globals.css */
 
 .bg-slate {
   --background: var(--color-slate-50);
@@ -187,15 +187,38 @@
   --primary: var(--color-slate-800);
   --primary-foreground: var(--color-slate-50);
 
+  --secondary: --alpha(var(--color-slate-950) / 4%);
   --secondary-foreground: var(--color-slate-800);
 
+  --muted: --alpha(var(--color-slate-950) / 4%);
   --muted-foreground: color-mix(
     in srgb,
     var(--color-slate-500) 90%,
-    var(--color-black)
+    var(--color-slate-950)
   );
 
+  --accent: --alpha(var(--color-slate-950) / 4%);
   --accent-foreground: var(--color-slate-800);
+
+  --border: --alpha(var(--color-slate-950) / 8%);
+  --input: --alpha(var(--color-slate-950) / 10%);
+  --ring: var(--color-slate-400);
+
+  --sidebar: var(--color-slate-50);
+  --sidebar-foreground: color-mix(
+    in srgb,
+    var(--color-slate-800) 64%,
+    var(--sidebar)
+  );
+  --sidebar-primary: var(--color-slate-800);
+  --sidebar-primary-foreground: var(--color-slate-50);
+  --sidebar-accent: --alpha(var(--color-slate-950) / 4%);
+  --sidebar-accent-foreground: var(--color-slate-800);
+  --sidebar-border: --alpha(var(--color-slate-950) / 6%);
+  --sidebar-ring: var(--color-slate-400);
+
+  --code: color-mix(in srgb, var(--background) 99%, var(--color-slate-950));
+  --code-highlight: --alpha(var(--color-slate-950) / 4%);
 
   @variant dark {
     --background: color-mix(
@@ -233,9 +256,33 @@
 
     --destructive: color-mix(
       in srgb,
-      var(--color-red-500) 90%,
+      var(--color-red-600) 90%,
       var(--color-slate-50)
     );
+
+    --border: --alpha(var(--color-slate-50) / 6%);
+    --input: --alpha(var(--color-slate-50) / 8%);
+    --ring: var(--color-slate-500);
+
+    --sidebar: color-mix(
+      in srgb,
+      var(--color-slate-950) 97%,
+      var(--color-slate-50)
+    );
+    --sidebar-foreground: color-mix(
+      in srgb,
+      var(--color-slate-100) 64%,
+      var(--sidebar)
+    );
+    --sidebar-primary: var(--color-slate-100);
+    --sidebar-primary-foreground: var(--color-slate-800);
+    --sidebar-accent: --alpha(var(--color-slate-50) / 4%);
+    --sidebar-accent-foreground: var(--color-slate-100);
+    --sidebar-border: --alpha(var(--color-slate-50) / 5%);
+    --sidebar-ring: var(--color-slate-400);
+
+    --code: color-mix(in srgb, var(--background) 99%, var(--color-slate-50));
+    --code-highlight: --alpha(var(--color-slate-50) / 4%);
   }
 }
 
@@ -252,15 +299,38 @@
   --primary: var(--color-gray-800);
   --primary-foreground: var(--color-gray-50);
 
+  --secondary: --alpha(var(--color-gray-950) / 4%);
   --secondary-foreground: var(--color-gray-800);
 
+  --muted: --alpha(var(--color-gray-950) / 4%);
   --muted-foreground: color-mix(
     in srgb,
     var(--color-gray-500) 90%,
-    var(--color-black)
+    var(--color-gray-950)
   );
 
+  --accent: --alpha(var(--color-gray-950) / 4%);
   --accent-foreground: var(--color-gray-800);
+
+  --border: --alpha(var(--color-gray-950) / 8%);
+  --input: --alpha(var(--color-gray-950) / 10%);
+  --ring: var(--color-gray-400);
+
+  --sidebar: var(--color-gray-50);
+  --sidebar-foreground: color-mix(
+    in srgb,
+    var(--color-gray-800) 64%,
+    var(--sidebar)
+  );
+  --sidebar-primary: var(--color-gray-800);
+  --sidebar-primary-foreground: var(--color-gray-50);
+  --sidebar-accent: --alpha(var(--color-gray-950) / 4%);
+  --sidebar-accent-foreground: var(--color-gray-800);
+  --sidebar-border: --alpha(var(--color-gray-950) / 6%);
+  --sidebar-ring: var(--color-gray-400);
+
+  --code: color-mix(in srgb, var(--background) 99%, var(--color-gray-950));
+  --code-highlight: --alpha(var(--color-gray-950) / 4%);
 
   @variant dark {
     --background: color-mix(
@@ -294,9 +364,33 @@
 
     --destructive: color-mix(
       in srgb,
-      var(--color-red-500) 90%,
+      var(--color-red-600) 90%,
       var(--color-gray-50)
     );
+
+    --border: --alpha(var(--color-gray-50) / 6%);
+    --input: --alpha(var(--color-gray-50) / 8%);
+    --ring: var(--color-gray-500);
+
+    --sidebar: color-mix(
+      in srgb,
+      var(--color-gray-950) 97%,
+      var(--color-gray-50)
+    );
+    --sidebar-foreground: color-mix(
+      in srgb,
+      var(--color-gray-100) 64%,
+      var(--sidebar)
+    );
+    --sidebar-primary: var(--color-gray-100);
+    --sidebar-primary-foreground: var(--color-gray-800);
+    --sidebar-accent: --alpha(var(--color-gray-50) / 4%);
+    --sidebar-accent-foreground: var(--color-gray-100);
+    --sidebar-border: --alpha(var(--color-gray-50) / 5%);
+    --sidebar-ring: var(--color-gray-400);
+
+    --code: color-mix(in srgb, var(--background) 99%, var(--color-gray-50));
+    --code-highlight: --alpha(var(--color-gray-50) / 4%);
   }
 }
 
@@ -313,15 +407,38 @@
   --primary: var(--color-zinc-800);
   --primary-foreground: var(--color-zinc-50);
 
+  --secondary: --alpha(var(--color-zinc-950) / 4%);
   --secondary-foreground: var(--color-zinc-800);
 
+  --muted: --alpha(var(--color-zinc-950) / 4%);
   --muted-foreground: color-mix(
     in srgb,
     var(--color-zinc-500) 90%,
-    var(--color-black)
+    var(--color-zinc-950)
   );
 
+  --accent: --alpha(var(--color-zinc-950) / 4%);
   --accent-foreground: var(--color-zinc-800);
+
+  --border: --alpha(var(--color-zinc-950) / 8%);
+  --input: --alpha(var(--color-zinc-950) / 10%);
+  --ring: var(--color-zinc-400);
+
+  --sidebar: var(--color-zinc-50);
+  --sidebar-foreground: color-mix(
+    in srgb,
+    var(--color-zinc-800) 64%,
+    var(--sidebar)
+  );
+  --sidebar-primary: var(--color-zinc-800);
+  --sidebar-primary-foreground: var(--color-zinc-50);
+  --sidebar-accent: --alpha(var(--color-zinc-950) / 4%);
+  --sidebar-accent-foreground: var(--color-zinc-800);
+  --sidebar-border: --alpha(var(--color-zinc-950) / 6%);
+  --sidebar-ring: var(--color-zinc-400);
+
+  --code: color-mix(in srgb, var(--background) 99%, var(--color-zinc-950));
+  --code-highlight: --alpha(var(--color-zinc-950) / 4%);
 
   @variant dark {
     --background: color-mix(
@@ -355,9 +472,34 @@
 
     --destructive: color-mix(
       in srgb,
-      var(--color-red-500) 90%,
+      var(--color-red-600) 90%,
       var(--color-zinc-50)
     );
+
+    --border: --alpha(var(--color-zinc-50) / 6%);
+    --input: --alpha(var(--color-zinc-50) / 8%);
+    --ring: var(--color-zinc-500);
+
+    --sidebar-ring: var(--color-zinc-400);
+    --sidebar: color-mix(
+      in srgb,
+      var(--color-zinc-950) 97%,
+      var(--color-zinc-50)
+    );
+    --sidebar-foreground: color-mix(
+      in srgb,
+      var(--color-zinc-100) 64%,
+      var(--sidebar)
+    );
+    --sidebar-primary: var(--color-zinc-100);
+    --sidebar-primary-foreground: var(--color-zinc-800);
+    --sidebar-accent: --alpha(var(--color-zinc-50) / 4%);
+    --sidebar-accent-foreground: var(--color-zinc-100);
+    --sidebar-border: --alpha(var(--color-zinc-50) / 5%);
+    --sidebar-ring: var(--color-zinc-400);
+
+    --code: color-mix(in srgb, var(--background) 99%, var(--color-zinc-50));
+    --code-highlight: --alpha(var(--color-zinc-50) / 4%);
   }
 }
 
@@ -374,15 +516,38 @@
   --primary: var(--color-stone-800);
   --primary-foreground: var(--color-stone-50);
 
+  --secondary: --alpha(var(--color-stone-950) / 4%);
   --secondary-foreground: var(--color-stone-800);
 
+  --muted: --alpha(var(--color-stone-950) / 4%);
   --muted-foreground: color-mix(
     in srgb,
     var(--color-stone-500) 90%,
-    var(--color-black)
+    var(--color-stone-950)
   );
 
+  --accent: --alpha(var(--color-stone-950) / 4%);
   --accent-foreground: var(--color-stone-800);
+
+  --border: --alpha(var(--color-stone-950) / 8%);
+  --input: --alpha(var(--color-stone-950) / 10%);
+  --ring: var(--color-stone-400);
+
+  --sidebar: var(--color-stone-50);
+  --sidebar-foreground: color-mix(
+    in srgb,
+    var(--color-stone-800) 64%,
+    var(--sidebar)
+  );
+  --sidebar-primary: var(--color-stone-800);
+  --sidebar-primary-foreground: var(--color-stone-50);
+  --sidebar-accent: --alpha(var(--color-stone-950) / 4%);
+  --sidebar-accent-foreground: var(--color-stone-800);
+  --sidebar-border: --alpha(var(--color-stone-950) / 6%);
+  --sidebar-ring: var(--color-stone-400);
+
+  --code: color-mix(in srgb, var(--background) 99%, var(--color-stone-950));
+  --code-highlight: --alpha(var(--color-stone-950) / 4%);
 
   @variant dark {
     --background: color-mix(
@@ -420,9 +585,33 @@
 
     --destructive: color-mix(
       in srgb,
-      var(--color-red-500) 90%,
+      var(--color-red-600) 90%,
       var(--color-stone-50)
     );
+
+    --border: --alpha(var(--color-stone-50) / 6%);
+    --input: --alpha(var(--color-stone-50) / 8%);
+    --ring: var(--color-stone-500);
+
+    --sidebar: color-mix(
+      in srgb,
+      var(--color-stone-950) 97%,
+      var(--color-stone-50)
+    );
+    --sidebar-foreground: color-mix(
+      in srgb,
+      var(--color-stone-100) 64%,
+      var(--sidebar)
+    );
+    --sidebar-primary: var(--color-stone-100);
+    --sidebar-primary-foreground: var(--color-stone-800);
+    --sidebar-accent: --alpha(var(--color-stone-50) / 4%);
+    --sidebar-accent-foreground: var(--color-stone-100);
+    --sidebar-border: --alpha(var(--color-stone-50) / 5%);
+    --sidebar-ring: var(--color-stone-400);
+
+    --code: color-mix(in srgb, var(--background) 99%, var(--color-stone-50));
+    --code-highlight: --alpha(var(--color-stone-50) / 4%);
   }
 }
 

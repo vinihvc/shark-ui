@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import {
   Pagination,
   PaginationItems,
@@ -9,7 +9,7 @@ import {
 } from "@/registry/react/components/pagination";
 
 const Example = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = React.useState(1);
 
   return (
     <div className="flex flex-col gap-4">

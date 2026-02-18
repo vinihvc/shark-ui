@@ -47,7 +47,7 @@ export const ModeSwitcher = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
+      <TooltipTrigger asChild>
         <Button
           aria-label="Toggle theme"
           className={cn("group", "extend-touch-target")}

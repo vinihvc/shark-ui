@@ -27,7 +27,6 @@ export const menuContentVariants = tv({
   base: [
     "z-(--z-index)",
     "h-auto",
-    // "max-h-[min(var(--available-height),--spacing(72))] min-w-[max(var(--reference-width),--spacing(32))]",
     "p-1",
     "bg-popover",
     "text-popover-foreground",

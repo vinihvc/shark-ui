@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Steps,
@@ -24,7 +24,7 @@ const items = [
 ];
 
 const Example = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = React.useState(0);
 
   return (
     <div className="flex w-full max-w-lg flex-col gap-4">

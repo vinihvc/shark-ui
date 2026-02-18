@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import {
   ToggleGroup,
@@ -15,7 +15,7 @@ const FONT_WEIGHTS = [
 ] as const;
 
 const Example = () => {
-  const [value, setValue] = useState<string[]>(["normal"]);
+  const [value, setValue] = React.useState<string[]>(["normal"]);
 
   return (
     <div className="flex flex-col gap-3">

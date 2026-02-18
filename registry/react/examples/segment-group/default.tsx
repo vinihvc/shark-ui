@@ -1,18 +1,21 @@
-import { SegmentGroup } from "@/registry/react/components/segment-group";
+import {
+  SegmentGroup,
+  SegmentGroupIndicator,
+  SegmentGroupItem,
+  SegmentGroupItemText,
+} from "@/registry/react/components/segment-group";
 
 const frameworks = ["React", "Solid", "Svelte", "Vue"];
 
 const SegmentGroupDemo = () => (
-  <SegmentGroup.Root defaultValue="React">
-    <SegmentGroup.Indicator />
+  <SegmentGroup defaultValue="React">
+    <SegmentGroupIndicator />
     {frameworks.map((framework) => (
-      <SegmentGroup.Item key={framework} value={framework}>
-        <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
-        <SegmentGroup.ItemControl />
-        <SegmentGroup.ItemHiddenInput />
-      </SegmentGroup.Item>
+      <SegmentGroupItem key={framework} value={framework}>
+        <SegmentGroupItemText>{framework}</SegmentGroupItemText>
+      </SegmentGroupItem>
     ))}
-  </SegmentGroup.Root>
+  </SegmentGroup>
 );
 
 export default SegmentGroupDemo;

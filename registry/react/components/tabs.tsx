@@ -9,7 +9,8 @@ export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
   return (
     <ArkTabs.Root
       className={cn(
-        "flex flex-col gap-2 data-[orientation=vertical]:flex-row",
+        "flex flex-col gap-2",
+        "data-[orientation=vertical]:flex-row",
         className
       )}
       data-slot="tabs"
@@ -38,7 +39,7 @@ const tabsListVariants = tv({
   variants: {
     variant: {
       default: {
-        base: ["rounded-lg bg-muted text-muted-foreground/72"],
+        base: ["rounded-lg bg-muted"],
         indicator: ["-z-1 rounded-md bg-input/32 dark:bg-input"],
       },
       underline: {
@@ -104,7 +105,7 @@ export const TabsTrigger = (
         "rounded-md outline-none",
         "transition-[color,background-color,box-shadow]",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
-        "hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring aria-selected:text-foreground",
+        "hover:text-foreground/72 focus-visible:ring-2 focus-visible:ring-ring aria-selected:text-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
         "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
         className

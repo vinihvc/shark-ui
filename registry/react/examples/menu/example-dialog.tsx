@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
@@ -17,7 +17,7 @@ import {
 } from "@/registry/react/components/menu";
 
 const Example = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   return (
     <>

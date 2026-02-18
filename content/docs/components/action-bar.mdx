@@ -1,0 +1,109 @@
+---
+title: Action Bar
+description: Display a bottom action bar with a set of actions for selected items.
+links:
+  doc: https://chakra-ui.com/docs/components/action-bar
+---
+
+<ComponentPreview componentName="action-bar" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark-ui/action-bar
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/action-bar.tsx" src="/action-bar.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+The action bar is designed to be controlled by table or checkbox selections. Use `open` and `onOpenChange` to control visibility.
+
+```tsx
+import {
+  ActionBarRoot,
+  ActionBarPositioner,
+  ActionBarContent,
+  ActionBarCloseTrigger,
+  ActionBarSelectionTrigger,
+  ActionBarSeparator,
+} from "@/components/ui/action-bar";
+
+const [open, setOpen] = useState(false);
+
+<ActionBarRoot open={open} onOpenChange={setOpen}>
+  <ActionBarPositioner placement="bottom">
+    <ActionBarContent>
+      <ActionBarCloseTrigger />
+      <ActionBarSeparator />
+      <ActionBarSelectionTrigger count={3} />
+      {/* Your actions */}
+    </ActionBarContent>
+  </ActionBarPositioner>
+</ActionBarRoot>
+```
+
+## Placement
+
+<ComponentPreview componentName="action-bar" fileName="example-placement" />
+
+## API Reference
+
+### ActionBarRoot
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean) => void` | - |
+
+### ActionBarPositioner
+
+| Prop | Type | Default |
+|------|------|---------|
+| `placement` | `"bottom" \| "bottom-start" \| "bottom-end"` | `"bottom"` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+
+### ActionBarContent
+
+| Prop | Type | Default |
+|------|------|---------|
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+
+### ActionBarCloseTrigger
+
+Closes the action bar when clicked.
+
+### ActionBarSelectionTrigger
+
+| Prop | Type | Default |
+|------|------|---------|
+| `count` | `number` | `0` |
+| `label` | `string` | - |
+
+Displays "X items selected" when `count` is provided, or custom `label`/`children`.

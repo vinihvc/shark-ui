@@ -87,7 +87,7 @@ Key conventions:
 ### Styling
 
 - Tailwind CSS v4 with `@theme` directive in CSS (no `tailwind.config` file)
-- Global styles in `styles/global.css` with CSS variables for theming (light/dark)
+- Global styles in `styles/globals.css` with CSS variables for theming (light/dark)
 - Semantic color tokens: primary, secondary, muted, accent, destructive, success, info, warning
 - Custom animations defined in CSS: slideUp/slideDown, expand/collapse, marquee, indeterminate
 

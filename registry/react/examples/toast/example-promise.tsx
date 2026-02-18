@@ -14,15 +14,15 @@ const Example = () => {
             ),
           {
             loading: {
-              title: "Loading...",
-              description: "Please wait.",
+              title: "Generating event...",
+              description: "Please wait while we generate the event.",
             },
             success: (data) => ({
-              title: "Success!",
+              title: "Event generated!",
               description: `${data.name} has been created`,
             }),
             error: {
-              title: "Error",
+              title: "Error generating event",
               description: "Something went wrong.",
             },
           }

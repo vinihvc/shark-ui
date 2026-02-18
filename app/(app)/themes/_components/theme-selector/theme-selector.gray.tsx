@@ -44,7 +44,7 @@ export const ThemeSelectorGray = () => {
           <div className="flex items-center gap-2">
             <div
               className={cn(
-                "size-4 rounded-md border",
+                "size-4 rounded-full border",
                 `bg-${selectedColor}-900`
               )}
             />

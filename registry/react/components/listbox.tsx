@@ -28,18 +28,21 @@ export const Listbox: ArkListbox.RootComponent = (props) => {
 
 export const ListboxContent = (
   props: React.ComponentProps<typeof ArkListbox.Content>
-) => (
-  <ArkListbox.Content
-    className={cn(
-      "flex max-h-72 flex-col overflow-y-auto rounded-md border bg-popover p-1 outline-none",
-      "data-[orientation=horizontal]:max-h-none data-[orientation=horizontal]:max-w-max data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:overflow-x-auto data-[orientation=horizontal]:overflow-y-hidden",
-      "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border",
-      props.className
-    )}
-    data-slot="listbox-content"
-    {...props}
-  />
-);
+) => {
+  const { className, ...rest } = props;
+  return (
+    <ArkListbox.Content
+      className={cn(
+        "flex max-h-72 flex-col overflow-y-auto rounded-md border bg-popover p-1 outline-none",
+        "data-[orientation=horizontal]:max-h-none data-[orientation=horizontal]:max-w-max data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:overflow-x-auto data-[orientation=horizontal]:overflow-y-hidden",
+        "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border",
+        className
+      )}
+      data-slot="listbox-content"
+      {...rest}
+    />
+  );
+};
 
 export const ListboxItem = (
   props: React.ComponentProps<typeof ArkListbox.Item>
@@ -66,16 +69,19 @@ export const ListboxItem = (
 
 export const ListboxItemText = (
   props: React.ComponentProps<typeof ArkListbox.ItemText>
-) => (
-  <ArkListbox.ItemText
-    className={cn(
-      "min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap",
-      props.className
-    )}
-    data-slot="listbox-item-text"
-    {...props}
-  />
-);
+) => {
+  const { className, ...rest } = props;
+  return (
+    <ArkListbox.ItemText
+      className={cn(
+        "min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap",
+        className
+      )}
+      data-slot="listbox-item-text"
+      {...rest}
+    />
+  );
+};
 
 export const ListboxItemIndicator = (
   props: React.ComponentProps<typeof ArkListbox.ItemIndicator>

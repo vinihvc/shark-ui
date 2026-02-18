@@ -1,0 +1,89 @@
+---
+title: RTL
+description: Right-to-left support for Arabic, Hebrew, Persian, and other RTL languages.
+links:
+  doc: https://ark-ui.com/docs/utilities/locale
+---
+
+{/* <ComponentPreview componentName="locale" fileName="example-rtl" /> */}
+
+## Setup
+
+Wrap your app with `LocaleProvider` and pass an RTL locale.
+
+```tsx showLineNumbers {4,6}
+import { LocaleProvider } from "@/components/ui/locale";
+
+export const App = () => (
+  <LocaleProvider locale="ar-BH">
+    {/* Your app */}
+  </LocaleProvider>
+);
+```
+
+Common RTL locales include `ar-BH`, `ar-SA`, `he-IL`, and `fa-IR`.
+
+> **Note:** If no `LocaleProvider` is setup, the default locale for the app will be `en-US` and therefore the direction will be `ltr`.
+
+## Applying Direction
+
+Access the current `dir` value and apply it to your root element (e.g. `<html>` or an app wrapper) so layout and Ark UI components render correctly:
+
+```tsx
+import { LocaleProvider, useLocale } from "@/components/ui/locale";
+
+const AppContent = () => {
+  const { locale, dir } = useLocale();
+
+  return (
+    <div dir={dir} lang={locale}>
+      {/* Your app content */}
+    </div>
+  );
+};
+```
+
+## How it works
+
+When using RTL with Shark UI:
+
+- **Logical properties**: Prefer logical utilities (`ms-*`, `me-*`, `ps-*`, `pe-*`, `start-*`, `end-*`) over physical ones (`ml-*`, `mr-*`, `left-*`, `right-*`) so layout adapts to direction.
+- **Direction propagation**: Set `dir={dir}` on the root so child components inherit the correct text direction and alignment.
+- **Ark UI components**: Ark UI components respect the document direction when positioning overlays, tooltips, and menus.
+
+## Font recommendations
+
+For the best RTL experience, use fonts that support your target language. [Noto](https://fonts.google.com/noto) provides good coverage for Arabic, Hebrew, and Persian and pairs well with [Inter](https://fonts.google.com/specimen/Inter) or [Geist](https://fonts.google.com/specimen/Geist).
+
+## Animations
+
+Use logical animation utilities so motion follows direction:
+
+- Prefer `slide-in-from-end` / `slide-out-to-end` over `slide-in-from-right` / `slide-out-to-right`
+- Prefer `slide-in-from-start` / `slide-out-to-start` over `slide-in-from-left` / `slide-out-to-left`
+
+### Portal elements
+
+For overlays that render in a portal (Popover, Tooltip, Dialog), pass `dir` so content aligns correctly in RTL:
+
+```tsx
+<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent dir={dir}>
+      {/* Popover content */}
+  </PopoverContent>
+</Popover>
+```
+
+```tsx
+<Tooltip>
+  <TooltipTrigger>Open</TooltipTrigger>
+  <TooltipContent dir={dir}>
+    {/* Tooltip content */}
+  </TooltipContent>
+</Tooltip>
+```
+
+---
+
+For the full API reference, see the [Ark UI Locale documentation](https://ark-ui.com/docs/utilities/locale).

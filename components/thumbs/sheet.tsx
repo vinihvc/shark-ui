@@ -16,7 +16,7 @@ export const SheetThumb = ({
         </div>
         <div className="flex flex-1" />
         <div className="flex justify-end">
-          <div className="h-2.5 w-1/2 rounded-full bg-primary" />
+          <div className="h-2.5 w-1/2 rounded-lg bg-primary" />
         </div>
       </div>
     </div>

@@ -93,6 +93,23 @@ toast.create({
 
 <ComponentPreview componentName="toast" fileName="example-action" />
 
+### Deduplication
+
+Toasts with the same `id` are deduplicated: repeated triggers animate the existing toast.
+
+- **Passing `id`** — deduplicate
+- **Not passing `id`** — always create a new toast
+
+<ComponentPreview componentName="toast" fileName="example-dedupe" />
+
+```tsx showLineNumbers {2}
+toast.success({ 
+  id: "clipboard", 
+  title: "Success!",
+  description: "User has been created.",
+});
+```
+
 ### Duration
 
 Control how long a toast stays visible with the `duration` option.
@@ -116,10 +133,10 @@ By default, the toaster is placed at the bottom right corner of the screen.
 You can customize the placement of the toaster by updating the `placement` option in `createToaster()`.
 
 ```tsx title="components/ui/toast.tsx" {2} showshowLineNumbers
-const toast = createToaster({
+const baseToaster = createToaster({
   placement: "bottom-end",
   overlap: true,
-  max: 3,
+  max: 4,
 });
 ```
 
@@ -130,10 +147,10 @@ Any extra toasts will be queued and rendered when a toast has been dismissed.
 By default, the toaster can display up to 3 toasts at the same time. You can customize the maximum number of visible toasts by updating the `max` option in `createToaster()`.
 
 ```tsx title="components/ui/toast.tsx" {4} showshowLineNumbers
-const toast = createToaster({
+const baseToaster = createToaster({
   placement: "bottom-end",
   overlap: true,
-  max: 3,
+  max: 4,
 });
 ```
 
@@ -145,9 +162,8 @@ Renders the toast container. Place it once in your app layout.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `toaster` | `ReturnType<typeof createToaster>` | default `toast` | The toaster instance to render |
-| `className` | `string` | `-` | Optional class name for the toaster group |
-| `dir` | `"ltr"` \| `"rtl"` | `"ltr"` | Text direction |
+| `toaster` | `ReturnType<typeof createToaster>` | `-` | 
+| `className` | `string` | `-` | 
 
 ### ToastItem
 
@@ -156,22 +172,6 @@ Renders a single toast. Used internally by `Toaster` for each toast. Renders a `
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `className` | `string` | `-` | Optional class name for the toast root |
-
-### toast (instance methods)
-
-| Method | Description |
-|--------|-------------|
-| `toast.create` | Create a toast with the given options |
-| `toast.success` | Create a success toast |
-| `toast.error` | Create an error toast |
-| `toast.warning` | Create a warning toast |
-| `toast.info` | Create an info toast |
-| `toast.loading` | Create a loading toast |
-| `toast.promise` | Create a toast that tracks a promise (loading → success/error) |
-| `toast.update` | Update an existing toast by id |
-| `toast.dismiss` | Dismiss a toast by id, or all if no id |
-| `toast.pause` | Pause auto-dismiss timer |
-| `toast.resume` | Resume auto-dismiss timer |
 
 ---
 

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Rating } from "@/registry/react/components/rating";
 
 const Example = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
 
   const isCorrectRating = value === 5;
 

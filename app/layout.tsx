@@ -1,4 +1,4 @@
-import "@/styles/global.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
 import { SITE_CONFIG } from "@/config/site";

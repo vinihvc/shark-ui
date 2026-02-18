@@ -10,6 +10,7 @@ import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Separator } from "@/registry/react/components/separator";
+import { HeaderCustomize } from "./header.customize";
 
 interface SiteHeaderProps extends React.ComponentProps<"header"> {}
 
@@ -25,7 +26,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
         "sticky top-0",
         "w-full",
         "bg-background/80 backdrop-blur-sm",
-        "border-b",
+
         className
       )}
       {...rest}
@@ -76,10 +77,14 @@ export const SiteHeader = (props: SiteHeaderProps) => {
 
             <Separator orientation="vertical" />
 
+            <HeaderCustomize />
+
             <ModeSwitcher />
           </div>
         </div>
       </div>
+
+      <span className="block h-px bg-[linear-gradient(90deg,var(--color-foreground)_1px,transparent_1px)] bg-bottom bg-size-[6px_1px] bg-repeat-x opacity-30 dark:opacity-15" />
     </header>
   );
 };

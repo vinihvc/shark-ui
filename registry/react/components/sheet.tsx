@@ -8,16 +8,17 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
+  Dialog,
   DialogBody,
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogOverlay,
   DialogTitle,
-  dialogOverlayVariants,
-} from "./dialog";
+} from "@/registry/react/components/dialog";
 
 export const Sheet = (props: React.ComponentProps<typeof ArkDialog.Root>) => (
-  <ArkDialog.Root data-slot="sheet" {...props} />
+  <Dialog data-slot="sheet" {...props} />
 );
 
 export const SheetTrigger = (
@@ -27,15 +28,7 @@ export const SheetTrigger = (
 export const SheetOverlay = (
   props: React.ComponentProps<typeof ArkDialog.Backdrop>
 ) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkDialog.Backdrop
-      className={cn(dialogOverlayVariants(), className)}
-      data-slot="sheet-overlay"
-      {...rest}
-    />
-  );
+  return <DialogOverlay data-slot="sheet-overlay" {...props} />;
 };
 
 const sheetPositionerVariants = tv({
