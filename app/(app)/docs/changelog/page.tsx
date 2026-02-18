@@ -49,7 +49,7 @@ const ChangelogPage = () => {
                 Changelog
               </h1>
             </div>
-            <p className="text-[1.05rem] text-muted-foreground sm:text-balance sm:text-base md:max-w-[80%]">
+            <p className="sm: text-[1.05rem] text-muted-foreground sm:text-base md:max-w-[80%]">
               Latest updates and announcements.
             </p>
           </div>

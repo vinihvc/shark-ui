@@ -21,9 +21,9 @@ const TOP_LEVEL_SECTIONS = [
 ];
 
 interface MobileNavProps extends React.ComponentProps<typeof Popover> {
-  tree: typeof source.pageTree;
-  items: { href: string; label: string }[];
   className?: string;
+  items: { href: string; label: string }[];
+  tree: typeof source.pageTree;
 }
 
 export function MobileNav(props: MobileNavProps) {

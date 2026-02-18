@@ -14,8 +14,8 @@ import {
 const Example = () => (
   <ColorPicker
     className="w-full max-w-64"
-    inline
     defaultValue={parseColor("#eb5e41")}
+    inline
   >
     <ColorPickerArea>
       <ColorPickerAreaBackground />

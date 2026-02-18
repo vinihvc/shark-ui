@@ -12,8 +12,8 @@ export const ColorPickerThumb = ({
         <div className="h-2 w-3/4 rounded-full bg-muted-foreground/16" />
       </div>
 
-      <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border bg-muted shadow-md/5">
-        <PipetteIcon className="size-4 text-primary/64" />
+      <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border bg-primary shadow-md/5">
+        <PipetteIcon className="size-4 text-primary-foreground" />
       </div>
     </div>
   </BlockThumbCard>

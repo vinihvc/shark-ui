@@ -4,28 +4,25 @@ import { useState } from "react";
 import {
   AngleSlider,
   AngleSliderControl,
-  AngleSliderLabel,
-  AngleSliderMarker,
-  AngleSliderMarkerGroup,
+  AngleSliderProgressRing,
   AngleSliderThumb,
-  AngleSliderValueText,
+  AngleSliderValueDisplay,
 } from "@/registry/react/components/angle-slider";
 
 const Example = () => {
   const [value, setValue] = useState(45);
 
   return (
-    <AngleSlider onValueChange={(e) => setValue(e.value)} value={value}>
-      <AngleSliderLabel>Rotation</AngleSliderLabel>
+    <AngleSlider
+      aria-label="Angle"
+      onValueChange={(e) => setValue(e.value)}
+      value={value}
+    >
       <AngleSliderControl>
-        <AngleSliderMarkerGroup>
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((val) => (
-            <AngleSliderMarker key={val} value={val} />
-          ))}
-        </AngleSliderMarkerGroup>
+        <AngleSliderProgressRing />
         <AngleSliderThumb />
       </AngleSliderControl>
-      <AngleSliderValueText />
+      <AngleSliderValueDisplay />
     </AngleSlider>
   );
 };

@@ -4,15 +4,15 @@ const FormatByteUnitDisplayExample = () => (
   <div className="flex flex-col gap-3">
     <div>
       <span className="text-muted-foreground text-sm">Long: </span>
-      <FormatByte value={1_500_000} unitDisplay="long" />
+      <FormatByte unitDisplay="long" value={1_500_000} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">Short: </span>
-      <FormatByte value={1_500_000} unitDisplay="short" />
+      <FormatByte unitDisplay="short" value={1_500_000} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">Narrow: </span>
-      <FormatByte value={1_500_000} unitDisplay="narrow" />
+      <FormatByte unitDisplay="narrow" value={1_500_000} />
     </div>
   </div>
 );

@@ -80,10 +80,10 @@ const data: Payment[] = [
 ];
 
 export interface Payment {
-  id: string;
   amount: number;
-  status: "pending" | "processing" | "success" | "failed";
   email: string;
+  id: string;
+  status: "pending" | "processing" | "success" | "failed";
 }
 
 export const columns: ColumnDef<Payment>[] = [

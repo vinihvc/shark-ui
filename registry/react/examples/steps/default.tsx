@@ -17,7 +17,7 @@ const steps = Array.from({ length: 3 }, (_, index) => index + 1);
 
 const StepsDemo = () => {
   return (
-    <Steps className="h-full w-full max-w-md" count={steps.length}>
+    <Steps className="size-full max-w-md" count={steps.length}>
       <StepsList>
         {steps.map((step) => (
           <StepsItem index={step - 1} key={step}>

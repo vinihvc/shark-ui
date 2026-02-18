@@ -206,7 +206,7 @@ export const FieldDescription = (props: React.ComponentProps<typeof ark.p>) => {
     <ark.p
       className={cn(
         "font-normal text-muted-foreground text-sm leading-normal",
-        "group-has-data-[orientation=horizontal]/field:text-balance",
+        "group-has-data-[orientation=horizontal]/field:",
         "nth-last-2:-mt-1 last:mt-0 [[data-variant=legend]+&]:-mt-1.5",
         "in-[[data-slot=field]:has([data-slot=radio-group-item])]:ml-6",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",

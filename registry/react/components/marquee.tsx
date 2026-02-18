@@ -8,6 +8,11 @@ interface MarqueeProps
     "spacing" | "side"
   > {
   /**
+   *
+   * @default "horizontal"
+   */
+  orientation?: "horizontal" | "vertical";
+  /**
    * Whether to show the edges of the marquee
    *
    * @default true
@@ -19,11 +24,6 @@ interface MarqueeProps
    * @default 4
    */
   spacing?: number;
-  /**
-   *
-   * @default "horizontal"
-   */
-  orientation?: "horizontal" | "vertical";
 }
 
 export const Marquee = (props: MarqueeProps) => {

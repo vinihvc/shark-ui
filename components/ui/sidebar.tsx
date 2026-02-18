@@ -35,12 +35,12 @@ const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 interface SidebarContextProps {
-  state: "expanded" | "collapsed";
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  openMobile: boolean;
-  setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
+  open: boolean;
+  openMobile: boolean;
+  setOpen: (open: boolean) => void;
+  setOpenMobile: (open: boolean) => void;
+  state: "expanded" | "collapsed";
   toggleSidebar: () => void;
 }
 
@@ -153,10 +153,10 @@ function SidebarProvider({
 }
 
 interface SidebarProps extends React.ComponentProps<typeof Sheet> {
+  className?: string;
+  collapsible?: "offcanvas" | "icon" | "none";
   side?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
-  collapsible?: "offcanvas" | "icon" | "none";
-  className?: string;
 }
 
 function Sidebar({

@@ -38,11 +38,11 @@ export const DEFAULT_PACKAGE_MANAGER = "pnpm";
 export const DEFAULT_INSTALLATION_METHOD = "cli";
 
 export interface Config {
-  primaryColor: PrimaryColor;
-  grayColor: GrayColor;
   borderRadius: BorderRadius;
-  packageManager: PackageManager;
+  grayColor: GrayColor;
   installationMethod: InstallationMethod;
+  packageManager: PackageManager;
+  primaryColor: PrimaryColor;
 }
 
 export const configAtom = atomWithStorage<Config>("config", {

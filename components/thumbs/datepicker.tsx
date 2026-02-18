@@ -10,7 +10,7 @@ export const DatePickerThumb = ({
     <div className="relative flex w-48 flex-col gap-2 rounded-lg border bg-muted p-3 shadow-md/5">
       <div className="flex items-center justify-between gap-1">
         <div className="flex size-5 items-center justify-center rounded-lg border bg-muted">
-          <span aria-hidden className="text-muted-foreground/64 text-xs">
+          <span aria-hidden className="text-muted-foreground/64">
             <ChevronLeftIcon className="size-3" />
           </span>
         </div>
@@ -19,7 +19,7 @@ export const DatePickerThumb = ({
           <div className="h-2 w-3/4 rounded-lg bg-muted-foreground/16" />
         </div>
         <div className="flex size-5 items-center justify-center rounded-lg border bg-muted">
-          <span aria-hidden className="text-muted-foreground/64 text-xs">
+          <span aria-hidden className="text-muted-foreground/64">
             <ChevronLeftIcon className="size-3 rotate-180" />
           </span>
         </div>

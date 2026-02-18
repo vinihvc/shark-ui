@@ -51,13 +51,44 @@ npm install @ark-ui/react lucide-react
 
 ```tsx
 import { SignaturePad } from "@/components/ui/signature-pad";
-
-<SignaturePad.Root>
-  <SignaturePad.Label>Sign below</SignaturePad.Label>
-  <SignaturePad.Control>
-    <SignaturePad.Segment />
-    <SignaturePad.ClearTrigger />
-    <SignaturePad.Guide />
-  </SignaturePad.Control>
-</SignaturePad.Root>
 ```
+
+```tsx
+<SignaturePad />
+```
+
+## Examples
+
+### Image preview
+
+Use the `onDrawEnd` callback to capture the signature as an image. 
+
+The callback receives the `getDataUrl(type)` method that returns a promise that resolves to a data URL.
+
+<ComponentPreview componentName="signature-pad" fileName="example-image-preview" />
+
+### With field
+
+Wrap the signature pad in a `Field` with `FieldLabel` and `FieldHelper` for accessible form integration.
+
+<ComponentPreview componentName="signature-pad" fileName="example-field" />
+
+## API Reference
+
+### SignaturePad
+
+Root component. Renders a `div`.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Whether the signature pad is disabled. |
+| `required` | `boolean` | `false` | Whether the signature pad is required. |
+| `readOnly` | `boolean` | `false` | Whether the signature pad is read-only. |
+| `name` | `string` | — | Name for form submission. |
+| `onDraw` | `(details: DrawDetails) => void` | — | Callback while drawing. |
+| `onDrawEnd` | `(details: DrawEndDetails) => void` | — | Callback when drawing ends. Use `details.getDataUrl(type)` to get image data. |
+| `className` | `string` | — | Additional CSS classes. |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/signature-pad#api-reference).

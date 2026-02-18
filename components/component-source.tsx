@@ -10,23 +10,23 @@ import { CopyButton } from "./copy-button";
 export interface ComponentSourceProps
   extends React.ComponentProps<typeof CodeBlock> {
   /**
-   * The title of the code block
-   */
-  title?: string;
-  /**
-   * The source code to display
-   */
-  src?: string;
-  /**
-   * The language of the code block
-   */
-  language?: string;
-  /**
    * Whether to make the code block collapsible
    *
    * @default true
    */
   isCollapsible?: boolean;
+  /**
+   * The language of the code block
+   */
+  language?: string;
+  /**
+   * The source code to display
+   */
+  src?: string;
+  /**
+   * The title of the code block
+   */
+  title?: string;
 }
 
 export const ComponentSource = (props: ComponentSourceProps) => {

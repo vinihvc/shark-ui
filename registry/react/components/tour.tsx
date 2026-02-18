@@ -23,13 +23,13 @@ export type TourStepType = TourStepDetails;
 
 interface TourProviderProps {
   /**
-   * The tour instance
-   */
-  tour: UseTourReturn;
-  /**
    * The function to start the tour
    */
   handleStart: () => void;
+  /**
+   * The tour instance
+   */
+  tour: UseTourReturn;
 }
 
 const TourProvider = React.createContext({} as TourProviderProps);

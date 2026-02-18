@@ -13,7 +13,7 @@ export const AngleSliderThumb = ({
           className="absolute inset-0 rounded-full border-8 border-primary"
           style={{
             clipPath:
-              "polygon(50% 0, 100% 0, 100% 100%, 0 100%, 0 60%, 50% 60%)",
+              "polygon(50% 0, 100% 0, 100% 100%, 0 100%, 0 70%, 50% 70%)",
           }}
         />
         <div className="absolute top-12 left-0 size-4 rounded-full bg-primary ring-4 ring-muted" />

@@ -6,17 +6,17 @@ import { FieldLabel } from "./field";
 interface ProgressProps
   extends Omit<React.ComponentProps<typeof ArkProgress.Root>, "value"> {
   /**
-   * The value of the progress bar
-   *
-   * @default 0
-   */
-  value?: number;
-  /**
    * Shows indeterminate progress
    *
    * @default false
    */
   indeterminate?: boolean;
+  /**
+   * The value of the progress bar
+   *
+   * @default 0
+   */
+  value?: number;
 }
 
 export const Progress = (props: ProgressProps) => {

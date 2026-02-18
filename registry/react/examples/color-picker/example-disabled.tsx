@@ -11,8 +11,8 @@ import {
 const Example = () => (
   <ColorPicker
     className="w-full max-w-64"
-    disabled
     defaultValue={parseColor("#eb5e41")}
+    disabled
   >
     <ColorPickerControl>
       <ColorPickerChannelInput channel="hex" />

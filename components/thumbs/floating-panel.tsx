@@ -11,11 +11,11 @@ export const FloatingPanelThumb = ({
       <div className="flex items-center justify-between gap-2 border-border border-b bg-muted px-3 py-2">
         <div className="h-2 w-1/3 min-w-0 rounded-full bg-muted-foreground/16" />
         <div className="flex items-center gap-2">
-          <span aria-hidden className="text-muted-foreground/64 text-xs">
+          <span aria-hidden className="text-muted-foreground/64">
             <MinusIcon className="size-3 text-muted-foreground/64" />
           </span>
 
-          <span aria-hidden className="text-muted-foreground/64 text-xs">
+          <span aria-hidden className="text-muted-foreground/64">
             <XIcon className="size-3 text-muted-foreground/64" />
           </span>
         </div>

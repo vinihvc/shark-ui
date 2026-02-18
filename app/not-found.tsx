@@ -13,7 +13,7 @@ const NotFoundPage = () => {
 
           <h1 className="font-semibold text-2xl">Page Not Found</h1>
 
-          <p className="max-w-xs text-balance text-lg text-muted-foreground">
+          <p className="max-w-xs text-lg text-muted-foreground">
             The page you&apos;re looking for doesn&apos;t exist or has been
             moved.
           </p>

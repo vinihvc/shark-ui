@@ -9,7 +9,7 @@ export const buttonVariants = tv({
     "relative",
     "inline-flex shrink-0 items-center justify-center gap-2",
     "whitespace-nowrap font-medium text-sm",
-    "rounded-md",
+    "rounded-lg",
     "transition-all",
     "outline-none focus-visible:border-ring focus-visible:ring-[3px]",
     "disabled:pointer-events-none disabled:opacity-64",
@@ -20,7 +20,7 @@ export const buttonVariants = tv({
     variant: {
       solid: [
         "bg-primary",
-        "border border-transparent",
+        "border border-transparent shadow-primary/24 shadow-xs",
         "text-primary-foreground",
         "hover:bg-primary/90",
         "focus-visible:border-background focus-visible:ring-ring/50",
@@ -35,6 +35,7 @@ export const buttonVariants = tv({
       destructive: [
         "bg-destructive",
         "text-white",
+        "shadow-destructive/24 shadow-xs",
         "hover:bg-destructive/90",
         "focus-visible:border-destructive-foreground focus-visible:ring-destructive-foreground/32",
       ],
@@ -86,7 +87,7 @@ export const buttonVariants = tv({
       false: "",
     },
     pill: {
-      true: "rounded-full pe-4",
+      true: "rounded-full pe-4 has-[>svg]:pe-0",
     },
   },
   defaultVariants: {

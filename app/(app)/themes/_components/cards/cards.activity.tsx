@@ -110,7 +110,7 @@ export const CardsActivityGoal = () => {
         </div>
         <div className="flex-1">
           <ChartContainer
-            className="aspect-auto h-full w-full"
+            className="aspect-auto size-full"
             config={chartConfig}
           >
             <BarChart data={data}>

@@ -108,33 +108,51 @@ const createCssVars = (
     (item) => item.value === borderRadius
   )?.cssVars;
 
+  const light = gray?.light;
+  const dark = gray?.dark;
+  const pLight = primary?.light;
+  const pDark = primary?.dark;
+
   return `:root {
-  --radius: ${radius?.radius};
-  --background: ${gray?.light.background};
-  --foreground: ${gray?.light.foreground};
-  --card: var(--color-white);
-  --card-foreground: ${gray?.light["card-foreground"]};
-  --popover: ${gray?.light.popover};
-  --popover-foreground: ${gray?.light["popover-foreground"]};
-  --primary: var(--${primary?.light.primary});
-  --primary-foreground: var(--${primary?.light["primary-foreground"]});
-  --secondary: ${gray?.light.secondary};
-  --secondary-foreground: ${gray?.light["secondary-foreground"]};
-  --muted: ${gray?.light.muted};
-  --muted-foreground: ${gray?.light["muted-foreground"]};
-  --accent: ${gray?.light.accent};
-  --accent-foreground: ${gray?.light["accent-foreground"]};
-  --success: var(--color-emerald-600);
-  --success-foreground: var(--color-green-50);
-  --info: var(--color-sky-600);
-  --info-foreground: var(--color-sky-50);
-  --warning: var(--color-yellow-400);
-  --warning-foreground: var(--color-yellow-950);
-  --destructive: var(--color-red-600);
-  --destructive-foreground: var(--color-red-50);
-  --border: ${gray?.light.border};
-  --input: ${gray?.light.input};
-  --ring: ${primary?.light.ring};
+  --radius: ${radius?.radius ?? "0.5rem"};
+
+  --background: ${light?.background};
+  --foreground: ${light?.foreground};
+
+  --card: ${light?.card};
+  --card-foreground: ${light?.["card-foreground"]};
+
+  --popover: ${light?.popover};
+  --popover-foreground: ${light?.["popover-foreground"]};
+
+  --primary: ${pLight?.primary ?? light?.primary};
+  --primary-foreground: ${pLight?.["primary-foreground"] ?? light?.["primary-foreground"]};
+
+  --secondary: --alpha(var(--color-black) / 4%);
+  --secondary-foreground: ${light?.["secondary-foreground"]};
+
+  --muted: --alpha(var(--color-black) / 4%);
+  --muted-foreground: ${light?.["muted-foreground"]};
+
+  --accent: --alpha(var(--color-black) / 4%);
+  --accent-foreground: ${light?.["accent-foreground"]};
+
+  --destructive: var(--color-red-500);
+  --destructive-foreground: var(--color-red-700);
+
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+
+  --border: --alpha(var(--color-black) / 8%);
+  --input: --alpha(var(--color-black) / 10%);
+  --ring: ${pLight?.ring ?? light?.ring};
+
   --chart-1: var(--color-orange-600);
   --chart-2: var(--color-teal-600);
   --chart-3: var(--color-cyan-900);
@@ -143,31 +161,43 @@ const createCssVars = (
 }
 
 .dark {
-  --background: ${gray?.dark.background};
-  --foreground: ${gray?.dark.foreground};
-  --card: ${gray?.dark.card};
-  --card-foreground: ${gray?.dark["card-foreground"]};
-  --popover: ${gray?.dark.popover};
-  --popover-foreground: ${gray?.dark["popover-foreground"]};
-  --primary: ${primary?.dark.primary};
-  --primary-foreground: ${primary?.dark["primary-foreground"]};
-  --secondary: ${gray?.dark.secondary};
-  --secondary-foreground: ${gray?.dark["secondary-foreground"]};
-  --muted: ${gray?.dark.muted};
-  --muted-foreground: ${gray?.dark["muted-foreground"]};
-  --accent: ${gray?.dark.accent};
-  --accent-foreground: ${gray?.dark["accent-foreground"]};
-  --success: var(--color-emerald-600);
-  --success-foreground: var(--color-green-50);
-  --info: var(--color-sky-600);
-  --info-foreground: var(--color-sky-50);
-  --warning: var(--color-yellow-600);
-  --warning-foreground: var(--color-yellow-50);
-  --destructive: var(--color-red-700);
-  --destructive-foreground: var(--color-red-50);
-  --border: ${gray?.dark.border};
-  --input: ${gray?.dark.input};
-  --ring: ${primary?.dark.ring};
+  --background: ${dark?.background};
+  --foreground: ${dark?.foreground};
+
+  --card: ${dark?.card};
+  --card-foreground: ${dark?.["card-foreground"]};
+
+  --popover: ${dark?.popover};
+  --popover-foreground: ${dark?.["popover-foreground"]};
+
+  --primary: ${pDark?.primary ?? dark?.primary};
+  --primary-foreground: ${pDark?.["primary-foreground"] ?? dark?.["primary-foreground"]};
+
+  --secondary: ${dark?.secondary};
+  --secondary-foreground: ${dark?.["secondary-foreground"]};
+
+  --muted: ${dark?.muted};
+  --muted-foreground: ${dark?.["muted-foreground"]};
+
+  --accent: ${dark?.accent};
+  --accent-foreground: ${dark?.["accent-foreground"]};
+
+  --destructive: ${dark?.destructive};
+  --destructive-foreground: ${dark?.["destructive-foreground"]};
+
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
+
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-400);
+
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
+
+  --border: ${dark?.border};
+  --input: ${dark?.input};
+  --ring: ${pDark?.ring ?? dark?.ring};
+
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
   --chart-3: var(--color-amber-500);

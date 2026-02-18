@@ -1,5 +1,5 @@
 import { Accordion as ArkAccordion } from "@ark-ui/react/accordion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
@@ -46,13 +46,13 @@ export const AccordionTrigger = (
   return (
     <ArkAccordion.ItemTrigger
       className={cn(
-        "flex flex-1 items-start justify-between gap-4",
+        "flex flex-1 items-center justify-between gap-3",
         "py-4",
         "text-left font-medium text-sm",
-        "rounded-md",
+        "rounded-md border border-transparent",
         "outline-none",
         "transition-all",
-        "disabled:pointer-events-none disabled:opacity-64",
+        "disabled:pointer-events-none disabled:opacity-50 disabled:grayscale",
         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
         "[&_[data-state=open]>svg]:rotate-180",
         className
@@ -63,7 +63,16 @@ export const AccordionTrigger = (
       {children}
 
       <ArkAccordion.ItemIndicator data-slot="accordion-indicator">
-        <ChevronDown className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200" />
+        <ChevronDownIcon
+          className={cn(
+            "translate-y-0.5",
+            "size-4",
+            "shrink-0",
+            "text-muted-foreground",
+            "pointer-events-none",
+            "transition-transform duration-300"
+          )}
+        />
       </ArkAccordion.ItemIndicator>
     </ArkAccordion.ItemTrigger>
   );
@@ -77,8 +86,7 @@ export const AccordionContent = (
   return (
     <ArkAccordion.ItemContent
       className={cn(
-        "text-sm",
-        "overflow-hidden",
+        "overflow-hidden rounded-md text-sm",
         "data-[state=open]:animate-slide-down",
         "data-[state=closed]:animate-slide-up",
         className

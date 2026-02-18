@@ -4,13 +4,13 @@ import { Card, CardFooter, CardHeader } from "@/registry/react/components/card";
 
 export interface BlockThumbCardProps extends React.ComponentProps<typeof Card> {
   /**
-   * The title of the card
-   */
-  title: string;
-  /**
    * The subtitle/description of the card
    */
   subtitle: string;
+  /**
+   * The title of the card
+   */
+  title: string;
 }
 
 export const BlockThumbCard = (props: BlockThumbCardProps) => {

@@ -13,10 +13,10 @@ import { type PackageManager, useConfig } from "@/store/config";
 import { CopyButton } from "./copy-button";
 
 interface CodeBlockCommandProps extends React.ComponentProps<"pre"> {
-  __npm__?: string;
-  __yarn__?: string;
-  __pnpm__?: string;
   __bun__?: string;
+  __npm__?: string;
+  __pnpm__?: string;
+  __yarn__?: string;
 }
 
 export const CodeBlockCommand = (props: CodeBlockCommandProps) => {

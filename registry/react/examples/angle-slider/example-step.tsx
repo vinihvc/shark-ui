@@ -1,25 +1,18 @@
 import {
   AngleSlider,
   AngleSliderControl,
-  AngleSliderLabel,
-  AngleSliderMarker,
-  AngleSliderMarkerGroup,
+  AngleSliderProgressRing,
   AngleSliderThumb,
-  AngleSliderValueText,
+  AngleSliderValueDisplay,
 } from "@/registry/react/components/angle-slider";
 
 const Example = () => (
-  <AngleSlider step={15}>
-    <AngleSliderLabel>Rotation</AngleSliderLabel>
+  <AngleSlider aria-label="Angle" defaultValue={45} step={15}>
     <AngleSliderControl>
-      <AngleSliderMarkerGroup>
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((value) => (
-          <AngleSliderMarker key={value} value={value} />
-        ))}
-      </AngleSliderMarkerGroup>
+      <AngleSliderProgressRing />
       <AngleSliderThumb />
     </AngleSliderControl>
-    <AngleSliderValueText />
+    <AngleSliderValueDisplay />
   </AngleSlider>
 );
 

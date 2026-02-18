@@ -20,11 +20,11 @@ import { cn } from "@/lib/utils";
 import { checkboxVariants } from "./checkbox";
 
 export interface TreeNodeType<T = unknown> {
+  children?: TreeNodeType<T>[] | undefined;
+  expandedIcon?: React.JSX.ElementType | null;
+  icon?: React.JSX.ElementType | null;
   id: string;
   name: string;
-  icon?: React.JSX.ElementType | null;
-  expandedIcon?: React.JSX.ElementType | null;
-  children?: TreeNodeType<T>[] | undefined;
 }
 
 export const createTreeCollection = <T extends TreeNodeType>(
@@ -179,17 +179,17 @@ export const TreeViewBranchItem = (props: TreeViewBranchItemProps) => {
 interface TreeViewBranchTitleProps
   extends React.ComponentProps<typeof ArkTreeView.BranchText> {
   /**
-   * Custom icon
-   *
-   * @default <FolderIcon />
-   */
-  icon?: React.JSX.ElementType | null;
-  /**
    * Custom expanded icon
    *
    * @default <FolderOpenIcon />
    */
   expandedIcon?: React.JSX.ElementType | null;
+  /**
+   * Custom icon
+   *
+   * @default <FolderIcon />
+   */
+  icon?: React.JSX.ElementType | null;
 }
 
 const TreeViewBranchTitle = (props: TreeViewBranchTitleProps) => {

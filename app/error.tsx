@@ -36,12 +36,12 @@ const ErrorPage = (props: ErrorPageProps) => {
             <span aria-hidden="true">500</span>
           </h1>
 
-          <p className="max-w-xs text-balance text-lg text-muted-foreground">
+          <p className="max-w-xs text-lg text-muted-foreground">
             Something went wrong.
           </p>
 
           {isDev && (
-            <pre className="max-w-xs text-balance text-lg text-muted-foreground">
+            <pre className="max-w-xs text-lg text-muted-foreground">
               {error.message}
             </pre>
           )}

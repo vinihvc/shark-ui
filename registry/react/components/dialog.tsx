@@ -89,16 +89,16 @@ export const dialogContentVariants = tv({
   ],
   variants: {
     size: {
-      sm: ["max-w-xs"],
-      md: ["max-w-sm"],
-      lg: ["max-w-md"],
-      xl: ["max-w-lg"],
+      sm: ["max-w-sm"],
+      md: ["max-w-md"],
+      lg: ["max-w-lg"],
+      xl: ["max-w-xl"],
       fullscreen: ["size-full"],
     },
     bottomStickOnMobile: {
       true: [
         "max-sm:max-w-none",
-        "max-sm:rounded-none max-sm:rounded-t-lg max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
+        "max-sm:rounded-none max-sm:rounded-t-xl max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
         "max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))]",
         "max-sm:data-[state=closed]:slide-out-to-bottom-5 max-sm:data-[state=open]:slide-in-from-bottom-5",
       ],
@@ -113,17 +113,17 @@ interface DialogContentProps
   extends React.ComponentProps<typeof ArkDialog.Content>,
     VariantProps<typeof dialogContentVariants> {
   /**
-   * Show close button at the top right corner
-   *
-   * @default true
-   */
-  showCloseButton?: boolean;
-  /**
    * Stick the dialog to the bottom of the screen on mobile
    *
    * @default true
    */
   bottomStickOnMobile?: boolean;
+  /**
+   * Show close button at the top right corner
+   *
+   * @default true
+   */
+  showCloseButton?: boolean;
 }
 
 export const DialogContent = (props: DialogContentProps) => {
@@ -206,13 +206,13 @@ export const DialogBody = (props: DialogBodyProps) => {
 
 interface DialogHeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * The title of the dialog
-   */
-  title?: string;
-  /**
    * The description of the dialog
    */
   description?: string;
+  /**
+   * The title of the dialog
+   */
+  title?: string;
 }
 
 export const DialogHeader = (props: DialogHeaderProps) => {
@@ -279,7 +279,7 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        "sm:rounded-b-[calc(var(--radius-lg)-1px)]",
+        "sm:rounded-b-[calc(var(--radius-xl)-1px)]",
         "px-(--space) py-4",
         "bg-muted/72",
         "border-t",

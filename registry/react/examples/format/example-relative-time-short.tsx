@@ -4,15 +4,15 @@ const FormatRelativeTimeShortExample = () => (
   <div className="flex flex-col gap-3">
     <div>
       <span className="text-muted-foreground text-sm">Long: </span>
-      <FormatRelativeTime value={new Date("2025-05-05")} style="long" />
+      <FormatRelativeTime style="long" value={new Date("2025-05-05")} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">Short: </span>
-      <FormatRelativeTime value={new Date("2025-05-05")} style="short" />
+      <FormatRelativeTime style="short" value={new Date("2025-05-05")} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">Narrow: </span>
-      <FormatRelativeTime value={new Date("2025-05-05")} style="narrow" />
+      <FormatRelativeTime style="narrow" value={new Date("2025-05-05")} />
     </div>
   </div>
 );

@@ -32,23 +32,23 @@ export interface DefaultComboboxItem {
 
 interface ComboboxItemsProps<T extends CollectionItem> {
   /**
+   * Function to group items. When provided, ComboboxList renders grouped.
+   */
+  groupBy?: (item: T, index: number) => string;
+  /**
    * Array of items. Filtering is handled internally.
    */
   items: T[];
-  /**
-   * Convert item to value string.
-   * Defaults to (i) => i.value for { label, value } shape.
-   */
-  itemToValue?: (item: T) => string;
   /**
    * Convert item to display string (for filtering).
    * Defaults to (i) => i.label for { label, value } shape.
    */
   itemToString?: (item: T) => string;
   /**
-   * Function to group items. When provided, ComboboxList renders grouped.
+   * Convert item to value string.
+   * Defaults to (i) => i.value for { label, value } shape.
    */
-  groupBy?: (item: T, index: number) => string;
+  itemToValue?: (item: T) => string;
 }
 
 interface ComboboxProps<
@@ -140,11 +140,11 @@ interface ComboboxInputProps
   extends Omit<React.ComponentProps<typeof ArkCombobox.Input>, "size">,
     VariantProps<typeof inputVariants> {
   /**
-   * Whether to show the trigger button.
+   * Whether the control is disabled.
    *
-   * @default true
+   * @default false
    */
-  showTrigger?: boolean;
+  disabled?: boolean;
 
   /**
    * Whether to show the clear button.
@@ -153,11 +153,11 @@ interface ComboboxInputProps
    */
   showClear?: boolean;
   /**
-   * Whether the control is disabled.
+   * Whether to show the trigger button.
    *
-   * @default false
+   * @default true
    */
-  disabled?: boolean;
+  showTrigger?: boolean;
 }
 
 export const ComboboxInput = (props: ComboboxInputProps) => {
@@ -464,10 +464,6 @@ export const ComboboxChips = (props: React.ComponentProps<typeof ark.div>) => {
 
 interface ComboboxChipProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * The item value (used for removal)
-   */
-  value: string;
-  /**
    * The display label
    */
   label: string;
@@ -475,6 +471,10 @@ interface ComboboxChipProps extends React.ComponentProps<typeof ark.div> {
    * Called when the remove button is clicked
    */
   onRemove: () => void;
+  /**
+   * The item value (used for removal)
+   */
+  value: string;
 }
 
 export const ComboboxChip = (props: ComboboxChipProps) => {

@@ -111,7 +111,7 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
 
         <ResizableResizeTrigger id="1:2" withHandle />
         <ResizablePanel
-          className="relative z-10 flex h-full w-full after:absolute after:inset-0 after:right-3 after:z-0 after:bg-muted/50"
+          className="relative z-10 flex size-full after:absolute after:inset-0 after:right-3 after:z-0 after:bg-muted/50"
           id="2"
         />
       </Resizable>

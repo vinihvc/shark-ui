@@ -6,11 +6,7 @@ import {
 } from "@/registry/react/components/accordion";
 
 const Example = () => (
-  <Accordion
-    className="w-full max-w-lg"
-    collapsible={false}
-    defaultValue={["item-1"]}
-  >
+  <Accordion className="w-full max-w-lg" defaultValue={["item-1"]}>
     <AccordionItem value="item-1">
       <AccordionTrigger>Product Information</AccordionTrigger>
       <AccordionContent className="text-muted-foreground">
@@ -22,7 +18,7 @@ const Example = () => (
       </AccordionContent>
     </AccordionItem>
 
-    <AccordionItem value="item-2">
+    <AccordionItem disabled value="item-2">
       <AccordionTrigger>Shipping Details</AccordionTrigger>
       <AccordionContent className="text-muted-foreground">
         <p>

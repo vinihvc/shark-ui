@@ -27,7 +27,7 @@ const HomePage = () => {
           </Badge>
         </div>
 
-        <h1 className="text-balance font-semibold text-4xl leading-tight sm:text-5xl md:text-6xl">
+        <h1 className="font-semibold text-4xl leading-tight sm:text-5xl md:text-6xl">
           shadcn/ui Components <br />
           Powered by{" "}
           <span className="inline-block rounded-md bg-primary px-4 py-1 text-primary-foreground leading-none">

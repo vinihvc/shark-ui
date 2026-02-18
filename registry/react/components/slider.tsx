@@ -5,17 +5,17 @@ import { FieldLabel } from "./field";
 
 interface SliderProps extends React.ComponentProps<typeof ArkSlider.Root> {
   /**
-   * Whether to show markers.
-   *
-   * @default false
-   */
-  showMarkers?: boolean;
-  /**
    * The interval between markers.
    *
    * @default 1
    */
   markerInterval?: number;
+  /**
+   * Whether to show markers.
+   *
+   * @default false
+   */
+  showMarkers?: boolean;
 }
 
 export const Slider = (props: SliderProps) => {

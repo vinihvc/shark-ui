@@ -53,9 +53,9 @@ export type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
 export interface ChartLegendContentProps {
   className?: string;
   hideIcon?: boolean;
-  verticalAlign?: LegendProps["verticalAlign"];
-  payload?: LegendPayload[];
   nameKey?: string;
+  payload?: LegendPayload[];
+  verticalAlign?: LegendProps["verticalAlign"];
 }
 
 const ChartContext = React.createContext<ChartContextProps | null>(null);
@@ -71,10 +71,10 @@ const useChart = () => {
 };
 
 interface ChartContainerProps extends React.ComponentProps<"div"> {
-  config: ChartConfig;
   children: React.ComponentProps<
     typeof RechartsPrimitive.ResponsiveContainer
   >["children"];
+  config: ChartConfig;
 }
 
 export const ChartContainer = (props: ChartContainerProps) => {
@@ -104,8 +104,8 @@ export const ChartContainer = (props: ChartContainerProps) => {
 };
 
 interface ChartStyleProps {
-  id: string;
   config: ChartConfig;
+  id: string;
 }
 
 export const ChartStyle = (props: ChartStyleProps) => {

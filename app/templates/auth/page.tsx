@@ -27,7 +27,7 @@ const AuthTemplatePage = () => {
               <FieldGroup>
                 <div className="flex flex-col items-center gap-1 text-center">
                   <h1 className="font-bold text-2xl">Login to your account</h1>
-                  <p className="text-balance text-muted-foreground text-sm">
+                  <p className="text-muted-foreground text-sm">
                     Enter your email below to login to your account
                   </p>
                 </div>
@@ -82,7 +82,7 @@ const AuthTemplatePage = () => {
       <div className="relative hidden bg-muted lg:block">
         <img
           alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          className="absolute inset-0 size-full object-cover dark:brightness-[0.2] dark:grayscale"
           src="/images/placeholder.svg"
         />
       </div>

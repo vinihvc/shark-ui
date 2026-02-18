@@ -4,11 +4,11 @@ const FormatNumberPercentExample = () => (
   <div className="flex flex-col gap-3">
     <div>
       <span className="text-muted-foreground text-sm">Default: </span>
-      <FormatNumber value={0.75} style="percent" />
+      <FormatNumber style="percent" value={0.75} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">With decimals: </span>
-      <FormatNumber value={0.7567} style="percent" minimumFractionDigits={2} />
+      <FormatNumber minimumFractionDigits={2} style="percent" value={0.7567} />
     </div>
   </div>
 );

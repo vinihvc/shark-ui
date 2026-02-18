@@ -22,14 +22,14 @@ const Example = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Button onClick={() => setOpen(!open)} variant="outline" size="sm">
+      <Button onClick={() => setOpen(!open)} size="sm" variant="outline">
         Toggle
       </Button>
       <ColorPicker
         className="w-full max-w-64"
-        open={open}
-        onOpenChange={(e) => setOpen(e.open)}
         defaultValue={parseColor("#eb5e41")}
+        onOpenChange={(e) => setOpen(e.open)}
+        open={open}
       >
         <ColorPickerControl>
           <ColorPickerChannelInput channel="hex" />

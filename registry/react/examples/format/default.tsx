@@ -21,7 +21,7 @@ const FormatDemo = () => (
     <div className="inline-flex items-baseline gap-1">
       <span className="text-muted-foreground text-sm">Downloads</span>
       <span className="font-medium text-foreground tabular-nums tracking-tight">
-        <FormatNumber value={120_000} notation="compact" />
+        <FormatNumber notation="compact" value={120_000} />
       </span>
       <span className="text-muted-foreground text-sm">per month</span>
     </div>

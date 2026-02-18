@@ -46,8 +46,8 @@ export const TooltipContent = (
             "z-40 w-fit origin-(--transform-origin)",
             "px-3 py-1.5",
             "bg-popover",
-            "rounded-md border shadow-md/5",
-            "text-balance text-foreground text-xs",
+            "rounded-lg border shadow-md/5",
+            "text-foreground text-xs",
             "animate-in",
             "fade-in-0 zoom-in-95",
             "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
@@ -62,6 +62,8 @@ export const TooltipContent = (
           {...rest}
         >
           {children}
+
+          <TooltipArrow />
         </ArkTooltip.Content>
       </ArkTooltip.Positioner>
     </Portal>
@@ -78,14 +80,14 @@ export const TooltipArrow = (
       data-slot="tooltip-arrow"
       style={
         {
-          "--arrow-background": "var(--foreground)",
+          "--arrow-background": "var(--popover)",
           "--arrow-size": "calc(1.5 * var(--spacing))",
           ...style,
         } as React.CSSProperties
       }
       {...rest}
     >
-      <ArkTooltip.ArrowTip />
+      <ArkTooltip.ArrowTip className="border-t border-l" />
     </ArkTooltip.Arrow>
   );
 };

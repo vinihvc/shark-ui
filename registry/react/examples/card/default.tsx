@@ -21,7 +21,6 @@ const CardDemo = () => (
           <Button variant="link">Sign Up</Button>
         </CardAction>
       </CardHeader>
-
       <CardContent>
         <FieldSet>
           <Field>
@@ -30,11 +29,11 @@ const CardDemo = () => (
           </Field>
         </FieldSet>
       </CardContent>
-
       <CardFooter className="flex-col">
-        <Button className="w-full">Login</Button>
-
-        <Button className="w-full" variant="outline">
+        <Button className="w-full" size="lg">
+          Login
+        </Button>
+        <Button className="w-full" size="lg" variant="outline">
           <GoogleIcon />
           Login with Google
         </Button>

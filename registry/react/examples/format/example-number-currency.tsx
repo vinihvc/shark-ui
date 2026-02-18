@@ -4,15 +4,15 @@ const FormatNumberCurrencyExample = () => (
   <div className="flex flex-col gap-3">
     <div>
       <span className="text-muted-foreground text-sm">USD: </span>
-      <FormatNumber value={99.99} style="currency" currency="USD" />
+      <FormatNumber currency="USD" style="currency" value={99.99} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">EUR: </span>
-      <FormatNumber value={99.99} style="currency" currency="EUR" />
+      <FormatNumber currency="EUR" style="currency" value={99.99} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">BRL: </span>
-      <FormatNumber value={99.99} style="currency" currency="BRL" />
+      <FormatNumber currency="BRL" style="currency" value={99.99} />
     </div>
   </div>
 );

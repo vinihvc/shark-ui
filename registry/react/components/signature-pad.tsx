@@ -4,115 +4,112 @@ import { SignaturePad as ArkSignaturePad } from "@ark-ui/react/signature-pad";
 import { RotateCcw } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/registry/react/components/button";
 
-const signaturePadRootClass = cn(
-  "flex w-80 flex-col gap-1.5 text-foreground [--height:10rem] [--width:20rem]",
-  "data-disabled:opacity-50 data-disabled:grayscale"
-);
-
-const signaturePadLabelClass = cn(
-  "font-medium text-foreground text-sm leading-5"
-);
-
-const signaturePadControlClass = cn(
-  "relative flex min-h-[var(--height)] min-w-0 flex-col rounded-lg border border-input bg-muted",
-  "data-disabled:cursor-not-allowed"
-);
-
-const signaturePadSegmentClass = cn(
-  "h-full min-h-[var(--height)] w-full touch-none",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-);
-
-const signaturePadClearTriggerClass = cn(
-  "absolute top-3 right-3 inline-flex size-8 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors",
-  "hover:bg-muted-foreground/10 hover:text-foreground",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-  "disabled:cursor-not-allowed disabled:opacity-50",
-  "[&_svg]:size-4"
-);
-
-const signaturePadGuideClass = cn(
-  "pointer-events-none absolute right-6 bottom-6 left-6 border-border border-b border-dashed"
-);
-
-interface SignaturePadRootProps
-  extends React.ComponentProps<typeof ArkSignaturePad.Root> {
-  className?: string;
-}
-
-const SignaturePadRoot = (props: SignaturePadRootProps) => {
+export const SignaturePad = (
+  props: React.ComponentProps<typeof ArkSignaturePad.Root>
+) => {
   const { className, ...rest } = props;
+
   return (
     <ArkSignaturePad.Root
-      className={cn(signaturePadRootClass, className)}
+      className={cn(
+        "h-40 min-h-40 w-full",
+        "flex flex-col gap-1.5",
+        "data-disabled:opacity-50 data-disabled:grayscale",
+        className
+      )}
       data-slot="signature-pad"
+      {...rest}
+    >
+      <SignaturePadControl>
+        <SignaturePadSegment />
+        <SignaturePadClear />
+        <SignaturePadGuide />
+      </SignaturePadControl>
+    </ArkSignaturePad.Root>
+  );
+};
+
+const SignaturePadControl = (
+  props: React.ComponentProps<typeof ArkSignaturePad.Control>
+) => {
+  const { className, ...rest } = props;
+  return (
+    <ArkSignaturePad.Control
+      className={cn(
+        "relative",
+        "size-full min-h-0 min-w-0",
+        "flex flex-col",
+        "bg-muted",
+        "rounded-xl border shadow-md/5",
+        "data-disabled:cursor-not-allowed",
+        className
+      )}
+      data-slot="signature-pad-control"
       {...rest}
     />
   );
 };
 
-const SignaturePadLabel = (
-  props: React.ComponentProps<typeof ArkSignaturePad.Label>
-) => (
-  <ArkSignaturePad.Label
-    className={cn(signaturePadLabelClass, props.className)}
-    data-slot="signature-pad-label"
-    {...props}
-  />
-);
-
-const SignaturePadControl = (
-  props: React.ComponentProps<typeof ArkSignaturePad.Control>
-) => (
-  <ArkSignaturePad.Control
-    className={cn(signaturePadControlClass, props.className)}
-    data-slot="signature-pad-control"
-    {...props}
-  />
-);
-
 const SignaturePadSegment = (
   props: React.ComponentProps<typeof ArkSignaturePad.Segment>
-) => (
-  <ArkSignaturePad.Segment
-    className={cn(signaturePadSegmentClass, props.className)}
-    data-slot="signature-pad-segment"
-    {...props}
-  />
-);
+) => {
+  const { className, ...rest } = props;
+  return (
+    <ArkSignaturePad.Segment
+      className={cn(
+        "size-full",
+        "min-h-0",
+        "fill-foreground",
+        "touch-none",
+        className
+      )}
+      data-slot="signature-pad-segment"
+      {...rest}
+    />
+  );
+};
 
-const SignaturePadClearTrigger = (
+const SignaturePadClear = (
   props: React.ComponentProps<typeof ArkSignaturePad.ClearTrigger>
 ) => {
-  const { children, ...rest } = props;
+  const { className, ...rest } = props;
+
   return (
     <ArkSignaturePad.ClearTrigger
-      className={cn(signaturePadClearTriggerClass, rest.className)}
+      asChild
+      className={cn(
+        "absolute top-2 right-2",
+        "bg-muted",
+        "text-muted-foreground",
+        className
+      )}
       data-slot="signature-pad-clear"
       {...rest}
     >
-      {children ?? <RotateCcw />}
+      <Button size="icon-md" variant="ghost">
+        <RotateCcw />
+      </Button>
     </ArkSignaturePad.ClearTrigger>
   );
 };
 
 const SignaturePadGuide = (
   props: React.ComponentProps<typeof ArkSignaturePad.Guide>
-) => (
-  <ArkSignaturePad.Guide
-    className={cn(signaturePadGuideClass, props.className)}
-    {...props}
-  />
-);
+) => {
+  const { className, ...rest } = props;
 
-export const SignaturePad = {
-  Root: SignaturePadRoot,
-  Label: SignaturePadLabel,
-  Control: SignaturePadControl,
-  Segment: SignaturePadSegment,
-  ClearTrigger: SignaturePadClearTrigger,
-  Guide: SignaturePadGuide,
-  Image: ArkSignaturePad.Image,
-  HiddenInput: ArkSignaturePad.HiddenInput,
+  return (
+    <ArkSignaturePad.Guide
+      className={cn(
+        "absolute inset-x-6 bottom-6",
+        "border-input border-b-2 border-dashed",
+        "pointer-events-none",
+        className
+      )}
+      data-slot="signature-pad-guide"
+      {...rest}
+    />
+  );
 };

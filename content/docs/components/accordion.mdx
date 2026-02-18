@@ -73,11 +73,11 @@ import {
 
 ## Examples
 
-### Collapsible
+### Non-collapsible
 
-Use the `collapsible={false}` prop to disable the collapsible behavior and prevent closing the open item by clicking its trigger again.
+Set the `collapsible` prop to `false` to disable the collapsible behavior and prevent closing the open item.
 
-<ComponentPreview componentName="accordion" fileName="example-collapsible" />
+<ComponentPreview componentName="accordion" fileName="example-non-collapsible" />
 
 ### Multiple
 
@@ -90,6 +90,12 @@ Use the `multiple` prop to allow multiple items to be open simultaneously.
 Use the `value` and `onValueChange` props to control the accordion state programmatically.
 
 <ComponentPreview componentName="accordion" fileName="example-controlled" />
+
+### Disabled
+
+Use the `disabled` prop on `AccordionItem` to prevent interaction with specific items.
+
+<ComponentPreview componentName="accordion" fileName="example-disabled" />
 
 ## API Reference
 
@@ -105,6 +111,7 @@ Root element of the accordion. Renders a `div`
 | `defaultValue` | `string[]` | `-` |
 | `onValueChange` | `ValueChangeDetails` | `-` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AccordionItem
 
@@ -113,6 +120,7 @@ Container for a single accordion item. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
 ### AccordionTrigger
@@ -123,6 +131,7 @@ Button that toggles the accordion item. Renders a `button`
 |------|------|---------|
 | `disabled` | `boolean` | `false` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AccordionContent
 
@@ -131,6 +140,7 @@ Container for the accordion item content. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ---
 

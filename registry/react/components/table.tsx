@@ -4,17 +4,17 @@ import { cn } from "@/lib/utils";
 
 interface TableProps extends React.ComponentProps<typeof ark.table> {
   /**
-   * The variant of the table.
-   *
-   * @default "plain"
-   */
-  variant?: "plain" | "striped";
-  /**
    * Whether the table rows are hoverable.
    *
    * @default true
    */
   isHoverable?: boolean;
+  /**
+   * The variant of the table.
+   *
+   * @default "plain"
+   */
+  variant?: "plain" | "striped";
 }
 
 export const Table = (props: TableProps) => {

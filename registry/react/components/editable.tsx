@@ -69,17 +69,17 @@ export const EditableInput = (props: EditableInputProps) => {
 interface EditablePreviewProps
   extends React.ComponentProps<typeof ArkEditable.Preview> {
   /**
-   * The variant of the preview
-   *
-   * @default "outline"
-   */
-  variant?: ButtonProps["variant"];
-  /**
    * The size of the preview
    *
    * @default "md"
    */
   size?: ButtonProps["size"];
+  /**
+   * The variant of the preview
+   *
+   * @default "outline"
+   */
+  variant?: ButtonProps["variant"];
 }
 
 export const EditablePreview = (props: EditablePreviewProps) => {

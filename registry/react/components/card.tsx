@@ -15,7 +15,7 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
         "bg-card",
         "text-foreground",
         "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
-        "rounded-lg border shadow-md/5",
+        "rounded-xl border shadow-md/5",
         "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/50 in-focus-visible:ring-offset-2 in-focus-visible:ring-offset-background",
         className
       )}
@@ -66,13 +66,13 @@ export const CardMedia = (props: CardMediaProps) => {
 
 interface HeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * The title of the card
-   */
-  title?: string;
-  /**
    * The description of the card
    */
   description?: string;
+  /**
+   * The title of the card
+   */
+  title?: string;
 }
 
 export const CardHeader = (props: HeaderProps) => {

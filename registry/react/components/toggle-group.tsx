@@ -16,9 +16,9 @@ type SpacingValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10;
 interface ToggleGroupProps
   extends Omit<React.ComponentProps<typeof ArkToggleGroup.Root>, "className">,
     Pick<ToggleProps, "variant" | "size"> {
+  className?: string;
   /** Gap between items. Use 0 for segmented (merged) appearance. */
   spacing?: SpacingValue;
-  className?: string;
 }
 
 const spacingToGap: Record<SpacingValue, string> = {

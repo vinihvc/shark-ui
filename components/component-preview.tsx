@@ -11,6 +11,12 @@ const registryPath = "registry/react/examples";
 interface ComponentPreviewProps
   extends Omit<React.ComponentProps<"div">, "ref"> {
   /**
+   * The alignment of the component
+   *
+   * @default "center"
+   */
+  align?: "start" | "center" | "end";
+  /**
    * The name of the component to display in the preview
    *
    * @default ""
@@ -20,12 +26,6 @@ interface ComponentPreviewProps
    * The file name of the component
    */
   fileName?: string;
-  /**
-   * The alignment of the component
-   *
-   * @default "center"
-   */
-  align?: "start" | "center" | "end";
 }
 
 export const ComponentPreview = async (props: ComponentPreviewProps) => {

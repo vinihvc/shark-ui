@@ -4,11 +4,11 @@ const FormatByteUnitSystemExample = () => (
   <div className="flex flex-col gap-3">
     <div>
       <span className="text-muted-foreground text-sm">Decimal (1000): </span>
-      <FormatByte value={1024} unitSystem="decimal" />
+      <FormatByte unitSystem="decimal" value={1024} />
     </div>
     <div>
       <span className="text-muted-foreground text-sm">Binary (1024): </span>
-      <FormatByte value={1024} unitSystem="binary" />
+      <FormatByte unitSystem="binary" value={1024} />
     </div>
   </div>
 );

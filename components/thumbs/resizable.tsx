@@ -6,7 +6,7 @@ export const ResizableThumb = ({
   title = "Resizable",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
-    <div className="flex h-full w-full items-center gap-2">
+    <div className="flex size-full items-center gap-2">
       <div className="flex h-1/2 min-h-0 flex-1 items-center justify-center rounded-lg border bg-muted shadow-md/5">
         <span className="text-muted-foreground text-sm">A</span>
       </div>

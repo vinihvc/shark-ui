@@ -1,26 +1,19 @@
-import { AngleSliderValueText } from "@ark-ui/react";
 import {
   AngleSlider,
   AngleSliderControl,
-  AngleSliderLabel,
-  AngleSliderMarker,
-  AngleSliderMarkerGroup,
+  AngleSliderProgressRing,
   AngleSliderThumb,
+  AngleSliderValueDisplay,
 } from "@/registry/react/components/angle-slider";
 
-const AngleSliderDemo = () => (
-  <AngleSlider>
-    <AngleSliderLabel>Rotation</AngleSliderLabel>
-    <AngleSliderControl>
-      <AngleSliderMarkerGroup>
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((value) => (
-          <AngleSliderMarker key={value} value={value} />
-        ))}
-      </AngleSliderMarkerGroup>
-      <AngleSliderThumb />
-    </AngleSliderControl>
-    <AngleSliderValueText />
-  </AngleSlider>
-);
-
-export default AngleSliderDemo;
+export default function AngleSliderDemo() {
+  return (
+    <AngleSlider aria-label="Angle" defaultValue={45}>
+      <AngleSliderControl>
+        <AngleSliderProgressRing />
+        <AngleSliderThumb />
+      </AngleSliderControl>
+      <AngleSliderValueDisplay />
+    </AngleSlider>
+  );
+}

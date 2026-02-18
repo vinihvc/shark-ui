@@ -43,15 +43,30 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   AlertAction,
   AlertDescription,
   AlertTitle,
-  a: ({ className, ...props }: React.ComponentProps<"a">) => (
-    <a
-      className={cn(
-        "font-medium text-foreground underline underline-offset-4",
-        className
-      )}
-      {...props}
-    />
-  ),
+  a: ({ className, ...props }: React.ComponentProps<"a">) => {
+    const isExternal = props.href?.startsWith("http");
+
+    if (isExternal) {
+      return (
+        <a
+          className={cn(
+            "font-medium text-foreground underline underline-offset-4",
+            className
+          )}
+          rel="noopener noreferrer"
+          target="_blank"
+          {...props}
+        />
+      );
+    }
+
+    return (
+      <Link
+        className={cn("font-medium underline underline-offset-4", className)}
+        {...props}
+      />
+    );
+  },
   Button,
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
@@ -81,7 +96,12 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       return (
         <code
           className={cn(
-            "relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[.8125rem] text-muted-foreground outline-none",
+            "relative",
+            "px-1.5 py-0.5",
+            "bg-secondary/32 dark:bg-muted",
+            "font-mono text-foreground text-sm",
+            "rounded-md",
+            "outline-none",
             className
           )}
           {...props}
@@ -291,25 +311,37 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       {...props}
     />
   ),
-  table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <ScrollArea className="my-6">
+  table: ({ className, ...props }: React.ComponentProps<typeof Table>) => (
+    <ScrollArea className="my-6 rounded-xl border">
       <Table
-        className={cn("relative w-full rounded-lg border text-sm", className)}
+        className={cn(
+          "relative w-full border-none [&_tbody_tr:last-child]:border-b-0",
+          className
+        )}
         isHoverable={false}
         {...props}
       />
     </ScrollArea>
   ),
-  td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <TableCell className={className} {...props} />
+  td: ({ className, ...props }: React.ComponentProps<typeof TableCell>) => (
+    <TableCell
+      className={cn("**:[code]:text-muted-foreground", className)}
+      {...props}
+    />
   ),
-  thead: ({ className, ...props }: React.ComponentProps<"thead">) => (
-    <TableHeader className={cn("", className)} {...props} />
+  thead: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TableHeader>) => (
+    <TableHeader className={cn("bg-muted", className)} {...props} />
   ),
-  th: ({ className, ...props }: React.ComponentProps<"th">) => (
-    <TableHead className={cn("font-medium", className)} {...props} />
+  th: ({ className, ...props }: React.ComponentProps<typeof TableHead>) => (
+    <TableHead
+      className={cn("font-medium text-foreground", className)}
+      {...props}
+    />
   ),
-  tr: (props: React.ComponentProps<"tr">) => <TableRow {...props} />,
+  tr: (props: React.ComponentProps<typeof TableRow>) => <TableRow {...props} />,
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
     <ul
       className={cn("my-6 ms-6 list-disc text-muted-foreground", className)}

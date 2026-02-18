@@ -1,5 +1,5 @@
 import type React from "react";
-import { cn } from "@/lib/utils";
+import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
   DialogBody,
@@ -11,7 +11,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/react/components/dialog";
-import { Button } from "./button";
 
 export const AlertDialog = (props: React.ComponentProps<typeof Dialog>) => {
   return <Dialog data-slot="alert-dialog-root" role="alertdialog" {...props} />;
@@ -68,17 +67,7 @@ export const AlertDialogClose = (
 export const AlertDialogFooter = (
   props: React.ComponentProps<typeof DialogFooter>
 ) => {
-  const { className, children, ...rest } = props;
-
-  return (
-    <DialogFooter
-      className={cn("", className)}
-      data-slot="alert-dialog-footer"
-      {...rest}
-    >
-      {children}
-    </DialogFooter>
-  );
+  return <DialogFooter data-slot="alert-dialog-footer" {...props} />;
 };
 
 interface AlertDialogActionProps

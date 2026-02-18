@@ -10,9 +10,9 @@ import {
 } from "@/registry/react/components/combobox";
 
 interface DocItem {
+  href: string;
   label: string;
   value: string;
-  href: string;
 }
 
 const items: DocItem[] = [

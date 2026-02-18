@@ -147,74 +147,51 @@
       transform: translateX(400%);
     }
   }
-
-  @keyframes toast-pulsate {
-    0% {
-      scale: 1;
-    }
-    50% {
-      scale: 1.05;
-    }
-    100% {
-      scale: 1;
-    }
-  }
-
-  @keyframes toast-shake {
-    20% {
-      translate: -4px 0;
-    }
-    40% {
-      translate: 4px 0;
-    }
-    60% {
-      translate: -4px 0;
-    }
-    80% {
-      translate: 4px 0;
-    }
-  }
 }
 
 :root {
-  --radius: 0.65rem;
+  --radius: 0.5rem;
 
-  --background: var(--color-neutral-100);
-  --foreground: var(--color-neutral-950);
+  --background: var(--color-neutral-50);
+  --foreground: var(--color-neutral-800);
 
   --card: var(--color-neutral-50);
-  --card-foreground: var(--color-neutral-950);
+  --card-foreground: var(--color-neutral-800);
 
   --popover: var(--color-neutral-50);
-  --popover-foreground: var(--color-neutral-950);
+  --popover-foreground: var(--color-neutral-800);
 
-  --primary: var(--color-neutral-900);
+  --primary: var(--color-neutral-800);
   --primary-foreground: var(--color-neutral-50);
 
-  --secondary: var(--color-neutral-200);
-  --secondary-foreground: var(--color-neutral-900);
+  --secondary: --alpha(var(--color-black) / 4%);
+  --secondary-foreground: var(--color-neutral-800);
 
-  --muted: var(--color-neutral-100);
-  --muted-foreground: var(--color-neutral-500);
+  --muted: --alpha(var(--color-black) / 4%);
+  --muted-foreground: color-mix(
+    in srgb,
+    var(--color-neutral-500) 90%,
+    var(--color-black)
+  );
 
-  --accent: var(--color-neutral-100);
-  --accent-foreground: var(--color-neutral-900);
-
-  --success: var(--color-emerald-500);
-  --success-foreground: var(--color-green-700);
-
-  --info: var(--color-sky-500);
-  --info-foreground: var(--color-sky-700);
-
-  --warning: var(--color-amber-500);
-  --warning-foreground: var(--color-amber-700);
+  --accent: --alpha(var(--color-black) / 4%);
+  --accent-foreground: var(--color-neutral-800);
 
   --destructive: var(--color-red-500);
   --destructive-foreground: var(--color-red-700);
 
-  --border: var(--color-neutral-200);
-  --input: var(--color-neutral-300);
-  --ring: var(--primary);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+
+  --border: --alpha(var(--color-black) / 8%);
+  --input: --alpha(var(--color-black) / 10%);
+  --ring: var(--color-neutral-400);
 
   --chart-1: var(--color-orange-600);
   --chart-2: var(--color-teal-600);
@@ -224,42 +201,58 @@
 }
 
 .dark {
-  --background: var(--color-neutral-950);
-  --foreground: var(--color-neutral-50);
+  --background: color-mix(
+    in srgb,
+    var(--color-neutral-950) 100%,
+    var(--color-neutral-50)
+  );
+  --foreground: var(--color-neutral-100);
 
-  --card: var(--color-neutral-950);
-  --card-foreground: var(--color-neutral-50);
+  --card: color-mix(in srgb, var(--background) 98%, var(--color-neutral-50));
+  --card-foreground: var(--color-neutral-100);
 
-  --popover: var(--color-neutral-950);
-  --popover-foreground: var(--color-neutral-50);
+  --popover: color-mix(
+    in srgb,
+    var(--background) 100%,
+    var(--color-neutral-50)
+  );
+  --popover-foreground: var(--color-neutral-100);
 
-  --primary: var(--color-neutral-50);
-  --primary-foreground: var(--color-neutral-900);
+  --primary: var(--color-neutral-100);
+  --primary-foreground: var(--color-neutral-800);
 
-  --secondary: var(--color-neutral-700);
-  --secondary-foreground: var(--color-neutral-50);
+  --secondary: --alpha(var(--color-neutral-50) / 4%);
+  --secondary-foreground: var(--color-neutral-100);
 
-  --muted: var(--color-neutral-900);
-  --muted-foreground: var(--color-neutral-400);
+  --muted: --alpha(var(--color-neutral-50) / 4%);
+  --muted-foreground: color-mix(
+    in srgb,
+    var(--color-neutral-500) 90%,
+    var(--color-neutral-50)
+  );
 
-  --accent: var(--color-neutral-900);
-  --accent-foreground: var(--color-neutral-50);
+  --accent: --alpha(var(--color-neutral-50) / 4%);
+  --accent-foreground: var(--color-neutral-100);
+
+  --destructive: color-mix(
+    in srgb,
+    var(--color-red-500) 90%,
+    var(--color-neutral-50)
+  );
+  --destructive-foreground: var(--color-red-400);
+
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
 
   --success: var(--color-emerald-500);
-  --success-foreground: var(--color-green-400);
-
-  --info: var(--color-sky-500);
-  --info-foreground: var(--color-sky-400);
+  --success-foreground: var(--color-emerald-400);
 
   --warning: var(--color-amber-500);
   --warning-foreground: var(--color-amber-400);
 
-  --destructive: var(--color-red-700);
-  --destructive-foreground: var(--color-red-400);
-
-  --border: var(--color-neutral-800);
-  --input: var(--color-neutral-800);
-  --ring: var(--primary);
+  --border: --alpha(var(--color-neutral-50) / 6%);
+  --input: --alpha(var(--color-neutral-50) / 8%);
+  --ring: var(--color-neutral-500);
 
   --chart-1: var(--color-blue-700);
   --chart-2: var(--color-emerald-500);
@@ -325,16 +318,16 @@
   }
 
   [data-rehype-pretty-code-figure] {
-    background-color: var(--color-muted);
-    color: var(--color-muted-foreground);
-    border-radius: var(--radius-lg);
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--border);
+    position: relative;
     margin-top: calc(var(--spacing) * 6);
     overflow: hidden;
+    color: var(--color-muted-foreground);
     outline: none;
-    position: relative;
+    background-color: var(--color-muted);
+    border-color: var(--border);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: var(--radius-lg);
 
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5);
@@ -347,19 +340,19 @@
 
   [data-rehype-pretty-code-title] {
     min-height: calc(var(--spacing) * 11);
-    border-bottom: --alpha(var(--border) / 64%);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
     padding-block: calc(var(--spacing) * 2.5);
     padding-inline: calc(var(--spacing) * 4);
     font-family: var(--font-mono);
     color: var(--color-muted-foreground);
+    border-bottom: --alpha(var(--border) / 64%);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
   }
 
   [data-line-numbers] {
     display: grid;
     min-width: 100%;
-    white-space: pre;
+    neutral-50-space: pre;
     border: 0;
     background: transparent;
     padding: 0;
@@ -368,16 +361,16 @@
   }
 
   [data-line-numbers] [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
+    position: sticky;
+    left: 0;
     display: inline-block;
     width: calc(var(--spacing) * 16);
     padding-right: calc(var(--spacing) * 6);
-    text-align: right;
     color: var(--color-muted-foreground);
+    text-align: right;
+    content: counter(line);
+    counter-increment: line;
     background-color: var(--color-muted);
-    position: sticky;
-    left: 0;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
@@ -385,11 +378,11 @@
   }
 
   [data-line] {
+    display: inline-block;
+    width: 100%;
+    min-height: calc(var(--spacing) * 1);
     padding-top: calc(var(--spacing) * 0.5);
     padding-bottom: calc(var(--spacing) * 0.5);
-    min-height: calc(var(--spacing) * 1);
-    width: 100%;
-    display: inline-block;
   }
 
   [data-line] span {
@@ -423,11 +416,11 @@
   }
 
   [data-highlighted-chars] {
-    border-radius: var(--radius-sm);
-    padding-inline: 0.3rem;
     padding-block: 0.1rem;
+    padding-inline: 0.3rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+    border-radius: var(--radius-sm);
   }
 
   .highlighted-word {
@@ -435,14 +428,14 @@
     padding: 0;
 
     &::before {
-      content: "";
       position: absolute;
       top: -2px;
-      left: -2px;
       right: -2px;
       bottom: -2px;
-      border-radius: var(--radius-xs);
+      left: -2px;
       pointer-events: none;
+      content: "";
+      border-radius: var(--radius-xs);
     }
 
     + .highlighted-word {
@@ -454,9 +447,9 @@
 
     &:has(+ .highlighted-word) {
       &::before {
+        right: 2px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        right: 2px;
       }
     }
   }
