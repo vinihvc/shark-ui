@@ -25,7 +25,7 @@ export const MenuTrigger = (
 
 export const menuContentVariants = tv({
   base: [
-    "z-(--z-index)",
+    "z-[calc(50+var(--z-index,0))]",
     "h-auto",
     "p-1",
     "bg-popover",
@@ -39,8 +39,8 @@ export const menuContentVariants = tv({
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
     "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
     "data-[side=bottom]:slide-in-from-top-2",
-    "data-[side=left]:slide-in-from-right-2",
-    "data-[side=right]:slide-in-from-left-2",
+    "data-[side=left]:slide-in-from-end-2",
+    "data-[side=right]:slide-in-from-start-2",
     "data-[side=top]:slide-in-from-bottom-2",
   ],
 });
@@ -166,12 +166,12 @@ export const MenuCheckboxItem = (
     <ArkMenu.CheckboxItem
       className={cn(
         menuItemVariants({ variant: "default" }),
-        "pl-8",
+        "ps-8",
         className
       )}
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
         <Check />
       </ArkMenu.ItemIndicator>
 
@@ -232,13 +232,13 @@ export const MenuRadioItem = (
     <ArkMenu.RadioItem
       className={cn(
         menuItemVariants({ variant: "default" }),
-        "pl-8",
+        "ps-8",
         className
       )}
       data-slot="menu-radio-item"
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
         <Check />
       </ArkMenu.ItemIndicator>
 
@@ -297,7 +297,7 @@ export const MenuShortcut = (props: React.ComponentProps<typeof ark.span>) => {
   return (
     <ark.span
       className={cn(
-        "ml-auto",
+        "me-auto",
         "text-muted-foreground text-xs tracking-widest",
         "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
         className
@@ -325,7 +325,7 @@ export const MenuArrow = (
       }
       {...rest}
     >
-      <ArkMenu.ArrowTip className="border-t border-l" />
+      <ArkMenu.ArrowTip className="border-s border-t" />
     </ArkMenu.Arrow>
   );
 };

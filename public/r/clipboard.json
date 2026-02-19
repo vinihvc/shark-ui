@@ -2,13 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clipboard",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "https://shark.vini.one/r/input.json"
-  ],
+  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "registryDependencies": ["https://shark.vini.one/r/input.json"],
   "files": [
     {
       "path": "registry/react/components/clipboard.tsx",

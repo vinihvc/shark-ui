@@ -95,7 +95,7 @@ export const ProgressValue = (
   return (
     <FieldLabel asChild>
       <ArkProgress.ValueText
-        className={cn("ml-auto tabular-nums", className)}
+        className={cn("ms-auto tabular-nums", className)}
         data-slot="progress-value"
         {...rest}
       />

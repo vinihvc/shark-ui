@@ -66,8 +66,8 @@ export const PopoverContent = (props: PopoverContentProps) => {
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[side=bottom]:slide-in-from-top-2",
-            "data-[side=left]:slide-in-from-right-2",
-            "data-[side=right]:slide-in-from-left-2",
+            "data-[side=left]:slide-in-from-end-2",
+            "data-[side=right]:slide-in-from-start-2",
             "data-[side=top]:slide-in-from-bottom-2",
             className
           )}
@@ -79,7 +79,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
           {!!showCloseButton && (
             <PopoverClose asChild>
               <Button
-                className="absolute top-2 right-2 opacity-64 hover:opacity-100"
+                className="absolute end-2 top-2 opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >
@@ -219,7 +219,7 @@ export const PopoverArrow = (
       }
       {...rest}
     >
-      <ArkPopover.ArrowTip className="border-t border-l" />
+      <ArkPopover.ArrowTip className="border-s border-t" />
     </ArkPopover.Arrow>
   );
 };

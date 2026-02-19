@@ -16,7 +16,7 @@ const buttonGroupVariants = tv({
     orientation: {
       horizontal: [
         "[&>*:not(:first-child)]:rounded-l-none",
-        "[&>*:not(:first-child)]:border-l-0",
+        "[&>*:not(:first-child)]:border-s-0",
         "[&>*:not(:last-child)]:rounded-r-none",
       ],
       vertical: [

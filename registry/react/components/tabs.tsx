@@ -31,7 +31,7 @@ const tabsListVariants = tv({
       "data-[orientation=vertical]:flex-col",
     ],
     indicator: [
-      "absolute bottom-0 left-0",
+      "absolute start-0 bottom-0",
       "h-(--height) w-(--width)",
       "transition-[width,translate] duration-200 ease-in-out",
     ],

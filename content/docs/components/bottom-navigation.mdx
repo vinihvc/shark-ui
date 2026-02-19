@@ -1,0 +1,100 @@
+---
+title: Bottom Navigation
+description: A fixed navigation bar at the bottom of the screen for mobile-first apps.
+links:
+  doc: https://ark-ui.com/docs/components/tabs
+  api: https://ark-ui.com/docs/components/tabs#api-reference
+---
+
+<ComponentPreview componentName="bottom-navigation" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/bottom-navigation
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/bottom-navigation.tsx" src="bottom-navigation.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+The bottom navigation is a compound component built for mobile-first layouts. It uses Ark UI Tabs under the hood for selection state.
+
+```tsx
+import {
+  BottomNavigation,
+  BottomNavigationList,
+  BottomNavigationItem,
+  BottomNavigationItemIcon,
+  BottomNavigationItemLabel,
+  BottomNavigationItemBadge,
+} from "@/components/ui/bottom-navigation";
+```
+
+```tsx showLineNumbers
+<BottomNavigation defaultValue="home">
+  <BottomNavigationList>
+    <BottomNavigationItem value="home">
+      <BottomNavigationItemIcon>
+        <HomeIcon />
+      </BottomNavigationItemIcon>
+      <BottomNavigationItemLabel>Home</BottomNavigationItemLabel>
+    </BottomNavigationItem>
+    <BottomNavigationItem value="notifications">
+      <BottomNavigationItemIcon>
+        <BellIcon />
+      </BottomNavigationItemIcon>
+      <BottomNavigationItemLabel>Notifications</BottomNavigationItemLabel>
+      <BottomNavigationItemBadge>3</BottomNavigationItemBadge>
+    </BottomNavigationItem>
+  </BottomNavigationList>
+</BottomNavigation>
+```
+
+## Components
+
+| Component | Description |
+| --- | --- |
+| `BottomNavigation` | Root. Manages selection state. Accepts Tabs props (`value`, `defaultValue`, `onValueChange`). |
+| `BottomNavigationList` | The fixed bar container. |
+| `BottomNavigationItem` | Each nav item. Requires `value` prop. |
+| `BottomNavigationItemIcon` | Wrapper for the item icon. |
+| `BottomNavigationItemLabel` | Wrapper for the item label. |
+| `BottomNavigationItemBadge` | Optional notification badge. |
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="bottom-navigation" fileName="default" />

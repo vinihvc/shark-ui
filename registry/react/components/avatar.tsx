@@ -89,7 +89,7 @@ export const AvatarFallback = (
 export const avatarBadgeVariants = tv({
   base: [
     "z-10",
-    "absolute right-0 bottom-0",
+    "absolute end-0 bottom-0",
     "inline-flex items-center justify-center",
     "rounded-full",
     "ring-2 ring-background",

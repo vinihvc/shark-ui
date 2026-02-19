@@ -43,18 +43,18 @@ export const TooltipContent = (
       <ArkTooltip.Positioner data-slot="tooltip-positioner">
         <ArkTooltip.Content
           className={cn(
-            "z-40 w-fit origin-(--transform-origin)",
+            "z-40 w-fit",
             "px-3 py-1.5",
-            "bg-popover",
+            "bg-foreground",
+            "text-background text-xs",
             "rounded-lg border shadow-md/5",
-            "text-foreground text-xs",
-            "animate-in",
+            "origin-(--transform-origin) animate-in",
             "fade-in-0 zoom-in-95",
             "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
             "data-[state=closed]:animate-out",
             "data-[side=bottom]:slide-in-from-top-2",
-            "data-[side=left]:slide-in-from-right-2",
-            "data-[side=right]:slide-in-from-left-2",
+            "data-[side=left]:slide-in-from-end-2",
+            "data-[side=right]:slide-in-from-start-2",
             "data-[side=top]:slide-in-from-bottom-2",
             className
           )}
@@ -87,7 +87,7 @@ export const TooltipArrow = (
       }
       {...rest}
     >
-      <ArkTooltip.ArrowTip className="border-t border-l" />
+      <ArkTooltip.ArrowTip className="border-s border-t" />
     </ArkTooltip.Arrow>
   );
 };

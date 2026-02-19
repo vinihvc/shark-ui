@@ -1,0 +1,64 @@
+---
+description: RTL-friendly logical utilities for positioning, margin, padding, and animations
+globs: "registry/**/*.tsx"
+alwaysApply: false
+---
+
+# RTL Logical Classes
+
+Use logical utilities instead of physical ones so layout adapts to text direction (LTR/RTL). See [content/docs/(root)/rtl.mdx](content/docs/(root)/rtl.mdx).
+
+## Positioning
+
+Prefer logical positioning utilities so elements align correctly in both LTR and RTL:
+
+| Physical | Logical |
+| -------- | ------- |
+| `left-*` | `start-*` |
+| `right-*` | `end-*` |
+
+**Exception:** Keep `left-1/2` and `-translate-x-1/2` for true geometric centering (center of viewport); these do not change with direction.
+
+## Margin
+
+| Physical | Logical |
+| -------- | ------- |
+| `ml-*` | `ms-*` |
+| `mr-*` | `me-*` |
+
+## Padding
+
+| Physical | Logical |
+| -------- | ------- |
+| `pl-*` | `ps-*` |
+| `pr-*` | `pe-*` |
+
+## Borders and rounding
+
+| Physical | Logical |
+| -------- | ------- |
+| `border-l-*` | `border-s-*` |
+| `border-r-*` | `border-e-*` |
+| `rounded-l-*` | `rounded-s-*` |
+| `rounded-r-*` | `rounded-e-*` |
+
+## Animations
+
+Use logical slide utilities so motion follows text direction:
+
+| Physical | Logical |
+| -------- | ------- |
+| `slide-in-from-left-*` | `slide-in-from-start-*` |
+| `slide-in-from-right-*` | `slide-in-from-end-*` |
+| `slide-out-to-left-*` | `slide-out-to-start-*` |
+| `slide-out-to-right-*` | `slide-out-to-end-*` |
+
+**Bad:**
+```tsx
+className="absolute top-2 right-2 ml-4 pl-2 data-[side=left]:slide-in-from-right-2"
+```
+
+**Good:**
+```tsx
+className="absolute top-2 end-2 ms-4 ps-2 data-[side=left]:slide-in-from-end-2"
+```

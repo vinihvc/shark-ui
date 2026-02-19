@@ -20,7 +20,7 @@ export const buttonVariants = tv({
     variant: {
       solid: [
         "bg-primary",
-        "shadosmprimary/24 border border-transparemd shadow-xs",
+        "border border-transparemd shadow-md shadow-primary/24",
         "text-primary-foreground",
         "hover:bg-primary/90",
         "focus-visible:border-background focus-visible:ring-ring/50",

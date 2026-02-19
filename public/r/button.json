@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "tailwind-variants"
-  ],
+  "dependencies": ["@ark-ui/react", "tailwind-variants"],
   "cssVars": {
     "light": {
       "destructive-foreground": "var(--color-red-50)",
@@ -26,9 +23,7 @@
       "warning-foreground": "var(--color-yellow-50)"
     }
   },
-  "registryDependencies": [
-    "https://shark.vini.one/r/spinner.json"
-  ],
+  "registryDependencies": ["https://shark.vini.one/r/spinner.json"],
   "files": [
     {
       "path": "registry/react/components/button.tsx",

@@ -69,7 +69,7 @@ export const CarouselPrevious = (
     <ArkCarousel.PrevTrigger
       className={cn(
         "absolute",
-        "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-left-12 data-[orientation=horizontal]:-translate-y-1/2",
+        "data-[orientation=horizontal]:-start-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
         "data-[orientation=vertical]:-top-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
         className
       )}
@@ -94,7 +94,7 @@ export const CarouselNext = (
     <ArkCarousel.NextTrigger
       className={cn(
         "absolute",
-        "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-right-12 data-[orientation=horizontal]:-translate-y-1/2",
+        "data-[orientation=horizontal]:-end-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
         "data-[orientation=vertical]:-bottom-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
         className
       )}

@@ -107,14 +107,14 @@ const hintContentVariants = tv({
         "data-[state=open]:slide-in-from-top-5 origin-bottom",
       ],
       right: [
-        "top-1/2 left-full ml-(--offset) -translate-y-1/2",
-        "ml-(--offset)",
-        "data-[state=open]:slide-in-from-left-5 origin-right",
+        "start-full top-1/2 ms-(--offset) -translate-y-1/2",
+        "ms-(--offset)",
+        "data-[state=open]:slide-in-from-start-5 origin-end",
       ],
       left: [
-        "top-1/2 right-full mr-(--offset) -translate-y-1/2",
-        "mr-(--offset)",
-        "data-[state=open]:slide-in-from-right-5 origin-left",
+        "end-full top-1/2 me-(--offset) -translate-y-1/2",
+        "me-(--offset)",
+        "data-[state=open]:slide-in-from-end-5 origin-start",
       ],
       top: [
         "bottom-full left-1/2 mb-(--offset) -translate-x-1/2",
@@ -165,7 +165,7 @@ export const HintContent = (props: HintContentProps) => {
 };
 
 const useHint = () => {
-  const context = React.use(HintContext);
+  const context = React.useContext(HintContext);
 
   if (!context) {
     throw new Error("useHint must be used within a Hint");

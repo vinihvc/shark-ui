@@ -57,7 +57,7 @@ export const DialogPositioner = (
     <ArkDialog.Positioner
       className={cn(
         "fixed inset-0 z-50",
-        "grid grid-rows-[1fr_auto_1fr] justify-items-center items-center",
+        "grid grid-rows-[1fr_auto_1fr] items-center justify-items-center",
         "p-4",
         "overscroll-y-none [scrollbar-gutter:stable_both-edges]",
         className
@@ -160,7 +160,7 @@ export const DialogContent = (props: DialogContentProps) => {
             <DialogClose asChild>
               <Button
                 aria-label="Close"
-                className="absolute top-2 right-2 opacity-64 hover:opacity-100"
+                className="absolute inset-e-2 top-2 opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >

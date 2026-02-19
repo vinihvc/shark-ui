@@ -9,7 +9,7 @@ const nativeSelectVariants = tv({
   base: [
     "appearance-none",
     "w-full min-w-0",
-    "py-1 pr-8 pl-2.5",
+    "py-1 ps-2.5 pe-8",
     "select-none text-sm",
     "bg-transparent dark:bg-input/30",
     "rounded-md border border-input",
@@ -55,7 +55,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
       <ChevronDown
         aria-hidden="true"
         className={cn(
-          "absolute top-1/2 right-2.5 -translate-y-1/2",
+          "absolute end-2.5 top-1/2 -translate-y-1/2",
           "size-4",
           "select-none text-muted-foreground",
           "pointer-events-none"

@@ -20,8 +20,8 @@ export const CopyButton = (props: React.ComponentProps<typeof Clipboard>) => {
         rootClassName={cn("absolute top-1.5 right-1.5 z-10", className)}
         {...rest}
       >
-        <TooltipTrigger asChild>
-          <ClipboardTrigger asChild>
+        <ClipboardTrigger asChild>
+          <TooltipTrigger asChild>
             <Button
               className="opacity-64 hover:opacity-100 focus-visible:opacity-100"
               size="icon-sm"
@@ -29,8 +29,8 @@ export const CopyButton = (props: React.ComponentProps<typeof Clipboard>) => {
             >
               <ClipboardIndicator />
             </Button>
-          </ClipboardTrigger>
-        </TooltipTrigger>
+          </TooltipTrigger>
+        </ClipboardTrigger>
         <TooltipContent>Copy to clipboard</TooltipContent>
       </Clipboard>
     </Tooltip>

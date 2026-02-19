@@ -168,7 +168,7 @@ export const TourContent = (props: TourContentProps) => {
           {children}
 
           {!!showCloseButton && (
-            <TourClose asChild className="absolute top-4 right-4">
+            <TourClose asChild className="absolute end-4 top-4">
               <Button
                 className="size-8 border-none opacity-64 hover:opacity-100"
                 size="icon-md"
@@ -338,7 +338,7 @@ export const TourNextStep = (
 };
 
 export const useTourContext = () => {
-  const context = React.use(TourProvider);
+  const context = React.useContext(TourProvider);
 
   if (!context) {
     throw new Error("useTour must be used within a TourProvider");

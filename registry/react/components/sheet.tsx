@@ -93,13 +93,13 @@ const sheetContentVariants = tv({
         "w-[calc(100%-(--spacing(12)))] max-w-md",
         "col-start-2",
         "border-e",
-        "data-[state=closed]:slide-out-to-left-10 data-[state=open]:slide-in-from-left-10",
+        "data-[state=closed]:slide-out-to-start-10 data-[state=open]:slide-in-from-start-10",
       ],
       right: [
         "w-[calc(100%-(--spacing(12)))] max-w-md",
         "col-start-2",
         "border-s",
-        "data-[state=closed]:slide-out-to-right-10 data-[state=open]:slide-in-from-right-10",
+        "data-[state=closed]:slide-out-to-end-10 data-[state=open]:slide-in-from-end-10",
       ],
     },
     variant: {
@@ -153,7 +153,7 @@ export const SheetContent = (props: SheetContentProps) => {
             <SheetClose asChild>
               <Button
                 aria-label="Close"
-                className="absolute top-2 right-2 opacity-64 hover:opacity-100"
+                className="absolute end-2 top-2 opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >

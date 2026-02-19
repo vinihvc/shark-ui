@@ -236,7 +236,7 @@
   --primary: var(--color-neutral-100);
   --primary-foreground: var(--color-neutral-800);
 
-  --secondary: --alpha(var(--color-neutral-50) / 4%);
+  --secondary: --alpha(var(--color-white) / 4%);
   --secondary-foreground: var(--color-neutral-100);
 
   --muted: --alpha(var(--color-neutral-50) / 4%);

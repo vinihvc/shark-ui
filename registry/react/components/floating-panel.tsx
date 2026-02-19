@@ -40,7 +40,7 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
   return (
     <Portal>
       <ArkFloatingPanel.Positioner
-        className="top-(--y) left-(--x) z-50"
+        className="start-(--x) top-(--y) z-50"
         data-slot="floating-panel-positioner"
       >
         <ArkFloatingPanel.Content

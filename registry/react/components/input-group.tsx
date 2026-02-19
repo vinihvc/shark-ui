@@ -16,8 +16,8 @@ export const InputGroup = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs outline-none transition-[color,box-shadow] dark:bg-input/30",
         "h-9 min-w-0 has-[>textarea]:h-auto",
-        "has-[>[data-align=inline-start]]:[&>input]:pl-2",
-        "has-[>[data-align=inline-end]]:[&>input]:pr-2",
+        "has-[>[data-align=inline-start]]:[&>input]:ps-2",
+        "has-[>[data-align=inline-end]]:[&>input]:pe-2",
         "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
         "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
         "has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50",
@@ -45,14 +45,14 @@ const inputGroupAddonVariants = tv({
   variants: {
     align: {
       "inline-start": [
-        "order-first pl-3",
-        "has-[>button]:ml-[-0.45rem]",
-        "has-[>kbd]:ml-[-0.35rem]",
+        "order-first ps-3",
+        "has-[>button]:ms-[-0.45rem]",
+        "has-[>kbd]:ms-[-0.35rem]",
       ],
       "inline-end": [
-        "order-last pr-3",
-        "has-[>button]:mr-[-0.45rem]",
-        "has-[>kbd]:mr-[-0.35rem]",
+        "order-last pe-3",
+        "has-[>button]:me-[-0.45rem]",
+        "has-[>kbd]:me-[-0.35rem]",
       ],
       "block-start": [
         "order-first w-full justify-start px-3 pt-3",

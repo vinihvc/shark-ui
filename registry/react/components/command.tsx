@@ -176,7 +176,7 @@ export const CommandShortcut = (
   return (
     <ark.span
       className={cn(
-        "ml-auto text-muted-foreground text-xs tracking-widest",
+        "me-auto text-muted-foreground text-xs tracking-widest",
         className
       )}
       data-slot="command-shortcut"

@@ -105,8 +105,8 @@ export const SelectContent = (
             "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
             "data-[side=top]:slide-in-from-bottom-2",
             "data-[side=bottom]:slide-in-from-top-2",
-            "data-[side=right]:slide-in-from-left-2",
-            "data-[side=left]:slide-in-from-right-2",
+            "data-[side=right]:slide-in-from-start-2",
+            "data-[side=left]:slide-in-from-end-2",
             className
           )}
           data-slot="select-content"
@@ -167,7 +167,7 @@ export const SelectItem = (
     <ArkSelect.Item
       className={cn(
         "relative",
-        "py-1.5 pr-8 pl-2",
+        "py-1.5 ps-2 pe-8",
         "text-sm",
         "flex w-full items-center gap-2",
         "rounded-sm",
@@ -190,7 +190,7 @@ export const SelectItem = (
         {children}
       </ArkSelect.ItemText>
 
-      <span className="absolute right-2 flex size-3.5 items-center justify-center">
+      <span className="absolute end-2 flex size-3.5 items-center justify-center">
         <ArkSelect.ItemIndicator data-slot="select-item-indicator">
           <CheckIcon />
         </ArkSelect.ItemIndicator>

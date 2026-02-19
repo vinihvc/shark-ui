@@ -46,7 +46,7 @@ export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
 };
 
 export const useThemes = () => {
-  const context = React.use(ThemesContext);
+  const context = React.useContext(ThemesContext);
 
   if (!context) {
     throw new Error("useThemes must be used within a ThemesProvider");

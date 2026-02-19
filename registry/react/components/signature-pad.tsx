@@ -80,7 +80,7 @@ const SignaturePadClear = (
     <ArkSignaturePad.ClearTrigger
       asChild
       className={cn(
-        "absolute top-2 right-2",
+        "absolute end-2 top-2",
         "bg-muted",
         "text-muted-foreground",
         className

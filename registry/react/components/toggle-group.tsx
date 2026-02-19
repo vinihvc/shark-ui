@@ -50,7 +50,7 @@ const toggleGroupVariants = tv({
       segmented: true,
       orientation: "horizontal",
       class: [
-        "[&>[data-slot=toggle-group-item]:not(:first-child)]:-ml-px [&>[data-slot=toggle-group-item]:not(:first-child)]:rounded-l-none [&>[data-slot=toggle-group-item]:not(:first-child)]:border-l-0",
+        "[&>[data-slot=toggle-group-item]:not(:first-child)]:-ms-px [&>[data-slot=toggle-group-item]:not(:first-child)]:rounded-s-none [&>[data-slot=toggle-group-item]:not(:first-child)]:border-s-0",
         "[&>[data-slot=toggle-group-item]:not(:last-child)]:rounded-r-none",
       ],
     },
@@ -145,7 +145,7 @@ export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
 };
 
 function useToggleGroupContext() {
-  const context = React.use(ToggleGroupContext);
+  const context = React.useContext(ToggleGroupContext);
 
   if (!context) {
     throw new Error("useToggleGroupContext must be used within a ToggleGroup");

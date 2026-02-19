@@ -1,0 +1,94 @@
+---
+title: Frame
+description: A framed container for grouping related information.
+---
+
+<ComponentPreview componentName="frame" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/frame
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/frame.tsx" src="frame.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+The frame is a compound component for grouping related information with a header, content panels, and optional footer.
+
+```tsx
+import {
+  Frame,
+  FrameHeader,
+  FrameTitle,
+  FrameDescription,
+  FramePanel,
+  FrameFooter,
+} from "@/components/ui/frame";
+```
+
+```tsx showLineNumbers
+<Frame>
+  <FrameHeader>
+    <FrameTitle>Title</FrameTitle>
+    <FrameDescription>Description</FrameDescription>
+  </FrameHeader>
+  <FramePanel>Content</FramePanel>
+  <FrameFooter>Footer</FrameFooter>
+</Frame>
+```
+
+## Components
+
+| Component | Description |
+| --- | --- |
+| `Frame` | Root container. Accepts `className` and standard div props. |
+| `FrameHeader` | Header section containing title and description. |
+| `FrameTitle` | Title text for the frame header. |
+| `FrameDescription` | Description text for the frame header. |
+| `FramePanel` | Panel container for frame content. Use multiple for separated sections. |
+| `FrameFooter` | Footer section for the frame. |
+
+## Examples
+
+### Default
+
+<ComponentPreview componentName="frame" fileName="default" />
+
+### Separated Panels
+
+By default, multiple panels are separated with spacing between them.
+
+<ComponentPreview componentName="frame" fileName="example-separated-panels" />

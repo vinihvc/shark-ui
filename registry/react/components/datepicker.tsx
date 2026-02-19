@@ -80,7 +80,7 @@ export const DatePickerYearSelect = (
       <ArkDatePicker.YearSelect
         className={cn(
           "appearance-none",
-          "px-2 py-1 pr-6",
+          "px-2 py-1 pe-6",
           "text-sm",
           "rounded-md border",
           "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
@@ -92,7 +92,7 @@ export const DatePickerYearSelect = (
 
       <span
         className={cn(
-          "absolute inset-y-0 right-1",
+          "absolute inset-y-0 end-1",
           "flex items-center",
           "[&_svg]:size-3.5 [&_svg]:text-muted-foreground"
         )}
@@ -113,7 +113,7 @@ export const DatePickerMonthSelect = (
       <ArkDatePicker.MonthSelect
         className={cn(
           "appearance-none",
-          "px-2 py-1 pr-6",
+          "px-2 py-1 pe-6",
           "text-sm",
           "rounded-md border",
           "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
@@ -125,7 +125,7 @@ export const DatePickerMonthSelect = (
 
       <span
         className={cn(
-          "absolute inset-y-0 right-1",
+          "absolute inset-y-0 end-1",
           "flex items-center",
           "[&_svg]:size-3.5 [&_svg]:text-muted-foreground"
         )}

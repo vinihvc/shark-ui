@@ -163,7 +163,7 @@ export const PaginationEllipsis = (
 };
 
 const _usePaginationContext = () => {
-  const context = React.use(PaginationContext);
+  const context = React.useContext(PaginationContext);
 
   if (!context) {
     throw new Error(
