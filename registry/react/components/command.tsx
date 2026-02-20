@@ -1,7 +1,7 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
 import { ComboboxItem, ComboboxItemText } from "@ark-ui/react/combobox";
+import { ark } from "@ark-ui/react/factory";
 import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {

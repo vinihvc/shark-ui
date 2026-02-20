@@ -66,13 +66,29 @@ import {
 
 ## Examples
 
-### Side
+### Positioning
 
 <ComponentPreview componentName="action-bar" fileName="example-side" />
 
 ### Table with Selection
 
 <ComponentPreview componentName="action-bar" fileName="example-table" />
+
+### Close Trigger
+
+<ComponentPreview componentName="action-bar" fileName="example-close-trigger" />
+
+### Within Dialog
+
+<ComponentPreview componentName="action-bar" fileName="example-dialog" />
+
+### Within Menu with Separator
+
+<ComponentPreview componentName="action-bar" fileName="example-menu-separator" />
+
+### Controlled
+
+<ComponentPreview componentName="action-bar" fileName="example-controlled" />
 
 ## API Reference
 
@@ -86,21 +102,30 @@ import {
 | `unmountOnExit` | `boolean` | `true` |
 | `onOpenChange` | `(open: boolean) => void` | - |
 
+### ActionBarPositioning
+
+Object to configure action bar placement and offset.
+
+| Property | Type | Default |
+|----------|------|---------|
+| `placement` | `"bottom" \| "bottom-start" \| "bottom-end"` | `"bottom"` |
+| `offset` | `number` | `16` |
+
 ### ActionBarContent
 
 | Prop | Type | Default |
 |------|------|---------|
-| `placement` | `"bottom" \| "bottom-start" \| "bottom-end"` | `"bottom"` |
+| `positioning` | `ActionBarPositioning` | `{ placement: "bottom", offset: 16 }` |
+| `aria-label` | `string` | `"Selection actions"` |
+| `aria-labelledby` | `string` | - |
 | `className` | `string` | - |
-| `asChild` | `boolean` | `false` |
 
 ### ActionBarPositioner
 
 | Prop | Type | Default |
 |------|------|---------|
-| `side` | `"bottom" \| "bottom-start" \| "bottom-end"` | `"bottom"` |
+| `positioning` | `ActionBarPositioning` | `{ placement: "bottom", offset: 16 }` |
 | `className` | `string` | - |
-| `asChild` | `boolean` | `false` |
 
 ### ActionBarTrigger
 
@@ -108,32 +133,30 @@ Opens the action bar when clicked. Use `asChild` to merge props with a child ele
 
 | Prop | Type | Default |
 |------|------|---------|
-| `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
+| `className` | `string` | - |
 
 ### ActionBarClose
 
-Closes the action bar when clicked. Use `asChild` to merge close behavior with a custom element. Renders a close icon button by default.
+Closes the action bar when clicked. Use `asChild` to merge close behavior with a custom element.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
+| `className` | `string` | - |
 
 ### ActionBarSelectionTrigger
+
+Displays "X items selected" when `count` is provided, or custom `label`/`children`.
 
 | Prop | Type | Default |
 |------|------|---------|
 | `count` | `number` | `0` |
 | `label` | `string` | - |
 | `className` | `string` | - |
-| `asChild` | `boolean` | `false` |
-
-Displays "X items selected" when `count` is provided, or custom `label`/`children`.
 
 ### ActionBarSeparator
 
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | - |
-| `asChild` | `boolean` | `false` |

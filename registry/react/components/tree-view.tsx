@@ -1,6 +1,6 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import {
   TreeView as ArkTreeView,
   createTreeCollection as arkCreateTreeCollection,

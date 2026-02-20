@@ -1,5 +1,6 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
 import { Tabs as ArkTabs } from "@ark-ui/react/tabs";
 import type React from "react";
 import { cn } from "@/lib/utils";
@@ -65,12 +66,12 @@ export const BottomNavigationItem = (
 };
 
 export const BottomNavigationItemIcon = (
-  props: React.ComponentProps<"span">
+  props: React.ComponentProps<typeof ark.span>
 ) => {
   const { className, ...rest } = props;
 
   return (
-    <span
+    <ark.span
       className={cn("flex items-center justify-center", className)}
       data-slot="bottom-navigation-item-icon"
       {...rest}
@@ -79,12 +80,12 @@ export const BottomNavigationItemIcon = (
 };
 
 export const BottomNavigationItemLabel = (
-  props: React.ComponentProps<"span">
+  props: React.ComponentProps<typeof ark.span>
 ) => {
   const { className, ...rest } = props;
 
   return (
-    <span
+    <ark.span
       className={cn("truncate", className)}
       data-slot="bottom-navigation-item-label"
       {...rest}
@@ -100,7 +101,7 @@ export const BottomNavigationItemBadge = (
   return (
     <span
       className={cn(
-        "absolute end-1/2 top-1 translate-x-6 -translate-y-1/2",
+        "absolute inset-e-1/2 top-1 translate-x-6 -translate-y-1/2",
         "flex size-4 items-center justify-center",
         "rounded-full bg-primary font-medium text-[10px] text-primary-foreground",
         "min-w-4 px-1",

@@ -1,7 +1,7 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
 import { Avatar as ArkAvatar } from "@ark-ui/react/avatar";
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";

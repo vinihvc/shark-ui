@@ -11,15 +11,15 @@ import {
 } from "@/registry/react/components/action-bar";
 import { Button } from "@/registry/react/components/button";
 
-type Side = "bottom" | "bottom-start" | "bottom-end";
+type Placement = "bottom" | "bottom-start" | "bottom-end";
 
 const Example = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [side, setSide] = React.useState<Side>("bottom");
+  const [placement, setPlacement] = React.useState<Placement>("bottom");
 
-  const handleOpenChange = (side: Side) => {
+  const handleOpenChange = (nextPlacement: Placement) => {
     setIsOpen(true);
-    setSide(side);
+    setPlacement(nextPlacement);
   };
 
   return (
@@ -43,7 +43,10 @@ const Example = () => {
       </div>
 
       <ActionBar onOpenChange={setIsOpen} open={isOpen}>
-        <ActionBarContent className="w-full max-w-md" side={side}>
+        <ActionBarContent
+          className="w-full max-w-md"
+          positioning={{ placement }}
+        >
           <ActionBarClose asChild>
             <Button size="icon-sm" variant="ghost">
               <XIcon />

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { cn } from "@/lib/utils";
 
 interface SeparatorProps extends React.ComponentProps<typeof ark.div> {

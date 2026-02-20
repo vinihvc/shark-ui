@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/registry/react/components/separator";

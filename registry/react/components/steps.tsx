@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { Steps as ArkSteps } from "@ark-ui/react/steps";
 import { CheckIcon } from "lucide-react";
 import type React from "react";

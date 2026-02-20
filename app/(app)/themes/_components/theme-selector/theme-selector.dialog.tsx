@@ -128,13 +128,13 @@ const createCssVars = (
   --primary: ${pLight?.primary ?? light?.primary};
   --primary-foreground: ${pLight?.["primary-foreground"] ?? light?.["primary-foreground"]};
 
-  --secondary: --alpha(var(--color-black) / 4%);
+  --secondary: ${light?.secondary};
   --secondary-foreground: ${light?.["secondary-foreground"]};
 
-  --muted: --alpha(var(--color-black) / 4%);
+  --muted: ${light?.muted};
   --muted-foreground: ${light?.["muted-foreground"]};
 
-  --accent: --alpha(var(--color-black) / 4%);
+  --accent: ${light?.accent};
   --accent-foreground: ${light?.["accent-foreground"]};
 
   --destructive: var(--color-red-500);
@@ -149,8 +149,8 @@ const createCssVars = (
   --warning: var(--color-amber-500);
   --warning-foreground: var(--color-amber-700);
 
-  --border: --alpha(var(--color-black) / 8%);
-  --input: --alpha(var(--color-black) / 10%);
+  --border: ${light?.border};
+  --input: ${light?.input};
   --ring: ${pLight?.ring ?? light?.ring};
 
   --chart-1: var(--color-orange-600);

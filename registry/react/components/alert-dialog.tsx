@@ -1,4 +1,5 @@
 import type React from "react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
   Dialog,
@@ -37,7 +38,17 @@ export const AlertDialogContent = (
 export const AlertDialogBody = (
   props: React.ComponentProps<typeof DialogBody>
 ) => {
-  return <DialogBody data-slot="alert-dialog-body" {...props} />;
+  const { className, ...rest } = props;
+  return (
+    <DialogBody
+      className={cn(
+        "in-[[data-slot=alert-dialog-content]:has([data-slot=alert-dialog-header])]:pt-0",
+        className
+      )}
+      data-slot="alert-dialog-body"
+      {...rest}
+    />
+  );
 };
 
 export const AlertDialogHeader = (

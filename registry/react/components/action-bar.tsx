@@ -119,35 +119,61 @@ export const ActionBarTrigger = (props: ActionBarTriggerProps) => {
   );
 };
 
+export interface ActionBarPositioning {
+  /**
+   * The placement of the action bar.
+   *
+   * @default "bottom"
+   */
+  placement?: "bottom" | "bottom-start" | "bottom-end";
+  /**
+   * The offset from the edge in pixels.
+   *
+   * @default 16
+   */
+  offset?: number;
+}
+
 const actionBarPositionerVariants = tv({
   base: [
     "fixed inset-x-0 bottom-0 z-40",
     "flex",
-    "px-4 pb-4",
+    "px-4",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
     "data-[state=open]:slide-in-from-bottom-2 data-[state=closed]:slide-out-to-bottom-2",
   ],
   variants: {
-    side: {
+    placement: {
       bottom: "justify-center",
       "bottom-end": "justify-end",
       "bottom-start": "justify-start",
     },
   },
   defaultVariants: {
-    side: "bottom",
+    placement: "bottom",
   },
 });
 
 export interface ActionBarPositionerProps
-  extends React.ComponentProps<typeof ark.div>,
-    VariantProps<typeof actionBarPositionerVariants> {}
+  extends React.ComponentProps<typeof ark.div> {
+  /**
+   * The positioning of the action bar.
+   */
+  positioning?: ActionBarPositioning;
+}
 
 export const ActionBarPositioner = (props: ActionBarPositionerProps) => {
-  const { side = "bottom", className, ...rest } = props;
+  const {
+    positioning = { placement: "bottom", offset: 16 },
+    className,
+    ...rest
+  } = props;
 
   const { isOpen, lazyMount, unmountOnExit } = useActionBar();
+
+  const placement = positioning.placement ?? "bottom";
+  const offset = positioning.offset ?? 16;
 
   return (
     <Presence
@@ -157,9 +183,10 @@ export const ActionBarPositioner = (props: ActionBarPositionerProps) => {
       unmountOnExit={unmountOnExit}
     >
       <ark.div
-        className={cn(actionBarPositionerVariants({ side }), className)}
-        data-side={side}
+        className={cn(actionBarPositionerVariants({ placement }), className)}
+        data-placement={placement}
         data-slot="action-bar-positioner"
+        style={{ paddingBottom: offset }}
         {...rest}
       />
     </Presence>
@@ -167,14 +194,18 @@ export const ActionBarPositioner = (props: ActionBarPositionerProps) => {
 };
 
 export interface ActionBarContentProps
-  extends React.ComponentProps<typeof ark.div>,
-    VariantProps<typeof actionBarPositionerVariants> {}
+  extends React.ComponentProps<typeof ark.div> {
+  /**
+   * The positioning of the action bar.
+   */
+  positioning?: ActionBarPositioning;
+}
 
 export const ActionBarContent = (props: ActionBarContentProps) => {
   const {
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledby,
-    side = "bottom",
+    positioning = { placement: "bottom", offset: 16 },
     className,
     ...rest
   } = props;
@@ -183,7 +214,7 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
 
   return (
     <Portal>
-      <ActionBarPositioner side={side}>
+      <ActionBarPositioner positioning={positioning}>
         <ark.div
           aria-label={
             ariaLabelledby ? undefined : (ariaLabel ?? "Selection actions")
@@ -252,7 +283,7 @@ export interface ActionBarSelectionTriggerProps
 export const ActionBarSelectionTrigger = (
   props: ActionBarSelectionTriggerProps
 ) => {
-  const { count = 0, label, className, children, ...rest } = props;
+  const { label, count = 0, className, children, ...rest } = props;
 
   return (
     <ark.span

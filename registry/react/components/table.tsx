@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
@@ -112,7 +112,7 @@ export const TableHead = (props: React.ComponentProps<typeof ark.th>) => {
         "text-left align-middle",
         "font-normal text-muted-foreground",
         "rtl:text-right",
-        "[&:has([role=checkbox])]:pe-0",
+        "[&:has([role=checkbox])]:ps-2 [&:has([role=checkbox])]:pe-0",
         className
       )}
       data-slot="table-head"
@@ -127,7 +127,8 @@ export const TableCell = (props: React.ComponentProps<typeof ark.td>) => {
   return (
     <ark.td
       className={cn(
-        "whitespace-nowrap p-2 align-middle [&:has([role=checkbox])]:pe-0",
+        "whitespace-nowrap p-2 align-middle",
+        "[&:has([role=checkbox])]:ps-2 [&:has([role=checkbox])]:pe-0",
         className
       )}
       data-slot="table-cell"

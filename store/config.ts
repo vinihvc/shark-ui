@@ -23,7 +23,16 @@ export type PrimaryColor =
   | "pink"
   | "rose";
 
-export type GrayColor = "neutral" | "slate" | "gray" | "zinc" | "stone";
+export type GrayColor =
+  | "neutral"
+  | "slate"
+  | "gray"
+  | "zinc"
+  | "stone"
+  | "mauve"
+  | "olive"
+  | "mist"
+  | "taupe";
 
 export type BorderRadius = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
