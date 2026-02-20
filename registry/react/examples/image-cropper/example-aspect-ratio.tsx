@@ -1,25 +1,32 @@
-import { ImageCropper } from "@/registry/react/components/image-cropper";
+import {
+	ImageCropper,
+	ImageCropperGrid,
+	ImageCropperHandle,
+	ImageCropperImage,
+	ImageCropperSelection,
+	ImageCropperViewport,
+} from "@/registry/react/components/image-cropper";
 
 const IMAGE_SRC =
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80";
+	"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80";
 
-const ImageCropperAspectRatioDemo = () => (
-  <ImageCropper.Root aspectRatio={16 / 9}>
-    <ImageCropper.Viewport>
-      <ImageCropper.Image alt="Crop 16:9" src={IMAGE_SRC} />
-      <ImageCropper.Selection>
-        <ImageCropper.Handle position="n" />
-        <ImageCropper.Handle position="e" />
-        <ImageCropper.Handle position="s" />
-        <ImageCropper.Handle position="w" />
-        <ImageCropper.Handle position="ne" />
-        <ImageCropper.Handle position="se" />
-        <ImageCropper.Handle position="sw" />
-        <ImageCropper.Handle position="nw" />
-        <ImageCropper.Grid />
-      </ImageCropper.Selection>
-    </ImageCropper.Viewport>
-  </ImageCropper.Root>
+const Example = () => (
+	<ImageCropper aspectRatio={16 / 9}>
+		<ImageCropperViewport>
+			<ImageCropperImage alt="Crop 16:9" src={IMAGE_SRC} />
+			<ImageCropperSelection>
+				<ImageCropperHandle position="n" />
+				<ImageCropperHandle position="e" />
+				<ImageCropperHandle position="s" />
+				<ImageCropperHandle position="w" />
+				<ImageCropperHandle position="ne" />
+				<ImageCropperHandle position="se" />
+				<ImageCropperHandle position="sw" />
+				<ImageCropperHandle position="nw" />
+				<ImageCropperGrid axis="horizontal" />
+			</ImageCropperSelection>
+		</ImageCropperViewport>
+	</ImageCropper>
 );
 
-export default ImageCropperAspectRatioDemo;
+export default Example;

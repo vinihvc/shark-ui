@@ -1,25 +1,32 @@
-import { ImageCropper } from "@/registry/react/components/image-cropper";
+import {
+	ImageCropper,
+	ImageCropperGrid,
+	ImageCropperHandle,
+	ImageCropperImage,
+	ImageCropperSelection,
+	ImageCropperViewport,
+} from "@/registry/react/components/image-cropper";
 
 const IMAGE_SRC =
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80";
+	"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80";
 
-const ImageCropperCircleDemo = () => (
-  <ImageCropper.Root cropShape="circle">
-    <ImageCropper.Viewport>
-      <ImageCropper.Image alt="Circle crop" src={IMAGE_SRC} />
-      <ImageCropper.Selection>
-        <ImageCropper.Handle position="n" />
-        <ImageCropper.Handle position="e" />
-        <ImageCropper.Handle position="s" />
-        <ImageCropper.Handle position="w" />
-        <ImageCropper.Handle position="ne" />
-        <ImageCropper.Handle position="se" />
-        <ImageCropper.Handle position="sw" />
-        <ImageCropper.Handle position="nw" />
-        <ImageCropper.Grid />
-      </ImageCropper.Selection>
-    </ImageCropper.Viewport>
-  </ImageCropper.Root>
+const Example = () => (
+	<ImageCropper cropShape="circle">
+		<ImageCropperViewport>
+			<ImageCropperImage alt="Circle crop" src={IMAGE_SRC} />
+			<ImageCropperSelection>
+				<ImageCropperHandle position="n" />
+				<ImageCropperHandle position="e" />
+				<ImageCropperHandle position="s" />
+				<ImageCropperHandle position="w" />
+				<ImageCropperHandle position="ne" />
+				<ImageCropperHandle position="se" />
+				<ImageCropperHandle position="sw" />
+				<ImageCropperHandle position="nw" />
+				<ImageCropperGrid axis="horizontal" />
+			</ImageCropperSelection>
+		</ImageCropperViewport>
+	</ImageCropper>
 );
 
-export default ImageCropperCircleDemo;
+export default Example;

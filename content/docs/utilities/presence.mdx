@@ -26,7 +26,27 @@ const [visible, setVisible] = React.useState(false);
 </Presence>
 ```
 
-When `present` is `true`, the content animates in. When `false`, it animates out before unmounting (if `unmountOnExit` is true).
+## Lazy
+
+You can lazy mount and unmount the content by setting `lazyMount` and `unmountOnExit` to `true`.
+
+It will remove the element from the DOM when it is not present.
+
+```tsx showLineNumbers
+<Presence lazyMount unmountOnExit {...}>
+  {/** content */}
+</Presence>
+```
+
+## State
+
+Presence automatically manages the attribute `data-state` to `open` and `closed`. This enables styling and animations based on visibility state.
+
+
+```tsx showLineNumbers
+<Presence present={true} /> // <div data-state="open" />
+<Presence present={false} /> // <div data-state="closed" />
+```
 
 ## Props
 
@@ -38,6 +58,11 @@ When `present` is `true`, the content animates in. When `false`, it animates out
 | `unmountOnExit` | `boolean` | `true` |
 | `lazyMount` | `boolean` | `true` |
 | `asChild` | `boolean` | `false` |
+
+| Attribute | Description |
+| --- | --- |
+| `data-state` | `open \| closed` |
+| `data-slot` | `presence` |
 
 ---
 

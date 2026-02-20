@@ -1,3 +1,5 @@
+"use client";
+
 import { ark } from "@ark-ui/react";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
@@ -11,6 +13,8 @@ import { ScrollArea } from "@/registry/react/components/scroll-area";
 interface DialogContextProps {
 	/**
 	 * Used internally to show or hide overlay
+	 *
+	 * @default true
 	 */
 	modal?: boolean;
 }
@@ -18,7 +22,12 @@ interface DialogContextProps {
 const DialogContext = React.createContext({} as DialogContextProps);
 
 export const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {
-	const { modal, lazyMount = true, unmountOnExit = true, ...rest } = props;
+	const {
+		modal = true,
+		lazyMount = true,
+		unmountOnExit = true,
+		...rest
+	} = props;
 
 	return (
 		<DialogContext.Provider value={{ modal }}>
@@ -77,7 +86,6 @@ export const DialogPositioner = (
 				"fixed inset-0 z-50",
 				"grid grid-rows-[1fr_auto_3fr] justify-items-center",
 				"p-4",
-				"overscroll-y-none [scrollbar-gutter:stable_both-edges]",
 				className,
 			)}
 			data-slot="dialog-positioner"
