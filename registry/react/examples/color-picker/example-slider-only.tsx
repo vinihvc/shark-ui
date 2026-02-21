@@ -4,8 +4,8 @@ import {
   ColorPicker,
   ColorPickerChannelSlider,
   ColorPickerTransparencyGrid,
+  ColorPickerValue,
   ColorPickerValueSwatch,
-  ColorPickerValueText,
   parseColor,
 } from "@/registry/react/components/color-picker";
 
@@ -21,7 +21,7 @@ const Example = () => (
         <ColorPickerTransparencyGrid />
         <ColorPickerValueSwatch />
       </div>
-      <ColorPickerValueText className="font-medium text-sm" />
+      <ColorPickerValue className="font-medium text-sm" />
     </div>
     <div className="flex flex-col gap-2.5">
       <ColorPickerChannelSlider channel="red" />

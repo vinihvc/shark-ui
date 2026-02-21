@@ -53,7 +53,7 @@ export const AccordionTrigger = (
         "outline-none",
         "transition-all",
         "disabled:pointer-events-none disabled:opacity-50 disabled:grayscale",
-        "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
         "[&_[data-state=open]>svg]:rotate-180",
         className
       )}

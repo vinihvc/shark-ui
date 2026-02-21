@@ -1,38 +1,37 @@
 ---
 title: React Router
-description: Instructions to install Shark UI in a React Router project
+description: Install Shark UI in a React Router project.
 ---
 
-### Create project
+## Create project
 
 ```bash
 npx create-react-router@latest my-app
 ```
 
-### Run the CLI
+## Run the CLI
 
-Run the `shadcn` init command to setup your project:
+Run the shadcn init command to set up `components.json` and path aliases:
 
 ```bash
 npx shadcn@latest init
 ```
 
-### Add Components
+## Add components
 
-You can now start adding components to your project.
+Add components from the Shark registry:
 
 ```bash
 pnpm dlx shadcn@latest add https://shark.vini.one/r/button.json
 ```
 
-The command above will add the `Button` component to your project. You can then import it like this:
+Import and use them in your routes:
 
-```tsx showLineNumbers title="app/routes/home.tsx"
+```tsx title="app/routes/home.tsx" showLineNumbers
 import { Button } from "~/components/ui/button"
-
 import type { Route } from "./+types/home"
 
-export function meta({}: Route.MetaArgs) {
+export const meta = ({}: Route.MetaArgs) => {
   return [
     { title: "New React Router App" },
     { name: "description", content: "Welcome to React Router!" },

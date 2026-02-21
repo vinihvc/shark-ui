@@ -83,7 +83,7 @@ export const DatePickerYearSelect = (
           "px-2 py-1 pe-6",
           "text-sm",
           "rounded-md border",
-          "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+          "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
           className
         )}
         data-slot="datepicker-year-select"
@@ -92,7 +92,7 @@ export const DatePickerYearSelect = (
 
       <span
         className={cn(
-          "absolute inset-y-0 end-1",
+          "absolute inset-e-1 inset-y-0",
           "flex items-center",
           "[&_svg]:size-3.5 [&_svg]:text-muted-foreground"
         )}
@@ -116,7 +116,7 @@ export const DatePickerMonthSelect = (
           "px-2 py-1 pe-6",
           "text-sm",
           "rounded-md border",
-          "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+          "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
           className
         )}
         data-slot="datepicker-month-select"
@@ -125,7 +125,7 @@ export const DatePickerMonthSelect = (
 
       <span
         className={cn(
-          "absolute inset-y-0 end-1",
+          "absolute inset-e inset-y-0",
           "flex items-center",
           "[&_svg]:size-3.5 [&_svg]:text-muted-foreground"
         )}
@@ -318,11 +318,11 @@ export const DatePickerTableCellTrigger = (
         "aspect-square size-auto w-full min-w-8",
         "select-none font-normal text-foreground text-sm leading-none",
         "transition-[background-color,color]",
-        "rounded-md",
+        "rounded-md border border-transparent",
         "hover:bg-accent hover:text-accent-foreground",
         "data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-full data-today:after:bg-primary",
         "data-focus:bg-accent/30 data-focus:text-primary",
-        "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
         "data-in-range:not-[data-selected]:bg-primary/10",
         "data-selected:bg-primary! data-selected:text-primary-foreground!",

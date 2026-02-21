@@ -47,7 +47,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
           "w-fit",
           "flex items-center justify-between gap-2",
           "*:data-placeholder-shown:text-muted-foreground",
-          "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/50",
+          "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32",
           "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
         )}
@@ -190,7 +190,7 @@ export const SelectItem = (
         {children}
       </ArkSelect.ItemText>
 
-      <span className="absolute end-2 flex size-3.5 items-center justify-center">
+      <span className="absolute inset-e-2 flex size-3.5 items-center justify-center">
         <ArkSelect.ItemIndicator data-slot="select-item-indicator">
           <CheckIcon />
         </ArkSelect.ItemIndicator>

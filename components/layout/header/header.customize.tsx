@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, Undo, WandSparklesIcon } from "lucide-react";
+import { CheckIcon, Shuffle, Undo, WandSparklesIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
 import { useHotKeys } from "@/hooks/use-hot-keys";
@@ -8,186 +8,245 @@ import { BORDER_RADIUS, GRAY_COLORS, PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
-	Field,
-	FieldGroup,
-	FieldLabel,
+  Field,
+  FieldGroup,
+  FieldLabel,
 } from "@/registry/react/components/field";
 import { Kbd } from "@/registry/react/components/kbd";
 import {
-	Sheet,
-	SheetBody,
-	SheetContent,
-	SheetFooter,
-	SheetHeader,
-	SheetTrigger,
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/react/components/radio-group";
+import {
+  Sheet,
+  SheetBody,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTrigger,
 } from "@/registry/react/components/sheet";
 import { Slider } from "@/registry/react/components/slider";
 import {
-	ToggleGroup,
-	ToggleGroupItem,
-} from "@/registry/react/components/toggle-group";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@/registry/react/components/tooltip";
 import {
-	type BorderRadius,
-	type GrayColor,
-	type PrimaryColor,
-	useConfig,
+  type BorderRadius,
+  DEFAULT_BORDER_RADIUS,
+  DEFAULT_GRAY_COLOR,
+  DEFAULT_PRIMARY_COLOR,
+  type GrayColor,
+  type PrimaryColor,
+  useConfig,
 } from "@/store/config";
 
 export const HeaderCustomize = () => {
-	const [config, setConfig] = useConfig();
-	const { resolvedTheme } = useTheme();
+  const [config, setConfig] = useConfig();
+  const { resolvedTheme } = useTheme();
 
-	const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
-	useHotKeys(["c", "C"], () => setIsOpen((prev) => !prev));
+  useHotKeys(["c", "C"], () => setIsOpen((prev) => !prev));
 
-	const isLight = resolvedTheme === "light";
+  const isLight = resolvedTheme === "light";
 
-	const handleSelectGrayColor = (color: GrayColor) => {
-		setConfig({
-			...config,
-			grayColor: color,
-		});
-	};
+  const handleSelectGrayColor = (color: GrayColor) => {
+    setConfig({
+      ...config,
+      grayColor: color,
+    });
+  };
 
-	const handleSelectPrimaryColor = (color: PrimaryColor) => {
-		setConfig({
-			...config,
-			primaryColor: color,
-		});
-	};
+  const handleSelectPrimaryColor = (color: PrimaryColor) => {
+    setConfig({
+      ...config,
+      primaryColor: color,
+    });
+  };
 
-	return (
-		<Sheet
-			modal={false}
-			open={isOpen}
-			onOpenChange={({ open }) => setIsOpen(open)}
-		>
-			<Tooltip>
-				<TooltipTrigger asChild>
-					<SheetTrigger asChild>
-						<Button size="icon-md" variant="ghost">
-							<WandSparklesIcon />
-						</Button>
-					</SheetTrigger>
-				</TooltipTrigger>
-				<TooltipContent>
-					<p>
-						Customize <Kbd>C</Kbd>
-					</p>
-				</TooltipContent>
-			</Tooltip>
+  return (
+    <Sheet
+      modal={false}
+      onOpenChange={({ open }) => setIsOpen(open)}
+      open={isOpen}
+    >
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <SheetTrigger asChild>
+            <Button size="icon-md" variant="ghost">
+              <WandSparklesIcon />
+            </Button>
+          </SheetTrigger>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>
+            Customize <Kbd>C</Kbd>
+          </p>
+        </TooltipContent>
+      </Tooltip>
 
-			<SheetContent variant="inset">
-				<SheetHeader
-					description="Change the theme to match your style."
-					title="Make it yours"
-				/>
+      <SheetContent variant="inset">
+        <SheetHeader
+          description="Change the theme to match your style."
+          title="Make it yours"
+        />
 
-				<SheetBody>
-					<FieldGroup className="gap-6">
-						<Field>
-							<FieldLabel>Gray Color</FieldLabel>
-							<ToggleGroup
-								className="grid w-full grid-cols-3 gap-2"
-								multiple={false}
-								onValueChange={({ value }) =>
-									handleSelectGrayColor(value[0] as GrayColor)
-								}
-								value={[config.grayColor]}
-							>
-								{GRAY_COLORS.map((color) => (
-									<ToggleGroupItem
-										className="group flex items-center justify-between gap-2 border-input shadow-md/5"
-										key={color.value}
-										value={color.value}
-									>
-										<div className="flex items-center gap-2">
-											<div
-												className={cn(
-													"size-4 rounded-full border",
-													`bg-${color.value}-900`,
-												)}
-											/>
-											{color.label}
-										</div>
-										<CheckIcon className="size-3.5 group-data-[state=off]:hidden" />
-									</ToggleGroupItem>
-								))}
-							</ToggleGroup>
-						</Field>
+        <SheetBody>
+          <FieldGroup className="gap-6">
+            <Field>
+              <FieldLabel>Gray Color</FieldLabel>
+              <RadioGroup
+                className={cn(
+                  "w-full",
+                  "grid grid-cols-3 gap-4",
+                  "**:data-[slot=radio-group-item-control]:hidden",
+                  "**:data-[slot=radio-group-item-text]:flex **:data-[slot=radio-group-item-text]:w-full **:data-[slot=radio-group-item-text]:items-center **:data-[slot=radio-group-item-text]:justify-between"
+                )}
+                onValueChange={({ value }) =>
+                  handleSelectGrayColor(value as GrayColor)
+                }
+                value={config.grayColor}
+              >
+                {GRAY_COLORS.map((color) => (
+                  <RadioGroupItem
+                    className={cn(
+                      "group",
+                      "w-full",
+                      "flex items-center justify-between",
+                      "px-3.5 py-2.5",
+                      "bg-background",
+                      "rounded-lg border border-input shadow-md/5",
+                      "data-[state=checked]:bg-input/32"
+                    )}
+                    key={color.value}
+                    value={color.value}
+                  >
+                    <div className="flex flex-1 items-center gap-2">
+                      <div
+                        className={cn(
+                          "size-5 rounded-full border",
+                          `bg-${color.value}-500`
+                        )}
+                      />
+                      {color.label}
+                    </div>
 
-						<Field>
-							<FieldLabel>Primary Color</FieldLabel>
-							<ToggleGroup
-								className="grid w-full grid-cols-3 gap-4"
-								multiple={false}
-								onValueChange={({ value }) =>
-									handleSelectPrimaryColor(value[0] as PrimaryColor)
-								}
-								value={[config.primaryColor]}
-							>
-								{PRIMARY_COLORS.map((color) => {
-									const hex =
-										typeof color.hex === "string"
-											? color.hex
-											: color.hex[isLight ? "light" : "dark"];
+                    <CheckIcon className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden" />
+                  </RadioGroupItem>
+                ))}
+              </RadioGroup>
+            </Field>
 
-									return (
-										<ToggleGroupItem
-											className="group flex items-center justify-between gap-2 border-input shadow-md/5"
-											key={color.value}
-											value={color.value}
-										>
-											<div className="flex items-center gap-2">
-												<div
-													className={cn("size-4 rounded-full border", hex)}
-												/>
-												{color.label}
-											</div>
-											<CheckIcon className="size-3.5 group-data-[state=off]:hidden" />
-										</ToggleGroupItem>
-									);
-								})}
-							</ToggleGroup>
-						</Field>
+            <Field>
+              <FieldLabel>Primary Color</FieldLabel>
+              <RadioGroup
+                className={cn(
+                  "w-full",
+                  "grid grid-cols-3 gap-4",
+                  "**:data-[slot=radio-group-item-control]:hidden",
+                  "**:data-[slot=radio-group-item-text]:flex **:data-[slot=radio-group-item-text]:w-full **:data-[slot=radio-group-item-text]:items-center **:data-[slot=radio-group-item-text]:justify-between"
+                )}
+                onValueChange={({ value }) =>
+                  handleSelectPrimaryColor(value as PrimaryColor)
+                }
+                value={config.primaryColor}
+              >
+                {PRIMARY_COLORS.map((color) => {
+                  const hex =
+                    typeof color.hex === "string"
+                      ? color.hex
+                      : color.hex[isLight ? "light" : "dark"];
 
-						<Field>
-							<FieldLabel>Radius</FieldLabel>
-							<Slider
-								min={0}
-								defaultValue={[5]}
-								markerInterval={1}
-								max={BORDER_RADIUS.length - 1}
-								showMarkers
-								markerLabels={BORDER_RADIUS.map((radius) => radius.value)}
-								value={[
-									BORDER_RADIUS.findIndex(
-										(radius) => radius.value === config.borderRadius,
-									),
-								]}
-								onValueChange={({ value }) =>
-									setConfig({
-										...config,
-										borderRadius: BORDER_RADIUS[value[0]].value as BorderRadius,
-									})
-								}
-							/>
-						</Field>
-					</FieldGroup>
-				</SheetBody>
+                  return (
+                    <RadioGroupItem
+                      className={cn(
+                        "group",
+                        "w-full",
+                        "flex items-center justify-between",
+                        "px-3.5 py-2.5",
+                        "bg-background",
+                        "rounded-lg border border-input shadow-md/5",
+                        "data-[state=checked]:bg-input/32"
+                      )}
+                      key={color.value}
+                      value={color.value}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div
+                          className={cn("size-4 rounded-full border", hex)}
+                        />
+                        {color.label}
+                      </div>
+                      <CheckIcon className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden" />
+                    </RadioGroupItem>
+                  );
+                })}
+              </RadioGroup>
+            </Field>
 
-				<SheetFooter>
-					<Button variant="outline">
-						<Undo /> Reset
-					</Button>
-				</SheetFooter>
-			</SheetContent>
-		</Sheet>
-	);
+            <Field>
+              <FieldLabel>Radius</FieldLabel>
+              <Slider
+                defaultValue={[5]}
+                markerInterval={1}
+                markerLabels={BORDER_RADIUS.map((radius) => radius.value)}
+                max={BORDER_RADIUS.length - 1}
+                min={0}
+                onValueChange={({ value }) =>
+                  setConfig({
+                    ...config,
+                    borderRadius: BORDER_RADIUS[value[0]].value as BorderRadius,
+                  })
+                }
+                showMarkers
+                value={[
+                  BORDER_RADIUS.findIndex(
+                    (radius) => radius.value === config.borderRadius
+                  ),
+                ]}
+              />
+            </Field>
+          </FieldGroup>
+        </SheetBody>
+
+        <SheetFooter>
+          <Button
+            onClick={() =>
+              setConfig({
+                ...config,
+                primaryColor: DEFAULT_PRIMARY_COLOR,
+                grayColor: DEFAULT_GRAY_COLOR,
+                borderRadius: DEFAULT_BORDER_RADIUS,
+              })
+            }
+            variant="outline"
+          >
+            <Undo /> Reset
+          </Button>
+          <Button
+            onClick={() => {
+              const randomGray =
+                GRAY_COLORS[Math.floor(Math.random() * GRAY_COLORS.length)];
+              const randomPrimary =
+                PRIMARY_COLORS[
+                  Math.floor(Math.random() * PRIMARY_COLORS.length)
+                ];
+              const randomRadius =
+                BORDER_RADIUS[Math.floor(Math.random() * BORDER_RADIUS.length)];
+              setConfig({
+                ...config,
+                grayColor: randomGray.value as GrayColor,
+                primaryColor: randomPrimary.value as PrimaryColor,
+                borderRadius: randomRadius.value as BorderRadius,
+              });
+            }}
+            variant="outline"
+          >
+            <Shuffle /> Randomize
+          </Button>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
 };

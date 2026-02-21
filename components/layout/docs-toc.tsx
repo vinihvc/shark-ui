@@ -1,9 +1,10 @@
 "use client";
 
 import type { TOCItemType } from "fumadocs-core/toc";
-import { AlignLeft } from "lucide-react";
+import { AlignLeft, CircleArrowUpIcon } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Presence } from "@/registry/react/components/presence";
 
 interface DocsTableOfContentsProps extends React.ComponentProps<"div"> {
   /**
@@ -20,6 +21,7 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
     [data]
   );
   const activeHeading = useActiveItem(itemIds);
+  const showScrollToTop = useShowScrollToTop();
 
   if (!data?.length) {
     return null;
@@ -49,8 +51,48 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
           </TOCItem>
         ))}
       </div>
+
+      <Presence
+        className={cn(
+          "mt-2 ps-3.5",
+          "duration-200",
+          "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
+          "data-[state=open]:fade-in-0 data-[state=open]:animate-in"
+        )}
+        present={showScrollToTop}
+      >
+        <TOCItem
+          className="inline-flex items-center gap-2"
+          data-active={false}
+          data-depth={0}
+          href="#page-title"
+        >
+          <CircleArrowUpIcon className="size-4" /> Scroll to top
+        </TOCItem>
+      </Presence>
     </div>
   );
+};
+
+const useShowScrollToTop = () => {
+  const [show, setShow] = React.useState(false);
+
+  React.useEffect(() => {
+    const updateVisibility = () => {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const threshold = scrollableHeight * 0.3;
+      setShow(window.scrollY >= threshold);
+    };
+
+    updateVisibility();
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, []);
+
+  return show;
 };
 
 const useActiveItem = (itemIds: string[]) => {
@@ -99,12 +141,15 @@ const TOCItem = (props: React.ComponentProps<"a">) => {
   return (
     <a
       className={cn(
-        "relative py-1 leading-4.5 no-underline",
-        "text-muted-foreground",
+        "relative",
+        "-mx-1 px-2 py-1",
+        "text-muted-foreground leading-4.5",
+        "rounded-md border border-transparent no-underline",
         "transition-colors",
         "before:absolute before:inset-y-px before:-left-3.25 before:w-px before:rounded-full",
         "hover:text-foreground",
         "data-[active=true]:text-foreground",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-[active=true]:before:w-0.5 data-[active=true]:before:bg-primary",
         "data-[depth=3]:ps-3.5",
         "data-[depth=4]:ps-5.5",

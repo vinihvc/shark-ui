@@ -13,18 +13,14 @@ const ShowDemo = () => {
         <Button
           onClick={() => setValue((v) => Math.max(0, v - 1))}
           size="sm"
-          type="button"
           variant="outline"
         >
           -
         </Button>
-        <span className="min-w-[2rem] text-center font-medium">
-          Value: {value}
-        </span>
+        <span className="min-w-8 text-center font-medium">Value: {value}</span>
         <Button
           onClick={() => setValue((v) => v + 1)}
           size="sm"
-          type="button"
           variant="outline"
         >
           +

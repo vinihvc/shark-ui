@@ -6,7 +6,7 @@ import {
 } from "@/registry/react/components/alert";
 
 const Example = () => (
-  <Alert variant="success">
+  <Alert className="max-w-md" variant="success">
     <CheckCircleIcon />
     <AlertTitle>Payment successful</AlertTitle>
     <AlertDescription>

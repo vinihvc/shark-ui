@@ -46,8 +46,8 @@ const itemVariants = tv({
     "rounded-lg border",
     "transition-colors duration-100",
     "[a]:transition-colors [a]:hover:bg-muted",
-    "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "[&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
+    "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {
     variant: {

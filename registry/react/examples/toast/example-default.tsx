@@ -8,6 +8,7 @@ const ToastDemo = () => {
     <Button
       onClick={() => {
         toast.create({
+          id: "event-created",
           title: "Event has been created.",
           description: "Tuesday, February 10, 2026 at 10:00 AM.",
         });

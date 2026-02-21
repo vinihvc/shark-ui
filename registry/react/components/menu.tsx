@@ -115,7 +115,7 @@ const menuItemVariants = tv({
   base: [
     "group/menu-item",
     "relative",
-    "px-2 py-1.5",
+    "px-3 py-2",
     "w-full",
     "flex items-center gap-2 rounded-lg",
     "text-sm",
@@ -171,7 +171,7 @@ export const MenuCheckboxItem = (
       )}
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
         <Check />
       </ArkMenu.ItemIndicator>
 
@@ -238,7 +238,7 @@ export const MenuRadioItem = (
       data-slot="menu-radio-item"
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute start-2 flex size-3.5 items-center justify-center">
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
         <Check />
       </ArkMenu.ItemIndicator>
 

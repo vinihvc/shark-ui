@@ -20,7 +20,7 @@ export const Separator = (props: SeparatorProps) => {
         "shrink-0",
         "bg-border",
         "data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full",
-        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px data-[orientation=vertical]:self-stretch",
+        "data-[orientation=vertical]:w-px data-[orientation=vertical]:not-[[class^='h-']]:not-[[class*='_h-']]:self-stretch",
         className
       )}
       data-orientation={orientation}

@@ -10,7 +10,7 @@ export const Frame = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "flex flex-col gap-4",
         "rounded-xl border bg-card text-card-foreground shadow-md/5",
-        "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/50 in-focus-visible:ring-offset-2 in-focus-visible:ring-offset-background",
+        "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/32 in-focus-visible:ring-offset-2 in-focus-visible:ring-offset-background",
         className
       )}
       data-slot="frame"

@@ -6,7 +6,7 @@ import {
 } from "@/registry/react/components/alert";
 
 const Example = () => (
-  <Alert variant="destructive">
+  <Alert className="max-w-md" variant="destructive">
     <TriangleAlertIcon />
     <AlertTitle>Session expired</AlertTitle>
     <AlertDescription>

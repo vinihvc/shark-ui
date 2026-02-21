@@ -8,7 +8,7 @@ const FloatDemo = () => (
       <AvatarFallback>JD</AvatarFallback>
     </Avatar>
     <Float placement="bottom-end">
-      <Badge className="rounded-full px-1.5" size="sm" variant="solid">
+      <Badge className="rounded-full px-1.5" size="sm" variant="default">
         New
       </Badge>
     </Float>

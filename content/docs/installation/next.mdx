@@ -1,30 +1,48 @@
 ---
 title: Next.js
-description: Instructions to install Shark UI in a Next.js project
+description: Install Shark UI in a Next.js project.
 ---
 
 ## Create project
 
-To create a new Next.js project, you can use the following command:
+Create a new Next.js project:
 
 ```bash
 pnpm create next-app@latest my-app --yes
 ```
 
-## Adding css
+## Add CSS
 
-Replace everything in `app/globals.css` with the following:
+Replace the contents of `app/globals.css` with:
 
-```css title="globals.css"
+```css title="app/globals.css"
 @import "tailwindcss";
 ```
 
 ## Run the CLI
 
-Run the shadcn init command to setup your project:
+Run the shadcn init command to set up your project:
 
 ```bash
 npx shadcn@latest init
 ```
 
-You will be asked a few questions to configure `components.json` file.
+The CLI asks a few questions and creates a `components.json` file with path aliases, style options, and Tailwind config.
+
+## Add components
+
+Add components from the Shark registry by URL:
+
+```bash
+pnpm dlx shadcn@latest add https://shark.vini.one/r/button.json
+```
+
+Then import and use them:
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+export default function Page() {
+  return <Button>Click me</Button>;
+}
+```

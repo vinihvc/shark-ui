@@ -1,23 +1,29 @@
 "use client";
 
-import { Highlight as ArkHighlight } from "@ark-ui/react/highlight";
+import {
+  Highlight as ArkHighlight,
+  useHighlight as useArkHighlight,
+} from "@ark-ui/react/highlight";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-const highlightMarkClass = cn(
-  "rounded-sm bg-primary/20 font-medium text-primary",
-  "box-decoration-clone"
-);
-
-const Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {
+export const Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {
   const { className, ...rest } = props;
+
   return (
     <ArkHighlight
-      className={cn(highlightMarkClass, className)}
+      className={cn(
+        "px-1",
+        "bg-primary/20",
+        "font-medium text-primary",
+        "rounded-md",
+        "box-decoration-clone",
+        className
+      )}
       data-slot="highlight"
       {...rest}
     />
   );
 };
 
-export { Highlight };
+export const useHighlight = useArkHighlight;

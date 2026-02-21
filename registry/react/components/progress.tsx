@@ -60,8 +60,8 @@ export const ProgressTrack = (
         "bg-input",
         "rounded-full",
         "overflow-x-hidden",
-        "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
-        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2"
+        "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
       )}
       data-slot="progress-track"
       {...props}

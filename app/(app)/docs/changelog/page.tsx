@@ -8,7 +8,7 @@ import { ScrollArea } from "@/registry/react/components/scroll-area";
 export const revalidate = false;
 export const dynamic = "force-static";
 
-export function generateMetadata() {
+export const generateMetadata = () => {
   return {
     title: "Changelog",
     description: "Latest updates and announcements.",
@@ -28,7 +28,7 @@ export function generateMetadata() {
       ],
     },
   };
-}
+};
 
 const ChangelogPage = () => {
   const pages = getChangelogPages();

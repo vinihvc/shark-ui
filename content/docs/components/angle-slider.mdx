@@ -50,23 +50,11 @@ npm install @ark-ui/react
 ## Usage
 
 ```tsx
-import {
-  AngleSlider,
-} from "@/components/ui/angle-slider";
+import { AngleSlider } from "@/components/ui/angle-slider";
+```
 
-<AngleSlider.Root defaultValue={0}>
-  <AngleSlider.Label>Rotation</AngleSlider.Label>
-  <AngleSlider.Control>
-    <AngleSlider.MarkerGroup>
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((value) => (
-        <AngleSlider.Marker key={value} value={value} />
-      ))}
-    </AngleSlider.MarkerGroup>
-    <AngleSlider.Thumb />
-  </AngleSlider.Control>
-  <AngleSlider.ValueText />
-  <AngleSlider.HiddenInput />
-</AngleSlider.Root>
+```tsx showLineNumbers
+<AngleSlider defaultValue={45} />
 ```
 
 ## Examples
@@ -77,14 +65,75 @@ Control the angle value programmatically.
 
 <ComponentPreview componentName="angle-slider" fileName="example-controlled" />
 
-### Disabled
+### Size
 
-Disable user interaction with the angle slider.
+Use the `size` prop to change the slider dimensions.
+
+<ComponentPreview componentName="angle-slider" fileName="example-size" />
+
+### Thickness
+
+Use the `thickness` prop to change the progress ring thickness.
+
+<ComponentPreview componentName="angle-slider" fileName="example-thickness" />
+
+### Disabled
 
 <ComponentPreview componentName="angle-slider" fileName="example-disabled" />
 
+### With markers
+
+Use `markers` to display clock-style tick marks.
+
+<ComponentPreview componentName="angle-slider" fileName="example-with-markers" />
+
 ### With step
 
-Snap to specific angle increments (e.g., 15°).
+Use `markersAtSteps` with `step` to align markers with step positions.
 
 <ComponentPreview componentName="angle-slider" fileName="example-step" />
+
+### Custom markers
+
+Pass a `number[]` to `markers` for custom angles.
+
+<ComponentPreview componentName="angle-slider" fileName="example-custom-markers" />
+
+### Show value
+
+Use `AngleSliderValue` to show the current value, you can customize it with `prefix` and `suffix`.
+
+<ComponentPreview componentName="angle-slider" fileName="example-with-value" />
+
+## API Reference
+
+### AngleSlider
+
+Root element of the angle slider. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `number` | - |
+| `defaultValue` | `number` | `0` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | - |
+| `step` | `number` | `1` |
+| `disabled` | `boolean` | - |
+| `size` | `number` | `120` |
+| `thickness` | `number` | `6` |
+| `markers` | `boolean \| number[]` | - |
+| `markersAtSteps` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### AngleSliderValue
+
+Displays the current value. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `prefix` | `React.ReactNode \| string` | - |
+| `suffix` | `React.ReactNode \| string` | - |
+| `className` | `string` | - |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/react/docs/components/angle-slider).

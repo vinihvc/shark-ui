@@ -31,7 +31,9 @@
     "postinstall": "fumadocs-mdx",
     "lint:check": "ultracite check",
     "lint:fix": "ultracite fix",
-    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts"
+    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
   },
   "dependencies": {
     "@ark-ui/react": "^5.31.0",
@@ -59,7 +61,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.3",
+    "@biomejs/biome": "2.4.0",
     "@tailwindcss/postcss": "^4.2.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "25.3.0",

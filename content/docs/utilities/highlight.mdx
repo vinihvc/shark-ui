@@ -7,6 +7,7 @@ links:
 
 <ComponentPreview componentName="highlight" />
 
+
 ## Installation
 
 ```bash
@@ -17,21 +18,52 @@ npm install @ark-ui/react
 
 ```tsx
 import { Highlight } from "@/components/ui/highlight";
+```
 
+```tsx
 <Highlight
-  query="component"
-  text="Ark UI is a headless component library for building accessible web applications."
+  query="amet"
+  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 />
 ```
 
+## Examples
+
+### Multiple
+
+Pass an array of strings to the `query` prop to highlight multiple substrings.
+
+<ComponentPreview componentName="highlight" fileName="example-multiple" />
+
+### Custom Style
+
+Use the `className` prop to customize the style of the highlighted text.
+
+<ComponentPreview componentName="highlight" fileName="example-custom-style" />
+
+### Search Query
+
+Use the Highlight component to highlight search query results.
+
+<ComponentPreview componentName="highlight" fileName="example-search-query" />
+
+### With Squiggle
+
+Use a custom decoration like a wavy underline for a fancier highlight effect.
+
+<ComponentPreview componentName="highlight" fileName="example-squiggle" />
+
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `query` | `string \| string[]` | Term(s) to highlight |
-| `text` | `string` | The text to search and highlight within |
-| `ignoreCase` | `boolean` | Case-insensitive matching |
-| `exactMatch` | `boolean` | Match whole words only |
+### Highlight
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `query` | `string \| string[]` | **required** | 
+| `text` | `string` | **required** | 
+| `ignoreCase` | `boolean` | `false` | 
+| `exactMatch` | `boolean` | `false` | 
+| `className` | `string` | `""` | 
 
 ---
 

@@ -1,20 +1,11 @@
 import { Status } from "@/registry/react/components/status";
 
-const StatusSizesDemo = () => (
-  <div className="flex flex-col gap-4">
-    <Status.Root colorPalette="blue" size="sm">
-      <Status.Indicator />
-      In Review
-    </Status.Root>
-    <Status.Root colorPalette="red" size="md">
-      <Status.Indicator />
-      Error
-    </Status.Root>
-    <Status.Root colorPalette="green" size="lg">
-      <Status.Indicator />
-      Approved
-    </Status.Root>
+const Example = () => (
+  <div className="flex gap-4">
+    <Status size="sm" variant="info" />
+    <Status size="md" variant="warning" />
+    <Status size="lg" variant="destructive" />
   </div>
 );
 
-export default StatusSizesDemo;
+export default Example;

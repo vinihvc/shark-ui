@@ -163,17 +163,21 @@
   --primary: var(--color-neutral-800);
   --primary-foreground: var(--color-neutral-50);
 
-  --secondary: --alpha(var(--color-neutral-950) / 4%);
+  --secondary: color-mix(
+    in srgb,
+    var(--color-neutral-950) 4%,
+    var(--background)
+  );
   --secondary-foreground: var(--color-neutral-800);
 
-  --muted: --alpha(var(--color-neutral-950) / 4%);
+  --muted: color-mix(in srgb, var(--color-neutral-950) 4%, var(--background));
   --muted-foreground: color-mix(
     in srgb,
     var(--color-neutral-500) 90%,
     var(--color-neutral-950)
   );
 
-  --accent: --alpha(var(--color-neutral-950) / 4%);
+  --accent: color-mix(in srgb, var(--color-neutral-950) 4%, var(--background));
   --accent-foreground: var(--color-neutral-800);
 
   --destructive: var(--color-red-500);
@@ -188,8 +192,8 @@
   --warning: var(--color-amber-500);
   --warning-foreground: var(--color-amber-700);
 
-  --border: --alpha(var(--color-neutral-950) / 8%);
-  --input: --alpha(var(--color-neutral-950) / 10%);
+  --border: color-mix(in srgb, var(--color-neutral-950) 8%, var(--background));
+  --input: color-mix(in srgb, var(--color-neutral-950) 10%, var(--background));
   --ring: var(--color-neutral-400);
 
   --sidebar: var(--color-neutral-50);
@@ -200,9 +204,17 @@
   );
   --sidebar-primary: var(--color-neutral-800);
   --sidebar-primary-foreground: var(--color-neutral-50);
-  --sidebar-accent: --alpha(var(--color-neutral-950) / 4%);
+  --sidebar-accent: color-mix(
+    in srgb,
+    var(--color-neutral-950) 4%,
+    var(--sidebar)
+  );
   --sidebar-accent-foreground: var(--color-neutral-800);
-  --sidebar-border: --alpha(var(--color-neutral-950) / 6%);
+  --sidebar-border: color-mix(
+    in srgb,
+    var(--color-neutral-950) 6%,
+    var(--sidebar)
+  );
   --sidebar-ring: var(--color-neutral-400);
 
   --chart-1: var(--color-orange-600);
@@ -212,7 +224,11 @@
   --chart-5: var(--color-amber-500);
 
   --code: color-mix(in srgb, var(--background) 98%, var(--color-neutral-950));
-  --code-highlight: --alpha(var(--color-neutral-950) / 4%);
+  --code-highlight: color-mix(
+    in srgb,
+    var(--color-neutral-950) 4%,
+    var(--code)
+  );
 }
 
 .dark {
@@ -236,17 +252,17 @@
   --primary: var(--color-neutral-100);
   --primary-foreground: var(--color-neutral-800);
 
-  --secondary: --alpha(var(--color-white) / 4%);
+  --secondary: color-mix(in srgb, var(--color-white) 4%, var(--background));
   --secondary-foreground: var(--color-neutral-100);
 
-  --muted: --alpha(var(--color-neutral-50) / 4%);
+  --muted: color-mix(in srgb, var(--color-neutral-50) 4%, var(--background));
   --muted-foreground: color-mix(
     in srgb,
     var(--color-neutral-500) 90%,
     var(--color-neutral-50)
   );
 
-  --accent: --alpha(var(--color-neutral-50) / 4%);
+  --accent: color-mix(in srgb, var(--color-neutral-50) 4%, var(--background));
   --accent-foreground: var(--color-neutral-100);
 
   --destructive: color-mix(
@@ -265,8 +281,8 @@
   --warning: var(--color-amber-500);
   --warning-foreground: var(--color-amber-400);
 
-  --border: --alpha(var(--color-neutral-50) / 6%);
-  --input: --alpha(var(--color-neutral-50) / 8%);
+  --border: color-mix(in srgb, var(--color-neutral-50) 6%, var(--background));
+  --input: color-mix(in srgb, var(--color-neutral-50) 8%, var(--background));
   --ring: var(--color-neutral-500);
 
   --sidebar: color-mix(
@@ -281,9 +297,17 @@
   );
   --sidebar-primary: var(--color-neutral-100);
   --sidebar-primary-foreground: var(--color-neutral-800);
-  --sidebar-accent: --alpha(var(--color-neutral-50) / 4%);
+  --sidebar-accent: color-mix(
+    in srgb,
+    var(--color-neutral-50) 4%,
+    var(--sidebar)
+  );
   --sidebar-accent-foreground: var(--color-neutral-100);
-  --sidebar-border: --alpha(var(--color-neutral-50) / 5%);
+  --sidebar-border: color-mix(
+    in srgb,
+    var(--color-neutral-50) 5%,
+    var(--sidebar)
+  );
   --sidebar-ring: var(--color-neutral-400);
 
   --chart-1: var(--color-blue-700);
@@ -293,7 +317,7 @@
   --chart-5: var(--color-rose-500);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-neutral-50));
-  --code-highlight: --alpha(var(--color-neutral-50) / 4%);
+  --code-highlight: color-mix(in srgb, var(--color-neutral-50) 4%, var(--code));
 }
 
 @layer base {
@@ -333,25 +357,16 @@
   }
 }
 
-@layer components {
-  .steps {
-    &:first-child {
-      @apply mt-0!;
-    }
+@utility step {
+  counter-increment: step;
 
-    &:first-child > h3:first-child {
-      @apply mt-0!;
-    }
-
-    > h3 {
-      @apply mt-16!;
-    }
-
-    > h3 + p {
-      @apply mt-2!;
-    }
+  &:before {
+    @apply border border-border bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9;
+    content: counter(step);
   }
+}
 
+@layer components {
   [data-rehype-pretty-code-figure] {
     position: relative;
     margin-top: calc(var(--spacing) * 6);
@@ -379,9 +394,7 @@
     padding-inline: calc(var(--spacing) * 4);
     font-family: var(--font-mono);
     color: var(--color-muted-foreground);
-    border-bottom: --alpha(var(--border) / 64%);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 64%, var(--code));
   }
 
   [data-line-numbers] {

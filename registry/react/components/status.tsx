@@ -1,104 +1,49 @@
 import { ark } from "@ark-ui/react/factory";
-import React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-const statusVariants = tv({
-  slots: {
-    root: ["inline-flex items-center gap-2", "text-foreground text-sm"],
-    indicator: ["shrink-0 rounded-full", "border-2 border-background"],
-  },
+export const statusVariants = tv({
+  base: [
+    "shrink-0 rounded-full",
+    "flex items-center justify-center",
+    "font-medium text-[10px]",
+    "ring-2 ring-background",
+  ],
   variants: {
-    colorPalette: {
-      gray: { indicator: "bg-muted-foreground" },
-      red: { indicator: "bg-destructive" },
-      orange: { indicator: "bg-orange-500" },
-      yellow: { indicator: "bg-yellow-500" },
-      green: { indicator: "bg-success" },
-      teal: { indicator: "bg-teal-500" },
-      blue: { indicator: "bg-info" },
-      cyan: { indicator: "bg-cyan-500" },
-      purple: { indicator: "bg-purple-500" },
-      pink: { indicator: "bg-pink-500" },
+    variant: {
+      default: "bg-foreground text-background",
+      success: "bg-success text-success-foreground",
+      info: "bg-info text-info-foreground",
+      warning: "bg-warning text-warning-foreground",
+      destructive:
+        "bg-destructive text-destructive-foreground dark:bg-destructive-foreground",
     },
     size: {
-      sm: {
-        root: "gap-1.5 text-xs",
-        indicator: "size-1.5",
-      },
-      md: {
-        root: "gap-2 text-sm",
-        indicator: "size-2",
-      },
-      lg: {
-        root: "gap-2.5 text-base",
-        indicator: "size-2.5",
-      },
+      sm: "size-2",
+      md: "size-2.5",
+      lg: "size-3",
     },
   },
   defaultVariants: {
-    colorPalette: "gray",
+    variant: "default",
     size: "md",
   },
 });
 
-type StatusContextValue = VariantProps<typeof statusVariants>;
-
-const StatusContext = React.createContext<StatusContextValue>({});
-
-interface StatusRootProps
-  extends React.ComponentProps<typeof ark.div>,
+interface StatusProps
+  extends React.ComponentProps<typeof ark.span>,
     VariantProps<typeof statusVariants> {}
 
-export const StatusRoot = (props: StatusRootProps) => {
-  const {
-    colorPalette = "gray",
-    size = "md",
-    className,
-    children,
-    ...rest
-  } = props;
-  const { root } = statusVariants({ colorPalette, size });
-  const context = React.useMemo(
-    () => ({ colorPalette, size }),
-    [colorPalette, size]
-  );
+export const Status = (props: StatusProps) => {
+  const { variant, size, className, ...rest } = props;
 
   return (
-    <StatusContext.Provider value={context}>
-      <ark.div
-        className={cn(root(), className)}
-        data-color-palette={colorPalette}
-        data-size={size}
-        data-slot="status"
-        {...rest}
-      >
-        {children}
-      </ark.div>
-    </StatusContext.Provider>
-  );
-};
-
-export const StatusIndicator = (
-  props: React.ComponentProps<typeof ark.div>
-) => {
-  const { className, ...rest } = props;
-  const context = React.useContext(StatusContext);
-  const { indicator } = statusVariants({
-    colorPalette: context.colorPalette ?? "gray",
-    size: context.size ?? "md",
-  });
-
-  return (
-    <ark.div
-      className={cn(indicator(), className)}
+    <ark.span
+      className={cn(statusVariants({ variant, size }), className)}
+      data-size={size}
       data-slot="status-indicator"
       {...rest}
     />
   );
-};
-
-export const Status = {
-  Root: StatusRoot,
-  Indicator: StatusIndicator,
 };

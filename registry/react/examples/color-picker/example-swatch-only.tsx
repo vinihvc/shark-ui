@@ -7,7 +7,7 @@ import {
   ColorPickerSwatchGroup,
   ColorPickerSwatchIndicator,
   ColorPickerSwatchTrigger,
-  ColorPickerValueText,
+  ColorPickerValue,
   parseColor,
 } from "@/registry/react/components/color-picker";
 
@@ -20,7 +20,7 @@ const Example = () => (
     inline
   >
     <output className="font-medium text-foreground text-sm">
-      Selected color: <ColorPickerValueText />
+      Selected color: <ColorPickerValue />
     </output>
     <ColorPickerSwatchGroup>
       {swatches.map((color) => (

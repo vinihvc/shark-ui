@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "registry/react/components/highlight.tsx",
-      "content": "\"use client\";\n\nimport { Highlight as ArkHighlight } from \"@ark-ui/react/highlight\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst highlightMarkClass = cn(\n  \"rounded-sm bg-primary/20 font-medium text-primary\",\n  \"box-decoration-clone\"\n);\n\nconst Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {\n  const { className, ...rest } = props;\n  return (\n    <ArkHighlight\n      className={cn(highlightMarkClass, className)}\n      data-slot=\"highlight\"\n      {...rest}\n    />\n  );\n};\n\nexport { Highlight };\n",
+      "content": "\"use client\";\n\nimport {\n  Highlight as ArkHighlight,\n  useHighlight as useArkHighlight,\n} from \"@ark-ui/react/highlight\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkHighlight\n      className={cn(\n        \"px-1\",\n        \"bg-primary/20\",\n        \"font-medium text-primary\",\n        \"rounded-md\",\n        \"box-decoration-clone\",\n        className\n      )}\n      data-slot=\"highlight\"\n      {...rest}\n    />\n  );\n};\n\nexport const useHighlight = useArkHighlight;\n",
       "type": "registry:ui"
     }
   ]

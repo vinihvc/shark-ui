@@ -12,7 +12,7 @@ export const EditableThumb = ({
         <div className="h-2 w-2/3 rounded-full bg-muted-foreground/16" />
       </div>
       <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border bg-muted shadow-md/5">
-        <span aria-hidden className="text-muted-foreground">
+        <span aria-hidden className="text-muted-foreground/64">
           <CheckIcon className="size-3" />
         </span>
       </div>

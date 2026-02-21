@@ -95,17 +95,19 @@ Set `min` and `max` to constrain the slider's value range.
 
 <ComponentPreview componentName="slider" fileName="example-min-max" />
 
+### Marks
+
+You can use the `showMarkers` and `markerInterval` props to show markers and control the interval between markers.
+
+<ComponentPreview componentName="slider" fileName="example-marks" />
+
 ### Step
 
 Set `step` to control the slider's granularity.
 
+Use with `showMarkers` and `markerLabels` to show custom labels on the markers.
+
 <ComponentPreview componentName="slider" fileName="example-step" />
-
-### Marks
-
-You can use the `showMarkers` and `markerInterval` props to show markers on the slider and control the interval between markers.
-
-<ComponentPreview componentName="slider" fileName="example-marks" />
 
 <Alert>
   <InfoIcon />
@@ -132,6 +134,7 @@ Root element of the slider. Renders the track, range, and thumb(s).
 | `disabled` | `boolean` | `false` |
 | `showMarkers` | `boolean` | `false` |
 | `markerInterval` | `number` | `1` |
+| `markerLabels` | `string[]` | `[]` |
 | `className` | `string` | — |
 
 ### SliderLabel

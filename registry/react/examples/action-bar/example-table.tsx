@@ -7,12 +7,10 @@ import {
   PencilIcon,
   SendIcon,
   Trash2Icon,
-  XIcon,
 } from "lucide-react";
 import React from "react";
 import {
   ActionBar,
-  ActionBarClose,
   ActionBarContent,
   ActionBarSelectionTrigger,
 } from "@/registry/react/components/action-bar";
@@ -115,7 +113,10 @@ const Example = () => {
                   <TableCell className="font-medium">{order.id}</TableCell>
                   <TableCell>{order.name}</TableCell>
                   <TableCell>
-                    <Badge variant={statusVariants[order.status]}>
+                    <Badge
+                      className="capitalize"
+                      variant={statusVariants[order.status]}
+                    >
                       {order.status}
                     </Badge>
                   </TableCell>
@@ -127,11 +128,6 @@ const Example = () => {
         </Table>
 
         <ActionBarContent className="w-full max-w-xl">
-          <ActionBarClose asChild>
-            <Button size="icon-sm" variant="ghost">
-              <XIcon />
-            </Button>
-          </ActionBarClose>
           <ActionBarSelectionTrigger count={selectedIds.length} />
           <div className="ml-auto flex gap-2">
             <Button size="sm" variant="secondary">
@@ -146,7 +142,6 @@ const Example = () => {
               <MenuTrigger asChild>
                 <Button size="sm" variant="secondary">
                   <EllipsisIcon />
-                  More
                 </Button>
               </MenuTrigger>
               <MenuContent>
@@ -210,37 +205,37 @@ const orders = [
   {
     id: "SO-01",
     name: "Macbook Pro 16",
-    status: "Processing",
+    status: "progress",
     amount: "245,12 $",
   },
   {
     id: "SO-02",
     name: "Apple Watch Series 9",
-    status: "Shipped",
+    status: "transit",
     amount: "122,18 $",
   },
   {
     id: "SO-03",
     name: "AirPods Max",
-    status: " Delivered",
+    status: "pending",
     amount: "89,50 $",
   },
   {
     id: "SO-04",
     name: "iPad Pro 13",
-    status: "Delivered",
+    status: "pending",
     amount: "310,00 $",
   },
   {
     id: "SO-05",
     name: "iPhone 15 Pro Max",
-    status: "Shipped",
+    status: "transit",
     amount: "156,75 $",
   },
 ];
 
 const statusVariants: Record<string, BadgeVariant> = {
-  Shipped: "warning",
-  Delivered: "success",
-  Processing: "info",
+  transit: "success",
+  pending: "warning",
+  progress: "info",
 };

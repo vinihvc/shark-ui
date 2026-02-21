@@ -1,12 +1,27 @@
 ---
-title: "January 2026 - Beta 1"
-description: "Most of the components are ready for the first beta release."
+title: January 2026 - Beta 1
+description: First beta release with core components, blocks, templates, and theme support.
 date: 2026-01-07
 ---
 
-The very first goal was to create a set of components based on [Ark UI](https://ark-ui.com/) that uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+Beta 1 marks the first public release of Shark UI. The goal was to build a set of components on [Ark UI](https://ark-ui.com) styled with [Tailwind CSS](https://tailwindcss.com), so you can add accessible primitives to a project without wiring up styles from scratch.
 
-- Initial components release.
-- Initial blocks release.
-- Initial templates release.
-- Theme editor
+## Components
+
+Roughly 80+ components are available, grouped into several categories:
+
+- **UI primitives**: Accordion, Alert, Avatar, Badge, Button, Card, Separator, Skeleton, Tabs
+- **Overlays and dialogs**: Dialog, Menu, Popover, Sheet, Tooltip, Hover Card, Context Menu
+- **Forms and inputs**: Input, Textarea, Checkbox, Radio Group, Select, Native Select, Field, Combobox, Input OTP, File Upload, Editable
+- **Layout and navigation**: Sidebar, Scroll Area, Resizable, Pagination, Breadcrumb, Bottom Navigation
+- **Feedback and display**: Progress, Slider, Rating Group, Toggle, Toggle Group, Steps, Carousel
+
+Components are copy-paste: they land in your project, and you own the code. Tailwind and Ark UI are the only runtime dependencies.
+
+## Theme editor
+
+The theme editor lets you tweak colors and copy the resulting CSS variables into your project. Themes follow the shadcn color convention, with extra variables for success, warning, info, and destructive states.
+
+## Limitations
+
+This is a beta. Some components may change before a stable release. If you run into issues, open an issue on [GitHub](https://github.com/vinihvc/shark-ui).

@@ -26,7 +26,7 @@ export const checkboxVariants = tv({
     "bg-transparent",
     "rounded-sm border border-input shadow-xs/5",
     "transition-shadow",
-    "data-focus-visible:border-ring data-focus-visible:ring-[3px] data-focus-visible:ring-ring/50 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
+    "data-focus-visible:border-primary data-focus-visible:ring-[3px] data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
     "dark:data-focus-visible:data-invalid:border-destructive-foreground/64 dark:data-focus-visible:data-invalid:ring-destructive-foreground/48",
     "data-disabled:opacity-64",
     "[[data-disabled],[data-checked],[data-invalid]]:shadow-none",

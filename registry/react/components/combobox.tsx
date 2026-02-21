@@ -503,7 +503,6 @@ export const ComboboxChip = (props: ComboboxChipProps) => {
           onRemove();
         }}
         tabIndex={-1}
-        type="button"
         variant="ghost"
       >
         <X />

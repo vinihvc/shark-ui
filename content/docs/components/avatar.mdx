@@ -70,19 +70,17 @@ Use the `size` prop to change the size of the avatar.
 
 ### Small
 
-<ComponentPreview componentName="avatar" fileName="size-sm" />
+<ComponentPreview componentName="avatar" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="avatar" fileName="example-size-md" />
 
 ### Large
 
-<ComponentPreview componentName="avatar" fileName="size-lg" />
+<ComponentPreview componentName="avatar" fileName="example-size-lg" />
 
 ## Examples
-
-### Custom Size
-
-If you want to use a custom size, you can use the `className` prop to set the size.
-
-<ComponentPreview componentName="avatar" fileName="size-custom" />
 
 ### Avatar Group
 
@@ -90,23 +88,17 @@ Use the `<AvatarGroup />` to add a group of avatars.
 
 <ComponentPreview componentName="avatar" fileName="example-group" />
 
-### Custom Colors
-
-You can customize the avatar fallback colors using the `className` prop.
-
-<ComponentPreview componentName="avatar" fileName="example-custom-colors" />
-
-### With Status
+### Badge
 
 Use `<AvatarBadge />` to show status indicators on avatars.
 
 <ComponentPreview componentName="avatar" fileName="example-with-status" />
 
-### Fallback Only
+### Badge with Icon
 
-You can use just the `<AvatarFallback />` to display a icon or text.
+Add an icon to `<AvatarBadge />` for actions like adding a user.
 
-<ComponentPreview componentName="avatar" fileName="example-fallback-only" />
+<ComponentPreview componentName="avatar" fileName="example-badge-with-icon" />
 
 ### Fallback with Icon
 
@@ -138,6 +130,24 @@ You can use with the `<HoverCard>` to show user information on hover.
 
 <ComponentPreview componentName="avatar" fileName="example-hover-card" />
 
+### Custom Size
+
+Use `size-*` to set the size of the avatar.
+
+<ComponentPreview componentName="avatar" fileName="example-size-custom" />
+
+### Custom Radius
+
+Use `rounded-*` to set the radius of the avatar.
+
+<ComponentPreview componentName="avatar" fileName="example-custom-radius" />
+
+### Custom Colors
+
+Customize the `<AvatarFallback />` with a custom color.
+
+<ComponentPreview componentName="avatar" fileName="example-custom-colors" />
+
 ## API Reference
 
 ### Avatar
@@ -148,6 +158,7 @@ Root element of the avatar. Renders a `div`
 | --- | --- | --- | 
 | `size` | `sm`, `md`, `lg` | `md` | 
 | `className` | `string` | `-` | 
+| `asChild` | `boolean` | `false` | 
 
 ### AvatarImage
 
@@ -156,6 +167,7 @@ Image element for the avatar. Renders an `img`
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | `className` | `string` | `-` | 
+| `asChild` | `boolean` | `false` | 
 
 ### AvatarFallback
 
@@ -164,6 +176,7 @@ Fallback content displayed when the image fails to load. Renders a `div`
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | `className` | `string` | `-` | 
+| `asChild` | `boolean` | `false` | 
 
 ### AvatarGroup
 
@@ -172,6 +185,7 @@ Container for grouping multiple avatars. Renders a `div`
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | `className` | `string` | `-` | 
+| `asChild` | `boolean` | `false` | 
 
 ### AvatarGroupCount
 
@@ -180,6 +194,7 @@ Element for displaying a count in avatar groups. Renders a `div`
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | `className` | `string` | `-` | 
+| `asChild` | `boolean` | `false` | 
 
 ### AvatarBadge
 
@@ -187,8 +202,9 @@ Badge element displayed on the avatar. Renders a `span`
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
-| `variant` | `success`, `warning`, `destructive` | `success` | 
+| `variant` | `default`, `success`, `info`, `warning`, `destructive` | `default` | 
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` | 
 
 ---
 

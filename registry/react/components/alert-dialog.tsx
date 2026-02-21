@@ -86,13 +86,13 @@ interface AlertDialogActionProps
   /**
    * The variant of the action button
    *
-   * @default "solid"
+   * @default "default"
    */
-  variant?: "solid" | "destructive";
+  variant?: "default" | "destructive";
 }
 
 export const AlertDialogAction = (props: AlertDialogActionProps) => {
-  const { variant = "solid", children, ...rest } = props;
+  const { variant = "default", children, ...rest } = props;
 
   return (
     <DialogClose asChild data-slot="alert-dialog-action" {...rest}>

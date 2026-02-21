@@ -58,33 +58,33 @@ import { Badge } from "@/components/ui/badge";
 
 You can change the variant of the badge using the `variant` prop.
 
-### Solid
+### Default
 
-<ComponentPreview componentName="badge" fileName="variant-solid" />
+<ComponentPreview componentName="badge" fileName="example-variant-default" />
 
 ### Secondary
 
-<ComponentPreview componentName="badge" fileName="variant-secondary" />
+<ComponentPreview componentName="badge" fileName="example-variant-secondary" />
 
 ### Outline
 
-<ComponentPreview componentName="badge" fileName="variant-outline" />
+<ComponentPreview componentName="badge" fileName="example-variant-outline" />
 
 ### Success
 
-<ComponentPreview componentName="badge" fileName="variant-success" />
+<ComponentPreview componentName="badge" fileName="example-variant-success" />
 
 ### Info
 
-<ComponentPreview componentName="badge" fileName="variant-info" />
+<ComponentPreview componentName="badge" fileName="example-variant-info" />
 
 ### Warning
 
-<ComponentPreview componentName="badge" fileName="variant-warning" />
+<ComponentPreview componentName="badge" fileName="example-variant-warning" />
 
 ### Destructive
 
-<ComponentPreview componentName="badge" fileName="variant-destructive" />
+<ComponentPreview componentName="badge" fileName="example-variant-destructive" />
 
 ## Sizes
 
@@ -92,17 +92,21 @@ You can change the size of the badge using the `size` prop.
 
 ### Small
 
-<ComponentPreview componentName="badge" fileName="size-sm" />
+<ComponentPreview componentName="badge" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="badge" fileName="example-size-md" />
 
 ### Large
 
-<ComponentPreview componentName="badge" fileName="size-lg" />
+<ComponentPreview componentName="badge" fileName="example-size-lg" />
 
 ## Pill
 
 You can use the `pill` prop to create fully rounded badges.
 
-<ComponentPreview componentName="badge" fileName="state-pill-true" />
+<ComponentPreview componentName="badge" fileName="example-state-pill-true" />
 
 ## Examples
 
@@ -111,12 +115,6 @@ You can use the `pill` prop to create fully rounded badges.
 You can use [asChild](/docs/as-child) prop on `<Badge />` to make another element styled as a badge.
 
 <ComponentPreview componentName="badge" fileName="example-with-link" />
-
-### Custom color
-
-You can use the `className` prop to add custom colors to the badge.
-
-<ComponentPreview componentName="badge" fileName="example-custom-color" />
 
 ### With icon
 
@@ -136,6 +134,12 @@ Badges can display counts or numbers for notifications and indicators.
 
 <ComponentPreview componentName="badge" fileName="example-with-count" />
 
+### Custom color
+
+You can use the `className` to add custom styles to the badge.
+
+<ComponentPreview componentName="badge" fileName="example-custom-color" />
+
 ## API Reference
 
 ### Badge
@@ -144,7 +148,8 @@ Root element of the badge. Renders a `span`
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
-| `variant` | `solid`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive` | `solid` | 
+| `variant` | `default`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive` | `default` | 
 | `size` | `sm`, `md`, `lg` | `md` | 
 | `className` | `string` | `-` | 
+| `asChild` | `boolean` | `false` | 
 

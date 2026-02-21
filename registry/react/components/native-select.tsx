@@ -16,7 +16,7 @@ const nativeSelectVariants = tv({
     "transition-colors",
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
-    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+    "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
     "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
     "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
   ],
@@ -55,7 +55,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
       <ChevronDown
         aria-hidden="true"
         className={cn(
-          "absolute end-2.5 top-1/2 -translate-y-1/2",
+          "absolute inset-e-2.5 top-1/2 -translate-y-1/2",
           "size-4",
           "select-none text-muted-foreground",
           "pointer-events-none"

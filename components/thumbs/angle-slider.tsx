@@ -16,7 +16,7 @@ export const AngleSliderThumb = ({
               "polygon(50% 0, 100% 0, 100% 100%, 0 100%, 0 70%, 50% 70%)",
           }}
         />
-        <div className="absolute top-12 left-0 size-4 rounded-full bg-primary ring-4 ring-muted" />
+        <div className="absolute inset-s-0 top-12 size-4 rounded-full bg-primary ring-4 ring-muted" />
       </div>
     </div>
   </BlockThumbCard>

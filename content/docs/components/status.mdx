@@ -59,16 +59,23 @@ import { Status } from "@/components/ui/status";
 
 <ComponentPreview componentName="status" fileName="example-sizes" />
 
+## With Badge
+
+<ComponentPreview componentName="status" fileName="example-with-badge" />
+
 ## API Reference
 
-### Status.Root
+### Status
+
+Renders a `span`.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `colorPalette` | `"gray" \| "red" \| "orange" \| "yellow" \| "green" \| "teal" \| "blue" \| "cyan" \| "purple" \| "pink"` | `"gray"` |
+| `variant` | `"success" \| "info" \| "warning" \| "destructive"` | `"success"` |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
-### Status.Indicator
-
-The status indicator dot. Inherits `colorPalette` and `size` from `Status.Root` context.
+| Attribute | Description |
+|-----------|-------|
+| `data-slot` | `status` |

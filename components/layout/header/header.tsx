@@ -44,7 +44,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               "hidden gap-2 lg:flex",
               "font-bold text-base",
               "rounded-md border border-transparent",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             )}
             href="/"
           >
@@ -59,11 +59,6 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               <HeaderCommand tree={pageTree} />
             </div>
 
-            <Separator
-              className="ml-2 hidden lg:block"
-              orientation="vertical"
-            />
-
             <Button asChild size="icon-md" variant="ghost">
               <a
                 href="https://github.com/vinihvc/shark-ui"
@@ -75,9 +70,11 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               </a>
             </Button>
 
-            <Separator orientation="vertical" />
+            <Separator className="h-5" orientation="vertical" />
 
             <HeaderCustomize />
+
+            <Separator className="h-5" orientation="vertical" />
 
             <ModeSwitcher />
           </div>

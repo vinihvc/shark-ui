@@ -8,12 +8,10 @@ import {
 import { Button } from "@/registry/react/components/button";
 
 const Example = () => (
-  <Alert variant="info">
+  <Alert className="max-w-md">
     <HistoryIcon />
     <AlertTitle>New update available</AlertTitle>
-    <AlertDescription>
-      A new update is available. Check it out now.
-    </AlertDescription>
+    <AlertDescription>Check it out now.</AlertDescription>
     <AlertAction>
       <Button size="xs" variant="ghost">
         Ignore

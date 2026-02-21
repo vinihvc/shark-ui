@@ -5,15 +5,16 @@ import { cn } from "@/lib/utils";
 export const badgeVariants = tv({
   base: [
     "inline-flex items-center justify-center gap-1",
-    "select-none font-medium",
-    "rounded-md border border-transparent",
+    "select-none whitespace-nowrap font-medium",
+    "rounded-sm border border-transparent",
     "overflow-hidden",
-    "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 [button,a&]:cursor-pointer",
+    "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
+    "[button&,a&]:cursor-pointer [button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
   ],
   variants: {
     variant: {
-      solid: [
+      default: [
         "bg-foreground",
         "text-background",
         "focus-visible:border-foreground focus-visible:ring-foreground/20",
@@ -78,12 +79,12 @@ export const badgeVariants = tv({
       ],
       md: [
         "h-5.5 min-w-5.5 sm:h-4.5 sm:min-w-4.5",
-        "px-1.5",
+        "px-1",
         "text-sm sm:text-xs",
       ],
       lg: [
         "h-6.5 min-w-6.5 sm:h-5.5 sm:min-w-5.5",
-        "px-2",
+        "px-1.5",
         "text-base sm:text-sm",
         "[&_svg]:size-3.5",
       ],
@@ -93,7 +94,7 @@ export const badgeVariants = tv({
     },
   },
   defaultVariants: {
-    variant: "solid",
+    variant: "default",
     size: "md",
     pill: false,
   },
@@ -107,7 +108,7 @@ interface BadgeProps
 
 export const Badge = (props: BadgeProps) => {
   const {
-    variant = "solid",
+    variant = "default",
     size = "md",
     pill = false,
     className,

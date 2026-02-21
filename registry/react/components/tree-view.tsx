@@ -428,7 +428,7 @@ const TreeViewNodeInput = (
         "border-primary bg-popover text-foreground",
         "rounded-md border",
         "selection:bg-primary/20 selection:text-foreground",
-        "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
         className
       )}
       data-slot="tree-view-node-rename-input"

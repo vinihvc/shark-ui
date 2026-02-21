@@ -21,7 +21,7 @@ import {
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 
-export function CardsChat() {
+export const CardsChat = () => {
   const [messages, setMessages] = React.useState([
     {
       role: "agent",
@@ -119,4 +119,4 @@ export function CardsChat() {
       </CardFooter>
     </Card>
   );
-}
+};

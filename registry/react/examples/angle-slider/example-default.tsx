@@ -1,19 +1,14 @@
 import {
   AngleSlider,
-  AngleSliderControl,
-  AngleSliderProgressRing,
-  AngleSliderThumb,
-  AngleSliderValueDisplay,
+  AngleSliderValue,
 } from "@/registry/react/components/angle-slider";
 
-export default function AngleSliderDemo() {
+const AngleSliderDemo = () => {
   return (
     <AngleSlider aria-label="Angle" defaultValue={45}>
-      <AngleSliderControl>
-        <AngleSliderProgressRing />
-        <AngleSliderThumb />
-      </AngleSliderControl>
-      <AngleSliderValueDisplay />
+      <AngleSliderValue suffix="°" />
     </AngleSlider>
   );
-}
+};
+
+export default AngleSliderDemo;

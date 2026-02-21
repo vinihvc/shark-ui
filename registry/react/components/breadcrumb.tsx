@@ -3,8 +3,18 @@ import { ChevronRight, MoreHorizontal } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export const Breadcrumb = (props: React.ComponentProps<typeof ark.nav>) => {
-  return <ark.nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
+interface BreadcrumbProps extends React.ComponentProps<typeof ark.nav> {
+  /**
+   * Accessible label for the breadcrumb navigation landmark.
+   * @default "Breadcrumb"
+   */
+  "aria-label"?: string;
+}
+
+export const Breadcrumb = (props: BreadcrumbProps) => {
+  const { "aria-label": ariaLabel = "Breadcrumb", ...rest } = props;
+
+  return <ark.nav aria-label={ariaLabel} data-slot="breadcrumb" {...rest} />;
 };
 
 export const BreadcrumbList = (props: React.ComponentProps<typeof ark.ol>) => {
@@ -18,6 +28,7 @@ export const BreadcrumbList = (props: React.ComponentProps<typeof ark.ol>) => {
         className
       )}
       data-slot="breadcrumb-list"
+      role="list"
       {...rest}
     />
   );
@@ -40,7 +51,14 @@ export const BreadcrumbLink = (props: React.ComponentProps<typeof ark.a>) => {
 
   return (
     <ark.a
-      className={cn("transition-colors hover:text-foreground", className)}
+      className={cn(
+        "transition-colors",
+        "rounded-md border border-transparent",
+        "-mx-1 p-1",
+        "hover:text-foreground",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        className
+      )}
       data-slot="breadcrumb-link"
       {...rest}
     />
@@ -70,7 +88,7 @@ export const BreadcrumbSeparator = (
   return (
     <ark.li
       aria-hidden="true"
-      className={cn("opacity-80 [&>svg]:size-4", className)}
+      className={cn("opacity-80 [&_svg]:size-4", className)}
       data-slot="breadcrumb-separator"
       role="presentation"
       {...rest}
@@ -94,7 +112,6 @@ export const BreadcrumbEllipsis = (
       {...rest}
     >
       <MoreHorizontal className="size-4" />
-      <span className="sr-only">More</span>
     </ark.span>
   );
 };

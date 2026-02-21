@@ -45,6 +45,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 ```tsx
 import {
   ActionBar,
+  ActionBarBody,
   ActionBarClose,
   ActionBarContent,
   ActionBarSelectionTrigger,
@@ -59,40 +60,57 @@ import {
   <ActionBarContent>
     <ActionBarClose />
     <ActionBarSelectionTrigger count={3} />
-    {/* Your actions */}
+    <ActionBarBody>
+      {/* Your action buttons */}
+    </ActionBarBody>
   </ActionBarContent>
 </ActionBar>
 ```
-
 ## Examples
-
-### Positioning
-
-<ComponentPreview componentName="action-bar" fileName="example-side" />
-
-### Table with Selection
-
-<ComponentPreview componentName="action-bar" fileName="example-table" />
-
-### Close Trigger
-
-<ComponentPreview componentName="action-bar" fileName="example-close-trigger" />
-
-### Within Dialog
-
-<ComponentPreview componentName="action-bar" fileName="example-dialog" />
-
-### Within Menu with Separator
-
-<ComponentPreview componentName="action-bar" fileName="example-menu-separator" />
 
 ### Controlled
 
 <ComponentPreview componentName="action-bar" fileName="example-controlled" />
 
+### Positioning
+
+Use the `positioning.placement` prop to position the action bar.
+
+<ComponentPreview componentName="action-bar" fileName="example-positioning" />
+
+### Offset
+
+Use `positioning.offset` to control the distance from the bottom edge.
+
+<ComponentPreview componentName="action-bar" fileName="example-offset" />
+
+### Custom Spacing
+
+Update the `[--space]` CSS variable for internal padding.
+
+<ComponentPreview componentName="action-bar" fileName="example-custom-spacing" />
+
+### Close Trigger
+
+<ComponentPreview componentName="action-bar" fileName="example-close-trigger" />
+
+### With Dialog
+
+<ComponentPreview componentName="action-bar" fileName="example-dialog" />
+
+### With Menu 
+
+<ComponentPreview componentName="action-bar" fileName="example-menu" />
+
+### Table
+
+<ComponentPreview componentName="action-bar" fileName="example-table" />
+
 ## API Reference
 
 ### ActionBar
+
+Root context provider for the action bar. Renders a `React.Fragment`.
 
 | Prop | Type | Default |
 |------|------|---------|
@@ -102,61 +120,60 @@ import {
 | `unmountOnExit` | `boolean` | `true` |
 | `onOpenChange` | `(open: boolean) => void` | - |
 
-### ActionBarPositioning
-
-Object to configure action bar placement and offset.
-
-| Property | Type | Default |
-|----------|------|---------|
-| `placement` | `"bottom" \| "bottom-start" \| "bottom-end"` | `"bottom"` |
-| `offset` | `number` | `16` |
-
 ### ActionBarContent
+
+Floating toolbar displayed at the bottom. Renders a `div`.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `positioning` | `ActionBarPositioning` | `{ placement: "bottom", offset: 16 }` |
+| `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", offset?: string }` | `{ placement: "bottom", offset: "16px" }` |
 | `aria-label` | `string` | `"Selection actions"` |
 | `aria-labelledby` | `string` | - |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
-### ActionBarPositioner
-
-| Prop | Type | Default |
-|------|------|---------|
-| `positioning` | `ActionBarPositioning` | `{ placement: "bottom", offset: 16 }` |
-| `className` | `string` | - |
+| Attributes | Description |
+|------|------|
+| `data-slot` | `"action-bar-content"` |
+| `data-state` | `"open" \| "closed"` |
+| `--offset` | `"16px"` |
+| `--space` | Internal padding. Override via `className`, e.g. `[--space:--spacing(6)]`. Default: `--spacing(4)` |
 
 ### ActionBarTrigger
 
-Opens the action bar when clicked. Use `asChild` to merge props with a child element (e.g. `Button`).
+Button that opens the action bar. Renders a `button`.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `asChild` | `boolean` | `false` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### ActionBarClose
 
-Closes the action bar when clicked. Use `asChild` to merge close behavior with a custom element.
+Button that closes the action bar. Renders a `button`.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `asChild` | `boolean` | `false` |
+| `aria-label` | `string` | `"Close"` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### ActionBarSelectionTrigger
 
-Displays "X items selected" when `count` is provided, or custom `label`/`children`.
+Displays selection count or custom label. Renders a `span`.
 
 | Prop | Type | Default |
 |------|------|---------|
 | `count` | `number` | `0` |
 | `label` | `string` | - |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
-### ActionBarSeparator
+### ActionBarBody
+
+Container for action buttons. Renders a `div`.
 
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

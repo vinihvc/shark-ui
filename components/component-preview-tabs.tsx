@@ -20,7 +20,7 @@ interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
   source: React.ReactNode;
 }
 
-export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
+export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
   const { className, component, source, ...rest } = props;
 
   return (
@@ -61,4 +61,4 @@ export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
       </Tabs>
     </div>
   );
-}
+};

@@ -7,7 +7,6 @@ import {
   ActionBarClose,
   ActionBarContent,
   ActionBarSelectionTrigger,
-  ActionBarSeparator,
 } from "@/registry/react/components/action-bar";
 import { Button } from "@/registry/react/components/button";
 
@@ -23,7 +22,7 @@ const Example = () => {
   };
 
   return (
-    <>
+    <ActionBar onOpenChange={setIsOpen} open={isOpen}>
       <div className="flex flex-wrap gap-4">
         <Button
           onClick={() => handleOpenChange("bottom-start")}
@@ -41,22 +40,15 @@ const Example = () => {
           Bottom End
         </Button>
       </div>
-
-      <ActionBar onOpenChange={setIsOpen} open={isOpen}>
-        <ActionBarContent
-          className="w-full max-w-md"
-          positioning={{ placement }}
-        >
-          <ActionBarClose asChild>
-            <Button size="icon-sm" variant="ghost">
-              <XIcon />
-            </Button>
-          </ActionBarClose>
-          <ActionBarSeparator />
-          <ActionBarSelectionTrigger count={5} />
-        </ActionBarContent>
-      </ActionBar>
-    </>
+      <ActionBarContent className="w-full max-w-xs" positioning={{ placement }}>
+        <ActionBarClose asChild>
+          <Button size="icon-sm" variant="ghost">
+            <XIcon />
+          </Button>
+        </ActionBarClose>
+        <ActionBarSelectionTrigger count={5} />
+      </ActionBarContent>
+    </ActionBar>
   );
 };
 

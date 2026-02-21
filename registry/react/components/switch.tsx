@@ -14,7 +14,7 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
         "rounded-full border border-transparent shadow-xs",
         "transition-all",
         "outline-none [[data-focus-visible],[data-invalid]]:ring-[3px]",
-        "data-focus-visible:border-ring data-focus-visible:ring-ring/50",
+        "data-focus-visible:border-primary data-focus-visible:ring-ring/32",
         "data-invalid:border-destructive data-invalid:ring-destructive/20",
         "dark:data-invalid:border-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
         "data-[state=checked]:bg-primary",

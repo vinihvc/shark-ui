@@ -60,5 +60,5 @@ className="absolute top-2 right-2 ml-4 pl-2 data-[side=left]:slide-in-from-right
 
 **Good:**
 ```tsx
-className="absolute top-2 end-2 ms-4 ps-2 data-[side=left]:slide-in-from-end-2"
+className="absolute top-2 inset-e-2 ms-4 ps-2 data-[side=left]:slide-in-from-end-2"
 ```

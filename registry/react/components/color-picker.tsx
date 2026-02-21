@@ -321,14 +321,15 @@ export const ColorPickerSwatchIndicator = (
   );
 };
 
-export const ColorPickerValueText = (
+export const ColorPickerValue = (
   props: React.ComponentProps<typeof ArkColorPicker.ValueText>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkColorPicker.ValueText
       className={cn("font-medium text-sm", className)}
-      data-slot="color-picker-value-text"
+      data-slot="color-picker-value"
       {...rest}
     />
   );

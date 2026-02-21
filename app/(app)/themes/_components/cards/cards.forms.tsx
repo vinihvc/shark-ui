@@ -39,7 +39,7 @@ const plans = [
   },
 ] as const;
 
-export function CardsForms() {
+export const CardsForms = () => {
   return (
     <Card>
       <CardHeader
@@ -140,4 +140,4 @@ export function CardsForms() {
       </CardContent>
     </Card>
   );
-}
+};

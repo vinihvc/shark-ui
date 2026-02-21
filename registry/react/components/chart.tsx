@@ -229,7 +229,7 @@ export const ChartTooltipContent = (props: CustomTooltipProps) => {
           return (
             <div
               className={cn(
-                "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
+                "flex w-full flex-wrap items-stretch gap-2 [&_svg]:h-2.5 [&_svg]:w-2.5 [&_svg]:text-muted-foreground",
                 indicator === "dot" && "items-center"
               )}
               key={item.dataKey}
@@ -322,7 +322,7 @@ export const ChartLegendContent = (props: ChartLegendContentProps) => {
         return (
           <div
             className={cn(
-              "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
+              "flex items-center gap-1.5 [&_svg]:h-3 [&_svg]:w-3 [&_svg]:text-muted-foreground"
             )}
             key={item.value}
           >

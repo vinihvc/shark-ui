@@ -3,22 +3,20 @@ import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-const placementMap = {
-  "top-start": "top-0 start-0 -translate-x-1/2 -translate-y-1/2",
-  "top-center": "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
-  "top-end": "top-0 end-0 translate-x-1/2 -translate-y-1/2",
-  "middle-start": "top-1/2 start-0 -translate-x-1/2 -translate-y-1/2",
-  "middle-center": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
-  "middle-end": "top-1/2 end-0 translate-x-1/2 -translate-y-1/2",
-  "bottom-start": "bottom-0 start-0 -translate-x-1/2 translate-y-1/2",
-  "bottom-center": "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-  "bottom-end": "bottom-0 end-0 translate-x-1/2 translate-y-1/2",
-} as const;
-
 const floatVariants = tv({
   base: ["absolute", "z-10"],
   variants: {
-    placement: placementMap,
+    placement: {
+      "top-start": "inset-s-0 top-0 -translate-x-1/2 -translate-y-1/2",
+      "top-center": "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+      "top-end": "inset-e-0 top-0 translate-x-1/2 -translate-y-1/2",
+      "middle-start": "inset-s-0 top-1/2 -translate-x-1/2 -translate-y-1/2",
+      "middle-center": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
+      "middle-end": "inset-e-0 top-1/2 translate-x-1/2 -translate-y-1/2",
+      "bottom-start": "inset-s-0 bottom-0 -translate-x-1/2 translate-y-1/2",
+      "bottom-center": "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
+      "bottom-end": "inset-e-0 bottom-0 translate-x-1/2 translate-y-1/2",
+    },
   },
   defaultVariants: {
     placement: "top-end",

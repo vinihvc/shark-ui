@@ -6,7 +6,7 @@ import {
 } from "@/registry/react/components/alert";
 
 const Example = () => (
-  <Alert className="border-purple-500/32 bg-purple-500/5 [&>svg]:text-purple-500">
+  <Alert className="max-w-md border-purple-500/32 bg-purple-500/5 [&_svg]:text-purple-500">
     <WandSparklesIcon />
     <AlertTitle>Fancy alert, huh?</AlertTitle>
     <AlertDescription>

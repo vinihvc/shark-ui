@@ -50,7 +50,7 @@ export const ClipboardInput = (
   );
 };
 
-const clipboardValueTextVariants = tv({
+const clipboardValueVariants = tv({
   base: [
     "flex items-center",
     "rounded-md",
@@ -71,18 +71,18 @@ const clipboardValueTextVariants = tv({
   },
 });
 
-interface ClipboardValueTextProps
+interface ClipboardValueProps
   extends React.ComponentProps<typeof ArkClipboard.ValueText>,
-    VariantProps<typeof clipboardValueTextVariants> {}
+    VariantProps<typeof clipboardValueVariants> {}
 
-export const ClipboardValueText = (props: ClipboardValueTextProps) => {
+export const ClipboardValue = (props: ClipboardValueProps) => {
   const { size, className, ...rest } = props;
 
   return (
     <ArkClipboard.ValueText
-      data-slot="clipboard-value-text"
+      data-slot="clipboard-value"
       {...rest}
-      className={cn(clipboardValueTextVariants({ size }), className)}
+      className={cn(clipboardValueVariants({ size }), className)}
     />
   );
 };

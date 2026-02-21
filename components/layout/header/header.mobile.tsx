@@ -26,7 +26,7 @@ interface MobileNavProps extends React.ComponentProps<typeof Popover> {
   tree: typeof source.pageTree;
 }
 
-export function MobileNav(props: MobileNavProps) {
+export const MobileNav = (props: MobileNavProps) => {
   const { tree, items, className, ...rest } = props;
 
   return (
@@ -115,4 +115,4 @@ export function MobileNav(props: MobileNavProps) {
       </PopoverContent>
     </Popover>
   );
-}
+};

@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/react/components/prose.tsx",
-      "content": "import { ark } from \"@ark-ui/react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ProseProps extends React.ComponentProps<typeof ark.div> {}\n\nexport const Prose = (props: ProseProps) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\"prose mx-auto max-w-[65ch]\", className)}\n      data-slot=\"prose\"\n      {...rest}\n    />\n  );\n};\n",
+      "content": "import { ark } from \"@ark-ui/react/factory\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ProseProps extends React.ComponentProps<typeof ark.div> {}\n\nexport const Prose = (props: ProseProps) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\"prose mx-auto max-w-[65ch]\", className)}\n      data-slot=\"prose\"\n      {...rest}\n    />\n  );\n};\n",
       "type": "registry:ui"
     }
   ]

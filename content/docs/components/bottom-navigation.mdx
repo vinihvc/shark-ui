@@ -49,8 +49,6 @@ npm install @ark-ui/react
 
 ## Usage
 
-The bottom navigation is a compound component built for mobile-first layouts. It uses Ark UI Tabs under the hood for selection state.
-
 ```tsx
 import {
   BottomNavigation,
@@ -58,7 +56,6 @@ import {
   BottomNavigationItem,
   BottomNavigationItemIcon,
   BottomNavigationItemLabel,
-  BottomNavigationItemBadge,
 } from "@/components/ui/bottom-navigation";
 ```
 
@@ -76,25 +73,90 @@ import {
         <BellIcon />
       </BottomNavigationItemIcon>
       <BottomNavigationItemLabel>Notifications</BottomNavigationItemLabel>
-      <BottomNavigationItemBadge>3</BottomNavigationItemBadge>
     </BottomNavigationItem>
   </BottomNavigationList>
 </BottomNavigation>
 ```
 
-## Components
+## Disclaimer
 
-| Component | Description |
-| --- | --- |
-| `BottomNavigation` | Root. Manages selection state. Accepts Tabs props (`value`, `defaultValue`, `onValueChange`). |
-| `BottomNavigationList` | The fixed bar container. |
-| `BottomNavigationItem` | Each nav item. Requires `value` prop. |
-| `BottomNavigationItemIcon` | Wrapper for the item icon. |
-| `BottomNavigationItemLabel` | Wrapper for the item label. |
-| `BottomNavigationItemBadge` | Optional notification badge. |
+> Note, don't include `position: absolute` on the `<BottomNavigationList />` component.
+
+All examples have `position: absolute` because if not the component will be fixed to the bottom of this page.
 
 ## Examples
 
-### Default
+### Icon only
 
-<ComponentPreview componentName="bottom-navigation" fileName="default" />
+Show only icons without labels for a minimalist layout.
+
+<ComponentPreview componentName="bottom-navigation" fileName="example-icon-only" />
+
+### With links
+
+Use the `asChild` prop on `<BottomNavigationItem />` with `<Link />`. 
+
+Sync the active state with `value={pathname}` on the `<BottomNavigation />`.
+
+<ComponentPreview componentName="bottom-navigation" fileName="example-with-links" />
+
+## Accessibility
+
+- Use `aria-label` on `<BottomNavigationList />` to identify the navigation.
+- Use `aria-label` on `<BottomNavigationItem />` when using icon-only items so screen readers can announce the purpose of each item.
+
+## API Reference
+
+### BottomNavigation
+
+Root element. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `-` |
+| `defaultValue` | `string` | `-` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+### BottomNavigationList
+
+The fixed bar container. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Main navigation"` |
+| `className` | `string` | `-` |
+
+### BottomNavigationItem
+
+A navigation item. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
+| `aria-label` | `string` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BottomNavigationItemIcon
+
+Wrapper for the item icon. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BottomNavigationItemLabel
+
+Wrapper for the item label. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI Tabs documentation](https://ark-ui.com/docs/components/tabs#api-reference).
