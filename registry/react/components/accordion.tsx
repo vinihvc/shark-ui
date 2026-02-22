@@ -1,3 +1,5 @@
+"use client";
+
 import { Accordion as ArkAccordion } from "@ark-ui/react/accordion";
 import { ChevronDownIcon } from "lucide-react";
 import type React from "react";

@@ -46,22 +46,9 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       {...props}
     />
   ),
-  a: ({ className, ...props }: React.ComponentProps<"a">) => {
-    const isExternal = props.href?.startsWith("http");
-
-    if (isExternal) {
-      return (
-        <a
-          className={cn(
-            "font-medium text-foreground underline underline-offset-4",
-            className
-          )}
-          rel="noopener noreferrer"
-          target="_blank"
-          {...props}
-        />
-      );
-    }
+  a: ({ className, ...props }: React.ComponentProps<typeof Link>) => {
+    const isExternal =
+      typeof props.href === "string" && props.href.startsWith("http");
 
     return (
       <Link
@@ -69,6 +56,10 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
           "font-medium text-foreground underline underline-offset-4",
           className
         )}
+        {...(isExternal && {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        })}
         {...props}
       />
     );

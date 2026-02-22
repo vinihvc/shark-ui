@@ -1,0 +1,133 @@
+---
+title: Announcement
+description: A compound badge designed to display announcements.
+---
+
+<ComponentPreview componentName="announcement" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark/announcement
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/announcement.tsx" src="/announcement.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Announcement,
+  AnnouncementTag,
+  AnnouncementTitle,
+} from "@/components/ui/announcement";
+```
+
+```tsx showLineNumbers
+<Announcement>
+  <AnnouncementTag>Latest update</AnnouncementTag>
+  <AnnouncementTitle>New feature added</AnnouncementTitle>
+</Announcement>
+```
+
+## Variants
+
+Use the `variant` prop on `<AnnouncementTag />` to change the variant of the tag.
+
+### Destructive
+
+<ComponentPreview componentName="announcement" fileName="example-variant-destructive" />
+
+### Info
+
+<ComponentPreview componentName="announcement" fileName="example-variant-info" />
+
+### Warning
+
+<ComponentPreview componentName="announcement" fileName="example-variant-warning" />
+
+### Success
+
+<ComponentPreview componentName="announcement" fileName="example-variant-success" />
+
+## Examples
+
+### With icon
+
+Add icons to the tag or title to provide visual context. Use `aria-hidden` on decorative icons.
+
+<ComponentPreview componentName="announcement" fileName="example-with-icon" />
+
+### With link
+
+You can use the [asChild](/docs/as-child) prop on `<Announcement />` to make a link styled as an announcement.
+
+<ComponentPreview componentName="announcement" fileName="example-with-link" />
+
+### Without Tag
+
+You can use the announcement with just a title, without the tag component.
+
+<ComponentPreview componentName="announcement" fileName="example-without-tag" />
+
+## API Reference
+
+### Announcement
+
+Root element of the announcement. Renders a `div`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `role` | `status`, `alert`, or other ARIA live region role | `status` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AnnouncementTag
+
+Optional label for the announcement. Renders a `span`. Uses Badge variants. Icons in the tag inherit the variant color.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `default`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive` | `default` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AnnouncementTitle
+
+Main title content of the announcement. Renders a `span`. Icons in the title use `text-muted-foreground`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

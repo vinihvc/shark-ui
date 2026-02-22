@@ -1,3 +1,5 @@
+"use client";
+
 import { ark } from "@ark-ui/react/factory";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -86,7 +88,6 @@ export const badgeVariants = tv({
         "h-6.5 min-w-6.5 sm:h-5.5 sm:min-w-5.5",
         "px-1.5",
         "text-base sm:text-sm",
-        "[&_svg]:size-3.5",
       ],
     },
     pill: {

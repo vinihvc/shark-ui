@@ -1,3 +1,5 @@
+"use client";
+
 import { Progress as ArkProgress } from "@ark-ui/react/progress";
 import type React from "react";
 import { cn } from "@/lib/utils";

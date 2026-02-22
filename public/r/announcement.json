@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "cssVars": {
+    "light": {
+      "destructive-foreground": "var(--color-red-50)",
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-400)",
+      "warning-foreground": "var(--color-yellow-950)"
+    },
+    "dark": {
+      "destructive-foreground": "var(--color-red-50)",
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-600)",
+      "warning-foreground": "var(--color-yellow-50)"
+    }
+  },
+  "files": [
+    {
+      "path": "registry/react/components/announcement.tsx",
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const announcementVariants = tv({\n  base: [\n    \"inline-flex items-center gap-2\",\n    \"px-3 py-1.5\",\n    \"font-medium text-sm\",\n    \"rounded-full border\",\n    \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n    \"[&_svg]:size-4 [&_svg]:shrink-0\",\n    \"[button&,a&]:cursor-pointer [button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11\",\n  ],\n  variants: {\n    variant: {\n      default: [\n        \"bg-input/4 dark:bg-input/32\",\n        \"[&_svg]:text-muted-foreground\",\n        \"[a&]:shadow-border/24 [a&]:shadow-xs\",\n        \"[a&]:hover:bg-input/8\",\n      ],\n      destructive: [\n        \"bg-destructive/4\",\n        \"border-destructive/32\",\n        \"[&_svg]:text-destructive\",\n        \"[a&]:shadow-destructive/24 [a&]:shadow-xs\",\n        \"[a&]:hover:bg-destructive/10\",\n      ],\n      info: [\n        \"bg-info/4\",\n        \"border-info/32\",\n        \"[&_svg]:text-info\",\n        \"[a&]:shadow-info/24 [a&]:shadow-xs\",\n        \"[a&]:hover:bg-info/10\",\n      ],\n      warning: [\n        \"bg-warning/4\",\n        \"border-warning/32\",\n        \"[&_svg]:text-warning\",\n        \"[a&]:shadow-warning/24 [a&]:shadow-xs\",\n        \"[a&]:hover:bg-warning/10\",\n      ],\n      success: [\n        \"bg-success/4\",\n        \"border-success/32\",\n        \"[&_svg]:text-success\",\n        \"[a&]:shadow-success/24 [a&]:shadow-xs\",\n        \"[a&]:hover:bg-success/10\",\n      ],\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\ninterface AnnouncementProps\n  extends React.ComponentProps<typeof ark.div>,\n    VariantProps<typeof announcementVariants> {}\n\nexport const Announcement = (props: AnnouncementProps) => {\n  const { variant = \"default\", className, role, asChild, ...rest } = props;\n  const resolvedRole = role ?? (asChild ? undefined : \"status\");\n\n  return (\n    <ark.div\n      asChild={asChild}\n      className={cn(announcementVariants({ variant }), className)}\n      data-slot=\"announcement\"\n      {...(resolvedRole != null && { role: resolvedRole })}\n      {...rest}\n    />\n  );\n};\n\nexport const AnnouncementTag = (\n  props: React.ComponentProps<typeof ark.span>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.span\n      className={cn(\"font-medium text-xs opacity-90\", className)}\n      data-slot=\"announcement-tag\"\n      {...rest}\n    />\n  );\n};\n\nexport const AnnouncementTitle = (\n  props: React.ComponentProps<typeof ark.span>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.span\n      className={cn(\"inline-flex items-center gap-1 font-medium\", className)}\n      data-slot=\"announcement-title\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

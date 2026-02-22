@@ -1,3 +1,5 @@
+"use client";
+
 import { FieldInput } from "@ark-ui/react/field";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";

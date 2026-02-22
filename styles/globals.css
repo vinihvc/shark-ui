@@ -361,8 +361,8 @@
   counter-increment: step;
 
   &:before {
-    @apply border border-border bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9;
     content: counter(step);
+    @apply border border-border bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9;
   }
 }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { ark } from "@ark-ui/react/factory";
 import { Field as ArkField } from "@ark-ui/react/field";
 import { Fieldset as ArkFieldset } from "@ark-ui/react/fieldset";

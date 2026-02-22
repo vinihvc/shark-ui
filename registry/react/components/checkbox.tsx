@@ -1,3 +1,5 @@
+"use client";
+
 import { Checkbox as ArkCheckbox } from "@ark-ui/react/checkbox";
 import { Check, Minus } from "lucide-react";
 import type React from "react";

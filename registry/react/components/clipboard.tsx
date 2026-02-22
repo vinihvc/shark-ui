@@ -1,3 +1,5 @@
+"use client";
+
 import { Clipboard as ArkClipboard } from "@ark-ui/react/clipboard";
 import { Check, ClipboardIcon } from "lucide-react";
 import type React from "react";

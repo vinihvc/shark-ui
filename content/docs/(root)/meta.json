@@ -1,1 +1,11 @@
-{"title":"Sections","pages":["index","rtl","[Forms](/docs/forms)","[Installation](/docs/installation)","[Changelog](/docs/changelog)","[llms.txt](/llms.txt)"]}
+{
+  "title": "Sections",
+  "pages": [
+    "index",
+    "rtl",
+    "[Forms](/docs/forms)",
+    "[Installation](/docs/installation)",
+    "[Changelog](/docs/changelog)",
+    "[llms.txt](/llms.txt)"
+  ]
+}

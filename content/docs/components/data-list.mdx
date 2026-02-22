@@ -43,18 +43,23 @@ npm install @ark-ui/react tailwind-variants
 ## Usage
 
 ```tsx
-import { DataList } from "@/components/ui/data-list";
+import {
+  DataListRoot,
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+} from "@/components/ui/data-list";
 
-<DataList.Root>
-  <DataList.Item>
-    <DataList.ItemLabel>Name</DataList.ItemLabel>
-    <DataList.ItemValue>John Doe</DataList.ItemValue>
-  </DataList.Item>
-  <DataList.Item>
-    <DataList.ItemLabel>Email</DataList.ItemLabel>
-    <DataList.ItemValue>john@example.com</DataList.ItemValue>
-  </DataList.Item>
-</DataList.Root>
+<DataListRoot>
+  <DataListItem>
+    <DataListItemLabel>Name</DataListItemLabel>
+    <DataListItemValue>John Doe</DataListItemValue>
+  </DataListItem>
+  <DataListItem>
+    <DataListItemLabel>Email</DataListItemLabel>
+    <DataListItemValue>john@example.com</DataListItemValue>
+  </DataListItem>
+</DataListRoot>
 ```
 
 ## Orientation
@@ -63,7 +68,7 @@ import { DataList } from "@/components/ui/data-list";
 
 ## API Reference
 
-### DataList.Root
+### DataListRoot
 
 | Prop | Type | Default |
 |------|------|---------|
@@ -72,14 +77,14 @@ import { DataList } from "@/components/ui/data-list";
 | `variant` | `"subtle" \| "bold"` | `"subtle"` |
 | `className` | `string` | - |
 
-### DataList.Item
+### DataListItem
 
-Container for a single row. Inherits context from `DataList.Root`.
+Container for a single row. Inherits context from `DataListRoot`.
 
-### DataList.ItemLabel
+### DataListItemLabel
 
 Label for the row (e.g. "Name", "Email").
 
-### DataList.ItemValue
+### DataListItemValue
 
 Value for the row.

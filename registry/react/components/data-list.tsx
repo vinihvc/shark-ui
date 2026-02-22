@@ -1,3 +1,5 @@
+"use client";
+
 import { ark } from "@ark-ui/react/factory";
 import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -142,11 +144,4 @@ export const DataListItemValue = (
       {...rest}
     />
   );
-};
-
-export const DataList = {
-  Root: DataListRoot,
-  Item: DataListItem,
-  ItemLabel: DataListItemLabel,
-  ItemValue: DataListItemValue,
 };

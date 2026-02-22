@@ -1,4 +1,9 @@
-import { DataList } from "@/registry/react/components/data-list";
+import {
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+  DataListRoot,
+} from "@/registry/react/components/data-list";
 
 const data = [
   { label: "New Users", value: "234" },
@@ -7,14 +12,14 @@ const data = [
 ];
 
 const DataListDemo = () => (
-  <DataList.Root>
+  <DataListRoot>
     {data.map((item) => (
-      <DataList.Item key={item.label}>
-        <DataList.ItemLabel>{item.label}</DataList.ItemLabel>
-        <DataList.ItemValue>{item.value}</DataList.ItemValue>
-      </DataList.Item>
+      <DataListItem key={item.label}>
+        <DataListItemLabel>{item.label}</DataListItemLabel>
+        <DataListItemValue>{item.value}</DataListItemValue>
+      </DataListItem>
     ))}
-  </DataList.Root>
+  </DataListRoot>
 );
 
 export default DataListDemo;

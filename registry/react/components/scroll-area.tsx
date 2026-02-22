@@ -1,3 +1,5 @@
+"use client";
+
 import { ScrollArea as ArkScrollArea } from "@ark-ui/react/scroll-area";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";

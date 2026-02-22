@@ -1,3 +1,5 @@
+"use client";
+
 import { Editable as ArkEditable } from "@ark-ui/react/editable";
 import type React from "react";
 import { cn } from "@/lib/utils";

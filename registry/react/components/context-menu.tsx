@@ -1,3 +1,5 @@
+"use client";
+
 import { ark } from "@ark-ui/react/factory";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import type React from "react";

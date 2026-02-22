@@ -1,3 +1,5 @@
+"use client";
+
 import { Tabs as ArkTabs } from "@ark-ui/react/tabs";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";

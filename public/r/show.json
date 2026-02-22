@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "registry/react/components/show.tsx",
-      "content": "import type React from \"react\";\n\ninterface ShowProps {\n  /**\n   * Content to render when `when` is truthy.\n   */\n  children: React.ReactNode;\n  /**\n   * Content to render when `when` is falsy.\n   */\n  fallback?: React.ReactNode;\n  /**\n   * When truthy, renders children. When falsy, renders fallback.\n   */\n  when: boolean;\n}\n\nexport const Show = (props: ShowProps) => {\n  const { when, fallback, children } = props;\n\n  if (when) {\n    return <>{children}</>;\n  }\n\n  return <>{fallback}</>;\n};\n",
+      "content": "\"use client\";\n\nimport type React from \"react\";\n\ninterface ShowProps {\n  /**\n   * Content to render when `when` is truthy.\n   */\n  children: React.ReactNode;\n  /**\n   * Content to render when `when` is falsy.\n   */\n  fallback?: React.ReactNode;\n  /**\n   * When truthy, renders children. When falsy, renders fallback.\n   */\n  when: boolean;\n}\n\nexport const Show = (props: ShowProps) => {\n  const { when, fallback, children } = props;\n\n  if (when) {\n    return <>{children}</>;\n  }\n\n  return <>{fallback}</>;\n};\n",
       "type": "registry:ui"
     }
   ]

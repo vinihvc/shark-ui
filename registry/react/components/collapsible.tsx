@@ -1,3 +1,5 @@
+"use client";
+
 import { Collapsible as ArkCollapsible } from "@ark-ui/react/collapsible";
 import { ChevronDown } from "lucide-react";
 import type React from "react";

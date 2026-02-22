@@ -1,3 +1,5 @@
+"use client";
+
 import { Switch as ArkSwitch } from "@ark-ui/react/switch";
 import type React from "react";
 import { cn } from "@/lib/utils";

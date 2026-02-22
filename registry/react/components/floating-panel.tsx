@@ -1,3 +1,5 @@
+"use client";
+
 import { Portal } from "@ark-ui/react";
 import { FloatingPanel as ArkFloatingPanel } from "@ark-ui/react/floating-panel";
 import { Maximize, Minus, SquareArrowOutUpRight } from "lucide-react";

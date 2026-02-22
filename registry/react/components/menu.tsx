@@ -1,3 +1,5 @@
+"use client";
+
 import { ark, Portal } from "@ark-ui/react";
 import { Menu as ArkMenu, type MenuContentProps } from "@ark-ui/react/menu";
 import { Check, ChevronRight } from "lucide-react";
