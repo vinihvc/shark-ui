@@ -22,7 +22,11 @@ const Example = () => {
   };
 
   return (
-    <ActionBar onOpenChange={setIsOpen} open={isOpen}>
+    <ActionBar
+      onOpenChange={setIsOpen}
+      open={isOpen}
+      positioning={{ placement }}
+    >
       <div className="flex flex-wrap gap-4">
         <Button
           onClick={() => handleOpenChange("bottom-start")}
@@ -40,7 +44,7 @@ const Example = () => {
           Bottom End
         </Button>
       </div>
-      <ActionBarContent className="w-full max-w-xs" positioning={{ placement }}>
+      <ActionBarContent className="w-full max-w-xs">
         <ActionBarClose asChild>
           <Button size="icon-sm" variant="ghost">
             <XIcon />

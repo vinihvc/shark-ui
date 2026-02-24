@@ -33,11 +33,12 @@ const Example = () => {
         ))}
       </div>
 
-      <ActionBar onOpenChange={setIsOpen} open={isOpen}>
-        <ActionBarContent
-          className="w-full max-w-md"
-          positioning={{ offset, placement: "bottom" }}
-        >
+      <ActionBar
+        onOpenChange={setIsOpen}
+        open={isOpen}
+        positioning={{ offset, placement: "bottom" }}
+      >
+        <ActionBarContent className="w-full max-w-md">
           <ActionBarClose asChild>
             <Button size="icon-sm" variant="ghost">
               <XIcon />

@@ -8,10 +8,15 @@ import { cn } from "@/lib/utils";
 export const BottomNavigation = (
   props: React.ComponentProps<typeof ArkTabs.Root>
 ) => {
-  const { className, ...rest } = props;
+  const {
+    "aria-label": ariaLabel = "Main navigation",
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkTabs.Root
+      aria-label={ariaLabel}
       className={cn("w-full", className)}
       data-slot="bottom-navigation"
       style={{

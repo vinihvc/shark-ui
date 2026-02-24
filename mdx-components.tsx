@@ -199,15 +199,23 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
 
     return (
       <h3
-        {...props}
         className={cn(
           "mt-8 scroll-m-20 font-semibold text-lg *:[code]:text-lg",
+
           className
         )}
         id={id}
+        {...props}
       >
         <a
-          className="no-underline underline-offset-4 hover:underline"
+          className={cn(
+            "-mx-2 px-2",
+            "rounded-md",
+            "no-underline underline-offset-4",
+            "hover:underline",
+            "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "border border-transparent"
+          )}
           href={`#${id}`}
         >
           {children}

@@ -14,7 +14,6 @@ const AlertDialogDemo = () => (
     <AlertDialogTrigger asChild>
       <Button variant="outline">Open</Button>
     </AlertDialogTrigger>
-
     <AlertDialogContent>
       <AlertDialogHeader
         description="Do you want to allow the USB accessory to connect to this device?"
@@ -22,7 +21,6 @@ const AlertDialogDemo = () => (
       />
       <AlertDialogFooter>
         <AlertDialogCancel>Don't allow</AlertDialogCancel>
-
         <AlertDialogAction>Allow</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>

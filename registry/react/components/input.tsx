@@ -12,7 +12,7 @@ export const inputVariants = tv({
     "px-3",
     "bg-transparent dark:bg-input/30",
     "text-base md:text-sm",
-    "rounded-md border border-input shadow-xs/5",
+    "rounded-md border border-input shadow-md/5",
     "placeholder:text-muted-foreground",
     "file:inline-flex file:h-7 file:items-center file:border-0",
     "file:font-medium file:text-foreground file:text-sm",

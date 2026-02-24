@@ -84,12 +84,6 @@ Use `positioning.offset` to control the distance from the bottom edge.
 
 <ComponentPreview componentName="action-bar" fileName="example-offset" />
 
-### Custom Spacing
-
-Update the `[--space]` CSS variable for internal padding.
-
-<ComponentPreview componentName="action-bar" fileName="example-custom-spacing" />
-
 ### Close Trigger
 
 <ComponentPreview componentName="action-bar" fileName="example-close-trigger" />
@@ -106,6 +100,19 @@ Update the `[--space]` CSS variable for internal padding.
 
 <ComponentPreview componentName="action-bar" fileName="example-table" />
 
+### Custom Spacing
+
+The `[--space:--spacing("value")]` utility class controls the action bar internal padding.
+
+
+<ComponentPreview componentName="action-bar" fileName="example-custom-spacing" />
+
+Breakpoint utilities change the action bar spacing at different screen sizes.
+
+```css
+  md:[--space:--spacing(6)] lg:[--space:--spacing(8)]
+```
+
 ## API Reference
 
 ### ActionBar
@@ -116,17 +123,17 @@ Root context provider for the action bar. Renders a `React.Fragment`.
 |------|------|---------|
 | `open` | `boolean` | - |
 | `defaultOpen` | `boolean` | `false` |
+| `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", offset?: string }` | `{ placement: "bottom", offset: "16px" }` |
 | `lazyMount` | `boolean` | `true` |
 | `unmountOnExit` | `boolean` | `true` |
 | `onOpenChange` | `(open: boolean) => void` | - |
 
 ### ActionBarContent
 
-Floating toolbar displayed at the bottom. Renders a `div`.
+Floating toolbar. Renders a `div`.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", offset?: string }` | `{ placement: "bottom", offset: "16px" }` |
 | `aria-label` | `string` | `"Selection actions"` |
 | `aria-labelledby` | `string` | - |
 | `className` | `string` | - |
@@ -137,7 +144,6 @@ Floating toolbar displayed at the bottom. Renders a `div`.
 | `data-slot` | `"action-bar-content"` |
 | `data-state` | `"open" \| "closed"` |
 | `--offset` | `"16px"` |
-| `--space` | Internal padding. Override via `className`, e.g. `[--space:--spacing(6)]`. Default: `--spacing(4)` |
 
 ### ActionBarTrigger
 

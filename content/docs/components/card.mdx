@@ -74,11 +74,11 @@ import {
 
 ## Title and Description
 
-You can use `<CardHeader />` in two ways:
+`<CardHeader />` supports two usage patterns:
 
 ### Using props
 
-You can pass `title` and `description` props directly to `<CardHeader />`. In this case, you don't need to use `<CardTitle />` and `<CardDescription />` components.
+Pass `title` and `description` props directly to `<CardHeader />`. This approach does not require `<CardTitle />` or `<CardDescription />` components.
 
 ```tsx showLineNumbers
 <CardHeader title="Card Title" description="Card description">
@@ -88,7 +88,7 @@ You can pass `title` and `description` props directly to `<CardHeader />`. In th
 
 ### Using components
 
-Alternatively, you can use `<CardTitle />` and `<CardDescription />` as children for more control.
+Alternatively, use `<CardTitle />` and `<CardDescription />` as children for more control.
 
 ```tsx showLineNumbers
 <CardHeader>
@@ -114,12 +114,12 @@ A card with an icon at the top and title, description, and action button at the 
 
 ### Custom spacing
 
-You can use the `[--space:--spacing("value")]` utility class to change the spacing of the card.
+The `[--space:--spacing("value")]` utility class controls the card spacing.
 
 
 <ComponentPreview componentName="card" fileName="example-spacing" />
 
-You can also use breakpoint utilities to change the spacing of the card at different screen sizes.
+Breakpoint utilities change the card spacing at different screen sizes.
 
 ```css
   md:[--space:--spacing(6)] lg:[--space:--spacing(8)]

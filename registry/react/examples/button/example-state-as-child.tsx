@@ -3,7 +3,7 @@ import { Button } from "@/registry/react/components/button";
 
 const Example = () => (
   <Button asChild>
-    <Link href="/login">Login </Link>
+    <Link href="#">Login </Link>
   </Button>
 );
 

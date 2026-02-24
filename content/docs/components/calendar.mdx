@@ -1,0 +1,132 @@
+---
+title: Calendar
+description: A calendar component for selecting dates with calendar navigation
+links:
+  doc: https://ark-ui.com/docs/components/date-picker
+  api: https://ark-ui.com/docs/components/date-picker#api-reference
+---
+
+<ComponentPreview componentName="calendar" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark/calendar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/calendar.tsx" src="/calendar.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Calendar,
+  CalendarControl,
+  CalendarInput,
+  CalendarTrigger,
+  CalendarContent,
+  CalendarView,
+  CalendarContext,
+  CalendarTable,
+  CalendarTableHead,
+  CalendarTableRow,
+  CalendarTableHeader,
+  CalendarTableBody,
+  CalendarTableCell,
+  CalendarTableCellTrigger,
+  CalendarViewControl,
+  CalendarViewTrigger,
+  CalendarRangeText,
+  CalendarPrevTrigger,
+  CalendarNextTrigger,
+} from "@/components/ui/calendar";
+```
+
+```tsx showLineNumbers
+<Calendar>
+  <CalendarLabel>Pick a date</CalendarLabel>
+  <CalendarControl>
+    <CalendarInput placeholder="Select date" />
+    <CalendarTrigger asChild>
+      <Button>📅</Button>
+    </CalendarTrigger>
+  </CalendarControl>
+
+  <CalendarContent>
+    <CalendarView view="day">
+      <CalendarContext>
+        {(calendar) => (
+          <>
+            <CalendarViewControl>
+              <CalendarPrevTrigger>Prev</CalendarPrevTrigger>
+              <CalendarViewTrigger>
+                <CalendarRangeText />
+              </CalendarViewTrigger>
+              <CalendarNextTrigger>Next</CalendarNextTrigger>
+            </CalendarViewControl>
+            <CalendarTable>
+              <CalendarTableHead>
+                <CalendarTableRow>
+                  {calendar.weekDays.map((weekDay, id) => (
+                    <CalendarTableHeader key={id}>
+                      {weekDay.short}
+                    </CalendarTableHeader>
+                  ))}
+                </CalendarTableRow>
+              </CalendarTableHead>
+              <CalendarTableBody>
+                {calendar.weeks.map((week, id) => (
+                  <CalendarTableRow key={id}>
+                    {week.map((day, id) => (
+                      <CalendarTableCell key={id} value={day}>
+                        <CalendarTableCellTrigger>
+                          {day.day}
+                        </CalendarTableCellTrigger>
+                      </CalendarTableCell>
+                    ))}
+                  </CalendarTableRow>
+                ))}
+              </CalendarTableBody>
+            </CalendarTable>
+          </>
+        )}
+      </CalendarContext>
+    </CalendarView>
+  </CalendarContent>
+</Calendar>
+```
+
+## Examples
+
+Soon

@@ -458,7 +458,6 @@
     --border: color-mix(in srgb, var(--color-zinc-50) 6%, var(--background));
     --input: color-mix(in srgb, var(--color-zinc-50) 8%, var(--background));
 
-    --sidebar-ring: var(--color-zinc-400);
     --sidebar: color-mix(
       in srgb,
       var(--color-zinc-950) 97%,

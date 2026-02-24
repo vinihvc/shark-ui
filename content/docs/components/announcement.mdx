@@ -49,57 +49,57 @@ npm install @ark-ui/react tailwind-variants
 ```tsx
 import {
   Announcement,
-  AnnouncementTag,
+  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/components/ui/announcement";
 ```
 
 ```tsx showLineNumbers
 <Announcement>
-  <AnnouncementTag>Latest update</AnnouncementTag>
+  <AnnouncementBadge>Latest update</AnnouncementBadge>
   <AnnouncementTitle>New feature added</AnnouncementTitle>
 </Announcement>
 ```
 
 ## Variants
 
-Use the `variant` prop on `<AnnouncementTag />` to change the variant of the tag.
-
-### Destructive
-
-<ComponentPreview componentName="announcement" fileName="example-variant-destructive" />
+The `variant` prop on `<AnnouncementBadge />` controls the badge visual style.
 
 ### Info
 
 <ComponentPreview componentName="announcement" fileName="example-variant-info" />
 
+### Success
+
+<ComponentPreview componentName="announcement" fileName="example-variant-success" />
+
 ### Warning
 
 <ComponentPreview componentName="announcement" fileName="example-variant-warning" />
 
-### Success
+### Destructive
 
-<ComponentPreview componentName="announcement" fileName="example-variant-success" />
+<ComponentPreview componentName="announcement" fileName="example-variant-destructive" />
 
 ## Examples
 
 ### With icon
 
-Add icons to the tag or title to provide visual context. Use `aria-hidden` on decorative icons.
+Add icons to the badge or title to provide visual context. Use `aria-hidden` on decorative icons.
 
 <ComponentPreview componentName="announcement" fileName="example-with-icon" />
 
 ### With link
 
-You can use the [asChild](/docs/as-child) prop on `<Announcement />` to make a link styled as an announcement.
+The [asChild](/docs/as-child) prop renders a link with announcement styling.
 
 <ComponentPreview componentName="announcement" fileName="example-with-link" />
 
-### Without Tag
+### Without Badge
 
-You can use the announcement with just a title, without the tag component.
+The announcement supports a title-only layout without the badge component.
 
-<ComponentPreview componentName="announcement" fileName="example-without-tag" />
+<ComponentPreview componentName="announcement" fileName="example-without-badge" />
 
 ## API Reference
 
@@ -113,9 +113,9 @@ Root element of the announcement. Renders a `div`
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
-### AnnouncementTag
+### AnnouncementBadge
 
-Optional label for the announcement. Renders a `span`. Uses Badge variants. Icons in the tag inherit the variant color.
+Optional badge for the announcement. Renders a `span`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -125,7 +125,7 @@ Optional label for the announcement. Renders a `span`. Uses Badge variants. Icon
 
 ### AnnouncementTitle
 
-Main title content of the announcement. Renders a `span`. Icons in the title use `text-muted-foreground`.
+Main title content of the announcement. Renders a `span`.
 
 | Prop | Type | Default |
 | --- | --- | --- |

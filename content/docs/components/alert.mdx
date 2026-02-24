@@ -102,7 +102,7 @@ import {
 
 ## Variants
 
-You can change the variant of the alert using the `variant` prop. 
+The `variant` prop controls the alert's visual style. 
 
 ### Default
 
@@ -128,19 +128,17 @@ You can change the variant of the alert using the `variant` prop.
 
 ### With icon
 
-You can add icons to alerts to provide visual context and improve user experience.
+Icons can be added to alerts for visual context and improved user experience.
 
 <ComponentPreview componentName="alert" fileName="example-with-icon" />
-
-### Custom color
-
-You can use the `className` prop to customize the alert colors to match your design system.
-
-<ComponentPreview componentName="alert" fileName="example-custom-color" />
 
 ### With action
 
 <ComponentPreview componentName="alert" fileName="example-with-action" />
+
+### Custom color
+
+<ComponentPreview componentName="alert" fileName="example-custom-color" />
 
 ## API Reference
 
@@ -152,6 +150,7 @@ Root element of the alert. Renders a `div`
 |------|------|---------|
 | `variant` | `"default", "info", "warning", "success", "destructive"` | `"default"` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AlertTitle
 
@@ -160,6 +159,7 @@ Styled title of the alert. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AlertDescription
 
@@ -168,6 +168,7 @@ Styled description with muted foreground text color. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AlertAction
 
@@ -176,3 +177,4 @@ Container for action buttons. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

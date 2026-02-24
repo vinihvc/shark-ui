@@ -1,12 +1,12 @@
 import {
   Announcement,
-  AnnouncementTag,
+  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/registry/react/components/announcement";
 
 const Example = () => (
   <Announcement>
-    <AnnouncementTag variant="default">Release</AnnouncementTag>
+    <AnnouncementBadge variant="default">Release</AnnouncementBadge>
     <AnnouncementTitle>
       v2.1.0 — Dark mode, faster builds, and 12 new components
     </AnnouncementTitle>

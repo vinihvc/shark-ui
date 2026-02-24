@@ -56,7 +56,7 @@ import { Badge } from "@/components/ui/badge";
 
 ## Variants
 
-You can change the variant of the badge using the `variant` prop.
+The `variant` prop controls the badge's visual style.
 
 ### Default
 
@@ -88,7 +88,7 @@ You can change the variant of the badge using the `variant` prop.
 
 ## Sizes
 
-You can change the size of the badge using the `size` prop.
+The `size` prop controls the badge dimensions.
 
 ### Small
 
@@ -104,39 +104,31 @@ You can change the size of the badge using the `size` prop.
 
 ## Pill
 
-You can use the `pill` prop to create fully rounded badges.
+The `pill` prop creates fully rounded badges.
 
-<ComponentPreview componentName="badge" fileName="example-state-pill-true" />
+<ComponentPreview componentName="badge" fileName="example-pill" />
 
 ## Examples
 
 ### With link
 
-You can use [asChild](/docs/as-child) prop on `<Badge />` to make another element styled as a badge.
+The [asChild](/docs/as-child) prop renders another element with badge styling.
 
 <ComponentPreview componentName="badge" fileName="example-with-link" />
 
 ### With icon
 
-You can add icons to badges to provide visual context.
+Icons can be added to badges for visual context.
 
 <ComponentPreview componentName="badge" fileName="example-with-icon" />
 
 ### With spinner
 
-You can add a `<Spinner />` to badges to indicate loading states.
+The `<Spinner />` component indicates loading states when placed inside a badge.
 
 <ComponentPreview componentName="badge" fileName="example-with-spinner" />
 
-### With count
-
-Badges can display counts or numbers for notifications and indicators.
-
-<ComponentPreview componentName="badge" fileName="example-with-count" />
-
 ### Custom color
-
-You can use the `className` to add custom styles to the badge.
 
 <ComponentPreview componentName="badge" fileName="example-custom-color" />
 
@@ -151,5 +143,5 @@ Root element of the badge. Renders a `span`
 | `variant` | `default`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive` | `default` | 
 | `size` | `sm`, `md`, `lg` | `md` | 
 | `className` | `string` | `-` | 
-| `asChild` | `boolean` | `false` | 
+| `asChild` | `boolean` | `false` |
 

@@ -23,7 +23,7 @@ export { ComboboxThumb } from "./combobox";
 export { CommandThumb } from "./command";
 export { ContextMenuThumb } from "./context-menu";
 export { DataListThumb } from "./data-list";
-export { DatePickerThumb } from "./datepicker";
+export { CalendarThumb } from "./calendar";
 export { DialogThumb } from "./dialog";
 export { EditableThumb } from "./editable";
 export { FieldThumb } from "./field";

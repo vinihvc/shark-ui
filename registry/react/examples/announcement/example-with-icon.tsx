@@ -1,16 +1,16 @@
 import { ArrowUpRight, SparklesIcon } from "lucide-react";
 import {
   Announcement,
-  AnnouncementTag,
+  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/registry/react/components/announcement";
 
 const Example = () => (
   <Announcement>
-    <AnnouncementTag variant="info">
+    <AnnouncementBadge variant="info">
       <SparklesIcon aria-hidden />
-      New feature
-    </AnnouncementTag>
+      New features
+    </AnnouncementBadge>
     <AnnouncementTitle>
       Dark mode and 12 new components available
       <ArrowUpRight aria-hidden />

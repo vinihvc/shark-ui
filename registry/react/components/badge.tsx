@@ -10,6 +10,7 @@ export const badgeVariants = tv({
     "select-none whitespace-nowrap font-medium",
     "rounded-sm border border-transparent",
     "overflow-hidden",
+    "transition-colors",
     "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
     "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
     "[button&,a&]:cursor-pointer [button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
@@ -21,7 +22,6 @@ export const badgeVariants = tv({
         "text-background",
         "focus-visible:border-foreground focus-visible:ring-foreground/20",
         "dark:focus-visible:ring-foreground/40",
-        "[a&]:shadow-primary/24 [a&]:shadow-xs",
         "[a&]:hover:bg-foreground/90",
       ],
       secondary: [
@@ -29,14 +29,12 @@ export const badgeVariants = tv({
         "text-secondary-foreground",
         "border-secondary/20",
         "focus-visible:border-foreground focus-visible:ring-foreground/50",
-        "[a&]:shadow-secondary/24 [a&]:shadow-xs",
         "[a&]:hover:bg-secondary/90",
       ],
       outline: [
         "border-border",
         "[a&]:hover:bg-accent",
         "[a&]:hover:text-accent-foreground",
-        "[a&]:shadow-border/24 [a&]:shadow-xs",
       ],
       success: [
         "bg-success/10",
@@ -44,7 +42,6 @@ export const badgeVariants = tv({
         "border-success/20",
         "focus-visible:border-success focus-visible:ring-success/20",
         "[a&]:hover:bg-success/20",
-        "[a&]:shadow-success/24 [a&]:shadow-xs",
       ],
       info: [
         "bg-info/10",
@@ -52,7 +49,6 @@ export const badgeVariants = tv({
         "border-info/20",
         "focus-visible:border-info focus-visible:ring-info/50",
         "[a&]:hover:bg-info/20",
-        "[a&]:shadow-info/24 [a&]:shadow-xs",
       ],
       warning: [
         "bg-warning/10",
@@ -61,7 +57,6 @@ export const badgeVariants = tv({
         "focus-visible:border-warning focus-visible:ring-warning/20",
         "dark:focus-visible:ring-warning/40",
         "[a&]:hover:bg-warning/20",
-        "[a&]:shadow-warning/24 [a&]:shadow-xs",
       ],
       destructive: [
         "bg-destructive/10 dark:bg-destructive/5",
@@ -70,7 +65,6 @@ export const badgeVariants = tv({
         "focus-visible:border-destructive focus-visible:ring-destructive/20",
         "dark:focus-visible:ring-destructive/40",
         "[a&]:hover:bg-destructive/20",
-        "[a&]:shadow-destructive/24 [a&]:shadow-xs",
       ],
     },
     size: {
@@ -81,17 +75,22 @@ export const badgeVariants = tv({
       ],
       md: [
         "h-5.5 min-w-5.5 sm:h-4.5 sm:min-w-4.5",
-        "px-1",
+        "px-1.5",
         "text-sm sm:text-xs",
       ],
       lg: [
         "h-6.5 min-w-6.5 sm:h-5.5 sm:min-w-5.5",
-        "px-1.5",
+        "px-2 sm:px-1.5",
         "text-base sm:text-sm",
       ],
     },
     pill: {
-      true: "rounded-full",
+      true: [
+        "rounded-full",
+        "has-[>svg]:data-[size=sm]:pe-1.5",
+        "has-[>svg]:data-[size=md]:pe-2",
+        "has-[>svg]:data-[size=lg]:pe-2 sm:has-[>svg]:data-[size=lg]:pe-2.5",
+      ],
     },
   },
   defaultVariants: {
@@ -119,7 +118,9 @@ export const Badge = (props: BadgeProps) => {
   return (
     <ark.span
       className={cn(badgeVariants({ variant, size, pill }), className)}
+      data-size={size}
       data-slot="badge"
+      data-variant={variant}
       {...rest}
     />
   );

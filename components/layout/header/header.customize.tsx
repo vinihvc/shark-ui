@@ -79,14 +79,12 @@ export const HeaderCustomize = () => {
             </Button>
           </SheetTrigger>
         </TooltipTrigger>
-        <TooltipContent>
-          <p>
-            Customize <Kbd>C</Kbd>
-          </p>
+        <TooltipContent className="flex items-center gap-2 pr-2">
+          Customize <Kbd>C</Kbd>
         </TooltipContent>
       </Tooltip>
 
-      <SheetContent variant="inset">
+      <SheetContent>
         <SheetHeader
           description="Change the theme to match your style."
           title="Make it yours"

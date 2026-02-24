@@ -17,9 +17,9 @@ const avatarVariants = tv({
     "size-8",
     "inline-flex shrink-0 items-center justify-center",
     "bg-background",
-    "rounded-full",
     "select-none font-medium text-xs",
-    "relative after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
+    "rounded-full",
+    "after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
   ],
   variants: {
     size: {

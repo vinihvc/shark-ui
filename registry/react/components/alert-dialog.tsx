@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
+import { Button, type ButtonProps } from "@/registry/react/components/button";
 import {
   Dialog,
   DialogBody,
@@ -84,7 +84,8 @@ export const AlertDialogFooter = (
 };
 
 interface AlertDialogActionProps
-  extends React.ComponentProps<typeof DialogClose> {
+  extends React.ComponentProps<typeof DialogClose>,
+    Omit<ButtonProps, "variant"> {
   /**
    * The variant of the action button
    *
@@ -94,23 +95,23 @@ interface AlertDialogActionProps
 }
 
 export const AlertDialogAction = (props: AlertDialogActionProps) => {
-  const { variant = "default", children, ...rest } = props;
+  const { variant = "default", ...rest } = props;
 
   return (
-    <DialogClose asChild data-slot="alert-dialog-action" {...rest}>
-      <Button variant={variant}>{children}</Button>
+    <DialogClose asChild data-slot="alert-dialog-action">
+      <Button variant={variant} {...rest} />
     </DialogClose>
   );
 };
 
-export const AlertDialogCancel = (
-  props: React.ComponentProps<typeof DialogClose>
-) => {
-  const { children, ...rest } = props;
+interface AlertDialogCancelProps
+  extends React.ComponentProps<typeof DialogClose>,
+    Omit<ButtonProps, "variant"> {}
 
+export const AlertDialogCancel = (props: AlertDialogCancelProps) => {
   return (
-    <DialogClose asChild data-slot="alert-dialog-cancel" {...rest}>
-      <Button variant="outline">{children}</Button>
+    <DialogClose asChild data-slot="alert-dialog-cancel">
+      <Button variant="outline" {...props} />
     </DialogClose>
   );
 };

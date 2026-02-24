@@ -2,9 +2,9 @@ import { ChevronLeftIcon } from "lucide-react";
 import { BlockThumbCard } from "./block-card";
 import type { ThumbProps } from "./types";
 
-export const DatePickerThumb = ({
+export const CalendarThumb = ({
   description = "",
-  title = "Date Picker",
+  title = "Calendar",
 }: ThumbProps) => (
   <BlockThumbCard subtitle={description} title={title}>
     <div className="relative flex w-48 flex-col gap-2 rounded-lg border bg-muted p-3 shadow-md/5">

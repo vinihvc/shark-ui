@@ -130,7 +130,7 @@ Use `closable: true` to show the close button.
 
 By default, the toaster is placed at the bottom right corner of the screen. 
 
-You can customize the placement of the toaster by updating the `placement` option in `createToaster()`.
+Update the `placement` option in `createToaster()` to customize the toaster position.
 
 ```tsx title="components/ui/toast.tsx" {2} showshowLineNumbers
 const baseToaster = createToaster({
@@ -144,7 +144,7 @@ const baseToaster = createToaster({
 
 Any extra toasts will be queued and rendered when a toast has been dismissed.
 
-By default, the toaster can display up to 3 toasts at the same time. You can customize the maximum number of visible toasts by updating the `max` option in `createToaster()`.
+By default, the toaster displays up to 3 toasts. Update the `max` option in `createToaster()` to change the maximum number of visible toasts.
 
 ```tsx title="components/ui/toast.tsx" {4} showshowLineNumbers
 const baseToaster = createToaster({

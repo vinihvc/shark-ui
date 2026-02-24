@@ -203,7 +203,7 @@ export const AngleSliderThumb = (
           "shrink-0",
           "bg-white",
           "size-(--size)",
-          "rounded-full shadow-xs/5 ring-2 ring-background",
+          "rounded-full shadow-xs/5 ring-2 ring-border",
           "transition-all",
           "hover:cursor-grab hover:ring-[3px]"
         )}

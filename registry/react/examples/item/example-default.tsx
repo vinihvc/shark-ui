@@ -19,12 +19,12 @@ const ItemDemo = () => (
         </ItemDescription>
       </ItemContent>
       <ItemActions>
-        <Button size="sm" variant="outline">
+        <Button size="icon-sm" variant="outline">
           <Ellipsis />
         </Button>
       </ItemActions>
     </Item>
-    <Item asChild size="sm" variant="outline">
+    <Item asChild variant="outline">
       <a href="#">
         <ItemMedia>
           <BadgeCheck className="size-5" />

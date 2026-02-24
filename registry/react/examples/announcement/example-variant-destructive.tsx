@@ -1,15 +1,15 @@
 import { TriangleAlertIcon } from "lucide-react";
 import {
   Announcement,
-  AnnouncementTag,
+  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/registry/react/components/announcement";
 
 const Example = () => (
   <Announcement>
-    <AnnouncementTag variant="destructive">
+    <AnnouncementBadge variant="destructive">
       <TriangleAlertIcon /> Payment failed
-    </AnnouncementTag>
+    </AnnouncementBadge>
     <AnnouncementTitle>
       Your last invoice couldn&apos;t be processed. Update your billing info.
     </AnnouncementTitle>

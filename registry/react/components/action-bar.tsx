@@ -24,36 +24,60 @@ interface ActionBarContextValue {
    */
   onOpen?: () => void;
   /**
+   * The positioning of the action bar.
+   */
+  positioning: {
+    /**
+     * The offset from the edge in pixels.
+     *
+     * @default '16px'
+     */
+    offset?: string;
+    /**
+     * The placement of the action bar.
+     *
+     * @default "bottom"
+     */
+    placement?: "bottom" | "bottom-start" | "bottom-end";
+  };
+  /**
    * The function to call when the action bar is mounted
    */
   unmountOnExit?: boolean;
 }
+
+const defaultPositioning = { placement: "bottom", offset: "16px" } as const;
 
 const ActionBarContext = React.createContext({} as ActionBarContextValue);
 
 export interface ActionBarProps
   extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   /**
-   * The default open state of the action bar
+   * The default open state of the action bar.
    */
   defaultOpen?: boolean;
   /**
-   * The function to call when the open state of the action bar changes
+   * The function to call when the open state of the action bar changes.
    */
   onOpenChange?: (open: boolean) => void;
   /**
-   * The open state of the action bar
+   * The open state of the action bar.
    */
   open?: boolean;
+  /**
+   * Placement and offset of the action bar.
+   */
+  positioning?: ActionBarContextValue["positioning"];
 }
 
 export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
   const {
     open,
     defaultOpen = false,
-    onOpenChange,
+    positioning: _positioning,
     lazyMount = true,
     unmountOnExit = true,
+    onOpenChange,
     ...rest
   } = props;
 
@@ -83,10 +107,11 @@ export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
       onClose: handleClose,
       onOpen: handleOpen,
       isOpen,
+      positioning: { ...defaultPositioning, ..._positioning },
       lazyMount,
       unmountOnExit,
     }),
-    [handleClose, handleOpen, isOpen, lazyMount, unmountOnExit]
+    [handleClose, handleOpen, isOpen, lazyMount, unmountOnExit, _positioning]
   );
 
   return <ActionBarContext.Provider value={context} {...rest} />;
@@ -139,39 +164,20 @@ const actionBarPositionerVariants = tv({
 });
 
 export interface ActionBarContentProps
-  extends React.ComponentProps<typeof ark.div> {
-  /**
-   * The positioning of the action bar.
-   */
-  positioning?: {
-    /**
-     * The offset from the edge in pixels.
-     *
-     * @default '16px'
-     */
-    offset?: string;
-    /**
-     * The placement of the action bar.
-     *
-     * @default "bottom"
-     */
-    placement?: "bottom" | "bottom-start" | "bottom-end";
-  };
-}
+  extends React.ComponentProps<typeof ark.div> {}
 
 export const ActionBarContent = (props: ActionBarContentProps) => {
   const {
     "aria-label": ariaLabel,
     "aria-labelledby": ariaLabelledby,
-    positioning = { placement: "bottom", offset: "16px" },
     className,
     ...rest
   } = props;
 
-  const { isOpen, lazyMount, unmountOnExit } = useActionBar();
+  const { isOpen, lazyMount, unmountOnExit, positioning } = useActionBar();
 
-  const placement = positioning.placement ?? "bottom";
-  const offset = positioning.offset ?? "16px";
+  const placement = positioning?.placement ?? "bottom";
+  const offset = positioning?.offset ?? "16px";
 
   return (
     <Portal>

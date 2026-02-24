@@ -104,7 +104,7 @@ export const dialogContentVariants = tv({
     "flex flex-col",
     "bg-popover",
     "text-popover-foreground",
-    "rounded-xl border shadow-lg/5",
+    "rounded-2xl border shadow-lg/5",
     "focus:outline-none focus:ring-0",
     "-translate-y-[calc(1.25rem*var(--nested-layer-count))]",
     "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
@@ -124,7 +124,7 @@ export const dialogContentVariants = tv({
     bottomStickOnMobile: {
       true: [
         "max-sm:max-w-none",
-        "max-sm:rounded-none max-sm:rounded-t-xl max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
+        "max-sm:rounded-none max-sm:rounded-t-2xl max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
         "max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))]",
         "max-sm:data-[state=closed]:slide-out-to-bottom-5 max-sm:data-[state=open]:slide-in-from-bottom-5",
       ],
@@ -305,7 +305,7 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        "sm:rounded-b-[calc(var(--radius-xl)-1px)]",
+        "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
         "px-(--space) py-4",
         "bg-muted/72",
         "border-t",

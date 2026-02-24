@@ -37,7 +37,7 @@ const Example = () => {
             <ItemHeader>
               <img
                 alt={model.name}
-                className="aspect-square w-full rounded-sm object-cover grayscale"
+                className="aspect-square grayscale"
                 height={128}
                 src={model.image}
                 width={128}

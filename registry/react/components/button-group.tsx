@@ -25,7 +25,7 @@ const buttonGroupVariants = tv({
         "flex-col",
         "[&>*:not(:first-child)]:rounded-t-none",
         "[&>*:not(:first-child)]:border-t-0",
-        "[&>*:not(:last-child)]:rounded-b-none",
+        "[&>*:not(:last-child)]:rounded-b-none [&>*:not(:last-child)]:shadow-none",
       ],
     },
   },

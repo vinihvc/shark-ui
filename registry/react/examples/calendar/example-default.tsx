@@ -19,10 +19,10 @@ import {
   CalendarYearSelect,
 } from "@/registry/react/components/calendar";
 
-export const CardsCalendar = () => (
-  <Card className="hidden p-0 sm:flex">
-    <CardContent className="p-0">
-      <Calendar className="rounded-lg p-2" selectionMode="range">
+const CalendarDemo = () => (
+  <Card>
+    <CardContent>
+      <Calendar selectionMode="range">
         <CalendarView view="day">
           <CalendarContext>
             {(calendar) => (
@@ -73,3 +73,5 @@ export const CardsCalendar = () => (
     </CardContent>
   </Card>
 );
+
+export default CalendarDemo;

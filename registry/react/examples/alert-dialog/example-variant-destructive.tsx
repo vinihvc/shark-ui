@@ -14,7 +14,6 @@ const Example = () => (
     <AlertDialogTrigger asChild>
       <Button variant="outline">Open</Button>
     </AlertDialogTrigger>
-
     <AlertDialogContent>
       <AlertDialogHeader
         description="This action cannot be undone. This will permanently delete the project and remove all data."
@@ -22,7 +21,6 @@ const Example = () => (
       />
       <AlertDialogFooter>
         <AlertDialogCancel>Cancel</AlertDialogCancel>
-
         <AlertDialogAction variant="destructive">
           Delete project
         </AlertDialogAction>

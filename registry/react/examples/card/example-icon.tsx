@@ -24,7 +24,7 @@ const Example = () => (
         </pre>
       </CardContent>
       <CardFooter className="flex-row-reverse">
-        <Button>Copy code</Button>
+        <Button size="sm">Copy code</Button>
       </CardFooter>
     </Card>
   </div>

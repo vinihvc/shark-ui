@@ -12,12 +12,13 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "[--space:--spacing(4)]",
         "group/card",
+        "relative",
         "py-(--space)",
         "flex flex-col gap-4",
         "bg-card",
         "text-foreground",
+        "rounded-2xl border shadow-lg/5",
         "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
-        "rounded-xl border shadow-md/5",
         "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/32 in-focus-visible:ring-offset-2 in-focus-visible:ring-offset-background",
         className
       )}

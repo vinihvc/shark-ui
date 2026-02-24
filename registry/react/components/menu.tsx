@@ -27,12 +27,12 @@ export const MenuTrigger = (
 
 export const menuContentVariants = tv({
   base: [
-    "z-[calc(50+var(--z-index,0))]",
+    "z-[calc(50+var(--nested-layer-count,0))]",
     "h-auto",
     "p-1",
     "bg-popover",
     "text-popover-foreground",
-    "rounded-xl border shadow-md",
+    "rounded-xl border shadow-lg/5",
     "origin-(--transform-origin)",
     "outline-none",
     "overflow-y-auto overflow-x-hidden",
@@ -117,7 +117,7 @@ const menuItemVariants = tv({
   base: [
     "group/menu-item",
     "relative",
-    "px-3 py-2",
+    "px-2.5 py-2",
     "w-full",
     "flex items-center gap-2 rounded-lg",
     "text-sm",
@@ -299,7 +299,7 @@ export const MenuShortcut = (props: React.ComponentProps<typeof ark.span>) => {
   return (
     <ark.span
       className={cn(
-        "me-auto",
+        "ms-auto rtl:me-auto",
         "text-muted-foreground text-xs tracking-widest",
         "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
         className

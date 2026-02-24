@@ -1,4 +1,10 @@
-import { DownloadIcon, HeartIcon, PlusIcon, SettingsIcon } from "lucide-react";
+import {
+  DownloadIcon,
+  ExternalLinkIcon,
+  HeartIcon,
+  PlusIcon,
+  SettingsIcon,
+} from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 
 const Example = () => (
@@ -18,6 +24,10 @@ const Example = () => (
     <Button variant="ghost">
       <DownloadIcon />
       Download
+    </Button>
+    <Button variant="link">
+      Visit website
+      <ExternalLinkIcon />
     </Button>
   </div>
 );

@@ -20,7 +20,7 @@ const Example = () => {
       <ActionBarTrigger asChild>
         <Button variant="outline">Open</Button>
       </ActionBarTrigger>
-      <ActionBarContent className="w-full max-w-md [--space:--spacing(2)]">
+      <ActionBarContent className="w-full max-w-md [--space:--spacing(2)] md:[--space:--spacing(6)]">
         <ActionBarClose asChild>
           <Button size="icon-sm" variant="ghost">
             <XIcon />

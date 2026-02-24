@@ -54,15 +54,19 @@ import { Button } from "@/components/ui/button";
 <Button>Button</Button>
 ```
 
+## Accessibility
+
+- When using icon-only, add an `aria-label` prop so screen readers can identify the button’s purpose.
+
 ## Link
 
-You can use [asChild](/docs/as-child) prop on `<Button />` to make another element styled as a button.
+The [asChild](/docs/as-child) prop renders another element with button styling.
 
 <ComponentPreview componentName="button" fileName="example-state-as-child" />
 
 ## Variants
 
-You can change the variant of the button using the `variant` prop.
+The `variant` prop controls the button's visual style.
 
 ### Default
 
@@ -90,7 +94,7 @@ You can change the variant of the button using the `variant` prop.
 
 ## Sizes
 
-You can change the size of the button using the `size` prop.
+The `size` prop controls the button dimensions.
 
 ### Extra Small
 
@@ -110,53 +114,47 @@ You can change the size of the button using the `size` prop.
 
 ## Pill
 
-You can use the `pill` prop to create fully rounded buttons.
+The `pill` prop creates fully rounded buttons.
 
-<ComponentPreview componentName="button" fileName="example-state-pill-true" />
+<ComponentPreview componentName="button" fileName="example-pill" />
 
 ## Disabling click effect
 
-You can disable the click effect of the button using the `clickEffect` prop.
+The `clickEffect` prop disables the click animation.
 
-<ComponentPreview componentName="button" fileName="example-state-click-effect-false" />
+<ComponentPreview componentName="button" fileName="example-no-click-effect" />
 
 ## States
 
 ### Disabled
 
-You can disable the button using the `disabled` prop.
+The `disabled` prop disables user interaction.
 
-<ComponentPreview componentName="button" fileName="example-state-disabled-true" />
+<ComponentPreview componentName="button" fileName="example-disabled" />
 
 ### Loading
 
-You can show a loading indicator when the button is loading using the `isLoading` prop.
+The `isLoading` prop displays a loading indicator.
 
-<ComponentPreview componentName="button" fileName="example-state-loading-true" />
+<ComponentPreview componentName="button" fileName="example-loading" />
 
 ## Examples
 
-### Custom color
+### Icon only
 
-You can use the `className` prop to add custom colors to the button.
-
-<ComponentPreview componentName="button" fileName="example-custom-color" />
-
-### Icon
-
-You can create icon-only buttons using the `icon-*` size variants.
+Create icon-only buttons using the `icon-*` size variants.
 
 <ComponentPreview componentName="button" fileName="example-icon" />
 
 ### With icon
 
-You can add icons to buttons alongside text to provide visual context.
+Icons can be placed alongside text for visual context.
 
 <ComponentPreview componentName="button" fileName="example-with-icon" />
 
 ## Touch hitbox
 
-You can change the touch hitbox of the button to improve the user experience on touch devices.
+The `.touch-target` utility extends the touch hitbox for better usability on touch devices.
 
 Add a `.touch-target` utility to a element to extend the touch target.
 
@@ -178,6 +176,10 @@ Add a `.touch-target` utility to a element to extend the touch target.
   }
 }
 ```
+
+### Custom color
+
+<ComponentPreview componentName="button" fileName="example-custom-color" />
 
 ## API Reference
 

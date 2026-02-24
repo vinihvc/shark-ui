@@ -1,6 +1,10 @@
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Card, CardFooter, CardHeader } from "@/registry/react/components/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/react/components/card";
 
 export interface BlockThumbCardProps extends React.ComponentProps<typeof Card> {
   /**
@@ -19,7 +23,7 @@ export const BlockThumbCard = (props: BlockThumbCardProps) => {
   return (
     <Card
       aria-label={title}
-      className={cn("size-full pb-0", className)}
+      className={cn("size-full bg-muted/50 pb-0", className)}
       {...rest}
     >
       <CardHeader
@@ -29,19 +33,21 @@ export const BlockThumbCard = (props: BlockThumbCardProps) => {
         title={title}
       />
 
-      <CardFooter
+      <CardContent
         aria-hidden="true"
         className={cn(
           "h-40 w-full",
-          "select-none",
           "flex items-center justify-center",
+          "rounded-b-2xl border-t",
+          "bg-card",
+          "select-none",
           "[&>div:not([class^='w-'],[class*='_w-'])]:w-full",
           "px-10 py-4"
         )}
         role="img"
       >
         {children}
-      </CardFooter>
+      </CardContent>
     </Card>
   );
 };

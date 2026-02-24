@@ -1,4 +1,3 @@
-import { UserIcon } from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
@@ -15,45 +14,26 @@ import {
 } from "@/registry/react/components/item";
 
 const Example = () => (
-  <div className="flex w-full max-w-md flex-col gap-4">
-    <Item variant="outline">
-      <ItemMedia variant="default">
-        <Avatar size="sm">
-          <AvatarImage alt="" src="https://github.com/pasqualevitiello.png" />
-          <AvatarFallback>PV</AvatarFallback>
-        </Avatar>
-      </ItemMedia>
-      <ItemContent>
-        <ItemTitle>Pasquale Vitiello</ItemTitle>
-        <ItemDescription>Last seen 5 months ago</ItemDescription>
-      </ItemContent>
-      <ItemActions>
-        <Button size="sm" variant="outline">
-          View
-        </Button>
-      </ItemActions>
-    </Item>
-    <Item variant="outline">
-      <ItemMedia variant="default">
-        <Avatar size="sm">
-          <AvatarFallback>
-            <UserIcon />
-          </AvatarFallback>
-        </Avatar>
-      </ItemMedia>
-      <ItemContent>
-        <ItemTitle>No Team Members</ItemTitle>
-        <ItemDescription>
-          Invite your team to collaborate on this project.
-        </ItemDescription>
-      </ItemContent>
-      <ItemActions>
-        <Button size="sm" variant="outline">
-          Invite
-        </Button>
-      </ItemActions>
-    </Item>
-  </div>
+  <Item className="w-full max-w-md" variant="outline">
+    <ItemMedia>
+      <Avatar size="sm">
+        <AvatarImage
+          alt="@pasqualevitiello"
+          src="https://github.com/pasqualevitiello.png"
+        />
+        <AvatarFallback>PV</AvatarFallback>
+      </Avatar>
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Pasquale Vitiello</ItemTitle>
+      <ItemDescription>Last seen 5 months ago</ItemDescription>
+    </ItemContent>
+    <ItemActions>
+      <Button size="sm" variant="outline">
+        View
+      </Button>
+    </ItemActions>
+  </Item>
 );
 
 export default Example;

@@ -16,7 +16,7 @@ const Example = () => (
       </ItemDescription>
     </ItemContent>
     <ItemActions>
-      <Button size="sm" variant="outline">
+      <Button size="icon-sm" variant="outline">
         Action
       </Button>
     </ItemActions>

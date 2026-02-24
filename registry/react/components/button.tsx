@@ -15,6 +15,7 @@ export const buttonVariants = tv({
     "transition-all",
     "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/32",
     "disabled:pointer-events-none disabled:opacity-64",
+    "data-[state=loading]:pointer-events-none",
     "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
@@ -65,33 +66,37 @@ export const buttonVariants = tv({
       xs: [
         "h-6",
         "gap-1.5",
-        "px-3",
+        "px-2",
         "rounded-sm",
-        "has-[>svg]:px-2.5",
         "[&_svg:not([class*='size-'])]:size-3",
       ],
       sm: [
         "h-7",
-        "px-3",
+        "px-2.5",
         "gap-1.5",
-        "has-[>svg]:px-2.5",
         "[&_svg:not([class*='size-'])]:size-3.5",
       ],
       md: ["h-8", "px-3", "py-2"],
-      lg: ["h-9", "px-4"],
-      xl: ["h-10", "text-base", "px-5"],
-      "icon-xs": "size-6 rounded-[calc(var(--radius-md)-4px)]",
+      lg: ["h-9", "px-3.5"],
+      xl: ["h-10", "text-base", "px-4"],
+      "icon-xs": "size-6 rounded-sm",
       "icon-sm": "size-7",
       "icon-md": "size-8",
       "icon-lg": "size-9",
       "icon-xl": "size-10 [&_svg:not([class*='size-'])]:size-5",
     },
     clickEffect: {
-      true: "active:translate-y-px",
-      false: "",
+      true: "active:scale-[0.98]",
     },
     pill: {
-      true: "rounded-full",
+      true: [
+        "rounded-full",
+        "has-[>svg]:data-[size=xs]:pe-3",
+        "has-[>svg]:data-[size=sm]:pe-3.5",
+        "has-[>svg]:data-[size=md]:pe-4",
+        "has-[>svg]:data-[size=lg]:pe-4.5",
+        "has-[>svg]:data-[size=xl]:pe-5",
+      ],
     },
   },
   defaultVariants: {
@@ -121,11 +126,11 @@ export interface ButtonProps
 
 export const Button = (props: ButtonProps) => {
   const {
-    variant,
-    size,
+    variant = "default",
+    size = "md",
     clickEffect = true,
-    pill,
-    isLoading,
+    pill = false,
+    isLoading = false,
     className,
     children,
     ...rest
@@ -143,17 +148,19 @@ export const Button = (props: ButtonProps) => {
       data-variant={variant}
       type="button"
       {...rest}
+      aria-busy={isLoading}
+      aria-disabled={isLoading}
     >
       {isLoading ? (
         <>
-          <span aria-hidden className="invisible contents">
+          <span aria-hidden className="invisible">
             {children}
           </span>
 
           <span className="sr-only">{children}</span>
 
           <span className="absolute inset-0 flex items-center justify-center">
-            <Spinner />
+            <Spinner aria-hidden />
           </span>
         </>
       ) : (
