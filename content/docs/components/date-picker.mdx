@@ -1,0 +1,96 @@
+---
+title: Date Picker
+description: A popover date picker with an input and calendar.
+links:
+  doc: https://ark-ui.com/docs/components/date-picker
+  api: https://ark-ui.com/docs/components/date-picker#api-reference
+---
+
+<ComponentPreview componentName="date-picker" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/date-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/date-picker.tsx" src="/date-picker.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  DatePicker,
+  DatePickerCalendar,
+  DatePickerClearTrigger,
+  DatePickerContent,
+  DatePickerControl,
+  DatePickerInput,
+  DatePickerLabel,
+  DatePickerPositioner,
+  DatePickerTrigger,
+} from "@/components/ui/date-picker";
+```
+
+```tsx showLineNumbers
+<DatePicker selectionMode="single">
+  <DatePickerLabel>Pick a date</DatePickerLabel>
+  <DatePickerControl>
+    <DatePickerInput index={0} placeholder="Select date" />
+    <DatePickerTrigger />
+    <DatePickerClearTrigger asChild>
+      <Button size="sm" variant="outline">Clear</Button>
+    </DatePickerClearTrigger>
+  </DatePickerControl>
+  <DatePickerPositioner>
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePickerPositioner>
+</DatePicker>
+```
+
+## Examples
+
+### Range
+
+Select a date range with `selectionMode="range"` and `DatePickerRangeInput` for start and end date inputs.
+
+<ComponentPreview componentName="date-picker" fileName="example-range" />
+
+### With Time
+
+Add a time input with `DatePickerTimer` for date and time selection.
+
+<ComponentPreview componentName="date-picker" fileName="example-with-time" />

@@ -9,10 +9,10 @@ import {
 } from "@/registry/react/components/calendar";
 import { Card, CardContent } from "@/registry/react/components/card";
 
-export const CardsCalendar = () => (
-  <Card className="hidden p-0 sm:flex">
-    <CardContent className="p-0">
-      <Calendar className="rounded-lg p-2" selectionMode="range">
+const Example = () => (
+  <Card className="[--space:--spacing(2)]">
+    <CardContent>
+      <Calendar selectionMode="range">
         <CalendarViewControl>
           <CalendarMonthSelect />
           <CalendarYearSelect />
@@ -25,3 +25,5 @@ export const CardsCalendar = () => (
     </CardContent>
   </Card>
 );
+
+export default Example;

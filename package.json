@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.31.0",
+    "date-fns": "^4.1.0",
     "@shikijs/langs": "^3.22.0",
     "@shikijs/themes": "^3.22.0",
     "@shikijs/transformers": "^3.22.0",

@@ -30,15 +30,11 @@ export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
     >
       <Tabs defaultValue="preview">
         <TabsList>
-          <TabsTrigger className="rounded-lg" value="preview">
-            Preview
-          </TabsTrigger>
-          <TabsTrigger className="rounded-lg" value="code">
-            Code
-          </TabsTrigger>
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
 
-        <div className={cn("relative", "rounded-lg border")}>
+        <div className={cn("relative", "rounded-2xl border")}>
           <TabsContent value="preview">
             <div
               className={cn(
@@ -55,7 +51,7 @@ export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
 
           <TabsContent value="code">
             <div
-              className="overflow-hidden **:[figure]:m-0! **:[figure]:border-0 **:[pre]:h-[450px]"
+              className="overflow-hidden **:[figure]:m-0! **:[figure]:border-0 **:[pre]:min-h-[450px]"
               data-slot="code"
             >
               {source}

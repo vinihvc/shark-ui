@@ -1,14 +1,15 @@
 import { SITE_CONFIG } from "@/config/site";
 import type { RegistryItemType } from "@/lib/registry";
 
-const dependencies = ["@ark-ui/react", "date-fns", "lucide-react"];
+const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "calendar",
+  name: "date-picker",
   type: "registry:ui",
   dependencies,
   registryDependencies: [
     `${SITE_CONFIG.url}/r/button.json`,
+    `${SITE_CONFIG.url}/r/calendar.json`,
     `${SITE_CONFIG.url}/r/input.json`,
   ],
 };

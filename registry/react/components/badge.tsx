@@ -8,7 +8,7 @@ export const badgeVariants = tv({
   base: [
     "inline-flex items-center justify-center gap-1",
     "select-none whitespace-nowrap font-medium",
-    "rounded-sm border border-transparent",
+    "rounded-md border border-transparent",
     "overflow-hidden",
     "transition-colors",
     "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",

@@ -17,7 +17,7 @@ export const Textarea = (
         "px-3 py-2",
         "bg-transparent dark:bg-input/30",
         "text-base md:text-sm",
-        "rounded-md border border-input shadow-xs",
+        "rounded-lg border border-input shadow-md/5",
         "placeholder:text-muted-foreground",
         "transition-[color,box-shadow]",
         "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",

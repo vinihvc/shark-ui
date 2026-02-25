@@ -14,13 +14,19 @@ export const InputGroup = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs outline-none transition-[color,box-shadow] dark:bg-input/30",
-        "h-9 min-w-0 has-[>textarea]:h-auto",
+        "group/input-group",
+        "relative",
+        "h-9 w-full min-w-0",
+        "flex items-center",
+        "bg-background dark:bg-input/30",
+        "rounded-md border border-input shadow-xs",
+        "transition-[color,box-shadow]",
+        "has-[>textarea]:h-auto",
         "has-[>[data-align=inline-start]]:[&>input]:ps-2",
         "has-[>[data-align=inline-end]]:[&>input]:pe-2",
         "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
         "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
-        "has-[[data-slot=input-group-control]:focus-visible]:border-primary has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/32",
+        "outline-none has-[[data-slot=input-group-control]:focus-visible]:border-primary has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/32",
         "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
         className
       )}

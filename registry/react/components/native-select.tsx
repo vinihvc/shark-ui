@@ -2,19 +2,19 @@
 
 import { ark } from "@ark-ui/react/factory";
 import { Field as ArkField } from "@ark-ui/react/field";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-const nativeSelectVariants = tv({
+export const nativeSelectVariants = tv({
   base: [
     "appearance-none",
     "w-full min-w-0",
-    "py-1 ps-2.5 pe-8",
+    "ps-2.5 pe-8",
     "select-none text-sm",
     "bg-transparent dark:bg-input/30",
-    "rounded-md border border-input",
+    "rounded-lg border border-input shadow-md/5",
     "transition-colors",
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
@@ -44,7 +44,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
   return (
     <ark.div
       className={cn(
-        "group/native-select relative w-fit has-[select:disabled]:opacity-64",
+        "relative w-fit has-[select:disabled]:opacity-64",
         className
       )}
       data-slot="native-select-wrapper"
@@ -54,7 +54,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
         data-slot="native-select"
         {...rest}
       />
-      <ChevronDown
+      <ChevronDownIcon
         aria-hidden="true"
         className={cn(
           "absolute inset-e-2.5 top-1/2 -translate-y-1/2",

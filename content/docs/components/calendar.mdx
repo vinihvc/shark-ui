@@ -1,6 +1,6 @@
 ---
 title: Calendar
-description: A calendar component for selecting dates with calendar navigation
+description: Select a date or a range of dates.
 links:
   doc: https://ark-ui.com/docs/components/date-picker
   api: https://ark-ui.com/docs/components/date-picker#api-reference
@@ -52,81 +52,191 @@ npm install @ark-ui/react lucide-react
 ```tsx
 import {
   Calendar,
-  CalendarControl,
-  CalendarInput,
-  CalendarTrigger,
-  CalendarContent,
-  CalendarView,
-  CalendarContext,
   CalendarTable,
-  CalendarTableHead,
-  CalendarTableRow,
-  CalendarTableHeader,
-  CalendarTableBody,
-  CalendarTableCell,
-  CalendarTableCellTrigger,
+  CalendarTableDays,
   CalendarViewControl,
-  CalendarViewTrigger,
-  CalendarRangeText,
-  CalendarPrevTrigger,
-  CalendarNextTrigger,
+  CalendarWeekDays,
 } from "@/components/ui/calendar";
 ```
 
 ```tsx showLineNumbers
 <Calendar>
-  <CalendarLabel>Pick a date</CalendarLabel>
-  <CalendarControl>
-    <CalendarInput placeholder="Select date" />
-    <CalendarTrigger asChild>
-      <Button>📅</Button>
-    </CalendarTrigger>
-  </CalendarControl>
-
-  <CalendarContent>
-    <CalendarView view="day">
-      <CalendarContext>
-        {(calendar) => (
-          <>
-            <CalendarViewControl>
-              <CalendarPrevTrigger>Prev</CalendarPrevTrigger>
-              <CalendarViewTrigger>
-                <CalendarRangeText />
-              </CalendarViewTrigger>
-              <CalendarNextTrigger>Next</CalendarNextTrigger>
-            </CalendarViewControl>
-            <CalendarTable>
-              <CalendarTableHead>
-                <CalendarTableRow>
-                  {calendar.weekDays.map((weekDay, id) => (
-                    <CalendarTableHeader key={id}>
-                      {weekDay.short}
-                    </CalendarTableHeader>
-                  ))}
-                </CalendarTableRow>
-              </CalendarTableHead>
-              <CalendarTableBody>
-                {calendar.weeks.map((week, id) => (
-                  <CalendarTableRow key={id}>
-                    {week.map((day, id) => (
-                      <CalendarTableCell key={id} value={day}>
-                        <CalendarTableCellTrigger>
-                          {day.day}
-                        </CalendarTableCellTrigger>
-                      </CalendarTableCell>
-                    ))}
-                  </CalendarTableRow>
-                ))}
-              </CalendarTableBody>
-            </CalendarTable>
-          </>
-        )}
-      </CalendarContext>
-    </CalendarView>
-  </CalendarContent>
+  <CalendarViewControl>
+    <CalendarView />
+  </CalendarViewControl>
+  <CalendarTable>
+    <CalendarWeekDays />
+    <CalendarTableDays />
+  </CalendarTable>
 </Calendar>
 ```
 
 ## Examples
 
-Soon
+### Date Range
+
+<ComponentPreview componentName="calendar" fileName="example-range" />
+
+### Controlled
+
+<ComponentPreview componentName="calendar" fileName="example-controlled" />
+
+### Month and Year Selector
+
+<ComponentPreview componentName="calendar" fileName="example-month-year-selector" />
+
+### With Presets
+
+<ComponentPreview componentName="calendar" fileName="example-presets" />
+
+### Multiple Months
+
+<ComponentPreview componentName="calendar" fileName="example-multiple-months" />
+
+### Min and Max
+
+Use the `min` and `max` props with `parseDate` to restrict the selectable date range.
+
+<ComponentPreview componentName="calendar" fileName="example-min-max" />
+
+### Select Today
+
+<ComponentPreview componentName="calendar" fileName="example-select-today" />
+
+### Fixed Weeks
+
+Use the `fixedWeeks` prop to always display 6 weeks in the calendar, preventing layout shifts when navigating between months.
+
+<ComponentPreview componentName="calendar" fileName="example-fixed-weeks" />
+
+### Booked Dates
+
+Use the `isDateUnavailable` prop to mark specific dates as unavailable.
+
+<ComponentPreview componentName="calendar" fileName="example-booked-dates" />
+
+### Custom Cell Size
+
+Use `[--cell-size:--spacing("value")]` to set the size of the calendar cells.
+
+<ComponentPreview componentName="calendar" fileName="example-custom-cell-size" />
+
+Breakpoint utilities change the cell size at different screen sizes.
+
+```css
+  md:[--cell-size:--spacing(10)] lg:[--cell-size:--spacing(12)]
+```
+
+## API Reference
+
+### Calendar
+
+Root element of the calendar. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `DateValue[]` | - |
+| `defaultValue` | `DateValue[]` | - |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | - |
+| `selectionMode` | `"single"` \| `"range"` \| `"multiple"` | `"single"` |
+| `min` | `DateValue` | - |
+| `max` | `DateValue` | - |
+| `isDateUnavailable` | `(date: DateValue) => boolean` | - |
+| `fixedWeeks` | `boolean` | `false` |
+| `outsideDaySelectable` | `boolean` | `false` |
+| `numOfMonths` | `number` | `1` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarViewControl
+
+Container for the view navigation (prev/next) and month/year selects. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarMonthSelect
+
+Dropdown for selecting the month. Renders a `NativeSelect`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `format` | `"short"` \| `"long"` | `"short"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarYearSelect
+
+Dropdown for selecting the year. Renders a `select`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarTable
+
+Table container for the calendar grid. Renders a `table`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarWeekDays
+
+Header row displaying week day names. Renders a `thead`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `format` | `"narrow"` \| `"short"` \| `"long"` | `"narrow"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarTableDays
+
+Body with the calendar day cells for the current view. Renders a `tbody`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarTableNextMonth
+
+Body with calendar day cells for the next month(s). Use with `numOfMonths` for multi-month layouts. Renders a `tbody`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `months` | `number` | `1` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### CalendarTableCell
+
+Individual day cell. Renders a `td` with a trigger.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `DateValue` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### parseDate
+
+Utility for parsing dates. Use with `min`, `max`, `value`, and `defaultValue`.
+
+```tsx
+import { parseDate } from "@/components/ui/calendar";
+
+// Parse from Date, string, or timestamp
+parseDate(new Date());
+parseDate("2024-01-15");
+parseDate(Date.now());
+```
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/date-picker#api-reference).

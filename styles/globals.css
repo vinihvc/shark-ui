@@ -376,7 +376,7 @@
     border-color: var(--border);
     border-style: solid;
     border-width: 1px;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-2xl);
     @apply bg-code;
 
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {

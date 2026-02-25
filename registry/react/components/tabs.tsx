@@ -42,7 +42,7 @@ const tabsListVariants = tv({
     variant: {
       default: {
         base: ["rounded-lg bg-muted"],
-        indicator: ["-z-1 rounded-md bg-input/32 dark:bg-input"],
+        indicator: ["-z-1 rounded-lg bg-input/32 dark:bg-input"],
       },
       underline: {
         base: [
@@ -102,7 +102,7 @@ export const TabsTrigger = (
         "flex shrink-0 grow items-center justify-center gap-1.5",
         "px-[calc(--spacing(2.5)-1px)]",
         "whitespace-nowrap font-medium text-base sm:text-sm",
-        "rounded-md border border-transparent",
+        "rounded-lg border border-transparent",
         "cursor-pointer",
         "transition-[color,background-color,box-shadow]",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",

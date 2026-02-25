@@ -15,6 +15,8 @@ export const buttonVariants = tv({
     "transition-all",
     "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/32",
     "disabled:pointer-events-none disabled:opacity-64",
+    "data-disabled:pointer-events-none data-disabled:opacity-64",
+    "aria-disabled:pointer-events-none aria-disabled:opacity-64",
     "data-[state=loading]:pointer-events-none",
     "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",

@@ -3,16 +3,21 @@ import {
   CalendarMonthSelect,
   CalendarTable,
   CalendarTableDays,
+  CalendarTodayTrigger,
   CalendarViewControl,
   CalendarWeekDays,
   CalendarYearSelect,
 } from "@/registry/react/components/calendar";
-import { Card, CardContent } from "@/registry/react/components/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+} from "@/registry/react/components/card";
 
-export const CardsCalendar = () => (
-  <Card className="hidden p-0 sm:flex">
-    <CardContent className="p-0">
-      <Calendar className="rounded-lg p-2" selectionMode="range">
+const Example = () => (
+  <Calendar>
+    <Card className="[--space:--spacing(2)]">
+      <CardContent>
         <CalendarViewControl>
           <CalendarMonthSelect />
           <CalendarYearSelect />
@@ -21,7 +26,12 @@ export const CardsCalendar = () => (
           <CalendarWeekDays />
           <CalendarTableDays />
         </CalendarTable>
-      </Calendar>
-    </CardContent>
-  </Card>
+      </CardContent>
+      <CardFooter>
+        <CalendarTodayTrigger className="w-full" />
+      </CardFooter>
+    </Card>
+  </Calendar>
 );
+
+export default Example;
