@@ -35,6 +35,8 @@ npx shadcn@latest add @shark/color-picker
 npm install @ark-ui/react lucide-react
 ```
 
+<Step>Ensure `input` and `input-group` are installed for ColorPickerInput usage.</Step>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource title="components/ui/color-picker.tsx" src="color-picker.tsx" />
@@ -47,106 +49,242 @@ npm install @ark-ui/react lucide-react
 
 </CodeTabs>
 
-## Usage
+## Input
+
+Usage of Color Picker only using input.
+
+### Usage
 
 ```tsx
-import { 
-  ColorPicker, 
-  ColorPickerArea, 
-  ColorPickerAreaBackground, 
-  ColorPickerAreaThumb, 
-  ColorPickerChannelInput, 
-  ColorPickerChannelSlider, 
-  ColorPickerContent, 
-  ColorPickerControl, 
-  ColorPickerEyeDropperTrigger, 
-  ColorPickerTransparencyGrid, 
-  ColorPickerTrigger, 
-  ColorPickerValueSwatch, 
-  parseColor 
+import {
+  ColorPicker,
+  ColorPickerInput,
 } from "@/components/ui/color-picker";
-
-<ColorPicker defaultValue={parseColor("#eb5e41")}>
-  <ColorPickerControl>
-    <ColorPickerChannelInput channel="hex" />
-    <ColorPickerTrigger />
-  </ColorPickerControl>
-  <ColorPickerContent>
-    <ColorPickerArea>
-      <ColorPickerAreaBackground />
-      <ColorPickerAreaThumb />
-    </ColorPickerArea>
-    <div className="flex items-center gap-3">
-      <ColorPickerEyeDropperTrigger />
-      <div className="flex flex-1 flex-col gap-2.5">
-        <ColorPickerChannelSlider channel="hue" />
-        <ColorPickerChannelSlider channel="alpha">
-          <ColorPickerTransparencyGrid />
-        </ColorPickerChannelSlider>
-      </div>
-    </div>
-  </ColorPickerContent>
-</ColorPicker>
 ```
 
-## Examples
+```tsx showLineNumbers
+<ColorPicker>
+  <ColorPickerInput asChild channel="hex">
+    <Input />
+  </ColorPickerInput>
+</ColorPicker>
+```
 
 ### Controlled
 
 Use the `value` and `onValueChange` props to programmatically control the color picker's state.
 
-<ComponentPreview componentName="color-picker" fileName="example-controlled" />
+<ComponentPreview componentName="color-picker" fileName="example-input-controlled" />
 
-{/* ### Open Controlled
+### State
 
-Control the open state of the color picker popover programmatically using the `open` and `onOpenChange` props.
+#### Invalid
 
-<ComponentPreview componentName="color-picker" fileName="example-open-controlled" />
+<ComponentPreview componentName="color-picker" fileName="example-input-invalid" />
 
-### Disabled
+#### Disabled
+
+<ComponentPreview componentName="color-picker" fileName="example-input-disabled" />
+
+### Examples
+
+#### With Field
+
+The Field component helps manage form-related state and accessibility attributes of a color picker.
+
+<ComponentPreview componentName="color-picker" fileName="example-with-field" />
+
+#### Channel Editing
+
+Channel inputs for editing hex, RGB, or alpha values.
+
+<ComponentPreview componentName="color-picker" fileName="example-input-channel" />
+
+#### With Swatch
+
+Input with `<ColorPickerSwatchPreview />` showing the current color alongside the hex input.
+
+<ComponentPreview componentName="color-picker" fileName="example-input-with-swatch-preview" />
+
+#### With Popover
+
+Input with trigger and popover content for area, hue, and alpha selection.
+
+<ComponentPreview componentName="color-picker" fileName="example-input-with-popover" />
+
+## Popover
+
+Color picker with trigger and popover content.
+
+### Usage
+
+```tsx
+import {
+  ColorPicker,
+  ColorPickerArea,
+  ColorPickerAreaThumb,
+  ColorPickerContent,
+  ColorPickerTrigger,
+} from "@/components/ui/color-picker";
+```
+
+```tsx showLineNumbers
+<ColorPicker>
+  <ColorPickerTrigger />
+  <ColorPickerContent>
+    <ColorPickerArea>
+      <ColorPickerAreaThumb />
+    </ColorPickerArea>
+  </ColorPickerContent>
+</ColorPicker>
+```
+
+### State
+
+#### Disabled
 
 Use the `disabled` prop to disable the color picker.
 
-<ComponentPreview componentName="color-picker" fileName="example-disabled" />
+<ComponentPreview componentName="color-picker" fileName="example-popover-disabled" />
 
-### Inline
+### Examples
+
+#### With Channel Editing
+
+Popover with area, sliders, and input fields for editing red, green, and blue values.
+
+<ComponentPreview componentName="color-picker" fileName="example-popover-with-channel-editing" />
+
+#### With Only Sliders
+
+Popover with hue, saturation, lightness, and alpha sliders only, no color area.
+
+<ComponentPreview componentName="color-picker" fileName="example-popover-sliders-only" />
+
+#### With Swatch Picker
+
+Popover with preset color swatches for quick selection.
+
+<ComponentPreview componentName="color-picker" fileName="example-popover-with-swatch-picker" />
+
+## Swatch Picker
+
+A simple color picker with only preset color swatches using SwatchTrigger for selection.
+
+### Usage
+
+```tsx
+import {
+  ColorPicker,
+  ColorPickerSwatchTrigger,
+  ColorPickerSwatchGroup,
+  ColorPickerSwatch,
+  ColorPickerSwatchIndicator,
+} from "@/components/ui/color-picker";
+```
+
+```tsx showLineNumbers
+<ColorPicker>
+  <ColorPickerSwatchGroup>
+    <ColorPickerSwatchTrigger value="#0485F7">
+      <ColorPickerSwatch value="#0485F7">
+          <ColorPickerSwatchIndicator />
+      </ColorPickerSwatch>
+    </ColorPickerSwatchTrigger>
+  </ColorPickerSwatchGroup>
+</ColorPicker>
+```
+
+### Controlled
+
+Use the `value` and `onValueChange` props to programmatically control the swatch picker's state.
+
+<ComponentPreview componentName="color-picker" fileName="example-swatch-picker-controlled" />
+
+### State
+
+#### Disabled
+
+Use the `disabled` prop to disable the swatch picker.
+
+<ComponentPreview componentName="color-picker" fileName="example-swatch-picker-disabled" />
+
+### Examples
+
+#### Custom Size
+
+Customize swatch size using the `size-*` utility class on `<ColorPickerSwatchTrigger />`.
+
+<ComponentPreview componentName="color-picker" fileName="example-swatch-picker-custom-size" />
+
+#### Custom Radius
+
+Override the default rounded style on `<ColorPickerSwatchTrigger />` using the `rounded-*` utility class.
+
+<ComponentPreview componentName="color-picker" fileName="example-swatch-picker-custom-radius" />
+
+#### Custom Indicator
+
+Replace the default check icon with a custom indicator via children of `ColorPickerSwatchIndicator`.
+
+<ComponentPreview componentName="color-picker" fileName="example-swatch-picker-custom-indicator" />
+
+## Area
+
+2D color picker for selecting saturation and lightness.
+
+### Area Only
 
 Render the color picker inline without a popover by using the `inline` prop.
 
-<ComponentPreview componentName="color-picker" fileName="example-inline" />
+<ComponentPreview componentName="color-picker" fileName="example-area-only" />
 
-### Input Only
+### Color Channels
 
-A minimal color picker with just an input field, value swatch, and eye dropper trigger.
+<ComponentPreview componentName="color-picker" fileName="example-area-channels" />
 
-<ComponentPreview componentName="color-picker" fileName="example-input-only" />
+### With Dots
+
+<ComponentPreview componentName="color-picker" fileName="example-area-dots" />
+
+## Slider
+
+Channel sliders for hue, saturation, lightness, RGB, or alpha.
 
 ### Slider Only
 
-Display only the channel sliders for RGB color selection.
+Display the color area with channel sliders for hue and alpha.
 
-<ComponentPreview componentName="color-picker" fileName="example-slider-only" /> */}
-{/* 
-### Swatch Only
+<ComponentPreview componentName="color-picker" fileName="example-slider-only" />
 
-A simple color picker with only preset color swatches.
+### Default
 
-<ComponentPreview componentName="color-picker" fileName="example-swatch-only" />
+<ComponentPreview componentName="color-picker" fileName="example-slider-default" />
 
-### Swatches
+### Controlled
 
-Include preset color swatches in the color picker content for quick color selection.
+<ComponentPreview componentName="color-picker" fileName="example-slider-controlled" />
 
-<ComponentPreview componentName="color-picker" fileName="example-swatches" />
+### Disabled
 
-### Value Swatch
+<ComponentPreview componentName="color-picker" fileName="example-slider-disabled" />
 
-Display the current color value as a swatch alongside the color area and sliders.
+### Alpha Channel
 
-<ComponentPreview componentName="color-picker" fileName="example-value-swatch" />
+<ComponentPreview componentName="color-picker" fileName="example-slider-alpha-channel" />
 
-### With Field
+### HSL Channels
 
-The Field component helps manage form-related state and accessibility attributes of a color picker. It includes handling ARIA labels, helper text, and error text.
+<ComponentPreview componentName="color-picker" fileName="example-slider-hsl-channels" />
 
-<ComponentPreview componentName="color-picker" fileName="example-with-field" /> */}
+### RGB Channels
+
+<ComponentPreview componentName="color-picker" fileName="example-slider-rgb-channels" />
+
+### Vertical
+
+<ComponentPreview componentName="color-picker" fileName="example-slider-vertical" />
+
+## API Reference
+
+For a complete list of props, see the [Ark UI Color Picker documentation](https://ark-ui.com/docs/components/color-picker#api-reference).

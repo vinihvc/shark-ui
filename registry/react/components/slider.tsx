@@ -84,8 +84,8 @@ export const Slider = (props: SliderProps) => {
             "bg-input/64",
             "rounded-full",
             "select-none overflow-hidden",
-            "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full",
-            "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
+            "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
+            "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2"
           )}
           data-slot="slider-track"
         >
@@ -109,7 +109,7 @@ export const Slider = (props: SliderProps) => {
               className={cn(
                 "relative",
                 "shrink-0",
-                "size-4",
+                "size-4.5",
                 "bg-white",
                 "rounded-full shadow-xs/5 ring-2 ring-border",
                 "cursor-grab select-none",

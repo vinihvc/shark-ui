@@ -45,27 +45,28 @@ export const ClipboardInput = (
 
   return (
     <ArkClipboard.Input
+      className={cn(inputVariants(), className)}
       data-slot="clipboard-input"
       {...rest}
-      className={cn(inputVariants(), className)}
     />
   );
 };
 
 const clipboardValueVariants = tv({
   base: [
-    "flex items-center",
-    "rounded-md",
-    "text-muted-foreground text-sm",
-    "border",
+    "inline-flex items-center",
+    "px-3",
+    "bg-transparent dark:bg-input/30",
+    "text-base md:text-sm",
+    "rounded-lg border border-input shadow-md/5",
   ],
   variants: {
     size: {
-      xs: "h-6 px-3",
-      sm: "h-7 px-3",
-      md: "h-8 px-4",
-      lg: "h-9 px-6",
-      xl: "h-10 px-8",
+      xs: "h-6",
+      sm: "h-7",
+      md: "h-8",
+      lg: "h-9",
+      xl: "h-10",
     },
   },
   defaultVariants: {
@@ -96,7 +97,6 @@ export const ClipboardIndicator = (
 
   return (
     <ArkClipboard.Indicator
-      asChild
       data-slot="clipboard-indicator"
       {...rest}
       className="pointer-events-none"

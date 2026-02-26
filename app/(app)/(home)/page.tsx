@@ -21,7 +21,7 @@ const HomePage = () => {
         <div>
           <Badge asChild variant="secondary">
             <NavLink href="/docs/changelog">
-              <StarIcon />
+              <StarIcon aria-hidden />
               Beta Version
             </NavLink>
           </Badge>
@@ -48,7 +48,7 @@ const HomePage = () => {
           <Button asChild size="lg" variant="outline">
             <NavLink href="/docs/components">
               View components
-              <ArrowRightIcon />
+              <ArrowRightIcon aria-hidden />
             </NavLink>
           </Button>
         </div>

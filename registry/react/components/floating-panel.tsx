@@ -2,7 +2,7 @@
 
 import { Portal } from "@ark-ui/react";
 import { FloatingPanel as ArkFloatingPanel } from "@ark-ui/react/floating-panel";
-import { Maximize, Minus, SquareArrowOutUpRight } from "lucide-react";
+import { Maximize, MinusIcon, SquareArrowOutUpRight } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
@@ -42,7 +42,7 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
   return (
     <Portal>
       <ArkFloatingPanel.Positioner
-        className="start-(--x) top-(--y) z-50"
+        className="inset-s-(--x) top-(--y) z-50"
         data-slot="floating-panel-positioner"
       >
         <ArkFloatingPanel.Content
@@ -118,9 +118,13 @@ export const FloatingPanelMinimize = (props: FloatingPanelMinimizeProps) => {
 
   return (
     <ArkFloatingPanel.StageTrigger {...rest} asChild stage="minimized">
-      <Button asChild={asChild} size="icon-sm" variant="ghost">
-        <Minus />
-        <span className="sr-only">Minimize</span>
+      <Button
+        aria-label="Minimize"
+        asChild={asChild}
+        size="icon-sm"
+        variant="ghost"
+      >
+        <MinusIcon />
       </Button>
     </ArkFloatingPanel.StageTrigger>
   );
@@ -137,9 +141,13 @@ export const FloatingPanelMaximize = (props: FloatingPanelMaximizeProps) => {
 
   return (
     <ArkFloatingPanel.StageTrigger {...rest} asChild stage="maximized">
-      <Button asChild={asChild} size="icon-sm" variant="ghost">
+      <Button
+        aria-label="Maximize"
+        asChild={asChild}
+        size="icon-sm"
+        variant="ghost"
+      >
         <Maximize />
-        <span className="sr-only">Maximize</span>
       </Button>
     </ArkFloatingPanel.StageTrigger>
   );
@@ -156,9 +164,13 @@ export const FloatingPanelRestore = (props: FloatingPanelRestoreProps) => {
 
   return (
     <ArkFloatingPanel.StageTrigger {...rest} asChild stage="default">
-      <Button asChild={asChild} size="icon-sm" variant="outline">
+      <Button
+        aria-label="Restore"
+        asChild={asChild}
+        size="icon-sm"
+        variant="outline"
+      >
         <SquareArrowOutUpRight />
-        <span className="sr-only">Restore</span>
       </Button>
     </ArkFloatingPanel.StageTrigger>
   );

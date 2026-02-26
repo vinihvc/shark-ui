@@ -158,9 +158,8 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <Menu>
           <MenuTrigger asChild>
-            <Button className="size-8 p-0" variant="ghost">
-              <span className="sr-only">Open</span>
-              <MoreHorizontalIcon />
+            <Button aria-label="Open" className="size-8 p-0" variant="ghost">
+              <MoreHorizontalIcon aria-hidden />
             </Button>
           </MenuTrigger>
 

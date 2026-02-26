@@ -1,7 +1,7 @@
 "use client";
 
 import { NumberInput as ArkNumberInput } from "@ark-ui/react/number-input";
-import { Minus, Plus } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Input, type InputProps } from "@/registry/react/components/input";
@@ -57,13 +57,13 @@ const NumberFieldGroup = (
       className={cn(
         "relative",
         "flex w-full justify-between",
-        "bg-background",
+        "bg-transparent dark:bg-input/30",
         "text-base",
-        "rounded-lg border border-input shadow-xs ring-ring/24",
+        "rounded-lg border border-input shadow-md/5 ring-ring/32",
         "transition-shadow",
-        "focus-within:border-ring focus-within:ring-[3px]",
+        "focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
-        "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
+        "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
         "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
         className
       )}
@@ -86,7 +86,7 @@ const NumberFieldDecrement = (
         "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
         "flex shrink-0",
         "text-foreground",
-        "rounded-none rounded-s-[calc(var(--radius-md)-1px)]",
+        "rounded-none rounded-s-[calc(var(--radius-lg)-1px)]",
         "cursor-pointer",
         "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
         className
@@ -94,9 +94,8 @@ const NumberFieldDecrement = (
       data-slot="number-input-decrement"
       {...rest}
     >
-      <Button variant="ghost">
-        <Minus aria-hidden />
-        <span className="sr-only">Decrement</span>
+      <Button aria-label="Decrement" variant="ghost">
+        <MinusIcon aria-hidden />
       </Button>
     </ArkNumberInput.DecrementTrigger>
   );
@@ -115,7 +114,7 @@ const NumberFieldIncrement = (
         "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
         "flex shrink-0",
         "text-foreground",
-        "rounded-none rounded-e-[calc(var(--radius-md)-1px)]",
+        "rounded-none rounded-e-[calc(var(--radius-lg)-1px)]",
         "cursor-pointer",
         "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
         className
@@ -123,9 +122,8 @@ const NumberFieldIncrement = (
       data-slot="number-input-increment"
       {...rest}
     >
-      <Button variant="ghost">
-        <Plus aria-hidden />
-        <span className="sr-only">Increment</span>
+      <Button aria-label="Increment" variant="ghost">
+        <PlusIcon aria-hidden />
       </Button>
     </ArkNumberInput.IncrementTrigger>
   );

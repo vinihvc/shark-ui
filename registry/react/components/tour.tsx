@@ -7,7 +7,7 @@ import {
   type UseTourReturn,
   useTour,
 } from "@ark-ui/react/tour";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, XIcon } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -168,15 +168,14 @@ export const TourContent = (props: TourContentProps) => {
           {children}
 
           {!!showCloseButton && (
-            <TourClose asChild className="absolute end-4 top-4">
+            <TourClose asChild className="absolute inset-e-4 top-4">
               <Button
+                aria-label="Close"
                 className="size-8 border-none opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >
-                <X />
-
-                <span className="sr-only">Close</span>
+                <XIcon />
               </Button>
             </TourClose>
           )}

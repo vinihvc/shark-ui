@@ -81,24 +81,24 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                           {neighbours.previous ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.previous.url}>
-                                <ChevronLeftIcon />
+                                <ChevronLeftIcon aria-hidden />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronLeftIcon />
+                              <ChevronLeftIcon aria-hidden />
                             </Button>
                           )}
 
                           {neighbours.next ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.next.url}>
-                                <ChevronRightIcon />
+                                <ChevronRightIcon aria-hidden />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronRightIcon />
+                              <ChevronRightIcon aria-hidden />
                             </Button>
                           )}
                         </div>
@@ -120,7 +120,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                               rel="noreferrer"
                               target="_blank"
                             >
-                              Docs <ArrowUpRightIcon />
+                              Docs <ArrowUpRightIcon aria-hidden />
                             </a>
                           </Badge>
                         )}
@@ -132,7 +132,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                               rel="noreferrer"
                               target="_blank"
                             >
-                              API <ArrowUpRightIcon />
+                              API <ArrowUpRightIcon aria-hidden />
                             </a>
                           </Badge>
                         )}

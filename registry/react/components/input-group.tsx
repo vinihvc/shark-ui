@@ -8,28 +8,47 @@ import { Button } from "@/registry/react/components/button";
 import { Input } from "@/registry/react/components/input";
 import { Textarea } from "@/registry/react/components/textarea";
 
-export const InputGroup = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
+const inpuGroupVariants = tv({
+  base: [
+    "group/input-group",
+    "relative",
+    "w-full min-w-0",
+    "flex items-center",
+    "bg-background dark:bg-input/30",
+    "rounded-lg border border-input shadow-md/5",
+    "transition-[color,box-shadow]",
+    "has-[>textarea]:h-auto",
+    "has-[>[data-align=inline-start]]:[&>input]:ps-2",
+    "has-[>[data-align=inline-end]]:[&>input]:pe-2",
+    "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
+    "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
+    "outline-none focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
+    "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-[3px] has-[[data-slot][aria-invalid=true]]:ring-destructive/24",
+    "dark:has-[[data-slot][aria-invalid=true]]:border-destructive-foreground dark:has-[[data-slot][aria-invalid=true]]:ring-destructive-fore/40",
+  ],
+  variants: {
+    size: {
+      sm: ["h-7"],
+      md: ["h-8"],
+      lg: ["h-9"],
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+});
+
+interface InputGroupProps
+  extends React.ComponentProps<typeof ark.div>,
+    VariantProps<typeof inpuGroupVariants> {}
+
+export const InputGroup = (props: InputGroupProps) => {
+  const { size = "md", className, ...rest } = props;
 
   return (
     <ark.div
-      className={cn(
-        "group/input-group",
-        "relative",
-        "h-9 w-full min-w-0",
-        "flex items-center",
-        "bg-background dark:bg-input/30",
-        "rounded-md border border-input shadow-xs",
-        "transition-[color,box-shadow]",
-        "has-[>textarea]:h-auto",
-        "has-[>[data-align=inline-start]]:[&>input]:ps-2",
-        "has-[>[data-align=inline-end]]:[&>input]:pe-2",
-        "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
-        "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
-        "outline-none has-[[data-slot=input-group-control]:focus-visible]:border-primary has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-ring/32",
-        "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
-        className
-      )}
+      className={cn(inpuGroupVariants({ size }), className)}
+      data-size={size}
       data-slot="input-group"
       role="group"
       {...rest}
@@ -164,7 +183,12 @@ export const InputGroupInput = (props: React.ComponentProps<typeof Input>) => {
   return (
     <Input
       className={cn(
-        "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 shadow-none",
+        "bg-transparent",
+        "rounded-none border-0",
+        "focus-visible:ring-0",
+        "disabled:bg-transparent aria-invalid:ring-0",
+        "dark:bg-transparent dark:disabled:bg-transparent",
         className
       )}
       data-slot="input-group-control"

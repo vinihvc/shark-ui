@@ -1,7 +1,7 @@
 import { FormatNumber } from "@/registry/react/components/format";
 
 const FormatNumberCurrencyExample = () => (
-  <div className="flex flex-col gap-3">
+  <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">USD: </span>
       <FormatNumber currency="USD" style="currency" value={99.99} />

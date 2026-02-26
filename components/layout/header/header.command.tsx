@@ -171,7 +171,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
                   item={item}
                   key={item.value}
                 >
-                  <ComponentIcon />
+                  <ComponentIcon aria-hidden />
                   {item.label}
                 </CommandItem>
               )}

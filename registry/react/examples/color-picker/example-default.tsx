@@ -3,37 +3,45 @@
 import {
   ColorPicker,
   ColorPickerArea,
-  ColorPickerAreaBackground,
   ColorPickerAreaThumb,
-  ColorPickerChannelInput,
-  ColorPickerChannelSlider,
   ColorPickerContent,
-  ColorPickerControl,
   ColorPickerEyeDropperTrigger,
+  ColorPickerInput,
+  ColorPickerSlider,
+  ColorPickerSwatchPreview,
   ColorPickerTransparencyGrid,
   ColorPickerTrigger,
-  parseColor,
 } from "@/registry/react/components/color-picker";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/react/components/input-group";
 
 const ColorPickerDemo = () => (
-  <ColorPicker className="w-full max-w-64" defaultValue={parseColor("#eb5e41")}>
-    <ColorPickerControl>
-      <ColorPickerChannelInput channel="hex" />
-      <ColorPickerTrigger />
-    </ColorPickerControl>
+  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41">
+    <InputGroup>
+      <ColorPickerTrigger asChild>
+        <InputGroupAddon>
+          <ColorPickerSwatchPreview />
+        </InputGroupAddon>
+      </ColorPickerTrigger>
+      <ColorPickerInput asChild>
+        <InputGroupInput />
+      </ColorPickerInput>
+    </InputGroup>
 
     <ColorPickerContent>
       <ColorPickerArea>
-        <ColorPickerAreaBackground />
         <ColorPickerAreaThumb />
       </ColorPickerArea>
       <div className="flex items-center gap-3">
         <ColorPickerEyeDropperTrigger />
         <div className="flex flex-1 flex-col gap-2.5">
-          <ColorPickerChannelSlider channel="hue" />
-          <ColorPickerChannelSlider channel="alpha">
+          <ColorPickerSlider channel="hue" />
+          <ColorPickerSlider channel="alpha">
             <ColorPickerTransparencyGrid />
-          </ColorPickerChannelSlider>
+          </ColorPickerSlider>
         </div>
       </div>
     </ColorPickerContent>

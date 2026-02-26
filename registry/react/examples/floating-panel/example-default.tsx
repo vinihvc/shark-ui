@@ -50,9 +50,8 @@ const FloatingPanelDemo = () => {
             <FloatingPanelRestore />
 
             <FloatingPanelClose asChild>
-              <Button size="icon-sm">
-                <XIcon />
-                <span className="sr-only">Close</span>
+              <Button aria-label="Close" size="icon-sm">
+                <XIcon aria-hidden />
               </Button>
             </FloatingPanelClose>
           </FloatingPanelControl>

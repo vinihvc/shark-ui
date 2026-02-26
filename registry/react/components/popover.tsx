@@ -3,7 +3,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { Popover as ArkPopover } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
-import { X } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { ScrollArea } from "./scroll-area";
@@ -81,13 +81,12 @@ export const PopoverContent = (props: PopoverContentProps) => {
           {!!showCloseButton && (
             <PopoverClose asChild>
               <Button
+                aria-label="Close"
                 className="absolute inset-e-2 top-2 opacity-64 hover:opacity-100"
                 size="icon-md"
                 variant="ghost"
               >
-                <X />
-
-                <span className="sr-only">Close</span>
+                <XIcon />
               </Button>
             </PopoverClose>
           )}

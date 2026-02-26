@@ -2,34 +2,17 @@
 
 import {
   ColorPicker,
-  ColorPickerChannelSlider,
+  ColorPickerSlider,
   ColorPickerTransparencyGrid,
-  ColorPickerValue,
-  ColorPickerValueSwatch,
-  parseColor,
 } from "@/registry/react/components/color-picker";
 
 const Example = () => (
-  <ColorPicker
-    className="w-full max-w-64"
-    defaultFormat="rgba"
-    defaultValue={parseColor("#5dd016")}
-    inline
-  >
-    <div className="flex items-center gap-3">
-      <div className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-md border shadow-sm">
+  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" inline>
+    <div className="flex flex-1 flex-col gap-4">
+      <ColorPickerSlider channel="hue" />
+      <ColorPickerSlider channel="alpha">
         <ColorPickerTransparencyGrid />
-        <ColorPickerValueSwatch />
-      </div>
-      <ColorPickerValue className="font-medium text-sm" />
-    </div>
-    <div className="flex flex-col gap-2.5">
-      <ColorPickerChannelSlider channel="red" />
-      <ColorPickerChannelSlider channel="green" />
-      <ColorPickerChannelSlider channel="blue" />
-      <ColorPickerChannelSlider channel="alpha">
-        <ColorPickerTransparencyGrid />
-      </ColorPickerChannelSlider>
+      </ColorPickerSlider>
     </div>
   </ColorPicker>
 );

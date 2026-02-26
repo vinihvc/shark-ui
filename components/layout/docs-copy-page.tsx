@@ -48,8 +48,8 @@ export const DocsCopyPage = (props: DocsCopyPageProps) => {
 
         <Menu positioning={{ placement: "bottom-end" }}>
           <MenuTrigger asChild>
-            <Button size="icon-sm" variant="outline">
-              <ChevronDownIcon />
+            <Button aria-label="Open" size="icon-sm" variant="outline">
+              <ChevronDownIcon aria-hidden />
             </Button>
           </MenuTrigger>
 

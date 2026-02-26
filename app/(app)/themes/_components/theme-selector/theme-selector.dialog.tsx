@@ -41,13 +41,12 @@ export const ThemeSelectorDialog = (
       >
         <ClipboardTrigger asChild>
           <Button
+            aria-label="Copy"
             className="rounded-r-none rounded-l-md"
             size="icon-sm"
             variant="outline"
           >
             <ClipboardIndicator />
-
-            <span className="sr-only">Copy</span>
           </Button>
         </ClipboardTrigger>
       </Clipboard>
@@ -55,7 +54,7 @@ export const ThemeSelectorDialog = (
       <Dialog>
         <DialogTrigger asChild>
           <Button size="sm" variant="outline">
-            Open theme <ChevronDownIcon className="opacity-64" />
+            Open theme <ChevronDownIcon aria-hidden className="opacity-64" />
           </Button>
         </DialogTrigger>
 

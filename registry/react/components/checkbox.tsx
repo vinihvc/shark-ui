@@ -32,7 +32,7 @@ export const checkboxVariants = tv({
     "dark:data-focus-visible:data-invalid:border-destructive-foreground/64 dark:data-focus-visible:data-invalid:ring-destructive-foreground/48",
     "data-disabled:opacity-64",
     "[[data-disabled],[data-checked],[data-invalid]]:shadow-none",
-    "data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/20",
+    "data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24",
     "dark:data-invalid:border-destructive-foreground dark:data-invalid:text-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
     "dark:not-data-checked:bg-input/32 dark:data-invalid:ring-destructive-foreground/24",
   ],

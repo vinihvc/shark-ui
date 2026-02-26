@@ -1,7 +1,7 @@
 import { FormatRelativeTime } from "@/registry/react/components/format";
 
 const FormatRelativeTimeShortExample = () => (
-  <div className="flex flex-col gap-3">
+  <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">Long: </span>
       <FormatRelativeTime style="long" value={new Date("2025-05-05")} />

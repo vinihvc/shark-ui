@@ -1,52 +1,24 @@
-"use client";
-
 import {
   ColorPicker,
-  ColorPickerArea,
-  ColorPickerAreaBackground,
-  ColorPickerAreaThumb,
-  ColorPickerChannelInput,
-  ColorPickerChannelSlider,
-  ColorPickerContent,
-  ColorPickerControl,
-  ColorPickerEyeDropperTrigger,
-  ColorPickerTransparencyGrid,
-  ColorPickerTrigger,
-  parseColor,
+  ColorPickerInput,
 } from "@/registry/react/components/color-picker";
 import {
   Field,
-  FieldError,
   FieldHelper,
+  FieldLabel,
 } from "@/registry/react/components/field";
+import { Input } from "@/registry/react/components/input";
 
 const Example = () => (
-  <Field className="flex w-full max-w-sm flex-col gap-1">
-    <ColorPicker defaultValue={parseColor("#eb5e41")}>
-      <ColorPickerControl>
-        <ColorPickerChannelInput channel="hex" />
-        <ColorPickerChannelInput channel="alpha" />
-        <ColorPickerTrigger />
-      </ColorPickerControl>
-      <ColorPickerContent>
-        <ColorPickerArea>
-          <ColorPickerAreaBackground />
-          <ColorPickerAreaThumb />
-        </ColorPickerArea>
-        <div className="flex items-center gap-3">
-          <ColorPickerEyeDropperTrigger />
-          <div className="flex flex-1 flex-col gap-2.5">
-            <ColorPickerChannelSlider channel="hue" />
-            <ColorPickerChannelSlider channel="alpha">
-              <ColorPickerTransparencyGrid />
-            </ColorPickerChannelSlider>
-          </div>
-        </div>
-      </ColorPickerContent>
-    </ColorPicker>
-    <FieldHelper>Additional Info</FieldHelper>
-    <FieldError>Error Info</FieldError>
-  </Field>
+  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41">
+    <Field>
+      <FieldLabel>Color</FieldLabel>
+      <ColorPickerInput asChild>
+        <Input />
+      </ColorPickerInput>
+      <FieldHelper>Enter your brand's primary color</FieldHelper>
+    </Field>
+  </ColorPicker>
 );
 
 export default Example;

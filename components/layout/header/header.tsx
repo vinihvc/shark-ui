@@ -59,13 +59,17 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               <HeaderCommand tree={pageTree} />
             </div>
 
-            <Button asChild size="icon-md" variant="ghost">
+            <Button
+              aria-label="Visit GitHub"
+              asChild
+              size="icon-md"
+              variant="ghost"
+            >
               <a
                 href="https://github.com/vinihvc/shark-ui"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className="sr-only">GitHub</span>
                 <GithubIcon />
               </a>
             </Button>

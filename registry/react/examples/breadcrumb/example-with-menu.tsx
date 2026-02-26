@@ -35,7 +35,7 @@ const Example = () => (
               <BreadcrumbEllipsis />
             </Button>
           </MenuTrigger>
-          <MenuContent className="w-48">
+          <MenuContent className="w-40">
             <MenuItem asChild value="docs">
               <a href="#">Documentation</a>
             </MenuItem>

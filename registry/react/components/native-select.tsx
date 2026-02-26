@@ -19,7 +19,7 @@ export const nativeSelectVariants = tv({
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
     "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
-    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
+    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
     "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
   ],
   variants: {

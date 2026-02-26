@@ -8,7 +8,7 @@ import {
 
 const Example = () => (
   <Announcement asChild>
-    <Link href="/logs">
+    <Link href="#">
       <AnnouncementBadge variant="success">
         <CheckCircleIcon /> Deployed
       </AnnouncementBadge>

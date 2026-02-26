@@ -18,7 +18,7 @@ export const buttonVariants = tv({
     "data-disabled:pointer-events-none data-disabled:opacity-64",
     "aria-disabled:pointer-events-none aria-disabled:opacity-64",
     "data-[state=loading]:pointer-events-none",
-    "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
+    "aria-invalid:border-destructive aria-invalid:ring-destructive/24",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {

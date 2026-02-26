@@ -1,7 +1,7 @@
 import { FormatByte } from "@/registry/react/components/format";
 
 const FormatByteUnitSystemExample = () => (
-  <div className="flex flex-col gap-3">
+  <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">Decimal (1000): </span>
       <FormatByte unitSystem="decimal" value={1024} />

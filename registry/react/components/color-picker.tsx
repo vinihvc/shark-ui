@@ -3,38 +3,69 @@
 import { Portal } from "@ark-ui/react";
 import {
   ColorPicker as ArkColorPicker,
+  type ColorPickerValueChangeDetails,
   parseColor as parseColorArk,
 } from "@ark-ui/react/color-picker";
-import { Pipette } from "lucide-react";
-import type React from "react";
+import { ark } from "@ark-ui/react/factory";
+import { CheckIcon, Pipette } from "lucide-react";
+import React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { Input } from "./input";
+import { Button } from "@/registry/react/components/button";
 
 export const parseColor = parseColorArk;
 
-export const ColorPicker = (
-  props: React.ComponentProps<typeof ArkColorPicker.Root>
-) => {
+export interface ColorPickerProps
+  extends Omit<
+    React.ComponentProps<typeof ArkColorPicker.Root>,
+    "defaultValue" | "value"
+  > {
+  /**
+   * The default value of the color picker.
+   */
+  defaultValue?: string;
+  /**
+   * The value of the color picker.
+   */
+  value?: string;
+}
+
+export const ColorPicker = (props: ColorPickerProps) => {
   const {
+    value,
+    defaultValue,
+    positioning = {
+      placement: "top-start",
+    },
     lazyMount = true,
     unmountOnExit = true,
     className,
+    onValueChange,
     children,
     ...rest
   } = props;
 
+  const [internalValue, setInternalValue] = React.useState(defaultValue);
+
+  const isControlled = value !== undefined;
+
+  const handleChangeValue = (e: ColorPickerValueChangeDetails) => {
+    if (isControlled) {
+      onValueChange?.(e);
+    } else {
+      setInternalValue(e.valueAsString);
+    }
+  };
+
   return (
     <ArkColorPicker.Root
-      className={cn(
-        "w-full",
-        "flex flex-col gap-2",
-        "text-foreground",
-        className
-      )}
+      className={cn("w-fit", "flex gap-2", className)}
       data-slot="color-picker"
+      defaultValue={internalValue ? parseColor(internalValue) : undefined}
       lazyMount={lazyMount}
+      onValueChange={handleChangeValue}
+      positioning={positioning}
       unmountOnExit={unmountOnExit}
+      value={isControlled ? parseColor(value) : undefined}
       {...rest}
     >
       {children}
@@ -61,39 +92,7 @@ export const ColorPickerControl = (
 export const ColorPickerTrigger = (
   props: React.ComponentProps<typeof ArkColorPicker.Trigger>
 ) => {
-  const { className, children, ...rest } = props;
-
-  return (
-    <ArkColorPicker.Trigger asChild data-slot="color-picker-trigger" {...rest}>
-      <Button
-        className={cn("p-1 data-disabled:grayscale", className)}
-        clickEffect={false}
-        size="icon-md"
-        variant="outline"
-      >
-        <div className="relative size-full shrink-0 overflow-hidden rounded-sm border">
-          <ColorPickerTransparencyGrid />
-          <ColorPickerValueSwatch />
-        </div>
-      </Button>
-    </ArkColorPicker.Trigger>
-  );
-};
-
-export const ColorPickerChannelInput = (
-  props: React.ComponentProps<typeof ArkColorPicker.ChannelInput>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkColorPicker.ChannelInput
-      asChild
-      data-slot="color-picker-channel-input"
-      {...rest}
-    >
-      <Input className={cn(className)} />
-    </ArkColorPicker.ChannelInput>
-  );
+  return <ArkColorPicker.Trigger data-slot="color-picker-trigger" {...props} />;
 };
 
 export const ColorPickerTransparencyGrid = (
@@ -114,19 +113,6 @@ export const ColorPickerTransparencyGrid = (
   );
 };
 
-export const ColorPickerValueSwatch = (
-  props: React.ComponentProps<typeof ArkColorPicker.ValueSwatch>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkColorPicker.ValueSwatch
-      className={cn("z-1 size-full", className)}
-      {...rest}
-    />
-  );
-};
-
 export const ColorPickerContent = (
   props: React.ComponentProps<typeof ArkColorPicker.Content>
 ) => {
@@ -137,14 +123,15 @@ export const ColorPickerContent = (
       <ArkColorPicker.Positioner data-slot="color-picker-positioner">
         <ArkColorPicker.Content
           className={cn(
+            "[--space:--spacing(3)]",
             "z-50",
             "relative",
-            "max-h-96 min-w-64",
+            "w-full min-w-56",
             "flex flex-col gap-3",
-            "p-4",
+            "p-(--space)",
             "origin-(--transform-origin)",
             "bg-popover",
-            "rounded-xl border shadow-lg/5",
+            "rounded-2xl border shadow-lg/5",
             "outline-none",
             "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:animate-in",
             "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out",
@@ -158,82 +145,41 @@ export const ColorPickerContent = (
   );
 };
 
-export const ColorPickerArea = (
-  props: React.ComponentProps<typeof ArkColorPicker.Area>
+export const ColorPickerView = (
+  props: React.ComponentProps<typeof ArkColorPicker.View>
 ) => {
   const { className, ...rest } = props;
   return (
-    <ArkColorPicker.Area
-      className={cn(
-        "relative",
-        "h-40",
-        "overflow-hidden rounded-md",
-        "touch-none",
-        className
-      )}
-      data-slot="color-picker-area"
+    <ArkColorPicker.View
+      className={cn("relative h-full flex-1", className)}
+      data-slot="color-picker-view"
       {...rest}
     />
   );
 };
 
-export const ColorPickerAreaBackground = (
-  props: React.ComponentProps<typeof ArkColorPicker.AreaBackground>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkColorPicker.AreaBackground
-      className={cn("size-full", "rounded-lg border", className)}
-      data-slot="color-picker-area-background"
-      {...rest}
-    />
-  );
-};
-
-export const ColorPickerAreaThumb = (
-  props: React.ComponentProps<typeof ArkColorPicker.AreaThumb>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkColorPicker.AreaThumb
-      className={cn(
-        "-translate-x-1/2 -translate-y-1/2",
-        "size-4",
-        "rounded-full border-2 border-white shadow-xs/5",
-        "outline-none ring-border/64 focus-visible:ring-1",
-        className
-      )}
-      data-slot="color-picker-area-thumb"
-      {...rest}
-    />
-  );
-};
-
-export const ColorPickerChannelSlider = (
+export const ColorPickerSlider = (
   props: React.ComponentProps<typeof ArkColorPicker.ChannelSlider>
 ) => {
   const { className, children, ...rest } = props;
 
   return (
     <ArkColorPicker.ChannelSlider
-      className={cn("relative h-2.5 flex-1", "rounded-full border", className)}
+      className={cn("relative h-full flex-1", "rounded-full border", className)}
       data-slot="color-picker-channel-slider"
       {...rest}
     >
       {children}
 
       <ArkColorPicker.ChannelSliderTrack
-        className="h-2.5 w-full rounded-sm"
+        className="h-2 w-full rounded-sm"
         data-slot="color-picker-channel-slider-track"
       />
       <ArkColorPicker.ChannelSliderThumb
         className={cn(
-          "size-3.5",
-          "-translate-x-1/2 -translate-y-1/2",
-          "rounded-full",
-          "border-2 border-white shadow-xs/5",
+          "size-4.5",
+          "-translate-1/2",
+          "rounded-full border-[3px] border-white shadow-[0_0_0_1px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(0,0,0,0.1)]",
           "outline-none ring-1 ring-border/64"
         )}
         data-slot="color-picker-channel-slider-thumb"
@@ -266,7 +212,7 @@ export const ColorPickerSwatchGroup = (
   const { className, ...rest } = props;
   return (
     <ArkColorPicker.SwatchGroup
-      className={cn("flex flex-wrap gap-2", className)}
+      className={cn("flex flex-wrap items-center gap-2", className)}
       data-slot="color-picker-swatch-group"
       {...rest}
     />
@@ -277,10 +223,18 @@ export const ColorPickerSwatchTrigger = (
   props: React.ComponentProps<typeof ArkColorPicker.SwatchTrigger>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkColorPicker.SwatchTrigger
       className={cn(
-        "flex items-center justify-center rounded-md p-0 outline-none ring-border/64 focus-visible:ring-2",
+        "relative",
+        "size-8",
+        "flex items-center justify-center",
+        "rounded-full",
+        "transition-[border-color,box-shadow] duration-100 ease-out will-change-transform",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
+        "data-[state=checked]:shadow-md data-[state=checked]:ring-(--color) data-[state=checked]:ring-2",
         className
       )}
       data-slot="color-picker-swatch-trigger"
@@ -293,10 +247,17 @@ export const ColorPickerSwatch = (
   props: React.ComponentProps<typeof ArkColorPicker.Swatch>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkColorPicker.Swatch
       className={cn(
-        "relative grid size-8 shrink-0 place-items-center overflow-hidden rounded-md border shadow-sm",
+        "size-full",
+        "shrink-0",
+        "overflow-hidden",
+        "rounded-[inherit]",
+        "transition-transform duration-100 ease-out will-change-transform",
+        "not-[data-state=checked]:hover:scale-110",
+        "data-[state=checked]:scale-[0.8]",
         className
       )}
       data-slot="color-picker-swatch"
@@ -308,16 +269,24 @@ export const ColorPickerSwatch = (
 export const ColorPickerSwatchIndicator = (
   props: React.ComponentProps<typeof ArkColorPicker.SwatchIndicator>
 ) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
+
   return (
     <ArkColorPicker.SwatchIndicator
       className={cn(
-        "absolute inset-0 flex items-center justify-center text-sm text-white drop-shadow-sm [&_svg]:size-4",
+        "absolute inset-0 z-10",
+        "flex items-center justify-center",
+        "text-white",
+        "pointer-events-none",
+        "zoom-in-5 animate-in blur-in-md",
+        "[&_svg]:size-1/2",
         className
       )}
       data-slot="color-picker-swatch-indicator"
       {...rest}
-    />
+    >
+      {children || <CheckIcon />}
+    </ArkColorPicker.SwatchIndicator>
   );
 };
 
@@ -332,5 +301,129 @@ export const ColorPickerValue = (
       data-slot="color-picker-value"
       {...rest}
     />
+  );
+};
+
+export const ColorPickerValueSwatch = (
+  props: React.ComponentProps<typeof ArkColorPicker.ValueSwatch>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkColorPicker.ValueSwatch
+      className={cn(
+        "relative size-8 shrink-0",
+        "overflow-hidden",
+        "rounded-full border",
+        className
+      )}
+      data-slot="color-picker-value-swatch"
+      {...rest}
+    />
+  );
+};
+
+interface ColorPickerAreaProps
+  extends React.ComponentProps<typeof ArkColorPicker.Area> {
+  /**
+   *
+   */
+  showDots?: boolean;
+}
+
+export const ColorPickerArea = (props: ColorPickerAreaProps) => {
+  const { className, showDots = false, children, ...rest } = props;
+
+  return (
+    <ArkColorPicker.Area
+      className={cn(
+        "relative",
+        "aspect-square size-full",
+        "rounded-xl border",
+        "touch-none",
+        {
+          "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
+            showDots,
+        },
+        className
+      )}
+      data-slot="color-picker-area"
+      {...rest}
+    >
+      <ArkColorPicker.AreaBackground
+        className="size-full rounded-[inherit]"
+        data-slot="color-picker-area-background"
+      />
+
+      {children}
+    </ArkColorPicker.Area>
+  );
+};
+
+export const ColorPickerAreaThumb = (
+  props: React.ComponentProps<typeof ArkColorPicker.AreaThumb>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkColorPicker.AreaThumb
+      className={cn(
+        "size-4.5",
+        "rounded-full border-[3px] border-white shadow-[0_0_0_1px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(0,0,0,0.1)]",
+        "outline-none ring-border/64",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
+        className
+      )}
+      data-slot="color-picker-area-thumb"
+      {...rest}
+    />
+  );
+};
+
+export const ColorPickerInput = (
+  props: Partial<React.ComponentProps<typeof ArkColorPicker.ChannelInput>>
+) => {
+  const { channel = "hex", className, ...rest } = props;
+
+  return (
+    <ArkColorPicker.ChannelInput
+      channel={channel}
+      data-slot="color-picker-input"
+      {...rest}
+    />
+  );
+};
+
+export const ColorPickerSwatchPreview = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn(
+        "relative",
+        "size-8",
+        "shrink-0",
+        "rounded-full border",
+        "pointer-events-none overflow-hidden",
+        "group-data-[size=lg]/input-group:size-5",
+        "group-data-[size=md]/input-group:size-4",
+        "group-data-[size=sm]/input-group:size-3.5",
+        "group-data-disabled/color-input:opacity-64",
+        className
+      )}
+      data-slot="color-picker-input-swatch"
+      {...rest}
+    >
+      <ArkColorPicker.TransparencyGrid
+        className={cn(
+          "size-full rounded-[calc(var(--radius-sm)-0.5px)]",
+          "bg-[linear-gradient(45deg,#e4e4e4_25%,transparent_25%),linear-gradient(-45deg,#e4e4e4_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#e4e4e4_75%),linear-gradient(-45deg,transparent_75%,#e4e4e4_75%)]",
+          "bg-position-[0_0,0_4px,4px_-4px,-4px_0] bg-size-(--spacing(2))"
+        )}
+      />
+      <ArkColorPicker.ValueSwatch className="z-1 size-full" />
+    </ark.div>
   );
 };

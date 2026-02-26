@@ -1,11 +1,10 @@
 import type { RegistryItemType } from "@/lib/registry";
 
-const dependencies = ["@ark-ui/react", "lucide-react"];
-
 const manifest: RegistryItemType = {
   name: "color-picker",
   type: "registry:ui",
-  dependencies,
+  dependencies: ["@ark-ui/react", "lucide-react"],
+  registryDependencies: ["input", "input-group", "button"],
 };
 
 export default manifest;

@@ -18,7 +18,7 @@ const Example = () => {
   const [value, setValue] = React.useState<string[]>(["normal"]);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <span className="font-medium text-sm">Font Weight</span>
         <ToggleGroup

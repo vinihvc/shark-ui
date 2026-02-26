@@ -58,32 +58,40 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
         <div className="flex items-center gap-2">
           <ButtonGroup>
             <Button
+              aria-label="Desktop"
               onClick={() => setMediaQuery("desktop")}
               size="icon-sm"
               variant="outline"
             >
-              <ComputerIcon />
+              <ComputerIcon aria-hidden />
             </Button>
 
             <Button
+              aria-label="Tablet"
               onClick={() => setMediaQuery("tablet")}
               size="icon-sm"
               variant="outline"
             >
-              <TabletIcon />
+              <TabletIcon aria-hidden />
             </Button>
 
             <Button
+              aria-label="Phone"
               onClick={() => setMediaQuery("mobile")}
               size="icon-sm"
               variant="outline"
             >
-              <PhoneIcon />
+              <PhoneIcon aria-hidden />
             </Button>
 
-            <Button asChild size="icon-sm" variant="outline">
+            <Button
+              aria-label="Fullscreen"
+              asChild
+              size="icon-sm"
+              variant="outline"
+            >
               <Link href={url} target="_blank">
-                <FullscreenIcon />
+                <FullscreenIcon aria-hidden />
               </Link>
             </Button>
 

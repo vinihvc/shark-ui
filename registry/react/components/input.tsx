@@ -18,9 +18,12 @@ export const inputVariants = tv({
     "file:font-medium file:text-foreground file:text-sm",
     "transition-[color,box-shadow]",
     "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
-    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 data-invalid:text-destructive",
-    "dark:data-invalid:text-destructive-foreground dark:aria-invalid:border-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
+    "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
+    "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24",
+    "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
+    "dark:data-invalid:border-destructive-foreground dark:data-invalid:text-destructive-foreground dark:data-invalid:ring-destructive-foreground/40",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
+    "[appearance:textfield] [&::-moz-appearance]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
   ],
   variants: {
     size: {

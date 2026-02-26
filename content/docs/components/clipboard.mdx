@@ -86,7 +86,7 @@ Use the `onStatusChange` prop to control the clipboard value programmatically.
 
 ### Value Text
 
-Use `<ClipboardValueText />` to display the value as text instead of an input field.
+Use `<ClipboardValue />` to display the value as text instead of an input field.
 
 <ComponentPreview componentName="clipboard" fileName="example-value-text" />
 
@@ -115,8 +115,8 @@ Button that triggers the copy action. Renders a `button`
 
 | Prop | Type | Default |
 |------|------|---------|
-| `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### ClipboardInput
 
@@ -134,8 +134,9 @@ Indicator that shows different icons based on the copied state. Renders a `span`
 |------|------|---------|
 | `copied` | `ReactNode` | `<Check />` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
-### ClipboardValueText
+### ClipboardValue
 
 Text element that displays the value. Renders a `span`
 
@@ -143,6 +144,7 @@ Text element that displays the value. Renders a `span`
 |------|------|---------|
 | `size` | `"xs"`, `"sm"`, `"md"`, `"lg"`, `"xl"` | `"md"` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ---
 

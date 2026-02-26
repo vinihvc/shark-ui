@@ -14,7 +14,7 @@ const items = [
   { label: "Cherry", value: "cherry" },
 ];
 
-const ComboboxPopoverButtonDemo = () => {
+const Example = () => {
   return (
     <Combobox className="w-64" inputBehavior="none" items={items}>
       <ComboboxInput className="sr-only" />
@@ -32,4 +32,4 @@ const ComboboxPopoverButtonDemo = () => {
   );
 };
 
-export default ComboboxPopoverButtonDemo;
+export default Example;

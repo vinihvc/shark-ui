@@ -1,7 +1,7 @@
 "use client";
 
 import type { TOCItemType } from "fumadocs-core/toc";
-import { AlignLeft, CircleArrowUpIcon } from "lucide-react";
+import { AlignLeftIcon, CircleArrowUpIcon } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Presence } from "@/registry/react/components/presence";
@@ -35,7 +35,7 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
       )}
     >
       <p className="inline-flex h-7 items-center gap-2 font-medium text-xs [&_svg]:size-3">
-        <AlignLeft aria-hidden />
+        <AlignLeftIcon aria-hidden />
         On This Page
       </p>
 
@@ -67,7 +67,7 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
           data-depth={0}
           href="#page-title"
         >
-          <CircleArrowUpIcon className="size-4" /> Scroll to top
+          <CircleArrowUpIcon aria-hidden className="size-4" /> Scroll to top
         </TOCItem>
       </Presence>
     </div>

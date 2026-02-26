@@ -73,9 +73,8 @@ const InputGroupDemo = () => (
         </Menu>
         <InputGroupText className="ml-auto">52% used</InputGroupText>
         <Separator className="h-4!" orientation="vertical" />
-        <InputGroupButton disabled pill size="icon-xs">
-          <ArrowUpIcon />
-          <span className="sr-only">Send</span>
+        <InputGroupButton aria-label="Send" disabled pill size="icon-xs">
+          <ArrowUpIcon aria-hidden />
         </InputGroupButton>
       </InputGroupAddon>
     </InputGroup>

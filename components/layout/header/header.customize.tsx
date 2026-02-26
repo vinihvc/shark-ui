@@ -75,7 +75,7 @@ export const HeaderCustomize = () => {
         <TooltipTrigger asChild>
           <SheetTrigger asChild>
             <Button size="icon-md" variant="ghost">
-              <WandSparklesIcon />
+              <WandSparklesIcon aria-hidden />
             </Button>
           </SheetTrigger>
         </TooltipTrigger>
@@ -130,7 +130,10 @@ export const HeaderCustomize = () => {
                       {color.label}
                     </div>
 
-                    <CheckIcon className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden" />
+                    <CheckIcon
+                      aria-hidden
+                      className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden"
+                    />
                   </RadioGroupItem>
                 ))}
               </RadioGroup>
@@ -176,7 +179,10 @@ export const HeaderCustomize = () => {
                         />
                         {color.label}
                       </div>
-                      <CheckIcon className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden" />
+                      <CheckIcon
+                        aria-hidden
+                        className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden"
+                      />
                     </RadioGroupItem>
                   );
                 })}
@@ -220,7 +226,7 @@ export const HeaderCustomize = () => {
             }
             variant="outline"
           >
-            <Undo /> Reset
+            <Undo aria-hidden /> Reset
           </Button>
           <Button
             onClick={() => {
@@ -241,7 +247,7 @@ export const HeaderCustomize = () => {
             }}
             variant="outline"
           >
-            <Shuffle /> Randomize
+            <Shuffle aria-hidden /> Randomize
           </Button>
         </SheetFooter>
       </SheetContent>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { StarIcon } from "lucide-react";
 import {
   createTreeCollection,
   TreeView,
@@ -73,7 +73,7 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
         </TreeViewBranch>
       ) : (
         <TreeViewContent>
-          <TreeViewItem icon={Star}>{node.name}</TreeViewItem>
+          <TreeViewItem icon={StarIcon}>{node.name}</TreeViewItem>
         </TreeViewContent>
       )}
     </TreeViewNode>

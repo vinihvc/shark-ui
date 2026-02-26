@@ -109,8 +109,8 @@ export const CardsButtons = () => {
           <ButtonGroup>
             <Button variant="outline">Outline</Button>
             <DialogTrigger asChild>
-              <Button size="icon-md" variant="outline">
-                <PlusIcon />
+              <Button aria-label="Add" size="icon-md" variant="outline">
+                <PlusIcon aria-hidden />
               </Button>
             </DialogTrigger>
           </ButtonGroup>

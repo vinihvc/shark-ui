@@ -1,7 +1,7 @@
 "use client";
 
 import { Collapsible as ArkCollapsible } from "@ark-ui/react/collapsible";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
@@ -82,7 +82,10 @@ export const CollapsibleIndicator = (
       data-slot="collapsible-indicator"
       {...rest}
     >
-      <ChevronDown className="transition-transform duration-200" />
+      <ChevronDownIcon
+        aria-hidden
+        className="transition-transform duration-200"
+      />
     </ArkCollapsible.Indicator>
   );
 };

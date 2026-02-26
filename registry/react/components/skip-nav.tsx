@@ -27,7 +27,7 @@ export const SkipNavLink = (props: SkipNavLinkProps) => {
   return (
     <ark.a
       className={cn(
-        "sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-9999 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+        "sr-only focus:not-sr-only focus:fixed focus:inset-s-4 focus:top-4 focus:z-9999 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring",
         className
       )}
       data-slot="skip-nav-link"

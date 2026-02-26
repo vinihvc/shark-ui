@@ -1,12 +1,36 @@
 ---
 title: Chart
-description: A component for displaying charts.
+description: Beautiful charts built with Recharts. Copy and paste into your apps.
 links:
   doc: https://recharts.github.io/en-US/guide/getting-started
   api: https://recharts.github.io/en-US/api
 ---
 
 <ComponentPreview componentName="chart" />
+
+## Component
+
+We use [Recharts](https://recharts.org/) under the hood.
+
+The `chart` component is designed with composition in mind. You build charts using Recharts components and only bring in custom components such as `ChartTooltip` when and where you need them.
+
+We do not wrap Recharts. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path to upgrade your charts.
+
+```tsx
+import { Bar, BarChart } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+
+export function MyChart() {
+  return (
+    <ChartContainer>
+      <BarChart data={data}>
+        <Bar dataKey="value" />
+        <ChartTooltip content={<ChartTooltipContent />} />
+      </BarChart>
+    </ChartContainer>
+  )
+}
+```
 
 ## Installation
 
@@ -18,7 +42,7 @@ links:
 </TabsList>
 
 <TabsContent value="cli">
-  
+
 ```bash
 npx shadcn@latest add @shark/chart
 ```
@@ -39,6 +63,28 @@ npm install recharts
 
 <ComponentSource title="components/ui/chart.tsx" src="/chart.tsx" />
 
+<Step>Add chart colors to your CSS file (optional, for theming):</Step>
+
+```css
+@layer base {
+  :root {
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+  }
+
+  .dark {
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+  }
+}
+```
+
 <Step>Update the import paths to match your project setup.</Step>
 
 </Steps>
@@ -47,25 +93,194 @@ npm install recharts
 
 </CodeTabs>
 
-## Usage
+## Your First Chart
+
+Let's build your first chart. We'll create a bar chart with a grid, axis, tooltip, and legend.
+
+### Define your data
+
+Your data can be in any shape. Use the `dataKey` prop to map your data to the chart.
 
 ```tsx
-import { 
-  Bar, 
-  BarChart
-  } from "recharts"
-import { 
-  ChartContainer,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
+const chartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+]
 ```
 
+### Define your chart config
+
+The chart config holds configuration for the chart—labels, icons, and color tokens for theming. It is intentionally decoupled from chart data.
+
+```tsx
+import { type ChartConfig } from "@/components/ui/chart"
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "#2563eb",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "#60a5fa",
+  },
+} satisfies ChartConfig
+```
+
+### Build your chart
+
+Set a `min-h-[VALUE]` or `h-[VALUE]` on `ChartContainer` for the chart to be responsive.
+
 ```tsx showLineNumbers
-<ChartContainer>
-  <BarChart data={data}>
-    <Bar dataKey="value" />
+<ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+  <BarChart accessibilityLayer data={chartData}>
+    <CartesianGrid vertical={false} />
+    <XAxis
+      dataKey="month"
+      tickLine={false}
+      tickMargin={10}
+      axisLine={false}
+      tickFormatter={(value) => value.slice(0, 3)}
+    />
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <ChartLegend content={<ChartLegendContent />} />
+    <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+    <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
   </BarChart>
 </ChartContainer>
 ```
 
-## Examples
+## Chart Config
+
+The chart config defines labels, icons, and colors. You can share it between charts or use it independently when data or color tokens live remotely.
+
+```tsx
+import { Monitor } from "lucide-react"
+import { type ChartConfig } from "@/components/ui/chart"
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    icon: Monitor,
+    color: "#2563eb",
+    // OR use theme for light/dark modes
+    theme: {
+      light: "#2563eb",
+      dark: "#dc2626",
+    },
+  },
+} satisfies ChartConfig
+```
+
+## Theming
+
+Charts support theming via CSS variables (recommended) or any color format: hex, hsl, or oklch.
+
+### CSS Variables
+
+Define colors in your CSS and reference them in the chart config:
+
+```tsx
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
+```
+
+### Direct colors
+
+You can define colors directly in the chart config:
+
+```tsx
+const chartConfig = {
+  desktop: { label: "Desktop", color: "#2563eb" },
+  mobile: { label: "Mobile", color: "hsl(220, 98%, 61%)" },
+  tablet: { label: "Tablet", color: "oklch(0.5 0.2 240)" },
+} satisfies ChartConfig
+```
+
+### Using colors
+
+Reference config colors using `var(--color-KEY)`:
+
+- **Components:** `<Bar dataKey="desktop" fill="var(--color-desktop)" />`
+- **Chart data:** `{ browser: "chrome", visitors: 275, fill: "var(--color-chrome)" }`
+- **Tailwind:** `<LabelList className="fill-[--color-desktop]" />`
+
+## Tooltip
+
+Use `ChartTooltip` and `ChartTooltipContent` to add tooltips. Colors are automatically pulled from the chart config.
+
+```tsx
+import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+
+<ChartTooltip content={<ChartTooltipContent />} />
+```
+
+### Tooltip props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `labelKey` | string | The config or data key to use for the label. |
+| `nameKey` | string | The config or data key to use for the name. |
+| `indicator` | `dot` \| `line` \| `dashed` | The indicator style for the tooltip. |
+| `hideLabel` | boolean | Whether to hide the label. |
+| `hideIndicator` | boolean | Whether to hide the indicator. |
+
+### Custom label and name
+
+Use `labelKey` and `nameKey` for custom keys:
+
+```tsx
+const chartConfig = {
+  visitors: { label: "Total Visitors" },
+  chrome: { label: "Chrome", color: "var(--chart-1)" },
+  safari: { label: "Safari", color: "var(--chart-2)" },
+} satisfies ChartConfig
+
+<ChartTooltip
+  content={<ChartTooltipContent labelKey="visitors" nameKey="browser" />}
+/>
+```
+
+## Legend
+
+Use `ChartLegend` and `ChartLegendContent` to add a legend. Colors are automatically pulled from the chart config.
+
+```tsx
+import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
+
+<ChartLegend content={<ChartLegendContent />} />
+```
+
+### Custom legend names
+
+Use the `nameKey` prop to map legend names to your data:
+
+```tsx
+<ChartLegend content={<ChartLegendContent nameKey="browser" />} />
+```
+
+## Accessibility
+
+Enable the `accessibilityLayer` prop on Recharts components for keyboard access and screen reader support.
+
+```tsx
+<BarChart accessibilityLayer data={chartData}>
+  {/* ... */}
+</BarChart>
+```
+
+---
+
+For a complete list of props, see the [Recharts documentation](https://recharts.github.io/en-US/api).
