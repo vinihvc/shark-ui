@@ -13,9 +13,9 @@ Use `useTransition` instead of manual `useState` for loading states. This provid
 
 ```tsx
 function SearchResults() {
-  const [query, setQuery] = useState('')
-  const [results, setResults] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [query, setQuery] = React.useState('')
+  const [results, setResults] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const handleSearch = async (value: string) => {
     setIsLoading(true)
@@ -38,11 +38,11 @@ function SearchResults() {
 **Correct (useTransition with built-in pending state):**
 
 ```tsx
-import { useTransition, useState } from 'react'
+import { useTransition,React.useState } from 'react'
 
 function SearchResults() {
-  const [query, setQuery] = useState('')
-  const [results, setResults] = useState([])
+  const [query, setQuery] = React.useState('')
+  const [results, setResults] = React.useState([])
   const [isPending, startTransition] = useTransition()
 
   const handleSearch = (value: string) => {

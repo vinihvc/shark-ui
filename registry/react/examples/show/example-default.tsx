@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { Show } from "@/registry/react/components/show";
 
 const ShowDemo = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
 
   return (
     <div className="flex flex-col gap-4">

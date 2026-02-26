@@ -1,6 +1,6 @@
 "use client";
 
-import { Circle } from "lucide-react";
+import { SparkleIcon } from "lucide-react";
 import {
   ColorPicker,
   ColorPickerSwatch,
@@ -18,7 +18,7 @@ const Example = () => (
         <ColorPickerSwatchTrigger key={color} value={color}>
           <ColorPickerSwatch value={color}>
             <ColorPickerSwatchIndicator>
-              <Circle className="size-2.5 fill-current" strokeWidth={0} />
+              <SparkleIcon />
             </ColorPickerSwatchIndicator>
           </ColorPickerSwatch>
         </ColorPickerSwatchTrigger>

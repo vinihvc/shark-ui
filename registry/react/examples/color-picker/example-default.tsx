@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ColorPicker,
   ColorPickerArea,
@@ -11,6 +9,7 @@ import {
   ColorPickerSwatchPreview,
   ColorPickerTransparencyGrid,
   ColorPickerTrigger,
+  ColorPickerView,
 } from "@/registry/react/components/color-picker";
 import {
   InputGroup,
@@ -19,7 +18,7 @@ import {
 } from "@/registry/react/components/input-group";
 
 const ColorPickerDemo = () => (
-  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41">
+  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" format="hsla">
     <InputGroup>
       <ColorPickerTrigger asChild>
         <InputGroupAddon>
@@ -35,15 +34,17 @@ const ColorPickerDemo = () => (
       <ColorPickerArea>
         <ColorPickerAreaThumb />
       </ColorPickerArea>
-      <div className="flex items-center gap-3">
-        <ColorPickerEyeDropperTrigger />
-        <div className="flex flex-1 flex-col gap-2.5">
-          <ColorPickerSlider channel="hue" />
-          <ColorPickerSlider channel="alpha">
-            <ColorPickerTransparencyGrid />
-          </ColorPickerSlider>
+      <ColorPickerView format="hsla">
+        <div className="flex items-center gap-3">
+          <ColorPickerEyeDropperTrigger />
+          <div className="flex flex-1 flex-col gap-2.5">
+            <ColorPickerSlider channel="hue" />
+            <ColorPickerSlider channel="alpha">
+              <ColorPickerTransparencyGrid />
+            </ColorPickerSlider>
+          </div>
         </div>
-      </div>
+      </ColorPickerView>
     </ColorPickerContent>
   </ColorPicker>
 );

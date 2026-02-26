@@ -446,7 +446,7 @@ Load large data or modules only when a feature is activated.
 
 ```tsx
 function AnimationPlayer({ enabled, setEnabled }: { enabled: boolean; setEnabled: React.Dispatch<React.SetStateAction<boolean>> }) {
-  const [frames, setFrames] = useState<Frame[] | null>(null)
+  const [frames, setFrames] = React.useState<Frame[] | null>(null)
 
   useEffect(() => {
     if (enabled && !frames && typeof window !== 'undefined') {
@@ -1166,7 +1166,7 @@ SWR enables request deduplication, caching, and revalidation across component in
 
 ```tsx
 function UserList() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = React.useState([])
   useEffect(() => {
     fetch('/api/users')
       .then(r => r.json())
@@ -1293,9 +1293,9 @@ If a value can be computed from current props/state, do not store it in state or
 
 ```tsx
 function Form() {
-  const [firstName, setFirstName] = useState('First')
-  const [lastName, setLastName] = useState('Last')
-  const [fullName, setFullName] = useState('')
+  const [firstName, setFirstName] = React.useState('First')
+  const [lastName, setLastName] = React.useState('Last')
+  const [fullName, setFullName] = React.useState('')
 
   useEffect(() => {
     setFullName(firstName + ' ' + lastName)
@@ -1309,8 +1309,8 @@ function Form() {
 
 ```tsx
 function Form() {
-  const [firstName, setFirstName] = useState('First')
-  const [lastName, setLastName] = useState('Last')
+  const [firstName, setFirstName] = React.useState('First')
+  const [lastName, setLastName] = React.useState('Last')
   const fullName = firstName + ' ' + lastName
 
   return <p>{fullName}</p>
@@ -1509,7 +1509,7 @@ If a side effect is triggered by a specific user action (submit, click, drag), r
 
 ```tsx
 function Form() {
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = React.useState(false)
   const theme = useContext(ThemeContext)
 
   useEffect(() => {
@@ -1575,7 +1575,7 @@ When updating state based on the current state value, use the functional update 
 
 ```tsx
 function TodoList() {
-  const [items, setItems] = useState(initialItems)
+  const [items, setItems] = React.useState(initialItems)
   
   // Callback must depend on items, recreated on every items change
   const addItems = useCallback((newItems: Item[]) => {
@@ -1597,7 +1597,7 @@ The first callback is recreated every time `items` changes, which can cause chil
 
 ```tsx
 function TodoList() {
-  const [items, setItems] = useState(initialItems)
+  const [items, setItems] = React.useState(initialItems)
   
   // Stable callback, never recreated
   const addItems = useCallback((newItems: Item[]) => {
@@ -1654,8 +1654,8 @@ Pass a function to `useState` for expensive initial values. Without the function
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
   // buildSearchIndex() runs on EVERY render, even after initialization
-  const [searchIndex, setSearchIndex] = useState(buildSearchIndex(items))
-  const [query, setQuery] = useState('')
+  const [searchIndex, setSearchIndex] = React.useState(buildSearchIndex(items))
+  const [query, setQuery] = React.useState('')
   
   // When query changes, buildSearchIndex runs again unnecessarily
   return <SearchResults index={searchIndex} query={query} />
@@ -1663,7 +1663,7 @@ function FilteredList({ items }: { items: Item[] }) {
 
 function UserProfile() {
   // JSON.parse runs on every render
-  const [settings, setSettings] = useState(
+  const [settings, setSettings] = React.useState(
     JSON.parse(localStorage.getItem('settings') || '{}')
   )
   
@@ -1676,15 +1676,15 @@ function UserProfile() {
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
   // buildSearchIndex() runs ONLY on initial render
-  const [searchIndex, setSearchIndex] = useState(() => buildSearchIndex(items))
-  const [query, setQuery] = useState('')
+  const [searchIndex, setSearchIndex] = React.useState(() => buildSearchIndex(items))
+  const [query, setQuery] = React.useState('')
   
   return <SearchResults index={searchIndex} query={query} />
 }
 
 function UserProfile() {
   // JSON.parse runs only on initial render
-  const [settings, setSettings] = useState(() => {
+  const [settings, setSettings] = React.useState(() => {
     const stored = localStorage.getItem('settings')
     return stored ? JSON.parse(stored) : {}
   })
@@ -1707,7 +1707,7 @@ Mark frequent, non-urgent state updates as transitions to maintain UI responsive
 
 ```tsx
 function ScrollTracker() {
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = React.useState(0)
   useEffect(() => {
     const handler = () => setScrollY(window.scrollY)
     window.addEventListener('scroll', handler, { passive: true })
@@ -1722,7 +1722,7 @@ function ScrollTracker() {
 import { startTransition } from 'react'
 
 function ScrollTracker() {
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = React.useState(0)
   useEffect(() => {
     const handler = () => {
       startTransition(() => setScrollY(window.scrollY))
@@ -1743,7 +1743,7 @@ When a value changes frequently and you don't want a re-render on every update (
 
 ```tsx
 function Tracker() {
-  const [lastX, setLastX] = useState(0)
+  const [lastX, setLastX] = React.useState(0)
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => setLastX(e.clientX)
@@ -1980,7 +1980,7 @@ Server-side rendering will fail because `localStorage` is undefined.
 
 ```tsx
 function ThemeWrapper({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = React.useState('light')
   
   useEffect(() => {
     // Runs after hydration - causes visible flash
@@ -2125,9 +2125,9 @@ Use `useTransition` instead of manual `useState` for loading states. This provid
 
 ```tsx
 function SearchResults() {
-  const [query, setQuery] = useState('')
-  const [results, setResults] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [query, setQuery] = React.useState('')
+  const [results, setResults] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const handleSearch = async (value: string) => {
     setIsLoading(true)
@@ -2150,11 +2150,11 @@ function SearchResults() {
 **Correct: useTransition with built-in pending state**
 
 ```tsx
-import { useTransition, useState } from 'react'
+import { useTransition,React.useState } from 'react'
 
 function SearchResults() {
-  const [query, setQuery] = useState('')
-  const [results, setResults] = useState([])
+  const [query, setQuery] = React.useState('')
+  const [results, setResults] = React.useState([])
   const [isPending, startTransition] = useTransition()
 
   const handleSearch = (value: string) => {
@@ -2899,7 +2899,7 @@ Access latest values in callbacks without adding them to dependency arrays. Prev
 
 ```tsx
 function SearchInput({ onSearch }: { onSearch: (q: string) => void }) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = React.useState('')
 
   useEffect(() => {
     const timeout = setTimeout(() => onSearch(query), 300)
@@ -2914,7 +2914,7 @@ function SearchInput({ onSearch }: { onSearch: (q: string) => void }) {
 import { useEffectEvent } from 'react';
 
 function SearchInput({ onSearch }: { onSearch: (q: string) => void }) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = React.useState('')
   const onSearchEvent = useEffectEvent(onSearch)
 
   useEffect(() => {

@@ -12,10 +12,11 @@ import {
   ColorPickerSwatchPreview,
   ColorPickerSwatchTrigger,
   ColorPickerTrigger,
+  ColorPickerView,
 } from "@/registry/react/components/color-picker";
 
 const Example = () => (
-  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41">
+  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" format="hsla">
     <ColorPickerTrigger asChild>
       <Button size="lg" variant="ghost">
         <ColorPickerSwatchPreview className="size-6" />
@@ -26,7 +27,9 @@ const Example = () => (
       <ColorPickerArea>
         <ColorPickerAreaThumb />
       </ColorPickerArea>
-      <ColorPickerSlider channel="hue" />
+      <ColorPickerView format="hsla">
+        <ColorPickerSlider channel="hue" />
+      </ColorPickerView>
       <ColorPickerSwatchGroup>
         {swatches.map((color) => (
           <ColorPickerSwatchTrigger

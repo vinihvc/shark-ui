@@ -13,7 +13,7 @@ SWR enables request deduplication, caching, and revalidation across component in
 
 ```tsx
 function UserList() {
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = React.useState([])
   useEffect(() => {
     fetch('/api/users')
       .then(r => r.json())

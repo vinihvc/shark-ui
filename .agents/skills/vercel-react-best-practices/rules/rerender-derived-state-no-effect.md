@@ -13,9 +13,9 @@ If a value can be computed from current props/state, do not store it in state or
 
 ```tsx
 function Form() {
-  const [firstName, setFirstName] = useState('First')
-  const [lastName, setLastName] = useState('Last')
-  const [fullName, setFullName] = useState('')
+  const [firstName, setFirstName] = React.useState('First')
+  const [lastName, setLastName] = React.useState('Last')
+  const [fullName, setFullName] = React.useState('')
 
   useEffect(() => {
     setFullName(firstName + ' ' + lastName)
@@ -29,8 +29,8 @@ function Form() {
 
 ```tsx
 function Form() {
-  const [firstName, setFirstName] = useState('First')
-  const [lastName, setLastName] = useState('Last')
+  const [firstName, setFirstName] = React.useState('First')
+  const [lastName, setLastName] = React.useState('Last')
   const fullName = firstName + ' ' + lastName
 
   return <p>{fullName}</p>

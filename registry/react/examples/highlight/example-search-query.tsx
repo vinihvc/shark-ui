@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Highlight } from "@/registry/react/components/highlight";
 import { Input } from "@/registry/react/components/input";
 
 const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
 
 const Example = () => {
-  const [query, setQuery] = useState("spot");
+  const [query, setQuery] = React.useState("spot");
 
   return (
     <div className="flex w-full max-w-64 flex-col gap-4">

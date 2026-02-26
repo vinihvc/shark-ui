@@ -7,15 +7,15 @@ import {
 const Example = () => (
   <ColorPicker
     className="w-full max-w-64"
-    defaultValue="#ff6432"
-    format="rgba"
+    defaultValue="#0485F7"
+    format="hsba"
     inline
   >
-    <ColorPickerView format="rgba">
+    <ColorPickerView format="hsba">
       <div className="flex w-full flex-col gap-4">
-        <ColorPickerSlider channel="red" />
-        <ColorPickerSlider channel="green" />
-        <ColorPickerSlider channel="blue" />
+        <ColorPickerSlider channel="hue" />
+        <ColorPickerSlider channel="saturation" />
+        <ColorPickerSlider channel="brightness" />
       </div>
     </ColorPickerView>
   </ColorPicker>

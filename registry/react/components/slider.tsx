@@ -95,7 +95,7 @@ export const Slider = (props: SliderProps) => {
               "bg-primary",
               "select-none",
               "data-[orientation=horizontal]:h-full",
-              "data-[orientation=vertical]:w-full data-[orientation=vertical]:self-stretch"
+              "data-[orientation=vertical]:w-full data-[orientation=vertical]:not-[[class^='h-']]:not-[[class*='_h-']]:self-stretch"
             )}
             data-slot="slider-range"
           />

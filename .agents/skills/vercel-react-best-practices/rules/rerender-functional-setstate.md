@@ -2,7 +2,7 @@
 title: Use Functional setState Updates
 impact: MEDIUM
 impactDescription: prevents stale closures and unnecessary callback recreations
-tags: react, hooks, useState, useCallback, callbacks, closures
+tags: react, hooks,React.useState, useCallback, callbacks, closures
 ---
 
 ## Use Functional setState Updates
@@ -13,7 +13,7 @@ When updating state based on the current state value, use the functional update 
 
 ```tsx
 function TodoList() {
-  const [items, setItems] = useState(initialItems)
+  const [items, setItems] = React.useState(initialItems)
   
   // Callback must depend on items, recreated on every items change
   const addItems = useCallback((newItems: Item[]) => {
@@ -35,7 +35,7 @@ The first callback is recreated every time `items` changes, which can cause chil
 
 ```tsx
 function TodoList() {
-  const [items, setItems] = useState(initialItems)
+  const [items, setItems] = React.useState(initialItems)
   
   // Stable callback, never recreated
   const addItems = useCallback((newItems: Item[]) => {

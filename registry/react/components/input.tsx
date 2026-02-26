@@ -23,7 +23,6 @@ export const inputVariants = tv({
     "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
     "dark:data-invalid:border-destructive-foreground dark:data-invalid:text-destructive-foreground dark:data-invalid:ring-destructive-foreground/40",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
-    "[appearance:textfield] [&::-moz-appearance]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
   ],
   variants: {
     size: {

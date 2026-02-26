@@ -183,9 +183,9 @@ export const InputGroupInput = (props: React.ComponentProps<typeof Input>) => {
   return (
     <Input
       className={cn(
-        "flex-1 shadow-none",
+        "flex-1",
         "bg-transparent",
-        "rounded-none border-0",
+        "rounded-none border-0 shadow-none",
         "focus-visible:ring-0",
         "disabled:bg-transparent aria-invalid:ring-0",
         "dark:bg-transparent dark:disabled:bg-transparent",
@@ -205,7 +205,11 @@ export const InputGroupTextarea = (
   return (
     <Textarea
       className={cn(
-        "flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1",
+        "py-3",
+        "bg-transparent",
+        "resize-none rounded-none border-0 shadow-none",
+        "focus-visible:ring-0 dark:bg-transparent",
         className
       )}
       data-slot="input-group-control"

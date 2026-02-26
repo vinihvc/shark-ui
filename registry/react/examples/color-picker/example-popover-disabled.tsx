@@ -1,5 +1,4 @@
-"use client";
-
+import { Button } from "@/registry/react/components/button";
 import {
   ColorPicker,
   ColorPickerArea,
@@ -7,7 +6,6 @@ import {
   ColorPickerSwatchPreview,
   ColorPickerTrigger,
 } from "@/registry/react/components/color-picker";
-import { Button } from "../../components/button";
 
 const Example = () => (
   <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" disabled>

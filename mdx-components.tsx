@@ -223,12 +223,34 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       </h3>
     );
   },
-  h4: ({ className, ...props }: React.ComponentProps<"h4">) => (
-    <h4
-      className={cn("mt-8 scroll-m-20 font-medium tracking-tight", className)}
-      {...props}
-    />
-  ),
+  h4: ({ className, children, ...props }: React.ComponentProps<"h4">) => {
+    const id =
+      (props as { id?: string }).id ||
+      children
+        ?.toString()
+        .replace(/ /g, "-")
+        .replace(/'/g, "")
+        .replace(/\?/g, "")
+        .toLowerCase();
+
+    return (
+      <h4
+        className={cn(
+          "mt-8 scroll-m-20 font-medium text-lg tracking-tight",
+          className
+        )}
+        id={id}
+        {...props}
+      >
+        <a
+          className="no-underline underline-offset-4 hover:underline"
+          href={`#${id}`}
+        >
+          {children}
+        </a>
+      </h4>
+    );
+  },
   h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
     <h5
       className={cn(

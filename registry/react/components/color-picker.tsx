@@ -10,7 +10,7 @@ import { ark } from "@ark-ui/react/factory";
 import { CheckIcon, Pipette } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
+import { Button, type ButtonProps } from "@/registry/react/components/button";
 
 export const parseColor = parseColorArk;
 
@@ -58,7 +58,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
   return (
     <ArkColorPicker.Root
-      className={cn("w-fit", "flex gap-2", className)}
+      className={cn("group/color-picker", "w-fit", "flex gap-2", className)}
       data-slot="color-picker"
       defaultValue={internalValue ? parseColor(internalValue) : undefined}
       lazyMount={lazyMount}
@@ -127,12 +127,12 @@ export const ColorPickerContent = (
             "z-50",
             "relative",
             "w-full min-w-56",
-            "flex flex-col gap-3",
+            "flex flex-col gap-4",
             "p-(--space)",
-            "origin-(--transform-origin)",
             "bg-popover",
             "rounded-2xl border shadow-lg/5",
             "outline-none",
+            "origin-(--transform-origin)",
             "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:animate-in",
             "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out",
             className
@@ -151,7 +151,7 @@ export const ColorPickerView = (
   const { className, ...rest } = props;
   return (
     <ArkColorPicker.View
-      className={cn("relative h-full flex-1", className)}
+      className={cn("relative flex size-full flex-1 flex-col gap-4", className)}
       data-slot="color-picker-view"
       {...rest}
     />
@@ -165,22 +165,39 @@ export const ColorPickerSlider = (
 
   return (
     <ArkColorPicker.ChannelSlider
-      className={cn("relative h-full flex-1", "rounded-full border", className)}
+      className={cn(
+        "relative",
+        "flex items-center",
+        "touch-none select-none",
+        "rounded-full border",
+        "data-[orientation=horizontal]:w-full",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+        "group-data-disabled/color-picker:pointer-events-none group-data-disabled/color-picker:cursor-not-allowed group-data-disabled/color-picker:opacity-64",
+        className
+      )}
       data-slot="color-picker-channel-slider"
       {...rest}
     >
       {children}
 
       <ArkColorPicker.ChannelSliderTrack
-        className="h-2 w-full rounded-sm"
+        className={cn(
+          "grow",
+          "rounded-full",
+          "select-none overflow-hidden",
+          "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
+          "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2"
+        )}
         data-slot="color-picker-channel-slider-track"
       />
       <ArkColorPicker.ChannelSliderThumb
         className={cn(
+          "relative shrink-0",
           "size-4.5",
           "-translate-1/2",
           "rounded-full border-[3px] border-white shadow-[0_0_0_1px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(0,0,0,0.1)]",
-          "outline-none ring-1 ring-border/64"
+          "outline-none ring-1 ring-border/64",
+          "origin-left data-[orientation=vertical]:origin-bottom"
         )}
         data-slot="color-picker-channel-slider-thumb"
       />
@@ -188,10 +205,14 @@ export const ColorPickerSlider = (
   );
 };
 
+interface ColorPickerEyeDropperTrigger
+  extends React.ComponentProps<typeof ArkColorPicker.EyeDropperTrigger>,
+    ButtonProps {}
+
 export const ColorPickerEyeDropperTrigger = (
-  props: React.ComponentProps<typeof ArkColorPicker.EyeDropperTrigger>
+  props: ColorPickerEyeDropperTrigger
 ) => {
-  const { className, children, ...rest } = props;
+  const { variant = "outline", size = "icon-md", children, ...rest } = props;
 
   return (
     <ArkColorPicker.EyeDropperTrigger
@@ -199,7 +220,7 @@ export const ColorPickerEyeDropperTrigger = (
       {...rest}
       asChild
     >
-      <Button className={cn(className)} size="icon-md" variant="outline">
+      <Button size={size} variant={variant}>
         {children || <Pipette />}
       </Button>
     </ArkColorPicker.EyeDropperTrigger>

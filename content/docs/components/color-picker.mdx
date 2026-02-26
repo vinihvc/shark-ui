@@ -8,6 +8,8 @@ links:
 
 <ComponentPreview componentName="color-picker" />
 
+The color picker supports multiple usage modes: input for hex or channel editing, popover for area and slider selection, swatch picker for preset colors, and standalone area or slider components. Compose subcomponents to build the picker that fits your needs.
+
 ## Installation
 
 <CodeTabs>
@@ -35,7 +37,7 @@ npx shadcn@latest add @shark/color-picker
 npm install @ark-ui/react lucide-react
 ```
 
-<Step>Ensure `input` and `input-group` are installed for ColorPickerInput usage.</Step>
+<Step>Ensure the `input` and `input-group` components are installed for ColorPickerInput usage.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -49,9 +51,7 @@ npm install @ark-ui/react lucide-react
 
 </CodeTabs>
 
-## Input
-
-Usage of Color Picker only using input.
+## Input mode
 
 ### Usage
 
@@ -72,7 +72,7 @@ import {
 
 ### Controlled
 
-Use the `value` and `onValueChange` props to programmatically control the color picker's state.
+Use the `value` and `onValueChange` props to programmatically control the color picker's state. The exported `parseColor` helper parses color strings for programmatic use (e.g. `parseColor(value).toString("hex")`).
 
 <ComponentPreview componentName="color-picker" fileName="example-input-controlled" />
 
@@ -90,13 +90,9 @@ Use the `value` and `onValueChange` props to programmatically control the color 
 
 #### With Field
 
-The Field component helps manage form-related state and accessibility attributes of a color picker.
-
 <ComponentPreview componentName="color-picker" fileName="example-with-field" />
 
 #### Channel Editing
-
-Channel inputs for editing hex, RGB, or alpha values.
 
 <ComponentPreview componentName="color-picker" fileName="example-input-channel" />
 
@@ -108,11 +104,17 @@ Input with `<ColorPickerSwatchPreview />` showing the current color alongside th
 
 #### With Popover
 
-Input with trigger and popover content for area, hue, and alpha selection.
+An input with trigger and popover content for area, hue, and alpha selection.
 
 <ComponentPreview componentName="color-picker" fileName="example-input-with-popover" />
 
-## Popover
+#### Compact
+
+Inspired by Figma's color input.
+
+<ComponentPreview componentName="color-picker" fileName="example-input-compact" />
+
+## Popover mode
 
 Color picker with trigger and popover content.
 
@@ -124,7 +126,11 @@ import {
   ColorPickerArea,
   ColorPickerAreaThumb,
   ColorPickerContent,
+  ColorPickerEyeDropperTrigger,
+  ColorPickerSlider,
   ColorPickerTrigger,
+  ColorPickerTransparencyGrid,
+  ColorPickerView,
 } from "@/components/ui/color-picker";
 ```
 
@@ -135,6 +141,13 @@ import {
     <ColorPickerArea>
       <ColorPickerAreaThumb />
     </ColorPickerArea>
+    <ColorPickerView>
+      <ColorPickerEyeDropperTrigger />
+      <ColorPickerSlider channel="hue" />
+      <ColorPickerSlider channel="alpha">
+        <ColorPickerTransparencyGrid />
+      </ColorPickerSlider>
+    </ColorPickerView>
   </ColorPickerContent>
 </ColorPicker>
 ```
@@ -143,11 +156,15 @@ import {
 
 #### Disabled
 
-Use the `disabled` prop to disable the color picker.
+Set `disabled` to prevent user interaction.
 
 <ComponentPreview componentName="color-picker" fileName="example-popover-disabled" />
 
 ### Examples
+
+#### With Eye Dropper
+
+<ComponentPreview componentName="color-picker" fileName="example-default" />
 
 #### With Channel Editing
 
@@ -167,9 +184,7 @@ Popover with preset color swatches for quick selection.
 
 <ComponentPreview componentName="color-picker" fileName="example-popover-with-swatch-picker" />
 
-## Swatch Picker
-
-A simple color picker with only preset color swatches using SwatchTrigger for selection.
+## Color Swatch Picker mode
 
 ### Usage
 
@@ -205,7 +220,7 @@ Use the `value` and `onValueChange` props to programmatically control the swatch
 
 #### Disabled
 
-Use the `disabled` prop to disable the swatch picker.
+Set `disabled` to prevent user interaction.
 
 <ComponentPreview componentName="color-picker" fileName="example-swatch-picker-disabled" />
 
@@ -225,66 +240,263 @@ Override the default rounded style on `<ColorPickerSwatchTrigger />` using the `
 
 #### Custom Indicator
 
-Replace the default check icon with a custom indicator via children of `ColorPickerSwatchIndicator`.
+Replace the default check icon with a custom indicator via the children of `ColorPickerSwatchIndicator`.
 
 <ComponentPreview componentName="color-picker" fileName="example-swatch-picker-custom-indicator" />
 
-## Area
+## Area mode
 
-2D color picker for selecting saturation and lightness.
+### Usage
 
-### Area Only
+```tsx
+import {
+  ColorPicker,
+  ColorPickerArea,
+  ColorPickerAreaThumb,
+} from "@/components/ui/color-picker";
+```
 
-Render the color picker inline without a popover by using the `inline` prop.
+```tsx showLineNumbers
+<ColorPicker>
+  <ColorPickerArea>
+    <ColorPickerAreaThumb />
+  </ColorPickerArea>
+</ColorPicker>
+```
 
-<ComponentPreview componentName="color-picker" fileName="example-area-only" />
+### Examples
 
-### Color Channels
+#### Color Channels
 
 <ComponentPreview componentName="color-picker" fileName="example-area-channels" />
 
-### With Dots
+#### With Dots
 
 <ComponentPreview componentName="color-picker" fileName="example-area-dots" />
 
-## Slider
+## Slider mode
 
-Channel sliders for hue, saturation, lightness, RGB, or alpha.
+### Usage
 
-### Slider Only
+```tsx
+import {
+  ColorPicker,
+  ColorPickerSlider,
+} from "@/components/ui/color-picker";
+```
 
-Display the color area with channel sliders for hue and alpha.
-
-<ComponentPreview componentName="color-picker" fileName="example-slider-only" />
-
-### Default
-
-<ComponentPreview componentName="color-picker" fileName="example-slider-default" />
+```tsx showLineNumbers
+<ColorPicker>
+  <ColorPickerSlider channel="hue" />
+</ColorPicker>
+```
 
 ### Controlled
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-controlled" />
 
-### Disabled
+### State
+
+#### Disabled
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-disabled" />
 
-### Alpha Channel
+### Examples
+
+#### Alpha Channel
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-alpha-channel" />
 
-### HSL Channels
+#### HSL Channels
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-hsl-channels" />
 
-### RGB Channels
+#### HSBA Channels
+
+<ComponentPreview componentName="color-picker" fileName="example-slider-hsba-channels" />
+
+#### RGB Channels
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-rgb-channels" />
 
-### Vertical
+#### Vertical
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-vertical" />
 
 ## API Reference
 
-For a complete list of props, see the [Ark UI Color Picker documentation](https://ark-ui.com/docs/components/color-picker#api-reference).
+### ColorPicker
+
+Root element of the color picker.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `defaultValue` | `string` | — |
+| `onValueChange` | `(details: ColorPickerValueChangeDetails) => void` | — |
+| `disabled` | `boolean` | `false` |
+| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | — |
+| `inline` | `boolean` | `false` |
+| `positioning` | `PositioningOptions` | `{ placement: "top-start" }` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `className` | `string` | — |
+
+### ColorPickerTrigger
+
+Button or element that opens the color picker popover.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | `false` |
+
+### ColorPickerContent
+
+Container for the popover content. Renders inside a portal.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### ColorPickerControl
+
+Container for grouping control elements such as area, sliders, and inputs.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### ColorPickerView
+
+Container for sliders and inputs. Can specify `format` for child value display.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | — |
+| `className` | `string` | — |
+
+### ColorPickerArea
+
+Two-dimensional color selection area.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showDots` | `boolean` | `false` |
+| `xChannel` | `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"red"` \| `"green"` \| `"blue"` \| `"alpha"` | — |
+| `yChannel` | `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"red"` \| `"green"` \| `"blue"` \| `"alpha"` | — |
+| `className` | `string` | — |
+
+### ColorPickerAreaThumb
+
+Draggable thumb within the color area.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### ColorPickerSlider
+
+Slider for adjusting a color channel.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `channel` | `"hex"` \| `"hexa"` \| `"red"` \| `"green"` \| `"blue"` \| `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"alpha"` | — |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` |
+| `className` | `string` | — |
+
+### ColorPickerTransparencyGrid
+
+Checkerboard pattern for indicating transparency. Renders as a child of `ColorPickerSlider` when editing alpha.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### ColorPickerEyeDropperTrigger
+
+Button that activates the native Eye Dropper API to sample colors from the screen.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `ButtonProps["variant"]` | `"outline"` |
+| `size` | `ButtonProps["size"]` | `"icon-md"` |
+| `children` | `ReactNode` | `<Pipette />` |
+| `className` | `string` | — |
+
+### ColorPickerInput
+
+Input for displaying and editing a color channel value. Use `asChild` with a custom input (e.g. `Input` or `InputGroupInput`) for styling.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `channel` | `"hex"` \| `"hexa"` \| `"red"` \| `"green"` \| `"blue"` \| `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"alpha"` | `"hex"` |
+| `asChild` | `boolean` | `false` |
+
+### ColorPickerSwatchPreview
+
+Compact swatch that displays the current color. Use inside an input group for input mode.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### ColorPickerSwatchGroup
+
+Container for swatch triggers in swatch picker mode.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### ColorPickerSwatchTrigger
+
+Button that selects a color when clicked. Wraps `ColorPickerSwatch` and optionally `ColorPickerSwatchIndicator`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `className` | `string` | — |
+
+### ColorPickerSwatch
+
+Color swatch display. Use as a child of `ColorPickerSwatchTrigger`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `className` | `string` | — |
+
+### ColorPickerSwatchIndicator
+
+Indicator shown when a swatch is selected. Renders a check icon by default; pass children to customize.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | `<CheckIcon />` |
+| `className` | `string` | — |
+
+### ColorPickerValue
+
+Displays the current color as formatted text.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | — |
+| `className` | `string` | — |
+
+### ColorPickerValueSwatch
+
+Displays the current color as a swatch. Use for standalone value preview.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### parseColor
+
+Exported utility to parse color strings. Use for programmatic color handling (e.g. `parseColor("#eb5e41").toString("hex")`).
+
+---
+
+For the complete list of props and additional subcomponents, see the [Ark UI Color Picker documentation](https://ark-ui.com/docs/components/color-picker#api-reference).

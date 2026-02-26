@@ -1,10 +1,7 @@
-"use client";
-
 import {
   ColorPicker,
   ColorPickerSlider,
-  ColorPickerValue,
-  ColorPickerValueSwatch,
+  ColorPickerView,
 } from "@/registry/react/components/color-picker";
 
 const Example = () => (
@@ -12,15 +9,12 @@ const Example = () => (
     className="w-full max-w-64"
     defaultValue="#EB5E41"
     disabled
+    format="hsla"
     inline
   >
-    <div className="flex items-center gap-3">
-      <div className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-md border shadow-sm">
-        <ColorPickerValueSwatch />
-      </div>
-      <ColorPickerValue className="font-medium text-sm" />
-    </div>
-    <ColorPickerSlider channel="hue" />
+    <ColorPickerView format="hsla">
+      <ColorPickerSlider channel="hue" />
+    </ColorPickerView>
   </ColorPicker>
 );
 

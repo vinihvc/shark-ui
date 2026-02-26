@@ -77,7 +77,7 @@ Reference these guidelines when:
 - `rerender-derived-state` - Subscribe to derived booleans, not raw values
 - `rerender-derived-state-no-effect` - Derive state during render, not effects
 - `rerender-functional-setstate` - Use functional setState for stable callbacks
-- `rerender-lazy-state-init` - Pass function to useState for expensive values
+- `rerender-lazy-state-init` - Pass function toReact.useState for expensive values
 - `rerender-simple-expression-in-memo` - Avoid memo for simple primitives
 - `rerender-move-effect-to-event` - Put interaction logic in event handlers
 - `rerender-transitions` - Use startTransition for non-urgent updates

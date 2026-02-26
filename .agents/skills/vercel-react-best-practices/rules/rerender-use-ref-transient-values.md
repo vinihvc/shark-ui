@@ -13,7 +13,7 @@ When a value changes frequently and you don't want a re-render on every update (
 
 ```tsx
 function Tracker() {
-  const [lastX, setLastX] = useState(0)
+  const [lastX, setLastX] = React.useState(0)
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => setLastX(e.clientX)

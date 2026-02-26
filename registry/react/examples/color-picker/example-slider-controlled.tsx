@@ -1,33 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import {
   ColorPicker,
   ColorPickerSlider,
-  ColorPickerValue,
-  ColorPickerValueSwatch,
+  ColorPickerView,
 } from "@/registry/react/components/color-picker";
 
 const Example = () => {
-  const [color, setColor] = useState("#EB5E41");
+  const [color, setColor] = React.useState("rgba(82, 65, 235, 1)");
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex w-full max-w-64 flex-col gap-4">
       <ColorPicker
-        className="w-full max-w-64"
+        className="w-full"
+        format="hsla"
         inline
         onValueChange={(e) => setColor(e.valueAsString)}
         value={color}
       >
-        <div className="flex items-center gap-3">
-          <div className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-md border shadow-sm">
-            <ColorPickerValueSwatch />
-          </div>
-          <ColorPickerValue className="font-medium text-sm" />
-        </div>
-        <ColorPickerSlider channel="hue" />
+        <ColorPickerView format="hsla">
+          <ColorPickerSlider channel="hue" />
+        </ColorPickerView>
       </ColorPicker>
-      <p className="text-muted-foreground text-sm">Current color: {color}</p>
+      <p className="text-center text-muted-foreground text-sm">{color}</p>
     </div>
   );
 };

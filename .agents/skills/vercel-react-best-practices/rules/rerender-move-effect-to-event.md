@@ -13,7 +13,7 @@ If a side effect is triggered by a specific user action (submit, click, drag), r
 
 ```tsx
 function Form() {
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = React.useState(false)
   const theme = useContext(ThemeContext)
 
   useEffect(() => {

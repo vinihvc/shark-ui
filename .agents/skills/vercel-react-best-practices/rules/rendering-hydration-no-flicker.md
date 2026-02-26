@@ -30,7 +30,7 @@ Server-side rendering will fail because `localStorage` is undefined.
 
 ```tsx
 function ThemeWrapper({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = React.useState('light')
   
   useEffect(() => {
     // Runs after hydration - causes visible flash
