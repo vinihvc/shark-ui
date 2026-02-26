@@ -78,7 +78,7 @@ export const CardsTeamMembers = () => {
 
       <CardContent>
         {teamMembers.map((member) => (
-          <Item className="gap-4 px-0" key={member.name} size="sm">
+          <Item className="gap-4 px-0" key={member.name}>
             <Avatar className="shrink-0 self-start border">
               <AvatarImage alt="Image" src={member.avatar} />
               <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
