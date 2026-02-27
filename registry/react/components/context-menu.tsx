@@ -1,8 +1,8 @@
 "use client";
 
-import { ark } from "@ark-ui/react/factory";
 import { Menu as ArkMenu } from "@ark-ui/react/menu";
 import type React from "react";
+import { cn } from "@/lib/utils";
 import {
   Menu,
   MenuContent,
@@ -22,12 +22,14 @@ export const ContextMenu = (props: React.ComponentProps<typeof Menu>) => (
 export const ContextMenuTrigger = (
   props: React.ComponentProps<typeof ArkMenu.ContextTrigger>
 ) => {
-  const { children, asChild, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
-    <ArkMenu.ContextTrigger asChild data-slot="context-menu" {...rest}>
-      <ark.span asChild={asChild}>{children}</ark.span>
-    </ArkMenu.ContextTrigger>
+    <ArkMenu.ContextTrigger
+      className={cn("cursor-default select-none", className)}
+      data-slot="context-menu"
+      {...rest}
+    />
   );
 };
 

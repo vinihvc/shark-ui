@@ -2,11 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "date-fns",
-    "lucide-react"
-  ],
+  "dependencies": ["@ark-ui/react", "date-fns", "lucide-react"],
   "registryDependencies": [
     "https://shark.vini.one/r/button.json",
     "https://shark.vini.one/r/input.json"

@@ -1,3 +1,7 @@
+"use client";
+
+import { CalendarIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
   CalendarMonthSelect,
   CalendarTable,
@@ -9,12 +13,18 @@ import {
 import {
   DatePicker,
   DatePickerContent,
-  DatePickerInput,
+  DatePickerTrigger,
+  DatePickerValue,
 } from "@/registry/react/components/date-picker";
 
 const Example = () => (
   <DatePicker>
-    <DatePickerInput />
+    <DatePickerTrigger asChild>
+      <Button className="min-w-56" variant="outline">
+        <CalendarIcon aria-hidden="true" />
+        <DatePickerValue placeholder="Pick a date" />
+      </Button>
+    </DatePickerTrigger>
     <DatePickerContent>
       <CalendarViewControl>
         <CalendarMonthSelect />

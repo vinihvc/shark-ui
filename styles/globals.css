@@ -146,6 +146,24 @@
       transform: translateX(400%);
     }
   }
+
+  @keyframes flip-in {
+    from {
+      transform: rotateY(180deg);
+    }
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+
+  @keyframes flip-out {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(180deg);
+    }
+  }
 }
 
 :root {
@@ -362,7 +380,7 @@
 
   &:before {
     content: counter(step);
-    @apply border border-border bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9;
+    @apply border border-border bg-code mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-xs font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-8;
   }
 }
 

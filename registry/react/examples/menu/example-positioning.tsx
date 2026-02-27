@@ -6,15 +6,15 @@ import {
   MenuTrigger,
 } from "@/registry/react/components/menu";
 
-const sides = ["left", "top", "bottom", "right"] as const;
+const placements = ["left", "top", "bottom", "right"] as const;
 
 const Example = () => (
   <div className="flex flex-wrap justify-center gap-2">
-    {sides.map((side) => (
-      <Menu key={side} positioning={{ placement: side }}>
+    {placements.map((placement) => (
+      <Menu key={placement} positioning={{ placement }}>
         <MenuTrigger asChild>
           <Button className="capitalize" variant="outline">
-            {side}
+            {placement}
           </Button>
         </MenuTrigger>
         <MenuContent className="w-36">

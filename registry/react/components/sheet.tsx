@@ -34,7 +34,7 @@ export const SheetOverlay = (
 const sheetPositionerVariants = tv({
   base: ["fixed inset-0 z-50 grid"],
   variants: {
-    side: {
+    placement: {
       bottom: "grid grid-rows-[1fr_auto] pt-12",
       top: "grid grid-rows-[auto_1fr] pb-12",
       left: "flex justify-start",
@@ -55,11 +55,11 @@ interface SheetPositionerProps
     VariantProps<typeof sheetPositionerVariants> {}
 
 export const SheetPositioner = (props: SheetPositionerProps) => {
-  const { variant = "default", side, className, ...rest } = props;
+  const { variant = "default", placement, className, ...rest } = props;
 
   return (
     <ArkDialog.Positioner
-      className={cn(sheetPositionerVariants({ side, variant }), className)}
+      className={cn(sheetPositionerVariants({ placement, variant }), className)}
       data-slot="sheet-positioner"
       {...rest}
     />
@@ -80,7 +80,7 @@ const sheetContentVariants = tv({
     "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
   ],
   variants: {
-    side: {
+    placement: {
       bottom: [
         "row-start-2 border-t",
         "data-[state=closed]:slide-in-from-bottom-10 data-[state=open]:slide-in-from-bottom-10",
@@ -111,7 +111,7 @@ const sheetContentVariants = tv({
     },
   },
   defaultVariants: {
-    side: "right",
+    placement: "right",
     variant: "default",
   },
 });
@@ -130,7 +130,7 @@ interface SheetContentProps
 export const SheetContent = (props: SheetContentProps) => {
   const {
     showCloseButton = true,
-    side = "right",
+    placement = "right",
     variant = "default",
     className,
     children,
@@ -141,9 +141,12 @@ export const SheetContent = (props: SheetContentProps) => {
     <Portal>
       <SheetOverlay />
 
-      <SheetPositioner side={side} variant={variant}>
+      <SheetPositioner placement={placement} variant={variant}>
         <ArkDialog.Content
-          className={cn(sheetContentVariants({ side, variant }), className)}
+          className={cn(
+            sheetContentVariants({ placement, variant }),
+            className
+          )}
           data-slot="sheet-content"
           {...rest}
         >

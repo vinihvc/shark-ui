@@ -315,18 +315,15 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       </ScrollArea>
     );
   },
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
-      className={cn(
-        "mt-8 scroll-m-32 font-heading font-medium text-lg tracking-tight",
-        className
-      )}
-      {...props}
-    />
-  ),
   Steps: ({ ...props }) => (
     <div
       className="[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8"
+      {...props}
+    />
+  ),
+  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
+    <h3
+      className={cn("mt-8 scroll-m-32 tracking-tight", className)}
       {...props}
     />
   ),

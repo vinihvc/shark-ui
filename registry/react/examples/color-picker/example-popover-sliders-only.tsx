@@ -13,11 +13,7 @@ import {
 import { Field, FieldLabel } from "@/registry/react/components/field";
 
 const Example = () => (
-  <ColorPicker
-    className="w-full max-w-64"
-    defaultValue="#eb5e41"
-    format="hsla"
-  >
+  <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" format="hsla">
     <ColorPickerTrigger asChild>
       <Button size="lg" variant="ghost">
         <ColorPickerSwatchPreview className="size-6" />

@@ -1,0 +1,148 @@
+---
+title: Toggle Tooltip
+description: An infotip that looks like a tooltip but works like a popover—opens on hover and click for touch/keyboard accessibility.
+links:
+  doc: https://ark-ui.com/docs/components/popover
+  api: https://ark-ui.com/docs/components/popover#api-reference
+---
+
+<ComponentPreview componentName="toggle-tooltip" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/toggle-tooltip
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/toggle-tooltip.tsx" src="/toggle-tooltip.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ToggleTooltip,
+  ToggleTooltipContent,
+  ToggleTooltipTrigger,
+} from "@/components/ui/toggle-tooltip";
+```
+
+```tsx showLineNumbers
+<ToggleTooltip>
+  <ToggleTooltipTrigger asChild>
+    <button type="button">
+      <InfoIcon />
+    </button>
+  </ToggleTooltipTrigger>
+  <ToggleTooltipContent>
+    Hover or click to see this content.
+  </ToggleTooltipContent>
+</ToggleTooltip>
+```
+
+## When to use
+
+| Component | Use when |
+| --- | --- |
+| **Tooltip** | The trigger's purpose is unrelated to opening the popup. Non-essential clarity for sighted mouse/keyboard users. |
+| **Toggle Tooltip** | The trigger's purpose is to open the popup (e.g. info icon). Content should be accessible to touch users and screen readers. |
+| **Popover** | You need richer content, headers, footers, or more space. |
+
+Tooltips don't work well with touch—there's no hover on tap. Use Toggle Tooltip when the trigger exists to reveal supplementary info so everyone can access it.
+
+## Examples
+
+### Side
+
+Use the `positioning` prop to change the position.
+
+<ComponentPreview componentName="toggle-tooltip" fileName="example-side" />
+
+### Info icon
+
+Label with info icon pattern, common in data lists and forms.
+
+<ComponentPreview componentName="toggle-tooltip" fileName="example-info-icon" />
+
+### Interactive content
+
+Unlike tooltips, Toggle Tooltip is a popover and can contain interactive content like links.
+
+<ComponentPreview componentName="toggle-tooltip" fileName="example-with-link" />
+
+## API Reference
+
+### ToggleTooltip
+
+Root component. Manages open state, positioning, and hover behavior.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `positioning` | `PositioningOptions` | `{ placement: "top" }` | Options used to position the content |
+| `openOnHover` | `boolean` | `true` | Open on hover (desktop convenience) |
+| `openDelay` | `number` | `0` | Delay before opening on hover (ms) |
+| `closeDelay` | `number` | `100` | Delay before closing on hover leave (ms) |
+| `modal` | `boolean` | `false` | Whether to trap focus when open |
+| `lazyMount` | `boolean` | `true` | Whether to enable lazy mounting |
+| `unmountOnExit` | `boolean` | `true` | Whether to unmount on exit |
+| `open` | `boolean` | — | The controlled open state |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | — | Called when the open state changes |
+
+### ToggleTooltipTrigger
+
+The element that triggers the popover on click or hover. Renders a `button` by default.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+### ToggleTooltipContent
+
+The content displayed. Renders a `div` element with tooltip-like styling.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | The class name for the content |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+### ToggleTooltipArrow
+
+Optional arrow pointing to the trigger. Place inside `ToggleTooltipContent`.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | — | Use the provided child element as the default rendered element |
+
+---
+
+For positioning and other props, see the [Ark UI Popover documentation](https://ark-ui.com/docs/components/popover#api-reference).

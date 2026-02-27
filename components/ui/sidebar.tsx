@@ -158,16 +158,28 @@ export const SidebarProvider = (props: SidebarProviderProps) => {
 };
 
 interface SidebarProps extends React.ComponentProps<typeof Sheet> {
+  /**
+   * The class name of the sidebar.
+   */
   className?: string;
+  /**
+   * The collapsible state of the sidebar.
+   */
   collapsible?: "offcanvas" | "icon" | "none";
-  side?: "left" | "right";
+  /**
+   * The side of the sidebar.
+   */
+  placement?: "left" | "right";
+  /**
+   * The variant of the sidebar.
+   */
   variant?: "sidebar" | "floating" | "inset";
 }
 
 export const Sidebar = (props: SidebarProps) => {
   const {
     collapsible = "offcanvas",
-    side = "left",
+    placement = "left",
     variant = "sidebar",
     className,
     children,
@@ -231,7 +243,7 @@ export const Sidebar = (props: SidebarProps) => {
     <ark.div
       className={cn("group peer", "hidden md:block", "text-sidebar-foreground")}
       data-collapsible={state === "collapsed" ? collapsible : ""}
-      data-side={side}
+      data-placement={placement}
       data-state={state}
       data-variant={variant}
     >
@@ -242,7 +254,7 @@ export const Sidebar = (props: SidebarProps) => {
           "bg-transparent",
           "transition-[width] duration-200 ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
-          "group-data-[side=right]:rotate-180",
+          "group-data-[placement=right]:rotate-180",
           variant === "floating" || variant === "inset"
             ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
@@ -255,12 +267,12 @@ export const Sidebar = (props: SidebarProps) => {
           "hidden md:flex",
           "h-svh",
           "transition-[left,right,width] duration-200 ease-linear",
-          side === "left"
+          placement === "left"
             ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
           variant === "floating" || variant === "inset"
             ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
-            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
+            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[placement=left]:border-r group-data-[placement=right]:border-l",
           className
         )}
         {...props}
@@ -319,12 +331,12 @@ export const SidebarRail = (props: React.ComponentProps<typeof ark.button>) => {
         "transition-all ease-linear",
         "after:absolute after:inset-y-0 after:left-1/2 after:w-[2px]",
         "hover:after:bg-sidebar-border",
-        "group-data-[side=left]:-right-4 group-data-[side=right]:left-0",
-        "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",
-        "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
+        "group-data-[placement=left]:-right-4 group-data-[placement=right]:left-0",
+        "in-data-[placement=left]:cursor-w-resize in-data-[placement=right]:cursor-e-resize",
+        "[[data-placement=left][data-state=collapsed]_&]:cursor-e-resize [[data-placement=right][data-state=collapsed]_&]:cursor-w-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:after:left-full",
-        "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
-        "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
+        "[[data-placement=left][data-collapsible=offcanvas]_&]:-right-2",
+        "[[data-placement=right][data-collapsible=offcanvas]_&]:-left-2",
         className
       )}
       data-sidebar="rail"

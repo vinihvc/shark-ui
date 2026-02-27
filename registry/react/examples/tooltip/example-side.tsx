@@ -5,15 +5,15 @@ import {
   TooltipTrigger,
 } from "@/registry/react/components/tooltip";
 
-const sides = ["left", "top", "bottom", "right"] as const;
+const placements = ["left", "top", "bottom", "right"] as const;
 
 const Example = () => (
   <div className="flex flex-wrap items-center justify-center gap-4">
-    {sides.map((side) => (
-      <Tooltip key={side} positioning={{ placement: side }}>
+    {placements.map((placement) => (
+      <Tooltip key={placement} positioning={{ placement }}>
         <TooltipTrigger asChild>
           <Button className="capitalize" variant="outline">
-            {side}
+            {placement}
           </Button>
         </TooltipTrigger>
         <TooltipContent>

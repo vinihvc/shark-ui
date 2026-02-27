@@ -5,10 +5,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 interface MarqueeProps
-  extends Omit<
-    React.ComponentProps<typeof ArkMarquee.Root>,
-    "spacing" | "side"
-  > {
+  extends Omit<React.ComponentProps<typeof ArkMarquee.Root>, "side"> {
   /**
    *
    * @default "horizontal"
@@ -20,12 +17,6 @@ interface MarqueeProps
    * @default true
    */
   showEdges?: boolean;
-  /**
-   * The amount of space between items.
-   *
-   * @default 4
-   */
-  spacing?: number;
 }
 
 export const Marquee = (props: MarqueeProps) => {
@@ -41,8 +32,6 @@ export const Marquee = (props: MarqueeProps) => {
 
   const side = orientation === "horizontal" ? "start" : "bottom";
 
-  const spacingValue = `${(spacing * 4) / 16}rem`;
-
   return (
     <ArkMarquee.Root
       className={cn(
@@ -55,7 +44,6 @@ export const Marquee = (props: MarqueeProps) => {
       data-orientation={orientation}
       data-slot="marquee"
       side={side}
-      spacing={spacingValue}
       speed={speed}
       {...rest}
     >
@@ -118,10 +106,10 @@ export const MarqueeEdge = (
         "group-data-[orientation=vertical]/marquee:h-1/5 group-data-[orientation=vertical]/marquee:w-full",
         "pointer-events-none",
         "from-background to-transparent",
-        "data-[side=start]:bg-linear-to-r",
-        "data-[side=end]:bg-linear-to-l",
-        "data-[side=top]:bg-linear-to-b",
-        "data-[side=bottom]:bg-linear-to-t",
+        "data-[placement=start]:bg-linear-to-r",
+        "data-[placement=end]:bg-linear-to-l",
+        "data-[placement=top]:bg-linear-to-b",
+        "data-[placement=bottom]:bg-linear-to-t",
         className
       )}
       data-slot="marquee-edge"

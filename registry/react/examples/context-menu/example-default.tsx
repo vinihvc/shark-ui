@@ -27,8 +27,11 @@ import {
 
 const ContextMenuDemo = () => (
   <ContextMenu>
-    <ContextMenuTrigger className="flex items-center justify-center rounded-md border-2 border-dashed p-10">
-      Right click here
+    <ContextMenuTrigger className="flex aspect-video items-center justify-center rounded-2xl border border-dashed p-20 text-sm">
+      <span className="pointer-fine:inline-block hidden">Right click here</span>
+      <span className="pointer-coarse:inline-block hidden">
+        Long press here
+      </span>
     </ContextMenuTrigger>
     <ContextMenuContent className="w-40">
       <ContextMenuGroup>

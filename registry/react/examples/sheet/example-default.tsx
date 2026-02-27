@@ -37,7 +37,7 @@ const SheetDemo = () => (
           </Field>
         </FieldGroup>
       </SheetBody>
-      <SheetFooter className="mt-auto">
+      <SheetFooter>
         <SheetClose asChild>
           <Button variant="outline">Cancel</Button>
         </SheetClose>

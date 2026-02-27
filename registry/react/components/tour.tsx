@@ -159,7 +159,7 @@ export const TourContent = (props: TourContentProps) => {
             "focus:outline-none focus:ring-0",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
-            "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
+            "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
             className
           )}
           data-slot="tour-content"

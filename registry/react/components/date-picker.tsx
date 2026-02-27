@@ -6,46 +6,64 @@ import { CalendarIcon, ClockIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
-import { Calendar } from "@/registry/react/components/calendar";
+import {
+  Calendar,
+  CalendarPresetTrigger,
+} from "@/registry/react/components/calendar";
+import type { Input, InputProps } from "@/registry/react/components/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/react/components/input-group";
-import type { Input } from "./input";
 
 export const DatePicker = (props: React.ComponentProps<typeof Calendar>) => {
-  const { className, lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const { positioning = { placement: "top" }, ...rest } = props;
 
   return (
     <Calendar
-      className={cn("w-fit", className)}
       data-slot="date-picker"
       inline={false}
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
+      positioning={positioning}
       {...rest}
     />
   );
 };
 
-interface DatePickerTriggerProps
-  extends Omit<React.ComponentProps<typeof ArkDatePicker.Input>, "size"> {
-  /**
-   * Whether to show the clear button.
-   *
-   * @default false
-   */
-  showClear?: boolean;
-}
-
-export const DatePickerInput = (props: DatePickerTriggerProps) => {
-  const { showClear = false, ...rest } = props;
+export const DatePickerTrigger = (
+  props: React.ComponentProps<typeof ArkDatePicker.Trigger>
+) => {
+  const { className, children, ...rest } = props;
 
   return (
     <ArkDatePicker.Control data-slot="date-picker-control">
-      <InputGroup>
+      <ArkDatePicker.Trigger
+        className={cn(
+          "justify-start",
+          "text-left data-placeholder-shown:[&>span]:text-muted-foreground",
+          "active:scale-100",
+          className
+        )}
+        data-slot="date-picker-trigger"
+        {...rest}
+      >
+        {children}
+      </ArkDatePicker.Trigger>
+    </ArkDatePicker.Control>
+  );
+};
+
+interface DatePickerInputProps
+  extends Omit<React.ComponentProps<typeof ArkDatePicker.Input>, "size">,
+    InputProps {}
+
+export const DatePickerInput = (props: DatePickerInputProps) => {
+  const { size, className, ...rest } = props;
+
+  return (
+    <ArkDatePicker.Control data-slot="date-picker-control">
+      <InputGroup size={size}>
         <ArkDatePicker.Input asChild data-slot="date-picker-input" {...rest}>
           <InputGroupInput />
         </ArkDatePicker.Input>
@@ -53,123 +71,19 @@ export const DatePickerInput = (props: DatePickerTriggerProps) => {
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             asChild
-            className="group-has-data-[slot=date-picker-clear-trigger]/input-group:hidden"
             data-slot="input-group-button"
             size="icon-xs"
             variant="ghost"
           >
             <ArkDatePicker.Trigger asChild data-slot="date-picker-trigger">
-              <Button size="icon-md" variant="outline">
-                <CalendarIcon aria-hidden className="size-4" />
+              <Button size="icon-md" variant="ghost">
+                <CalendarIcon aria-hidden />
               </Button>
             </ArkDatePicker.Trigger>
           </InputGroupButton>
-
-          {showClear && (
-            <ArkDatePicker.ClearTrigger
-              asChild
-              data-slot="date-picker-clear-trigger"
-            >
-              <Button size="sm" variant="ghost">
-                Clear
-              </Button>
-            </ArkDatePicker.ClearTrigger>
-          )}
         </InputGroupAddon>
       </InputGroup>
     </ArkDatePicker.Control>
-  );
-};
-
-interface DatePickerRangeInputProps {
-  /** Placeholder for the end date input. */
-  endPlaceholder?: string;
-  /**
-   * Whether to show the clear button.
-   *
-   * @default false
-   */
-  showClear?: boolean;
-  /** Placeholder for the start date input. */
-  startPlaceholder?: string;
-}
-
-export const DatePickerRangeInput = (props: DatePickerRangeInputProps) => {
-  const {
-    showClear = false,
-    startPlaceholder = "Start date",
-    endPlaceholder = "End date",
-  } = props;
-
-  return (
-    <ArkDatePicker.Control data-slot="date-picker-control">
-      <InputGroup className="gap-2">
-        <ArkDatePicker.Input
-          asChild
-          data-slot="date-picker-input"
-          index={0}
-          placeholder={startPlaceholder}
-        >
-          <InputGroupInput className="min-w-28" />
-        </ArkDatePicker.Input>
-        <span className="text-muted-foreground text-sm">to</span>
-        <ArkDatePicker.Input
-          asChild
-          data-slot="date-picker-input"
-          index={1}
-          placeholder={endPlaceholder}
-        >
-          <InputGroupInput className="min-w-28" />
-        </ArkDatePicker.Input>
-
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton
-            asChild
-            className="group-has-data-[slot=date-picker-clear-trigger]/input-group:hidden"
-            data-slot="input-group-button"
-            size="icon-xs"
-            variant="ghost"
-          >
-            <ArkDatePicker.Trigger asChild data-slot="date-picker-trigger">
-              <Button size="icon-md" variant="outline">
-                <CalendarIcon aria-hidden className="size-4" />
-              </Button>
-            </ArkDatePicker.Trigger>
-          </InputGroupButton>
-
-          {showClear && (
-            <ArkDatePicker.ClearTrigger
-              asChild
-              data-slot="date-picker-clear-trigger"
-            >
-              <Button size="sm" variant="ghost">
-                Clear
-              </Button>
-            </ArkDatePicker.ClearTrigger>
-          )}
-        </InputGroupAddon>
-      </InputGroup>
-    </ArkDatePicker.Control>
-  );
-};
-
-export const DatePickerPositioner = (
-  props: React.ComponentProps<typeof ArkDatePicker.Positioner>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkDatePicker.Positioner
-      className={cn(
-        "z-50",
-        "data-[state=closed]:animate-out data-[state=open]:animate-in",
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-        "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-        className
-      )}
-      data-slot="date-picker-positioner"
-      {...rest}
-    />
   );
 };
 
@@ -203,19 +117,49 @@ export const DatePickerContent = (
 
   return (
     <Portal>
-      <DatePickerPositioner>
+      <ArkDatePicker.Positioner data-slot="date-picker-positioner">
         <ArkDatePicker.Content
           className={cn(
-            "w-fit min-w-72",
-            "rounded-lg border bg-popover p-3 text-popover-foreground shadow-lg",
-            "outline-none",
             "[--cell-size:--spacing(8)]",
+            "z-[calc(50+var(--layer-index,0))]",
+            "w-fit min-w-72",
+            "p-3",
+            "bg-popover",
+            "text-popover-foreground",
+            "rounded-2xl border shadow-lg/5",
+            "outline-none",
+            "origin-(--transform-origin)",
+            "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+            "data-[state=closed]:animate-out data-[state=open]:animate-in",
+            "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
             className
           )}
           data-slot="date-picker-content"
           {...rest}
         />
-      </DatePickerPositioner>
+      </ArkDatePicker.Positioner>
     </Portal>
+  );
+};
+
+export const DatePickerValue = (
+  props: React.ComponentProps<typeof ArkDatePicker.ValueText>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkDatePicker.ValueText
+      className={cn("font-medium text-sm", className)}
+      data-slot="date-picker-value"
+      {...rest}
+    />
+  );
+};
+
+export const DatePickerPresetTrigger = (
+  props: React.ComponentProps<typeof ArkDatePicker.PresetTrigger>
+) => {
+  return (
+    <CalendarPresetTrigger data-slot="date-picker-preset-trigger" {...props} />
   );
 };

@@ -25,6 +25,20 @@ export const MenuTrigger = (
   props: React.ComponentProps<typeof ArkMenu.Trigger>
 ) => <ArkMenu.Trigger data-slot="menu-trigger" {...props} />;
 
+export const MenuPositioner = (
+  props: React.ComponentProps<typeof ArkMenu.Positioner>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkMenu.Positioner
+      className={cn("outline-none", className)}
+      data-slot="menu-positioner"
+      {...rest}
+    />
+  );
+};
+
 export const menuContentVariants = tv({
   base: [
     "z-[calc(50+var(--nested-layer-count,0))]",
@@ -37,29 +51,15 @@ export const menuContentVariants = tv({
     "outline-none",
     "overflow-y-auto overflow-x-hidden",
     "duration-100",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-    "data-[side=bottom]:slide-in-from-top-2",
-    "data-[side=left]:slide-in-from-end-2",
-    "data-[side=right]:slide-in-from-start-2",
-    "data-[side=top]:slide-in-from-bottom-2",
+    "data-[state=open]:animate-in",
+    "data-[state=open]:fade-in-0",
+    "data-[state=open]:zoom-in-[98%]",
+    "data-[placement=bottom]:slide-in-from-top-2",
+    "data-[placement=left]:slide-in-from-end-2",
+    "data-[placement=right]:slide-in-from-start-2",
+    "data-[placement=top]:slide-in-from-bottom-2",
   ],
 });
-
-export const MenuPositioner = (
-  props: React.ComponentProps<typeof ArkMenu.Positioner>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkMenu.Positioner
-      className={cn("outline-none")}
-      data-slot="menu-positioner"
-      {...rest}
-    />
-  );
-};
 
 export const MenuContent = (props: MenuContentProps) => {
   const { className, children, ...rest } = props;

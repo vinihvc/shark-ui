@@ -5,7 +5,7 @@ import React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-interface HintContextType {
+interface HintContextValue {
   /**
    * The id of the hint.
    *
@@ -17,6 +17,23 @@ interface HintContextType {
    */
   isVisible: boolean;
   /**
+   * The positioning of the action bar.
+   */
+  positioning: {
+    /**
+     * The offset from the edge in pixels.
+     *
+     * @default '16px'
+     */
+    offset?: string;
+    /**
+     * The placement of the action bar.
+     *
+     * @default "bottom"
+     */
+    placement?: "top" | "bottom" | "left" | "right";
+  };
+  /**
    * Set the visibility of the hint.
    */
   setIsVisible: (value: boolean) => void;
@@ -24,46 +41,55 @@ interface HintContextType {
 
 interface HintProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * Spacing between the trigger and the hint.
-   *
-   * @default "1.5"
+   * Placement and offset of the hint.
    */
-  offset?: string;
-  /**
-   * The side that the hint will appear from.
-   *
-   * @default "top"
-   */
-  side?: "top" | "bottom" | "left" | "right";
+  positioning?: HintContextValue["positioning"];
 }
 
-const HintContext = React.createContext({} as HintContextType & HintProps);
+const HintContext = React.createContext({} as HintContextValue);
+
+const defaultPositioning = { placement: "bottom", offset: "16px" } as const;
 
 export const Hint = (props: HintProps) => {
-  const { side = "top", offset = "1.5", className, children, ...rest } = props;
+  const {
+    positioning = { placement: "top", offset: "6px" },
+    className,
+    children,
+    ...rest
+  } = props;
 
   const hintId = `hint${React.useId()}`;
 
   const [isVisible, setIsVisible] = React.useState(false);
 
   return (
-    <HintContext value={{ isVisible, side, setIsVisible, id: hintId }}>
+    <HintContext.Provider
+      value={{
+        isVisible,
+        positioning: {
+          ...defaultPositioning,
+          ...positioning,
+        },
+        setIsVisible,
+        id: hintId,
+      }}
+    >
       <ark.div
         aria-describedby={hintId}
         className={cn("relative inline-flex whitespace-nowrap", className)}
-        data-side={side}
+        data-placement={positioning.placement}
         data-slot="hint"
         data-state={isVisible ? "open" : "closed"}
         style={
           {
-            "--offset": `calc(${offset} * var(--spacing))`,
+            "--offset": `calc(${positioning.offset} * var(--spacing))`,
           } as React.CSSProperties
         }
         {...rest}
       >
         {children}
       </ark.div>
-    </HintContext>
+    </HintContext.Provider>
   );
 };
 
@@ -91,16 +117,16 @@ export const HintTrigger = (props: React.ComponentProps<typeof ark.button>) => {
 const hintContentVariants = tv({
   base: [
     "absolute",
-    "z-40 w-fit",
+    "z-50 w-fit",
     "px-3 py-1.5",
-    "bg-popover",
+    "bg-foreground",
+    "text-background text-xs",
     "rounded-md border shadow-md/5",
-    "text-foreground text-xs",
-    "fade-in-0 zoom-in-95 animate-in",
-    "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out",
+    "fade-in-0 zoom-in-[98%] animate-in",
+    "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
   ],
   variants: {
-    side: {
+    placement: {
       bottom: [
         "top-full left-1/2 -translate-x-1/2",
         "mt-(--offset)",
@@ -124,7 +150,7 @@ const hintContentVariants = tv({
     },
   },
   defaultVariants: {
-    side: "top",
+    placement: "top",
   },
 });
 
@@ -140,9 +166,15 @@ interface HintContentProps
 }
 
 export const HintContent = (props: HintContentProps) => {
-  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;
+  const {
+    lazyMount = true,
+    unmountOnExit = true,
+    className,
+    children,
+    ...rest
+  } = props;
 
-  const { side, isVisible, id } = useHint();
+  const { positioning, isVisible, id } = useHint();
 
   return (
     <Presence
@@ -152,15 +184,31 @@ export const HintContent = (props: HintContentProps) => {
       unmountOnExit={unmountOnExit}
     >
       <ark.div
-        className={cn(hintContentVariants({ side }), className)}
-        data-side={side}
+        className={cn(
+          hintContentVariants({ placement: positioning.placement }),
+          className
+        )}
+        data-placement={positioning.placement}
         data-slot="hint-content"
         data-state={isVisible ? "open" : "closed"}
         id={id}
         role="tooltip"
         {...rest}
-      />
+      >
+        {children}
+        <HintArrow />
+      </ark.div>
     </Presence>
+  );
+};
+
+export const HintArrow = (props: React.ComponentProps<typeof ark.div>) => {
+  return (
+    <ark.div
+      className={cn("absolute", "size-2", "bg-foreground")}
+      data-slot="hint-arrow"
+      {...props}
+    />
   );
 };
 

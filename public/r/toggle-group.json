@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle-group",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react"
-  ],
+  "dependencies": ["@ark-ui/react"],
   "registryDependencies": [
     "https://shark.vini.one/r/toggle.json",
     "https://shark.vini.one/r/tooltip.json"

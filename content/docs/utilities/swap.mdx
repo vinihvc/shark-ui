@@ -1,0 +1,127 @@
+---
+title: Swap
+description: Animate between two visual states with smooth transitions.
+links:
+  doc: https://ark-ui.com/docs/utilities/swap
+---
+
+<ComponentPreview componentName="swap" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://shark.vini.one/r/swap.json
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+  <Step>Add the following keyframes to your `globals.css` for the flip variant:</Step>
+
+```css title="styles/globals.css"
+@keyframes flip-in {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes flip-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/swap.tsx" src="/swap.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { 
+  Swap, 
+  SwapIndicator
+} from "@/registry/react/components/swap";
+```
+
+```tsx showLineNumbers
+<Swap>
+  <SwapIndicator type="on">
+    <MoonIcon />
+  </SwapIndicator>
+  <SwapIndicator type="off">
+    <SunIcon />
+  </SwapIndicator>
+</Swap>
+```
+
+## Examples
+
+### Fade
+
+<ComponentPreview componentName="swap" fileName="example-default" />
+
+### Flip
+
+<ComponentPreview componentName="swap" fileName="example-flip" />
+
+### Rotate
+
+<ComponentPreview componentName="swap" fileName="example-rotate" />
+
+### Scale
+
+<ComponentPreview componentName="swap" fileName="example-scale" />
+
+### Blur
+
+<ComponentPreview componentName="swap" fileName="example-blur" />
+
+## Props
+
+### Swap
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `swap` | `boolean` | `false` |
+| `lazyMount` | `boolean` | `false` |
+| `unmountOnExit` | `boolean` | `false` |
+| `asChild` | `boolean` | `false` |
+
+### SwapIndicator
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `type` | `'on' \| 'off'` | **required** |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/swap#api-reference).

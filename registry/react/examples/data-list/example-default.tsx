@@ -1,8 +1,8 @@
 import {
+  DataList,
   DataListItem,
   DataListItemLabel,
   DataListItemValue,
-  DataListRoot,
 } from "@/registry/react/components/data-list";
 
 const data = [
@@ -12,14 +12,14 @@ const data = [
 ];
 
 const DataListDemo = () => (
-  <DataListRoot>
+  <DataList>
     {data.map((item) => (
       <DataListItem key={item.label}>
         <DataListItemLabel>{item.label}</DataListItemLabel>
         <DataListItemValue>{item.value}</DataListItemValue>
       </DataListItem>
     ))}
-  </DataListRoot>
+  </DataList>
 );
 
 export default DataListDemo;

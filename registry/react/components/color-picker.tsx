@@ -48,7 +48,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
   const isControlled = value !== undefined;
 
-  const handleChangeValue = (e: ColorPickerValueChangeDetails) => {
+  const handleValueChange = (e: ColorPickerValueChangeDetails) => {
     if (isControlled) {
       onValueChange?.(e);
     } else {
@@ -62,7 +62,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
       data-slot="color-picker"
       defaultValue={internalValue ? parseColor(internalValue) : undefined}
       lazyMount={lazyMount}
-      onValueChange={handleChangeValue}
+      onValueChange={handleValueChange}
       positioning={positioning}
       unmountOnExit={unmountOnExit}
       value={isControlled ? parseColor(value) : undefined}
@@ -133,8 +133,8 @@ export const ColorPickerContent = (
             "rounded-2xl border shadow-lg/5",
             "outline-none",
             "origin-(--transform-origin)",
-            "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:animate-in",
-            "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out",
+            "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
+            "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
             className
           )}
           data-slot="color-picker-content"

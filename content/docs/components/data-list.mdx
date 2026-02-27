@@ -44,13 +44,13 @@ npm install @ark-ui/react tailwind-variants
 
 ```tsx
 import {
-  DataListRoot,
+  DataList,
   DataListItem,
   DataListItemLabel,
   DataListItemValue,
 } from "@/components/ui/data-list";
 
-<DataListRoot>
+<DataList>
   <DataListItem>
     <DataListItemLabel>Name</DataListItemLabel>
     <DataListItemValue>John Doe</DataListItemValue>
@@ -59,32 +59,70 @@ import {
     <DataListItemLabel>Email</DataListItemLabel>
     <DataListItemValue>john@example.com</DataListItemValue>
   </DataListItem>
-</DataListRoot>
+</DataList>
 ```
 
 ## Orientation
 
-<ComponentPreview componentName="data-list" fileName="example-orientation" />
+Use the `orientation` prop to change the orientation of the datalist component.
+
+### Horizontal
+
+<ComponentPreview componentName="data-list" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="data-list" fileName="example-orientation-vertical" />
+
+## Examples
+
+### Info Tip
+
+Render the `Hint` component within `DataListItem` to provide additional context to the datalist.
+
+<ComponentPreview componentName="data-list" fileName="example-info-tip" />
+
+### Separator
+
+Use the `divide-y` utility class on `DataList` to add a separator between items.
+
+<ComponentPreview componentName="data-list" fileName="example-separator" />
 
 ## API Reference
 
-### DataListRoot
+### DataList
+
+Root component. Renders a `div`
 
 | Prop | Type | Default |
 |------|------|---------|
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
-| `variant` | `"subtle" \| "bold"` | `"subtle"` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### DataListItem
 
-Container for a single row. Inherits context from `DataListRoot`.
+Container for a single row. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### DataListItemLabel
 
-Label for the row (e.g. "Name", "Email").
+Label for the row. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### DataListItemValue
 
-Value for the row.
+Value for the row. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

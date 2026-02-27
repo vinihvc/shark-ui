@@ -6,25 +6,10 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-type CarouselProps = Omit<
-  React.ComponentProps<typeof ArkCarousel.Root>,
-  "spacing" | "padding"
-> & {
-  /**
-   * The amount of space between items.
-   */
-  spacing?: number;
-  /**
-   * The amount of padding around the carousel.
-   */
-  padding?: number;
-};
-
-export const Carousel = (props: CarouselProps) => {
-  const { spacing = 4, padding = 0, className, ...rest } = props;
-
-  const spacingValue = `${(spacing * 4) / 16}rem`;
-  const paddingValue = `${(padding * 4) / 16}rem`;
+export const Carousel = (
+  props: React.ComponentProps<typeof ArkCarousel.Root>
+) => {
+  const { className, ...rest } = props;
 
   return (
     <ArkCarousel.Root
@@ -35,8 +20,6 @@ export const Carousel = (props: CarouselProps) => {
         className
       )}
       data-slot="carousel"
-      padding={paddingValue}
-      spacing={spacingValue}
       {...rest}
     />
   );

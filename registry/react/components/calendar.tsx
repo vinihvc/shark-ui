@@ -19,13 +19,15 @@ export const parseDate = arkParseDate;
 export const Calendar = (
   props: React.ComponentProps<typeof ArkCalendar.Root>
 ) => {
-  const { className, ...rest } = props;
+  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;
 
   return (
     <ArkCalendar.Root
       className={cn("[--cell-size:--spacing(8)]", "w-fit", className)}
       data-slot="calendar"
       inline
+      lazyMount={lazyMount}
+      unmountOnExit={unmountOnExit}
       {...rest}
     />
   );

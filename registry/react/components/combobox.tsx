@@ -205,7 +205,7 @@ export const ComboboxTrigger = (
 
   return (
     <ArkCombobox.Trigger
-      className={cn("absolute inset-y-0 end-1", className)}
+      className={cn("absolute inset-e-1 inset-y-0", className)}
       data-slot="combobox-trigger"
       {...rest}
       asChild
@@ -256,11 +256,11 @@ export const ComboboxContent = (
             "outline-none",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-            "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
-            "data-[side=top]:slide-in-from-bottom-2",
-            "data-[side=bottom]:slide-in-from-top-2",
-            "data-[side=right]:slide-in-from-start-2",
-            "data-[side=left]:slide-in-from-end-2",
+            "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
+            "data-[placement=top]:slide-in-from-bottom-2",
+            "data-[placement=bottom]:slide-in-from-top-2",
+            "data-[placement=right]:slide-in-from-start-2",
+            "data-[placement=left]:slide-in-from-end-2",
             className
           )}
           data-slot="combobox-content"
@@ -341,7 +341,7 @@ export const ComboboxItem = (
         {children}
       </ArkCombobox.ItemText>
 
-      <span className="absolute end-2 flex size-3.5 items-center justify-center">
+      <span className="absolute inset-e-2 flex size-3.5 items-center justify-center">
         <ArkCombobox.ItemIndicator data-slot="combobox-item-indicator">
           <CheckIcon />
         </ArkCombobox.ItemIndicator>

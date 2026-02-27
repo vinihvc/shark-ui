@@ -47,8 +47,9 @@ export const DialogTrigger = (
 
 export const dialogOverlayVariants = tv({
   base: [
-    "fixed inset-0 z-40",
+    "fixed inset-0 z-50",
     "bg-black/32 backdrop-blur-sm",
+    "duration-200",
     "peer peer-data-[slot=dialog-overlay]:hidden",
     "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
     "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
@@ -84,6 +85,7 @@ export const DialogPositioner = (
     <ArkDialog.Positioner
       className={cn(
         "fixed inset-0 z-50",
+        "h-svh w-screen",
         "grid grid-rows-[1fr_auto_3fr] justify-items-center",
         "p-4",
         className
@@ -110,8 +112,8 @@ export const dialogContentVariants = tv({
     "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
     "data-[nested=dialog]:data-[state=closed]:slide-in-from-bottom-10 data-[nested=dialog]:data-[state=open]:slide-in-from-bottom-10 data-[has-nested=dialog]:origin-top",
     "scale-[calc(1-0.1*var(--nested-layer-count))] opacity-[calc(1-0.1*var(--nested-layer-count))]",
-    "data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
-    "data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0 data-[state=open]:animate-in",
+    "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
+    "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
   ],
   variants: {
     size: {
@@ -127,6 +129,7 @@ export const dialogContentVariants = tv({
         "max-sm:rounded-none max-sm:rounded-t-2xl max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
         "max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))]",
         "max-sm:data-[state=closed]:slide-out-to-bottom-5 max-sm:data-[state=open]:slide-in-from-bottom-5",
+        "max-sm:data-[state=closed]:zoom-out-100 max-sm:data-[state=open]:zoom-in-100",
       ],
     },
   },

@@ -10,6 +10,7 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
   return (
     <ArkSwitch.Root
       className={cn(
+        "group/switch",
         "[--size:--spacing(4)]",
         "h-[calc(var(--size)+2px)] w-[calc(var(--size)*2-2px)]",
         "inline-flex shrink-0 items-center",
@@ -31,7 +32,7 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
         <ArkSwitch.Thumb
           className={cn(
             "block",
-            "size-[calc(var(--size)-2px)]",
+            "size-[calc(var(--size)-2px)] group-hover:w-(--size)",
             "pointer-events-none",
             "bg-background",
             "rounded-full",

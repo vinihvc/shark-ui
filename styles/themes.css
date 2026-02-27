@@ -6,102 +6,153 @@
   --primary: var(--color-red-600);
   --primary-foreground: var(--color-red-50);
   --ring: var(--color-red-500);
+  --sidebar-primary: var(--color-red-600);
+  --sidebar-primary-foreground: var(--color-red-50);
+  --sidebar-ring: var(--color-red-500);
 }
 
 .theme-orange {
   --primary: var(--color-orange-600);
   --primary-foreground: var(--color-orange-50);
   --ring: var(--color-orange-400);
+  --sidebar-primary: var(--color-orange-600);
+  --sidebar-primary-foreground: var(--color-orange-50);
+  --sidebar-ring: var(--color-orange-400);
 }
 
 .theme-amber {
   --primary: var(--color-amber-600);
   --primary-foreground: var(--color-amber-50);
   --ring: var(--color-amber-500);
+  --sidebar-primary: var(--color-amber-600);
+  --sidebar-primary-foreground: var(--color-amber-50);
+  --sidebar-ring: var(--color-amber-500);
 }
 
 .theme-yellow {
   --primary: var(--color-yellow-600);
   --primary-foreground: var(--color-yellow-50);
   --ring: var(--color-yellow-500);
+  --sidebar-primary: var(--color-yellow-600);
+  --sidebar-primary-foreground: var(--color-yellow-50);
+  --sidebar-ring: var(--color-yellow-500);
 }
 
 .theme-lime {
   --primary: var(--color-lime-600);
   --primary-foreground: var(--color-lime-50);
   --ring: var(--color-lime-600);
+  --sidebar-primary: var(--color-lime-600);
+  --sidebar-primary-foreground: var(--color-lime-50);
+  --sidebar-ring: var(--color-lime-600);
 }
 
 .theme-green {
   --primary: var(--color-green-600);
   --primary-foreground: var(--color-green-50);
   --ring: var(--color-green-600);
+  --sidebar-primary: var(--color-green-600);
+  --sidebar-primary-foreground: var(--color-green-50);
+  --sidebar-ring: var(--color-green-600);
 }
 
 .theme-emerald {
   --primary: var(--color-emerald-600);
   --primary-foreground: var(--color-emerald-50);
   --ring: var(--color-emerald-600);
+  --sidebar-primary: var(--color-emerald-600);
+  --sidebar-primary-foreground: var(--color-emerald-50);
+  --sidebar-ring: var(--color-emerald-600);
 }
 
 .theme-teal {
   --primary: var(--color-teal-600);
   --primary-foreground: var(--color-teal-50);
   --ring: var(--color-teal-600);
+  --sidebar-primary: var(--color-teal-600);
+  --sidebar-primary-foreground: var(--color-teal-50);
+  --sidebar-ring: var(--color-teal-600);
 }
 
 .theme-cyan {
   --primary: var(--color-cyan-600);
   --primary-foreground: var(--color-cyan-50);
   --ring: var(--color-cyan-600);
+  --sidebar-primary: var(--color-cyan-600);
+  --sidebar-primary-foreground: var(--color-cyan-50);
+  --sidebar-ring: var(--color-cyan-600);
 }
 
 .theme-sky {
   --primary: var(--color-sky-600);
   --primary-foreground: var(--color-sky-50);
   --ring: var(--color-sky-600);
+  --sidebar-primary: var(--color-sky-600);
+  --sidebar-primary-foreground: var(--color-sky-50);
+  --sidebar-ring: var(--color-sky-600);
 }
 
 .theme-blue {
   --primary: var(--color-blue-600);
   --primary-foreground: var(--color-blue-50);
   --ring: var(--color-blue-400);
+  --sidebar-primary: var(--color-blue-600);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --sidebar-ring: var(--color-blue-400);
 }
 
 .theme-indigo {
   --primary: var(--color-indigo-600);
   --primary-foreground: var(--color-indigo-50);
   --ring: var(--color-indigo-400);
+  --sidebar-primary: var(--color-indigo-600);
+  --sidebar-primary-foreground: var(--color-indigo-50);
+  --sidebar-ring: var(--color-indigo-400);
 }
 
 .theme-violet {
   --primary: var(--color-violet-600);
   --primary-foreground: var(--color-violet-50);
   --ring: var(--color-violet-400);
+  --sidebar-primary: var(--color-violet-600);
+  --sidebar-primary-foreground: var(--color-violet-50);
+  --sidebar-ring: var(--color-violet-400);
 }
 
 .theme-purple {
   --primary: var(--color-purple-600);
   --primary-foreground: var(--color-purple-50);
   --ring: var(--color-purple-400);
+  --sidebar-primary: var(--color-purple-600);
+  --sidebar-primary-foreground: var(--color-purple-50);
+  --sidebar-ring: var(--color-purple-400);
 }
 
 .theme-fuchsia {
   --primary: var(--color-fuchsia-600);
   --primary-foreground: var(--color-fuchsia-50);
   --ring: var(--color-fuchsia-400);
+  --sidebar-primary: var(--color-fuchsia-600);
+  --sidebar-primary-foreground: var(--color-fuchsia-50);
+  --sidebar-ring: var(--color-fuchsia-400);
 }
 
 .theme-pink {
   --primary: var(--color-pink-600);
   --primary-foreground: var(--color-pink-50);
   --ring: var(--color-pink-400);
+  --sidebar-primary: var(--color-pink-600);
+  --sidebar-primary-foreground: var(--color-pink-50);
+  --sidebar-ring: var(--color-pink-400);
 }
 
 .theme-rose {
   --primary: var(--color-rose-600);
   --primary-foreground: var(--color-rose-50);
   --ring: var(--color-rose-400);
+  --sidebar-primary: var(--color-rose-600);
+  --sidebar-primary-foreground: var(--color-rose-50);
+  --sidebar-ring: var(--color-rose-400);
 }
 
 /* Neutral goes here but it's the same as the default on globals.css */
@@ -231,14 +282,18 @@
 .bg-slate:not([class*="theme-"]) {
   --primary: var(--color-slate-800);
   --primary-foreground: var(--color-slate-50);
+  --ring: var(--color-slate-400);
   --sidebar-primary: var(--color-slate-800);
   --sidebar-primary-foreground: var(--color-slate-50);
+  --sidebar-ring: var(--color-slate-400);
 
   @variant dark {
     --primary: var(--color-slate-100);
     --primary-foreground: var(--color-slate-800);
+    --ring: var(--color-slate-500);
     --sidebar-primary: var(--color-slate-100);
     --sidebar-primary-foreground: var(--color-slate-800);
+    --sidebar-ring: var(--color-slate-500);
   }
 }
 
@@ -357,20 +412,18 @@
 .bg-gray:not([class*="theme-"]) {
   --primary: var(--color-gray-800);
   --primary-foreground: var(--color-gray-50);
-
   --ring: var(--color-gray-400);
-
   --sidebar-primary: var(--color-gray-800);
   --sidebar-primary-foreground: var(--color-gray-50);
+  --sidebar-ring: var(--color-gray-400);
 
   @variant dark {
     --primary: var(--color-gray-100);
     --primary-foreground: var(--color-gray-800);
-
     --ring: var(--color-gray-500);
-
     --sidebar-primary: var(--color-gray-100);
     --sidebar-primary-foreground: var(--color-gray-800);
+    --sidebar-ring: var(--color-gray-500);
   }
 }
 
@@ -489,20 +542,18 @@
 .bg-zinc:not([class*="theme-"]) {
   --primary: var(--color-zinc-800);
   --primary-foreground: var(--color-zinc-50);
-
   --ring: var(--color-zinc-400);
-
   --sidebar-primary: var(--color-zinc-800);
   --sidebar-primary-foreground: var(--color-zinc-50);
+  --sidebar-ring: var(--color-zinc-400);
 
   @variant dark {
     --primary: var(--color-zinc-100);
     --primary-foreground: var(--color-zinc-800);
-
     --ring: var(--color-zinc-500);
-
     --sidebar-primary: var(--color-zinc-100);
     --sidebar-primary-foreground: var(--color-zinc-800);
+    --sidebar-ring: var(--color-zinc-500);
   }
 }
 
@@ -629,20 +680,18 @@
 .bg-stone:not([class*="theme-"]) {
   --primary: var(--color-stone-800);
   --primary-foreground: var(--color-stone-50);
-
   --ring: var(--color-stone-400);
-
   --sidebar-primary: var(--color-stone-800);
   --sidebar-primary-foreground: var(--color-stone-50);
+  --sidebar-ring: var(--color-stone-400);
 
   @variant dark {
     --primary: var(--color-stone-100);
     --primary-foreground: var(--color-stone-800);
-
     --ring: var(--color-stone-500);
-
     --sidebar-primary: var(--color-stone-100);
     --sidebar-primary-foreground: var(--color-stone-800);
+    --sidebar-ring: var(--color-stone-500);
   }
 }
 
@@ -769,20 +818,18 @@
 .bg-mauve:not([class*="theme-"]) {
   --primary: var(--color-mauve-800);
   --primary-foreground: var(--color-mauve-50);
-
   --ring: var(--color-mauve-400);
-
   --sidebar-primary: var(--color-mauve-800);
   --sidebar-primary-foreground: var(--color-mauve-50);
+  --sidebar-ring: var(--color-mauve-400);
 
   @variant dark {
     --primary: var(--color-mauve-100);
     --primary-foreground: var(--color-mauve-800);
-
     --ring: var(--color-mauve-500);
-
     --sidebar-primary: var(--color-mauve-100);
     --sidebar-primary-foreground: var(--color-mauve-800);
+    --sidebar-ring: var(--color-mauve-500);
   }
 }
 
@@ -909,20 +956,18 @@
 .bg-olive:not([class*="theme-"]) {
   --primary: var(--color-olive-800);
   --primary-foreground: var(--color-olive-50);
-
   --ring: var(--color-olive-400);
-
   --sidebar-primary: var(--color-olive-800);
   --sidebar-primary-foreground: var(--color-olive-50);
+  --sidebar-ring: var(--color-olive-400);
 
   @variant dark {
     --primary: var(--color-olive-100);
     --primary-foreground: var(--color-olive-800);
-
     --ring: var(--color-olive-500);
-
     --sidebar-primary: var(--color-olive-100);
     --sidebar-primary-foreground: var(--color-olive-800);
+    --sidebar-ring: var(--color-olive-500);
   }
 }
 
@@ -1043,20 +1088,18 @@
 .bg-mist:not([class*="theme-"]) {
   --primary: var(--color-mist-800);
   --primary-foreground: var(--color-mist-50);
-
   --ring: var(--color-mist-400);
-
   --sidebar-primary: var(--color-mist-800);
   --sidebar-primary-foreground: var(--color-mist-50);
+  --sidebar-ring: var(--color-mist-400);
 
   @variant dark {
     --primary: var(--color-mist-100);
     --primary-foreground: var(--color-mist-800);
-
     --ring: var(--color-mist-500);
-
     --sidebar-primary: var(--color-mist-100);
     --sidebar-primary-foreground: var(--color-mist-800);
+    --sidebar-ring: var(--color-mist-500);
   }
 }
 
@@ -1183,20 +1226,18 @@
 .bg-taupe:not([class*="theme-"]) {
   --primary: var(--color-taupe-800);
   --primary-foreground: var(--color-taupe-50);
-
   --ring: var(--color-taupe-400);
-
   --sidebar-primary: var(--color-taupe-800);
   --sidebar-primary-foreground: var(--color-taupe-50);
+  --sidebar-ring: var(--color-taupe-400);
 
   @variant dark {
     --primary: var(--color-taupe-100);
     --primary-foreground: var(--color-taupe-800);
-
     --ring: var(--color-taupe-500);
-
     --sidebar-primary: var(--color-taupe-100);
     --sidebar-primary-foreground: var(--color-taupe-800);
+    --sidebar-ring: var(--color-taupe-500);
   }
 }
 

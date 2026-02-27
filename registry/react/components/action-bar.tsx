@@ -46,8 +46,6 @@ interface ActionBarContextValue {
   unmountOnExit?: boolean;
 }
 
-const defaultPositioning = { placement: "bottom", offset: "16px" } as const;
-
 const ActionBarContext = React.createContext({} as ActionBarContextValue);
 
 export interface ActionBarProps
@@ -70,11 +68,13 @@ export interface ActionBarProps
   positioning?: ActionBarContextValue["positioning"];
 }
 
+const defaultPositioning = { placement: "bottom", offset: "16px" } as const;
+
 export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
   const {
     open,
     defaultOpen = false,
-    positioning: _positioning,
+    positioning,
     lazyMount = true,
     unmountOnExit = true,
     onOpenChange,
@@ -107,11 +107,11 @@ export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
       onClose: handleClose,
       onOpen: handleOpen,
       isOpen,
-      positioning: { ...defaultPositioning, ..._positioning },
+      positioning: { ...defaultPositioning, ...positioning },
       lazyMount,
       unmountOnExit,
     }),
-    [handleClose, handleOpen, isOpen, lazyMount, unmountOnExit, _positioning]
+    [handleClose, handleOpen, isOpen, lazyMount, unmountOnExit, positioning]
   );
 
   return <ActionBarContext.Provider value={context} {...rest} />;
@@ -144,7 +144,7 @@ export const ActionBarTrigger = (props: ActionBarTriggerProps) => {
 
 const actionBarPositionerVariants = tv({
   base: [
-    "fixed inset-x-0 bottom-0 z-40",
+    "fixed inset-x-0 bottom-0 z-50",
     "flex",
     "px-4 pb-(--offset)",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",
@@ -176,8 +176,8 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
 
   const { isOpen, lazyMount, unmountOnExit, positioning } = useActionBar();
 
-  const placement = positioning?.placement ?? "bottom";
-  const offset = positioning?.offset ?? "16px";
+  const placement = positioning.placement;
+  const offset = positioning.offset;
 
   return (
     <Portal>

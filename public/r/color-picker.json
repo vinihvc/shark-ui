@@ -2,15 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "color-picker",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "input",
-    "input-group",
-    "button"
-  ],
+  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "registryDependencies": ["input", "input-group", "button"],
   "files": [
     {
       "path": "registry/react/components/color-picker.tsx",
