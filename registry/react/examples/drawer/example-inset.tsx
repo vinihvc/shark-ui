@@ -7,7 +7,6 @@ import {
 	DrawerContentInner,
 	DrawerFooter,
 	DrawerHeader,
-	DrawerProvider,
 	DrawerTrigger,
 } from "@/registry/react/components/drawer";
 import {
@@ -17,16 +16,16 @@ import {
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 
-const DrawerDemo = () => (
+const Example = () => (
 	<Drawer>
 		<DrawerTrigger asChild>
 			<Button variant="outline">Open</Button>
 		</DrawerTrigger>
-		<DrawerContent>
+		<DrawerContent variant="inset">
 			<DrawerContentInner>
 				<DrawerHeader
-					description="Make changes to your account here. Swipe down to close."
-					title="Edit Profile"
+					description="On larger screens, the drawer appears with rounded corners and padding."
+					title="Inset drawer"
 				/>
 				<DrawerBody>
 					<FieldGroup>
@@ -35,20 +34,19 @@ const DrawerDemo = () => (
 							<Input defaultValue="Vinicius Vicentini" />
 						</Field>
 						<Field>
-							<FieldLabel>Username</FieldLabel>
-							<Input defaultValue="@vinihvc" />
+							<FieldLabel>Email</FieldLabel>
+							<Input defaultValue="vinicius@example.com" />
 						</Field>
 					</FieldGroup>
 				</DrawerBody>
 			</DrawerContentInner>
-
 			<DrawerFooter>
 				<DrawerContentInner>
 					<DrawerClose asChild>
 						<Button variant="outline">Cancel</Button>
 					</DrawerClose>
 					<DrawerClose asChild>
-						<Button>Save changes</Button>
+						<Button>Save</Button>
 					</DrawerClose>
 				</DrawerContentInner>
 			</DrawerFooter>
@@ -56,4 +54,4 @@ const DrawerDemo = () => (
 	</Drawer>
 );
 
-export default DrawerDemo;
+export default Example;

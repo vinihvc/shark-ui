@@ -18,5 +18,7 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@basecn": "https://basecn.dev/r/{name}.json"
+  }
 }

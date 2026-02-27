@@ -8,101 +8,101 @@ import { cn } from "@/lib/utils";
 import { inputVariants } from "./input";
 
 interface ClipboardProps
-  extends React.ComponentProps<typeof ArkClipboard.Root> {
-  /**
-   * The children of the clipboard
-   */
-  rootClassName?: string;
+	extends React.ComponentProps<typeof ArkClipboard.Root> {
+	/**
+	 * The children of the clipboard
+	 */
+	rootClassName?: string;
 }
 
 export const Clipboard = (props: ClipboardProps) => {
-  const { rootClassName, asChild, className, children, ...rest } = props;
+	const { rootClassName, asChild, className, children, ...rest } = props;
 
-  return (
-    <ArkClipboard.Root
-      className={cn(rootClassName)}
-      data-slot="clipboard"
-      {...rest}
-    >
-      <ArkClipboard.Control
-        className={cn("flex items-center gap-2", className)}
-        data-slot="clipboard-control"
-      >
-        {children}
-      </ArkClipboard.Control>
-    </ArkClipboard.Root>
-  );
+	return (
+		<ArkClipboard.Root
+			className={cn(rootClassName)}
+			data-slot="clipboard"
+			{...rest}
+		>
+			<ArkClipboard.Control
+				className={cn("flex items-center gap-2", className)}
+				data-slot="clipboard-control"
+			>
+				{children}
+			</ArkClipboard.Control>
+		</ArkClipboard.Root>
+	);
 };
 
 export const ClipboardTrigger = (
-  props: React.ComponentProps<typeof ArkClipboard.Trigger>
+	props: React.ComponentProps<typeof ArkClipboard.Trigger>,
 ) => <ArkClipboard.Trigger data-slot="clipboard-trigger" {...props} />;
 
 export const ClipboardInput = (
-  props: React.ComponentProps<typeof ArkClipboard.Input>
+	props: React.ComponentProps<typeof ArkClipboard.Input>,
 ) => {
-  const { className, ...rest } = props;
+	const { className, ...rest } = props;
 
-  return (
-    <ArkClipboard.Input
-      className={cn(inputVariants(), className)}
-      data-slot="clipboard-input"
-      {...rest}
-    />
-  );
+	return (
+		<ArkClipboard.Input
+			className={cn(inputVariants(), className)}
+			data-slot="clipboard-input"
+			{...rest}
+		/>
+	);
 };
 
 const clipboardValueVariants = tv({
-  base: [
-    "inline-flex items-center",
-    "px-3",
-    "bg-transparent dark:bg-input/30",
-    "text-base md:text-sm",
-    "rounded-lg border border-input shadow-md/5",
-  ],
-  variants: {
-    size: {
-      xs: "h-6",
-      sm: "h-7",
-      md: "h-8",
-      lg: "h-9",
-      xl: "h-10",
-    },
-  },
-  defaultVariants: {
-    size: "md",
-  },
+	base: [
+		"inline-flex items-center",
+		"px-3",
+		"bg-transparent dark:bg-input/30",
+		"text-base md:text-sm",
+		"rounded-lg border border-input shadow-sm/5",
+	],
+	variants: {
+		size: {
+			xs: "h-6",
+			sm: "h-7",
+			md: "h-8",
+			lg: "h-9",
+			xl: "h-10",
+		},
+	},
+	defaultVariants: {
+		size: "md",
+	},
 });
 
 interface ClipboardValueProps
-  extends React.ComponentProps<typeof ArkClipboard.ValueText>,
-    VariantProps<typeof clipboardValueVariants> {}
+	extends React.ComponentProps<typeof ArkClipboard.ValueText>,
+		VariantProps<typeof clipboardValueVariants> {}
 
 export const ClipboardValue = (props: ClipboardValueProps) => {
-  const { size, className, ...rest } = props;
+	const { size, className, ...rest } = props;
 
-  return (
-    <ArkClipboard.ValueText
-      data-slot="clipboard-value"
-      {...rest}
-      className={cn(clipboardValueVariants({ size }), className)}
-    />
-  );
+	return (
+		<ArkClipboard.ValueText
+			data-slot="clipboard-value"
+			{...rest}
+			className={cn(clipboardValueVariants({ size }), className)}
+		/>
+	);
 };
 
 export const ClipboardIndicator = (
-  props: React.ComponentProps<typeof ArkClipboard.Indicator>
+	props: React.ComponentProps<typeof ArkClipboard.Indicator>,
 ) => {
-  const { copied = <Check />, className, children, ...rest } = props;
+	const { copied = <Check />, className, children, ...rest } = props;
 
-  return (
-    <ArkClipboard.Indicator
-      data-slot="clipboard-indicator"
-      {...rest}
-      className="pointer-events-none"
-      copied={copied}
-    >
-      {children || <ClipboardIcon />}
-    </ArkClipboard.Indicator>
-  );
+	return (
+		<ArkClipboard.Indicator
+			data-slot="clipboard-indicator"
+			{...rest}
+			className="pointer-events-none"
+			copied={copied}
+		>
+			{children || <ClipboardIcon />}
+		</ArkClipboard.Indicator>
+	);
 };

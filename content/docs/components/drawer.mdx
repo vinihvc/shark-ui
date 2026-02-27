@@ -43,27 +43,12 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-Wrap your app (or layout) with `DrawerProvider` to enable the indent effect—when a drawer opens, the page content scales down and gets rounded corners.
-
-```tsx
-import { DrawerProvider } from "@/components/ui/drawer";
-
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        <DrawerProvider>{children}</DrawerProvider>
-      </body>
-    </html>
-  );
-}
-```
-
 ```tsx
 import {
   Drawer,
   DrawerTrigger,
   DrawerContent,
+  DrawerContentInner,
   DrawerHeader,
   DrawerTitle,
   DrawerDescription,
@@ -74,19 +59,22 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Drawer swipeDirection="down">
-  <DrawerTrigger asChild>
-    <Button>Open</Button>
-  </DrawerTrigger>
+<Drawer>
+  <DrawerTrigger />
   <DrawerContent>
-    <DrawerHeader title="Title" description="Description" />
-    <DrawerBody>
-      {/** your content here */}
-    </DrawerBody>
+    <DrawerContentInner>
+      <DrawerHeader>
+        <DrawerTitle />
+        <DrawerDescription />
+      </DrawerHeader>
+      <DrawerBody>
+        {/** your content here */}
+      </DrawerBody>
+    </DrawerContentInner>
     <DrawerFooter>
-      <DrawerClose asChild>
-        <Button>Close</Button>
-      </DrawerClose>
+      <DrawerContentInner>
+        <DrawerClose />
+      </DrawerContentInner>
     </DrawerFooter>
   </DrawerContent>
 </Drawer>
@@ -94,11 +82,17 @@ import {
 
 ## Examples
 
-### Indent effect
+### Container
 
-With `DrawerProvider` wrapping your app, opening a drawer triggers the indent effect: the page content scales down slightly and gains rounded top corners, with a dimmed overlay behind it.
+Use `<DrawerContentInner />` to constrain drawer content width to `max-w-sm`.
 
-<ComponentPreview componentName="drawer" fileName="example-indent" />
+<ComponentPreview componentName="drawer" fileName="example-drawer-content-inner" />
+
+### Inset Variant
+
+Use `variant="inset"` on `<DrawerContent />` so the drawer appears as a floating card rather than edge-to-edge.
+
+<ComponentPreview componentName="drawer" fileName="example-inset" />
 
 ### Swipe Directions
 
@@ -108,43 +102,11 @@ Control which direction the drawer slides and swipes using `swipeDirection` on t
 
 ### Snap Points
 
-Use `snapPoints` to allow the drawer to snap to multiple heights (e.g. 25%, 50%, 100%).
+Use `snapPoints` to allow the drawer to snap to multiple heights.
 
 <ComponentPreview componentName="drawer" fileName="example-snap-points" />
 
-### Nested drawers
-
-Open a drawer from within another drawer. Nested drawers use a cascade effect (scale and opacity) to show the stack depth.
-
-<ComponentPreview componentName="drawer" fileName="example-nested" />
-
-### Nested drawers, non-modal
-
-Use `modal={false}` to allow interaction with the page behind the drawer. Nested drawers can be opened inside another drawer's content.
-
-<ComponentPreview componentName="drawer" fileName="example-nested-non-modal" />
-
-### Mobile navigation
-
-You can build a full-screen mobile navigation sheet using Drawer parts, including a flick-to-dismiss from the top gesture.
-
-<ComponentPreview componentName="drawer" fileName="example-mobile-navigation" />
-
-### Action sheet with separate destructive action
-
-This demo builds an action sheet with a grouped list of actions plus a separate destructive action button.
-
-<ComponentPreview componentName="drawer" fileName="example-action-sheet" />
-
 ## API Reference
-
-### DrawerProvider
-
-Provider that enables the indent effect. Wrap your app or layout with it. When a drawer opens, the page content inside scales down and gets rounded corners. Renders `Drawer.Stack` with `IndentBackground` and `Indent` parts.
-
-| Prop | Type | Default |
-|------|------|---------|
-| `className` | `string` | `-` |
 
 ### Drawer
 
@@ -185,6 +147,14 @@ Container for the drawer content. Renders a `div` with swipe support. Direction 
 | `variant` | `"default" \| "inset"` | `"default"` |
 | `className` | `string` | `-` |
 
+### DrawerContentInner
+
+Wrapper that constrains content to `max-w-sm` and centers it. Use to wrap the main body (header + body) or footer actions. When used inside `DrawerFooter`, inherits `flex-col-reverse` and `gap-2` for button layout.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
 ### DrawerHeader
 
 Header container for the drawer. Renders a `div`.
@@ -195,22 +165,6 @@ Header container for the drawer. Renders a `div`.
 | `description` | `string` | `-` |
 | `className` | `string` | `-` |
 
-### DrawerBody
-
-Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
-
-| Prop | Type | Default |
-|------|------|---------|
-| `scrollFade` | `boolean` | `false` |
-| `className` | `string` | `-` |
-
-### DrawerFooter
-
-Footer container for the drawer. Renders a `div`.
-
-| Prop | Type | Default |
-|------|------|---------|
-| `className` | `string` | `-` |
 
 ### DrawerTitle
 
@@ -230,6 +184,23 @@ Description element for the drawer. Renders a `div`.
 | `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
+### DrawerBody
+
+Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `scrollFade` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DrawerFooter
+
+Footer container for the drawer. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
 ### DrawerClose
 
 Button that closes the drawer. Renders a `button`.
@@ -237,23 +208,6 @@ Button that closes the drawer. Renders a `button`.
 | Prop | Type | Default |
 |------|------|---------|
 | `asChild` | `boolean` | `false` |
-| `className` | `string` | `-` |
-
-### DrawerBackdrop
-
-Backdrop overlay for the drawer. Renders a `div`. Used internally by `DrawerContent`.
-
-| Prop | Type | Default |
-|------|------|---------|
-| `className` | `string` | `-` |
-
-### DrawerPositioner
-
-Positioning wrapper for the drawer content. Renders a `div`. Used internally by `DrawerContent`.
-
-| Prop | Type | Default |
-|------|------|---------|
-| `variant` | `"default" \| "inset"` | `"default"` |
 | `className` | `string` | `-` |
 
 ---

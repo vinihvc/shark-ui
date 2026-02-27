@@ -387,6 +387,9 @@ export const ComboboxList = <T extends CollectionItem = DefaultComboboxItem>(
       ? (collection.group() as [string, T[]][])
       : null;
 
+  const groupedArray = Array.isArray(grouped) ? grouped : [];
+  const items = Array.from(collection.items ?? []);
+
   return (
     <ScrollArea>
       <ArkComboboxList
@@ -395,10 +398,10 @@ export const ComboboxList = <T extends CollectionItem = DefaultComboboxItem>(
         {...rest}
       >
         <ComboboxEmpty />
-        {grouped ? (
-          grouped.map(([groupName, groupItems]) => (
+        {groupedArray.length > 0 ? (
+          groupedArray.map(([groupName, groupItems]) => (
             <ComboboxGroup heading={groupName} key={groupName}>
-              {groupItems.map((item) => (
+              {(Array.isArray(groupItems) ? groupItems : []).map((item) => (
                 <React.Fragment
                   key={collection.getItemValue(item) ?? undefined}
                 >
@@ -409,7 +412,7 @@ export const ComboboxList = <T extends CollectionItem = DefaultComboboxItem>(
           ))
         ) : (
           <ComboboxGroup>
-            {collection.items.map((item) => (
+            {items.map((item) => (
               <React.Fragment key={collection.getItemValue(item) ?? undefined}>
                 {renderItem(item as T)}
               </React.Fragment>
@@ -426,40 +429,54 @@ export const useComboboxContext = useArkComboboxContext;
 export const ComboboxChips = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
-  const { multiple, value, collection, clearValue } = useArkComboboxContext();
+  try {
+    const { multiple, value, collection, clearValue } =
+      useArkComboboxContext();
 
-  if (!(multiple && value.length && collection)) {
+    const rawValues = Array.isArray(value)
+      ? value
+      : value != null
+        ? [value]
+        : [];
+    const safeValues = Array.from(rawValues).filter(
+      (v): v is string => typeof v === "string",
+    );
+
+    if (!(multiple && safeValues.length && collection)) {
+      return null;
+    }
+
+    return (
+      <ark.div
+        className={cn("flex flex-wrap gap-1 px-1", className)}
+        data-slot="combobox-chips"
+        {...rest}
+      >
+        {safeValues.map((itemValue) => {
+          const item = collection.find(itemValue);
+          const label =
+            item && collection.getItemValue(item)
+              ? ((
+                  collection as { getItemLabel?: (i: unknown) => string }
+                ).getItemLabel?.(item) ??
+                (item as { label?: string }).label ??
+                String(itemValue))
+              : String(itemValue);
+
+          return (
+            <ComboboxChip
+              key={itemValue}
+              label={label}
+              onRemove={() => clearValue(itemValue)}
+              value={itemValue}
+            />
+          );
+        })}
+      </ark.div>
+    );
+  } catch {
     return null;
   }
-
-  return (
-    <ark.div
-      className={cn("flex flex-wrap gap-1 px-1", className)}
-      data-slot="combobox-chips"
-      {...rest}
-    >
-      {value.map((itemValue) => {
-        const item = collection.find(itemValue);
-        const label =
-          item && collection.getItemValue(item)
-            ? ((
-                collection as { getItemLabel?: (i: unknown) => string }
-              ).getItemLabel?.(item) ??
-              (item as { label?: string }).label ??
-              String(itemValue))
-            : itemValue;
-
-        return (
-          <ComboboxChip
-            key={itemValue}
-            label={label}
-            onRemove={() => clearValue(itemValue)}
-            value={itemValue}
-          />
-        );
-      })}
-    </ark.div>
-  );
 };
 
 interface ComboboxChipProps extends React.ComponentProps<typeof ark.div> {
@@ -526,10 +543,15 @@ export const ComboboxValueText = (props: ComboboxValueTextProps) => {
   const { value, collection } = useArkComboboxContext();
 
   const labels = React.useMemo(() => {
-    if (!(collection && value.length)) {
+    const values = (() => {
+      if (Array.isArray(value)) return value;
+      if (value == null) return [];
+      return [value];
+    })();
+    if (!(collection && values.length)) {
       return [];
     }
-    return value
+    return values
       .map((v) => collection.find(v))
       .filter(Boolean)
       .map((item) =>

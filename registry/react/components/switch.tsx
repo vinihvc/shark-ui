@@ -5,48 +5,48 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
-  const { className, ...rest } = props;
+	const { className, ...rest } = props;
 
-  return (
-    <ArkSwitch.Root
-      className={cn(
-        "group/switch",
-        "[--size:--spacing(4)]",
-        "h-[calc(var(--size)+2px)] w-[calc(var(--size)*2-2px)]",
-        "inline-flex shrink-0 items-center",
-        "rounded-full border border-transparent shadow-xs",
-        "transition-all",
-        "outline-none [[data-focus-visible],[data-invalid]]:ring-[3px]",
-        "data-focus-visible:border-primary data-focus-visible:ring-ring/32",
-        "data-invalid:border-destructive data-invalid:ring-destructive/24",
-        "dark:data-invalid:border-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
-        "data-[state=checked]:bg-primary",
-        "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
-        "data-disabled:pointer-events-none data-disabled:opacity-64",
-        className
-      )}
-      data-slot="switch"
-      {...rest}
-    >
-      <ArkSwitch.Control data-slot="switch-control">
-        <ArkSwitch.Thumb
-          className={cn(
-            "block",
-            "size-[calc(var(--size)-2px)] group-hover:w-(--size)",
-            "pointer-events-none",
-            "bg-background",
-            "rounded-full",
-            "transition-transform",
-            "ring-0",
-            "data-[state=checked]:translate-x-[calc(var(--size)-2px)] dark:data-[state=checked]:bg-primary-foreground",
-            "dark:data-[state=unchecked]:bg-foreground",
-            "data-[state=unchecked]:translate-x-0"
-          )}
-          data-slot="switch-thumb"
-        />
-      </ArkSwitch.Control>
+	return (
+		<ArkSwitch.Root
+			className={cn(
+				"group/switch",
+				"[--size:--spacing(4)]",
+				"h-[calc(var(--size)+2px)] w-[calc(var(--size)*2-2px)]",
+				"inline-flex shrink-0 items-center",
+				"rounded-full border border-transparent shadow-md shadow-foreground/10",
+				"transition-all",
+				"outline-none [[data-focus-visible],[data-invalid]]:ring-[3px]",
+				"data-focus-visible:border-primary data-focus-visible:ring-ring/32",
+				"data-invalid:border-destructive data-invalid:ring-destructive/24",
+				"dark:data-invalid:border-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
+				"data-[state=checked]:bg-primary data-[state=checked]:shadow-primary/24",
+				"data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
+				"data-disabled:pointer-events-none data-disabled:opacity-64",
+				className,
+			)}
+			data-slot="switch"
+			{...rest}
+		>
+			<ArkSwitch.Control data-slot="switch-control">
+				<ArkSwitch.Thumb
+					className={cn(
+						"block",
+						"size-[calc(var(--size)-2px)]",
+						"pointer-events-none",
+						"bg-background",
+						"rounded-full",
+						"transition-transform",
+						"ring-0",
+						"data-[state=checked]:translate-x-[calc(var(--size)-2px)] dark:data-[state=checked]:bg-primary-foreground",
+						"dark:data-[state=unchecked]:bg-foreground",
+						"data-[state=unchecked]:translate-x-0",
+					)}
+					data-slot="switch-thumb"
+				/>
+			</ArkSwitch.Control>
 
-      <ArkSwitch.HiddenInput />
-    </ArkSwitch.Root>
-  );
+			<ArkSwitch.HiddenInput />
+		</ArkSwitch.Root>
+	);
 };

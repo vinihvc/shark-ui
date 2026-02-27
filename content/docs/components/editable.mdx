@@ -63,7 +63,7 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Editable defaultValue="Editable content">
+<Editable>
   <EditableArea>
     <EditableInput />
     <EditablePreview />
@@ -76,7 +76,7 @@ import {
 </Editable>
 ```
 
-## Activation Modes
+## Modes
 
 The `activationMode` prop controls how editing is triggered.
 
@@ -108,10 +108,6 @@ No automatic activation. Use `EditableEditTrigger` to manually start editing.
 
 The `size` prop on `EditablePreview` controls the preview dimensions.
 
-### Extra Small
-
-<ComponentPreview componentName="editable" fileName="example-size-xs" />
-
 ### Small
 
 <ComponentPreview componentName="editable" fileName="example-size-sm" />
@@ -120,9 +116,17 @@ The `size` prop on `EditablePreview` controls the preview dimensions.
 
 <ComponentPreview componentName="editable" fileName="example-size-lg" />
 
-### Extra Large
+## Orientation
 
-<ComponentPreview componentName="editable" fileName="example-size-xl" />
+The `orientation` prop controls the layout of the editable component and its controls.
+
+#### Horizontal
+
+<ComponentPreview componentName="editable" fileName="example-orientation-horizontal" />
+
+#### Vertical
+
+<ComponentPreview componentName="editable" fileName="example-orientation-vertical" />
 
 ## Examples
 
@@ -143,22 +147,6 @@ Make the entire form editable at once by using the `edit` prop.
 The `value` and `onValueChange` props control the editable component programmatically.
 
 <ComponentPreview componentName="editable" fileName="example-controlled" />
-
-## Orientation
-
-The `orientation` prop controls the layout of the editable component and its controls.
-
-#### Horizontal
-
-Controls are displayed horizontally next to the editable area. This is the default.
-
-<ComponentPreview componentName="editable" fileName="example-orientation-horizontal" />
-
-#### Vertical
-
-Controls are displayed vertically next to the editable area. Useful for multi-line editable content.
-
-<ComponentPreview componentName="editable" fileName="example-orientation-vertical" />
 
 ## API Reference
 
