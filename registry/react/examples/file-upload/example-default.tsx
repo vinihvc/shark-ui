@@ -3,64 +3,34 @@
 import { Button } from "@/registry/react/components/button";
 import {
   FileUpload,
-  FileUploadContext,
+  FileUploadDescription,
   FileUploadDropzone,
-  FileUploadGroup,
-  FileUploadItem,
-  FileUploadItemDeleteTrigger,
-  FileUploadItemName,
-  FileUploadItemPreview,
-  FileUploadItemPreviewImage,
-  FileUploadItemSizeText,
-  FileUploadLabel,
+  FileUploadDropzoneIcon,
+  FileUploadHelper,
+  FileUploadList,
+  FileUploadTitle,
   FileUploadTrigger,
 } from "@/registry/react/components/file-upload";
+import { Separator } from "@/registry/react/components/separator";
 
 const FileUploadDemo = () => (
-  <FileUpload className="h-40 w-full items-center" maxFiles={4}>
+  <FileUpload className="mx-auto w-full max-w-xs" maxFiles={2}>
     <FileUploadDropzone>
-      <FileUploadLabel>Drop files here or click to upload</FileUploadLabel>
-
+      <FileUploadDropzoneIcon />
+      <FileUploadTitle>Drop files here</FileUploadTitle>
+      <div className="flex items-center justify-center gap-2">
+        <Separator />
+        <FileUploadDescription>or</FileUploadDescription>
+        <Separator />
+      </div>
       <FileUploadTrigger asChild>
-        <Button>Upload</Button>
+        <Button>Browse files</Button>
       </FileUploadTrigger>
+      <FileUploadHelper>
+        You can upload up to 2 files at a time.
+      </FileUploadHelper>
     </FileUploadDropzone>
-
-    <FileUploadGroup>
-      <FileUploadContext>
-        {({ acceptedFiles }) =>
-          acceptedFiles.map((file) => (
-            <FileUploadItem
-              className="justify-between"
-              file={file}
-              key={file.name}
-            >
-              <div className="flex items-center justify-between gap-2">
-                <FileUploadItemPreview type="image/*">
-                  <FileUploadItemPreviewImage />
-                </FileUploadItemPreview>
-
-                <FileUploadItemPreview type="application/pdf">
-                  <div
-                    className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 font-medium text-[10px] text-primary"
-                    data-type="pdf"
-                  >
-                    PDF
-                  </div>
-                </FileUploadItemPreview>
-
-                <div className="flex flex-col gap-1">
-                  <FileUploadItemName />
-                  <FileUploadItemSizeText />
-                </div>
-              </div>
-
-              <FileUploadItemDeleteTrigger />
-            </FileUploadItem>
-          ))
-        }
-      </FileUploadContext>
-    </FileUploadGroup>
+    <FileUploadList />
   </FileUpload>
 );
 

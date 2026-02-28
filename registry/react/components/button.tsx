@@ -32,6 +32,7 @@ export const buttonVariants = tv({
       ],
       outline: [
         "bg-transparent",
+        "text-foreground",
         "border border-input shadow-md/5",
         "hover:bg-accent hover:text-accent-foreground",
         "dark:bg-input/32 dark:hover:bg-input/64",

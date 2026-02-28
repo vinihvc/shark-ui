@@ -79,3 +79,63 @@ import {
 ```
 
 ## Examples
+
+### Trigger only
+
+<ComponentPreview componentName="file-upload" fileName="example-trigger" />
+
+### Dropzone only
+
+Use `FileUploadDropzone` to enable drag-and-drop. It exposes a `data-dragging` attribute for styling the drag state.
+
+<ComponentPreview componentName="file-upload" fileName="example-dropzone" />
+
+### Accepted File Types
+
+Use the `accept` prop to restrict file types. Accepts MIME types (`image/png`) or extensions (`.pdf`).
+
+<ComponentPreview componentName="file-upload" fileName="example-accepted-file-types" />
+
+### With Field
+
+Use `Field` to add helper text and error handling.
+
+<ComponentPreview componentName="file-upload" fileName="example-with-field" />
+
+### Custom Preview
+
+Use `FileUploadContext` to build a custom file list with thumbnails and a floating delete button.
+
+<ComponentPreview componentName="file-upload" fileName="example-custom-preview" />
+
+### Media Capture
+
+Use the `capture` prop to capture and upload media directly from the device camera.
+
+<ComponentPreview componentName="file-upload" fileName="example-media-capture" />
+
+<Alert variant="warning">
+<InfoIcon />
+<AlertTitle>The capture prop is only supported on mobile devices.</AlertTitle>
+</Alert>
+
+### Directory Upload
+
+Use the `directory` prop to upload entire folders.
+
+<ComponentPreview componentName="file-upload" fileName="example-directory-upload" />
+
+<Alert variant="warning">
+<InfoIcon />
+<AlertTitle>Attention: Directory Upload</AlertTitle>
+<AlertDescription>
+  When uploading directories with many files, set `maxFiles` to a higher value or remove it entirely to prevent rejections.
+</AlertDescription>
+
+</Alert>
+
+### Clear Trigger
+
+Use `FileUploadClearTrigger` to remove all uploaded files at once.
+
+<ComponentPreview componentName="file-upload" fileName="example-clear-trigger" />

@@ -72,15 +72,15 @@ import { Input } from "@/components/ui/input";
 ## Validation and Errors
 
 - Add `invalid` to Field to switch the entire block into an error state.
-- Add `invalid` on the input itself to switch the input into an error state.
+- Add `disabled` to Field to switch the entire block into a disabled state.
 
-```tsx
-<Field invalid>
-  <FieldLabel>Email</FieldLabel>
-  <Input type="email" />
-  <FieldError>Enter a valid email address.</FieldError>
-</Field>
-```
+### Invalid
+
+<ComponentPreview componentName="field" fileName="example-with-error" />
+
+### Disabled
+
+<ComponentPreview componentName="field" fileName="example-disabled-field" />
 
 ## Accessibility
 
