@@ -11,7 +11,7 @@ import {
 const Example = () => (
   <Field className="w-full max-w-xs">
     <FieldLabel>Upload images</FieldLabel>
-    <FileUpload className="w-full" maxFiles={2}>
+    <FileUpload className="w-full">
       <FileUploadDropzone>
         <FileUploadDropzoneIcon />
       </FileUploadDropzone>

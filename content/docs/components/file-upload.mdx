@@ -52,33 +52,36 @@ npm install @ark-ui/react lucide-react
 ```tsx
 import { 
   FileUpload,
+  FileUploadDropzone,
+  FileUploadDropzoneIcon,
+  FileUploadTitle,
+  FileUploadDescription,
+  FileUploadHelper,
   FileUploadTrigger,
-  FileUploadItemGroup,
-  FileUploadContext,
-  FileUploadItem,
-  FileUploadItemPreview,
-  FileUploadItemPreviewImage,
+  FileUploadList,
 } from "@/components/ui/file-upload";
 ```
 
 ```tsx showLineNumbers
-<FileUpload maxFiles={4}>
-  <FileUploadTrigger>Upload</FileUploadTrigger>
-  <FileUploadItemGroup>
-    <FileUploadContext>
-      {({ acceptedFiles }) => (
-        <FileUploadItem file={acceptedFiles[0]}>
-          <FileUploadItemPreview>
-            <FileUploadItemPreviewImage src={acceptedFiles[0].name} />
-          </FileUploadItemPreview>
-        </FileUploadItem>
-      )}
-    </FileUploadContext>
-  </FileUploadItemGroup>
+<FileUpload maxFiles={2} accept={["image/*png,image/jpeg*", ".pdf"]}>
+  <FileUploadDropzone>
+    <FileUploadDropzoneIcon />
+    <FileUploadTitle>Drop files here</FileUploadTitle>
+    <FileUploadDescription>or</FileUploadDescription>
+    <FileUploadTrigger />
+    <FileUploadHelper>You can upload up to 2 files at a time.</FileUploadHelper>
+  </FileUploadDropzone>
+  <FileUploadList />
 </FileUpload>
 ```
 
 ## Examples
+
+### Multiple Files
+
+Use the `maxFiles` prop to allow uploading multiple files at once.
+
+<ComponentPreview componentName="file-upload" fileName="example-multiple-files" />
 
 ### Trigger only
 
@@ -90,21 +93,31 @@ Use `FileUploadDropzone` to enable drag-and-drop. It exposes a `data-dragging` a
 
 <ComponentPreview componentName="file-upload" fileName="example-dropzone" />
 
-### Accepted File Types
+### Accepted Files
 
-Use the `accept` prop to restrict file types. Accepts MIME types (`image/png`) or extensions (`.pdf`).
+Use the `accept` prop to restrict file types.
 
 <ComponentPreview componentName="file-upload" fileName="example-accepted-file-types" />
 
 ### With Field
 
-Use `Field` to add helper text and error handling.
+Use `<Field />` to add helper text and error handling.
 
 <ComponentPreview componentName="file-upload" fileName="example-with-field" />
 
 ### Custom Preview
 
-Use `FileUploadContext` to build a custom file list with thumbnails and a floating delete button.
+```tsx
+const { acceptedFiles } = useFileUploadContext();
+
+return (
+  <div>
+    {acceptedFiles.map((file) => (
+      <div key={file.name}>{file.name}</div>
+    ))}
+  </div>
+);
+```
 
 <ComponentPreview componentName="file-upload" fileName="example-custom-preview" />
 
@@ -136,6 +149,189 @@ Use the `directory` prop to upload entire folders.
 
 ### Clear Trigger
 
-Use `FileUploadClearTrigger` to remove all uploaded files at once.
+Use `<FileUploadClearTrigger />` to remove all uploaded files at once.
 
 <ComponentPreview componentName="file-upload" fileName="example-clear-trigger" />
+
+## API Reference
+
+### FileUpload
+
+Root component. Wraps the file upload UI and manages file state. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `accept` | `string \| Record<string, string[]> \| FileMimeType[]` | `-` |
+| `acceptedFiles` | `File[]` | `-` |
+| `allowDrop` | `boolean` | `true` |
+| `capture` | `'user' \| 'environment'` | `-` |
+| `defaultAcceptedFiles` | `File[]` | `-` |
+| `directory` | `boolean` | `false` |
+| `disabled` | `boolean` | `-` |
+| `invalid` | `boolean` | `-` |
+| `maxFiles` | `number` | `1` |
+| `maxFileSize` | `number` | `Infinity` |
+| `minFileSize` | `number` | `0` |
+| `name` | `string` | `-` |
+| `onFileAccept` | `(details: FileAcceptDetails) => void` | `-` |
+| `onFileChange` | `(details: FileChangeDetails) => void` | `-` |
+| `onFileReject` | `(details: FileRejectDetails) => void` | `-` |
+| `readOnly` | `boolean` | `-` |
+| `required` | `boolean` | `-` |
+| `transformFiles` | `(files: File[]) => Promise<File[]>` | `-` |
+| `validate` | `(file: File, details: FileValidateDetails) => FileError[] \| null` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadTrigger
+
+Button that opens the file picker. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadDropzone
+
+Drop zone for drag-and-drop. Exposes `data-dragging` when files are dragged over. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `disableClick` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadDropzoneIcon
+
+Icon displayed in the dropzone. Renders a `div`. Accepts custom children (e.g. icons).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FileUploadTitle
+
+Title text for the dropzone. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FileUploadDescription
+
+Description text for the dropzone. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FileUploadHelper
+
+Helper text (e.g. upload limits). Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FileUploadList
+
+Pre-built list of uploaded files with previews, names, sizes, and delete buttons. Renders nothing when empty.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FileUploadItemGroup
+
+Container for file items. Renders a `ul`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `type` | `'accepted' \| 'rejected'` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadItem
+
+Single file item. Renders a `li`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `file` | `File` | required |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadItemPreview
+
+Preview container for a file. Use `type` to match file formats (e.g. `image/*`, `application/pdf`, `.*`). Renders conditional content.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `type` | `string` | `'.*'` |
+| `className` | `string` | `-` |
+
+### FileUploadItemPreviewImage
+
+Image thumbnail for image files. Use inside `FileUploadItemPreview` with `type="image/*"`. Renders an `img`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadItemName
+
+Displays the file name. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadItemSize
+
+Displays the formatted file size. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadItemDeleteTrigger
+
+Button to remove a single file. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FileUploadClearTrigger
+
+Button to remove all files. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### useFileUploadContext
+
+Hook to access file upload state and methods. Use inside `FileUpload` or `FileUploadRootProvider`.
+
+| Property | Type |
+| --- | --- |
+| `acceptedFiles` | `File[]` |
+| `rejectedFiles` | `FileRejection[]` |
+| `openFilePicker` | `() => void` |
+| `deleteFile` | `(file: File, type?: ItemType) => void` |
+| `clearFiles` | `() => void` |
+| `clearRejectedFiles` | `() => void` |
+| `getFileSize` | `(file: File) => string` |
+| `createFileUrl` | `(file: File, cb: (url: string) => void) => () => void` |
+| `setClipboardFiles` | `(dt: DataTransfer) => boolean` |
+
+---
+
+For a complete list of props and attributes, see the [Ark UI File Upload](https://ark-ui.com/docs/components/file-upload#api-reference) documentation.

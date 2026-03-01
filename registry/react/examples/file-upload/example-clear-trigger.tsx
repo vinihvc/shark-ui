@@ -12,7 +12,7 @@ import {
 } from "@/registry/react/components/file-upload";
 
 const Example = () => (
-  <FileUpload className="w-full max-w-xs" maxFiles={2}>
+  <FileUpload className="w-full max-w-xs">
     <FileUploadClearTrigger asChild className="absolute top-2 right-2">
       <Button aria-label="Clear files" size="icon-sm" variant="ghost">
         <Trash2Icon />

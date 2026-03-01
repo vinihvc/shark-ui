@@ -138,10 +138,6 @@ export const FileUploadItemGroup = (
   );
 };
 
-export const FileUploadContext = (
-  props: React.ComponentProps<typeof ArkFileUpload.Context>
-) => <ArkFileUpload.Context data-slot="file-upload-context" {...props} />;
-
 interface FileUploadListProps
   extends Omit<React.ComponentProps<typeof ArkFileUpload.Item>, "file"> {}
 

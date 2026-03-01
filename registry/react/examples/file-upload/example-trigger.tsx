@@ -7,7 +7,7 @@ import {
 } from "@/registry/react/components/file-upload";
 
 const Example = () => (
-  <FileUpload maxFiles={3}>
+  <FileUpload>
     <div className="flex justify-center">
       <FileUploadTrigger asChild>
         <Button variant="outline">

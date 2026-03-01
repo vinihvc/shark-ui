@@ -1,6 +1,7 @@
 "use client";
 
 import { XIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
   FileUpload,
   FileUploadDropzone,
@@ -13,10 +14,9 @@ import {
   FileUploadTitle,
   useFileUploadContext,
 } from "@/registry/react/components/file-upload";
-import { Button } from "../../components/button";
 
 const Example = () => (
-  <FileUpload accept="image/*" className="w-full max-w-xs" maxFiles={4}>
+  <FileUpload accept="image/*" className="w-full max-w-xs">
     <FileUploadDropzone>
       <FileUploadDropzoneIcon />
       <FileUploadTitle>Drop files here</FileUploadTitle>

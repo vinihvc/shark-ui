@@ -2150,12 +2150,12 @@ function SearchResults() {
 **Correct: useTransition with built-in pending state**
 
 ```tsx
-import { useTransition,React.useState } from 'react'
+import React from 'react'
 
 function SearchResults() {
   const [query, setQuery] = React.useState('')
   const [results, setResults] = React.useState([])
-  const [isPending, startTransition] = useTransition()
+  const [isPending, startTransition] = Rect.useTransition()
 
   const handleSearch = (value: string) => {
     setQuery(value) // Update input immediately

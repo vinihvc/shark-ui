@@ -9,7 +9,7 @@ import {
 } from "@/registry/react/components/file-upload";
 
 const Example = () => (
-  <FileUpload className="w-full max-w-xs" maxFiles={5}>
+  <FileUpload className="w-full max-w-xs">
     <FileUploadDropzone>
       <FileUploadDropzoneIcon />
       <FileUploadTitle>Drop your files here</FileUploadTitle>
