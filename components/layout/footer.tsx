@@ -8,8 +8,8 @@ export const Footer = (props: FooterProps) => {
   const { className, ...rest } = props;
 
   return (
-    <footer className={cn("border-t bg-background", className)} {...rest}>
-      <div className="container py-12">
+    <footer className={cn(className)} {...rest}>
+      <div className="container py-6">
         <div className="text-center text-muted-foreground text-sm">
           <p>
             &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights

@@ -71,7 +71,7 @@ export const buttonVariants = tv({
         "gap-1.5",
         "px-2",
         "rounded-sm",
-        "[&_svg:not([class*='size-'])]:size-3",
+        "[&_svg:not([class*='size-'])]:size-2.5",
       ],
       sm: [
         "h-7",

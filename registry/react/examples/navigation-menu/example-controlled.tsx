@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
 } from "@/registry/react/components/navigation-menu";
 
-const NavigationMenuControlledDemo = () => {
+const Example = () => {
   const [value, setValue] = useState<string>("");
 
   return (
@@ -88,4 +88,4 @@ const NavigationMenuControlledDemo = () => {
   );
 };
 
-export default NavigationMenuControlledDemo;
+export default Example;

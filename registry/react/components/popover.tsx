@@ -189,7 +189,7 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         "sm:rounded-b-[calc(var(--radius-lg)-1px)]",
         "px-(--space) py-4",
-        "bg-muted/72",
+        "bg-muted/64",
         "border-t",
         className
       )}

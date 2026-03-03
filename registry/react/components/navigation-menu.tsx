@@ -1,13 +1,14 @@
 "use client";
 
+import { Portal } from "@ark-ui/react";
 import {
   NavigationMenu as ArkNavigationMenu,
   type NavigationMenuContentProps,
   type NavigationMenuLinkProps,
   type NavigationMenuTriggerProps,
 } from "@ark-ui/react/navigation-menu";
+import { ChevronDownIcon } from "lucide-react";
 import type React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
 export const NavigationMenu = (
@@ -17,7 +18,11 @@ export const NavigationMenu = (
 
   return (
     <ArkNavigationMenu.Root
-      className={cn("relative", className)}
+      className={cn(
+        "group relative",
+        "[--arrow-size:20px] [--indicator-size:10px]",
+        className
+      )}
       data-slot="navigation-menu"
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
@@ -26,13 +31,6 @@ export const NavigationMenu = (
   );
 };
 
-const navigationMenuListVariants = tv({
-  base: [
-    "relative flex items-center gap-1",
-    "data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
-  ],
-});
-
 export const NavigationMenuList = (
   props: React.ComponentProps<typeof ArkNavigationMenu.List>
 ) => {
@@ -40,7 +38,7 @@ export const NavigationMenuList = (
 
   return (
     <ArkNavigationMenu.List
-      className={cn(navigationMenuListVariants(), className)}
+      className={cn("flex", "data-[orientation=vertical]:flex-col", className)}
       data-slot="navigation-menu-list"
       {...rest}
     />
@@ -54,126 +52,108 @@ export const NavigationMenuItem = (
 
   return (
     <ArkNavigationMenu.Item
-      className={cn("relative", className)}
+      className={cn(
+        "relative",
+        "group-data-[variant=viewport]:static",
+        className
+      )}
       data-slot="navigation-menu-item"
       {...rest}
     />
   );
 };
 
-const navigationMenuTriggerVariants = tv({
-  base: [
-    "inline-flex items-center justify-center gap-1.5",
-    "h-9 px-3 sm:h-8",
-    "whitespace-nowrap font-medium text-sm",
-    "rounded-md border border-transparent",
-    "text-muted-foreground",
-    "cursor-pointer",
-    "transition-colors",
-    "hover:bg-accent hover:text-accent-foreground",
-    "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
-    "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/32",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-  ],
-});
-
 export const NavigationMenuTrigger = (props: NavigationMenuTriggerProps) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <ArkNavigationMenu.Trigger
-      className={cn(navigationMenuTriggerVariants(), className)}
+      className={cn(
+        "flex cursor-pointer items-center gap-1 border-0 bg-transparent px-4 py-2.5 font-medium text-inherit",
+        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
+        "[&>svg]:size-3.5 [&>svg]:transition-[rotate] [&>svg]:duration-200 [&>svg]:ease-[ease]",
+        "[&[data-state=open]>svg]:-rotate-180",
+        className
+      )}
       data-slot="navigation-menu-trigger"
+      type="button"
       {...rest}
-    />
+    >
+      {children}
+      <ChevronDownIcon />
+    </ArkNavigationMenu.Trigger>
   );
 };
 
-const navigationMenuContentVariants = tv({
-  base: [
-    "absolute top-full left-0 z-50",
-    "mt-1 min-w-48",
-    "overflow-hidden rounded-lg border",
-    "bg-popover text-popover-foreground",
-    "shadow-lg/5",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
-    "data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2",
-  ],
-});
-
-export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkNavigationMenu.Content
-      className={cn(navigationMenuContentVariants(), className)}
-      data-slot="navigation-menu-content"
-      {...rest}
-    />
-  );
-};
-
-const navigationMenuLinkVariants = tv({
-  base: [
-    "block w-full",
-    "px-3 py-2",
-    "text-sm",
-    "rounded-md",
-    "text-popover-foreground",
-    "no-underline",
-    "transition-colors",
-    "hover:bg-accent hover:text-accent-foreground",
-    "focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:outline-none",
-    "data-current:bg-accent data-current:text-accent-foreground",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-  ],
-});
-
-export const NavigationMenuLink = (props: NavigationMenuLinkProps) => {
-  const { className, ...rest } = props;
+export const NavigationMenuLink = (
+  props: NavigationMenuLinkProps & {
+    context?: "default" | "content" | "viewport";
+  }
+) => {
+  const { className, context = "default", ...rest } = props;
 
   return (
     <ArkNavigationMenu.Link
-      className={cn(navigationMenuLinkVariants(), className)}
+      className={cn(
+        "flex cursor-pointer items-center gap-1 border-0 bg-transparent px-4 py-2.5 font-medium text-inherit no-underline",
+        "focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2",
+        "[&>svg]:size-3.5 [&>svg]:transition-[rotate] [&>svg]:duration-200 [&>svg]:ease-[ease]",
+        "[&[data-state=open]>svg]:-rotate-180",
+        "data-current:text-primary",
+        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+        context === "content" &&
+          "flex min-h-8 w-full px-[0.725rem] text-inherit outline-none",
+        context === "viewport" &&
+          "flex items-center gap-2 rounded p-2 text-inherit text-sm leading-5 outline-none hover:bg-muted focus-visible:bg-muted focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-1 data-disabled:text-muted-foreground data-disabled:opacity-50",
+        className
+      )}
       data-slot="navigation-menu-link"
       {...rest}
     />
   );
 };
 
-const navigationMenuIndicatorVariants = tv({
-  base: [
-    "absolute top-0 left-0",
-    "transition-[transform,width,height] duration-250 ease-out",
-    "data-[orientation=horizontal]:h-full data-[orientation=horizontal]:w-(--trigger-width) data-[orientation=horizontal]:translate-x-(--trigger-x)",
-    "data-[orientation=vertical]:h-(--trigger-height) data-[orientation=vertical]:w-full data-[orientation=vertical]:translate-y-(--trigger-y)",
-  ],
-  variants: {
-    variant: {
-      default: "rounded-md bg-accent/50",
-      underline:
-        "bg-primary data-[orientation=horizontal]:top-auto data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:h-0.5 data-[orientation=vertical]:w-0.5",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
+  const { className, ...rest } = props;
 
-interface NavigationMenuIndicatorProps
-  extends React.ComponentProps<typeof ArkNavigationMenu.Indicator>,
-    VariantProps<typeof navigationMenuIndicatorVariants> {}
+  return (
+    <ArkNavigationMenu.Content
+      className={cn(
+        "absolute top-0 left-0 grid flex-col gap-2.5 p-5 outline-none",
+        "bg-popover",
+        "will-change-[transform,opacity]",
+        "rtl:right-0 rtl:left-auto",
+        "data-[variant=default]:top-full data-[variant=default]:left-0 data-[variant=default]:mt-2 data-[variant=default]:w-max data-[variant=default]:min-w-48",
+        "data-[variant=viewport]:top-0 data-[variant=viewport]:left-0",
+        "data-[data-motion=from-start]:animate-[nav-menu-from-left_250ms_ease]",
+        "data-[data-motion=from-end]:animate-[nav-menu-from-right_250ms_ease]",
+        "data-[data-motion=to-start]:animate-[nav-menu-to-left_250ms_ease]",
+        "data-[data-motion=to-end]:animate-[nav-menu-to-right_250ms_ease]",
+        className
+      )}
+      data-slot="navigation-menu-content"
+      {...rest}
+    />
+  );
+};
 
 export const NavigationMenuIndicator = (
-  props: NavigationMenuIndicatorProps
+  props: React.ComponentProps<typeof ArkNavigationMenu.Indicator>
 ) => {
-  const { variant = "default", className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <ArkNavigationMenu.Indicator
-      className={cn(navigationMenuIndicatorVariants({ variant }), className)}
+      className={cn(
+        "absolute z-2 flex justify-center overflow-hidden",
+        "h-(--indicator-size) transition-[translate,width] duration-250 ease-[ease]",
+        "bg-accent/50",
+        "data-[orientation=horizontal]:bottom-[-15px] data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:w-(--trigger-width) data-[orientation=horizontal]:translate-x-(--trigger-x)",
+        "data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-[-15px] data-[orientation=vertical]:h-(--trigger-height) data-[orientation=vertical]:translate-y-(--trigger-y) data-[orientation=vertical]:items-center",
+        "data-[state=open]:animate-[nav-menu-fade-in_250ms_ease]",
+        "data-[state=closed]:animate-[nav-menu-fade-out_250ms_ease]",
+        className
+      )}
       data-slot="navigation-menu-indicator"
       {...rest}
     />
@@ -186,11 +166,19 @@ export const NavigationMenuViewportPositioner = (
   const { className, ...rest } = props;
 
   return (
-    <ArkNavigationMenu.ViewportPositioner
-      className={cn("absolute top-full left-0 z-50 w-full", className)}
-      data-slot="navigation-menu-viewport-positioner"
-      {...rest}
-    />
+    <Portal>
+      <ArkNavigationMenu.ViewportPositioner
+        className={cn(
+          "absolute flex justify-center",
+          "data-[orientation=horizontal]:top-full data-[orientation=horizontal]:left-0",
+          "data-[orientation=vertical]:top-0 data-[orientation=vertical]:left-full",
+          "data-[align=start]:justify-start data-[align=end]:justify-end data-[align=center]:justify-center",
+          className
+        )}
+        data-slot="navigation-menu-viewport-positioner"
+        {...rest}
+      />
+    </Portal>
   );
 };
 
@@ -202,13 +190,15 @@ export const NavigationMenuViewport = (
   return (
     <ArkNavigationMenu.Viewport
       className={cn(
-        "overflow-hidden rounded-lg border",
-        "bg-popover text-popover-foreground",
-        "shadow-lg/5",
-        "transition-[width,height] duration-300 ease-out",
-        "[--viewport-height:var(--viewport-height)] [--viewport-width:var(--viewport-width)]",
-        "data-[state=closed]:animate-out data-[state=open]:animate-in",
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        "relative top-0 left-0 overflow-hidden rounded-lg bg-popover",
+        "h-(--viewport-height) w-(--viewport-width) flex-[0_0_auto]",
+        "origin-top transition-[width,height] duration-300 ease-[ease]",
+        "drop-shadow-[0_1px_2px_var(--color-border)]",
+        "z-[calc(var(--layer-index,0)+50)]",
+        "data-[orientation=horizontal]:mt-[15px]",
+        "data-[orientation=vertical]:ml-[15px]",
+        "data-[state=open]:animate-[nav-menu-scale-in_200ms_ease]",
+        "data-[state=closed]:animate-[nav-menu-scale-out_200ms_ease]",
         className
       )}
       data-slot="navigation-menu-viewport"
@@ -216,3 +206,83 @@ export const NavigationMenuViewport = (
     />
   );
 };
+
+export const NavigationMenuTriggerIcon = ({
+  className,
+  children,
+  ...rest
+}: React.ComponentProps<"span">) => (
+  <span
+    className={cn("inline-flex items-center justify-center", className)}
+    data-slot="navigation-menu-trigger-icon"
+    {...rest}
+  >
+    {children}
+  </span>
+);
+
+export const NavigationMenuArrow = (
+  props: React.ComponentProps<typeof ArkNavigationMenu.Arrow>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkNavigationMenu.Arrow
+      className={cn(
+        "relative h-(--arrow-size) w-(--arrow-size) rotate-45 bg-popover",
+        "shadow-[color-mix(in_srgb,var(--color-border)_40%,transparent)_-1px_-1px_1px]",
+        "data-[orientation=horizontal]:top-1",
+        "data-[orientation=vertical]:left-3",
+        className
+      )}
+      data-slot="navigation-menu-arrow"
+      {...rest}
+    />
+  );
+};
+
+export const NavigationMenuGridLinkList = ({
+  className,
+  ...rest
+}: React.ComponentProps<"ul">) => (
+  <ul
+    className={cn(
+      "m-0 grid list-none gap-2 p-0",
+      "w-[400px] grid-cols-2",
+      className
+    )}
+    data-slot="navigation-menu-grid-link-list"
+    {...rest}
+  />
+);
+
+export const NavigationMenuFlexLinkList = ({
+  className,
+  ...rest
+}: React.ComponentProps<"ul">) => (
+  <ul
+    className={cn(
+      "m-0 flex list-none flex-col gap-2 p-0",
+      "w-[250px]",
+      className
+    )}
+    data-slot="navigation-menu-flex-link-list"
+    {...rest}
+  />
+);
+
+export const NavigationMenuLinkCard = ({
+  className,
+  ...rest
+}: React.ComponentProps<"a">) => (
+  <a
+    className={cn(
+      "block rounded-md p-3 no-underline",
+      "[&_p]:font-normal [&_p]:text-sm",
+      "hover:bg-muted/20",
+      className
+    )}
+    data-slot="navigation-menu-link-card"
+    {...rest}
+  />
+);

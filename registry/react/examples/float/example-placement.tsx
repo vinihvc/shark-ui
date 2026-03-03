@@ -1,33 +1,34 @@
+import { Badge } from "@/registry/react/components/badge";
 import { Float } from "@/registry/react/components/float";
 
-const FloatPlacementDemo = () => (
-  <div className="grid grid-cols-3 gap-8">
-    {(
-      [
-        "top-start",
-        "top-center",
-        "top-end",
-        "middle-start",
-        "middle-center",
-        "middle-end",
-        "bottom-start",
-        "bottom-center",
-        "bottom-end",
-      ] as const
-    ).map((placement) => (
+const Example = () => (
+  <div className="grid grid-cols-3 gap-4">
+    {placements.map((placement) => (
       <div
-        className="relative flex size-24 items-center justify-center rounded-lg border bg-muted/30"
+        className="flex flex-col items-center justify-center gap-2"
         key={placement}
       >
         <span className="text-muted-foreground text-xs">{placement}</span>
-        <Float placement={placement}>
-          <span className="flex size-6 items-center justify-center rounded-full bg-primary font-medium text-primary-foreground text-xs">
-            3
-          </span>
-        </Float>
+        <div className="relative size-16 rounded-lg border bg-muted/30">
+          <Float placement={placement}>
+            <Badge>3</Badge>
+          </Float>
+        </div>
       </div>
     ))}
   </div>
 );
 
-export default FloatPlacementDemo;
+const placements = [
+  "top-start",
+  "top-center",
+  "top-end",
+  "middle-start",
+  "middle-center",
+  "middle-end",
+  "bottom-start",
+  "bottom-center",
+  "bottom-end",
+] as const;
+
+export default Example;

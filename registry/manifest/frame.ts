@@ -1,6 +1,6 @@
 import type { RegistryItemType } from "@/lib/registry";
 
-const dependencies = ["@ark-ui/react"];
+const dependencies: string[] = [];
 
 const manifest: RegistryItemType = {
   name: "frame",

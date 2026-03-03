@@ -1,7 +1,13 @@
 "use client";
 
 import React from "react";
-import { NumberField } from "@/registry/react/components/number-input";
+import {
+  NumberField,
+  NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
+} from "@/registry/react/components/number-input";
 
 const Example = () => {
   const [value, setValue] = React.useState("1");
@@ -11,10 +17,13 @@ const Example = () => {
   return (
     <div className="flex w-full max-w-40 flex-col gap-4 text-center text-sm">
       <p>Select the number 3</p>
-      <NumberField
-        onValueChange={({ value }) => setValue(value)}
-        value={value}
-      />
+      <NumberField onValueChange={({ value }) => setValue(value)} value={value}>
+        <NumberFieldGroup>
+          <NumberFieldDecrement />
+          <NumberFieldInput />
+          <NumberFieldIncrement />
+        </NumberFieldGroup>
+      </NumberField>
       <p className="text-center">{isNumberFive ? "✅" : "❌"}</p>
     </div>
   );

@@ -2,8 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-group",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "lucide-react"],
-  "registryDependencies": ["https://shark.vini.one/r/separator.json"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://shark.vini.one/r/separator.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/button-group.tsx",

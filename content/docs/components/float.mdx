@@ -42,15 +42,14 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-Float requires a parent with `position: relative`. Place `Float` as a sibling of the anchored content.
+Float requires a parent with `position: relative`. Place `<Float />` as a sibling of the anchored content.
 
 ```tsx
 import { Float } from "@/components/ui/float";
 
 <div className="relative">
-  <Avatar />
   <Float placement="top-end">
-    <Badge>New</Badge>
+    {/** floated content **/}
   </Float>
 </div>
 ```
@@ -67,3 +66,4 @@ import { Float } from "@/components/ui/float";
 |------|------|---------|
 | `placement` | `"top-start" \| "top-center" \| "top-end" \| "middle-start" \| "middle-center" \| "middle-end" \| "bottom-start" \| "bottom-center" \| "bottom-end"` | `"top-end"` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

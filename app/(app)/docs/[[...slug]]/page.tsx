@@ -10,6 +10,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
+import { Footer } from "@/components/layout/footer";
 import { getPageImage, source } from "@/lib/fumadocs";
 import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
@@ -151,6 +152,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
         </div>
 

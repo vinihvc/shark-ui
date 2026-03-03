@@ -8,42 +8,28 @@ import {
 } from "@/registry/react/components/navigation-menu";
 
 const NavigationMenuDemo = () => (
-  <NavigationMenu className="max-w-max">
+  <NavigationMenu>
     <NavigationMenuList>
-      <NavigationMenuItem value="products">
-        <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+      <NavigationMenuItem value="features">
+        <NavigationMenuTrigger>Features</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <div className="grid w-48 gap-2 p-2">
-            <NavigationMenuLink href="/analytics" value="products">
-              Analytics
-            </NavigationMenuLink>
-            <NavigationMenuLink href="/marketing" value="products">
-              Marketing
-            </NavigationMenuLink>
-            <NavigationMenuLink href="/engagement" value="products">
-              Engagement
-            </NavigationMenuLink>
-          </div>
+          <NavigationMenuLink>Overview</NavigationMenuLink>
+          <NavigationMenuLink>Features</NavigationMenuLink>
         </NavigationMenuContent>
       </NavigationMenuItem>
-
-      <NavigationMenuItem value="solutions">
-        <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+      <NavigationMenuItem value="docs">
+        <NavigationMenuTrigger>Documentation</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <div className="grid w-48 gap-2 p-2">
-            <NavigationMenuLink href="/docs" value="solutions">
-              Documentation
-            </NavigationMenuLink>
-            <NavigationMenuLink href="/api" value="solutions">
-              API Reference
-            </NavigationMenuLink>
-          </div>
+          <NavigationMenuLink>Introduction</NavigationMenuLink>
+          <NavigationMenuLink>Installation</NavigationMenuLink>
+          <NavigationMenuLink context="content" href="#components" value="docs">
+            Components
+          </NavigationMenuLink>
         </NavigationMenuContent>
       </NavigationMenuItem>
-
-      <NavigationMenuItem value="pricing">
-        <NavigationMenuLink href="/pricing" value="pricing">
-          Pricing
+      <NavigationMenuItem value="about">
+        <NavigationMenuLink href="#about" value="about">
+          About
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>

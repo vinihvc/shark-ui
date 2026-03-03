@@ -79,6 +79,18 @@ Control the position of the hover card relative to the trigger using the `positi
 
 <ComponentPreview componentName="hover-card" fileName="example-positioning" />
 
+## Controlled
+
+Control the open state programmatically using the `open` and `onOpenChange` props.
+
+<ComponentPreview componentName="hover-card" fileName="example-controlled" />
+
+## Disabled
+
+Use the `disabled` prop to prevent the hover card from opening on hover.
+
+<ComponentPreview componentName="hover-card" fileName="example-disabled" />
+
 ## API Reference
 
 ### HoverCard
@@ -103,8 +115,8 @@ Button that triggers the hover card. Renders a `button`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | - |
 
 ### HoverCardContent
 
@@ -112,8 +124,8 @@ Content element that displays when the hover card is open. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | - |
 
 ### HoverCardArrow
 
@@ -121,24 +133,8 @@ Arrow element that points to the trigger. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | - |
 | `className` | `string` | `-` |
-
-**CSS Variables:**
-
-- `--arrow-size` - The size of the arrow
-- `--arrow-size-half` - Half the size of the arrow
-- `--arrow-background` - Use this variable to style the arrow background
-- `--arrow-offset` - The offset position of the arrow
-
-### HoverCardArrowTip
-
-Tip of the arrow element. Renders a `div`.
-
-| Prop | Type | Default |
-| --- | --- | --- |
 | `asChild` | `boolean` | - |
-| `className` | `string` | `-` |
 
 ---
 

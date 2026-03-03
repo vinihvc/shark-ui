@@ -15,7 +15,7 @@ const Example = () => {
     <Carousel
       className="w-full max-w-48 sm:max-w-64"
       loop
-      padding={8}
+      padding="16px"
       slideCount={slides.length}
       slidesPerPage={2}
     >

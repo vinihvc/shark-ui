@@ -1,12 +1,12 @@
 ---
 title: Hint
-description: A lightweight, minimal tooltip that shows information on hover or focus.
+description: A lightweight, minimal tooltip that shows information.
 ---
 
 <Alert>
   <InfoIcon />
   <AlertDescription>
-    For a complete component with collision detection and state management, use the <Link href="/docs/components/tooltip">Tooltip component</Link>.
+    For a complete component Tooltip component check out the <Link href="/docs/components/tooltip">Tooltip component</Link>.
   </AlertDescription>
 </Alert>
 
@@ -66,7 +66,7 @@ import { Hint, HintTrigger, HintContent } from "@/components/ui/hint";
 
 ## Hint vs Tooltip
 
- - **Hint**: A lightweight, minimal tooltip that shows information on hover or focus.
+ - **Hint**: A lightweight, minimal tooltip that shows information
 
 - **Tooltip**: A more complex component that provides a more full-featured tooltip with a variety of options.
 
@@ -74,27 +74,29 @@ import { Hint, HintTrigger, HintContent } from "@/components/ui/hint";
 
 ### Hint
 
-Root element that provides context and wraps the trigger and content.
+Root element. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` |
 | `offset` | `string` | `"1.5"` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | - |
 
 ### HintTrigger
 
-The element that triggers the hint on hover or focus. Use `asChild` to merge props with a child component.
+The element that triggers the hint on hover or focus. Renders a `button`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | - |
 | `className` | `string` | - |
+| `asChild` | `boolean` | - |
 
 ### HintContent
 
-The hint popup content displayed on hover or focus.
+The hint popup content displayed on hover or focus. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | - |
+| `asChild` | `boolean` | - |

@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-otp",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
-  "registryDependencies": ["https://shark.vini.one/r/input.json"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [
+    "https://shark.vini.one/r/input.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/input-otp.tsx",

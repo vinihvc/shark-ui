@@ -57,6 +57,13 @@ import { NumberField } from "@/components/ui/number-input";
 <NumberField />
 ```
 
+### Controlled
+
+Use `value` and `onValueChange` to control the number input. Keep the value as a string when using `formatOptions` to preserve locale formatting.
+
+<ComponentPreview componentName="number-input" fileName="example-controlled" />
+
+
 ## Sizes
 
 Use the `size` prop to change the input height.
@@ -73,7 +80,7 @@ Use the `size` prop to change the input height.
 
 <ComponentPreview componentName="number-input" fileName="example-size-lg" />
 
-## Examples
+## State
 
 ### Disabled
 
@@ -87,9 +94,24 @@ Use the `invalid` prop (or `aria-invalid`) to mark the number input as invalid a
 
 <ComponentPreview componentName="number-input" fileName="example-invalid" />
 
+
+## Examples
+
+### Field Only
+
+Render the input field without stepper buttons.
+
+<ComponentPreview componentName="number-input" fileName="example-field-only" />
+
+### With Field
+
+Use `<Field />`, `<FieldLabel />`, and `<FieldDescription />` for a labeled number input with helper text.
+
+<ComponentPreview componentName="number-input" fileName="example-with-field" />
+
 ### With Scrub
 
-Render `<NumberField />` with the `scrubber` prop and a `label` to enable the scrubber interaction—drag the label to change the value.
+Use the `<NumberFieldScrubber />` to enable the scrubber interaction—drag the label to change the value.
 
 <ComponentPreview componentName="number-input" fileName="example-scrub" />
 
@@ -119,19 +141,15 @@ Use the `allowMouseWheel` prop to increment or decrement the value with the mous
 
 <ComponentPreview componentName="number-input" fileName="example-mouse-wheel" />
 
-### Controlled
-
-Use `value` and `onValueChange` to control the number input. Keep the value as a string when using `formatOptions` to preserve locale formatting.
-
-<ComponentPreview componentName="number-input" fileName="example-controlled" />
-
 ## API Reference
 
 ### NumberField
 
+Root component. Renders a `div`.
+
 | Prop | Type | Default |
 | --- | --- | --- |
-| `size` | `sm`, `md`, `lg` | `md` |
+| `size` | `sm` \| `md` \| `lg` | `md` |
 | `scrubber` | `boolean` | `false` |
 | `defaultValue` | `string` | — |
 | `value` | `string` | — |
@@ -143,7 +161,51 @@ Use `value` and `onValueChange` to control the number input. Keep the value as a
 | `invalid` | `boolean` | — |
 | `focusInputOnChange` | `boolean` | `true` |
 | `clampValueOnBlur` | `boolean` | `true` |
-| `allowMouseWheel` | `boolean` | `false`|
+| `allowMouseWheel` | `boolean` | `false` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `className` | `string` | — |
+
+### NumberFieldGroup
+
+Container for the input and stepper buttons. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### NumberFieldDecrement
+
+Decrement button. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### NumberFieldIncrement
+
+Increment button. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### NumberFieldInput
+
+The numeric input element. Renders an `input`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `sm` \| `md` \| `lg` | `md` |
+| `className` | `string` | — |
+
+### NumberFieldScrubber
+
+Scrubber area—drag to change the value. Renders a `label`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | — |
+| `className` | `string` | — |
 
 ---
 

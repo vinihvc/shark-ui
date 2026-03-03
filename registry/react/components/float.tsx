@@ -6,7 +6,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
 const floatVariants = tv({
-  base: ["absolute", "z-10"],
+  base: ["absolute z-10"],
   variants: {
     placement: {
       "top-start": "-translate-1/2 inset-s-0 top-0",
@@ -30,7 +30,7 @@ interface FloatProps
     VariantProps<typeof floatVariants> {}
 
 export const Float = (props: FloatProps) => {
-  const { placement = "top-end", className, children, ...rest } = props;
+  const { placement = "top-end", className, ...rest } = props;
 
   return (
     <ark.div
@@ -38,8 +38,6 @@ export const Float = (props: FloatProps) => {
       data-placement={placement}
       data-slot="float"
       {...rest}
-    >
-      {children}
-    </ark.div>
+    />
   );
 };

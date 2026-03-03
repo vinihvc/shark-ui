@@ -56,7 +56,7 @@ const itemVariants = tv({
     variant: {
       default: "border-transparent",
       outline: "border-border shadow-lg/5",
-      muted: "border-transparent bg-muted/50 shadow-lg shadow-muted/24",
+      muted: "border-transparent bg-muted/64 shadow-lg shadow-muted/24",
     },
   },
   defaultVariants: {

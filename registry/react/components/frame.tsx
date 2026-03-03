@@ -1,7 +1,7 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import type React from "react";
+import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 export const Frame = (props: React.ComponentProps<typeof ark.div>) => {
@@ -10,9 +10,12 @@ export const Frame = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "flex flex-col gap-4",
-        "rounded-xl border bg-card text-card-foreground shadow-md/5",
-        "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/32 in-focus-visible:ring-offset-2 in-focus-visible:ring-offset-background",
+        "relative",
+        "p-1",
+        "flex flex-col",
+        "bg-muted/72",
+        "rounded-2xl",
+        "*:[[data-slot=frame-panel]+[data-slot=frame-panel]]:mt-1",
         className
       )}
       data-slot="frame"
@@ -21,13 +24,31 @@ export const Frame = (props: React.ComponentProps<typeof ark.div>) => {
   );
 };
 
-export const FrameHeader = (props: React.ComponentProps<typeof ark.div>) => {
+export const FramePanel = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
     <ark.div
-      className={cn("flex flex-col gap-1", "px-4 pt-4", className)}
-      data-slot="frame-header"
+      className={cn(
+        "relative",
+        "p-5",
+        "bg-background",
+        "rounded-xl border shadow-xs/5",
+        className
+      )}
+      data-slot="frame-panel"
+      {...rest}
+    />
+  );
+};
+
+export const FrameHeader = (props: React.ComponentProps<typeof ark.header>) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.header
+      className={cn("flex flex-col", "px-5 py-4", className)}
+      data-slot="frame-panel-header"
       {...rest}
     />
   );
@@ -38,11 +59,8 @@ export const FrameTitle = (props: React.ComponentProps<typeof ark.div>) => {
 
   return (
     <ark.div
-      className={cn(
-        "font-semibold text-base text-foreground leading-tight",
-        className
-      )}
-      data-slot="frame-title"
+      className={cn("font-semibold text-sm", className)}
+      data-slot="frame-panel-title"
       {...rest}
     />
   );
@@ -56,35 +74,19 @@ export const FrameDescription = (
   return (
     <ark.div
       className={cn("text-muted-foreground text-sm", className)}
-      data-slot="frame-description"
+      data-slot="frame-panel-description"
       {...rest}
     />
   );
 };
 
-export const FramePanel = (props: React.ComponentProps<typeof ark.div>) => {
+export const FrameFooter = (props: React.ComponentProps<typeof ark.footer>) => {
   const { className, ...rest } = props;
 
   return (
-    <ark.div
-      className={cn("flex flex-col gap-1 px-4", className)}
-      data-slot="frame-panel"
-      {...rest}
-    />
-  );
-};
-
-export const FrameFooter = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ark.div
-      className={cn(
-        "border-border border-t px-4 py-4",
-        "text-muted-foreground text-sm",
-        className
-      )}
-      data-slot="frame-footer"
+    <ark.footer
+      className={cn("px-5 py-4", className)}
+      data-slot="frame-panel-footer"
       {...rest}
     />
   );

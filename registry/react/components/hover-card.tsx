@@ -51,7 +51,7 @@ export const HoverCardContent = (
             "bg-popover",
             "text-popover-foreground",
             "origin-(--transform-origin)",
-            "rounded-lg border shadow-lg/5",
+            "rounded-2xl border shadow-lg/5",
             "outline-hidden",
             "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
             "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
@@ -66,6 +66,8 @@ export const HoverCardContent = (
           {...rest}
         >
           {children}
+
+          <HoverCardArrow />
         </ArkHoverCard.Content>
       </ArkHoverCard.Positioner>
     </Portal>

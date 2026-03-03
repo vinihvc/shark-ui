@@ -1,15 +1,16 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import { CogIcon, XIcon } from "lucide-react";
+import { Settings2Icon, XIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
   FloatingPanel,
   FloatingPanelBody,
-  FloatingPanelClose,
+  FloatingPanelCloseTrigger,
   FloatingPanelContent,
   FloatingPanelControl,
+  FloatingPanelFooter,
   FloatingPanelHeader,
   FloatingPanelMaximize,
   FloatingPanelMinimize,
@@ -26,37 +27,31 @@ import {
   SelectValue,
 } from "@/registry/react/components/select";
 
+const collection = createListCollection({
+  items: ["Inter", "Roboto", "Helvetica", "Geist"],
+});
+
 const FloatingPanelDemo = () => {
-  const collection = createListCollection({
-    items: ["Inter", "Roboto", "Helvetica", "Geist"],
-  });
-
   return (
-    <FloatingPanel>
+    <FloatingPanel defaultSize={{ width: 360, height: 300 }}>
       <FloatingPanelTrigger asChild>
-        <Button>Open Panel</Button>
+        <Button variant="outline">Open</Button>
       </FloatingPanelTrigger>
-
       <FloatingPanelContent>
         <FloatingPanelHeader>
-          <CogIcon />
+          <Settings2Icon />
           <FloatingPanelTitle>Settings</FloatingPanelTitle>
-
           <FloatingPanelControl>
             <FloatingPanelMinimize />
-
             <FloatingPanelMaximize />
-
             <FloatingPanelRestore />
-
-            <FloatingPanelClose asChild>
-              <Button aria-label="Close" size="icon-sm">
+            <FloatingPanelCloseTrigger asChild>
+              <Button aria-label="Close" size="icon-xs">
                 <XIcon aria-hidden />
               </Button>
-            </FloatingPanelClose>
+            </FloatingPanelCloseTrigger>
           </FloatingPanelControl>
         </FloatingPanelHeader>
-
         <FloatingPanelBody>
           <Field>
             <FieldLabel>Font family</FieldLabel>
@@ -64,7 +59,6 @@ const FloatingPanelDemo = () => {
               <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
-
               <SelectContent>
                 {collection.items.map((item) => (
                   <SelectItem item={item} key={item}>
@@ -74,12 +68,14 @@ const FloatingPanelDemo = () => {
               </SelectContent>
             </Select>
           </Field>
-
           <Field>
             <FieldLabel>Font size</FieldLabel>
             <NumberField className="w-full" defaultValue="16" />
           </Field>
         </FloatingPanelBody>
+        <FloatingPanelFooter>
+          <Button variant="outline">Save</Button>
+        </FloatingPanelFooter>
       </FloatingPanelContent>
     </FloatingPanel>
   );

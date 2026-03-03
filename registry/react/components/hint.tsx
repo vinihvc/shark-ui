@@ -29,7 +29,7 @@ interface HintContextValue {
     /**
      * The placement of the action bar.
      *
-     * @default "bottom"
+     * @default "top"
      */
     placement?: "top" | "bottom" | "left" | "right";
   };
@@ -48,15 +48,15 @@ interface HintProps extends React.ComponentProps<typeof ark.div> {
 
 const HintContext = React.createContext({} as HintContextValue);
 
-const defaultPositioning = { placement: "bottom", offset: "16px" } as const;
+const defaultPositioning = { placement: "top", offset: "10px" } as const;
 
 export const Hint = (props: HintProps) => {
-  const {
-    positioning = { placement: "top", offset: "6px" },
-    className,
-    children,
-    ...rest
-  } = props;
+  const { positioning, className, children, ...rest } = props;
+
+  const positioningValue = {
+    ...defaultPositioning,
+    ...positioning,
+  };
 
   const hintId = `hint${React.useId()}`;
 
@@ -66,10 +66,7 @@ export const Hint = (props: HintProps) => {
     <HintContext.Provider
       value={{
         isVisible,
-        positioning: {
-          ...defaultPositioning,
-          ...positioning,
-        },
+        positioning: positioningValue,
         setIsVisible,
         id: hintId,
       }}
@@ -77,12 +74,12 @@ export const Hint = (props: HintProps) => {
       <ark.div
         aria-describedby={hintId}
         className={cn("relative inline-flex whitespace-nowrap", className)}
-        data-placement={positioning.placement}
+        data-placement={positioningValue.placement}
         data-slot="hint"
         data-state={isVisible ? "open" : "closed"}
         style={
           {
-            "--offset": `calc(${positioning.offset} * var(--spacing))`,
+            "--offset": positioningValue.offset,
           } as React.CSSProperties
         }
         {...rest}
@@ -121,7 +118,7 @@ const hintContentVariants = tv({
     "px-3 py-1.5",
     "bg-foreground",
     "text-background text-xs",
-    "rounded-md border shadow-md/5",
+    "rounded-lg shadow-md/5",
     "fade-in-0 zoom-in-[98%] animate-in",
     "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
   ],
@@ -156,14 +153,7 @@ const hintContentVariants = tv({
 
 interface HintContentProps
   extends React.ComponentProps<typeof ark.div>,
-    Pick<PresenceProps, "lazyMount" | "unmountOnExit"> {
-  /**
-   * Whether to lazy mount the hint content.
-   *
-   * @default true
-   */
-  lazyMount?: boolean;
-}
+    Pick<PresenceProps, "lazyMount" | "unmountOnExit"> {}
 
 export const HintContent = (props: HintContentProps) => {
   const {
@@ -202,13 +192,35 @@ export const HintContent = (props: HintContentProps) => {
   );
 };
 
+const hintArrowVariants = tv({
+  base: "absolute rotate-225",
+  variants: {
+    placement: {
+      bottom: ["-top-0.5 left-1/2 -translate-x-1/2"],
+      top: ["-bottom-0.5 left-1/2 -translate-x-1/2"],
+      right: ["-inset-s-0.5 top-1/2 -translate-y-1/2"],
+      left: ["-inset-e-0.5 top-1/2 -translate-y-1/2"],
+    },
+  },
+});
+
 export const HintArrow = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  const { positioning } = useHint();
+
   return (
     <ark.div
-      className={cn("absolute", "size-2", "bg-foreground")}
+      className={cn(
+        hintArrowVariants({ placement: positioning.placement }),
+        className
+      )}
+      data-placement={positioning.placement}
       data-slot="hint-arrow"
-      {...props}
-    />
+      {...rest}
+    >
+      <ark.div className="size-2 bg-foreground" data-slot="hint-arrow-tip" />
+    </ark.div>
   );
 };
 

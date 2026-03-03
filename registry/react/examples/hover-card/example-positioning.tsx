@@ -16,14 +16,11 @@ const Example = () => (
             {placement}
           </Button>
         </HoverCardTrigger>
-        <HoverCardContent>
-          <div className="flex flex-col gap-1">
-            <h4 className="font-medium">Hover Card</h4>
-            <p>
-              This hover card appears on the {placement} placement of the
-              trigger.
-            </p>
-          </div>
+        <HoverCardContent className="flex flex-col gap-1">
+          <h4 className="font-medium">Hover Card</h4>
+          <p className="text-muted-foreground text-sm">
+            This hover card appears on the {placement} placement of the trigger.
+          </p>
         </HoverCardContent>
       </HoverCard>
     ))}

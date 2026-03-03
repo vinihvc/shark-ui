@@ -1,7 +1,7 @@
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
@@ -10,79 +10,127 @@ import {
   NavigationMenuViewportPositioner,
 } from "@/registry/react/components/navigation-menu";
 
-const NavigationMenuViewportDemo = () => (
-  <NavigationMenu className="max-w-max">
-    <NavigationMenuList>
-      <NavigationMenuItem value="products">
-        <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <div className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2">
-            <div className="space-y-2">
-              <p className="font-medium text-sm">Analytics</p>
-              <NavigationMenuLink href="/analytics" value="products">
-                Dashboard
-              </NavigationMenuLink>
-              <NavigationMenuLink href="/reports" value="products">
-                Reports
-              </NavigationMenuLink>
-            </div>
-            <div className="space-y-2">
-              <p className="font-medium text-sm">Marketing</p>
-              <NavigationMenuLink href="/campaigns" value="products">
-                Campaigns
-              </NavigationMenuLink>
-              <NavigationMenuLink href="/audience" value="products">
-                Audience
-              </NavigationMenuLink>
-            </div>
-          </div>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
+export const Viewport = () => {
+  const renderLinks = (opts: { value: string; items: string[] }) => {
+    const { value, items } = opts;
 
-      <NavigationMenuItem value="solutions">
-        <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <div className="grid w-[400px] gap-2 p-4">
-            <NavigationMenuLink href="/docs" value="solutions">
-              Documentation
-            </NavigationMenuLink>
-            <NavigationMenuLink href="/api" value="solutions">
-              API Reference
-            </NavigationMenuLink>
-            <NavigationMenuLink href="/integrations" value="solutions">
-              Integrations
-            </NavigationMenuLink>
-          </div>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
+    return items.map((item) => (
+      <NavigationMenuLink
+        asChild
+        className={cn(
+          "flex items-center gap-2 rounded p-2 text-inherit text-sm leading-5 outline-none transition-colors",
+          "hover:bg-muted focus-visible:bg-muted focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-1",
+          "data-disabled:text-muted-foreground data-disabled:opacity-50"
+        )}
+        key={`${value}-${item}`}
+      >
+        <a href={`#${value}-${item.toLowerCase().replace(/\s+/g, "-")}`}>
+          {item}
+        </a>
+      </NavigationMenuLink>
+    ));
+  };
 
-      <NavigationMenuItem value="resources">
-        <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <div className="grid w-48 gap-2 p-4">
-            <NavigationMenuLink href="/blog" value="resources">
-              Blog
-            </NavigationMenuLink>
-            <NavigationMenuLink href="/support" value="resources">
-              Support
-            </NavigationMenuLink>
-          </div>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem value="products">
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+          <NavigationMenuContent
+            style={{
+              gridTemplateColumns: "1fr 2fr",
+              width: 600,
+            }}
+          >
+            {renderLinks({
+              value: "products",
+              items: [
+                "Analytics Platform",
+                "Customer Engagement",
+                "Marketing Automation",
+                "Data Integration",
+                "Enterprise Solutions",
+                "API Documentation",
+              ],
+            })}
 
-      <NavigationMenuItem value="pricing">
-        <NavigationMenuLink href="/pricing" value="pricing">
-          Pricing
-        </NavigationMenuLink>
-      </NavigationMenuItem>
+            {renderLinks({
+              value: "products",
+              items: [
+                "Case Studies",
+                "Success Stories",
+                "Integration Partners",
+                "Security & Compliance",
+              ],
+            })}
+          </NavigationMenuContent>
+        </NavigationMenuItem>
 
-      <NavigationMenuIndicator variant="underline" />
-    </NavigationMenuList>
+        <NavigationMenuItem value="company">
+          <NavigationMenuTrigger>Company</NavigationMenuTrigger>
+          <NavigationMenuContent
+            style={{
+              gridTemplateColumns: "1fr 1fr",
+              width: 450,
+            }}
+          >
+            {renderLinks({
+              value: "company",
+              items: [
+                "About Us",
+                "Leadership Team",
+                "Careers",
+                "Press Releases",
+              ],
+            })}
 
-    <NavigationMenuViewportPositioner>
-      <NavigationMenuViewport />
-    </NavigationMenuViewportPositioner>
-  </NavigationMenu>
-);
+            {renderLinks({
+              value: "company",
+              items: ["Investors", "Partners", "Corporate Responsibility"],
+            })}
+          </NavigationMenuContent>
+        </NavigationMenuItem>
 
-export default NavigationMenuViewportDemo;
+        <NavigationMenuItem value="developers">
+          <NavigationMenuTrigger>Developers</NavigationMenuTrigger>
+          <NavigationMenuContent
+            style={{
+              gridTemplateColumns: "1.6fr 1fr",
+              width: 650,
+            }}
+          >
+            {renderLinks({
+              value: "developers",
+              items: [
+                "API Documentation",
+                "SDKs & Libraries",
+                "Developer Guides",
+                "Code Samples",
+                "Webhooks",
+                "GraphQL Explorer",
+              ],
+            })}
+            {renderLinks({
+              value: "developers",
+              items: [
+                "Developer Community",
+                "Changelog",
+                "Status Page",
+                "Rate Limits",
+              ],
+            })}
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem value="pricing">
+          <NavigationMenuLink href="#pricing">Pricing</NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+
+      <NavigationMenuViewportPositioner align="start">
+        <NavigationMenuViewport />
+      </NavigationMenuViewportPositioner>
+    </NavigationMenu>
+  );
+};
+
+export default Viewport;

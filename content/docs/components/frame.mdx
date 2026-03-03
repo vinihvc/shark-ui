@@ -70,17 +70,6 @@ import {
 </Frame>
 ```
 
-## Components
-
-| Component | Description |
-| --- | --- |
-| `Frame` | Root container. Accepts `className` and standard div props. |
-| `FrameHeader` | Header section containing title and description. |
-| `FrameTitle` | Title text for the frame header. |
-| `FrameDescription` | Description text for the frame header. |
-| `FramePanel` | Panel container for frame content. Use multiple for separated sections. |
-| `FrameFooter` | Footer section for the frame. |
-
 ## Examples
 
 ### Separated Panels
@@ -88,3 +77,59 @@ import {
 By default, multiple panels are separated with spacing between them.
 
 <ComponentPreview componentName="frame" fileName="example-separated-panels" />
+
+## API Reference
+
+### Frame
+
+The main container component for grouping related information. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FramePanel
+
+A panel container for frame content. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameHeader
+
+Header section for the frame. Renders a `header`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameTitle
+
+Title text for the frame header. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameDescription
+
+Description text for the frame header. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameFooter
+
+Footer section for the frame. Renders a `footer`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

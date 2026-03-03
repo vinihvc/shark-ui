@@ -4,7 +4,7 @@ import { Marquee, MarqueeItem } from "@/registry/react/components/marquee";
 const items = Array.from({ length: 10 });
 
 const Example = () => (
-  <Marquee pauseOnInteraction spacing={10}>
+  <Marquee pauseOnInteraction spacing="40px">
     {items.map((_, index) => (
       <MarqueeItem key={index}>
         <Card>

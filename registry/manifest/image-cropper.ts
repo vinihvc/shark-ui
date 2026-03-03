@@ -6,6 +6,7 @@ const manifest: RegistryItemType = {
   name: "image-cropper",
   type: "registry:ui",
   dependencies,
+  registryDependencies: ["@shark/button"],
 };
 
 export default manifest;

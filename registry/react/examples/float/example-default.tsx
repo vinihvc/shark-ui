@@ -1,15 +1,16 @@
-import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
+import { BellIcon } from "lucide-react";
 import { Badge } from "@/registry/react/components/badge";
+import { Button } from "@/registry/react/components/button";
 import { Float } from "@/registry/react/components/float";
 
 const FloatDemo = () => (
   <div className="relative">
-    <Avatar className="size-16">
-      <AvatarFallback>JD</AvatarFallback>
-    </Avatar>
-    <Float placement="bottom-end">
-      <Badge className="rounded-full px-1.5" size="sm" variant="default">
-        New
+    <Button size="icon-lg" variant="outline">
+      <BellIcon />
+    </Button>
+    <Float>
+      <Badge pill size="sm" variant="default">
+        9+
       </Badge>
     </Float>
   </div>

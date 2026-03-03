@@ -430,8 +430,7 @@ export const ComboboxChips = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   try {
-    const { multiple, value, collection, clearValue } =
-      useArkComboboxContext();
+    const { multiple, value, collection, clearValue } = useArkComboboxContext();
 
     const rawValues = Array.isArray(value)
       ? value
@@ -439,7 +438,7 @@ export const ComboboxChips = (props: React.ComponentProps<typeof ark.div>) => {
         ? [value]
         : [];
     const safeValues = Array.from(rawValues).filter(
-      (v): v is string => typeof v === "string",
+      (v): v is string => typeof v === "string"
     );
 
     if (!(multiple && safeValues.length && collection)) {
@@ -544,8 +543,12 @@ export const ComboboxValueText = (props: ComboboxValueTextProps) => {
 
   const labels = React.useMemo(() => {
     const values = (() => {
-      if (Array.isArray(value)) return value;
-      if (value == null) return [];
+      if (Array.isArray(value)) {
+        return value;
+      }
+      if (value == null) {
+        return [];
+      }
       return [value];
     })();
     if (!(collection && values.length)) {
