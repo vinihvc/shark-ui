@@ -73,7 +73,7 @@ export const Item = (props: ItemProps) => {
 
   return (
     <ark.div
-      className={cn(itemVariants({ variant, className }))}
+      className={cn(itemVariants({ variant }), className)}
       data-slot="item"
       data-variant={variant}
       {...rest}

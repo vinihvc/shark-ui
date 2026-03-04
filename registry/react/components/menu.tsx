@@ -2,19 +2,25 @@
 
 import { ark, Portal } from "@ark-ui/react";
 import { Menu as ArkMenu, type MenuContentProps } from "@ark-ui/react/menu";
-import { Check, ChevronRight } from "lucide-react";
+import { CheckIcon, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
-  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    lazyMount = true,
+    positioning = { placement: "bottom-end" },
+    unmountOnExit = true,
+    ...rest
+  } = props;
 
   return (
     <ArkMenu.Root
       data-slot="menu"
       lazyMount={lazyMount}
+      positioning={positioning}
       unmountOnExit={unmountOnExit}
       {...rest}
     />
@@ -124,7 +130,7 @@ const menuItemVariants = tv({
     "select-none outline-hidden",
     "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
     "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {
     variant: {
@@ -174,7 +180,7 @@ export const MenuCheckboxItem = (
       {...rest}
     >
       <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
-        <Check />
+        <CheckIcon />
       </ArkMenu.ItemIndicator>
 
       <ArkMenu.ItemText>{children}</ArkMenu.ItemText>
@@ -241,7 +247,7 @@ export const MenuRadioItem = (
       {...rest}
     >
       <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
-        <Check />
+        <CheckIcon />
       </ArkMenu.ItemIndicator>
 
       <ArkMenu.ItemText data-slot="menu-radio-item-text">

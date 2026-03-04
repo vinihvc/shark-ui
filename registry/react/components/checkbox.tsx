@@ -1,7 +1,7 @@
 "use client";
 
 import { Checkbox as ArkCheckbox } from "@ark-ui/react/checkbox";
-import { Check, Minus } from "lucide-react";
+import { CheckIcon, MinusIcon } from "lucide-react";
 import type React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -52,11 +52,11 @@ export const Checkbox = (
     >
       <ArkCheckbox.Control data-slot="checkbox-control">
         <CheckboxIndicator>
-          <Check />
+          <CheckIcon />
         </CheckboxIndicator>
 
         <CheckboxIndicator indeterminate>
-          <Minus />
+          <MinusIcon />
         </CheckboxIndicator>
       </ArkCheckbox.Control>
 

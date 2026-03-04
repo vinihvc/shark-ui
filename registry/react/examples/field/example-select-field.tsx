@@ -15,17 +15,11 @@ import {
 } from "@/registry/react/components/select";
 
 const collection = createListCollection({
-  items: [
-    "Select a country",
-    "United States",
-    "United Kingdom",
-    "Canada",
-    "Australia",
-  ],
+  items: ["Brazil", "Mexico", "Ireland"],
 });
 
 const Example = () => (
-  <Field className="w-full max-w-xs">
+  <Field className="w-full max-w-64">
     <FieldLabel>Country</FieldLabel>
     <Select collection={collection}>
       <SelectTrigger className="w-full">
@@ -39,7 +33,7 @@ const Example = () => (
         ))}
       </SelectContent>
     </Select>
-    <FieldDescription>This is an optional field</FieldDescription>
+    <FieldDescription>Used for shipping estimates</FieldDescription>
   </Field>
 );
 

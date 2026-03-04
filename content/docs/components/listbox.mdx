@@ -1,6 +1,6 @@
 ---
 title: Listbox
-description: A list of options for single or multiple selection without a dropdown trigger.
+description: Select a single or multiple items from a list.
 links:
   doc: https://ark-ui.com/docs/components/listbox
   api: https://ark-ui.com/docs/components/listbox#api-reference
@@ -51,34 +51,196 @@ npm install @ark-ui/react lucide-react
 
 ```tsx
 import {
-  Listbox,
   createListCollection,
+  Listbox,
+  ListboxContent,
+  ListboxItem,
+  ListboxLabel,
 } from "@/components/ui/listbox";
-
-const collection = createListCollection({
-  items: [
-    { label: "United States", value: "us" },
-    { label: "Canada", value: "ca" },
-  ],
-});
-
-<Listbox.Root collection={collection}>
-  <Listbox.Label>Select Country</Listbox.Label>
-  <Listbox.Content>
-    {collection.items.map((item) => (
-      <Listbox.Item item={item} key={item.value}>
-        <Listbox.ItemText>{item.label}</Listbox.ItemText>
-        <Listbox.ItemIndicator />
-      </Listbox.Item>
-    ))}
-  </Listbox.Content>
-</Listbox.Root>
 ```
+
+```tsx
+<Listbox collection={collection}>
+  <ListboxContent>
+    {collection.items.map((item) => (
+      <ListboxItem item={item} key={item.value}>
+        {item.label}
+      </ListboxItem>
+    ))}
+  </ListboxContent>
+</Listbox>
+```
+
+## Controlled
+
+Use `value` and `onValueChange` to control the listbox externally.
+
+<ComponentPreview componentName="listbox" fileName="example-controlled" />
+
+## State
+
+### Disabled
+
+Disable the entire listbox with the `disabled` prop.
+
+<ComponentPreview componentName="listbox" fileName="example-disabled" />
+
+## Orientation
+
+Use `orientation` prop to change the orientation of the listbox.
+
+### Horizontal
+
+<ComponentPreview componentName="listbox" fileName="example-horizontal" />
+
+## Selection Mode
+
+### Multiple
+
+Set `selectionMode="multiple"` to allow selecting multiple items.
+
+<ComponentPreview componentName="listbox" fileName="example-selection-multiple" />
+
+### None
+
+Set `selectionMode="none"` to disable selection.
+
+<ComponentPreview componentName="listbox" fileName="example-selection-none" />
 
 ## Examples
 
-### Multiple selection
+### With Icon
 
-Allow selecting multiple items with `selectionMode="multiple"`.
+Add icons to listbox items to provide visual context and improve recognition of different options.
 
-<ComponentPreview componentName="listbox" fileName="example-multiple" />
+<ComponentPreview componentName="listbox" fileName="example-with-icon" />
+
+### With Description
+
+Include additional descriptive text for each item to provide more context and help users make informed choices.
+
+<ComponentPreview componentName="listbox" fileName="example-with-description" />
+
+### Image Explorer
+
+Create an interactive gallery where the listbox acts as navigation for displaying different images or media content.
+
+<ComponentPreview componentName="listbox" fileName="example-image-explorer" />
+
+### Transfer List
+
+Create a dual-listbox interface for moving items between available and selected states, commonly used for permission management or item selection workflows.
+
+<ComponentPreview componentName="listbox" fileName="example-transfer-list" />
+
+### Grouping
+
+Use `groupBy` in `createListCollection` and `<ListboxItemGroup heading={}>` with `<ListboxItemGroupLabel>` to group items.
+
+<ComponentPreview componentName="listbox" fileName="example-grouping" />
+
+### Extended Selection
+
+Set `selectionMode="extended"` to select multiple items with Cmd/Ctrl modifier.
+
+<ComponentPreview componentName="listbox" fileName="example-extended-selection" />
+
+### Grid Layout
+
+Use `createGridCollection` with `columnCount` and grid CSS for a grid layout.
+
+<ComponentPreview componentName="listbox" fileName="example-grid" />
+
+## API Reference
+
+### Listbox
+
+Root element of the listbox component. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collection` | `ListCollection<T>` | **required** |
+| `value` | `string[]` | — |
+| `defaultValue` | `string[]` | `[]` |
+| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | — |
+| `selectionMode` | `'single' \| 'multiple' \| 'extended'` | `'single'` |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` |
+| `disabled` | `boolean` | — |
+| `deselectable` | `boolean` | — |
+| `loopFocus` | `boolean` | `false` |
+
+### ListboxContent
+
+Content container for listbox items. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxItem
+
+  A single listbox option. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `item` | `T` | **required** |
+| `variant` | `"default" \| "destructive"` | `"default"` |
+| `asChild` | `boolean` | — |
+| `highlightOnHover` | `boolean` | — |
+
+### ListboxItemText
+
+Displays the text content of a listbox item. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxItemIndicator
+
+Shows selection state (e.g., checkmark). Renders when item is selected. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | `<CheckIcon />` |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxItemGroup
+
+Groups related items. Use `heading` or `<ListboxItemGroupLabel />` for a label. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string` | — |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxItemGroupLabel
+
+Label for a group. Renders inside `<ListboxItemGroup />`. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxValueText
+
+Displays the selected value(s) as text. Use for custom trigger/display. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `string` | — |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxShortcut
+
+Optional keyboard hint shown next to an item. Renders a `span`. Renders a `span`.
+
+---
+
+For a complete list of props, see the [Ark UI Listbox documentation](https://ark-ui.com/docs/components/listbox#api-reference).

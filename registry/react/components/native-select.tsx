@@ -14,7 +14,7 @@ export const nativeSelectVariants = tv({
     "ps-2.5 pe-8",
     "select-none text-sm",
     "bg-transparent dark:bg-input/30",
-    "rounded-lg border border-input shadow-md/5",
+    "rounded-xl border border-input shadow-md/5",
     "transition-colors",
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
@@ -36,10 +36,17 @@ export const nativeSelectVariants = tv({
 
 interface NativeSelectProps
   extends Omit<React.ComponentProps<typeof ArkField.Select>, "size">,
-    VariantProps<typeof nativeSelectVariants> {}
+    VariantProps<typeof nativeSelectVariants> {
+  /**
+   * Whether the select is invalid.
+   *
+   * @default false
+   */
+  invalid?: boolean;
+}
 
 export const NativeSelect = (props: NativeSelectProps) => {
-  const { size = "md", className, ...rest } = props;
+  const { size = "md", invalid = false, className, ...rest } = props;
 
   return (
     <ark.div
@@ -50,6 +57,7 @@ export const NativeSelect = (props: NativeSelectProps) => {
       data-slot="native-select-wrapper"
     >
       <ArkField.Select
+        aria-invalid={invalid}
         className={cn(nativeSelectVariants({ size }))}
         data-slot="native-select"
         {...rest}

@@ -1,6 +1,11 @@
 "use client";
 
-import { SearchIcon } from "lucide-react";
+import { FilterIcon } from "lucide-react";
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/react/components/field";
 import {
   InputGroup,
   InputGroupAddon,
@@ -8,12 +13,16 @@ import {
 } from "@/registry/react/components/input-group";
 
 const Example = () => (
-  <InputGroup className="max-w-64">
-    <InputGroupAddon align="inline-start">
-      <SearchIcon aria-hidden />
-    </InputGroupAddon>
-    <InputGroupInput placeholder="Search..." />
-  </InputGroup>
+  <Field className="max-w-64">
+    <FieldLabel>Filter</FieldLabel>
+    <InputGroup>
+      <InputGroupAddon align="inline-start">
+        <FilterIcon aria-hidden />
+      </InputGroupAddon>
+      <InputGroupInput placeholder="Search..." />
+    </InputGroup>
+    <FieldDescription>Icon positioned at the start.</FieldDescription>
+  </Field>
 );
 
 export default Example;

@@ -41,40 +41,62 @@ npm install @ark-ui/react
 </CodeTabs>
 
 ## Usage
-
-Wrap a container (e.g. Card) with `LinkBox` and add `LinkOverlay` with an `href` to make the whole area a link.
+```tsx
+import { 
+  LinkBox, 
+  LinkOverlay
+} from "@/components/ui/link-overlay";
+```
 
 ```tsx
-import { LinkBox, LinkOverlay } from "@/components/ui/link-overlay";
-import { Card } from "@/components/ui/card";
-
 <LinkBox>
-  <Card>
-    <LinkOverlay href="/blog/post-1" />
-    <h2>Blog Post Title</h2>
-    <p>Some content...</p>
-  </Card>
+  <h2>
+    <LinkOverlay href="/blog/post-1">
+      Blog Post Title
+    </LinkOverlay>
+  </h2>
 </LinkBox>
 ```
 
-Inner links (e.g. "Read more") work by using `relative z-10` so they stay above the overlay.
+## Accessibility
 
-### With Next.js Link
+- **Wrapping a whole card in `<a>`** — Screen readers announce all card content as link text (verbose, confusing).
+- **`LinkOverlay`** — Keeps the link on the heading only. Announcements stay short.
+- **Full area clickable** — The overlay makes the whole card clickable without extra markup.
+- **Inner links** — Stay above the overlay and remain focusable. Users can tab between multiple links instead of one.
 
-Use `asChild` on both `LinkBox` and `LinkOverlay` to compose with `next/link`:
+## Link
 
-```tsx
-import Link from "next/link";
-import { LinkBox, LinkOverlay } from "@/components/ui/link-overlay";
+The [`asChild`](/docs/as-child) prop renders another element with link overlay styling.
 
-<LinkBox asChild>
-  <article>
-    <LinkOverlay asChild>
-      <Link href="/blog/post">Blog Post Title</Link>
-    </LinkOverlay>
-    <p>Content...</p>
-  </article>
-</LinkBox>
+<ComponentPreview componentName="link-overlay" fileName="example-with-link" />
+
+## Examples
+
+### Article
+
+A blog-style article with metadata, heading, description, and an inner link that stays clickable above the overlay.
+
+<ComponentPreview componentName="link-overlay" fileName="example-article" />
+
+### Always use Link 
+
+By default the `<LinkOverlay />` component will render an <a /> tag.
+
+To use the Next.js (or any other) `<Link />` component, make the following updates to `link-overlay.tsx`.
+
+```diff tsx title="components/ui/link-overlay.tsx" showshowLineNumbers
++ import Link from "next/link"
+- import { ark } from "@ark-ui/react/factory"
+
+- export const LinkOverlay = (props: React.ComponentProps<typeof ark.a>) => {
++ export const LinkOverlay = (props: React.ComponentProps<typeof Link>) => {
+  const { className, ...rest } = props;
+
+  return (
+-    <ark.a
++    <Link
+      ...
 ```
 
 ## API Reference
@@ -83,13 +105,13 @@ import { LinkBox, LinkOverlay } from "@/components/ui/link-overlay";
 
 | Prop | Type | Default |
 |------|------|---------|
-| `asChild` | `boolean` | `false` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### LinkOverlay
 
 | Prop | Type | Default |
 |------|------|---------|
 | `href` | `string` | required |
-| `asChild` | `boolean` | `false` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

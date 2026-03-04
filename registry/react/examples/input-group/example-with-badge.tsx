@@ -1,5 +1,6 @@
 "use client";
 
+import { AtSignIcon } from "lucide-react";
 import { Badge } from "@/registry/react/components/badge";
 import {
   InputGroup,
@@ -14,6 +15,9 @@ const Example = () => (
       <Badge pill size="sm" variant="success">
         Available
       </Badge>
+    </InputGroupAddon>
+    <InputGroupAddon align="inline-start">
+      <AtSignIcon />
     </InputGroupAddon>
   </InputGroup>
 );

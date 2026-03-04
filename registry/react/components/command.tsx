@@ -77,7 +77,7 @@ export const CommandItem = (
           "rounded-sm",
           "data-disabled:pointer-events-none data-disabled:opacity-64",
           "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-          "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
         )}
         data-slot="command-item-text"

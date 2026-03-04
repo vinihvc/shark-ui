@@ -1,16 +1,32 @@
 "use client";
 
 import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/react/components/field";
+import {
   InputGroup,
   InputGroupAddon,
-  InputGroupInput,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
 } from "@/registry/react/components/input-group";
 
 const Example = () => (
-  <InputGroup className="max-w-64">
-    <InputGroupInput placeholder="Input above addon" />
-    <InputGroupAddon align="block-end">Helper text below</InputGroupAddon>
-  </InputGroup>
+  <Field className="max-w-xs">
+    <FieldLabel>Textarea</FieldLabel>
+    <InputGroup>
+      <InputGroupTextarea placeholder="Write a comment..." />
+      <InputGroupAddon align="block-end">
+        <InputGroupText>0/280</InputGroupText>
+        <InputGroupButton className="ml-auto" size="xs" variant="default">
+          Post
+        </InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+    <FieldDescription>Footer positioned below the textarea.</FieldDescription>
+  </Field>
 );
 
 export default Example;

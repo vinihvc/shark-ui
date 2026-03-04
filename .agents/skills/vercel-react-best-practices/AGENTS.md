@@ -394,7 +394,7 @@ Popular icon and component libraries can have **up to 10,000 re-exports** in the
 **Incorrect: imports entire library**
 
 ```tsx
-import { Check, X, Menu } from 'lucide-react'
+import { CheckIcon, X, MenuIcon } from 'lucide-react'
 // Loads 1,583 modules, takes ~2.8s extra in dev
 // Runtime cost: 200-800ms on every cold start
 
@@ -426,7 +426,7 @@ module.exports = {
 }
 
 // Then you can keep the ergonomic barrel imports:
-import { Check, X, Menu } from 'lucide-react'
+import { CheckIcon, X, Menu } from 'lucide-react'
 // Automatically transformed to direct imports at build time
 ```
 

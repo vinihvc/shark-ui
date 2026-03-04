@@ -38,13 +38,13 @@ export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
           <TabsContent value="preview">
             <div
               className={cn(
-                "relative flex h-[450px] w-full items-center justify-center overflow-y-auto p-6 sm:p-10"
+                "relative flex h-[450px] w-full items-center justify-center overflow-y-auto p-4 sm:p-10"
               )}
             >
-              <div className="absolute top-4 right-0 left-0 border border-border/64 border-dashed sm:top-8" />
-              <div className="absolute right-0 bottom-4 left-0 border border-border/64 border-dashed sm:bottom-8" />
-              <div className="absolute top-0 bottom-0 left-4 border border-border/64 border-dashed sm:left-8" />
-              <div className="absolute top-0 right-4 bottom-0 border border-border/64 border-dashed sm:right-8" />
+              <div className="absolute top-4 right-0 left-0 border border-border/64 border-dashed max-sm:hidden sm:top-8" />
+              <div className="absolute right-0 bottom-4 left-0 border border-border/64 border-dashed max-sm:hidden sm:bottom-8" />
+              <div className="absolute top-0 bottom-0 left-4 border border-border/64 border-dashed max-sm:hidden sm:left-8" />
+              <div className="absolute top-0 right-4 bottom-0 border border-border/64 border-dashed max-sm:hidden sm:right-8" />
               {component}
             </div>
           </TabsContent>

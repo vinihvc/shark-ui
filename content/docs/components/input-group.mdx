@@ -114,29 +114,9 @@ Use the `size` prop to change the size of the input group.
 
 ## Examples
 
-### With End Icon
-
-<ComponentPreview componentName="input-group" fileName="example-with-end-icon" />
-
-### With Start
-
-<ComponentPreview componentName="input-group" fileName="example-with-start" />
-
-### With End
-
-<ComponentPreview componentName="input-group" fileName="example-with-end" />
-
-### With Start and End
-
-<ComponentPreview componentName="input-group" fileName="example-with-start-and-end" />
-
 ### With Tooltip
 
 <ComponentPreview componentName="input-group" fileName="example-with-tooltip" />
-
-### With Icon Button
-
-<ComponentPreview componentName="input-group" fileName="example-with-icon-button" />
 
 ### With Button
 
@@ -157,9 +137,10 @@ Use the `size` prop to change the size of the input group.
 ### With Inner Label
 
 <ComponentPreview componentName="input-group" fileName="example-with-inner-label" />
-### Loading
 
-<ComponentPreview componentName="input-group" fileName="example-loading" />
+### With Spinner
+
+<ComponentPreview componentName="input-group" fileName="example-with-spinner" />
 
 ### With Number Field
 
@@ -168,3 +149,58 @@ Use the `size` prop to change the size of the input group.
 ### With Textarea
 
 <ComponentPreview componentName="input-group" fileName="example-with-textarea" />
+
+## API Reference
+
+### InputGroup
+
+Root container. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `sm` \| `md` \| `lg` | `md` |
+| `className` | `string` | — |
+
+### InputGroupAddon
+
+Addon container for labels, buttons, or icons. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `align` | `inline-start` \| `inline-end` \| `block-start` \| `block-end` | `inline-start` |
+| `className` | `string` | — |
+
+### InputGroupButton
+
+Button inside an addon. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | [`ButtonSize`](/docs/components/button#sizes) | `xs` |
+| `variant` | [`ButtonVariant`](/docs/components/button#variants) | `ghost` |
+| `type` | `"button" \| "submit" \| "reset"` | `button` |
+| `className` | `string` | — |
+
+### InputGroupText
+
+Static text inside an addon. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### InputGroupInput
+
+Input element. Renders an `input`. Accepts all native input props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### InputGroupTextarea
+
+Textarea element. Renders a `textarea`. Accepts all native textarea props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |

@@ -33,19 +33,9 @@ import {
   TableRow,
 } from "./registry/react/components/table";
 
-// use this function to get MDX components, you will need it for rendering MDX
 export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   ...defaultMdxComponents,
   ...components,
-  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn(
-        "font-medium text-foreground underline underline-offset-4",
-        className
-      )}
-      {...props}
-    />
-  ),
   a: ({ className, ...props }: React.ComponentProps<typeof Link>) => {
     const isExternal =
       typeof props.href === "string" && props.href.startsWith("http");
@@ -54,11 +44,10 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       <Link
         className={cn(
           "font-medium text-foreground",
+          "rounded-md border border-transparent",
           "underline underline-offset-4",
-          "rounded-md",
           "hover:underline",
           "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          "border border-transparent",
           className
         )}
         {...(isExternal && {

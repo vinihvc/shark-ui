@@ -8,7 +8,7 @@ const Example = () => (
     <Slider defaultValue={[50]}>
       <SliderLabel>Volume</SliderLabel>
     </Slider>
-    <FieldDescription>This is an optional field</FieldDescription>
+    <FieldDescription>Adjust the volume of the media player</FieldDescription>
   </Field>
 );
 

@@ -4,37 +4,33 @@ import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export interface LinkBoxProps extends React.ComponentProps<typeof ark.div> {
-  asChild?: boolean;
-}
-
-export const LinkBox = (props: LinkBoxProps) => {
-  const { asChild, className, ...rest } = props;
+export const LinkBox = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
 
   return (
     <ark.div
-      asChild={asChild}
-      className={cn("relative", className)}
+      className={cn(
+        "relative",
+        "[&_a[href]:not([data-slot=link-overlay])]:relative [&_a[href]:not([data-slot=link-overlay])]:z-1",
+        className
+      )}
       data-slot="link-box"
       {...rest}
     />
   );
 };
 
-export interface LinkOverlayProps extends React.ComponentProps<typeof ark.a> {
-  asChild?: boolean;
-}
-
-export const LinkOverlay = (props: LinkOverlayProps) => {
-  const { asChild, className, ...rest } = props;
+export const LinkOverlay = (props: React.ComponentProps<typeof ark.a>) => {
+  const { className, ...rest } = props;
 
   return (
     <ark.a
-      asChild={asChild}
       className={cn(
-        "absolute inset-0 z-0",
-        "rounded-[inherit]",
-        "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
+        "static",
+        "-mx-1 -my-0.5 px-1 py-0.5",
+        "rounded-md border border-transparent",
+        "before:absolute before:inset-0 before:z-0 before:block before:h-full before:w-full before:cursor-inherit before:content-['']",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
         className
       )}
       data-slot="link-overlay"

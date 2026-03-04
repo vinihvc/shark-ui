@@ -93,7 +93,7 @@ export const BugReportForm = () => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <Field data-invalid={isInvalid}>
+                  <Field invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
                     <Input
                       id={field.name}
@@ -101,7 +101,7 @@ export const BugReportForm = () => {
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      aria-invalid={isInvalid}
+                      invalid={isInvalid}
                       placeholder="Login button not working on mobile"
                       autoComplete="off"
                     />
@@ -120,7 +120,7 @@ export const BugReportForm = () => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <Field data-invalid={isInvalid}>
+                  <Field invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Description</FieldLabel>
                     <InputGroup>
                       <InputGroupTextarea
@@ -132,7 +132,7 @@ export const BugReportForm = () => {
                         placeholder="I'm having an issue with the login button on mobile."
                         rows={6}
                         className="min-h-24 resize-none"
-                        aria-invalid={isInvalid}
+                        invalid={isInvalid}
                       />
                       <InputGroupAddon align="block-end">
                         <InputGroupText className="tabular-nums">
@@ -199,7 +199,7 @@ Here's a basic example of a form using TanStack Form with the `Field` component.
         const isInvalid =
           field.state.meta.isTouched && !field.state.meta.isValid
         return (
-          <Field data-invalid={isInvalid}>
+          <Field invalid={isInvalid}>
             <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
             <Input
               id={field.name}
@@ -207,7 +207,7 @@ Here's a basic example of a form using TanStack Form with the `Field` component.
               value={field.state.value}
               onBlur={field.handleBlur}
               onChange={(e) => field.handleChange(e.target.value)}
-              aria-invalid={isInvalid}
+              invalid={isInvalid}
               placeholder="Login button not working on mobile"
               autoComplete="off"
             />
@@ -355,8 +355,8 @@ const form = useForm({
 
 Display errors next to the field using `FieldError`. For styling and accessibility:
 
-- Add the `data-invalid` prop to the `Field` component.
-- Add the `aria-invalid` prop to the form control such as `Input`, `SelectTrigger`, `Checkbox`, etc.
+- Add the `invalid` prop to the `Field` component.
+- Add the `invalid` prop to the form control such as `Input`, `SelectTrigger`, `Checkbox`, etc.
 
 ```tsx
 <form.Field
@@ -366,7 +366,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
       field.state.meta.isTouched && !field.state.meta.isValid
 
     return (
-      <Field data-invalid={isInvalid}>
+      <Field invalid={isInvalid}>
         <FieldLabel htmlFor={field.name}>Email</FieldLabel>
         <Input
           id={field.name}
@@ -375,7 +375,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
           onBlur={field.handleBlur}
           onChange={(e) => field.handleChange(e.target.value)}
           type="email"
-          aria-invalid={isInvalid}
+          invalid={isInvalid}
         />
         {isInvalid && (
           <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -391,7 +391,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 ### Input
 
 - For input fields, use `field.state.value` and `field.handleChange` on the `Input` component.
-- To show errors, add the `aria-invalid` prop to the `Input` and the `data-invalid` prop to the `Field` component.
+- To show errors, add the `invalid` prop to the `Input` and the `invalid` prop to the `Field` component.
 
 ```tsx
 <form.Field
@@ -400,7 +400,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
     const isInvalid =
       field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <Field data-invalid={isInvalid}>
+      <Field invalid={isInvalid}>
         <FieldLabel htmlFor="form-tanstack-input-username">Username</FieldLabel>
         <Input
           id="form-tanstack-input-username"
@@ -408,7 +408,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
           value={field.state.value}
           onBlur={field.handleBlur}
           onChange={(e) => field.handleChange(e.target.value)}
-          aria-invalid={isInvalid}
+          invalid={isInvalid}
           placeholder="shadcn"
           autoComplete="username"
         />
@@ -428,7 +428,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 ### Textarea
 
 - For textarea fields, use `field.state.value` and `field.handleChange` on the `Textarea` component.
-- To show errors, add the `aria-invalid` prop to the `Textarea` and the `data-invalid` prop to the `Field` component.
+- To show errors, add the `invalid` prop to the `Textarea` and the `invalid` prop to the `Field` component.
 
 ```tsx
 <form.Field
@@ -437,7 +437,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
     const isInvalid =
       field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <Field data-invalid={isInvalid}>
+      <Field invalid={isInvalid}>
         <FieldLabel htmlFor="form-tanstack-textarea-about">
           More about you
         </FieldLabel>
@@ -447,7 +447,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
           value={field.state.value}
           onBlur={field.handleBlur}
           onChange={(e) => field.handleChange(e.target.value)}
-          aria-invalid={isInvalid}
+          invalid={isInvalid}
           placeholder="I'm a software engineer..."
           className="min-h-[120px]"
         />
@@ -467,7 +467,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 ### Select
 
 - For select components, use `field.state.value` and `field.handleChange` on the `NativeSelect` or `Select` component.
-- To show errors, add the `aria-invalid` prop to the trigger and the `data-invalid` prop to the `Field` component.
+- To show errors, add the `invalid` prop to the trigger and the `invalid` prop to the `Field` component.
 
 ```tsx
 <form.Field
@@ -476,7 +476,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
     const isInvalid =
       field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <Field orientation="responsive" data-invalid={isInvalid}>
+      <Field orientation="responsive" invalid={isInvalid}>
         <FieldContent>
           <FieldLabel htmlFor="form-tanstack-select-language">
             Spoken Language
@@ -493,7 +493,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
           name={field.name}
           value={field.state.value}
           onChange={(e) => field.handleChange(e.target.value)}
-          aria-invalid={isInvalid}
+          invalid={isInvalid}
         >
           <NativeSelectOption value="">Select</NativeSelectOption>
           <NativeSelectOption value="en">English</NativeSelectOption>
@@ -508,7 +508,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 
 - For checkbox, use `field.state.value` and `field.handleChange` on the `Checkbox` component.
 - For checkbox arrays, use `mode="array"` on the `form.Field` component and TanStack Form's array helpers (`pushValue`, `removeValue`).
-- To show errors, add the `aria-invalid` prop to the `Checkbox` and the `data-invalid` prop to the `Field` component.
+- To show errors, add the `invalid` prop to the `Checkbox` and the `invalid` prop to the `Field` component.
 - Remember to add `data-slot="checkbox-group"` to the `FieldGroup` component for proper styling and spacing.
 
 ```tsx
@@ -529,12 +529,12 @@ Display errors next to the field using `FieldError`. For styling and accessibili
             <Field
               key={task.id}
               orientation="horizontal"
-              data-invalid={isInvalid}
+              invalid={isInvalid}
             >
               <Checkbox
                 id={`form-tanstack-checkbox-${task.id}`}
                 name={field.name}
-                aria-invalid={isInvalid}
+                invalid={isInvalid}
                 checked={field.state.value.includes(task.id)}
                 onCheckedChange={(checked) => {
                   if (checked) {
@@ -568,7 +568,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 ### Radio Group
 
 - For radio groups, use `field.state.value` and `field.handleChange` on the `RadioGroup` component.
-- To show errors, add the `aria-invalid` prop to the `RadioGroupItem` and the `data-invalid` prop to the `Field` component.
+- To show errors, add the `invalid` prop to the `RadioGroupItem` and the `invalid` prop to the `Field` component.
 
 ```tsx
 <form.Field
@@ -592,7 +592,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
               key={plan.id}
               htmlFor={`form-tanstack-radiogroup-${plan.id}`}
             >
-              <Field orientation="horizontal" data-invalid={isInvalid}>
+              <Field orientation="horizontal" invalid={isInvalid}>
                 <FieldContent>
                   <FieldTitle>{plan.title}</FieldTitle>
                   <FieldDescription>{plan.description}</FieldDescription>
@@ -600,7 +600,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
                 <RadioGroupItem
                   value={plan.id}
                   id={`form-tanstack-radiogroup-${plan.id}`}
-                  aria-invalid={isInvalid}
+                  invalid={isInvalid}
                 />
               </Field>
             </FieldLabel>
@@ -618,7 +618,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 ### Switch
 
 - For switches, use `field.state.value` and `field.handleChange` on the `Switch` component.
-- To show errors, add the `aria-invalid` prop to the `Switch` and the `data-invalid` prop to the `Field` component.
+- To show errors, add the `invalid` prop to the `Switch` and the `invalid` prop to the `Field` component.
 
 ```tsx
 <form.Field
@@ -627,7 +627,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
     const isInvalid =
       field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <Field orientation="horizontal" data-invalid={isInvalid}>
+      <Field orientation="horizontal" invalid={isInvalid}>
         <FieldContent>
           <FieldLabel htmlFor="form-tanstack-switch-twoFactor">
             Multi-factor authentication
@@ -644,7 +644,7 @@ Display errors next to the field using `FieldError`. For styling and accessibili
           name={field.name}
           checked={field.state.value}
           onCheckedChange={field.handleChange}
-          aria-invalid={isInvalid}
+          invalid={isInvalid}
         />
       </Field>
     )
@@ -703,7 +703,7 @@ Access individual array items using bracket notation: `fieldName[index].property
     const isSubFieldInvalid =
       subField.state.meta.isTouched && !subField.state.meta.isValid
     return (
-      <Field orientation="horizontal" data-invalid={isSubFieldInvalid}>
+      <Field orientation="horizontal" invalid={isSubFieldInvalid}>
         <FieldContent>
           <InputGroup>
             <InputGroupInput
@@ -712,7 +712,7 @@ Access individual array items using bracket notation: `fieldName[index].property
               value={subField.state.value}
               onBlur={subField.handleBlur}
               onChange={(e) => subField.handleChange(e.target.value)}
-              aria-invalid={isSubFieldInvalid}
+              invalid={isSubFieldInvalid}
               placeholder="name@example.com"
               type="email"
             />

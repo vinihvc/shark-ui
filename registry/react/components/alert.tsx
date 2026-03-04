@@ -11,7 +11,7 @@ export const alertVariants = tv({
     "px-3.5 py-3",
     "grid w-full items-start gap-x-2 gap-y-0.5",
     "text-card-foreground text-sm",
-    "rounded-lg border",
+    "rounded-xl border",
     "has-[>svg]:has-data-[slot=alert-action]:grid-cols-[calc(var(--spacing)*4)_1fr_auto] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr]",
     "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
     "has-data-[slot=alert-action]:grid-cols-[1fr_auto]",

@@ -1,7 +1,7 @@
 "use client";
 
 import { Clipboard as ArkClipboard } from "@ark-ui/react/clipboard";
-import { Check, ClipboardIcon } from "lucide-react";
+import { CheckIcon, ClipboardIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -93,7 +93,7 @@ export const ClipboardValue = (props: ClipboardValueProps) => {
 export const ClipboardIndicator = (
   props: React.ComponentProps<typeof ArkClipboard.Indicator>
 ) => {
-  const { copied = <Check />, className, children, ...rest } = props;
+  const { copied = <CheckIcon />, className, children, ...rest } = props;
 
   return (
     <ArkClipboard.Indicator

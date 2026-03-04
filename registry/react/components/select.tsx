@@ -5,7 +5,7 @@ import {
   Select as ArkSelect,
   createListCollection,
 } from "@ark-ui/react/select";
-import { CheckIcon, ChevronsUpDown } from "lucide-react";
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -46,7 +46,8 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
           inputVariants({ size }),
           "w-fit",
           "flex items-center justify-between gap-2",
-          "*:data-placeholder-shown:text-muted-foreground",
+          "text-base md:text-sm",
+          "data-placeholder-shown:text-muted-foreground/64",
           "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32",
           "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
@@ -57,7 +58,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
         {children}
 
         <ArkSelect.Indicator data-slot="select-indicator">
-          <ChevronsUpDown />
+          <ChevronsUpDownIcon />
         </ArkSelect.Indicator>
       </ArkSelect.Trigger>
     </ArkSelect.Control>
@@ -176,7 +177,7 @@ export const SelectItem = (
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0",
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+        "[&_svg:not([class*='size-'])]:size-4",
         className
       )}
       data-slot="select-item"
