@@ -190,7 +190,7 @@ export const DialogContent = (props: DialogContentProps) => {
               <Button
                 aria-label="Close"
                 className="absolute top-2 right-2 opacity-64 hover:opacity-100"
-                size="icon-md"
+                size="icon-sm"
                 variant="ghost"
               >
                 <XIcon />

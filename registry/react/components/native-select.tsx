@@ -18,7 +18,7 @@ export const nativeSelectVariants = tv({
     "transition-colors",
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
-    "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "focus:border-primary focus:ring-[3px] focus:ring-ring/32",
     "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
     "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
   ],
@@ -46,7 +46,7 @@ interface NativeSelectProps
 }
 
 export const NativeSelect = (props: NativeSelectProps) => {
-  const { size = "md", invalid = false, className, ...rest } = props;
+  const { size = "md", invalid, className, ...rest } = props;
 
   return (
     <ark.div

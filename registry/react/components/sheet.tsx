@@ -157,7 +157,7 @@ export const SheetContent = (props: SheetContentProps) => {
               <Button
                 aria-label="Close"
                 className="absolute inset-e-2 top-2 opacity-64 hover:opacity-100"
-                size="icon-md"
+                size="icon-sm"
                 variant="ghost"
               >
                 <XIcon />

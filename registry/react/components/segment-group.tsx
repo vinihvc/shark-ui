@@ -4,38 +4,40 @@ import { SegmentGroup as ArkSegmentGroup } from "@ark-ui/react/segment-group";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export const SegmentGroup = (
-  props: React.ComponentProps<typeof ArkSegmentGroup.Root>
-) => {
-  const { className, ...rest } = props;
+type SegmentGroupVariant = "default" | "underline";
+
+interface SegmentGroupProps
+  extends React.ComponentProps<typeof ArkSegmentGroup.Root> {
+  /**
+   * The visual variant of the segment group.
+   *
+   * @default "default"
+   */
+  variant?: SegmentGroupVariant;
+}
+
+export const SegmentGroup = (props: SegmentGroupProps) => {
+  const {
+    orientation = "horizontal",
+    variant = "default",
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkSegmentGroup.Root
       className={cn(
-        "relative isolate inline-flex items-center rounded-lg bg-muted p-1",
-        "shadow-[inset_0_0_0_1px_hsl(var(--border))]",
-        "data-disabled:opacity-64 data-disabled:grayscale",
+        "group/segment-group relative",
+        "flex gap-2",
+        "isolate",
+        "data-[orientation=vertical]:flex-col",
+        "data-disabled:opacity-64",
+        "data-[variant=underline]:gap-1 data-[variant=underline]:border-input data-[variant=underline]:border-b",
         className
       )}
       data-slot="segment-group"
-      {...rest}
-    />
-  );
-};
-
-export const SegmentGroupIndicator = (
-  props: React.ComponentProps<typeof ArkSegmentGroup.Indicator>
-) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ArkSegmentGroup.Indicator
-      className={cn(
-        "absolute z-0 rounded-md bg-background shadow-sm",
-        "transition-[width,height,left,top] duration-150 ease-out",
-        className
-      )}
-      data-slot="segment-group-indicator"
+      data-variant={variant}
+      orientation={orientation}
       {...rest}
     />
   );
@@ -49,11 +51,12 @@ export const SegmentGroupItem = (
   return (
     <ArkSegmentGroup.Item
       className={cn(
-        "relative flex cursor-pointer select-none items-center justify-center gap-2 rounded-md px-3.5 py-2 font-medium text-foreground text-sm",
+        "relative",
+        "cursor-pointer",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
-        "data-disabled:cursor-not-allowed data-disabled:opacity-64",
-        "data-[state=checked]:text-primary",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "rounded-[inherit] border border-transparent",
+        "outline-none data-focus-visible:border-primary data-focus-visible:ring-[3px] data-focus-visible:ring-ring/32",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         className
       )}
       data-slot="segment-group-item"
@@ -62,7 +65,6 @@ export const SegmentGroupItem = (
       {children}
 
       <ArkSegmentGroup.ItemControl />
-
       <ArkSegmentGroup.ItemHiddenInput />
     </ArkSegmentGroup.Item>
   );
@@ -77,6 +79,31 @@ export const SegmentGroupItemText = (
     <ArkSegmentGroup.ItemText
       className={cn("relative z-1", className)}
       data-slot="segment-group-item-text"
+      {...rest}
+    />
+  );
+};
+
+export const SegmentGroupIndicator = (
+  props: React.ComponentProps<typeof ArkSegmentGroup.Indicator>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkSegmentGroup.Indicator
+      className={cn(
+        "absolute top-(--top) left-(--left) z-0",
+        "h-(--height) w-(--width)",
+        "rounded-[inherit]",
+        "bg-input",
+        "transition-[width,height,left,top] duration-150 ease-out",
+        "[transition-property:var(--transition-property,width,height,left,top)]",
+        "group-data-[variant=underline]/segment-group:bg-primary",
+        "group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
+        "group-data-[variant=underline]/segment-group:h-0.5",
+        className
+      )}
+      data-slot="segment-group-indicator"
       {...rest}
     />
   );

@@ -69,7 +69,7 @@ export const PaginationItem = (
         className={cn(
           "data-selected:not-[hover]:bg-transparent dark:data-selected:not-[hover]:bg-input/30",
           "data-selected:not-[hover]:text-foreground",
-          "data-selected:not-[hover]:border-border",
+          "data-selected:not-[hover]:border-input",
           className
         )}
         size="icon-md"

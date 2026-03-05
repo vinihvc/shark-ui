@@ -169,7 +169,12 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       <h2
         {...props}
         className={cn(
-          "mt-12 scroll-m-20 font-semibold text-2xl first:mt-0 lg:mt-16 [&+p]:mt-4! *:[code]:text-2xl",
+          "mt-12 lg:mt-16",
+          "font-semibold text-2xl",
+          "first:mt-0",
+          "scroll-m-20",
+          "[&+p]:mt-4!",
+          "*:[code]:text-2xl",
           className
         )}
         id={id}
@@ -203,8 +208,10 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     return (
       <h3
         className={cn(
-          "mt-8 scroll-m-20 font-semibold text-lg *:[code]:text-lg",
-
+          "mt-8",
+          "font-semibold text-lg",
+          "scroll-m-20",
+          "*:[code]:text-lg",
           className
         )}
         id={id}

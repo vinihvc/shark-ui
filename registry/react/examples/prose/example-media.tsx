@@ -9,7 +9,6 @@ const Example = () => (
         src="/images/placeholder.svg"
         width={200}
       />
-
       <figcaption>A description of the image.</figcaption>
     </figure>
   </Prose>

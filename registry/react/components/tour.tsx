@@ -154,8 +154,9 @@ export const TourContent = (props: TourContentProps) => {
             "relative",
             "w-full max-w-md",
             "flex flex-col gap-4",
-            "bg-background",
-            "rounded-lg border shadow-lg",
+            "bg-popover",
+            "text-popover-foreground",
+            "rounded-2xl border shadow-lg/5",
             "focus:outline-none focus:ring-0",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
@@ -172,7 +173,7 @@ export const TourContent = (props: TourContentProps) => {
               <Button
                 aria-label="Close"
                 className="size-8 border-none opacity-64 hover:opacity-100"
-                size="icon-md"
+                size="icon-sm"
                 variant="ghost"
               >
                 <XIcon />

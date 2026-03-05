@@ -116,8 +116,6 @@ Control the position of the popover relative to the trigger using the `positioni
 
 To make the popover non-modal, set the `modal` prop to `false`.
 
-In some cases, you might want the popover to not trap focus or block interaction with the rest of the page.
-
 <ComponentPreview componentName="popover" fileName="example-non-modal" />
 
 ### Nested
@@ -144,9 +142,9 @@ Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on out
 
 <ComponentPreview componentName="popover" fileName="example-close-behavior" />
 
-### Scroll area
+### With Scroll
 
-Make the content area scrollable while keeping header and footer fixed using ScrollArea.
+Use `<PopoverBody />` to make the content area scrollable while keeping header and footer fixed.
 
 <ComponentPreview componentName="popover" fileName="example-scroll-area" />
 
@@ -154,7 +152,7 @@ Make the content area scrollable while keeping header and footer fixed using Scr
 
 Render a popover inside a dialog.
 
-<ComponentPreview componentName="popover" fileName="example-dialog-integration" />
+<ComponentPreview componentName="popover" fileName="example-with-dialog" />
 
 ## API Reference
 

@@ -101,6 +101,12 @@ Set `selectionMode="multiple"` to allow selecting multiple items.
 
 <ComponentPreview componentName="listbox" fileName="example-selection-multiple" />
 
+### Extended
+
+Set `selectionMode="extended"` to select multiple items with Cmd/Ctrl modifier.
+
+<ComponentPreview componentName="listbox" fileName="example-selection-extended" />
+
 ### None
 
 Set `selectionMode="none"` to disable selection.
@@ -139,11 +145,17 @@ Use `groupBy` in `createListCollection` and `<ListboxItemGroup heading={}>` with
 
 <ComponentPreview componentName="listbox" fileName="example-grouping" />
 
-### Extended Selection
+### With Filter
 
-Set `selectionMode="extended"` to select multiple items with Cmd/Ctrl modifier.
+Filter items using `useListCollection` with `useFilter` from `@ark-ui/react/locale`. Call `filter` when the search input changes to filter items by label.
 
-<ComponentPreview componentName="listbox" fileName="example-extended-selection" />
+<ComponentPreview componentName="listbox" fileName="example-with-filter" />
+
+### With Popover
+
+Use the listbox within a popover to create dropdown-like selection menus that overlay other content without taking up permanent screen space.
+
+<ComponentPreview componentName="listbox" fileName="example-with-popover" />
 
 ### Grid Layout
 
@@ -234,6 +246,15 @@ Displays the selected value(s) as text. Use for custom trigger/display. Renders 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `placeholder` | `string` | — |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### ListboxEmpty
+
+Displays content when the listbox has no items. Use for empty states, e.g. when filtering returns no results. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `asChild` | `boolean` | — |
 | `className` | `string` | — |
 

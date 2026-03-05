@@ -15,7 +15,7 @@ const Example = () => (
       Top
     </ResizablePanel>
 
-    <ResizableResizeTrigger id="1:2" withHandle />
+    <ResizableResizeTrigger id="1:2" />
 
     <ResizablePanel className="flex items-center justify-center" id="2">
       Bottom

@@ -37,6 +37,10 @@ export const PopoverAnchor = (
   props: React.ComponentProps<typeof ArkPopover.Anchor>
 ) => <ArkPopover.Anchor data-slot="popover-anchor" {...props} />;
 
+export const PopoverPositioner = (
+  props: React.ComponentProps<typeof ArkPopover.Positioner>
+) => <ArkPopover.Positioner data-slot="popover-positioner" {...props} />;
+
 interface PopoverContentProps
   extends React.ComponentProps<typeof ArkPopover.Content> {
   /**
@@ -52,10 +56,11 @@ export const PopoverContent = (props: PopoverContentProps) => {
 
   return (
     <Portal>
-      <ArkPopover.Positioner data-slot="popover-positioner">
+      <PopoverPositioner>
         <ArkPopover.Content
           className={cn(
             "relative",
+            "z-[calc(50+var(--layer-index,0))]",
             "[--space:--spacing(4)]",
             "w-auto",
             "flex flex-col",
@@ -83,7 +88,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
               <Button
                 aria-label="Close"
                 className="absolute inset-e-2 top-2 opacity-64 hover:opacity-100"
-                size="icon-md"
+                size="icon-sm"
                 variant="ghost"
               >
                 <XIcon />
@@ -91,7 +96,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
             </PopoverClose>
           )}
         </ArkPopover.Content>
-      </ArkPopover.Positioner>
+      </PopoverPositioner>
     </Portal>
   );
 };

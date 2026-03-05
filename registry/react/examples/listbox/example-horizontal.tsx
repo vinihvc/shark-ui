@@ -26,7 +26,7 @@ const Example = () => (
               <ListboxItemText>{item.title}</ListboxItemText>
               <p className="text-muted-foreground text-xs">{item.artist}</p>
             </div>
-            <ListboxItemIndicator className="absolute top-4 right-4 rounded-sm bg-muted [&_svg]:text-muted-foreground!" />
+            <ListboxItemIndicator className="absolute top-4 right-4 shrink-0 rounded-sm bg-background [&_svg]:text-foreground!" />
           </ListboxItem>
         ))}
       </ListboxContent>

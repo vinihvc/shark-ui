@@ -50,14 +50,16 @@ npm install @ark-ui/react
 ## Usage
 
 ```tsx
-import { Marquee, MarqueeItem } from "@/components/ui/marquee";
+import { Marquee, MarqueeContent, MarqueeItem } from "@/components/ui/marquee";
 ```
 
 ```tsx showLineNumbers
 <Marquee>
-  <MarqueeItem />
-  <MarqueeItem />
-  <MarqueeItem />
+  <MarqueeContent>
+    <MarqueeItem />
+    <MarqueeItem />
+    <MarqueeItem />
+  </MarqueeContent>
 </Marquee>
 ```
 
@@ -104,8 +106,6 @@ Use the `autoFill` prop to automatically duplicate content to fill the container
 
 Use the `spacing` prop to control the gap between items.
 
-Spacing is in multiples of `4px`. Example: `spacing={10}` will set the spacing to `40px`.
-
 <ComponentPreview componentName="marquee" fileName="example-spacing" />
 
 ### Fade
@@ -130,12 +130,21 @@ Root component for the scrolling marquee. Renders a `div` with viewport and cont
 | --- | --- | --- |
 | `orientation` | `horizontal`, `vertical` | `horizontal` |
 | `speed` | `number` (px/s) | `50` |
-| `spacing` | `number` | `4` |
+| `spacing` | `string` | `"16px"` |
 | `showEdges` | `boolean` | `true` |
 | `autoFill` | `boolean` | `false` |
 | `pauseOnInteraction` | `boolean` | `false` |
 | `reverse` | `boolean` | `false` |
 | `className` | `string` | - |
+
+### MarqueeContent
+
+Content wrapper for marquee items. Renders a viewport with animated content inside. Wrap `MarqueeItem` children with this component.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
 
 ### MarqueeItem
 
@@ -144,6 +153,7 @@ A single item in the marquee. Renders an item element.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | - |
+| `asChild` | `boolean` | - |
 
 ---
 

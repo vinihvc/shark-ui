@@ -6,7 +6,7 @@ description: A styled native HTML select element with consistent design system i
 <Alert>
   <InfoIcon />
   <AlertDescription>
-    For a styled select component, use the <Link href="/docs/components/select">Select component</Link>.
+    For a styled select component, use the [Select component](/docs/components/select).
   </AlertDescription>
 </Alert>
 
@@ -71,6 +71,11 @@ import {
 </NativeSelect>
 ```
 
+## Native Select vs Select
+
+- **NativeSelect** — Use for native browser behavior, better performance, or mobile-optimized dropdowns.
+- **Select** — Use for custom styling, animations, or complex interactions.
+
 ## Sizes
 
 Use the `size` prop to change the select height.
@@ -87,13 +92,13 @@ Use the `size` prop to change the select height.
 
 <ComponentPreview componentName="native-select" fileName="example-size-lg" />
 
-## Examples
+## State
 
-### Groups
+### Controlled
 
-Use `<NativeSelectOptGroup />` to group options with a label.
+Use `value` and `onChange` to control the select externally.
 
-<ComponentPreview componentName="native-select" fileName="example-groups" />
+<ComponentPreview componentName="native-select" fileName="example-controlled" />
 
 ### Disabled
 
@@ -107,10 +112,19 @@ Use the `invalid` prop to mark the select as invalid.
 
 <ComponentPreview componentName="native-select" fileName="example-invalid" />
 
-## Native Select vs Select
+## Examples
 
-- **NativeSelect** — Use for native browser behavior, better performance, or mobile-optimized dropdowns.
-- **Select** — Use for custom styling, animations, or complex interactions.
+### Groups
+
+Use `<NativeSelectOptGroup />` to group options with a label.
+
+<ComponentPreview componentName="native-select" fileName="example-groups" />
+
+### With Field
+
+Wrap in `<Field />` with `<FieldLabel />` and `<FieldDescription />` for proper labeling and accessibility.
+
+<ComponentPreview componentName="native-select" fileName="example-with-field" />
 
 ## API Reference
 

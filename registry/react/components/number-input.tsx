@@ -67,7 +67,7 @@ export const NumberFieldDecrement = (
         "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
         "flex shrink-0",
         "text-foreground",
-        "rounded-none rounded-s-[calc(var(--radius-lg)-1px)]",
+        "rounded-none rounded-s-[calc(var(--radius-xl)-1px)]",
         "cursor-pointer",
         "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
         className
@@ -95,7 +95,7 @@ export const NumberFieldIncrement = (
         "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
         "flex shrink-0",
         "text-foreground",
-        "rounded-none rounded-e-[calc(var(--radius-lg)-1px)]",
+        "rounded-none rounded-e-[calc(var(--radius-xl)-1px)]",
         "cursor-pointer",
         "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
         className

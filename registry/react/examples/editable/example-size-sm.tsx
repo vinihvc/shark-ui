@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { CheckIcon, X } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Editable,

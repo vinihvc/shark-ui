@@ -50,27 +50,131 @@ npm install @ark-ui/react
 ## Usage
 
 ```tsx
-import { SegmentGroup } from "@/components/ui/segment-group";
-
-<SegmentGroup.Root defaultValue="React">
-  <SegmentGroup.Indicator />
-  <SegmentGroup.Item value="React">
-    <SegmentGroup.ItemText>React</SegmentGroup.ItemText>
-    <SegmentGroup.ItemControl />
-    <SegmentGroup.ItemHiddenInput />
-  </SegmentGroup.Item>
-  <SegmentGroup.Item value="Vue">
-    <SegmentGroup.ItemText>Vue</SegmentGroup.ItemText>
-    <SegmentGroup.ItemControl />
-    <SegmentGroup.ItemHiddenInput />
-  </SegmentGroup.Item>
-</SegmentGroup.Root>
+import {
+  SegmentGroup,
+  SegmentGroupIndicator,
+  SegmentGroupItem,
+  SegmentGroupItemText,
+} from "@/components/ui/segment-group";
 ```
+
+```tsx showLineNumbers
+<SegmentGroup>
+  <SegmentGroupIndicator />
+  <SegmentGroupItem value="profile">
+    <SegmentGroupItemText />
+  </SegmentGroupItem>
+  <SegmentGroupItem value="account">
+    <SegmentGroupItemText />
+  </SegmentGroupItem>
+</SegmentGroup>
+```
+  
+## Variant
+
+Use the `variant` prop to change the visual variant of the segment group.
+
+### Default
+
+<ComponentPreview componentName="segment-group" fileName="example-default" />
+
+### Underline
+
+<ComponentPreview componentName="segment-group" fileName="example-variant-underline" />
+
+## Controlled
+
+Control the selected value programmatically with `value` and `onValueChange` props.
+
+<ComponentPreview componentName="segment-group" fileName="example-controlled" />
+
+## Orientation
+
+Use `orientation` to change the direction of the items.
+
+### Horizontal
+
+<ComponentPreview componentName="segment-group" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="segment-group" fileName="example-orientation-vertical" />
+
+## State
+
+### Disabled
+
+Use the `disabled` prop to disable the entire segment group.
+
+<ComponentPreview componentName="segment-group" fileName="example-disabled" />
+
+### Disabled Item
+
+Use the `disabled` prop on individual items to disable specific options.
+
+<ComponentPreview componentName="segment-group" fileName="example-disabled-item" />
 
 ## Examples
 
-### Controlled
+### Indicator on Hover
 
-Control the selected value programmatically.
+The indicator follows the mouse and returns to the selected item when not hovering.
 
-<ComponentPreview componentName="segment-group" fileName="example-controlled" />
+<ComponentPreview componentName="segment-group" fileName="example-indicator-on-hover" />
+
+### Custom Indicator
+
+Use `bg-*` classes to change the color of the indicator.
+
+<ComponentPreview componentName="segment-group" fileName="example-custom-indicator" />
+
+## API Reference
+
+### SegmentGroup
+
+Root component. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultValue` | `string` | — |
+| `value` | `string` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` |
+| `variant` | `"default"` \| `"underline"` | `"default"` |
+| `disabled` | `boolean` | — |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SegmentGroupIndicator
+
+Visual indicator for the selected segment. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+| `className` | `string` | — |
+
+### SegmentGroupItem
+
+Individual segment option. Renders a `label`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — |
+| `disabled` | `boolean` | — |
+| `invalid` | `boolean` | — |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SegmentGroupItemText
+
+Text content for a segment item. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/segment-group#api-reference).

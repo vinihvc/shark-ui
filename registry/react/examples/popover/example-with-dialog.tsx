@@ -28,7 +28,7 @@ const Example = () => (
       <DialogBody>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="secondary">Open</Button>
+            <Button variant="outline">Open</Button>
           </PopoverTrigger>
           <PopoverContent>
             <PopoverHeader

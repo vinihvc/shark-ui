@@ -3,6 +3,7 @@ import { NavLink } from "@/components/nav-link";
 import { source } from "@/lib/fumadocs";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
+import { FeaturesBlock } from "./_components/features-block";
 
 const HomePage = () => {
   const rawCount = source.getPages().length;
@@ -53,6 +54,8 @@ const HomePage = () => {
           </Button>
         </div>
       </section>
+
+      <FeaturesBlock />
     </main>
   );
 };

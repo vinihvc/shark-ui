@@ -47,27 +47,7 @@ export const Marquee = (props: MarqueeProps) => {
       speed={speed}
       {...rest}
     >
-      <ArkMarquee.Viewport
-        className="flex overflow-hidden"
-        data-slot="marquee-viewport"
-      >
-        <ArkMarquee.Content
-          className={cn(
-            "flex",
-            "min-w-max",
-            "delay-(--marquee-delay)",
-            "data-[orientation=vertical]:animate-marquee-y",
-            "data-[orientation=horizontal]:animate-marquee-x",
-            "data-[orientation=horizontal]:flex-row",
-            "data-[orientation=vertical]:flex-col",
-            "data-reverse:direction-[reverse]!",
-            "group-data-paused:paused!"
-          )}
-          data-slot="marquee-content"
-        >
-          {children}
-        </ArkMarquee.Content>
-      </ArkMarquee.Viewport>
+      {children}
 
       {showEdges && (
         <>
@@ -76,6 +56,36 @@ export const Marquee = (props: MarqueeProps) => {
         </>
       )}
     </ArkMarquee.Root>
+  );
+};
+
+export const MarqueeContent = (
+  props: React.ComponentProps<typeof ArkMarquee.Content>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkMarquee.Viewport
+      className="flex overflow-hidden"
+      data-slot="marquee-viewport"
+    >
+      <ArkMarquee.Content
+        className={cn(
+          "flex",
+          "min-w-max",
+          "delay-(--marquee-delay)",
+          "data-[orientation=vertical]:animate-marquee-y",
+          "data-[orientation=horizontal]:animate-marquee-x",
+          "data-[orientation=horizontal]:flex-row",
+          "data-[orientation=vertical]:flex-col",
+          "data-reverse:direction-[reverse]!",
+          "group-data-paused:paused!",
+          className
+        )}
+        data-slot="marquee-content"
+        {...rest}
+      />
+    </ArkMarquee.Viewport>
   );
 };
 

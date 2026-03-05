@@ -6,7 +6,6 @@ import { CheckIcon, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
   const {
@@ -48,14 +47,14 @@ export const MenuPositioner = (
 export const menuContentVariants = tv({
   base: [
     "z-[calc(50+var(--nested-layer-count,0))]",
-    "h-auto",
+    "max-h-(--available-height) not-[class*='w-']:min-w-32",
     "p-1",
     "bg-popover",
     "text-popover-foreground",
     "rounded-xl border shadow-lg/5",
     "origin-(--transform-origin)",
     "outline-none",
-    "overflow-y-auto overflow-x-hidden",
+    "overflow-y-auto",
     "duration-100",
     "data-[state=open]:animate-in",
     "data-[state=open]:fade-in-0",
@@ -78,7 +77,7 @@ export const MenuContent = (props: MenuContentProps) => {
           data-slot="menu-content"
           {...rest}
         >
-          <ScrollArea>{children}</ScrollArea>
+          {children}
         </ArkMenu.Content>
       </MenuPositioner>
     </Portal>
@@ -130,7 +129,7 @@ const menuItemVariants = tv({
     "select-none outline-hidden",
     "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
     "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {
     variant: {

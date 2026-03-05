@@ -73,7 +73,7 @@ import {
   <MenuContent>
     <MenuItemGroup>
       <MenuItemGroupLabel />
-      <MenuItem value="item-1" />
+      <MenuItem />
       <MenuSub>
         <MenuSubTrigger />
         <MenuSubContent>
@@ -140,6 +140,18 @@ Use the `asChild` prop on `<MenuItem />` with a `anchor` element to render a lin
 Use `<MenuGroup />` with  `<MenuGroupLabel />` or the `heading` prop to group related items under a label.
 
 <ComponentPreview componentName="menu" fileName="example-group-label" />
+
+### With Separator
+
+Use `<MenuSeparator />` to add visual dividers between related groups of menu items.
+
+<ComponentPreview componentName="menu" fileName="example-with-separator" />
+
+### With Scroll
+
+Add `max-h-*` and `overflow-y-auto` to `<MenuContent />` to constrain height and enable native scrolling when there are many items.
+
+<ComponentPreview componentName="menu" fileName="example-with-scroll" />
 
 ### Open a Dialog
 

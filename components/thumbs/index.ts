@@ -60,7 +60,6 @@ export { SegmentGroupThumb } from "./segment-group";
 export { SelectThumb } from "./select";
 export { SeparatorThumb } from "./separator";
 export { SheetThumb } from "./sheet";
-export { ShowThumb } from "./show";
 export { SignaturePadThumb } from "./signature-pad";
 export { SkeletonThumb } from "./skeleton";
 export { SkipNavThumb } from "./skip-nav";

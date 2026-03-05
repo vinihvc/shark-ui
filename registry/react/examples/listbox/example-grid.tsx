@@ -22,7 +22,7 @@ const Example = () => {
         >
           {collection.items.map((item) => (
             <ListboxItem item={item} key={item.value}>
-              <ListboxItemText className="text-center">
+              <ListboxItemText className="text-center text-xl">
                 {item.label}
               </ListboxItemText>
             </ListboxItem>

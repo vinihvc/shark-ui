@@ -61,7 +61,7 @@ const listboxItemVariants = tv({
     "cursor-pointer",
     "outline-hidden",
     "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg:not([class*='size-'])]:h-lh [&_svg:not([class*='size-'])]:w-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {
     variant: {
@@ -193,6 +193,23 @@ export const ListboxItemIndicator = (
     >
       {children ?? <CheckIcon />}
     </ArkListbox.ItemIndicator>
+  );
+};
+
+export const ListboxEmpty = (
+  props: React.ComponentProps<typeof ArkListbox.Empty>
+) => {
+  const { className, ...rest } = props;
+  return (
+    <ArkListbox.Empty
+      className={cn(
+        "px-2 py-1.5",
+        "text-center text-muted-foreground text-sm",
+        className
+      )}
+      data-slot="listbox-empty"
+      {...rest}
+    />
   );
 };
 
