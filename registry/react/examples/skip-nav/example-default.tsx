@@ -5,7 +5,7 @@ import {
 
 const SkipNavDemo = () => (
   <div className="flex min-h-[200px] flex-col gap-4">
-    <SkipNavLink>Skip to Content</SkipNavLink>
+    <SkipNavLink className="focus:absolute">Skip to Content</SkipNavLink>
     <nav className="rounded-lg border bg-muted/30 p-4">
       <p className="text-muted-foreground text-sm">
         Navigation — Tab to focus the skip link, then Enter to jump to main

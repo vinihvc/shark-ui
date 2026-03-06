@@ -40,7 +40,7 @@ export const NumberFieldGroup = (
         "flex w-full justify-between",
         "bg-transparent dark:bg-input/30",
         "text-base",
-        "rounded-xl border border-input shadow-md/5 ring-ring/32",
+        "rounded-lg border border-input shadow-md/5 ring-ring/32",
         "transition-shadow",
         "focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
         "data-disabled:pointer-events-none data-disabled:opacity-64",

@@ -102,7 +102,7 @@ Use the `variant="inset"` prop to add padding. The sheet appears as a floating c
 
 <ComponentPreview componentName="sheet" fileName="example-inset" />
 
-### With ScrollArea
+### With Scroll
 
 Use `<SheetBody />` to make the content area scrollable while keeping header and footer fixed.
 
@@ -119,6 +119,12 @@ Use the `showCloseButton` prop to hide the close button in the top right corner.
 Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on outside click and escape.
 
 <ComponentPreview componentName="sheet" fileName="example-close-behavior" />
+
+### Non-Modal
+
+Use `modal={false}` to allow interaction with elements outside the sheet. Disables focus trapping and scroll prevention.
+
+<ComponentPreview componentName="sheet" fileName="example-non-modal" />
 
 ## API Reference
 

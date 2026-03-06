@@ -8,27 +8,9 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const users = [
-  {
-    id: "1",
-    name: "Alice Johnson",
-    email: "alice@example.com",
-  },
-  {
-    id: "2",
-    name: "Bruno Silva",
-    email: "bruno@example.com",
-  },
-  {
-    id: "3",
-    name: "Clara Mendes",
-    email: "clara@example.com",
-  },
-];
-
 const Example = () => {
   return (
-    <Table isHoverable={false}>
+    <Table className="mx-auto w-full max-w-xl" isHoverable={false}>
       <TableCaption className="sr-only">
         Table with row hover disabled (isHoverable=false).
       </TableCaption>
@@ -49,5 +31,23 @@ const Example = () => {
     </Table>
   );
 };
+
+const users = [
+  {
+    id: "1",
+    name: "Alice Johnson",
+    email: "alice@example.com",
+  },
+  {
+    id: "2",
+    name: "Bruno Silva",
+    email: "bruno@example.com",
+  },
+  {
+    id: "3",
+    name: "Clara Mendes",
+    email: "clara@example.com",
+  },
+];
 
 export default Example;

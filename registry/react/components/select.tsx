@@ -1,21 +1,16 @@
 "use client";
 
-import { Portal } from "@ark-ui/react";
-import {
-  Select as ArkSelect,
-  createListCollection,
-} from "@ark-ui/react/select";
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { ark, Portal } from "@ark-ui/react";
+import { Select as ArkSelect, useSelectContext } from "@ark-ui/react/select";
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { inputVariants } from "@/registry/react/components/input";
 
-export const createCollection = createListCollection;
+export const SelectContext = ArkSelect.Context;
 
-export const Select = <T,>(
-  props: React.ComponentProps<typeof ArkSelect.Root<T>>
-) => {
+export const Select: ArkSelect.RootComponent = (props) => {
   const { lazyMount = true, unmountOnExit = true, children, ...rest } = props;
 
   return (
@@ -34,10 +29,23 @@ export const Select = <T,>(
 
 interface SelectTriggerProps
   extends React.ComponentProps<typeof ArkSelect.Trigger>,
-    VariantProps<typeof inputVariants> {}
+    VariantProps<typeof inputVariants> {
+  /**
+   * Show clear trigger
+   *
+   * @default false
+   */
+  showClearTrigger?: boolean;
+}
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
-  const { size = "md", className, children, ...rest } = props;
+  const {
+    showClearTrigger = false,
+    size = "md",
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <ArkSelect.Control data-slot="select-control">
@@ -45,11 +53,11 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
         className={cn(
           inputVariants({ size }),
           "w-fit",
-          "flex items-center justify-between gap-2",
+          "flex items-center gap-2",
           "text-base md:text-sm",
           "data-placeholder-shown:text-muted-foreground/64",
           "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32",
-          "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
           className
         )}
         data-slot="select-trigger"
@@ -57,9 +65,16 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
       >
         {children}
 
-        <ArkSelect.Indicator data-slot="select-indicator">
-          <ChevronsUpDownIcon />
-        </ArkSelect.Indicator>
+        <div className="ms-auto flex items-center gap-1 rtl:me-auto">
+          {showClearTrigger && (
+            <SelectClearTrigger>
+              <XIcon />
+            </SelectClearTrigger>
+          )}
+          <ArkSelect.Indicator data-slot="select-indicator">
+            <ChevronsUpDownIcon />
+          </ArkSelect.Indicator>
+        </div>
       </ArkSelect.Trigger>
     </ArkSelect.Control>
   );
@@ -73,7 +88,9 @@ export const SelectValue = (
   return (
     <ArkSelect.ValueText
       className={cn(
-        "flex min-w-0 items-center gap-2 truncate text-nowrap",
+        "min-w-0",
+        "flex items-center gap-2",
+        "truncate text-nowrap",
         className
       )}
       {...rest}
@@ -97,16 +114,18 @@ export const SelectContent = (
             "p-1",
             "bg-popover",
             "text-popover-foreground",
-            "rounded-xl border shadow-lg/5",
-            "overflow-auto",
+            "rounded-lg border border-input shadow-md/5",
+            "origin-(--transform-origin)",
             "outline-none",
-            "data-[state=closed]:animate-out data-[state=open]:animate-in",
-            "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-            "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
-            "data-[placement=top]:slide-in-from-bottom-2",
+            "overflow-y-auto",
+            "duration-100",
+            "data-[state=open]:animate-in",
+            "data-[state=open]:fade-in-0",
+            "data-[state=open]:zoom-in-[98%]",
             "data-[placement=bottom]:slide-in-from-top-2",
-            "data-[placement=right]:slide-in-from-start-2",
             "data-[placement=left]:slide-in-from-end-2",
+            "data-[placement=right]:slide-in-from-start-2",
+            "data-[placement=top]:slide-in-from-bottom-2",
             className
           )}
           data-slot="select-content"
@@ -149,7 +168,8 @@ export const SelectGroupLabel = (
   return (
     <ArkSelect.ItemGroupLabel
       className={cn(
-        "px-2 py-1.5 font-semibold text-muted-foreground text-xs",
+        "px-2 py-1.5",
+        "font-semibold text-muted-foreground text-xs",
         className
       )}
       data-slot="select-group-label"
@@ -167,34 +187,79 @@ export const SelectItem = (
     <ArkSelect.Item
       className={cn(
         "relative",
+        "w-full",
         "py-1.5 ps-2 pe-8",
-        "text-sm",
-        "flex w-full items-center gap-2",
-        "rounded-lg",
-        "select-none",
+        "flex items-center gap-2",
+        "select-none text-base md:text-sm",
+        "rounded-md",
         "cursor-default",
         "outline-hidden",
+        "in-[[data-slot=select-content]:has([data-slot=select-group-label])]:ps-4",
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0",
-        "[&_svg:not([class*='size-'])]:size-4",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:text-muted-foreground",
         className
       )}
       data-slot="select-item"
       {...rest}
     >
       <ArkSelect.ItemText
-        className="flex w-full items-center gap-2"
+        className="flex w-full flex-1 items-center gap-2"
         data-slot="select-item-text"
       >
         {children}
       </ArkSelect.ItemText>
 
-      <span className="absolute inset-e-2 flex size-3.5 items-center justify-center">
+      <span className="absolute inset-e-2 flex size-4 items-center justify-center">
         <ArkSelect.ItemIndicator data-slot="select-item-indicator">
           <CheckIcon />
         </ArkSelect.ItemIndicator>
       </span>
     </ArkSelect.Item>
   );
+};
+
+export const SelectClearTrigger = (
+  props: React.ComponentProps<typeof ArkSelect.ClearTrigger>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkSelect.ClearTrigger
+      aria-label="Clear selected value(s)"
+      className={cn(
+        "[&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
+        "transition-opacity",
+        "opacity-64",
+        "outline-none focus-visible:opacity-100",
+        "hover:opacity-100",
+        className
+      )}
+      data-slot="select-clear-trigger"
+      {...rest}
+    />
+  );
+};
+
+export const SelectEmpty = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  const { empty } = useSelectContext();
+
+  if (empty) {
+    return (
+      <ark.div
+        className={cn(
+          "px-2 py-1.5",
+          "text-center text-muted-foreground text-sm",
+          className
+        )}
+        role="presentation"
+        {...rest}
+      />
+    );
+  }
+
+  return null;
 };

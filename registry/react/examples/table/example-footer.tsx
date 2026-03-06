@@ -9,15 +9,9 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const items = [
-  { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },
-  { id: "2", item: "Mechanical keyboard", qty: 1, unitPrice: 149.99 },
-  { id: "3", item: "USB-C hub", qty: 3, unitPrice: 45.0 },
-];
-
 const Example = () => {
   return (
-    <Table>
+    <Table className="mx-auto w-full max-w-xl">
       <TableCaption className="sr-only">
         Order summary with footer totals.
       </TableCaption>
@@ -52,5 +46,11 @@ const Example = () => {
     </Table>
   );
 };
+
+const items = [
+  { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },
+  { id: "2", item: "Mechanical keyboard", qty: 1, unitPrice: 149.99 },
+  { id: "3", item: "USB-C hub", qty: 3, unitPrice: 45.0 },
+];
 
 export default Example;

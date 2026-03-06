@@ -10,45 +10,8 @@ import {
 } from "@/registry/react/components/table";
 
 const TableDemo = () => {
-  const users = [
-    {
-      id: "1",
-      name: "Alice Johnson",
-      email: "alice.johnson@example.com",
-      role: "Admin",
-      status: "active",
-    },
-    {
-      id: "2",
-      name: "Bruno Silva",
-      email: "bruno.silva@example.com",
-      role: "Editor",
-      status: "invited",
-    },
-    {
-      id: "3",
-      name: "Clara Mendes",
-      email: "clara.mendes@example.com",
-      role: "Viewer",
-      status: "inactive",
-    },
-    {
-      id: "4",
-      name: "David Park",
-      email: "david.park@example.com",
-      role: "Editor",
-      status: "active",
-    },
-  ];
-
-  const statusVariants: Record<string, BadgeVariant> = {
-    active: "success",
-    invited: "info",
-    inactive: "destructive",
-  };
-
   return (
-    <Table>
+    <Table className="mx-auto w-full max-w-xl">
       <TableCaption>A list of users in your workspace.</TableCaption>
       <TableHeader>
         <TableRow>
@@ -78,5 +41,42 @@ const TableDemo = () => {
     </Table>
   );
 };
+
+const statusVariants: Record<string, BadgeVariant> = {
+  active: "success",
+  invited: "info",
+  inactive: "destructive",
+};
+
+const users = [
+  {
+    id: "1",
+    name: "Alice Johnson",
+    email: "alice.johnson@example.com",
+    role: "Admin",
+    status: "active",
+  },
+  {
+    id: "2",
+    name: "Bruno Silva",
+    email: "bruno.silva@example.com",
+    role: "Editor",
+    status: "invited",
+  },
+  {
+    id: "3",
+    name: "Clara Mendes",
+    email: "clara.mendes@example.com",
+    role: "Viewer",
+    status: "inactive",
+  },
+  {
+    id: "4",
+    name: "David Park",
+    email: "david.park@example.com",
+    role: "Editor",
+    status: "active",
+  },
+];
 
 export default TableDemo;

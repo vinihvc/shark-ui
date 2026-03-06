@@ -1,5 +1,6 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import {
   Avatar,
   AvatarFallback,
@@ -18,7 +19,6 @@ import {
   ItemTitle,
 } from "@/registry/react/components/item";
 import {
-  createCollection,
   Select,
   SelectContent,
   SelectItem,
@@ -48,7 +48,7 @@ const teamMembers = [
 ];
 
 export const CardsTeamMembers = () => {
-  const collection = createCollection({
+  const collection = createListCollection({
     items: [
       {
         value: "Viewer",

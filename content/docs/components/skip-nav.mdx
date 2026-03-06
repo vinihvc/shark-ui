@@ -1,9 +1,9 @@
 ---
 title: Skip Nav
-description: Allow keyboard users to skip to the main content of the page (WCAG 2.4.1 Bypass Blocks).
-links:
-  doc: https://chakra-ui.com/docs/components/skip-nav
+description: Allow keyboard users to skip to the main content of the page.
 ---
+
+> Click on the "Preview" tab and use the tab key to see the skip to content link.
 
 <ComponentPreview componentName="skip-nav" />
 
@@ -42,19 +42,23 @@ npm install @ark-ui/react
 
 ## Usage
 
-Place `SkipNavLink` as one of the first focusable elements on the page. Use `SkipNavContent` to wrap your main content—it renders a div with an id that the link targets.
+- Place `<SkipNavLink />` as one of the first focusable elements on the page.
+- Use `<SkipNavContent />` to wrap your main content. It renders a div with an id that the link targets.
 
 ```tsx
 import { SkipNavContent, SkipNavLink } from "@/components/ui/skip-nav";
 
-<SkipNavLink>Skip to content</SkipNavLink>
+<SkipNavLink />
 <nav>...</nav>
-<SkipNavContent>
-  <main>Your main content</main>
-</SkipNavContent>
+<SkipNavContent />
+<main>Your main content</main>
 ```
 
-Per [WCAG 2.4.1 (Bypass Blocks)](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html), skip links let keyboard and screen reader users bypass repeated navigation and jump to the main content.
+## Accessibility
+
+Learn more about in the [WCAG 2.4.1 (Bypass Blocks)](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html) section.
+
+Skip links and allow keyboard and screen reader users to bypass repeated navigation and jump to the main content.
 
 ## API Reference
 
@@ -64,6 +68,7 @@ Per [WCAG 2.4.1 (Bypass Blocks)](https://www.w3.org/WAI/WCAG21/Understanding/byp
 |------|------|---------|
 | `id` | `string` | `"skip-nav-content"` |
 | `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
 
 ### SkipNavContent
 
@@ -71,5 +76,4 @@ Per [WCAG 2.4.1 (Bypass Blocks)](https://www.w3.org/WAI/WCAG21/Understanding/byp
 |------|------|---------|
 | `id` | `string` | `"skip-nav-content"` |
 | `className` | `string` | - |
-
-Ensure `id` matches between `SkipNavLink` and `SkipNavContent` when using a custom value.
+| `asChild` | `boolean` | `false` |

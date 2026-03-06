@@ -32,7 +32,9 @@ export const SegmentGroup = (props: SegmentGroupProps) => {
         "isolate",
         "data-[orientation=vertical]:flex-col",
         "data-disabled:opacity-64",
-        "data-[variant=underline]:gap-1 data-[variant=underline]:border-input data-[variant=underline]:border-b",
+        "data-[variant=underline]:gap-1 data-[variant=underline]:border-input",
+        "data-[orientation=horizontal]:data-[variant=underline]:border-b",
+        "data-[orientation=vertical]:data-[variant=underline]:border-l",
         className
       )}
       data-slot="segment-group"
@@ -99,8 +101,11 @@ export const SegmentGroupIndicator = (
         "transition-[width,height,left,top] duration-150 ease-out",
         "[transition-property:var(--transition-property,width,height,left,top)]",
         "group-data-[variant=underline]/segment-group:bg-primary",
-        "group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
-        "group-data-[variant=underline]/segment-group:h-0.5",
+        "group-data-[orientation=horizontal]/segment-group:group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
+        "group-data-[orientation=vertical]/segment-group:group-data-[variant=underline]/segment-group:right-[calc(var(--left)+var(--width)-1px)]",
+        "group-data-[orientation=vertical]/segment-group:group-data-[variant=underline]/segment-group:-translate-x-px",
+        "group-data-[orientation=horizontal]/segment-group:group-data-[variant=underline]/segment-group:h-0.5",
+        "group-data-[orientation=vertical]/segment-group:group-data-[variant=underline]/segment-group:w-0.5",
         className
       )}
       data-slot="segment-group-indicator"

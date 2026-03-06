@@ -9,7 +9,6 @@ const SKIP_NAV_ID = "skip-nav-content";
 export interface SkipNavLinkProps extends React.ComponentProps<typeof ark.a> {
   /**
    * The id of the element to skip to.
-   * Must match the id on SkipNavContent.
    *
    * @default "skip-nav-content"
    */
@@ -27,7 +26,11 @@ export const SkipNavLink = (props: SkipNavLinkProps) => {
   return (
     <ark.a
       className={cn(
-        "sr-only focus:not-sr-only focus:fixed focus:inset-s-4 focus:top-4 focus:z-9999 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+        "text-sm",
+        "sr-only focus:not-sr-only",
+        "focus:fixed focus:inset-s-4 focus:top-4 focus:z-9999",
+        "focus:px-4 focus:py-2",
+        "focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-ring",
         className
       )}
       data-slot="skip-nav-link"

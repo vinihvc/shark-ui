@@ -1,6 +1,6 @@
 {
   "name": "shark-ui",
-  "description": "shadcn components powered by ark-ui",
+  "description": "components library powered by ark-ui",
   "version": "1.0.0",
   "private": true,
   "author": "Vinicius Vicentini <viniciusvicentini@live.com>",
@@ -11,6 +11,9 @@
   },
   "homepage": "https://shark.vini.one",
   "keywords": [
+    "headless",
+    "a11y",
+    "react",
     "shadcn",
     "ark-ui",
     "ui",

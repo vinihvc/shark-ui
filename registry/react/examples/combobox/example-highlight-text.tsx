@@ -11,11 +11,10 @@ import {
 } from "@/registry/react/components/combobox";
 
 const items = [
-  { label: "React", value: "react" },
-  { label: "Vue", value: "vue" },
-  { label: "Svelte", value: "svelte" },
-  { label: "Solid", value: "solid" },
-  { label: "Angular", value: "angular" },
+  { label: "JavaScript", value: "javascript" },
+  { label: "TypeScript", value: "typescript" },
+  { label: "Python", value: "python" },
+  { label: "Rust", value: "rust" },
 ];
 
 const HighlightMatch = ({ text }: { text: string }) => {

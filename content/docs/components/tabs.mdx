@@ -69,6 +69,25 @@ import {
 </Tabs>
 ```
 
+## Controlled
+
+Use `value` and `onValueChange` to control the active tab programmatically.
+
+<ComponentPreview componentName="tabs" fileName="example-controlled" />
+
+## Variant
+
+Use the `variant` prop on `<TabsList />` to change the selection indicator style.
+
+### Default
+
+<ComponentPreview componentName="tabs" fileName="example-variant-default" />
+
+### Underline
+
+<ComponentPreview componentName="tabs" fileName="example-variant-underline" />
+
+
 ## Orientation
 
 Use the `orientation` prop on `<Tabs />` to lay out tabs horizontally or vertically.
@@ -81,13 +100,14 @@ Use the `orientation` prop on `<Tabs />` to lay out tabs horizontally or vertica
 
 <ComponentPreview componentName="tabs" fileName="example-orientation-vertical" />
 
-## Variant
 
-Use the `variant` prop on `<TabsList />` for an underline-style indicator instead of a pill background.
+## State
 
-### Underline
+### Disabled
 
-<ComponentPreview componentName="tabs" fileName="example-variant-underline" />
+Disable individual tabs with the `disabled` prop on `<TabsTrigger />`. Disabled tabs are not focusable or selectable.
+
+<ComponentPreview componentName="tabs" fileName="example-disabled" />
 
 ## Examples
 
@@ -96,12 +116,6 @@ Use the `variant` prop on `<TabsList />` for an underline-style indicator instea
 Combine `orientation="vertical"` on `<Tabs />` with `variant="underline"` on `<TabsList />`.
 
 <ComponentPreview componentName="tabs" fileName="example-variant-underline-orientation-vertical" />
-
-### Disabled
-
-Disable individual tabs with the `disabled` prop on `<TabsTrigger />`. Disabled tabs are not focusable or selectable.
-
-<ComponentPreview componentName="tabs" fileName="example-disabled" />
 
 ### With icons
 

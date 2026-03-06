@@ -201,7 +201,7 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
             className={cn(
               "[--space:--spacing(4)]",
               "flex w-full max-w-full items-center gap-2",
-              "rounded-xl border shadow-lg/5",
+              "rounded-lg border border-input shadow-md/5",
               "p-(--space)",
               "bg-popover",
               "text-popover-foreground",
@@ -234,7 +234,7 @@ export const ActionBarClose = (props: ActionBarCloseProps) => {
     <ark.button
       aria-label="Close"
       className={cn(
-        "opacity-70 transition-opacity",
+        "opacity-64 transition-opacity",
         "hover:opacity-100",
         className
       )}

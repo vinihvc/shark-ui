@@ -30,16 +30,19 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
   return (
     <div
       className={cn(
-        "z-10 flex flex-col gap-1 py-2 ps-6 pe-4 text-sm",
+        "z-10",
+        "flex flex-col gap-1",
+        "py-2 ps-6 pe-4",
+        "text-sm",
         className
       )}
     >
-      <p className="inline-flex h-7 items-center gap-2 font-medium text-xs [&_svg]:size-3">
-        <AlignLeftIcon aria-hidden />
+      <p className="inline-flex h-7 items-center gap-2 font-medium text-xs">
+        <AlignLeftIcon aria-hidden className="size-3" />
         On This Page
       </p>
 
-      <div className="relative ms-3.5 flex flex-col gap-0.5 before:absolute before:inset-y-0 before:-left-3.25 before:w-px before:bg-border">
+      <div className="relative ms-4.5 flex flex-col gap-0.5 before:absolute before:inset-y-0 before:-left-3.25 before:w-px before:bg-border">
         {data.map((item) => (
           <TOCItem
             data-active={item.url === `#${activeHeading}`}
@@ -146,7 +149,7 @@ const TOCItem = (props: React.ComponentProps<"a">) => {
         "text-muted-foreground leading-4.5",
         "rounded-md border border-transparent no-underline",
         "transition-colors",
-        "before:absolute before:inset-y-px before:-left-3 before:w-px before:rounded-full",
+        "before:absolute before:inset-y-px before:-left-3 before:w-px before:translate-x-0.5",
         "hover:text-foreground",
         "data-[active=true]:text-foreground",
         "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",

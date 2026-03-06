@@ -90,7 +90,7 @@ export const BreadcrumbSeparator = (
   return (
     <ark.li
       aria-hidden="true"
-      className={cn("opacity-80 [&_svg]:size-4", className)}
+      className={cn("opacity-64 [&_svg]:size-4", className)}
       data-slot="breadcrumb-separator"
       role="presentation"
       {...rest}

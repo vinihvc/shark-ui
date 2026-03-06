@@ -32,7 +32,7 @@ export const SheetOverlay = (
 };
 
 const sheetPositionerVariants = tv({
-  base: ["fixed inset-0 z-50 grid"],
+  base: ["fixed inset-0 z-50 grid h-svh w-screen"],
   variants: {
     placement: {
       bottom: "grid grid-rows-[1fr_auto] pt-12",

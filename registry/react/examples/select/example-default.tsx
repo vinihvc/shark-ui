@@ -1,7 +1,7 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import {
-  createCollection,
   Select,
   SelectContent,
   SelectGroup,
@@ -11,10 +11,6 @@ import {
 } from "@/registry/react/components/select";
 
 const SelectDemo = () => {
-  const collection = createCollection({
-    items: ["Banana", "Apple", "Orange", "Pineapple"],
-  });
-
   return (
     <Select collection={collection}>
       <SelectTrigger className="w-48">
@@ -33,5 +29,9 @@ const SelectDemo = () => {
     </Select>
   );
 };
+
+const collection = createListCollection({
+  items: ["Banana", "Apple", "Orange", "Pineapple"],
+});
 
 export default SelectDemo;
