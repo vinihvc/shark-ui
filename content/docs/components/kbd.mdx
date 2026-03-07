@@ -17,7 +17,7 @@ description: A keyboard shortcut component
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/kbd
+npx shadcn@latest add @shark/kbd
 ```
 
 </TabsContent>
@@ -46,14 +46,14 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Kbd, 
   KbdGroup 
 } from "@/components/ui";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <KbdGroup>
   <Kbd>⌘</Kbd>
   <Kbd>K</Kbd>
@@ -66,7 +66,7 @@ Use the `variant` prop to change the visual style of the kbd.
 
 ### Outline
 
-<ComponentPreview componentName="kbd" fileName="variant-outline" />
+<ComponentPreview componentName="kbd" fileName="example-variant-outline" />
 
 ## Examples
 
@@ -78,7 +78,7 @@ Use `<KbdGroup />` to group keys into a single shortcut.
 
 ### Input Group
 
-Use `<Kbd />` inside [InputGroup](/docs/components/input-group) addons to show shortcut hints next to inputs.
+Use `<Kbd />` inside `<InputGroup />` addons to show shortcut hints next to inputs.
 
 <ComponentPreview componentName="kbd" fileName="example-input-group" />
 
@@ -90,7 +90,7 @@ Add shortcut hints to buttons with `<Kbd />` or `<KbdGroup />`.
 
 ### Tooltip
 
-Show keyboard shortcuts in [Tooltip](/docs/components/tooltip) content.
+Show keyboard shortcuts in `<Tooltip />` content.
 
 <ComponentPreview componentName="kbd" fileName="example-tooltip" />
 

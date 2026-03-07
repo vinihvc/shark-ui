@@ -1,0 +1,12 @@
+import type { RegistryItemType } from "@/lib/registry";
+
+const dependencies = ["@ark-ui/react"];
+
+const manifest: RegistryItemType = {
+  name: "image-cropper",
+  type: "registry:ui",
+  dependencies,
+  registryDependencies: ["@shark/button"],
+};
+
+export default manifest;

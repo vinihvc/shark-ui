@@ -1,8 +1,9 @@
-import { ArrowRight, StarIcon } from "lucide-react";
+import { ArrowRightIcon, StarIcon } from "lucide-react";
 import { NavLink } from "@/components/nav-link";
 import { source } from "@/lib/fumadocs";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
+import { FeaturesBlock } from "./_components/features-block";
 
 const HomePage = () => {
   const rawCount = source.getPages().length;
@@ -21,13 +22,13 @@ const HomePage = () => {
         <div>
           <Badge asChild variant="secondary">
             <NavLink href="/docs/changelog">
-              <StarIcon />
+              <StarIcon aria-hidden />
               Beta Version
             </NavLink>
           </Badge>
         </div>
 
-        <h1 className="text-balance font-semibold text-4xl leading-tight sm:text-5xl md:text-6xl">
+        <h1 className="font-semibold text-4xl leading-tight sm:text-5xl md:text-6xl">
           shadcn/ui Components <br />
           Powered by{" "}
           <span className="inline-block rounded-md bg-primary px-4 py-1 text-primary-foreground leading-none">
@@ -48,11 +49,13 @@ const HomePage = () => {
           <Button asChild size="lg" variant="outline">
             <NavLink href="/docs/components">
               View components
-              <ArrowRight />
+              <ArrowRightIcon aria-hidden />
             </NavLink>
           </Button>
         </div>
       </section>
+
+      <FeaturesBlock />
     </main>
   );
 };

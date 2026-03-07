@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/menu
+npx shadcn@latest add @shark/menu
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
  Menu,
   MenuCheckboxItem,
@@ -67,13 +67,13 @@ import {
 } from "@/components/ui/menu";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Menu>
   <MenuTrigger />
   <MenuContent>
     <MenuItemGroup>
       <MenuItemGroupLabel />
-      <MenuItem value="item-1" />
+      <MenuItem />
       <MenuSub>
         <MenuSubTrigger />
         <MenuSubContent>
@@ -141,6 +141,18 @@ Use `<MenuGroup />` with  `<MenuGroupLabel />` or the `heading` prop to group re
 
 <ComponentPreview componentName="menu" fileName="example-group-label" />
 
+### With Separator
+
+Use `<MenuSeparator />` to add visual dividers between related groups of menu items.
+
+<ComponentPreview componentName="menu" fileName="example-with-separator" />
+
+### With Scroll
+
+Add `max-h-*` and `overflow-y-auto` to `<MenuContent />` to constrain height and enable native scrolling when there are many items.
+
+<ComponentPreview componentName="menu" fileName="example-with-scroll" />
+
 ### Open a Dialog
 
 Open a dialog from a `<MenuItem />` with the `onClick` prop and controlled state.
@@ -167,8 +179,6 @@ Root element of the menu component.
 | `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
 | `onSelect` | `(details: SelectionDetails) => void` | — |
 | `closeOnSelect` | `boolean` | `true` |
-| `lazyMount` | `boolean` | `true` |
-| `unmountOnExit` | `boolean` | `true` |
 
 ### MenuTrigger
 
@@ -252,7 +262,7 @@ Submenu: wrap a nested `<Menu />`-like structure. `<MenuSubTrigger />` opens the
 
 ### MenuShortcut
 
-Optional keyboard hint shown next to an item (e.g. `⌘S`). Renders a `span`.
+Optional keyboard hint shown next to an item. Renders a `span`.
 
 ---
 

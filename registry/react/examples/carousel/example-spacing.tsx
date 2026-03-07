@@ -16,7 +16,7 @@ const Example = () => {
       className="w-full max-w-48 sm:max-w-64"
       slideCount={slides.length}
       slidesPerPage={2}
-      spacing={10}
+      spacing="64px"
     >
       <CarouselControl>
         <CarouselPrevious>Previous</CarouselPrevious>

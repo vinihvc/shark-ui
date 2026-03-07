@@ -4,8 +4,8 @@ import fm from "front-matter";
 import { source } from "@/lib/fumadocs";
 
 export interface ChangelogPageData {
-  title: string;
   description?: string;
+  title: string;
 }
 
 export type ChangelogPage = ReturnType<typeof source.getPages>[number] & {

@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/carousel
+npx shadcn@latest add @shark/carousel
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Carousel,
   CarouselControl,
@@ -62,7 +62,7 @@ import {
 } from "@/components/ui/carousel"; 
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Carousel>
   <CarouselControl>
     <CarouselPrevious>Previous</CarouselPrevious>
@@ -78,7 +78,7 @@ import {
 
 ## Orientation
 
-You can change the orientation of the carousel using the `orientation` prop.
+The `orientation` prop controls the carousel layout direction.
 
 ### Horizontal
 
@@ -132,8 +132,6 @@ Display multiple slides simultaneously by setting the `slidesPerPage` prop on `<
 
 Control the gap between slides using the `spacing` prop on `<Carousel />`.
 
-Spacing is in multiples of `4px`. Example: `spacing={10}` will set the spacing to `40px`.
-
 <ComponentPreview componentName="carousel" fileName="example-spacing" />
 
 ### Padding
@@ -167,14 +165,9 @@ Root element of the carousel. Renders a `div`
 | `page` | `number` | `-` |
 | `slidesPerPage` | `number` | `1` |
 | `slidesPerMove` | `number \| 'auto'` | `'auto'` |
-| `snapType` | `'proximity' \| 'mandatory'` | `'mandatory'` |
-| `spacing` | `number` | `'4'` |
+| `spacing` | `string` | `"16px"` |
 | `padding` | `number` | `0` |
-| `inViewThreshold` | `number \| number[]` | `0.6` |
 | `className` | `string` | `-` |
-| `onPageChange` | `({ page }: PageChangeDetails) => void` | `-` |
-| `onAutoplayStatusChange` | `({ isPlaying, page, type }: AutoplayStatusDetails) => void` | `-` |
-| `onDragStatusChange` | `({ isDragging, page, type }: DragStatusDetails) => void` | `-` |
 
 ### CarouselContent
 
@@ -183,6 +176,7 @@ Container for carousel items. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### CarouselItem
 
@@ -193,6 +187,7 @@ Container for a single carousel item. Renders a `div`
 | `index` | `number` | **required** |
 | `snapAlign` | `'start' \| 'center' \| 'end'` | `'start'` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### CarouselControl
 
@@ -201,6 +196,7 @@ Container for carousel navigation controls. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### CarouselPrevious
 
@@ -225,6 +221,7 @@ Container for carousel indicators. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### CarouselIndicator
 
@@ -235,6 +232,7 @@ Button that indicates and navigates to a specific slide. Renders a `button`
 | `index` | `number` | **required** |
 | `readOnly` | `boolean` | `false` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ---
 

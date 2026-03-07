@@ -1,0 +1,138 @@
+---
+title: Rating
+description: Used to show reviews and ratings in a visual format.
+links:
+  doc: https://ark-ui.com/docs/components/rating-group
+  api: https://ark-ui.com/docs/components/rating-group#api-reference
+---
+
+<ComponentPreview componentName="rating" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark/rating
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/rating.tsx" src="/rating.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { RatingGroup } from "@/components/ui/rating";
+```
+
+```tsx showLineNumbers
+<RatingGroup />
+```
+
+## Controlled
+
+Use `value` and `onValueChange` to control the rating programmatically.
+
+<ComponentPreview componentName="rating" fileName="example-controlled" />
+
+## State
+
+### Readonly
+
+Use the `readOnly` prop to display a rating without interaction.
+
+<ComponentPreview componentName="rating" fileName="example-readonly" />
+
+### Disabled
+
+Use the `disabled` prop to prevent interaction and show a disabled state.
+
+<ComponentPreview componentName="rating" fileName="example-disabled" />
+
+## Examples
+
+### Half star
+
+Use `allowHalf` to allow half-star selections.
+
+<ComponentPreview componentName="rating" fileName="example-half-star" />
+
+### Count
+
+Use the `count` prop to show more or less stars.
+
+<ComponentPreview componentName="rating" fileName="example-count" />
+
+### Testimonial
+
+Display a read-only rating inside a testimonial card.
+
+<ComponentPreview componentName="rating" fileName="example-testimonial" />
+
+### Customize size
+
+Use the `className` prop to set the size of the rating.
+
+<ComponentPreview componentName="rating" fileName="example-custom-size" />
+
+### Custom icon
+
+Compose the rating with a different icon.
+
+<ComponentPreview componentName="rating" fileName="example-custom-icon" />
+
+### Custom color
+
+Override the filled color with `className`.
+
+<ComponentPreview componentName="rating" fileName="example-custom-color" />
+
+## API Reference
+
+### Rating
+
+Root element of the rating. Renders a `div` and forwards props to Ark UI's RatingGroup.Root.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `allowHalf` | `boolean` | `false` |
+| `count` | `number` | `5` |
+| `defaultValue` | `number` | `-` |
+| `value` | `number` | `-` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | `-` |
+| `readOnly` | `boolean` | `-` |
+| `disabled` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/rating-group#api-reference).
+

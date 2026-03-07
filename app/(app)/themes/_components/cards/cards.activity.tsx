@@ -80,14 +80,14 @@ export const CardsActivityGoal = () => {
       <CardContent className="flex flex-1 flex-col">
         <div className="flex items-center justify-center gap-4">
           <Button
+            aria-label="Decrease"
             className="size-7 rounded-full"
             disabled={goal <= 200}
             onClick={() => onClick(-10)}
             size="icon-md"
             variant="outline"
           >
-            <MinusIcon />
-            <span className="sr-only">Decrease</span>
+            <MinusIcon aria-hidden />
           </Button>
           <div className="text-center">
             <div className="font-bold text-4xl tabular-nums tracking-tighter">
@@ -98,19 +98,19 @@ export const CardsActivityGoal = () => {
             </div>
           </div>
           <Button
+            aria-label="Increase"
             className="size-7 rounded-full"
             disabled={goal >= 400}
             onClick={() => onClick(10)}
             size="icon-md"
             variant="outline"
           >
-            <PlusIcon />
-            <span className="sr-only">Increase</span>
+            <PlusIcon aria-hidden />
           </Button>
         </div>
         <div className="flex-1">
           <ChartContainer
-            className="aspect-auto h-full w-full"
+            className="aspect-auto size-full"
             config={chartConfig}
           >
             <BarChart data={data}>
@@ -120,7 +120,7 @@ export const CardsActivityGoal = () => {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full" variant="secondary">
+        <Button className="w-full" variant="outline">
           Set Goal
         </Button>
       </CardFooter>

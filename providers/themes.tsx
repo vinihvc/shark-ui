@@ -33,9 +33,9 @@ export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
       document.body.classList.remove(className);
     }
 
-    document.body.classList.add(`theme-${primaryColor}`);
     document.body.classList.add(`bg-${grayColor}`);
     document.body.classList.add(`radius-${borderRadius}`);
+    document.body.classList.add(`theme-${primaryColor}`);
   }, [primaryColor, grayColor, borderRadius]);
 
   return (
@@ -46,7 +46,7 @@ export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
 };
 
 export const useThemes = () => {
-  const context = React.use(ThemesContext);
+  const context = React.useContext(ThemesContext);
 
   if (!context) {
     throw new Error("useThemes must be used within a ThemesProvider");

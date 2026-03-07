@@ -1,3 +1,5 @@
+"use client";
+
 import { Tabs as ArkTabs } from "@ark-ui/react/tabs";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -9,7 +11,8 @@ export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
   return (
     <ArkTabs.Root
       className={cn(
-        "flex flex-col gap-2 data-[orientation=vertical]:flex-row",
+        "flex flex-col gap-2",
+        "data-[orientation=vertical]:flex-row",
         className
       )}
       data-slot="tabs"
@@ -30,7 +33,7 @@ const tabsListVariants = tv({
       "data-[orientation=vertical]:flex-col",
     ],
     indicator: [
-      "absolute bottom-0 left-0",
+      "absolute inset-s-0 bottom-0",
       "h-(--height) w-(--width)",
       "transition-[width,translate] duration-200 ease-in-out",
     ],
@@ -38,8 +41,8 @@ const tabsListVariants = tv({
   variants: {
     variant: {
       default: {
-        base: ["rounded-lg bg-muted text-muted-foreground/72"],
-        indicator: ["-z-1 rounded-md bg-input/32 dark:bg-input"],
+        base: ["rounded-lg"],
+        indicator: ["-z-1 rounded-lg bg-input/64 dark:bg-input"],
       },
       underline: {
         base: [
@@ -99,12 +102,13 @@ export const TabsTrigger = (
         "flex shrink-0 grow items-center justify-center gap-1.5",
         "px-[calc(--spacing(2.5)-1px)]",
         "whitespace-nowrap font-medium text-base sm:text-sm",
-        "border border-transparent",
+        "rounded-lg border border-transparent",
         "cursor-pointer",
-        "rounded-md outline-none",
         "transition-[color,background-color,box-shadow]",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
-        "hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring aria-selected:text-foreground",
+        "hover:text-foreground/72",
+        "aria-selected:text-foreground",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
         "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
         className

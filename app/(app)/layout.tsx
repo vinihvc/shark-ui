@@ -8,8 +8,6 @@ const AppLayout = (props: LayoutProps<"/">) => {
       <SiteHeader />
 
       {children}
-
-      {/* <Footer /> */}
     </>
   );
 };

@@ -17,7 +17,7 @@ description: A component that allows you to group input elements together.
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/input-group
+npx shadcn@latest add @shark/input-group
 ```
 
 </TabsContent>
@@ -46,7 +46,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   InputGroup,
   InputGroupAddon,
@@ -57,7 +57,7 @@ import {
 } from "@/components/ui/input-group";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <InputGroup>
   <InputGroupInput />
   <InputGroupAddon>
@@ -66,8 +66,149 @@ import {
 </InputGroup>
 ```
 
+## Align
+
+Use the `align` prop to change the alignment of the input group.
+
+### inline-start
+
+<ComponentPreview componentName="input-group" fileName="example-align-inline-start" />
+
+### inline-end
+
+<ComponentPreview componentName="input-group" fileName="example-align-inline-end" />
+
+### block-start
+
+<ComponentPreview componentName="input-group" fileName="example-align-block-start" />
+
+### block-end
+
+<ComponentPreview componentName="input-group" fileName="example-align-block-end" />
+
+## Size
+
+Use the `size` prop to change the size of the input group.
+
+### Small
+
+<ComponentPreview componentName="input-group" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="input-group" fileName="example-size-md" />
+
+### Large
+
+<ComponentPreview componentName="input-group" fileName="example-size-lg" />
+
+## State
+
+### Disabled
+
+<ComponentPreview componentName="input-group" fileName="example-disabled" />
+
+### Invalid
+
+<ComponentPreview componentName="input-group" fileName="example-invalid" />
+
 ## Examples
 
-### Default
+### With Tooltip
 
-<ComponentPreview componentName="input-group" fileName="default" />
+<ComponentPreview componentName="input-group" fileName="example-with-tooltip" />
+
+### With Button
+
+<ComponentPreview componentName="input-group" fileName="example-with-button" />
+
+### With Menu
+
+<ComponentPreview componentName="input-group" fileName="example-with-menu" />
+
+### With Badge
+
+<ComponentPreview componentName="input-group" fileName="example-with-badge" />
+
+### With Keyboard Shortcut
+
+<ComponentPreview componentName="input-group" fileName="example-with-keyboard-shortcut" />
+
+### With Inner Label
+
+<ComponentPreview componentName="input-group" fileName="example-with-inner-label" />
+
+### With Spinner
+
+<ComponentPreview componentName="input-group" fileName="example-with-spinner" />
+
+### With Number Field
+
+<ComponentPreview componentName="input-group" fileName="example-with-number-input" />
+
+### With Input Group
+
+Use `<FieldGroup />` with textarea to build forms. Combine subject input, message textarea, and action buttons.
+
+<ComponentPreview componentName="input-group" fileName="example-input-group" />
+
+### Password Strength Checker
+
+A complete password checker with show/hide toggle, clear button, and real-time strength indicator. A strong password requires at least 8 characters with uppercase, lowercase, number, and special character.
+
+<ComponentPreview componentName="input-group" fileName="example-password-strength-checker" />
+
+## API Reference
+
+### InputGroup
+
+Root container. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `sm` \| `md` \| `lg` | `md` |
+| `className` | `string` | — |
+
+### InputGroupAddon
+
+Addon container for labels, buttons, or icons. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `align` | `inline-start` \| `inline-end` \| `block-start` \| `block-end` | `inline-start` |
+| `className` | `string` | — |
+
+### InputGroupButton
+
+Button inside an addon. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | [`ButtonSize`](/docs/components/button#sizes) | `xs` |
+| `variant` | [`ButtonVariant`](/docs/components/button#variants) | `ghost` |
+| `type` | `"button" \| "submit" \| "reset"` | `button` |
+| `className` | `string` | — |
+
+### InputGroupText
+
+Static text inside an addon. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### InputGroupInput
+
+Input element. Renders an `input`. Accepts all native input props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+
+### InputGroupTextarea
+
+Textarea element. Renders a `textarea`. Accepts all native textarea props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |

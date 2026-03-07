@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/autocomplete
+npx shadcn@latest add @shark/autocomplete
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Autocomplete,
   AutocompleteInput,
@@ -59,11 +59,10 @@ import {
   AutocompleteEmpty,
   AutocompleteItemGroupLabel,
   AutocompleteTrigger,
-  AutocompleteClearTrigger,
 } from "@/components/ui/autocomplete";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Autocomplete>
   <AutocompleteInput />
   <AutocompleteContent>
@@ -77,7 +76,3 @@ import {
 ```
 
 ## Examples
-
-### Default
-
-<ComponentPreview componentName="autocomplete" fileName="default" />

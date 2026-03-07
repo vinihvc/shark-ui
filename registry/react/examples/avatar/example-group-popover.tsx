@@ -38,10 +38,10 @@ const Example = () => (
       <AvatarFallback>IA</AvatarFallback>
     </Avatar>
     <Popover positioning={{ placement: "bottom-end" }}>
-      <AvatarGroupCount>
+      <AvatarGroupCount asChild>
         <PopoverTrigger asChild>
           <Button pill size="icon-md" variant="ghost">
-            <AvatarGroupCount>+5</AvatarGroupCount>
+            +5
           </Button>
         </PopoverTrigger>
       </AvatarGroupCount>

@@ -20,7 +20,7 @@ interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
   source: React.ReactNode;
 }
 
-export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
+export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
   const { className, component, source, ...rest } = props;
 
   return (
@@ -30,28 +30,28 @@ export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
     >
       <Tabs defaultValue="preview">
         <TabsList>
-          <TabsTrigger className="rounded-lg" value="preview">
-            Preview
-          </TabsTrigger>
-          <TabsTrigger className="rounded-lg" value="code">
-            Code
-          </TabsTrigger>
+          <TabsTrigger value="preview">Preview</TabsTrigger>
+          <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
 
-        <div className={cn("relative", "rounded-lg border")}>
+        <div className={cn("relative", "rounded-2xl border")}>
           <TabsContent value="preview">
             <div
               className={cn(
-                "flex h-[450px] w-full items-center justify-center overflow-y-auto p-10 max-sm:px-6"
+                "relative flex h-[450px] w-full items-center justify-center overflow-y-auto p-4 sm:p-10"
               )}
             >
+              <div className="absolute top-4 right-0 left-0 border border-border/64 border-dashed max-sm:hidden sm:top-8" />
+              <div className="absolute right-0 bottom-4 left-0 border border-border/64 border-dashed max-sm:hidden sm:bottom-8" />
+              <div className="absolute top-0 bottom-0 left-4 border border-border/64 border-dashed max-sm:hidden sm:left-8" />
+              <div className="absolute top-0 right-4 bottom-0 border border-border/64 border-dashed max-sm:hidden sm:right-8" />
               {component}
             </div>
           </TabsContent>
 
           <TabsContent value="code">
             <div
-              className="overflow-hidden **:[figure]:m-0! **:[figure]:border-0 **:[figure]:bg-muted **:[pre]:h-[450px]"
+              className="overflow-hidden **:[figure]:m-0! **:[figure]:border-0 **:[pre]:min-h-[450px]"
               data-slot="code"
             >
               {source}
@@ -61,4 +61,4 @@ export function ComponentPreviewTabs(props: ComponentPreviewTabsProps) {
       </Tabs>
     </div>
   );
-}
+};

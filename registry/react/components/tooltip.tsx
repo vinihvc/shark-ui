@@ -1,3 +1,5 @@
+"use client";
+
 import { Portal } from "@ark-ui/react";
 import { Tooltip as ArkTooltip } from "@ark-ui/react/tooltip";
 import type React from "react";
@@ -43,25 +45,27 @@ export const TooltipContent = (
       <ArkTooltip.Positioner data-slot="tooltip-positioner">
         <ArkTooltip.Content
           className={cn(
-            "z-40 w-fit origin-(--transform-origin)",
+            "z-50 w-fit",
             "px-3 py-1.5",
             "bg-foreground",
-            "rounded-md",
-            "text-balance text-background text-xs",
-            "animate-in",
-            "fade-in-0 zoom-in-95",
-            "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+            "text-background text-xs",
+            "rounded-lg shadow-md/5",
+            "origin-(--transform-origin) animate-in",
+            "fade-in-0 zoom-in-[98%]",
+            "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",
             "data-[state=closed]:animate-out",
-            "data-[side=bottom]:slide-in-from-top-2",
-            "data-[side=left]:slide-in-from-right-2",
-            "data-[side=right]:slide-in-from-left-2",
-            "data-[side=top]:slide-in-from-bottom-2",
+            "data-[placement=bottom]:slide-in-from-top-2",
+            "data-[placement=left]:slide-in-from-end-2",
+            "data-[placement=right]:slide-in-from-start-2",
+            "data-[placement=top]:slide-in-from-bottom-2",
             className
           )}
           data-slot="tooltip-content"
           {...rest}
         >
           {children}
+
+          <TooltipArrow />
         </ArkTooltip.Content>
       </ArkTooltip.Positioner>
     </Portal>

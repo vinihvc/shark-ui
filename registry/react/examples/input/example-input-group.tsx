@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import {
   InputGroup,
   InputGroupAddon,
@@ -9,7 +9,7 @@ const Example = () => (
   <InputGroup className="w-64">
     <InputGroupInput placeholder="Search..." />
     <InputGroupAddon>
-      <Search />
+      <SearchIcon />
     </InputGroupAddon>
   </InputGroup>
 );

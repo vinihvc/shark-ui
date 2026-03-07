@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/qr-code
+npx shadcn@latest add @shark/qr-code
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   QrCode, 
   QrCodeFrame,
@@ -58,7 +58,7 @@ import {
 } from "@/components/ui/qr-code";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <QrCode>
   <QrCodeFrame />
   <QrCodeOverlay />
@@ -114,14 +114,8 @@ Root element. Renders a `div`.
 | `onValueChange` | `(details: ValueChangeDetails) => void` | — |
 | `encoding` | `QrCodeGenerateOptions` | — |
 | `pixelSize` | `number` | — |
-| `asChild` | `boolean` | — |
 | `className` | `string` | — |
-
-| Attributes | Type | Default |
-| --- | --- | --- |
-| `[data-slot]` | `-` | `qr-code` |
-| `--qr-code-size` | `string` | `var(--spacing(32))` |
-| `--qr-code-overlay-size` | `string` | `calc(var(--qr-code-size)/3)` |
+| `asChild` | `boolean` | — |
 
 ### QrCodeFrame
 
@@ -129,17 +123,17 @@ SVG frame that contains the QR pattern. Renders an `svg`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
 | `className` | `string` | — |
+| `asChild` | `boolean` | — |
 
 ### QrCodeOverlay
 
-Overlay in the center of the QR code (e.g. logo). Renders a `div`.
+Overlay in the center of the QR code. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
 | `className` | `string` | — |
+| `asChild` | `boolean` | — |
 
 ### QrCodeDownload
 
@@ -150,6 +144,7 @@ Trigger to download the QR code as an image. Renders a `button`.
 | `fileName` | `string` | — |
 | `mimeType` | `DataUrlType` | — |
 | `quality` | `number` | — |
+| `className` | `string` | — |
 | `asChild` | `boolean` | — |
 
 ---

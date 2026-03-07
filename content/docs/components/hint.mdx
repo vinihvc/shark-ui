@@ -1,0 +1,102 @@
+---
+title: Hint
+description: A lightweight, minimal tooltip that shows information.
+---
+
+<Alert>
+  <InfoIcon />
+  <AlertDescription>
+    For a complete component Tooltip component check out the [Tooltip](/docs/components/tooltip) component.
+  </AlertDescription>
+</Alert>
+
+<ComponentPreview componentName="hint" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/hint
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/hint.tsx" src="/hint.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Hint, HintTrigger, HintContent } from "@/components/ui/hint";
+```
+
+```tsx showLineNumbers
+<Hint>
+  <HintTrigger />
+  <HintContent />
+</Hint>
+```
+
+## Examples
+
+### Positions
+
+<ComponentPreview componentName="hint" fileName="example-positions" />
+
+## Hint vs Tooltip
+
+ - **Hint**: A lightweight, minimal tooltip that shows information
+
+- **Tooltip**: A more complex component that provides a more full-featured tooltip with a variety of options.
+
+## API Reference
+
+### Hint
+
+Root element. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` |
+| `offset` | `string` | `"1.5"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### HintTrigger
+
+The element that triggers the hint on hover or focus. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### HintContent
+
+The hint popup content displayed on hover or focus. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |

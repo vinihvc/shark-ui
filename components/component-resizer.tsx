@@ -1,16 +1,22 @@
 "use client";
 
-import { Computer, Fullscreen, Phone, RotateCw, Tablet } from "lucide-react";
+import {
+  ComputerIcon,
+  FullscreenIcon,
+  PhoneIcon,
+  RotateCwIcon,
+  TabletIcon,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
-  Splitter,
-  SplitterPanel,
-  SplitterResizeTrigger,
-} from "@/registry/react/components/splitter";
+  Resizable,
+  ResizablePanel,
+  ResizableResizeTrigger,
+} from "@/registry/react/components/resizable";
 
 interface ComponentResizerProps extends React.ComponentProps<"figure"> {
   /**
@@ -52,32 +58,40 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
         <div className="flex items-center gap-2">
           <ButtonGroup>
             <Button
+              aria-label="Desktop"
               onClick={() => setMediaQuery("desktop")}
               size="icon-sm"
               variant="outline"
             >
-              <Computer />
+              <ComputerIcon aria-hidden />
             </Button>
 
             <Button
+              aria-label="Tablet"
               onClick={() => setMediaQuery("tablet")}
               size="icon-sm"
               variant="outline"
             >
-              <Tablet />
+              <TabletIcon aria-hidden />
             </Button>
 
             <Button
+              aria-label="Phone"
               onClick={() => setMediaQuery("mobile")}
               size="icon-sm"
               variant="outline"
             >
-              <Phone />
+              <PhoneIcon aria-hidden />
             </Button>
 
-            <Button asChild size="icon-sm" variant="outline">
+            <Button
+              aria-label="Fullscreen"
+              asChild
+              size="icon-sm"
+              variant="outline"
+            >
               <Link href={url} target="_blank">
-                <Fullscreen />
+                <FullscreenIcon aria-hidden />
               </Link>
             </Button>
 
@@ -86,14 +100,14 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
               size="icon-sm"
               variant="outline"
             >
-              <RotateCw />
+              <RotateCwIcon />
             </Button>
           </ButtonGroup>
         </div>
       </figcaption>
 
-      <Splitter defaultSize={[100, 0]} panels={[{ id: "1" }, { id: "2" }]}>
-        <SplitterPanel
+      <Resizable defaultSize={[100, 0]} panels={[{ id: "1" }, { id: "2" }]}>
+        <ResizablePanel
           id="1"
           key={count}
           style={{
@@ -101,14 +115,14 @@ export const ComponentResizer = (props: ComponentResizerProps) => {
           }}
         >
           {children}
-        </SplitterPanel>
+        </ResizablePanel>
 
-        <SplitterResizeTrigger id="1:2" withHandle />
-        <SplitterPanel
-          className="relative z-10 flex h-full w-full after:absolute after:inset-0 after:right-3 after:z-0 after:bg-muted/50"
+        <ResizableResizeTrigger id="1:2" withHandle />
+        <ResizablePanel
+          className="relative z-10 flex size-full after:absolute after:inset-0 after:right-3 after:z-0 after:bg-muted/64"
           id="2"
         />
-      </Splitter>
+      </Resizable>
     </figure>
   );
 };

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "client-only",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/client-only.tsx",
+      "content": "\"use client\";\n\nexport { ClientOnly } from \"@ark-ui/react/client-only\";\n",
+      "type": "registry:ui"
+    }
+  ]
+}

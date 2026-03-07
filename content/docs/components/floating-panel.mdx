@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/floating-panel
+npx shadcn@latest add @shark/floating-panel
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   FloatingPanel,
   FloatingPanelTrigger,
@@ -60,7 +60,7 @@ import {
 } from "@/components/ui/floating-panel";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <FloatingPanel>
   <FloatingPanelTrigger />
   <FloatingPanelContent>
@@ -74,6 +74,95 @@ import {
 
 ## Examples
 
-### Default
+### Controlled Size
 
-<ComponentPreview componentName="floating-panel" fileName="default" />
+Control the panel size programmatically using the `size` and `onSizeChange` props.
+
+<ComponentPreview componentName="floating-panel" fileName="example-controlled-size" />
+
+### Controlled Position
+
+Control the panel position programmatically using the `position` and `onPositionChange` props.
+
+<ComponentPreview componentName="floating-panel" fileName="example-controlled-position" />
+
+## API Reference
+
+### FloatingPanel
+
+Root element of the floating panel. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | `-` |
+| `position` | `Point` | `-` |
+| `defaultPosition` | `Point` | `-` |
+| `onPositionChange` | `(details: PositionChangeDetails) => void` | `-` |
+| `size` | `Size` | `-` |
+| `defaultSize` | `Size` | `-` |
+| `onSizeChange` | `(details: SizeChangeDetails) => void` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `draggable` | `boolean` | `true` |
+| `resizable` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### FloatingPanelTrigger
+
+Button that opens the panel. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FloatingPanelContent
+
+Container for the panel content. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `resizable` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### FloatingPanelHeader
+
+Header container. Renders a `div` wrapped in a drag trigger.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### FloatingPanelTitle
+
+Title element for the panel. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FloatingPanelBody
+
+Scrollable content container. Renders a `div` wrapped in a [`ScrollArea`](/docs/components/scroll-area).
+
+| Prop | Type | Default |
+|------|------|---------|
+| `scrollFade` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### FloatingPanelCloseTrigger
+
+Button that closes the panel. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/floating-panel#api-reference).

@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/skeleton
+npx shadcn@latest add @shark/skeleton
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Skeleton,
   SkeletonCircle,
@@ -57,16 +57,66 @@ import {
 } from "@/components/ui/skeleton";
 ```
 
-```tsx lineNumbers
-<div className="flex w-full items-center gap-5">
-  <SkeletonCircle className="size-16" />
-  <SkeletonText lines={3} />
-  <Skeleton className="h-16 w-full" />
-</div>
+```tsx showLineNumbers
+<SkeletonCircle />
+<SkeletonText />
+<Skeleton />
 ```
 
 ## Examples
 
-### Default
+### Skeleton
 
-<ComponentPreview componentName="skeleton" fileName="default" />
+Rectangular skeleton placeholder.
+
+<ComponentPreview componentName="skeleton" fileName="example-skeleton" />
+
+### Circle
+
+Circular skeleton placeholder.
+
+<ComponentPreview componentName="skeleton" fileName="example-skeleton-circle" />
+
+### Text
+
+Use the `lines` prop to control the number of placeholder lines; the last line is shorter by default.
+
+<ComponentPreview componentName="skeleton" fileName="example-skeleton-text" />
+
+### Loading cards
+
+<ComponentPreview componentName="skeleton" fileName="example-loading-card" />
+
+## API Reference
+
+### Skeleton
+
+Rectangular skeleton placeholder. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SkeletonCircle
+
+Circular skeleton placeholder. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SkeletonText
+
+Multi-line text skeleton. Renders a `div` with placeholder lines; the last line is shorter by default.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `lines` | `number` | `2` |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/skeleton#api-reference).

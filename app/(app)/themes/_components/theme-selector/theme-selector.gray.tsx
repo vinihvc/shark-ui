@@ -1,7 +1,6 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import React from "react";
 import { GRAY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
@@ -22,10 +21,7 @@ export const ThemeSelectorGray = () => {
     items: GRAY_COLORS,
   });
 
-  const [selectedColor, setSelectedColor] = React.useState(config.grayColor);
-
   const handleSelectColor = (color: GrayColor) => {
-    setSelectedColor(color);
     setConfig({
       ...config,
       grayColor: color,
@@ -38,14 +34,14 @@ export const ThemeSelectorGray = () => {
       <Select
         collection={collection}
         onValueChange={({ value }) => handleSelectColor(value[0] as GrayColor)}
-        value={[selectedColor]}
+        value={[config.grayColor]}
       >
         <SelectTrigger className="w-full">
           <div className="flex items-center gap-2">
             <div
               className={cn(
-                "size-4 rounded-md border",
-                `bg-${selectedColor}-900`
+                "size-4 rounded-full border",
+                `bg-${config.grayColor}-500`
               )}
             />
             <SelectValue placeholder="Select a theme" />

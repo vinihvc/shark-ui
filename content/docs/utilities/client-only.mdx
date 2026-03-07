@@ -1,0 +1,49 @@
+---
+title: Client Only
+description: Render content only on the client side.
+links:
+  doc: https://ark-ui.com/docs/components/client-only
+---
+
+<ComponentPreview componentName="client-only" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { ClientOnly } from "@/components/ui/client-only";
+```
+
+```tsx
+<ClientOnly>
+  <div>This content only renders on the client.</div>
+</ClientOnly>
+```
+
+## Examples
+
+### With fallback
+
+Pass `fallback` to show content while the client-only content is loading:
+
+<ComponentPreview componentName="client-only" fileName="example-fallback" />
+
+## API Reference
+
+### ClientOnly
+
+Renders children only on the client side.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `fallback` | `ReactNode` | — |
+| `children` | `ReactNode` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/client-only#api-reference).

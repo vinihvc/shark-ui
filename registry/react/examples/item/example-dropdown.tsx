@@ -41,12 +41,12 @@ const people = [
 const Example = () => (
   <Menu>
     <MenuTrigger asChild>
-      <Button variant="outline">Select</Button>
+      <Button variant="outline">Open</Button>
     </MenuTrigger>
-    <MenuContent className="w-64">
+    <MenuContent className="w-72">
       {people.map((person) => (
         <MenuItem key={person.username} value={person.username}>
-          <Item size="xs">
+          <Item className="[--space:--spacing(2)]">
             <ItemMedia>
               <Avatar className="grayscale" size="sm">
                 <AvatarImage alt="" src={person.avatar} />

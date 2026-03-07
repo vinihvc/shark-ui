@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -41,7 +41,7 @@ import {
   PopoverHeader,
   PopoverTrigger,
 } from "@/registry/react/components/popover";
-import { useToast } from "@/registry/react/components/toast";
+import { toast } from "@/registry/react/components/toast";
 import {
   Tooltip,
   TooltipContent,
@@ -50,7 +50,6 @@ import {
 
 export const CardsButtons = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const toast = useToast();
 
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -110,8 +109,8 @@ export const CardsButtons = () => {
           <ButtonGroup>
             <Button variant="outline">Outline</Button>
             <DialogTrigger asChild>
-              <Button size="icon-md" variant="outline">
-                <Plus />
+              <Button aria-label="Add" size="icon-md" variant="outline">
+                <PlusIcon aria-hidden />
               </Button>
             </DialogTrigger>
           </ButtonGroup>
@@ -158,6 +157,7 @@ export const CardsButtons = () => {
         <Button
           onClick={() =>
             toast.create({
+              id: "easter-egg",
               title: "You found the easter egg!",
               description: "Congratulations!",
               type: "success",

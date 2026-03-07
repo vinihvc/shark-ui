@@ -1,3 +1,5 @@
+"use client";
+
 import { Editable as ArkEditable } from "@ark-ui/react/editable";
 import type React from "react";
 import { cn } from "@/lib/utils";
@@ -12,16 +14,10 @@ export interface EditableProps
 }
 
 export const Editable = (props: EditableProps) => {
-  const {
-    orientation = "horizontal",
-    activationMode = "focus",
-    className,
-    ...rest
-  } = props;
+  const { orientation = "horizontal", className, ...rest } = props;
 
   return (
     <ArkEditable.Root
-      activationMode={activationMode}
       className={cn(
         "group/editable",
         "relative",
@@ -30,7 +26,6 @@ export const Editable = (props: EditableProps) => {
         "flex items-center gap-2",
         className
       )}
-      data-mode={activationMode}
       data-orientation={orientation}
       data-slot="editable"
       {...rest}
@@ -69,17 +64,17 @@ export const EditableInput = (props: EditableInputProps) => {
 interface EditablePreviewProps
   extends React.ComponentProps<typeof ArkEditable.Preview> {
   /**
-   * The variant of the preview
-   *
-   * @default "outline"
-   */
-  variant?: ButtonProps["variant"];
-  /**
    * The size of the preview
    *
    * @default "md"
    */
   size?: ButtonProps["size"];
+  /**
+   * The variant of the preview
+   *
+   * @default "outline"
+   */
+  variant?: ButtonProps["variant"];
 }
 
 export const EditablePreview = (props: EditablePreviewProps) => {
@@ -94,7 +89,7 @@ export const EditablePreview = (props: EditablePreviewProps) => {
         "whitespace-pre-wrap font-normal text-base sm:text-sm",
         "dark:hover:bg-input/32",
         "data-placeholder-shown:text-muted-foreground",
-        "in-[[data-slot=editable-area]:has([data-slot=textarea])]:items-start",
+        "in-[[data-slot=editable-area]:has(textarea)]:items-start",
         className
       )}
       data-slot="editable-preview"

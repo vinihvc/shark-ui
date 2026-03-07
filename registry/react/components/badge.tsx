@@ -1,19 +1,23 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
-const badgeVariants = tv({
+export const badgeVariants = tv({
   base: [
     "inline-flex items-center justify-center gap-1",
-    "select-none font-medium",
+    "select-none whitespace-nowrap font-medium",
     "rounded-md border border-transparent",
     "overflow-hidden",
-    "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0 [button,a&]:cursor-pointer",
+    "transition-colors",
+    "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
+    "[button&,a&]:cursor-pointer [button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
   ],
   variants: {
     variant: {
-      solid: [
+      default: [
         "bg-foreground",
         "text-background",
         "focus-visible:border-foreground focus-visible:ring-foreground/20",
@@ -58,7 +62,7 @@ const badgeVariants = tv({
         "bg-destructive/10 dark:bg-destructive/5",
         "text-destructive-foreground",
         "border-destructive-foreground/20",
-        "focus-visible:border-destructive focus-visible:ring-destructive/20",
+        "focus-visible:border-destructive focus-visible:ring-destructive/24",
         "dark:focus-visible:ring-destructive/40",
         "[a&]:hover:bg-destructive/20",
       ],
@@ -76,21 +80,27 @@ const badgeVariants = tv({
       ],
       lg: [
         "h-6.5 min-w-6.5 sm:h-5.5 sm:min-w-5.5",
-        "px-2",
+        "px-2 sm:px-1.5",
         "text-base sm:text-sm",
-        "[&_svg]:size-3.5",
       ],
     },
     pill: {
-      true: "rounded-full",
+      true: [
+        "rounded-full",
+        "has-[>svg]:data-[size=sm]:pe-1.5",
+        "has-[>svg]:data-[size=md]:pe-2",
+        "has-[>svg]:data-[size=lg]:pe-2 sm:has-[>svg]:data-[size=lg]:pe-2.5",
+      ],
     },
   },
   defaultVariants: {
-    variant: "solid",
+    variant: "default",
     size: "md",
     pill: false,
   },
 });
+
+export type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
 
 interface BadgeProps
   extends React.ComponentProps<typeof ark.span>,
@@ -98,7 +108,7 @@ interface BadgeProps
 
 export const Badge = (props: BadgeProps) => {
   const {
-    variant = "solid",
+    variant = "default",
     size = "md",
     pill = false,
     className,
@@ -108,7 +118,9 @@ export const Badge = (props: BadgeProps) => {
   return (
     <ark.span
       className={cn(badgeVariants({ variant, size, pill }), className)}
+      data-size={size}
       data-slot="badge"
+      data-variant={variant}
       {...rest}
     />
   );

@@ -31,7 +31,7 @@ const Example = () => (
         <ItemMedia variant="image">
           <img
             alt={image.alt}
-            className="aspect-square w-full rounded-sm object-cover grayscale"
+            className="aspect-square w-full object-cover grayscale"
             height={80}
             src={image.src}
             width={80}

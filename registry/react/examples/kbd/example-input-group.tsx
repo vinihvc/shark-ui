@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import {
   InputGroup,
   InputGroupAddon,
@@ -9,7 +9,7 @@ import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 const Example = () => (
   <InputGroup className="w-64">
     <InputGroupAddon>
-      <Search />
+      <SearchIcon />
     </InputGroupAddon>
     <InputGroupInput placeholder="Search..." />
     <InputGroupAddon align="inline-end">

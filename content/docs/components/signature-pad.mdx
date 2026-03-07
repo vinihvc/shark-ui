@@ -1,0 +1,94 @@
+---
+title: Signature Pad
+description: Capture hand-drawn signatures with a canvas-based input.
+links:
+  doc: https://ark-ui.com/docs/components/signature-pad
+  api: https://ark-ui.com/docs/components/signature-pad#api-reference
+---
+
+<ComponentPreview componentName="signature-pad" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/signature-pad
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/signature-pad.tsx" src="signature-pad.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { SignaturePad } from "@/components/ui/signature-pad";
+```
+
+```tsx
+<SignaturePad />
+```
+
+## Examples
+
+### Image preview
+
+Use the `onDrawEnd` callback to capture the signature as an image. 
+
+The callback receives the `getDataUrl(type)` method that returns a promise that resolves to a data URL.
+
+<ComponentPreview componentName="signature-pad" fileName="example-image-preview" />
+
+### With field
+
+Wrap the signature pad in a `Field` with `FieldLabel` and `FieldHelper` for accessible form integration.
+
+<ComponentPreview componentName="signature-pad" fileName="example-field" />
+
+## API Reference
+
+### SignaturePad
+
+Root component. Renders a `div`.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Whether the signature pad is disabled. |
+| `required` | `boolean` | `false` | Whether the signature pad is required. |
+| `readOnly` | `boolean` | `false` | Whether the signature pad is read-only. |
+| `name` | `string` | — | Name for form submission. |
+| `onDraw` | `(details: DrawDetails) => void` | — | Callback while drawing. |
+| `onDrawEnd` | `(details: DrawEndDetails) => void` | — | Callback when drawing ends. Use `details.getDataUrl(type)` to get image data. |
+| `className` | `string` | — | Additional CSS classes. |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/signature-pad#api-reference).

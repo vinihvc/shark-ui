@@ -69,7 +69,7 @@ export const PaginationItem = (
         className={cn(
           "data-selected:not-[hover]:bg-transparent dark:data-selected:not-[hover]:bg-input/30",
           "data-selected:not-[hover]:text-foreground",
-          "data-selected:not-[hover]:border-border",
+          "data-selected:not-[hover]:border-input",
           className
         )}
         size="icon-md"
@@ -163,7 +163,7 @@ export const PaginationEllipsis = (
 };
 
 const _usePaginationContext = () => {
-  const context = React.use(PaginationContext);
+  const context = React.useContext(PaginationContext);
 
   if (!context) {
     throw new Error(

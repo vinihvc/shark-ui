@@ -1,4 +1,10 @@
-import { Bold, Braces, ImagePlus, Italic, Underline } from "lucide-react";
+import {
+  BoldIcon,
+  BracesIcon,
+  ImagePlusIcon,
+  ItalicIcon,
+  UnderlineIcon,
+} from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 
@@ -6,22 +12,22 @@ const Example = () => (
   <ButtonGroup>
     <ButtonGroup>
       <Button clickEffect={false} size="icon-md" variant="outline">
-        <Italic />
+        <ItalicIcon />
       </Button>
       <Button clickEffect={false} size="icon-md" variant="outline">
-        <Bold />
+        <BoldIcon />
       </Button>
       <Button clickEffect={false} size="icon-md" variant="outline">
-        <Underline />
+        <UnderlineIcon />
       </Button>
     </ButtonGroup>
 
     <ButtonGroup>
       <Button clickEffect={false} size="icon-md" variant="outline">
-        <ImagePlus />
+        <ImagePlusIcon />
       </Button>
       <Button clickEffect={false} size="icon-md" variant="outline">
-        <Braces />
+        <BracesIcon />
       </Button>
     </ButtonGroup>
   </ButtonGroup>

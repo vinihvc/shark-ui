@@ -1,4 +1,6 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import { Field as ArkField } from "@ark-ui/react/field";
 import { Fieldset as ArkFieldset } from "@ark-ui/react/fieldset";
 import type React from "react";
@@ -11,7 +13,8 @@ const fieldVariants = tv({
     "group/field",
     "w-full",
     "flex gap-2",
-    "data-invalid:text-destructive dark:data-invalid:text-destructive-foreground",
+    "data-invalid:text-destructive",
+    "dark:data-invalid:text-destructive-foreground",
   ],
   variants: {
     orientation: {
@@ -20,11 +23,6 @@ const fieldVariants = tv({
         "flex-row items-center",
         "*:data-[slot=field-label]:flex-auto",
         "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-      ],
-      responsive: [
-        "@md/field-group:flex-row flex-col @md/field-group:items-center *:w-full @md/field-group:*:w-auto [&>.sr-only]:w-auto",
-        "@md/field-group:*:data-[slot=field-label]:flex-auto",
-        "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
       ],
     },
     reverse: {
@@ -111,7 +109,7 @@ export const FieldGroup = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "group/field-group @container/field-group",
+        "group/field-group",
         "flex w-full flex-col gap-4",
         "data-[data-slot=checkbox-group]:gap-3",
         "*:data-[slot=field-group]:gap-4",
@@ -149,9 +147,9 @@ export const FieldLabel = (
         "group/field-label peer/field-label",
         "font-medium text-sm leading-snug",
         "flex w-fit gap-2",
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5",
         "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
-        "group-data-disabled/field:opacity-50",
+        "group-data-disabled/field:opacity-64",
         "dark:has-data-[state=checked]:bg-primary/10",
         className
       )}
@@ -168,9 +166,10 @@ export const FieldLabelRequired = (
 
   return (
     <ark.span
-      aria-label="Required"
+      aria-hidden
       className={cn(
-        "text-destructive text-sm dark:text-destructive-foreground",
+        "select-none text-destructive text-sm",
+        "dark:text-destructive-foreground",
         className
       )}
       data-slot="field-label-required"
@@ -190,7 +189,7 @@ export const FieldTitle = (props: React.ComponentProps<typeof ark.div>) => {
         "w-fit",
         "flex items-center gap-2",
         "font-medium text-sm leading-snug",
-        "group-data-[disabled=true]/field:opacity-50",
+        "group-data-[disabled=true]/field:opacity-64",
         className
       )}
       data-slot="field-title"
@@ -206,8 +205,9 @@ export const FieldDescription = (props: React.ComponentProps<typeof ark.p>) => {
     <ark.p
       className={cn(
         "font-normal text-muted-foreground text-sm leading-normal",
-        "group-has-data-[orientation=horizontal]/field:text-balance",
+        "group-has-data-[orientation=horizontal]/field:",
         "nth-last-2:-mt-1 last:mt-0 [[data-variant=legend]+&]:-mt-1.5",
+        "in-[[data-slot=field]:has([data-slot=radio-group-item])]:ms-6 in-[[data-slot=field]:has([data-slot=radio-group-item])]:-mt-1.5!",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
         className
       )}
@@ -274,7 +274,8 @@ export const FieldError = (
   return (
     <ArkField.ErrorText
       className={cn(
-        "font-normal text-destructive text-sm dark:text-destructive-foreground",
+        "font-normal text-destructive text-sm",
+        "dark:text-destructive-foreground",
         className
       )}
       data-slot="field-error"

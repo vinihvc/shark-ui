@@ -1,4 +1,6 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -8,7 +10,7 @@ const kbdVariants = tv({
     "h-5 min-w-5",
     "px-1",
     "inline-flex items-center justify-center gap-1",
-    "select-none font-medium font-sans text-muted-foreground text-xs",
+    "select-none font-medium font-sans text-foreground text-xs",
     "rounded-sm border border-transparent",
     "pointer-events-none",
     "in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background",

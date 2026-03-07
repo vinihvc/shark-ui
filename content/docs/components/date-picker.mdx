@@ -1,0 +1,193 @@
+---
+title: Date Picker
+description: A popover date picker with an input and calendar.
+links:
+  doc: https://ark-ui.com/docs/components/date-picker
+  api: https://ark-ui.com/docs/components/date-picker#api-reference
+---
+
+<ComponentPreview componentName="date-picker" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/date-picker
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/date-picker.tsx" src="/date-picker.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  DatePicker,
+  DatePickerCalendar,
+  DatePickerClearTrigger,
+  DatePickerContent,
+  DatePickerControl,
+  DatePickerInput,
+  DatePickerLabel,
+  DatePickerPositioner,
+  DatePickerTrigger,
+} from "@/components/ui/date-picker";
+```
+
+```tsx showLineNumbers
+<DatePicker selectionMode="single">
+  <DatePickerLabel>Pick a date</DatePickerLabel>
+  <DatePickerControl>
+    <DatePickerInput index={0} placeholder="Select date" />
+    <DatePickerTrigger />
+    <DatePickerClearTrigger asChild>
+      <Button size="sm" variant="outline">Clear</Button>
+    </DatePickerClearTrigger>
+  </DatePickerControl>
+  <DatePickerPositioner>
+    <DatePickerContent>
+      <DatePickerCalendar />
+    </DatePickerContent>
+  </DatePickerPositioner>
+</DatePicker>
+```
+
+## Examples
+
+### Input
+
+Use `DatePickerInput` for a text input with calendar icon that opens the date picker.
+
+<ComponentPreview componentName="date-picker" fileName="example-input" />
+
+### Range
+
+Select a date range with `selectionMode="range"`.
+
+<ComponentPreview componentName="date-picker" fileName="example-range" />
+
+### Time
+
+Use `<DatePickerTimer />` for time selection.
+
+<ComponentPreview componentName="date-picker" fileName="example-time" />
+
+### With Presets
+
+Add quick single-date presets in a side panel.
+
+<ComponentPreview componentName="date-picker" fileName="example-with-presets" />
+
+### Custom format
+
+Customize the format of the presets using external date formatting library like `date-fns`.
+
+<ComponentPreview componentName="date-picker" fileName="example-custom-format" />
+
+## API Reference
+
+### DatePicker
+
+Root element. Extends [Calendar](/docs/components/calendar#api-reference).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `DateValue[]` | - |
+| `defaultValue` | `DateValue[]` | - |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | - |
+| `selectionMode` | `"single"` \| `"range"` \| `"multiple"` | `"single"` |
+| `positioning` | `PositioningOptions` | `{ placement: "top" }` |
+| `lazyMount` | `boolean` | - |
+| `unmountOnExit` | `boolean` | - |
+
+### DatePickerTrigger
+
+Button that opens the date picker. `button`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
+
+### DatePickerInput
+
+Input with calendar icon that opens the date picker on click. `input`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `string` | - |
+| `index` | `number` | - |
+| `size` | `"sm"` \| `"md"` \| `"lg"` | - |
+| `className` | `string` | - |
+
+### DatePickerContent
+
+Container for the calendar content. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### DatePickerValue
+
+Displays the selected date(s) as text. Use inside `DatePickerTrigger`. `span`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `string` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### DatePickerTimer
+
+Time input for selecting hour and minute. Use alongside the calendar for date-time selection. `input`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | - |
+| `defaultValue` | `string` | - |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | - |
+| `className` | `string` | - |
+
+### DatePickerPresetTrigger
+
+Quick preset button for dates. `button`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `value` | `DateValue[]` | - |
+| `asChild` | `boolean` | - |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/date-picker#api-reference).

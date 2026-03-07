@@ -42,13 +42,13 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
       <CollapsibleTrigger
         className={cn(
           "absolute inset-x-0 -bottom-4",
-          "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
+          "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/32",
           "flex h-20 cursor-pointer items-center justify-center",
-          "bg-linear-to-b from-transparent via-50% via-muted to-muted",
+          "bg-linear-to-b from-transparent via-50% via-card to-card",
           "font-medium text-muted-foreground text-sm",
           "rounded-b-lg transition-colors",
           "hover:text-foreground",
-          "group-data-open/collapsible:hidden"
+          "data-[state=open]:hidden"
         )}
       >
         {isOpened ? "Collapse" : "Expand"}

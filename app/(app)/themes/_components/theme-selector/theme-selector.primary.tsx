@@ -21,6 +21,7 @@ import {
 
 export const ThemeSelectorPrimary = () => {
   const { resolvedTheme } = useTheme();
+  const [config, setConfig] = useConfig();
 
   const isLight = resolvedTheme === "light";
 
@@ -28,7 +29,12 @@ export const ThemeSelectorPrimary = () => {
     items: PRIMARY_COLORS,
   });
 
-  const [config, setConfig] = useConfig();
+  const handleSelectColor = (color: PrimaryColor) => {
+    setConfig({
+      ...config,
+      primaryColor: color,
+    });
+  };
 
   return (
     <Field>
@@ -36,13 +42,13 @@ export const ThemeSelectorPrimary = () => {
       <Select
         collection={collection}
         onValueChange={({ value }) =>
-          setConfig({ ...config, primaryColor: value[0] as PrimaryColor })
+          handleSelectColor(value[0] as PrimaryColor)
         }
         value={[config.primaryColor]}
       >
         <SelectTrigger className="w-full">
           <div className="flex items-center gap-2">
-            <div className="size-4 rounded-md border bg-primary" />
+            <div className="size-4 rounded-full border bg-primary" />
             <SelectValue placeholder="Select a theme" />
           </div>
         </SelectTrigger>
@@ -57,7 +63,7 @@ export const ThemeSelectorPrimary = () => {
             return (
               <SelectItem item={item.value} key={item.value}>
                 <div className="flex items-center gap-2">
-                  <div className={cn("size-3 rounded-md", hex)} />
+                  <div className={cn("size-3 rounded-full", hex)} />
                   {item.label}
                   {item.value === DEFAULT_PRIMARY_COLOR && (
                     <Badge size="sm" variant="info">

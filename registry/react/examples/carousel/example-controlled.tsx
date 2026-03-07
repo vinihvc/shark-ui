@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Card, CardContent } from "@/registry/react/components/card";
 import {
   Carousel,
@@ -12,7 +12,7 @@ import {
 } from "@/registry/react/components/carousel";
 
 const Example = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = React.useState(0);
 
   const slides = Array.from({ length: 8 });
 

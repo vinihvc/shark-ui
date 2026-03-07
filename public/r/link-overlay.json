@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link-overlay",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/link-overlay.tsx",
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const LinkBox = (props: React.ComponentProps<typeof ark.div>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\n        \"relative\",\n        \"[&_a[href]:not([data-slot=link-overlay])]:relative [&_a[href]:not([data-slot=link-overlay])]:z-1\",\n        className\n      )}\n      data-slot=\"link-box\"\n      {...rest}\n    />\n  );\n};\n\nexport const LinkOverlay = (props: React.ComponentProps<typeof ark.a>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.a\n      className={cn(\n        \"static\",\n        \"-mx-1 -my-0.5 px-1 py-0.5\",\n        \"rounded-md border border-transparent\",\n        \"before:absolute before:inset-0 before:z-0 before:block before:h-full before:w-full before:cursor-inherit before:content-['']\",\n        \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        className\n      )}\n      data-slot=\"link-overlay\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

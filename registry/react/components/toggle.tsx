@@ -1,39 +1,49 @@
+"use client";
+
 import { Toggle as ArkToggle } from "@ark-ui/react/toggle";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import {
-  type ButtonProps,
-  buttonVariants,
-} from "@/registry/react/components/button";
+import { buttonVariants } from "@/registry/react/components/button";
 
 export const toggleVariants = tv({
-  base: ["data-state=on]:bg-accent", "data-[state=on]:text-accent-foreground"],
+  base: [
+    "data-[state=on]:bg-input/64 dark:data-[state=on]:bg-input/64",
+    "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
+  ],
   variants: {
     size: {
-      md: "h-9 min-w-9 px-2",
-      sm: "h-8 min-w-8 px-1.5",
-      lg: "h-10 min-w-10 px-2.5",
+      sm: "h-7 min-w-7 px-1.5",
+      md: "h-8 min-w-8 px-2",
+      lg: "h-9 min-w-9 px-2.5",
     },
   },
   defaultVariants: {
-    variant: "solid",
     size: "md",
   },
 });
 
 export interface ToggleProps
   extends React.ComponentProps<typeof ArkToggle.Root>,
-    VariantProps<typeof toggleVariants>,
-    Pick<ButtonProps, "variant"> {}
+    VariantProps<typeof toggleVariants> {
+  /**
+   * The variant of the toggle
+   *
+   * @default "outline"
+   */
+  variant?: Extract<
+    VariantProps<typeof buttonVariants>["variant"],
+    "outline" | "ghost"
+  >;
+}
 
 export const Toggle = (props: ToggleProps) => {
-  const { variant = "outline", size = "md", className, ...rest } = props;
+  const { variant = "ghost", size = "md", className, ...rest } = props;
 
   return (
     <ArkToggle.Root
       className={cn(
-        buttonVariants({ variant }),
+        buttonVariants({ variant, clickEffect: false }),
         toggleVariants({ size }),
         className
       )}

@@ -1,0 +1,146 @@
+---
+title: Resizable
+description: A component that divides your interface into resizable sections.
+links:
+  doc: https://ark-ui.com/docs/components/splitter
+  api: https://ark-ui.com/docs/components/splitter#api-reference
+---
+
+<ComponentPreview componentName="resizable" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/resizable
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/resizable.tsx" src="/resizable.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Resizable,
+  ResizablePanel,
+  ResizableResizeTrigger,
+} from "@/components/ui/resizable";
+```
+
+```tsx showLineNumbers
+<Resizable>
+  <ResizablePanel id="1" />
+  <ResizableResizeTrigger id="1:2" />
+  <ResizablePanel id="2" />
+</Resizable>
+```
+
+## Orientation
+
+Use the `orientation` prop to control the orientation of the resizable panels.
+
+### Horizontal
+
+Set `orientation="horizontal"` to place panels side by side (default).
+
+<ComponentPreview componentName="resizable" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+Set `orientation="vertical"` to stack panels vertically.
+
+<ComponentPreview componentName="resizable" fileName="example-orientation-vertical" />
+
+## Examples
+
+### Handle
+
+Use the `withHandle` prop on `<ResizableResizeTrigger />` to show a visible grip handle for resizing.
+
+<ComponentPreview componentName="resizable" fileName="example-handle" />
+
+### Min / Max Size
+
+Use `panels` with `minSize` and `maxSize` to constrain how small or large a panel can be resized.
+
+<ComponentPreview componentName="resizable" fileName="example-min-max" />
+
+### Multiple Panels
+
+<ComponentPreview componentName="resizable" fileName="example-multiple-panels" />
+
+## API Reference
+
+### Resizable
+
+Root component. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `panels` | `PanelData[]` | — |
+| `defaultSize` | `number[]` | — |
+| `size` | `number[]` | — |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `keyboardResizeBy` | `number` | — |
+| `onResize` | `(details: ResizeDetails) => void` | — |
+| `onResizeStart` | `() => void` | — |
+| `onResizeEnd` | `(details: ResizeEndDetails) => void` | — |
+| `onCollapse` | `(details: ExpandCollapseDetails) => void` | — |
+| `onExpand` | `(details: ExpandCollapseDetails) => void` | — |
+| `className` | `string` | — |
+
+### ResizablePanel
+
+Panel container. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `id` | `string` | — |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | — |
+
+### ResizableResizeTrigger
+
+Resize handle between panels. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `id` | `${string}:${string}` | — |
+| `withHandle` | `boolean` | `false` |
+| `disabled` | `boolean` | — |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/splitter#api-reference).

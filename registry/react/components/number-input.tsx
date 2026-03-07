@@ -1,31 +1,19 @@
 "use client";
 
 import { NumberInput as ArkNumberInput } from "@ark-ui/react/number-input";
-import { Minus, Plus } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Input, type InputProps } from "@/registry/react/components/input";
 import { Button } from "./button";
+import { FieldLabel } from "./field";
 
 interface NumberFieldProps
   extends React.ComponentProps<typeof ArkNumberInput.Root>,
-    Pick<InputProps, "size"> {
-  /**
-   * The label to display on the scrubber.
-   *
-   * @default ""
-   */
-  label?: string;
-  /**
-   * Whether to show the scrubber.
-   *
-   * @default false
-   */
-  scrubber?: boolean;
-}
+    Pick<InputProps, "size"> {}
 
 export const NumberField = (props: NumberFieldProps) => {
-  const { className, size = "md", scrubber = false, label, ...rest } = props;
+  const { size = "md", className, ...rest } = props;
 
   return (
     <ArkNumberInput.Root
@@ -36,18 +24,11 @@ export const NumberField = (props: NumberFieldProps) => {
       data-size={size}
       data-slot="number-input"
       {...rest}
-    >
-      {scrubber && <NumberFieldScrubber>{label}</NumberFieldScrubber>}
-      <NumberFieldGroup>
-        <NumberFieldDecrement />
-        <NumberFieldInput size={size} />
-        <NumberFieldIncrement />
-      </NumberFieldGroup>
-    </ArkNumberInput.Root>
+    />
   );
 };
 
-const NumberFieldGroup = (
+export const NumberFieldGroup = (
   props: React.ComponentProps<typeof ArkNumberInput.Control>
 ) => {
   const { className, ...rest } = props;
@@ -57,13 +38,13 @@ const NumberFieldGroup = (
       className={cn(
         "relative",
         "flex w-full justify-between",
-        "bg-background",
+        "bg-transparent dark:bg-input/30",
         "text-base",
-        "rounded-lg border border-input shadow-xs ring-ring/24",
+        "rounded-lg border border-input shadow-md/5 ring-ring/32",
         "transition-shadow",
-        "focus-within:border-ring focus-within:ring-[3px]",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
-        "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
+        "focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
+        "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
         "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
         className
       )}
@@ -73,7 +54,7 @@ const NumberFieldGroup = (
   );
 };
 
-const NumberFieldDecrement = (
+export const NumberFieldDecrement = (
   props: React.ComponentProps<typeof ArkNumberInput.DecrementTrigger>
 ) => {
   const { className, ...rest } = props;
@@ -86,7 +67,7 @@ const NumberFieldDecrement = (
         "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
         "flex shrink-0",
         "text-foreground",
-        "rounded-none rounded-s-[calc(var(--radius-md)-1px)]",
+        "rounded-none rounded-s-[calc(var(--radius-xl)-1px)]",
         "cursor-pointer",
         "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
         className
@@ -94,15 +75,14 @@ const NumberFieldDecrement = (
       data-slot="number-input-decrement"
       {...rest}
     >
-      <Button variant="ghost">
-        <Minus aria-hidden />
-        <span className="sr-only">Decrement</span>
+      <Button aria-label="Decrement" variant="ghost">
+        <MinusIcon aria-hidden />
       </Button>
     </ArkNumberInput.DecrementTrigger>
   );
 };
 
-const NumberFieldIncrement = (
+export const NumberFieldIncrement = (
   props: React.ComponentProps<typeof ArkNumberInput.IncrementTrigger>
 ) => {
   const { className, ...rest } = props;
@@ -115,7 +95,7 @@ const NumberFieldIncrement = (
         "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
         "flex shrink-0",
         "text-foreground",
-        "rounded-none rounded-e-[calc(var(--radius-md)-1px)]",
+        "rounded-none rounded-e-[calc(var(--radius-xl)-1px)]",
         "cursor-pointer",
         "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
         className
@@ -123,15 +103,14 @@ const NumberFieldIncrement = (
       data-slot="number-input-increment"
       {...rest}
     >
-      <Button variant="ghost">
-        <Plus aria-hidden />
-        <span className="sr-only">Increment</span>
+      <Button aria-label="Increment" variant="ghost">
+        <PlusIcon aria-hidden />
       </Button>
     </ArkNumberInput.IncrementTrigger>
   );
 };
 
-const NumberFieldInput = (props: React.ComponentProps<typeof Input>) => {
+export const NumberFieldInput = (props: React.ComponentProps<typeof Input>) => {
   const { size, className, ...rest } = props;
 
   return (
@@ -141,8 +120,8 @@ const NumberFieldInput = (props: React.ComponentProps<typeof Input>) => {
           "grow",
           "dark:bg-transparent",
           "text-center tabular-nums",
-          "border-0",
-          "focus-visible:ring-0 aria-invalid:ring-0",
+          "border-0 shadow-none ring-0",
+          "focus-visible:ring-0 aria-invalid:ring-0 data-invalid:ring-0",
           className
         )}
         size={size}
@@ -151,7 +130,7 @@ const NumberFieldInput = (props: React.ComponentProps<typeof Input>) => {
   );
 };
 
-const NumberFieldScrubber = (
+export const NumberFieldScrubber = (
   props: React.ComponentProps<typeof ArkNumberInput.Scrubber>
 ) => {
   const { className, children, ...rest } = props;
@@ -163,8 +142,8 @@ const NumberFieldScrubber = (
       data-slot="number-input-scrubber"
       {...rest}
     >
-      <ArkNumberInput.Label data-slot="number-input-scrubber-label">
-        {children}
+      <ArkNumberInput.Label asChild>
+        <FieldLabel>{children}</FieldLabel>
       </ArkNumberInput.Label>
     </ArkNumberInput.Scrubber>
   );

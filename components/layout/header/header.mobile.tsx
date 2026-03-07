@@ -21,18 +21,19 @@ const TOP_LEVEL_SECTIONS = [
 ];
 
 interface MobileNavProps extends React.ComponentProps<typeof Popover> {
-  tree: typeof source.pageTree;
-  items: { href: string; label: string }[];
   className?: string;
+  items: { href: string; label: string }[];
+  tree: typeof source.pageTree;
 }
 
-export function MobileNav(props: MobileNavProps) {
+export const MobileNav = (props: MobileNavProps) => {
   const { tree, items, className, ...rest } = props;
 
   return (
     <Popover {...rest}>
       <PopoverTrigger asChild>
         <Button
+          aria-label="Toggle Menu"
           className={cn(
             "group extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
             className
@@ -54,7 +55,6 @@ export function MobileNav(props: MobileNavProps) {
                 )}
               />
             </div>
-            <span className="sr-only">Toggle Menu</span>
           </div>
           <span className="flex h-8 items-center font-medium text-lg leading-none">
             Menu
@@ -115,4 +115,4 @@ export function MobileNav(props: MobileNavProps) {
       </PopoverContent>
     </Popover>
   );
-}
+};

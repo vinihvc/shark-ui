@@ -1,34 +1,34 @@
 ---
 title: TanStack Start
-description: Instructions to install Shark UI in a TanStack Start project
+description: Install Shark UI in a TanStack Start project.
 ---
 
-### Create project
+TanStack Start with the shadcn add-on ships with Tailwind and the shadcn CLI preconfigured. You only need to add components from the Shark registry.
 
-To create a new TanStack Start project, you can use the following command:
+## Create project
 
 ```bash
 npm create @tanstack/start@latest --tailwind --add-ons shadcn
 ```
 
-### Add Components
+## Add components
 
-You can now start adding components to your project.
+Add components from the Shark registry:
 
 ```bash
 pnpm dlx shadcn@latest add https://shark.vini.one/r/button.json
 ```
 
-The command above will add the `Button` component to your project. You can then import it like this:
+Import and use them in your routes:
 
-```tsx title="app/routes/index.tsx" lineNumbers
-import { Button } from "@/components/ui/button" 
+```tsx title="app/routes/index.tsx" showLineNumbers
+import { Button } from "@/components/ui/button"
 
 function App() {
-  return ( 
-    <div> 
-      <Button>Click me</Button> 
-    </div> 
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
   )
-} 
+}
 ```

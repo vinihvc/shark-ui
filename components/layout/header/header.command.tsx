@@ -1,18 +1,17 @@
 "use client";
 
-import { useFilter, useListCollection } from "@ark-ui/react";
-import { Component } from "lucide-react";
+import { ComponentIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import type { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
+import { ComboboxList } from "@/registry/react/components/combobox";
 import {
   Command,
   CommandContent,
   CommandControl,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandItem,
 } from "@/registry/react/components/command";
@@ -28,16 +27,16 @@ import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 import { slugify } from "@/utils/formatter";
 
 interface PageItem {
-  value: string;
-  label: string;
-  url: string;
   isComponent: boolean;
   keywords?: string[];
+  label: string;
+  url: string;
+  value: string;
 }
 
 interface PageGroup {
-  value: string;
   items: PageItem[];
+  value: string;
 }
 
 interface HeaderCommandProps extends React.ComponentProps<typeof Dialog> {
@@ -53,8 +52,6 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
   const router = useRouter();
 
   const [isOpen, setIsOpen] = React.useState(false);
-
-  const { contains } = useFilter({ sensitivity: "base" });
 
   const components = React.useMemo<PageGroup[]>(() => {
     const groups: PageGroup[] = [];
@@ -95,10 +92,10 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
     return groups;
   }, [tree]);
 
-  const { collection, filter } = useListCollection<PageItem>({
-    initialItems: components.flatMap((group) => group.items),
-    filter: contains,
-  });
+  const items = React.useMemo(
+    () => components.flatMap((group) => group.items),
+    [components]
+  );
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -126,7 +123,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
         <Button
           className={cn(
             "justify-start",
-            "h-8 w-full md:w-48 lg:w-40 xl:w-64",
+            "h-8 w-full md:w-48 lg:w-40",
             "pl-3 sm:pr-12",
             "font-normal",
             "shadow-none"
@@ -135,8 +132,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           variant="outline"
           {...props}
         >
-          <span className="hidden lg:inline-flex">Search documentation...</span>
-          <span className="inline-flex lg:hidden">Search...</span>
+          <span className="inline-flex">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden sm:flex">
             <KbdGroup>
               <Kbd className="border">⌘</Kbd>
@@ -154,8 +150,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
 
         <Command
           className="rounded-md border"
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
+          items={items}
           onSelect={({ itemValue }) => {
             router.push(`/docs/${itemValue}`);
             setIsOpen(false);
@@ -169,18 +164,18 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           <CommandContent>
             <CommandEmpty />
 
-            <CommandGroup heading="Components">
-              {collection.items.map((item) => (
+            <ComboboxList<PageItem>>
+              {(item) => (
                 <CommandItem
                   className="border border-transparent data-highlighted:border-input"
                   item={item}
                   key={item.value}
                 >
-                  <Component />
+                  <ComponentIcon aria-hidden />
                   {item.label}
                 </CommandItem>
-              ))}
-            </CommandGroup>
+              )}
+            </ComboboxList>
           </CommandContent>
         </Command>
       </DialogContent>

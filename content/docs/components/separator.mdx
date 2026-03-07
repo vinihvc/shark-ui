@@ -1,9 +1,6 @@
 ---
 title: Separator  
-description: A separator is a component that separates content with a thin line.
-links:
-  doc: https://ark-ui.com/docs/components/separator
-  api: https://ark-ui.com/docs/components/separator#api-reference
+description: Visually or semantically separate content with a thin line.
 ---
 
 <ComponentPreview componentName="separator" />
@@ -20,7 +17,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/separator
+npx shadcn@latest add @shark/separator
 ```
 
 </TabsContent>
@@ -50,16 +47,39 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { Separator } from "@/components/ui/separator";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Separator />
 ```
 
 ## Examples
 
-### Default
+### Vertical
 
-<ComponentPreview componentName="separator" fileName="default" />
+Use `orientation` prop to control the orientation of the separator.
+
+<ComponentPreview componentName="separator" fileName="example-vertical" />
+
+### Menu
+
+<ComponentPreview componentName="separator" fileName="example-menu" />
+
+### List
+
+<ComponentPreview componentName="separator" fileName="example-list" />
+
+## API Reference
+
+### Separator
+
+Root element. Renders a `div`.
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `orientation` | `"horizontal"`, `"vertical"` | `"horizontal"` |
+| `className` | `string` | `-` |
+
+For more props, see [Ark UI Separator](https://ark-ui.com/docs/components/separator#api-reference).

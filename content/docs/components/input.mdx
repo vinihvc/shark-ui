@@ -17,7 +17,7 @@ description: A field that allows users to enter text
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/input
+npx shadcn@latest add @shark/input
 ```
 
 </TabsContent>
@@ -46,11 +46,11 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { Input } from "@/components/ui/input";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Input />
 ```
 
@@ -58,55 +58,59 @@ import { Input } from "@/components/ui/input";
 
 Use the `size` prop to change the input height.
 
-### Extra Small
-
-<ComponentPreview componentName="input" fileName="size-xs" />
-
 ### Small
 
-<ComponentPreview componentName="input" fileName="size-sm" />
+<ComponentPreview componentName="input" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="input" fileName="example-size-md" />
 
 ### Large
 
-<ComponentPreview componentName="input" fileName="size-lg" />
+<ComponentPreview componentName="input" fileName="example-size-lg" />
 
-### Extra Large
-
-<ComponentPreview componentName="input" fileName="size-xl" />
-
-## Examples
-
-### Field
-
-Use `Field`, `FieldLabel` and `FieldDescription` to create a input with a label and a description.
-
-<ComponentPreview componentName="input" fileName="example-field" />
-
-### Field Group
-
-Use `FieldGroup` to show multiple `Field` blocks and to build forms.
-
-<ComponentPreview componentName="input" fileName="example-field-group" />
+## State
 
 ### Disabled
 
-Use the `disabled` prop to disable the input. To style the disabled state, add the `disabled` attribute to the `<Field />` component.
+Use the `disabled` prop to disable the input.
 
 <ComponentPreview componentName="input" fileName="example-disabled" />
 
 ### Invalid
 
-Use the `aria-invalid` prop to mark the input as invalid. You can also pass `invalid` prop to the `<Field />` that will disable the label and the `<Input />` element or just the `<Input />` element.
+Use the `invalid` prop to mark the input as invalid.
 
 <ComponentPreview componentName="input" fileName="example-invalid" />
+
+## Examples
+
+### Field
+
+Use `<Field />`, `<FieldLabel />` and `<FieldDescription />` to create a input with a label and a description.
+
+<ComponentPreview componentName="input" fileName="example-field" />
+
+### Field Group
+
+Use `<FieldGroup />` to show multiple `<Field />` blocks and to build forms.
+
+<ComponentPreview componentName="input" fileName="example-field-group" />
 
 ### File
 
 Use the `type="file"` prop to create a file input.
 
-You can also use the <Link href="/docs/components/file-upload">`<FileUpload />`</Link> component to upload files.
-
 <ComponentPreview componentName="input" fileName="example-file" />
+
+<Alert>
+<InfoIcon />
+<AlertTitle>Dedicated File Upload component</AlertTitle>
+<AlertDescription>
+  For more advanced file upload functionality, use the [`<FileUpload />`](/docs/components/file-upload) component instead.
+</AlertDescription>
+</Alert>
 
 ### Inline
 
@@ -120,7 +124,7 @@ Use the `orientation="horizontal"` prop to create a inline input.
 
 ### Required
 
-Use the `required` prop to mark the input as required. You can pass `required` prop to the `<Field />` that will make the `<Input />` element required.
+Use the `required` prop to mark the input as required.
 
  Use `<FieldLabelRequired />` to add a required indicator to the label.
 
@@ -140,12 +144,18 @@ Use [`<InputGroup />`](/docs/components/input-group) to create a input group.
 
 ### Button Group
 
-Use [`<ButtonGroup />`](/docs/components/button-group) to create a button group.
+Use `<ButtonGroup />` to create a button group.
 
 <ComponentPreview componentName="input" fileName="example-button-group" />
 
-### Form
+## API Reference
 
-A full form example with multiple inputs.
+### Input
 
-<ComponentPreview componentName="input" fileName="example-form" />
+Text input field. Renders an `input`. Accepts all native input attributes.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `sm` \| `md` \| `lg` | `md` |
+| `type` | `string` | `text` |
+| `className` | `string` | — |

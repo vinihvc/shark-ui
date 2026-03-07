@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
@@ -32,7 +32,7 @@ const Example = () => (
       <AvatarFallback>IA</AvatarFallback>
     </Avatar>
     <AvatarGroupCount>
-      <Plus />
+      <PlusIcon />
     </AvatarGroupCount>
   </AvatarGroup>
 );

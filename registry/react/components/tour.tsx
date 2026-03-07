@@ -7,7 +7,7 @@ import {
   type UseTourReturn,
   useTour,
 } from "@ark-ui/react/tour";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, XIcon } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -23,18 +23,16 @@ export type TourStepType = TourStepDetails;
 
 interface TourProviderProps {
   /**
-   * The tour instance
-   */
-  tour: UseTourReturn;
-  /**
    * The function to start the tour
    */
   handleStart: () => void;
+  /**
+   * The tour instance
+   */
+  tour: UseTourReturn;
 }
 
-const TourProvider = React.createContext<TourProviderProps>(
-  {} as TourProviderProps
-);
+const TourProvider = React.createContext({} as TourProviderProps);
 
 interface TourProps
   extends Omit<React.ComponentProps<typeof ArkTour.Root>, "tour"> {
@@ -44,14 +42,39 @@ interface TourProps
    * @default []
    */
   steps: TourStepDetails[];
+  /**
+   * Enable arrow key navigation between steps
+   */
+  keyboardNavigation?: boolean;
+  /**
+   * Called when the current step changes
+   */
+  onStepChange?: (details: { stepId: string | null }) => void;
+  /**
+   * Called when the tour status changes
+   */
+  onStatusChange?: (details: { status: string }) => void;
 }
 
 export const Tour = (props: TourProps) => {
-  const { steps = [], lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    steps = [],
+    lazyMount = true,
+    unmountOnExit = true,
+    keyboardNavigation,
+    onStepChange,
+    onStatusChange,
+    ...rest
+  } = props;
 
   const [isStarted, setIsStarted] = React.useState(false);
 
-  const tour = useTour({ steps });
+  const tour = useTour({
+    steps,
+    keyboardNavigation,
+    onStepChange,
+    onStatusChange,
+  });
 
   React.useEffect(() => {
     if (isStarted) {
@@ -111,13 +134,17 @@ export const TourActionTrigger = (
 
 export const TourOverlay = (
   props: React.ComponentProps<typeof DialogOverlay>
-) => (
-  <ArkTour.Backdrop
-    className={dialogOverlayVariants()}
-    data-slot="tour-overlay"
-    {...props}
-  />
-);
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkTour.Backdrop
+      className={cn(dialogOverlayVariants(), className)}
+      data-slot="tour-overlay"
+      {...rest}
+    />
+  );
+};
 
 interface TourContentProps
   extends React.ComponentProps<typeof ArkTour.Content> {
@@ -147,16 +174,18 @@ export const TourContent = (props: TourContentProps) => {
       >
         <ArkTour.Content
           className={cn(
+            "[--space:--spacing(4)]",
             "z-50",
             "relative",
             "w-full max-w-md",
             "flex flex-col gap-4",
-            "bg-background",
-            "rounded-lg border shadow-lg",
+            "bg-popover",
+            "text-popover-foreground",
+            "rounded-2xl border shadow-lg/5",
             "focus:outline-none focus:ring-0",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
-            "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
+            "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
             className
           )}
           data-slot="tour-content"
@@ -165,15 +194,14 @@ export const TourContent = (props: TourContentProps) => {
           {children}
 
           {!!showCloseButton && (
-            <TourClose asChild className="absolute top-4 right-4">
+            <TourClose asChild className="absolute inset-e-4 top-4">
               <Button
-                className="size-8 border-none opacity-70 hover:opacity-100"
-                size="icon-md"
+                aria-label="Close"
+                className="size-8 border-none opacity-64 hover:opacity-100"
+                size="icon-sm"
                 variant="ghost"
               >
-                <X />
-
-                <span className="sr-only">Close</span>
+                <XIcon />
               </Button>
             </TourClose>
           )}
@@ -266,6 +294,44 @@ export const TourFooter = (
   );
 };
 
+export const TourActions = (
+  props: React.ComponentProps<typeof DialogFooter>
+) => {
+  const { className, ...rest } = props;
+  const { tour } = useTourContext();
+  const actions = tour.step?.actions ?? [];
+
+  if (actions.length === 0) {
+    return null;
+  }
+
+  return (
+    <ArkTour.Control {...rest} asChild>
+      <DialogFooter
+        className={cn("flex flex-wrap gap-2", className)}
+        data-slot="tour-actions"
+      >
+        {actions.map((action) => (
+          <TourActionTrigger key={action.label} action={action} asChild>
+            <Button
+              size="sm"
+              variant={
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default"
+              }
+            >
+              {action.action === "prev" && <ChevronLeft />}
+              {action.label}
+              {action.action === "next" && <ChevronRight />}
+            </Button>
+          </TourActionTrigger>
+        ))}
+      </DialogFooter>
+    </ArkTour.Control>
+  );
+};
+
 export const TourPreviousStep = (
   props: Omit<React.ComponentProps<typeof TourActionTrigger>, "action">
 ) => {
@@ -335,7 +401,7 @@ export const TourNextStep = (
 };
 
 export const useTourContext = () => {
-  const context = React.use(TourProvider);
+  const context = React.useContext(TourProvider);
 
   if (!context) {
     throw new Error("useTour must be used within a TourProvider");

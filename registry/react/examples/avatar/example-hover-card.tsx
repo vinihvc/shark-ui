@@ -15,21 +15,19 @@ const Example = () => (
   <AvatarGroup>
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button pill size="icon-md" variant="ghost">
-          <Avatar>
+        <Button pill size="icon-lg" variant="ghost">
+          <Avatar size="lg">
             <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
             <AvatarFallback>VV</AvatarFallback>
           </Avatar>
         </Button>
       </HoverCardTrigger>
-
       <HoverCardContent className="w-max">
         <div className="flex gap-4">
           <Avatar>
             <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
             <AvatarFallback>VV</AvatarFallback>
           </Avatar>
-
           <div>
             <h4 className="font-semibold text-sm">Vinicius Vicentini</h4>
             <p className="text-muted-foreground text-sm">@vinihvc</p>
@@ -37,11 +35,10 @@ const Example = () => (
         </div>
       </HoverCardContent>
     </HoverCard>
-
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button pill size="icon-md" variant="ghost">
-          <Avatar>
+        <Button pill size="icon-lg" variant="ghost">
+          <Avatar size="lg">
             <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
@@ -54,7 +51,6 @@ const Example = () => (
             <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
             <AvatarFallback>VV</AvatarFallback>
           </Avatar>
-
           <div>
             <h4 className="font-semibold text-sm">Shadcn</h4>
             <p className="text-muted-foreground text-sm">@shadcn</p>

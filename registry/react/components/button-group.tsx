@@ -1,4 +1,6 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/registry/react/components/separator";
@@ -10,20 +12,20 @@ const buttonGroupVariants = tv({
     "*:not([class*='flex-']):flex-1",
     "*:focus-visible:relative *:focus-visible:z-10",
     "has-[>[data-slot=button-group]]:gap-2",
-    "has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md",
+    "has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-e-md",
   ],
   variants: {
     orientation: {
       horizontal: [
         "[&>*:not(:first-child)]:rounded-l-none",
-        "[&>*:not(:first-child)]:border-l-0",
-        "[&>*:not(:last-child)]:rounded-r-none",
+        "[&>*:not(:first-child)]:border-s-0",
+        "[&>*:not(:last-child)]:rounded-e-none",
       ],
       vertical: [
         "flex-col",
         "[&>*:not(:first-child)]:rounded-t-none",
         "[&>*:not(:first-child)]:border-t-0",
-        "[&>*:not(:last-child)]:rounded-b-none",
+        "[&>*:not(:last-child)]:rounded-b-none [&>*:not(:last-child)]:shadow-none",
       ],
     },
   },

@@ -1,0 +1,161 @@
+---
+title: Bottom Navigation
+description: A fixed navigation bar at the bottom of the screen for mobile-first apps.
+links:
+  doc: https://ark-ui.com/docs/components/tabs
+  api: https://ark-ui.com/docs/components/tabs#api-reference
+---
+
+<ComponentPreview componentName="bottom-navigation" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/bottom-navigation
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/bottom-navigation.tsx" src="bottom-navigation.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  BottomNavigation,
+  BottomNavigationList,
+  BottomNavigationItem,
+  BottomNavigationItemIcon,
+  BottomNavigationItemLabel,
+} from "@/components/ui/bottom-navigation";
+```
+
+```tsx showLineNumbers
+<BottomNavigation defaultValue="home">
+  <BottomNavigationList>
+    <BottomNavigationItem value="home">
+      <BottomNavigationItemIcon>
+        <HomeIcon />
+      </BottomNavigationItemIcon>
+      <BottomNavigationItemLabel>Home</BottomNavigationItemLabel>
+    </BottomNavigationItem>
+    <BottomNavigationItem value="notifications">
+      <BottomNavigationItemIcon>
+        <BellIcon />
+      </BottomNavigationItemIcon>
+      <BottomNavigationItemLabel>Notifications</BottomNavigationItemLabel>
+    </BottomNavigationItem>
+  </BottomNavigationList>
+</BottomNavigation>
+```
+
+## Disclaimer
+
+> Note, don't include `position: absolute` on the `<BottomNavigationList />` component.
+
+All examples have `position: absolute` because if not the component will be fixed to the bottom of this page.
+
+## Examples
+
+### Icon only
+
+Show only icons without labels for a minimalist layout.
+
+<ComponentPreview componentName="bottom-navigation" fileName="example-icon-only" />
+
+### With links
+
+Use the `asChild` prop on `<BottomNavigationItem />` with `<Link />`. 
+
+Sync the active state with `value={pathname}` on the `<BottomNavigation />`.
+
+<ComponentPreview componentName="bottom-navigation" fileName="example-with-links" />
+
+## Accessibility
+
+- Use `aria-label` on `<BottomNavigationItem />` when using icon-only items so screen readers can read the label.
+
+## API Reference
+
+### BottomNavigation
+
+Root element. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `-` |
+| `defaultValue` | `string` | `-` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+### BottomNavigationList
+
+The fixed bar container. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Main navigation"` |
+| `className` | `string` | `-` |
+
+### BottomNavigationItem
+
+A navigation item. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
+| `aria-label` | `string` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BottomNavigationItemIcon
+
+Wrapper for the item icon. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### BottomNavigationItemLabel
+
+Wrapper for the item label. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI Tabs documentation](https://ark-ui.com/docs/components/tabs#api-reference).

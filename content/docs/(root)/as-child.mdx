@@ -1,15 +1,15 @@
 ---
 title: The asChild prop
-description: Pass a child element to make it inherit the styles and props.
+description: Render a different element as the component while inheriting its styles and behavior.
 ---
 
-All components that support the `asChild` prop will inherit the styles and props of the parent component.
+The `asChild` prop lets you swap the default element for your own—a link, a custom button, whatever—while keeping the component’s styles, props, and behavior. You get composition without extra wrapper divs or duplicated markup. That’s useful when you need semantic HTML (like an anchor for navigation) but want it to look and act like a Button or Badge.
 
 ## Creating new Components
 
-You can use the [ark factory](https://ark-ui.com/docs/guides/composition#the-ark-factory) to create your own elements that work just like the components in the library.
+When you build custom components with the [Ark factory](https://ark-ui.com/docs/guides/composition#the-ark-factory), they automatically support `asChild` because Ark’s factory handles the prop under the hood. You don’t have to do anything special—just pass through props and the child merges in:
 
-```tsx lineNumbers
+```tsx
 import { ark } from '@ark-ui/react/factory'
 
 interface ButtonExampleProps extends 
@@ -20,41 +20,41 @@ export const ButtonExample = (props: ButtonExampleProps) => (
 )
 ```
 
-```tsx lineNumbers
+```tsx
 import Link from "next/link";
 
 <ButtonExample asChild>
-  <Link href="/login">Login </Link>
+  <Link href="/login">Login</Link>
 </ButtonExample>
 ```
 
-## Example
+## Examples
 
 ### Link
 
-You can use the `asChild` prop to make a link styled as a button.
+Need a login link that looks like a button? Use `asChild` so the `Link` becomes the rendered element—no extra div, and it keeps proper semantics for SEO and screen readers.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Button asChild>
-  <Link href="/login">Login </Link>
+  <Link href="/login">Login</Link>
 </Button>
 ```
 
 ### Badge
 
-You can use the `asChild` prop to make a badge styled as a button.
+Sometimes a badge is clickable—a tag that goes somewhere, or a category filter. Wrap a `Link` with `Badge` and `asChild`, and the link gets the badge styling while staying a real anchor.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Badge asChild>
-  <Link href="/login">Login </Link>
+  <Link href="/tags/react">React</Link>
 </Badge>
 ```
 
 ### Dialog
 
-You can use the `asChild` prop to make a dialog styled as a button.
+Trigger components like `DialogTrigger` often need a button. Instead of nesting a button inside a trigger div, pass the `Button` as the child and let it become the trigger. Same accessibility, less markup.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Dialog>
   <DialogTrigger asChild>
     <Button>Open dialog</Button>
@@ -65,9 +65,9 @@ You can use the `asChild` prop to make a dialog styled as a button.
 
 ### Menu
 
-You can use the `asChild` prop to make a menu styled as a button.
+Same pattern for menus. The `Button` merges into `MenuTrigger`, so you get a single element that opens the menu with the right keyboard and focus behavior.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Menu>
   <MenuTrigger asChild>
     <Button>Open</Button>
@@ -78,12 +78,17 @@ You can use the `asChild` prop to make a menu styled as a button.
 
 ### Popover
 
-You can use the `asChild` prop to make a popover styled as a button.
+Popovers work the same way. Use `asChild` on `PopoverTrigger` and pass your `Button`—no wrapper needed.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Popover>
   <PopoverTrigger asChild>
     <Button>Open Popover</Button>
   </PopoverTrigger>
   {/* ... */}
 </Popover>
+```
+
+## When to use it
+
+Reach for `asChild` when you want the right element in the DOM: links for navigation, buttons for triggers, or any case where semantic HTML matters. It’s handy for forms (submit links styled as buttons), navigation bars, and anywhere you’d otherwise wrap something in a div just to apply styles.

@@ -1,6 +1,6 @@
 ---
 title: Radio Group
-description: A set of checkable buttons where no more than one can be checked at a time
+description: Allows single selection from multiple options.
 links:
   doc: https://ark-ui.com/docs/components/radio-group
   api: https://ark-ui.com/docs/components/radio-group#api-reference
@@ -18,9 +18,9 @@ links:
 </TabsList>
 
 <TabsContent value="cli">
-  
+
 ```bash
-npx shadcn@latest add @shark-ui/radio-group
+npx shadcn@latest add @shark/radio-group
 ```
 
 </TabsContent>
@@ -49,23 +49,80 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx lineNumbers
-import { 
-  RadioGroup, 
-  RadioGroupItem 
+```tsx
+import {
+  RadioGroup,
+  RadioGroupItem,
 } from "@/components/ui/radio-group";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <RadioGroup>
-  <RadioGroupItem value="1">Option 1</RadioGroupItem>
-  <RadioGroupItem value="2">Option 2</RadioGroupItem>
-  <RadioGroupItem value="3">Option 3</RadioGroupItem>
+  <RadioGroupItem value="item-1">{/* label */}</RadioGroupItem>
+  <RadioGroupItem value="item-2">{/* label */}</RadioGroupItem>
 </RadioGroup>
 ```
 
+## Controlled
+
+Use the `value` and `onValueChange` props to control the radio group.
+
+<ComponentPreview componentName="radio-group" fileName="example-controlled" />
+
+## State
+
+### Invalid
+
+Use the `invalid` prop on `<RadioGroup />` to indicate an invalid state.
+
+<ComponentPreview componentName="radio-group" fileName="example-invalid" />
+
+### Disabled
+
+Use the `disabled` on `<RadioGroup />` to disable  all the radio group items or on `<RadioGroupItem />` to disable a single item.
+
+<ComponentPreview componentName="radio-group" fileName="example-disabled" />
+
 ## Examples
 
-### Default
+### With Description
 
-<ComponentPreview componentName="radio-group" fileName="default" />
+Use `<FieldDescription />` to add a description to the radio group.
+
+<ComponentPreview componentName="radio-group" fileName="example-with-description" />
+
+### Card Style
+
+Use `<FieldLabel />` to wrap the entire `<Field />` for a clickable card-style selection.
+
+<ComponentPreview componentName="radio-group" fileName="example-card" />
+
+## API Reference
+
+### RadioGroup
+
+Root element of the radio group. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `string` | `-` |
+| `defaultValue` | `string` | `-` |
+| `disabled` | `boolean` | `false` |
+| `name` | `string` | `-` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+
+### RadioGroupItem
+
+A single radio item. Renders a `label`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `value` | `string` | `-` |
+| `disabled` | `boolean` | `false` |
+| `invalid` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/radio-group#api-reference).

@@ -1,22 +1,40 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export const Table = (props: React.ComponentProps<typeof ark.table>) => {
-  const { className, ...rest } = props;
+interface TableProps extends React.ComponentProps<typeof ark.table> {
+  /**
+   * Whether the table rows are hoverable.
+   *
+   * @default true
+   */
+  isHoverable?: boolean;
+  /**
+   * The variant of the table.
+   *
+   * @default "plain"
+   */
+  variant?: "plain" | "striped";
+}
+
+export const Table = (props: TableProps) => {
+  const { variant = "plain", isHoverable = true, className, ...rest } = props;
 
   return (
     <div className="relative w-full overflow-auto" data-slot="table-wrapper">
       <ark.table
         className={cn(
+          "group/table",
           "w-full",
           "caption-bottom",
           "text-foreground text-sm",
           className
         )}
+        data-hoverable={isHoverable}
         data-slot="table"
+        data-variant={variant}
         {...rest}
       />
     </div>
@@ -35,7 +53,10 @@ export const TableHeader = (props: React.ComponentProps<typeof ark.thead>) => {
   );
 };
 
-export const TableBody = (props: React.ComponentProps<typeof ark.tbody>) => {
+export interface TableBodyProps
+  extends React.ComponentProps<typeof ark.tbody> {}
+
+export const TableBody = (props: TableBodyProps) => {
   const { className, ...rest } = props;
 
   return (
@@ -54,7 +75,7 @@ export const TableFooter = (props: React.ComponentProps<typeof ark.tfoot>) => {
     <ark.tfoot
       className={cn(
         "border-t",
-        "bg-muted/50",
+        "bg-muted/64",
         "font-medium",
         "last:[&>tr]:border-b-0",
         className
@@ -73,7 +94,8 @@ export const TableRow = (props: React.ComponentProps<typeof ark.tr>) => {
       className={cn(
         "border-b",
         "data-[state=selected]:bg-muted",
-        "[&:has(td):hover]:bg-muted/50",
+        "group-data-[variant=striped]/table:even:bg-muted/30",
+        "group-data-[hoverable=true]/table:[&:has(td):hover]:bg-muted/64",
         className
       )}
       data-slot="table-row"
@@ -88,11 +110,11 @@ export const TableHead = (props: React.ComponentProps<typeof ark.th>) => {
   return (
     <ark.th
       className={cn(
-        "h-12 px-4",
+        "h-10 px-4",
         "text-left align-middle",
         "font-normal text-muted-foreground",
         "rtl:text-right",
-        "[&:has([role=checkbox])]:pe-0",
+        "[&:has([role=checkbox])]:ps-2 [&:has([role=checkbox])]:pe-0",
         className
       )}
       data-slot="table-head"
@@ -107,7 +129,8 @@ export const TableCell = (props: React.ComponentProps<typeof ark.td>) => {
   return (
     <ark.td
       className={cn(
-        "p-4 align-middle [&:has([role=checkbox])]:pe-0",
+        "whitespace-nowrap p-2 align-middle",
+        "[&:has([role=checkbox])]:ps-2 [&:has([role=checkbox])]:pe-0",
         className
       )}
       data-slot="table-cell"

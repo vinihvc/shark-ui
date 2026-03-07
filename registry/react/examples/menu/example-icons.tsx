@@ -1,4 +1,4 @@
-import { Copy, Pencil, Share } from "lucide-react";
+import { CopyIcon, PencilIcon, ShareIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Menu,
@@ -14,15 +14,15 @@ const Example = () => (
     </MenuTrigger>
     <MenuContent className="w-40">
       <MenuItem value="edit">
-        <Pencil />
+        <PencilIcon />
         Edit
       </MenuItem>
       <MenuItem value="copy">
-        <Copy />
+        <CopyIcon />
         Copy
       </MenuItem>
       <MenuItem value="share">
-        <Share />
+        <ShareIcon />
         Share
       </MenuItem>
     </MenuContent>

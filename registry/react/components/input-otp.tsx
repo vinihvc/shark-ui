@@ -1,6 +1,6 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { PinInput as ArkPinInput } from "@ark-ui/react/pin-input";
 import type React from "react";
 import { cn } from "@/lib/utils";

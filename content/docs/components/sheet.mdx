@@ -6,6 +6,13 @@ links:
   api: https://ark-ui.com/docs/components/dialog#api-reference
 ---
 
+<Alert>
+  <InfoIcon />
+  <AlertDescription>
+    Built on top of the [Dialog component](/docs/components/dialog). Check it out for more examples.
+  </AlertDescription>
+</Alert>
+
 <ComponentPreview componentName="sheet" />
 
 ## Installation
@@ -20,7 +27,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/sheet
+npx shadcn@latest add @shark/sheet
 ```
 
 </TabsContent>
@@ -49,31 +56,188 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Sheet, 
+  SheetTrigger, 
   SheetContent, 
-  SheetDescription, 
-  SheetHeader, 
+  SheetHeader,
   SheetTitle, 
-  SheetTrigger 
+  SheetDescription, 
+  SheetBody,
+  SheetFooter,
+  SheetClose,
 } from "@/components/ui/sheet";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Sheet>
-  <SheetTrigger>Open</SheetTrigger>
+  <SheetTrigger />
   <SheetContent>
     <SheetHeader>
-      <SheetTitle>Sheet Title</SheetTitle>     
-      <SheetDescription>Sheet Description</SheetDescription>
+      <SheetTitle />
+      <SheetDescription />
     </SheetHeader>
+    <SheetBody>
+      {/** your content here */}
+    </SheetBody>
+    <SheetFooter>
+      <SheetClose />
+    </SheetFooter>
   </SheetContent>
 </Sheet>
 ```
 
 ## Examples
 
-### Default
+### Sides
 
-<ComponentPreview componentName="sheet" fileName="default" />
+Control which side the sheet slides in from using the `side` prop.
+
+<ComponentPreview componentName="sheet" fileName="example-sides" />
+
+### Inset Variant
+
+Use the `variant="inset"` prop to add padding. The sheet appears as a floating card rather than edge-to-edge.
+
+<ComponentPreview componentName="sheet" fileName="example-inset" />
+
+### With Scroll
+
+Use `<SheetBody />` to make the content area scrollable while keeping header and footer fixed.
+
+<ComponentPreview componentName="sheet" fileName="example-scroll-area" />
+
+### No Close Button
+
+Use the `showCloseButton` prop to hide the close button in the top right corner.
+
+<ComponentPreview componentName="sheet" fileName="example-no-close-button" />
+
+### Close behavior
+
+Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on outside click and escape.
+
+<ComponentPreview componentName="sheet" fileName="example-close-behavior" />
+
+### Non-Modal
+
+Use `modal={false}` to allow interaction with elements outside the sheet. Disables focus trapping and scroll prevention.
+
+<ComponentPreview componentName="sheet" fileName="example-non-modal" />
+
+## API Reference
+
+### Sheet
+
+Root element of the sheet. Renders a `div`. Uses Ark UI Dialog under the hood.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
+| `modal` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `closeOnInteractOutside` | `boolean` | `true` |
+| `initialFocusEl` | `() => MaybeElement` | `-` |
+| `finalFocusEl` | `() => MaybeElement` | `-` |
+| `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | `-` |
+| `onInteractOutside` | `(event: InteractOutsideEvent) => void` | `-` |
+| `className` | `string` | `-` |
+
+### SheetTrigger
+
+Button that opens the sheet. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### SheetContent
+
+Container for the sheet content. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `side` | `"right" \| "left" \| "top" \| "bottom"` | `"right"` |
+| `variant` | `"default" \| "inset"` | `"default"` |
+| `showCloseButton` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### SheetHeader
+
+Header container for the sheet. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `title` | `string` | `-` |
+| `description` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### SheetBody
+
+Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `scrollFade` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### SheetFooter
+
+Footer container for the sheet. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### SheetTitle
+
+Title element for the sheet. Renders an `h2`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### SheetDescription
+
+Description element for the sheet. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### SheetClose
+
+Button that closes the sheet. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### SheetOverlay
+
+Backdrop overlay for the sheet. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### SheetPositioner
+
+Positioning wrapper for the sheet content. Renders a `div`. Used internally by `SheetContent`; expose when composing custom layouts.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `side` | `"right" \| "left" \| "top" \| "bottom"` | `-` |
+| `variant` | `"default" \| "inset"` | `"default"` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/dialog#api-reference).

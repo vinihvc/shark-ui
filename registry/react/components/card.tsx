@@ -1,4 +1,6 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 
@@ -10,12 +12,14 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "[--space:--spacing(4)]",
         "group/card",
+        "relative",
         "py-(--space)",
         "flex flex-col gap-4",
         "bg-card",
         "text-foreground",
+        "rounded-2xl border shadow-lg/5",
         "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
-        "rounded-lg border shadow-xs",
+        "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/32 in-focus-visible:ring-offset-2 in-focus-visible:ring-offset-background",
         className
       )}
       data-slot="card"
@@ -65,13 +69,13 @@ export const CardMedia = (props: CardMediaProps) => {
 
 interface HeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * The title of the card
-   */
-  title?: string;
-  /**
    * The description of the card
    */
   description?: string;
+  /**
+   * The title of the card
+   */
+  title?: string;
 }
 
 export const CardHeader = (props: HeaderProps) => {
@@ -106,7 +110,7 @@ export const CardTitle = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "text-balance font-semibold text-foreground text-lg/6 sm:text-base/6",
+        "font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
       )}
       data-slot="card-title"
@@ -122,11 +126,7 @@ export const CardDescription = (
 
   return (
     <ark.div
-      className={cn(
-        "row-start-2",
-        "text-balance text-muted-foreground text-sm",
-        className
-      )}
+      className={cn("row-start-2", "text-muted-foreground text-sm", className)}
       data-slot="card-description"
       {...rest}
     />
@@ -168,8 +168,8 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "flex items-center gap-2",
         "px-(--space)",
-        "bg-muted/50",
-        "border-t",
+        "bg-muted/64",
+        "rounded-b-lg border-t",
         "py-(--space)",
         className
       )}

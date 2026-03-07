@@ -13,7 +13,7 @@ import { Input } from "@/registry/react/components/input";
 const Example = () => {
   return (
     <div className="w-full max-w-sm">
-      <Card className="w-full [--space:--spacing(6)] md:[--space:--spacing(8)] lg:[--space:--spacing(10)]">
+      <Card className="w-full [--space:--spacing(2)] md:[--space:--spacing(6)]">
         <CardHeader
           description="Enter your email and check your inbox"
           title="Login to your account"

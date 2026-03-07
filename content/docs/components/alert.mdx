@@ -22,7 +22,7 @@ import { Info, AlertCircle, AlertTriangle, CheckCircle } from "lucide-react";
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/alert
+npx shadcn@latest add @shark/alert
 ```
 
 </TabsContent>
@@ -85,7 +85,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Basic usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Alert, 
   AlertDescription, 
@@ -93,54 +93,52 @@ import {
 } from "@/components/ui/alert";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Alert>
-  <AlertTitle>Alert</AlertTitle>
-  <AlertDescription>This is an alert</AlertDescription>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>You can add icons to alerts.</AlertDescription>
 </Alert>
 ```
 
 ## Variants
 
-You can change the variant of the alert using the `variant` prop. 
+The `variant` prop controls the alert's visual style. 
 
-### Solid
+### Default
 
-<ComponentPreview componentName="alert" fileName="variant-solid" />
+<ComponentPreview componentName="alert" fileName="example-variant-default" />
 
 ### Info
 
-<ComponentPreview componentName="alert" fileName="variant-info" />
+<ComponentPreview componentName="alert" fileName="example-variant-info" />
 
 ### Warning
 
-<ComponentPreview componentName="alert" fileName="variant-warning" />
+<ComponentPreview componentName="alert" fileName="example-variant-warning" />
 
 ### Success
 
-<ComponentPreview componentName="alert" fileName="variant-success" />
+<ComponentPreview componentName="alert" fileName="example-variant-success" />
 
 ### Destructive
 
-<ComponentPreview componentName="alert" fileName="variant-destructive" />
+<ComponentPreview componentName="alert" fileName="example-variant-destructive" />
 
 ## Examples
 
 ### With icon
 
-You can add icons to alerts to provide visual context and improve user experience.
+Icons can be added to alerts for visual context and improved user experience.
 
-<ComponentPreview componentName="alert" fileName="with-icon" />
+<ComponentPreview componentName="alert" fileName="example-with-icon" />
+
+### With action
+
+<ComponentPreview componentName="alert" fileName="example-with-action" />
 
 ### Custom color
 
-You can use the `className` prop to customize the alert colors to match your design system.
-
-<ComponentPreview componentName="alert" fileName="custom-color" />
-
-### With action buttons
-
-<ComponentPreview componentName="alert" fileName="with-action" />
+<ComponentPreview componentName="alert" fileName="example-custom-color" />
 
 ## API Reference
 
@@ -150,8 +148,9 @@ Root element of the alert. Renders a `div`
 
 | Prop | Type | Default |
 |------|------|---------|
-| `variant` | `"solid", "info", "warning", "success", "destructive"` | `"solid"` |
+| `variant` | `"default", "info", "warning", "success", "destructive"` | `"default"` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AlertTitle
 
@@ -160,6 +159,7 @@ Styled title of the alert. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AlertDescription
 
@@ -168,6 +168,7 @@ Styled description with muted foreground text color. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AlertAction
 
@@ -176,3 +177,4 @@ Container for action buttons. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

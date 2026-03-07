@@ -1,0 +1,155 @@
+---
+title: Image Cropper
+description: Crop and transform images with zoom, rotation, and aspect ratio controls.
+links:
+  doc: https://ark-ui.com/docs/components/image-cropper
+  api: https://ark-ui.com/docs/components/image-cropper#api-reference
+---
+
+<ComponentPreview componentName="image-cropper" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/image-cropper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/image-cropper.tsx" src="image-cropper.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ImageCropper,
+  ImageCropperImage,
+  ImageCropperSelection,
+} from "@/components/ui/image-cropper";
+
+<ImageCropper>
+  <ImageCropperImage alt="Crop me" src="/image.jpg" />
+  <ImageCropperSelection />
+</ImageCropper>
+```
+
+## Examples
+
+### Aspect ratio
+
+Use the `aspectRatio` to lock the crop area to a specific aspect ratio. 
+
+<ComponentPreview componentName="image-cropper" fileName="example-aspect-ratio" />
+
+### Circle crop
+
+Use `cropShape="circle"` for profile pictures or avatars.
+
+<ComponentPreview componentName="image-cropper" fileName="example-circle-crop" />
+
+### Initial crop
+
+Start with a pre-defined crop area using the `initialCrop` prop.
+
+<ComponentPreview componentName="image-cropper" fileName="example-initial-crop" />
+
+### Controlled zoom
+
+Control zoom programmatically with the `zoom` and `onZoomChange` props.
+
+<ComponentPreview componentName="image-cropper" fileName="example-controlled-zoom" />
+
+### Zoom limits
+
+Set `minZoom` and `maxZoom` to constrain how far users can zoom.
+
+<ComponentPreview componentName="image-cropper" fileName="example-zoom-limits" />
+
+### Min and max size
+
+Constrain the crop area size with `minWidth`, `minHeight`, `maxWidth`, and `maxHeight`.
+
+<ComponentPreview componentName="image-cropper" fileName="example-min-max-size" />
+
+### Fixed crop area
+
+Set `fixedCropArea` to `true` when the crop area should stay fixed while the image moves underneath.
+
+<ComponentPreview componentName="image-cropper" fileName="example-fixed-crop-area" />
+
+## API Reference
+
+### ImageCropper
+
+Root container for the image cropper. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aspectRatio` | `number` | — |
+| `cropShape` | `'circle' \| 'rectangle'` | `'rectangle'` |
+| `fixedCropArea` | `boolean` | `false` |
+| `initialCrop` | `{ x: number; y: number; width: number; height: number }` | — |
+| `maxHeight` | `number` | `Infinity` |
+| `maxWidth` | `number` | `Infinity` |
+| `maxZoom` | `number` | `5` |
+| `minHeight` | `number` | `40` |
+| `minWidth` | `number` | `40` |
+| `minZoom` | `number` | `1` |
+| `onCropChange` | `(details: CropChangeDetails) => void` | — |
+| `onZoomChange` | `(details: ZoomChangeDetails) => void` | — |
+| `rotation` | `number` | — |
+| `zoom` | `number` | — |
+| `className` | `string` | — |
+
+### ImageCropperImage
+
+The image element to crop. Renders an `img`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `alt` | `string` | — |
+| `src` | `string` | — |
+| `className` | `string` | — |
+
+### ImageCropperSelection
+
+The crop selection overlay with handles and grid. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `axis` | `'horizontal' \| 'vertical' \| 'both'` | `'both'` |
+| `children` | `ReactNode` | — |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/image-cropper#api-reference).

@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/tabs
+npx shadcn@latest add @shark/tabs
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Tabs,
   TabsList,
@@ -58,7 +58,7 @@ import {
 } from "@/components/ui/tabs";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Tabs>
   <TabsList>
     <TabsTrigger value="1">Tab 1</TabsTrigger>
@@ -69,30 +69,100 @@ import {
 </Tabs>
 ```
 
-## Variants
+## Controlled
 
-You can change the variant of the tabs using the `variant` prop on `TabsList`.
+Use `value` and `onValueChange` to control the active tab programmatically.
+
+<ComponentPreview componentName="tabs" fileName="example-controlled" />
+
+## Variant
+
+Use the `variant` prop on `<TabsList />` to change the selection indicator style.
 
 ### Default
 
-<ComponentPreview componentName="tabs" fileName="variant-default" />
+<ComponentPreview componentName="tabs" fileName="example-variant-default" />
 
 ### Underline
 
-<ComponentPreview componentName="tabs" fileName="variant-underline" />
+<ComponentPreview componentName="tabs" fileName="example-variant-underline" />
+
 
 ## Orientation
 
-You can change the orientation of the tabs using the `orientation` prop on `Tabs`.
+Use the `orientation` prop on `<Tabs />` to lay out tabs horizontally or vertically.
 
 ### Horizontal
 
-<ComponentPreview componentName="tabs" fileName="orientation-horizontal" />
+<ComponentPreview componentName="tabs" fileName="example-orientation-horizontal" />
 
 ### Vertical
 
-<ComponentPreview componentName="tabs" fileName="orientation-vertical" />
+<ComponentPreview componentName="tabs" fileName="example-orientation-vertical" />
 
-## Vertical with Underline variant
 
-<ComponentPreview componentName="tabs" fileName="variant-underline-orientation-vertical" />
+## State
+
+### Disabled
+
+Disable individual tabs with the `disabled` prop on `<TabsTrigger />`. Disabled tabs are not focusable or selectable.
+
+<ComponentPreview componentName="tabs" fileName="example-disabled" />
+
+## Examples
+
+### Vertical with underline
+
+Combine `orientation="vertical"` on `<Tabs />` with `variant="underline"` on `<TabsList />`.
+
+<ComponentPreview componentName="tabs" fileName="example-variant-underline-orientation-vertical" />
+
+### With icons
+
+<ComponentPreview componentName="tabs" fileName="example-with-icons" />
+
+## API Reference
+
+### Tabs
+
+Root element. Manages tab state and layout.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `-` |
+| `defaultValue` | `string` | `-` |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | `-` |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` |
+| `className` | `string` | `-` |
+
+### TabsList
+
+Container for tab triggers and the selection indicator.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default"` \| `"underline"` | `"default"` |
+| `className` | `string` | `-` |
+
+### TabsTrigger
+
+Button that selects a tab. Must have a `value` matching a `TabsContent` panel.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### TabsContent
+
+Panel shown when its tab is selected. Must have a `value` matching a `TabsTrigger`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI Tabs documentation](https://ark-ui.com/docs/components/tabs#api-reference).

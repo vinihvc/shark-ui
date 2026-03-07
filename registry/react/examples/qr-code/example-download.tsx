@@ -1,6 +1,6 @@
 "use client";
 
-import { Download } from "lucide-react";
+import { DownloadIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { Card, CardContent } from "@/registry/react/components/card";
@@ -43,14 +43,14 @@ const Example = () => {
           <div className="flex items-center gap-2">
             <QrCodeDownload asChild fileName="qr-code" mimeType="image/png">
               <Button className="w-1/2" size="icon-md" variant="outline">
-                <Download />
+                <DownloadIcon />
                 PNG
               </Button>
             </QrCodeDownload>
 
             <QrCodeDownload asChild fileName="qr-code" mimeType="image/svg+xml">
               <Button className="w-1/2" size="icon-md">
-                <Download />
+                <DownloadIcon />
                 SVG
               </Button>
             </QrCodeDownload>

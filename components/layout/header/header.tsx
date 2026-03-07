@@ -1,15 +1,16 @@
 import { GithubIcon } from "lucide-react";
+import { Logo } from "@/components/icons/logo";
 import { HeaderCommand } from "@/components/layout/header/header.command";
 import { MainNav } from "@/components/layout/header/header.main";
 import { MobileNav } from "@/components/layout/header/header.mobile";
 import { ModeSwitcher } from "@/components/layout/mode-switcher";
-import { Logo } from "@/components/logo";
 import { NavLink } from "@/components/nav-link";
 import { NAV_ITEMS } from "@/config/navigation";
 import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Separator } from "@/registry/react/components/separator";
+import { HeaderCustomize } from "./header.customize";
 
 interface SiteHeaderProps extends React.ComponentProps<"header"> {}
 
@@ -25,7 +26,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
         "sticky top-0",
         "w-full",
         "bg-background/80 backdrop-blur-sm",
-        "border-b",
+
         className
       )}
       {...rest}
@@ -43,7 +44,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               "hidden gap-2 lg:flex",
               "font-bold text-base",
               "rounded-md border border-transparent",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             )}
             href="/"
           >
@@ -58,28 +59,33 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               <HeaderCommand tree={pageTree} />
             </div>
 
-            <Separator
-              className="ml-2 hidden lg:block"
-              orientation="vertical"
-            />
-
-            <Button asChild size="icon-md" variant="ghost">
+            <Button
+              aria-label="Visit GitHub"
+              asChild
+              size="icon-md"
+              variant="ghost"
+            >
               <a
                 href="https://github.com/vinihvc/shark-ui"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span className="sr-only">GitHub</span>
                 <GithubIcon />
               </a>
             </Button>
 
-            <Separator orientation="vertical" />
+            <Separator className="h-5" orientation="vertical" />
+
+            <HeaderCustomize />
+
+            <Separator className="h-5" orientation="vertical" />
 
             <ModeSwitcher />
           </div>
         </div>
       </div>
+
+      <span className="block h-px bg-[linear-gradient(90deg,var(--color-foreground)_1px,transparent_1px)] bg-bottom bg-size-[6px_1px] bg-repeat-x opacity-30 dark:opacity-15" />
     </header>
   );
 };

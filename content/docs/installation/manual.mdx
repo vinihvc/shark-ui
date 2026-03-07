@@ -1,17 +1,19 @@
 ---
 title: Manual Installation
-description: Instructions to install Shark UI in a project manually.
+description: Install Shark UI without the shadcn CLI by copying config and files manually.
 ---
+
+Manual setup gives you full control over every file. Use this when the CLI does not fit your setup or you prefer not to use it.
 
 ### Add Tailwind CSS
 
-Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
+Components are styled with Tailwind CSS. Install it first:
 
-[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
+[Follow the Tailwind CSS installation instructions.](https://tailwindcss.com/docs/installation)
 
 ### Add dependencies
 
-Add the following dependencies to your project:
+Install the packages Shark UI components use:
 
 ```bash
 pnpm add tailwind-variants clsx tailwind-merge lucide-react tw-animate-css
@@ -21,7 +23,7 @@ pnpm add tailwind-variants clsx tailwind-merge lucide-react tw-animate-css
 
 Configure the path aliases in your `tsconfig.json` file.
 
-```json title="tsconfig.json" lineNumbers
+```json title="tsconfig.json" showLineNumbers
 {
   "compilerOptions": {
     "baseUrl": ".", // [!code highlight]
@@ -32,13 +34,13 @@ Configure the path aliases in your `tsconfig.json` file.
 }
 ```
 
-The `@` alias is a preference. You can use other aliases if you want.
+The `@` alias is a convention; you can use a different alias if needed.
 
 ### Configure styles
 
-Add the following to your `globals.css` file.
+Add the following to your `globals.css` file (or your main stylesheet). This defines the design tokens (colors, radius, animations) that components depend on.
 
-```css title="styles/globals.css" lineNumbers
+```css title="styles/globals.css" showLineNumbers
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -139,6 +141,24 @@ Add the following to your `globals.css` file.
     }
     to {
       transform: translateY(var(--marquee-translate));
+    }
+  }
+
+  @keyframes flip-in {
+    from {
+      transform: rotateY(180deg);
+    }
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+
+  @keyframes flip-out {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(180deg);
     }
   }
 }
@@ -260,18 +280,18 @@ Add the following to your `globals.css` file.
 
 ### Add a cn helper
 
-```ts title="lib/utils.ts" lineNumbers
+```ts title="lib/utils.ts" showLineNumbers
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 ```
 
-### Create a `components.json` file
+### Create a components.json file
 
-Create a `components.json` file in the root of your project.
+Create a `components.json` file in the project root so the shadcn CLI (if you use it later) knows where to write components.
 
-```json title="components.json" lineNumbers
+```json title="components.json" showLineNumbers
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
@@ -295,6 +315,6 @@ Create a `components.json` file in the root of your project.
 }
 ```
 
-### That's all!
+### Next steps
 
-Now you can start adding [components](/docs/components) to your project.
+You can now add components manually from the [component docs](/docs/components) or use the CLI with `pnpm dlx shadcn@latest add https://shark.vini.one/r/button.json` to fetch and install them.

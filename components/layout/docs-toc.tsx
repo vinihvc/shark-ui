@@ -1,9 +1,10 @@
 "use client";
 
 import type { TOCItemType } from "fumadocs-core/toc";
-import { AlignLeft } from "lucide-react";
+import { AlignLeftIcon, CircleArrowUpIcon } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Presence } from "@/registry/react/components/presence";
 
 interface DocsTableOfContentsProps extends React.ComponentProps<"div"> {
   /**
@@ -20,6 +21,7 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
     [data]
   );
   const activeHeading = useActiveItem(itemIds);
+  const showScrollToTop = useShowScrollToTop();
 
   if (!data?.length) {
     return null;
@@ -28,40 +30,72 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
   return (
     <div
       className={cn(
-        "z-10 flex flex-col gap-1 py-2 ps-6 pe-4 text-sm",
+        "z-10",
+        "flex flex-col gap-1",
+        "py-2 ps-6 pe-4",
+        "text-sm",
         className
       )}
     >
-      <p className="inline-flex h-7 items-center gap-2 font-medium text-xs [&_svg]:size-3">
-        <AlignLeft aria-hidden />
+      <p className="inline-flex h-7 items-center gap-2 font-medium text-xs">
+        <AlignLeftIcon aria-hidden className="size-3" />
         On This Page
       </p>
 
-      <div className="relative ms-3.5 flex flex-col gap-0.5 before:absolute before:inset-y-0 before:-left-3.25 before:w-px before:bg-border">
+      <div className="relative ms-4.5 flex flex-col gap-0.5 before:absolute before:inset-y-0 before:-left-3.25 before:w-px before:bg-border">
         {data.map((item) => (
-          <a
-            className={cn(
-              "relative py-1 leading-4.5 no-underline",
-              "text-muted-foreground",
-              "transition-colors",
-              "before:absolute before:inset-y-px before:-left-3.25 before:w-px before:rounded-full",
-              "hover:text-foreground",
-              "data-[active=true]:text-foreground",
-              "data-[active=true]:before:w-0.5 data-[active=true]:before:bg-primary",
-              "data-[depth=3]:ps-3.5",
-              "data-[depth=4]:ps-5.5"
-            )}
+          <TOCItem
             data-active={item.url === `#${activeHeading}`}
             data-depth={item.depth}
             href={item.url}
             key={item.url}
           >
             {item.title}
-          </a>
+          </TOCItem>
         ))}
       </div>
+
+      <Presence
+        className={cn(
+          "mt-2 ps-3.5",
+          "duration-200",
+          "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
+          "data-[state=open]:fade-in-0 data-[state=open]:animate-in"
+        )}
+        present={showScrollToTop}
+      >
+        <TOCItem
+          className="inline-flex items-center gap-2"
+          data-active={false}
+          data-depth={0}
+          href="#page-title"
+        >
+          <CircleArrowUpIcon aria-hidden className="size-4" /> Scroll to top
+        </TOCItem>
+      </Presence>
     </div>
   );
+};
+
+const useShowScrollToTop = () => {
+  const [show, setShow] = React.useState(false);
+
+  React.useEffect(() => {
+    const updateVisibility = () => {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const threshold = scrollableHeight * 0.3;
+      setShow(window.scrollY >= threshold);
+    };
+
+    updateVisibility();
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateVisibility);
+  }, []);
+
+  return show;
 };
 
 const useActiveItem = (itemIds: string[]) => {
@@ -102,4 +136,29 @@ const useActiveItem = (itemIds: string[]) => {
   }, [itemIds, activeId]);
 
   return activeId;
+};
+
+const TOCItem = (props: React.ComponentProps<"a">) => {
+  const { className, ...rest } = props;
+
+  return (
+    <a
+      className={cn(
+        "relative",
+        "-mx-1 px-2 py-1",
+        "text-muted-foreground leading-4.5",
+        "rounded-md border border-transparent no-underline",
+        "transition-colors",
+        "before:absolute before:inset-y-px before:-left-3 before:w-px before:translate-x-0.5",
+        "hover:text-foreground",
+        "data-[active=true]:text-foreground",
+        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "data-[active=true]:before:w-0.5 data-[active=true]:before:bg-primary",
+        "data-[depth=3]:ps-3.5",
+        "data-[depth=4]:ps-5.5",
+        className
+      )}
+      {...rest}
+    />
+  );
 };

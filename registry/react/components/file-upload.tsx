@@ -1,22 +1,16 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
 import {
   FileUpload as ArkFileUpload,
-  type FileUploadFileError,
+  useFileUploadContext as useArkFileUploadContext,
 } from "@ark-ui/react/file-upload";
-import { Trash2 } from "lucide-react";
+import { UploadIcon, XIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-export const ERROR_MESSAGES: Record<FileUploadFileError, string> = {
-  TOO_MANY_FILES: "Too many files selected (max 3 allowed)",
-  FILE_INVALID_TYPE: "Invalid file type (only images and PDFs allowed)",
-  FILE_TOO_LARGE: "File too large (max 1MB)",
-  FILE_TOO_SMALL: "File too small (min 1KB)",
-  FILE_INVALID: "Invalid file",
-  FILE_EXISTS: "File already exists",
-};
+export const useFileUploadContext = useArkFileUploadContext;
 
 export const FileUpload = (
   props: React.ComponentProps<typeof ArkFileUpload.Root>
@@ -25,7 +19,12 @@ export const FileUpload = (
 
   return (
     <ArkFileUpload.Root
-      className={cn("relative flex flex-col items-start gap-4", className)}
+      className={cn(
+        "group/file-upload",
+        "relative",
+        "flex flex-col justify-center gap-4",
+        className
+      )}
       data-slot="file-upload"
       {...rest}
     >
@@ -48,13 +47,15 @@ export const FileUploadDropzone = (
   return (
     <ArkFileUpload.Dropzone
       className={cn(
-        "p-6",
-        "flex flex-col items-center justify-center gap-4",
-        "rounded-md border-2 border-dashed",
+        "[--space:--spacing(8)]",
+        "p-(--space)",
+        "flex flex-col items-center justify-center gap-2",
+        "text-center",
+        "rounded-2xl border-2 border-input border-dashed",
         "cursor-pointer",
         "data-cover:absolute data-cover:inset-0 data-cover:flex data-cover:items-center data-cover:justify-center",
         "data-dragging:border-primary data-dragging:bg-primary/10",
-        "data-invalid:border-destructive data-invalid:bg-destructive/10",
+        "data-invalid:border-destructive dark:data-invalid:border-destructive-foreground",
         className
       )}
       data-slot="file-upload-dropzone"
@@ -63,37 +64,153 @@ export const FileUploadDropzone = (
   );
 };
 
-export const FileUploadLabel = (
-  props: React.ComponentProps<typeof ArkFileUpload.Label>
+export const FileUploadDropzoneIcon = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn(
+        "p-3",
+        "bg-muted/64",
+        "text-muted-foreground",
+        "rounded-full border",
+        "group-data-dragging/file-upload:border-primary/24 group-data-dragging/file-upload:bg-primary/5 group-data-dragging/file-upload:text-primary",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        className
+      )}
+      data-slot="file-upload-dropzone-icon"
+      {...rest}
+    >
+      {children || <UploadIcon />}
+    </ark.div>
+  );
+};
+
+export const FileUploadTitle = (
+  props: React.ComponentProps<typeof ark.div>
 ) => {
   const { className, ...rest } = props;
 
   return (
-    <ArkFileUpload.Label
-      className={cn("font-medium text-muted-foreground text-sm", className)}
-      data-slot="file-upload-label"
+    <ark.div
+      className={cn("font-medium text-foreground text-sm", className)}
+      data-slot="file-upload-title"
       {...rest}
     />
   );
 };
 
-export const FileUploadGroup = (
+export const FileUploadDescription = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn("font-medium text-muted-foreground text-sm", className)}
+      data-slot="file-upload-title"
+      {...rest}
+    />
+  );
+};
+
+export const FileUploadHelper = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn("text-muted-foreground text-xs", className)}
+      data-slot="file-upload-dropzone-helper"
+      {...rest}
+    />
+  );
+};
+
+export const FileUploadItemGroup = (
   props: React.ComponentProps<typeof ArkFileUpload.ItemGroup>
 ) => {
-  const { className, ...rest } = props;
-
   return (
-    <ArkFileUpload.ItemGroup
-      className={cn("flex flex-col gap-2", className)}
-      data-slot="file-upload-group"
-      {...rest}
-    />
+    <ArkFileUpload.ItemGroup data-slot="file-upload-item-group" {...props} />
   );
 };
 
-export const FileUploadContext = (
-  props: React.ComponentProps<typeof ArkFileUpload.Context>
-) => <ArkFileUpload.Context data-slot="file-upload-context" {...props} />;
+interface FileUploadListProps
+  extends Omit<React.ComponentProps<typeof ArkFileUpload.Item>, "file"> {}
+
+export const FileUploadList = (props: FileUploadListProps) => {
+  const { className, ...rest } = props;
+
+  const fileUpload = useFileUploadContext();
+
+  const files = fileUpload.acceptedFiles;
+
+  if (files.length === 0) {
+    return null;
+  }
+
+  return (
+    <FileUploadItemGroup className="flex flex-col gap-2">
+      {files.map((file, index) => {
+        const isImage = file.type.startsWith("image/");
+
+        const extension = file.name.split(".").pop();
+
+        return (
+          <FileUploadItem
+            className={cn(
+              "flex-1 items-start justify-start gap-4",
+              "bg-card",
+              "p-2",
+              "rounded-xl border",
+              "fade-in-0 slide-in-from-top-5 animate-in",
+              className
+            )}
+            file={file}
+            key={`${file.name}-${index}`}
+            {...rest}
+          >
+            <FileUploadItemPreview
+              className="size-8"
+              {...(isImage ? { type: "image/*" } : { type: ".*" })}
+            >
+              {isImage ? (
+                <FileUploadItemPreviewImage />
+              ) : (
+                <span className="uppercase">{extension}</span>
+              )}
+            </FileUploadItemPreview>
+
+            <div className="min-w-0 flex-1 overflow-hidden">
+              <FileUploadItemName />
+              <FileUploadItemSize />
+            </div>
+
+            <FileUploadItemDeleteTrigger
+              asChild
+              className="me-auto rtl:ms-auto"
+            >
+              <Button
+                className={cn(
+                  "rounded-lg",
+                  "hover:bg-destructive/10 hover:text-destructive",
+                  "dark:hover:bg-destructive-foreground/10 dark:hover:text-destructive-foreground"
+                )}
+                size="icon-xs"
+                variant="ghost"
+              >
+                <XIcon />
+              </Button>
+            </FileUploadItemDeleteTrigger>
+          </FileUploadItem>
+        );
+      })}
+    </FileUploadItemGroup>
+  );
+};
 
 export const FileUploadItem = (
   props: React.ComponentProps<typeof ArkFileUpload.Item>
@@ -102,14 +219,7 @@ export const FileUploadItem = (
 
   return (
     <ArkFileUpload.Item
-      className={cn(
-        "relative",
-        "flex flex-1 items-center gap-2",
-        "p-2",
-        "rounded-md border",
-        "fade-in-0 slide-in-from-top-5 animate-in",
-        className
-      )}
+      className={cn("relative inline-flex", className)}
       data-slot="file-upload-item"
       {...rest}
     />
@@ -123,7 +233,14 @@ export const FileUploadItemPreview = (
 
   return (
     <ArkFileUpload.ItemPreview
-      className={cn(className)}
+      className={cn(
+        "flex shrink-0 items-center justify-center",
+        "font-semibold text-[0.5rem] text-primary",
+        "bg-primary/10",
+        "select-none",
+        "rounded-full",
+        className
+      )}
       data-slot="file-upload-item-preview"
       {...rest}
     />
@@ -137,7 +254,12 @@ export const FileUploadItemPreviewImage = (
 
   return (
     <ArkFileUpload.ItemPreviewImage
-      className={cn("aspect-square h-10 rounded-md object-cover", className)}
+      className={cn(
+        "aspect-square size-full",
+        "object-cover",
+        "rounded-lg",
+        className
+      )}
       data-slot="file-upload-item-preview-image"
       {...rest}
     />
@@ -151,14 +273,19 @@ export const FileUploadItemName = (
 
   return (
     <ArkFileUpload.ItemName
-      className={cn("line-clamp-1 min-w-0 truncate text-sm", className)}
+      className={cn(
+        "truncate font-medium text-xs",
+        "min-w-0",
+        "overflow-hidden",
+        className
+      )}
       data-slot="file-upload-item-name"
       {...rest}
     />
   );
 };
 
-export const FileUploadItemSizeText = (
+export const FileUploadItemSize = (
   props: React.ComponentProps<typeof ArkFileUpload.ItemSizeText>
 ) => {
   const { className, ...rest } = props;
@@ -166,7 +293,7 @@ export const FileUploadItemSizeText = (
   return (
     <ArkFileUpload.ItemSizeText
       className={cn("text-muted-foreground text-xs", className)}
-      data-slot="file-upload-item-size-text"
+      data-slot="file-upload-item-size"
       {...rest}
     />
   );
@@ -175,18 +302,30 @@ export const FileUploadItemSizeText = (
 export const FileUploadItemDeleteTrigger = (
   props: React.ComponentProps<typeof ArkFileUpload.ItemDeleteTrigger>
 ) => {
-  const { className, ...rest } = props;
-
   return (
     <ArkFileUpload.ItemDeleteTrigger
-      className={cn(className)}
       data-slot="file-upload-item-delete-trigger"
-      {...rest}
-      asChild
-    >
-      <Button size="icon-sm" variant="ghost">
-        <Trash2 />
-      </Button>
-    </ArkFileUpload.ItemDeleteTrigger>
+      {...props}
+    />
   );
 };
+
+export const FileUploadClearTrigger = (
+  props: React.ComponentProps<typeof ArkFileUpload.ClearTrigger>
+) => {
+  return (
+    <ArkFileUpload.ClearTrigger
+      data-slot="file-upload-clear-trigger"
+      {...props}
+    />
+  );
+};
+
+export const FileUploadRootProvider = (
+  props: React.ComponentProps<typeof ArkFileUpload.RootProvider>
+) => (
+  <ArkFileUpload.RootProvider
+    data-slot="file-upload-root-provider"
+    {...props}
+  />
+);

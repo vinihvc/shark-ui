@@ -1,0 +1,792 @@
+---
+title: TanStack Form
+description: Build forms in React using TanStack Form and Zod with Shark UI components
+links:
+  doc: https://ui.shadcn.com/docs/forms/tanstack-form
+---
+
+This guide explores how to build forms using TanStack Form. You'll learn to create forms with the `Field` component, implement schema validation with Zod, handle errors, and ensure accessibility.
+
+## Demo
+
+We'll start by building the following form. It has a simple text input and a textarea. On submit, we'll validate the form data and display any errors.
+
+> **Note:** For the purpose of this demo, we have intentionally disabled browser validation to show how schema validation and form errors work in TanStack Form. It is recommended to add basic browser validation in your production code.
+
+```tsx
+/* eslint-disable react/no-children-prop */
+"use client"
+
+import * as React from "react"
+import { useForm } from "@tanstack/react-form"
+import * as z from "zod"
+
+import { Button } from "@/registry/react/components/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/react/components/card"
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/react/components/field"
+import { Input } from "@/registry/react/components/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/registry/react/components/input-group"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+
+export const BugReportForm = () => {
+  const form = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+    validators: {
+      onSubmit: formSchema,
+    },
+    onSubmit: async ({ value }) => {
+      console.log(value)
+    },
+  })
+
+  return (
+    <Card className="w-full sm:max-w-md">
+      <CardHeader>
+        <CardTitle>Bug Report</CardTitle>
+        <CardDescription>
+          Help us improve by reporting bugs you encounter.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form
+          id="bug-report-form"
+          onSubmit={(e) => {
+            e.preventDefault()
+            form.handleSubmit()
+          }}
+        >
+          <FieldGroup>
+            <form.Field
+              name="title"
+              children={(field) => {
+                const isInvalid =
+                  field.state.meta.isTouched && !field.state.meta.isValid
+                return (
+                  <Field invalid={isInvalid}>
+                    <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+                    <Input
+                      id={field.name}
+                      name={field.name}
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={(e) => field.handleChange(e.target.value)}
+                      invalid={isInvalid}
+                      placeholder="Login button not working on mobile"
+                      autoComplete="off"
+                    />
+                    {isInvalid && (
+                      <FieldError>
+                        {field.state.meta.errors.join(", ")}
+                      </FieldError>
+                    )}
+                  </Field>
+                )
+              }}
+            />
+            <form.Field
+              name="description"
+              children={(field) => {
+                const isInvalid =
+                  field.state.meta.isTouched && !field.state.meta.isValid
+                return (
+                  <Field invalid={isInvalid}>
+                    <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                    <InputGroup>
+                      <InputGroupTextarea
+                        id={field.name}
+                        name={field.name}
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        placeholder="I'm having an issue with the login button on mobile."
+                        rows={6}
+                        className="min-h-24 resize-none"
+                        invalid={isInvalid}
+                      />
+                      <InputGroupAddon align="block-end">
+                        <InputGroupText className="tabular-nums">
+                          {field.state.value.length}/100 characters
+                        </InputGroupText>
+                      </InputGroupAddon>
+                    </InputGroup>
+                    <FieldDescription>
+                      Include steps to reproduce, expected behavior, and what
+                      actually happened.
+                    </FieldDescription>
+                    {isInvalid && (
+                      <FieldError>
+                        {field.state.meta.errors.join(", ")}
+                      </FieldError>
+                    )}
+                  </Field>
+                )
+              }}
+            />
+          </FieldGroup>
+        </form>
+      </CardContent>
+      <CardFooter>
+        <Field orientation="horizontal">
+          <Button type="button" variant="outline" onClick={() => form.reset()}>
+            Reset
+          </Button>
+          <Button type="submit" form="bug-report-form">
+            Submit
+          </Button>
+        </Field>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+## Approach
+
+This form leverages TanStack Form for powerful, headless form handling. We'll build our form using the `Field` component, which gives you complete flexibility over the markup and styling.
+
+- Uses TanStack Form's `useForm` hook for form state management.
+- `form.Field` component with render prop pattern for controlled inputs.
+- `Field` components for building accessible forms.
+- Client-side validation using Zod.
+- Real-time validation feedback.
+
+## Anatomy
+
+Here's a basic example of a form using TanStack Form with the `Field` component.
+
+```tsx
+<form
+  onSubmit={(e) => {
+    e.preventDefault()
+    form.handleSubmit()
+  }}
+>
+  <FieldGroup>
+    <form.Field
+      name="title"
+      children={(field) => {
+        const isInvalid =
+          field.state.meta.isTouched && !field.state.meta.isValid
+        return (
+          <Field invalid={isInvalid}>
+            <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+            <Input
+              id={field.name}
+              name={field.name}
+              value={field.state.value}
+              onBlur={field.handleBlur}
+              onChange={(e) => field.handleChange(e.target.value)}
+              invalid={isInvalid}
+              placeholder="Login button not working on mobile"
+              autoComplete="off"
+            />
+            <FieldDescription>
+              Provide a concise title for your bug report.
+            </FieldDescription>
+            {isInvalid && (
+              <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+            )}
+          </Field>
+        )
+      }}
+    />
+  </FieldGroup>
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+## Form
+
+### Create a schema
+
+We'll start by defining the shape of our form using a Zod schema.
+
+> **Note:** This example uses `zod v3` for schema validation. TanStack Form integrates seamlessly with Zod and other Standard Schema validation libraries through its validators API.
+
+```tsx
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+```
+
+### Setup the form
+
+Use the `useForm` hook from TanStack Form to create your form instance with Zod validation.
+
+```tsx
+import { useForm } from "@tanstack/react-form"
+import * as z from "zod"
+
+const formSchema = z.object({
+  // ...
+})
+
+export const BugReportForm = () => {
+  const form = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+    validators: {
+      onSubmit: formSchema,
+    },
+    onSubmit: async ({ value }) => {
+      console.log(value)
+    },
+  })
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        form.handleSubmit()
+      }}
+    >
+      {/* ... */}
+    </form>
+  )
+}
+```
+
+We are using `onSubmit` to validate the form data here. TanStack Form supports other validation modes, which you can read about in the [documentation](https://tanstack.com/form/latest/docs/framework/react/guides/dynamic-validation).
+
+### Done
+
+That's it. You now have a fully accessible form with client-side validation.
+
+When you submit the form, the `onSubmit` function will be called with the validated form data. If the form data is invalid, TanStack Form will display the errors next to each field.
+
+## Validation
+
+### Client-side Validation
+
+TanStack Form validates your form data using the Zod schema. Validation happens in real-time as the user types.
+
+```tsx
+import { useForm } from "@tanstack/react-form"
+
+const formSchema = z.object({
+  // ...
+})
+
+export const BugReportForm = () => {
+  const form = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+    validators: {
+      onSubmit: formSchema,
+    },
+    onSubmit: async ({ value }) => {
+      console.log(value)
+    },
+  })
+
+  return <form onSubmit={/* ... */}>{/* ... */}</form>
+}
+```
+
+### Validation Modes
+
+TanStack Form supports different validation strategies through the `validators` option:
+
+| Mode | Description |
+| --- | --- |
+| `"onChange"` | Validation triggers on every change. |
+| `"onBlur"` | Validation triggers on blur. |
+| `"onSubmit"` | Validation triggers on submit. |
+
+```tsx
+const form = useForm({
+  defaultValues: {
+    title: "",
+    description: "",
+  },
+  validators: {
+    onSubmit: formSchema,
+    onChange: formSchema,
+    onBlur: formSchema,
+  },
+})
+```
+
+## Displaying Errors
+
+Display errors next to the field using `FieldError`. For styling and accessibility:
+
+- Add the `invalid` prop to the `Field` component.
+- Add the `invalid` prop to the form control such as `Input`, `SelectTrigger`, `Checkbox`, etc.
+
+```tsx
+<form.Field
+  name="email"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+
+    return (
+      <Field invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+        <Input
+          id={field.name}
+          name={field.name}
+          value={field.state.value}
+          onBlur={field.handleBlur}
+          onChange={(e) => field.handleChange(e.target.value)}
+          type="email"
+          invalid={isInvalid}
+        />
+        {isInvalid && (
+          <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+        )}
+      </Field>
+    )
+  }}
+/>
+```
+
+## Working with Different Field Types
+
+### Input
+
+- For input fields, use `field.state.value` and `field.handleChange` on the `Input` component.
+- To show errors, add the `invalid` prop to the `Input` and the `invalid` prop to the `Field` component.
+
+```tsx
+<form.Field
+  name="username"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field invalid={isInvalid}>
+        <FieldLabel htmlFor="form-tanstack-input-username">Username</FieldLabel>
+        <Input
+          id="form-tanstack-input-username"
+          name={field.name}
+          value={field.state.value}
+          onBlur={field.handleBlur}
+          onChange={(e) => field.handleChange(e.target.value)}
+          invalid={isInvalid}
+          placeholder="shadcn"
+          autoComplete="username"
+        />
+        <FieldDescription>
+          This is your public display name. Must be between 3 and 10
+          characters. Must only contain letters, numbers, and underscores.
+        </FieldDescription>
+        {isInvalid && (
+          <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+        )}
+      </Field>
+    )
+  }}
+/>
+```
+
+### Textarea
+
+- For textarea fields, use `field.state.value` and `field.handleChange` on the `Textarea` component.
+- To show errors, add the `invalid` prop to the `Textarea` and the `invalid` prop to the `Field` component.
+
+```tsx
+<form.Field
+  name="about"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field invalid={isInvalid}>
+        <FieldLabel htmlFor="form-tanstack-textarea-about">
+          More about you
+        </FieldLabel>
+        <Textarea
+          id="form-tanstack-textarea-about"
+          name={field.name}
+          value={field.state.value}
+          onBlur={field.handleBlur}
+          onChange={(e) => field.handleChange(e.target.value)}
+          invalid={isInvalid}
+          placeholder="I'm a software engineer..."
+          className="min-h-[120px]"
+        />
+        <FieldDescription>
+          Tell us more about yourself. This will be used to help us
+          personalize your experience.
+        </FieldDescription>
+        {isInvalid && (
+          <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+        )}
+      </Field>
+    )
+  }}
+/>
+```
+
+### Select
+
+- For select components, use `field.state.value` and `field.handleChange` on the `NativeSelect` or `Select` component.
+- To show errors, add the `invalid` prop to the trigger and the `invalid` prop to the `Field` component.
+
+```tsx
+<form.Field
+  name="language"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field orientation="responsive" invalid={isInvalid}>
+        <FieldContent>
+          <FieldLabel htmlFor="form-tanstack-select-language">
+            Spoken Language
+          </FieldLabel>
+          <FieldDescription>
+            For best results, select the language you speak.
+          </FieldDescription>
+          {isInvalid && (
+            <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+          )}
+        </FieldContent>
+        <NativeSelect
+          id="form-tanstack-select-language"
+          name={field.name}
+          value={field.state.value}
+          onChange={(e) => field.handleChange(e.target.value)}
+          invalid={isInvalid}
+        >
+          <NativeSelectOption value="">Select</NativeSelectOption>
+          <NativeSelectOption value="en">English</NativeSelectOption>
+        </NativeSelect>
+      </Field>
+    )
+  }}
+/>
+```
+
+### Checkbox
+
+- For checkbox, use `field.state.value` and `field.handleChange` on the `Checkbox` component.
+- For checkbox arrays, use `mode="array"` on the `form.Field` component and TanStack Form's array helpers (`pushValue`, `removeValue`).
+- To show errors, add the `invalid` prop to the `Checkbox` and the `invalid` prop to the `Field` component.
+- Remember to add `data-slot="checkbox-group"` to the `FieldGroup` component for proper styling and spacing.
+
+```tsx
+<form.Field
+  name="tasks"
+  mode="array"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <FieldSet>
+        <FieldLegend variant="label">Tasks</FieldLegend>
+        <FieldDescription>
+          Get notified when tasks you've created have updates.
+        </FieldDescription>
+        <FieldGroup data-slot="checkbox-group">
+          {tasks.map((task) => (
+            <Field
+              key={task.id}
+              orientation="horizontal"
+              invalid={isInvalid}
+            >
+              <Checkbox
+                id={`form-tanstack-checkbox-${task.id}`}
+                name={field.name}
+                invalid={isInvalid}
+                checked={field.state.value.includes(task.id)}
+                onCheckedChange={(checked) => {
+                  if (checked) {
+                    field.pushValue(task.id)
+                  } else {
+                    const index = field.state.value.indexOf(task.id)
+                    if (index > -1) {
+                      field.removeValue(index)
+                    }
+                  }
+                }}
+              />
+              <FieldLabel
+                htmlFor={`form-tanstack-checkbox-${task.id}`}
+                className="font-normal"
+              >
+                {task.label}
+              </FieldLabel>
+            </Field>
+          ))}
+        </FieldGroup>
+        {isInvalid && (
+          <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+        )}
+      </FieldSet>
+    )
+  }}
+/>
+```
+
+### Radio Group
+
+- For radio groups, use `field.state.value` and `field.handleChange` on the `RadioGroup` component.
+- To show errors, add the `invalid` prop to the `RadioGroupItem` and the `invalid` prop to the `Field` component.
+
+```tsx
+<form.Field
+  name="plan"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <FieldSet>
+        <FieldLegend>Plan</FieldLegend>
+        <FieldDescription>
+          You can upgrade or downgrade your plan at any time.
+        </FieldDescription>
+        <RadioGroup
+          name={field.name}
+          value={field.state.value}
+          onValueChange={field.handleChange}
+        >
+          {plans.map((plan) => (
+            <FieldLabel
+              key={plan.id}
+              htmlFor={`form-tanstack-radiogroup-${plan.id}`}
+            >
+              <Field orientation="horizontal" invalid={isInvalid}>
+                <FieldContent>
+                  <FieldTitle>{plan.title}</FieldTitle>
+                  <FieldDescription>{plan.description}</FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value={plan.id}
+                  id={`form-tanstack-radiogroup-${plan.id}`}
+                  invalid={isInvalid}
+                />
+              </Field>
+            </FieldLabel>
+          ))}
+        </RadioGroup>
+        {isInvalid && (
+          <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+        )}
+      </FieldSet>
+    )
+  }}
+/>
+```
+
+### Switch
+
+- For switches, use `field.state.value` and `field.handleChange` on the `Switch` component.
+- To show errors, add the `invalid` prop to the `Switch` and the `invalid` prop to the `Field` component.
+
+```tsx
+<form.Field
+  name="twoFactor"
+  children={(field) => {
+    const isInvalid =
+      field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field orientation="horizontal" invalid={isInvalid}>
+        <FieldContent>
+          <FieldLabel htmlFor="form-tanstack-switch-twoFactor">
+            Multi-factor authentication
+          </FieldLabel>
+          <FieldDescription>
+            Enable multi-factor authentication to secure your account.
+          </FieldDescription>
+          {isInvalid && (
+            <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
+          )}
+        </FieldContent>
+        <Switch
+          id="form-tanstack-switch-twoFactor"
+          name={field.name}
+          checked={field.state.value}
+          onCheckedChange={field.handleChange}
+          invalid={isInvalid}
+        />
+      </Field>
+    )
+  }}
+/>
+```
+
+## Resetting the Form
+
+Use `form.reset()` to reset the form to its default values.
+
+```tsx
+<Button type="button" variant="outline" onClick={() => form.reset()}>
+  Reset
+</Button>
+```
+
+## Array Fields
+
+TanStack Form provides powerful array field management with `mode="array"`. This allows you to dynamically add, remove, and update array items with full validation support.
+
+### Array Field Structure
+
+Use `mode="array"` on the parent field to enable array field management.
+
+```tsx
+<form.Field
+  name="emails"
+  mode="array"
+  children={(field) => {
+    return (
+      <FieldSet>
+        <FieldLegend variant="label">Email Addresses</FieldLegend>
+        <FieldDescription>
+          Add up to 5 email addresses where we can contact you.
+        </FieldDescription>
+        <FieldGroup>
+          {field.state.value.map((_, index) => (
+            // Nested field for each array item
+          ))}
+        </FieldGroup>
+      </FieldSet>
+    )
+  }}
+/>
+```
+
+### Nested Fields
+
+Access individual array items using bracket notation: `fieldName[index].propertyName`.
+
+```tsx
+<form.Field
+  name={`emails[${index}].address`}
+  children={(subField) => {
+    const isSubFieldInvalid =
+      subField.state.meta.isTouched && !subField.state.meta.isValid
+    return (
+      <Field orientation="horizontal" invalid={isSubFieldInvalid}>
+        <FieldContent>
+          <InputGroup>
+            <InputGroupInput
+              id={`form-tanstack-array-email-${index}`}
+              name={subField.name}
+              value={subField.state.value}
+              onBlur={subField.handleBlur}
+              onChange={(e) => subField.handleChange(e.target.value)}
+              invalid={isSubFieldInvalid}
+              placeholder="name@example.com"
+              type="email"
+            />
+            {field.state.value.length > 1 && (
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton
+                  type="button"
+                  variant="ghost"
+                  size="icon-xs"
+                  onClick={() => field.removeValue(index)}
+                  aria-label={`Remove email ${index + 1}`}
+                >
+                  <XIcon />
+                </InputGroupButton>
+              </InputGroupAddon>
+            )}
+          </InputGroup>
+          {isSubFieldInvalid && (
+            <FieldError>{subField.state.meta.errors.join(", ")}</FieldError>
+          )}
+        </FieldContent>
+      </Field>
+    )
+  }}
+/>
+```
+
+### Adding Items
+
+Use `field.pushValue(item)` to add items to an array field.
+
+```tsx
+<Button
+  type="button"
+  variant="outline"
+  size="sm"
+  onClick={() => field.pushValue({ address: "" })}
+  disabled={field.state.value.length >= 5}
+>
+  Add Email Address
+</Button>
+```
+
+### Removing Items
+
+Use `field.removeValue(index)` to remove items from an array field.
+
+```tsx
+{field.state.value.length > 1 && (
+  <InputGroupButton
+    type="button"
+    variant="ghost"
+    size="icon-xs"
+    onClick={() => field.removeValue(index)}
+    aria-label={`Remove email ${index + 1}`}
+  >
+    <XIcon />
+  </InputGroupButton>
+)}
+```
+
+### Array Validation
+
+Validate array fields using Zod's array methods.
+
+```tsx
+const formSchema = z.object({
+  emails: z
+    .array(
+      z.object({
+        address: z.string().email("Enter a valid email address."),
+      })
+    )
+    .min(1, "Add at least one email address.")
+    .max(5, "You can add up to 5 email addresses."),
+})
+```

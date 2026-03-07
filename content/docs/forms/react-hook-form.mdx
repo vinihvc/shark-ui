@@ -1,0 +1,689 @@
+---
+title: React Hook Form
+description: Build forms in React using React Hook Form and Zod with Shark UI components
+links:
+  doc: https://ui.shadcn.com/docs/forms/react-hook-form
+---
+
+In this guide, we will take a look at building forms with React Hook Form. We'll cover building forms with the `Field` component, adding schema validation using Zod, error handling, accessibility, and more.
+
+## Demo
+
+We are going to build the following form. It has a simple text input and a textarea. On submit, we'll validate the form data and display any errors.
+
+> **Note:** For the purpose of this demo, we have intentionally disabled browser validation to show how schema validation and form errors work in React Hook Form. It is recommended to add basic browser validation in your production code.
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { Button } from "@/registry/react/components/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/react/components/card"
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/react/components/field"
+import { Input } from "@/registry/react/components/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/registry/react/components/input-group"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+
+export const BugReportForm = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data)
+  }
+
+  return (
+    <Card className="w-full sm:max-w-md">
+      <CardHeader>
+        <CardTitle>Bug Report</CardTitle>
+        <CardDescription>
+          Help us improve by reporting bugs you encounter.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+          <FieldGroup>
+            <Controller
+              name="title"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-demo-title">
+                    Bug Title
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-rhf-demo-title"
+                    invalid={fieldState.invalid}
+                    placeholder="Login button not working on mobile"
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError>{fieldState.error?.message}</FieldError>
+                  )}
+                </Field>
+              )}
+            />
+            <Controller
+              name="description"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-demo-description">
+                    Description
+                  </FieldLabel>
+                  <InputGroup>
+                    <InputGroupTextarea
+                      {...field}
+                      id="form-rhf-demo-description"
+                      placeholder="I'm having an issue with the login button on mobile."
+                      rows={6}
+                      className="min-h-24 resize-none"
+                      invalid={fieldState.invalid}
+                    />
+                    <InputGroupAddon align="block-end">
+                      <InputGroupText className="tabular-nums">
+                        {field.value.length}/100 characters
+                      </InputGroupText>
+                    </InputGroupAddon>
+                  </InputGroup>
+                  <FieldDescription>
+                    Include steps to reproduce, expected behavior, and what
+                    actually happened.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError>{fieldState.error?.message}</FieldError>
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+        </form>
+      </CardContent>
+      <CardFooter>
+        <Field orientation="horizontal">
+          <Button type="button" variant="outline" onClick={() => form.reset()}>
+            Reset
+          </Button>
+          <Button type="submit" form="form-rhf-demo">
+            Submit
+          </Button>
+        </Field>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+## Approach
+
+This form leverages React Hook Form for performant, flexible form handling. We'll build our form using the `Field` component, which gives you complete flexibility over the markup and styling.
+
+- Uses React Hook Form's `useForm` hook for form state management.
+- `Controller` component for controlled inputs.
+- `Field` components for building accessible forms.
+- Client-side validation using Zod with `zodResolver`.
+
+## Anatomy
+
+Here's a basic example of a form using the `Controller` component from React Hook Form and the `Field` component.
+
+```tsx
+<Controller
+  name="title"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        invalid={fieldState.invalid}
+        placeholder="Login button not working on mobile"
+        autoComplete="off"
+      />
+      <FieldDescription>
+        Provide a concise title for your bug report.
+      </FieldDescription>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+## Form
+
+### Create a form schema
+
+We'll start by defining the shape of our form using a Zod schema.
+
+> **Note:** This example uses `zod v3` for schema validation, but you can replace it with any other Standard Schema validation library supported by React Hook Form.
+
+```tsx
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+```
+
+### Setup the form
+
+Next, we'll use the `useForm` hook from React Hook Form to create our form instance. We'll also add the Zod resolver to validate the form data.
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+
+export const BugReportForm = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data)
+  }
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* Build the form here */}
+    </form>
+  )
+}
+```
+
+### Done
+
+That's it. You now have a fully accessible form with client-side validation.
+
+When you submit the form, the `onSubmit` function will be called with the validated form data. If the form data is invalid, React Hook Form will display the errors next to each field.
+
+## Validation
+
+### Client-side Validation
+
+React Hook Form validates your form data using the Zod schema. Define a schema and pass it to the `resolver` option of the `useForm` hook.
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+})
+
+export const ExampleForm = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+}
+```
+
+### Validation Modes
+
+React Hook Form supports different validation modes.
+
+```tsx
+const form = useForm<z.infer<typeof formSchema>>({
+  resolver: zodResolver(formSchema),
+  mode: "onChange",
+})
+```
+
+| Mode | Description |
+| --- | --- |
+| `"onChange"` | Validation triggers on every change. |
+| `"onBlur"` | Validation triggers on blur. |
+| `"onSubmit"` | Validation triggers on submit (default). |
+| `"onTouched"` | Validation triggers on first blur, then on every change. |
+| `"all"` | Validation triggers on blur and change. |
+
+## Displaying Errors
+
+Display errors next to the field using `FieldError`. For styling and accessibility:
+
+- Add the `invalid` prop to the `Field` component.
+- Add the `invalid` prop to the form control such as `Input`, `SelectTrigger`, `Checkbox`, etc.
+
+```tsx
+<Controller
+  name="email"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        type="email"
+        invalid={fieldState.invalid}
+      />
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+## Working with Different Field Types
+
+### Input
+
+- For input fields, spread the `field` object onto the `Input` component.
+- To show errors, add the `invalid` prop to the `Input` and the `invalid` prop to the `Field` component.
+
+```tsx
+<Controller
+  name="name"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+      <Input {...field} id={field.name} invalid={fieldState.invalid} />
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Textarea
+
+- For textarea fields, spread the `field` object onto the `Textarea` (or `InputGroupTextarea`) component.
+- To show errors, add the `invalid` prop to the textarea and the `invalid` prop to the `Field` component.
+
+```tsx
+<Controller
+  name="about"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor="form-rhf-textarea-about">More about you</FieldLabel>
+      <Textarea
+        {...field}
+        id="form-rhf-textarea-about"
+        invalid={fieldState.invalid}
+        placeholder="I'm a software engineer..."
+        className="min-h-[120px]"
+      />
+      <FieldDescription>
+        Tell us more about yourself. This will be used to help us personalize
+        your experience.
+      </FieldDescription>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Select
+
+- For select components, use `field.value` and `field.onChange` on the `NativeSelect` or `Select` component.
+- To show errors, add the `invalid` prop to the trigger and the `invalid` prop to the `Field` component.
+
+```tsx
+<Controller
+  name="language"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field orientation="responsive" invalid={fieldState.invalid}>
+      <FieldContent>
+        <FieldLabel htmlFor="form-rhf-select-language">
+          Spoken Language
+        </FieldLabel>
+        <FieldDescription>
+          For best results, select the language you speak.
+        </FieldDescription>
+        {fieldState.invalid && (
+          <FieldError>{fieldState.error?.message}</FieldError>
+        )}
+      </FieldContent>
+      <NativeSelect
+        id="form-rhf-select-language"
+        invalid={fieldState.invalid}
+        value={field.value}
+        onChange={(e) => field.onChange(e.target.value)}
+      >
+        <NativeSelectOption value="">Select</NativeSelectOption>
+        <NativeSelectOption value="en">English</NativeSelectOption>
+      </NativeSelect>
+    </Field>
+  )}
+/>
+```
+
+### Checkbox
+
+- For checkbox arrays, use `field.value` and `field.onChange` with array manipulation.
+- To show errors, add the `invalid` prop to the `Checkbox` and the `invalid` prop to the `Field` component.
+- Remember to add `data-slot="checkbox-group"` to the `FieldGroup` component for proper styling and spacing.
+
+```tsx
+<Controller
+  name="tasks"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <FieldSet>
+      <FieldLegend variant="label">Tasks</FieldLegend>
+      <FieldDescription>
+        Get notified when tasks you've created have updates.
+      </FieldDescription>
+      <FieldGroup data-slot="checkbox-group">
+        {tasks.map((task) => (
+          <Field
+            key={task.id}
+            orientation="horizontal"
+            invalid={fieldState.invalid}
+          >
+            <Checkbox
+              id={`form-rhf-checkbox-${task.id}`}
+              name={field.name}
+              invalid={fieldState.invalid}
+              checked={field.value.includes(task.id)}
+              onCheckedChange={(checked) => {
+                const newValue = checked
+                  ? [...field.value, task.id]
+                  : field.value.filter((value) => value !== task.id)
+                field.onChange(newValue)
+              }}
+            />
+            <FieldLabel
+              htmlFor={`form-rhf-checkbox-${task.id}`}
+              className="font-normal"
+            >
+              {task.label}
+            </FieldLabel>
+          </Field>
+        ))}
+      </FieldGroup>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </FieldSet>
+  )}
+/>
+```
+
+### Radio Group
+
+- For radio groups, use `field.value` and `field.onChange` on the `RadioGroup` component.
+- To show errors, add the `invalid` prop to the `RadioGroupItem` and the `invalid` prop to the `Field` component.
+
+```tsx
+<Controller
+  name="plan"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <FieldSet>
+      <FieldLegend>Plan</FieldLegend>
+      <FieldDescription>
+        You can upgrade or downgrade your plan at any time.
+      </FieldDescription>
+      <RadioGroup
+        name={field.name}
+        value={field.value}
+        onValueChange={field.onChange}
+      >
+        {plans.map((plan) => (
+          <FieldLabel key={plan.id} htmlFor={`form-rhf-radiogroup-${plan.id}`}>
+            <Field orientation="horizontal" invalid={fieldState.invalid}>
+              <FieldContent>
+                <FieldTitle>{plan.title}</FieldTitle>
+                <FieldDescription>{plan.description}</FieldDescription>
+              </FieldContent>
+              <RadioGroupItem
+                value={plan.id}
+                id={`form-rhf-radiogroup-${plan.id}`}
+                invalid={fieldState.invalid}
+              />
+            </Field>
+          </FieldLabel>
+        ))}
+      </RadioGroup>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </FieldSet>
+  )}
+/>
+```
+
+### Switch
+
+- For switches, use `field.value` and `field.onChange` on the `Switch` component.
+- To show errors, add the `invalid` prop to the `Switch` and the `invalid` prop to the `Field` component.
+
+```tsx
+<Controller
+  name="twoFactor"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field orientation="horizontal" invalid={fieldState.invalid}>
+      <FieldContent>
+        <FieldLabel htmlFor="form-rhf-switch-twoFactor">
+          Multi-factor authentication
+        </FieldLabel>
+        <FieldDescription>
+          Enable multi-factor authentication to secure your account.
+        </FieldDescription>
+        {fieldState.invalid && (
+          <FieldError>{fieldState.error?.message}</FieldError>
+        )}
+      </FieldContent>
+      <Switch
+        id="form-rhf-switch-twoFactor"
+        name={field.name}
+        checked={field.value}
+        onCheckedChange={field.onChange}
+        invalid={fieldState.invalid}
+      />
+    </Field>
+  )}
+/>
+```
+
+## Resetting the Form
+
+Use `form.reset()` to reset the form to its default values.
+
+```tsx
+<Button type="button" variant="outline" onClick={() => form.reset()}>
+  Reset
+</Button>
+```
+
+## Array Fields
+
+React Hook Form provides a `useFieldArray` hook for managing dynamic array fields. This is useful when you need to add or remove fields dynamically.
+
+### Using useFieldArray
+
+Use the `useFieldArray` hook to manage array fields. It provides `fields`, `append`, and `remove` methods.
+
+```tsx
+import { useFieldArray, useForm } from "react-hook-form"
+
+export const ExampleForm = () => {
+  const form = useForm({
+    // ... form config
+  })
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "emails",
+  })
+}
+```
+
+### Array Field Structure
+
+Wrap your array fields in a `FieldSet` with a `FieldLegend` and `FieldDescription`.
+
+```tsx
+<FieldSet className="gap-4">
+  <FieldLegend variant="label">Email Addresses</FieldLegend>
+  <FieldDescription>
+    Add up to 5 email addresses where we can contact you.
+  </FieldDescription>
+  <FieldGroup className="gap-4">{/* Array items go here */}</FieldGroup>
+</FieldSet>
+```
+
+### Controller Pattern for Array Items
+
+Map over the `fields` array and use `Controller` for each item. **Make sure to use `field.id` as the key.**
+
+```tsx
+{fields.map((field, index) => (
+  <Controller
+    key={field.id}
+    name={`emails.${index}.address`}
+    control={form.control}
+    render={({ field: controllerField, fieldState }) => (
+      <Field orientation="horizontal" invalid={fieldState.invalid}>
+        <FieldContent>
+          <InputGroup>
+            <InputGroupInput
+              {...controllerField}
+              id={`form-rhf-array-email-${index}`}
+              invalid={fieldState.invalid}
+              placeholder="name@example.com"
+              type="email"
+              autoComplete="email"
+            />
+            {/* Remove button */}
+          </InputGroup>
+          {fieldState.invalid && (
+            <FieldError>{fieldState.error?.message}</FieldError>
+          )}
+        </FieldContent>
+      </Field>
+    )}
+  />
+))}
+```
+
+### Adding Items
+
+Use the `append` method to add new items to the array.
+
+```tsx
+<Button
+  type="button"
+  variant="outline"
+  size="sm"
+  onClick={() => append({ address: "" })}
+  disabled={fields.length >= 5}
+>
+  Add Email Address
+</Button>
+```
+
+### Removing Items
+
+Use the `remove` method to remove items from the array. Add the remove button conditionally.
+
+```tsx
+{fields.length > 1 && (
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton
+      type="button"
+      variant="ghost"
+      size="icon-xs"
+      onClick={() => remove(index)}
+      aria-label={`Remove email ${index + 1}`}
+    >
+      <XIcon />
+    </InputGroupButton>
+  </InputGroupAddon>
+)}
+```
+
+### Array Validation
+
+Use Zod's `array` method to validate array fields.
+
+```tsx
+const formSchema = z.object({
+  emails: z
+    .array(
+      z.object({
+        address: z.string().email("Enter a valid email address."),
+      })
+    )
+    .min(1, "Add at least one email address.")
+    .max(5, "You can add up to 5 email addresses."),
+})
+```

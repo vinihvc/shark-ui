@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "prose",
+  "type": "registry:ui",
+  "dependencies": [],
+  "cssVars": {},
+  "files": [
+    {
+      "path": "registry/react/components/prose.tsx",
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface ProseProps extends React.ComponentProps<typeof ark.div> {}\n\nexport const Prose = (props: ProseProps) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\"prose mx-auto max-w-[65ch]\", className)}\n      data-slot=\"prose\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

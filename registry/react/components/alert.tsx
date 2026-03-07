@@ -1,4 +1,6 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -9,46 +11,46 @@ export const alertVariants = tv({
     "px-3.5 py-3",
     "grid w-full items-start gap-x-2 gap-y-0.5",
     "text-card-foreground text-sm",
-    "rounded-lg border",
+    "rounded-xl border",
     "has-[>svg]:has-data-[slot=alert-action]:grid-cols-[calc(var(--spacing)*4)_1fr_auto] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr]",
-    "has-[>svg]:gap-x-2 [&>svg]:h-lh [&>svg]:w-4",
+    "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
     "has-data-[slot=alert-action]:grid-cols-[1fr_auto]",
   ],
   variants: {
     variant: {
-      solid: [
+      default: [
         "bg-input/4",
-        "[&>svg]:text-muted-foreground",
+        "[&_svg]:text-muted-foreground",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-muted",
       ],
       destructive: [
         "bg-destructive/4",
         "border-destructive/32",
-        "[&>svg]:text-destructive",
+        "[&_svg]:text-destructive",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-destructive/10",
       ],
       info: [
         "bg-info/4",
         "border-info/32",
-        "[&>svg]:text-info",
+        "[&_svg]:text-info",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-info/10",
       ],
       warning: [
         "bg-warning/4",
         "border-warning/32",
-        "[&>svg]:text-warning",
+        "[&_svg]:text-warning",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-warning/10",
       ],
       success: [
         "bg-success/4",
         "border-success/32",
-        "[&>svg]:text-success",
+        "[&_svg]:text-success",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-success/10",
       ],
     },
   },
   defaultVariants: {
-    variant: "solid",
+    variant: "default",
   },
 });
 
@@ -89,7 +91,7 @@ export const AlertDescription = (
     <ark.div
       className={cn(
         "flex flex-col gap-2.5",
-        "text-balance text-muted-foreground",
+        "text-muted-foreground",
         "[svg~&]:col-start-2",
         className
       )}

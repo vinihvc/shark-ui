@@ -1,27 +1,20 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
-import {
-  ComboboxContent,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxItemText,
-  ComboboxList,
-  createListCollection,
-} from "@ark-ui/react/combobox";
+import { ComboboxItem, ComboboxItemText } from "@ark-ui/react/combobox";
+import { ark } from "@ark-ui/react/factory";
 import { SearchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Combobox,
+  ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
   ComboboxGroup,
   ComboboxGroupLabel,
+  ComboboxInput,
 } from "./combobox";
 
-export const createCollection = createListCollection;
-
-export const Command = <T,>(
+export const Command = <T extends { label: string; value: string }>(
   props: React.ComponentProps<typeof Combobox<T>>
 ) => {
   const { open = true, ...rest } = props;
@@ -61,7 +54,7 @@ export const CommandContent = (
       data-slot="command"
       {...rest}
     >
-      <ComboboxList className="flex flex-col">{children}</ComboboxList>
+      {children}
     </ComboboxContent>
   );
 };
@@ -82,9 +75,9 @@ export const CommandItem = (
           "cursor-default",
           "outline-hidden",
           "rounded-sm",
-          "data-disabled:pointer-events-none data-disabled:opacity-50",
+          "data-disabled:pointer-events-none data-disabled:opacity-64",
           "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-          "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
           className
         )}
         data-slot="command-item-text"
@@ -106,7 +99,7 @@ export const CommandInput = (
 
   return (
     <div className="flex h-9 items-center gap-2 border-b px-3">
-      <SearchIcon className="size-4 shrink-0 opacity-50" />
+      <SearchIcon className="size-4 shrink-0 opacity-64" />
 
       <ComboboxInput
         className={cn(
@@ -117,7 +110,7 @@ export const CommandInput = (
           "text-sm",
           "outline-hidden",
           "placeholder:text-muted-foreground",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "disabled:cursor-not-allowed disabled:opacity-64",
           className
         )}
         data-slot="command-input"
@@ -183,7 +176,7 @@ export const CommandShortcut = (
   return (
     <ark.span
       className={cn(
-        "ml-auto text-muted-foreground text-xs tracking-widest",
+        "ms-auto text-muted-foreground text-xs tracking-widest rtl:me-auto",
         className
       )}
       data-slot="command-shortcut"

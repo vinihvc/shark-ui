@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "presence",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/presence.tsx",
+      "content": "\"use client\";\n\nimport { Presence as ArkPresence } from \"@ark-ui/react/presence\";\nimport type React from \"react\";\n\nexport const Presence = (props: React.ComponentProps<typeof ArkPresence>) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkPresence\n      data-slot=\"presence\"\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}
