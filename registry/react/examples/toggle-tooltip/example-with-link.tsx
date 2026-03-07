@@ -1,4 +1,5 @@
 import { InfoIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
   ToggleTooltip,
   ToggleTooltipContent,
@@ -8,13 +9,9 @@ import {
 const Example = () => (
   <ToggleTooltip>
     <ToggleTooltipTrigger asChild>
-      <button
-        aria-label="Learn more about this feature"
-        className="inline-flex text-muted-foreground hover:text-foreground"
-        type="button"
-      >
-        <InfoIcon className="size-4" />
-      </button>
+      <Button aria-label="Learn more about this feature" variant="outline">
+        <InfoIcon />
+      </Button>
     </ToggleTooltipTrigger>
     <ToggleTooltipContent>
       This is a popover, so it can contain interactive content like{" "}

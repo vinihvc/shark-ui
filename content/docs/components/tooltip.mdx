@@ -66,6 +66,30 @@ import {
 </Tooltip>
 ```
 
+## When to use
+
+### Use Tooltip when
+
+- The trigger has its own purpose and the popup is **supplementary**.
+- The content is **non-essential**—nice-to-have clarity for sighted mouse/keyboard users.
+- You're okay with **touch users not seeing it**—tooltips only open on hover/focus, not on tap.
+- The content is **short and non-interactive** (no links or buttons inside).
+
+### Use Toggle Tooltip when
+
+- The trigger's **primary purpose** is to reveal the content.
+- The content is **essential** and should be accessible to touch users and screen readers.
+- You need **click-to-open** so everyone can access it—no hover required.
+- The content may be **interactive** (links, buttons) since Toggle Tooltip is a popover under the hood.
+
+### Quick reference
+
+| Component | Trigger purpose | Touch access | Content type |
+| --- | --- | --- | --- |
+| **Tooltip** | Unrelated (trigger does something else) | No | Short, non-interactive |
+| **Toggle Tooltip** | To open the popup | Yes | Supplementary, can be interactive |
+| **Popover** | To open the popup | Yes | Rich content, headers, footers |
+
 ## Examples
 
 ### Side

@@ -1,4 +1,5 @@
 import { InfoIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
   DataList,
   DataListItem,
@@ -10,6 +11,27 @@ import {
   ToggleTooltipContent,
   ToggleTooltipTrigger,
 } from "@/registry/react/components/toggle-tooltip";
+
+const Example = () => (
+  <DataList>
+    {data.map((item) => (
+      <DataListItem key={item.label}>
+        <DataListItemLabel className="inline-flex items-center gap-1.5">
+          {item.label}
+          <ToggleTooltip>
+            <ToggleTooltipTrigger asChild>
+              <Button aria-label={`Info about ${item.label}`} variant="outline">
+                <InfoIcon />
+              </Button>
+            </ToggleTooltipTrigger>
+            <ToggleTooltipContent>{item.info}</ToggleTooltipContent>
+          </ToggleTooltip>
+        </DataListItemLabel>
+        <DataListItemValue>{item.value}</DataListItemValue>
+      </DataListItem>
+    ))}
+  </DataList>
+);
 
 const data = [
   {
@@ -24,30 +46,5 @@ const data = [
     info: "Total revenue in the last quarter",
   },
 ];
-
-const Example = () => (
-  <DataList>
-    {data.map((item) => (
-      <DataListItem key={item.label}>
-        <DataListItemLabel className="inline-flex items-center gap-1.5">
-          {item.label}
-          <ToggleTooltip>
-            <ToggleTooltipTrigger asChild>
-              <button
-                aria-label={`Info about ${item.label}`}
-                className="inline-flex text-muted-foreground hover:text-foreground"
-                type="button"
-              >
-                <InfoIcon className="size-3.5" />
-              </button>
-            </ToggleTooltipTrigger>
-            <ToggleTooltipContent>{item.info}</ToggleTooltipContent>
-          </ToggleTooltip>
-        </DataListItemLabel>
-        <DataListItemValue>{item.value}</DataListItemValue>
-      </DataListItem>
-    ))}
-  </DataList>
-);
 
 export default Example;

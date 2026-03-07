@@ -171,7 +171,7 @@ Pass the `icon` prop to `TreeViewItem` to override the icon for a specific leaf 
 
 ### With file extensions
 
-Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extensions (e.g. `".tsx"`, `".json"`) to icon components. Icons are resolved from each node's id; unmatched extensions fall back to `FileIcon`.
+Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extensions to icon components. Icons are resolved from each node's id; unmatched extensions fall back to `FileIcon`.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons" />
 
@@ -260,7 +260,7 @@ Expandable content container for branch children. Renders a `div`.
 
 ### TreeViewContent
 
-Wrapper for leaf items. Use with `asChild` to render as a custom element (e.g. `<a>` for links). Renders a `div`.
+Wrapper for leaf items. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -326,7 +326,7 @@ const links = createTreeCollection<LinkNode>({
 
 Creates a type-safe mapping of file extensions to icon components. Use with `fileIcons` prop on `TreeView`. 
 
-Keys use dotted extensions (e.g. `".tsx"`, `".json"`).
+Keys use dotted extensions.
 
 ```tsx
 const fileIcons = createFileIcons({

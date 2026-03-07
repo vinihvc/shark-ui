@@ -1,0 +1,21 @@
+import { DownloadIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
+import { DownloadTrigger } from "@/registry/react/components/download-trigger";
+
+const Example = () => (
+  <DownloadTrigger
+    asChild
+    data={svgContent}
+    fileName="icon.svg"
+    mimeType="image/svg+xml"
+  >
+    <Button size="lg" variant="outline">
+      <DownloadIcon />
+      Download SVG
+    </Button>
+  </DownloadTrigger>
+);
+
+const svgContent = `<svg fill="none" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M149.978 73.374c12.889 6.02 17.7 19.947 10.746 31.105l-6.43 10.317c-57.065 91.56-54.802 202.263 5.97 292.018 7.406 10.938 3.167 25.002-9.467 31.414-12.635 6.411-28.882 2.742-36.288-8.196-70.14-103.592-72.753-231.363-6.89-337.039l6.43-10.316c6.954-11.158 23.04-15.323 35.929-9.303M294.024 73.374c12.888 6.02 17.7 19.947 10.746 31.105l-6.431 10.317c-57.065 91.56-54.801 202.263 5.97 292.018 7.406 10.938 3.168 25.002-9.467 31.414-12.634 6.411-28.881 2.742-36.287-8.196-70.142-103.592-72.754-231.363-6.891-337.039l6.43-10.316c6.955-11.158 23.041-15.323 35.93-9.303M438.069 73.374c12.889 6.02 17.7 19.947 10.746 31.105l-6.43 10.317c-57.066 91.56-54.802 202.263 5.97 292.018 7.405 10.938 3.167 25.002-9.467 31.414-12.635 6.411-28.882 2.742-36.288-8.196-70.141-103.592-72.754-231.363-6.891-337.039l6.431-10.316c6.954-11.158 23.04-15.323 35.929-9.303" fill="currentColor"/></svg>`;
+
+export default Example;

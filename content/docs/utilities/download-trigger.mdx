@@ -1,8 +1,9 @@
 ---
 title: Download Trigger
-description: Trigger file downloads from the browser.
+description: Trigger file downloads programmatically.
 links:
-  doc: https://ark-ui.com/docs/components/download-trigger
+  doc: https://ark-ui.com/docs/utilities/download-trigger
+  api: https://ark-ui.com/docs/utilities/download-trigger#api-reference
 ---
 
 <ComponentPreview componentName="download-trigger" />
@@ -17,23 +18,42 @@ npm install @ark-ui/react lucide-react
 
 ```tsx
 import { DownloadTrigger } from "@/components/ui/download-trigger";
+```
 
+```tsx
 <DownloadTrigger
-  data="File content"
-  fileName="document.txt"
-  mimeType="text/plain"
+  data="..."
+  fileName="schema.json"
+  mimeType="application/json"
 >
   Download
 </DownloadTrigger>
 ```
 
-## Props
+## Examples
 
-| Prop | Type | Description |
+### Download SVG
+
+Download an SVG file by passing the SVG markup to `data` and setting `mimeType` to `image/svg+xml`.
+
+<ComponentPreview componentName="download-trigger" fileName="example-download-svg" />
+
+### Promise
+
+Trigger downloads from a promise that returns a `Blob`, `File`, or `string`. Pass a function to `data`.
+
+<ComponentPreview componentName="download-trigger" fileName="example-promise" />
+
+## API Reference
+
+### DownloadTrigger
+
+| Prop | Type | Default |
 | --- | --- | --- |
-| `data` | `string \| Blob \| Promise<string \| Blob>` | Content to download |
-| `fileName` | `string` | Name of the downloaded file |
-| `mimeType` | `string` | MIME type of the file |
+| `data` | `DownloadableData \| (() => MaybePromise<DownloadableData>)` | — |
+| `fileName` | `string` | — |
+| `mimeType` | `FileMimeType` | — |
+| `asChild` | `boolean` | — |
 
 ---
 

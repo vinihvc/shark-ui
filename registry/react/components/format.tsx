@@ -13,9 +13,3 @@ export const FormatNumber = (
 export const FormatRelativeTime = (
   props: React.ComponentProps<typeof ArkFormat.RelativeTime>
 ) => <ArkFormat.RelativeTime data-slot="format-relative-time" {...props} />;
-
-export const Format = {
-  Byte: FormatByte,
-  Number: FormatNumber,
-  RelativeTime: FormatRelativeTime,
-};

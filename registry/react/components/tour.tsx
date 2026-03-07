@@ -42,14 +42,39 @@ interface TourProps
    * @default []
    */
   steps: TourStepDetails[];
+  /**
+   * Enable arrow key navigation between steps
+   */
+  keyboardNavigation?: boolean;
+  /**
+   * Called when the current step changes
+   */
+  onStepChange?: (details: { stepId: string | null }) => void;
+  /**
+   * Called when the tour status changes
+   */
+  onStatusChange?: (details: { status: string }) => void;
 }
 
 export const Tour = (props: TourProps) => {
-  const { steps = [], lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    steps = [],
+    lazyMount = true,
+    unmountOnExit = true,
+    keyboardNavigation,
+    onStepChange,
+    onStatusChange,
+    ...rest
+  } = props;
 
   const [isStarted, setIsStarted] = React.useState(false);
 
-  const tour = useTour({ steps });
+  const tour = useTour({
+    steps,
+    keyboardNavigation,
+    onStepChange,
+    onStatusChange,
+  });
 
   React.useEffect(() => {
     if (isStarted) {
@@ -265,6 +290,44 @@ export const TourFooter = (
   return (
     <ArkTour.Control {...rest} asChild>
       <DialogFooter data-slot="tour-control">{children}</DialogFooter>
+    </ArkTour.Control>
+  );
+};
+
+export const TourActions = (
+  props: React.ComponentProps<typeof DialogFooter>
+) => {
+  const { className, ...rest } = props;
+  const { tour } = useTourContext();
+  const actions = tour.step?.actions ?? [];
+
+  if (actions.length === 0) {
+    return null;
+  }
+
+  return (
+    <ArkTour.Control {...rest} asChild>
+      <DialogFooter
+        className={cn("flex flex-wrap gap-2", className)}
+        data-slot="tour-actions"
+      >
+        {actions.map((action) => (
+          <TourActionTrigger key={action.label} action={action} asChild>
+            <Button
+              size="sm"
+              variant={
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default"
+              }
+            >
+              {action.action === "prev" && <ChevronLeft />}
+              {action.label}
+              {action.action === "next" && <ChevronRight />}
+            </Button>
+          </TourActionTrigger>
+        ))}
+      </DialogFooter>
     </ArkTour.Control>
   );
 };

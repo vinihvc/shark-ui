@@ -1,6 +1,6 @@
 ---
 title: Toggle Tooltip
-description: An infotip that looks like a tooltip but works like a popover—opens on hover and click for touch/keyboard accessibility.
+description: Looks like a tooltip, but works like a popover.
 links:
   doc: https://ark-ui.com/docs/components/popover
   api: https://ark-ui.com/docs/components/popover#api-reference
@@ -70,15 +70,36 @@ import {
 </ToggleTooltip>
 ```
 
+## Accessibility
+
+- **Icon-only triggers** — When the trigger is an icon without visible text, add an `aria-label` so screen readers can announce its purpose.
+- **Touch and keyboard** — Unlike tooltips, Toggle Tooltip opens on click as well as hover, so touch users and keyboard users can access the content.
+- **Screen reader exposure** — Content is exposed to assistive technologies. Use Toggle Tooltip when the information is essential, not decorative.
+- **Escape to close** — Press Escape to dismiss the content when it is open.
+
 ## When to use
 
-| Component | Use when |
-| --- | --- |
-| **Tooltip** | The trigger's purpose is unrelated to opening the popup. Non-essential clarity for sighted mouse/keyboard users. |
-| **Toggle Tooltip** | The trigger's purpose is to open the popup (e.g. info icon). Content should be accessible to touch users and screen readers. |
-| **Popover** | You need richer content, headers, footers, or more space. |
+### Use Tooltip when
 
-Tooltips don't work well with touch—there's no hover on tap. Use Toggle Tooltip when the trigger exists to reveal supplementary info so everyone can access it.
+- The trigger has its own purpose and the popup is **supplementary**.
+- The content is **non-essential**—nice-to-have clarity for sighted mouse/keyboard users.
+- You're okay with **touch users not seeing it**—tooltips only open on hover/focus, not on tap.
+- The content is **short and non-interactive** (no links or buttons inside).
+
+### Use Toggle Tooltip when
+
+- The trigger's **primary purpose** is to reveal the content.
+- The content is **essential** and should be accessible to touch users and screen readers.
+- You need **click-to-open** so everyone can access it—no hover required.
+- The content may be **interactive** (links, buttons) since Toggle Tooltip is a popover under the hood.
+
+### Quick reference
+
+| Component | Trigger purpose | Touch access | Content type |
+| --- | --- | --- | --- |
+| **Tooltip** | Unrelated (trigger does something else) | No | Short, non-interactive |
+| **Toggle Tooltip** | To open the popup | Yes | Supplementary, can be interactive |
+| **Popover** | To open the popup | Yes | Rich content, headers, footers |
 
 ## Examples
 

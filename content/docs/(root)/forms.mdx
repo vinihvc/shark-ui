@@ -5,7 +5,17 @@ links:
   doc: https://ark-ui.com/docs/guides/forms
 ---
 
+import { FormsList } from "@/components/layout/forms-list";
+
 Shark UI builds on Ark UI's `Field` and `Fieldset` components for integrating with native `form` element or popular form libraries like [React Hook Form](https://react-hook-form.com/), [TanStack Form](https://tanstack.com/form/latest), and [Vee Validate](https://vee-validate.logaretm.com/).
+
+## Form Libraries
+
+Shark UI integrates with popular form libraries.
+
+<FormsList />
+
+For detailed guides with examples, validation, and field-type-specific patterns, see the linked pages above.
 
 ## Field Context
 
@@ -253,12 +263,3 @@ const Demo = () => (
   </FieldSet>
 )
 ```
-
-## Form Libraries
-
-Shark UI integrates with popular form libraries:
-
-- **[React Hook Form](/docs/forms/react-hook-form)** — Use `register` for simple inputs and `Controller` for complex components
-- **[TanStack Form](/docs/forms/tanstack-form)** — Powerful form state management with `form.Field` render prop pattern
-
-For detailed guides with examples, validation, and field-type-specific patterns, see the linked pages above.

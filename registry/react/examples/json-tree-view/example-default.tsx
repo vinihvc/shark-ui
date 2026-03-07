@@ -13,8 +13,6 @@ const data = {
   },
 };
 
-const JsonTreeViewDemo = () => (
-  <JsonTreeView data={data} defaultExpandedDepth={1} />
-);
+const Example = () => <JsonTreeView data={data} defaultExpandedDepth={1} />;
 
-export default JsonTreeViewDemo;
+export default Example;

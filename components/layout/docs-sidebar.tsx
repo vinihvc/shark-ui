@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { NavLink } from "@/components/nav-link";
 import {
   Sidebar,
   SidebarContent,
@@ -12,7 +13,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { source } from "@/lib/fumadocs";
-import { NavLink } from "../nav-link";
 
 export const DocsSidebar = (
   props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }

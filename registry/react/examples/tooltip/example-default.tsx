@@ -14,7 +14,7 @@ import {
 
 const TooltipDemo = () => (
   <ButtonGroup>
-    <Tooltip open>
+    <Tooltip>
       <TooltipTrigger asChild>
         <Button clickEffect={false} size="icon-md" variant="outline">
           <BoldIcon />

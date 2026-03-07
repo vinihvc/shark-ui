@@ -1,4 +1,5 @@
 import { InfoIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
   ToggleTooltip,
   ToggleTooltipContent,
@@ -8,15 +9,11 @@ import {
 const Example = () => (
   <ToggleTooltip>
     <ToggleTooltipTrigger asChild>
-      <button
-        aria-label="More information"
-        className="inline-flex text-muted-foreground hover:text-foreground"
-        type="button"
-      >
-        <InfoIcon className="size-4" />
-      </button>
+      <Button aria-label="More information" variant="outline">
+        <InfoIcon />
+      </Button>
     </ToggleTooltipTrigger>
-    <ToggleTooltipContent>
+    <ToggleTooltipContent className="max-w-52">
       Hover or click to see this content. Works on touch devices too.
     </ToggleTooltipContent>
   </ToggleTooltip>

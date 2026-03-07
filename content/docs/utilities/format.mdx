@@ -16,39 +16,25 @@ npm install @ark-ui/react
 
 ## Usage
 
-Format provides three components for locale-aware formatting. All use the native `Intl` API and are cached for performance.
-
 ```tsx
-import { Format } from "@/components/ui/format";
-
-// Byte formatting (file sizes)
-<Format.Byte value={120_000} />
-// Renders: "120 KB"
-
-// Relative time
-<Format.RelativeTime value={new Date("2025-05-05")} />
-// Renders relative to now: "in X days" or "X days ago"
-
-// Number formatting
-<Format.Number value={1234567} />
-// Renders: "1,234,567"
+import { 
+  FormatByte, 
+  FormatNumber, 
+  FormatRelativeTime 
+} from "@/components/ui/format";
 ```
 
-Individual components can be imported separately:
-
 ```tsx
-import {
-  FormatByte,
-  FormatNumber,
-  FormatRelativeTime,
-} from "@/components/ui/format";
+<FormatByte value={120_000} />
+<FormatNumber value={1234567} />
+<FormatRelativeTime value={new Date("2025-05-05")} />
 ```
 
 ## Examples
 
 ### Format Byte
 
-Format byte values as file sizes (e.g., 1.2 MB, 512 KB).
+Format byte values as file sizes.
 
 <ComponentPreview componentName="format" fileName="example-byte" />
 
@@ -66,7 +52,7 @@ Use `unitSystem` to choose between decimal (1000 bytes) or binary (1024 bytes).
 
 ### Format Relative Time
 
-Format dates as relative time (e.g., 2 hours ago, in 3 days).
+Format dates as relative time.
 
 <ComponentPreview componentName="format" fileName="example-relative-time" />
 
@@ -96,49 +82,43 @@ Use `style="percent"` to format numbers as percentages.
 
 #### Compact notation
 
-Use `notation="compact"` for compact display (e.g., 1.2M, 120K).
+Use `notation="compact"` for compact display.
 
 <ComponentPreview componentName="format" fileName="example-number-compact" />
 
 ## API Reference
 
-### Format.Byte
+### FormatByte
 
-Formats byte values with automatic unit conversion. Extends `Intl.NumberFormat` for byte-specific formatting.
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number` | — |
+| `unit` | `"byte"` \| `"bit"` | `"byte"` |
+| `unitDisplay` | `"long"` \| `"short"` \| `"narrow"` | — |
+| `unitSystem` | `"decimal"` \| `"binary"` | — |
+| `locale` | `string` | — |
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `number` | — | The byte size to format (required) |
-| `unit` | `"byte"` \| `"bit"` | `"byte"` | The unit granularity to display |
-| `unitDisplay` | `"long"` \| `"short"` \| `"narrow"` | — | How to display the unit |
-| `unitSystem` | `"decimal"` \| `"binary"` | — | Use decimal (1000) or binary (1024) |
-| `locale` | `string` | — | BCP 47 locale string |
+### FormatRelativeTime
 
-### Format.RelativeTime
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `Date` \| `number` | — |
+| `numeric` | `"always"` \| `"auto"` | — |
+| `style` | `"long"` \| `"short"` \| `"narrow"` | — |
+| `locale` | `string` | — |
 
-Formats dates as relative time using `Intl.RelativeTimeFormat`.
+### FormatNumber
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `Date` \| `number` | — | The date to format (required) |
-| `numeric` | `"always"` \| `"auto"` | — | Numeric vs. verbal representation |
-| `style` | `"long"` \| `"short"` \| `"narrow"` | — | Format style |
-| `locale` | `string` | — | BCP 47 locale string |
-
-### Format.Number
-
-Formats numbers using `Intl.NumberFormat` with caching.
-
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `number` | — | The number to format (required) |
-| `locale` | `string` | — | BCP 47 locale string |
-| `style` | `"decimal"` \| `"percent"` \| `"currency"` \| `"unit"` | `"decimal"` | Format style |
-| `currency` | `string` | — | ISO 4217 currency code (e.g., `"USD"`) when `style="currency"` |
-| `unit` | `string` | — | Unit for `style="unit"` (e.g., `"kilometer"`, `"liter"`) |
-| `notation` | `"standard"` \| `"compact"` \| `"scientific"` \| `"engineering"` | `"standard"` | Number notation |
-| `minimumFractionDigits` | `number` | — | Minimum decimal places |
-| `maximumFractionDigits` | `number` | — | Maximum decimal places |
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number` | — |
+| `locale` | `string` | — |
+| `style` | `"decimal"` \| `"percent"` \| `"currency"` \| `"unit"` | `"decimal"` |
+| `currency` | `string` | — |
+| `unit` | `string` | — |
+| `notation` | `"standard"` \| `"compact"` \| `"scientific"` \| `"engineering"` | `"standard"` |
+| `minimumFractionDigits` | `number` | — |
+| `maximumFractionDigits` | `number` | — |
 
 ---
 

@@ -76,6 +76,36 @@ import {
 
 ## Examples
 
+### Countdown
+
+Create a countdown by setting `countdown` to `true` and `startMs` to the initial duration.
+
+<ComponentPreview componentName="timer" fileName="example-countdown" />
+
+### Interval
+
+Use the `interval` prop to control update frequency.
+
+<ComponentPreview componentName="timer" fileName="example-interval" />
+
+### Events
+
+Listen to `onTick` and `onComplete` for timer events.
+
+<ComponentPreview componentName="timer" fileName="example-events" />
+
+### Pomodoro
+
+Alternate between work and break sessions using `onComplete`.
+
+<ComponentPreview componentName="timer" fileName="example-pomodoro" />
+
+### Root Provider
+
+Use `TimerRootProvider` and `useTimer` to control the timer from outside.
+
+<ComponentPreview componentName="timer" fileName="example-root-provider" />
+
 ## API Reference
 
 ### Timer
@@ -84,6 +114,10 @@ import {
 | --- | --- | --- | --- |
 | `targetMs` | `number` | `0` | The target time in milliseconds |
 | `startMs` | `number` | `0` | The start time in milliseconds |
+| `countdown` | `boolean` | `false` | Whether the timer counts down |
+| `interval` | `number` | `1000` | Update interval in milliseconds |
+| `onTick` | `(details: TickDetails) => void` | `-` | Called on each timer update |
+| `onComplete` | `() => void` | `-` | Called when the timer reaches target |
 
 ### TimerArea
 
@@ -95,7 +129,7 @@ import {
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `type` | `"hours"` \| `"minutes"` \| `"seconds"` \| `"days"` | `"seconds"` | The type of timer item |
+| `type` | `"days"` \| `"hours"` \| `"minutes"` \| `"seconds"` \| `"milliseconds"` | `"seconds"` | The type of timer item |
 
 ### TimerSeparator
 
@@ -113,13 +147,19 @@ import {
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `action` | `"start"` \| `"pause"` \| `"resume"` | `"start"` | The action for the timer action trigger |
+| `action` | `"start"` \| `"pause"` \| `"resume"` \| `"reset"` | `"start"` | The action for the timer action trigger |
 
-### TimerActionTriggerProps
+### TimerRootProvider
+
+Use with `useTimer` to control the timer from outside the component tree.
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `action` | `"start"` \| `"pause"` \| `"resume"` | `"start"` | The action for the timer action trigger |
+| `value` | `UseTimerReturn` | `-` | Timer state and methods from `useTimer` |
+
+### useTimer
+
+Hook to create timer state. Use with `TimerRootProvider` to control the timer externally.
 
 ---
 

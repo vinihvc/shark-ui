@@ -1,8 +1,10 @@
 "use client";
 
-import { Timer as ArkTimer } from "@ark-ui/react/timer";
+import { Timer as ArkTimer, useTimer as useArkTimer } from "@ark-ui/react/timer";
 import type React from "react";
 import { cn } from "@/lib/utils";
+
+export const useTimer = useArkTimer;
 
 export const Timer = (props: React.ComponentProps<typeof ArkTimer.Root>) => {
   const { className, ...rest } = props;
@@ -98,3 +100,9 @@ export const TimerActionTrigger = (
     />
   );
 };
+
+export const TimerRootProvider = (
+  props: React.ComponentProps<typeof ArkTimer.RootProvider>
+) => (
+  <ArkTimer.RootProvider data-slot="timer-root-provider" {...props} />
+);

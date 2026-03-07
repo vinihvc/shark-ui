@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/react/components/format.tsx",
-      "content": "\"use client\";\n\nimport { Format as ArkFormat } from \"@ark-ui/react/format\";\n\nexport const FormatByte = (\n  props: React.ComponentProps<typeof ArkFormat.Byte>\n) => <ArkFormat.Byte data-slot=\"format-byte\" {...props} />;\n\nexport const FormatNumber = (\n  props: React.ComponentProps<typeof ArkFormat.Number>\n) => <ArkFormat.Number data-slot=\"format-number\" {...props} />;\n\nexport const FormatRelativeTime = (\n  props: React.ComponentProps<typeof ArkFormat.RelativeTime>\n) => <ArkFormat.RelativeTime data-slot=\"format-relative-time\" {...props} />;\n\nexport const Format = {\n  Byte: FormatByte,\n  Number: FormatNumber,\n  RelativeTime: FormatRelativeTime,\n};\n",
+      "content": "\"use client\";\n\nimport { Format as ArkFormat } from \"@ark-ui/react/format\";\n\nexport const FormatByte = (\n  props: React.ComponentProps<typeof ArkFormat.Byte>\n) => <ArkFormat.Byte data-slot=\"format-byte\" {...props} />;\n\nexport const FormatNumber = (\n  props: React.ComponentProps<typeof ArkFormat.Number>\n) => <ArkFormat.Number data-slot=\"format-number\" {...props} />;\n\nexport const FormatRelativeTime = (\n  props: React.ComponentProps<typeof ArkFormat.RelativeTime>\n) => <ArkFormat.RelativeTime data-slot=\"format-relative-time\" {...props} />;\n",
       "type": "registry:ui"
     }
   ]
