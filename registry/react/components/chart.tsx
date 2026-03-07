@@ -232,7 +232,7 @@ export const ChartTooltipContent = (props: CustomTooltipProps) => {
                 "flex w-full flex-wrap items-stretch gap-2 [&_svg]:h-2.5 [&_svg]:w-2.5 [&_svg]:text-muted-foreground",
                 indicator === "dot" && "items-center"
               )}
-              key={item.dataKey}
+              key={item.dataKey as string}
             >
               {!!formatter && item?.value !== undefined && item.name ? (
                 formatter(item.value, item.name, item, index, item.payload)
