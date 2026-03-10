@@ -1,8 +1,8 @@
 import { Toggle } from "@/registry/react/components/toggle";
 
 const Example = () => (
-  <Toggle disabled variant="outline">
-    Disabled
+  <Toggle size="md" variant="outline">
+    Medium
   </Toggle>
 );
 

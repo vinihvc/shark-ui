@@ -46,7 +46,7 @@ const itemVariants = tv({
     "gap-(--space) p-(--space)",
     "in-data-[slot=menu-content]:p-0",
     "text-sm",
-    "rounded-2xl border",
+    "rounded-xl border",
     "transition-colors duration-100",
     "[a]:transition-colors [a]:hover:bg-muted",
     "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",

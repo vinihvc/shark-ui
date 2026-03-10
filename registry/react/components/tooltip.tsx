@@ -1,6 +1,6 @@
 "use client";
 
-import { Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
 import { Tooltip as ArkTooltip } from "@ark-ui/react/tooltip";
 import type React from "react";
 import { cn } from "@/lib/utils";

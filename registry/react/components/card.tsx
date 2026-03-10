@@ -15,7 +15,7 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
         "bg-card",
         "text-foreground",
         "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
-        "rounded-lg border shadow-xs",
+        "rounded-xl border shadow-xs",
         className
       )}
       data-slot="card"
@@ -65,13 +65,13 @@ export const CardMedia = (props: CardMediaProps) => {
 
 interface HeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * The title of the card
-   */
-  title?: string;
-  /**
    * The description of the card
    */
   description?: string;
+  /**
+   * The title of the card
+   */
+  title?: string;
 }
 
 export const CardHeader = (props: HeaderProps) => {
@@ -169,7 +169,8 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
         "flex items-center gap-2",
         "px-(--space)",
         "bg-muted/64",
-        "rounded-b-2xl border-t",        "py-(--space)",
+        "rounded-b-2xl border-t",
+        "py-(--space)",
         className
       )}
       data-slot="card-footer"

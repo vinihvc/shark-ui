@@ -18,7 +18,13 @@ import {
   FloatingPanelTitle,
   FloatingPanelTrigger,
 } from "@/registry/react/components/floating-panel";
-import { NumberField } from "@/registry/react/components/number-input";
+import {
+  NumberField,
+  NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
+} from "@/registry/react/components/number-input";
 import {
   Select,
   SelectContent,
@@ -70,7 +76,13 @@ const FloatingPanelDemo = () => {
           </Field>
           <Field>
             <FieldLabel>Font size</FieldLabel>
-            <NumberField className="w-full" defaultValue="16" />
+            <NumberField className="w-full" defaultValue="16">
+              <NumberFieldGroup>
+                <NumberFieldDecrement />
+                <NumberFieldInput />
+                <NumberFieldIncrement />
+              </NumberFieldGroup>
+            </NumberField>
           </Field>
         </FloatingPanelBody>
         <FloatingPanelFooter>

@@ -2,7 +2,6 @@
 
 import {
   Combobox,
-  ComboboxChips,
   ComboboxContent,
   ComboboxInput,
   ComboboxItem,
@@ -31,7 +30,6 @@ const Example = () => (
   <Field className="w-full max-w-xs">
     <FieldLabel>Fruits</FieldLabel>
     <Combobox items={items} multiple>
-      <ComboboxChips />
       <ComboboxInput aria-label="Select items" placeholder="Select items…" />
       <ComboboxContent>
         <ComboboxList>

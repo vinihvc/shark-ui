@@ -25,7 +25,7 @@ export const buttonVariants = tv({
     variant: {
       default: [
         "bg-primary",
-        "border border-transparent shadow-md shadow-primary/24",
+        "border border-transparent shadow-primary/24 shadow-sm",
         "text-primary-foreground",
         "hover:bg-primary/90",
         "focus-visible:border-background",
@@ -33,7 +33,7 @@ export const buttonVariants = tv({
       outline: [
         "bg-transparent",
         "text-foreground",
-        "border border-input shadow-md/5",
+        "border border-input shadow-sm/5",
         "hover:bg-accent hover:text-accent-foreground",
         "dark:bg-input/32 dark:hover:bg-input/64",
         "focus-visible:border-primary",
@@ -41,7 +41,7 @@ export const buttonVariants = tv({
       destructive: [
         "bg-destructive",
         "text-white",
-        "border border-transparent shadow-destructive/24 shadow-md",
+        "border border-transparent shadow-destructive/24 shadow-sm",
         "hover:bg-destructive/90",
         "focus-visible:border-background focus-visible:ring-destructive-foreground/32",
       ],

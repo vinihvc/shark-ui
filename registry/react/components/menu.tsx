@@ -1,18 +1,25 @@
+"use client";
+
 import { ark, Portal } from "@ark-ui/react";
 import { Menu as ArkMenu, type MenuContentProps } from "@ark-ui/react/menu";
-import { Check, ChevronRight } from "lucide-react";
+import { CheckIcon, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "./scroll-area";
 
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
-  const { lazyMount = true, unmountOnExit = true, ...rest } = props;
+  const {
+    lazyMount = true,
+    positioning = { placement: "bottom-end" },
+    unmountOnExit = true,
+    ...rest
+  } = props;
 
   return (
     <ArkMenu.Root
       data-slot="menu"
       lazyMount={lazyMount}
+      positioning={positioning}
       unmountOnExit={unmountOnExit}
       {...rest}
     />
@@ -23,29 +30,6 @@ export const MenuTrigger = (
   props: React.ComponentProps<typeof ArkMenu.Trigger>
 ) => <ArkMenu.Trigger data-slot="menu-trigger" {...props} />;
 
-export const menuContentVariants = tv({
-  base: [
-    "z-(--z-index)",
-    "h-auto",
-    // "max-h-[min(var(--available-height),--spacing(72))] min-w-[max(var(--reference-width),--spacing(32))]",
-    "p-1",
-    "bg-popover",
-    "text-popover-foreground",
-    "rounded-md border shadow-md",
-    "origin-(--transform-origin)",
-    "outline-none",
-    "overflow-y-auto overflow-x-hidden",
-    "duration-100",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-    "data-[side=bottom]:slide-in-from-top-2",
-    "data-[side=left]:slide-in-from-right-2",
-    "data-[side=right]:slide-in-from-left-2",
-    "data-[side=top]:slide-in-from-bottom-2",
-  ],
-});
-
 export const MenuPositioner = (
   props: React.ComponentProps<typeof ArkMenu.Positioner>
 ) => {
@@ -53,12 +37,34 @@ export const MenuPositioner = (
 
   return (
     <ArkMenu.Positioner
-      className={cn("outline-none")}
+      className={cn("outline-none", className)}
       data-slot="menu-positioner"
       {...rest}
     />
   );
 };
+
+export const menuContentVariants = tv({
+  base: [
+    "z-[calc(50+var(--nested-layer-count,0))]",
+    "max-h-(--available-height) not-[class*='w-']:min-w-32",
+    "p-1",
+    "bg-popover",
+    "text-popover-foreground",
+    "rounded-lg border border-input shadow-md/5",
+    "origin-(--transform-origin)",
+    "outline-none",
+    "overflow-y-auto",
+    "duration-100",
+    "data-[state=open]:animate-in",
+    "data-[state=open]:fade-in-0",
+    "data-[state=open]:zoom-in-[98%]",
+    "data-[placement=bottom]:slide-in-from-top-2",
+    "data-[placement=left]:slide-in-from-end-2",
+    "data-[placement=right]:slide-in-from-start-2",
+    "data-[placement=top]:slide-in-from-bottom-2",
+  ],
+});
 
 export const MenuContent = (props: MenuContentProps) => {
   const { className, children, ...rest } = props;
@@ -71,7 +77,7 @@ export const MenuContent = (props: MenuContentProps) => {
           data-slot="menu-content"
           {...rest}
         >
-          <ScrollArea>{children}</ScrollArea>
+          {children}
         </ArkMenu.Content>
       </MenuPositioner>
     </Portal>
@@ -105,7 +111,7 @@ export const MenuSeparator = (
 
   return (
     <ArkMenu.Separator
-      className={cn("-mx-1 my-1 h-px bg-border", className)}
+      className={cn("my-1 h-px bg-border", className)}
       data-slot="menu-separator"
       {...rest}
     />
@@ -116,14 +122,14 @@ const menuItemVariants = tv({
   base: [
     "group/menu-item",
     "relative",
-    "px-2 py-1.5",
     "w-full",
     "px-2.5 py-1.5",
     "flex items-center gap-2",
     "select-none text-sm",
     "rounded-lg",
-    "outline-hidden",    "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
-    "data-disabled:pointer-events-none data-disabled:opacity-50",
+    "outline-hidden",
+    "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
+    "data-disabled:pointer-events-none data-disabled:opacity-64",
     "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {
@@ -168,13 +174,13 @@ export const MenuCheckboxItem = (
     <ArkMenu.CheckboxItem
       className={cn(
         menuItemVariants({ variant: "default" }),
-        "pl-8",
+        "ps-8",
         className
       )}
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <Check />
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
+        <CheckIcon />
       </ArkMenu.ItemIndicator>
 
       <ArkMenu.ItemText>{children}</ArkMenu.ItemText>
@@ -234,14 +240,14 @@ export const MenuRadioItem = (
     <ArkMenu.RadioItem
       className={cn(
         menuItemVariants({ variant: "default" }),
-        "pl-8",
+        "ps-8",
         className
       )}
       data-slot="menu-radio-item"
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <Check />
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
+        <CheckIcon />
       </ArkMenu.ItemIndicator>
 
       <ArkMenu.ItemText data-slot="menu-radio-item-text">
@@ -299,7 +305,7 @@ export const MenuShortcut = (props: React.ComponentProps<typeof ark.span>) => {
   return (
     <ark.span
       className={cn(
-        "ml-auto",
+        "ms-auto rtl:me-auto",
         "text-muted-foreground text-xs tracking-widest",
         "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
         className
@@ -327,7 +333,7 @@ export const MenuArrow = (
       }
       {...rest}
     >
-      <ArkMenu.ArrowTip className="border-t border-l" />
+      <ArkMenu.ArrowTip className="border-s border-t" />
     </ArkMenu.Arrow>
   );
 };

@@ -2,7 +2,6 @@
 
 import {
   Combobox,
-  ComboboxChips,
   ComboboxContent,
   ComboboxInput,
   ComboboxItem,
@@ -19,7 +18,6 @@ const items = [
 const ComboboxMultipleDemo = () => {
   return (
     <Combobox className="w-64" items={items} multiple>
-      <ComboboxChips />
       <ComboboxInput placeholder="Select frameworks..." />
       <ComboboxContent>
         <ComboboxList>

@@ -1,7 +1,7 @@
 import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 import { Toggle } from "@/registry/react/components/toggle";
 
-const ToggleDemo = () => (
+const Example = () => (
   <div className="flex items-center gap-1">
     <Toggle aria-label="Toggle bold" variant="outline">
       <BoldIcon />
@@ -15,4 +15,4 @@ const ToggleDemo = () => (
   </div>
 );
 
-export default ToggleDemo;
+export default Example;

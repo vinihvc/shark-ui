@@ -1,12 +1,12 @@
 "use client";
 
-import { Portal } from "@ark-ui/react";
 import {
   ColorPicker as ArkColorPicker,
   type ColorPickerValueChangeDetails,
   parseColor as parseColorArk,
 } from "@ark-ui/react/color-picker";
 import { ark } from "@ark-ui/react/factory";
+import { Portal } from "@ark-ui/react/portal";
 import { CheckIcon, Pipette } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";

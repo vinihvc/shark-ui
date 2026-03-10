@@ -3,7 +3,7 @@
 import React from "react";
 import { Toggle } from "@/registry/react/components/toggle";
 
-const ToggleDemo = () => {
+const Example = () => {
   const [pressed, setPressed] = React.useState(false);
 
   return (
@@ -16,4 +16,4 @@ const ToggleDemo = () => {
   );
 };
 
-export default ToggleDemo;
+export default Example;

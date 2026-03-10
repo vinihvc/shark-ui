@@ -6,10 +6,11 @@ import {
   DataListItemValue,
 } from "@/registry/react/components/data-list";
 import {
-  Hint,
-  HintContent,
-  HintTrigger,
-} from "@/registry/react/components/hint";
+  ToggleTooltip,
+  ToggleTooltipContent,
+  ToggleTooltipTrigger,
+} from "@/registry/react/components/toggle-tooltip";
+import { Button } from "../../components/button";
 
 const data = [
   {
@@ -31,18 +32,18 @@ const Example = () => (
       <DataListItem key={item.label}>
         <DataListItemLabel className="inline-flex items-center gap-1.5">
           {item.label}
-          <Hint positioning={{ placement: "top" }}>
-            <HintTrigger asChild>
-              <button
+          <ToggleTooltip positioning={{ placement: "top" }}>
+            <ToggleTooltipTrigger asChild>
+              <Button
                 aria-label={`Info about ${item.label}`}
-                className="inline-flex text-muted-foreground hover:text-foreground"
-                type="button"
+                size="icon-sm"
+                variant="ghost"
               >
-                <InfoIcon className="size-3.5" />
-              </button>
-            </HintTrigger>
-            <HintContent>{item.info}</HintContent>
-          </Hint>
+                <InfoIcon />
+              </Button>
+            </ToggleTooltipTrigger>
+            <ToggleTooltipContent>{item.info}</ToggleTooltipContent>
+          </ToggleTooltip>
         </DataListItemLabel>
         <DataListItemValue>{item.value}</DataListItemValue>
       </DataListItem>

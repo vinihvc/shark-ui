@@ -114,7 +114,7 @@ export const SelectContent = (
             "p-1",
             "bg-popover",
             "text-popover-foreground",
-            "rounded-lg border border-input shadow-md/5",
+            "rounded-lg border border-input shadow-xs/5",
             "origin-(--transform-origin)",
             "outline-none",
             "overflow-y-auto",

@@ -50,11 +50,23 @@ npm install @ark-ui/react lucide-react
 ## Usage
 
 ```tsx
-import { NumberField } from "@/components/ui/number-input";
+import { 
+  NumberField, 
+  NumberFieldGroup, 
+  NumberFieldInput, 
+  NumberFieldIncrement, 
+  NumberFieldDecrement 
+} from "@/comopnents/ui/number-input";
 ```
 
 ```tsx showLineNumbers
-<NumberField />
+<NumberField>
+  <NumberFieldGroup>
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+    <NumberFieldDecrement />
+  </NumberFieldGroup>
+</NumberField>
 ```
 
 ### Controlled

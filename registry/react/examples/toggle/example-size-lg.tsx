@@ -1,9 +1,9 @@
 import { Toggle } from "@/registry/react/components/toggle";
 
-const ToggleDemo = () => (
+const Example = () => (
   <Toggle size="lg" variant="outline">
     Large
   </Toggle>
 );
 
-export default ToggleDemo;
+export default Example;

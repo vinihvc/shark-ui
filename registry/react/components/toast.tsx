@@ -1,6 +1,6 @@
 "use client";
 
-import { Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react/portal";
 import {
   Toast as ArkToast,
   Toaster as ArkToaster,

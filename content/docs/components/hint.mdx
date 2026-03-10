@@ -78,10 +78,8 @@ Root element. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` |
-| `offset` | `string` | `"1.5"` |
+| `positioning` | `Positioning` | `"{ placement: 'top', offset: '10px' }"` |
 | `className` | `string` | - |
-| `asChild` | `boolean` | - |
 
 ### HintTrigger
 
@@ -90,7 +88,6 @@ The element that triggers the hint on hover or focus. Renders a `button`.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | - |
-| `asChild` | `boolean` | - |
 
 ### HintContent
 
@@ -98,5 +95,14 @@ The hint popup content displayed on hover or focus. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | - |
-| `asChild` | `boolean` | - |
+
+### HintArrow
+
+Arrow pointing to the trigger. Rendered inside `HintContent` by default.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |

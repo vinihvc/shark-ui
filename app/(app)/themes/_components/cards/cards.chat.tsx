@@ -49,11 +49,13 @@ export const CardsChat = () => {
       <CardHeader className="flex flex-row items-center">
         <div className="flex items-center gap-4">
           <Avatar className="border">
-            <AvatarImage alt="Image" src="/avatars/01.png" />
-            <AvatarFallback>S</AvatarFallback>
+            <AvatarImage alt="Image" src="https://github.com/vinihvc.png" />
+            <AvatarFallback>VV</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-0.5">
-            <p className="font-medium text-sm leading-none">Sofia Davis</p>
+            <p className="font-medium text-sm leading-none">
+              Vinicius Vicentini
+            </p>
             <p className="text-muted-foreground text-xs">m@example.com</p>
           </div>
         </div>

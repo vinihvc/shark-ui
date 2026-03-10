@@ -25,7 +25,13 @@ import { NumberField } from "@/registry/react/components/number-input"
 
 const Demo = () => (
   <Field disabled>
-    <NumberField /> {/* NumberField will be disabled */}
+    <NumberField>
+      <NumberFieldGroup>
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+        <NumberFieldDecrement />
+      </NumberFieldGroup>
+    </NumberField>
   </Field>
 )
 ```

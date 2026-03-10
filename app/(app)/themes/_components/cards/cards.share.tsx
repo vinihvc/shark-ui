@@ -110,8 +110,8 @@ export const CardsShare = () => (
           <div className="flex items-center justify-between space-x-4">
             <div className="flex items-center space-x-4">
               <Avatar>
-                <AvatarImage src="/avatars/01.png" />
-                <AvatarFallback>SD</AvatarFallback>
+                <AvatarImage src="https://github.com/vinihvc.png" />
+                <AvatarFallback>VV</AvatarFallback>
               </Avatar>
               <div>
                 <p className="font-medium text-sm leading-none">Sofia Davis</p>

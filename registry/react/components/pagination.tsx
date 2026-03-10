@@ -5,34 +5,27 @@ import {
   usePaginationContext,
 } from "@ark-ui/react/pagination";
 import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-type PaginationContextType = {};
-
-const PaginationContext = React.createContext({} as PaginationContextType);
-
 interface PaginationProps
-  extends React.ComponentProps<typeof ArkPagination.Root>,
-    PaginationContextType {}
+  extends React.ComponentProps<typeof ArkPagination.Root> {}
 
 export const Pagination = (props: PaginationProps) => {
   const { className, ...rest } = props;
 
   return (
-    <PaginationContext.Provider value={{}}>
-      <ArkPagination.Root
-        className={cn(
-          "mx-auto",
-          "w-full",
-          "flex justify-center gap-1",
-          className
-        )}
-        data-slot="pagination"
-        {...rest}
-      />
-    </PaginationContext.Provider>
+    <ArkPagination.Root
+      className={cn(
+        "mx-auto",
+        "w-full",
+        "flex justify-center gap-1",
+        className
+      )}
+      data-slot="pagination"
+      {...rest}
+    />
   );
 };
 
@@ -161,16 +154,4 @@ export const PaginationEllipsis = (
       <Ellipsis />
     </ArkPagination.Ellipsis>
   );
-};
-
-const _usePaginationContext = () => {
-  const context = React.useContext(PaginationContext);
-
-  if (!context) {
-    throw new Error(
-      "usePaginationContext must be used within a PaginationProvider"
-    );
-  }
-
-  return context;
 };

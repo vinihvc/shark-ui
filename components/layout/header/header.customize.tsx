@@ -121,7 +121,7 @@ export const HeaderCustomize = () => {
                       "flex items-center justify-between",
                       "px-3.5 py-2.5",
                       "bg-background",
-                      "rounded-lg border border-input shadow-md/5",
+                      "rounded-lg border border-input shadow-xs/5",
                       "data-[state=checked]:bg-input/32"
                     )}
                     key={color.value}
@@ -174,7 +174,7 @@ export const HeaderCustomize = () => {
                         "flex items-center justify-between",
                         "px-3.5 py-2.5",
                         "bg-background",
-                        "rounded-lg border border-input shadow-md/5",
+                        "rounded-lg border border-input shadow-xs/5",
                         "data-[state=checked]:bg-input/32"
                       )}
                       key={color.value}

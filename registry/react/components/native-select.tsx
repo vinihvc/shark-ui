@@ -14,7 +14,7 @@ export const nativeSelectVariants = tv({
     "ps-2.5 pe-8",
     "select-none text-base md:text-sm",
     "bg-transparent dark:bg-input/30",
-    "rounded-lg border border-input shadow-md/5",
+    "rounded-lg border border-input shadow-xs/5",
     "transition-colors",
     "outline-none",
     "disabled:pointer-events-none disabled:cursor-not-allowed",
