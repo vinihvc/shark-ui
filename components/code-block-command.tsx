@@ -1,6 +1,6 @@
 "use client";
 
-import { Terminal } from "lucide-react";
+import { TerminalIcon } from "lucide-react";
 import React from "react";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import {
@@ -13,10 +13,10 @@ import { type PackageManager, useConfig } from "@/store/config";
 import { CopyButton } from "./copy-button";
 
 interface CodeBlockCommandProps extends React.ComponentProps<"pre"> {
-  __npm__?: string;
-  __yarn__?: string;
-  __pnpm__?: string;
   __bun__?: string;
+  __npm__?: string;
+  __pnpm__?: string;
+  __yarn__?: string;
 }
 
 export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
@@ -47,7 +47,7 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
         value={packageManager}
       >
         <div className="flex items-center gap-2 border-border/64 border-b px-4 py-1 font-mono">
-          <Terminal className="size-4" />
+          <TerminalIcon aria-hidden className="size-4" />
 
           <TabsList className="bg-transparent">
             {Object.entries(tabs).map(([key]) => {

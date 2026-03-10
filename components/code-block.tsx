@@ -5,25 +5,25 @@ import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
-   * The title of the code block
-   */
-  title?: string;
-  /**
    * The code to highlight
    */
   code: string;
-  /**
-   * Whether to show the line numbers
-   *
-   * @default true
-   */
-  showLineNumbers?: boolean;
   /**
    * Whether to show the copy button
    *
    * @default true
    */
   copyButton?: boolean;
+  /**
+   * Whether to show the line numbers
+   *
+   * @default true
+   */
+  showshowLineNumbers?: boolean;
+  /**
+   * The title of the code block
+   */
+  title?: string;
 }
 
 export const CodeBlock = async (props: CodeBlockProps) => {

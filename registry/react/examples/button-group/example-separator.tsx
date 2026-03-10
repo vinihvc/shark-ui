@@ -1,4 +1,4 @@
-import { Minus, Plus } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   ButtonGroup,
@@ -8,11 +8,11 @@ import {
 const Example = () => (
   <ButtonGroup>
     <Button clickEffect={false} size="icon-md" variant="secondary">
-      <Minus />
+      <MinusIcon />
     </Button>
     <ButtonGroupSeparator />
     <Button clickEffect={false} size="icon-md" variant="secondary">
-      <Plus />
+      <PlusIcon />
     </Button>
   </ButtonGroup>
 );

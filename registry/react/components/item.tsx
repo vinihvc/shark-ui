@@ -1,4 +1,6 @@
-import { ark } from "@ark-ui/react";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -10,10 +12,8 @@ export const ItemGroup = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "[--space:--spacing(4)]",
         "group/item-group",
-        "flex w-full flex-col",
-        "gap-4 has-[data-size=sm]:gap-2.5 has-[data-size=xs]:gap-2",
+        "flex w-full flex-col gap-4",
         className
       )}
       data-slot="item-group"
@@ -40,30 +40,27 @@ export const ItemSeparator = (
 
 const itemVariants = tv({
   base: [
+    "[--space:--spacing(3)]",
     "group/item",
     "flex w-full flex-wrap items-center",
+    "gap-(--space) p-(--space)",
+    "in-data-[slot=menu-content]:p-0",
     "text-sm",
-    "rounded-lg border",
+    "rounded-2xl border",
     "transition-colors duration-100",
     "[a]:transition-colors [a]:hover:bg-muted",
-    "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-    "[&>svg:not([class*='size-'])]:size-4 [&>svg]:pointer-events-none [&>svg]:shrink-0",
+    "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
   variants: {
     variant: {
       default: "border-transparent",
-      outline: "border-border",
-      muted: "border-transparent bg-muted/50",
-    },
-    size: {
-      xs: "gap-2 in-data-[slot=menu-content]:p-0 px-2.5 py-2",
-      sm: "gap-2.5 px-3 py-2.5",
-      md: "gap-2.5 px-3 py-2.5",
+      outline: "border-border shadow-lg/5",
+      muted: "border-transparent bg-muted/64 shadow-lg shadow-muted/24",
     },
   },
   defaultVariants: {
     variant: "default",
-    size: "md",
   },
 });
 
@@ -72,12 +69,11 @@ interface ItemProps
     VariantProps<typeof itemVariants> {}
 
 export const Item = (props: ItemProps) => {
-  const { variant = "default", size = "md", className, ...rest } = props;
+  const { variant = "default", className, ...rest } = props;
 
   return (
     <ark.div
-      className={cn(itemVariants({ variant, size, className }))}
-      data-size={size}
+      className={cn(itemVariants({ variant }), className)}
       data-slot="item"
       data-variant={variant}
       {...rest}
@@ -97,9 +93,8 @@ const itemMediaVariants = tv({
       icon: ["[&_svg:not([class*='size-'])]:size-4"],
       image: [
         "size-10",
-        "rounded-sm",
+        "rounded-xl",
         "overflow-hidden",
-        "group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6",
         "[&_img]:size-full [&_img]:object-cover",
       ],
     },
@@ -132,8 +127,7 @@ export const ItemContent = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "flex flex-1 flex-col gap-1",
-        "group-data-[size=xs]/item:gap-0",
+        "flex flex-1 flex-col gap-0.5",
         "[&+[data-slot=item-content]]:flex-none",
         className
       )}
@@ -168,7 +162,6 @@ export const ItemDescription = (props: React.ComponentProps<typeof ark.p>) => {
     <ark.p
       className={cn(
         "line-clamp-2 text-left font-normal text-muted-foreground text-sm leading-normal",
-        "group-data-[size=xs]/item:text-xs",
         "[&>a:hover]:text-primary",
         "[&>a]:underline [&>a]:underline-offset-4",
         className
@@ -198,6 +191,7 @@ export const ItemHeader = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex basis-full items-center justify-between gap-2",
+        "[&_img]:size-full [&_img]:rounded-xl [&_img]:object-cover",
         className
       )}
       data-slot="item-header"

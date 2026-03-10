@@ -1,0 +1,215 @@
+---
+title: Drawer
+description: A panel that slides in from the edge of the screen.
+links:
+  doc: https://ark-ui.com/docs/components/dialog
+  api: https://ark-ui.com/docs/components/dialog#api-reference
+---
+
+<ComponentPreview componentName="drawer" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/drawer
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/drawer.tsx" src="/drawer.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerContentInner,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerBody,
+  DrawerFooter,
+  DrawerClose,
+} from "@/components/ui/drawer";
+```
+
+```tsx showLineNumbers
+<Drawer>
+  <DrawerTrigger />
+  <DrawerContent>
+    <DrawerContentInner>
+      <DrawerHeader>
+        <DrawerTitle />
+        <DrawerDescription />
+      </DrawerHeader>
+      <DrawerBody>
+        {/** your content here */}
+      </DrawerBody>
+    </DrawerContentInner>
+    <DrawerFooter>
+      <DrawerContentInner>
+        <DrawerClose />
+      </DrawerContentInner>
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
+```
+
+## Examples
+
+### Container
+
+Use `<DrawerContentInner />` to constrain drawer content width to `max-w-sm`.
+
+<ComponentPreview componentName="drawer" fileName="example-drawer-content-inner" />
+
+### Inset Variant
+
+Use `variant="inset"` on `<DrawerContent />` so the drawer appears as a floating card rather than edge-to-edge.
+
+<ComponentPreview componentName="drawer" fileName="example-inset" />
+
+### Swipe Directions
+
+Control which direction the drawer slides and swipes using `swipeDirection` on the root.
+
+<ComponentPreview componentName="drawer" fileName="example-swipe-directions" />
+
+### Snap Points
+
+Use `snapPoints` to allow the drawer to snap to multiple heights.
+
+<ComponentPreview componentName="drawer" fileName="example-snap-points" />
+
+## API Reference
+
+### Drawer
+
+Root element of the drawer. Renders a drawer context. Uses Ark UI Drawer (zag-js) under the hood.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | `-` |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
+| `swipeDirection` | `"up" \| "down" \| "left" \| "right"` | `"down"` |
+| `snapPoints` | `(number \| string)[]` | `[1]` |
+| `defaultSnapPoint` | `number \| string \| null` | `1` |
+| `snapToSequentialPoints` | `boolean` | `false` |
+| `closeThreshold` | `number` | `0.25` |
+| `swipeVelocityThreshold` | `number` | `700` |
+| `preventDragOnScroll` | `boolean` | `true` |
+| `modal` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `closeOnInteractOutside` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### DrawerTrigger
+
+Button that opens the drawer. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DrawerContent
+
+Container for the drawer content. Renders a `div` with swipe support. Direction is inherited from `swipeDirection` on the root.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"default" \| "inset"` | `"default"` |
+| `className` | `string` | `-` |
+
+### DrawerContentInner
+
+Wrapper that constrains content to `max-w-sm` and centers it. Use to wrap the main body (header + body) or footer actions. When used inside `DrawerFooter`, inherits `flex-col-reverse` and `gap-2` for button layout.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DrawerHeader
+
+Header container for the drawer. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `title` | `string` | `-` |
+| `description` | `string` | `-` |
+| `className` | `string` | `-` |
+
+
+### DrawerTitle
+
+Title element for the drawer. Renders an `h2`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DrawerDescription
+
+Description element for the drawer. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DrawerBody
+
+Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `scrollFade` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### DrawerFooter
+
+Footer container for the drawer. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+### DrawerClose
+
+Button that closes the drawer. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/dialog#api-reference).

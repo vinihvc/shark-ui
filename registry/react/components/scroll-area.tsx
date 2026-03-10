@@ -1,3 +1,5 @@
+"use client";
+
 import { ScrollArea as ArkScrollArea } from "@ark-ui/react/scroll-area";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -9,12 +11,24 @@ const scrollAreaVariants = tv({
     "rounded-[inherit]",
     "transition-shadows",
     "outline-none",
-    "data-has-overflow-x:overscroll-x-contain",
+    "[scrollbar-width:none]",
+    "[&::-webkit-scrollbar]:display-none",
+    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+    "transition-shadow",
   ],
   variants: {
-    scrollbarGutter: {
-      true: ["data-has-overflow-y:pe-2.5", "data-has-overflow-x:pb-2.5"],
+    scrollFade: {
+      true: [
+        "mask-t-from-[calc(100%-var(--fade-size))]",
+        "mask-b-from-[calc(100%-var(--fade-size))]",
+        "data-at-top:mask-t-from-100%",
+        "data-at-bottom:mask-b-from-100%",
+        "transition-shadow",
+      ],
     },
+  },
+  defaultVariants: {
+    scrollFade: false,
   },
 });
 
@@ -23,41 +37,28 @@ interface ScrollAreaProps
     VariantProps<typeof scrollAreaVariants> {}
 
 export const ScrollArea = (props: ScrollAreaProps) => {
-  const { scrollbarGutter = false, className, children, ...rest } = props;
+  const { scrollFade = false, className, children, ...rest } = props;
 
   return (
-    <>
-      <style>
-        {`
-        [data-slot='scroll-area-viewport'] {
-          scrollbar-width: none;
-          &::-webkit-scrollbar {
-            display: none;
-          }
-        }
-}`}
-      </style>
-
-      <ArkScrollArea.Root
-        className={cn("size-full min-h-0", className)}
-        data-slot="scroll-area"
-        {...rest}
+    <ArkScrollArea.Root
+      className={cn("size-full min-h-0 [--fade-size:1.5rem]", className)}
+      data-slot="scroll-area"
+      {...rest}
+    >
+      <ArkScrollArea.Viewport
+        className={cn(scrollAreaVariants({ scrollFade }))}
+        data-slot="scroll-area-viewport"
       >
-        <ArkScrollArea.Viewport
-          className={cn(scrollAreaVariants({ scrollbarGutter }))}
-          data-slot="scroll-area-viewport"
-        >
-          <ArkScrollArea.Content data-slot="scroll-area-content">
-            {children}
-          </ArkScrollArea.Content>
-        </ArkScrollArea.Viewport>
+        <ArkScrollArea.Content data-slot="scroll-area-content">
+          {children}
+        </ArkScrollArea.Content>
+      </ArkScrollArea.Viewport>
 
-        <ScrollAreaScrollbar orientation="vertical" />
-        <ScrollAreaScrollbar orientation="horizontal" />
+      <ScrollAreaScrollbar orientation="vertical" />
+      <ScrollAreaScrollbar orientation="horizontal" />
 
-        <ArkScrollArea.Corner data-slot="scroll-area-corner" />
-      </ArkScrollArea.Root>
-    </>
+      <ArkScrollArea.Corner data-slot="scroll-area-corner" />
+    </ArkScrollArea.Root>
   );
 };
 
@@ -71,12 +72,14 @@ export const ScrollAreaScrollbar = (
       className={cn(
         "flex",
         "m-1",
+        "bg-muted/64",
         "opacity-0 transition-opacity delay-300",
         "data-[orientation=vertical]:w-1.5",
         "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:flex-col",
-        "data-hovering:opacity-100 data-scrolling:opacity-100",
-        "data-hovering:delay-0 data-scrolling:delay-0",
-        "data-hovering:duration-100 data-scrolling:duration-100",
+        "data-hover:opacity-100 data-hover:delay-0 data-hover:duration-100",
+        "data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100",
+        "data-[orientation=vertical]:in-[[data-slot=scroll-area]:not([data-overflow-y])]:hidden",
+        "data-[orientation=horizontal]:in-[[data-slot=scroll-area]:not([data-overflow-x])]:hidden",
         className
       )}
       data-slot="scroll-area-scrollbar"

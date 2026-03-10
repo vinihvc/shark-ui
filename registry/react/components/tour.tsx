@@ -39,8 +39,6 @@ const TourProvider = React.createContext<TourProviderProps>(
 interface TourProps
   extends Omit<React.ComponentProps<typeof ArkTour.Root>, "tour"> {
   /**
-<<<<<<< Updated upstream
-=======
    * Enable arrow key navigation between steps
    */
   keyboardNavigation?: boolean;
@@ -53,7 +51,6 @@ interface TourProps
    */
   onStepChange?: (details: { stepId: string | null }) => void;
   /**
->>>>>>> Stashed changes
    * The steps to display in the tour
    *
    * @default []
@@ -126,15 +123,6 @@ export const TourActionTrigger = (
 
 export const TourOverlay = (
   props: React.ComponentProps<typeof DialogOverlay>
-<<<<<<< Updated upstream
-) => (
-  <ArkTour.Backdrop
-    className={dialogOverlayVariants()}
-    data-slot="tour-overlay"
-    {...props}
-  />
-);
-=======
 ) => {
   const { className, ...rest } = props;
 
@@ -146,8 +134,6 @@ export const TourOverlay = (
     />
   );
 };
->>>>>>> Stashed changes
-
 export const TourPositioner = (
   props: React.ComponentProps<typeof ArkTour.Positioner>
 ) => (
@@ -182,13 +168,8 @@ export const TourContent = (props: TourContentProps) => {
       <TourPositioner>
         <ArkTour.Content
           className={cn(
-<<<<<<< Updated upstream
-            "z-50",
-=======
             "[--space:--spacing(4)]",
-            "z-[calc(50+var(--layer-index,0))]",
->>>>>>> Stashed changes
-            "relative",
+            "z-[calc(50+var(--layer-index,0))]",            "relative",
             "w-full max-w-md",
             "flex flex-col gap-4",
             "bg-background",
@@ -316,8 +297,6 @@ export const TourFooter = (
   );
 };
 
-<<<<<<< Updated upstream
-=======
 export const TourActions = (
   props: React.ComponentProps<typeof DialogFooter>
 ) => {
@@ -356,10 +335,7 @@ export const TourActions = (
       </DialogFooter>
     </ArkTour.Control>
   );
-};
-
->>>>>>> Stashed changes
-export const TourPreviousStep = (
+};export const TourPreviousStep = (
   props: Omit<React.ComponentProps<typeof TourActionTrigger>, "action">
 ) => {
   const { ...rest } = props;

@@ -1,0 +1,125 @@
+---
+title: Format
+description: Format numbers, bytes, and relative time with locale-aware formatting using the native Intl API.
+links:
+  doc: https://ark-ui.com/docs/components/format
+  api: https://ark-ui.com/docs/components/format
+---
+
+<ComponentPreview componentName="format" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { 
+  FormatByte, 
+  FormatNumber, 
+  FormatRelativeTime 
+} from "@/components/ui/format";
+```
+
+```tsx
+<FormatByte value={120_000} />
+<FormatNumber value={1234567} />
+<FormatRelativeTime value={new Date("2025-05-05")} />
+```
+
+## Examples
+
+### Format Byte
+
+Format byte values as file sizes.
+
+<ComponentPreview componentName="format" fileName="example-byte" />
+
+#### Unit display
+
+Use the `unitDisplay` prop to control how the unit is displayed.
+
+<ComponentPreview componentName="format" fileName="example-byte-unit-display" />
+
+#### Unit system
+
+Use `unitSystem` to choose between decimal (1000 bytes) or binary (1024 bytes).
+
+<ComponentPreview componentName="format" fileName="example-byte-unit-system" />
+
+### Format Relative Time
+
+Format dates as relative time.
+
+<ComponentPreview componentName="format" fileName="example-relative-time" />
+
+#### Style
+
+Use the `style` prop for long, short, or narrow format.
+
+<ComponentPreview componentName="format" fileName="example-relative-time-short" />
+
+### Format Number
+
+Format numbers with locale-aware options.
+
+<ComponentPreview componentName="format" fileName="example-number" />
+
+#### Currency
+
+Use `style="currency"` with the `currency` prop for currency formatting.
+
+<ComponentPreview componentName="format" fileName="example-number-currency" />
+
+#### Percentage
+
+Use `style="percent"` to format numbers as percentages.
+
+<ComponentPreview componentName="format" fileName="example-number-percent" />
+
+#### Compact notation
+
+Use `notation="compact"` for compact display.
+
+<ComponentPreview componentName="format" fileName="example-number-compact" />
+
+## API Reference
+
+### FormatByte
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number` | — |
+| `unit` | `"byte"` \| `"bit"` | `"byte"` |
+| `unitDisplay` | `"long"` \| `"short"` \| `"narrow"` | — |
+| `unitSystem` | `"decimal"` \| `"binary"` | — |
+| `locale` | `string` | — |
+
+### FormatRelativeTime
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `Date` \| `number` | — |
+| `numeric` | `"always"` \| `"auto"` | — |
+| `style` | `"long"` \| `"short"` \| `"narrow"` | — |
+| `locale` | `string` | — |
+
+### FormatNumber
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number` | — |
+| `locale` | `string` | — |
+| `style` | `"decimal"` \| `"percent"` \| `"currency"` \| `"unit"` | `"decimal"` |
+| `currency` | `string` | — |
+| `unit` | `string` | — |
+| `notation` | `"standard"` \| `"compact"` \| `"scientific"` \| `"engineering"` | `"standard"` |
+| `minimumFractionDigits` | `number` | — |
+| `maximumFractionDigits` | `number` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/format#api-reference).

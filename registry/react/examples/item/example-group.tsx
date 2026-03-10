@@ -44,7 +44,7 @@ const Example = () => {
               <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
             </Avatar>
           </ItemMedia>
-          <ItemContent className="gap-1">
+          <ItemContent>
             <ItemTitle>{person.username}</ItemTitle>
             <ItemDescription>{person.email}</ItemDescription>
           </ItemContent>

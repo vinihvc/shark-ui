@@ -251,12 +251,7 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-<<<<<<< Updated upstream
-        "sm:rounded-b-[calc(var(--radius-lg)-1px)]",
-=======
-        "sm:rounded-b-2xl",
->>>>>>> Stashed changes
-        "px-(--space) py-4",
+        "sm:rounded-b-2xl",        "px-(--space) py-4",
         "bg-muted/72",
         "border-t",
         className

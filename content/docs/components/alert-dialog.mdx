@@ -1,16 +1,16 @@
 ---
 title: Alert Dialog
-description: A modal window that appears on top of the main content. To display important content to the user.
+description: Display important content on top of the main content.
 links:
   doc: https://ark-ui.com/docs/components/dialog
   api: https://ark-ui.com/docs/components/dialog#api-reference
 ---
 
 <Alert>
-<Info />
-<AlertDescription>
-Built on top of the <Link href="/docs/components/dialog">Dialog component</Link>. Check it out for more examples.
-</AlertDescription>
+  <InfoIcon />
+  <AlertDescription>
+  Built on top of the [`<Dialog />`](/docs/components/dialog) component. Check it out for more examples.
+  </AlertDescription>
 </Alert>
 
 <ComponentPreview componentName="alert-dialog" />
@@ -27,7 +27,7 @@ Built on top of the <Link href="/docs/components/dialog">Dialog component</Link>
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/alert-dialog
+npx shadcn@latest add @shark/alert-dialog
 ```
 
 </TabsContent>
@@ -56,7 +56,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   AlertDialog, 
   AlertDialogTrigger, 
@@ -71,20 +71,20 @@ import {
 } from "@/components/ui/alert-dialog";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <AlertDialog>
-  <AlertDialogTrigger>Open dialog</AlertDialogTrigger>
+  <AlertDialogTrigger />
   <AlertDialogContent>
     <AlertDialogHeader>
-      <AlertDialogTitle>Dialog Title</AlertDialogTitle>
-      <AlertDialogDescription>Dialog Description</AlertDialogDescription>
+      <AlertDialogTitle />
+      <AlertDialogDescription />
     </AlertDialogHeader>
     <AlertDialogBody>
     {/** Your content here */}
     </AlertDialogBody>
     <AlertDialogFooter>
-      <AlertDialogCancel>Close</AlertDialogCancel>
-      <AlertDialogAction>Action</AlertDialogAction>
+      <AlertDialogCancel />
+      <AlertDialogAction />
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
@@ -92,10 +92,27 @@ import {
 
 ## Examples
 
-### Destructive action
+### Destructive
 
-<ComponentPreview componentName="alert-dialog" fileName="variant-destructive" />
+<ComponentPreview componentName="alert-dialog" fileName="example-variant-destructive" />
 
 ## API Reference
 
-See the [Dialog component](/docs/components/dialog#api-reference) API reference for the available props.
+See the [Dialog component](/docs/components/dialog#api-reference) API reference to learn more.
+
+### AlertDialogAction
+
+Primary action button that closes the dialog. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"default" \| "destructive"` | `"default"` |
+| `className` | `string` | `-` |
+
+### AlertDialogCancel
+
+Cancel button that closes the dialog. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |

@@ -1,9 +1,10 @@
 {
-  "title": "Get Started",
+  "title": "Sections",
   "pages": [
     "index",
+    "rtl",
+    "[Forms](/docs/forms)",
     "[Installation](/docs/installation)",
-    "[Dark Mode](/docs/dark-mode)",
     "[Changelog](/docs/changelog)",
     "[llms.txt](/llms.txt)"
   ]

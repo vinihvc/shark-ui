@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/checkbox
+npx shadcn@latest add @shark/checkbox
 ```
 
 </TabsContent>
@@ -49,11 +49,11 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { Checkbox } from "@/components/ui/checkbox";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Checkbox />
 ```
 
@@ -63,13 +63,19 @@ Use the `checked` prop to control the checkbox.
 
 <ComponentPreview componentName="checkbox" fileName="example-controlled" />
 
-## Invalid State
+## States
+
+### Invalid
 
 Use the `invalid` prop to indicate an invalid state.
 
 <ComponentPreview componentName="checkbox" fileName="example-invalid" />
 
-You can pass `invalid` prop to the `<Field />` to disable the label and description or `<Checkbox />` to disable just the checkbox.
+### Disabled
+
+Use the `disabled` prop to disable the checkbox.
+
+<ComponentPreview componentName="checkbox" fileName="example-disabled" />
 
 ## Examples
 
@@ -78,12 +84,6 @@ You can pass `invalid` prop to the `<Field />` to disable the label and descript
 Use `<FieldDescription />` to add a description to the checkbox.
 
 <ComponentPreview componentName="checkbox" fileName="example-with-description" />
-
-### Disabled
-
-Use the `disabled` prop to disable the checkbox.
-
-<ComponentPreview componentName="checkbox" fileName="example-disabled" />
 
 ### Indeterminate
 
@@ -96,16 +96,6 @@ Use the `checked="indeterminate"` prop to set the checkbox to an indeterminate s
 Use `<CheckboxGroup />` to group multiple checkboxes together.
 
 <ComponentPreview componentName="checkbox" fileName="example-checkbox-group" />
-
-Use `defaultValue` to set the default checked values.
-
-```tsx lineNumbers
-<CheckboxGroup defaultValue={["value-1", "value-2"]}>
-  <Checkbox value="value-1" />
-  <Checkbox value="value-2" />
-  <Checkbox value="value-3" />
-</CheckboxGroup>
-```
 
 ### Card Style
 

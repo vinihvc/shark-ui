@@ -1,0 +1,127 @@
+---
+title: Status
+description: Indicate the status of a process or state with a color-coded indicator.
+links:
+  doc: https://chakra-ui.com/docs/components/status
+---
+
+<ComponentPreview componentName="status" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/status
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/status.tsx" src="/status.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Status } from "@/components/ui/status";
+
+<Status.Root colorPalette="green">
+  <Status.Indicator />
+  Success
+</Status.Root>
+```
+
+## Variants
+
+### Default
+
+<ComponentPreview componentName="status" fileName="example-variant-default" />
+
+### Info
+
+<ComponentPreview componentName="status" fileName="example-variant-info" />
+
+### Success
+
+<ComponentPreview componentName="status" fileName="example-variant-success" />
+
+### Warning
+
+<ComponentPreview componentName="status" fileName="example-variant-warning" />
+
+### Destructive
+
+<ComponentPreview componentName="status" fileName="example-variant-destructive" />
+
+## Sizes
+
+### Small
+
+<ComponentPreview componentName="status" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="status" fileName="example-size-md" />
+
+### Large
+
+<ComponentPreview componentName="status" fileName="example-size-lg" />
+
+## With Badge
+
+<ComponentPreview componentName="status" fileName="example-with-badge" />
+
+## With Icon
+
+Place an icon inside the `<Status />`.
+
+<ComponentPreview componentName="status" fileName="example-with-icon" />
+
+## Custom Size
+
+Use `size-*` utility classes to customize the size.
+
+<ComponentPreview componentName="status" fileName="example-custom-size" />
+
+## Custom Color
+
+Use `bg-*` and `text-*` utility classes to customize the color.
+
+<ComponentPreview componentName="status" fileName="example-custom-color" />
+
+## API Reference
+
+### Status
+
+Renders a `span`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `variant` | `"success" \| "info" \| "warning" \| "destructive"` | `"success"` |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+| Attribute | Description |
+|-----------|-------|
+| `data-slot` | `status` |

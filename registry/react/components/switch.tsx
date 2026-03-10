@@ -1,3 +1,5 @@
+"use client";
+
 import { Switch as ArkSwitch } from "@ark-ui/react/switch";
 import type React from "react";
 import { cn } from "@/lib/utils";
@@ -8,15 +10,19 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
   return (
     <ArkSwitch.Root
       className={cn(
-        "peer",
-        "h-[1.15rem] w-8",
+        "group/switch",
+        "[--size:--spacing(4)]",
+        "h-[calc(var(--size)+2px)] w-[calc(var(--size)*2-2px)]",
         "inline-flex shrink-0 items-center",
-        "rounded-full border border-transparent shadow-xs",
+        "rounded-full border border-transparent",
         "transition-all",
-        "outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "outline-none [[data-focus-visible],[data-invalid]]:ring-[3px]",
+        "data-focus-visible:border-primary data-focus-visible:ring-ring/32",
+        "data-invalid:border-destructive data-invalid:ring-destructive/24",
+        "dark:data-invalid:border-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
         "data-[state=checked]:bg-primary",
-        "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
+        "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         className
       )}
       data-slot="switch"
@@ -26,13 +32,13 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
         <ArkSwitch.Thumb
           className={cn(
             "block",
-            "size-4",
+            "size-[calc(var(--size)-2px)]",
             "pointer-events-none",
             "bg-background",
             "rounded-full",
             "transition-transform",
             "ring-0",
-            "data-[state=checked]:translate-x-[calc(100%-2px)] dark:data-[state=checked]:bg-primary-foreground",
+            "data-[state=checked]:translate-x-[calc(var(--size)-2px)] dark:data-[state=checked]:bg-primary-foreground",
             "dark:data-[state=unchecked]:bg-foreground",
             "data-[state=unchecked]:translate-x-0"
           )}

@@ -17,7 +17,7 @@ const DialogScrollAreaDemo = () => (
 
     <DialogContent size="lg">
       <DialogHeader title="Terms & Conditions" />
-      <DialogBody>
+      <DialogBody scrollFade>
         <div className="space-y-2 **:[h3]:font-semibold **:[p]:text-muted-foreground **:[p]:text-sm">
           <h3>What is Lorem Ipsum?</h3>
           <p>
@@ -56,6 +56,13 @@ const DialogScrollAreaDemo = () => (
             egestas egestas quam mi at quam. Curabitur eu tempus mauris.
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
             posuere cubilia curae;
+          </p>
+          <h3>Where can I get some?</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            egestas semper eros a maximus. Sed consequat tempus lobortis.
+            Phasellus sed vulputate turpis. Nulla facilisi. Curabitur consequat
+            dui tellus.
           </p>
         </div>
       </DialogBody>

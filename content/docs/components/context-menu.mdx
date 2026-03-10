@@ -7,9 +7,9 @@ links:
 ---
 
 <Alert>
-  <Info />
+  <InfoIcon />
   <AlertDescription>
-    Built on top of the <Link href="/docs/components/menu">Menu component</Link>. Check it out for more examples.
+    Built on top of the [Menu](/docs/components/menu) component. Check it out for more examples.
   </AlertDescription>
 </Alert>
  
@@ -27,7 +27,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/context-menu
+npx shadcn@latest add @shark/context-menu
 ```
 
 </TabsContent>
@@ -56,7 +56,7 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   ContextMenu, 
   ContextMenuTrigger, 
@@ -67,7 +67,7 @@ import {
 } from "@/components/ui/context-menu";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <ContextMenu>
   <ContextMenuTrigger>Right click here</ContextMenuTrigger>
   <ContextMenuContent>

@@ -1,5 +1,6 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import {
   Avatar,
   AvatarFallback,
@@ -13,7 +14,6 @@ import {
 } from "@/registry/react/components/card";
 import { Input } from "@/registry/react/components/input";
 import {
-  createCollection,
   Select,
   SelectContent,
   SelectItem,
@@ -22,7 +22,7 @@ import {
 } from "@/registry/react/components/select";
 import { Separator } from "@/registry/react/components/separator";
 
-const collection = createCollection({
+const collection = createListCollection({
   items: [
     {
       value: "edit",

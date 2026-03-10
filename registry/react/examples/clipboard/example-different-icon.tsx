@@ -1,4 +1,4 @@
-import { Sparkle, Sparkles } from "lucide-react";
+import { SparkleIcon, SparklesIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   Clipboard,
@@ -10,8 +10,8 @@ const Example = () => (
   <Clipboard value="https://x.com/vinihvc">
     <ClipboardTrigger asChild>
       <Button size="icon-md">
-        <ClipboardIndicator copied={<Sparkles />}>
-          <Sparkle />
+        <ClipboardIndicator copied={<SparklesIcon />}>
+          <SparkleIcon />
         </ClipboardIndicator>
       </Button>
     </ClipboardTrigger>

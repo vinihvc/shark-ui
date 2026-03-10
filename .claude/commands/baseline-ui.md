@@ -58,7 +58,6 @@ Enforces an opinionated UI baseline to prevent AI-generated interface slop.
 
 ## Typography
 
-- MUST use `text-balance` for headings and `text-balance` for body/paragraphs
 - MUST use `tabular-nums` for data
 - SHOULD use `truncate` or `line-clamp` for dense UI
 - NEVER modify `letter-spacing` (`tracking-*`) unless explicitly requested

@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { NavLink } from "@/components/nav-link";
 import {
   Sidebar,
   SidebarContent,
@@ -12,26 +13,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { source } from "@/lib/fumadocs";
-import { NavLink } from "../nav-link";
-
-const TOP_LEVEL_SECTIONS = [
-  { name: "Introduction", href: "/docs", exact: true },
-  { name: "Installation", href: "/docs/installation", exact: true },
-  {
-    name: "Components",
-    href: "/docs/components",
-    exact: true,
-  },
-  {
-    name: "asChild prop",
-    href: "/docs/as-child",
-    exact: true,
-  },
-  {
-    name: "Changelog",
-    href: "/docs/changelog",
-  },
-];
 
 export const DocsSidebar = (
   props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }
@@ -55,14 +36,14 @@ export const DocsSidebar = (
             </SidebarGroupLabel>
             <SidebarGroupContent>
               {item.type === "folder" && (
-                <SidebarMenu className="gap-0.5">
+                <SidebarMenu className="gap-1">
                   {item.children.map((item) => {
                     return (
                       item.type === "page" && (
                         <SidebarMenuItem key={item.url}>
                           <SidebarMenuButton
                             asChild
-                            className="ps-3.5 text-muted-foreground hover:bg-transparent [.active]:bg-muted"
+                            className="ps-3.5 text-muted-foreground hover:bg-muted [.active]:bg-muted [.active]:text-foreground"
                             isActive={item.url === pathname}
                           >
                             <NavLink href={item.url}>{item.name}</NavLink>

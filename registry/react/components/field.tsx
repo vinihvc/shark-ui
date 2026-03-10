@@ -153,13 +153,7 @@ export const FieldLabel = (
         "w-fit",
         "flex gap-1",
         "font-medium text-sm leading-snug",
-<<<<<<< Updated upstream
-        "flex w-fit gap-2",
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
-=======
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5",
->>>>>>> Stashed changes
-        "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5",        "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
         "group-data-disabled/field:opacity-50",
         "dark:has-data-[state=checked]:bg-primary/10",
         className
@@ -176,14 +170,8 @@ export const FieldRequiredIndicator = (
   const { className, children, ...rest } = props;
 
   return (
-<<<<<<< Updated upstream
-    <ark.span
-      aria-label="Required"
-=======
     <ArkField.RequiredIndicator
-      aria-hidden
->>>>>>> Stashed changes
-      className={cn(
+      aria-hidden      className={cn(
         "text-destructive text-sm dark:text-destructive-foreground",
         className
       )}

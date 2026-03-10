@@ -11,6 +11,12 @@ const registryPath = "registry/react/examples";
 interface ComponentPreviewProps
   extends Omit<React.ComponentProps<"div">, "ref"> {
   /**
+   * The alignment of the component
+   *
+   * @default "center"
+   */
+  align?: "start" | "center" | "end";
+  /**
    * The name of the component to display in the preview
    *
    * @default ""
@@ -20,18 +26,12 @@ interface ComponentPreviewProps
    * The file name of the component
    */
   fileName?: string;
-  /**
-   * The alignment of the component
-   *
-   * @default "center"
-   */
-  align?: "start" | "center" | "end";
 }
 
 export const ComponentPreview = async (props: ComponentPreviewProps) => {
   const {
     componentName,
-    fileName = "default",
+    fileName = "example-default",
     align = "center",
     ...rest
   } = props;
@@ -51,8 +51,6 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     "utf-8"
   );
 
-  const replacedCode = replaceContent(sourceCode);
-
   if (!Example.default) {
     throw new Error(`Component ${componentName} not found`);
   }
@@ -60,19 +58,8 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
   return (
     <ComponentPreviewTabs
       component={<Example.default />}
-      source={<ComponentSource code={replacedCode} isCollapsible={false} />}
+      source={<ComponentSource code={sourceCode} isCollapsible={false} />}
       {...rest}
     />
   );
-};
-
-const replaceContent = (code: string) => {
-  code = code.replaceAll("@/registry/react/components", "@/components/ui");
-  code = code.replaceAll(/const (\w+) =/g, "export const $1 =");
-  code = code.replaceAll(/export default (\w+);/g, "");
-  code = code.replaceAll(/\n$/g, "");
-  code = code.replaceAll(/\n$/g, "");
-  code = code.replaceAll(/\n$/g, "");
-
-  return code;
 };

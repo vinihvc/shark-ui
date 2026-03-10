@@ -21,7 +21,7 @@ import {
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 
-export function CardsChat() {
+export const CardsChat = () => {
   const [messages, setMessages] = React.useState([
     {
       role: "agent",
@@ -106,12 +106,12 @@ export function CardsChat() {
             />
             <InputGroupAddon align="inline-end">
               <InputGroupButton
+                aria-label="Send"
                 className="rounded-full"
                 size="icon-xs"
                 type="submit"
               >
-                <ArrowUpIcon />
-                <span className="sr-only">Send</span>
+                <ArrowUpIcon aria-hidden />
               </InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
@@ -119,4 +119,4 @@ export function CardsChat() {
       </CardFooter>
     </Card>
   );
-}
+};

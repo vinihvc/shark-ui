@@ -1,7 +1,9 @@
+"use client";
+
 import type React from "react";
 import {
   Combobox,
-  ComboboxClearTrigger,
+  ComboboxClear,
   ComboboxContent,
   ComboboxControl,
   ComboboxEmpty,
@@ -13,7 +15,9 @@ import {
 } from "@/registry/react/components/combobox";
 import { Input } from "./input";
 
-export const Autocomplete = <T,>(
+export const Autocomplete = <
+  T extends { label: string; value: string } | string,
+>(
   props: React.ComponentProps<typeof Combobox<T>>
 ) => (
   <Combobox
@@ -52,9 +56,9 @@ export const AutocompleteTrigger = (
   props: React.ComponentProps<typeof ComboboxTrigger>
 ) => <ComboboxTrigger data-slot="autocomplete-trigger" {...props} />;
 
-export const AutocompleteClearTrigger = (
-  props: React.ComponentProps<typeof ComboboxClearTrigger>
-) => <ComboboxClearTrigger data-slot="autocomplete-clear-trigger" {...props} />;
+export const AutocompleteClear = (
+  props: React.ComponentProps<typeof ComboboxClear>
+) => <ComboboxClear data-slot="autocomplete-clear" {...props} />;
 
 export const AutocompleteGroup = (
   props: React.ComponentProps<typeof ComboboxGroup>

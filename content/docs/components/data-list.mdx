@@ -1,0 +1,128 @@
+---
+title: Data List
+description: Display a list of similar data items with labels and values.
+links:
+  doc: https://chakra-ui.com/docs/components/data-list
+---
+
+<ComponentPreview componentName="data-list" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/data-list
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/data-list.tsx" src="/data-list.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  DataList,
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+} from "@/components/ui/data-list";
+
+<DataList>
+  <DataListItem>
+    <DataListItemLabel>Name</DataListItemLabel>
+    <DataListItemValue>John Doe</DataListItemValue>
+  </DataListItem>
+  <DataListItem>
+    <DataListItemLabel>Email</DataListItemLabel>
+    <DataListItemValue>john@example.com</DataListItemValue>
+  </DataListItem>
+</DataList>
+```
+
+## Orientation
+
+Use the `orientation` prop to change the orientation of the datalist component.
+
+### Horizontal
+
+<ComponentPreview componentName="data-list" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="data-list" fileName="example-orientation-vertical" />
+
+## Examples
+
+### Info Tip
+
+Render the `Hint` component within `DataListItem` to provide additional context to the datalist.
+
+<ComponentPreview componentName="data-list" fileName="example-info-tip" />
+
+### Separator
+
+Use the `divide-y` utility class on `DataList` to add a separator between items.
+
+<ComponentPreview componentName="data-list" fileName="example-separator" />
+
+## API Reference
+
+### DataList
+
+Root component. Renders a `div`
+
+| Prop | Type | Default |
+|------|------|---------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### DataListItem
+
+Container for a single row. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### DataListItemLabel
+
+Label for the row. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### DataListItemValue
+
+Value for the row. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

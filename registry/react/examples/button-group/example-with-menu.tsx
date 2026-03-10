@@ -1,4 +1,11 @@
-import { Ban, MoreHorizontalIcon, Share2, Star } from "lucide-react";
+import {
+  BanIcon,
+  BookmarkIcon,
+  CloudDownloadIcon,
+  MoreHorizontalIcon,
+  Share2Icon,
+  StarIcon,
+} from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
@@ -6,13 +13,14 @@ import {
   MenuContent,
   MenuGroup,
   MenuItem,
+  MenuSeparator,
   MenuTrigger,
 } from "@/registry/react/components/menu";
 
 const Example = () => (
   <ButtonGroup>
     <Button variant="outline">
-      <Star />
+      <StarIcon />
       Subscribe
     </Button>
     <Menu positioning={{ placement: "bottom-end" }}>
@@ -24,10 +32,17 @@ const Example = () => (
       <MenuContent className="w-48">
         <MenuGroup>
           <MenuItem value="share">
-            <Share2 /> Share Profile
+            <Share2Icon /> Share
           </MenuItem>
-          <MenuItem value="share">
-            <Ban />
+          <MenuItem value="watch-later">
+            <BookmarkIcon /> Watch later
+          </MenuItem>
+          <MenuItem value="download">
+            <CloudDownloadIcon /> Download
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem value="report" variant="destructive">
+            <BanIcon />
             Report
           </MenuItem>
         </MenuGroup>

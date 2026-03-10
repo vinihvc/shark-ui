@@ -1,0 +1,64 @@
+---
+title: Presence
+description: Animate components on mount and unmount.
+links:
+  doc: https://ark-ui.com/docs/components/presence
+---
+
+<ComponentPreview componentName="presence" />
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import React from "react";
+import { Presence } from "@/components/ui/presence";
+
+const [visible, setVisible] = React.useState(false);
+
+<Presence present={visible}>
+  Content that animates in and out
+</Presence>
+```
+
+## Lazy
+
+Setting `lazyMount` and `unmountOnExit` to `true` lazy mounts and unmounts the content.
+
+It will remove the element from the DOM when it is not present.
+
+```tsx showLineNumbers
+<Presence lazyMount unmountOnExit {...}>
+  {/** content */}
+</Presence>
+```
+
+## State
+
+Presence automatically manages the attribute `data-state` to `open` and `closed`. This enables styling and animations based on visibility state.
+
+
+```tsx showLineNumbers
+<Presence present={true} /> // <div data-state="open" />
+<Presence present={false} /> // <div data-state="closed" />
+```
+
+## API Reference
+
+### Presence
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `present` | `boolean` | `false` |
+| `unmountOnExit` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/presence#api-reference).

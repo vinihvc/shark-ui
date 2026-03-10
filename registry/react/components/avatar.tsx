@@ -1,10 +1,14 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
 import { Avatar as ArkAvatar } from "@ark-ui/react/avatar";
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import {
+  Status,
+  type statusVariants,
+} from "@/registry/react/components/status";
 
 const avatarVariants = tv({
   base: [
@@ -13,9 +17,9 @@ const avatarVariants = tv({
     "size-8",
     "inline-flex shrink-0 items-center justify-center",
     "bg-background",
+    "select-none font-medium text-xs",
     "rounded-full",
-    "font-medium text-xs",
-    "select-none",
+    "after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
   ],
   variants: {
     size: {
@@ -56,7 +60,7 @@ export const AvatarImage = (
       className={cn(
         "size-full",
         "aspect-square object-cover",
-        "rounded-full",
+        "rounded-[inherit]",
         className
       )}
       data-slot="avatar-image"
@@ -76,8 +80,8 @@ export const AvatarFallback = (
         "size-full",
         "flex items-center justify-center",
         "bg-muted",
-        "rounded-full",
-        "[&>svg]:size-4 group-data-[size=lg]/avatar:[&>svg]:size-4.5 group-data-[size=sm]/avatar:[&>svg]:size-3",
+        "rounded-[inherit]",
+        "[&_svg]:size-4 group-data-[size=lg]/avatar:[&_svg]:size-4.5 group-data-[size=sm]/avatar:[&_svg]:size-3",
         className
       )}
       data-slot="avatar-fallback"
@@ -86,38 +90,25 @@ export const AvatarFallback = (
   );
 };
 
-export const avatarBadgeVariants = tv({
-  base: [
-    "z-10",
-    "absolute right-0 bottom-0",
-    "inline-flex items-center justify-center",
-    "rounded-full",
-    "ring-2 ring-background",
-    "size-2.5 [&>svg]:size-2",
-  ],
-  variants: {
-    variant: {
-      success: ["bg-success text-success-foreground"],
-      warning: "bg-warning text-warning-foreground",
-      destructive: "bg-destructive text-destructive-foreground",
-    },
-  },
-  defaultVariants: {
-    variant: "success",
-  },
-});
-
 interface AvatarBadgeProps
   extends React.ComponentProps<typeof ark.span>,
-    VariantProps<typeof avatarBadgeVariants> {}
+    Pick<VariantProps<typeof statusVariants>, "variant"> {}
 
 export const AvatarBadge = (props: AvatarBadgeProps) => {
   const { variant, className, ...rest } = props;
 
   return (
-    <ark.span
-      className={cn(avatarBadgeVariants({ variant }), className)}
+    <Status
+      className={cn(
+        "absolute inset-e-0 bottom-0 z-10",
+        "flex items-center justify-center",
+        "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&_svg]:hidden",
+        "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&_svg]:size-2",
+        "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&_svg]:size-2",
+        className
+      )}
       data-slot="avatar-badge"
+      variant={variant}
       {...rest}
     />
   );
@@ -130,7 +121,7 @@ export const AvatarGroup = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex -space-x-2",
-        "*:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
+        "**:data-[slot=avatar]:ring-2 **:data-[slot=avatar]:ring-background",
         className
       )}
       data-slot="avatar-group"
@@ -151,10 +142,10 @@ export const AvatarGroupCount = (
         "size-8",
         "flex shrink-0 items-center justify-center",
         "bg-muted",
-        "text-muted-foreground text-sm",
+        "select-none text-muted-foreground text-sm",
         "rounded-full",
         "ring-2 ring-background",
-        "[&>svg]:size-4",
+        "[&_svg]:size-4",
         className
       )}
       data-slot="avatar-group-count"

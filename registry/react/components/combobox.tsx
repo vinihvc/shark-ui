@@ -228,17 +228,12 @@ export const ComboboxEmpty = (
 
   return (
     <ArkCombobox.Empty
-<<<<<<< Updated upstream
-      className={cn("px-2 py-1.5 text-muted-foreground text-sm", className)}
-=======
       className={cn(
         "px-2 py-1.5",
         "text-center text-muted-foreground text-sm",
         className
       )}
-      data-slot="combobox-empty"
->>>>>>> Stashed changes
-      {...rest}
+      data-slot="combobox-empty"      {...rest}
     >
       {children || "No results found."}
     </ArkCombobox.Empty>

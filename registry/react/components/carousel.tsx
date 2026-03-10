@@ -6,25 +6,10 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-type CarouselProps = Omit<
-  React.ComponentProps<typeof ArkCarousel.Root>,
-  "spacing" | "padding"
-> & {
-  /**
-   * The amount of space between items.
-   */
-  spacing?: number;
-  /**
-   * The amount of padding around the carousel.
-   */
-  padding?: number;
-};
-
-export const Carousel = (props: CarouselProps) => {
-  const { spacing = 4, padding = 0, className, ...rest } = props;
-
-  const spacingValue = `${(spacing * 4) / 16}rem`;
-  const paddingValue = `${(padding * 4) / 16}rem`;
+export const Carousel = (
+  props: React.ComponentProps<typeof ArkCarousel.Root>
+) => {
+  const { className, ...rest } = props;
 
   return (
     <ArkCarousel.Root
@@ -35,8 +20,6 @@ export const Carousel = (props: CarouselProps) => {
         className
       )}
       data-slot="carousel"
-      padding={paddingValue}
-      spacing={spacingValue}
       {...rest}
     />
   );
@@ -69,7 +52,7 @@ export const CarouselPrevious = (
     <ArkCarousel.PrevTrigger
       className={cn(
         "absolute",
-        "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-left-12 data-[orientation=horizontal]:-translate-y-1/2",
+        "data-[orientation=horizontal]:-inset-s-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
         "data-[orientation=vertical]:-top-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
         className
       )}
@@ -77,9 +60,14 @@ export const CarouselPrevious = (
       {...rest}
       asChild
     >
-      <Button clickEffect={false} pill size="icon-md" variant="outline">
-        <ChevronLeftIcon />
-        <span className="sr-only">Previous</span>
+      <Button
+        aria-label="Previous"
+        clickEffect={false}
+        pill
+        size="icon-md"
+        variant="outline"
+      >
+        <ChevronLeftIcon aria-hidden />
       </Button>
     </ArkCarousel.PrevTrigger>
   );
@@ -94,7 +82,7 @@ export const CarouselNext = (
     <ArkCarousel.NextTrigger
       className={cn(
         "absolute",
-        "data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-right-12 data-[orientation=horizontal]:-translate-y-1/2",
+        "data-[orientation=horizontal]:-inset-e-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
         "data-[orientation=vertical]:-bottom-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
         className
       )}
@@ -102,9 +90,14 @@ export const CarouselNext = (
       asChild
       data-slot="carousel-next"
     >
-      <Button clickEffect={false} pill size="icon-md" variant="outline">
-        <ChevronRightIcon />
-        <span className="sr-only">Next</span>
+      <Button
+        aria-label="Next"
+        clickEffect={false}
+        pill
+        size="icon-md"
+        variant="outline"
+      >
+        <ChevronRightIcon aria-hidden />
       </Button>
     </ArkCarousel.NextTrigger>
   );
@@ -139,9 +132,9 @@ export const CarouselIndicator = (
         "size-2",
         "shrink-0",
         "bg-foreground",
-        "opacity-40 data-current:opacity-100",
+        "opacity-64 data-current:opacity-100",
         "overflow-hidden",
-        "[&_img]:size-full [&_img]:rounded-md [&_img]:object-cover",
+        "[&_img]:size-full [&_img]:rounded-lg [&_img]:object-cover",
         "rounded-full",
         className
       )}
@@ -160,8 +153,9 @@ export const CarouselContent = (
     <ArkCarousel.ItemGroup
       className={cn(
         "min-w-0",
+        "-my-4 py-4",
         "flex flex-1",
-        "overflow-hidden rounded-md",
+        "overflow-hidden rounded-lg",
         className
       )}
       data-slot="carousel-group"
@@ -180,7 +174,7 @@ export const CarouselItem = (
       className={cn(
         "min-w-0",
         "shrink-0 grow-0 basis-full",
-        "[&_img]:size-full [&_img]:rounded-md [&_img]:object-cover",
+        "[&_img]:size-full [&_img]:rounded-lg [&_img]:object-cover",
         className
       )}
       data-slot="carousel-item"

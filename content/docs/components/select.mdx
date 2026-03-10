@@ -1,6 +1,6 @@
 ---
 title: Select
-description: Displays a list of options for the user to pick from
+description: Displays a list of options for the user to pick from.
 links:
   doc: https://ark-ui.com/docs/components/select
   api: https://ark-ui.com/docs/components/select#api-reference
@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/select
+npx shadcn@latest add @shark/select
 ```
 
 </TabsContent>
@@ -49,27 +49,201 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
-import { 
+```tsx
+import { createListCollection } from "@ark-ui/react";
+import {
   Select,
+  SelectContent,
+  SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 ```
 
-```tsx lineNumbers
-  <Select>
-    <SelectTrigger>
-      <SelectValueText placeholder="Select an option" />
-    </SelectTrigger>
-    <SelectContent>
-      <SelectItem value="1">Option 1</SelectItem>
-    </SelectContent>
-  </Select>
+```tsx showLineNumbers
+const collection = createListCollection({
+  items: ["Option 1", "Option 2", "Option 3"],
+});
+
+<Select collection={collection}>
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    {collection.items.map((item) => (
+      <SelectItem item={item} key={item}>
+        {item}
+      </SelectItem>
+    ))}
+  </SelectContent>
+</Select>
 ```
+
+## Controlled
+
+Use `value` and `onValueChange` to control the selected items.
+
+<ComponentPreview componentName="select" fileName="example-controlled" />
+
+## Size
+
+Control trigger size with the `size` prop on SelectTrigger.
+
+### Small
+
+<ComponentPreview componentName="select" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="select" fileName="example-size-md" />
+
+### Large
+
+<ComponentPreview componentName="select" fileName="example-size-lg" />
+
+## State
+
+### Disabled
+
+<ComponentPreview componentName="select" fileName="example-disabled" />
+
+### Invalid
+
+<ComponentPreview componentName="select" fileName="example-invalid" />
 
 ## Examples
 
-### Default
+### Multiple
 
-<ComponentPreview componentName="select" fileName="default" />
+Enable multiple selection with the `multiple` prop.
+
+<ComponentPreview componentName="select" fileName="example-multiple" />
+
+### Grouping
+
+Organize options into groups using `groupBy` and `SelectGroup`.
+
+<ComponentPreview componentName="select" fileName="example-grouping" />
+
+### With Field
+
+Use `<Field />` for labels, helper text, and error handling.
+
+<ComponentPreview componentName="select" fileName="example-with-field" />
+
+### Max Selection
+
+<ComponentPreview componentName="select" fileName="example-max-selection" />
+
+### With Scroll
+
+<ComponentPreview componentName="select" fileName="example-with-scroll" />
+
+### Empty
+
+Use `SelectEmpty` to display a message when the collection has no items.
+
+<ComponentPreview componentName="select" fileName="example-empty" />
+
+## API Reference
+
+### Select
+
+Root component. Wraps Ark UI Select.Root with `HiddenSelect` for form support.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collection` | `ListCollection<T>` | — |
+| `value` | `string[]` | — |
+| `defaultValue` | `string[]` | — |
+| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | — |
+| `multiple` | `boolean` | `false` |
+| `disabled` | `boolean` | — |
+| `invalid` | `boolean` | — |
+| `name` | `string` | — |
+| `required` | `boolean` | — |
+| `positioning` | `PositioningOptions` | — |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `className` | `string` | — |
+
+### SelectTrigger
+
+Trigger button that opens the dropdown. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm"` \| `"md"` \| `"lg"` | `"md"` |
+| `showClearTrigger` | `boolean` | `false` |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectValue
+
+Displays the selected value. Renders a `span`. Use `SelectContext` as children for custom display.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `string` | — |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectContent
+
+Popup container for options. Renders a `div` inside a `Portal`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectClearTrigger
+
+Button to clear the selected value. Shown when `showClearTrigger` is true on `SelectTrigger`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectGroup
+
+Groups related options. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string` \| `ReactNode` | — |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectGroupLabel
+
+Label for a group. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectItem
+
+Individual option. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `item` | `T` | — |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### SelectEmpty
+
+Displays content when the collection has no items. Renders when `collection.size === 0`. Place inside `SelectContent`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `children` | `ReactNode` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/select#api-reference).

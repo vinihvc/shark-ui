@@ -5,16 +5,20 @@ description: Introduction to Shark UI
 
 ## What is Shark UI?
 
-Shark UI is a opinionated UI library built on top of [Ark UI](https://ark-ui.com) and [shadcn](https://shadcn.com). It provides a set of components and utilities that are designed to be used in a modern web application. Shark is a combination of ```shadcn``` and ```ark``` initials.
+Shark UI is an opinionated UI library built on top of [Ark UI](https://ark-ui.com) and [shadcn](https://shadcn.com). "Opinionated" means it comes with sensible defaults out of the box—styling, variants, and structure—so you can drop components into a project without starting from scratch. It’s not a black-box framework; you own the code, tweak what you need, and build on top of something that’s already thought through.
+
+The name blends the two projects it’s built on: **sh** from shadcn and **ark** from Ark UI. Shark.
 
 ## Motivation
 
-[Ark UI](https://ark-ui.com) has more headless components, it's made by the team behind [Chakra UI](https://chakra-ui.com) also is a direct alternative to [Radix Primitives](https://radix-ui.com/primitives) and [Base UI](https://base-ui.com) and a more opinionated approach to [shadcn](https://shadcn.com).
+[Ark UI](https://ark-ui.com) offers a broad set of headless components—made by the team behind [Chakra UI](https://chakra-ui.com)—and serves as a direct alternative to [Radix Primitives](https://radix-ui.com/primitives) and [Base UI](https://base-ui.com). It gives you accessible primitives and state management, but it leaves styling and layout entirely to you. [shadcn](https://shadcn.com), on the other hand, ships copy-paste components that look great with [Tailwind CSS](https://tailwindcss.com). The gap is that Ark’s docs don’t show how to pair its primitives with Tailwind, or how to turn them into a reusable design system you can install, theme, and extend.
+
+If you wanted that combination, you had to figure it out yourself. That’s where Shark UI comes in.
 
 ## Solution
 
-Because of the [Ark UI](https://ark-ui.com) docs don't have examples with [Tailwind CSS](https://tailwindcss.com) and how to create a reusable design system, I decided to create a new library.
+Shark UI bridges that gap. It takes Ark’s headless components, styles them with Tailwind using shadcn’s patterns, and gives you a design system you can install, customize, and grow. Components live in your project, not in a dependency you can’t touch. You get Tailwind examples, consistent theming, and a structure that scales—without reinventing the wheel.
 
 ## Installation
 
-Follow the [installation guide](/docs/installation) to install Shark UI in your project.
+To get started, follow the [installation guide](/docs/installation). You’ll choose your framework (Next.js, Vite, Astro, and others are supported), add the components you need, and you’re off.

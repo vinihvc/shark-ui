@@ -1,0 +1,71 @@
+---
+title: Highlight
+description: Highlight search terms within text.
+links:
+  doc: https://ark-ui.com/docs/components/highlight
+---
+
+<ComponentPreview componentName="highlight" />
+
+
+## Installation
+
+```bash
+npm install @ark-ui/react
+```
+
+## Usage
+
+```tsx
+import { Highlight } from "@/components/ui/highlight";
+```
+
+```tsx
+<Highlight
+  query="amet"
+  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+/>
+```
+
+## Examples
+
+### Multiple
+
+Pass an array of strings to the `query` prop to highlight multiple substrings.
+
+<ComponentPreview componentName="highlight" fileName="example-multiple" />
+
+### Search Query
+
+Use the Highlight component to highlight search query results.
+
+<ComponentPreview componentName="highlight" fileName="example-search-query" />
+
+### With Squiggle
+
+Use a custom decoration like a wavy underline for a fancier highlight effect.
+
+<ComponentPreview componentName="highlight" fileName="example-squiggle" />
+
+
+### Custom Style
+
+Use the `className` prop to customize the style of the highlighted text.
+
+<ComponentPreview componentName="highlight" fileName="example-custom-style" />
+
+## API Reference
+
+### Highlight
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| `query` | `string \| string[]` | **required** | 
+| `text` | `string` | **required** | 
+| `ignoreCase` | `boolean` | `false` | 
+| `exactMatch` | `boolean` | `false` | 
+| `className` | `string` | `""` | 
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/highlight#api-reference).

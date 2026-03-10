@@ -15,7 +15,7 @@ const items = Array.from({ length: 12 }, (_, i) => ({
 }));
 
 const Example = () => (
-  <Popover closeOnEscape={false} closeOnInteractOutside={false}>
+  <Popover>
     <PopoverTrigger asChild>
       <Button variant="outline">Open</Button>
     </PopoverTrigger>
@@ -35,7 +35,7 @@ const Example = () => (
       </PopoverBody>
       <PopoverFooter>
         <PopoverClose asChild>
-          <Button>Close it</Button>
+          <Button>Close</Button>
         </PopoverClose>
       </PopoverFooter>
     </PopoverContent>

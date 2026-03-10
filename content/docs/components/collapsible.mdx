@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/collapsible
+npx shadcn@latest add @shark/collapsible
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Collapsible, 
   CollapsibleTrigger, 
@@ -57,7 +57,7 @@ import {
 } from "@/components/ui/collapsible";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Collapsible>
   <CollapsibleTrigger>Open Collapsible</CollapsibleTrigger>
   <CollapsibleContent>Collapsible Content</CollapsibleContent>
@@ -68,7 +68,7 @@ import {
 
 ### Nested
 
-You can nest collapsibles inside each other to create hierarchical structures.
+Collapsibles can be nested to create hierarchical structures.
 
 <ComponentPreview componentName="collapsible" fileName="example-nested" />
 
@@ -92,11 +92,11 @@ Use the `collapsedHeight` prop to show a portion of the content when collapsed.
 
 
 <Alert variant="warning">
-<Info />
-<AlertTitle>Accessibility Notice</AlertTitle>
-<AlertDescription>
-Interactive elements (links, buttons, inputs) within the collapsed area automatically become inaccesible to prevent keyboard navigation to hidden content.
-</AlertDescription>
+  <InfoIcon />
+  <AlertTitle>Accessibility Notice</AlertTitle>
+  <AlertDescription>
+  Interactive elements (links, buttons, inputs) within the collapsed area automatically become inaccesible to prevent keyboard navigation to hidden content.
+  </AlertDescription>
 </Alert>
 
 ## API Reference
@@ -110,8 +110,6 @@ Root element of the collapsible. Renders a `div`
 | `open` | `boolean` | `-` |
 | `defaultOpen` | `boolean` | `false` |
 | `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
-| `lazyMount` | `boolean` | `true` |
-| `unmountOnExit` | `boolean` | `true` |
 | `collapsedHeight` | `string` | `-` |
 | `className` | `string` | `-` |
 
@@ -121,8 +119,8 @@ Button that toggles the collapsible. Renders a `button`
 
 | Prop | Type | Default |
 |------|------|---------|
-| `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### CollapsibleContent
 
@@ -131,6 +129,7 @@ Container for the collapsible content. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### CollapsibleIndicator
 
@@ -139,6 +138,7 @@ Indicator icon that rotates when the collapsible is open. Renders a `span`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ---
 

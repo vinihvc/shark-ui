@@ -46,20 +46,13 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
         <ArkFloatingPanel.Content
           className={cn(
             "relative",
-<<<<<<< Updated upstream
-            "h-(--height) w-(--width)",
-            "ring-ring/40 focus-visible:outline-none focus-visible:ring-1",
-            "rounded-lg border bg-background shadow-lg",
-=======
             "flex flex-col",
             "h-(--height) min-h-0 w-(--width)",
             "bg-popover",
             "text-popover-foreground",
             "rounded-xl border shadow-lg/5",
             "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
-            "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
->>>>>>> Stashed changes
-            className
+            "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",            className
           )}
           data-slot="floating-panel-content"
           {...rest}

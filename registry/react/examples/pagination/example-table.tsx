@@ -32,7 +32,7 @@ const Example = () => {
   const paginatedUsers = users.slice((page - 1) * pageSize, page * pageSize);
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-6 rounded-md border p-4">
+    <div className="flex w-full max-w-lg flex-col gap-2 rounded-xl border p-4">
       <Table>
         <TableHeader>
           <TableRow>
@@ -49,11 +49,9 @@ const Example = () => {
           ))}
         </TableBody>
       </Table>
-
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-22">
         <div className="flex shrink-0 items-center gap-2">
           <div className="text-muted-foreground text-sm">Items per page:</div>
-
           <NativeSelect
             onChange={(e) => setPageSize(Number(e.target.value))}
             value={pageSize}

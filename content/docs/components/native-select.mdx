@@ -4,9 +4,9 @@ description: A styled native HTML select element with consistent design system i
 ---
 
 <Alert>
-  <Info />
+  <InfoIcon />
   <AlertDescription>
-    For a styled select component, use the <Link href="/docs/components/select">Select component</Link>.
+    For a styled select component, use the [Select component](/docs/components/select).
   </AlertDescription>
 </Alert>
 
@@ -24,7 +24,7 @@ description: A styled native HTML select element with consistent design system i
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/native-select
+npx shadcn@latest add @shark/native-select
 ```
 
 </TabsContent>
@@ -53,7 +53,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   NativeSelect, 
   NativeSelectOptGroup, 
@@ -61,7 +61,7 @@ import {
 } from "@/components/ui/native-select";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <NativeSelect>
   <NativeSelectOptGroup label="Group 1">
     <NativeSelectOption value="1">Option 1</NativeSelectOption>
@@ -71,33 +71,34 @@ import {
 </NativeSelect>
 ```
 
+## Native Select vs Select
+
+- **NativeSelect** — Use for native browser behavior, better performance, or mobile-optimized dropdowns.
+- **Select** — Use for custom styling, animations, or complex interactions.
+
 ## Sizes
 
 Use the `size` prop to change the select height.
 
 ### Small
 
-<ComponentPreview componentName="native-select" fileName="size-sm" />
+<ComponentPreview componentName="native-select" fileName="example-size-sm" />
 
 ### Medium
 
-<ComponentPreview componentName="native-select" fileName="size-md" />
+<ComponentPreview componentName="native-select" fileName="example-size-md" />
 
 ### Large
 
-<ComponentPreview componentName="native-select" fileName="size-lg" />
+<ComponentPreview componentName="native-select" fileName="example-size-lg" />
 
-## Examples
+## State
 
-### Default
+### Controlled
 
-<ComponentPreview componentName="native-select" fileName="default" />
+Use `value` and `onChange` to control the select externally.
 
-### Groups
-
-Use `<NativeSelectOptGroup />` to group options with a label.
-
-<ComponentPreview componentName="native-select" fileName="example-groups" />
+<ComponentPreview componentName="native-select" fileName="example-controlled" />
 
 ### Disabled
 
@@ -107,14 +108,23 @@ Use the `disabled` prop to disable the select.
 
 ### Invalid
 
-Use the `aria-invalid` to `<Select />` or `invalid` prop on the `<Field />` to mark the select as invalid and show error styling.
+Use the `invalid` prop to mark the select as invalid.
 
 <ComponentPreview componentName="native-select" fileName="example-invalid" />
 
-## Native Select vs Select
+## Examples
 
-- **NativeSelect** — Use for native browser behavior, better performance, or mobile-optimized dropdowns.
-- **Select** — Use for custom styling, animations, or complex interactions.
+### Groups
+
+Use `<NativeSelectOptGroup />` to group options with a label.
+
+<ComponentPreview componentName="native-select" fileName="example-groups" />
+
+### With Field
+
+Wrap in `<Field />` with `<FieldLabel />` and `<FieldDescription />` for proper labeling and accessibility.
+
+<ComponentPreview componentName="native-select" fileName="example-with-field" />
 
 ## API Reference
 
@@ -126,7 +136,7 @@ Extends native `<select>` props. Additional props:
 | --- | --- | --- |
 | `size` | `sm`, `md`, `lg` | `md` |
 | `disabled` | `boolean` | — |
-| `aria-invalid` | `boolean` | — |
+| `invalid` | `boolean` | — |
 
 ### NativeSelectOptGroup
 

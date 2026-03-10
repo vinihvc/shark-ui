@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Pencil } from "lucide-react";
+import { CheckIcon, PencilIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -38,11 +38,11 @@ const Example = () => {
           >
             {isEditing ? (
               <>
-                <Check /> Save
+                <CheckIcon /> Save
               </>
             ) : (
               <>
-                <Pencil /> Edit
+                <PencilIcon /> Edit
               </>
             )}
           </Button>

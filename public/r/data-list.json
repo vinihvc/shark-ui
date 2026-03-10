@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-list",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/data-list.tsx",
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface DataListProps extends React.ComponentProps<typeof ark.dl> {\n  /**\n   * The orientation of the data list.\n   *\n   * @default \"horizontal\"\n   */\n  orientation?: \"horizontal\" | \"vertical\";\n}\n\nexport const DataList = (props: DataListProps) => {\n  const { orientation = \"horizontal\", className, children, ...rest } = props;\n\n  return (\n    <ark.dl\n      className={cn(\n        \"group/data-list\",\n        \"flex flex-col gap-1\",\n        \"text-sm\",\n        className\n      )}\n      data-orientation={orientation}\n      data-slot=\"data-list\"\n      {...rest}\n    >\n      {children}\n    </ark.dl>\n  );\n};\n\nexport const DataListItem = (props: React.ComponentProps<typeof ark.div>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\n        \"flex gap-4 py-2\",\n        \"group-data-[orientation=horizontal]/data-list:flex-row group-data-[orientation=horizontal]/data-list:items-center\",\n        \"group-data-[orientation=vertical]/data-list:flex-col group-data-[orientation=vertical]/data-list:gap-1\",\n        className\n      )}\n      data-slot=\"data-list-item\"\n      {...rest}\n    />\n  );\n};\n\nexport const DataListItemLabel = (\n  props: React.ComponentProps<typeof ark.dt>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.dt\n      className={cn(\n        \"min-w-24 shrink-0\",\n        \"font-medium text-muted-foreground\",\n        \"group-data-[orientation=vertical]/data-list:min-w-0\",\n        className\n      )}\n      data-slot=\"data-list-item-label\"\n      {...rest}\n    />\n  );\n};\n\nexport const DataListItemValue = (\n  props: React.ComponentProps<typeof ark.dd>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.dd\n      className={cn(\"flex-1\", \"text-foreground\", className)}\n      data-slot=\"data-list-item-value\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

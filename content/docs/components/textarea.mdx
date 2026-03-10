@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/textarea
+npx shadcn@latest add @shark/textarea
 ```
 
 </TabsContent>
@@ -49,16 +49,69 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { Textarea } from "@/components/ui/textarea";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Textarea />
 ```
 
+## Controlled
+
+Control the value with `value` and `onChange`.
+
+<ComponentPreview componentName="textarea" fileName="example-controlled" />
+
+## State
+
+### Disabled
+
+Disable the textarea with the `disabled` prop. Use `Field` with `disabled` to disable the whole field (label + textarea).
+
+<ComponentPreview componentName="textarea" fileName="example-disabled" />
+
+### Invalid
+
+Use the `invalid` prop on `<Field />` or `<Textarea />` to show invalid state.
+
+<ComponentPreview componentName="textarea" fileName="example-invalid" />
+
 ## Examples
 
-### Default
+### Autoresize
 
-<ComponentPreview componentName="textarea" fileName="default" />
+Use `autoresize` to make the textarea grow with content.
+
+<ComponentPreview componentName="textarea" fileName="example-autoresize" />
+
+### With Field
+
+Wrap the textarea in a `<Field />` and add `<FieldLabel />` and `<FieldDescription />`.
+
+<ComponentPreview componentName="textarea" fileName="example-with-field" />
+
+### With Input Group
+
+Use `<FieldGroup />` to group multiple `<Field />` blocks. Combine textarea with other inputs and action buttons.
+
+<ComponentPreview componentName="input-group" fileName="example-input-group" />
+
+### Form Integration
+
+<ComponentPreview componentName="textarea" fileName="example-form" />
+
+## API Reference
+
+### Textarea
+
+Renders a `textarea`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `autoresize` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+---
+
+For more details, see the [Ark UI Field documentation](https://ark-ui.com/docs/components/field#api-reference).

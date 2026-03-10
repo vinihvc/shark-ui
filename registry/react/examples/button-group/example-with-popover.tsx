@@ -1,4 +1,4 @@
-import { ChevronDown, GitFork, Plus } from "lucide-react";
+import { ChevronDownIcon, GitForkIcon, PlusIcon } from "lucide-react";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -12,7 +12,7 @@ import { Separator } from "@/registry/react/components/separator";
 const Example = () => (
   <ButtonGroup>
     <Button variant="outline">
-      <GitFork /> Fork
+      <GitForkIcon /> Fork
       <Badge size="sm" variant="secondary">
         42
       </Badge>
@@ -20,7 +20,7 @@ const Example = () => (
     <Popover positioning={{ placement: "bottom-end" }}>
       <PopoverTrigger asChild>
         <Button aria-label="Settings" size="icon-md" variant="outline">
-          <ChevronDown />
+          <ChevronDownIcon />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full max-w-80">
@@ -31,7 +31,7 @@ const Example = () => (
         </p>
         <Separator className="my-0" />
         <Button className="w-full justify-start rounded-t-none" variant="ghost">
-          <Plus />
+          <PlusIcon />
           Create a new fork
         </Button>
       </PopoverContent>

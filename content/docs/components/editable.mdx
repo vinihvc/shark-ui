@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/editable
+npx shadcn@latest add @shark/editable
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Editable,
   EditableArea,
@@ -62,8 +62,8 @@ import {
 } from "@/components/ui/editable";
 ```
 
-```tsx lineNumbers
-<Editable defaultValue="Editable content">
+```tsx showLineNumbers
+<Editable>
   <EditableArea>
     <EditableInput />
     <EditablePreview />
@@ -76,7 +76,7 @@ import {
 </Editable>
 ```
 
-## Activation Modes
+## Modes
 
 The `activationMode` prop controls how editing is triggered.
 
@@ -106,23 +106,27 @@ No automatic activation. Use `EditableEditTrigger` to manually start editing.
 
 ## Sizes
 
-You can change the size of the editable preview using the `size` prop on `EditablePreview`.
-
-### Extra Small
-
-<ComponentPreview componentName="editable" fileName="size-xs" />
+The `size` prop on `EditablePreview` controls the preview dimensions.
 
 ### Small
 
-<ComponentPreview componentName="editable" fileName="size-sm" />
+<ComponentPreview componentName="editable" fileName="example-size-sm" />
 
 ### Large
 
-<ComponentPreview componentName="editable" fileName="size-lg" />
+<ComponentPreview componentName="editable" fileName="example-size-lg" />
 
-### Extra Large
+## Orientation
 
-<ComponentPreview componentName="editable" fileName="size-xl" />
+The `orientation` prop controls the layout of the editable component and its controls.
+
+#### Horizontal
+
+<ComponentPreview componentName="editable" fileName="example-orientation-horizontal" />
+
+#### Vertical
+
+<ComponentPreview componentName="editable" fileName="example-orientation-vertical" />
 
 ## Examples
 
@@ -140,25 +144,9 @@ Edit without control buttons. Press Enter to save, Escape to cancel.
 
 Make the entire form editable at once by using the `edit` prop.
 
-You can also use the `value` and `onValueChange` props to control the editable component.
+The `value` and `onValueChange` props control the editable component programmatically.
 
 <ComponentPreview componentName="editable" fileName="example-controlled" />
-
-## Orientation
-
-The `orientation` prop controls the layout of the editable component and its controls.
-
-#### Horizontal
-
-Controls are displayed horizontally next to the editable area. This is the default.
-
-<ComponentPreview componentName="editable" fileName="example-orientation-horizontal" />
-
-#### Vertical
-
-Controls are displayed vertically next to the editable area. Useful for multi-line editable content.
-
-<ComponentPreview componentName="editable" fileName="example-orientation-vertical" />
 
 ## API Reference
 
@@ -173,12 +161,6 @@ Root element of the editable component. Renders a `div`.
 | `submitMode` | `both \| enter \| blur \| none` | `'both'` |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
-
-| Attributes | Type | Default |
-| --- | --- | --- |
-| `[data-mode]` | `focus \| dblclick \| click \| none` | `activationMode` |
-| `[data-orientation]` | `horizontal \| vertical` | `orientation` |
-| `[data-slot]` | `-` | `editable` |
 
 ### EditableArea
 
@@ -198,10 +180,6 @@ Input element for editing. Renders an `input` or custom element when using `asCh
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
-| Attributes | Type | Default |
-| --- | --- | --- |
-| `[data-slot]` | `-` | `editable-input` |
-
 ### EditablePreview
 
 Preview element that displays the value when not editing. Renders a `span`.
@@ -211,10 +189,6 @@ Preview element that displays the value when not editing. Renders a `span`.
 | `asChild` | `boolean` | `-` |
 | `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` |
 | `className` | `string` | `-` |
-
-| Attributes | Type | Default |
-| --- | --- | --- |
-| `[data-slot]` | `-` | `editable-preview` |
 
 ### EditableControl
 

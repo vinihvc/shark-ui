@@ -7,7 +7,6 @@ import {
 const NativeSelectDemo = () => (
   <Field className="w-full max-w-40" invalid>
     <FieldLabel>Select a fruit</FieldLabel>
-
     <NativeSelect className="w-full max-w-40">
       <NativeSelectOption value="banana">Banana</NativeSelectOption>
       <NativeSelectOption value="apple">Apple</NativeSelectOption>

@@ -1,3 +1,5 @@
+"use client";
+
 import { QrCode as ArkQrCode } from "@ark-ui/react/qr-code";
 import type React from "react";
 import { cn } from "@/lib/utils";

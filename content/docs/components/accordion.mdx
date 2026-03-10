@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/accordion
+npx shadcn@latest add @shark/accordion
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Accordion, 
   AccordionItem, 
@@ -58,39 +58,45 @@ import {
 } from "@/components/ui/accordion";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Accordion>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Accordion Item 1</AccordionTrigger>
-    <AccordionContent>Accordion Content 1</AccordionContent>
+  <AccordionItem>
+    <AccordionTrigger />
+    <AccordionContent />
   </AccordionItem>
-
-  <AccordionItem value="item-2">
-    <AccordionTrigger>Accordion Item 2</AccordionTrigger>
-    <AccordionContent>Accordion Content 2</AccordionContent>
+  <AccordionItem>
+    <AccordionTrigger />
+    <AccordionContent />
   </AccordionItem>
 </Accordion>
 ```
 
+## Controlled
+
+Use the `value` and `onValueChange` props to control the accordion state programmatically.
+
+<ComponentPreview componentName="accordion" fileName="example-controlled" />
+
+
 ## Examples
 
-### Single
+### Non-collapsible
 
-By default, only one item can be open at a time. Use the `collapsible` prop to allow closing the open item.
+Set the `collapsible` prop to `false` to disable the collapsible behavior and prevent closing the open item.
 
-<ComponentPreview componentName="accordion" fileName="single" />
+<ComponentPreview componentName="accordion" fileName="example-non-collapsible" />
 
 ### Multiple
 
 Use the `multiple` prop to allow multiple items to be open simultaneously.
 
-<ComponentPreview componentName="accordion" fileName="multiple" />
+<ComponentPreview componentName="accordion" fileName="example-multiple" />
 
-### Controlled
+### Disabled
 
-Use the `value` and `onValueChange` props to control the accordion state programmatically.
+Use the `disabled` prop on `AccordionItem` to prevent interaction with specific items.
 
-<ComponentPreview componentName="accordion" fileName="controlled" />
+<ComponentPreview componentName="accordion" fileName="example-disabled" />
 
 ## API Reference
 
@@ -100,14 +106,13 @@ Root element of the accordion. Renders a `div`
 
 | Prop | Type | Default |
 |------|------|---------|
-| `collapsible` | `boolean` | `false` |
+| `collapsible` | `boolean` | `true` |
 | `multiple` | `boolean` | `false` |
 | `value` | `string[]` | `-` |
 | `defaultValue` | `string[]` | `-` |
 | `onValueChange` | `ValueChangeDetails` | `-` |
-| `lazyMount` | `boolean` | `true` |
-| `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AccordionItem
 
@@ -116,6 +121,7 @@ Container for a single accordion item. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
 ### AccordionTrigger
@@ -126,6 +132,7 @@ Button that toggles the accordion item. Renders a `button`
 |------|------|---------|
 | `disabled` | `boolean` | `false` |
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ### AccordionContent
 
@@ -134,6 +141,7 @@ Container for the accordion item content. Renders a `div`
 | Prop | Type | Default |
 |------|------|---------|
 | `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 ---
 

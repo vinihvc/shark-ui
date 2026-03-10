@@ -1,5 +1,7 @@
+"use client";
+
 import { Collapsible as ArkCollapsible } from "@ark-ui/react/collapsible";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +38,7 @@ export const CollapsibleTrigger = (
     <ArkCollapsible.Trigger
       className={cn(
         "cursor-pointer",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "data-disabled:pointer-events-none data-disabled:opacity-64",
         "has-data-[slot=collapsible-indicator]:[button]:justify-between",
         className
       )}
@@ -80,7 +82,10 @@ export const CollapsibleIndicator = (
       data-slot="collapsible-indicator"
       {...rest}
     >
-      <ChevronDown className="transition-transform duration-200" />
+      <ChevronDownIcon
+        aria-hidden
+        className="transition-transform duration-200"
+      />
     </ArkCollapsible.Indicator>
   );
 };

@@ -1,0 +1,79 @@
+---
+title: Skip Nav
+description: Allow keyboard users to skip to the main content of the page.
+---
+
+> Click on the "Preview" tab and use the tab key to see the skip to content link.
+
+<ComponentPreview componentName="skip-nav" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/skip-nav
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/skip-nav.tsx" src="/skip-nav.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+- Place `<SkipNavLink />` as one of the first focusable elements on the page.
+- Use `<SkipNavContent />` to wrap your main content. It renders a div with an id that the link targets.
+
+```tsx
+import { SkipNavContent, SkipNavLink } from "@/components/ui/skip-nav";
+
+<SkipNavLink />
+<nav>...</nav>
+<SkipNavContent />
+<main>Your main content</main>
+```
+
+## Accessibility
+
+Learn more about in the [WCAG 2.4.1 (Bypass Blocks)](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html) section.
+
+Skip links and allow keyboard and screen reader users to bypass repeated navigation and jump to the main content.
+
+## API Reference
+
+### SkipNavLink
+
+| Prop | Type | Default |
+|------|------|---------|
+| `id` | `string` | `"skip-nav-content"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### SkipNavContent
+
+| Prop | Type | Default |
+|------|------|---------|
+| `id` | `string` | `"skip-nav-content"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

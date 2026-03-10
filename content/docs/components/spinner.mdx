@@ -17,7 +17,7 @@ description: A spinner component for displaying a loading state
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/spinner
+npx shadcn@latest add @shark/spinner
 ```
 
 </TabsContent>
@@ -46,16 +46,43 @@ npm install lucide-react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { Spinner } from "@/components/ui/spinner";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Spinner />
 ```
 
+## Customization
+
 ## Examples
 
-### Default
+### Size
 
-<ComponentPreview componentName="spinner" fileName="default" />
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview componentName="spinner" fileName="example-size" />
+
+### Badge
+
+Add a spinner to a badge to indicate a loading state.
+
+<ComponentPreview componentName="spinner" fileName="example-badge" />
+
+### Input Group
+
+Use a spinner in an input group addon to indicate a loading or validating state.
+
+<ComponentPreview componentName="spinner" fileName="example-input-group" />
+
+## API Reference
+
+### Spinner
+
+Use the `Spinner` component to display a loading indicator. It forwards SVG props and supports `className` for sizing and styling.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `aria-label` | `string` | `"Loading"` |

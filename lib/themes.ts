@@ -2,10 +2,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Neutral",
     value: "neutral",
-    hex: {
-      light: "bg-black",
-      dark: "bg-white",
-    },
+    hex: { light: "bg-black", dark: "bg-white" },
     cssVars: {
       light: {
         primary: "var(--color-black)",
@@ -22,7 +19,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Red",
     value: "red",
-    hex: "bg-red-600",
+    hex: "bg-red-500",
     cssVars: {
       light: {
         primary: "var(--color-red-600)",
@@ -39,7 +36,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Orange",
     value: "orange",
-    hex: "bg-orange-600",
+    hex: "bg-orange-500",
     cssVars: {
       light: {
         primary: "var(--color-orange-600)",
@@ -56,7 +53,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Amber",
     value: "amber",
-    hex: "bg-amber-600",
+    hex: "bg-amber-500",
     cssVars: {
       light: {
         primary: "var(--color-amber-600)",
@@ -73,7 +70,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Yellow",
     value: "yellow",
-    hex: "bg-yellow-600",
+    hex: "bg-yellow-500",
     cssVars: {
       light: {
         primary: "var(--color-yellow-600)",
@@ -90,7 +87,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Lime",
     value: "lime",
-    hex: "bg-lime-600",
+    hex: "bg-lime-500",
     cssVars: {
       light: {
         primary: "var(--color-lime-600)",
@@ -107,7 +104,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Green",
     value: "green",
-    hex: "bg-green-600",
+    hex: "bg-green-500",
     cssVars: {
       light: {
         primary: "var(--color-green-600)",
@@ -124,7 +121,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Emerald",
     value: "emerald",
-    hex: "bg-emerald-600",
+    hex: "bg-emerald-500",
     cssVars: {
       light: {
         primary: "var(--color-emerald-600)",
@@ -141,7 +138,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Teal",
     value: "teal",
-    hex: "bg-teal-600",
+    hex: "bg-teal-500",
     cssVars: {
       light: {
         primary: "var(--color-teal-600)",
@@ -158,7 +155,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Cyan",
     value: "cyan",
-    hex: "bg-cyan-600",
+    hex: "bg-cyan-500",
     cssVars: {
       light: {
         primary: "var(--color-cyan-600)",
@@ -175,7 +172,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Sky",
     value: "sky",
-    hex: "bg-sky-600",
+    hex: "bg-sky-500",
     cssVars: {
       light: {
         primary: "var(--color-sky-600)",
@@ -192,7 +189,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Blue",
     value: "blue",
-    hex: "bg-blue-600",
+    hex: "bg-blue-500",
     cssVars: {
       light: {
         primary: "var(--color-blue-600)",
@@ -209,7 +206,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Indigo",
     value: "indigo",
-    hex: "bg-indigo-600",
+    hex: "bg-indigo-500",
     cssVars: {
       light: {
         primary: "var(--color-indigo-600)",
@@ -226,7 +223,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Violet",
     value: "violet",
-    hex: "bg-violet-600",
+    hex: "bg-violet-500",
     cssVars: {
       light: {
         primary: "var(--color-violet-600)",
@@ -243,7 +240,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Purple",
     value: "purple",
-    hex: "bg-purple-600",
+    hex: "bg-purple-500",
     cssVars: {
       light: {
         primary: "var(--color-purple-600)",
@@ -260,7 +257,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Fuchsia",
     value: "fuchsia",
-    hex: "bg-fuchsia-600",
+    hex: "bg-fuchsia-500",
     cssVars: {
       light: {
         primary: "var(--color-fuchsia-600)",
@@ -277,7 +274,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Pink",
     value: "pink",
-    hex: "bg-pink-600",
+    hex: "bg-pink-500",
     cssVars: {
       light: {
         primary: "var(--color-pink-600)",
@@ -294,7 +291,7 @@ export const PRIMARY_COLORS = [
   {
     label: "Rose",
     value: "rose",
-    hex: "bg-rose-600",
+    hex: "bg-rose-500",
     cssVars: {
       light: {
         primary: "var(--color-rose-600)",
@@ -310,198 +307,818 @@ export const PRIMARY_COLORS = [
   },
 ];
 
+/* Gray scale – same structure as globals.css, base name replaces "neutral" */
 export const GRAY_COLORS = [
   {
     label: "Slate",
     value: "slate",
-    hex: "bg-slate-900",
+    hex: "bg-slate-500",
     cssVars: {
       light: {
         background: "var(--color-slate-50)",
-        foreground: "var(--color-slate-950)",
-        secondary: "var(--color-slate-100)",
-        "secondary-foreground": "var(--color-slate-950)",
-        muted: "var(--color-slate-100)",
-        "muted-foreground": "var(--color-slate-500)",
+        foreground: "var(--color-slate-800)",
         card: "var(--color-slate-50)",
-        "card-foreground": "var(--color-slate-950)",
+        "card-foreground": "var(--color-slate-800)",
         popover: "var(--color-slate-50)",
-        "popover-foreground": "var(--color-slate-950)",
-        accent: "var(--color-slate-200)",
-        "accent-foreground": "var(--color-slate-950)",
-        border: "var(--color-slate-200)",
-        input: "var(--color-slate-300)",
+        "popover-foreground": "var(--color-slate-800)",
+        primary: "var(--color-slate-800)",
+        "primary-foreground": "var(--color-slate-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-slate-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-slate-800)",
+        muted:
+          "color-mix(in srgb, var(--color-slate-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-slate-500) 90%, var(--color-slate-950))",
+        accent:
+          "color-mix(in srgb, var(--color-slate-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-slate-800)",
+        border:
+          "color-mix(in srgb, var(--color-slate-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-slate-950) 10%, var(--background))",
+        ring: "var(--color-slate-400)",
+        sidebar: "var(--color-slate-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-slate-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-slate-800)",
+        "sidebar-primary-foreground": "var(--color-slate-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-slate-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-slate-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-slate-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-slate-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-slate-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-slate-950) 4%, var(--code))",
       },
       dark: {
-        background: "var(--color-slate-950)",
-        foreground: "var(--color-slate-50)",
-        secondary: "var(--color-slate-900)",
-        "secondary-foreground": "var(--color-slate-50)",
-        muted: "var(--color-slate-900)",
-        "muted-foreground": "var(--color-slate-400)",
-        card: "var(--color-slate-950)",
-        "card-foreground": "var(--color-slate-50)",
-        popover: "var(--color-slate-950)",
-        accent: "var(--color-slate-800)",
-        "accent-foreground": "var(--color-slate-50)",
-        border: "var(--color-slate-800)",
-        input: "var(--color-slate-700)",
+        background:
+          "color-mix(in srgb, var(--color-slate-950) 100%, var(--color-slate-50))",
+        foreground: "var(--color-slate-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-slate-50))",
+        "card-foreground": "var(--color-slate-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-slate-50))",
+        "popover-foreground": "var(--color-slate-100)",
+        primary: "var(--color-slate-100)",
+        "primary-foreground": "var(--color-slate-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-slate-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-slate-100)",
+        muted:
+          "color-mix(in srgb, var(--color-slate-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-slate-500) 90%, var(--color-slate-50))",
+        accent:
+          "color-mix(in srgb, var(--color-slate-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-slate-100)",
+        border:
+          "color-mix(in srgb, var(--color-slate-50) 6%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-slate-50) 8%, var(--background))",
+        ring: "var(--color-slate-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-slate-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-slate-950) 97%, var(--color-slate-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-slate-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-slate-100)",
+        "sidebar-primary-foreground": "var(--color-slate-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-slate-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-slate-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-slate-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-slate-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-slate-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-slate-50) 4%, var(--code))",
       },
     },
   },
   {
     label: "Gray",
     value: "gray",
-    hex: "bg-gray-900",
+    hex: "bg-gray-500",
     cssVars: {
       light: {
         background: "var(--color-gray-50)",
-        foreground: "var(--color-gray-950)",
-        secondary: "var(--color-gray-100)",
-        "secondary-foreground": "var(--color-gray-950)",
-        muted: "var(--color-gray-100)",
-        "muted-foreground": "var(--color-gray-500)",
+        foreground: "var(--color-gray-800)",
         card: "var(--color-gray-50)",
-        "card-foreground": "var(--color-gray-950)",
+        "card-foreground": "var(--color-gray-800)",
         popover: "var(--color-gray-50)",
-        "popover-foreground": "var(--color-gray-950)",
-        accent: "var(--color-gray-200)",
-        "accent-foreground": "var(--color-gray-950)",
-        border: "var(--color-gray-200)",
-        input: "var(--color-gray-300)",
+        "popover-foreground": "var(--color-gray-800)",
+        primary: "var(--color-gray-800)",
+        "primary-foreground": "var(--color-gray-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-gray-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-gray-800)",
+        muted:
+          "color-mix(in srgb, var(--color-gray-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-gray-500) 90%, var(--color-gray-950))",
+        accent:
+          "color-mix(in srgb, var(--color-gray-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-gray-800)",
+        border:
+          "color-mix(in srgb, var(--color-gray-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-gray-950) 10%, var(--background))",
+        ring: "var(--color-gray-400)",
+        sidebar: "var(--color-gray-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-gray-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-gray-800)",
+        "sidebar-primary-foreground": "var(--color-gray-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-gray-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-gray-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-gray-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-gray-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-gray-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-gray-950) 4%, var(--code))",
       },
       dark: {
-        background: "var(--color-gray-950)",
-        foreground: "var(--color-gray-50)",
-        secondary: "var(--color-gray-900)",
-        "secondary-foreground": "var(--color-gray-50)",
-        muted: "var(--color-gray-900)",
-        "muted-foreground": "var(--color-gray-400)",
-        card: "var(--color-gray-950)",
-        "card-foreground": "var(--color-gray-50)",
-        popover: "var(--color-gray-950)",
-        "popover-foreground": "var(--color-gray-50)",
-        accent: "var(--color-gray-800)",
-        "accent-foreground": "var(--color-gray-50)",
-        border: "var(--color-gray-800)",
-        input: "var(--color-gray-700)",
+        background:
+          "color-mix(in srgb, var(--color-gray-950) 100%, var(--color-gray-50))",
+        foreground: "var(--color-gray-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-gray-50))",
+        "card-foreground": "var(--color-gray-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-gray-50))",
+        "popover-foreground": "var(--color-gray-100)",
+        primary: "var(--color-gray-100)",
+        "primary-foreground": "var(--color-gray-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-gray-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-gray-100)",
+        muted: "color-mix(in srgb, var(--color-gray-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-gray-500) 90%, var(--color-gray-50))",
+        accent:
+          "color-mix(in srgb, var(--color-gray-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-gray-100)",
+        border:
+          "color-mix(in srgb, var(--color-gray-50) 6%, var(--background))",
+        input: "color-mix(in srgb, var(--color-gray-50) 8%, var(--background))",
+        ring: "var(--color-gray-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-gray-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-gray-950) 97%, var(--color-gray-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-gray-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-gray-100)",
+        "sidebar-primary-foreground": "var(--color-gray-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-gray-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-gray-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-gray-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-gray-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-gray-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-gray-50) 4%, var(--code))",
       },
     },
   },
   {
     label: "Zinc",
     value: "zinc",
-    hex: "bg-zinc-900",
+    hex: "bg-zinc-500",
     cssVars: {
       light: {
         background: "var(--color-zinc-50)",
-        foreground: "var(--color-zinc-950)",
-        secondary: "var(--color-zinc-100)",
-        "secondary-foreground": "var(--color-zinc-950)",
-        muted: "var(--color-zinc-100)",
-        "muted-foreground": "var(--color-zinc-500)",
+        foreground: "var(--color-zinc-800)",
         card: "var(--color-zinc-50)",
-        "card-foreground": "var(--color-zinc-950)",
+        "card-foreground": "var(--color-zinc-800)",
         popover: "var(--color-zinc-50)",
-        "popover-foreground": "var(--color-zinc-950)",
-        accent: "var(--color-zinc-200)",
-        "accent-foreground": "var(--color-zinc-950)",
-        border: "var(--color-zinc-200)",
-        input: "var(--color-zinc-300)",
+        "popover-foreground": "var(--color-zinc-800)",
+        primary: "var(--color-zinc-800)",
+        "primary-foreground": "var(--color-zinc-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-zinc-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-zinc-800)",
+        muted:
+          "color-mix(in srgb, var(--color-zinc-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-zinc-500) 90%, var(--color-zinc-950))",
+        accent:
+          "color-mix(in srgb, var(--color-zinc-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-zinc-800)",
+        border:
+          "color-mix(in srgb, var(--color-zinc-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-zinc-950) 10%, var(--background))",
+        ring: "var(--color-zinc-400)",
+        sidebar: "var(--color-zinc-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-zinc-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-zinc-800)",
+        "sidebar-primary-foreground": "var(--color-zinc-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-zinc-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-zinc-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-zinc-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-zinc-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-zinc-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-zinc-950) 4%, var(--code))",
       },
       dark: {
-        background: "var(--color-zinc-950)",
-        foreground: "var(--color-zinc-50)",
-        secondary: "var(--color-zinc-900)",
-        "secondary-foreground": "var(--color-zinc-50)",
-        muted: "var(--color-zinc-900)",
-        "muted-foreground": "var(--color-zinc-400)",
-        card: "var(--color-zinc-950)",
-        "card-foreground": "var(--color-zinc-50)",
-        popover: "var(--color-zinc-950)",
-        "popover-foreground": "var(--color-zinc-50)",
-        accent: "var(--color-zinc-800)",
-        "accent-foreground": "var(--color-zinc-50)",
-        border: "var(--color-zinc-800)",
-        input: "var(--color-zinc-700)",
+        background:
+          "color-mix(in srgb, var(--color-zinc-950) 100%, var(--color-zinc-50))",
+        foreground: "var(--color-zinc-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-zinc-50))",
+        "card-foreground": "var(--color-zinc-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-zinc-50))",
+        "popover-foreground": "var(--color-zinc-100)",
+        primary: "var(--color-zinc-100)",
+        "primary-foreground": "var(--color-zinc-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-zinc-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-zinc-100)",
+        muted: "color-mix(in srgb, var(--color-zinc-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-zinc-500) 90%, var(--color-zinc-50))",
+        accent:
+          "color-mix(in srgb, var(--color-zinc-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-zinc-100)",
+        border:
+          "color-mix(in srgb, var(--color-zinc-50) 6%, var(--background))",
+        input: "color-mix(in srgb, var(--color-zinc-50) 8%, var(--background))",
+        ring: "var(--color-zinc-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-zinc-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-zinc-950) 97%, var(--color-zinc-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-zinc-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-zinc-100)",
+        "sidebar-primary-foreground": "var(--color-zinc-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-zinc-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-zinc-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-zinc-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-zinc-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-zinc-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-zinc-50) 4%, var(--code))",
       },
     },
   },
   {
     label: "Neutral",
     value: "neutral",
-    hex: "bg-neutral-900",
+    hex: "bg-neutral-500",
     cssVars: {
       light: {
         background: "var(--color-neutral-50)",
-        foreground: "var(--color-neutral-950)",
-        secondary: "var(--color-neutral-100)",
-        "secondary-foreground": "var(--color-neutral-950)",
-        muted: "var(--color-neutral-100)",
-        "muted-foreground": "var(--color-neutral-500)",
+        foreground: "var(--color-neutral-800)",
         card: "var(--color-neutral-50)",
-        "card-foreground": "var(--color-neutral-950)",
+        "card-foreground": "var(--color-neutral-800)",
         popover: "var(--color-neutral-50)",
-        "popover-foreground": "var(--color-neutral-950)",
-        accent: "var(--color-neutral-200)",
-        "accent-foreground": "var(--color-neutral-950)",
-        border: "var(--color-neutral-200)",
-        input: "var(--color-neutral-300)",
+        "popover-foreground": "var(--color-neutral-800)",
+        primary: "var(--color-neutral-800)",
+        "primary-foreground": "var(--color-neutral-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-neutral-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-neutral-800)",
+        muted:
+          "color-mix(in srgb, var(--color-neutral-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-neutral-500) 90%, var(--color-neutral-950))",
+        accent:
+          "color-mix(in srgb, var(--color-neutral-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-neutral-800)",
+        border:
+          "color-mix(in srgb, var(--color-neutral-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-neutral-950) 10%, var(--background))",
+        ring: "var(--color-neutral-400)",
+        sidebar: "var(--color-neutral-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-neutral-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-neutral-800)",
+        "sidebar-primary-foreground": "var(--color-neutral-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-neutral-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-neutral-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-neutral-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-neutral-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-neutral-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-neutral-950) 4%, var(--code))",
       },
       dark: {
-        background: "var(--color-neutral-950)",
-        foreground: "var(--color-neutral-50)",
-        secondary: "var(--color-neutral-900)",
-        "secondary-foreground": "var(--color-neutral-50)",
-        muted: "var(--color-neutral-900)",
-        "muted-foreground": "var(--color-neutral-400)",
-        card: "var(--color-neutral-950)",
-        "card-foreground": "var(--color-neutral-50)",
-        popover: "var(--color-neutral-950)",
-        "popover-foreground": "var(--color-neutral-50)",
-        accent: "var(--color-neutral-800)",
-        "accent-foreground": "var(--color-neutral-50)",
-        border: "var(--color-neutral-800)",
-        input: "var(--color-neutral-700)",
+        background:
+          "color-mix(in srgb, var(--color-neutral-950) 100%, var(--color-neutral-50))",
+        foreground: "var(--color-neutral-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-neutral-50))",
+        "card-foreground": "var(--color-neutral-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-neutral-50))",
+        "popover-foreground": "var(--color-neutral-100)",
+        primary: "var(--color-neutral-100)",
+        "primary-foreground": "var(--color-neutral-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-neutral-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-neutral-100)",
+        muted:
+          "color-mix(in srgb, var(--color-neutral-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-neutral-500) 90%, var(--color-neutral-50))",
+        accent:
+          "color-mix(in srgb, var(--color-neutral-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-neutral-100)",
+        border:
+          "color-mix(in srgb, var(--color-neutral-50) 6%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-neutral-50) 8%, var(--background))",
+        ring: "var(--color-neutral-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-neutral-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-neutral-950) 97%, var(--color-neutral-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-neutral-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-neutral-100)",
+        "sidebar-primary-foreground": "var(--color-neutral-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-neutral-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-neutral-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-neutral-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-neutral-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-neutral-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-neutral-50) 4%, var(--code))",
       },
     },
   },
   {
     label: "Stone",
     value: "stone",
-    hex: "bg-stone-900",
+    hex: "bg-stone-500",
     cssVars: {
       light: {
         background: "var(--color-stone-50)",
-        foreground: "var(--color-stone-950)",
-        secondary: "var(--color-stone-100)",
-        "secondary-foreground": "var(--color-stone-950)",
-        muted: "var(--color-stone-100)",
-        "muted-foreground": "var(--color-stone-500)",
+        foreground: "var(--color-stone-800)",
         card: "var(--color-stone-50)",
-        "card-foreground": "var(--color-stone-950)",
+        "card-foreground": "var(--color-stone-800)",
         popover: "var(--color-stone-50)",
-        "popover-foreground": "var(--color-stone-950)",
-        accent: "var(--color-stone-200)",
-        "accent-foreground": "var(--color-stone-950)",
-        border: "var(--color-stone-200)",
-        input: "var(--color-stone-300)",
+        "popover-foreground": "var(--color-stone-800)",
+        primary: "var(--color-stone-800)",
+        "primary-foreground": "var(--color-stone-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-stone-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-stone-800)",
+        muted:
+          "color-mix(in srgb, var(--color-stone-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-stone-500) 90%, var(--color-stone-950))",
+        accent:
+          "color-mix(in srgb, var(--color-stone-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-stone-800)",
+        border:
+          "color-mix(in srgb, var(--color-stone-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-stone-950) 10%, var(--background))",
+        ring: "var(--color-stone-400)",
+        sidebar: "var(--color-stone-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-stone-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-stone-800)",
+        "sidebar-primary-foreground": "var(--color-stone-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-stone-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-stone-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-stone-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-stone-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-stone-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-stone-950) 4%, var(--code))",
       },
       dark: {
-        background: "var(--color-stone-950)",
-        foreground: "var(--color-stone-50)",
-        secondary: "var(--color-stone-900)",
-        "secondary-foreground": "var(--color-stone-50)",
-        muted: "var(--color-stone-900)",
-        "muted-foreground": "var(--color-stone-400)",
-        card: "var(--color-stone-950)",
-        "card-foreground": "var(--color-stone-50)",
-        popover: "var(--color-stone-950)",
-        "popover-foreground": "var(--color-stone-50)",
-        accent: "var(--color-stone-800)",
-        "accent-foreground": "var(--color-stone-50)",
-        border: "var(--color-stone-800)",
-        input: "var(--color-stone-700)",
+        background:
+          "color-mix(in srgb, var(--color-stone-950) 100%, var(--color-stone-50))",
+        foreground: "var(--color-stone-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-stone-50))",
+        "card-foreground": "var(--color-stone-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-stone-50))",
+        "popover-foreground": "var(--color-stone-100)",
+        primary: "var(--color-stone-100)",
+        "primary-foreground": "var(--color-stone-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-stone-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-stone-100)",
+        muted:
+          "color-mix(in srgb, var(--color-stone-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-stone-500) 90%, var(--color-stone-50))",
+        accent:
+          "color-mix(in srgb, var(--color-stone-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-stone-100)",
+        border:
+          "color-mix(in srgb, var(--color-stone-50) 6%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-stone-50) 8%, var(--background))",
+        ring: "var(--color-stone-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-stone-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-stone-950) 97%, var(--color-stone-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-stone-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-stone-100)",
+        "sidebar-primary-foreground": "var(--color-stone-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-stone-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-stone-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-stone-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-stone-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-stone-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-stone-50) 4%, var(--code))",
+      },
+    },
+  },
+  {
+    label: "Mauve",
+    value: "mauve",
+    hex: "bg-mauve-500",
+    cssVars: {
+      light: {
+        background: "var(--color-mauve-50)",
+        foreground: "var(--color-mauve-800)",
+        card: "var(--color-mauve-50)",
+        "card-foreground": "var(--color-mauve-800)",
+        popover: "var(--color-mauve-50)",
+        "popover-foreground": "var(--color-mauve-800)",
+        primary: "var(--color-mauve-800)",
+        "primary-foreground": "var(--color-mauve-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-mauve-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-mauve-800)",
+        muted:
+          "color-mix(in srgb, var(--color-mauve-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-mauve-500) 90%, var(--color-mauve-950))",
+        accent:
+          "color-mix(in srgb, var(--color-mauve-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-mauve-800)",
+        border:
+          "color-mix(in srgb, var(--color-mauve-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-mauve-950) 10%, var(--background))",
+        ring: "var(--color-mauve-400)",
+        sidebar: "var(--color-mauve-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-mauve-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-mauve-800)",
+        "sidebar-primary-foreground": "var(--color-mauve-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-mauve-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-mauve-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-mauve-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-mauve-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-mauve-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-mauve-950) 4%, var(--code))",
+      },
+      dark: {
+        background:
+          "color-mix(in srgb, var(--color-mauve-950) 100%, var(--color-mauve-50))",
+        foreground: "var(--color-mauve-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-mauve-50))",
+        "card-foreground": "var(--color-mauve-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-mauve-50))",
+        "popover-foreground": "var(--color-mauve-100)",
+        primary: "var(--color-mauve-100)",
+        "primary-foreground": "var(--color-mauve-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-mauve-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-mauve-100)",
+        muted:
+          "color-mix(in srgb, var(--color-mauve-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-mauve-500) 90%, var(--color-mauve-50))",
+        accent:
+          "color-mix(in srgb, var(--color-mauve-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-mauve-100)",
+        border:
+          "color-mix(in srgb, var(--color-mauve-50) 6%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-mauve-50) 8%, var(--background))",
+        ring: "var(--color-mauve-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-mauve-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-mauve-950) 97%, var(--color-mauve-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-mauve-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-mauve-100)",
+        "sidebar-primary-foreground": "var(--color-mauve-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-mauve-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-mauve-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-mauve-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-mauve-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-mauve-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-mauve-50) 4%, var(--code))",
+      },
+    },
+  },
+  {
+    label: "Olive",
+    value: "olive",
+    hex: "bg-olive-500",
+    cssVars: {
+      light: {
+        background: "var(--color-olive-50)",
+        foreground: "var(--color-olive-800)",
+        card: "var(--color-olive-50)",
+        "card-foreground": "var(--color-olive-800)",
+        popover: "var(--color-olive-50)",
+        "popover-foreground": "var(--color-olive-800)",
+        primary: "var(--color-olive-800)",
+        "primary-foreground": "var(--color-olive-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-olive-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-olive-800)",
+        muted:
+          "color-mix(in srgb, var(--color-olive-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-olive-500) 90%, var(--color-olive-950))",
+        accent:
+          "color-mix(in srgb, var(--color-olive-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-olive-800)",
+        border:
+          "color-mix(in srgb, var(--color-olive-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-olive-950) 10%, var(--background))",
+        ring: "var(--color-olive-400)",
+        sidebar: "var(--color-olive-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-olive-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-olive-800)",
+        "sidebar-primary-foreground": "var(--color-olive-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-olive-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-olive-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-olive-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-olive-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-olive-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-olive-950) 4%, var(--code))",
+      },
+      dark: {
+        background:
+          "color-mix(in srgb, var(--color-olive-950) 100%, var(--color-olive-50))",
+        foreground: "var(--color-olive-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-olive-50))",
+        "card-foreground": "var(--color-olive-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-olive-50))",
+        "popover-foreground": "var(--color-olive-100)",
+        primary: "var(--color-olive-100)",
+        "primary-foreground": "var(--color-olive-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-olive-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-olive-100)",
+        muted:
+          "color-mix(in srgb, var(--color-olive-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-olive-500) 90%, var(--color-olive-50))",
+        accent:
+          "color-mix(in srgb, var(--color-olive-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-olive-100)",
+        border:
+          "color-mix(in srgb, var(--color-olive-50) 6%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-olive-50) 8%, var(--background))",
+        ring: "var(--color-olive-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-olive-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-olive-950) 97%, var(--color-olive-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-olive-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-olive-100)",
+        "sidebar-primary-foreground": "var(--color-olive-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-olive-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-olive-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-olive-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-olive-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-olive-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-olive-50) 4%, var(--code))",
+      },
+    },
+  },
+  {
+    label: "Mist",
+    value: "mist",
+    hex: "bg-mist-500",
+    cssVars: {
+      light: {
+        background: "var(--color-mist-50)",
+        foreground: "var(--color-mist-800)",
+        card: "var(--color-mist-50)",
+        "card-foreground": "var(--color-mist-800)",
+        popover: "var(--color-mist-50)",
+        "popover-foreground": "var(--color-mist-800)",
+        primary: "var(--color-mist-800)",
+        "primary-foreground": "var(--color-mist-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-mist-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-mist-800)",
+        muted:
+          "color-mix(in srgb, var(--color-mist-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-mist-500) 90%, var(--color-mist-950))",
+        accent:
+          "color-mix(in srgb, var(--color-mist-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-mist-800)",
+        border:
+          "color-mix(in srgb, var(--color-mist-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-mist-950) 10%, var(--background))",
+        ring: "var(--color-mist-400)",
+        sidebar: "var(--color-mist-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-mist-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-mist-800)",
+        "sidebar-primary-foreground": "var(--color-mist-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-mist-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-mist-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-mist-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-mist-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-mist-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-mist-950) 4%, var(--code))",
+      },
+      dark: {
+        background:
+          "color-mix(in srgb, var(--color-mist-950) 100%, var(--color-mist-50))",
+        foreground: "var(--color-mist-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-mist-50))",
+        "card-foreground": "var(--color-mist-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-mist-50))",
+        "popover-foreground": "var(--color-mist-100)",
+        primary: "var(--color-mist-100)",
+        "primary-foreground": "var(--color-mist-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-mist-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-mist-100)",
+        muted: "color-mix(in srgb, var(--color-mist-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-mist-500) 90%, var(--color-mist-50))",
+        accent:
+          "color-mix(in srgb, var(--color-mist-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-mist-100)",
+        border:
+          "color-mix(in srgb, var(--color-mist-50) 6%, var(--background))",
+        input: "color-mix(in srgb, var(--color-mist-50) 8%, var(--background))",
+        ring: "var(--color-mist-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-mist-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-mist-950) 97%, var(--color-mist-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-mist-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-mist-100)",
+        "sidebar-primary-foreground": "var(--color-mist-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-mist-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-mist-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-mist-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-mist-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-mist-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-mist-50) 4%, var(--code))",
+      },
+    },
+  },
+  {
+    label: "Taupe",
+    value: "taupe",
+    hex: "bg-taupe-500",
+    cssVars: {
+      light: {
+        background: "var(--color-taupe-50)",
+        foreground: "var(--color-taupe-800)",
+        card: "var(--color-taupe-50)",
+        "card-foreground": "var(--color-taupe-800)",
+        popover: "var(--color-taupe-50)",
+        "popover-foreground": "var(--color-taupe-800)",
+        primary: "var(--color-taupe-800)",
+        "primary-foreground": "var(--color-taupe-50)",
+        secondary:
+          "color-mix(in srgb, var(--color-taupe-950) 4%, var(--background))",
+        "secondary-foreground": "var(--color-taupe-800)",
+        muted:
+          "color-mix(in srgb, var(--color-taupe-950) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-taupe-500) 90%, var(--color-taupe-950))",
+        accent:
+          "color-mix(in srgb, var(--color-taupe-950) 4%, var(--background))",
+        "accent-foreground": "var(--color-taupe-800)",
+        border:
+          "color-mix(in srgb, var(--color-taupe-950) 8%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-taupe-950) 10%, var(--background))",
+        ring: "var(--color-taupe-400)",
+        sidebar: "var(--color-taupe-50)",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-taupe-800) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-taupe-800)",
+        "sidebar-primary-foreground": "var(--color-taupe-50)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-taupe-950) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-taupe-800)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-taupe-950) 6%, var(--sidebar))",
+        "sidebar-ring": "var(--color-taupe-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-taupe-950))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-taupe-950) 4%, var(--code))",
+      },
+      dark: {
+        background:
+          "color-mix(in srgb, var(--color-taupe-950) 100%, var(--color-taupe-50))",
+        foreground: "var(--color-taupe-100)",
+        card: "color-mix(in srgb, var(--background) 98%, var(--color-taupe-50))",
+        "card-foreground": "var(--color-taupe-100)",
+        popover:
+          "color-mix(in srgb, var(--background) 100%, var(--color-taupe-50))",
+        "popover-foreground": "var(--color-taupe-100)",
+        primary: "var(--color-taupe-100)",
+        "primary-foreground": "var(--color-taupe-800)",
+        secondary:
+          "color-mix(in srgb, var(--color-taupe-50) 4%, var(--background))",
+        "secondary-foreground": "var(--color-taupe-100)",
+        muted:
+          "color-mix(in srgb, var(--color-taupe-50) 4%, var(--background))",
+        "muted-foreground":
+          "color-mix(in srgb, var(--color-taupe-500) 90%, var(--color-taupe-50))",
+        accent:
+          "color-mix(in srgb, var(--color-taupe-50) 4%, var(--background))",
+        "accent-foreground": "var(--color-taupe-100)",
+        border:
+          "color-mix(in srgb, var(--color-taupe-50) 6%, var(--background))",
+        input:
+          "color-mix(in srgb, var(--color-taupe-50) 8%, var(--background))",
+        ring: "var(--color-taupe-500)",
+        destructive:
+          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-taupe-50))",
+        "destructive-foreground": "var(--color-red-400)",
+        sidebar:
+          "color-mix(in srgb, var(--color-taupe-950) 97%, var(--color-taupe-50))",
+        "sidebar-foreground":
+          "color-mix(in srgb, var(--color-taupe-100) 64%, var(--sidebar))",
+        "sidebar-primary": "var(--color-taupe-100)",
+        "sidebar-primary-foreground": "var(--color-taupe-800)",
+        "sidebar-accent":
+          "color-mix(in srgb, var(--color-taupe-50) 4%, var(--sidebar))",
+        "sidebar-accent-foreground": "var(--color-taupe-100)",
+        "sidebar-border":
+          "color-mix(in srgb, var(--color-taupe-50) 5%, var(--sidebar))",
+        "sidebar-ring": "var(--color-taupe-400)",
+        code: "color-mix(in srgb, var(--background) 99%, var(--color-taupe-50))",
+        "code-highlight":
+          "color-mix(in srgb, var(--color-taupe-50) 4%, var(--code))",
       },
     },
   },

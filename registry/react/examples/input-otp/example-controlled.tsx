@@ -9,7 +9,7 @@ const Example = () => {
   const isCorrect = value.join("") === "1234";
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       <p className="text-center text-muted-foreground text-sm">
         Enter the code 1234
       </p>

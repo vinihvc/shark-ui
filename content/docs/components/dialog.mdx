@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/dialog
+npx shadcn@latest add @shark/dialog
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   Dialog, 
   DialogTrigger, 
@@ -63,9 +63,9 @@ import {
 } from "@/components/ui/dialog";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Dialog>
-  <DialogTrigger>Open dialog</DialogTrigger>
+  <DialogTrigger />
   <DialogContent>
     <DialogHeader>
       <DialogTitle />
@@ -83,21 +83,21 @@ import {
 
 ## Title and Description
 
-You can use `<DialogHeader />` in two ways:
+`<DialogHeader />` supports two usage patterns:
 
 ### Using props
 
-You can pass `title` and `description` props directly to `<DialogHeader />`. In this case, you don't need to use `<DialogTitle />` and `<DialogDescription />` components.
+Pass `title` and `description` props directly to `<DialogHeader />`. This approach does not require `<DialogTitle />` or `<DialogDescription />` components.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <DialogHeader title="Dialog Title" description="Dialog description" />
 ```
 
 ### Using components
 
-Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as children for more control.
+Alternatively, use `<DialogTitle />` and `<DialogDescription />` as children for more control.
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <DialogHeader>
   <DialogTitle>Dialog Title</DialogTitle>
   <DialogDescription>Dialog description</DialogDescription>
@@ -106,15 +106,15 @@ Alternatively, you can use `<DialogTitle />` and `<DialogDescription />` as chil
 
 ## Examples
 
-### With ScrollArea
+### With Scroll
 
-Make the content area scrollable while keeping header and footer fixed using ScrollArea.
+Use `<DialogBody />` to make the content area scrollable while keeping header and footer fixed.
 
 <ComponentPreview componentName="dialog" fileName="example-scroll-area" />
 
 ### No Close Button
 
-Hide the close button in the top right corner by setting `showCloseButton={false}`.
+Use the `showCloseButton` prop to hide the close button in the top right corner.
 
 <ComponentPreview componentName="dialog" fileName="example-no-close-button" />
 
@@ -129,12 +129,6 @@ Use `closeOnInteractOutside` and `closeOnEscape` props to prevent closing on out
 Open a dialog imperatively from a menu item using the `onClick` handler.
 
 <ComponentPreview componentName="dialog" fileName="example-open-from-menu" />
-
-### Confirmation
-
-Intercept close attempts to show confirmation prompts, preventing data loss from unsaved changes.
-
-<ComponentPreview componentName="dialog" fileName="example-confirmation" />
 
 ### Non-Modal
 
@@ -165,8 +159,6 @@ Root element of the dialog. Renders a `div`.
 | `open` | `boolean` | `-` |
 | `defaultOpen` | `boolean` | `false` |
 | `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
-| `lazyMount` | `boolean` | `true` |
-| `unmountOnExit` | `boolean` | `true` |
 | `modal` | `boolean` | `true` |
 | `closeOnEscape` | `boolean` | `true` |
 | `closeOnInteractOutside` | `boolean` | `true` |
@@ -193,7 +185,6 @@ Container for the dialog content. Renders a `div`.
 |------|------|---------|
 | `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"md"` |
 | `showCloseButton` | `boolean` | `true` |
-| `bottomStickOnMobile` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
 ### DialogHeader
@@ -208,7 +199,7 @@ Header container for the dialog. Renders a `div`.
 
 ### DialogBody
 
-Content container for the dialog. Renders a `div` wrapped in a `ScrollArea`.
+Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
 
 | Prop | Type | Default |
 |------|------|---------|

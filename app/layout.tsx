@@ -1,9 +1,10 @@
-import "@/styles/global.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { SkipNavLink } from "@/registry/react/components/skip-nav";
 import { Toaster } from "@/registry/react/components/toast";
 import { Providers } from "./providers";
 
@@ -57,6 +58,8 @@ const RootLayout = (props: LayoutProps<"/">) => {
     >
       <body>
         <Providers>
+          <SkipNavLink>Skip to content</SkipNavLink>
+
           {children}
 
           <Toaster />

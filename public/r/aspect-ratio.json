@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/react/components/aspect-ratio.tsx",
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AspectRatioProps extends React.ComponentProps<typeof ark.div> {}\n\nexport const AspectRatio = (props: AspectRatioProps) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\n        \"[--ratio:1]\",\n        \"relative\",\n        \"w-full\",\n        \"aspect-(--ratio)\",\n        className\n      )}\n      data-slot=\"aspect-ratio\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

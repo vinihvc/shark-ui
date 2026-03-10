@@ -1,10 +1,15 @@
-import Link from "fumadocs-core/link";
 import { findNeighbour } from "fumadocs-core/page-tree";
-import { ArrowUpRightIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowUpRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
+import { Footer } from "@/components/layout/footer";
 import { getPageImage, source } from "@/lib/fumadocs";
 import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
@@ -57,13 +62,16 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
     <div className="size-full">
       <div className="flex items-stretch xl:w-full" data-slot="docs">
         <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-8 lg:mr-4 lg:mb-8">
-          <div className="relative flex w-full flex-col border bg-muted/32 text-card-foreground shadow-xs/5 max-lg:border-none lg:rounded-2xl">
-            <div className="flex-1 p-6 px-4 py-6 sm:px-6 lg:p-8">
+          <div className="relative flex w-full flex-col border bg-card text-card-foreground shadow-lg/5 max-lg:border-none lg:rounded-2xl">
+            <div className="flex-1 px-4 py-6 sm:px-6 lg:p-8">
               <div className="mx-auto w-full">
                 <div className="flex min-w-0 flex-col gap-8">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between gap-2">
-                      <h1 className="scroll-m-20 font-semibold text-3xl">
+                      <h1
+                        className="scroll-m-20 font-semibold text-3xl"
+                        id="page-title"
+                      >
                         {page.data.title}
                       </h1>
 
@@ -72,26 +80,26 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
 
                         <div className="flex items-center gap-2">
                           {neighbours.previous ? (
-                            <Button size="icon-sm" variant="outline">
+                            <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.previous.url}>
-                                <ChevronLeft />
+                                <ChevronLeftIcon aria-hidden />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronLeft />
+                              <ChevronLeftIcon aria-hidden />
                             </Button>
                           )}
 
                           {neighbours.next ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.next.url}>
-                                <ChevronRight />
+                                <ChevronRightIcon aria-hidden />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronRight />
+                              <ChevronRightIcon aria-hidden />
                             </Button>
                           )}
                         </div>
@@ -99,7 +107,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                     </div>
 
                     {page.data.description && (
-                      <p className="text-[1.05rem] text-muted-foreground sm:text-balance sm:text-base md:max-w-[80%]">
+                      <p className="sm: text-[1.05rem] text-muted-foreground sm:text-base md:max-w-[80%]">
                         {page.data.description}
                       </p>
                     )}
@@ -107,25 +115,25 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                     {links && (
                       <div className="flex items-center gap-2 pt-4">
                         {links?.doc && (
-                          <Badge asChild pill variant="outline">
+                          <Badge asChild size="lg" variant="secondary">
                             <a
                               href={links.doc}
                               rel="noreferrer"
                               target="_blank"
                             >
-                              Docs <ArrowUpRightIcon />
+                              Docs <ArrowUpRightIcon aria-hidden />
                             </a>
                           </Badge>
                         )}
 
                         {links?.api && (
-                          <Badge asChild pill variant="outline">
+                          <Badge asChild size="lg" variant="secondary">
                             <a
                               href={links.api}
                               rel="noreferrer"
                               target="_blank"
                             >
-                              API <ArrowUpRightIcon />
+                              API <ArrowUpRightIcon aria-hidden />
                             </a>
                           </Badge>
                         )}
@@ -141,19 +149,23 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                 </div>
               </div>
             </div>
+            <Footer />
           </div>
         </div>
 
-        <div className="sticky top-(--header-height) z-30 ms-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col overflow-hidden overscroll-none xl:flex">
-          <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:hidden">
-            <div className="flex min-h-0 flex-col gap-2 overflow-auto py-2">
-              <div className="h-(--top-spacing) shrink-0" />
-              {page.data.toc && page.data.toc.length > 0 && (
+        {page.data.toc && page.data.toc.length > 0 && (
+          <div className="sticky top-(--header-height) z-30 ms-auto hidden h-[calc(100svh-var(--header-height))] w-64 flex-col overflow-hidden xl:flex">
+            <ScrollArea
+              className="[--fade-size:3rem] **:data-[slot=scroll-area-scrollbar]:hidden"
+              scrollFade
+            >
+              <div className="flex min-h-0 flex-col gap-2 overflow-auto py-2">
+                <div className="h-(--top-spacing) shrink-0" />
                 <DocsTableOfContents data={page.data.toc} />
-              )}
-            </div>
-          </ScrollArea>
-        </div>
+              </div>
+            </ScrollArea>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,135 @@
+---
+title: Frame
+description: A framed container for grouping related information.
+---
+
+<ComponentPreview componentName="frame" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/frame
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/frame.tsx" src="frame.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+The frame is a compound component for grouping related information with a header, content panels, and optional footer.
+
+```tsx
+import {
+  Frame,
+  FrameHeader,
+  FrameTitle,
+  FrameDescription,
+  FramePanel,
+  FrameFooter,
+} from "@/components/ui/frame";
+```
+
+```tsx showLineNumbers
+<Frame>
+  <FrameHeader>
+    <FrameTitle>Title</FrameTitle>
+    <FrameDescription>Description</FrameDescription>
+  </FrameHeader>
+  <FramePanel>Content</FramePanel>
+  <FrameFooter>Footer</FrameFooter>
+</Frame>
+```
+
+## Examples
+
+### Separated Panels
+
+By default, multiple panels are separated with spacing between them.
+
+<ComponentPreview componentName="frame" fileName="example-separated-panels" />
+
+## API Reference
+
+### Frame
+
+The main container component for grouping related information. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FramePanel
+
+A panel container for frame content. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameHeader
+
+Header section for the frame. Renders a `header`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameTitle
+
+Title text for the frame header. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameDescription
+
+Description text for the frame header. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### FrameFooter
+
+Footer section for the frame. Renders a `footer`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

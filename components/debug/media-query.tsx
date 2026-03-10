@@ -7,8 +7,8 @@ export const MediaQuery = () => {
     <div
       style={{
         position: "fixed",
-        bottom: "calc(var(--spacing) * 1)",
-        left: "calc(var(--spacing) * 1)",
+        bottom: "calc(var(--spacing) * 1.5)",
+        left: "calc(var(--spacing) * 1.5)",
         zIndex: 50,
         height: "calc(var(--spacing) * 4)",
         width: "calc(var(--spacing) * 5)",
@@ -16,9 +16,9 @@ export const MediaQuery = () => {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: "var(--radius-md)",
-        fontSize: "8px",
+        fontSize: "10px",
         fontWeight: "bold",
-        color: "var(--muted)",
+        color: "var(--background)",
         backgroundColor: "var(--foreground)",
       }}
     >

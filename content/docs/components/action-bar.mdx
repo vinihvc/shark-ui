@@ -1,0 +1,185 @@
+---
+title: Action Bar
+description: Display a bottom action bar with a set of actions for selected items.
+links:
+  doc: https://chakra-ui.com/docs/components/action-bar
+---
+
+<ComponentPreview componentName="action-bar" />
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/action-bar
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+  <Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/action-bar.tsx" src="/action-bar.tsx" />
+
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ActionBar,
+  ActionBarBody,
+  ActionBarClose,
+  ActionBarContent,
+  ActionBarSelectionTrigger,
+  ActionBarSeparator,
+  ActionBarTrigger,
+} from "@/components/ui/action-bar";
+```
+
+```tsx
+<ActionBar>
+  <ActionBarTrigger />
+  <ActionBarContent>
+    <ActionBarClose />
+    <ActionBarSelectionTrigger count={3} />
+    <ActionBarBody>
+      {/* Your action buttons */}
+    </ActionBarBody>
+  </ActionBarContent>
+</ActionBar>
+```
+
+## Controlled
+
+<ComponentPreview componentName="action-bar" fileName="example-controlled" />
+
+## Examples
+
+### Positioning
+
+Use the `positioning.placement` prop to position the action bar.
+
+<ComponentPreview componentName="action-bar" fileName="example-positioning" />
+
+### Offset
+
+Use `positioning.offset` to control the distance from the bottom edge.
+
+<ComponentPreview componentName="action-bar" fileName="example-offset" />
+
+### Close Trigger
+
+<ComponentPreview componentName="action-bar" fileName="example-close-trigger" />
+
+### With Dialog
+
+<ComponentPreview componentName="action-bar" fileName="example-dialog" />
+
+### With Menu 
+
+<ComponentPreview componentName="action-bar" fileName="example-menu" />
+
+### Table
+
+<ComponentPreview componentName="action-bar" fileName="example-table" />
+
+### Custom Spacing
+
+The `[--space:--spacing("value")]` utility class controls the action bar internal padding.
+
+<ComponentPreview componentName="action-bar" fileName="example-custom-spacing" />
+
+Breakpoint utilities change the action bar spacing at different screen sizes.
+
+```css
+  md:[--space:--spacing(6)] lg:[--space:--spacing(8)]
+```
+
+## API Reference
+
+### ActionBar
+
+Root context provider for the action bar. Renders a `React.Fragment`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", offset?: string }` | `{ placement: "bottom", offset: "16px" }` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `onOpenChange` | `(open: boolean) => void` | - |
+
+### ActionBarContent
+
+Floating toolbar. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `aria-label` | `string` | `"Selection actions"` |
+| `aria-labelledby` | `string` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+| Attributes | Description |
+|------|------|
+| `data-slot` | `"action-bar-content"` |
+| `data-state` | `"open" \| "closed"` |
+| `--offset` | `"16px"` |
+
+### ActionBarTrigger
+
+Button that opens the action bar. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ActionBarClose
+
+Button that closes the action bar. Renders a `button`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `aria-label` | `string` | `"Close"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ActionBarSelectionTrigger
+
+Displays selection count or custom label. Renders a `span`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `count` | `number` | `0` |
+| `label` | `string` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### ActionBarBody
+
+Container for action buttons. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

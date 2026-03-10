@@ -8,7 +8,7 @@ import {
 
 const Example = () => {
   return (
-    <Collapsible className="w-96">
+    <Collapsible className="w-96" collapsedHeight="50px">
       <CollapsibleTrigger asChild>
         <Button className="w-full" variant="outline">
           Read more

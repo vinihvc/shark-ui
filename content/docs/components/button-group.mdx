@@ -17,7 +17,7 @@ description: A component that allows you to group button elements together.
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/button-group
+npx shadcn@latest add @shark/button-group
 ```
 
 </TabsContent>
@@ -46,87 +46,74 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { 
   ButtonGroup,
-  ButtonGroupText
   ButtonGroupSeparator,
 } from "@/components/ui/button-group";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <ButtonGroup> 
   <Button />
   <ButtonGroupSeparator />
   <Button />
-  <ButtonGroupSeparator />
-  <ButtonGroupText />
 </ButtonGroup>
 ```
 
 ## Accessibility
 
-- The `ButtonGroup` component has the `role` attribute set to `group`.
-- Use `Tab` to navigate between the controls in the group.
 - Use `aria-label` or `aria-labelledby` to label the group.
 
-```tsx lineNumbers
-<Group aria-label="Media controls">
-  <Button variant="outline">Play</Button>
-  <GroupSeparator />
-  <Button variant="outline">Pause</Button>
-</Group>
+```tsx showLineNumbers
+<ButtonGroup aria-label="Media controls">
+  {/* Your content here */}
+</ButtonGroup>
 ```
 
 ## Orientation
 
-You can change the orientation of the button group using the `orientation` prop.
+The `orientation` prop controls the layout direction of the button group.
 
 ### Horizontal
 
-<ComponentPreview componentName="button-group" fileName="orientation-horizontal" />
+<ComponentPreview componentName="button-group" fileName="example-orientation-horizontal" />
 
 ### Vertical
 
-<ComponentPreview componentName="button-group" fileName="orientation-vertical" />
+<ComponentPreview componentName="button-group" fileName="example-orientation-vertical" />
 
 ## Examples
 
 ### Nested
 
-You can nest button groups inside other button groups to have spacing between the buttons
+Button groups can be nested inside other button groups to add spacing between buttons.
 
 <ComponentPreview componentName="button-group" fileName="example-nested" />
 
 ### Separator
 
-You can add a separator between the buttons using the `<ButtonGroupSeparator />`.
+The `<ButtonGroupSeparator />` component adds a separator between buttons.
 
 Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
 
 <ComponentPreview componentName="button-group" fileName="example-separator" />
 
-### With Text
-
-You can add text between the buttons using the `<ButtonGroupText />`.
-
-<ComponentPreview componentName="button-group" fileName="example-with-text" />
-
 ### With Input
 
-You can combine buttons with input fields in a button group.
+Buttons can be combined with input fields in a button group.
 
 <ComponentPreview componentName="button-group" fileName="example-with-input" />
 
 ### With Menu
 
-You can integrate a menu component within a button group for additional options.
+A menu component can be integrated within a button group for additional options.
 
 <ComponentPreview componentName="button-group" fileName="example-with-menu" />
 
 ### With Popover
 
-You can add a popover trigger button to a button group for contextual information or actions.
+A popover trigger button can be added to a button group for contextual information or actions.
 
 <ComponentPreview componentName="button-group" fileName="example-with-popover" />
 
@@ -139,14 +126,6 @@ Root element of the button group. Renders a `fieldset`
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | `orientation` | `horizontal`, `vertical` | `horizontal` | 
-| `className` | `string` | `-` | 
-
-### ButtonGroupText
-
-Text element for the button group. Renders a `div`
-
-| Prop | Type | Default | 
-| --- | --- | --- | 
 | `className` | `string` | `-` | 
 
 ### ButtonGroupSeparator

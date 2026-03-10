@@ -1,8 +1,9 @@
-import Link from "fumadocs-core/link";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import { Info } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
+import Link from "next/link";
 import { CodeBlockCommand } from "@/components/code-block-command";
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
 import { CodeTabs } from "@/components/code-tabs";
 import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentPreview } from "@/components/component-preview";
@@ -24,26 +25,39 @@ import {
   TabsTrigger,
 } from "@/registry/react/components/tabs";
 import { CopyButton } from "./components/copy-button";
+import {
+  Table,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "./registry/react/components/table";
 
-// use this function to get MDX components, you will need it for rendering MDX
 export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   ...defaultMdxComponents,
   ...components,
-  Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (
-    <Alert className={cn("my-6", className)} {...props} />
-  ),
-  AlertAction,
-  AlertDescription,
-  AlertTitle,
-  a: ({ className, ...props }: React.ComponentProps<"a">) => (
-    <a
-      className={cn(
-        "font-medium text-foreground underline underline-offset-4",
-        className
-      )}
-      {...props}
-    />
-  ),
+  a: ({ className, ...props }: React.ComponentProps<typeof Link>) => {
+    const isExternal =
+      typeof props.href === "string" && props.href.startsWith("http");
+
+    return (
+      <Link
+        className={cn(
+          "font-medium text-foreground",
+          "rounded-md border border-transparent",
+          "underline underline-offset-4",
+          "hover:underline",
+          "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          className
+        )}
+        {...(isExternal && {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        })}
+        {...props}
+      />
+    );
+  },
   Button,
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
@@ -73,7 +87,12 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       return (
         <code
           className={cn(
-            "relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[.8125rem] text-muted-foreground outline-none",
+            "relative",
+            "px-1.5 py-0.5",
+            "bg-primary/5",
+            "font-mono text-primary text-sm",
+            "rounded-md",
+            "outline-none",
             className
           )}
           {...props}
@@ -115,7 +134,9 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     return (
       <figcaption
         className={cn(
-          "flex items-center gap-2 text-[.8125rem] text-muted-foreground [&_svg]:size-4.5 [&_svg]:text-muted-foreground [&_svg]:opacity-70 sm:[&_svg]:size-4",
+          "flex items-center gap-2",
+          "text-[.8125rem] text-muted-foreground",
+          "[&_svg]:size-4.5 [&_svg]:text-muted-foreground [&_svg]:opacity-64 sm:[&_svg]:size-4",
           className
         )}
         {...props}
@@ -148,13 +169,25 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       <h2
         {...props}
         className={cn(
-          "mt-12 scroll-m-20 font-semibold text-2xl first:mt-0 lg:mt-16 [&+p]:mt-4! *:[code]:text-2xl",
+          "mt-12 lg:mt-16",
+          "font-semibold text-2xl",
+          "first:mt-0",
+          "scroll-m-20",
+          "[&+p]:mt-4!",
+          "*:[code]:text-2xl",
           className
         )}
         id={id}
       >
         <a
-          className="no-underline underline-offset-4 hover:underline"
+          className={cn(
+            "-mx-2 px-2",
+            "rounded-md",
+            "no-underline underline-offset-4",
+            "hover:underline",
+            "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "border border-transparent"
+          )}
           href={`#${id}`}
         >
           {children}
@@ -174,15 +207,25 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
 
     return (
       <h3
-        {...props}
         className={cn(
-          "mt-8 scroll-m-20 font-semibold text-lg *:[code]:text-lg",
+          "mt-8",
+          "font-semibold text-lg",
+          "scroll-m-20",
+          "*:[code]:text-lg",
           className
         )}
         id={id}
+        {...props}
       >
         <a
-          className="no-underline underline-offset-4 hover:underline"
+          className={cn(
+            "-mx-2 px-2",
+            "rounded-md",
+            "no-underline underline-offset-4",
+            "hover:underline",
+            "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "border border-transparent"
+          )}
           href={`#${id}`}
         >
           {children}
@@ -190,12 +233,41 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       </h3>
     );
   },
-  h4: ({ className, ...props }: React.ComponentProps<"h4">) => (
-    <h4
-      className={cn("mt-8 scroll-m-20 font-medium tracking-tight", className)}
-      {...props}
-    />
-  ),
+  h4: ({ className, children, ...props }: React.ComponentProps<"h4">) => {
+    const id =
+      (props as { id?: string }).id ||
+      children
+        ?.toString()
+        .replace(/ /g, "-")
+        .replace(/'/g, "")
+        .replace(/\?/g, "")
+        .toLowerCase();
+
+    return (
+      <h4
+        className={cn(
+          "mt-8 scroll-m-20 font-medium text-lg tracking-tight",
+          className
+        )}
+        id={id}
+        {...props}
+      >
+        <a
+          className={cn(
+            "-mx-2 px-2",
+            "rounded-md",
+            "no-underline underline-offset-4",
+            "hover:underline",
+            "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            "border border-transparent"
+          )}
+          href={`#${id}`}
+        >
+          {children}
+        </a>
+      </h4>
+    );
+  },
   h5: ({ className, ...props }: React.ComponentProps<"h5">) => (
     <h5
       className={cn(
@@ -220,12 +292,7 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   img: ({ className, ...props }: React.ComponentProps<"img">) => (
     <img className={cn("rounded-md", className)} {...props} />
   ),
-  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
+
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
@@ -265,36 +332,69 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       </ScrollArea>
     );
   },
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
-      className={cn("mt-8 scroll-m-32 font-medium tracking-tight", className)}
+  Steps: ({ ...props }) => (
+    <div
+      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8"
       {...props}
     />
   ),
-  Steps: ({ ...props }) => (
-    <div
-      className="steps [&>h3]:step mb-12 [counter-reset:step] *:[h3]:first:mt-0!"
+  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
+    <h3
+      className={cn("mt-8 scroll-m-32 tracking-tight", className)}
       {...props}
     />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong
+    <strong className={cn("font-medium text-inherit", className)} {...props} />
+  ),
+  table: ({ className, ...props }: React.ComponentProps<typeof Table>) => (
+    <ScrollArea className="my-6 rounded-xl border">
+      <Table
+        className={cn(
+          "relative w-full border-none [&_tbody_tr:last-child]:border-b-0",
+          className
+        )}
+        isHoverable={false}
+        {...props}
+      />
+    </ScrollArea>
+  ),
+  td: ({ className, ...props }: React.ComponentProps<typeof TableCell>) => (
+    <TableCell
+      className={cn(
+        "**:[code]:bg-transparent **:[code]:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  ),
+  thead: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TableHeader>) => (
+    <TableHeader className={cn("bg-muted", className)} {...props} />
+  ),
+  th: ({ className, ...props }: React.ComponentProps<typeof TableHead>) => (
+    <TableHead
       className={cn("font-medium text-foreground", className)}
       {...props}
     />
   ),
-  Tab: ({ className, ...props }: React.ComponentProps<"div">) => (
-    <div className={cn(className)} {...props} />
+  tr: (props: React.ComponentProps<typeof TableRow>) => <TableRow {...props} />,
+  ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
+    <ul
+      className={cn("my-6 ms-6 list-disc text-muted-foreground", className)}
+      {...props}
+    />
   ),
-  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
-    return <Tabs className={cn(className)} {...props} />;
-  },
-  TabsList: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsList>) => (
-    <TabsList className={cn("", className)} {...props} />
+  Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (
+    <Alert className={cn("my-6", className)} {...props} />
   ),
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+  Tabs,
+  TabsList,
   TabsContent: ({
     className,
     ...props
@@ -308,47 +408,10 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     />
   ),
   TabsTrigger,
-  table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <ScrollArea className="my-6">
-      <table
-        className={cn("relative w-full border-none text-sm", className)}
-        {...props}
-      />
-    </ScrollArea>
-  ),
-  td: ({ className, ...props }: React.ComponentProps<"td">) => (
-    <td
-      className={cn(
-        "whitespace-nowrap px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
-  ),
-  th: ({ className, ...props }: React.ComponentProps<"th">) => (
-    <th
-      className={cn(
-        "px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
-  ),
-  tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
-    <tr
-      className={cn("m-0 border-b last:border-b-none", className)}
-      {...props}
-    />
-  ),
-  ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul
-      className={cn("my-6 ms-6 list-disc text-muted-foreground", className)}
-      {...props}
-    />
-  ),
-  Info,
+  InfoIcon,
   ComponentPreview,
   ComponentInstallation,
   ComponentSource,
   CodeTabs,
+  CodeCollapsibleWrapper,
 });

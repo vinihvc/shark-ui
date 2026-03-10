@@ -1,7 +1,173 @@
-import Link from "fumadocs-core/link";
+import Link from "next/link";
 import React from "react";
+import {
+  AccordionThumb,
+  ActionBarThumb,
+  AlertDialogThumb,
+  AlertThumb,
+  AngleSliderThumb,
+  AspectRatioThumb,
+  AutocompleteThumb,
+  AvatarThumb,
+  BadgeThumb,
+  BottomNavigationThumb,
+  BreadcrumbThumb,
+  ButtonGroupThumb,
+  ButtonThumb,
+  CalendarThumb,
+  CardThumb,
+  CarouselThumb,
+  ChartThumb,
+  CheckboxThumb,
+  ClipboardThumb,
+  CollapsibleThumb,
+  ColorPickerThumb,
+  ComboboxThumb,
+  CommandThumb,
+  ContextMenuThumb,
+  DataListThumb,
+  DialogThumb,
+  DrawerThumb,
+  EditableThumb,
+  FieldThumb,
+  FileUploadThumb,
+  FloatingPanelThumb,
+  FloatThumb,
+  FrameThumb,
+  HintThumb,
+  HoverCardThumb,
+  ImageCropperThumb,
+  InputGroupThumb,
+  InputOtpThumb,
+  InputThumb,
+  ItemThumb,
+  KbdThumb,
+  LinkOverlayThumb,
+  ListboxThumb,
+  MarqueeThumb,
+  MenuThumb,
+  NativeSelectThumb,
+  NavigationMenuThumb,
+  NumberInputThumb,
+  PaginationThumb,
+  PopoverThumb,
+  ProgressThumb,
+  ProseThumb,
+  QrCodeThumb,
+  RadioGroupThumb,
+  RatingGroupThumb,
+  ResizableThumb,
+  ScrollAreaThumb,
+  SegmentGroupThumb,
+  SelectThumb,
+  SeparatorThumb,
+  SheetThumb,
+  SignaturePadThumb,
+  SkeletonThumb,
+  SkipNavThumb,
+  SliderThumb,
+  SpinnerThumb,
+  StatusThumb,
+  StepsThumb,
+  SwitchThumb,
+  TableThumb,
+  TabsThumb,
+  TextareaThumb,
+  TimerThumb,
+  ToastThumb,
+  ToggleGroupThumb,
+  ToggleThumb,
+  ToggleTooltipThumb,
+  TooltipThumb,
+  TourThumb,
+  TreeViewThumb,
+} from "@/components/thumbs";
+import type { ThumbProps } from "@/components/thumbs/types";
 import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
+
+const THUMB_MAP: Record<string, React.ComponentType<ThumbProps>> = {
+  accordion: AccordionThumb,
+  "action-bar": ActionBarThumb,
+  "alert-dialog": AlertDialogThumb,
+  "angle-slider": AngleSliderThumb,
+  alert: AlertThumb,
+  "aspect-ratio": AspectRatioThumb,
+  autocomplete: AutocompleteThumb,
+  avatar: AvatarThumb,
+  badge: BadgeThumb,
+  breadcrumb: BreadcrumbThumb,
+  "bottom-navigation": BottomNavigationThumb,
+  "button-group": ButtonGroupThumb,
+  button: ButtonThumb,
+  card: CardThumb,
+  carousel: CarouselThumb,
+  chart: ChartThumb,
+  checkbox: CheckboxThumb,
+  clipboard: ClipboardThumb,
+  collapsible: CollapsibleThumb,
+  "color-picker": ColorPickerThumb,
+  combobox: ComboboxThumb,
+  command: CommandThumb,
+  "context-menu": ContextMenuThumb,
+  "data-list": DataListThumb,
+  calendar: CalendarThumb,
+  dialog: DialogThumb,
+  drawer: DrawerThumb,
+  editable: EditableThumb,
+  field: FieldThumb,
+  "file-upload": FileUploadThumb,
+  float: FloatThumb,
+  "floating-panel": FloatingPanelThumb,
+  frame: FrameThumb,
+  hint: HintThumb,
+  "hover-card": HoverCardThumb,
+  "image-cropper": ImageCropperThumb,
+  "input-group": InputGroupThumb,
+  "input-otp": InputOtpThumb,
+  input: InputThumb,
+  item: ItemThumb,
+  kbd: KbdThumb,
+  "link-overlay": LinkOverlayThumb,
+  listbox: ListboxThumb,
+  marquee: MarqueeThumb,
+  menu: MenuThumb,
+  "native-select": NativeSelectThumb,
+  "navigation-menu": NavigationMenuThumb,
+  "number-input": NumberInputThumb,
+  pagination: PaginationThumb,
+  popover: PopoverThumb,
+  progress: ProgressThumb,
+  prose: ProseThumb,
+  "qr-code": QrCodeThumb,
+  "radio-group": RadioGroupThumb,
+  rating: RatingGroupThumb,
+  resizable: ResizableThumb,
+  "scroll-area": ScrollAreaThumb,
+  "segment-group": SegmentGroupThumb,
+  select: SelectThumb,
+  separator: SeparatorThumb,
+  "signature-pad": SignaturePadThumb,
+  sheet: SheetThumb,
+  skeleton: SkeletonThumb,
+  "skip-nav": SkipNavThumb,
+  slider: SliderThumb,
+  spinner: SpinnerThumb,
+  status: StatusThumb,
+  steps: StepsThumb,
+  switch: SwitchThumb,
+  table: TableThumb,
+  tabs: TabsThumb,
+  textarea: TextareaThumb,
+  timer: TimerThumb,
+  toast: ToastThumb,
+  "toggle-group": ToggleGroupThumb,
+  toggle: ToggleThumb,
+  "toggle-tooltip": ToggleTooltipThumb,
+  tooltip: TooltipThumb,
+  tour: TourThumb,
+  "tree-view": TreeViewThumb,
+};
 
 interface ComponentsListProps extends React.ComponentProps<"div"> {}
 
@@ -13,7 +179,7 @@ export const ComponentsList = (props: ComponentsListProps) => {
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 lg:gap-y-6 xl:gap-x-20",
+        "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6",
         className
       )}
       {...rest}
@@ -22,15 +188,35 @@ export const ComponentsList = (props: ComponentsListProps) => {
         <React.Fragment key={group.$id}>
           {group.type === "folder" &&
             group.children.map((item) => {
-              if (item.type === "page") {
-                return (
-                  <Link href={item.url} key={item.url}>
-                    {item.name}
-                  </Link>
-                );
+              if (item.type !== "page") {
+                return null;
               }
 
-              return null;
+              const slug = item.url.split("/").filter(Boolean).pop() ?? "";
+              const ThumbComponent = THUMB_MAP[slug];
+
+              if (!ThumbComponent) {
+                return null;
+              }
+
+              const page = source.getNodePage(item);
+              const title = page?.data.title ?? slug;
+              const description = page?.data.description ?? "";
+
+              return (
+                <Link
+                  className={cn(
+                    "flex",
+                    "transition-opacity hover:opacity-90",
+                    "rounded-lg",
+                    "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  )}
+                  href={item.url}
+                  key={item.url}
+                >
+                  <ThumbComponent description={description} title={title} />
+                </Link>
+              );
             })}
         </React.Fragment>
       ))}

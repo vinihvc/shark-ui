@@ -3,12 +3,12 @@ import {
   Clipboard,
   ClipboardIndicator,
   ClipboardTrigger,
-  ClipboardValueText,
+  ClipboardValue,
 } from "@/registry/react/components/clipboard";
 
 const Example = () => (
   <Clipboard value="https://x.com/vinihvc">
-    <ClipboardValueText />
+    <ClipboardValue />
     <ClipboardTrigger asChild>
       <Button size="icon-md">
         <ClipboardIndicator />

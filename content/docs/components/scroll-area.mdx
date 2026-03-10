@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/scroll-area
+npx shadcn@latest add @shark/scroll-area
 ```
 
 </TabsContent>
@@ -49,20 +49,48 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx
 import { ScrollArea } from "@/components/ui/scroll-area";
 ```
 
-```tsx lineNumbers
-<ScrollArea>
+```tsx showLineNumbers
+<ScrollArea className="h-64">
   {/* Your content here */}
 </ScrollArea>
 ```
 
 ## Examples
 
-### Scrollbar Gutter
+### Scroll Fade
 
-Use the `scrollbarGutter` prop to add padding to accommodate scrollbars and prevent layout shift.
+Use `scrollFade` to add a subtle fade effect to the edges of the scroll area.
 
-<ComponentPreview componentName="scroll-area" fileName="example-scrollbar-gutter" />
+<ComponentPreview componentName="scroll-area" fileName="example-scroll-fade" />
+
+### Horizontal Scroll
+
+<ComponentPreview componentName="scroll-area" fileName="example-horizontal" />
+
+### Both Scrollbars
+
+<ComponentPreview componentName="scroll-area" fileName="example-both-directions" />
+
+### Nested
+
+Scroll areas can be nested within each other for complex layouts.
+
+<ComponentPreview componentName="scroll-area" fileName="example-nested" />
+
+## API Reference
+
+### ScrollArea
+
+Root component. Renders a `div`.
+
+| Prop | Type | Default | 
+| --- | --- | --- | 
+| scrollFade | `boolean` | `false` | 
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/scroll-area#api-reference). 
