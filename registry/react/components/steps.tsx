@@ -86,7 +86,7 @@ export const StepsIndicator = (
   return (
     <ArkSteps.Indicator
       className={cn(
-        "flex shrink-0 items-center justify-center",
+        "flex shrink-0 items-center justify-center tabular-nums",
         "size-(--steps-size)",
         "font-semibold",
         "rounded-full",

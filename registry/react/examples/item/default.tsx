@@ -24,6 +24,7 @@ const ItemDemo = () => (
         </Button>
       </ItemActions>
     </Item>
+<<<<<<< Updated upstream:registry/react/examples/item/default.tsx
     <Item asChild size="sm" variant="outline">
       <a href="#">
         <ItemMedia>
@@ -36,6 +37,18 @@ const ItemDemo = () => (
           <ChevronRight className="size-4" />
         </ItemActions>
       </a>
+=======
+    <Item variant="outline">
+      <ItemMedia>
+        <BadgeCheck className="size-5" />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Your profile has been verified.</ItemTitle>
+      </ItemContent>
+      <ItemActions>
+        <ChevronRight className="size-4" />
+      </ItemActions>
+>>>>>>> Stashed changes:registry/react/examples/item/example-default.tsx
     </Item>
   </div>
 );

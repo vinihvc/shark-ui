@@ -129,7 +129,9 @@ export const FieldContent = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "group/field-content flex flex-1 flex-col gap-1.5 leading-snug",
+        "group/field-content",
+        "flex flex-1 flex-col gap-1.5",
+        "leading-snug",
         className
       )}
       data-slot="field-content"
@@ -146,10 +148,17 @@ export const FieldLabel = (
   return (
     <ArkField.Label
       className={cn(
-        "group/field-label peer/field-label",
+        "group/field-label",
+        "peer/field-label",
+        "w-fit",
+        "flex gap-1",
         "font-medium text-sm leading-snug",
+<<<<<<< Updated upstream
         "flex w-fit gap-2",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-4",
+=======
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-2.5",
+>>>>>>> Stashed changes
         "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
         "group-data-disabled/field:opacity-50",
         "dark:has-data-[state=checked]:bg-primary/10",
@@ -161,23 +170,28 @@ export const FieldLabel = (
   );
 };
 
-export const FieldLabelRequired = (
+export const FieldRequiredIndicator = (
   props: React.ComponentProps<typeof ark.span>
 ) => {
   const { className, children, ...rest } = props;
 
   return (
+<<<<<<< Updated upstream
     <ark.span
       aria-label="Required"
+=======
+    <ArkField.RequiredIndicator
+      aria-hidden
+>>>>>>> Stashed changes
       className={cn(
         "text-destructive text-sm dark:text-destructive-foreground",
         className
       )}
-      data-slot="field-label-required"
+      data-slot="field-required-indicator"
       {...rest}
     >
       {children ?? "*"}
-    </ark.span>
+    </ArkField.RequiredIndicator>
   );
 };
 

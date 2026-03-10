@@ -67,4 +67,97 @@ import {
 
 ### Default
 
+<<<<<<< Updated upstream
 <ComponentPreview componentName="toggle-group" fileName="default" />
+=======
+Use `orientation="vertical"` for a vertical layout.
+
+<ComponentPreview componentName="toggle-group" fileName="example-vertical" />
+
+### With spacing
+
+Use `spacing` to add space between buttons. When spacing is greater than 0, each button keeps its own border and rounded corners.
+
+<ComponentPreview componentName="toggle-group" fileName="example-spacing" />
+
+### With separator
+
+Add visual separators between toggle items using the `ToggleGroupSeparator` component.
+
+<ComponentPreview componentName="toggle-group" fileName="example-separator" />
+
+### Disabled
+
+Disable the entire group with the `disabled` prop.
+
+<ComponentPreview componentName="toggle-group" fileName="example-disabled" />
+
+### With disabled toggle
+
+Disable individual toggles by setting `disabled` on a specific item.
+
+<ComponentPreview componentName="toggle-group" fileName="example-disabled-item" />
+
+### Single selection
+
+Use `multiple={false}` to allow only one toggle to be selected at a time.
+
+<ComponentPreview componentName="toggle-group" fileName="example-single" />
+
+### With tooltips
+
+Wrap items with Tooltip to show labels on hover.
+
+<ComponentPreview componentName="toggle-group" fileName="example-tooltips" />
+
+### Custom
+
+A custom toggle group example with tooltips and custom styling for font weight selection.
+
+<ComponentPreview componentName="toggle-group" fileName="example-custom" />
+
+## API Reference
+
+### ToggleGroup
+
+Root component. Provides shared variant and size to child toggles via context. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"outline"` \| `"ghost"` | `"ghost"` |
+| `size` | `"sm"` \| `"md"` \| `"lg"` | `"md"` |
+| `spacing` | `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6` \| `8` \| `10` | `0` |
+| `multiple` | `boolean` | `true` |
+| `defaultValue` | `string[]` | — |
+| `value` | `string[]` | — |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | — |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | — |
+
+For more props, see [Ark UI Toggle Group](https://ark-ui.com/docs/components/toggle-group#api-reference).
+
+### ToggleGroupItem
+
+Individual toggle button within the group. Inherits variant and size from parent ToggleGroup. Renders a [`<Toggle />`](/docs/components/toggle).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | — |
+| `aria-label` | `string` | — |
+
+### ToggleGroupSeparator
+
+Visual separator between toggle items. Use within `ToggleGroup` for a consistent styled divider. Renders a [`<Separator />`](/docs/components/separator).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"horizontal"` \| `"vertical"` | `"vertical"` |
+| `className` | `string` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/toggle-group#api-reference).
+>>>>>>> Stashed changes

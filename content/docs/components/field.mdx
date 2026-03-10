@@ -72,4 +72,174 @@ import {
 
 ### Default
 
+<<<<<<< Updated upstream
 <ComponentPreview componentName="field" fileName="default" />
+=======
+<ComponentPreview componentName="field" fileName="example-required-field" />
+
+### Input
+
+<ComponentPreview componentName="field" fileName="example-input-group" />
+
+### Autocomplete
+
+<ComponentPreview componentName="field" fileName="example-autocomplete-field" />
+
+### Combobox
+
+<ComponentPreview componentName="field" fileName="example-combobox-field" />
+
+### Combobox Multiple
+
+<ComponentPreview componentName="field" fileName="example-combobox-multiple-field" />
+
+### Textarea
+
+<ComponentPreview componentName="field" fileName="example-textarea-field" />
+
+### Select
+
+<ComponentPreview componentName="field" fileName="example-select-field" />
+
+### Checkbox
+
+<ComponentPreview componentName="field" fileName="example-checkbox-field" />
+
+### Checkbox
+
+<ComponentPreview componentName="field" fileName="example-checkbox-group-field" />
+
+### Radio Group
+
+<ComponentPreview componentName="field" fileName="example-radio-group-field" />
+
+### Switch
+
+<ComponentPreview componentName="field" fileName="example-switch-field" />
+
+### Slider
+
+Use `<SliderLabel />` inside the `<Slider />` to label the slider.
+
+<ComponentPreview componentName="field" fileName="example-slider-field" /> 
+
+### Number Input
+
+<ComponentPreview componentName="field" fileName="example-number-input" />
+
+### Field
+
+<ComponentPreview componentName="field" fileName="example-field-group" />
+
+## API Reference
+
+### Field
+
+Root component. Flex container for label, control, and helper/error text. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` |
+| `reverse` | `boolean` | `false` |
+| `invalid` | `boolean` | `-` |
+| `disabled` | `boolean` | `-` |
+| `required` | `boolean` | `-` |
+| `readOnly` | `boolean` | `-` |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FieldSet
+
+Groups related form controls. Renders a `fieldset`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FieldLegend
+
+Legend for a FieldSet. Renders a `legend`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"legend" \| "label"` | `"legend"` |
+| `className` | `string` | `-` |
+
+### FieldGroup
+
+Container for a group of fields. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FieldContent
+
+Wrapper for label + description/error. Use with horizontal orientation. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FieldLabel
+
+Label for the field. Associates with the control via `htmlFor` / `id`. Renders a `label`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### FieldRequiredIndicator
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | `"*"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `-` |
+
+### FieldTitle
+
+Title wrapper for field content. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FieldDescription
+
+Description or helper text for the field. Muted foreground. Renders a `p`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FieldSeparator
+
+Horizontal separator between field groups. Optional center text. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | `-` |
+| `className` | `string` | `-` |
+
+### FieldHelper
+
+Helper text (alias for description). Renders a `p`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### FieldError
+
+Error message for invalid state. Destructive foreground. Renders a `p`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+---
+
+For a complete list of props, see the [Ark UI Field](https://ark-ui.com/docs/components/field#api-reference) and [Fieldset](https://ark-ui.com/docs/components/fieldset#api-reference) documentation.
+>>>>>>> Stashed changes

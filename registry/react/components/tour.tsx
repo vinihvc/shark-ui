@@ -39,6 +39,21 @@ const TourProvider = React.createContext<TourProviderProps>(
 interface TourProps
   extends Omit<React.ComponentProps<typeof ArkTour.Root>, "tour"> {
   /**
+<<<<<<< Updated upstream
+=======
+   * Enable arrow key navigation between steps
+   */
+  keyboardNavigation?: boolean;
+  /**
+   * Called when the tour status changes
+   */
+  onStatusChange?: (details: { status: string }) => void;
+  /**
+   * Called when the current step changes
+   */
+  onStepChange?: (details: { stepId: string | null }) => void;
+  /**
+>>>>>>> Stashed changes
    * The steps to display in the tour
    *
    * @default []
@@ -111,10 +126,39 @@ export const TourActionTrigger = (
 
 export const TourOverlay = (
   props: React.ComponentProps<typeof DialogOverlay>
+<<<<<<< Updated upstream
 ) => (
   <ArkTour.Backdrop
     className={dialogOverlayVariants()}
     data-slot="tour-overlay"
+    {...props}
+  />
+);
+=======
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkTour.Backdrop
+      className={cn(dialogOverlayVariants(), "duration-initial", className)}
+      data-slot="tour-overlay"
+      {...rest}
+    />
+  );
+};
+>>>>>>> Stashed changes
+
+export const TourPositioner = (
+  props: React.ComponentProps<typeof ArkTour.Positioner>
+) => (
+  <ArkTour.Positioner
+    className={cn(
+      "z-50",
+      "flex items-center justify-center",
+      "data-[type=dialog]:fixed data-[type=dialog]:inset-0",
+      "data-[type=tooltip]:absolute"
+    )}
+    data-slot="tour-positioner"
     {...props}
   />
 );
@@ -135,19 +179,15 @@ export const TourContent = (props: TourContentProps) => {
   return (
     <Portal>
       <TourOverlay />
-
-      <ArkTour.Positioner
-        className={cn(
-          "z-50",
-          "flex items-center justify-center",
-          "data-[type=dialog]:fixed data-[type=dialog]:inset-0",
-          "data-[type=tooltip]:absolute"
-        )}
-        data-slot="tour-positioner"
-      >
+      <TourPositioner>
         <ArkTour.Content
           className={cn(
+<<<<<<< Updated upstream
             "z-50",
+=======
+            "[--space:--spacing(4)]",
+            "z-[calc(50+var(--layer-index,0))]",
+>>>>>>> Stashed changes
             "relative",
             "w-full max-w-md",
             "flex flex-col gap-4",
@@ -178,15 +218,25 @@ export const TourContent = (props: TourContentProps) => {
             </TourClose>
           )}
         </ArkTour.Content>
-      </ArkTour.Positioner>
+      </TourPositioner>
 
-      <ArkTour.Spotlight className="z-50 border-2 border-primary" />
+      <TourSpotlight />
     </Portal>
   );
 };
 
 export const TourBody = (props: React.ComponentProps<typeof DialogBody>) => (
   <DialogBody data-slot="tour-body" {...props} />
+);
+
+export const TourSpotlight = (
+  props: React.ComponentProps<typeof ArkTour.Spotlight>
+) => (
+  <ArkTour.Spotlight
+    className="z-50 border-2 border-primary"
+    data-slot="tour-spotlight"
+    {...props}
+  />
 );
 
 export const TourHeader = (
@@ -266,6 +316,49 @@ export const TourFooter = (
   );
 };
 
+<<<<<<< Updated upstream
+=======
+export const TourActions = (
+  props: React.ComponentProps<typeof DialogFooter>
+) => {
+  const { className, ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  const actions = tour.step?.actions ?? [];
+
+  if (actions.length === 0) {
+    return null;
+  }
+
+  return (
+    <ArkTour.Control {...rest} asChild>
+      <DialogFooter
+        className={cn("flex flex-wrap gap-2", className)}
+        data-slot="tour-actions"
+      >
+        {actions.map((action) => (
+          <TourActionTrigger action={action} asChild key={action.label}>
+            <Button
+              size="sm"
+              variant={
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default"
+              }
+            >
+              {action.action === "prev" && <ChevronLeft />}
+              {action.label}
+              {action.action === "next" && <ChevronRight />}
+            </Button>
+          </TourActionTrigger>
+        ))}
+      </DialogFooter>
+    </ArkTour.Control>
+  );
+};
+
+>>>>>>> Stashed changes
 export const TourPreviousStep = (
   props: Omit<React.ComponentProps<typeof TourActionTrigger>, "action">
 ) => {

@@ -110,7 +110,11 @@ export const CardsActivityGoal = () => {
         </div>
         <div className="flex-1">
           <ChartContainer
+<<<<<<< Updated upstream
             className="aspect-auto h-full w-full"
+=======
+            className="aspect-auto h-16 w-full"
+>>>>>>> Stashed changes
             config={chartConfig}
           >
             <BarChart data={data}>

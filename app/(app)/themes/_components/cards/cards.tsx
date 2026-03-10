@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { CardsExerciseMinutes } from "./card.exercise-minutes";
 import { CardsPayments } from "./card.payments";
 import { CardsActivityGoal } from "./cards.activity";
 import { CardsCalendar } from "./cards.calendar";
@@ -21,7 +22,9 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
     >
       <div className="grid gap-4 lg:col-span-4 xl:col-span-6">
         <div className="grid gap-1 sm:grid-cols-[auto_1fr] md:hidden">
-          <CardsCalendar />
+          <div className="hidden sm:flex">
+            <CardsCalendar />
+          </div>
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
             <CardsActivityGoal />
           </div>
@@ -49,6 +52,10 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
         </div>
         <div className="hidden md:block">
           <CardsPayments />
+        </div>
+
+        <div className="hidden md:block">
+          <CardsExerciseMinutes />
         </div>
 
         <div className="xl:hidden">

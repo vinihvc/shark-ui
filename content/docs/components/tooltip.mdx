@@ -66,8 +66,104 @@ import {
 </Tooltip>
 ```
 
+<<<<<<< Updated upstream
 ## Examples
 
 ### Default
 
 <ComponentPreview componentName="tooltip" fileName="default" />
+=======
+## Tooltip vs Toggle Tooltip
+
+You're viewing **Tooltip**—a label that shows on hover or focus. Use it when the content is supplementary and non-essential, and you're okay with touch users not having access.
+
+### Use Tooltip when
+
+- The trigger has its own purpose and the popup is **supplementary**.
+- The content is **non-essential**—nice-to-have clarity for sighted mouse/keyboard users.
+- You're okay with **touch users not seeing it**—tooltips only open on hover/focus, not on tap.
+- The content is **short and non-interactive** (no links or buttons inside).
+
+### Tooltip behavior
+
+- **Hover or focus only** — Opens on hover/focus; touch users cannot access it.
+- **Non-interactive** — Keep content short with no links or buttons.
+- **Supplementary** — Best for nice-to-have information, not critical content.
+
+### Consider Toggle Tooltip when
+
+- The trigger's **primary purpose** is to reveal the content.
+- The content is **essential** and should be accessible to touch users and screen readers.
+- You need **click-to-open** so everyone can access it.
+- The content may be **interactive** (links, buttons).
+
+## Positioning
+
+Use the `positioning` prop to change the position of the tooltip.
+
+<ComponentPreview componentName="tooltip" fileName="example-side" />
+
+## Examples
+
+### With Keyboard Shortcut
+
+<ComponentPreview componentName="tooltip" fileName="example-with-keyboard-shortcut" />
+
+### Disabled Button
+
+Show a tooltip on a disabled button by wrapping it with a span.
+
+<ComponentPreview componentName="tooltip" fileName="example-disabled-button" />
+
+## API Reference
+
+### Tooltip
+
+Root component that wraps the tooltip. Manages open state and positioning.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `positioning` | `PositioningOptions` | `{ placement: "top" }` |
+| `openDelay` | `number` | `0` |
+| `closeDelay` | `number` | `100` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `open` | `boolean` | — |
+| `defaultOpen` | `boolean` | — |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
+| `disabled` | `boolean` | — |
+| `interactive` | `boolean` | `false` |
+| `closeOnClick` | `boolean` | `true` |
+| `closeOnEscape` | `boolean` | `true` |
+| `closeOnPointerDown` | `boolean` | `true` |
+| `closeOnScroll` | `boolean` | `true` |
+
+### TooltipTrigger
+
+The element that triggers the tooltip on hover or focus. Renders a `button` by default.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+### TooltipContent
+
+The tooltip content displayed in a popover. Renders a `div` element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### TooltipArrow
+
+Optional arrow pointing to the trigger. Place inside `TooltipContent`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/tooltip#api-reference).
+>>>>>>> Stashed changes

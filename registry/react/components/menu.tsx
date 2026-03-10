@@ -118,9 +118,17 @@ const menuItemVariants = tv({
     "relative",
     "px-2 py-1.5",
     "w-full",
+<<<<<<< Updated upstream
     "flex items-center gap-2 rounded-sm",
     "text-sm",
     "select-none outline-hidden",
+=======
+    "px-2.5 py-1.5",
+    "flex items-center gap-2",
+    "select-none text-sm",
+    "rounded-lg",
+    "outline-hidden",
+>>>>>>> Stashed changes
     "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
     "data-disabled:pointer-events-none data-disabled:opacity-50",
     "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",

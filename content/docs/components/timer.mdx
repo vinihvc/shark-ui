@@ -1,0 +1,166 @@
+---
+title: Timer
+description: A countdown or stopwatch timer with start, pause, and resume controls.
+links:
+  doc: https://ark-ui.com/docs/components/timer
+  api: https://ark-ui.com/docs/components/timer#api-reference
+---
+
+<ComponentPreview componentName="timer" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/timer
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/timer.tsx" src="timer.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { 
+  Timer, 
+  TimerArea, 
+  TimerItem, 
+  TimerSeparator, 
+  TimerControl, 
+  TimerActionTrigger,
+} from "@/components/ui/timer";
+
+<Timer targetMs={3600000} startMs={2400000}>
+  <TimerArea>
+    <TimerItem type="hours" />
+    <TimerSeparator>:</TimerSeparator>
+    <TimerItem type="minutes" />
+    <TimerSeparator>:</TimerSeparator>
+    <TimerItem type="seconds" />
+  </TimerArea>
+  <TimerControl>
+    <TimerActionTrigger action="start">Start</TimerActionTrigger>
+    <TimerActionTrigger action="pause">Pause</TimerActionTrigger>
+  </TimerControl>
+</Timer>
+```
+
+## Examples
+
+### Countdown
+
+Create a countdown by setting `countdown` to `true` and `startMs` to the initial duration.
+
+<ComponentPreview componentName="timer" fileName="example-countdown" />
+
+### Interval
+
+Use the `interval` prop to control update frequency.
+
+<ComponentPreview componentName="timer" fileName="example-interval" />
+
+### Events
+
+Listen to `onTick` and `onComplete` for timer events.
+
+<ComponentPreview componentName="timer" fileName="example-events" />
+
+### Pomodoro
+
+Alternate between work and break sessions using `onComplete`.
+
+<ComponentPreview componentName="timer" fileName="example-pomodoro" />
+
+### Root Provider
+
+Use `TimerRootProvider` and `useTimer` to control the timer from outside.
+
+<ComponentPreview componentName="timer" fileName="example-root-provider" />
+
+## API Reference
+
+### Timer
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `targetMs` | `number` | `0` |
+| `startMs` | `number` | `0` |
+| `countdown` | `boolean` | `false` |
+| `interval` | `number` | `1000` |
+| `onTick` | `(details: TickDetails) => void` | `-` |
+| `onComplete` | `() => void` | `-` |
+
+### TimerArea
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TimerItem
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `type` | `"days"` \| `"hours"` \| `"minutes"` \| `"seconds"` \| `"milliseconds"` | `"seconds"` |
+
+### TimerSeparator
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TimerControl
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### TimerActionTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `action` | `"start"` \| `"pause"` \| `"resume"` \| `"reset"` | `"start"` |
+
+### TimerRootProvider
+
+Use with `useTimer` to control the timer from outside the component tree.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `UseTimerReturn` | `-` |
+
+### useTimer
+
+Hook to create timer state. Use with `TimerRootProvider` to control the timer externally.
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/timer#api-reference).

@@ -44,7 +44,12 @@ export const InputOtpSlot = (
 
   return (
     <ArkPinInput.Input asChild data-slot="input-otp-input" {...rest}>
-      <Input className={cn("relative p-0 text-center text-base", className)} />
+      <Input
+        className={cn(
+          "relative p-0 text-center text-base tabular-nums",
+          className
+        )}
+      />
     </ArkPinInput.Input>
   );
 };

@@ -59,7 +59,11 @@ export const PopoverContent = (props: PopoverContentProps) => {
             "flex flex-col",
             "bg-popover",
             "text-popover-foreground",
+<<<<<<< Updated upstream
             "rounded-md border shadow-md",
+=======
+            "rounded-xl border shadow-lg/5",
+>>>>>>> Stashed changes
             "outline-hidden",
             "origin-(--transform-origin)",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",

@@ -1,0 +1,155 @@
+---
+title: Toggle Tooltip
+description: Looks like a tooltip, but works like a popover.
+links:
+  doc: https://ark-ui.com/docs/components/popover
+  api: https://ark-ui.com/docs/components/popover#api-reference
+---
+
+<Alert>
+  <InfoIcon />
+  <AlertDescription>
+  Built on top of the [`<Popover />`](/docs/components/popover) component. Check it out for more examples.
+  </AlertDescription>
+</Alert>
+
+<ComponentPreview componentName="toggle-tooltip" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/toggle-tooltip
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/toggle-tooltip.tsx" src="/toggle-tooltip.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ToggleTooltip,
+  ToggleTooltipContent,
+  ToggleTooltipTrigger,
+} from "@/components/ui/toggle-tooltip";
+```
+
+```tsx showLineNumbers
+<ToggleTooltip>
+  <ToggleTooltipTrigger asChild>
+    <button type="button">
+      <InfoIcon />
+    </button>
+  </ToggleTooltipTrigger>
+  <ToggleTooltipContent>
+    Hover or click to see this content.
+  </ToggleTooltipContent>
+</ToggleTooltip>
+```
+
+## Tooltip vs Toggle Tooltip
+
+You're viewing **Toggle Tooltip**—a popover that opens on hover or click. Use it when the content is essential and should be accessible to everyone, including touch users and screen readers.
+
+### Use Toggle Tooltip when
+
+- The trigger's **primary purpose** is to reveal the content.
+- The content is **essential** and should be accessible to touch users and screen readers.
+- You need **click-to-open** so everyone can access it—no hover required.
+- The content may be **interactive** (links, buttons) since Toggle Tooltip is a popover under the hood.
+
+### Toggle Tooltip behavior
+
+- **Touch and keyboard** — Opens on click as well as hover, so touch and keyboard users can access the content.
+- **Screen reader exposure** — Content is exposed to assistive technologies.
+- **Escape to close** — Press Escape to dismiss when open.
+- **Icon-only triggers** — Add an `aria-label` when the trigger is an icon without visible text.
+
+### Consider Tooltip when
+
+- The trigger has its own purpose and the popup is **supplementary**.
+- The content is **non-essential**—nice-to-have clarity.
+- Touch users don't need to access it—tooltips only open on hover/focus.
+- The content is **short and non-interactive** (no links or buttons inside).
+
+## Positioning
+
+Use the `positioning` prop to change the position.
+
+<ComponentPreview componentName="toggle-tooltip" fileName="example-side" />
+
+## API Reference 
+
+### ToggleTooltip
+
+Root component. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `positioning` | `PositioningOptions` | `{ placement: "top" }` |
+| `modal` | `boolean` | `false` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `open` | `boolean` | — |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
+
+### ToggleTooltipTrigger
+
+The element that triggers the toggle tooltip on click. Renders a `button` by default.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### ToggleTooltipContent
+
+The content displayed in a popover. Renders a `div` element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+### ToggleTooltipArrow
+
+Optional arrow pointing to the trigger. Place inside `ToggleTooltipContent`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `asChild` | `boolean` | — |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/popover#api-reference).

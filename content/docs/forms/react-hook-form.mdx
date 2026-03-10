@@ -1,0 +1,1010 @@
+---
+title: React Hook Form
+description: Build forms in React using React Hook Form and Zod.
+links:
+  doc: https://react-hook-form.com
+  ark: https://ark-ui.com/docs/guides/forms#react-hook-form
+---
+
+This guide shows how to pair [React Hook Form](https://react-hook-form.com) with Shark UI’s form primitives. Shark UI’s `Field` components are built on [Ark UI](https://ark-ui.com), so they work naturally with React Hook Form while keeping validation, error handling, and accessibility in sync. For additional patterns (including native controls with `register` and custom components with `Controller`).
+
+## Demo
+
+The example below is a bug report form: a text input for the title and a textarea for the description. On submit, the form is validated with Zod and any errors are shown alongside the relevant fields.
+
+> **Note:** Browser validation is disabled in this demo to illustrate schema validation. In production, keep native validation enabled when appropriate.
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, useForm } from "react-hook-form"
+import * as z from "zod"
+
+import { Button } from "@/registry/react/components/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/react/components/card"
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/react/components/field"
+import { Input } from "@/registry/react/components/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/registry/react/components/input-group"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+
+export const BugReportForm = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data)
+  }
+
+  return (
+    <Card className="w-full sm:max-w-md">
+      <CardHeader>
+        <CardTitle>Bug Report</CardTitle>
+        <CardDescription>
+          Help us improve by reporting bugs you encounter.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+          <FieldGroup>
+            <Controller
+              name="title"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-demo-title">
+                    Bug Title
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-rhf-demo-title"
+                    invalid={fieldState.invalid}
+                    placeholder="Login button not working on mobile"
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError>{fieldState.error?.message}</FieldError>
+                  )}
+                </Field>
+              )}
+            />
+            <Controller
+              name="description"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-demo-description">
+                    Description
+                  </FieldLabel>
+                  <InputGroup>
+                    <InputGroupTextarea
+                      {...field}
+                      id="form-rhf-demo-description"
+                      placeholder="I'm having an issue with the login button on mobile."
+                      rows={6}
+                      className="min-h-24 resize-none"
+                      invalid={fieldState.invalid}
+                    />
+                    <InputGroupAddon align="block-end">
+                      <InputGroupText className="tabular-nums">
+                        {field.value.length}/100 characters
+                      </InputGroupText>
+                    </InputGroupAddon>
+                  </InputGroup>
+                  <FieldDescription>
+                    Include steps to reproduce, expected behavior, and what
+                    actually happened.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError>{fieldState.error?.message}</FieldError>
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+        </form>
+      </CardContent>
+      <CardFooter>
+        <Field orientation="horizontal">
+          <Button type="button" variant="outline" onClick={() => form.reset()}>
+            Reset
+          </Button>
+          <Button type="submit" form="form-rhf-demo">
+            Submit
+          </Button>
+        </Field>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+## Approach
+
+The pattern uses React Hook Form for state and Zod for validation. Shark UI’s Ark-based `Field` primitives handle layout and a11y, leaving you full control over markup and styling.
+
+- **Form state**: React Hook Form’s `useForm` and `Controller` for controlled fields
+- **Layout & semantics**: Shark UI `Field`, `FieldLabel`, `FieldError`, and related components
+- **Validation**: Zod schema with `zodResolver` for client-side validation
+
+## Anatomy
+
+Typical structure: wrap each field with `Controller`, and use Shark UI’s `Field` for layout and error wiring.
+
+```tsx
+<Controller
+  name="title"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        invalid={fieldState.invalid}
+        placeholder="Login button not working on mobile"
+        autoComplete="off"
+      />
+      <FieldDescription>
+        Provide a concise title for your bug report.
+      </FieldDescription>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+## Form
+
+### Create a form schema
+
+Define your form shape with a Zod schema.
+
+> **Note:** React Hook Form supports other [Standard Schema](https://react-hook-form.com/docs/useform/resolvers#schema-validation) libraries; Zod is used here for clarity.
+
+```tsx
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+```
+
+### Setup the form
+
+Create the form with `useForm` and pass `zodResolver(formSchema)` so Zod runs validation.
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+
+export const BugReportForm = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data)
+  }
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* Build the form here */}
+    </form>
+  )
+}
+```
+
+### Done
+
+With that, the form is ready: accessible labels and errors come from the `Field` components, and Zod runs on submit. Invalid submissions populate `fieldState.error` so `FieldError` can render messages.
+
+## Validation
+
+### Client-side validation
+
+Use a Zod schema as the `resolver` in `useForm`. Validation runs according to the `mode` you set.
+
+```tsx
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+
+const formSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+})
+
+export const ExampleForm = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+}
+```
+
+### Validation modes
+
+```tsx
+const form = useForm<z.infer<typeof formSchema>>({
+  resolver: zodResolver(formSchema),
+  mode: "onChange",
+})
+```
+
+| Mode | Description |
+| --- | --- |
+| `"onChange"` | Validation triggers on every change. |
+| `"onBlur"` | Validation triggers on blur. |
+| `"onSubmit"` | Validation triggers on submit (default). |
+| `"onTouched"` | Validation triggers on first blur, then on every change. |
+| `"all"` | Validation triggers on blur and change. |
+
+## Displaying errors
+
+Use `FieldError` and pass `invalid` down so both the `Field` wrapper and the control (e.g. `Input`, `SelectTrigger`, `Checkbox`) get the correct states for styling and ARIA.
+
+```tsx
+<Controller
+  name="email"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        type="email"
+        invalid={fieldState.invalid}
+      />
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+## Working with different field types
+
+### Simple inputs with register
+
+For plain text inputs and textareas, you can use `register` instead of `Controller`—fewer wrappers and less boilerplate.
+
+```tsx
+const { register, handleSubmit, formState: { errors } } = useForm()
+
+<form onSubmit={handleSubmit(onSubmit)}>
+  <Field invalid={!!errors.email}>
+    <FieldLabel htmlFor="email">Email</FieldLabel>
+    <Input
+      {...register("email", {
+        required: "Email is required",
+        pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
+      })}
+      id="email"
+      invalid={!!errors.email}
+    />
+    <FieldError>{errors.email?.message}</FieldError>
+  </Field>
+</form>
+```
+
+### Input with `Controller`
+
+Use `Controller` when you need controlled behavior (e.g. character counters) or when integrating custom components. Spread `field` onto `Input` and pass `invalid={fieldState.invalid}` to both `Field` and `Input`.
+
+```tsx
+<Controller
+  name="name"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+      <Input {...field} id={field.name} invalid={fieldState.invalid} />
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Textarea
+
+Same idea as Input: spread `field` onto `Textarea` or `InputGroupTextarea`, and pass `invalid` to both the `Field` and the textarea.
+
+```tsx
+<Controller
+  name="about"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor="form-rhf-textarea-about">More about you</FieldLabel>
+      <Textarea
+        {...field}
+        id="form-rhf-textarea-about"
+        invalid={fieldState.invalid}
+        placeholder="I'm a software engineer..."
+        className="min-h-[120px]"
+      />
+      <FieldDescription>
+        Tell us more about yourself. This will be used to help us personalize
+        your experience.
+      </FieldDescription>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### NativeSelect
+
+Use `NativeSelect` for a native HTML `<select>`. Like plain inputs, use `register` instead of `Controller`—no controlled wrappers needed.
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/registry/react/components/native-select"
+
+const { register, formState: { errors } } = form
+
+<Field orientation="horizontal" invalid={!!errors.language}>
+  <FieldContent>
+    <FieldLabel htmlFor="form-rhf-native-select-language">
+      Spoken Language
+    </FieldLabel>
+    <FieldDescription>
+      For best results, select the language you speak.
+    </FieldDescription>
+    {errors.language && (
+      <FieldError>{errors.language?.message}</FieldError>
+    )}
+  </FieldContent>
+  <NativeSelect
+    {...register("language", { required: "Select a language" })}
+    id="form-rhf-native-select-language"
+    invalid={!!errors.language}
+  >
+    <NativeSelectOption value="">Select</NativeSelectOption>
+    <NativeSelectOption value="en">English</NativeSelectOption>
+  </NativeSelect>
+</Field>
+```
+
+### Select
+
+Use `Select` for a custom dropdown with a collection. Wire `value` and `onValueChange`; for single select, `value` is `string[]` with one item. Forward the field ref to `SelectTrigger` so React Hook Form can focus the first invalid field on submit.
+
+```tsx
+import { createListCollection } from "@ark-ui/react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/react/components/select"
+
+const collection = createListCollection({
+  items: [{ label: "English", value: "en" }, { label: "Portuguese", value: "pt" }],
+})
+
+<Controller
+  name="language"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>Spoken Language</FieldLabel>
+      <Select
+        collection={collection}
+        value={field.value ? [field.value] : []}
+        onValueChange={(e) => field.onChange(e.value?.[0] ?? "")}
+      >
+        <SelectTrigger ref={field.ref} className="w-full">
+          <SelectValue placeholder="Select language" />
+        </SelectTrigger>
+        <SelectContent>
+          {collection.items.map((item) => (
+            <SelectItem item={item} key={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Checkbox
+
+For checkbox lists, manage an array in `field.value` and use `field.onChange`. Set `data-slot="checkbox-group"` on `FieldGroup` for correct spacing.
+
+```tsx
+<Controller
+  name="tasks"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <FieldSet>
+      <FieldLegend variant="label">Tasks</FieldLegend>
+      <FieldDescription>
+        Get notified when tasks you've created have updates.
+      </FieldDescription>
+      <FieldGroup data-slot="checkbox-group">
+        {tasks.map((task) => (
+          <Field
+            key={task.id}
+            orientation="horizontal"
+            invalid={fieldState.invalid}
+          >
+            <Checkbox
+              id={`form-rhf-checkbox-${task.id}`}
+              name={field.name}
+              invalid={fieldState.invalid}
+              checked={field.value.includes(task.id)}
+              onCheckedChange={(checked) => {
+                const newValue = checked
+                  ? [...field.value, task.id]
+                  : field.value.filter((value) => value !== task.id)
+                field.onChange(newValue)
+              }}
+            />
+            <FieldLabel
+              htmlFor={`form-rhf-checkbox-${task.id}`}
+              className="font-normal"
+            >
+              {task.label}
+            </FieldLabel>
+          </Field>
+        ))}
+      </FieldGroup>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </FieldSet>
+  )}
+/>
+```
+
+### Radio group
+
+Wire `field.value` and `field.onChange` to `RadioGroup`; pass `invalid` to both `Field` and `RadioGroupItem`.
+
+```tsx
+<Controller
+  name="plan"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <FieldSet>
+      <FieldLegend>Plan</FieldLegend>
+      <FieldDescription>
+        You can upgrade or downgrade your plan at any time.
+      </FieldDescription>
+      <RadioGroup
+        name={field.name}
+        value={field.value}
+        onValueChange={field.onChange}
+      >
+        {plans.map((plan) => (
+          <FieldLabel key={plan.id} htmlFor={`form-rhf-radiogroup-${plan.id}`}>
+            <Field orientation="horizontal" invalid={fieldState.invalid}>
+              <FieldContent>
+                <FieldTitle>{plan.title}</FieldTitle>
+                <FieldDescription>{plan.description}</FieldDescription>
+              </FieldContent>
+              <RadioGroupItem
+                value={plan.id}
+                id={`form-rhf-radiogroup-${plan.id}`}
+                invalid={fieldState.invalid}
+              />
+            </Field>
+          </FieldLabel>
+        ))}
+      </RadioGroup>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </FieldSet>
+  )}
+/>
+```
+
+### Switch
+
+Use `field.value` and `field.onChange` with `Switch`; pass `invalid` to both `Field` and the switch.
+
+```tsx
+<Controller
+  name="twoFactor"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field orientation="horizontal" invalid={fieldState.invalid}>
+      <FieldContent>
+        <FieldLabel htmlFor="form-rhf-switch-twoFactor">
+          Multi-factor authentication
+        </FieldLabel>
+        <FieldDescription>
+          Enable multi-factor authentication to secure your account.
+        </FieldDescription>
+        {fieldState.invalid && (
+          <FieldError>{fieldState.error?.message}</FieldError>
+        )}
+      </FieldContent>
+      <Switch
+        id="form-rhf-switch-twoFactor"
+        name={field.name}
+        checked={field.value}
+        onCheckedChange={field.onChange}
+        invalid={fieldState.invalid}
+      />
+    </Field>
+  )}
+/>
+```
+
+### NumberField
+
+Use `field.value` and `field.onChange` with `NumberField`; the `onValueChange` callback provides `{ value }`, which you pass to `field.onChange`. Pass `invalid` to both `Field` and `NumberField`.
+
+```tsx
+<Controller
+  name="quantity"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel htmlFor="form-rhf-number-quantity">Quantity</FieldLabel>
+      <NumberField
+        value={field.value ?? ""}
+        onValueChange={({ value }) => field.onChange(value)}
+        invalid={fieldState.invalid}
+        min={1}
+        max={99}
+      >
+        <NumberFieldGroup>
+          <NumberFieldDecrement />
+          <NumberFieldInput id="form-rhf-number-quantity" />
+          <NumberFieldIncrement />
+        </NumberFieldGroup>
+      </NumberField>
+      <FieldDescription>
+        Number of items (1–99).
+      </FieldDescription>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Slider
+
+Use `field.value` (as `number[]`) and `field.onChange` with `Slider`; the `onValueChange` callback provides `{ value }`. Single-thumb sliders use `[50]`, so `field.value` is the first element.
+
+```tsx
+<Controller
+  name="volume"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <Slider
+        value={field.value ?? [50]}
+        onValueChange={({ value }) => field.onChange(value)}
+        min={0}
+        max={100}
+      >
+        <div className="flex items-center justify-between">
+          <SliderLabel>Volume</SliderLabel>
+          <SliderValue />
+        </div>
+      </Slider>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Segment Group
+
+Use `field.value` and `field.onChange` with `SegmentGroup`; pass `invalid` to `Field`. Wire `value` and `onValueChange` to the root.
+
+```tsx
+const viewOptions = ["Profile", "Account", "Security"]
+
+<Controller
+  name="view"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>View</FieldLabel>
+      <SegmentGroup
+        value={field.value}
+        onValueChange={(e) => field.onChange(e.value)}
+        className="rounded-lg"
+      >
+        <SegmentGroupIndicator />
+        {viewOptions.map((opt) => (
+          <SegmentGroupItem key={opt} value={opt} className="px-2 py-1.5 text-sm">
+            <SegmentGroupItemText>{opt}</SegmentGroupItemText>
+          </SegmentGroupItem>
+        ))}
+      </SegmentGroup>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Combobox
+
+Use `field.value` and `field.onChange` with `Combobox`; the `onValueChange` callback provides the selected value. Forward the field’s `ref` to the trigger so React Hook Form can focus invalid fields on submit.
+
+```tsx
+const items = [{ label: "Apple", value: "apple" }, { label: "Banana", value: "banana" }]
+
+<Controller
+  name="fruit"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>Fruit</FieldLabel>
+      <Combobox
+        items={items}
+        value={field.value != null ? [field.value] : []}
+        onValueChange={(e) => field.onChange(e.value?.[0] ?? null)}
+      >
+        <ComboboxInput ref={field.ref} aria-label="Select fruit" placeholder="Select…" />
+        <ComboboxContent>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem item={item} key={item.value}>
+                {item.label}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Date Picker
+
+Use `field.value` and `field.onChange` with `DatePicker`; the value is a `DateValue` from `@internationalized/date`. Convert to/from ISO string for storage if needed.
+
+```tsx
+import { parseDate } from "@/registry/react/components/calendar"
+
+<Controller
+  name="startDate"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>Start date</FieldLabel>
+      <DatePicker
+        value={field.value ? parseDate(field.value) : undefined}
+        onValueChange={(e) => field.onChange(e.valueAsString)}
+      >
+        <DatePickerInput placeholder="Pick a date" />
+      </DatePicker>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Input OTP
+
+Use `field.value` (as `string[]`) and `field.onChange` with `InputOtp`; the `onValueChange` callback provides `{ value }`. Join the array for submission (e.g. `value.join("")`).
+
+```tsx
+<Controller
+  name="code"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>Verification code</FieldLabel>
+      <InputOtp
+        value={field.value ?? ["", "", "", ""]}
+        onValueChange={({ value }) => field.onChange(value)}
+      >
+        <InputOtpSlot index={0} />
+        <InputOtpSlot index={1} />
+        <InputOtpSlot index={2} />
+        <InputOtpSlot index={3} />
+      </InputOtp>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Color Picker
+
+Use `field.value` (hex string) and `field.onChange` with `ColorPicker`; wire `value` and `onValueChange`. Use `ColorPickerInput` for an inline input, or `ColorPickerTrigger` + popover for a picker UI.
+
+```tsx
+<Controller
+  name="primaryColor"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>Brand color</FieldLabel>
+      <ColorPicker
+        value={field.value ?? "#eb5e41"}
+        onValueChange={(e) => field.onChange(e.valueAsString)}
+      >
+        <ColorPickerInput asChild>
+          <Input />
+        </ColorPickerInput>
+      </ColorPicker>
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### Rating
+
+Use `field.value` (number) and `field.onChange` with `Rating`; the `onValueChange` callback provides `{ value }`.
+
+```tsx
+<Controller
+  name="rating"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field invalid={fieldState.invalid}>
+      <FieldLabel>Rating</FieldLabel>
+      <Rating
+        value={field.value ?? 0}
+        onValueChange={(e) => field.onChange(e.value ?? 0)}
+        count={5}
+      />
+      {fieldState.invalid && (
+        <FieldError>{fieldState.error?.message}</FieldError>
+      )}
+    </Field>
+  )}
+/>
+```
+
+### File Upload
+
+`FileUpload` uses a native hidden input, so it participates in form submission. Use `Controller` to read the file list from the input’s `onChange`, or use `register` if you only need the native behavior.
+
+```tsx
+<Controller
+  name="documents"
+  control={form.control}
+  render={({ field }) => (
+    <Field>
+      <FieldLabel>Upload documents</FieldLabel>
+      <FileUpload
+        name={field.name}
+        accept=".pdf,.doc"
+        onFileAccept={(e) => field.onChange(e.files)}
+      >
+        <FileUploadDropzone>
+          <FileUploadDropzoneIcon />
+        </FileUploadDropzone>
+        <FileUploadList />
+      </FileUpload>
+    </Field>
+  )}
+/>
+```
+
+## Resetting the form
+
+Call `form.reset()` to restore default values.
+
+```tsx
+<Button type="button" variant="outline" onClick={() => form.reset()}>
+  Reset
+</Button>
+```
+
+## Array fields
+
+Use `useFieldArray` when you have dynamic lists of fields (e.g. multiple emails). It exposes `fields`, `append`, and `remove`.
+
+### Using useFieldArray
+
+```tsx
+import { useFieldArray, useForm } from "react-hook-form"
+
+export const ExampleForm = () => {
+  const form = useForm({
+    // ... form config
+  })
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "emails",
+  })
+}
+```
+
+### Array field structure
+
+Group array items in a `FieldSet` with `FieldLegend` and `FieldDescription`.
+
+```tsx
+<FieldSet className="gap-4">
+  <FieldLegend variant="label">Email Addresses</FieldLegend>
+  <FieldDescription>
+    Add up to 5 email addresses where we can contact you.
+  </FieldDescription>
+  <FieldGroup className="gap-4">{/* Array items go here */}</FieldGroup>
+</FieldSet>
+```
+
+### Controller pattern for array items
+
+Map over `fields` and wrap each item in a `Controller`. Use `field.id` as the React key.
+
+```tsx
+{fields.map((field, index) => (
+  <Controller
+    key={field.id}
+    name={`emails.${index}.address`}
+    control={form.control}
+    render={({ field: controllerField, fieldState }) => (
+      <Field orientation="horizontal" invalid={fieldState.invalid}>
+        <FieldContent>
+          <InputGroup>
+            <InputGroupInput
+              {...controllerField}
+              id={`form-rhf-array-email-${index}`}
+              invalid={fieldState.invalid}
+              placeholder="name@example.com"
+              type="email"
+              autoComplete="email"
+            />
+            {/* Remove button */}
+          </InputGroup>
+          {fieldState.invalid && (
+            <FieldError>{fieldState.error?.message}</FieldError>
+          )}
+        </FieldContent>
+      </Field>
+    )}
+  />
+))}
+```
+
+### Adding items
+
+Call `append(newItem)` to push a new entry.
+
+```tsx
+<Button
+  type="button"
+  variant="outline"
+  size="sm"
+  onClick={() => append({ address: "" })}
+  disabled={fields.length >= 5}
+>
+  Add Email Address
+</Button>
+```
+
+### Removing items
+
+Call `remove(index)`. Typically you only show the remove action when there’s more than one item.
+
+```tsx
+{fields.length > 1 && (
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton
+      type="button"
+      variant="ghost"
+      size="icon-xs"
+      onClick={() => remove(index)}
+      aria-label={`Remove email ${index + 1}`}
+    >
+      <XIcon />
+    </InputGroupButton>
+  </InputGroupAddon>
+)}
+```
+
+### Array validation
+
+Validate arrays with Zod’s `z.array()` and `.min()` / `.max()`.
+
+```tsx
+const formSchema = z.object({
+  emails: z
+    .array(
+      z.object({
+        address: z.string().email("Enter a valid email address."),
+      })
+    )
+    .min(1, "Add at least one email address.")
+    .max(5, "You can add up to 5 email addresses."),
+})
+```

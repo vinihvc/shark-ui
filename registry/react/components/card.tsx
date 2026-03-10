@@ -168,8 +168,13 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "flex items-center gap-2",
         "px-(--space)",
+<<<<<<< Updated upstream
         "bg-muted/50",
         "border-t",
+=======
+        "bg-muted/64",
+        "rounded-b-2xl border-t",
+>>>>>>> Stashed changes
         "py-(--space)",
         className
       )}

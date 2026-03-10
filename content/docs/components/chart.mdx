@@ -8,6 +8,33 @@ links:
 
 <ComponentPreview componentName="chart" />
 
+<<<<<<< Updated upstream
+=======
+## Component
+
+We use [Recharts](https://recharts.org/) under the hood.
+
+The `chart` component is designed with composition in mind. You build charts using Recharts components and only bring in custom components such as `ChartTooltip` when and where you need them.
+
+We do not wrap Recharts. This means you're not locked into an abstraction. When a new Recharts version is released, you can follow the official upgrade path to upgrade your charts.
+
+```tsx
+import { Bar, BarChart } from "recharts"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+
+export const MyChart = () => {
+  return (
+    <ChartContainer>
+      <BarChart data={data}>
+        <Bar dataKey="value" />
+        <ChartTooltip content={<ChartTooltipContent />} />
+      </BarChart>
+    </ChartContainer>
+  )
+}
+```
+
+>>>>>>> Stashed changes
 ## Installation
 
 <CodeTabs>
@@ -72,4 +99,133 @@ import {
 
 ### Default
 
+<<<<<<< Updated upstream
 <ComponentPreview componentName="chart" fileName="default" />
+=======
+```tsx
+import { Monitor } from "lucide-react"
+import { type ChartConfig } from "@/components/ui/chart"
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    icon: Monitor,
+    color: "#2563eb",
+    // OR use theme for light/dark modes
+    theme: {
+      light: "#2563eb",
+      dark: "#dc2626",
+    },
+  },
+} satisfies ChartConfig
+```
+
+## Theming
+
+Charts support theming via CSS variables (recommended) or any color format: hex, hsl, or oklch.
+
+### CSS Variables
+
+Define colors in your CSS and reference them in the chart config:
+
+```tsx
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
+```
+
+### Direct colors
+
+You can define colors directly in the chart config:
+
+```tsx
+const chartConfig = {
+  desktop: { label: "Desktop", color: "#2563eb" },
+  mobile: { label: "Mobile", color: "hsl(220, 98%, 61%)" },
+  tablet: { label: "Tablet", color: "oklch(0.5 0.2 240)" },
+} satisfies ChartConfig
+```
+
+### Using colors
+
+Reference config colors using `var(--color-KEY)`:
+
+- **Components:** `<Bar dataKey="desktop" fill="var(--color-desktop)" />`
+- **Chart data:** `{ browser: "chrome", visitors: 275, fill: "var(--color-chrome)" }`
+- **Tailwind:** `<LabelList className="fill-[--color-desktop]" />`
+
+## Tooltip
+
+Use `ChartTooltip` and `ChartTooltipContent` to add tooltips. Colors are automatically pulled from the chart config.
+
+```tsx
+import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+
+<ChartTooltip content={<ChartTooltipContent />} />
+```
+
+### Tooltip props
+
+| Prop | Type |
+| --- | --- |
+| `labelKey` | string |
+| `nameKey` | string |
+| `indicator` | `dot` \| `line` \| `dashed` |
+| `hideLabel` | boolean |
+| `hideIndicator` | boolean |
+
+### Custom label and name
+
+Use `labelKey` and `nameKey` for custom keys:
+
+```tsx
+const chartConfig = {
+  visitors: { label: "Total Visitors" },
+  chrome: { label: "Chrome", color: "var(--chart-1)" },
+  safari: { label: "Safari", color: "var(--chart-2)" },
+} satisfies ChartConfig
+
+<ChartTooltip
+  content={<ChartTooltipContent labelKey="visitors" nameKey="browser" />}
+/>
+```
+
+## Legend
+
+Use `ChartLegend` and `ChartLegendContent` to add a legend. Colors are automatically pulled from the chart config.
+
+```tsx
+import { ChartLegend, ChartLegendContent } from "@/components/ui/chart"
+
+<ChartLegend content={<ChartLegendContent />} />
+```
+
+### Custom legend names
+
+Use the `nameKey` prop to map legend names to your data:
+
+```tsx
+<ChartLegend content={<ChartLegendContent nameKey="browser" />} />
+```
+
+## Accessibility
+
+Enable the `accessibilityLayer` prop on Recharts components for keyboard access and screen reader support.
+
+```tsx
+<BarChart accessibilityLayer data={chartData}>
+  {/* ... */}
+</BarChart>
+```
+
+---
+
+For a complete list of props, see the [Recharts documentation](https://recharts.github.io/en-US/api).
+>>>>>>> Stashed changes

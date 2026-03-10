@@ -71,4 +71,96 @@ toaster.create({
 
 ### Default
 
+<<<<<<< Updated upstream
 <ComponentPreview componentName="toast" fileName="default" />
+=======
+<ComponentPreview componentName="toast" fileName="example-promise" />
+
+### Action
+
+<ComponentPreview componentName="toast" fileName="example-action" />
+
+### Deduplication
+
+Toasts with the same `id` are deduplicated: repeated triggers animate the existing toast.
+
+- **Passing `id`** — deduplicate
+- **Not passing `id`** — always create a new toast
+
+<ComponentPreview componentName="toast" fileName="example-dedupe" />
+
+```tsx showLineNumbers {2}
+toast.success({ 
+  id: "clipboard", 
+  title: "Success!",
+  description: "User has been created.",
+});
+```
+
+### Duration
+
+Control how long a toast stays visible with the `duration` option.
+
+Use `Infinity` to keep the toast visible until the user dismisses it.
+
+<ComponentPreview componentName="toast" fileName="example-duration" />
+
+### Closable
+
+Use `closable: true` to show the close button.
+
+<ComponentPreview componentName="toast" fileName="example-closable" />
+
+### Placement
+
+<ComponentPreview componentName="toast" fileName="example-placement" />
+
+By default, the toaster is placed at the bottom right corner of the screen. 
+
+Update the `placement` option in `createToaster()` to customize the toaster position.
+
+```tsx title="components/ui/toast.tsx" {2} showshowLineNumbers
+const baseToaster = createToaster({
+  placement: "bottom-end",
+  overlap: true,
+  max: 4,
+});
+```
+
+### Max visible
+
+Any extra toasts will be queued and rendered when a toast has been dismissed.
+
+By default, the toaster displays up to 3 toasts. Update the `max` option in `createToaster()` to change the maximum number of visible toasts.
+
+```tsx title="components/ui/toast.tsx" {4} showshowLineNumbers
+const baseToaster = createToaster({
+  placement: "bottom-end",
+  overlap: true,
+  max: 4,
+});
+```
+
+## API Reference
+
+### Toaster
+
+Renders the toast container. Place it once in your app layout.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `toaster` | `ReturnType<typeof createToaster>` | `-` | 
+| `className` | `string` | `-` | 
+
+### ToastItem
+
+Renders a single toast. Used internally by `Toaster` for each toast. Renders a `div`.
+
+| Prop | Type | Default |
+|------|------|---------|
+| `className` | `string` | `-` |
+
+---
+
+For more details, see the [Ark UI Toast documentation](https://ark-ui.com/docs/components/toast#api-reference).   
+>>>>>>> Stashed changes

@@ -22,6 +22,7 @@ import {
 const start = new Date(2025, 5, 5);
 
 export const CardsCalendar = () => (
+<<<<<<< Updated upstream
   <Card className="hidden p-0 sm:flex">
     <CardContent className="p-0">
       <DatePicker className="rounded-lg p-2" selectionMode="range">
@@ -66,6 +67,20 @@ export const CardsCalendar = () => (
           </DatePickerContext>
         </DatePickerView>
       </DatePicker>
+=======
+  <Card>
+    <CardContent>
+      <Calendar selectionMode="range">
+        <CalendarViewControl>
+          <CalendarMonthSelect />
+          <CalendarYearSelect />
+        </CalendarViewControl>
+        <CalendarTable>
+          <CalendarWeekDays />
+          <CalendarTableDays />
+        </CalendarTable>
+      </Calendar>
+>>>>>>> Stashed changes
     </CardContent>
   </Card>
 );

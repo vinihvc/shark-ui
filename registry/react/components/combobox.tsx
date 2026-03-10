@@ -126,7 +126,7 @@ export const ComboboxContent = (
             "p-1",
             "bg-popover",
             "text-popover-foreground",
-            "rounded-md border shadow-md",
+            "rounded-xl border shadow-lg/5",
             "overflow-hidden",
             "outline-none",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
@@ -197,7 +197,7 @@ export const ComboboxItem = (
         "py-1.5 pr-8 pl-2",
         "text-sm",
         "flex w-full items-center gap-2",
-        "rounded-sm",
+        "rounded-lg",
         "select-none",
         "cursor-default",
         "outline-hidden",
@@ -228,7 +228,16 @@ export const ComboboxEmpty = (
 
   return (
     <ArkCombobox.Empty
+<<<<<<< Updated upstream
       className={cn("px-2 py-1.5 text-muted-foreground text-sm", className)}
+=======
+      className={cn(
+        "px-2 py-1.5",
+        "text-center text-muted-foreground text-sm",
+        className
+      )}
+      data-slot="combobox-empty"
+>>>>>>> Stashed changes
       {...rest}
     >
       {children || "No results found."}

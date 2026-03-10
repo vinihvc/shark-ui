@@ -1,6 +1,5 @@
 import Link from "fumadocs-core/link";
 import { findNeighbour } from "fumadocs-core/page-tree";
-import { createRelativeLink } from "fumadocs-ui/mdx";
 import { ArrowUpRightIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -11,6 +10,7 @@ import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+import { SkipNavContent } from "@/registry/react/components/skip-nav";
 
 export const generateStaticParams = () => source.generateParams();
 
@@ -133,13 +133,10 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                     )}
                   </div>
 
+                  <SkipNavContent />
+
                   <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
-                    <MDX
-                      components={mdxComponents({
-                        // this allows you to link to other pages with relative file paths
-                        a: createRelativeLink(source, page),
-                      })}
-                    />
+                    <MDX components={mdxComponents()} />
                   </div>
                 </div>
               </div>

@@ -15,6 +15,25 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
+const TourDemo = () => (
+  <Tour steps={steps}>
+    <TourTrigger asChild>
+      <Button variant="outline">Open</Button>
+    </TourTrigger>
+    <TourContent>
+      <TourHeader>
+        <TourProgressText />
+        <TourTitle />
+        <TourDescription />
+      </TourHeader>
+      <TourFooter>
+        <TourPreviousStep />
+        <TourNextStep />
+      </TourFooter>
+    </TourContent>
+  </Tour>
+);
+
 const steps: TourStepType[] = [
   {
     id: "step-1",
@@ -55,6 +74,7 @@ const steps: TourStepType[] = [
   },
 ];
 
+<<<<<<< Updated upstream:registry/react/examples/tour/default.tsx
 const TourDemo = () => (
   <Tour steps={steps}>
     <TourTrigger asChild>
@@ -76,4 +96,6 @@ const TourDemo = () => (
   </Tour>
 );
 
+=======
+>>>>>>> Stashed changes:registry/react/examples/tour/example-default.tsx
 export default TourDemo;
