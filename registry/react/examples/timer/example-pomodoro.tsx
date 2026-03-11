@@ -25,9 +25,9 @@ const PomodoroExample = () => {
 
   return (
     <Timer
-      startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000}
       countdown
       onComplete={handleComplete}
+      startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000}
     >
       <h2 className="font-semibold text-lg">
         {isWorking ? "Work Session" : "Break Session"}

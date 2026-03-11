@@ -9,13 +9,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
-import { Footer } from "@/components/layout/footer";
-import { getPageImage, source } from "@/lib/fumadocs";
+import { SITE_CONFIG } from "@/config/site";
+import { source } from "@/lib/fumadocs";
+import { absoluteUrl } from "@/lib/url";
 import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { SkipNavContent } from "@/registry/react/components/skip-nav";
+
+export const revalidate = false;
+export const dynamic = "force-static";
 
 export const generateStaticParams = () => source.generateParams();
 
@@ -30,11 +34,32 @@ export const generateMetadata = async (
     notFound();
   }
 
+  const doc = page.data;
+
+  if (!(doc.title && doc.description)) {
+    notFound();
+  }
+
+  const ogImageUrl = absoluteUrl(
+    `/og?title=${encodeURIComponent(doc.title)}&description=${encodeURIComponent(doc.description)}`
+  );
+
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title: doc.title,
+    description: doc.description,
     openGraph: {
-      images: getPageImage(page).url,
+      title: doc.title,
+      description: doc.description,
+      type: "article",
+      url: absoluteUrl(page.url),
+      images: [{ url: ogImageUrl }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doc.title,
+      description: doc.description,
+      images: [{ url: ogImageUrl }],
+      creator: SITE_CONFIG.creator,
     },
   };
 };
@@ -149,7 +174,6 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                 </div>
               </div>
             </div>
-            <Footer />
           </div>
         </div>
 

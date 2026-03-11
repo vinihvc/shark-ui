@@ -1,0 +1,204 @@
+---
+title: Sidebar
+description: A sidebar component for navigation and app structure.
+links:
+  doc: https://ui.shadcn.com/docs/components/sidebar
+  api: https://ui.shadcn.com/docs/components/sidebar
+---
+
+<ComponentPreview componentName="sidebar" showBorders={false} />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/sidebar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/sidebar.tsx" src="/sidebar.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+```
+
+```tsx showLineNumbers
+<SidebarProvider>
+  <Sidebar>
+    <SidebarHeader />
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild href="#">
+                <span>Home</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+    <SidebarFooter />
+  </Sidebar>
+  <SidebarInset>
+    <header>
+      <SidebarTrigger />
+    </header>
+    <main>{children}</main>
+  </SidebarInset>
+</SidebarProvider>
+```
+
+## Structure
+
+A Sidebar is composed of:
+
+- **SidebarProvider** - Handles collapsible state and context
+- **SidebarTrigger** - Button to toggle the sidebar
+- **Sidebar** - The sidebar container
+- **SidebarHeader** - Sticky header at the top
+- **SidebarContent** - Scrollable content area
+- **SidebarFooter** - Sticky footer at the bottom
+- **SidebarGroup** - Section within the content
+- **SidebarInset** - Main content area (use with `variant="inset"`)
+
+## Examples
+
+### Collapsible Icon
+
+A sidebar that collapses to icons when toggled. Use the rail or trigger to toggle.
+
+<ComponentPreview componentName="sidebar" fileName="example-default" showBorders={false} />
+
+### Offcanvas
+
+The sidebar slides off-screen when collapsed. Hover the edge to reveal the rail.
+
+<ComponentPreview componentName="sidebar" fileName="example-offcanvas" showBorders={false} />
+
+### Floating
+
+The floating variant adds rounded corners and a border.
+
+<ComponentPreview componentName="sidebar" fileName="example-floating" showBorders={false} />
+
+### Inset
+
+The inset variant adds padding and rounded corners to the main content area.
+
+<ComponentPreview componentName="sidebar" fileName="example-inset" showBorders={false} />
+
+### Controlled
+
+Use `open` and `onOpenChange` on SidebarProvider to control the sidebar state.
+
+<ComponentPreview componentName="sidebar" fileName="example-controlled" showBorders={false} />
+
+### Menu Skeleton
+
+Use SidebarMenuSkeleton for loading states.
+
+<ComponentPreview componentName="sidebar" fileName="example-skeleton" showBorders={false} />
+
+### Menu Badge
+
+Use SidebarMenuBadge to display counts next to menu items.
+
+<ComponentPreview componentName="sidebar" fileName="example-menu-badge" showBorders={false} />
+
+### Menu Action
+
+Use SidebarMenuAction with `showOnHover` for context menus on menu items.
+
+<ComponentPreview componentName="sidebar" fileName="example-menu-action" showBorders={false} />
+
+## SidebarProvider
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultOpen` | `boolean` | `true` |
+| `open` | `boolean` | `-` |
+| `onOpenChange` | `(open: boolean) => void` | `-` |
+
+## Sidebar
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collapsible` | `"offcanvas" \| "icon" \| "none"` | `"offcanvas"` |
+| `placement` | `"left" \| "right"` | `"left"` |
+| `variant` | `"sidebar" \| "floating" \| "inset"` | `"sidebar"` |
+
+### Collapsible modes
+
+- **offcanvas** - Sidebar slides off-screen when collapsed
+- **icon** - Sidebar collapses to icons only
+- **none** - Non-collapsible sidebar
+
+## useSidebar
+
+```tsx
+import { useSidebar } from "@/components/ui/sidebar";
+
+function MyComponent() {
+  const { state, open, setOpen, toggleSidebar, isMobile } = useSidebar();
+}
+```
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `state` | `"expanded" \| "collapsed"` | Current sidebar state |
+| `open` | `boolean` | Whether sidebar is open |
+| `setOpen` | `(open: boolean) => void` | Set open state |
+| `toggleSidebar` | `() => void` | Toggle sidebar |
+| `isMobile` | `boolean` | Whether on mobile viewport |
+
+## Keyboard shortcut
+
+Press `⌘B` (Mac) or `Ctrl+B` (Windows) to toggle the sidebar.

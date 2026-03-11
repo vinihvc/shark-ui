@@ -1,6 +1,8 @@
 import {
   Calendar,
   CalendarMonthSelect,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarViewControl,
@@ -14,8 +16,10 @@ const Example = () => (
     <CardContent>
       <Calendar fixedWeeks>
         <CalendarViewControl>
+          <CalendarPrevTrigger />
           <CalendarMonthSelect />
           <CalendarYearSelect />
+          <CalendarNextTrigger />
         </CalendarViewControl>
         <CalendarTable>
           <CalendarWeekDays />

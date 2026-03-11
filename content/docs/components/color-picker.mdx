@@ -1,6 +1,6 @@
 ---
 title: Color Picker
-description: A color picker for selecting colors with hue and alpha controls.
+description: Pick colors with hue and alpha controls.
 links:
   doc: https://ark-ui.com/docs/components/color-picker
   api: https://ark-ui.com/docs/components/color-picker#api-reference
@@ -41,7 +41,7 @@ npm install @ark-ui/react lucide-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource title="components/ui/color-picker.tsx" src="color-picker.tsx" />
+<ComponentSource title="components/ui/color-picker.tsx" src="/color-picker.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -331,16 +331,16 @@ Root element of the color picker.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `value` | `string` | — |
-| `defaultValue` | `string` | — |
-| `onValueChange` | `(details: ColorPickerValueChangeDetails) => void` | — |
+| `value` | `string` | - |
+| `defaultValue` | `string` | - |
+| `onValueChange` | `(details: ColorPickerValueChangeDetails) => void` | - |
 | `disabled` | `boolean` | `false` |
-| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | — |
+| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | - |
 | `inline` | `boolean` | `false` |
 | `positioning` | `PositioningOptions` | `{ placement: "top-start" }` |
 | `lazyMount` | `boolean` | `true` |
 | `unmountOnExit` | `boolean` | `true` |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerTrigger
 
@@ -348,7 +348,7 @@ Button or element that opens the color picker popover.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 
 ### ColorPickerContent
@@ -357,7 +357,7 @@ Container for the popover content. Renders inside a portal.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerControl
 
@@ -365,7 +365,7 @@ Container for grouping control elements such as area, sliders, and inputs.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerView
 
@@ -373,8 +373,8 @@ Container for sliders and inputs. Can specify `format` for child value display.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | — |
-| `className` | `string` | — |
+| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | - |
+| `className` | `string` | - |
 
 ### ColorPickerArea
 
@@ -383,9 +383,9 @@ Two-dimensional color selection area.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `showDots` | `boolean` | `false` |
-| `xChannel` | `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"red"` \| `"green"` \| `"blue"` \| `"alpha"` | — |
-| `yChannel` | `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"red"` \| `"green"` \| `"blue"` \| `"alpha"` | — |
-| `className` | `string` | — |
+| `xChannel` | `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"red"` \| `"green"` \| `"blue"` \| `"alpha"` | - |
+| `yChannel` | `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"red"` \| `"green"` \| `"blue"` \| `"alpha"` | - |
+| `className` | `string` | - |
 
 ### ColorPickerAreaThumb
 
@@ -393,7 +393,7 @@ Draggable thumb within the color area.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerSlider
 
@@ -401,9 +401,9 @@ Slider for adjusting a color channel.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `channel` | `"hex"` \| `"hexa"` \| `"red"` \| `"green"` \| `"blue"` \| `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"alpha"` | — |
+| `channel` | `"hex"` \| `"hexa"` \| `"red"` \| `"green"` \| `"blue"` \| `"hue"` \| `"saturation"` \| `"brightness"` \| `"lightness"` \| `"alpha"` | - |
 | `orientation` | `"horizontal"` \| `"vertical"` | `"horizontal"` |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerTransparencyGrid
 
@@ -411,7 +411,7 @@ Checkerboard pattern for indicating transparency. Renders as a child of `ColorPi
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerEyeDropperTrigger
 
@@ -422,7 +422,7 @@ Button that activates the native Eye Dropper API to sample colors from the scree
 | `variant` | `ButtonProps["variant"]` | `"outline"` |
 | `size` | `ButtonProps["size"]` | `"icon-md"` |
 | `children` | `ReactNode` | `<Pipette />` |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerInput
 
@@ -439,7 +439,7 @@ Compact swatch that displays the current color. Use inside an input group for in
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerSwatchGroup
 
@@ -447,7 +447,7 @@ Container for swatch triggers in swatch picker mode.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerSwatchTrigger
 
@@ -455,8 +455,8 @@ Button that selects a color when clicked. Wraps `ColorPickerSwatch` and optional
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `value` | `string` | — |
-| `className` | `string` | — |
+| `value` | `string` | - |
+| `className` | `string` | - |
 
 ### ColorPickerSwatch
 
@@ -464,8 +464,8 @@ Color swatch display. Use as a child of `ColorPickerSwatchTrigger`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `value` | `string` | — |
-| `className` | `string` | — |
+| `value` | `string` | - |
+| `className` | `string` | - |
 
 ### ColorPickerSwatchIndicator
 
@@ -474,7 +474,7 @@ Indicator shown when a swatch is selected. Renders a check icon by default; pass
 | Prop | Type | Default |
 | --- | --- | --- |
 | `children` | `ReactNode` | `<CheckIcon />` |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ColorPickerValue
 
@@ -482,8 +482,8 @@ Displays the current color as formatted text.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | — |
-| `className` | `string` | — |
+| `format` | `"hex"` \| `"hexa"` \| `"rgb"` \| `"rgba"` \| `"hsl"` \| `"hsla"` \| `"hsb"` \| `"hsba"` \| `"oklch"` | - |
+| `className` | `string` | - |
 
 ### ColorPickerValueSwatch
 
@@ -491,7 +491,7 @@ Displays the current color as a swatch. Use for standalone value preview.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### parseColor
 

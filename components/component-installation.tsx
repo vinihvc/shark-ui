@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import type React from "react";
 import { REGISTRY_PATH } from "@/config/constants";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import {
   Tabs,
   TabsContent,
@@ -12,7 +12,7 @@ import {
 } from "@/registry/react/components/tabs";
 import { CodeBlock } from "./code-block";
 
-const cliCommand = `pnpm dlx shadcn@latest add ${SITE_CONFIG.url}/r`;
+const cliCommand = `pnpm dlx shadcn@latest add ${absoluteUrl("/r")}`;
 
 export interface ComponentInstallationProps
   extends React.ComponentProps<"div"> {

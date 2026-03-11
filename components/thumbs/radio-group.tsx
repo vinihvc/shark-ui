@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const RadioGroupThumb = ({
-  description = "",
-  title = "Radio Group",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const RadioGroupThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex w-40 flex-col gap-2">
       <div className="flex items-center gap-2">
         <div className="size-4 shrink-0 rounded-full bg-muted-foreground/16" />

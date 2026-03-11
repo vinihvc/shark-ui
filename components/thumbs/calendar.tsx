@@ -1,12 +1,8 @@
 import { ChevronLeftIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const CalendarThumb = ({
-  description = "",
-  title = "Calendar",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const CalendarThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="relative flex w-48 flex-col gap-2 rounded-lg border bg-muted p-3 shadow-md/5">
       <div className="flex items-center justify-between gap-1">
         <div className="flex size-5 items-center justify-center rounded-lg border bg-muted">

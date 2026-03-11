@@ -6,7 +6,7 @@
     "@ark-ui/react"
   ],
   "registryDependencies": [
-    "https://shark.vini.one/r/menu.json"
+    "http://localhost:3000/r/menu.json"
   ],
   "files": [
     {

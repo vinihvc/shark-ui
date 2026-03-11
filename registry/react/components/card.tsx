@@ -15,7 +15,7 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
         "bg-card",
         "text-foreground",
         "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
-        "rounded-xl border shadow-xs",
+        "rounded-xl border shadow-sm/5",
         className
       )}
       data-slot="card"
@@ -106,7 +106,7 @@ export const CardTitle = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "text-balance font-semibold text-foreground text-lg/6 sm:text-base/6",
+        "font-semibold text-foreground text-lg/6 sm:text-base/6",
         className
       )}
       data-slot="card-title"
@@ -122,11 +122,7 @@ export const CardDescription = (
 
   return (
     <ark.div
-      className={cn(
-        "row-start-2",
-        "text-balance text-muted-foreground text-sm",
-        className
-      )}
+      className={cn("row-start-2", "text-muted-foreground text-sm", className)}
       data-slot="card-description"
       {...rest}
     />

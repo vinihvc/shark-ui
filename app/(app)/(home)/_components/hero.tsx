@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
-import { Logo } from "@/components/icons/logo";
+import { SharkIcon } from "@/components/icons/shark";
 import { cn } from "@/lib/utils";
 import {
   Announcement,
@@ -25,13 +25,13 @@ export const HeroSection = (props: HeroSectionProps) => {
   const { count, className, pattern = "dot", ...rest } = props;
 
   return (
-    <section className={cn("relative py-32", className)} {...rest}>
+    <section className={cn("relative", className)} {...rest}>
       <div className="flex max-w-2xl flex-col gap-4">
         <div>
           <Announcement asChild>
             <Link href="/docs/components">
               <AnnouncementBadge variant="default">
-                <Logo />
+                <SharkIcon />
                 <span className="max-sm:sr-only">Welcome</span>
               </AnnouncementBadge>
               <AnnouncementTitle>

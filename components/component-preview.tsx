@@ -26,6 +26,12 @@ interface ComponentPreviewProps
    * The file name of the component
    */
   fileName?: string;
+  /**
+   * Whether to show the dashed padding guide borders around the preview
+   *
+   * @default true
+   */
+  showBorders?: boolean;
 }
 
 export const ComponentPreview = async (props: ComponentPreviewProps) => {
@@ -33,6 +39,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     componentName,
     fileName = "example-default",
     align = "center",
+    showBorders,
     ...rest
   } = props;
 
@@ -59,6 +66,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     <ComponentPreviewTabs
       component={<Example.default />}
       source={<ComponentSource code={sourceCode} isCollapsible={false} />}
+      showBorders={showBorders}
       {...rest}
     />
   );

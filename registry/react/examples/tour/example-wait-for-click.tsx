@@ -9,9 +9,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -79,13 +79,13 @@ const WaitForClickExample = () => (
       </TourTrigger>
 
       <div className="flex flex-wrap gap-2">
-        <Button id="btn-add" type="button" variant="outline" size="sm">
+        <Button id="btn-add" size="sm" type="button" variant="outline">
           Add Item
         </Button>
-        <Button id="btn-edit" type="button" variant="outline" size="sm">
+        <Button id="btn-edit" size="sm" type="button" variant="outline">
           Edit
         </Button>
-        <Button id="btn-delete" type="button" variant="outline" size="sm">
+        <Button id="btn-delete" size="sm" type="button" variant="outline">
           Delete
         </Button>
       </div>

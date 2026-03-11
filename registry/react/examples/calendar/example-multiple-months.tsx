@@ -3,6 +3,8 @@
 import React from "react";
 import {
   Calendar,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarTableNextMonth,
@@ -26,7 +28,9 @@ const Example = () => {
           value={value}
         >
           <CalendarViewControl>
+            <CalendarPrevTrigger />
             <CalendarViewDate />
+            <CalendarNextTrigger />
           </CalendarViewControl>
           <div className="flex gap-4">
             <CalendarTable>

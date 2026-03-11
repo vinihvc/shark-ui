@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const StatusThumb = ({
-  description = "",
-  title = "Status",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const StatusThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="rounded-lg border bg-muted/32 p-3 shadow-md/5">
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-center gap-2">

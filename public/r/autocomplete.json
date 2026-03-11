@@ -7,8 +7,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://shark.vini.one/r/combobox.json",
-    "https://shark.vini.one/r/input.json"
+    "http://localhost:3000/r/combobox.json",
+    "http://localhost:3000/r/input.json"
   ],
   "files": [
     {

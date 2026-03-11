@@ -49,11 +49,11 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx showLineNumbers
 import { Toaster } from "@/components/ui/toast";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 const toaster = useToast();
 
 // add the toaster to the layout
@@ -116,7 +116,7 @@ By default, the toaster is placed at the bottom right corner of the screen.
 
 Update the `placement` option in `createToaster()` to customize the toaster position.
 
-```tsx title="components/ui/toast.tsx" {2} showshowLineNumbers
+```tsx title="components/ui/toast.tsx" {2} showLineNumbers
 const baseToaster = createToaster({
   placement: "bottom-end",
   overlap: true,
@@ -130,7 +130,7 @@ Any extra toasts will be queued and rendered when a toast has been dismissed.
 
 By default, the toaster displays up to 3 toasts. Update the `max` option in `createToaster()` to change the maximum number of visible toasts.
 
-```tsx title="components/ui/toast.tsx" {4} showshowLineNumbers
+```tsx title="components/ui/toast.tsx" {4} showLineNumbers
 const baseToaster = createToaster({
   placement: "bottom-end",
   overlap: true,
@@ -145,7 +145,7 @@ const baseToaster = createToaster({
 Renders the toast container. Place it once in your app layout.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `toaster` | `ReturnType<typeof createToaster>` | `-` | 
 | `className` | `string` | `-` | 
 
@@ -154,7 +154,7 @@ Renders the toast container. Place it once in your app layout.
 Renders a single toast. Used internally by `Toaster` for each toast. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `className` | `string` | `-` |
 
 ---

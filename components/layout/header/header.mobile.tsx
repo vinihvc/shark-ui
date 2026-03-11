@@ -1,8 +1,8 @@
 "use client";
 
+import type { Root } from "fumadocs-core/page-tree";
 import type React from "react";
 import { NavLink } from "@/components/nav-link";
-import type { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -12,18 +12,15 @@ import {
   PopoverTrigger,
 } from "@/registry/react/components/popover";
 
-const TOP_LEVEL_SECTIONS = [
-  { name: "Introduction", href: "/docs" },
-  { name: "Installation", href: "/docs/installation" },
-  { name: "Components", href: "/docs/components" },
-  { name: "asChild prop", href: "/docs/as-child" },
-  { name: "Changelog", href: "/docs/changelog" },
-];
-
-interface MobileNavProps extends React.ComponentProps<typeof Popover> {
-  className?: string;
+interface MobileNavProps extends React.ComponentProps<typeof Button> {
+  /**
+   * The items to display in the mobile navigation.
+   */
   items: { href: string; label: string }[];
-  tree: typeof source.pageTree;
+  /**
+   * The tree of pages to display in the mobile navigation.
+   */
+  tree: Root;
 }
 
 export const MobileNav = (props: MobileNavProps) => {
@@ -63,54 +60,34 @@ export const MobileNav = (props: MobileNavProps) => {
       </PopoverTrigger>
 
       <PopoverContent className="h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100">
-        <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
-          <div className="flex flex-col gap-4">
-            <div className="font-medium text-muted-foreground text-sm">
-              Sections
-            </div>
-            <div className="flex flex-col gap-3">
-              {TOP_LEVEL_SECTIONS.map(({ name, href }) => (
-                <PopoverClose asChild key={href}>
-                  <NavLink
-                    className="flex items-center gap-2 font-medium text-2xl"
-                    href={href}
-                  >
-                    {name}
-                  </NavLink>
-                </PopoverClose>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-8">
-            {tree?.children?.map((group, index) => {
-              if (group.type === "folder") {
-                return (
-                  <div className="flex flex-col gap-4" key={index}>
-                    <div className="font-medium text-muted-foreground text-sm">
-                      {group.name}
-                    </div>
-                    <div className="flex flex-col gap-3">
-                      {group.children.map((item) => {
-                        if (item.type === "page") {
-                          return (
-                            <PopoverClose asChild key={`${item.url}-${index}`}>
-                              <NavLink
-                                className="flex items-center gap-2 font-medium text-2xl"
-                                href={item.url}
-                              >
-                                {item.name}
-                              </NavLink>
-                            </PopoverClose>
-                          );
-                        }
-                      })}
-                    </div>
+        <div className="flex flex-col gap-8 px-4 py-6">
+          {tree?.children?.map((group, index) => {
+            if (group.type === "folder") {
+              return (
+                <div className="flex flex-col gap-4" key={index}>
+                  <div className="font-medium text-muted-foreground text-sm">
+                    {group.name}
                   </div>
-                );
-              }
-            })}
-          </div>
+                  <div className="flex flex-col gap-3">
+                    {group.children.map((item) => {
+                      if (item.type === "page") {
+                        return (
+                          <PopoverClose asChild key={`${item.url}-${index}`}>
+                            <NavLink
+                              className="flex items-center gap-2 font-medium text-2xl"
+                              href={item.url}
+                            >
+                              {item.name}
+                            </NavLink>
+                          </PopoverClose>
+                        );
+                      }
+                    })}
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
       </PopoverContent>
     </Popover>

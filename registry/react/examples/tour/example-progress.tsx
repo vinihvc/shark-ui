@@ -8,16 +8,16 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
   useTourContext,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const TourProgressBar = () => {
   const { tour } = useTourContext();
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden rounded-b-2xl bg-muted">
+    <div className="absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted">
       <div
         className="h-full bg-primary transition-[width]"
         style={{ width: `${tour.getProgressPercent()}%` }}
@@ -79,26 +79,26 @@ const ProgressExample = () => (
 
       <div className="flex flex-wrap gap-2">
         <div
-          id="progress-1"
           className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-1"
         >
           Step 1
         </div>
         <div
-          id="progress-2"
           className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-2"
         >
           Step 2
         </div>
         <div
-          id="progress-3"
           className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-3"
         >
           Step 3
         </div>
         <div
-          id="progress-4"
           className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-4"
         >
           Step 4
         </div>

@@ -1,18 +1,17 @@
 "use client";
 
-import {
-  CheckIcon,
-  PaletteIcon,
-  Shuffle,
-  Undo,
-  WandSparklesIcon,
-} from "lucide-react";
+import { CheckIcon, Shuffle, Undo, WandSparklesIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
 import { useHotKeys } from "@/hooks/use-hot-keys";
 import { BORDER_RADIUS, GRAY_COLORS, PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
+import {
+  Clipboard,
+  ClipboardIndicator,
+  ClipboardTrigger,
+} from "@/registry/react/components/clipboard";
 import {
   Field,
   FieldGroup,
@@ -231,9 +230,10 @@ export const HeaderCustomize = () => {
                 borderRadius: DEFAULT_BORDER_RADIUS,
               })
             }
-            variant="ghost"
+            variant="outline"
           >
-            <Undo aria-hidden /> Reset
+            <Undo aria-hidden />
+            <span className="sm:sr-only">Reset</span>
           </Button>
           <Button
             onClick={() => {
@@ -252,15 +252,20 @@ export const HeaderCustomize = () => {
                 borderRadius: randomRadius.value as BorderRadius,
               });
             }}
-            variant="ghost"
+            variant="outline"
           >
-            <Shuffle aria-hidden /> Randomize
+            <Shuffle aria-hidden />
+            <span className="sm:sr-only">Shuffle</span>
           </Button>
 
-          <Button variant="outline">
-            Get Config
-            <PaletteIcon aria-hidden />
-          </Button>
+          <Clipboard value="a">
+            <ClipboardTrigger asChild>
+              <Button variant="outline">
+                <ClipboardIndicator />
+                Copy theme
+              </Button>
+            </ClipboardTrigger>
+          </Clipboard>
         </SheetFooter>
       </SheetContent>
     </Sheet>

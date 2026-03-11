@@ -1,12 +1,8 @@
 import { SearchIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const CommandThumb = ({
-  description = "",
-  title = "Command",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const CommandThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="rounded-lg border bg-muted shadow-md/5">
       <div className="flex items-center gap-2 border-b p-3">
         <SearchIcon aria-hidden className="size-3 shrink-0 opacity-16" />

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  EyeIcon,
-  PencilIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { EyeIcon, PencilIcon, Trash2Icon } from "lucide-react";
 import {
   ContextMenu,
   ContextMenuContent,

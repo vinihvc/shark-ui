@@ -1,15 +1,15 @@
-import { EnvironmentSettings } from "@/components/examples/appearance-settings-demo";
-import { ButtonDemo } from "@/components/examples/button-demo";
-import { ButtonGroupInputGroup } from "@/components/examples/button-group-input-group-demo";
-import { CalendarDemo } from "@/components/examples/calendar-demo";
-import { ControlsDemo } from "@/components/examples/controls-demo";
-import { EmptyAvatarGroup } from "@/components/examples/empty-avatar-group-demo";
-import { FieldCheckbox } from "@/components/examples/field-checkbox-demo";
-import { FieldSlider } from "@/components/examples/field-slider-demo";
-import { InputOtpDemo } from "@/components/examples/input-otp-demo";
-import { ItemDemo } from "@/components/examples/item-demo";
-import { LoginDemo } from "@/components/examples/login-demo";
-import { TabsDemo } from "@/components/examples/tabs-demo";
+import { AvatarGroupEmptyExample } from "@/components/examples/avatar-group-empty-example";
+import { ButtonExample } from "@/components/examples/button-example";
+import { ButtonGroupInputGroupExample } from "@/components/examples/button-group-input-group-example";
+import { CalendarRangeExample } from "@/components/examples/calendar-range-example";
+import { ComputeEnvironmentExample } from "@/components/examples/compute-environment-example";
+import { ExerciseMinutesChartExample } from "@/components/examples/exercise-minutes-chart-example";
+import { FieldSliderExample } from "@/components/examples/field-slider-example";
+import { FormControlsExample } from "@/components/examples/form-controls-example";
+import { InputOtpExample } from "@/components/examples/input-otp-example";
+import { ItemExample } from "@/components/examples/item-example";
+import { LoginFormExample } from "@/components/examples/login-form-example";
+import { TabsExample } from "@/components/examples/tabs-example";
 import { cn } from "@/lib/utils";
 
 export const ComponentsExamples = (props: React.ComponentProps<"div">) => {
@@ -17,27 +17,29 @@ export const ComponentsExamples = (props: React.ComponentProps<"div">) => {
 
   return (
     <div
-      className={cn("grid grid-cols-3 gap-6 p-6", className)}
-      inert
+      className={cn(
+        "grid gap-6 sm:grid-cols-2 sm:p-6 lg:grid-cols-3",
+        className
+      )}
       {...rest}
     >
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <InputOtpDemo />
-        <ControlsDemo />
-        <ButtonDemo />
-        <ButtonGroupInputGroup />
-        <LoginDemo />
+        <InputOtpExample />
+        <FormControlsExample />
+        <ButtonExample />
+        <ButtonGroupInputGroupExample />
+        <ExerciseMinutesChartExample />
       </div>
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <CalendarDemo />
-        <TabsDemo />
-        <ItemDemo />
-        <EmptyAvatarGroup />
-        <FieldCheckbox />
+        <CalendarRangeExample />
+        <TabsExample />
+        <ItemExample />
+        <AvatarGroupEmptyExample />
+        <FieldSliderExample />
       </div>
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <EnvironmentSettings />
-        <FieldSlider />
+        <ComputeEnvironmentExample />
+        <LoginFormExample />
       </div>
     </div>
   );

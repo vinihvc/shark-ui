@@ -6,7 +6,9 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 type JsonTreeViewProps = React.ComponentProps<typeof ArkJsonTreeView.Root> & {
-  renderValue?: React.ComponentProps<typeof ArkJsonTreeView.Tree>["renderValue"];
+  renderValue?: React.ComponentProps<
+    typeof ArkJsonTreeView.Tree
+  >["renderValue"];
 };
 
 export const JsonTreeView = (props: JsonTreeViewProps) => {
@@ -24,7 +26,7 @@ export const JsonTreeView = (props: JsonTreeViewProps) => {
         "w-full",
         "font-mono text-foreground",
         "**:data-[part=branch-content]:relative",
-        "**:data-[part=branch-indent-guide]:absolute **:data-[part=branch-indent-guide]:start-[calc((var(--depth)-1)*1rem)] **:data-[part=branch-indent-guide]:h-full **:data-[part=branch-indent-guide]:w-px **:data-[part=branch-indent-guide]:bg-border",
+        "**:data-[part=branch-indent-guide]:absolute **:data-[part=branch-indent-guide]:inset-s-[calc((var(--depth)-1)*1rem)] **:data-[part=branch-indent-guide]:h-full **:data-[part=branch-indent-guide]:w-px **:data-[part=branch-indent-guide]:bg-border",
         "**:data-[part=branch-control]:flex **:data-[part=branch-control]:select-none **:data-[part=branch-control]:ps-[calc((var(--depth)-1)*0.75rem)]",
         "**:data-[part=branch-control]:rounded-md **:data-[part=branch-control]:px-2",
         "**:data-[part=branch-control]:hover:bg-muted",

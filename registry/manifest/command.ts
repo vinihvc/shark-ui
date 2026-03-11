@@ -1,5 +1,5 @@
-import { SITE_CONFIG } from "@/config/site";
 import type { RegistryItemType } from "@/lib/registry";
+import { absoluteUrl } from "@/lib/url";
 
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
@@ -7,7 +7,7 @@ const manifest: RegistryItemType = {
   name: "command",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [`${SITE_CONFIG.url}/r/combobox.json`],
+  registryDependencies: [absoluteUrl("/r/combobox.json")],
 };
 
 export default manifest;

@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const TimerThumb = ({
-  description = "",
-  title = "Timer",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const TimerThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="inline-flex w-fit items-center justify-center gap-2 rounded-lg border bg-muted px-6 py-4 font-semibold text-muted-foreground text-xl tabular-nums shadow-md/5">
       <div className="h-1.5 w-6 rounded-full bg-muted-foreground/16" />
       <div className="flex flex-col gap-1">

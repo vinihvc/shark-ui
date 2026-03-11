@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "lucide-react";
 import { ChatGptIcon } from "@/components/icons/chat-gpt";
 import { ClaudeIcon } from "@/components/icons/claude";
 import { MarkdownIcon } from "@/components/icons/markdown";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -32,7 +32,7 @@ interface DocsCopyPageProps extends React.ComponentProps<typeof ButtonGroup> {
 export const DocsCopyPage = (props: DocsCopyPageProps) => {
   const { data, url, className, ...rest } = props;
 
-  const pageUrl = `${SITE_CONFIG.url}${url}`;
+  const pageUrl = absoluteUrl(`${url}`);
 
   return (
     <ButtonGroup className={cn("hidden sm:flex", className)} {...rest}>

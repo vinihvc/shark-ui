@@ -1,10 +1,10 @@
+import { ButtonVariantsExample } from "@/components/examples/button-variants-example";
 import {
   Card,
   CardAction,
   CardContent,
   CardHeader,
 } from "@/registry/react/components/card";
-import { CardsButtons } from "../cards/cards.buttons";
 import { ThemeSelectorDialog } from "./theme-selector.dialog";
 import { ThemeSelectorGray } from "./theme-selector.gray";
 import { ThemeSelectorPrimary } from "./theme-selector.primary";
@@ -34,7 +34,7 @@ export const ThemeSelector = (props: React.ComponentProps<typeof Card>) => {
         </CardContent>
       </Card>
 
-      <CardsButtons />
+      <ButtonVariantsExample />
     </div>
   );
 };

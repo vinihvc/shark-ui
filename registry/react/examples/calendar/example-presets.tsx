@@ -2,7 +2,9 @@ import { Button } from "@/registry/react/components/button";
 import {
   Calendar,
   CalendarMonthSelect,
+  CalendarNextTrigger,
   CalendarPresetTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarViewControl,
@@ -20,8 +22,10 @@ const Example = () => (
     <Card className="w-full max-w-xs [--space:--spacing(2)]">
       <CardContent>
         <CalendarViewControl>
+          <CalendarPrevTrigger />
           <CalendarMonthSelect />
           <CalendarYearSelect />
+          <CalendarNextTrigger />
         </CalendarViewControl>
         <CalendarTable>
           <CalendarWeekDays />

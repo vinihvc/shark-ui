@@ -8,9 +8,9 @@ import {
 
 export interface BlockThumbCardProps extends React.ComponentProps<typeof Card> {
   /**
-   * The subtitle/description of the card
+   * The description of the card
    */
-  subtitle: string;
+  description: string;
   /**
    * The title of the card
    */
@@ -18,7 +18,7 @@ export interface BlockThumbCardProps extends React.ComponentProps<typeof Card> {
 }
 
 export const BlockThumbCard = (props: BlockThumbCardProps) => {
-  const { title, subtitle, children, className, ...rest } = props;
+  const { title, description, children, className, ...rest } = props;
 
   return (
     <Card
@@ -29,7 +29,7 @@ export const BlockThumbCard = (props: BlockThumbCardProps) => {
       <CardHeader
         aria-hidden="true"
         className="flex h-16 flex-col"
-        description={subtitle}
+        description={description}
         title={title}
       />
 

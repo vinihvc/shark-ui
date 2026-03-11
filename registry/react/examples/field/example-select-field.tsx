@@ -14,10 +14,6 @@ import {
   SelectValue,
 } from "@/registry/react/components/select";
 
-const collection = createListCollection({
-  items: ["Brazil", "Mexico", "Ireland"],
-});
-
 const Example = () => (
   <Field className="w-full max-w-64">
     <FieldLabel>Country</FieldLabel>
@@ -36,5 +32,9 @@ const Example = () => (
     <FieldDescription>Used for shipping estimates</FieldDescription>
   </Field>
 );
+
+const collection = createListCollection({
+  items: ["Brazil", "Mexico", "Ireland"],
+});
 
 export default Example;

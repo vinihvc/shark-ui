@@ -27,7 +27,7 @@
     }
   },
   "registryDependencies": [
-    "https://shark.vini.one/r/spinner.json"
+    "http://localhost:3000/r/spinner.json"
   ],
   "files": [
     {

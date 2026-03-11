@@ -1,6 +1,6 @@
 ---
 title: Action Bar
-description: Display a bottom action bar with a set of actions for selected items.
+description: Display an action bar for selected items.
 links:
   doc: https://chakra-ui.com/docs/components/action-bar
 ---
@@ -120,7 +120,7 @@ Breakpoint utilities change the action bar spacing at different screen sizes.
 Root context provider for the action bar. Renders a `React.Fragment`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `open` | `boolean` | - |
 | `defaultOpen` | `boolean` | `false` |
 | `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", offset?: string }` | `{ placement: "bottom", offset: "16px" }` |
@@ -133,14 +133,14 @@ Root context provider for the action bar. Renders a `React.Fragment`.
 Floating toolbar. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `aria-label` | `string` | `"Selection actions"` |
 | `aria-labelledby` | `string` | - |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 
 | Attributes | Description |
-|------|------|
+| --- | --- |
 | `data-slot` | `"action-bar-content"` |
 | `data-state` | `"open" \| "closed"` |
 | `--offset` | `"16px"` |
@@ -150,7 +150,7 @@ Floating toolbar. Renders a `div`.
 Button that opens the action bar. Renders a `button`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 
@@ -159,7 +159,7 @@ Button that opens the action bar. Renders a `button`.
 Button that closes the action bar. Renders a `button`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `aria-label` | `string` | `"Close"` |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
@@ -169,7 +169,7 @@ Button that closes the action bar. Renders a `button`.
 Displays selection count or custom label. Renders a `span`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `count` | `number` | `0` |
 | `label` | `string` | - |
 | `className` | `string` | - |
@@ -180,6 +180,6 @@ Displays selection count or custom label. Renders a `span`.
 Container for action buttons. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |

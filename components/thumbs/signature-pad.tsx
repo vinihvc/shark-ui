@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const SignaturePadThumb = ({
-  description = "",
-  title = "Signature Pad",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const SignaturePadThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="relative flex h-24 w-full flex-col rounded-lg border bg-muted shadow-md/5">
       <div className="absolute inset-e-2 top-2 flex size-4 items-center justify-center rounded-xl border bg-muted-foreground/16" />
 

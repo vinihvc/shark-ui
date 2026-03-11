@@ -37,7 +37,7 @@ npm install @ark-ui/react lucide-react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource title="components/ui/listbox.tsx" src="listbox.tsx" />
+<ComponentSource title="components/ui/listbox.tsx" src="/listbox.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -172,13 +172,13 @@ Root element of the listbox component. Renders a `div`.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `collection` | `ListCollection<T>` | **required** |
-| `value` | `string[]` | — |
+| `value` | `string[]` | - |
 | `defaultValue` | `string[]` | `[]` |
-| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | — |
+| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | - |
 | `selectionMode` | `'single' \| 'multiple' \| 'extended'` | `'single'` |
 | `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` |
-| `disabled` | `boolean` | — |
-| `deselectable` | `boolean` | — |
+| `disabled` | `boolean` | - |
+| `deselectable` | `boolean` | - |
 | `loopFocus` | `boolean` | `false` |
 
 ### ListboxContent
@@ -187,8 +187,8 @@ Content container for listbox items. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxItem
 
@@ -198,8 +198,8 @@ Content container for listbox items. Renders a `div`.
 | --- | --- | --- |
 | `item` | `T` | **required** |
 | `variant` | `"default" \| "destructive"` | `"default"` |
-| `asChild` | `boolean` | — |
-| `highlightOnHover` | `boolean` | — |
+| `asChild` | `boolean` | - |
+| `highlightOnHover` | `boolean` | - |
 
 ### ListboxItemText
 
@@ -207,8 +207,8 @@ Displays the text content of a listbox item. Renders a `span`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxItemIndicator
 
@@ -217,8 +217,8 @@ Shows selection state. Renders when item is selected. Renders a `span`.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `children` | `ReactNode` | `<CheckIcon />` |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxItemGroup
 
@@ -226,9 +226,9 @@ Groups related items. Use `heading` or `<ListboxItemGroupLabel />` for a label. 
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `heading` | `string` | — |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `heading` | `string` | - |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxItemGroupLabel
 
@@ -236,8 +236,8 @@ Label for a group. Renders inside `<ListboxItemGroup />`. Renders a `span`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxValueText
 
@@ -245,9 +245,9 @@ Displays the selected value(s) as text. Use for custom trigger/display. Renders 
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `placeholder` | `string` | — |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `placeholder` | `string` | - |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxEmpty
 
@@ -255,8 +255,8 @@ Displays content when the listbox has no items. Use for empty states, e.g. when 
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
-| `className` | `string` | — |
+| `asChild` | `boolean` | - |
+| `className` | `string` | - |
 
 ### ListboxShortcut
 

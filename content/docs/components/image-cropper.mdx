@@ -1,6 +1,6 @@
 ---
 title: Image Cropper
-description: Crop and transform images with zoom, rotation, and aspect ratio controls.
+description: Crop images with zoom, rotation, and aspect ratio.
 links:
   doc: https://ark-ui.com/docs/components/image-cropper
   api: https://ark-ui.com/docs/components/image-cropper#api-reference
@@ -37,7 +37,7 @@ npm install @ark-ui/react
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource title="components/ui/image-cropper.tsx" src="image-cropper.tsx" />
+<ComponentSource title="components/ui/image-cropper.tsx" src="/image-cropper.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -114,21 +114,21 @@ Root container for the image cropper. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `aspectRatio` | `number` | — |
+| `aspectRatio` | `number` | - |
 | `cropShape` | `'circle' \| 'rectangle'` | `'rectangle'` |
 | `fixedCropArea` | `boolean` | `false` |
-| `initialCrop` | `{ x: number; y: number; width: number; height: number }` | — |
+| `initialCrop` | `{ x: number; y: number; width: number; height: number }` | - |
 | `maxHeight` | `number` | `Infinity` |
 | `maxWidth` | `number` | `Infinity` |
 | `maxZoom` | `number` | `5` |
 | `minHeight` | `number` | `40` |
 | `minWidth` | `number` | `40` |
 | `minZoom` | `number` | `1` |
-| `onCropChange` | `(details: CropChangeDetails) => void` | — |
-| `onZoomChange` | `(details: ZoomChangeDetails) => void` | — |
-| `rotation` | `number` | — |
-| `zoom` | `number` | — |
-| `className` | `string` | — |
+| `onCropChange` | `(details: CropChangeDetails) => void` | - |
+| `onZoomChange` | `(details: ZoomChangeDetails) => void` | - |
+| `rotation` | `number` | - |
+| `zoom` | `number` | - |
+| `className` | `string` | - |
 
 ### ImageCropperImage
 
@@ -136,9 +136,9 @@ The image element to crop. Renders an `img`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `alt` | `string` | — |
-| `src` | `string` | — |
-| `className` | `string` | — |
+| `alt` | `string` | - |
+| `src` | `string` | - |
+| `className` | `string` | - |
 
 ### ImageCropperSelection
 
@@ -147,8 +147,8 @@ The crop selection overlay with handles and grid. Renders a `div`.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `axis` | `'horizontal' \| 'vertical' \| 'both'` | `'both'` |
-| `children` | `ReactNode` | — |
-| `className` | `string` | — |
+| `children` | `ReactNode` | - |
+| `className` | `string` | - |
 
 ---
 

@@ -28,7 +28,7 @@ export const RadioGroup = (
 export const RadioGroupItem = (
   props: React.ComponentProps<typeof ArkRadioGroup.Item>
 ) => {
-  const { className, children, ...rest } = props;
+  const { tabIndex, className, children, ...rest } = props;
 
   return (
     <ArkRadioGroup.Item
@@ -61,7 +61,7 @@ export const RadioGroupItem = (
 
       <RadioGroupText>{children}</RadioGroupText>
 
-      <ArkRadioGroup.ItemHiddenInput />
+      <ArkRadioGroup.ItemHiddenInput tabIndex={tabIndex} />
     </ArkRadioGroup.Item>
   );
 };

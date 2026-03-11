@@ -11,9 +11,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -81,10 +81,10 @@ const WaitForElementExample = () => {
         <div className="flex flex-col gap-2">
           <Button
             id="btn-add-item"
+            onClick={addItem}
+            size="sm"
             type="button"
             variant="outline"
-            size="sm"
-            onClick={addItem}
           >
             <PlusIcon className="size-4" />
             Add Item
@@ -93,13 +93,13 @@ const WaitForElementExample = () => {
           <div className="flex flex-col gap-2">
             {items.map((item, index) => (
               <div
-                key={item}
                 className="rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm"
                 data-item={
                   index === items.length - 1 && items.length > 2
                     ? "new"
                     : undefined
                 }
+                key={item}
               >
                 {item}
               </div>

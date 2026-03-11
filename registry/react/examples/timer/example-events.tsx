@@ -18,9 +18,9 @@ const EventsExample = () => {
 
   return (
     <Timer
-      targetMs={60 * 1000}
-      onTick={() => setTicks((t) => t + 1)}
       onComplete={() => setCompleted(true)}
+      onTick={() => setTicks((t) => t + 1)}
+      targetMs={60 * 1000}
     >
       <TimerArea>
         <div className="flex flex-col items-center gap-0">

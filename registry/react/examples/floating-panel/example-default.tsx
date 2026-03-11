@@ -33,10 +33,6 @@ import {
   SelectValue,
 } from "@/registry/react/components/select";
 
-const collection = createListCollection({
-  items: ["Inter", "Roboto", "Helvetica", "Geist"],
-});
-
 const FloatingPanelDemo = () => {
   return (
     <FloatingPanel defaultSize={{ width: 360, height: 300 }}>
@@ -92,5 +88,9 @@ const FloatingPanelDemo = () => {
     </FloatingPanel>
   );
 };
+
+const collection = createListCollection({
+  items: ["Inter", "Roboto", "Helvetica", "Geist"],
+});
 
 export default FloatingPanelDemo;

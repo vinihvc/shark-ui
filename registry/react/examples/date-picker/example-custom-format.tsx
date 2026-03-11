@@ -6,6 +6,8 @@ import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   CalendarMonthSelect,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarViewControl,
@@ -34,8 +36,10 @@ const Example = () => {
       </DatePickerTrigger>
       <DatePickerContent>
         <CalendarViewControl>
+          <CalendarPrevTrigger />
           <CalendarMonthSelect />
           <CalendarYearSelect />
+          <CalendarNextTrigger />
         </CalendarViewControl>
         <CalendarTable>
           <CalendarWeekDays />

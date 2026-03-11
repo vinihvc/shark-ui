@@ -90,13 +90,12 @@ export const CalendarViewDate = (
 export const CalendarTodayTrigger = (
   props: React.ComponentProps<typeof Button>
 ) => {
-  const { variant = "outline", size = "lg", className, ...rest } = props;
+  const { variant = "outline", size = "lg", ...rest } = props;
 
   return (
     <CalendarContext>
       {(calendar) => (
         <Button
-          className={cn("shadow-none", className)}
           data-slot="calendar-today-trigger"
           onClick={() => calendar.selectToday()}
           size={size}
@@ -135,7 +134,7 @@ export const CalendarYearSelect = (
       data-slot="calendar-year-select-wrapper"
     >
       <ArkCalendar.YearSelect
-        className={cn(nativeSelectVariants(), "shadow-none", className)}
+        className={cn(nativeSelectVariants())}
         data-slot="calendar-year-select"
         {...rest}
       />
@@ -164,7 +163,7 @@ export const CalendarMonthSelect = (
       data-slot="calendar-year-select-wrapper"
     >
       <ArkCalendar.MonthSelect
-        className={cn(nativeSelectVariants(), "shadow-none", className)}
+        className={cn(nativeSelectVariants(), className)}
         data-slot="calendar-year-select"
         {...rest}
       />
@@ -203,7 +202,7 @@ export const CalendarContext = (
 export const CalendarViewControl = (
   props: React.ComponentProps<typeof ArkCalendar.ViewControl>
 ) => {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <ArkCalendar.ViewControl
@@ -211,26 +210,44 @@ export const CalendarViewControl = (
         "z-2",
         "relative",
         "h-auto w-full",
-        "flex items-center justify-between gap-1.5",
+        "flex items-center gap-1.5",
         className
       )}
       data-slot="calendar-view-control"
       {...rest}
+    />
+  );
+};
+
+export const CalendarPrevTrigger = (
+  props: React.ComponentProps<typeof ArkCalendar.PrevTrigger>
+) => {
+  return (
+    <ArkCalendar.PrevTrigger
+      asChild
+      data-slot="calendar-prev-trigger"
+      {...props}
     >
-      <ArkCalendar.PrevTrigger asChild data-slot="calendar-prev-trigger">
-        <Button size="icon-md" variant="ghost">
-          <ChevronLeftIcon aria-hidden className="rtl:rotate-180" />
-        </Button>
-      </ArkCalendar.PrevTrigger>
+      <Button className="me-auto" size="icon-md" variant="ghost">
+        <ChevronLeftIcon aria-hidden className="rtl:rotate-180" />
+      </Button>
+    </ArkCalendar.PrevTrigger>
+  );
+};
 
-      <div className="flex items-center gap-1.5">{children}</div>
-
-      <ArkCalendar.NextTrigger asChild data-slot="calendar-next-trigger">
-        <Button size="icon-md" variant="ghost">
-          <ChevronRightIcon aria-hidden className="rtl:rotate-180" />
-        </Button>
-      </ArkCalendar.NextTrigger>
-    </ArkCalendar.ViewControl>
+export const CalendarNextTrigger = (
+  props: React.ComponentProps<typeof ArkCalendar.NextTrigger>
+) => {
+  return (
+    <ArkCalendar.NextTrigger
+      asChild
+      data-slot="calendar-next-trigger"
+      {...props}
+    >
+      <Button className="ms-auto" size="icon-md" variant="ghost">
+        <ChevronRightIcon aria-hidden className="rtl:rotate-180" />
+      </Button>
+    </ArkCalendar.NextTrigger>
   );
 };
 
@@ -285,14 +302,19 @@ export const CalendarWeekDays = (props: CalendarWeekDaysProps) => {
 export const CalendarTableDays = (
   props: React.ComponentProps<typeof CalendarTableBody>
 ) => {
+  const { tabIndex, ...rest } = props;
   return (
     <CalendarContext>
       {(calendar) => (
-        <CalendarTableBody {...props}>
+        <CalendarTableBody {...rest}>
           {calendar.weeks.map((week, index) => (
             <CalendarTableRow key={index}>
               {week.map((day) => (
-                <CalendarTableCell key={day.day} value={day}>
+                <CalendarTableCell
+                  key={day.day}
+                  tabIndex={tabIndex ?? undefined}
+                  value={day}
+                >
                   {day.day}
                 </CalendarTableCell>
               ))}
@@ -315,7 +337,7 @@ interface CalendarTableNextMonthProps
 }
 
 export const CalendarTableNextMonth = (props: CalendarTableNextMonthProps) => {
-  const { months = 1, ...rest } = props;
+  const { months = 1, tabIndex, ...rest } = props;
 
   return (
     <CalendarContext>
@@ -329,6 +351,7 @@ export const CalendarTableNextMonth = (props: CalendarTableNextMonthProps) => {
                 {week.map((day) => (
                   <CalendarTableCell
                     key={day.day}
+                    tabIndex={tabIndex ?? undefined}
                     value={day}
                     visibleRange={offset.visibleRange}
                   >

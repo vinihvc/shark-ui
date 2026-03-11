@@ -1,25 +1,35 @@
-import { ComponentResizer } from "@/components/component-resizer";
+import { DotPattern } from "@/components/dot-pattern";
+import { TemplateCard } from "./_components/template-card";
+import { TemplatesHero } from "./_components/templates-hero";
+import { MOCK_TEMPLATES } from "./_data/mock-templates";
 
-const BlocksPage = () => {
+export const revalidate = false;
+export const dynamic = "force-static";
+
+const TemplatesPage = () => {
   return (
-    <main className="container flex flex-col gap-4">
-      <div className="grid gap-2 pt-8 pb-4">
-        <h1 className="font-semibold text-3xl tracking-tight">Templates</h1>
-
-        <p className="text-lg text-muted-foreground">
-          Templates are pre-built pages and layouts for your website.
-        </p>
+    <main className="relative max-w-screen overflow-hidden">
+      <div className="absolute inset-0 h-96">
+        <DotPattern className="absolute inset-0 text-muted-foreground/40" />
+        <div className="absolute inset-0 bg-linear-to-t from-background to-background/10" />
       </div>
 
-      <ComponentResizer
-        className="h-dvh"
-        title="Auth Template"
-        url="/templates/auth"
-      >
-        <iframe className="size-full" src="/templates/auth" title="Auth" />
-      </ComponentResizer>
+      <div className="container relative flex flex-col gap-14 pt-16 pb-16 sm:pt-32">
+        <TemplatesHero />
+
+        <section aria-labelledby="templates-heading">
+          <h2 className="sr-only" id="templates-heading">
+            Templates
+          </h2>
+          <div className="grid gap-8 sm:grid-cols-2">
+            {MOCK_TEMPLATES.map((template) => (
+              <TemplateCard key={template.id} template={template} />
+            ))}
+          </div>
+        </section>
+      </div>
     </main>
   );
 };
 
-export default BlocksPage;
+export default TemplatesPage;

@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { NavLink } from "@/components/nav-link";
+import type { source } from "@/lib/fumadocs";
 import {
   Sidebar,
   SidebarContent,
@@ -11,8 +12,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import type { source } from "@/lib/fumadocs";
+} from "@/registry/react/components/sidebar";
 
 export const DocsSidebar = (
   props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }

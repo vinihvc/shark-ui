@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const AngleSliderThumb = ({
-  description = "",
-  title = "Angle Slider",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const AngleSliderThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex items-center justify-center">
       <div className="relative flex size-20 flex-col items-center gap-2 rounded-full bg-muted shadow-md/5">
         <div className="absolute inset-0 rounded-full border-8 border-muted-foreground/16" />

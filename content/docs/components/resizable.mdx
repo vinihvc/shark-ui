@@ -1,6 +1,6 @@
 ---
 title: Resizable
-description: A component that divides your interface into resizable sections.
+description: Divides the interface into resizable sections.
 links:
   doc: https://ark-ui.com/docs/components/splitter
   api: https://ark-ui.com/docs/components/splitter#api-reference
@@ -107,17 +107,17 @@ Root component. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `panels` | `PanelData[]` | — |
-| `defaultSize` | `number[]` | — |
-| `size` | `number[]` | — |
+| `panels` | `PanelData[]` | - |
+| `defaultSize` | `number[]` | - |
+| `size` | `number[]` | - |
 | `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` |
-| `keyboardResizeBy` | `number` | — |
-| `onResize` | `(details: ResizeDetails) => void` | — |
-| `onResizeStart` | `() => void` | — |
-| `onResizeEnd` | `(details: ResizeEndDetails) => void` | — |
-| `onCollapse` | `(details: ExpandCollapseDetails) => void` | — |
-| `onExpand` | `(details: ExpandCollapseDetails) => void` | — |
-| `className` | `string` | — |
+| `keyboardResizeBy` | `number` | - |
+| `onResize` | `(details: ResizeDetails) => void` | - |
+| `onResizeStart` | `() => void` | - |
+| `onResizeEnd` | `(details: ResizeEndDetails) => void` | - |
+| `onCollapse` | `(details: ExpandCollapseDetails) => void` | - |
+| `onExpand` | `(details: ExpandCollapseDetails) => void` | - |
+| `className` | `string` | - |
 
 ### ResizablePanel
 
@@ -125,9 +125,9 @@ Panel container. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `id` | `string` | — |
+| `id` | `string` | - |
 | `asChild` | `boolean` | `false` |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ### ResizableResizeTrigger
 
@@ -135,11 +135,11 @@ Resize handle between panels. Renders a `div`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `id` | `${string}:${string}` | — |
+| `id` | `${string}:${string}` | - |
 | `withHandle` | `boolean` | `false` |
-| `disabled` | `boolean` | — |
+| `disabled` | `boolean` | - |
 | `asChild` | `boolean` | `false` |
-| `className` | `string` | — |
+| `className` | `string` | - |
 
 ---
 

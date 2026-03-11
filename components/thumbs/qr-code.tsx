@@ -1,12 +1,8 @@
 import { QrCodeIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const QrCodeThumb = ({
-  description = "",
-  title = "QR Code",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const QrCodeThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex flex-col items-center justify-center gap-3">
       <div className="flex size-20 justify-center rounded-lg border bg-muted p-2 shadow-md/5">
         <QrCodeIcon className="size-16 stroke-[1.5] text-muted-foreground/64" />

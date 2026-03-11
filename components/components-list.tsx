@@ -1,92 +1,90 @@
 import Link from "next/link";
 import React from "react";
-import {
-  AccordionThumb,
-  ActionBarThumb,
-  AlertDialogThumb,
-  AlertThumb,
-  AngleSliderThumb,
-  AspectRatioThumb,
-  AutocompleteThumb,
-  AvatarThumb,
-  BadgeThumb,
-  BottomNavigationThumb,
-  BreadcrumbThumb,
-  ButtonGroupThumb,
-  ButtonThumb,
-  CalendarThumb,
-  CardThumb,
-  CarouselThumb,
-  ChartThumb,
-  CheckboxThumb,
-  ClipboardThumb,
-  CollapsibleThumb,
-  ColorPickerThumb,
-  ComboboxThumb,
-  CommandThumb,
-  ContextMenuThumb,
-  DataListThumb,
-  DialogThumb,
-  DrawerThumb,
-  EditableThumb,
-  FieldThumb,
-  FileUploadThumb,
-  FloatingPanelThumb,
-  FloatThumb,
-  FrameThumb,
-  HintThumb,
-  HoverCardThumb,
-  ImageCropperThumb,
-  InputGroupThumb,
-  InputOtpThumb,
-  InputThumb,
-  ItemThumb,
-  KbdThumb,
-  LinkOverlayThumb,
-  ListboxThumb,
-  MarqueeThumb,
-  MenuThumb,
-  NativeSelectThumb,
-  NavigationMenuThumb,
-  NumberInputThumb,
-  PaginationThumb,
-  PopoverThumb,
-  ProgressThumb,
-  ProseThumb,
-  QrCodeThumb,
-  RadioGroupThumb,
-  RatingGroupThumb,
-  ResizableThumb,
-  ScrollAreaThumb,
-  SegmentGroupThumb,
-  SelectThumb,
-  SeparatorThumb,
-  SheetThumb,
-  SignaturePadThumb,
-  SkeletonThumb,
-  SkipNavThumb,
-  SliderThumb,
-  SpinnerThumb,
-  StatusThumb,
-  StepsThumb,
-  SwitchThumb,
-  TableThumb,
-  TabsThumb,
-  TextareaThumb,
-  TimerThumb,
-  ToastThumb,
-  ToggleGroupThumb,
-  ToggleThumb,
-  ToggleTooltipThumb,
-  TooltipThumb,
-  TourThumb,
-  TreeViewThumb,
-} from "@/components/thumbs";
-import type { ThumbProps } from "@/components/thumbs/types";
+import { AccordionThumb } from "@/components/thumbs/accordion";
+import { ActionBarThumb } from "@/components/thumbs/action-bar";
+import { AlertDialogThumb } from "@/components/thumbs/alert-dialog";
+import { AlertThumb } from "@/components/thumbs/alert";
+import { AngleSliderThumb } from "@/components/thumbs/angle-slider";
+import { AspectRatioThumb } from "@/components/thumbs/aspect-ratio";
+import { AutocompleteThumb } from "@/components/thumbs/autocomplete";
+import { AvatarThumb } from "@/components/thumbs/avatar";
+import { BadgeThumb } from "@/components/thumbs/badge";
+import { BottomNavigationThumb } from "@/components/thumbs/bottom-navigation";
+import { BreadcrumbThumb } from "@/components/thumbs/breadcrumb";
+import { ButtonGroupThumb } from "@/components/thumbs/button-group";
+import { ButtonThumb } from "@/components/thumbs/button";
+import { CalendarThumb } from "@/components/thumbs/calendar";
+import { CardThumb } from "@/components/thumbs/card";
+import { CarouselThumb } from "@/components/thumbs/carousel";
+import { ChartThumb } from "@/components/thumbs/chart";
+import { CheckboxThumb } from "@/components/thumbs/checkbox";
+import { ClipboardThumb } from "@/components/thumbs/clipboard";
+import { CollapsibleThumb } from "@/components/thumbs/collapsible";
+import { ColorPickerThumb } from "@/components/thumbs/color-picker";
+import { ComboboxThumb } from "@/components/thumbs/combobox";
+import { CommandThumb } from "@/components/thumbs/command";
+import { ContextMenuThumb } from "@/components/thumbs/context-menu";
+import { DataListThumb } from "@/components/thumbs/data-list";
+import { DialogThumb } from "@/components/thumbs/dialog";
+import { DrawerThumb } from "@/components/thumbs/drawer";
+import { EditableThumb } from "@/components/thumbs/editable";
+import { FieldThumb } from "@/components/thumbs/field";
+import { FileUploadThumb } from "@/components/thumbs/file-upload";
+import { FloatingPanelThumb } from "@/components/thumbs/floating-panel";
+import { FloatThumb } from "@/components/thumbs/float";
+import { FrameThumb } from "@/components/thumbs/frame";
+import { HintThumb } from "@/components/thumbs/hint";
+import { HoverCardThumb } from "@/components/thumbs/hover-card";
+import { ImageCropperThumb } from "@/components/thumbs/image-cropper";
+import { InputGroupThumb } from "@/components/thumbs/input-group";
+import { InputOtpThumb } from "@/components/thumbs/input-otp";
+import { InputThumb } from "@/components/thumbs/input";
+import { ItemThumb } from "@/components/thumbs/item";
+import { KbdThumb } from "@/components/thumbs/kbd";
+import { LinkOverlayThumb } from "@/components/thumbs/link-overlay";
+import { ListboxThumb } from "@/components/thumbs/listbox";
+import { MarqueeThumb } from "@/components/thumbs/marquee";
+import { MenuThumb } from "@/components/thumbs/menu";
+import { NativeSelectThumb } from "@/components/thumbs/native-select";
+import { NavigationMenuThumb } from "@/components/thumbs/navigation-menu";
+import { NumberInputThumb } from "@/components/thumbs/number-input";
+import { PaginationThumb } from "@/components/thumbs/pagination";
+import { PopoverThumb } from "@/components/thumbs/popover";
+import { ProgressThumb } from "@/components/thumbs/progress";
+import { ProseThumb } from "@/components/thumbs/prose";
+import { QrCodeThumb } from "@/components/thumbs/qr-code";
+import { RadioGroupThumb } from "@/components/thumbs/radio-group";
+import { RatingGroupThumb } from "@/components/thumbs/rating-group";
+import { ResizableThumb } from "@/components/thumbs/resizable";
+import { ScrollAreaThumb } from "@/components/thumbs/scroll-area";
+import { SegmentGroupThumb } from "@/components/thumbs/segment-group";
+import { SelectThumb } from "@/components/thumbs/select";
+import { SeparatorThumb } from "@/components/thumbs/separator";
+import { SheetThumb } from "@/components/thumbs/sheet";
+import { SignaturePadThumb } from "@/components/thumbs/signature-pad";
+import { SkeletonThumb } from "@/components/thumbs/skeleton";
+import { SkipNavThumb } from "@/components/thumbs/skip-nav";
+import { SliderThumb } from "@/components/thumbs/slider";
+import { SpinnerThumb } from "@/components/thumbs/spinner";
+import { StatusThumb } from "@/components/thumbs/status";
+import { StepsThumb } from "@/components/thumbs/steps";
+import { SwitchThumb } from "@/components/thumbs/switch";
+import { TableThumb } from "@/components/thumbs/table";
+import { TabsThumb } from "@/components/thumbs/tabs";
+import { TextareaThumb } from "@/components/thumbs/textarea";
+import { TimerThumb } from "@/components/thumbs/timer";
+import { ToastThumb } from "@/components/thumbs/toast";
+import { ToggleGroupThumb } from "@/components/thumbs/toggle-group";
+import { ToggleThumb } from "@/components/thumbs/toggle";
+import { ToggleTooltipThumb } from "@/components/thumbs/toggle-tooltip";
+import { TooltipThumb } from "@/components/thumbs/tooltip";
+import { TourThumb } from "@/components/thumbs/tour";
+import { TreeViewThumb } from "@/components/thumbs/tree-view";
+import type { BlockThumbCardProps } from "@/components/thumbs/block-card";
 import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 
-const THUMB_MAP: Record<string, React.ComponentType<ThumbProps>> = {
+const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
   accordion: AccordionThumb,
   "action-bar": ActionBarThumb,
   "alert-dialog": AlertDialogThumb,

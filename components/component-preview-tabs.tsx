@@ -14,6 +14,12 @@ interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
    */
   component: React.ReactNode;
   /**
+   * Whether to show the dashed padding guide borders around the preview
+   *
+   * @default true
+   */
+  showBorders?: boolean;
+  /**
    * The source code to display in the preview
    *
    */
@@ -21,7 +27,7 @@ interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
 }
 
 export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
-  const { className, component, source, ...rest } = props;
+  const { component, source, showBorders = true, className, ...rest } = props;
 
   return (
     <div
@@ -34,17 +40,21 @@ export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
 
-        <div className={cn("relative", "rounded-2xl border")}>
+        <div className={cn("relative", "overflow-hidden rounded-2xl border")}>
           <TabsContent value="preview">
             <div
               className={cn(
                 "relative flex h-[450px] w-full items-center justify-center overflow-y-auto p-4 sm:p-10"
               )}
             >
-              <div className="absolute top-4 right-0 left-0 border border-border/64 border-dashed max-sm:hidden sm:top-8" />
-              <div className="absolute right-0 bottom-4 left-0 border border-border/64 border-dashed max-sm:hidden sm:bottom-8" />
-              <div className="absolute top-0 bottom-0 left-4 border border-border/64 border-dashed max-sm:hidden sm:left-8" />
-              <div className="absolute top-0 right-4 bottom-0 border border-border/64 border-dashed max-sm:hidden sm:right-8" />
+              {showBorders && (
+                <>
+                  <div className="absolute top-4 right-0 left-0 border border-border/64 border-dashed max-sm:hidden sm:top-8" />
+                  <div className="absolute right-0 bottom-4 left-0 border border-border/64 border-dashed max-sm:hidden sm:bottom-8" />
+                  <div className="absolute top-0 bottom-0 left-4 border border-border/64 border-dashed max-sm:hidden sm:left-8" />
+                  <div className="absolute top-0 right-4 bottom-0 border border-border/64 border-dashed max-sm:hidden sm:right-8" />
+                </>
+              )}
               {component}
             </div>
           </TabsContent>

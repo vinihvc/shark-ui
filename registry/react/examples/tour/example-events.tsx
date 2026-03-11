@@ -10,9 +10,9 @@ import {
   TourFooter,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -58,11 +58,11 @@ const EventsExample = () => {
   return (
     <div className="flex w-full max-w-sm flex-col gap-4">
       <Tour
-        steps={steps}
+        onStatusChange={(details) => addLog(`Status: ${details.status}`)}
         onStepChange={(details) =>
           addLog(`Step changed: ${details.stepId ?? "unknown"}`)
         }
-        onStatusChange={(details) => addLog(`Status: ${details.status}`)}
+        steps={steps}
       >
         <TourTrigger asChild>
           <Button variant="outline">Start Tour</Button>
@@ -70,20 +70,20 @@ const EventsExample = () => {
 
         <div className="flex flex-wrap gap-2">
           <div
-            id="event-1"
             className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            id="event-1"
           >
             Step 1
           </div>
           <div
-            id="event-2"
             className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            id="event-2"
           >
             Step 2
           </div>
           <div
-            id="event-3"
             className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            id="event-3"
           >
             Step 3
           </div>
@@ -94,9 +94,7 @@ const EventsExample = () => {
           {logs.length === 0 ? (
             <span>Start the tour to see events</span>
           ) : (
-            logs.map((log, i) => (
-              <span key={i}>{log}</span>
-            ))
+            logs.map((log, i) => <span key={i}>{log}</span>)
           )}
         </div>
 

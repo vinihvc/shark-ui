@@ -8,9 +8,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -28,8 +28,7 @@ const steps: TourStepType[] = [
     title: "Tooltip Step",
     description:
       "This step appears as a tooltip anchored to a specific element.",
-    target: () =>
-      document.querySelector<HTMLElement>("#tour-target-element"),
+    target: () => document.querySelector<HTMLElement>("#tour-target-element"),
     actions: [
       { label: "Back", action: "prev" },
       { label: "Next", action: "next" },
@@ -64,8 +63,8 @@ const StepTypesExample = () => (
       </TourTrigger>
 
       <div
-        id="tour-target-element"
         className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+        id="tour-target-element"
       >
         Target Element
       </div>

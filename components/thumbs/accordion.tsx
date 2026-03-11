@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const AccordionThumb = ({
-  description = "",
-  title = "Accordion",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const AccordionThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="rounded-lg border bg-muted shadow-md/5">
       <div className="flex items-center gap-2 border-b p-3">
         <span

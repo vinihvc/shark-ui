@@ -9,9 +9,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -49,7 +49,7 @@ const steps: TourStepType[] = [
 
 const KeyboardNavigationExample = () => (
   <div className="flex flex-col gap-4">
-    <Tour steps={steps} keyboardNavigation>
+    <Tour keyboardNavigation steps={steps}>
       <TourTrigger asChild>
         <Button variant="outline">Start Tour</Button>
       </TourTrigger>
@@ -61,20 +61,20 @@ const KeyboardNavigationExample = () => (
 
       <div className="flex flex-wrap gap-2">
         <div
-          id="tour-key-1"
           className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-key-1"
         >
           Step 1
         </div>
         <div
-          id="tour-key-2"
           className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-key-2"
         >
           Step 2
         </div>
         <div
-          id="tour-key-3"
           className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-key-3"
         >
           Step 3
         </div>

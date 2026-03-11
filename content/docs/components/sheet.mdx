@@ -1,6 +1,6 @@
 ---
 title: Sheet  
-description: A sheet is a component that displays content that slides out from the edge of the screen.
+description: Content that slides in from the screen edge.
 links:
   doc: https://ark-ui.com/docs/components/dialog
   api: https://ark-ui.com/docs/components/dialog#api-reference
@@ -49,7 +49,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx lineNumbers
+```tsx showLineNumbers
 import { 
   Sheet, 
   SheetContent, 
@@ -60,7 +60,7 @@ import {
 } from "@/components/ui/sheet";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Sheet>
   <SheetTrigger>Open</SheetTrigger>
   <SheetContent>
@@ -117,7 +117,7 @@ Use `modal={false}` to allow interaction with elements outside the sheet. Disabl
 Root element of the sheet. Renders a `div`. Uses Ark UI Dialog under the hood.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `open` | `boolean` | `-` |
 | `defaultOpen` | `boolean` | `false` |
 | `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
@@ -135,7 +135,7 @@ Root element of the sheet. Renders a `div`. Uses Ark UI Dialog under the hood.
 Button that opens the sheet. Renders a `button`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
@@ -144,7 +144,7 @@ Button that opens the sheet. Renders a `button`.
 Container for the sheet content. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `side` | `"right" \| "left" \| "top" \| "bottom"` | `"right"` |
 | `variant` | `"default" \| "inset"` | `"default"` |
 | `showCloseButton` | `boolean` | `true` |
@@ -155,7 +155,7 @@ Container for the sheet content. Renders a `div`.
 Header container for the sheet. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `title` | `string` | `-` |
 | `description` | `string` | `-` |
 | `className` | `string` | `-` |
@@ -165,7 +165,7 @@ Header container for the sheet. Renders a `div`.
 Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `scrollFade` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
@@ -174,7 +174,7 @@ Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
 Footer container for the sheet. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `className` | `string` | `-` |
 
 ### SheetTitle
@@ -182,7 +182,7 @@ Footer container for the sheet. Renders a `div`.
 Title element for the sheet. Renders an `h2`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
@@ -191,7 +191,7 @@ Title element for the sheet. Renders an `h2`.
 Description element for the sheet. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
@@ -200,7 +200,7 @@ Description element for the sheet. Renders a `div`.
 Button that closes the sheet. Renders a `button`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `asChild` | `boolean` | `false` |
 | `className` | `string` | `-` |
 
@@ -209,7 +209,7 @@ Button that closes the sheet. Renders a `button`.
 Backdrop overlay for the sheet. Renders a `div`.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `className` | `string` | `-` |
 
 ### SheetPositioner
@@ -217,7 +217,7 @@ Backdrop overlay for the sheet. Renders a `div`.
 Positioning wrapper for the sheet content. Renders a `div`. Used internally by `SheetContent`; expose when composing custom layouts.
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `side` | `"right" \| "left" \| "top" \| "bottom"` | `-` |
 | `variant` | `"default" \| "inset"` | `"default"` |
 | `className` | `string` | `-` |

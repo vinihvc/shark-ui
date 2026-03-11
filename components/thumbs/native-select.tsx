@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const NativeSelectThumb = ({
-  description = "",
-  title = "Native Select",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const NativeSelectThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex w-48 items-center rounded-lg border bg-muted p-1 px-2 shadow-md/5">
       <div className="h-2 w-2/4 rounded-full bg-muted-foreground/16" />
       <div className="ml-auto rotate-180">

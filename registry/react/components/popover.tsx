@@ -59,7 +59,8 @@ export const PopoverContent = (props: PopoverContentProps) => {
             "flex flex-col",
             "bg-popover",
             "text-popover-foreground",
-            "rounded-xl border shadow-lg/5",            "outline-hidden",
+            "rounded-xl border shadow-lg/5",
+            "outline-hidden",
             "origin-(--transform-origin)",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
             "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -96,13 +97,13 @@ export const PopoverContent = (props: PopoverContentProps) => {
 
 interface PopoverHeaderProps extends React.ComponentProps<typeof ark.div> {
   /**
-   * The title of the popover header
-   */
-  title?: string;
-  /**
    * The description of the popover header
    */
   description?: string;
+  /**
+   * The title of the popover header
+   */
+  title?: string;
 }
 
 export const PopoverHeader = (props: PopoverHeaderProps) => {

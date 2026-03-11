@@ -1,5 +1,5 @@
-import { SITE_CONFIG } from "@/config/site";
 import type { RegistryItemType } from "@/lib/registry";
+import { absoluteUrl } from "@/lib/url";
 
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
@@ -8,8 +8,8 @@ const manifest: RegistryItemType = {
   type: "registry:ui",
   dependencies,
   registryDependencies: [
-    `${SITE_CONFIG.url}/r/button.json`,
-    `${SITE_CONFIG.url}/r/input.json`,
+    absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/input.json"),
   ],
 };
 

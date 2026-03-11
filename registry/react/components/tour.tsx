@@ -23,13 +23,13 @@ export type TourStepType = TourStepDetails;
 
 interface TourProviderProps {
   /**
-   * The tour instance
-   */
-  tour: UseTourReturn;
-  /**
    * The function to start the tour
    */
   handleStart: () => void;
+  /**
+   * The tour instance
+   */
+  tour: UseTourReturn;
 }
 
 const TourProvider = React.createContext<TourProviderProps>(
@@ -169,7 +169,8 @@ export const TourContent = (props: TourContentProps) => {
         <ArkTour.Content
           className={cn(
             "[--space:--spacing(4)]",
-            "z-[calc(50+var(--layer-index,0))]",            "relative",
+            "z-[calc(50+var(--layer-index,0))]",
+            "relative",
             "w-full max-w-md",
             "flex flex-col gap-4",
             "bg-background",
@@ -335,7 +336,8 @@ export const TourActions = (
       </DialogFooter>
     </ArkTour.Control>
   );
-};export const TourPreviousStep = (
+};
+export const TourPreviousStep = (
   props: Omit<React.ComponentProps<typeof TourActionTrigger>, "action">
 ) => {
   const { ...rest } = props;

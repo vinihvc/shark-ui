@@ -10,9 +10,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -32,9 +32,13 @@ const steps: TourStepType[] = [
     target: () => document.querySelector<HTMLInputElement>("#input-name"),
     effect({ next, target, show }) {
       show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "input", {
-        predicate: (el) => el.value.trim().length >= 2,
-      });
+      const [promise, cancel] = waitForEvent<HTMLInputElement>(
+        target,
+        "input",
+        {
+          predicate: (el) => el.value.trim().length >= 2,
+        }
+      );
       promise.then(() => next());
       return cancel;
     },
@@ -48,9 +52,13 @@ const steps: TourStepType[] = [
     effect({ next, target, show }) {
       show();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "input", {
-        predicate: (el) => emailRegex.test(el.value),
-      });
+      const [promise, cancel] = waitForEvent<HTMLInputElement>(
+        target,
+        "input",
+        {
+          predicate: (el) => emailRegex.test(el.value),
+        }
+      );
       promise.then(() => next());
       return cancel;
     },
@@ -60,8 +68,7 @@ const steps: TourStepType[] = [
     type: "tooltip",
     title: "Accept Terms",
     description: "Check the checkbox to accept the terms.",
-    target: () =>
-      document.querySelector<HTMLInputElement>("#checkbox-terms"),
+    target: () => document.querySelector<HTMLInputElement>("#checkbox-terms"),
     effect({ next, target, show }) {
       show();
       const [promise, cancel] = waitForEvent<HTMLInputElement>(
@@ -93,34 +100,26 @@ const WaitForInputExample = () => (
 
       <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-border bg-muted/50 p-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="input-name" className="font-medium text-sm">
+          <label className="font-medium text-sm" htmlFor="input-name">
             Name
           </label>
-          <Input
-            id="input-name"
-            type="text"
-            placeholder="Enter your name"
-          />
+          <Input id="input-name" placeholder="Enter your name" type="text" />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="input-email" className="font-medium text-sm">
+          <label className="font-medium text-sm" htmlFor="input-email">
             Email
           </label>
-          <Input
-            id="input-email"
-            type="email"
-            placeholder="Enter your email"
-          />
+          <Input id="input-email" placeholder="Enter your email" type="email" />
         </div>
         <div className="flex items-center gap-2">
           <input
+            className="size-4 rounded border-input accent-primary"
             id="checkbox-terms"
             type="checkbox"
-            className="size-4 rounded border-input accent-primary"
           />
           <label
-            htmlFor="checkbox-terms"
             className="text-muted-foreground text-sm"
+            htmlFor="checkbox-terms"
           >
             I accept the terms and conditions
           </label>

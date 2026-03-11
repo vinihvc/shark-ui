@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const BreadcrumbThumb = ({
-  description = "",
-  title = "Breadcrumb",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const BreadcrumbThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <nav className="flex w-56 items-center gap-1 rounded-lg border bg-muted p-2 text-muted-foreground/64 text-sm shadow-md/5">
       <div className="h-1.5 w-full rounded-full bg-muted-foreground/16" />
 

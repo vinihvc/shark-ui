@@ -1,6 +1,6 @@
 ---
 title: Link Overlay
-description: Stretch a link over a container so the entire card or article is clickable.
+description: Makes the whole card or article clickable.
 links:
   doc: https://chakra-ui.com/docs/components/link-overlay
 ---
@@ -85,7 +85,7 @@ By default the `<LinkOverlay />` component will render an <a /> tag.
 
 To use the Next.js (or any other) `<Link />` component, make the following updates to `link-overlay.tsx`.
 
-```diff tsx title="components/ui/link-overlay.tsx" showshowLineNumbers
+```diff tsx title="components/ui/link-overlay.tsx" showLineNumbers
 + import Link from "next/link"
 - import { ark } from "@ark-ui/react/factory"
 
@@ -104,14 +104,14 @@ To use the Next.js (or any other) `<Link />` component, make the following updat
 ### LinkBox
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 
 ### LinkOverlay
 
 | Prop | Type | Default |
-|------|------|---------|
+| --- | --- | --- |
 | `href` | `string` | required |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |

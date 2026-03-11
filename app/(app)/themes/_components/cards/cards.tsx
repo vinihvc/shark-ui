@@ -1,13 +1,13 @@
+import { ActivityGoalExample } from "@/components/examples/activity-goal-example";
+import { CalendarRangeCardExample } from "@/components/examples/calendar-range-card-example";
+import { ChatCardExample } from "@/components/examples/chat-card-example";
+import { CookieSettingsExample } from "@/components/examples/cookie-settings-example";
+import { CreateAccountFormExample } from "@/components/examples/create-account-form-example";
+import { ExerciseMinutesChartExample } from "@/components/examples/exercise-minutes-chart-example";
+import { PaymentsTableExample } from "@/components/examples/payments-table-example";
+import { SubscriptionUpgradeExample } from "@/components/examples/subscription-upgrade-example";
+import { TeamMembersCardExample } from "@/components/examples/team-members-card-example";
 import { cn } from "@/lib/utils";
-import { CardsExerciseMinutes } from "./card.exercise-minutes";
-import { CardsPayments } from "./card.payments";
-import { CardsActivityGoal } from "./cards.activity";
-import { CardsCalendar } from "./cards.calendar";
-import { CardsChat } from "./cards.chat";
-import { CardsCookie } from "./cards.cookie";
-import { CardsCreateAccount } from "./cards.create-account";
-import { CardsForms } from "./cards.forms";
-import { CardsTeamMembers } from "./cards.members";
 
 export const CardsDemo = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
@@ -23,43 +23,43 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
       <div className="grid gap-4 lg:col-span-4 xl:col-span-6">
         <div className="grid gap-1 sm:grid-cols-[auto_1fr] md:hidden">
           <div className="hidden sm:flex">
-            <CardsCalendar />
+            <CalendarRangeCardExample />
           </div>
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
-            <CardsActivityGoal />
+            <ActivityGoalExample />
           </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           <div className="flex flex-col gap-4">
-            <CardsForms />
-            <CardsTeamMembers />
+            <SubscriptionUpgradeExample />
+            <TeamMembersCardExample />
           </div>
           <div className="flex flex-col gap-4">
-            <CardsCreateAccount />
-            <CardsChat />
+            <CreateAccountFormExample />
+            <ChatCardExample />
             <div className="hidden xl:block">
-              <CardsCookie />
+              <CookieSettingsExample />
             </div>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-4 lg:col-span-6 xl:col-span-5">
         <div className="hidden gap-1 sm:grid-cols-[auto_1fr] md:grid">
-          <CardsCalendar />
+          <CalendarRangeCardExample />
           <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-3">
-            <CardsActivityGoal />
+            <ActivityGoalExample />
           </div>
         </div>
         <div className="hidden md:block">
-          <CardsPayments />
+          <PaymentsTableExample />
         </div>
 
         <div className="hidden md:block">
-          <CardsExerciseMinutes />
+          <ExerciseMinutesChartExample />
         </div>
 
         <div className="xl:hidden">
-          <CardsCookie />
+          <CookieSettingsExample />
         </div>
       </div>
     </div>

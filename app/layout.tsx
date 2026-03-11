@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
+import { absoluteUrl } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import { SkipNavLink } from "@/registry/react/components/skip-nav";
 import { Toaster } from "@/registry/react/components/toast";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_CONFIG.url),
+  metadataBase: new URL(absoluteUrl("/")),
   title: {
     default: SITE_CONFIG.name,
     template: `%s | ${SITE_CONFIG.name}`,
@@ -22,13 +23,13 @@ export const metadata: Metadata = {
     description: SITE_CONFIG.description,
     images: [
       {
-        url: `${SITE_CONFIG.url}/opengraph-image.png`,
+        url: absoluteUrl("/opengraph-image.png"),
         width: 1200,
         height: 630,
         alt: SITE_CONFIG.name,
       },
     ],
-    url: SITE_CONFIG.url,
+    url: absoluteUrl("/"),
     type: "website",
     locale: "en_US",
     siteName: SITE_CONFIG.name,
@@ -37,13 +38,19 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_CONFIG.name,
     description: SITE_CONFIG.description,
-    images: [`${SITE_CONFIG.url}/opengraph-image.png`],
+    images: [absoluteUrl("/opengraph-image.png")],
     creator: SITE_CONFIG.creator,
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
+  },
+  manifest: `${SITE_CONFIG.url}/site.webmanifest`,
+  alternates: {
+    types: {
+      "application/rss+xml": `${SITE_CONFIG.url}/rss.xml`,
+    },
   },
 };
 

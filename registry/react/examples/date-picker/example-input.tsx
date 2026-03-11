@@ -1,5 +1,7 @@
 import {
   CalendarMonthSelect,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarViewControl,
@@ -17,8 +19,10 @@ const Example = () => (
     <DatePickerInput placeholder="Select date" />
     <DatePickerContent>
       <CalendarViewControl>
+        <CalendarPrevTrigger />
         <CalendarMonthSelect />
         <CalendarYearSelect />
+        <CalendarNextTrigger />
       </CalendarViewControl>
       <CalendarTable>
         <CalendarWeekDays />

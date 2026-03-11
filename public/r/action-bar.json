@@ -8,7 +8,7 @@
     "tailwind-variants"
   ],
   "registryDependencies": [
-    "https://shark.vini.one/r/button.json"
+    "http://localhost:3000/r/button.json"
   ],
   "files": [
     {

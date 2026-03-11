@@ -1,5 +1,6 @@
 # deps
 /node_modules
+.playwright-mcp
 
 # generated content
 .contentlayer

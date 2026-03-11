@@ -35,6 +35,7 @@ export const Slider = (props: SliderProps) => {
     markerInterval = 1,
     showMarkers = false,
     markerLabels = [],
+    tabIndex,
     className,
     children,
     ...rest
@@ -121,6 +122,7 @@ export const Slider = (props: SliderProps) => {
               data-slot="slider-thumb"
               index={index}
               key={key}
+              tabIndex={tabIndex ?? undefined}
             >
               <ArkSlider.HiddenInput />
             </ArkSlider.Thumb>

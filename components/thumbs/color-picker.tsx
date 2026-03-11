@@ -1,12 +1,8 @@
 import { PipetteIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const ColorPickerThumb = ({
-  description = "",
-  title = "Color Picker",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const ColorPickerThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex flex-col items-center justify-center gap-2">
       <div className="flex w-24 items-center justify-center gap-2 rounded-lg border bg-muted p-3 shadow-md/5">
         <div className="h-2 w-3/4 rounded-full bg-muted-foreground/16" />

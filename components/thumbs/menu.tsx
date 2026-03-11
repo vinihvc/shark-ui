@@ -1,9 +1,8 @@
 import { EllipsisIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const MenuThumb = ({ description = "", title = "Menu" }: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const MenuThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex w-48 flex-col items-end gap-1.5">
       <div className="flex size-8 items-center justify-center rounded-lg border bg-muted shadow-md/5">
         <EllipsisIcon className="size-4 text-muted-foreground/64" />

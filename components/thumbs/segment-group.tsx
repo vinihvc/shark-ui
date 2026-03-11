@@ -1,11 +1,7 @@
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const SegmentGroupThumb = ({
-  description = "",
-  title = "Segment Group",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const SegmentGroupThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex w-52 flex-col gap-4">
       <div className="flex items-center gap-3 rounded-lg border bg-muted p-1 shadow-md/5">
         <div className="flex items-center justify-center rounded-lg bg-primary p-2">

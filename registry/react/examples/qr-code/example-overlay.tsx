@@ -1,4 +1,4 @@
-import { Logo } from "@/components/icons/logo";
+import { SharkIcon } from "@/components/icons/shark";
 import {
   QrCode,
   QrCodeFrame,
@@ -9,7 +9,7 @@ const Example = () => (
   <QrCode value="https://x.com/vinihvc">
     <QrCodeFrame />
     <QrCodeOverlay>
-      <Logo />
+      <SharkIcon />
     </QrCodeOverlay>
   </QrCode>
 );

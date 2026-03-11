@@ -8,9 +8,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -18,8 +18,7 @@ const steps: TourStepType[] = [
     id: "step-1",
     type: "tooltip",
     title: "First Feature",
-    description:
-      "You can skip this tour at any time using the Skip button.",
+    description: "You can skip this tour at any time using the Skip button.",
     target: () => document.querySelector<HTMLElement>("#tour-item-1"),
     actions: [
       { label: "Skip", action: "dismiss" },
@@ -60,20 +59,20 @@ const SkipExample = () => (
 
       <div className="flex flex-wrap gap-2">
         <div
-          id="tour-item-1"
           className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-item-1"
         >
           Item 1
         </div>
         <div
-          id="tour-item-2"
           className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-item-2"
         >
           Item 2
         </div>
         <div
-          id="tour-item-3"
           className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-item-3"
         >
           Item 3
         </div>

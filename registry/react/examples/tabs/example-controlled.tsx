@@ -41,24 +41,20 @@ const Example = () => {
       </Tabs>
 
       <div className="flex gap-2">
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={() => setValue("profile")}
-        >
+        <Button onClick={() => setValue("profile")} size="sm" variant="outline">
           Go to Profile
         </Button>
         <Button
+          onClick={() => setValue("settings")}
           size="sm"
           variant="outline"
-          onClick={() => setValue("settings")}
         >
           Go to Settings
         </Button>
         <Button
+          onClick={() => setValue("security")}
           size="sm"
           variant="outline"
-          onClick={() => setValue("security")}
         >
           Go to Security
         </Button>

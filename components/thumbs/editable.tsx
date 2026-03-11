@@ -1,12 +1,8 @@
 import { CheckIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const EditableThumb = ({
-  description = "",
-  title = "Editable",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const EditableThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex items-center gap-2">
       <div className="flex h-8 flex-1 items-center rounded-lg border bg-muted px-3 shadow-md/5">
         <div className="h-2 w-2/3 rounded-full bg-muted-foreground/16" />

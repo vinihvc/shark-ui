@@ -4,6 +4,8 @@ import React from "react";
 import {
   Calendar,
   CalendarMonthSelect,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarViewControl,
@@ -25,8 +27,10 @@ const Example = () => {
             value={value}
           >
             <CalendarViewControl>
+              <CalendarPrevTrigger />
               <CalendarMonthSelect />
               <CalendarYearSelect />
+              <CalendarNextTrigger />
             </CalendarViewControl>
             <CalendarTable>
               <CalendarWeekDays />

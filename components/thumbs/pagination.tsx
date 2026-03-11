@@ -1,12 +1,8 @@
 import { ChevronLeftIcon } from "lucide-react";
-import { BlockThumbCard } from "./block-card";
-import type { ThumbProps } from "./types";
+import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
 
-export const PaginationThumb = ({
-  description = "",
-  title = "Pagination",
-}: ThumbProps) => (
-  <BlockThumbCard subtitle={description} title={title}>
+export const PaginationThumb = (props: BlockThumbCardProps) => (
+  <BlockThumbCard {...props}>
     <div className="flex w-48 justify-center gap-4">
       <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border bg-muted shadow-md/5">
         <ChevronLeftIcon className="size-4 text-muted-foreground" />

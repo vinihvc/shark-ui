@@ -21,9 +21,7 @@ const Example = () => {
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
         <NativeSelectOption value="orange">Orange</NativeSelectOption>
       </NativeSelect>
-      <p className="text-muted-foreground text-sm">
-        Selected: {value || "—"}
-      </p>
+      <p className="text-muted-foreground text-sm">Selected: {value || "—"}</p>
     </div>
   );
 };

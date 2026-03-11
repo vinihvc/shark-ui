@@ -5,7 +5,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
-  const { className, ...rest } = props;
+  const { className, tabIndex, ...rest } = props;
 
   return (
     <ArkSwitch.Root
@@ -46,7 +46,7 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
         />
       </ArkSwitch.Control>
 
-      <ArkSwitch.HiddenInput />
+      <ArkSwitch.HiddenInput tabIndex={tabIndex} />
     </ArkSwitch.Root>
   );
 };

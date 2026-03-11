@@ -8,9 +8,9 @@ import {
   TourDescription,
   TourHeader,
   TourProgressText,
+  type TourStepType,
   TourTitle,
   TourTrigger,
-  type TourStepType,
 } from "@/registry/react/components/tour";
 
 const steps: TourStepType[] = [
@@ -74,8 +74,8 @@ const AsyncExample = () => (
       </TourTrigger>
 
       <div
-        id="user-card"
         className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+        id="user-card"
       >
         User Profile Card
       </div>

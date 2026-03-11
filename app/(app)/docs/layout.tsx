@@ -1,6 +1,6 @@
 import { DocsSidebar } from "@/components/layout/docs-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { source } from "@/lib/fumadocs";
+import { SidebarProvider } from "@/registry/react/components/sidebar";
 
 const DocsLayout = ({ children }: LayoutProps<"/docs">) => (
   <main>

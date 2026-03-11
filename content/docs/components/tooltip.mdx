@@ -49,7 +49,7 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx lineNumbers
+```tsx showLineNumbers
 import { 
   Tooltip, 
   TooltipContent, 
@@ -57,7 +57,7 @@ import {
 } from "@/components/ui/tooltip";
 ```
 
-```tsx lineNumbers
+```tsx showLineNumbers
 <Tooltip>
   <TooltipTrigger>Hover me</TooltipTrigger>
   <TooltipContent>
@@ -121,10 +121,10 @@ Root component that wraps the tooltip. Manages open state and positioning.
 | `closeDelay` | `number` | `100` |
 | `lazyMount` | `boolean` | `true` |
 | `unmountOnExit` | `boolean` | `true` |
-| `open` | `boolean` | — |
-| `defaultOpen` | `boolean` | — |
-| `onOpenChange` | `(details: OpenChangeDetails) => void` | — |
-| `disabled` | `boolean` | — |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | - |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | - |
+| `disabled` | `boolean` | - |
 | `interactive` | `boolean` | `false` |
 | `closeOnClick` | `boolean` | `true` |
 | `closeOnEscape` | `boolean` | `true` |
@@ -137,7 +137,7 @@ The element that triggers the tooltip on hover or focus. Renders a `button` by d
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
+| `asChild` | `boolean` | - |
 
 ### TooltipContent
 
@@ -145,8 +145,8 @@ The tooltip content displayed in a popover. Renders a `div` element.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `className` | `string` | — |
-| `asChild` | `boolean` | — |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
 
 ### TooltipArrow
 
@@ -154,7 +154,7 @@ Optional arrow pointing to the trigger. Place inside `TooltipContent`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `asChild` | `boolean` | — |
+| `asChild` | `boolean` | - |
 
 ---
 

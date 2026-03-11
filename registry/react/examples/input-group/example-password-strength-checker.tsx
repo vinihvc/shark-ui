@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
@@ -10,7 +11,6 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/react/components/input-group";
-import { cn } from "@/lib/utils";
 
 const UPPERCASE_REGEX = /[A-Z]/;
 const LOWERCASE_REGEX = /[a-z]/;
@@ -53,8 +53,7 @@ interface PasswordStrengthProps {
 
 const STRENGTH_STYLES = {
   weak: "bg-red-500 text-white dark:bg-red-600 dark:text-white",
-  moderate:
-    "bg-orange-500 text-white dark:bg-orange-600 dark:text-white",
+  moderate: "bg-orange-500 text-white dark:bg-orange-600 dark:text-white",
   strong: "bg-green-500 text-white dark:bg-green-600 dark:text-white",
 } as const;
 
@@ -69,13 +68,13 @@ function PasswordStrength({ password }: PasswordStrengthProps) {
 
   return (
     <div
+      aria-live="polite"
       className={cn(
         "flex h-12 w-full items-center justify-center rounded-lg font-medium text-sm transition-colors",
         STRENGTH_STYLES[strength]
       )}
       data-testid="passwordStrengthDiv"
       role="status"
-      aria-live="polite"
     >
       {STRENGTH_LABELS[strength]}
     </div>
@@ -83,8 +82,8 @@ function PasswordStrength({ password }: PasswordStrengthProps) {
 }
 
 interface PasswordCheckerProps {
-  password: string;
   onPasswordChange: (value: string) => void;
+  password: string;
 }
 
 function PasswordChecker({ password, onPasswordChange }: PasswordCheckerProps) {
@@ -103,19 +102,19 @@ function PasswordChecker({ password, onPasswordChange }: PasswordCheckerProps) {
       <FieldLabel>Enter Your Password</FieldLabel>
       <InputGroup className="w-full">
         <InputGroupInput
-          type={showPassword ? "text" : "password"}
-          value={password}
+          aria-label="Password"
+          autoComplete="current-password"
+          data-testid="passwordInput"
           onChange={(e) => onPasswordChange(e.target.value)}
           placeholder="•••"
-          autoComplete="current-password"
-          aria-label="Password"
-          data-testid="passwordInput"
+          type={showPassword ? "text" : "password"}
+          value={password}
         />
         <InputGroupAddon align="inline-end">
           <InputGroupButton
-            type="button"
             aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={handleToggleVisibility}
+            type="button"
           >
             {showPassword ? (
               <EyeOffIcon aria-hidden />
@@ -127,19 +126,19 @@ function PasswordChecker({ password, onPasswordChange }: PasswordCheckerProps) {
       </InputGroup>
       <div className="mt-3 flex gap-2" data-testid="buttonDiv">
         <Button
+          onClick={handleToggleVisibility}
+          size="sm"
           type="button"
           variant="default"
-          size="sm"
-          onClick={handleToggleVisibility}
         >
           {showPassword ? "Hide Password" : "Show Password"}
         </Button>
         <Button
+          disabled={!password}
+          onClick={handleClear}
+          size="sm"
           type="button"
           variant="default"
-          size="sm"
-          onClick={handleClear}
-          disabled={!password}
         >
           Clear Password
         </Button>
@@ -153,7 +152,7 @@ const Example = () => {
 
   return (
     <div className="flex w-full max-w-sm flex-col gap-4">
-      <PasswordChecker password={password} onPasswordChange={setPassword} />
+      <PasswordChecker onPasswordChange={setPassword} password={password} />
       <PasswordStrength password={password} />
     </div>
   );

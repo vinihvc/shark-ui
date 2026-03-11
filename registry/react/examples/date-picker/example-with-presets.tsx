@@ -4,6 +4,8 @@ import { CalendarIcon } from "lucide-react";
 import { Button } from "@/registry/react/components/button";
 import {
   CalendarMonthSelect,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
   CalendarTable,
   CalendarTableDays,
   CalendarViewControl,
@@ -57,8 +59,10 @@ const Example = () => {
           </div>
           <div className="max-sm:pb-3 sm:ps-2">
             <CalendarViewControl>
+              <CalendarPrevTrigger />
               <CalendarMonthSelect />
               <CalendarYearSelect />
+              <CalendarNextTrigger />
             </CalendarViewControl>
             <CalendarTable>
               <CalendarWeekDays />

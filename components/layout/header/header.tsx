@@ -1,5 +1,5 @@
-import { GithubIcon } from "lucide-react";
-import { Logo } from "@/components/icons/logo";
+import { GithubIcon } from "@/components/icons/github";
+import { SharkIcon } from "@/components/icons/shark";
 import { HeaderCommand } from "@/components/layout/header/header.command";
 import { MainNav } from "@/components/layout/header/header.main";
 import { MobileNav } from "@/components/layout/header/header.mobile";
@@ -48,7 +48,7 @@ export const SiteHeader = (props: SiteHeaderProps) => {
             )}
             href="/"
           >
-            <Logo className="size-5 shrink-0" />
+            <SharkIcon className="size-5 shrink-0" />
             Shark
           </NavLink>
 
@@ -74,18 +74,16 @@ export const SiteHeader = (props: SiteHeaderProps) => {
               </a>
             </Button>
 
-            <Separator className="h-5" orientation="vertical" />
+            <Separator orientation="vertical" />
 
             <HeaderCustomize />
 
-            <Separator className="h-5" orientation="vertical" />
+            <Separator orientation="vertical" />
 
             <ModeSwitcher />
           </div>
         </div>
       </div>
-
-      <span className="block h-px bg-[linear-gradient(90deg,var(--color-foreground)_1px,transparent_1px)] bg-bottom bg-size-[6px_1px] bg-repeat-x opacity-30 dark:opacity-15" />
     </header>
   );
 };
