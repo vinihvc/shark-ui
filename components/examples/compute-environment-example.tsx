@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import {
   Field,
   FieldContent,
@@ -21,9 +22,13 @@ import {
 } from "@/registry/react/components/radio-group";
 import { Switch } from "@/registry/react/components/switch";
 
-export const ComputeEnvironmentExample = () => {
+export const ComputeEnvironmentExample = (
+  props: React.ComponentProps<"div">
+) => {
+  const { className, ...rest } = props;
+
   return (
-    <div className="flex w-full max-w-xs flex-col gap-6">
+    <div className={cn("flex w-full flex-col gap-6", className)} {...rest}>
       <FieldSet>
         <FieldLegend>Compute Environment</FieldLegend>
         <RadioGroup className="w-full" defaultValue="kubernetes">

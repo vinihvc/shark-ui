@@ -2,16 +2,12 @@
 
 import {
   Combobox as ArkCombobox,
-  ComboboxList as ArkComboboxList,
-  type CollectionItem,
+  type ComboboxList as ArkComboboxList,
   useComboboxContext as useArkComboboxContext,
-  useListCollection,
 } from "@ark-ui/react/combobox";
-import { ark } from "@ark-ui/react/factory";
-import { useFilter } from "@ark-ui/react/locale";
 import { Portal } from "@ark-ui/react/portal";
-import { CheckIcon, ChevronDown, XIcon } from "lucide-react";
-import React from "react";
+import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
+import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -22,99 +18,23 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/react/components/input-group";
-import { ScrollArea } from "@/registry/react/components/scroll-area";
 
-/** Default item shape for ComboboxList - provides good inference without explicit typing */
-export interface DefaultComboboxItem {
-  label: string;
-  value: string;
-}
+export const useComboboxContext = useArkComboboxContext;
 
-interface ComboboxItemsProps<T extends CollectionItem> {
-  /**
-   * Function to group items. When provided, ComboboxList renders grouped.
-   */
-  groupBy?: (item: T, index: number) => string;
-  /**
-   * Array of items. Filtering is handled internally.
-   */
-  items: T[];
-  /**
-   * Convert item to display string (for filtering).
-   * Defaults to (i) => i.label for { label, value } shape.
-   */
-  itemToString?: (item: T) => string;
-  /**
-   * Convert item to value string.
-   * Defaults to (i) => i.value for { label, value } shape.
-   */
-  itemToValue?: (item: T) => string;
-}
+export const ComboboxContext = ArkCombobox.Context;
 
-interface ComboboxProps<
-  T extends CollectionItem = { label: string; value: string },
-> extends ComboboxItemsProps<T> {
-  /**
-   * The type of filter to use
-   *
-   * @default 'base'
-   */
-  filterType?: Intl.CollatorOptions["sensitivity"];
-}
-
-type ComboboxRootProps<T> = Omit<
-  React.ComponentProps<typeof ArkCombobox.Root<T>>,
-  "collection"
-> &
-  ComboboxProps<T>;
-
-export const Combobox = <T extends CollectionItem>(
-  props: ComboboxRootProps<T>
-) => {
+export const Combobox: ArkCombobox.RootComponent = (props) => {
   const {
-    allowCustomValue = true,
-    filterType = "base",
     openOnClick = true,
-    groupBy,
-    itemToValue = defaultItemToValue as (item: T) => string,
-    itemToString = defaultItemToString as (item: T) => string,
-    items,
-    onInputValueChange,
-    onOpenChange,
     lazyMount = true,
     unmountOnExit = true,
     ...rest
   } = props;
 
-  const { contains } = useFilter({ sensitivity: filterType });
-
-  const { collection: filteredCollection, filter } = useListCollection({
-    filter: contains,
-    groupBy,
-    initialItems: items,
-    itemToString,
-    itemToValue,
-  });
-
-  const handleInputValueChange = (e: ArkCombobox.InputValueChangeDetails) => {
-    filter(e.inputValue);
-    onInputValueChange?.(e);
-  };
-
-  const handleOpenChange = (e: ArkCombobox.OpenChangeDetails) => {
-    filter("");
-    onOpenChange?.(e);
-  };
-
   return (
     <ArkCombobox.Root
-      allowCustomValue
-      collection={filteredCollection}
       data-slot="combobox"
-      inputBehavior="autohighlight"
       lazyMount={lazyMount}
-      onInputValueChange={handleInputValueChange}
-      onOpenChange={handleOpenChange}
       openOnClick={openOnClick}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -158,40 +78,47 @@ interface ComboboxInputProps
    * @default true
    */
   showTrigger?: boolean;
+  /**
+   * Addon to display at the start of the input (e.g. search icon).
+   */
+  startAddon?: React.ReactNode;
 }
 
 export const ComboboxInput = (props: ComboboxInputProps) => {
   const {
+    size = "md",
     showTrigger = true,
     showClear = false,
-    disabled,
+    startAddon,
     className,
     children,
     ...rest
   } = props;
 
+  const { inputValue } = useComboboxContext();
+
   return (
     <ComboboxControl>
-      <InputGroup className={cn(className)}>
-        <ArkCombobox.Input asChild>
-          <InputGroupInput disabled={disabled} {...rest} />
-        </ArkCombobox.Input>
+      <InputGroup className={cn(className)} size={size}>
+        {startAddon ? (
+          <InputGroupAddon align="inline-start">{startAddon}</InputGroupAddon>
+        ) : null}
         {children}
-
+        <ArkCombobox.Input asChild>
+          <InputGroupInput {...rest} />
+        </ArkCombobox.Input>
         <InputGroupAddon align="inline-end">
           {showTrigger && (
             <InputGroupButton
               asChild
               className="group-has-data-[slot=combobox-clear]/input-group:hidden"
-              data-slot="input-group-button"
-              disabled={disabled}
               size="icon-xs"
               variant="ghost"
             >
               <ComboboxTrigger />
             </InputGroupButton>
           )}
-          {showClear && <ComboboxClear disabled={disabled} />}
+          {showClear && inputValue && <ComboboxClear />}
         </InputGroupAddon>
       </InputGroup>
     </ComboboxControl>
@@ -212,7 +139,7 @@ export const ComboboxTrigger = (
     >
       {children ?? (
         <Button className="size-4" variant="ghost">
-          <ChevronDown />
+          <ChevronsUpDownIcon />
         </Button>
       )}
     </ArkCombobox.Trigger>
@@ -225,7 +152,7 @@ export const ComboboxClear = (
   return (
     <ArkCombobox.ClearTrigger data-slot="combobox-clear" {...props} asChild>
       <InputGroupButton size="icon-xs" variant="ghost">
-        <XIcon className="pointer-events-none" />
+        <XIcon />
       </InputGroupButton>
     </ArkCombobox.ClearTrigger>
   );
@@ -252,7 +179,7 @@ export const ComboboxContent = (
             "bg-popover",
             "text-popover-foreground",
             "rounded-xl border shadow-lg/5",
-            "overflow-hidden",
+            "overflow-y-auto",
             "outline-none",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -310,16 +237,30 @@ export const ComboboxGroupLabel = (
   );
 };
 
-export const ComboboxItem = (
-  props: React.ComponentProps<typeof ArkCombobox.Item>
-) => {
-  const { className, children, ...rest } = props;
+interface ComboboxItemProps
+  extends React.ComponentProps<typeof ArkCombobox.Item> {
+  /**
+   * Whether to show the check indicator for selected state.
+   *
+   * @default true
+   */
+  showIndicator?: boolean;
+}
+
+export const ComboboxItem = (props: ComboboxItemProps) => {
+  const {
+    className,
+    children,
+    showIndicator = true,
+    ...rest
+  } = props;
 
   return (
     <ArkCombobox.Item
       className={cn(
         "relative",
-        "py-1.5 ps-2 pe-8",
+        "py-1.5 ps-2",
+        showIndicator ? "pe-8" : "pe-2",
         "text-sm",
         "flex w-full items-center gap-2",
         "rounded-lg",
@@ -341,11 +282,13 @@ export const ComboboxItem = (
         {children}
       </ArkCombobox.ItemText>
 
-      <span className="absolute inset-e-2 flex size-3.5 items-center justify-center">
-        <ArkCombobox.ItemIndicator data-slot="combobox-item-indicator">
-          <CheckIcon />
-        </ArkCombobox.ItemIndicator>
-      </span>
+      {showIndicator ? (
+        <span className="absolute inset-e-2 flex size-3.5 items-center justify-center">
+          <ArkCombobox.ItemIndicator data-slot="combobox-item-indicator">
+            <CheckIcon />
+          </ArkCombobox.ItemIndicator>
+        </span>
+      ) : null}
     </ArkCombobox.Item>
   );
 };
@@ -370,125 +313,16 @@ export const ComboboxEmpty = (
   );
 };
 
-interface ComboboxListProps<T extends CollectionItem = DefaultComboboxItem>
-  extends Omit<React.ComponentProps<typeof ArkComboboxList>, "children"> {
-  /**
-   * Render prop that receives each item and returns a ComboboxItem.
-   * Use with the simplified `items` API.
-   */
-  children: (item: T) => React.ReactNode;
-}
-
-export const ComboboxList = <T extends CollectionItem = DefaultComboboxItem>(
-  props: ComboboxListProps<T>
+export const ComboboxList = (
+  props: React.ComponentProps<typeof ArkComboboxList>
 ) => {
-  const { children: renderItem, className, ...rest } = props;
-
-  const { collection } = useArkComboboxContext();
-
-  const grouped =
-    "group" in collection && typeof collection.group === "function"
-      ? (collection.group() as [string, T[]][])
-      : null;
-
-  const groupedArray = Array.isArray(grouped) ? grouped : [];
-  const items = Array.from(collection.items ?? []);
+  const { className, ...rest } = props;
 
   return (
-    <ScrollArea>
-      <ArkComboboxList
-        className={cn("flex flex-col", className)}
-        data-slot="combobox-list"
-        {...rest}
-      >
-        <ComboboxEmpty />
-        {groupedArray.length > 0 ? (
-          groupedArray.map(([groupName, groupItems]) => (
-            <ComboboxGroup heading={groupName} key={groupName}>
-              {(Array.isArray(groupItems) ? groupItems : []).map((item) => (
-                <React.Fragment
-                  key={collection.getItemValue(item) ?? undefined}
-                >
-                  {renderItem(item)}
-                </React.Fragment>
-              ))}
-            </ComboboxGroup>
-          ))
-        ) : (
-          <ComboboxGroup>
-            {items.map((item) => (
-              <React.Fragment key={collection.getItemValue(item) ?? undefined}>
-                {renderItem(item as T)}
-              </React.Fragment>
-            ))}
-          </ComboboxGroup>
-        )}
-      </ArkComboboxList>
-    </ScrollArea>
-  );
-};
-
-export const useComboboxContext = useArkComboboxContext;
-
-interface ComboboxValueTextProps extends React.ComponentProps<typeof ark.span> {
-  "data-placeholder"?: string;
-}
-
-export const ComboboxValueText = (props: ComboboxValueTextProps) => {
-  const {
-    "data-placeholder": dataPlaceholder,
-    className,
-    children,
-    ...rest
-  } = props;
-
-  const { value, collection } = useArkComboboxContext();
-
-  const labels = React.useMemo(() => {
-    const values = (() => {
-      if (Array.isArray(value)) {
-        return value;
-      }
-      if (value == null) {
-        return [];
-      }
-      return [value];
-    })();
-    if (!(collection && values.length)) {
-      return [];
-    }
-    return values
-      .map((v) => collection.find(v))
-      .filter(Boolean)
-      .map((item) =>
-        collection.getItemValue(item)
-          ? ((
-              collection as { getItemLabel?: (i: unknown) => string }
-            ).getItemLabel?.(item) ??
-            (item as { label?: string }).label ??
-            String(item))
-          : null
-      );
-  }, [collection, value]);
-
-  const displayValue = labels.filter(Boolean).join(", ") || children;
-
-  return (
-    <ark.span
-      className={cn(
-        "flex min-w-0 truncate text-nowrap",
-        "data-placeholder:text-muted-foreground",
-        className
-      )}
-      data-placeholder={displayValue ? undefined : ""}
+    <ArkCombobox.List
+      className={cn("flex flex-col", className)}
+      data-slot="combobox-list"
       {...rest}
-    >
-      {displayValue || dataPlaceholder}
-    </ark.span>
+    />
   );
 };
-
-const defaultItemToValue = (item: { label: string; value: string }) =>
-  item.value;
-const defaultItemToString = (item: { label: string; value: string }) =>
-  item.label;

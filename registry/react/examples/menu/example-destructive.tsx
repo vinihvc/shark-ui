@@ -11,7 +11,7 @@ import {
 const Example = () => (
   <Menu>
     <MenuTrigger asChild>
-      <Button variant="outline">Actions</Button>
+      <Button variant="outline">Open</Button>
     </MenuTrigger>
     <MenuContent className="w-40">
       <MenuItem value="edit">

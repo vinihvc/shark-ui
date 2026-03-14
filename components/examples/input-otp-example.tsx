@@ -17,7 +17,7 @@ export const InputOtpExample = () => {
         description="We've sent a code to a****@gmail.com"
         title="Verify account"
       />
-      <CardContent className="flex flex-col gap-4">
+      <CardContent className="flex flex-col items-center gap-4">
         <InputOtp defaultValue={["5", "5", "1", "6"]}>
           <InputOtpSlot index={0} tabIndex={-1} />
           <InputOtpSlot index={1} tabIndex={-1} />

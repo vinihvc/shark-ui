@@ -108,7 +108,7 @@ export const FloatingPanelHeader = (
           "min-w-0",
           "px-(--space) py-[calc(var(--space)*0.5)]",
           "flex flex-1 shrink-0 items-center gap-2",
-          "bg-muted/64",
+          "bg-muted/48",
           "rounded-t-2xl border-b",
           "overflow-hidden",
           "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -270,7 +270,7 @@ export const FloatingPanelFooter = (
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
         "px-(--space) py-4",
-        "bg-muted/64",
+        "bg-muted/48",
         "border-t",
         className
       )}

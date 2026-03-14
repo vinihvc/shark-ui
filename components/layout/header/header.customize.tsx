@@ -1,17 +1,19 @@
 "use client";
 
-import { CheckIcon, Shuffle, Undo, WandSparklesIcon } from "lucide-react";
+import {
+  CheckIcon,
+  ClipboardIcon,
+  Shuffle,
+  Undo,
+  WandSparklesIcon,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
+import { CopyThemeCodeDialog } from "@/components/dialog/copy-theme";
 import { useHotKeys } from "@/hooks/use-hot-keys";
 import { BORDER_RADIUS, GRAY_COLORS, PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
-import {
-  Clipboard,
-  ClipboardIndicator,
-  ClipboardTrigger,
-} from "@/registry/react/components/clipboard";
 import {
   Field,
   FieldGroup,
@@ -258,14 +260,12 @@ export const HeaderCustomize = () => {
             <span className="sm:sr-only">Shuffle</span>
           </Button>
 
-          <Clipboard value="a">
-            <ClipboardTrigger asChild>
-              <Button variant="outline">
-                <ClipboardIndicator />
-                Copy theme
-              </Button>
-            </ClipboardTrigger>
-          </Clipboard>
+          <CopyThemeCodeDialog>
+            <Button variant="outline">
+              <ClipboardIcon />
+              Copy theme
+            </Button>
+          </CopyThemeCodeDialog>
         </SheetFooter>
       </SheetContent>
     </Sheet>

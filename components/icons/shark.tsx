@@ -2,9 +2,9 @@ export const SharkIcon = (props: React.ComponentProps<"svg">) => {
   return (
     <svg
       fill="currentColor"
-      height="512"
+      height="64"
       viewBox="0 0 512 512"
-      width="512"
+      width="64"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

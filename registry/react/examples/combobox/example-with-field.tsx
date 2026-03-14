@@ -1,5 +1,6 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
@@ -14,25 +15,30 @@ import {
   FieldLabel,
 } from "@/registry/react/components/field";
 
-const items = [
-  { label: "Brazil", value: "br" },
-  { label: "Mexico", value: "mx" },
-  { label: "Ireland", value: "ie" },
-];
+const Example = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
 
-const ComboboxWithFieldDemo = () => {
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  });
+
   return (
-    <Field className="w-64" invalid>
+    <Field className="w-64">
       <FieldLabel>Country</FieldLabel>
-      <Combobox invalid items={items} required>
+      <Combobox
+        collection={collection}
+        onInputValueChange={({ inputValue }) => filter(inputValue)}
+        required
+      >
         <ComboboxInput placeholder="Select a country..." />
         <ComboboxContent>
           <ComboboxList>
-            {(item) => (
+            {collection.items.map((item) => (
               <ComboboxItem item={item} key={item.value}>
                 {item.label}
               </ComboboxItem>
-            )}
+            ))}
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
@@ -42,4 +48,10 @@ const ComboboxWithFieldDemo = () => {
   );
 };
 
-export default ComboboxWithFieldDemo;
+const initialItems = [
+  { label: "Brazil", value: "br" },
+  { label: "Mexico", value: "mx" },
+  { label: "Ireland", value: "ie" },
+];
+
+export default Example;

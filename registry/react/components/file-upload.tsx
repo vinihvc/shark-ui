@@ -73,7 +73,7 @@ export const FileUploadDropzoneIcon = (
     <ark.div
       className={cn(
         "p-3",
-        "bg-muted/64",
+        "bg-muted/48",
         "text-muted-foreground",
         "rounded-full border",
         "group-data-dragging/file-upload:border-primary/24 group-data-dragging/file-upload:bg-primary/5 group-data-dragging/file-upload:text-primary",

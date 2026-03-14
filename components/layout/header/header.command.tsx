@@ -6,40 +6,42 @@ import React from "react";
 import type { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
-import { ComboboxList } from "@/registry/react/components/combobox";
 import {
   Command,
-  CommandContent,
-  CommandControl,
+  CommandCollection,
+  CommandDialog,
+  CommandDialogContent,
+  CommandDialogTrigger,
   CommandEmpty,
+  CommandGroup,
+  CommandGroupLabel,
+  type CommandGroupValue,
   CommandInput,
   CommandItem,
+  type CommandItemValue,
+  CommandList,
+  CommandPanel,
 } from "@/registry/react/components/command";
 import {
-  Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/registry/react/components/dialog";
 import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 import { slugify } from "@/utils/formatter";
 
-interface PageItem {
+interface PageItem extends CommandItemValue {
   isComponent: boolean;
   keywords?: string[];
-  label: string;
   url: string;
-  value: string;
 }
 
-interface PageGroup {
+interface PageGroup extends CommandGroupValue {
   items: PageItem[];
-  value: string;
 }
 
-interface HeaderCommandProps extends React.ComponentProps<typeof Dialog> {
+interface HeaderCommandProps
+  extends React.ComponentProps<typeof CommandDialog> {
   /**
    * The tree of pages
    */
@@ -92,10 +94,15 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
     return groups;
   }, [tree]);
 
-  const items = React.useMemo(
-    () => components.flatMap((group) => group.items),
-    [components]
-  );
+  const valueToUrl = React.useMemo(() => {
+    const map = new Map<string, string>();
+    for (const group of components) {
+      for (const item of group.items) {
+        map.set(item.value, item.url);
+      }
+    }
+    return map;
+  }, [components]);
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -113,13 +120,13 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
   }, []);
 
   return (
-    <Dialog
-      onOpenChange={({ open }) => setIsOpen(open)}
+    <CommandDialog
+      onOpenChange={(e) => setIsOpen(e.open)}
       open={isOpen}
       trapFocus={false}
       {...rest}
     >
-      <DialogTrigger asChild>
+      <CommandDialogTrigger asChild>
         <Button
           className={cn(
             "justify-start",
@@ -130,7 +137,6 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           )}
           clickEffect={false}
           variant="outline"
-          {...props}
         >
           <span className="inline-flex">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden sm:flex">
@@ -140,45 +146,52 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
             </KbdGroup>
           </div>
         </Button>
-      </DialogTrigger>
+      </CommandDialogTrigger>
 
-      <DialogContent className="border-none" showCloseButton={false}>
+      <CommandDialogContent>
         <DialogHeader className="sr-only">
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
-
         <Command
           className="rounded-md border"
-          items={items}
-          onSelect={({ itemValue }) => {
-            router.push(`/docs/${itemValue}`);
-            setIsOpen(false);
+          items={components}
+          onValueChange={(e) => {
+            const val = Array.isArray(e.value) ? e.value[0] : e.value;
+            if (val) {
+              const url = valueToUrl.get(val);
+              if (url) {
+                router.push(url.startsWith("/") ? url : `/${url}`);
+              }
+              setIsOpen(false);
+            }
           }}
-          placeholder="Search documentation..."
         >
-          <CommandControl>
-            <CommandInput />
-          </CommandControl>
-
-          <CommandContent>
+          <CommandInput placeholder="Search documentation..." />
+          <CommandPanel>
             <CommandEmpty />
-
-            <ComboboxList<PageItem>>
-              {(item) => (
-                <CommandItem
-                  className="border border-transparent data-highlighted:border-input"
-                  item={item}
-                  key={item.value}
-                >
-                  <ComponentIcon aria-hidden />
-                  {item.label}
-                </CommandItem>
+            <CommandList>
+              {(group: CommandGroupValue) => (
+                <CommandGroup key={group.value}>
+                  <CommandGroupLabel>{group.value}</CommandGroupLabel>
+                  <CommandCollection items={group.items}>
+                    {(item: CommandItemValue) => (
+                      <CommandItem
+                        className="border border-transparent data-highlighted:border-input"
+                        item={item}
+                        key={item.value}
+                      >
+                        <ComponentIcon aria-hidden />
+                        {item.label}
+                      </CommandItem>
+                    )}
+                  </CommandCollection>
+                </CommandGroup>
               )}
-            </ComboboxList>
-          </CommandContent>
+            </CommandList>
+          </CommandPanel>
         </Command>
-      </DialogContent>
-    </Dialog>
+      </CommandDialogContent>
+    </CommandDialog>
   );
 };

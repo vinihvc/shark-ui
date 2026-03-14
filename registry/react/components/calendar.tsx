@@ -207,7 +207,6 @@ export const CalendarViewControl = (
   return (
     <ArkCalendar.ViewControl
       className={cn(
-        "z-2",
         "relative",
         "h-auto w-full",
         "flex items-center gap-1.5",

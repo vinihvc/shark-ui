@@ -1,16 +1,11 @@
 "use client";
 
 import { ark } from "@ark-ui/react";
-import {
-  Listbox as ArkListbox,
-  createListCollection as createListCollectionArk,
-} from "@ark-ui/react/listbox";
+import { Listbox as ArkListbox } from "@ark-ui/react/listbox";
 import { CheckIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-
-export const createListCollection = createListCollectionArk;
 
 export const Listbox: ArkListbox.RootComponent = (props) => {
   const { className, ...rest } = props;

@@ -8,9 +8,9 @@ import {
 import { Button } from "@/registry/react/components/button";
 import { Card, CardContent } from "@/registry/react/components/card";
 
-export const AvatarGroupEmptyExample = () => {
+export const AvatarGroupEmptyExample = (props: React.ComponentProps<"div">) => {
   return (
-    <Card>
+    <Card {...props}>
       <CardContent className="flex flex-col items-center gap-4">
         <AvatarGroup>
           <Avatar>

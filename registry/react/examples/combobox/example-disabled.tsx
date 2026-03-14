@@ -1,5 +1,6 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
@@ -8,27 +9,39 @@ import {
   ComboboxList,
 } from "@/registry/react/components/combobox";
 
-const items = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Cherry", value: "cherry" },
-];
+const Example = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
 
-const ComboboxDisabledDemo = () => {
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  });
+
   return (
-    <Combobox className="w-64" disabled items={items}>
+    <Combobox
+      className="w-64"
+      collection={collection}
+      disabled
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
       <ComboboxInput placeholder="Select a fruit..." />
       <ComboboxContent>
         <ComboboxList>
-          {(item) => (
+          {collection.items.map((item) => (
             <ComboboxItem item={item} key={item.value}>
               {item.label}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
   );
 };
 
-export default ComboboxDisabledDemo;
+const initialItems = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Cherry", value: "cherry" },
+];
+
+export default Example;

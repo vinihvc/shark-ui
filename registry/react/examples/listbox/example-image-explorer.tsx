@@ -1,8 +1,8 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import React from "react";
 import {
-  createListCollection,
   Listbox,
   ListboxContent,
   ListboxItem,
@@ -70,8 +70,6 @@ const collection = createListCollection({
       alt: "Desert dunes",
     },
   ],
-  itemToValue: (item) => item.value,
-  itemToString: (item) => item.label,
 });
 
 export default Example;

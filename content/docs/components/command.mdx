@@ -50,15 +50,46 @@ npm install @ark-ui/react lucide-react
 ## Usage
 
 ```tsx
-import { Command, CommandContent, CommandItem } from "@/components/ui/command";
+import {
+  Command,
+  CommandCollection,
+  CommandDialog,
+  CommandDialogContent,
+  CommandDialogTrigger,
+  CommandEmpty,
+  CommandGroup,
+  CommandGroupLabel,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandPanel,
+} from "@/components/ui/command";
 ```
 
 ```tsx showLineNumbers
-<Command>
-  <CommandContent>
-    <CommandItem>Item 1</CommandItem>
-  </CommandContent>
-</Command>
+<CommandDialog open={open} onOpenChange={(e) => setOpen(e.open)}>
+  <CommandDialogTrigger asChild>
+    <Button>Open Command Palette</Button>
+  </CommandDialogTrigger>
+  <CommandDialogContent>
+    <Command items={groupedItems} onValueChange={handleSelect}>
+      <CommandInput placeholder="Search..." />
+      <CommandPanel>
+        <CommandEmpty>No results.</CommandEmpty>
+        <CommandList>
+          {(group) => (
+            <CommandGroup key={group.value}>
+              <CommandGroupLabel>{group.value}</CommandGroupLabel>
+              <CommandCollection items={group.items}>
+                {(item) => <CommandItem key={item.value} item={item} />}
+              </CommandCollection>
+            </CommandGroup>
+          )}
+        </CommandList>
+      </CommandPanel>
+    </Command>
+  </CommandDialogContent>
+</CommandDialog>
 ```
 
 ## Examples

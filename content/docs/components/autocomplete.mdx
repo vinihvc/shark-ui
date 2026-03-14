@@ -47,6 +47,12 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 </CodeTabs>
 
+## Controlled
+
+Control the selected value with `value` and `onValueChange` props. Use `inputValue` and `onInputValueChange` for controlling the input text.
+
+<ComponentPreview componentName="autocomplete" fileName="example-controlled" />
+
 ## Usage
 
 ```tsx
@@ -75,4 +81,148 @@ import {
 </Autocomplete>
 ```
 
+## Sizes
+
+### Small
+
+<ComponentPreview componentName="autocomplete" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="autocomplete" fileName="example-size-md" />
+
+### Large
+
+<ComponentPreview componentName="autocomplete" fileName="example-size-lg" />
+
+## State
+
+### Invalid
+
+<ComponentPreview componentName="autocomplete" fileName="example-invalid" />
+
+### Disabled
+
+<ComponentPreview componentName="autocomplete" fileName="example-disabled" />
+
 ## Examples
+
+### Inline autocomplete
+
+Autofill the input with the highlighted item while navigating with arrow keys.
+
+<ComponentPreview componentName="autocomplete" fileName="example-inline-autocomplete" />
+
+### Group
+
+<ComponentPreview componentName="autocomplete" fileName="example-group" />
+
+### With Field
+
+Use Autocomplete with `<Field />` components to style with the field components.
+
+<ComponentPreview componentName="autocomplete" fileName="example-with-field" />
+
+### With clear button
+
+Pass `showClear` to `<AutocompleteInput />` to show a clear button.
+
+<ComponentPreview componentName="autocomplete" fileName="example-with-clear-button" />
+
+### With trigger
+
+Pass `showTrigger` to `<AutocompleteInput />` to show the dropdown trigger button.
+
+<ComponentPreview componentName="autocomplete" fileName="example-with-trigger" />
+
+### With start icon
+
+<ComponentPreview componentName="autocomplete" fileName="example-with-start-icon" />
+
+## API Reference
+
+### Autocomplete
+
+Root component. Combobox preset with `allowCustomValue` and `inputBehavior="autocomplete"` for inline autofill. Use with `useListCollection` and `useFilter`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collection` | `ListCollection<T>` | **required** |
+| `value` | `string \| string[]` | - |
+| `defaultValue` | `string \| string[]` | - |
+| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | - |
+| `onInputValueChange` | `(details: InputValueChangeDetails) => void` | - |
+| `multiple` | `boolean` | `false` |
+| `disabled` | `boolean` | - |
+| `openOnClick` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `className` | `string` | - |
+
+### AutocompleteInput
+
+Input field. Uses `ComboboxInput` with `showTrigger` and `showClear` defaulting to `false`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `showTrigger` | `boolean` | `false` |
+| `showClear` | `boolean` | `false` |
+| `disabled` | `boolean` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### AutocompleteContent
+
+Popup container for suggestions. Renders a `div` inside a `Portal`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### AutocompleteItem
+
+Individual selectable option. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `item` | `T` | **required** |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### AutocompleteGroup
+
+Groups related items. Use with `groupBy` on the collection.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string \| ReactNode` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### AutocompleteGroupLabel
+
+Label for a group. Renders inside `AutocompleteGroup`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### AutocompleteEmpty
+
+Displays content when no items match the filter. Default: "No results found."
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `children` | `ReactNode` | - |
+
+### AutocompleteControl / AutocompleteTrigger / AutocompleteClear
+
+Optional building blocks for custom layouts. Use `AutocompleteInput` for the standard layout.
+
+---
+
+Use `ComboboxList` from the combobox component to render the list of items. For a complete list of props, see the [Ark UI Combobox documentation](https://ark-ui.com/docs/components/combobox#api-reference).

@@ -107,7 +107,7 @@ export const dialogContentVariants = tv({
     "bg-popover",
     "text-popover-foreground",
     "rounded-2xl border shadow-lg/5",
-    "focus:outline-none focus:ring-0",
+    "outline-none",
     "-translate-y-[calc(1.25rem*var(--nested-layer-count))]",
     "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
     "data-[nested=dialog]:data-[state=closed]:slide-in-from-bottom-10 data-[nested=dialog]:data-[state=open]:slide-in-from-bottom-10 data-[has-nested=dialog]:origin-top",
@@ -121,6 +121,12 @@ export const dialogContentVariants = tv({
       md: ["max-w-md"],
       lg: ["max-w-lg"],
       xl: ["max-w-xl"],
+      "2xl": ["max-w-2xl"],
+      "3xl": ["max-w-3xl"],
+      "4xl": ["max-w-4xl"],
+      "5xl": ["max-w-5xl"],
+      "6xl": ["max-w-6xl"],
+      "7xl": ["max-w-7xl"],
       fullscreen: ["size-full"],
     },
     bottomStickOnMobile: {
@@ -310,7 +316,7 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
         "px-(--space) py-4",
-        "bg-muted/64",
+        "bg-muted/48",
         "border-t",
         className
       )}

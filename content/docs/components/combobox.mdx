@@ -87,6 +87,12 @@ const items = [
 </Combobox>
 ```
 
+## Controlled
+
+Control the selected value with `inputValue` and `onValueChange` props.
+
+<ComponentPreview componentName="combobox" fileName="example-controlled" />
+
 ## Size
 
 ### Small
@@ -101,9 +107,21 @@ const items = [
 
 <ComponentPreview componentName="combobox" fileName="example-size-lg" />
 
+## State
+
+### Invalid
+
+<ComponentPreview componentName="combobox" fileName="example-invalid" />
+
+### Disabled
+
+<ComponentPreview componentName="combobox" fileName="example-disabled" />
+
 ## Examples
 
 ### Auto highlight
+
+Automatically highlight the first matching item as the user types by setting `inputBehavior="autohighlight"`.
 
 <ComponentPreview componentName="combobox" fileName="example-autohighlight" />
 
@@ -113,44 +131,144 @@ const items = [
 
 ### With Field
 
+Use Combobox with `<Field />` components to style the combobox with the field components.
+
 <ComponentPreview componentName="combobox" fileName="example-with-field" />
 
-### With links
+### With scroll
 
-<ComponentPreview componentName="combobox" fileName="example-with-links" />
-
-### Highlight text
-
-<ComponentPreview componentName="combobox" fileName="example-highlight-text" />
-
-### Async
-
-<ComponentPreview componentName="combobox" fileName="example-async" />
-
-### Virtualized
-
-<ComponentPreview componentName="combobox" fileName="example-virtualized" />
-
-### Invalid
-
-<ComponentPreview componentName="combobox" fileName="example-invalid" />
+<ComponentPreview componentName="combobox" fileName="example-with-scroll" />
 
 ### Multiple
+
+Enable multiple selection by setting the `multiple` prop to `<Combobox />`.
 
 <ComponentPreview componentName="combobox" fileName="example-multiple" />
 
 ### With clear button
 
+Pass `showClear` to `<ComboboxInput />` to show a clear button.
+
 <ComponentPreview componentName="combobox" fileName="example-with-clear-button" />
 
-### Disabled
+### With start icon
 
-<ComponentPreview componentName="combobox" fileName="example-disabled" />
+<ComponentPreview componentName="combobox" fileName="example-with-start-icon" />
 
-### With input group
+## API Reference
 
-<ComponentPreview componentName="combobox" fileName="example-input-group" />
+### Combobox
 
-### Popover with button trigger
+Root component. Use with `useListCollection` and `useFilter` for filtering.
 
-<ComponentPreview componentName="combobox" fileName="example-popover-button" />
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collection` | `ListCollection<T>` | **required** |
+| `value` | `string \| string[]` | - |
+| `defaultValue` | `string \| string[]` | - |
+| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | - |
+| `onInputValueChange` | `(details: InputValueChangeDetails) => void` | - |
+| `multiple` | `boolean` | `false` |
+| `disabled` | `boolean` | - |
+| `openOnClick` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `className` | `string` | - |
+
+### ComboboxControl
+
+Optional wrapper for custom layouts. Use `ComboboxInput` for the standard input-with-trigger layout.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxInput
+
+Input with dropdown trigger and optional clear button. Renders a `<input>` and a `<button>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `showTrigger` | `boolean` | `true` |
+| `showClear` | `boolean` | `false` |
+| `disabled` | `boolean` | - |
+| `className` | `string` | - |
+
+### ComboboxTrigger
+
+Button that opens the dropdown. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxClear
+
+Button to clear the input value. 
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | - |
+
+### ComboboxContent
+
+Popup container for options. Renders a `div`
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxList
+
+List container for combobox items. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxItem
+
+Individual option. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `item` | `T` | **required** |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxGroup
+
+Groups related items. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string \| ReactNode` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxGroupLabel
+
+Label for a group. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### ComboboxEmpty
+
+Displays content when no items match the filter. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `children` | `ReactNode` | `No results found.` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/combobox#api-reference).

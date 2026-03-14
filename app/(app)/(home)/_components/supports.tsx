@@ -30,7 +30,7 @@ export const Supports = (props: React.ComponentProps<"section">) => {
         <Tooltip key={name} positioning={{ placement: "bottom" }}>
           <TooltipTrigger asChild>
             <div
-              className="relative flex items-center gap-3 text-muted-foreground data-[release=soon]:opacity-32"
+              className="relative flex flex-wrap items-center gap-3 text-muted-foreground data-[release=soon]:opacity-32"
               data-release={soon ? "soon" : "released"}
             >
               <Icon

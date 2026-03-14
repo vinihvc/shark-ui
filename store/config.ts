@@ -2,7 +2,7 @@ import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
 export type PrimaryColor =
-  | "default"
+  | "neutral"
   | "red"
   | "orange"
   | "amber"
@@ -40,7 +40,7 @@ export type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
 
 export type InstallationMethod = "cli" | "manual";
 
-export const DEFAULT_PRIMARY_COLOR = "default";
+export const DEFAULT_PRIMARY_COLOR = "neutral";
 export const DEFAULT_GRAY_COLOR = "neutral";
 export const DEFAULT_BORDER_RADIUS = "md";
 export const DEFAULT_PACKAGE_MANAGER = "pnpm";

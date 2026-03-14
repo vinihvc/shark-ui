@@ -7,24 +7,23 @@ export const TemplatesHero = (props: React.ComponentProps<"section">) => {
 
   return (
     <section className={className} {...rest}>
-      <div className="flex max-w-2xl flex-col gap-4">
-        <h1 className="font-extrabold text-4xl sm:text-7xl">
-          Ship products in <br /> record time
+      <div className="flex flex-col gap-4">
+        <h1 className="font-extrabold text-4xl leading-snug sm:text-7xl">
+          Ship products <br /> in{" "}
+          <mark className="rounded-l-lg border-primary border-r bg-primary/10 px-4 font-extrabold text-primary">
+            record time
+          </mark>
         </h1>
 
-        <div className="max-w-xl">
+        <div className="max-w-md">
           <p className="text-muted-foreground text-xl">
-            Pre-built templates and layouts built with Next.js, TypeScript,
-            Tailwind CSS, and Shark UI. Save hours of work and launch faster.
+            Pre-built templates and layouts built with Shark UI. Save hours of
+            work and launch faster.
           </p>
         </div>
 
         <div className="flex gap-4">
-          <Button asChild size="xl">
-            <Link href="/docs">Get Started</Link>
-          </Button>
-
-          <Button asChild size="xl" variant="ghost">
+          <Button asChild size="xl" variant="outline">
             <Link href="/docs/components">
               Browse docs
               <ArrowRightIcon aria-hidden />

@@ -1,7 +1,7 @@
 import { ComponentsExamples } from "@/app/(app)/(home)/_components/components-examples";
 import { DotPattern } from "@/components/dot-pattern";
 import { source } from "@/lib/fumadocs";
-import { Footer } from "./_components/footer";
+import { HomeFooter } from "./_components/footer";
 import { HeroSection } from "./_components/hero";
 import { Supports } from "./_components/supports";
 
@@ -28,10 +28,11 @@ const HomePage = () => {
           className="overflow-hidden lg:max-h-[calc(100vh-var(--header-height))] lg:min-w-max lg:shrink-0"
           tabIndex={-1}
         >
-          <ComponentsExamples />
+          <ComponentsExamples className="max-md:hidden" />
         </div>
       </div>
-      <Footer />
+
+      <HomeFooter />
     </main>
   );
 };

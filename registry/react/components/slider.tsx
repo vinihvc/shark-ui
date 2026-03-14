@@ -3,7 +3,7 @@
 import { Slider as ArkSlider } from "@ark-ui/react/slider";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { FieldLabel } from "./field";
+import { FieldLabel } from "@/registry/react/components/field";
 
 interface SliderProps extends React.ComponentProps<typeof ArkSlider.Root> {
   /**

@@ -72,7 +72,7 @@ export const ScrollAreaScrollbar = (
       className={cn(
         "flex",
         "m-1",
-        "bg-muted/64",
+        "bg-muted/48",
         "opacity-0 transition-opacity delay-300",
         "data-[orientation=vertical]:w-1.5",
         "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:flex-col",

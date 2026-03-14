@@ -51,7 +51,7 @@ export const menuContentVariants = tv({
     "p-1",
     "bg-popover",
     "text-popover-foreground",
-    "rounded-lg border border-input shadow-md/5",
+    "rounded-xl border border-input shadow-md/5",
     "origin-(--transform-origin)",
     "outline-none",
     "overflow-y-auto",
@@ -160,6 +160,22 @@ export const MenuItem = (props: MenuItemProps) => {
     <ArkMenu.Item
       className={cn(menuItemVariants({ variant }), className)}
       data-variant={variant}
+      {...rest}
+    />
+  );
+};
+
+export const MenuQuickItem = (props: MenuItemProps) => {
+  const { variant = "default", className, ...rest } = props;
+
+  return (
+    <ArkMenu.Item
+      className={cn(
+        menuItemVariants({ variant }),
+        "flex-col gap-1",
+        "[&_svg:not([class*='size-'])]:size-4.5",
+        className
+      )}
       {...rest}
     />
   );

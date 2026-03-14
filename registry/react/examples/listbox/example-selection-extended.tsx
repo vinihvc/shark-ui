@@ -1,9 +1,9 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import { Item } from "@/registry/react/components/item";
 import { Kbd } from "@/registry/react/components/kbd";
 import {
-  createListCollection,
   Listbox,
   ListboxContent,
   ListboxItem,

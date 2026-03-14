@@ -1,104 +1,58 @@
 "use client";
 
-import { GlobeIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
-  ComboboxControl,
+  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
 } from "@/registry/react/components/combobox";
-import {
-  InputGroup,
-  InputGroupAddon,
-} from "@/registry/react/components/input-group";
 
-const timezoneGroups = [
-  {
-    value: "Americas",
-    items: [
-      "(GMT-5) New York",
-      "(GMT-8) Los Angeles",
-      "(GMT-6) Chicago",
-      "(GMT-5) Toronto",
-      "(GMT-8) Vancouver",
-      "(GMT-3) São Paulo",
-    ],
-  },
-  {
-    value: "Europe",
-    items: [
-      "(GMT+0) London",
-      "(GMT+1) Paris",
-      "(GMT+1) Berlin",
-      "(GMT+1) Rome",
-      "(GMT+1) Madrid",
-      "(GMT+1) Amsterdam",
-    ],
-  },
-  {
-    value: "Asia/Pacific",
-    items: [
-      "(GMT+9) Tokyo",
-      "(GMT+8) Shanghai",
-      "(GMT+8) Singapore",
-      "(GMT+4) Dubai",
-      "(GMT+11) Sydney",
-      "(GMT+9) Seoul",
-    ],
-  },
-] as const;
+const Example = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
 
-interface TimezoneItem {
-  group: string;
-  label: string;
-  value: string;
-}
+  const { collection, filter } = useListCollection({
+    filter: contains,
+    groupBy: (item) => item.continent,
+    initialItems,
+  });
 
-const items: TimezoneItem[] = timezoneGroups.flatMap((group) =>
-  group.items.map((item) => ({
-    label: item,
-    value: item,
-    group: group.value,
-  }))
-);
-
-const ComboboxGroupDemo = () => {
   return (
     <Combobox
       className="w-64"
-      groupBy={(item) => item.group}
-      items={items}
-      itemToString={(item) => item.label}
-      itemToValue={(item) => item.value}
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <ComboboxControl asChild>
-        <InputGroup>
-          <InputGroupAddon>
-            <GlobeIcon />
-          </InputGroupAddon>
-          <ComboboxInput
-            className={cn(
-              "flex-1 rounded-none border-0 bg-transparent shadow-none",
-              "focus-visible:ring-0 dark:bg-transparent"
-            )}
-            placeholder="Select a timezone"
-          />
-        </InputGroup>
-      </ComboboxControl>
+      <ComboboxInput placeholder="Select a timezone" />
       <ComboboxContent className="w-60">
-        <ComboboxList<TimezoneItem>>
-          {(item) => (
-            <ComboboxItem item={item} key={item.value}>
-              {item.label}
-            </ComboboxItem>
-          )}
+        <ComboboxList>
+          {collection.group().map(([continent, group]) => (
+            <ComboboxGroup heading={continent} key={continent}>
+              {group.map((item) => (
+                <ComboboxItem item={item} key={item.value}>
+                  {item.label}
+                </ComboboxItem>
+              ))}
+            </ComboboxGroup>
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
   );
 };
 
-export default ComboboxGroupDemo;
+const initialItems = [
+  { label: "Canada", value: "ca", continent: "North America" },
+  { label: "United States", value: "us", continent: "North America" },
+  { label: "Mexico", value: "mx", continent: "North America" },
+  { label: "United Kingdom", value: "uk", continent: "Europe" },
+  { label: "Germany", value: "de", continent: "Europe" },
+  { label: "France", value: "fr", continent: "Europe" },
+  { label: "Japan", value: "jp", continent: "Asia" },
+  { label: "South Korea", value: "kr", continent: "Asia" },
+  { label: "China", value: "cn", continent: "Asia" },
+];
+
+export default Example;

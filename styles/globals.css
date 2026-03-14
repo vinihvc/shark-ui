@@ -452,10 +452,10 @@
   }
 
   [data-line] span {
-    color: var(--shiki-light);
+    @apply text-(--shiki-light);
 
     @variant dark {
-      color: var(--shiki-dark) !important;
+      @apply text-(--shiki-dark);
     }
   }
 
