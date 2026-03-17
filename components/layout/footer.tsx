@@ -13,6 +13,7 @@ const DOCS_LINKS = [
 
 const PROJECTS_LINKS = [
   { label: "Blocks", href: "/blocks" },
+  { label: "Showcase", href: "/showcase" },
   { label: "Templates", href: "/templates" },
 ] as const;
 

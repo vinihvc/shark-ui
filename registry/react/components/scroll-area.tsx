@@ -13,7 +13,7 @@ const scrollAreaVariants = tv({
     "outline-none",
     "[scrollbar-width:none]",
     "[&::-webkit-scrollbar]:display-none",
-    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+    "outline-none",
     "transition-shadow",
   ],
   variants: {
@@ -49,7 +49,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
         className={cn(scrollAreaVariants({ scrollFade }))}
         data-slot="scroll-area-viewport"
       >
-        <ArkScrollArea.Content data-slot="scroll-area-content">
+        <ArkScrollArea.Content data-slot="scroll-area-content ">
           {children}
         </ArkScrollArea.Content>
       </ArkScrollArea.Viewport>

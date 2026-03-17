@@ -19,11 +19,11 @@ const ComboboxDemo = () => {
 
   return (
     <Combobox
-      className="w-64"
+      className="max-w-xs"
       collection={collection}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
-      <ComboboxInput />
+      <ComboboxInput placeholder="Select an option" />
       <ComboboxContent>
         <ComboboxList>
           {collection.items.map((item) => (

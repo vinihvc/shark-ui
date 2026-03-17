@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  InboxIcon,
-  FileEditIcon,
-  SendIcon,
   AlertCircleIcon,
+  FileEditIcon,
+  InboxIcon,
+  SendIcon,
   Trash2Icon,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import React from "react";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
 import {
   Resizable,
@@ -89,7 +89,9 @@ const EMAILS = [
 ];
 
 const EmailTemplatePage = () => {
-  const [selectedId, setSelectedId] = useState<string | null>(EMAILS[0].id);
+  const [selectedId, setSelectedId] = React.useState<string | null>(
+    EMAILS[0].id
+  );
   const selectedEmail = EMAILS.find((e) => e.id === selectedId);
 
   return (
@@ -149,19 +151,16 @@ const EmailTemplatePage = () => {
               { id: "content", minSize: 30 },
             ]}
           >
-            <ResizablePanel
-              className="flex flex-col overflow-hidden"
-              id="list"
-            >
+            <ResizablePanel className="flex flex-col overflow-hidden" id="list">
               <ScrollArea className="flex-1">
                 <div className="flex flex-col">
                   {EMAILS.map((email) => (
                     <button
-                      key={email.id}
                       className="flex flex-col gap-1 border-b px-4 py-3 text-left transition-colors hover:bg-muted/50 data-[selected=true]:bg-muted"
                       data-selected={selectedId === email.id}
-                      type="button"
+                      key={email.id}
                       onClick={() => setSelectedId(email.id)}
+                      type="button"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <span className="truncate font-medium text-sm">

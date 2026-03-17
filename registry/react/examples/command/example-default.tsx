@@ -1,157 +1,69 @@
 "use client";
 
-import { ArrowDownIcon, ArrowUpIcon, CornerDownLeftIcon } from "lucide-react";
-import { Fragment, useEffect, useState } from "react";
-import { Button } from "@/registry/react/components/button";
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Command,
-  CommandCollection,
-  CommandDialog,
-  CommandDialogContent,
-  CommandDialogTrigger,
+  CommandContent,
   CommandEmpty,
-  CommandFooter,
   CommandGroup,
-  CommandGroupLabel,
-  type CommandGroupValue,
   CommandInput,
   CommandItem,
-  type CommandItemValue,
   CommandList,
-  CommandPanel,
   CommandSeparator,
   CommandShortcut,
 } from "@/registry/react/components/command";
-import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 
-const suggestions: CommandItemValue[] = [
-  { label: "Linear", shortcut: "⌘L", value: "linear" },
-  { label: "Figma", shortcut: "⌘F", value: "figma" },
-  { label: "Slack", shortcut: "⌘S", value: "slack" },
-  { label: "YouTube", shortcut: "⌘Y", value: "youtube" },
-  { label: "Raycast", shortcut: "⌘R", value: "raycast" },
-];
+const CommandExample = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
 
-const commands: CommandItemValue[] = [
-  {
-    label: "Clipboard History",
-    shortcut: "⌘⇧C",
-    value: "clipboard-history",
-  },
-  {
-    label: "Import Extension",
-    shortcut: "⌘I",
-    value: "import-extension",
-  },
-  { label: "Create Snippet", shortcut: "⌘N", value: "create-snippet" },
-  {
-    label: "System Preferences",
-    shortcut: "⌘,",
-    value: "system-preferences",
-  },
-  {
-    label: "Window Management",
-    shortcut: "⌘⇧W",
-    value: "window-management",
-  },
-];
-
-const groupedItems: CommandGroupValue[] = [
-  { items: suggestions, value: "Suggestions" },
-  { items: commands, value: "Commands" },
-];
-
-export default function CommandExample() {
-  const [open, setOpen] = useState(false);
-
-  function handleItemSelect(_value: string) {
-    setOpen(false);
-  }
-
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((o) => !o);
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+    groupBy: (item) => item.group,
+  });
 
   return (
-    <CommandDialog onOpenChange={(e) => setOpen(e.open)} open={open}>
-      <CommandDialogTrigger asChild>
-        <Button variant="outline">
-          Open Command Palette
-          <KbdGroup>
-            <Kbd>⌘</Kbd>
-            <Kbd>J</Kbd>
-          </KbdGroup>
-        </Button>
-      </CommandDialogTrigger>
-      <CommandDialogContent>
-        <Command
-          items={groupedItems}
-          onValueChange={(e) => {
-            const val = Array.isArray(e.value) ? e.value[0] : e.value;
-            if (val) {
-              handleItemSelect(val);
-            }
-          }}
-        >
-          <CommandInput placeholder="Search for apps and commands..." />
-          <CommandPanel>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandList>
-              {(group: CommandGroupValue, _index: number) => (
-                <Fragment key={group.value}>
-                  <CommandGroup>
-                    <CommandGroupLabel>{group.value}</CommandGroupLabel>
-                    <CommandCollection items={group.items}>
-                      {(item: CommandItemValue) => (
-                        <CommandItem item={item} key={item.value}>
-                          <span className="flex-1">{item.label}</span>
-                          {item.shortcut ? (
-                            <CommandShortcut>{item.shortcut}</CommandShortcut>
-                          ) : null}
-                        </CommandItem>
-                      )}
-                    </CommandCollection>
-                  </CommandGroup>
-                  <CommandSeparator />
-                </Fragment>
-              )}
-            </CommandList>
-          </CommandPanel>
-          <CommandFooter>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <KbdGroup>
-                  <Kbd>
-                    <ArrowUpIcon />
-                  </Kbd>
-                  <Kbd>
-                    <ArrowDownIcon />
-                  </Kbd>
-                </KbdGroup>
-                <span>Navigate</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Kbd>
-                  <CornerDownLeftIcon />
-                </Kbd>
-                <span>Open</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Kbd>Esc</Kbd>
-              <span>Close</span>
-            </div>
-          </CommandFooter>
-        </Command>
-      </CommandDialogContent>
-    </CommandDialog>
+    <Command
+      className="w-full max-w-md"
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
+      <CommandInput />
+      <CommandContent>
+        <CommandEmpty />
+        <CommandList>
+          {collection.group().map(([group, items]) => (
+            <CommandGroup heading={group} key={group}>
+              {items.map((item) => (
+                <CommandItem item={item} key={item.value}>
+                  {item.label}
+                  <CommandShortcut>{item.shortcut}</CommandShortcut>
+                </CommandItem>
+              ))}
+              <CommandSeparator />
+            </CommandGroup>
+          ))}
+        </CommandList>
+      </CommandContent>
+    </Command>
   );
-}
+};
+
+const initialItems = [
+  { label: "Linear", shortcut: "⌘L", value: "linear", group: "Suggestions" },
+  { label: "Figma", shortcut: "⌘F", value: "figma", group: "Suggestions" },
+  { label: "Slack", shortcut: "⌘S", value: "slack", group: "Suggestions" },
+  { label: "YouTube", shortcut: "⌘Y", value: "youtube", group: "Suggestions" },
+  { label: "Raycast", shortcut: "⌘R", value: "raycast", group: "Suggestions" },
+  { label: "Settings", shortcut: "⌘,", value: "settings", group: "Settings" },
+  { label: "Help", shortcut: "⌘?", value: "help", group: "Settings" },
+  { label: "About", shortcut: "⌘I", value: "about", group: "Settings" },
+  { label: "Feedback", shortcut: "⌘F", value: "feedback", group: "Settings" },
+  { label: "Support", shortcut: "⌘S", value: "support", group: "Settings" },
+  { label: "Updates", shortcut: "⌘U", value: "updates", group: "Settings" },
+  { label: "Logout", shortcut: "⌘L", value: "logout", group: "Settings" },
+  { label: "Sign out", shortcut: "⌘O", value: "sign out", group: "Settings" },
+  { label: "Sign in", shortcut: "⌘I", value: "sign in", group: "Settings" },
+];
+
+export default CommandExample;

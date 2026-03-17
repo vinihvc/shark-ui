@@ -1,7 +1,7 @@
 "use client";
 
 import { PauseIcon, PlayIcon, RotateCcwIcon } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Timer,
@@ -13,8 +13,8 @@ import {
 } from "@/registry/react/components/timer";
 
 const PomodoroExample = () => {
-  const [isWorking, setIsWorking] = useState(true);
-  const [cycles, setCycles] = useState(0);
+  const [isWorking, setIsWorking] = React.useState(true);
+  const [cycles, setCycles] = React.useState(0);
 
   const handleComplete = () => {
     setIsWorking(!isWorking);

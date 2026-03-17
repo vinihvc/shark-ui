@@ -2,7 +2,7 @@
 
 import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
 import { PlusIcon } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Tour,
@@ -65,7 +65,7 @@ const steps: TourStepType[] = [
 ];
 
 const WaitForElementExample = () => {
-  const [items, setItems] = useState(["Item 1", "Item 2"]);
+  const [items, setItems] = React.useState(["Item 1", "Item 2"]);
 
   const addItem = () => {
     setItems((prev) => [...prev, `Item ${prev.length + 1}`]);

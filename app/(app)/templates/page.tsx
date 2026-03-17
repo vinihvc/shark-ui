@@ -1,3 +1,4 @@
+import { TemplatesThumb } from "@/components/thumbs/templates";
 import { DotPattern } from "@/components/dot-pattern";
 import { Footer } from "@/components/layout/footer";
 import { TemplatesHero } from "./_components/hero";
@@ -17,7 +18,18 @@ const TemplatesPage = () => {
         </div>
 
         <div className="container relative flex flex-col gap-14 pt-16 pb-16 sm:pt-32">
-          <TemplatesHero />
+          <div className="flex flex-col flex-nowrap gap-14 lg:flex-row lg:items-start">
+            <div className="flex flex-col gap-4 lg:shrink-0">
+              <TemplatesHero />
+            </div>
+            <div
+              aria-hidden
+              className="hidden overflow-hidden lg:block lg:min-w-max lg:shrink-0"
+              tabIndex={-1}
+            >
+              <TemplatesThumb className="max-w-md" />
+            </div>
+          </div>
 
           <section aria-labelledby="templates-heading">
             <h2 className="sr-only" id="templates-heading">

@@ -1,7 +1,7 @@
 "use client";
 
 import { PlayIcon, RotateCcwIcon } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Timer,
@@ -13,8 +13,8 @@ import {
 } from "@/registry/react/components/timer";
 
 const EventsExample = () => {
-  const [ticks, setTicks] = useState(0);
-  const [completed, setCompleted] = useState(false);
+  const [ticks, setTicks] = React.useState(0);
+  const [completed, setCompleted] = React.useState(false);
 
   return (
     <Timer

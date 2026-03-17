@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Tour,
@@ -49,7 +49,7 @@ const steps: TourStepType[] = [
 ];
 
 const EventsExample = () => {
-  const [logs, setLogs] = useState<string[]>([]);
+  const [logs, setLogs] = React.useState<string[]>([]);
 
   const addLog = (message: string) => {
     setLogs((prev) => [...prev, message]);

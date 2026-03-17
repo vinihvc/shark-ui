@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   NavigationMenu,
@@ -12,7 +12,7 @@ import {
 } from "@/registry/react/components/navigation-menu";
 
 const Example = () => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = React.useState("");
 
   return (
     <div className="flex flex-col gap-4">

@@ -1,14 +1,13 @@
 import { DotPattern } from "@/components/dot-pattern";
 import { Footer } from "@/components/layout/footer";
-import { BlocksThumb } from "@/components/thumbs/blocks";
-import { BlockCard } from "./_components/block-card";
-import { BlocksHero } from "./_components/hero";
-import { MOCK_BLOCKS } from "./_data/mock-blocks";
+import { ShowcaseCard } from "./_components/showcase-card";
+import { ShowcaseHero } from "./_components/hero";
+import { MOCK_SHOWCASES } from "./_data/mock-showcases";
 
 export const revalidate = false;
 export const dynamic = "force-static";
 
-const BlocksPage = () => {
+const ShowcasePage = () => {
   return (
     <>
       <main className="relative max-w-screen overflow-hidden">
@@ -18,21 +17,15 @@ const BlocksPage = () => {
         </div>
 
         <div className="container relative flex flex-col gap-14 pt-16 pb-16 sm:pt-32">
-          <div className="flex flex-col flex-nowrap gap-14 lg:flex-row lg:items-start">
-            <div className="flex flex-col gap-4 lg:shrink-0">
-              <BlocksHero />
-            </div>
+          <ShowcaseHero />
 
-            <BlocksThumb className="w-full max-w-sm" />
-          </div>
-
-          <section aria-labelledby="blocks-heading">
-            <h2 className="sr-only" id="blocks-heading">
-              Blocks
+          <section aria-labelledby="showcase-heading">
+            <h2 className="sr-only" id="showcase-heading">
+              Showcase
             </h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {MOCK_BLOCKS.map((block) => (
-                <BlockCard block={block} key={block.id} />
+              {MOCK_SHOWCASES.map((showcase) => (
+                <ShowcaseCard key={showcase.id} showcase={showcase} />
               ))}
             </div>
           </section>
@@ -44,4 +37,4 @@ const BlocksPage = () => {
   );
 };
 
-export default BlocksPage;
+export default ShowcasePage;

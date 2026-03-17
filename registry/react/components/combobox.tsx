@@ -248,12 +248,7 @@ interface ComboboxItemProps
 }
 
 export const ComboboxItem = (props: ComboboxItemProps) => {
-  const {
-    className,
-    children,
-    showIndicator = true,
-    ...rest
-  } = props;
+  const { className, children, showIndicator = true, ...rest } = props;
 
   return (
     <ArkCombobox.Item
@@ -278,9 +273,7 @@ export const ComboboxItem = (props: ComboboxItemProps) => {
       persistFocus
       {...rest}
     >
-      <ArkCombobox.ItemText data-slot="combobox-item-text">
-        {children}
-      </ArkCombobox.ItemText>
+      {children}
 
       {showIndicator ? (
         <span className="absolute inset-e-2 flex size-3.5 items-center justify-center">

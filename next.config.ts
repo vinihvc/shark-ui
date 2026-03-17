@@ -5,7 +5,6 @@ const withMDX = createMDX();
 
 const config: NextConfig = {
   reactStrictMode: true,
-  serverExternalPackages: ["@takumi-rs/core"],
   async rewrites() {
     return [
       {
