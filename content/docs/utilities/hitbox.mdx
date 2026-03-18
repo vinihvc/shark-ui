@@ -1,0 +1,178 @@
+---
+title: Hitbox
+description: Expand hit areas of interactive elements without affecting layout.
+---
+
+<ComponentPreview componentName="hitbox" />
+
+Kudos to [Kian Bazza](https://bazza.dev/r/hit-area) for the original implementation.
+
+## Installation
+
+<CodeTabs>
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/hitbox
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+
+<Steps>
+  <Step>Copy the hitbox utilities into a new file (e.g. `styles/hitbox.css`).</Step>
+
+```css title="styles/hitbox.css" showLineNumbers
+@utility hitbox-debug {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    @apply border border-dashed border-blue-500 bg-blue-500/10;
+  }
+  &:hover::before {
+    @apply border border-dashed border-green-500 bg-green-500/10;
+  }
+}
+@utility hitbox {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+  }
+}
+@utility hitbox-* {
+  position: relative;
+  --hitbox-t: calc(-1 * --spacing(--value(number, [*])));
+  --hitbox-b: calc(-1 * --spacing(--value(number, [*])));
+  --hitbox-l: calc(-1 * --spacing(--value(number, [*])));
+  --hitbox-r: calc(-1 * --spacing(--value(number, [*])));
+  &::before {
+    content: "";
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+  }
+}
+@utility hitbox-l-* {
+  position: relative;
+  --hitbox-l: calc(-1 * --spacing(--value(number, [*])));
+  &::before { content: ""; position: absolute; top: var(--hitbox-t, 0px); right: var(--hitbox-r, 0px); bottom: var(--hitbox-b, 0px); left: var(--hitbox-l, 0px); pointer-events: inherit; }
+}
+@utility hitbox-r-* {
+  position: relative;
+  --hitbox-r: calc(-1 * --spacing(--value(number, [*])));
+  &::before { content: ""; position: absolute; top: var(--hitbox-t, 0px); right: var(--hitbox-r, 0px); bottom: var(--hitbox-b, 0px); left: var(--hitbox-l, 0px); pointer-events: inherit; }
+}
+@utility hitbox-t-* {
+  position: relative;
+  --hitbox-t: calc(-1 * --spacing(--value(number, [*])));
+  &::before { content: ""; position: absolute; top: var(--hitbox-t, 0px); right: var(--hitbox-r, 0px); bottom: var(--hitbox-b, 0px); left: var(--hitbox-l, 0px); pointer-events: inherit; }
+}
+@utility hitbox-b-* {
+  position: relative;
+  --hitbox-b: calc(-1 * --spacing(--value(number, [*])));
+  &::before { content: ""; position: absolute; top: var(--hitbox-t, 0px); right: var(--hitbox-r, 0px); bottom: var(--hitbox-b, 0px); left: var(--hitbox-l, 0px); pointer-events: inherit; }
+}
+@utility hitbox-x-* {
+  position: relative;
+  --hitbox-l: calc(-1 * --spacing(--value(number, [*])));
+  --hitbox-r: calc(-1 * --spacing(--value(number, [*])));
+  &::before { content: ""; position: absolute; top: var(--hitbox-t, 0px); right: var(--hitbox-r, 0px); bottom: var(--hitbox-b, 0px); left: var(--hitbox-l, 0px); pointer-events: inherit; }
+}
+@utility hitbox-y-* {
+  position: relative;
+  --hitbox-t: calc(-1 * --spacing(--value(number, [*])));
+  --hitbox-b: calc(-1 * --spacing(--value(number, [*])));
+  &::before { content: ""; position: absolute; top: var(--hitbox-t, 0px); right: var(--hitbox-r, 0px); bottom: var(--hitbox-b, 0px); left: var(--hitbox-l, 0px); pointer-events: inherit; }
+}
+```
+
+  <Step>Import it in your main stylesheet.</Step>
+
+```css title="styles/globals.css" showLineNumbers {2}
+@import "tailwindcss";
+@import "./hitbox.css";
+```
+
+</Steps>
+
+  </TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+<Button className="hitbox-6">Click me</Button>
+<Checkbox className="hitbox-4" />
+<a href="/page" className="hitbox-y-3 block py-2">Link</a>
+```
+
+## Examples
+
+### Basic
+
+Use `hitbox-*` to extend the hit area uniformly on all sides.
+
+<ComponentPreview componentName="hitbox" fileName="example-basic" />
+
+### Individual sides
+
+Target specific sides with `hitbox-l-*`, `hitbox-r-*`, `hitbox-t-*`, and `hitbox-b-*`.
+
+<ComponentPreview componentName="hitbox" fileName="example-sides" />
+
+### Horizontal and vertical
+
+Use `hitbox-x-*` and `hitbox-y-*` for axis shorthands.
+
+<ComponentPreview componentName="hitbox" fileName="example-axes" />
+
+### Custom values
+
+Use arbitrary values with bracket syntax.
+
+<ComponentPreview componentName="hitbox" fileName="example-custom" />
+
+### Debugging
+
+Add `hitbox-debug` to visualize the expanded hit area.
+
+<ComponentPreview componentName="hitbox" fileName="example-debug" />
+
+### Sidebar navigation
+
+Use `hitbox-y-*` so adjacent items feel continuous.
+
+<ComponentPreview componentName="hitbox" fileName="example-sidebar" />
+
+## API Reference
+
+| Class | Expansion |
+| --- | --- |
+| `hitbox` | Base (no expansion) |
+| `hitbox-*` | All sides (spacing or `[value]`) |
+| `hitbox-l-*` | Left |
+| `hitbox-r-*` | Right |
+| `hitbox-t-*` | Top |
+| `hitbox-b-*` | Bottom |
+| `hitbox-x-*` | Left and right |
+| `hitbox-y-*` | Top and bottom |
+| `hitbox-debug` | Debug overlay |

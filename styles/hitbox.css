@@ -1,0 +1,154 @@
+@utility hitbox-debug {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+    @apply border border-dashed border-info bg-info/10;
+  }
+
+  &:hover::before {
+    @apply border border-dashed border-success bg-success/10;
+  }
+}
+
+@utility hitbox {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-* {
+  --hitbox-t: --spacing(--value(number) * -1);
+  --hitbox-t: calc(--value([*]) * -1);
+  --hitbox-b: --spacing(--value(number) * -1);
+  --hitbox-b: calc(--value([*]) * -1);
+  --hitbox-l: --spacing(--value(number) * -1);
+  --hitbox-l: calc(--value([*]) * -1);
+  --hitbox-r: --spacing(--value(number) * -1);
+  --hitbox-r: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-l-* {
+  --hitbox-l: --spacing(--value(number) * -1);
+  --hitbox-l: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-r-* {
+  --hitbox-r: --spacing(--value(number) * -1);
+  --hitbox-r: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-t-* {
+  --hitbox-t: --spacing(--value(number) * -1);
+  --hitbox-t: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-b-* {
+  --hitbox-b: --spacing(--value(number) * -1);
+  --hitbox-b: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-x-* {
+  --hitbox-l: --spacing(--value(number) * -1);
+  --hitbox-l: calc(--value([*]) * -1);
+  --hitbox-r: --spacing(--value(number) * -1);
+  --hitbox-r: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
+
+@utility hitbox-y-* {
+  --hitbox-t: --spacing(--value(number) * -1);
+  --hitbox-t: calc(--value([*]) * -1);
+  --hitbox-b: --spacing(--value(number) * -1);
+  --hitbox-b: calc(--value([*]) * -1);
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: var(--hitbox-t, 0px);
+    right: var(--hitbox-r, 0px);
+    bottom: var(--hitbox-b, 0px);
+    left: var(--hitbox-l, 0px);
+    pointer-events: inherit;
+    content: "";
+  }
+}
