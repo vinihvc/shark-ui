@@ -94,7 +94,7 @@ export const ComponentSource = (props: ComponentSourceProps) => {
 
 const replaceContent = (code: string) => {
   code = code.replaceAll("@/registry/react/components", "@/components/ui");
-  code = code.replaceAll(/const (\w+) = \(/g, "export const $1 = (");
+  code = code.replaceAll(/export const (\w+) = \(/g, "export const $1 = (");
   code = code.replaceAll(/export default (\w+);/g, "");
   code = code.replaceAll(/\n$/g, "");
   code = code.replaceAll(/\n$/g, "");
