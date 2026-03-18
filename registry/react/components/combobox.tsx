@@ -8,7 +8,7 @@ import {
 import { Portal } from "@ark-ui/react/portal";
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 import type React from "react";
-import type { VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import type { inputVariants } from "@/registry/react/components/input";
@@ -19,7 +19,7 @@ import {
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 
-export const useComboboxContext = useArkComboboxContext;
+export const useCombobox = useArkComboboxContext;
 
 export const ComboboxContext = ArkCombobox.Context;
 
@@ -95,14 +95,14 @@ export const ComboboxInput = (props: ComboboxInputProps) => {
     ...rest
   } = props;
 
-  const { inputValue } = useComboboxContext();
+  const { inputValue } = useCombobox();
 
   return (
     <ComboboxControl>
       <InputGroup className={cn(className)} size={size}>
-        {startAddon ? (
+        {startAddon && (
           <InputGroupAddon align="inline-start">{startAddon}</InputGroupAddon>
-        ) : null}
+        )}
         {children}
         <ArkCombobox.Input asChild>
           <InputGroupInput {...rest} />
@@ -237,38 +237,43 @@ export const ComboboxGroupLabel = (
   );
 };
 
+export const comboboxItemVariants = tv({
+  base: [
+    "relative",
+    "py-1.5 ps-2",
+    "text-sm",
+    "flex w-full items-center gap-2",
+    "rounded-xl",
+    "select-none",
+    "cursor-default",
+    "outline-hidden",
+    "data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground",
+    "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+    "data-disabled:pointer-events-none data-disabled:opacity-64",
+    "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    " ",
+  ],
+  variants: {
+    showIndicator: {
+      true: "pe-8",
+      false: "pe-2",
+    },
+  },
+  defaultVariants: {
+    showIndicator: true,
+  },
+});
+
 interface ComboboxItemProps
-  extends React.ComponentProps<typeof ArkCombobox.Item> {
-  /**
-   * Whether to show the check indicator for selected state.
-   *
-   * @default true
-   */
-  showIndicator?: boolean;
-}
+  extends React.ComponentProps<typeof ArkCombobox.Item>,
+    VariantProps<typeof comboboxItemVariants> {}
 
 export const ComboboxItem = (props: ComboboxItemProps) => {
-  const { className, children, showIndicator = true, ...rest } = props;
+  const { showIndicator = true, className, children, ...rest } = props;
 
   return (
     <ArkCombobox.Item
-      className={cn(
-        "relative",
-        "py-1.5 ps-2",
-        showIndicator ? "pe-8" : "pe-2",
-        "text-sm",
-        "flex w-full items-center gap-2",
-        "rounded-lg",
-        "select-none",
-        "cursor-default",
-        "outline-hidden",
-        "data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground",
-        "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-        "data-disabled:pointer-events-none data-disabled:opacity-64",
-        "[&_svg]:pointer-events-none [&_svg]:shrink-0",
-        "[&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
+      className={cn(comboboxItemVariants({ showIndicator }), className)}
       data-slot="combobox-item"
       persistFocus
       {...rest}

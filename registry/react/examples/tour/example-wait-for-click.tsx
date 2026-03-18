@@ -71,7 +71,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const WaitForClickExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <Tour steps={steps}>
       <TourTrigger asChild>
@@ -103,4 +103,4 @@ const WaitForClickExample = () => (
   </div>
 );
 
-export default WaitForClickExample;
+export default Example;

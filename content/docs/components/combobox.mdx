@@ -29,6 +29,8 @@ npx shadcn@latest add @shark/combobox
 
 <Steps>
 
+<Step>This component depends on [Button](/docs/components/button), [Input](/docs/components/input), and [Input Group](/docs/components/input-group). Install them first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -49,39 +51,41 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-Pass an `items` array and use `ComboboxList` with a render prop. Filtering is handled internally. No type annotations needed for the common `{ label, value }` shape. For custom item shapes, type the callback parameter: `{(item: MyItemType) => ...}`.
-
 ```tsx
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
-  ComboboxControl,
-  ComboboxInput,
-  ComboboxTrigger,
-  ComboboxClearTrigger,
   ComboboxContent,
+  ComboboxInput,
   ComboboxItem,
   ComboboxList,
 } from "@/components/ui/combobox";
+```
 
-const items = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Cherry", value: "cherry" },
-];
+```tsx
+const { contains } = useFilter({ sensitivity: "base" });
+const { collection, filter } = useListCollection({
+  initialItems: [...],
+  filter: contains,
+  groupBy: (item) => item.group, // optional
+});
 
-<Combobox items={items}>
-  <ComboboxControl>
-    <ComboboxInput />
-    <ComboboxClearTrigger />
-    <ComboboxTrigger />
-  </ComboboxControl>
+<Combobox
+  collection={collection}
+  onInputValueChange={({ inputValue }) => filter(inputValue)}
+>
+  <ComboboxInput placeholder="Select an option" />
   <ComboboxContent>
     <ComboboxList>
-      {(item) => (
-        <ComboboxItem item={item} key={item.value}>
-          {item.label}
-        </ComboboxItem>
-      )}
+      {collection.group().map(([group, items]) => (
+        <ComboboxGroup heading={group} key={group}>
+          {items.map((item) => (
+            <ComboboxItem item={item} key={item.value}>
+              {item.label}
+            </ComboboxItem>
+          ))}
+        </ComboboxGroup>
+      ))}
     </ComboboxList>
   </ComboboxContent>
 </Combobox>

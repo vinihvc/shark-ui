@@ -1,0 +1,129 @@
+---
+title: Colors
+description: Color palette and theming with CSS variables for Shark UI.
+---
+
+Shark UI relies on CSS custom properties for its color system. For layout setup and the full styling guide, see [Styling](/docs/styling). These variables toggle between light and dark themes automatically when you add the `dark` class to your root element. All definitions live in `globals.css` and stick to the [shadcn/ui](https://ui.shadcn.com) naming style.
+
+## How It Works
+
+Colors are wired up through Tailwind's theme. The `@theme inline` block in `globals.css` maps semantic variables into Tailwind utilities so you can use classes like `bg-primary` and `text-muted-foreground`.
+
+Naming rules:
+
+- Names with `foreground` define text (or icon) color on top of that background (e.g. `--primary-foreground`).
+- Names without `foreground` define backgrounds (e.g. `--primary`, `--card`, `--popover`).
+
+Typical usage:
+
+```tsx
+<html className="dark">
+  <body className="bg-background text-foreground">
+    {/* Your app */}
+  </body>
+</html>
+```
+
+```tsx
+<div className="bg-primary text-primary-foreground">
+  Primary action
+</div>
+```
+
+## Variable Reference
+
+### Base Layout
+
+- <span className="inline-block size-5 rounded border border-border bg-background mr-2 align-middle" /> `--background` — Page background
+- <span className="inline-block size-5 rounded border border-border bg-foreground mr-2 align-middle" /> `--foreground` — Default text on that background
+
+### Cards and Surfaces
+
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-card" /><span className="inline-block size-5 rounded border border-border bg-card-foreground" /></span> `--card` / `--card-foreground` — Card backgrounds and their text
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-popover" /><span className="inline-block size-5 rounded border border-border bg-popover-foreground" /></span> `--popover` / `--popover-foreground` — Popovers, dropdowns, menus
+
+### Primary Actions
+
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-primary" /><span className="inline-block size-5 rounded border border-border bg-primary-foreground" /></span> `--primary` / `--primary-foreground` — Main buttons and links
+
+### Secondary and Muted
+
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-secondary" /><span className="inline-block size-5 rounded border border-border bg-secondary-foreground" /></span> `--secondary` / `--secondary-foreground` — Secondary controls
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-muted" /><span className="inline-block size-5 rounded border border-border bg-muted-foreground" /></span> `--muted` / `--muted-foreground` — Softer backgrounds and de‑emphasized text
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-accent" /><span className="inline-block size-5 rounded border border-border bg-accent-foreground" /></span> `--accent` / `--accent-foreground` — Hover and active states
+
+### Status Colors
+
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-success" /><span className="inline-block size-5 rounded border border-border bg-success-foreground" /></span> `--success` / `--success-foreground`
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-info" /><span className="inline-block size-5 rounded border border-border bg-info-foreground" /></span> `--info` / `--info-foreground`
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-warning" /><span className="inline-block size-5 rounded border border-border bg-warning-foreground" /></span> `--warning` / `--warning-foreground`
+- <span className="inline-flex gap-1 mr-2 align-middle"><span className="inline-block size-5 rounded border border-border bg-destructive" /><span className="inline-block size-5 rounded border border-border bg-destructive-foreground" /></span> `--destructive` / `--destructive-foreground`
+
+### Form and UI
+
+- <span className="inline-block size-5 rounded bg-border mr-2 align-middle" /> `--border` — Borders
+- <span className="inline-block size-5 rounded border border-border bg-input mr-2 align-middle" /> `--input` — Input backgrounds
+- <span className="inline-block size-5 rounded border border-border bg-ring mr-2 align-middle" /> `--ring` — Focus rings
+
+### Sidebar
+
+- <span className="inline-block size-5 rounded border border-border bg-sidebar mr-2 align-middle" /> `--sidebar` — Sidebar background
+- <span className="inline-block size-5 rounded border border-border bg-sidebar-foreground mr-2 align-middle" /> `--sidebar-foreground` — Sidebar text
+- <span className="inline-block size-5 rounded border border-border bg-sidebar-primary mr-2 align-middle" /> `--sidebar-primary` — Active item background
+- <span className="inline-block size-5 rounded border border-border bg-sidebar-accent mr-2 align-middle" /> `--sidebar-accent` — Hover and active states
+- <span className="inline-block size-5 rounded border border-border bg-sidebar-border mr-2 align-middle" /> `--sidebar-border` — Sidebar borders
+- <span className="inline-block size-5 rounded border border-border bg-sidebar-ring mr-2 align-middle" /> `--sidebar-ring` — Focus rings
+
+### Charts
+
+- <span className="inline-block size-5 rounded border border-border bg-chart-1 mr-2 align-middle" /> `--chart-1` — Chart series color 1
+- <span className="inline-block size-5 rounded border border-border bg-chart-2 mr-2 align-middle" /> `--chart-2` — Chart series color 2
+- <span className="inline-block size-5 rounded border border-border bg-chart-3 mr-2 align-middle" /> `--chart-3` — Chart series color 3
+- <span className="inline-block size-5 rounded border border-border bg-chart-4 mr-2 align-middle" /> `--chart-4` — Chart series color 4
+- <span className="inline-block size-5 rounded border border-border bg-chart-5 mr-2 align-middle" /> `--chart-5` — Chart series color 5
+
+## How to Use Colors
+
+In JSX with Tailwind classes:
+
+```tsx
+<div className="bg-background text-foreground">
+  <button className="bg-primary text-primary-foreground hover:bg-primary/90">
+    Click me
+  </button>
+</div>
+```
+
+For full setup, see the [manual installation guide](/docs/installation/manual).
+
+## Customizing Colors
+
+Override variables in `:root` for light mode and `.dark` for dark mode:
+
+```css
+:root {
+  --primary: var(--color-blue-600);
+  --primary-foreground: var(--color-blue-50);
+}
+
+.dark {
+  --primary: var(--color-blue-500);
+  --primary-foreground: var(--color-blue-50);
+}
+```
+
+For oklch or custom values, tools like [oklch.com](https://oklch.com/) help with conversion.
+
+Shark UI ships preset themes, check [Theming](/docs/theming) for more information.
+
+## Quick Tips
+
+- Apply the `dark` class on the root so dark mode styles take effect.
+- Check both light and dark appearances when changing colors.
+- Keep using foreground/background pairs so contrast stays safe.
+- Prefer color variables over hardcoded hex or rgb values.
+
+## Related
+
+- [Installation](/docs/installation) — Get Shark UI running in your project
+- [Manual Installation](/docs/installation/manual) — Set up styles and design tokens

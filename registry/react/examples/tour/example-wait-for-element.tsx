@@ -64,7 +64,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const WaitForElementExample = () => {
+const Example = () => {
   const [items, setItems] = React.useState(["Item 1", "Item 2"]);
 
   const addItem = () => {
@@ -121,4 +121,4 @@ const WaitForElementExample = () => {
   );
 };
 
-export default WaitForElementExample;
+export default Example;

@@ -66,7 +66,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const AsyncExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <Tour steps={steps}>
       <TourTrigger asChild>
@@ -93,4 +93,4 @@ const AsyncExample = () => (
   </div>
 );
 
-export default AsyncExample;
+export default Example;

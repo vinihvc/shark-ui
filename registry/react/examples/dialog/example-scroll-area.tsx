@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 
-const DialogScrollAreaDemo = () => (
+const Example = () => (
   <Dialog>
     <DialogTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -78,4 +78,4 @@ const DialogScrollAreaDemo = () => (
   </Dialog>
 );
 
-export default DialogScrollAreaDemo;
+export default Example;

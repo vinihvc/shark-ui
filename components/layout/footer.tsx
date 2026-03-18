@@ -86,25 +86,14 @@ export const Footer = (props: FooterProps) => {
                 Projects
               </span>
               <ul className="flex flex-col gap-1.5">
-                {PROJECTS_LINKS.map((item) => (
-                  <li key={item.href}>
-                    {"external" in item ? (
-                      <a
-                        className="text-muted-foreground text-sm outline-none hover:text-foreground focus-visible:text-foreground"
-                        href={item.href}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      <Link
-                        className="text-muted-foreground text-sm outline-none hover:text-foreground focus-visible:text-foreground"
-                        href={item.href}
-                      >
-                        {item.label}
-                      </Link>
-                    )}
+                {PROJECTS_LINKS.map(({ label, href }) => (
+                  <li key={href}>
+                    <Link
+                      className="text-muted-foreground text-sm outline-none hover:text-foreground focus-visible:text-foreground"
+                      href={href}
+                    >
+                      {label}
+                    </Link>
                   </li>
                 ))}
               </ul>

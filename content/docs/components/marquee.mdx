@@ -35,6 +35,25 @@ npx shadcn@latest add @shark/marquee
 npm install @ark-ui/react
 ```
 
+  <Step>Add the following animations to your `globals.css`.</Step>
+
+```css title="styles/globals.css" showLineNumbers
+@theme inline {
+  /* ... */
+  --animate-marquee-x: marqueeX var(--marquee-duration) linear infinite var(--marquee-delay);
+  --animate-marquee-y: marqueeY var(--marquee-duration) linear infinite var(--marquee-delay);
+
+  @keyframes marqueeX {
+    from { transform: translateX(0); }
+    to { transform: translateX(var(--marquee-translate)); }
+  }
+  @keyframes marqueeY {
+    from { transform: translateY(0); }
+    to { transform: translateY(var(--marquee-translate)); }
+  }
+}
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource title="components/ui/marquee.tsx" src="/marquee.tsx" />

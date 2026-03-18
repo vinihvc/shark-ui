@@ -11,7 +11,7 @@ import {
   ListboxShortcut,
 } from "@/registry/react/components/listbox";
 import { Separator } from "@/registry/react/components/separator";
-import { Item } from "../../components/item";
+import { Item } from "@/registry/react/components/item";
 
 const Example = () => {
   return (

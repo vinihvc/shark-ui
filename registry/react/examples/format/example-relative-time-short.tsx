@@ -1,6 +1,6 @@
 import { FormatRelativeTime } from "@/registry/react/components/format";
 
-const FormatRelativeTimeShortExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">Long: </span>
@@ -17,4 +17,4 @@ const FormatRelativeTimeShortExample = () => (
   </div>
 );
 
-export default FormatRelativeTimeShortExample;
+export default Example;

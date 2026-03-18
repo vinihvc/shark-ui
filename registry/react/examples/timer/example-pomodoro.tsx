@@ -12,7 +12,7 @@ import {
   TimerSeparator,
 } from "@/registry/react/components/timer";
 
-const PomodoroExample = () => {
+const Example = () => {
   const [isWorking, setIsWorking] = React.useState(true);
   const [cycles, setCycles] = React.useState(0);
 
@@ -72,4 +72,4 @@ const PomodoroExample = () => {
   );
 };
 
-export default PomodoroExample;
+export default Example;

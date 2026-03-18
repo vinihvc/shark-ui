@@ -7,7 +7,10 @@ const manifest: RegistryItemType = {
   name: "floating-panel",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [absoluteUrl("/r/button.json")],
+  registryDependencies: [
+    absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/scroll-area.json"),
+  ],
 };
 
 export default manifest;

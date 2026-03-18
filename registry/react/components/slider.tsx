@@ -1,9 +1,14 @@
 "use client";
 
-import { Slider as ArkSlider } from "@ark-ui/react/slider";
+import {
+  Slider as ArkSlider,
+  useSliderContext,
+} from "@ark-ui/react/slider";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { FieldLabel } from "@/registry/react/components/field";
+
+export const useSlider = useSliderContext;
 
 interface SliderProps extends React.ComponentProps<typeof ArkSlider.Root> {
   /**

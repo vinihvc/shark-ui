@@ -47,7 +47,6 @@ import { ListboxThumb } from "@/components/thumbs/listbox";
 import { MarqueeThumb } from "@/components/thumbs/marquee";
 import { MenuThumb } from "@/components/thumbs/menu";
 import { NativeSelectThumb } from "@/components/thumbs/native-select";
-import { NavigationMenuThumb } from "@/components/thumbs/navigation-menu";
 import { NumberInputThumb } from "@/components/thumbs/number-input";
 import { PaginationThumb } from "@/components/thumbs/pagination";
 import { PopoverThumb } from "@/components/thumbs/popover";
@@ -131,7 +130,6 @@ const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
   marquee: MarqueeThumb,
   menu: MenuThumb,
   "native-select": NativeSelectThumb,
-  "navigation-menu": NavigationMenuThumb,
   "number-input": NumberInputThumb,
   pagination: PaginationThumb,
   popover: PopoverThumb,

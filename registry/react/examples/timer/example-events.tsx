@@ -12,7 +12,7 @@ import {
   TimerSeparator,
 } from "@/registry/react/components/timer";
 
-const EventsExample = () => {
+const Example = () => {
   const [ticks, setTicks] = React.useState(0);
   const [completed, setCompleted] = React.useState(false);
 
@@ -57,4 +57,4 @@ const EventsExample = () => {
   );
 };
 
-export default EventsExample;
+export default Example;

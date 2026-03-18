@@ -47,7 +47,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const KeyboardNavigationExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <Tour keyboardNavigation steps={steps}>
       <TourTrigger asChild>
@@ -93,4 +93,4 @@ const KeyboardNavigationExample = () => (
   </div>
 );
 
-export default KeyboardNavigationExample;
+export default Example;

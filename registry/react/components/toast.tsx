@@ -6,6 +6,7 @@ import {
   Toaster as ArkToaster,
   createToaster,
   type ToastStatusChangeDetails,
+  useToastContext,
 } from "@ark-ui/react/toast";
 import {
   CircleAlertIcon,
@@ -17,8 +18,10 @@ import {
 import type { ComponentProps } from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { Spinner } from "./spinner";
+import { Button } from "@/registry/react/components/button";
+import { Spinner } from "@/registry/react/components/spinner";
+
+export const useToast = useToastContext;
 
 const toastVariants = tv({
   base: [

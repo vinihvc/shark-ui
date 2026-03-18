@@ -1,12 +1,17 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import { Popover as ArkPopover } from "@ark-ui/react/popover";
+import {
+  Popover as ArkPopover,
+  usePopoverContext,
+} from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { ScrollArea } from "./scroll-area";
+import { Button } from "@/registry/react/components/button";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
+
+export const usePopover = usePopoverContext;
 
 export const Popover = (
   props: React.ComponentProps<typeof ArkPopover.Root>

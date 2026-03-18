@@ -4,7 +4,7 @@ import {
   NativeSelectOption,
 } from "@/registry/react/components/native-select";
 
-const NativeSelectDemo = () => (
+const Example = () => (
   <Field className="w-full max-w-40" invalid>
     <FieldLabel>Select a fruit</FieldLabel>
     <NativeSelect className="w-full max-w-40">
@@ -15,4 +15,4 @@ const NativeSelectDemo = () => (
   </Field>
 );
 
-export default NativeSelectDemo;
+export default Example;

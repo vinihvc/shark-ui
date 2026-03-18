@@ -44,7 +44,7 @@ export const CopyThemeCodeDialog = (
     <Dialog {...rest}>
       <DialogTrigger asChild>{children}</DialogTrigger>
 
-      <DialogContent size="2xl">
+      <DialogContent size="xl">
         <DialogHeader>
           <DialogTitle className="capitalize">{cfg.primaryColor}</DialogTitle>
           <DialogDescription>

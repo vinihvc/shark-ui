@@ -29,6 +29,8 @@ npx shadcn@latest add @shark-ui/toast
 
 <Steps>
 
+<Step>This component depends on [Button](/docs/components/button). Install it first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -62,8 +64,8 @@ const toaster = useToast();
 // show a toast
 toaster.create({
   title: "Show Info Toast",
-  description: "This is a info toast",
-  type: "error",
+  description: "This is an info toast",
+  type: "info",
 });
 ```
 

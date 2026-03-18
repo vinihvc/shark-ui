@@ -1,7 +1,7 @@
-import { DotPattern } from "@/components/dot-pattern";
+import { DotPattern } from "@/components/background/dot-pattern";
 import { Footer } from "@/components/layout/footer";
-import { ShowcaseCard } from "./_components/showcase-card";
 import { ShowcaseHero } from "./_components/hero";
+import { ShowcaseCard } from "./_components/showcase-card";
 import { MOCK_SHOWCASES } from "./_data/mock-showcases";
 
 export const revalidate = false;

@@ -25,7 +25,7 @@ import {
   SidebarTrigger,
 } from "@/registry/react/components/sidebar";
 
-export default function SidebarExampleControlled() {
+function Example() {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -134,3 +134,5 @@ export default function SidebarExampleControlled() {
     </div>
   );
 }
+
+export default Example;

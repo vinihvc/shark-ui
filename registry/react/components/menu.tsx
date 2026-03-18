@@ -1,11 +1,17 @@
 "use client";
 
 import { ark, Portal } from "@ark-ui/react";
-import { Menu as ArkMenu, type MenuContentProps } from "@ark-ui/react/menu";
+import {
+  Menu as ArkMenu,
+  type MenuContentProps,
+  useMenuContext,
+} from "@ark-ui/react/menu";
 import { CheckIcon, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+
+export const useMenu = useMenuContext;
 
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
   const {

@@ -1,6 +1,6 @@
 import { FormatByte } from "@/registry/react/components/format";
 
-const FormatByteUnitDisplayExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">Long: </span>
@@ -17,4 +17,4 @@ const FormatByteUnitDisplayExample = () => (
   </div>
 );
 
-export default FormatByteUnitDisplayExample;
+export default Example;

@@ -9,7 +9,7 @@ import {
   TimerSeparator,
 } from "@/registry/react/components/timer";
 
-const IntervalExample = () => (
+const Example = () => (
   <Timer interval={100} targetMs={60 * 1000}>
     <TimerArea>
       <div className="flex flex-col items-center gap-0">
@@ -45,4 +45,4 @@ const IntervalExample = () => (
   </Timer>
 );
 
-export default IntervalExample;
+export default Example;

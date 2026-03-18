@@ -5,7 +5,7 @@ import {
   AvatarImage,
 } from "@/registry/react/components/avatar";
 
-const AvatarWithStatusDemo = () => (
+const Example = () => (
   <div className="flex flex-row flex-wrap items-center gap-2">
     <Avatar>
       <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
@@ -33,4 +33,4 @@ const AvatarWithStatusDemo = () => (
   </div>
 );
 
-export default AvatarWithStatusDemo;
+export default Example;

@@ -1,12 +1,17 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import { Field as ArkField } from "@ark-ui/react/field";
+import {
+  Field as ArkField,
+  useFieldContext as useArkFieldContext,
+} from "@ark-ui/react/field";
 import { Fieldset as ArkFieldset } from "@ark-ui/react/fieldset";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Separator } from "./separator";
+import { Separator } from "@/registry/react/components/separator";
+
+export const useField = useArkFieldContext;
 
 const fieldVariants = tv({
   base: [

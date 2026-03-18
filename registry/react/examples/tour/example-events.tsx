@@ -48,7 +48,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const EventsExample = () => {
+const Example = () => {
   const [logs, setLogs] = React.useState<string[]>([]);
 
   const addLog = (message: string) => {
@@ -114,4 +114,4 @@ const EventsExample = () => {
   );
 };
 
-export default EventsExample;
+export default Example;

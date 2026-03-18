@@ -1,5 +1,5 @@
 import { ComponentsExamples } from "@/app/(app)/(home)/_components/components-examples";
-import { DotPattern } from "@/components/dot-pattern";
+import { DotPattern } from "@/components/background/dot-pattern";
 import { source } from "@/lib/fumadocs";
 import { HomeFooter } from "./_components/footer";
 import { HeroSection } from "./_components/hero";

@@ -5,7 +5,7 @@ import {
   HintTrigger,
 } from "@/registry/react/components/hint";
 
-const HintsidesDemo = () => (
+const Example = () => (
   <div className="flex flex-wrap justify-center gap-2">
     <Hint positioning={{ placement: "left" }}>
       <HintTrigger asChild>
@@ -34,4 +34,4 @@ const HintsidesDemo = () => (
   </div>
 );
 
-export default HintsidesDemo;
+export default Example;

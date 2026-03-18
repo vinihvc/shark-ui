@@ -2,7 +2,7 @@
 
 import { AngleSlider } from "@/registry/react/components/angle-slider";
 
-export default function AngleSliderExampleCustomMarkers() {
+function Example() {
   return (
     <AngleSlider
       aria-label="Angle"
@@ -11,3 +11,5 @@ export default function AngleSliderExampleCustomMarkers() {
     />
   );
 }
+
+export default Example;

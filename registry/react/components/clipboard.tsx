@@ -1,11 +1,16 @@
 "use client";
 
-import { Clipboard as ArkClipboard } from "@ark-ui/react/clipboard";
+import {
+  Clipboard as ArkClipboard,
+  useClipboardContext,
+} from "@ark-ui/react/clipboard";
 import { CheckIcon, ClipboardIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { inputVariants } from "./input";
+import { inputVariants } from "@/registry/react/components/input";
+
+export const useClipboard = useClipboardContext;
 
 interface ClipboardProps
   extends React.ComponentProps<typeof ArkClipboard.Root> {

@@ -15,6 +15,7 @@
 
 ## Learned Workspace Facts
 
+- Import registry components with `@/registry/react/components/<component-name>`, never `./` or `../../components/`
 - Component thumbs in `components/thumbs/` follow accordion color pattern (`bg-muted-foreground/16`, `bg-muted-foreground/8`)
 - Registry examples in `registry/react/examples/<component>/` use `example-*.tsx` naming
 - Sidebar examples: wrap in `absolute inset-0 overflow-hidden`, add `className="absolute"` to Sidebar, use `h-full` on SidebarProvider to prevent overflow outside preview; pass showBorders={false} to ComponentPreview

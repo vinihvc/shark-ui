@@ -4,6 +4,7 @@ import {
   ColorPicker as ArkColorPicker,
   type ColorPickerValueChangeDetails,
   parseColor as parseColorArk,
+  useColorPickerContext,
 } from "@ark-ui/react/color-picker";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
@@ -13,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { Button, type ButtonProps } from "@/registry/react/components/button";
 
 export const parseColor = parseColorArk;
+export const useColorPicker = useColorPickerContext;
 
 export interface ColorPickerProps
   extends Omit<

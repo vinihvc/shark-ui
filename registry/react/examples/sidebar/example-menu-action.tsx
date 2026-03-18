@@ -32,7 +32,7 @@ const projects = [
   { name: "Support", url: "#" },
 ];
 
-export default function SidebarExampleMenuAction() {
+function Example() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <SidebarProvider className="h-full">
@@ -110,3 +110,5 @@ export default function SidebarExampleMenuAction() {
     </div>
   );
 }
+
+export default Example;

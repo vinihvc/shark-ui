@@ -29,6 +29,8 @@ npx shadcn@latest add @shark/autocomplete
 
 <Steps>
 
+<Step>This component depends on [Combobox](/docs/components/combobox), [Input](/docs/components/input), and [Separator](/docs/components/separator). Install them first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -47,39 +49,57 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 </CodeTabs>
 
+## Usage
+
+Pass a `collection` from `useListCollection` and use `useFilter` for filtering. Autocomplete is a Combobox preset with `allowCustomValue` and `inputBehavior="autocomplete"` for inline autofill.
+
+```tsx
+import { useFilter, useListCollection } from "@ark-ui/react";
+import {
+  Autocomplete,
+  AutocompleteContent,
+  AutocompleteEmpty,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+} from "@/components/ui/autocomplete";
+```
+
+```tsx
+const { contains } = useFilter({ sensitivity: "base" });
+const { collection, filter } = useListCollection({
+  initialItems: [...],
+  filter: contains,
+  groupBy: (item) => item.group, // optional
+});
+
+<Autocomplete
+  collection={collection}
+  onInputValueChange={({ inputValue }) => filter(inputValue)}
+>
+  <AutocompleteInput placeholder="Select an option" />
+  <AutocompleteContent>
+    <AutocompleteEmpty />
+    <AutocompleteList>
+      {collection.group().map(([group, items]) => (
+        <AutocompleteGroup heading={group} key={group}>
+          {items.map((item) => (
+            <AutocompleteItem item={item} key={item.value}>
+              {item.label}
+            </AutocompleteItem>
+          ))}
+        </AutocompleteGroup>
+      ))}
+    </AutocompleteList>
+  </AutocompleteContent>
+</Autocomplete>
+```
+
 ## Controlled
 
 Control the selected value with `value` and `onValueChange` props. Use `inputValue` and `onInputValueChange` for controlling the input text.
 
 <ComponentPreview componentName="autocomplete" fileName="example-controlled" />
-
-## Usage
-
-```tsx
-import { 
-  Autocomplete,
-  AutocompleteInput,
-  AutocompleteContent,
-  AutocompleteItem,
-  AutocompleteItemGroup,
-  AutocompleteEmpty,
-  AutocompleteItemGroupLabel,
-  AutocompleteTrigger,
-} from "@/components/ui/autocomplete";
-```
-
-```tsx showLineNumbers
-<Autocomplete>
-  <AutocompleteInput />
-  <AutocompleteContent>
-    <AutocompleteEmpty />
-    <AutocompleteItemGroup>
-      <AutocompleteItemGroupLabel />
-        <AutocompleteItem />
-    </AutocompleteItemGroup>
-  </AutocompleteContent>
-</Autocomplete>
-```
 
 ## Sizes
 

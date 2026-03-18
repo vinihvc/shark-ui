@@ -7,6 +7,8 @@ import {
 import type React from "react";
 import { cn } from "@/lib/utils";
 
+export const useHighlight = useArkHighlight;
+
 export const Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {
   const { className, ...rest } = props;
 
@@ -15,7 +17,7 @@ export const Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {
       className={cn(
         "px-1",
         "bg-primary/20",
-        "font-medium text-primary",
+        "text-primary",
         "rounded-md",
         "box-decoration-clone",
         className
@@ -25,5 +27,3 @@ export const Highlight = (props: React.ComponentProps<typeof ArkHighlight>) => {
     />
   );
 };
-
-export const useHighlight = useArkHighlight;

@@ -12,7 +12,7 @@ import {
   FileUploadItemPreview,
   FileUploadItemPreviewImage,
   FileUploadTitle,
-  useFileUploadContext,
+  useFileUpload,
 } from "@/registry/react/components/file-upload";
 
 const Example = () => (
@@ -26,7 +26,7 @@ const Example = () => (
 );
 
 const CustomPreviewList = () => {
-  const fileUpload = useFileUploadContext();
+  const fileUpload = useFileUpload();
 
   const files = fileUpload.acceptedFiles;
 

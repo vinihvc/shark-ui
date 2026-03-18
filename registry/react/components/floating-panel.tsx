@@ -1,13 +1,18 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import { FloatingPanel as ArkFloatingPanel } from "@ark-ui/react/floating-panel";
+import {
+  FloatingPanel as ArkFloatingPanel,
+  useFloatingPanelContext,
+} from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { Maximize, MaximizeIcon, MinimizeIcon, MinusIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button, type ButtonProps } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+
+export const useFloatingPanel = useFloatingPanelContext;
 
 export const FloatingPanel = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Root>

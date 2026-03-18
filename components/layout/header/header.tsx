@@ -12,9 +12,7 @@ import { Button } from "@/registry/react/components/button";
 import { Separator } from "@/registry/react/components/separator";
 import { HeaderCustomize } from "./header.customize";
 
-interface SiteHeaderProps extends React.ComponentProps<"header"> {}
-
-export const SiteHeader = (props: SiteHeaderProps) => {
+export const SiteHeader = (props: React.ComponentProps<"header">) => {
   const { className, ...rest } = props;
 
   const pageTree = source.pageTree;

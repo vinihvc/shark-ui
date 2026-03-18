@@ -15,7 +15,7 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        "md:grids-col-2 grid **:data-[slot=card]:shadow-none md:gap-4 lg:grid-cols-10 xl:grid-cols-11",
+        "grid md:grid-cols-2 md:gap-4 lg:grid-cols-10 xl:grid-cols-11 [&_[data-slot=card]]:shadow-none",
         className
       )}
       {...rest}

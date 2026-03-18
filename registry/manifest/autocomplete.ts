@@ -10,6 +10,7 @@ const manifest: RegistryItemType = {
   registryDependencies: [
     absoluteUrl("/r/combobox.json"),
     absoluteUrl("/r/input.json"),
+    absoluteUrl("/r/separator.json"),
   ],
 };
 

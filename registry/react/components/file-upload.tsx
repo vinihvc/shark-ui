@@ -10,7 +10,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-export const useFileUploadContext = useArkFileUploadContext;
+export const useFileUpload = useArkFileUploadContext;
 
 export const FileUpload = (
   props: React.ComponentProps<typeof ArkFileUpload.Root>
@@ -144,7 +144,7 @@ interface FileUploadListProps
 export const FileUploadList = (props: FileUploadListProps) => {
   const { className, ...rest } = props;
 
-  const fileUpload = useFileUploadContext();
+  const fileUpload = useFileUpload();
 
   const files = fileUpload.acceptedFiles;
 

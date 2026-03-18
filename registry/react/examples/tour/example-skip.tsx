@@ -50,7 +50,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const SkipExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <Tour steps={steps}>
       <TourTrigger asChild>
@@ -91,4 +91,4 @@ const SkipExample = () => (
   </div>
 );
 
-export default SkipExample;
+export default Example;

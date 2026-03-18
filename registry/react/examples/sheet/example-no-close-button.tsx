@@ -9,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/registry/react/components/sheet";
 
-const SheetNoCloseButtonDemo = () => (
+const Example = () => (
   <Sheet>
     <SheetTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -38,4 +38,4 @@ const SheetNoCloseButtonDemo = () => (
   </Sheet>
 );
 
-export default SheetNoCloseButtonDemo;
+export default Example;

@@ -92,7 +92,7 @@ export const HeaderCustomize = () => {
         </TooltipContent>
       </Tooltip>
 
-      <SheetContent>
+      <SheetContent className="max-sm:w-full max-sm:max-w-full">
         <SheetHeader
           description="Change the theme to match your style."
           title="Make it yours"

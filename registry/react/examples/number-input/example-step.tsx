@@ -5,7 +5,7 @@ import {
   NumberFieldIncrement,
   NumberFieldInput,
 } from "@/registry/react/components/number-input";
-import { FieldLabel } from "../../components/field";
+import { FieldLabel } from "@/registry/react/components/field";
 
 const Example = () => (
   <div className="flex flex-col gap-6">

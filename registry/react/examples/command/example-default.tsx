@@ -32,7 +32,7 @@ const CommandExample = () => {
       <CommandContent>
         <CommandEmpty />
         <CommandList>
-          {collection.group().map(([group, items]) => (
+          {collection.group().map(([group, items], index) => (
             <CommandGroup heading={group} key={group}>
               {items.map((item) => (
                 <CommandItem item={item} key={item.value}>
@@ -40,7 +40,7 @@ const CommandExample = () => {
                   <CommandShortcut>{item.shortcut}</CommandShortcut>
                 </CommandItem>
               ))}
-              <CommandSeparator />
+              {index < collection.group().length - 1 && <CommandSeparator />}
             </CommandGroup>
           ))}
         </CommandList>

@@ -18,7 +18,7 @@ import {
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
 
-const DialogInitialFocusDemo = () => {
+const Example = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   return (
@@ -57,4 +57,4 @@ const DialogInitialFocusDemo = () => {
   );
 };
 
-export default DialogInitialFocusDemo;
+export default Example;

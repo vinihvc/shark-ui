@@ -1,6 +1,8 @@
 "use client";
 
+import { Portal } from "@ark-ui/react";
 import { Combobox as ArkCombobox } from "@ark-ui/react/combobox";
+import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
 import { SearchIcon } from "lucide-react";
 import type React from "react";
 import type { ComponentProps } from "react";
@@ -11,24 +13,27 @@ import {
   ComboboxEmpty,
   ComboboxGroup,
   ComboboxGroupLabel,
-  ComboboxItem,
+  type ComboboxItem,
   ComboboxList,
+  comboboxItemVariants,
 } from "@/registry/react/components/combobox";
 import {
   Dialog,
-  DialogContent,
+  type DialogContent,
   DialogHeader,
+  DialogOverlay,
+  DialogPositioner,
   DialogTrigger,
+  dialogContentVariants,
 } from "@/registry/react/components/dialog";
+import type { InputProps } from "@/registry/react/components/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 import { MenuShortcut } from "@/registry/react/components/menu";
-import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { Separator } from "@/registry/react/components/separator";
-import type { InputProps } from "./input";
 
 export const CommandDialog = Dialog;
 
@@ -56,6 +61,7 @@ interface CommandDialogContentProps
 
 export const CommandDialogContent = (props: CommandDialogContentProps) => {
   const {
+    size = "lg",
     title = "Command Palette",
     description = "Search for a command to run...",
     className,
@@ -64,19 +70,30 @@ export const CommandDialogContent = (props: CommandDialogContentProps) => {
   } = props;
 
   return (
-    <DialogContent
-      className={cn("border-0 p-0", className)}
-      data-slot="command-dialog-content"
-      {...rest}
-    >
-      <DialogHeader
-        className="sr-only"
-        description={description}
-        title={title}
-      />
+    <Portal>
+      <DialogOverlay />
 
-      {children}
-    </DialogContent>
+      <DialogPositioner>
+        <ArkDialog.Content
+          className={cn(
+            "max-sm:row-start-1",
+            dialogContentVariants({ size }),
+            "border-0 p-0",
+            className
+          )}
+          data-slot="command-dialog-content"
+          {...rest}
+        >
+          <DialogHeader
+            className="sr-only"
+            description={description}
+            title={title}
+          />
+
+          {children}
+        </ArkDialog.Content>
+      </DialogPositioner>
+    </Portal>
   );
 };
 
@@ -87,6 +104,7 @@ export const Command: ArkCombobox.RootComponent = (props) => {
     <Combobox
       className={cn(
         "isolate",
+        "flex min-h-0 flex-1 flex-col",
         "p-2",
         "bg-popover",
         "text-popover-foreground",
@@ -99,7 +117,7 @@ export const Command: ArkCombobox.RootComponent = (props) => {
       lazyMount={lazyMount}
       loopFocus={false}
       open
-      selectionBehavior="clear"
+      selectionBehavior="preserve"
       unmountOnExit={unmountOnExit}
       {...rest}
     />
@@ -124,8 +142,12 @@ export const CommandContent = (
   return (
     <ArkCombobox.Content
       className={cn(
-        "max-h-72",
+        "flex flex-1 flex-col",
+        "max-h-(--available-height) min-h-0",
         "outline-none",
+        "overflow-auto",
+        "scroll-pr-1 overscroll-contain",
+        "[-webkit-scrollbar-track:calc(var(--spacing)*2)] [-webkit-scrollbar:calc(var(--spacing)*2)] [scrollbar-width:thin]",
         "[:not(.has-[+[data-slot=command-footer]])]:rounded-b-2xl [:not(.has-[+[data-slot=command-footer]])]:border-b",
         className
       )}
@@ -140,7 +162,11 @@ export const CommandInput = (props: CommandInputProps) => {
 
   return (
     <ComboboxControl className="mb-2">
-      <InputGroup className={cn("rounded-xl", className)} size={size} {...rest}>
+      <InputGroup
+        className={cn("rounded-xl bg-input/32", className)}
+        size={size}
+        {...rest}
+      >
         <InputGroupAddon>
           <SearchIcon aria-hidden className="opacity-64" />
         </InputGroupAddon>
@@ -152,26 +178,19 @@ export const CommandInput = (props: CommandInputProps) => {
   );
 };
 
-interface CommandListProps extends React.ComponentProps<typeof ComboboxList> {
-  /**
-   * Whether to apply a fade effect to the scroll area
-   *
-   * @default false
-   */
-  scrollFade?: boolean;
-}
+interface CommandListProps extends React.ComponentProps<typeof ComboboxList> {}
 
 export const CommandList = (props: CommandListProps) => {
-  const { scrollFade = false, className, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
-    <ScrollArea scrollFade={scrollFade}>
+    <div className="max-h-72 min-h-0 flex-1">
       <ComboboxList
-        className={cn("max-h-72 flex-1 pr-3", className)}
+        className={cn("flex-1 pr-3", className)}
         data-slot="command-list"
         {...rest}
       />
-    </ScrollArea>
+    </div>
   );
 };
 
@@ -207,11 +226,10 @@ export const CommandItem = (props: ComponentProps<typeof ComboboxItem>) => {
   const { className, ...rest } = props;
 
   return (
-    <ComboboxItem
-      className={cn(className)}
+    <ArkCombobox.Item
+      className={cn(comboboxItemVariants({ showIndicator: false }), className)}
       data-slot="command-item"
       persistFocus
-      showIndicator={false}
       {...rest}
     />
   );

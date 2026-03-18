@@ -1,6 +1,5 @@
-import { DotPattern } from "@/components/dot-pattern";
+import { DotPattern } from "@/components/background/dot-pattern";
 import { Footer } from "@/components/layout/footer";
-import { BlocksThumb } from "@/components/thumbs/blocks";
 import { BlockCard } from "./_components/block-card";
 import { BlocksHero } from "./_components/hero";
 import { MOCK_BLOCKS } from "./_data/mock-blocks";
@@ -22,8 +21,6 @@ const BlocksPage = () => {
             <div className="flex flex-col gap-4 lg:shrink-0">
               <BlocksHero />
             </div>
-
-            <BlocksThumb className="w-full max-w-sm" />
           </div>
 
           <section aria-labelledby="blocks-heading">
