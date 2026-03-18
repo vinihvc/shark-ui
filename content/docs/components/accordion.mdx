@@ -35,6 +35,25 @@ npx shadcn@latest add @shark/accordion
 npm install @ark-ui/react lucide-react
 ```
 
+  <Step>Add the following animations to your `globals.css`.</Step>
+
+```css title="styles/globals.css" showLineNumbers
+@theme inline {
+  /* ... */
+  --animate-slide-up: slideUp 0.2s ease-out;
+  --animate-slide-down: slideDown 0.2s ease-out;
+
+  @keyframes slideUp {
+    from { height: var(--height); }
+    to { height: 0; }
+  }
+  @keyframes slideDown {
+    from { height: 0; }
+    to { height: var(--height); }
+  }
+}
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource title="components/ui/accordion.tsx" src="/accordion.tsx" />

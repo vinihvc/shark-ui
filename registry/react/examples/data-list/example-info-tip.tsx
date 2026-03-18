@@ -10,7 +10,7 @@ import {
   ToggleTooltipContent,
   ToggleTooltipTrigger,
 } from "@/registry/react/components/toggle-tooltip";
-import { Button } from "../../components/button";
+import { Button } from "@/registry/react/components/button";
 
 const data = [
   {

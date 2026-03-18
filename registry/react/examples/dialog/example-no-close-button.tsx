@@ -6,7 +6,7 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 
-const DialogNoCloseButtonDemo = () => (
+const Example = () => (
   <Dialog>
     <DialogTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -21,4 +21,4 @@ const DialogNoCloseButtonDemo = () => (
   </Dialog>
 );
 
-export default DialogNoCloseButtonDemo;
+export default Example;

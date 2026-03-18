@@ -93,7 +93,7 @@ export const Hint = (props: HintProps) => {
 export const HintTrigger = (props: React.ComponentProps<typeof ark.button>) => {
   const { className, children, ...rest } = props;
 
-  const { isVisible, setIsVisible, id } = useHint();
+  const { isVisible, setIsVisible, id } = _useHint();
 
   return (
     <ark.button
@@ -164,7 +164,7 @@ export const HintContent = (props: HintContentProps) => {
     ...rest
   } = props;
 
-  const { positioning, isVisible, id } = useHint();
+  const { positioning, isVisible, id } = _useHint();
 
   return (
     <Presence
@@ -207,7 +207,7 @@ const hintArrowVariants = tv({
 export const HintArrow = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
-  const { positioning } = useHint();
+  const { positioning } = _useHint();
 
   return (
     <ark.div
@@ -224,7 +224,7 @@ export const HintArrow = (props: React.ComponentProps<typeof ark.div>) => {
   );
 };
 
-const useHint = () => {
+const _useHint = () => {
   const context = React.useContext(HintContext);
 
   if (!context) {

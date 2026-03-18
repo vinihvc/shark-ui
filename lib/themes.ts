@@ -2,312 +2,419 @@ export const PRIMARY_COLORS = [
   {
     label: "Neutral",
     value: "neutral",
-    hex: { light: "bg-black", dark: "bg-white" },
+    hex: { light: "bg-neutral-800", dark: "bg-neutral-100" },
     cssVars: {
       light: {
-        primary: "var(--color-black)",
-        "primary-foreground": "var(--color-white)",
-        ring: "var(--color-black)",
+        primary: "var(--color-neutral-800)",
+        "primary-foreground": "var(--color-neutral-50)",
+        ring: "var(--color-neutral-400)",
+        "sidebar-primary": "var(--color-neutral-800)",
+        "sidebar-primary-foreground": "var(--color-neutral-50)",
+        "sidebar-ring": "var(--color-neutral-400)",
       },
       dark: {
-        primary: "var(--color-white)",
-        "primary-foreground": "var(--color-black)",
-        ring: "var(--color-white)",
+        primary: "var(--color-neutral-100)",
+        "primary-foreground": "var(--color-neutral-800)",
+        ring: "var(--color-neutral-500)",
+        "sidebar-primary": "var(--color-neutral-100)",
+        "sidebar-primary-foreground": "var(--color-neutral-800)",
+        "sidebar-ring": "var(--color-neutral-400)",
       },
     },
   },
   {
     label: "Red",
     value: "red",
-    hex: "bg-red-500",
+    hex: { light: "bg-red-600", dark: "bg-red-700" },
     cssVars: {
       light: {
         primary: "var(--color-red-600)",
         "primary-foreground": "var(--color-red-50)",
         ring: "var(--color-red-500)",
+        "sidebar-primary": "var(--color-red-600)",
+        "sidebar-primary-foreground": "var(--color-red-50)",
+        "sidebar-ring": "var(--color-red-500)",
       },
       dark: {
         primary: "var(--color-red-700)",
         "primary-foreground": "var(--color-red-50)",
         ring: "var(--color-red-900)",
+        "sidebar-primary": "var(--color-red-700)",
+        "sidebar-primary-foreground": "var(--color-red-50)",
+        "sidebar-ring": "var(--color-red-900)",
       },
     },
   },
   {
     label: "Orange",
     value: "orange",
-    hex: "bg-orange-500",
+    hex: { light: "bg-orange-600", dark: "bg-orange-700" },
     cssVars: {
       light: {
         primary: "var(--color-orange-600)",
         "primary-foreground": "var(--color-orange-50)",
         ring: "var(--color-orange-400)",
+        "sidebar-primary": "var(--color-orange-600)",
+        "sidebar-primary-foreground": "var(--color-orange-50)",
+        "sidebar-ring": "var(--color-orange-400)",
       },
       dark: {
         primary: "var(--color-orange-700)",
         "primary-foreground": "var(--color-orange-50)",
         ring: "var(--color-orange-900)",
+        "sidebar-primary": "var(--color-orange-700)",
+        "sidebar-primary-foreground": "var(--color-orange-50)",
+        "sidebar-ring": "var(--color-orange-900)",
       },
     },
   },
   {
     label: "Amber",
     value: "amber",
-    hex: "bg-amber-500",
+    hex: { light: "bg-amber-600", dark: "bg-amber-700" },
     cssVars: {
       light: {
         primary: "var(--color-amber-600)",
         "primary-foreground": "var(--color-amber-50)",
         ring: "var(--color-amber-500)",
+        "sidebar-primary": "var(--color-amber-600)",
+        "sidebar-primary-foreground": "var(--color-amber-50)",
+        "sidebar-ring": "var(--color-amber-500)",
       },
       dark: {
         primary: "var(--color-amber-700)",
         "primary-foreground": "var(--color-amber-50)",
         ring: "var(--color-amber-900)",
+        "sidebar-primary": "var(--color-amber-700)",
+        "sidebar-primary-foreground": "var(--color-amber-50)",
+        "sidebar-ring": "var(--color-amber-900)",
       },
     },
   },
   {
     label: "Yellow",
     value: "yellow",
-    hex: "bg-yellow-500",
+    hex: { light: "bg-yellow-600", dark: "bg-yellow-700" },
     cssVars: {
       light: {
         primary: "var(--color-yellow-600)",
         "primary-foreground": "var(--color-yellow-50)",
         ring: "var(--color-yellow-500)",
+        "sidebar-primary": "var(--color-yellow-600)",
+        "sidebar-primary-foreground": "var(--color-yellow-50)",
+        "sidebar-ring": "var(--color-yellow-500)",
       },
       dark: {
         primary: "var(--color-yellow-700)",
         "primary-foreground": "var(--color-yellow-50)",
         ring: "var(--color-yellow-900)",
+        "sidebar-primary": "var(--color-yellow-700)",
+        "sidebar-primary-foreground": "var(--color-yellow-50)",
+        "sidebar-ring": "var(--color-yellow-900)",
       },
     },
   },
   {
     label: "Lime",
     value: "lime",
-    hex: "bg-lime-500",
+    hex: { light: "bg-lime-600", dark: "bg-lime-700" },
     cssVars: {
       light: {
         primary: "var(--color-lime-600)",
         "primary-foreground": "var(--color-lime-50)",
         ring: "var(--color-lime-600)",
+        "sidebar-primary": "var(--color-lime-600)",
+        "sidebar-primary-foreground": "var(--color-lime-50)",
+        "sidebar-ring": "var(--color-lime-600)",
       },
       dark: {
         primary: "var(--color-lime-700)",
         "primary-foreground": "var(--color-lime-50)",
         ring: "var(--color-lime-900)",
+        "sidebar-primary": "var(--color-lime-700)",
+        "sidebar-primary-foreground": "var(--color-lime-50)",
+        "sidebar-ring": "var(--color-lime-900)",
       },
     },
   },
   {
     label: "Green",
     value: "green",
-    hex: "bg-green-500",
+    hex: { light: "bg-green-600", dark: "bg-green-700" },
     cssVars: {
       light: {
         primary: "var(--color-green-600)",
         "primary-foreground": "var(--color-green-50)",
         ring: "var(--color-green-600)",
+        "sidebar-primary": "var(--color-green-600)",
+        "sidebar-primary-foreground": "var(--color-green-50)",
+        "sidebar-ring": "var(--color-green-600)",
       },
       dark: {
         primary: "var(--color-green-700)",
         "primary-foreground": "var(--color-green-50)",
         ring: "var(--color-green-900)",
+        "sidebar-primary": "var(--color-green-700)",
+        "sidebar-primary-foreground": "var(--color-green-50)",
+        "sidebar-ring": "var(--color-green-900)",
       },
     },
   },
   {
     label: "Emerald",
     value: "emerald",
-    hex: "bg-emerald-500",
+    hex: { light: "bg-emerald-600", dark: "bg-emerald-700" },
     cssVars: {
       light: {
         primary: "var(--color-emerald-600)",
         "primary-foreground": "var(--color-emerald-50)",
         ring: "var(--color-emerald-600)",
+        "sidebar-primary": "var(--color-emerald-600)",
+        "sidebar-primary-foreground": "var(--color-emerald-50)",
+        "sidebar-ring": "var(--color-emerald-600)",
       },
       dark: {
         primary: "var(--color-emerald-700)",
         "primary-foreground": "var(--color-emerald-50)",
         ring: "var(--color-emerald-900)",
+        "sidebar-primary": "var(--color-emerald-700)",
+        "sidebar-primary-foreground": "var(--color-emerald-50)",
+        "sidebar-ring": "var(--color-emerald-900)",
       },
     },
   },
   {
     label: "Teal",
     value: "teal",
-    hex: "bg-teal-500",
+    hex: { light: "bg-teal-600", dark: "bg-teal-700" },
     cssVars: {
       light: {
         primary: "var(--color-teal-600)",
         "primary-foreground": "var(--color-teal-50)",
         ring: "var(--color-teal-600)",
+        "sidebar-primary": "var(--color-teal-600)",
+        "sidebar-primary-foreground": "var(--color-teal-50)",
+        "sidebar-ring": "var(--color-teal-600)",
       },
       dark: {
         primary: "var(--color-teal-700)",
         "primary-foreground": "var(--color-teal-50)",
         ring: "var(--color-teal-900)",
+        "sidebar-primary": "var(--color-teal-700)",
+        "sidebar-primary-foreground": "var(--color-teal-50)",
+        "sidebar-ring": "var(--color-teal-900)",
       },
     },
   },
   {
     label: "Cyan",
     value: "cyan",
-    hex: "bg-cyan-500",
+    hex: { light: "bg-cyan-600", dark: "bg-cyan-700" },
     cssVars: {
       light: {
         primary: "var(--color-cyan-600)",
         "primary-foreground": "var(--color-cyan-50)",
         ring: "var(--color-cyan-600)",
+        "sidebar-primary": "var(--color-cyan-600)",
+        "sidebar-primary-foreground": "var(--color-cyan-50)",
+        "sidebar-ring": "var(--color-cyan-600)",
       },
       dark: {
         primary: "var(--color-cyan-700)",
         "primary-foreground": "var(--color-cyan-50)",
         ring: "var(--color-cyan-900)",
+        "sidebar-primary": "var(--color-cyan-700)",
+        "sidebar-primary-foreground": "var(--color-cyan-50)",
+        "sidebar-ring": "var(--color-cyan-900)",
       },
     },
   },
   {
     label: "Sky",
     value: "sky",
-    hex: "bg-sky-500",
+    hex: { light: "bg-sky-600", dark: "bg-sky-700" },
     cssVars: {
       light: {
         primary: "var(--color-sky-600)",
         "primary-foreground": "var(--color-sky-50)",
         ring: "var(--color-sky-600)",
+        "sidebar-primary": "var(--color-sky-600)",
+        "sidebar-primary-foreground": "var(--color-sky-50)",
+        "sidebar-ring": "var(--color-sky-600)",
       },
       dark: {
         primary: "var(--color-sky-700)",
         "primary-foreground": "var(--color-sky-50)",
         ring: "var(--color-sky-900)",
+        "sidebar-primary": "var(--color-sky-700)",
+        "sidebar-primary-foreground": "var(--color-sky-50)",
+        "sidebar-ring": "var(--color-sky-900)",
       },
     },
   },
   {
     label: "Blue",
     value: "blue",
-    hex: "bg-blue-500",
+    hex: { light: "bg-blue-600", dark: "bg-blue-600" },
     cssVars: {
       light: {
         primary: "var(--color-blue-600)",
         "primary-foreground": "var(--color-blue-50)",
         ring: "var(--color-blue-400)",
+        "sidebar-primary": "var(--color-blue-600)",
+        "sidebar-primary-foreground": "var(--color-blue-50)",
+        "sidebar-ring": "var(--color-blue-400)",
       },
       dark: {
         primary: "var(--color-blue-600)",
         "primary-foreground": "var(--color-blue-50)",
         ring: "var(--color-blue-900)",
+        "sidebar-primary": "var(--color-blue-600)",
+        "sidebar-primary-foreground": "var(--color-blue-50)",
+        "sidebar-ring": "var(--color-blue-900)",
       },
     },
   },
   {
     label: "Indigo",
     value: "indigo",
-    hex: "bg-indigo-500",
+    hex: { light: "bg-indigo-600", dark: "bg-indigo-500" },
     cssVars: {
       light: {
         primary: "var(--color-indigo-600)",
         "primary-foreground": "var(--color-indigo-50)",
         ring: "var(--color-indigo-400)",
+        "sidebar-primary": "var(--color-indigo-600)",
+        "sidebar-primary-foreground": "var(--color-indigo-50)",
+        "sidebar-ring": "var(--color-indigo-400)",
       },
       dark: {
         primary: "var(--color-indigo-500)",
         "primary-foreground": "var(--color-indigo-50)",
         ring: "var(--color-indigo-900)",
+        "sidebar-primary": "var(--color-indigo-500)",
+        "sidebar-primary-foreground": "var(--color-indigo-50)",
+        "sidebar-ring": "var(--color-indigo-900)",
       },
     },
   },
   {
     label: "Violet",
     value: "violet",
-    hex: "bg-violet-500",
+    hex: { light: "bg-violet-600", dark: "bg-violet-500" },
     cssVars: {
       light: {
         primary: "var(--color-violet-600)",
         "primary-foreground": "var(--color-violet-50)",
         ring: "var(--color-violet-400)",
+        "sidebar-primary": "var(--color-violet-600)",
+        "sidebar-primary-foreground": "var(--color-violet-50)",
+        "sidebar-ring": "var(--color-violet-400)",
       },
       dark: {
         primary: "var(--color-violet-500)",
         "primary-foreground": "var(--color-violet-50)",
         ring: "var(--color-violet-900)",
+        "sidebar-primary": "var(--color-violet-500)",
+        "sidebar-primary-foreground": "var(--color-violet-50)",
+        "sidebar-ring": "var(--color-violet-900)",
       },
     },
   },
   {
     label: "Purple",
     value: "purple",
-    hex: "bg-purple-500",
+    hex: { light: "bg-purple-600", dark: "bg-purple-500" },
     cssVars: {
       light: {
         primary: "var(--color-purple-600)",
         "primary-foreground": "var(--color-purple-50)",
         ring: "var(--color-purple-400)",
+        "sidebar-primary": "var(--color-purple-600)",
+        "sidebar-primary-foreground": "var(--color-purple-50)",
+        "sidebar-ring": "var(--color-purple-400)",
       },
       dark: {
         primary: "var(--color-purple-500)",
         "primary-foreground": "var(--color-purple-50)",
         ring: "var(--color-purple-900)",
+        "sidebar-primary": "var(--color-purple-500)",
+        "sidebar-primary-foreground": "var(--color-purple-50)",
+        "sidebar-ring": "var(--color-purple-900)",
       },
     },
   },
   {
     label: "Fuchsia",
     value: "fuchsia",
-    hex: "bg-fuchsia-500",
+    hex: { light: "bg-fuchsia-600", dark: "bg-fuchsia-500" },
     cssVars: {
       light: {
         primary: "var(--color-fuchsia-600)",
         "primary-foreground": "var(--color-fuchsia-50)",
         ring: "var(--color-fuchsia-400)",
+        "sidebar-primary": "var(--color-fuchsia-600)",
+        "sidebar-primary-foreground": "var(--color-fuchsia-50)",
+        "sidebar-ring": "var(--color-fuchsia-400)",
       },
       dark: {
         primary: "var(--color-fuchsia-500)",
         "primary-foreground": "var(--color-fuchsia-50)",
         ring: "var(--color-fuchsia-900)",
+        "sidebar-primary": "var(--color-fuchsia-500)",
+        "sidebar-primary-foreground": "var(--color-fuchsia-50)",
+        "sidebar-ring": "var(--color-fuchsia-900)",
       },
     },
   },
   {
     label: "Pink",
     value: "pink",
-    hex: "bg-pink-500",
+    hex: { light: "bg-pink-600", dark: "bg-pink-500" },
     cssVars: {
       light: {
         primary: "var(--color-pink-600)",
         "primary-foreground": "var(--color-pink-50)",
         ring: "var(--color-pink-400)",
+        "sidebar-primary": "var(--color-pink-600)",
+        "sidebar-primary-foreground": "var(--color-pink-50)",
+        "sidebar-ring": "var(--color-pink-400)",
       },
       dark: {
         primary: "var(--color-pink-500)",
         "primary-foreground": "var(--color-pink-50)",
         ring: "var(--color-pink-900)",
+        "sidebar-primary": "var(--color-pink-500)",
+        "sidebar-primary-foreground": "var(--color-pink-50)",
+        "sidebar-ring": "var(--color-pink-900)",
       },
     },
   },
   {
     label: "Rose",
     value: "rose",
-    hex: "bg-rose-500",
+    hex: { light: "bg-rose-600", dark: "bg-rose-500" },
     cssVars: {
       light: {
         primary: "var(--color-rose-600)",
         "primary-foreground": "var(--color-rose-50)",
         ring: "var(--color-rose-400)",
+        "sidebar-primary": "var(--color-rose-600)",
+        "sidebar-primary-foreground": "var(--color-rose-50)",
+        "sidebar-ring": "var(--color-rose-400)",
       },
       dark: {
         primary: "var(--color-rose-500)",
         "primary-foreground": "var(--color-rose-50)",
         ring: "var(--color-rose-900)",
+        "sidebar-primary": "var(--color-rose-500)",
+        "sidebar-primary-foreground": "var(--color-rose-50)",
+        "sidebar-ring": "var(--color-rose-900)",
       },
     },
   },
-];
+] as const;
 
-/* Gray scale – same structure as globals.css, base name replaces "neutral" */
 export const GRAY_COLORS = [
   {
     label: "Slate",
@@ -1122,7 +1229,7 @@ export const GRAY_COLORS = [
       },
     },
   },
-];
+] as const;
 
 export const BORDER_RADIUS = [
   {
@@ -1160,4 +1267,97 @@ export const BORDER_RADIUS = [
       radius: "0.625rem",
     },
   },
-];
+] as const;
+
+export type PrimaryColor = (typeof PRIMARY_COLORS)[number];
+export type GrayColor = (typeof GRAY_COLORS)[number];
+export type BorderRadius = (typeof BORDER_RADIUS)[number];
+
+export const createCssVars = (
+  primaryCss: PrimaryColor["cssVars"],
+  grayCss: GrayColor["cssVars"],
+  radiusCss: BorderRadius["cssVars"]
+) => {
+  return `:root {
+  --radius: ${radiusCss?.radius};
+  --background: ${grayCss?.light.background};
+  --foreground: ${grayCss?.light.foreground};
+  --card: ${grayCss?.light.card};
+  --card-foreground: ${grayCss?.light["card-foreground"]};
+  --popover: ${grayCss?.light.popover};
+  --popover-foreground: ${grayCss?.light["popover-foreground"]};
+  --primary: ${primaryCss?.light.primary};
+  --primary-foreground: ${primaryCss?.light["primary-foreground"]};
+  --secondary: ${grayCss?.light.secondary};
+  --secondary-foreground: ${grayCss?.light["secondary-foreground"]};
+  --muted: ${grayCss?.light.muted};
+  --muted-foreground: ${grayCss?.light["muted-foreground"]};
+  --accent: ${grayCss?.light.accent};
+  --accent-foreground: ${grayCss?.light["accent-foreground"]};
+  --destructive: var(--color-red-500);
+  --destructive-foreground: var(--color-red-700);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+  --border: ${grayCss?.light.border};
+  --input: ${grayCss?.light.input};
+  --ring: ${primaryCss?.light.ring};
+  --sidebar: ${grayCss?.light.sidebar};
+  --sidebar-foreground: ${grayCss?.light["sidebar-foreground"]};
+  --sidebar-primary: ${primaryCss?.light["sidebar-primary"]};
+  --sidebar-primary-foreground: ${primaryCss?.light["sidebar-primary-foreground"]};
+  --sidebar-accent: ${grayCss?.light["sidebar-accent"]};
+  --sidebar-accent-foreground: ${grayCss?.light["sidebar-accent-foreground"]};
+  --sidebar-border: ${grayCss?.light["sidebar-border"]};
+  --sidebar-ring: ${primaryCss?.light["sidebar-ring"]};
+  --chart-1: var(--color-orange-600);
+  --chart-2: var(--color-teal-600);
+  --chart-3: var(--color-cyan-900);
+  --chart-4: var(--color-amber-400);
+  --chart-5: var(--color-amber-500);
+}
+
+.dark {
+  --background: ${grayCss?.dark.background};
+  --foreground: ${grayCss?.dark.foreground};
+  --card: ${grayCss?.dark.card};
+  --card-foreground: ${grayCss?.dark["card-foreground"]};
+  --popover: ${grayCss?.dark.popover};
+  --popover-foreground: ${grayCss?.dark["popover-foreground"]};
+  --primary: ${primaryCss?.dark.primary};
+  --primary-foreground: ${primaryCss?.dark["primary-foreground"]};
+  --secondary: ${grayCss?.dark.secondary};
+  --secondary-foreground: ${grayCss?.dark["secondary-foreground"]};
+  --muted: ${grayCss?.dark.muted};
+  --muted-foreground: ${grayCss?.dark["muted-foreground"]};
+  --accent: ${grayCss?.dark.accent};
+  --accent-foreground: ${grayCss?.dark["accent-foreground"]};
+  --destructive: ${grayCss?.dark.destructive};
+  --destructive-foreground: ${grayCss?.dark["destructive-foreground"]};
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-400);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
+  --border: ${grayCss?.dark.border};
+  --input: ${grayCss?.dark.input};
+  --ring: ${primaryCss?.dark.ring};
+  --sidebar: ${grayCss?.dark.sidebar};
+  --sidebar-foreground: ${grayCss?.dark["sidebar-foreground"]};
+  --sidebar-primary: ${primaryCss?.dark["sidebar-primary"]};
+  --sidebar-primary-foreground: ${primaryCss?.dark["sidebar-primary-foreground"]};
+  --sidebar-accent: ${grayCss?.dark["sidebar-accent"]};
+  --sidebar-accent-foreground: ${grayCss?.dark["sidebar-accent-foreground"]};
+  --sidebar-border: ${grayCss?.dark["sidebar-border"]};
+  --sidebar-ring: ${primaryCss?.dark["sidebar-ring"]};
+  --chart-1: var(--color-blue-700);
+  --chart-2: var(--color-emerald-500);
+  --chart-3: var(--color-amber-500);
+  --chart-4: var(--color-purple-500);
+  --chart-5: var(--color-rose-500);
+}`;
+};

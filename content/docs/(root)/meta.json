@@ -1,11 +1,14 @@
 {
-  "title": "Sections",
-  "pages": [
-    "index",
-    "rtl",
-    "[Forms](/docs/forms)",
-    "[Installation](/docs/installation)",
-    "[Changelog](/docs/changelog)",
-    "[llms.txt](/llms.txt)"
-  ]
+	"title": "Sections",
+	"pages": [
+		"index",
+		"[Installation](/docs/installation)",
+		"rtl",
+		"styling",
+		"skills",
+		"llms-txt",
+		"colors",
+		"[Forms](/docs/forms)",
+		"[Changelog](/docs/changelog)"
+	]
 }

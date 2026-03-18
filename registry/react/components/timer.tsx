@@ -103,7 +103,3 @@ export const TimerActionTrigger = (
     />
   );
 };
-
-export const TimerRootProvider = (
-  props: React.ComponentProps<typeof ArkTimer.RootProvider>
-) => <ArkTimer.RootProvider data-slot="timer-root-provider" {...props} />;

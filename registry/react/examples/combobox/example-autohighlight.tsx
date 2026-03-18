@@ -1,5 +1,6 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
@@ -8,7 +9,36 @@ import {
   ComboboxList,
 } from "@/registry/react/components/combobox";
 
-const items = [
+const Example = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  });
+
+  return (
+    <Combobox
+      className="w-64"
+      collection={collection}
+      inputBehavior="autohighlight"
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
+      <ComboboxInput placeholder="Type to highlight..." />
+      <ComboboxContent>
+        <ComboboxList>
+          {collection.items.map((item) => (
+            <ComboboxItem item={item} key={item.value}>
+              {item.label}
+            </ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+};
+
+const initialItems = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Cherry", value: "cherry" },
@@ -16,21 +46,4 @@ const items = [
   { label: "Elderberry", value: "elderberry" },
 ];
 
-const ComboboxAutohighlightDemo = () => {
-  return (
-    <Combobox className="w-64" inputBehavior="autohighlight" items={items}>
-      <ComboboxInput placeholder="Type to highlight..." />
-      <ComboboxContent>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem item={item} key={item.value}>
-              {item.label}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
-  );
-};
-
-export default ComboboxAutohighlightDemo;
+export default Example;

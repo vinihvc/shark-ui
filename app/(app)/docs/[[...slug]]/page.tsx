@@ -132,7 +132,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                     </div>
 
                     {page.data.description && (
-                      <p className="sm: text-[1.05rem] text-muted-foreground sm:text-base md:max-w-[80%]">
+                      <p className="text-[1.05rem] text-muted-foreground sm:text-base md:max-w-[80%]">
                         {page.data.description}
                       </p>
                     )}

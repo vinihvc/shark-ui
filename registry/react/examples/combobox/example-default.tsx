@@ -1,5 +1,6 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
@@ -8,23 +9,39 @@ import {
   ComboboxList,
 } from "@/registry/react/components/combobox";
 
-const items = ["Apple", "Banana", "Cherry", "Date"];
-
 const ComboboxDemo = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  });
+
   return (
-    <Combobox className="w-64" items={items}>
-      <ComboboxInput />
+    <Combobox
+      className="max-w-xs"
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
+      <ComboboxInput placeholder="Select an option" />
       <ComboboxContent>
         <ComboboxList>
-          {(item: string) => (
-            <ComboboxItem item={item} key={item}>
-              {item}
+          {collection.items.map((item) => (
+            <ComboboxItem item={item} key={item.value}>
+              {item.label}
             </ComboboxItem>
-          )}
+          ))}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
   );
 };
+
+const initialItems = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Cherry", value: "cherry" },
+  { label: "Date", value: "date" },
+];
 
 export default ComboboxDemo;

@@ -1,6 +1,6 @@
 import { FormatNumber } from "@/registry/react/components/format";
 
-const FormatNumberCompactExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">1.2M: </span>
@@ -18,4 +18,4 @@ const FormatNumberCompactExample = () => (
   </div>
 );
 
-export default FormatNumberCompactExample;
+export default Example;

@@ -58,7 +58,9 @@ import {
   TimerControl, 
   TimerActionTrigger,
 } from "@/components/ui/timer";
+```
 
+```tsx
 <Timer targetMs={3600000} startMs={2400000}>
   <TimerArea>
     <TimerItem type="hours" />
@@ -99,12 +101,6 @@ Listen to `onTick` and `onComplete` for timer events.
 Alternate between work and break sessions using `onComplete`.
 
 <ComponentPreview componentName="timer" fileName="example-pomodoro" />
-
-### Root Provider
-
-Use `TimerRootProvider` and `useTimer` to control the timer from outside.
-
-<ComponentPreview componentName="timer" fileName="example-root-provider" />
 
 ## API Reference
 
@@ -148,18 +144,6 @@ Use `TimerRootProvider` and `useTimer` to control the timer from outside.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `action` | `"start"` \| `"pause"` \| `"resume"` \| `"reset"` | `"start"` |
-
-### TimerRootProvider
-
-Use with `useTimer` to control the timer from outside the component tree.
-
-| Prop | Type | Default |
-| --- | --- | --- |
-| `value` | `UseTimerReturn` | `-` |
-
-### useTimer
-
-Hook to create timer state. Use with `TimerRootProvider` to control the timer externally.
 
 ---
 

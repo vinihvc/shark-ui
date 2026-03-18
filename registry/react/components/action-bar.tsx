@@ -123,7 +123,7 @@ export interface ActionBarTriggerProps
 export const ActionBarTrigger = (props: ActionBarTriggerProps) => {
   const { onClick, ...rest } = props;
 
-  const { onOpen, isOpen } = useActionBar();
+  const { onOpen, isOpen } = _useActionBar();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onOpen?.();
@@ -174,7 +174,7 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
     ...rest
   } = props;
 
-  const { isOpen, lazyMount, unmountOnExit, positioning } = useActionBar();
+  const { isOpen, lazyMount, unmountOnExit, positioning } = _useActionBar();
 
   const placement = positioning.placement;
   const offset = positioning.offset;
@@ -223,7 +223,7 @@ export interface ActionBarCloseProps
 export const ActionBarClose = (props: ActionBarCloseProps) => {
   const { className, onClick, ...rest } = props;
 
-  const { onClose, isOpen } = useActionBar();
+  const { onClose, isOpen } = _useActionBar();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClose?.();
@@ -288,7 +288,7 @@ export const ActionBarBody = (props: React.ComponentProps<typeof ark.div>) => {
   );
 };
 
-const useActionBar = () => {
+const _useActionBar = () => {
   const context = React.useContext(ActionBarContext);
 
   if (!context) {

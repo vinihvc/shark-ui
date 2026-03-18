@@ -23,7 +23,7 @@ export const BlockThumbCard = (props: BlockThumbCardProps) => {
   return (
     <Card
       aria-label={title}
-      className={cn("size-full bg-muted/64 pb-0", className)}
+      className={cn("size-full bg-muted/48 pb-0", className)}
       {...rest}
     >
       <CardHeader

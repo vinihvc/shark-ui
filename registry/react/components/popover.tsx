@@ -1,10 +1,17 @@
-import { ark } from "@ark-ui/react";
-import { Popover as ArkPopover } from "@ark-ui/react/popover";
+"use client";
+
+import { ark } from "@ark-ui/react/factory";
+import {
+  Popover as ArkPopover,
+  usePopoverContext,
+} from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
-import { X } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { ScrollArea } from "./scroll-area";
+import { Button } from "@/registry/react/components/button";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
+
+export const usePopover = usePopoverContext;
 
 export const Popover = (
   props: React.ComponentProps<typeof ArkPopover.Root>
@@ -35,6 +42,10 @@ export const PopoverAnchor = (
   props: React.ComponentProps<typeof ArkPopover.Anchor>
 ) => <ArkPopover.Anchor data-slot="popover-anchor" {...props} />;
 
+export const PopoverPositioner = (
+  props: React.ComponentProps<typeof ArkPopover.Positioner>
+) => <ArkPopover.Positioner data-slot="popover-positioner" {...props} />;
+
 interface PopoverContentProps
   extends React.ComponentProps<typeof ArkPopover.Content> {
   /**
@@ -50,10 +61,11 @@ export const PopoverContent = (props: PopoverContentProps) => {
 
   return (
     <Portal>
-      <ArkPopover.Positioner data-slot="popover-positioner">
+      <PopoverPositioner>
         <ArkPopover.Content
           className={cn(
             "relative",
+            "z-[calc(50+var(--layer-index,0))]",
             "[--space:--spacing(4)]",
             "w-auto",
             "flex flex-col",
@@ -63,12 +75,12 @@ export const PopoverContent = (props: PopoverContentProps) => {
             "outline-hidden",
             "origin-(--transform-origin)",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-            "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+            "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
-            "data-[side=bottom]:slide-in-from-top-2",
-            "data-[side=left]:slide-in-from-right-2",
-            "data-[side=right]:slide-in-from-left-2",
-            "data-[side=top]:slide-in-from-bottom-2",
+            "data-[placement=bottom]:slide-in-from-top-2",
+            "data-[placement=left]:slide-in-from-end-2",
+            "data-[placement=right]:slide-in-from-start-2",
+            "data-[placement=top]:slide-in-from-bottom-2",
             className
           )}
           data-slot="popover-content"
@@ -79,18 +91,17 @@ export const PopoverContent = (props: PopoverContentProps) => {
           {!!showCloseButton && (
             <PopoverClose asChild>
               <Button
-                className="absolute top-2 right-2 opacity-70 hover:opacity-100"
-                size="icon-md"
+                aria-label="Close"
+                className="absolute inset-e-2 top-2 opacity-64 hover:opacity-100"
+                size="icon-sm"
                 variant="ghost"
               >
-                <X />
-
-                <span className="sr-only">Close</span>
+                <XIcon />
               </Button>
             </PopoverClose>
           )}
         </ArkPopover.Content>
-      </ArkPopover.Positioner>
+      </PopoverPositioner>
     </Portal>
   );
 };
@@ -188,7 +199,7 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         "sm:rounded-b-[calc(var(--radius-lg)-1px)]",
         "px-(--space) py-4",
-        "bg-muted/72",
+        "bg-muted/64",
         "border-t",
         className
       )}
@@ -219,7 +230,7 @@ export const PopoverArrow = (
       }
       {...rest}
     >
-      <ArkPopover.ArrowTip className="border-t border-l" />
+      <ArkPopover.ArrowTip className="border-s border-t" />
     </ArkPopover.Arrow>
   );
 };

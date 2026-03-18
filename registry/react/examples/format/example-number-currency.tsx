@@ -1,6 +1,6 @@
 import { FormatNumber } from "@/registry/react/components/format";
 
-const FormatNumberCurrencyExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">USD: </span>
@@ -17,4 +17,4 @@ const FormatNumberCurrencyExample = () => (
   </div>
 );
 
-export default FormatNumberCurrencyExample;
+export default Example;

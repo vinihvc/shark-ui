@@ -1,8 +1,8 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import { Field, FieldLabel } from "@/registry/react/components/field";
 import {
-  createListCollection,
   Listbox,
   ListboxContent,
   ListboxItem,

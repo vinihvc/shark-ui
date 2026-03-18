@@ -1,0 +1,9 @@
+import { getLLMFullText, getPatternPages } from "@/lib/fumadocs";
+
+export const revalidate = false;
+
+export const GET = async () => {
+  const pages = getPatternPages();
+  const scanned = await Promise.all(pages.map(getLLMFullText));
+  return new Response(scanned.join("\n\n"));
+};

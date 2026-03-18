@@ -29,10 +29,26 @@ npx shadcn@latest add @shark/progress
 
 <Steps>
 
+<Step>This component depends on [Field](/docs/components/field). Install it first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
 npm install @ark-ui/react tailwind-variants
+```
+
+  <Step>Add the following animations to your `globals.css`.</Step>
+
+```css title="styles/globals.css" showLineNumbers
+@theme inline {
+  /* ... */
+  --animate-indeterminate: indeterminate 1.5s ease-in-out infinite;
+
+  @keyframes indeterminate {
+    0% { transform: translateX(-100%); }
+      100% { transform: translateX(400%); }
+  }
+}
 ```
 
 <Step>Copy and paste the following code into your project.</Step>

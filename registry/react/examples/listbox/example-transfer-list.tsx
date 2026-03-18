@@ -1,11 +1,11 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import React, { useCallback } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { Item } from "@/registry/react/components/item";
 import {
-  createListCollection,
   Listbox,
   ListboxContent,
   ListboxItem,
@@ -22,17 +22,13 @@ const Example = () => {
 
   const availableCollection = createListCollection({
     items: available.map((label) => ({ label, value: label })),
-    itemToValue: (item) => (item as { value: string }).value,
-    itemToString: (item) => (item as { label: string }).label,
   });
 
   const selectedCollection = createListCollection({
     items: selected.map((label) => ({ label, value: label })),
-    itemToValue: (item) => (item as { value: string }).value,
-    itemToString: (item) => (item as { label: string }).label,
   });
 
-  const moveToSelected = useCallback(() => {
+  const moveToSelected = React.useCallback(() => {
     setAvailable((prev) =>
       prev.filter((item) => !availableValue.includes(item))
     );
@@ -40,7 +36,7 @@ const Example = () => {
     setAvailableValue([]);
   }, [availableValue]);
 
-  const moveToAvailable = useCallback(() => {
+  const moveToAvailable = React.useCallback(() => {
     setSelected((prev) => prev.filter((item) => !selectedValue.includes(item)));
     setAvailable((prev) => [...prev, ...selectedValue]);
     setSelectedValue([]);

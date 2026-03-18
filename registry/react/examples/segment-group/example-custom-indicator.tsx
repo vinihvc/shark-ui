@@ -7,7 +7,7 @@ import {
   SegmentGroupItemText,
 } from "@/registry/react/components/segment-group";
 
-const CustomIndicatorDemo = () => (
+const Example = () => (
   <SegmentGroup className="rounded-lg" defaultValue="Profile">
     <SegmentGroupIndicator className="bg-primary/20 dark:bg-primary/40" />
     {items.map((item) => (
@@ -25,4 +25,4 @@ const CustomIndicatorDemo = () => (
 
 const items = ["Profile", "Account", "Security", "Notifications"];
 
-export default CustomIndicatorDemo;
+export default Example;

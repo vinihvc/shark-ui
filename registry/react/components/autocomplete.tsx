@@ -1,5 +1,6 @@
 "use client";
 
+import type { Combobox as ArkCombobox } from "@ark-ui/react/combobox";
 import type React from "react";
 import {
   Combobox,
@@ -11,22 +12,21 @@ import {
   ComboboxGroupLabel,
   ComboboxInput,
   ComboboxItem,
+  ComboboxList,
   ComboboxTrigger,
 } from "@/registry/react/components/combobox";
-import { Input } from "./input";
+import { Separator } from "@/registry/react/components/separator";
 
-export const Autocomplete = <
-  T extends { label: string; value: string } | string,
->(
-  props: React.ComponentProps<typeof Combobox<T>>
-) => (
-  <Combobox
-    allowCustomValue
-    data-slot="autocomplete"
-    inputBehavior="autocomplete"
-    {...props}
-  />
-);
+export const Autocomplete: ArkCombobox.RootComponent = (props) => {
+  return (
+    <Combobox
+      allowCustomValue
+      data-slot="autocomplete"
+      inputBehavior="autocomplete"
+      {...props}
+    />
+  );
+};
 
 export const AutocompleteControl = (
   props: React.ComponentProps<typeof ComboboxControl>
@@ -34,11 +34,18 @@ export const AutocompleteControl = (
 
 export const AutocompleteInput = (
   props: React.ComponentProps<typeof ComboboxInput>
-) => (
-  <ComboboxInput data-slot="autocomplete-input" {...props} asChild>
-    <Input />
-  </ComboboxInput>
-);
+) => {
+  const { showClear = false, showTrigger = false, ...rest } = props;
+
+  return (
+    <ComboboxInput
+      data-slot="autocomplete-input"
+      showClear={showClear}
+      showTrigger={showTrigger}
+      {...rest}
+    />
+  );
+};
 
 export const AutocompleteGroupLabel = (
   props: React.ComponentProps<typeof ComboboxGroupLabel>
@@ -67,3 +74,15 @@ export const AutocompleteGroup = (
 export const AutocompleteEmpty = (
   props: React.ComponentProps<typeof ComboboxEmpty>
 ) => <ComboboxEmpty data-slot="autocomplete-empty" {...props} />;
+
+export const AutocompleteList = (
+  props: React.ComponentProps<typeof ComboboxList>
+) => <ComboboxList data-slot="autocomplete-list" {...props} />;
+
+export const AutocompleteCollection = (
+  props: React.ComponentProps<typeof ComboboxList>
+) => <ComboboxList data-slot="autocomplete-collection" {...props} />;
+
+export const AutocompleteSeparator = (
+  props: React.ComponentProps<typeof Separator>
+) => <Separator data-slot="autocomplete-separator" {...props} />;

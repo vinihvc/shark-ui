@@ -18,6 +18,11 @@ const sitemap = (): MetadataRoute.Sitemap => {
       priority: 0.6,
     },
     { url: absoluteUrl("/blocks"), changeFrequency: "monthly", priority: 0.6 },
+    {
+      url: absoluteUrl("/showcase"),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     { url: absoluteUrl("/themes"), changeFrequency: "monthly", priority: 0.6 },
   ];
 

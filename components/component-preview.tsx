@@ -65,8 +65,8 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
   return (
     <ComponentPreviewTabs
       component={<Example.default />}
-      source={<ComponentSource code={sourceCode} isCollapsible={false} />}
       showBorders={showBorders}
+      source={<ComponentSource code={sourceCode} isCollapsible={false} />}
       {...rest}
     />
   );

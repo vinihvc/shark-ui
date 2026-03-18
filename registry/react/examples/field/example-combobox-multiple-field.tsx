@@ -1,5 +1,6 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
@@ -13,7 +14,39 @@ import {
   FieldLabel,
 } from "@/registry/react/components/field";
 
-const items = [
+const Example = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  });
+
+  return (
+    <Field className="w-full max-w-xs">
+      <FieldLabel>Fruits</FieldLabel>
+      <Combobox
+        collection={collection}
+        multiple
+        onInputValueChange={({ inputValue }) => filter(inputValue)}
+      >
+        <ComboboxInput aria-label="Select items" placeholder="Select items…" />
+        <ComboboxContent>
+          <ComboboxList>
+            {collection.items.map((item) => (
+              <ComboboxItem item={item} key={item.value}>
+                {item.label}
+              </ComboboxItem>
+            ))}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+      <FieldDescription>Select multiple items.</FieldDescription>
+    </Field>
+  );
+};
+
+const initialItems = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Orange", value: "orange" },
@@ -25,24 +58,5 @@ const items = [
   { label: "Peach", value: "peach" },
   { label: "Pear", value: "pear" },
 ];
-
-const Example = () => (
-  <Field className="w-full max-w-xs">
-    <FieldLabel>Fruits</FieldLabel>
-    <Combobox items={items} multiple>
-      <ComboboxInput aria-label="Select items" placeholder="Select items…" />
-      <ComboboxContent>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem item={item} key={item.value}>
-              {item.label}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
-    <FieldDescription>Select multiple items.</FieldDescription>
-  </Field>
-);
 
 export default Example;

@@ -50,12 +50,13 @@ npm install @ark-ui/react lucide-react tailwind-variants
 ## Usage
 
 ```tsx
-import { 
- Menu,
+import {
+  Menu,
   MenuCheckboxItem,
   MenuContent,
   MenuGroup,
   MenuItem,
+  MenuQuickItem,
   MenuRadioGroup,
   MenuRadioItem,
   MenuSeparator,
@@ -146,6 +147,12 @@ Use `<MenuGroup />` with  `<MenuGroupLabel />` or the `heading` prop to group re
 Use `<MenuSeparator />` to add visual dividers between related groups of menu items.
 
 <ComponentPreview componentName="menu" fileName="example-with-separator" />
+
+### Quick Items
+
+Use `<MenuQuickItem />` for actions with icon-above-text layout, ideal for quick actions like Copy and Share displayed horizontally.
+
+<ComponentPreview componentName="menu" fileName="example-quick-item" />
 
 ### With Scroll
 
@@ -255,6 +262,18 @@ Label for a group. Renders inside `<MenuGroup />`.
 ### MenuSeparator
 
 Visual divider between items. Renders an `hr`.
+
+### MenuQuickItem
+
+A menu option with icon-above-text layout for quick actions. Use with `flex` to display multiple items horizontally.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `asChild` | `boolean` | - |
+| `disabled` | `boolean` | - |
+| `closeOnSelect` | `boolean` | - |
+| `onSelect` | `VoidFunction` | - |
 
 ### MenuSub / MenuSubTrigger / MenuSubContent
 

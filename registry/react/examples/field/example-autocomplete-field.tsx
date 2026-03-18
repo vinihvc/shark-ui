@@ -1,5 +1,6 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Autocomplete,
   AutocompleteContent,
@@ -14,7 +15,42 @@ import {
   FieldLabel,
 } from "@/registry/react/components/field";
 
-const items = [
+const Example = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  });
+
+  return (
+    <Field className="w-full max-w-xs">
+      <FieldLabel>Fruits</FieldLabel>
+      <Autocomplete
+        collection={collection}
+        onInputValueChange={({ inputValue }) => filter(inputValue)}
+      >
+        <AutocompleteInput
+          aria-label="Search items"
+          placeholder="Search items…"
+        />
+        <AutocompleteContent>
+          <AutocompleteEmpty>No items found.</AutocompleteEmpty>
+          <ComboboxList>
+            {collection.items.map((item) => (
+              <AutocompleteItem item={item} key={item.value}>
+                {item.label}
+              </AutocompleteItem>
+            ))}
+          </ComboboxList>
+        </AutocompleteContent>
+      </Autocomplete>
+      <FieldDescription>Select an item.</FieldDescription>
+    </Field>
+  );
+};
+
+const initialItems = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Orange", value: "orange" },
@@ -26,28 +62,5 @@ const items = [
   { label: "Peach", value: "peach" },
   { label: "Pear", value: "pear" },
 ];
-
-const Example = () => (
-  <Field className="w-full max-w-xs">
-    <FieldLabel>Fruits</FieldLabel>
-    <Autocomplete items={items}>
-      <AutocompleteInput
-        aria-label="Search items"
-        placeholder="Search items…"
-      />
-      <AutocompleteContent>
-        <AutocompleteEmpty>No items found.</AutocompleteEmpty>
-        <ComboboxList>
-          {(item) => (
-            <AutocompleteItem item={item} key={item.value}>
-              {item.label}
-            </AutocompleteItem>
-          )}
-        </ComboboxList>
-      </AutocompleteContent>
-    </Autocomplete>
-    <FieldDescription>Select an item.</FieldDescription>
-  </Field>
-);
 
 export default Example;

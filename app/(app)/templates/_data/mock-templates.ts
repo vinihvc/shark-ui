@@ -64,4 +64,31 @@ export const MOCK_TEMPLATES: MockTemplate[] = [
     status: "available",
     livePreviewUrl: "/templates/ecommerce",
   },
+  {
+    id: "email",
+    name: "Email",
+    description:
+      "Email with real-time messaging, typing indicators, and read receipts.",
+    previewUrl: "/templates/email",
+    status: "available",
+    livePreviewUrl: "/templates/email",
+  },
+  {
+    id: "task-manager",
+    name: "Task Manager",
+    description:
+      "Task manager with task creation, editing, and deletion. Includes task completion tracking and progress tracking.",
+    previewUrl: "/templates/task-manager",
+    status: "available",
+    livePreviewUrl: "/templates/task-manager",
+  },
+  {
+    id: "podcast",
+    name: "Podcast",
+    description:
+      "Podcast with podcast creation, editing, and deletion. Includes podcast completion tracking and progress tracking.",
+    previewUrl: "/templates/podcast",
+    status: "available",
+    livePreviewUrl: "/templates/podcast",
+  },
 ];

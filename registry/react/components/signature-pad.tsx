@@ -1,10 +1,15 @@
 "use client";
 
-import { SignaturePad as ArkSignaturePad } from "@ark-ui/react/signature-pad";
+import {
+  SignaturePad as ArkSignaturePad,
+  useSignaturePadContext,
+} from "@ark-ui/react/signature-pad";
 import { RotateCcw } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
+
+export const useSignaturePad = useSignaturePadContext;
 
 export const SignaturePad = (
   props: React.ComponentProps<typeof ArkSignaturePad.Root>

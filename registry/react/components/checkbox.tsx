@@ -1,10 +1,15 @@
 "use client";
 
-import { Checkbox as ArkCheckbox } from "@ark-ui/react/checkbox";
+import {
+  Checkbox as ArkCheckbox,
+  useCheckboxContext,
+} from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "lucide-react";
 import type React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+
+export const useCheckbox = useCheckboxContext;
 
 export const CheckboxGroup = (
   props: React.ComponentProps<typeof ArkCheckbox.Group>

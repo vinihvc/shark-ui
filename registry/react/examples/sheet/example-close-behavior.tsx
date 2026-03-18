@@ -6,7 +6,7 @@ import {
   SheetTrigger,
 } from "@/registry/react/components/sheet";
 
-const SheetCloseBehaviorDemo = () => (
+const Example = () => (
   <div className="flex flex-wrap justify-center gap-4">
     <Sheet closeOnInteractOutside={false}>
       <SheetTrigger asChild>
@@ -33,4 +33,4 @@ const SheetCloseBehaviorDemo = () => (
   </div>
 );
 
-export default SheetCloseBehaviorDemo;
+export default Example;

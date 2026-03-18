@@ -4,7 +4,7 @@ import {
   NativeSelectOption,
 } from "@/registry/react/components/native-select";
 
-const NativeSelectDemo = () => (
+const Example = () => (
   <NativeSelect className="w-full max-w-40">
     <NativeSelectOption value="">Select an option</NativeSelectOption>
     <NativeSelectOptGroup label="Tropical">
@@ -20,4 +20,4 @@ const NativeSelectDemo = () => (
   </NativeSelect>
 );
 
-export default NativeSelectDemo;
+export default Example;

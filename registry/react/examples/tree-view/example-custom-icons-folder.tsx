@@ -13,7 +13,7 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const TreeViewDemo = () => (
+const Example = () => (
   <div className="w-full max-w-40">
     <TreeView collection={collection}>
       <TreeViewTree>
@@ -86,4 +86,4 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
   );
 };
 
-export default TreeViewDemo;
+export default Example;

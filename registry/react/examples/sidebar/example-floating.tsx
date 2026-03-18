@@ -24,7 +24,7 @@ import {
   SidebarTrigger,
 } from "@/registry/react/components/sidebar";
 
-export default function SidebarExampleFloating() {
+function Example() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <SidebarProvider className="h-full">
@@ -120,3 +120,5 @@ export default function SidebarExampleFloating() {
     </div>
   );
 }
+
+export default Example;

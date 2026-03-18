@@ -37,9 +37,9 @@
 
 .prose h4:not(.not-prose h4) {
   margin-top: calc(var(--spacing) * 8);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: 600;
-  line-height: var(--text-xl--line-height);
+  line-height: var(--text-lg--line-height);
   letter-spacing: var(--tracking-tight);
   scroll-margin: calc(var(--spacing) * 20);
 }

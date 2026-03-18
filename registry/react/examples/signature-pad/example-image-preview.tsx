@@ -5,7 +5,7 @@ import React from "react";
 import { Field, FieldDescription } from "@/registry/react/components/field";
 import { SignaturePad } from "@/registry/react/components/signature-pad";
 
-const SignaturePadImagePreviewDemo = () => {
+const Example = () => {
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
 
   return (
@@ -31,4 +31,4 @@ const SignaturePadImagePreviewDemo = () => {
   );
 };
 
-export default SignaturePadImagePreviewDemo;
+export default Example;

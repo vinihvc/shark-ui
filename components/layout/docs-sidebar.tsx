@@ -14,9 +14,16 @@ import {
   SidebarMenuItem,
 } from "@/registry/react/components/sidebar";
 
-export const DocsSidebar = (
-  props: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }
-) => {
+interface DocsSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  /**
+   * The tree of pages to display in the sidebar
+   *
+   * @default source.pageTree
+   */
+  tree: typeof source.pageTree;
+}
+
+export const DocsSidebar = (props: DocsSidebarProps) => {
   const { tree, className, ...rest } = props;
 
   const pathname = usePathname();

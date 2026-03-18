@@ -6,7 +6,7 @@ import {
   AngleSliderValue,
 } from "@/registry/react/components/angle-slider";
 
-export default function AngleSliderExamplePrefixSuffix() {
+function Example() {
   return (
     <AngleSlider aria-label="Angle" defaultValue={90} size={120} thickness={10}>
       <AngleSliderValue
@@ -16,3 +16,5 @@ export default function AngleSliderExamplePrefixSuffix() {
     </AngleSlider>
   );
 }
+
+export default Example;

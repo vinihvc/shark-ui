@@ -15,7 +15,7 @@ import {
   SheetTrigger,
 } from "@/registry/react/components/sheet";
 
-const SheetDemo = () => (
+const Example = () => (
   <Sheet>
     <SheetTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -49,4 +49,4 @@ const SheetDemo = () => (
   </Sheet>
 );
 
-export default SheetDemo;
+export default Example;

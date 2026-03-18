@@ -1,7 +1,7 @@
 "use client";
 
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Field, FieldLabel } from "@/registry/react/components/field";
@@ -87,7 +87,7 @@ interface PasswordCheckerProps {
 }
 
 function PasswordChecker({ password, onPasswordChange }: PasswordCheckerProps) {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClear = () => {
     onPasswordChange("");
@@ -148,7 +148,7 @@ function PasswordChecker({ password, onPasswordChange }: PasswordCheckerProps) {
 }
 
 const Example = () => {
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = React.useState("");
 
   return (
     <div className="flex w-full max-w-sm flex-col gap-4">

@@ -1,12 +1,17 @@
 "use client";
 
-import { NumberInput as ArkNumberInput } from "@ark-ui/react/number-input";
+import {
+  NumberInput as ArkNumberInput,
+  useNumberInputContext,
+} from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Input, type InputProps } from "@/registry/react/components/input";
-import { Button } from "./button";
-import { FieldLabel } from "./field";
+import { Button } from "@/registry/react/components/button";
+import { FieldLabel } from "@/registry/react/components/field";
+
+export const useNumberInput = useNumberInputContext;
 
 interface NumberFieldProps
   extends React.ComponentProps<typeof ArkNumberInput.Root>,

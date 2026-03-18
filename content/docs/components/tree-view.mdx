@@ -35,6 +35,19 @@ npx shadcn@latest add @shark/tree-view
 npm install @ark-ui/react lucide-react
 ```
 
+  <Step>Add the following to your `globals.css` for the tree-view expand/collapse animation:</Step>
+
+```css title="styles/globals.css"
+@keyframes expand {
+  from { height: var(--collapsed-height, 0); }
+  to { height: var(--height); }
+}
+@keyframes collapse {
+  from { height: var(--height); }
+  to { height: var(--collapsed-height, 0); }
+}
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource title="components/ui/tree-view.tsx" src="/tree-view.tsx" />

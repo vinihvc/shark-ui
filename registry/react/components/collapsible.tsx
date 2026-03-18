@@ -1,9 +1,14 @@
 "use client";
 
-import { Collapsible as ArkCollapsible } from "@ark-ui/react/collapsible";
+import {
+  Collapsible as ArkCollapsible,
+  useCollapsibleContext,
+} from "@ark-ui/react/collapsible";
 import { ChevronDownIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+
+export const useCollapsible = useCollapsibleContext;
 
 export const Collapsible = (
   props: React.ComponentProps<typeof ArkCollapsible.Root>
