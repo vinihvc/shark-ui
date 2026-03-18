@@ -11,6 +11,7 @@ const manifest: RegistryItemType = {
     absoluteUrl("/r/button.json"),
     absoluteUrl("/r/calendar.json"),
     absoluteUrl("/r/input.json"),
+    absoluteUrl("/r/input-group.json"),
   ],
 };
 

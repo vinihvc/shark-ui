@@ -9,7 +9,7 @@ import {
   TimerSeparator,
 } from "@/registry/react/components/timer";
 
-const CountdownExample = () => (
+const Example = () => (
   <Timer countdown startMs={5 * 60 * 1000}>
     <TimerArea>
       <div className="flex flex-col items-center gap-0">
@@ -45,4 +45,4 @@ const CountdownExample = () => (
   </Timer>
 );
 
-export default CountdownExample;
+export default Example;

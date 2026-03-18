@@ -4,7 +4,13 @@ import fm from "front-matter";
 import { source } from "@/lib/fumadocs";
 
 export interface ChangelogPageData {
+  /**
+   * The description of the changelog page
+   */
   description?: string;
+  /**
+   * The title of the changelog page
+   */
   title: string;
 }
 

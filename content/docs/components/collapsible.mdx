@@ -35,6 +35,25 @@ npx shadcn@latest add @shark/collapsible
 npm install @ark-ui/react lucide-react
 ```
 
+  <Step>Add the following animations to your `globals.css`.</Step>
+
+```css title="styles/globals.css" showLineNumbers
+@theme inline {
+  /* ... */
+  --animate-expand: expand 0.2s ease-out;
+  --animate-collapse: collapse 0.2s ease-out;
+
+  @keyframes expand {
+    from { height: var(--collapsed-height, 0); }
+    to { height: var(--height); }
+  }
+  @keyframes collapse {
+    from { height: var(--height); }
+    to { height: var(--collapsed-height, 0); }
+  }
+}
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource title="components/ui/collapsible.tsx" src="/collapsible.tsx" />

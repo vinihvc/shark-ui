@@ -1,18 +1,28 @@
-import { getLLMText, source } from "@/lib/fumadocs";
+import { buildLLMIndex } from "@/lib/fumadocs";
 
 export const revalidate = false;
 
-export const GET = async () => {
-  const scan = source.getPages().map(getLLMText);
+export const GET = () => {
+  const intro = `# Shark UI Documentation
 
-  const intro = `# Shark UI\n
-> Shark UI is a collection of beautifully-designed, accessible components and a code distribution platform. It is built with TypeScript, Tailwind CSS, and Ark UI primitives. It supports multiple frameworks including Next.js, Vite, Remix, Astro, and more. Open Source. Open Code. AI-Ready. It also comes with a command-line tool to install and manage components.
+> Documentation for Shark UI component library.
+
+Shark UI is a component library built on [Tailwind CSS](https://tailwindcss.com/) and [Ark UI](https://ark-ui.com/). Components are accessible, customizable, and ready to use with your preferred framework.
+
+**Key Features:**
+
+- Beautiful by default - Professional look out of the box
+- Accessible - Built with accessibility best practices
+- Flexible - Customizable components with predictable patterns
+- Developer-friendly - Fully typed APIs and excellent autocompletion
+
+## Documentation Index
+
 `;
 
-  const scanned = await Promise.all(scan);
-
-  const content = `${intro}\n${scanned.join("\n\n")}
-  `;
+  const index = buildLLMIndex();
+  const content = `${intro}${index}
+`;
 
   return new Response(content);
 };

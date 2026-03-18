@@ -70,7 +70,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const ProgressExample = () => (
+const Example = () => (
   <div className="flex w-full max-w-sm flex-col gap-4">
     <Tour steps={steps}>
       <TourTrigger asChild>
@@ -119,4 +119,4 @@ const ProgressExample = () => (
   </div>
 );
 
-export default ProgressExample;
+export default Example;

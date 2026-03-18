@@ -1,11 +1,13 @@
+import { ClipboardIcon } from "lucide-react";
+import { CopyThemeCodeDialog } from "@/components/dialog/copy-theme";
 import { ButtonVariantsExample } from "@/components/examples/button-variants-example";
+import { Button } from "@/registry/react/components/button";
 import {
   Card,
   CardAction,
   CardContent,
   CardHeader,
 } from "@/registry/react/components/card";
-import { ThemeSelectorDialog } from "./theme-selector.dialog";
 import { ThemeSelectorGray } from "./theme-selector.gray";
 import { ThemeSelectorPrimary } from "./theme-selector.primary";
 import { ThemeSelectorRadius } from "./theme-selector.radius";
@@ -21,7 +23,12 @@ export const ThemeSelector = (props: React.ComponentProps<typeof Card>) => {
           title="Theme Selector"
         >
           <CardAction>
-            <ThemeSelectorDialog />
+            <CopyThemeCodeDialog>
+              <Button size="sm" variant="outline">
+                <ClipboardIcon />
+                Copy theme
+              </Button>
+            </CopyThemeCodeDialog>
           </CardAction>
         </CardHeader>
 

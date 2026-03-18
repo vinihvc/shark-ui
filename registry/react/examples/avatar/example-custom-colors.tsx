@@ -4,7 +4,7 @@ import {
   AvatarGroup,
 } from "@/registry/react/components/avatar";
 
-const AvatarCustomColorsDemo = () => (
+const Example = () => (
   <AvatarGroup>
     <Avatar>
       <AvatarFallback className="bg-indigo-600 text-indigo-50">
@@ -38,4 +38,4 @@ const AvatarCustomColorsDemo = () => (
   </AvatarGroup>
 );
 
-export default AvatarCustomColorsDemo;
+export default Example;

@@ -1,6 +1,6 @@
 import { FormatNumber } from "@/registry/react/components/format";
 
-const FormatNumberExample = () => (
+const Example = () => (
   <div className="inline-flex items-baseline gap-1">
     <span className="text-muted-foreground text-sm">Downloads</span>
     <span className="font-medium text-foreground tabular-nums tracking-tight">
@@ -10,4 +10,4 @@ const FormatNumberExample = () => (
   </div>
 );
 
-export default FormatNumberExample;
+export default Example;

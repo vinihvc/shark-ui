@@ -61,32 +61,52 @@ export const MobileNav = (props: MobileNavProps) => {
 
       <PopoverContent className="h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100">
         <div className="flex flex-col gap-8 px-4 py-6">
-          {tree?.children?.map((group, index) => {
-            if (group.type === "folder") {
-              return (
-                <div className="flex flex-col gap-4" key={index}>
-                  <div className="font-medium text-muted-foreground text-sm">
-                    {group.name}
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    {group.children.map((item) => {
-                      if (item.type === "page") {
-                        return (
-                          <PopoverClose asChild key={`${item.url}-${index}`}>
-                            <NavLink
-                              className="flex items-center gap-2 font-medium text-2xl"
-                              href={item.url}
-                            >
-                              {item.name}
-                            </NavLink>
-                          </PopoverClose>
-                        );
-                      }
-                    })}
-                  </div>
-                </div>
-              );
+          <div className="flex flex-col gap-4">
+            <div className="font-medium text-muted-foreground text-sm">
+              Navigation
+            </div>
+            <div className="flex flex-col gap-3">
+              {items.map((item) => (
+                <PopoverClose asChild key={item.href}>
+                  <NavLink
+                    className="flex items-center gap-2 font-medium text-2xl"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </NavLink>
+                </PopoverClose>
+              ))}
+            </div>
+          </div>
+          {tree?.children?.map((group) => {
+            if (group.type !== "folder") {
+              return null;
             }
+
+            return (
+              <div className="flex flex-col gap-4" key={String(group.name)}>
+                <div className="font-medium text-muted-foreground text-sm">
+                  {group.name}
+                </div>
+                <div className="flex flex-col gap-3">
+                  {group.children
+                    .filter(
+                      (item): item is typeof item & { type: "page" } =>
+                        item.type === "page"
+                    )
+                    .map((item) => (
+                      <PopoverClose asChild key={item.url}>
+                        <NavLink
+                          className="flex items-center gap-2 font-medium text-2xl"
+                          href={item.url}
+                        >
+                          {item.name}
+                        </NavLink>
+                      </PopoverClose>
+                    ))}
+                </div>
+              </div>
+            );
           })}
         </div>
       </PopoverContent>

@@ -29,6 +29,8 @@ npx shadcn@latest add @shark/command
 
 <Steps>
 
+<Step>This component depends on [Combobox](/docs/components/combobox), [Dialog](/docs/components/dialog), [Input Group](/docs/components/input-group), [Menu](/docs/components/menu), and [Separator](/docs/components/separator). Install them first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -50,16 +52,215 @@ npm install @ark-ui/react lucide-react
 ## Usage
 
 ```tsx
-import { Command, CommandContent, CommandItem } from "@/components/ui/command";
+import { useFilter, useListCollection } from "@ark-ui/react";
+import {
+  Command,
+  CommandContent,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 ```
 
-```tsx showLineNumbers
-<Command>
+```tsx
+const { contains } = useFilter({ sensitivity: "base" });
+const { collection, filter } = useListCollection({
+  initialItems: [...],
+  filter: contains,
+  groupBy: (item) => item.group, // optional
+});
+
+<Command
+  collection={collection}
+  onInputValueChange={({ inputValue }) => filter(inputValue)}
+>
+  <CommandInput placeholder="Search..." />
   <CommandContent>
-    <CommandItem>Item 1</CommandItem>
+    <CommandEmpty />
+    <CommandList>
+      {collection.group().map(([group, items]) => (
+        <CommandGroup heading={group} key={group}>
+          {items.map((item) => (
+            <CommandItem item={item} key={item.value}>
+              {item.label}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      ))}
+    </CommandList>
   </CommandContent>
 </Command>
 ```
 
 ## Examples
+
+### With Dialog
+
+Use `<CommandDialog />`, `<CommandDialogTrigger />`, and `<CommandDialogContent />` for the modal pattern.
+
+<ComponentPreview componentName="command" fileName="example-dialog" />
+
+### Groups
+
+Group related items with `<CommandGroup />` and the `heading` prop. 
+
+<ComponentPreview componentName="command" fileName="example-groups" />
+
+### Shortcuts
+
+Display keyboard shortcuts next to items with `<CommandShortcut />`.
+
+<ComponentPreview componentName="command" fileName="example-shortcuts" />
+
+### With Footer
+
+Add hints or actions in the footer with `<CommandFooter />`.
+
+<ComponentPreview componentName="command" fileName="example-with-footer" />
+
+## API Reference
+
+### Command
+
+Root component.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collection` | `ListCollection<T>` | **required** |
+| `value` | `string \| string[]` | - |
+| `defaultValue` | `string \| string[]` | - |
+| `onValueChange` | `(details: ValueChangeDetails<T>) => void` | - |
+| `onInputValueChange` | `(details: InputValueChangeDetails) => void` | - |
+| `disabled` | `boolean` | - |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `className` | `string` | - |
+
+### CommandDialog
+
+Dialog root for the command palette. Same as `Dialog`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `({ open }: OpenChangeDetails) => void` | - |
+| `className` | `string` | - |
+
+### CommandDialogTrigger
+
+Button that opens the command dialog. Renders a `button`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### CommandDialogContent
+
+Container for the command palette inside the dialog.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"lg"` |
+| `title` | `string` | `"Command Palette"` |
+| `description` | `string` | `"Search for a command to run..."` |
+| `className` | `string` | - |
+
+### CommandInput
+
+Search input with icon. Renders an input inside `InputGroup`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `placeholder` | `string` | - |
+| `disabled` | `boolean` | - |
+| `className` | `string` | - |
+
+### CommandContent
+
+Scrollable content container for the command list.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### CommandList
+
+List container for command items.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### CommandEmpty
+
+Content when no items match the filter.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `children` | `ReactNode` | `No results found.` |
+| `asChild` | `boolean` | - |
+
+### CommandGroup
+
+Groups related items. 
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `heading` | `string \| ReactNode` | - |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### CommandGroupLabel
+
+Label for a group. 
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | - |
+
+### CommandItem
+
+Individual command option. Renders a `div`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `item` | `T` | **required** |
+| `className` | `string` | - |
+
+### CommandSeparator
+
+Visual separator between groups or items. Renders a [`<Separator />`](/components/separator).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### CommandShortcut
+
+Keyboard shortcut badge. Renders a `span`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | - |
+| `className` | `string` | - |
+
+### CommandFooter
+
+Footer area for hints or actions. Renders a `div`.  
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/command#api-reference).
 

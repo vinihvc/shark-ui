@@ -9,7 +9,7 @@ const manifest: RegistryItemType = {
   dependencies,
   registryDependencies: [
     absoluteUrl("/r/button.json"),
-    absoluteUrl("/r/input.json"),
+    absoluteUrl("/r/native-select.json"),
   ],
 };
 

@@ -248,6 +248,7 @@
     var(--color-neutral-950) 4%,
     var(--code)
   );
+  color-scheme: light dark;
 }
 
 .dark {
@@ -345,7 +346,7 @@
   }
 
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 ring-ring;
   }
 
   html {
@@ -453,10 +454,10 @@
   }
 
   [data-line] span {
-    color: var(--shiki-light);
+    @apply text-(--shiki-light);
 
     @variant dark {
-      color: var(--shiki-dark) !important;
+      @apply text-(--shiki-dark);
     }
   }
 

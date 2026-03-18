@@ -36,7 +36,7 @@ export const Kbd = (props: KbdProps) => {
 
   return (
     <ark.kbd
-      className={cn(kbdVariants({ variant, className }))}
+      className={cn(kbdVariants({ variant }), className)}
       data-slot="kbd"
       {...rest}
     />

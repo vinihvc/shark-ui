@@ -9,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/registry/react/components/sheet";
 
-const SheetScrollAreaDemo = () => (
+const Example = () => (
   <Sheet>
     <SheetTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -78,4 +78,4 @@ const SheetScrollAreaDemo = () => (
   </Sheet>
 );
 
-export default SheetScrollAreaDemo;
+export default Example;

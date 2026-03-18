@@ -8,43 +8,46 @@ interface TemplateCardProps {
   template: MockTemplate;
 }
 
-const InfoPanel = ({
-  template,
-  isAvailable,
-}: {
+interface InfoPanelProps {
   isAvailable: boolean;
   template: MockTemplate;
-}) => (
-  <div className="flex flex-1 flex-col justify-center gap-4 p-6 lg:p-8">
-    <span className="font-medium text-primary text-sm">Template</span>
-    <h3 className="font-semibold text-2xl tracking-tight">{template.name}</h3>
-    <p className="text-muted-foreground text-sm leading-relaxed">
-      {template.description}
-    </p>
-    <div className="flex flex-wrap gap-3">
-      {isAvailable && (
-        <Button asChild size="lg" variant="default">
-          <Link href={template.livePreviewUrl}>
-            View Code
-            <CodeIcon aria-hidden />
-          </Link>
-        </Button>
-      )}
-      {isAvailable && (
-        <Button asChild size="lg" variant="outline">
-          <Link
-            href={template.livePreviewUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Live Preview
-            <ExternalLinkIcon aria-hidden />
-          </Link>
-        </Button>
-      )}
+}
+
+const InfoPanel = (props: InfoPanelProps) => {
+  const { template, isAvailable } = props;
+
+  return (
+    <div className="flex flex-1 flex-col justify-center gap-4 p-6 lg:p-8">
+      <span className="font-medium text-primary text-sm">Template</span>
+      <h3 className="font-semibold text-2xl tracking-tight">{template.name}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">
+        {template.description}
+      </p>
+      <div className="flex flex-col gap-4 md:flex-row">
+        {isAvailable && (
+          <Button asChild size="lg" variant="default">
+            <Link href={template.livePreviewUrl}>
+              View Code
+              <CodeIcon aria-hidden />
+            </Link>
+          </Button>
+        )}
+        {isAvailable && (
+          <Button asChild size="lg" variant="outline">
+            <Link
+              href={template.livePreviewUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Live Preview
+              <ExternalLinkIcon aria-hidden />
+            </Link>
+          </Button>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PreviewPanel = () => (
   <div className="relative aspect-square flex-1 overflow-hidden rounded-lg bg-muted" />

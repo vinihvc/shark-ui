@@ -6,7 +6,9 @@ import {
 } from "@ark-ui/react/angle-slider";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { FieldLabel } from "./field";
+import { FieldLabel } from "@/registry/react/components/field";
+
+export const useAngleSlider = useAngleSliderContext;
 
 interface AngleSliderContextValue {
   /**
@@ -135,7 +137,7 @@ export const AngleSlider = (props: AngleSliderProps) => {
 const AngleSliderProgressRing = () => {
   const api = useAngleSliderContext();
 
-  const { size, thickness, ringRadius, ringCircumference } = useAngleSlider();
+  const { size, thickness, ringRadius, ringCircumference } = _useAngleSlider();
 
   const percent = api.value / 360;
   const dashLength = percent * ringCircumference;
@@ -176,7 +178,7 @@ export const AngleSliderThumb = (
 ) => {
   const { className, ...rest } = props;
 
-  const { thumbSize, ringRadius } = useAngleSlider();
+  const { thumbSize, ringRadius } = _useAngleSlider();
 
   const halfThumb = thumbSize / 2;
 
@@ -280,7 +282,7 @@ export const AngleSliderMarker = (
 ) => {
   const { className, style, ...rest } = props;
 
-  const { size, thickness } = useAngleSlider();
+  const { size, thickness } = _useAngleSlider();
 
   const ringRadius = size / 2 - thickness / 2;
   const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));
@@ -314,7 +316,7 @@ export const AngleSliderMarker = (
 
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
 
-const useAngleSlider = () => {
+const _useAngleSlider = () => {
   const context = React.useContext(AngleSliderContext);
 
   if (!context?.ringRadius) {

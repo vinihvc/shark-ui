@@ -9,7 +9,7 @@ import {
   SheetTrigger,
 } from "@/registry/react/components/sheet";
 
-const SheetNonModalDemo = () => (
+const Example = () => (
   <Sheet modal={false}>
     <SheetTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -34,4 +34,4 @@ const SheetNonModalDemo = () => (
   </Sheet>
 );
 
-export default SheetNonModalDemo;
+export default Example;

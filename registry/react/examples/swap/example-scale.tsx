@@ -5,7 +5,7 @@ import React from "react";
 import { Button } from "@/registry/react/components/button";
 import { Swap, SwapIndicator } from "@/registry/react/components/swap";
 
-const SwapDemo = () => {
+const Example = () => {
   const [swap, setSwap] = React.useState(false);
 
   return (
@@ -22,4 +22,4 @@ const SwapDemo = () => {
   );
 };
 
-export default SwapDemo;
+export default Example;

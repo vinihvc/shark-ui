@@ -1,16 +1,16 @@
 "use client";
 
-import { ark } from "@ark-ui/react";
 import {
   Listbox as ArkListbox,
-  createListCollection as createListCollectionArk,
+  useListboxContext,
 } from "@ark-ui/react/listbox";
 import { CheckIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import { MenuShortcut } from "@/registry/react/components/menu";
 
-export const createListCollection = createListCollectionArk;
+export const useListbox = useListboxContext;
 
 export const Listbox: ArkListbox.RootComponent = (props) => {
   const { className, ...rest } = props;
@@ -214,20 +214,7 @@ export const ListboxEmpty = (
 };
 
 export const ListboxShortcut = (
-  props: React.ComponentProps<typeof ark.span>
+  props: React.ComponentProps<typeof MenuShortcut>
 ) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ark.span
-      className={cn(
-        "ms-auto rtl:me-auto",
-        "text-muted-foreground text-xs tracking-widest",
-        "group-data-highlighted/listbox-item:group-data-[variant=destructive]/listbox-item:text-destructive dark:group-data-highlighted/listbox-item:group-data-[variant=destructive]/listbox-item:text-destructive-foreground",
-        className
-      )}
-      data-slot="listbox-shortcut"
-      {...rest}
-    />
-  );
+  return <MenuShortcut data-slot="listbox-shortcut" {...props} />;
 };

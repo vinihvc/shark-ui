@@ -75,7 +75,7 @@ export const TableFooter = (props: React.ComponentProps<typeof ark.tfoot>) => {
     <ark.tfoot
       className={cn(
         "border-t",
-        "bg-muted/64",
+        "bg-muted/48",
         "font-medium",
         "last:[&>tr]:border-b-0",
         className
@@ -95,7 +95,7 @@ export const TableRow = (props: React.ComponentProps<typeof ark.tr>) => {
         "border-b",
         "data-[state=selected]:bg-muted",
         "group-data-[variant=striped]/table:even:bg-muted/30",
-        "group-data-[hoverable=true]/table:[&:has(td):hover]:bg-muted/64",
+        "group-data-[hoverable=true]/table:[&:has(td):hover]:bg-muted/48",
         className
       )}
       data-slot="table-row"

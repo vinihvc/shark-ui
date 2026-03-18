@@ -10,7 +10,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
-export const useFileUploadContext = useArkFileUploadContext;
+export const useFileUpload = useArkFileUploadContext;
 
 export const FileUpload = (
   props: React.ComponentProps<typeof ArkFileUpload.Root>
@@ -73,7 +73,7 @@ export const FileUploadDropzoneIcon = (
     <ark.div
       className={cn(
         "p-3",
-        "bg-muted/64",
+        "bg-muted/48",
         "text-muted-foreground",
         "rounded-full border",
         "group-data-dragging/file-upload:border-primary/24 group-data-dragging/file-upload:bg-primary/5 group-data-dragging/file-upload:text-primary",
@@ -144,7 +144,7 @@ interface FileUploadListProps
 export const FileUploadList = (props: FileUploadListProps) => {
   const { className, ...rest } = props;
 
-  const fileUpload = useFileUploadContext();
+  const fileUpload = useFileUpload();
 
   const files = fileUpload.acceptedFiles;
 

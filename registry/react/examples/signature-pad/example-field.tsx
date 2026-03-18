@@ -5,7 +5,7 @@ import {
 } from "@/registry/react/components/field";
 import { SignaturePad } from "@/registry/react/components/signature-pad";
 
-const SignaturePadFieldDemo = () => (
+const Example = () => (
   <Field className="w-full max-w-md">
     <FieldLabel>Signature</FieldLabel>
     <SignaturePad />
@@ -13,4 +13,4 @@ const SignaturePadFieldDemo = () => (
   </Field>
 );
 
-export default SignaturePadFieldDemo;
+export default Example;

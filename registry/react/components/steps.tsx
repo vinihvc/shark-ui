@@ -1,10 +1,12 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import { Steps as ArkSteps } from "@ark-ui/react/steps";
+import { Steps as ArkSteps, useStepsContext } from "@ark-ui/react/steps";
 import { CheckIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+
+export const useSteps = useStepsContext;
 
 export const Steps = (props: React.ComponentProps<typeof ArkSteps.Root>) => {
   const { className, ...rest } = props;

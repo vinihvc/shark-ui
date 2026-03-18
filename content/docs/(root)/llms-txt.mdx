@@ -1,0 +1,73 @@
+---
+title: LLMs.txt
+description: Let AI assistants like Claude, Cursor, and Windsurf use Shark UI documentation.
+---
+
+import { SITE_CONFIG } from "@/config/site";
+
+Shark UI provides [LLMs.txt](https://llmstxt.org/) endpoints so AI coding assistants can fetch documentation directly by URL.
+
+## Available Files
+
+**Core documentation:**
+
+- [/react/llms.txt](/react/llms.txt) — Quick reference index for React documentation
+- [/react/llms-full.txt](/react/llms-full.txt) — Complete Shark UI React documentation
+
+**For limited context windows:**
+
+- [/react/llms-components.txt](/react/llms-components.txt) — Component documentation only
+- [/react/llms-patterns.txt](/react/llms-patterns.txt) — Common patterns and recipes
+
+**All platforms:**
+
+- [/llms.txt](/llms.txt) — Quick reference index (React)
+- [/llms-full.txt](/llms-full.txt) — Complete documentation (React)
+- [/llms-components.txt](/llms-components.txt) — All component documentation
+- [/llms-patterns.txt](/llms-patterns.txt) — All patterns and recipes
+
+## Integration
+
+**Claude Code:** Reference the docs in your prompt or add to your project’s `.claude` file:
+
+```bash
+Use Shark UI documentation from https://shark.vini.one/llms.txt
+```
+
+**Cursor:** Use the `@Docs` feature:
+
+```bash
+@Docs https://shark.vini.one/llms-full.txt
+```
+
+[Learn more](https://docs.cursor.com/context/@-symbols/@-docs)
+
+**Windsurf:** Add to your `.windsurfrules` file:
+
+```bash
+#docs https://shark.vini.one/llms-full.txt
+```
+
+[Learn more](https://docs.codeium.com/windsurf/memories#memories-and-rules)
+
+**Other AI tools:** Most assistants accept documentation URLs:
+
+```bash
+https://shark.vini.one/llms.txt
+```
+
+For component-specific documentation:
+
+```bash
+https://shark.vini.one/llms-components.txt
+```
+
+For patterns and best practices:
+
+```bash
+https://shark.vini.one/llms-patterns.txt
+```
+
+## Contributing
+
+Spotted an issue with AI-generated code? Contributions to improve the LLMs.txt output are welcome on [GitHub](https://github.com/vinihvc/shark-ui).

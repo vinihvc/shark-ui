@@ -1,7 +1,7 @@
 "use client";
 
 import { ZoomInIcon, ZoomOutIcon } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   ImageCropper,
@@ -10,7 +10,7 @@ import {
 } from "@/registry/react/components/image-cropper";
 
 const Example = () => {
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = React.useState(1);
 
   return (
     <div className="flex w-full max-w-lg flex-col items-end gap-2">

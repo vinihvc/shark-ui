@@ -1,88 +1,69 @@
 "use client";
 
-import {
-  CalculatorIcon,
-  CalendarIcon,
-  CreditCardIcon,
-  SmileIcon,
-  UserIcon,
-} from "lucide-react";
-import { ComboboxList } from "@/registry/react/components/combobox";
+import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Command,
   CommandContent,
-  CommandControl,
   CommandEmpty,
+  CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
 } from "@/registry/react/components/command";
 
-interface CommandItemData {
-  icon: React.ReactNode;
-  label: string;
-  type: string;
-  value: string;
-}
+const CommandExample = () => {
+  const { contains } = useFilter({ sensitivity: "base" });
 
-const items: CommandItemData[] = [
-  {
-    label: "Calendar",
-    value: "calendar",
-    icon: <CalendarIcon />,
-    type: "Suggestions",
-  },
-  {
-    label: "Search Emoji",
-    value: "search-emoji",
-    icon: <SmileIcon />,
-    type: "Suggestions",
-  },
-  {
-    label: "Calculator",
-    value: "calculator",
-    icon: <CalculatorIcon />,
-    type: "Suggestions",
-  },
-  {
-    label: "Profile",
-    value: "profile",
-    icon: <UserIcon />,
-    type: "Settings",
-  },
-  {
-    label: "Billing",
-    value: "billing",
-    icon: <CreditCardIcon />,
-    type: "Settings",
-  },
-];
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+    groupBy: (item) => item.group,
+  });
 
-const CommandDemo = () => {
   return (
-    <div className="rounded-md border">
-      <Command
-        groupBy={(item) => item.type}
-        items={items}
-        placeholder="Type a command or search"
-      >
-        <CommandControl>
-          <CommandInput />
-        </CommandControl>
-
-        <CommandContent>
-          <CommandEmpty />
-          <ComboboxList<CommandItemData>>
-            {(item) => (
-              <CommandItem item={item} key={item.value}>
-                {item.icon}
-                {item.label}
-              </CommandItem>
-            )}
-          </ComboboxList>
-        </CommandContent>
-      </Command>
-    </div>
+    <Command
+      className="w-full max-w-md"
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
+      <CommandInput />
+      <CommandContent>
+        <CommandEmpty />
+        <CommandList>
+          {collection.group().map(([group, items], index) => (
+            <CommandGroup heading={group} key={group}>
+              {items.map((item) => (
+                <CommandItem item={item} key={item.value}>
+                  {item.label}
+                  <CommandShortcut>{item.shortcut}</CommandShortcut>
+                </CommandItem>
+              ))}
+              {index < collection.group().length - 1 && <CommandSeparator />}
+            </CommandGroup>
+          ))}
+        </CommandList>
+      </CommandContent>
+    </Command>
   );
 };
 
-export default CommandDemo;
+const initialItems = [
+  { label: "Linear", shortcut: "⌘L", value: "linear", group: "Suggestions" },
+  { label: "Figma", shortcut: "⌘F", value: "figma", group: "Suggestions" },
+  { label: "Slack", shortcut: "⌘S", value: "slack", group: "Suggestions" },
+  { label: "YouTube", shortcut: "⌘Y", value: "youtube", group: "Suggestions" },
+  { label: "Raycast", shortcut: "⌘R", value: "raycast", group: "Suggestions" },
+  { label: "Settings", shortcut: "⌘,", value: "settings", group: "Settings" },
+  { label: "Help", shortcut: "⌘?", value: "help", group: "Settings" },
+  { label: "About", shortcut: "⌘I", value: "about", group: "Settings" },
+  { label: "Feedback", shortcut: "⌘F", value: "feedback", group: "Settings" },
+  { label: "Support", shortcut: "⌘S", value: "support", group: "Settings" },
+  { label: "Updates", shortcut: "⌘U", value: "updates", group: "Settings" },
+  { label: "Logout", shortcut: "⌘L", value: "logout", group: "Settings" },
+  { label: "Sign out", shortcut: "⌘O", value: "sign out", group: "Settings" },
+  { label: "Sign in", shortcut: "⌘I", value: "sign in", group: "Settings" },
+];
+
+export default CommandExample;

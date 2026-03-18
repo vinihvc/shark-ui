@@ -29,6 +29,8 @@ npx shadcn@latest add @shark-ui/toggle-group
 
 <Steps>
 
+<Step>This component depends on [Toggle](/docs/components/toggle) and [Tooltip](/docs/components/tooltip). Install them first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -63,25 +65,31 @@ import {
 </ToggleGroup>
 ```
 
-## Examples
+## Orientation
 
-### Default
+Use `orientation` to change the orientation of the toggle group.
 
-Use `orientation="vertical"` for a vertical layout.
+### Horizontal
+
+<ComponentPreview componentName="toggle-group" fileName="example-horizontal" />
+
+### Vertical
 
 <ComponentPreview componentName="toggle-group" fileName="example-vertical" />
 
-### With spacing
+## Variant
 
-Use `spacing` to add space between buttons. When spacing is greater than 0, each button keeps its own border and rounded corners.
+Use `variant` to change the visual style of the toggle buttons.
 
-<ComponentPreview componentName="toggle-group" fileName="example-spacing" />
+### Ghost
 
-### With separator
+<ComponentPreview componentName="toggle-group" fileName="example-ghost" />
 
-Add visual separators between toggle items using the `ToggleGroupSeparator` component.
+### Outline
 
-<ComponentPreview componentName="toggle-group" fileName="example-separator" />
+<ComponentPreview componentName="toggle-group" fileName="example-outline" />
+
+## State
 
 ### Disabled
 
@@ -95,19 +103,21 @@ Disable individual toggles by setting `disabled` on a specific item.
 
 <ComponentPreview componentName="toggle-group" fileName="example-disabled-item" />
 
+## Examples
+
+### With spacing
+
+Use `spacing` to add space between buttons. When spacing is greater than 0, each button keeps its own border and rounded corners.
+
+<ComponentPreview componentName="toggle-group" fileName="example-spacing" />
+
 ### Single selection
 
 Use `multiple={false}` to allow only one toggle to be selected at a time.
 
 <ComponentPreview componentName="toggle-group" fileName="example-single" />
 
-### With tooltips
-
-Wrap items with Tooltip to show labels on hover.
-
-<ComponentPreview componentName="toggle-group" fileName="example-tooltips" />
-
-### Custom
+### Custom toggle group
 
 A custom toggle group example with tooltips and custom styling for font weight selection.
 
@@ -144,15 +154,6 @@ Individual toggle button within the group. Inherits variant and size from parent
 | `disabled` | `boolean` | `false` |
 | `className` | `string` | - |
 | `aria-label` | `string` | - |
-
-### ToggleGroupSeparator
-
-Visual separator between toggle items. Use within `ToggleGroup` for a consistent styled divider. Renders a [`<Separator />`](/docs/components/separator).
-
-| Prop | Type | Default |
-| --- | --- | --- |
-| `orientation` | `"horizontal"` \| `"vertical"` | `"vertical"` |
-| `className` | `string` | - |
 
 ---
 

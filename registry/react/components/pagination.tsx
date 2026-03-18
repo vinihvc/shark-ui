@@ -9,6 +9,8 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
+export const usePagination = usePaginationContext;
+
 interface PaginationProps
   extends React.ComponentProps<typeof ArkPagination.Root> {}
 

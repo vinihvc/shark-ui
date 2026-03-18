@@ -5,6 +5,7 @@ import {
   TreeView as ArkTreeView,
   createTreeCollection as arkCreateTreeCollection,
   type TreeCollection as arkTreeCollection,
+  useTreeViewContext as useArkTreeViewContext,
 } from "@ark-ui/react/tree-view";
 import {
   CheckIcon,
@@ -17,7 +18,9 @@ import {
 import React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { checkboxVariants } from "./checkbox";
+import { checkboxVariants } from "@/registry/react/components/checkbox";
+
+export const useTreeView = useArkTreeViewContext;
 
 export interface TreeNodeType<T = unknown> {
   children?: TreeNodeType<T>[] | undefined;
@@ -330,9 +333,9 @@ interface TreeViewItemProps
 export const TreeViewItem = (props: TreeViewItemProps) => {
   const { icon: Icon = FileIcon, className, children, ...rest } = props;
 
-  const { fileIcons } = useTreeViewContext();
+  const { fileIcons } = _useTreeView();
 
-  const getfileIcons = (value: string): React.JSX.ElementType => {
+  const getFileIcon = (value: string): React.JSX.ElementType => {
     const extension = getFileExtension(value);
     const resolved = extension ? fileIcons?.[extension] : undefined;
     return resolved ?? Icon;
@@ -341,7 +344,7 @@ export const TreeViewItem = (props: TreeViewItemProps) => {
   return (
     <ArkTreeView.NodeContext>
       {(nodeState) => {
-        const ResolvedIcon = getfileIcons(nodeState.value);
+        const ResolvedIcon = getFileIcon(nodeState.value);
 
         return (
           <>
@@ -437,7 +440,7 @@ const TreeViewNodeInput = (
   );
 };
 
-const useTreeViewContext = () => {
+const _useTreeView = () => {
   const context = React.useContext(TreeViewContext);
 
   if (!context) {

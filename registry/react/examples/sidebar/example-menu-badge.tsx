@@ -19,7 +19,7 @@ import {
   SidebarTrigger,
 } from "@/registry/react/components/sidebar";
 
-export default function SidebarExampleMenuBadge() {
+function Example() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <SidebarProvider className="h-full">
@@ -93,3 +93,5 @@ export default function SidebarExampleMenuBadge() {
     </div>
   );
 }
+
+export default Example;

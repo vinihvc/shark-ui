@@ -55,7 +55,7 @@ const steps: TourStepType[] = [
   },
 ];
 
-const StepTypesExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <Tour steps={steps}>
       <TourTrigger asChild>
@@ -82,4 +82,4 @@ const StepTypesExample = () => (
   </div>
 );
 
-export default StepTypesExample;
+export default Example;

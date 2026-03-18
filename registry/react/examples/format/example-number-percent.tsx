@@ -1,6 +1,6 @@
 import { FormatNumber } from "@/registry/react/components/format";
 
-const FormatNumberPercentExample = () => (
+const Example = () => (
   <div className="flex flex-col gap-4">
     <div>
       <span className="text-muted-foreground text-sm">Default: </span>
@@ -13,4 +13,4 @@ const FormatNumberPercentExample = () => (
   </div>
 );
 
-export default FormatNumberPercentExample;
+export default Example;

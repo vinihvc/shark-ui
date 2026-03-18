@@ -1,9 +1,14 @@
 "use client";
 
-import { ScrollArea as ArkScrollArea } from "@ark-ui/react/scroll-area";
+import {
+  ScrollArea as ArkScrollArea,
+  useScrollAreaContext,
+} from "@ark-ui/react/scroll-area";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+
+export const useScrollArea = useScrollAreaContext;
 
 const scrollAreaVariants = tv({
   base: [
@@ -13,7 +18,7 @@ const scrollAreaVariants = tv({
     "outline-none",
     "[scrollbar-width:none]",
     "[&::-webkit-scrollbar]:display-none",
-    "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+    "outline-none",
     "transition-shadow",
   ],
   variants: {
@@ -49,7 +54,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
         className={cn(scrollAreaVariants({ scrollFade }))}
         data-slot="scroll-area-viewport"
       >
-        <ArkScrollArea.Content data-slot="scroll-area-content">
+        <ArkScrollArea.Content data-slot="scroll-area-content ">
           {children}
         </ArkScrollArea.Content>
       </ArkScrollArea.Viewport>
@@ -72,7 +77,7 @@ export const ScrollAreaScrollbar = (
       className={cn(
         "flex",
         "m-1",
-        "bg-muted/64",
+        "bg-muted/48",
         "opacity-0 transition-opacity delay-300",
         "data-[orientation=vertical]:w-1.5",
         "data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:flex-col",

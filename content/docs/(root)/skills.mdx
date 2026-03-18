@@ -1,0 +1,71 @@
+---
+title: Skills
+description: Let AI assistants build UIs using Shark UI components with skills and context.
+---
+
+Skills give AI assistants like Claude Code project-aware context about Shark UI. When installed, your AI assistant knows how to find, install, compose, and customize components using the correct APIs and patterns for your project.
+
+For example, you can ask your AI assistant to:
+
+- "Add a login form with email and password fields."
+- "Create a settings page with a form for updating profile information."
+- "Build a dashboard with a sidebar, stats cards, and a data table."
+- "Add the dialog component from the Shark registry."
+- "Can you add a hero block from the Shark blocks?"
+
+## Setup
+
+Run the installer script (works with Claude Code, Cursor, OpenCode, Codex, and Antigravity):
+
+```bash
+curl -fsSL https://shark.vini.one/install | bash -s shark-ui
+```
+
+Alternatively, install via the skills CLI:
+
+```bash
+npx skills add shark-ui
+```
+
+## Using Skills
+
+Agents discover skills automatically, or you can invoke the skill with `/shark-ui`.
+
+You can instruct your assistant to:
+
+- Implement UIs with Shark UI components
+- Create screens and flows using the component set
+- Adjust themes, tokens, and styling
+- Look up component APIs and examples
+
+For broader AI context, see [llms.txt](/docs/llms-txt) for documentation bundled for agents.
+
+## What You Get
+
+- Shark UI setup and installation instructions
+- Component catalog with props, variants, and usage
+- Theming and styling notes
+- Design principles and composition patterns
+
+## Skill Layout
+
+```bash
+skills/shark-ui/
+├── SKILL.md              # Skill entry point
+├── LICENSE.txt
+└── scripts/
+    ├── list_components.mjs
+    ├── get_component_docs.mjs
+    ├── get_source.mjs
+    ├── get_styles.mjs
+    ├── get_theme.mjs
+    └── get_docs.mjs
+```
+
+## See Also
+
+- [Agent Skills Spec](https://agentskills.io/home)
+- [Claude Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+- [Cursor Skills](https://cursor.com/docs/context/skills)
+- [OpenCode Skills](https://opencode.ai/docs/skills)
+- [llms.txt](/docs/llms-txt) — Shark UI docs bundled for AI agents

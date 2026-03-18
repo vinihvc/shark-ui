@@ -1,9 +1,6 @@
 ---
 title: Drawer
 description: A panel that slides in from the edge of the screen.
-links:
-  doc: https://ark-ui.com/docs/components/dialog
-  api: https://ark-ui.com/docs/components/dialog#api-reference
 ---
 
 <ComponentPreview componentName="drawer" />
@@ -25,6 +22,8 @@ npx shadcn@latest add @shark/drawer
   <TabsContent value="manual">
 
 <Steps>
+  <Step>This component depends on [Button](/docs/components/button) and [Scroll Area](/docs/components/scroll-area). Install them first if you haven't already.</Step>
+
   <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -110,7 +109,7 @@ Use `snapPoints` to allow the drawer to snap to multiple heights.
 
 ### Drawer
 
-Root element of the drawer. Renders a drawer context. Uses Ark UI Drawer (zag-js) under the hood.
+Root element of the drawer.
 
 | Prop | Type | Default |
 | --- | --- | --- |

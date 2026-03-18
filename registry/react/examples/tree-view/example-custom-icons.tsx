@@ -20,7 +20,7 @@ const fileIcons = createFileIcons({
   ".md": FileTextIcon,
 });
 
-const TreeViewDemo = () => (
+const Example = () => (
   <div className="w-full max-w-40">
     <TreeView collection={collection} fileIcons={fileIcons}>
       <TreeViewTree>
@@ -87,4 +87,4 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
   );
 };
 
-export default TreeViewDemo;
+export default Example;

@@ -1,13 +1,18 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import { FloatingPanel as ArkFloatingPanel } from "@ark-ui/react/floating-panel";
+import {
+  FloatingPanel as ArkFloatingPanel,
+  useFloatingPanelContext,
+} from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { Maximize, MaximizeIcon, MinimizeIcon, MinusIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button, type ButtonProps } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+
+export const useFloatingPanel = useFloatingPanelContext;
 
 export const FloatingPanel = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Root>
@@ -108,7 +113,7 @@ export const FloatingPanelHeader = (
           "min-w-0",
           "px-(--space) py-[calc(var(--space)*0.5)]",
           "flex flex-1 shrink-0 items-center gap-2",
-          "bg-muted/64",
+          "bg-muted/48",
           "rounded-t-2xl border-b",
           "overflow-hidden",
           "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -270,7 +275,7 @@ export const FloatingPanelFooter = (
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
         "px-(--space) py-4",
-        "bg-muted/64",
+        "bg-muted/48",
         "border-t",
         className
       )}

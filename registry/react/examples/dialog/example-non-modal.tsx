@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 
-const DialogNonModalDemo = () => (
+const Example = () => (
   <Dialog modal={false}>
     <DialogTrigger asChild>
       <Button variant="outline">Open</Button>
@@ -35,4 +35,4 @@ const DialogNonModalDemo = () => (
   </Dialog>
 );
 
-export default DialogNonModalDemo;
+export default Example;

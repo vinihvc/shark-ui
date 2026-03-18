@@ -121,13 +121,25 @@ export const InputGroupAddon = (props: InputGroupAddonProps) => {
 };
 
 const inputGroupButtonVariants = tv({
-  base: "flex items-center gap-2 text-sm shadow-none",
+  base: ["flex items-center gap-2", "text-sm", "shadow-none"],
   variants: {
     size: {
-      xs: "h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&_svg:not([class*='size-'])]:size-3.5",
-      sm: "h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5",
-      "icon-xs": "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
-      "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+      xs: [
+        "h-6",
+        "gap-1",
+        "px-2",
+        "rounded-[calc(var(--radius)-5px)]",
+        "has-[>svg]:px-2",
+        "[&_svg:not([class*='size-'])]:size-3.5",
+      ],
+      sm: ["h-8", "gap-1.5", "px-2.5", "rounded-md", "has-[>svg]:px-2.5"],
+      "icon-xs": [
+        "size-6",
+        "rounded-[calc(var(--radius)-5px)]",
+        "p-0",
+        "has-[>svg]:p-0",
+      ],
+      "icon-sm": ["size-8", "p-0", "has-[>svg]:p-0"],
     },
   },
   defaultVariants: {
@@ -187,7 +199,7 @@ export const InputGroupInput = (props: React.ComponentProps<typeof Input>) => {
         "bg-transparent",
         "rounded-none border-0 shadow-none",
         "focus-visible:ring-0",
-        "disabled:bg-transparent aria-invalid:ring-0",
+        "disabled:bg-transparent aria-invalid:ring-0 data-invalid:ring-0",
         "dark:bg-transparent dark:disabled:bg-transparent",
         className
       )}

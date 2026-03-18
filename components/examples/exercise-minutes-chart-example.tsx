@@ -5,9 +5,7 @@ import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/registry/react/components/card";
 import {
   type ChartConfig,
@@ -70,14 +68,14 @@ export const ExerciseMinutesChartExample = (
 ) => {
   return (
     <Card {...props}>
-      <CardHeader>
-        <CardTitle>Exercise Minutes</CardTitle>
-        <CardDescription>Your exercise minutes are normal.</CardDescription>
-      </CardHeader>
+      <CardHeader
+        description="Your exercise minutes are normal."
+        title="Exercise Minutes"
+      />
       <CardContent>
         <ChartContainer className="w-full md:h-[200px]" config={chartConfig}>
           <LineChart
-            accessibilityLayer
+            accessibilityLayer={false}
             data={data}
             margin={{
               top: 5,
@@ -85,7 +83,6 @@ export const ExerciseMinutesChartExample = (
               left: 16,
               bottom: 0,
             }}
-            tabIndex={-1}
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -124,8 +121,8 @@ export const ExerciseMinutesChartExample = (
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  accessibilityLayer={true}
-                  active={true}
+                  accessibilityLayer={false}
+                  active={false}
                   activeIndex={undefined}
                   coordinate={undefined}
                   payload={[]}

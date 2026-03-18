@@ -1,8 +1,8 @@
 "use client";
 
+import { createListCollection } from "@ark-ui/react";
 import { PencilIcon, SquarePlusIcon, Trash2Icon } from "lucide-react";
 import {
-  createListCollection,
   Listbox,
   ListboxContent,
   ListboxItem,
@@ -11,7 +11,7 @@ import {
   ListboxShortcut,
 } from "@/registry/react/components/listbox";
 import { Separator } from "@/registry/react/components/separator";
-import { Item } from "../../components/item";
+import { Item } from "@/registry/react/components/item";
 
 const Example = () => {
   return (

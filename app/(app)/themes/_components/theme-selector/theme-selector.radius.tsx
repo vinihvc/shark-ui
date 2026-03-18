@@ -17,11 +17,11 @@ import {
   useConfig,
 } from "@/store/config";
 
-export const ThemeSelectorRadius = () => {
-  const collection = createListCollection({
-    items: BORDER_RADIUS,
-  });
+const collection = createListCollection({
+  items: BORDER_RADIUS,
+});
 
+export const ThemeSelectorRadius = () => {
   const [config, setConfig] = useConfig();
 
   return (

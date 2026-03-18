@@ -1,9 +1,11 @@
 "use client";
 
-import { Tabs as ArkTabs } from "@ark-ui/react/tabs";
+import { Tabs as ArkTabs, useTabsContext } from "@ark-ui/react/tabs";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+
+export const useTabs = useTabsContext;
 
 export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
   const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;

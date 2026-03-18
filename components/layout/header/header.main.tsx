@@ -5,7 +5,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 
 interface MainNavProps extends React.ComponentProps<"nav"> {
-  items: { href: string; label: string }[];
+  items: {
+    href: string;
+    label: string;
+  }[];
 }
 
 export const MainNav = (props: MainNavProps) => {

@@ -1,9 +1,11 @@
 "use client";
 
-import { Swap as ArkSwap } from "@ark-ui/react/swap";
+import { Swap as ArkSwap, useSwapContext } from "@ark-ui/react/swap";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+
+export const useSwap = useSwapContext;
 
 const swapIndicatorVariants = tv({
   variants: {

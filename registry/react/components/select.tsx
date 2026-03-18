@@ -8,6 +8,8 @@ import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { inputVariants } from "@/registry/react/components/input";
 
+export const useSelect = useSelectContext;
+
 export const SelectContext = ArkSelect.Context;
 
 export const Select: ArkSelect.RootComponent = (props) => {

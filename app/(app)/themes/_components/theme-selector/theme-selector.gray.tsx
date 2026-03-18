@@ -14,12 +14,12 @@ import {
 } from "@/registry/react/components/select";
 import { DEFAULT_GRAY_COLOR, type GrayColor, useConfig } from "@/store/config";
 
+const collection = createListCollection({
+  items: GRAY_COLORS,
+});
+
 export const ThemeSelectorGray = () => {
   const [config, setConfig] = useConfig();
-
-  const collection = createListCollection({
-    items: GRAY_COLORS,
-  });
 
   const handleSelectColor = (color: GrayColor) => {
     setConfig({
@@ -40,7 +40,7 @@ export const ThemeSelectorGray = () => {
           <div className="flex items-center gap-2">
             <div
               className={cn(
-                "size-4 rounded-full border",
+                "size-4 rounded-full",
                 `bg-${config.grayColor}-500`
               )}
             />
@@ -52,7 +52,7 @@ export const ThemeSelectorGray = () => {
           {collection.items.map((item) => (
             <SelectItem item={item.value} key={item.value}>
               <div className="flex items-center gap-2">
-                <div className={cn("size-4 rounded-md border", item.hex)} />
+                <div className={cn("size-4 rounded-md", item.hex)} />
                 {item.label}
                 {item.value === DEFAULT_GRAY_COLOR && (
                   <Badge size="sm" variant="info">

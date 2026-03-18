@@ -1,7 +1,7 @@
 "use client";
 
-import { PlusIcon } from "lucide-react";
-import React from "react";
+import { ExternalLinkIcon, PlusIcon, Trash2Icon } from "lucide-react";
+import type React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
 import {
@@ -49,22 +49,6 @@ import {
 } from "@/registry/react/components/tooltip";
 
 export const ButtonVariantsExample = (props: React.ComponentProps<"div">) => {
-  const [isLoading, setLoading] = React.useState(false);
-
-  React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setLoading(true);
-    }, 5000);
-
-    const timeoutId2 = setTimeout(() => {
-      setLoading(false);
-    }, 10_000);
-    return () => {
-      clearTimeout(timeoutId);
-      clearTimeout(timeoutId2);
-    };
-  }, []);
-
   return (
     <Card {...props}>
       <CardHeader
@@ -128,22 +112,22 @@ export const ButtonVariantsExample = (props: React.ComponentProps<"div">) => {
             </DialogBody>
             <DialogFooter>
               <DialogClose asChild>
-                <Button>Save changes</Button>
+                <Button variant="outline">Cancel</Button>
               </DialogClose>
               <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
+                <Button>Save changes</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>
         </Dialog>
 
-        <Tooltip open={isLoading} positioning={{ placement: "bottom" }}>
+        <Tooltip positioning={{ placement: "bottom" }}>
           <TooltipTrigger asChild>
-            <Button isLoading={isLoading} variant="destructive">
-              Delete account
+            <Button variant="destructive">
+              <Trash2Icon /> Destructive
             </Button>
           </TooltipTrigger>
-          <TooltipContent>I have isLoading state</TooltipContent>
+          <TooltipContent>I'm a tooltip</TooltipContent>
         </Tooltip>
 
         <Clipboard value="something">
@@ -168,7 +152,10 @@ export const ButtonVariantsExample = (props: React.ComponentProps<"div">) => {
           {" "}
           Ghost
         </Button>
-        <Button variant="link"> Visit website</Button>
+        <Button variant="link">
+          {" "}
+          Link <ExternalLinkIcon aria-hidden />
+        </Button>
       </CardContent>
     </Card>
   );

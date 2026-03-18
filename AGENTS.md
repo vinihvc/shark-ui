@@ -11,10 +11,15 @@
 - Field examples: use `className="w-full max-w-xs"` and export as default `Example`
 - ScrollArea in menus: use native `overflow-y-auto` when ScrollArea causes layout issues
 - Link overlay is a utility: div with `position: relative` and overlay link covering it, not a card-style component
+- Example components: prefer minimal logic; avoid runtime resolution when static display suffices
 
 ## Learned Workspace Facts
 
-- HackerRank tests: use `background` not `backgroundColor` for `toHaveStyle` assertions
+- Import registry components with `@/registry/react/components/<component-name>`, never `./` or `../../components/`
 - Component thumbs in `components/thumbs/` follow accordion color pattern (`bg-muted-foreground/16`, `bg-muted-foreground/8`)
 - Registry examples in `registry/react/examples/<component>/` use `example-*.tsx` naming
-- Sidebar examples: wrap in `absolute inset-0 overflow-hidden`, add `className="absolute"` to Sidebar, use `h-full` on SidebarProvider to prevent overflow outside preview
+- Sidebar examples: wrap in `absolute inset-0 overflow-hidden`, add `className="absolute"` to Sidebar, use `h-full` on SidebarProvider to prevent overflow outside preview; pass showBorders={false} to ComponentPreview
+- Footer: update `components/layout/footer.tsx` for app/templates; HomeFooter is for home page only
+- Recharts display-only chart examples: set `accessibilityLayer={false}` to disable tabindex
+- Thumbs folder: no barrel file; derive thumb component types from BlockThumbCardProps
+- Combobox examples: use useFilter + useListCollection from @ark-ui/react; pass collection (not items); onInputValueChange calls filter(inputValue); ComboboxList children use collection.items.map()

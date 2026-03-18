@@ -24,7 +24,7 @@ import {
   SidebarTrigger,
 } from "@/registry/react/components/sidebar";
 
-export default function SidebarExampleOffcanvas() {
+function Example() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <SidebarProvider className="h-full">
@@ -118,3 +118,5 @@ export default function SidebarExampleOffcanvas() {
     </div>
   );
 }
+
+export default Example;

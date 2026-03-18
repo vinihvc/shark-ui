@@ -15,7 +15,7 @@ import {
   SidebarTrigger,
 } from "@/registry/react/components/sidebar";
 
-export default function SidebarExampleSkeleton() {
+function Example() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <SidebarProvider className="h-full">
@@ -66,3 +66,5 @@ export default function SidebarExampleSkeleton() {
     </div>
   );
 }
+
+export default Example;

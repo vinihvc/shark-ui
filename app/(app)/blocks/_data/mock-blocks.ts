@@ -6,13 +6,9 @@ export interface MockBlock {
   previewUrl: string;
 }
 
-const slug = (name: string) =>
-  name.replace(/\s+/g, "-").toLowerCase();
+const slug = (name: string) => name.replace(/\s+/g, "-").toLowerCase();
 
-const block = (
-  name: string,
-  opts?: { description?: string }
-): MockBlock => {
+const block = (name: string, opts?: { description?: string }): MockBlock => {
   const id = slug(name);
   return {
     id,
