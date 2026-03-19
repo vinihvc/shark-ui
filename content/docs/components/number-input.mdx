@@ -165,7 +165,7 @@ Use the `allowMouseWheel` prop to increment or decrement the value with the mous
 
 ### NumberField
 
-Root component. Renders a `div`.
+Root component. Manages numeric value and stepper controls.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -187,7 +187,7 @@ Root component. Renders a `div`.
 
 ### NumberFieldGroup
 
-Container for the input and stepper buttons. Renders a `div`.
+Wraps the input and increment/decrement buttons.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ Container for the input and stepper buttons. Renders a `div`.
 
 ### NumberFieldDecrement
 
-Decrement button. Renders a `button`.
+Decreases the value by the step amount.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -203,7 +203,7 @@ Decrement button. Renders a `button`.
 
 ### NumberFieldIncrement
 
-Increment button. Renders a `button`.
+Increases the value by the step amount.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -211,7 +211,7 @@ Increment button. Renders a `button`.
 
 ### NumberFieldInput
 
-The numeric input element. Renders an `input`.
+Numeric input. Accepts number or direct typing.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -220,7 +220,7 @@ The numeric input element. Renders an `input`.
 
 ### NumberFieldScrubber
 
-Scrubber area—drag to change the value. Renders a `label`.
+Drag area for scrubbing the value (like slider). Wraps the input for label association.
 
 | Prop | Type | Default |
 | --- | --- | --- |

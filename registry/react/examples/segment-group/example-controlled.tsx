@@ -9,7 +9,7 @@ import {
 } from "@/registry/react/components/segment-group";
 
 const Example = () => {
-  const [value, setValue] = React.useState<string | null>(null);
+  const [value, setValue] = React.useState<string | null>("Profile");
 
   return (
     <SegmentGroup

@@ -154,7 +154,7 @@ To allow mouse drag, set the `allowMouseDrag` prop on `<Carousel />`.
 
 ### Carousel
 
-Root element of the carousel. Renders a `div`
+Root component. Manages slide state and navigation.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -173,7 +173,7 @@ Root element of the carousel. Renders a `div`
 
 ### CarouselContent
 
-Container for carousel items. Renders a `div`
+Wraps all slides. Handles layout and transitions.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ Container for carousel items. Renders a `div`
 
 ### CarouselItem
 
-Container for a single carousel item. Renders a `div`
+Wraps a single slide.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -193,7 +193,7 @@ Container for a single carousel item. Renders a `div`
 
 ### CarouselControl
 
-Container for carousel navigation controls. Renders a `div`
+Holds prev/next navigation buttons.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -202,7 +202,7 @@ Container for carousel navigation controls. Renders a `div`
 
 ### CarouselPrevious
 
-Button that navigates to the previous slide. Renders a `button`
+Goes to the previous slide.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -210,7 +210,7 @@ Button that navigates to the previous slide. Renders a `button`
 
 ### CarouselNext
 
-Button that navigates to the next slide. Renders a `button`
+Goes to the next slide.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -218,7 +218,7 @@ Button that navigates to the next slide. Renders a `button`
 
 ### CarouselIndicatorGroup
 
-Container for carousel indicators. Renders a `div`
+Holds slide indicator dots or pills.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -227,7 +227,7 @@ Container for carousel indicators. Renders a `div`
 
 ### CarouselIndicator
 
-Button that indicates and navigates to a specific slide. Renders a `button`
+Indicator for a slide. Click to jump to that slide.
 
 | Prop | Type | Default |
 | --- | --- | --- |

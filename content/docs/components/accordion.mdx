@@ -121,7 +121,7 @@ Use the `disabled` prop on `AccordionItem` to prevent interaction with specific 
 
 ### Accordion
 
-Root element of the accordion. Renders a `div`
+Root component. Manages expand/collapse state for items.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -135,7 +135,7 @@ Root element of the accordion. Renders a `div`
 
 ### AccordionItem
 
-Container for a single accordion item. Renders a `div`
+Wraps a single accordion section (trigger + content).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -145,7 +145,7 @@ Container for a single accordion item. Renders a `div`
 
 ### AccordionTrigger
 
-Button that toggles the accordion item. Renders a `button`
+Toggles the section open/closed on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -155,7 +155,7 @@ Button that toggles the accordion item. Renders a `button`
 
 ### AccordionContent
 
-Container for the accordion item content. Renders a `div`
+Holds the collapsible content for the section.
 
 | Prop | Type | Default |
 | --- | --- | --- |

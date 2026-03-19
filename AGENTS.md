@@ -23,3 +23,6 @@
 - Recharts display-only chart examples: set `accessibilityLayer={false}` to disable tabindex
 - Thumbs folder: no barrel file; derive thumb component types from BlockThumbCardProps
 - Combobox examples: use useFilter + useListCollection from @ark-ui/react; pass collection (not items); onInputValueChange calls filter(inputValue); ComboboxList children use collection.items.map()
+- When a component exposes user-customizable CSS variables (e.g. `[--ratio:1]`), document them in the component MDX API Reference using an Attribute | Default table (see aspect-ratio.mdx)
+- Ark UI components: add "For a complete list of props, see the [Ark UI documentation](<api-url>)" at end of MDX file
+- Blocks: import from `@/registry/react/blocks/{category}/{subfolder}/{block-name}`, e.g. `@/registry/react/blocks/marketing/heroes/minimal-gradient-with-ctas`

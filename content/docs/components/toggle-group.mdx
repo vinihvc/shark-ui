@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/toggle-group
+npx shadcn@latest add @shark/toggle-group
 ```
 
 </TabsContent>
@@ -51,7 +51,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { 
   ToggleGroup, 
   ToggleGroupItem 
@@ -107,7 +107,7 @@ Disable individual toggles by setting `disabled` on a specific item.
 
 ### With spacing
 
-Use `spacing` to add space between buttons. When spacing is greater than 0, each button keeps its own border and rounded corners.
+Use `spacing` to add space between buttons.
 
 <ComponentPreview componentName="toggle-group" fileName="example-spacing" />
 
@@ -127,7 +127,7 @@ A custom toggle group example with tooltips and custom styling for font weight s
 
 ### ToggleGroup
 
-Root component. Provides shared variant and size to child toggles via context. Renders a `div`.
+Root component. Provides shared variant and size to child toggles via context.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -142,11 +142,9 @@ Root component. Provides shared variant and size to child toggles via context. R
 | `disabled` | `boolean` | `false` |
 | `className` | `string` | - |
 
-For more props, see [Ark UI Toggle Group](https://ark-ui.com/docs/components/toggle-group#api-reference).
-
 ### ToggleGroupItem
 
-Individual toggle button within the group. Inherits variant and size from parent ToggleGroup. Renders a [`<Toggle />`](/docs/components/toggle).
+Single toggle in the group. Uses [`<Toggle />`](/docs/components/toggle) internally.
 
 | Prop | Type | Default |
 | --- | --- | --- |

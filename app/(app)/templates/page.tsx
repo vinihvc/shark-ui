@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import { DotPattern } from "@/components/background/dot-pattern";
 import { Footer } from "@/components/layout/footer";
+import { createMetadata } from "@/lib/metadata";
 import { TemplatesHero } from "./_components/hero";
 import { TemplateCard } from "./_components/template-card";
 import { MOCK_TEMPLATES } from "./_data/mock-templates";
 
 export const revalidate = false;
 export const dynamic = "force-static";
+
+export const metadata: Metadata = createMetadata({
+  title: "Templates",
+  description: "Browse starter templates for Next.js and React.",
+  url: "/templates",
+});
 
 const TemplatesPage = () => {
   return (

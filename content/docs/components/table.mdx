@@ -135,7 +135,7 @@ Set `isHoverable={false}` on `<Table />` to disable the hover background on body
 
 ### Table
 
-Root wrapper. Renders a scrollable container with a native `table` element.
+Scrollable wrapper around a native table. Supports striped and hover variants.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -145,7 +145,7 @@ Root wrapper. Renders a scrollable container with a native `table` element.
 
 ### TableHeader
 
-Header section. Renders a `thead`.
+Table header row group.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -153,7 +153,7 @@ Header section. Renders a `thead`.
 
 ### TableBody
 
-Body section. Renders a `tbody`.
+Table body row group.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -161,7 +161,7 @@ Body section. Renders a `tbody`.
 
 ### TableFooter
 
-Footer section. Renders a `tfoot`.
+Table footer row group for totals or summary rows.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -169,7 +169,7 @@ Footer section. Renders a `tfoot`.
 
 ### TableRow
 
-Row element. Renders a `tr`.
+A single table row.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -177,7 +177,7 @@ Row element. Renders a `tr`.
 
 ### TableHead
 
-Header cell. Renders a `th`.
+Header cell for column titles.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -185,7 +185,7 @@ Header cell. Renders a `th`.
 
 ### TableCell
 
-Body or footer cell. Renders a `td`.
+Data cell for body or footer rows.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -193,7 +193,7 @@ Body or footer cell. Renders a `td`.
 
 ### TableCaption
 
-Table caption. Renders a `caption`.
+Accessible caption describing the table. Use `sr-only` for screen-reader only.
 
 | Prop | Type | Default |
 | --- | --- | --- |

@@ -154,7 +154,7 @@ The `value` and `onValueChange` props control the editable component programmati
 
 ### Editable
 
-Root element of the editable component. Renders a `div`.
+Root component. Manages edit mode and value.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -166,7 +166,7 @@ Root element of the editable component. Renders a `div`.
 
 ### EditableArea
 
-Container for the editable input and preview. Renders a `div`.
+Wraps the input and preview views.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -175,7 +175,7 @@ Container for the editable input and preview. Renders a `div`.
 
 ### EditableInput
 
-Input element for editing. Renders an `input` or custom element when using `asChild`.
+Input shown when editing. Use `asChild` for custom input elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -184,7 +184,7 @@ Input element for editing. Renders an `input` or custom element when using `asCh
 
 ### EditablePreview
 
-Preview element that displays the value when not editing. Renders a `span`.
+Shows the value when not editing. Click to enter edit mode.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -194,7 +194,7 @@ Preview element that displays the value when not editing. Renders a `span`.
 
 ### EditableControl
 
-Container for the control buttons. Renders a `div`.
+Holds edit/cancel/submit control buttons.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -203,7 +203,7 @@ Container for the control buttons. Renders a `div`.
 
 ### EditableEditTrigger
 
-Button that triggers edit mode. Renders a `button`.
+Enters edit mode on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -212,7 +212,7 @@ Button that triggers edit mode. Renders a `button`.
 
 ### EditableCancelTrigger
 
-Button that cancels editing and reverts changes. Renders a `button`.
+Cancels editing and reverts to previous value.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -221,7 +221,7 @@ Button that cancels editing and reverts changes. Renders a `button`.
 
 ### EditableSubmitTrigger
 
-Button that submits the edited value. Renders a `button`.
+Submits the edited value and exits edit mode.
 
 | Prop | Type | Default |
 | --- | --- | --- |

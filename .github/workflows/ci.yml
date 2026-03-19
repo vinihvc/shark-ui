@@ -25,5 +25,5 @@ jobs:
       - name: Lint
         run: pnpm run lint:check
 
-      - name: Build
-        run: pnpm build
+      - name: Typecheck and Build
+        run: pnpm run registry:build && pnpm run typecheck

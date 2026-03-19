@@ -1,9 +1,17 @@
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
+import { createMetadata } from "@/lib/metadata";
 import { CardsDemo } from "./_components/cards/cards";
 import { ThemeSelector } from "./_components/theme-selector/theme-selector";
 
 export const dynamic = "force-static";
 export const revalidate = false;
+
+export const metadata: Metadata = createMetadata({
+  title: "Themes",
+  description: "Hand-picked color themes for Shark UI.",
+  url: "/themes",
+});
 
 const ThemesPage = () => {
   return (

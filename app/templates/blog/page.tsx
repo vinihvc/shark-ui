@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { createMetadata } from "@/lib/metadata";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -9,6 +11,13 @@ import {
 } from "@/registry/react/components/card";
 import { Prose } from "@/registry/react/components/prose";
 import { Separator } from "@/registry/react/components/separator";
+
+export const metadata: Metadata = createMetadata({
+  title: "Blog Template",
+  description:
+    "MDX-powered blog with responsive design, SEO metadata, and dynamic Open Graph images.",
+  url: "/templates/blog",
+});
 
 const POSTS = [
   {

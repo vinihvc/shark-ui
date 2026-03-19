@@ -130,7 +130,7 @@ Root element of the drawer.
 
 ### DrawerTrigger
 
-Button that opens the drawer. Renders a `button`.
+Opens the drawer on click. Use `asChild` for custom trigger elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -139,7 +139,7 @@ Button that opens the drawer. Renders a `button`.
 
 ### DrawerContent
 
-Container for the drawer content. Renders a `div` with swipe support. Direction is inherited from `swipeDirection` on the root.
+Holds the drawer panel. Supports swipe-to-close; direction inherited from root `swipeDirection`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -156,7 +156,7 @@ Wrapper that constrains content to `max-w-sm` and centers it. Use to wrap the ma
 
 ### DrawerHeader
 
-Header container for the drawer. Renders a `div`.
+Header area for title and description. Accepts props or children.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -167,7 +167,7 @@ Header container for the drawer. Renders a `div`.
 
 ### DrawerTitle
 
-Title element for the drawer. Renders an `h2`.
+Accessible title for the drawer. Announced to screen readers.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -176,7 +176,7 @@ Title element for the drawer. Renders an `h2`.
 
 ### DrawerDescription
 
-Description element for the drawer. Renders a `div`.
+Accessible description for the drawer. Announced to screen readers.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -185,7 +185,7 @@ Description element for the drawer. Renders a `div`.
 
 ### DrawerBody
 
-Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
+Scrollable body content. Uses ScrollArea for overflow. Supports `scrollFade` for gradient edges.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -194,7 +194,7 @@ Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
 
 ### DrawerFooter
 
-Footer container for the drawer. Renders a `div`.
+Footer area for action buttons.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -202,7 +202,7 @@ Footer container for the drawer. Renders a `div`.
 
 ### DrawerClose
 
-Button that closes the drawer. Renders a `button`.
+Closes the drawer on click. Use `asChild` for custom close elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |

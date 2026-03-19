@@ -1,8 +1,6 @@
 ---
 title: Status
 description: Color-coded status for process or state.
-links:
-  doc: https://chakra-ui.com/docs/components/status
 ---
 
 <ComponentPreview componentName="status" />
@@ -44,7 +42,9 @@ npm install @ark-ui/react tailwind-variants
 
 ```tsx
 import { Status } from "@/components/ui/status";
+```
 
+```tsx showLineNumbers
 <Status.Root colorPalette="green">
   <Status.Indicator />
   Success
@@ -113,7 +113,7 @@ Use `bg-*` and `text-*` utility classes to customize the color.
 
 ### Status
 
-Renders a `span`.
+Status badge or indicator (e.g. online, busy, away).
 
 | Prop | Type | Default |
 | --- | --- | --- |

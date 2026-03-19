@@ -122,7 +122,7 @@ Use the `collapsedHeight` prop to show a portion of the content when collapsed.
 
 ### Collapsible
 
-Root element of the collapsible. Renders a `div`
+Root component. Controls expand/collapse state and animation.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ Root element of the collapsible. Renders a `div`
 
 ### CollapsibleTrigger
 
-Button that toggles the collapsible. Renders a `button`
+Toggles expand/collapse on click. Use `asChild` for custom trigger elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -143,7 +143,7 @@ Button that toggles the collapsible. Renders a `button`
 
 ### CollapsibleContent
 
-Container for the collapsible content. Renders a `div`
+Holds the content that expands and collapses. Animated by default.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -152,7 +152,7 @@ Container for the collapsible content. Renders a `div`
 
 ### CollapsibleIndicator
 
-Indicator icon that rotates when the collapsible is open. Renders a `span`
+Chevron or icon that rotates to indicate open/closed state.
 
 | Prop | Type | Default |
 | --- | --- | --- |

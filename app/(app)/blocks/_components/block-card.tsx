@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Card, CardMedia } from "@/registry/react/components/card";
 import { LinkBox, LinkOverlay } from "@/registry/react/components/link-overlay";
-import type { MockBlock } from "../_data/mock-blocks";
+import type { Block } from "../_data/blocks-data";
 
 interface BlockCardProps {
-  block: MockBlock;
+  block: Block;
 }
 
 export const BlockCard = ({ block }: BlockCardProps) => {

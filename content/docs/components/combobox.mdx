@@ -56,16 +56,20 @@ import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Combobox,
   ComboboxContent,
+  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
 } from "@/components/ui/combobox";
 ```
 
-```tsx
+```tsx showLineNumbers
 const { contains } = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  initialItems: [...],
+  initialItems: [
+    { label: "Apple", value: "apple", group: "Fruits" },
+    { label: "Banana", value: "banana", group: "Fruits" },
+  ],
   filter: contains,
   groupBy: (item) => item.group, // optional
 });
@@ -190,7 +194,7 @@ Optional wrapper for custom layouts. Use `ComboboxInput` for the standard input-
 
 ### ComboboxInput
 
-Input with dropdown trigger and optional clear button. Renders a `<input>` and a `<button>`.
+Input with dropdown trigger and optional clear button. Combines search and selection.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -202,7 +206,7 @@ Input with dropdown trigger and optional clear button. Renders a `<input>` and a
 
 ### ComboboxTrigger
 
-Button that opens the dropdown. Renders a `button`.
+Opens the dropdown on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -219,7 +223,7 @@ Button to clear the input value.
 
 ### ComboboxContent
 
-Popup container for options. Renders a `div`
+Holds the dropdown options. Displayed in a portal.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -228,7 +232,7 @@ Popup container for options. Renders a `div`
 
 ### ComboboxList
 
-List container for combobox items. Renders a `div`.
+Wraps the list of options. Use with collection.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -237,7 +241,7 @@ List container for combobox items. Renders a `div`.
 
 ### ComboboxItem
 
-Individual option. Renders a `div`.
+A single selectable option.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -247,7 +251,7 @@ Individual option. Renders a `div`.
 
 ### ComboboxGroup
 
-Groups related items. Renders a `div`.
+Groups related options under an optional heading.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -257,7 +261,7 @@ Groups related items. Renders a `div`.
 
 ### ComboboxGroupLabel
 
-Label for a group. Renders a `div`.
+Label for an option group.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -266,7 +270,7 @@ Label for a group. Renders a `div`.
 
 ### ComboboxEmpty
 
-Displays content when no items match the filter. Renders a `div`.
+Shown when no options match the current filter. Use for empty state.
 
 | Prop | Type | Default |
 | --- | --- | --- |

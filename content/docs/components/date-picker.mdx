@@ -153,11 +153,15 @@ Input with calendar icon that opens the date picker on click. `input`
 
 ### DatePickerContent
 
-Container for the calendar content. Renders a `div`.
+Wraps the calendar. Inherits `--cell-size` from calendar for date cell sizing.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | - |
+
+| Attribute | Default |
+| --- | --- |
+| `--cell-size` | `--spacing(8)` |
 
 ### DatePickerValue
 

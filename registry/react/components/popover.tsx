@@ -67,7 +67,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
             "relative",
             "z-[calc(50+var(--layer-index,0))]",
             "[--space:--spacing(4)]",
-            "w-auto",
+            "w-auto min-w-32",
             "flex flex-col",
             "bg-popover",
             "text-popover-foreground",

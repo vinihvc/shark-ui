@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { NavLink } from "@/components/nav-link";
 import { SITE_CONFIG } from "@/config/site";
 import { Button } from "@/registry/react/components/button";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  robots: { index: false, follow: false },
+};
 
 const NotFoundPage = () => {
   return (

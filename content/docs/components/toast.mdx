@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/toast
+npx shadcn@latest add @shark/toast
 ```
 
 </TabsContent>
@@ -51,7 +51,7 @@ npm install @ark-ui/react lucide-react tailwind-variants
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { Toaster } from "@/components/ui/toast";
 ```
 
@@ -144,7 +144,7 @@ const baseToaster = createToaster({
 
 ### Toaster
 
-Renders the toast container. Place it once in your app layout.
+Toast container. Place once in your app layout (e.g. root layout).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -153,7 +153,7 @@ Renders the toast container. Place it once in your app layout.
 
 ### ToastItem
 
-Renders a single toast. Used internally by `Toaster` for each toast. Renders a `div`.
+Single toast instance. Used internally by `Toaster` for each toast.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -161,4 +161,4 @@ Renders a single toast. Used internally by `Toaster` for each toast. Renders a `
 
 ---
 
-For more details, see the [Ark UI Toast documentation](https://ark-ui.com/docs/components/toast#api-reference).
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/toast#api-reference).

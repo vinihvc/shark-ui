@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/tooltip
+npx shadcn@latest add @shark/tooltip
 ```
 
 </TabsContent>
@@ -49,7 +49,7 @@ npm install @ark-ui/react
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { 
   Tooltip, 
   TooltipContent, 
@@ -61,7 +61,7 @@ import {
 <Tooltip>
   <TooltipTrigger>Hover me</TooltipTrigger>
   <TooltipContent>
-    Tooltip content
+    {/* Content */}
   </TooltipContent>
 </Tooltip>
 ```
@@ -133,7 +133,7 @@ Root component that wraps the tooltip. Manages open state and positioning.
 
 ### TooltipTrigger
 
-The element that triggers the tooltip on hover or focus. Renders a `button` by default.
+Element that shows the tooltip on hover or focus. Button by default; use `asChild` for custom elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -141,7 +141,7 @@ The element that triggers the tooltip on hover or focus. Renders a `button` by d
 
 ### TooltipContent
 
-The tooltip content displayed in a popover. Renders a `div` element.
+Tooltip content shown in a popover on hover or focus.
 
 | Prop | Type | Default |
 | --- | --- | --- |

@@ -152,7 +152,7 @@ Customize the `<AvatarFallback />` with a custom color.
 
 ### Avatar
 
-Root element of the avatar. Renders a `div`
+Container for user or entity profile image. Supports sizes and fallback.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -162,7 +162,7 @@ Root element of the avatar. Renders a `div`
 
 ### AvatarImage
 
-Image element for the avatar. Renders an `img`
+Profile image. Shown when URL loads; fallback used on error.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -171,7 +171,7 @@ Image element for the avatar. Renders an `img`
 
 ### AvatarFallback
 
-Fallback content displayed when the image fails to load. Renders a `div`
+Shown when the image fails to load or is loading. Often initials or icon.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -180,7 +180,7 @@ Fallback content displayed when the image fails to load. Renders a `div`
 
 ### AvatarGroup
 
-Container for grouping multiple avatars. Renders a `div`
+Groups avatars with overlap and optional count badge.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -189,7 +189,7 @@ Container for grouping multiple avatars. Renders a `div`
 
 ### AvatarGroupCount
 
-Element for displaying a count in avatar groups. Renders a `div`
+Shows "+N" when more avatars exist than displayed (e.g. "+5").
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -198,7 +198,7 @@ Element for displaying a count in avatar groups. Renders a `div`
 
 ### AvatarBadge
 
-Badge element displayed on the avatar. Renders a `span`
+Status or indicator badge overlaid on the avatar corner.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 

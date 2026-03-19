@@ -317,7 +317,7 @@
     {
       "name": "label",
       "type": "components:ui",
-      "description": "Renders an accessible label associated with controls",
+      "description": "Accessible label for form controls. Associates with input via htmlFor and id.",
       "category": "ui",
       "tags": [
         "label",

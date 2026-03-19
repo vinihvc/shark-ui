@@ -143,7 +143,7 @@ Icons can be added to alerts for visual context and improved user experience.
 
 ### Alert
 
-Root element of the alert. Renders a `div`
+Root wrapper for alert messages. Supports variants (info, warning, etc.).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -153,7 +153,7 @@ Root element of the alert. Renders a `div`
 
 ### AlertTitle
 
-Styled title of the alert. Renders a `div`
+Alert title or heading. Bold by default.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -162,7 +162,7 @@ Styled title of the alert. Renders a `div`
 
 ### AlertDescription
 
-Styled description with muted foreground text color. Renders a `div`
+Alert body or description. Muted foreground for hierarchy.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -171,7 +171,7 @@ Styled description with muted foreground text color. Renders a `div`
 
 ### AlertAction
 
-Container for action buttons. Renders a `div`
+Holds action buttons (e.g. dismiss, retry).
 
 | Prop | Type | Default |
 | --- | --- | --- |

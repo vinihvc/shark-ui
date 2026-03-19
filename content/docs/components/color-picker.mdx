@@ -8,8 +8,6 @@ links:
 
 <ComponentPreview componentName="color-picker" />
 
-The color picker supports multiple usage modes: input for hex or channel editing, popover for area and slider selection, swatch picker for preset colors, and standalone area or slider components. Compose subcomponents to build the picker that fits your needs.
-
 ## Installation
 
 <CodeTabs>
@@ -53,7 +51,17 @@ npm install @ark-ui/react lucide-react
 
 </CodeTabs>
 
-## Input mode
+## Modes
+
+You can use multiple modes to build the color picker that fits your needs:
+
+- [Input](#input) for hex or channel editing
+- [Popover](#popover) for area and slider selection
+- [Swatch](#swatch-picker) picker for preset colors
+- [Area](#area) standalone component for color selection
+- [Slider](#slider) for color adjustment
+
+## Input
 
 ### Usage
 
@@ -116,7 +124,7 @@ Inspired by Figma's color input.
 
 <ComponentPreview componentName="color-picker" fileName="example-input-compact" />
 
-## Popover mode
+## Popover
 
 Color picker with trigger and popover content.
 
@@ -186,7 +194,7 @@ Popover with preset color swatches for quick selection.
 
 <ComponentPreview componentName="color-picker" fileName="example-popover-with-swatch-picker" />
 
-## Color Swatch Picker mode
+## Color Swatch Picker
 
 ### Usage
 
@@ -246,7 +254,7 @@ Replace the default check icon with a custom indicator via the children of `Colo
 
 <ComponentPreview componentName="color-picker" fileName="example-swatch-picker-custom-indicator" />
 
-## Area mode
+## Area
 
 ### Usage
 
@@ -276,7 +284,7 @@ import {
 
 <ComponentPreview componentName="color-picker" fileName="example-area-dots" />
 
-## Slider mode
+## Slider
 
 ### Usage
 
@@ -355,7 +363,7 @@ Button or element that opens the color picker popover.
 
 ### ColorPickerContent
 
-Container for the popover content. Renders inside a portal.
+Holds the color picker popover. Displayed in a portal.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -409,7 +417,7 @@ Slider for adjusting a color channel.
 
 ### ColorPickerTransparencyGrid
 
-Checkerboard pattern for indicating transparency. Renders as a child of `ColorPickerSlider` when editing alpha.
+Checkerboard pattern for transparency. Shown as child of `ColorPickerSlider` when editing alpha.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -471,7 +479,7 @@ Color swatch display. Use as a child of `ColorPickerSwatchTrigger`.
 
 ### ColorPickerSwatchIndicator
 
-Indicator shown when a swatch is selected. Renders a check icon by default; pass children to customize.
+Check mark or custom icon shown when a swatch is selected. Pass children to customize.
 
 | Prop | Type | Default |
 | --- | --- | --- |

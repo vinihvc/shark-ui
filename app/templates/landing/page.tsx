@@ -1,4 +1,14 @@
 import { ArrowRightIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = createMetadata({
+  title: "Landing Template",
+  description:
+    "Marketing landing page with hero, features, pricing, and CTA sections. Optimized for conversions.",
+  url: "/templates/landing",
+});
+
 import Link from "next/link";
 import { Button } from "@/registry/react/components/button";
 import {

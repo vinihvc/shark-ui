@@ -171,7 +171,7 @@ Root component. Wraps Ark UI Select.Root with `HiddenSelect` for form support.
 
 ### SelectTrigger
 
-Trigger button that opens the dropdown. Renders a `button`.
+Opens the dropdown on click. Displays the selected value or placeholder.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ Trigger button that opens the dropdown. Renders a `button`.
 
 ### SelectValue
 
-Displays the selected value. Renders a `span`. Use `SelectContext` as children for custom display.
+Shows the selected value or placeholder. Use `SelectContext` as children for custom display.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -192,7 +192,7 @@ Displays the selected value. Renders a `span`. Use `SelectContext` as children f
 
 ### SelectContent
 
-Popup container for options. Renders a `div` inside a `Portal`.
+Holds the dropdown options. Displayed in a portal.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -210,7 +210,7 @@ Button to clear the selected value. Shown when `showClearTrigger` is true on `Se
 
 ### SelectGroup
 
-Groups related options. Renders a `div`.
+Groups related options under an optional heading.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -220,7 +220,7 @@ Groups related options. Renders a `div`.
 
 ### SelectGroupLabel
 
-Label for a group. Renders a `div`.
+Label for an option group.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -229,7 +229,7 @@ Label for a group. Renders a `div`.
 
 ### SelectItem
 
-Individual option. Renders a `div`.
+A single selectable option in the dropdown.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -239,7 +239,7 @@ Individual option. Renders a `div`.
 
 ### SelectEmpty
 
-Displays content when the collection has no items. Renders when `collection.size === 0`. Place inside `SelectContent`.
+Shown when the collection has no items (`collection.size === 0`). Place inside `SelectContent`.
 
 | Prop | Type | Default |
 | --- | --- | --- |

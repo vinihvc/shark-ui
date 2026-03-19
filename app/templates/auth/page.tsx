@@ -1,4 +1,6 @@
 import { GalleryVerticalEndIcon } from "lucide-react";
+import type { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
 import { Button } from "@/registry/react/components/button";
 import {
   Field,
@@ -8,6 +10,13 @@ import {
   FieldSeparator,
 } from "@/registry/react/components/field";
 import { Input } from "@/registry/react/components/input";
+
+export const metadata: Metadata = createMetadata({
+  title: "Auth Template",
+  description:
+    "Complete login and signup flows with form validation. Includes password reset and OAuth-ready structure.",
+  url: "/templates/auth",
+});
 
 const AuthTemplatePage = () => {
   return (

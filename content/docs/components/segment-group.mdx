@@ -69,6 +69,26 @@ import {
   </SegmentGroupItem>
 </SegmentGroup>
 ```
+
+## Controlled
+
+Control the selected value programmatically with `value` and `onValueChange` props.
+
+<ComponentPreview componentName="segment-group" fileName="example-controlled" />
+
+## State
+
+### Disabled
+
+Use the `disabled` prop to disable the entire segment group.
+
+<ComponentPreview componentName="segment-group" fileName="example-disabled" />
+
+### Disabled Item
+
+Use the `disabled` prop on individual items to disable specific options.
+
+<ComponentPreview componentName="segment-group" fileName="example-disabled-item" />
   
 ## Variant
 
@@ -81,12 +101,6 @@ Use the `variant` prop to change the visual variant of the segment group.
 ### Underline
 
 <ComponentPreview componentName="segment-group" fileName="example-variant-underline" />
-
-## Controlled
-
-Control the selected value programmatically with `value` and `onValueChange` props.
-
-<ComponentPreview componentName="segment-group" fileName="example-controlled" />
 
 ## Orientation
 
@@ -103,20 +117,6 @@ Use `orientation` to change the direction of the items.
 ### Vertical with Underline
 
 <ComponentPreview componentName="segment-group" fileName="example-variant-underline-orientation-vertical" />
-
-## State
-
-### Disabled
-
-Use the `disabled` prop to disable the entire segment group.
-
-<ComponentPreview componentName="segment-group" fileName="example-disabled" />
-
-### Disabled Item
-
-Use the `disabled` prop on individual items to disable specific options.
-
-<ComponentPreview componentName="segment-group" fileName="example-disabled-item" />
 
 ## Examples
 
@@ -136,7 +136,7 @@ Use `bg-*` classes to change the color of the indicator.
 
 ### SegmentGroup
 
-Root component. Renders a `div`.
+Root component. Manages segmented control state (single or multi-select).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -151,7 +151,7 @@ Root component. Renders a `div`.
 
 ### SegmentGroupIndicator
 
-Visual indicator for the selected segment. Renders a `div`.
+Visual indicator that moves to the selected segment(s).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -160,19 +160,18 @@ Visual indicator for the selected segment. Renders a `div`.
 
 ### SegmentGroupItem
 
-Individual segment option. Renders a `label`.
+Single segment option. Use `value` for selection.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `string` | - |
 | `disabled` | `boolean` | - |
-| `invalid` | `boolean` | - |
 | `className` | `string` | - |
 | `asChild` | `boolean` | - |
 
 ### SegmentGroupItemText
 
-Text content for a segment item. Renders a `span`.
+Text label for a segment. Often wraps icon + text.
 
 | Prop | Type | Default |
 | --- | --- | --- |

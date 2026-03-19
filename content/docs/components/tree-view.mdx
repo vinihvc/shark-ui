@@ -193,7 +193,7 @@ Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extens
 
 ### TreeView
 
-Root component for the tree structure. Provides tree context to children. Renders a `div`.
+Root component. Provides tree context and manages expand/selection state.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -214,9 +214,17 @@ Root component for the tree structure. Provides tree context to children. Render
 | `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | - |
 
+| Attribute | Default |
+| --- | --- |
+| `--indentation` | `--spacing(4)` |
+| `--item-gap` | `--spacing(2)` |
+| `--padding-block` | `--spacing(1.5)` |
+| `--padding-inline` | `--spacing(3)` |
+| `--icon-size` | `--spacing(4)` |
+
 ### TreeViewLabel
 
-Label for the tree. Renders an `h2`.
+Accessible label for the tree (e.g. "File browser").
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -225,7 +233,7 @@ Label for the tree. Renders an `h2`.
 
 ### TreeViewTree
 
-Container for tree nodes. Renders a `div`.
+Wraps the root-level tree nodes.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -244,7 +252,7 @@ Provides tree node context. Must wrap each branch or item.
 
 ### TreeViewBranch
 
-Container for expandable branch nodes. Renders a `div`.
+Expandable branch with children. Toggles open/closed.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -253,7 +261,7 @@ Container for expandable branch nodes. Renders a `div`.
 
 ### TreeViewBranchItem
 
-Clickable control for branch expand/collapse. Renders a `div`.
+Clickable area to expand or collapse a branch.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -264,7 +272,7 @@ Clickable control for branch expand/collapse. Renders a `div`.
 
 ### TreeViewBranchContent
 
-Expandable content container for branch children. Renders a `div`.
+Holds the branch children. Shown when expanded.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -273,7 +281,7 @@ Expandable content container for branch children. Renders a `div`.
 
 ### TreeViewContent
 
-Wrapper for leaf items. Renders a `div`.
+Wrapper for leaf (non-expandable) items.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -282,7 +290,7 @@ Wrapper for leaf items. Renders a `div`.
 
 ### TreeViewItem
 
-Leaf node (non-expandable item). Renders a `div`. The `icon` prop is the fallback when no `fileIcons` match is found for the node.
+Leaf node (non-expandable). The `icon` prop is fallback when no `fileIcons` match.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -291,7 +299,7 @@ Leaf node (non-expandable item). Renders a `div`. The `icon` prop is the fallbac
 
 ### TreeViewCheckbox
 
-Checkbox for node selection in multi-select mode. Renders a `span`.
+Checkbox for selecting a node in multi-select mode.
 
 | Prop | Type | Default |
 | --- | --- | --- |

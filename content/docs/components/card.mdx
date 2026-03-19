@@ -1,9 +1,6 @@
 ---
 title: Card
 description: A flexible container for grouping related content and actions
-links:
-  doc: https://ark-ui.com/docs/components/card
-  api: https://ark-ui.com/docs/components/card#api-reference
 ---
 
 <ComponentPreview componentName="card" />
@@ -136,7 +133,7 @@ Breakpoint utilities change the card spacing at different screen sizes.
 
 ### Card
 
-Root element of the card. Renders a `div`
+Root wrapper for card layout. Supports header, body, footer.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -145,7 +142,7 @@ Root element of the card. Renders a `div`
 
 ### CardMedia
 
-Media container for the card. Renders a `div`
+Image, video, or media area. Often full-width at top.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -155,7 +152,7 @@ Media container for the card. Renders a `div`
 
 ### CardHeader
 
-Header container for the card. Renders a `div`
+Header area. Typically holds title and optional actions.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -166,7 +163,7 @@ Header container for the card. Renders a `div`
 
 ### CardTitle
 
-Title element for the card. Renders a `div`
+Card title or heading. Bold by default.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -175,7 +172,7 @@ Title element for the card. Renders a `div`
 
 ### CardDescription
 
-Description element for the card. Renders a `div`
+Card description or body text. Muted foreground for hierarchy.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -184,7 +181,7 @@ Description element for the card. Renders a `div`
 
 ### CardAction
 
-Action element for the card header. Renders a `div`
+Action button or link in the card header.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -193,7 +190,7 @@ Action element for the card header. Renders a `div`
 
 ### CardContent
 
-Content container for the card. Renders a `div`
+Main body content of the card.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 
@@ -202,7 +199,7 @@ Content container for the card. Renders a `div`
 
 ### CardFooter
 
-Footer container for the card. Renders a `div`
+Footer area. Typically holds secondary actions or metadata.
 
 | Prop | Type | Default | 
 | --- | --- | --- | 

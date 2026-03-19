@@ -92,7 +92,7 @@ Control the panel position programmatically using the `position` and `onPosition
 
 ### FloatingPanel
 
-Root element of the floating panel. Renders a `div`.
+Root component. Manages panel position and drag state.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ Root element of the floating panel. Renders a `div`.
 
 ### FloatingPanelTrigger
 
-Button that opens the panel. Renders a `button`.
+Opens the floating panel on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -123,7 +123,7 @@ Button that opens the panel. Renders a `button`.
 
 ### FloatingPanelContent
 
-Container for the panel content. Renders a `div`.
+Holds the panel content.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -132,7 +132,7 @@ Container for the panel content. Renders a `div`.
 
 ### FloatingPanelHeader
 
-Header container. Renders a `div` wrapped in a drag trigger.
+Header area. Acts as drag handle for repositioning.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ Header container. Renders a `div` wrapped in a drag trigger.
 
 ### FloatingPanelTitle
 
-Title element for the panel. Renders a `div`.
+Title for the panel.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -149,7 +149,7 @@ Title element for the panel. Renders a `div`.
 
 ### FloatingPanelBody
 
-Scrollable content container. Renders a `div` wrapped in a [`ScrollArea`](/docs/components/scroll-area).
+Scrollable body. Uses [`ScrollArea`](/docs/components/scroll-area) for overflow.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -158,7 +158,7 @@ Scrollable content container. Renders a `div` wrapped in a [`ScrollArea`](/docs/
 
 ### FloatingPanelCloseTrigger
 
-Button that closes the panel. Renders a `button`.
+Closes the panel on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |

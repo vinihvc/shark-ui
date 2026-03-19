@@ -46,8 +46,6 @@ npm install @ark-ui/react
 
 ## Usage
 
-The frame is a compound component for grouping related information with a header, content panels, and optional footer.
-
 ```tsx
 import {
   Frame,
@@ -82,7 +80,7 @@ By default, multiple panels are separated with spacing between them.
 
 ### Frame
 
-The main container component for grouping related information. Renders a `div`.
+Main container for grouping related content into panels.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -91,7 +89,7 @@ The main container component for grouping related information. Renders a `div`.
 
 ### FramePanel
 
-A panel container for frame content. Renders a `div`.
+A single panel with optional header and footer.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -100,7 +98,7 @@ A panel container for frame content. Renders a `div`.
 
 ### FrameHeader
 
-Header section for the frame. Renders a `header`.
+Header area for the panel. Often contains title and description.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -109,7 +107,7 @@ Header section for the frame. Renders a `header`.
 
 ### FrameTitle
 
-Title text for the frame header. Renders a `div`.
+Panel title or heading.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -118,7 +116,7 @@ Title text for the frame header. Renders a `div`.
 
 ### FrameDescription
 
-Description text for the frame header. Renders a `div`.
+Panel description or subtitle.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -127,7 +125,7 @@ Description text for the frame header. Renders a `div`.
 
 ### FrameFooter
 
-Footer section for the frame. Renders a `footer`.
+Footer area for the panel. Often contains actions.
 
 | Prop | Type | Default |
 | --- | --- | --- |

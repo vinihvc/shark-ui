@@ -55,7 +55,9 @@ import {
   ImageCropperImage,
   ImageCropperSelection,
 } from "@/components/ui/image-cropper";
+```
 
+```tsx showLineNumbers
 <ImageCropper>
   <ImageCropperImage alt="Crop me" src="/image.jpg" />
   <ImageCropperSelection />
@@ -110,7 +112,7 @@ Set `fixedCropArea` to `true` when the crop area should stay fixed while the ima
 
 ### ImageCropper
 
-Root container for the image cropper. Renders a `div`.
+Root wrapper. Manages crop state and handles.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -130,9 +132,15 @@ Root container for the image cropper. Renders a `div`.
 | `zoom` | `number` | - |
 | `className` | `string` | - |
 
+| Attribute | Default |
+| --- | --- |
+| `--cropper-accent` | `var(--color-white)` |
+| `--cropper-handler-size` | `--spacing(2)` |
+| `--cropper-handler-width` | `--spacing(1)` |
+
 ### ImageCropperImage
 
-The image element to crop. Renders an `img`.
+Image to crop. Pass `src` and alt.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -142,7 +150,7 @@ The image element to crop. Renders an `img`.
 
 ### ImageCropperSelection
 
-The crop selection overlay with handles and grid. Renders a `div`.
+Crop selection overlay with resize handles and optional grid.
 
 | Prop | Type | Default |
 | --- | --- | --- |

@@ -122,7 +122,7 @@ Use the `step` and `onStepChange` props to control the active step programmatica
 
 ### Steps
 
-Root element of the steps. Renders a `div`.
+Root component. Manages step state and connectors.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -133,6 +133,16 @@ Root element of the steps. Renders a `div`.
 | `linear` | `boolean` | `false` |
 | `onStepChange` | `(details: StepChangeDetails) => void` | `-` |
 | `onStepComplete` | `() => void` | `-` |
+
+### StepsList
+
+Wraps the list of steps. Handles connector layout.
+
+| Attribute | Default |
+| --- | --- |
+| `--steps-gutter` | `--spacing(2)` |
+| `--steps-icon-size` | `--spacing(4)` |
+| `--steps-size` | `--spacing(8)` |
 
 ---
 

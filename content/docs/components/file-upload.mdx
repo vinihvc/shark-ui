@@ -159,7 +159,7 @@ Use `<FileUploadClearTrigger />` to remove all uploaded files at once.
 
 ### FileUpload
 
-Root component. Wraps the file upload UI and manages file state. Renders a `div`.
+Root component. Manages file state and wraps the upload UI.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -186,7 +186,7 @@ Root component. Wraps the file upload UI and manages file state. Renders a `div`
 
 ### FileUploadTrigger
 
-Button that opens the file picker. Renders a `button`.
+Opens the native file picker on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ Button that opens the file picker. Renders a `button`.
 
 ### FileUploadDropzone
 
-Drop zone for drag-and-drop. Exposes `data-dragging` when files are dragged over. Renders a `div`.
+Drop zone for drag-and-drop. Exposes `data-dragging` when files are dragged over.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -205,7 +205,7 @@ Drop zone for drag-and-drop. Exposes `data-dragging` when files are dragged over
 
 ### FileUploadDropzoneIcon
 
-Icon displayed in the dropzone. Renders a `div`.
+Icon shown in the dropzone (e.g. upload icon).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ Icon displayed in the dropzone. Renders a `div`.
 
 ### FileUploadTitle
 
-Title text for the dropzone. Renders a `div`.
+Title text for the dropzone (e.g. "Drag files here").
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -221,7 +221,7 @@ Title text for the dropzone. Renders a `div`.
 
 ### FileUploadDescription
 
-Description text for the dropzone. Renders a `div`.
+Description or hint for the dropzone.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -229,7 +229,7 @@ Description text for the dropzone. Renders a `div`.
 
 ### FileUploadHelper
 
-Helper text. Renders a `div`.
+Helper text (e.g. file types, size limits).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -237,7 +237,7 @@ Helper text. Renders a `div`.
 
 ### FileUploadList
 
-Pre-built list of uploaded files with previews, names, sizes, and delete buttons. Renders nothing when empty.
+Pre-built list of uploaded files with previews, names, sizes, and delete buttons. Hidden when empty.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -245,7 +245,7 @@ Pre-built list of uploaded files with previews, names, sizes, and delete buttons
 
 ### FileUploadItemGroup
 
-Container for file items. Renders a `ul`.
+List of uploaded files.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -255,7 +255,7 @@ Container for file items. Renders a `ul`.
 
 ### FileUploadItem
 
-Single file item. Renders a `li`.
+Single uploaded file with preview and remove button.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -275,7 +275,7 @@ Preview container for a file.
 
 ### FileUploadItemPreviewImage
 
-Image thumbnail for image files. Use inside `FileUploadItemPreview` with `type="image/*"`. Renders an `img`.
+Image thumbnail for image files. Use inside `FileUploadItemPreview` with `type="image/*"`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -284,7 +284,7 @@ Image thumbnail for image files. Use inside `FileUploadItemPreview` with `type="
 
 ### FileUploadItemName
 
-Displays the file name. Renders a `div`.
+Shows the file name.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -293,7 +293,7 @@ Displays the file name. Renders a `div`.
 
 ### FileUploadItemSize
 
-Displays the formatted file size. Renders a `div`.
+Shows the formatted file size (e.g. "1.2 MB").
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -302,7 +302,7 @@ Displays the formatted file size. Renders a `div`.
 
 ### FileUploadItemDeleteTrigger
 
-Button to remove a single file. Renders a `button`.
+Removes a single file from the list.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -311,7 +311,7 @@ Button to remove a single file. Renders a `button`.
 
 ### FileUploadClearTrigger
 
-Button to remove all files. Renders a `button`.
+Removes all files from the list.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -336,4 +336,4 @@ Hook to access file upload state and methods. Use inside `FileUpload` or `FileUp
 
 ---
 
-For a complete list of props and attributes, see the [Ark UI File Upload](https://ark-ui.com/docs/components/file-upload#api-reference) documentation.
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/file-upload#api-reference).

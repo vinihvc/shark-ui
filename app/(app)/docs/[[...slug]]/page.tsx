@@ -9,9 +9,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
-import { SITE_CONFIG } from "@/config/site";
+import { ArticleJsonLd } from "@/components/seo/json-ld";
 import { source } from "@/lib/fumadocs";
-import { absoluteUrl } from "@/lib/url";
+import { createMetadata, createOgImageUrl } from "@/lib/metadata";
 import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
@@ -40,28 +40,15 @@ export const generateMetadata = async (
     notFound();
   }
 
-  const ogImageUrl = absoluteUrl(
-    `/og?title=${encodeURIComponent(doc.title)}&description=${encodeURIComponent(doc.description)}`
-  );
-
-  return {
+  return createMetadata({
     title: doc.title,
     description: doc.description,
-    openGraph: {
+    url: page.url,
+    imageUrl: createOgImageUrl({
       title: doc.title,
       description: doc.description,
-      type: "article",
-      url: absoluteUrl(page.url),
-      images: [{ url: ogImageUrl }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: doc.title,
-      description: doc.description,
-      images: [{ url: ogImageUrl }],
-      creator: SITE_CONFIG.creator,
-    },
-  };
+    }),
+  });
 };
 
 const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
@@ -85,6 +72,11 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
 
   return (
     <div className="size-full">
+      <ArticleJsonLd
+        description={page.data.description ?? ""}
+        headline={page.data.title}
+        url={page.url}
+      />
       <div className="flex items-stretch xl:w-full" data-slot="docs">
         <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-8 lg:mr-4 lg:mb-8">
           <div className="relative flex w-full flex-col border bg-card text-card-foreground shadow-lg/5 max-lg:border-none lg:rounded-2xl">

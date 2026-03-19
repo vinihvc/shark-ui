@@ -138,7 +138,7 @@ Breakpoint utilities change the cell size at different screen sizes.
 
 ### Calendar
 
-Root element of the calendar. Renders a `div`.
+Root component. Manages date view, selection, and navigation.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -155,9 +155,13 @@ Root element of the calendar. Renders a `div`.
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 
+| Attribute | Default |
+| --- | --- |
+| `--cell-size` | `--spacing(8)` |
+
 ### CalendarViewControl
 
-Container for the view navigation (prev/next) and month/year selects. Renders a `div`.
+Holds prev/next buttons and month/year selects.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -166,7 +170,7 @@ Container for the view navigation (prev/next) and month/year selects. Renders a 
 
 ### CalendarMonthSelect
 
-Dropdown for selecting the month. Renders a `NativeSelect`.
+Month selector dropdown. Uses NativeSelect internally.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -176,7 +180,7 @@ Dropdown for selecting the month. Renders a `NativeSelect`.
 
 ### CalendarYearSelect
 
-Dropdown for selecting the year. Renders a `select`.
+Year selector dropdown.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -185,7 +189,7 @@ Dropdown for selecting the year. Renders a `select`.
 
 ### CalendarTable
 
-Table container for the calendar grid. Renders a `table`.
+Table layout for the calendar day grid.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -194,7 +198,7 @@ Table container for the calendar grid. Renders a `table`.
 
 ### CalendarWeekDays
 
-Header row displaying week day names. Renders a `thead`.
+Header row with week day names (Sun–Sat).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -204,7 +208,7 @@ Header row displaying week day names. Renders a `thead`.
 
 ### CalendarTableDays
 
-Body with the calendar day cells for the current view. Renders a `tbody`.
+Body with day cells for the current month.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -213,7 +217,7 @@ Body with the calendar day cells for the current view. Renders a `tbody`.
 
 ### CalendarTableNextMonth
 
-Body with calendar day cells for the next month(s). Use with `numOfMonths` for multi-month layouts. Renders a `tbody`.
+Body for additional month(s). Use with `numOfMonths` for multi-month layout.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -223,7 +227,7 @@ Body with calendar day cells for the next month(s). Use with `numOfMonths` for m
 
 ### CalendarTableCell
 
-Individual day cell. Renders a `td` with a trigger.
+Single day cell. Clickable for selection. Shows disabled/outside styling.
 
 | Prop | Type | Default |
 | --- | --- | --- |

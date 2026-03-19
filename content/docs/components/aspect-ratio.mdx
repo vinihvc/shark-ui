@@ -52,7 +52,11 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 ```tsx showLineNumbers
 <AspectRatio>
-  <Image src="/image.jpg" alt="Description" fill />
+  <img
+    src="/image.jpg"
+    alt="Description"
+    className="object-cover size-full"
+  />
 </AspectRatio>
 ```
 
@@ -80,7 +84,7 @@ Use `[--ratio:*]` with breakpoints to change the ratio at different screen sizes
 
 ### AspectRatio
 
-Root element. Renders a `div`.
+Main wrapper that preserves aspect ratio for its children using CSS.
 
 | Prop | Type | Default |
 | --- | --- | --- |

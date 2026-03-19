@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
+import { WebSiteJsonLd } from "@/components/seo/json-ld";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { absoluteUrl } from "@/lib/url";
@@ -15,7 +16,15 @@ export const metadata: Metadata = {
     default: SITE_CONFIG.name,
     template: `%s | ${SITE_CONFIG.name}`,
   },
-  keywords: ["shadcn", "components", "nextjs", "react", "ark", "ui"],
+  keywords: [
+    "shark-ui",
+    "ark-ui",
+    "shadcn",
+    "components",
+    "nextjs",
+    "react",
+    "ui",
+  ],
   creator: SITE_CONFIG.creator,
   description: SITE_CONFIG.description,
   openGraph: {
@@ -48,6 +57,7 @@ export const metadata: Metadata = {
   },
   manifest: `${SITE_CONFIG.url}/site.webmanifest`,
   alternates: {
+    canonical: absoluteUrl("/"),
     types: {
       "application/rss+xml": `${SITE_CONFIG.url}/rss.xml`,
     },
@@ -64,6 +74,7 @@ const RootLayout = (props: LayoutProps<"/">) => {
       suppressHydrationWarning
     >
       <body>
+        <WebSiteJsonLd />
         <Providers>
           <SkipNavLink>Skip to content</SkipNavLink>
 

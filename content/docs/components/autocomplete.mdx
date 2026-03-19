@@ -51,24 +51,26 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 ## Usage
 
-Pass a `collection` from `useListCollection` and use `useFilter` for filtering. Autocomplete is a Combobox preset with `allowCustomValue` and `inputBehavior="autocomplete"` for inline autofill.
-
 ```tsx
 import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   Autocomplete,
   AutocompleteContent,
   AutocompleteEmpty,
+  AutocompleteGroup,
   AutocompleteInput,
   AutocompleteItem,
   AutocompleteList,
 } from "@/components/ui/autocomplete";
 ```
 
-```tsx
+```tsx showLineNumbers
 const { contains } = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  initialItems: [...],
+  initialItems: [
+    { label: "Apple", value: "apple", group: "Fruits" },
+    { label: "Banana", value: "banana", group: "Fruits" },
+  ],
   filter: contains,
   groupBy: (item) => item.group, // optional
 });
@@ -163,7 +165,7 @@ Pass `showTrigger` to `<AutocompleteInput />` to show the dropdown trigger butto
 
 ### Autocomplete
 
-Root component. Combobox preset with `allowCustomValue` and `inputBehavior="autocomplete"` for inline autofill. Use with `useListCollection` and `useFilter`.
+Combines input, dropdown trigger, and list into a searchable select.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -172,7 +174,6 @@ Root component. Combobox preset with `allowCustomValue` and `inputBehavior="auto
 | `defaultValue` | `string \| string[]` | - |
 | `onValueChange` | `(details: ValueChangeDetails<T>) => void` | - |
 | `onInputValueChange` | `(details: InputValueChangeDetails) => void` | - |
-| `multiple` | `boolean` | `false` |
 | `disabled` | `boolean` | - |
 | `openOnClick` | `boolean` | `true` |
 | `lazyMount` | `boolean` | `true` |
@@ -181,7 +182,7 @@ Root component. Combobox preset with `allowCustomValue` and `inputBehavior="auto
 
 ### AutocompleteInput
 
-Input field. Uses `ComboboxInput` with `showTrigger` and `showClear` defaulting to `false`.
+Text input with optional dropdown trigger and clear button. Supports size variants.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -194,7 +195,7 @@ Input field. Uses `ComboboxInput` with `showTrigger` and `showClear` defaulting 
 
 ### AutocompleteContent
 
-Popup container for suggestions. Renders a `div` inside a `Portal`.
+Dropdown that displays filtered suggestions. Portaled to overlay other content.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -203,7 +204,7 @@ Popup container for suggestions. Renders a `div` inside a `Portal`.
 
 ### AutocompleteItem
 
-Individual selectable option. Renders a `div`.
+Single selectable option in the suggestion list. Pass `item` from the collection.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -223,7 +224,7 @@ Groups related items. Use with `groupBy` on the collection.
 
 ### AutocompleteGroupLabel
 
-Label for a group. Renders inside `AutocompleteGroup`.
+Heading for a group of items. Use inside `AutocompleteGroup`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -232,7 +233,7 @@ Label for a group. Renders inside `AutocompleteGroup`.
 
 ### AutocompleteEmpty
 
-Displays content when no items match the filter. Default: "No results found."
+Content when no items match the filter. Default: "No results found."
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -245,4 +246,4 @@ Optional building blocks for custom layouts. Use `AutocompleteInput` for the sta
 
 ---
 
-Use `ComboboxList` from the combobox component to render the list of items. For a complete list of props, see the [Ark UI Combobox documentation](https://ark-ui.com/docs/components/combobox#api-reference).
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/combobox#api-reference).

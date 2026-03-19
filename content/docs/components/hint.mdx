@@ -75,7 +75,7 @@ import { Hint, HintTrigger, HintContent } from "@/components/ui/hint";
 
 ### Hint
 
-Root element. Renders a `div`.
+Root wrapper. Provides hint context to trigger and content.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -84,7 +84,7 @@ Root element. Renders a `div`.
 
 ### HintTrigger
 
-The element that triggers the hint on hover or focus. Renders a `button`.
+Shows the hint on hover or focus. Button by default; use `asChild` for custom elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -92,7 +92,7 @@ The element that triggers the hint on hover or focus. Renders a `button`.
 
 ### HintContent
 
-The hint popup content displayed on hover or focus. Renders a `div`.
+Hint content shown in a popover on hover or focus.
 
 | Prop | Type | Default |
 | --- | --- | --- |

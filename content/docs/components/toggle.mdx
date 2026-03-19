@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/toggle
+npx shadcn@latest add @shark/toggle
 ```
 
 </TabsContent>
@@ -51,7 +51,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { 
   Toggle,   
   ToggleIndicator 
@@ -63,6 +63,21 @@ import {
   <ToggleIndicator />
 </Toggle>
 ```
+
+## Controlled
+
+Use the `pressed` and `onPressedChange` props to control the toggle state programmatically.
+
+<ComponentPreview componentName="toggle" fileName="example-controlled" />
+
+## State
+
+### Disabled
+
+Use the `disabled` prop to disable the toggle.
+
+<ComponentPreview componentName="toggle" fileName="example-disabled" />
+
 
 ## Variants
 
@@ -88,14 +103,40 @@ import {
 
 <ComponentPreview componentName="toggle" fileName="example-size-lg" />
 
-## Controlled
-
-Use the `pressed` and `onPressedChange` props to control the toggle state programmatically.
-
-<ComponentPreview componentName="toggle" fileName="example-controlled" />
-
 ## Examples
 
-### Default
+### Icon Group
 
-<ComponentPreview componentName="toggle" fileName="example-default" />
+Use multiple toggles with icons for toolbar-style controls.
+
+<ComponentPreview componentName="toggle" fileName="example-icon-group" />
+
+## API Reference
+
+### Toggle
+
+Toggle button for on/off or selected state. Use `asChild` for custom elements.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `outline` \| `ghost` | `ghost` |
+| `size` | `sm` \| `md` \| `lg` | `md` |
+| `pressed` | `boolean` | `-` |
+| `defaultPressed` | `boolean` | `false` |
+| `disabled` | `boolean` | `false` |
+| `onPressedChange` | `(details: PressedChangeDetails) => void` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ToggleIndicator
+
+Icon or indicator shown when toggle is active. Omitted when used as child.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/toggle#api-reference).

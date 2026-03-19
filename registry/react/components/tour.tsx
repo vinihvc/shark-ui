@@ -1,6 +1,7 @@
 "use client";
 
-import { ark, Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import {
   Tour as ArkTour,
   type TourStepDetails,

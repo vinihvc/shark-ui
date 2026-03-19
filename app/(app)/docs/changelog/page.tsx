@@ -2,9 +2,8 @@ import { RssIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
-import { SITE_CONFIG } from "@/config/site";
 import { type ChangelogPageData, getChangelogPages } from "@/lib/changelog";
-import { absoluteUrl } from "@/lib/url";
+import { createMetadata, createOgImageUrl } from "@/lib/metadata";
 import { mdxComponents } from "@/mdx-components";
 import { Button } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
@@ -16,28 +15,13 @@ export const dynamic = "force-static";
 export const generateMetadata = (): Metadata => {
   const title = "Changelog";
   const description = "Latest updates and announcements.";
-  const ogImageUrl = absoluteUrl(
-    `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
-  );
 
-  return {
+  return createMetadata({
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      url: absoluteUrl("/docs/changelog"),
-      images: [{ url: ogImageUrl }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [{ url: ogImageUrl }],
-      creator: SITE_CONFIG.creator,
-    },
-  };
+    url: "/docs/changelog",
+    imageUrl: createOgImageUrl({ title, description }),
+  });
 };
 
 const ChangelogPage = () => {

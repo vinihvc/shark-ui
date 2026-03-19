@@ -1,8 +1,6 @@
 ---
 title: Action Bar
 description: Display an action bar for selected items.
-links:
-  doc: https://chakra-ui.com/docs/components/action-bar
 ---
 
 <ComponentPreview componentName="action-bar" />
@@ -56,7 +54,7 @@ import {
 } from "@/components/ui/action-bar";
 ```
 
-```tsx
+```tsx showLineNumbers
 <ActionBar>
   <ActionBarTrigger />
   <ActionBarContent>
@@ -119,7 +117,7 @@ Breakpoint utilities change the action bar spacing at different screen sizes.
 
 ### ActionBar
 
-Root context provider for the action bar. Renders a `React.Fragment`.
+Root context provider. Wraps the trigger and floating toolbar.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -132,7 +130,7 @@ Root context provider for the action bar. Renders a `React.Fragment`.
 
 ### ActionBarContent
 
-Floating toolbar. Renders a `div`.
+Floating toolbar positioned above selected items.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -149,7 +147,7 @@ Floating toolbar. Renders a `div`.
 
 ### ActionBarTrigger
 
-Button that opens the action bar. Renders a `button`.
+Opens the action bar on click. Typically wraps the selection trigger.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -158,7 +156,7 @@ Button that opens the action bar. Renders a `button`.
 
 ### ActionBarClose
 
-Button that closes the action bar. Renders a `button`.
+Closes the action bar and clears the selection.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -168,7 +166,7 @@ Button that closes the action bar. Renders a `button`.
 
 ### ActionBarSelectionTrigger
 
-Displays selection count or custom label. Renders a `span`.
+Shows the number of selected items or a custom label.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -179,7 +177,7 @@ Displays selection count or custom label. Renders a `span`.
 
 ### ActionBarBody
 
-Container for action buttons. Renders a `div`.
+Holds the action buttons. Use for bulk actions on selected items.
 
 | Prop | Type | Default |
 | --- | --- | --- |

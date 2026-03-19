@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/sheet
+npx shadcn@latest add @shark/sheet
 ```
 
 </TabsContent>
@@ -51,7 +51,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { 
   Sheet, 
   SheetContent, 
@@ -116,7 +116,7 @@ Use `modal={false}` to allow interaction with elements outside the sheet. Disabl
 
 ### Sheet
 
-Root element of the sheet. Renders a `div`. Uses Ark UI Dialog under the hood.
+Root component. Uses Ark UI Dialog. Controls open state and slide direction.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ Root element of the sheet. Renders a `div`. Uses Ark UI Dialog under the hood.
 
 ### SheetTrigger
 
-Button that opens the sheet. Renders a `button`.
+Opens the sheet on click. Use `asChild` for custom triggers.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -143,7 +143,7 @@ Button that opens the sheet. Renders a `button`.
 
 ### SheetContent
 
-Container for the sheet content. Renders a `div`.
+Holds the sheet panel. Slides in from the configured edge.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -154,7 +154,7 @@ Container for the sheet content. Renders a `div`.
 
 ### SheetHeader
 
-Header container for the sheet. Renders a `div`.
+Header area for title and description.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ Header container for the sheet. Renders a `div`.
 
 ### SheetBody
 
-Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
+Scrollable body. Uses ScrollArea for overflow.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -173,7 +173,7 @@ Scrollable content container. Renders a `div` wrapped in a `ScrollArea`.
 
 ### SheetFooter
 
-Footer container for the sheet. Renders a `div`.
+Footer area for action buttons.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -181,7 +181,7 @@ Footer container for the sheet. Renders a `div`.
 
 ### SheetTitle
 
-Title element for the sheet. Renders an `h2`.
+Accessible title. Announced to screen readers.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -190,7 +190,7 @@ Title element for the sheet. Renders an `h2`.
 
 ### SheetDescription
 
-Description element for the sheet. Renders a `div`.
+Accessible description. Announced to screen readers.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -199,7 +199,7 @@ Description element for the sheet. Renders a `div`.
 
 ### SheetClose
 
-Button that closes the sheet. Renders a `button`.
+Closes the sheet on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -208,7 +208,7 @@ Button that closes the sheet. Renders a `button`.
 
 ### SheetOverlay
 
-Backdrop overlay for the sheet. Renders a `div`.
+Dimmed overlay behind the sheet.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -216,7 +216,7 @@ Backdrop overlay for the sheet. Renders a `div`.
 
 ### SheetPositioner
 
-Positioning wrapper for the sheet content. Renders a `div`. Used internally by `SheetContent`; expose when composing custom layouts.
+Positioning wrapper for sheet content. Used internally; expose for custom layouts.
 
 | Prop | Type | Default |
 | --- | --- | --- |

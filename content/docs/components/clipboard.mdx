@@ -102,7 +102,7 @@ Use the `timeout` prop on `<Clipboard />` to customize how long the copied state
 
 ### Clipboard
 
-Root element of the clipboard. Renders a `div`
+Root wrapper. Manages copy state and value.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -113,7 +113,7 @@ Root element of the clipboard. Renders a `div`
 
 ### ClipboardTrigger
 
-Button that triggers the copy action. Renders a `button`
+Triggers copy to clipboard on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -122,7 +122,7 @@ Button that triggers the copy action. Renders a `button`
 
 ### ClipboardInput
 
-Input field that displays the value. Renders an `input`
+Input showing the value to copy. Often hidden or read-only.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ Input field that displays the value. Renders an `input`
 
 ### ClipboardIndicator
 
-Indicator that shows different icons based on the copied state. Renders a `span`
+Icon that changes based on copy state (e.g. copy vs check).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ Indicator that shows different icons based on the copied state. Renders a `span`
 
 ### ClipboardValue
 
-Text element that displays the value. Renders a `span`
+Text display of the value. Use when input is not needed.
 
 | Prop | Type | Default |
 | --- | --- | --- |

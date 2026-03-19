@@ -8,10 +8,10 @@ import {
 } from "@/registry/react/components/segment-group";
 
 const Example = () => (
-  <SegmentGroup defaultValue="Profile" disabled>
+  <SegmentGroup className="rounded-lg" defaultValue="Profile" disabled>
     <SegmentGroupIndicator />
     {items.map((item) => (
-      <SegmentGroupItem key={item} value={item}>
+      <SegmentGroupItem className="px-2 py-1.5 text-sm" key={item} value={item}>
         <SegmentGroupItemText>{item}</SegmentGroupItemText>
       </SegmentGroupItem>
     ))}

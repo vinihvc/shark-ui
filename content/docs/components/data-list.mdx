@@ -1,8 +1,6 @@
 ---
 title: Data List
 description: Display a list of similar data items with labels and values.
-links:
-  doc: https://chakra-ui.com/docs/components/data-list
 ---
 
 <ComponentPreview componentName="data-list" />
@@ -49,7 +47,9 @@ import {
   DataListItemLabel,
   DataListItemValue,
 } from "@/components/ui/data-list";
+```
 
+```tsx showLineNumbers
 <DataList>
   <DataListItem>
     <DataListItemLabel>Name</DataListItemLabel>
@@ -92,7 +92,7 @@ Use the `divide-y` utility class on `DataList` to add a separator between items.
 
 ### DataList
 
-Root component. Renders a `div`
+Root wrapper for label-value list layout.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -102,7 +102,7 @@ Root component. Renders a `div`
 
 ### DataListItem
 
-Container for a single row. Renders a `div`.
+Single label-value row.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -111,7 +111,7 @@ Container for a single row. Renders a `div`.
 
 ### DataListItemLabel
 
-Label for the row. Renders a `div`.
+Label or key for the row.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ Label for the row. Renders a `div`.
 
 ### DataListItemValue
 
-Value for the row. Renders a `div`.
+Value or content for the row.
 
 | Prop | Type | Default |
 | --- | --- | --- |

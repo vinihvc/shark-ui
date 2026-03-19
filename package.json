@@ -5,6 +5,9 @@
   "private": true,
   "author": "Vinicius Vicentini <viniciusvicentini@live.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/vinihvc/shark-ui"
@@ -29,6 +32,7 @@
   "scripts": {
     "prebuild": "bun run registry:build",
     "build": "next build",
+    "typecheck": "next build",
     "dev": "next dev --turbo",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
@@ -55,7 +59,7 @@
     "jotai": "^2.18.1",
     "lru-cache": "^11.2.7",
     "lucide-react": "^0.577.0",
-    "next": "16.1.7",
+    "next": "16.2.0",
     "next-themes": "^0.4.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -67,8 +71,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.7",
-    "@tailwindcss/postcss": "^4.2.1",
+    "@biomejs/biome": "2.4.8",
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/mdx": "^2.0.13",
     "@types/node": "25.5.0",
     "@types/react": "^19.2.14",
@@ -76,7 +80,7 @@
     "lint-staged": "^16.4.0",
     "postcss": "^8.5.8",
     "rimraf": "^6.1.3",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^4.2.2",
     "tsx": "^4.21.0",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5.9.3",

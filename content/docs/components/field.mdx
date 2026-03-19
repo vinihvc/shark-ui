@@ -20,7 +20,7 @@ links:
 <TabsContent value="cli">
   
 ```bash
-npx shadcn@latest add @shark-ui/field
+npx shadcn@latest add @shark/field
 ```
 
 </TabsContent>
@@ -51,7 +51,7 @@ npm install @ark-ui/react tailwind-variants
 
 ## Usage
 
-```tsx showLineNumbers
+```tsx
 import { 
   Field, 
   FieldLabel, 
@@ -134,7 +134,7 @@ Use `<SliderLabel />` inside the `<Slider />` to label the slider.
 
 ### Field
 
-Root component. Flex container for label, control, and helper/error text. Renders a `div`.
+Root layout for label, control, and helper/error text. Supports vertical and horizontal orientation.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -149,7 +149,7 @@ Root component. Flex container for label, control, and helper/error text. Render
 
 ### FieldSet
 
-Groups related form controls. Renders a `fieldset`.
+Groups related form controls semantically.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -157,7 +157,7 @@ Groups related form controls. Renders a `fieldset`.
 
 ### FieldLegend
 
-Legend for a FieldSet. Renders a `legend`.
+Legend or label for a FieldSet group.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -166,7 +166,7 @@ Legend for a FieldSet. Renders a `legend`.
 
 ### FieldGroup
 
-Container for a group of fields. Renders a `div`.
+Groups multiple fields with consistent spacing.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -174,7 +174,7 @@ Container for a group of fields. Renders a `div`.
 
 ### FieldContent
 
-Wrapper for label + description/error. Use with horizontal orientation. Renders a `div`.
+Wraps label, description, and error. Use with horizontal orientation.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -182,7 +182,7 @@ Wrapper for label + description/error. Use with horizontal orientation. Renders 
 
 ### FieldLabel
 
-Label for the field. Associates with the control via `htmlFor` / `id`. Renders a `label`.
+Label associated with the control via `htmlFor` / `id`. Required for accessibility.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -199,7 +199,7 @@ Label for the field. Associates with the control via `htmlFor` / `id`. Renders a
 
 ### FieldTitle
 
-Title wrapper for field content. Renders a `div`.
+Title wrapper for grouped field content.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -207,7 +207,7 @@ Title wrapper for field content. Renders a `div`.
 
 ### FieldDescription
 
-Description or helper text for the field. Muted foreground. Renders a `p`.
+Helper text or description. Shown in muted foreground.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ Description or helper text for the field. Muted foreground. Renders a `p`.
 
 ### FieldSeparator
 
-Horizontal separator between field groups. Optional center text. Renders a `div`.
+Horizontal divider between field groups. Optional center label.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -224,7 +224,7 @@ Horizontal separator between field groups. Optional center text. Renders a `div`
 
 ### FieldHelper
 
-Helper text (alias for description). Renders a `p`.
+Alias for FieldDescription. Use for consistency with other form libraries.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -232,7 +232,7 @@ Helper text (alias for description). Renders a `p`.
 
 ### FieldError
 
-Error message for invalid state. Destructive foreground. Renders a `p`.
+Error message shown when the field is invalid. Shown in destructive color.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -240,4 +240,4 @@ Error message for invalid state. Destructive foreground. Renders a `p`.
 
 ---
 
-For a complete list of props, see the [Ark UI Field](https://ark-ui.com/docs/components/field#api-reference) and [Fieldset](https://ark-ui.com/docs/components/fieldset#api-reference) documentation.
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/field#api-reference).

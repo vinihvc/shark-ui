@@ -1,6 +1,7 @@
 "use client";
 
-import { ark, Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
 import React from "react";
 import { tv } from "tailwind-variants";

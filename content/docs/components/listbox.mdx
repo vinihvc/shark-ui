@@ -49,9 +49,9 @@ npm install @ark-ui/react lucide-react
 
 ## Usage
 
-```tsx
+```tsx 
+import { createListCollection } from "@ark-ui/react";
 import {
-  createListCollection,
   Listbox,
   ListboxContent,
   ListboxItem,
@@ -59,7 +59,15 @@ import {
 } from "@/components/ui/listbox";
 ```
 
-```tsx
+```tsx showLineNumbers
+const collection = createListCollection({
+  items: [
+    { label: "Brazil", value: "br" },
+    { label: "Mexico", value: "mx" },
+    { label: "Ireland", value: "ie" },
+  ],
+});
+
 <Listbox collection={collection}>
   <ListboxContent>
     {collection.items.map((item) => (
@@ -147,7 +155,7 @@ Use `groupBy` in `createListCollection` and `<ListboxItemGroup heading={}>` with
 
 ### With Filter
 
-Filter items using `useListCollection` with `useFilter` from `@ark-ui/react/locale`. Call `filter` when the search input changes to filter items by label.
+Filter items using `useListCollection` with `useFilter` from `@ark-ui/react`. Call `filter` when the search input changes to filter items by label.
 
 <ComponentPreview componentName="listbox" fileName="example-with-filter" />
 
@@ -167,7 +175,7 @@ Use `createGridCollection` with `columnCount` and grid CSS for a grid layout.
 
 ### Listbox
 
-Root element of the listbox component. Renders a `div`.
+Root component. Manages selection state and keyboard navigation.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -183,7 +191,7 @@ Root element of the listbox component. Renders a `div`.
 
 ### ListboxContent
 
-Content container for listbox items. Renders a `div`.
+Holds the list of options.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -192,7 +200,7 @@ Content container for listbox items. Renders a `div`.
 
 ### ListboxItem
 
-  A single listbox option. Renders a `button`.
+A single selectable list option.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -203,7 +211,7 @@ Content container for listbox items. Renders a `div`.
 
 ### ListboxItemText
 
-Displays the text content of a listbox item. Renders a `span`.
+Text content for a list item.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -212,7 +220,7 @@ Displays the text content of a listbox item. Renders a `span`.
 
 ### ListboxItemIndicator
 
-Shows selection state. Renders when item is selected. Renders a `span`.
+Checkmark or icon shown when the item is selected.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -222,7 +230,7 @@ Shows selection state. Renders when item is selected. Renders a `span`.
 
 ### ListboxItemGroup
 
-Groups related items. Use `heading` or `<ListboxItemGroupLabel />` for a label. Renders a `div`.
+Groups related options. Use `heading` or `<ListboxItemGroupLabel />` for a label.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -232,7 +240,7 @@ Groups related items. Use `heading` or `<ListboxItemGroupLabel />` for a label. 
 
 ### ListboxItemGroupLabel
 
-Label for a group. Renders inside `<ListboxItemGroup />`. Renders a `span`.
+Label for a group. Must be used inside `<ListboxItemGroup />`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -241,7 +249,7 @@ Label for a group. Renders inside `<ListboxItemGroup />`. Renders a `span`.
 
 ### ListboxValueText
 
-Displays the selected value(s) as text. Use for custom trigger/display. Renders a `span`.
+Shows the selected value(s) as text. Use for custom trigger or display.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -251,7 +259,7 @@ Displays the selected value(s) as text. Use for custom trigger/display. Renders 
 
 ### ListboxEmpty
 
-Displays content when the listbox has no items. Use for empty states, e.g. when filtering returns no results. Renders a `div`.
+Shown when the list has no items. Use for empty states (e.g. no search results).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -260,8 +268,8 @@ Displays content when the listbox has no items. Use for empty states, e.g. when 
 
 ### ListboxShortcut
 
-Optional keyboard hint shown next to an item. Renders a `span`. Renders a `span`.
+Optional keyboard shortcut hint shown next to an item.
 
 ---
 
-For a complete list of props, see the [Ark UI Listbox documentation](https://ark-ui.com/docs/components/listbox#api-reference).
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/listbox#api-reference).

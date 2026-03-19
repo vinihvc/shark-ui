@@ -64,10 +64,13 @@ import {
 } from "@/components/ui/command";
 ```
 
-```tsx
+```tsx showLineNumbers
 const { contains } = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  initialItems: [...],
+  initialItems: [
+    { label: "Search", value: "search", group: "Actions" },
+    { label: "Settings", value: "settings", group: "Actions" },
+  ],
   filter: contains,
   groupBy: (item) => item.group, // optional
 });
@@ -151,7 +154,7 @@ Dialog root for the command palette. Same as `Dialog`.
 
 ### CommandDialogTrigger
 
-Button that opens the command dialog. Renders a `button`.
+Opens the command palette on click. Often uses a search icon.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -171,7 +174,7 @@ Container for the command palette inside the dialog.
 
 ### CommandInput
 
-Search input with icon. Renders an input inside `InputGroup`.
+Search input with icon. Uses InputGroup for layout.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -228,7 +231,7 @@ Label for a group.
 
 ### CommandItem
 
-Individual command option. Renders a `div`.
+A single command or action in the palette.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -237,7 +240,7 @@ Individual command option. Renders a `div`.
 
 ### CommandSeparator
 
-Visual separator between groups or items. Renders a [`<Separator />`](/components/separator).
+Visual divider between groups or items. Uses [`<Separator />`](/components/separator).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -245,7 +248,7 @@ Visual separator between groups or items. Renders a [`<Separator />`](/component
 
 ### CommandShortcut
 
-Keyboard shortcut badge. Renders a `span`.
+Keyboard shortcut hint shown next to a command.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -254,7 +257,7 @@ Keyboard shortcut badge. Renders a `span`.
 
 ### CommandFooter
 
-Footer area for hints or actions. Renders a `div`.  
+Footer area for hints, tips, or extra actions.  
 
 | Prop | Type | Default |
 | --- | --- | --- |

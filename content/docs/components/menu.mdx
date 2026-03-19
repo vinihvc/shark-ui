@@ -189,7 +189,7 @@ Root element of the menu component.
 
 ### MenuTrigger
 
-Button that opens the menu. Renders a `button`. Use `asChild` to delegate to a child element.
+Opens the menu on click. Use `asChild` to delegate to a child element.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -197,7 +197,7 @@ Button that opens the menu. Renders a `button`. Use `asChild` to delegate to a c
 
 ### MenuContent
 
-Content container for menu items. Renders a `div` inside a portal.
+Holds menu options. Displayed in a portal, positioned relative to the trigger.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -206,7 +206,7 @@ Content container for menu items. Renders a `div` inside a portal.
 
 ### MenuItem
 
-A single menu option. Renders a `div` (or child when `asChild`).
+A single selectable menu option. Supports `asChild` for custom elements.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -257,11 +257,11 @@ Groups related items. Use `heading` or `<MenuGroupLabel />` for a label.
 
 ### MenuGroupLabel
 
-Label for a group. Renders inside `<MenuGroup />`.
+Label for a group. Must be used inside `<MenuGroup />`.
 
 ### MenuSeparator
 
-Visual divider between items. Renders an `hr`.
+Visual divider between groups of menu items.
 
 ### MenuQuickItem
 
@@ -281,7 +281,7 @@ Submenu: wrap a nested `<Menu />`-like structure. `<MenuSubTrigger />` opens the
 
 ### MenuShortcut
 
-Optional keyboard hint shown next to an item. Renders a `span`.
+Optional keyboard shortcut hint displayed next to a menu item.
 
 ---
 

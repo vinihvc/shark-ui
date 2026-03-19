@@ -33,7 +33,7 @@ export const FramePanel = (props: React.ComponentProps<typeof ark.div>) => {
         "relative",
         "p-5",
         "bg-background",
-        "rounded-xl border shadow-xs/5",
+        "rounded-xl border shadow-sm/5",
         className
       )}
       data-slot="frame-panel"

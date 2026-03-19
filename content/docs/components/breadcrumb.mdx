@@ -55,7 +55,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+```
 
+```tsx showLineNumbers
 <Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
@@ -91,7 +93,7 @@ import {
 
 ### Breadcrumb
 
-Root element. Renders a `nav`.
+Navigation landmark for the breadcrumb trail.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -100,7 +102,7 @@ Root element. Renders a `nav`.
 
 ### BreadcrumbList
 
-Container for breadcrumb items. Renders an `ol`.
+Ordered list of breadcrumb segments.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -109,7 +111,7 @@ Container for breadcrumb items. Renders an `ol`.
 
 ### BreadcrumbItem
 
-Wrapper for each breadcrumb segment. Renders an `li`.
+Wraps a single breadcrumb link or page.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -118,7 +120,7 @@ Wrapper for each breadcrumb segment. Renders an `li`.
 
 ### BreadcrumbLink
 
-Link for navigable breadcrumb items. Renders an `a`.
+Link to a parent page in the hierarchy.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -128,7 +130,7 @@ Link for navigable breadcrumb items. Renders an `a`.
 
 ### BreadcrumbPage
 
-Current page indicator. Renders a `span` with `aria-current="page"`.
+Current page. Not a link; marked with `aria-current="page"` for accessibility.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -137,7 +139,7 @@ Current page indicator. Renders a `span` with `aria-current="page"`.
 
 ### BreadcrumbSeparator
 
-Visual separator between items. Renders an `li` with `ChevronRight` icon by default.
+Visual separator between segments. ChevronRight by default; customizable via children.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -147,7 +149,7 @@ Visual separator between items. Renders an `li` with `ChevronRight` icon by defa
 
 ### BreadcrumbEllipsis
 
-Ellipsis indicator for collapsed items. Renders a `span` with `MoreHorizontal` icon.
+Shows when middle segments are collapsed. MoreHorizontal icon by default; use with dropdown.
 
 | Prop | Type | Default |
 | --- | --- | --- |

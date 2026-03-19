@@ -1,6 +1,7 @@
 "use client";
 
-import { ark, Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import { Select as ArkSelect, useSelectContext } from "@ark-ui/react/select";
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 import type React from "react";

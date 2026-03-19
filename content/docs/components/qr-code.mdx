@@ -105,7 +105,7 @@ Use `<QrCodeDownload />` with `fileName` and `mimeType` to let users download th
 
 ### QrCode
 
-Root element. Renders a `div`.
+Root wrapper for the QR code and optional overlay/actions.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -117,9 +117,14 @@ Root element. Renders a `div`.
 | `className` | `string` | - |
 | `asChild` | `boolean` | - |
 
+| Attribute | Default |
+| --- | --- |
+| `--qr-code-size` | `--spacing(32)` |
+| `--qr-code-overlay-size` | `calc(var(--qr-code-size)/4)` |
+
 ### QrCodeFrame
 
-SVG frame that contains the QR pattern. Renders an `svg`.
+SVG containing the QR pattern. Scales with size.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -128,7 +133,7 @@ SVG frame that contains the QR pattern. Renders an `svg`.
 
 ### QrCodeOverlay
 
-Overlay in the center of the QR code. Renders a `div`.
+Optional center overlay (e.g. logo) on top of the QR pattern.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -137,7 +142,7 @@ Overlay in the center of the QR code. Renders a `div`.
 
 ### QrCodeDownload
 
-Trigger to download the QR code as an image. Renders a `button`.
+Downloads the QR code as an image file.
 
 | Prop | Type | Default |
 | --- | --- | --- |

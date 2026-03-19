@@ -100,13 +100,9 @@ import {
 
 ## API Reference
 
----
-
-See the [Dialog component](/docs/components/dialog#api-reference) API reference to learn more.
-
 ### AlertDialogAction
 
-Primary action button that closes the dialog. Renders a `button`.
+Primary action (e.g. confirm, delete). Closes the dialog on click.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -116,10 +112,13 @@ Primary action button that closes the dialog. Renders a `button`.
 
 ### AlertDialogCancel
 
-Cancel button that closes the dialog. Renders a `button`.
+Cancel action. Closes the dialog without committing.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
+---
+
+For a complete list of props, see the [Dialog API Reference](/docs/components/dialog#api-reference).

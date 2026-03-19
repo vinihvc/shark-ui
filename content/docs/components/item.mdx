@@ -152,7 +152,7 @@ Use `<Item />` inside a menu or dropdown to display rich content in menu items.
 
 ### Item
 
-Main component for displaying content with media, title, description, and actions. Renders a `div` (or the child element when `asChild` is true). Use `[--space:--spacing("value")]` via `className` to control padding and gap.
+Layout for list items with media, title, description, and actions. Use `[--space:--spacing("value")]` via `className` to control padding and gap. Supports `asChild`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -162,7 +162,7 @@ Main component for displaying content with media, title, description, and action
 
 ### ItemGroup
 
-Container that groups related items with consistent spacing. Renders a `div` with `role="list"`. Use `[--space:--spacing("value")]` via `className` to control the gap between items.
+Groups related items with consistent spacing. Use `[--space:--spacing("value")]` for gap. Has `role="list"` for accessibility.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -171,7 +171,7 @@ Container that groups related items with consistent spacing. Renders a `div` wit
 
 ### ItemSeparator
 
-Separator between items in a group. Renders a horizontal separator.
+Horizontal divider between items in a group.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -180,7 +180,7 @@ Separator between items in a group. Renders a horizontal separator.
 
 ### ItemMedia
 
-Displays media for the item. Renders a `div`.
+Avatar, icon, or image for the item. Supports icon and image variants.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -190,7 +190,7 @@ Displays media for the item. Renders a `div`.
 
 ### ItemContent
 
-Wraps the title and description of the item. Renders a `div`.
+Wraps the item title and description text.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -199,7 +199,7 @@ Wraps the title and description of the item. Renders a `div`.
 
 ### ItemTitle
 
-Displays the item title. Renders a `div`.
+Primary title or heading for the item.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -208,7 +208,7 @@ Displays the item title. Renders a `div`.
 
 ### ItemDescription
 
-Displays the item description. Renders a `p`.
+Secondary description or subtitle for the item.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -217,7 +217,7 @@ Displays the item description. Renders a `p`.
 
 ### ItemActions
 
-Container for action buttons or other controls. Renders a `div`.
+Holds action buttons or controls (e.g. menu, buttons).
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ Container for action buttons or other controls. Renders a `div`.
 
 ### ItemHeader
 
-Header above the item content (full-width row). Renders a `div`.
+Full-width header row above the item content.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -235,7 +235,7 @@ Header above the item content (full-width row). Renders a `div`.
 
 ### ItemFooter
 
-Footer below the item content (full-width row). Renders a `div`.
+Full-width footer row below the item content.
 
 | Prop | Type | Default |
 | --- | --- | --- |

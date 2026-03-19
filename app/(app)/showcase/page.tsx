@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import { DotPattern } from "@/components/background/dot-pattern";
 import { Footer } from "@/components/layout/footer";
+import { createMetadata } from "@/lib/metadata";
 import { ShowcaseHero } from "./_components/hero";
 import { ShowcaseCard } from "./_components/showcase-card";
 import { MOCK_SHOWCASES } from "./_data/mock-showcases";
 
 export const revalidate = false;
 export const dynamic = "force-static";
+
+export const metadata: Metadata = createMetadata({
+  title: "Showcase",
+  description: "Projects built with Shark UI.",
+  url: "/showcase",
+});
 
 const ShowcasePage = () => {
   return (

@@ -18,15 +18,20 @@ Visit http://shark.vini.one/docs to view the documentation.
 - **Own the code** — Components live in your repo; customize freely.
 - **Tailwind** — Styled with Tailwind CSS and `tailwind-variants`.
 
+## Acknowledgments
+
+Shark UI builds on [Ark UI](https://ark-ui.com), [shadcn CLI](https://ui.shadcn.com), [Tailwind CSS](https://tailwindcss.com), and [Fumadocs](https://fumadocs.dev).
+
 ## Development
 
 | Command        | Description        |
 |----------------|--------------------|
 | `pnpm dev`     | Start docs site    |
 | `pnpm build`   | Build docs         |
-| `pnpm run lint:check` | Lint (Ultracite) |
-| `pnpm run lint:fix`   | Lint and fix      |
+| `pnpm run typecheck`  | Type-check and build |
+| `pnpm run lint:check` | Lint (Ultracite)     |
+| `pnpm run lint:fix`   | Lint and fix         |
 
 ## License
 
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+Licensed under the [MIT license](LICENSE.md).

@@ -1,6 +1,7 @@
 "use client";
 
-import { ark, Portal } from "@ark-ui/react";
+import { Portal } from "@ark-ui/react";
+import { ark } from "@ark-ui/react/factory";
 import {
   Menu as ArkMenu,
   type MenuContentProps,
@@ -57,7 +58,7 @@ export const menuContentVariants = tv({
     "p-1",
     "bg-popover",
     "text-popover-foreground",
-    "rounded-xl border border-input shadow-md/5",
+    "rounded-xl border shadow-lg/5",
     "origin-(--transform-origin)",
     "outline-none",
     "overflow-y-auto",
