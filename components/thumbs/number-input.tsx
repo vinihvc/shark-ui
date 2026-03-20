@@ -1,8 +1,8 @@
 import { MinusIcon, PlusIcon } from "lucide-react";
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const NumberInputThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const NumberInputThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="flex w-40 overflow-hidden rounded-lg border bg-muted shadow-md/5">
       <div className="flex size-8 shrink-0 items-center justify-center border-border border-e">
         <MinusIcon className="size-3 text-muted-foreground/64" />
@@ -14,5 +14,5 @@ export const NumberInputThumb = (props: BlockThumbCardProps) => (
         <PlusIcon className="size-3 text-muted-foreground/64" />
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

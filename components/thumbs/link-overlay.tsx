@@ -1,8 +1,8 @@
 import { ExternalLink } from "lucide-react";
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const LinkOverlayThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const LinkOverlayThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="max-w-40 rounded-lg border bg-muted shadow-md/5">
       <div className="relative flex h-16 w-full items-center justify-center p-3">
         <div className="h-full w-full rounded-md bg-muted-foreground/16" />
@@ -14,5 +14,5 @@ export const LinkOverlayThumb = (props: BlockThumbCardProps) => (
         </div>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

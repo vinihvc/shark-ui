@@ -117,7 +117,7 @@ export const Command: ArkCombobox.RootComponent = (props) => {
       lazyMount={lazyMount}
       loopFocus={false}
       open
-      selectionBehavior="preserve"
+      selectionBehavior="clear"
       unmountOnExit={unmountOnExit}
       {...rest}
     />
@@ -147,7 +147,7 @@ export const CommandContent = (
         "outline-none",
         "overflow-auto",
         "scroll-pr-1 overscroll-contain",
-        "[-webkit-scrollbar-track:calc(var(--spacing)*2)] [-webkit-scrollbar:calc(var(--spacing)*2)] [scrollbar-width:thin]",
+        "[-webkit-scrollbar-track:--spacing(2)] [-webkit-scrollbar:--spacing(2)] [scrollbar-width:thin]",
         "[:not(.has-[+[data-slot=command-footer]])]:rounded-b-2xl [:not(.has-[+[data-slot=command-footer]])]:border-b",
         className
       )}

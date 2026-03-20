@@ -27,34 +27,34 @@ export const FeaturesBlock = () => {
           </div>
           <Image
             alt=""
-            className="absolute -bottom-40 -left-40 w-[1000px] max-w-none -scale-y-100"
+            className="absolute -inset-s-40 -bottom-40 w-[1000px] max-w-none -scale-y-100"
             height={400}
             src="/bg.svg"
             width={1000}
           />
           <div className="relative mt-6 flex h-full w-full flex-col items-start justify-center gap-2 md:mt-0 md:items-center">
-            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:-translate-x-40 md:translate-y-0">
+            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:-translate-x-40 md:translate-y-0 rtl:translate-x-40">
               <ShieldCheckIcon
                 aria-hidden
                 className="size-5 shrink-0 text-primary text-xl"
               />
               <span>WAI-ARIA compliant</span>
             </div>
-            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:translate-x-28 md:-translate-y-16">
+            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:translate-x-28 md:-translate-y-16 rtl:-translate-x-28">
               <KeyboardIcon
                 aria-hidden
                 className="size-5 shrink-0 text-primary text-xl"
               />
               <span>Keyboard navigation</span>
             </div>
-            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:-translate-x-20 md:translate-y-16">
+            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:-translate-x-20 md:translate-y-16 rtl:translate-x-20">
               <FocusIcon
                 aria-hidden
                 className="size-5 shrink-0 text-primary text-xl"
               />
               <span>Focus management</span>
             </div>
-            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:translate-x-44 md:translate-y-4">
+            <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:translate-x-44 md:translate-y-4 rtl:-translate-x-44">
               <MonitorIcon
                 aria-hidden
                 className="size-5 shrink-0 text-primary text-xl"
@@ -71,7 +71,7 @@ export const FeaturesBlock = () => {
               40+ Primitive Components
             </div>
           </div>
-          <div className="absolute top-12 left-1/2 flex w-full -translate-x-1/2 flex-col items-center justify-center">
+          <div className="absolute inset-s-1/2 top-12 flex w-full -translate-x-1/2 flex-col items-center justify-center">
             <Image
               alt=""
               className="w-[300px]"
@@ -112,7 +112,7 @@ export const FeaturesBlock = () => {
           </div>
           <Image
             alt=""
-            className="absolute bottom-0 hue-rotate-220 saturate-[1.2] md:top-0 md:left-48 md:scale-[1.75] dark:mix-blend-lighten"
+            className="absolute bottom-0 hue-rotate-220 saturate-[1.2] md:inset-s-48 md:top-0 md:scale-[1.75] dark:mix-blend-lighten"
             draggable={false}
             height={400}
             src="/globe.svg"

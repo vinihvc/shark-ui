@@ -1,15 +1,24 @@
 "use client";
 
-import { Button } from "@/registry/react/components/button";
-import { Card, CardContent, CardHeader } from "@/registry/react/components/card";
-import { Switch } from "@/registry/react/components/switch";
 import { Check } from "lucide-react";
-import { useState } from "react";
+import React from "react";
+import { Button } from "@/registry/react/components/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/react/components/card";
+import { Switch } from "@/registry/react/components/switch";
 
-const features = ["Unlimited projects", "50GB storage", "Priority support", "SSO"];
+const features = [
+  "Unlimited projects",
+  "50GB storage",
+  "Priority support",
+  "SSO",
+];
 
 const SinglePlanWithToggle = () => {
-  const [yearly, setYearly] = useState(false);
+  const [yearly, setYearly] = React.useState(false);
 
   return (
     <Card className="mx-auto max-w-md">
@@ -20,7 +29,7 @@ const SinglePlanWithToggle = () => {
       <CardContent className="flex flex-col gap-6">
         <div className="flex items-center gap-3">
           <span
-            className={`font-medium ${!yearly ? "text-foreground" : "text-muted-foreground"}`}
+            className={`font-medium ${yearly ? "text-muted-foreground" : "text-foreground"}`}
           >
             Monthly
           </span>
@@ -36,7 +45,7 @@ const SinglePlanWithToggle = () => {
         </div>
         <ul className="flex flex-col gap-2">
           {features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-sm">
+            <li className="flex items-center gap-2 text-sm" key={feature}>
               <Check className="size-4 text-primary" />
               {feature}
             </li>

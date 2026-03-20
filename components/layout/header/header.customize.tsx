@@ -87,7 +87,7 @@ export const HeaderCustomize = () => {
             </Button>
           </SheetTrigger>
         </TooltipTrigger>
-        <TooltipContent className="flex items-center gap-2 pr-2">
+        <TooltipContent className="flex items-center gap-2 pe-2">
           Customize <Kbd>C</Kbd>
         </TooltipContent>
       </Tooltip>

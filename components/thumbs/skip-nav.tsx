@@ -1,7 +1,7 @@
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const SkipNavThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const SkipNavThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="rounded-lg border bg-muted shadow-md/5">
       <div className="flex flex-col gap-2 p-3">
         <div className="h-2 w-full rounded-full bg-muted-foreground/8" />
@@ -14,5 +14,5 @@ export const SkipNavThumb = (props: BlockThumbCardProps) => (
         <div className="h-12 w-full rounded-md bg-muted-foreground/8" />
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

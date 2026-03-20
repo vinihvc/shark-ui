@@ -1,7 +1,7 @@
 import {
   getAllRegistryComponentNames,
   getComponentExamplesForLLM,
-} from "@/lib/llms-component-examples";
+} from "@/lib/llms";
 
 export const revalidate = false;
 

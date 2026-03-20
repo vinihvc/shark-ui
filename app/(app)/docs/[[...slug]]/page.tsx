@@ -9,7 +9,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
-import { ArticleJsonLd } from "@/components/seo/json-ld";
 import { source } from "@/lib/fumadocs";
 import { createMetadata, createOgImageUrl } from "@/lib/metadata";
 import { mdxComponents } from "@/mdx-components";
@@ -72,13 +71,8 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
 
   return (
     <div className="size-full">
-      <ArticleJsonLd
-        description={page.data.description ?? ""}
-        headline={page.data.title}
-        url={page.url}
-      />
       <div className="flex items-stretch xl:w-full" data-slot="docs">
-        <div className="relative flex w-full min-w-0 flex-1 flex-col lg:mt-8 lg:mr-4 lg:mb-8">
+        <div className="relative flex w-full min-w-0 flex-1 flex-col lg:me-4 lg:mt-8 lg:mb-8">
           <div className="relative flex w-full flex-col border bg-card text-card-foreground shadow-lg/5 max-lg:border-none lg:rounded-2xl">
             <div className="flex-1 px-4 py-6 sm:px-6 lg:p-8">
               <div className="mx-auto w-full">
@@ -99,24 +93,36 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                           {neighbours.previous ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.previous.url}>
-                                <ChevronLeftIcon aria-hidden />
+                                <ChevronLeftIcon
+                                  aria-hidden
+                                  className="rtl:rotate-180"
+                                />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronLeftIcon aria-hidden />
+                              <ChevronLeftIcon
+                                aria-hidden
+                                className="rtl:rotate-180"
+                              />
                             </Button>
                           )}
 
                           {neighbours.next ? (
                             <Button asChild size="icon-sm" variant="outline">
                               <Link href={neighbours.next.url}>
-                                <ChevronRightIcon aria-hidden />
+                                <ChevronRightIcon
+                                  aria-hidden
+                                  className="rtl:rotate-180"
+                                />
                               </Link>
                             </Button>
                           ) : (
                             <Button disabled size="icon-sm" variant="outline">
-                              <ChevronRightIcon aria-hidden />
+                              <ChevronRightIcon
+                                aria-hidden
+                                className="rtl:rotate-180"
+                              />
                             </Button>
                           )}
                         </div>

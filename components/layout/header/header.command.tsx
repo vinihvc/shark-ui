@@ -9,7 +9,6 @@ import {
   CircleDotDashed,
   CornerDownLeftIcon,
 } from "lucide-react";
-
 import { useRouter } from "next/navigation";
 import React from "react";
 import type { NavItem } from "@/config/navigation";
@@ -114,7 +113,10 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
       if (group.type === "folder") {
         for (const item of group.children) {
           if (item.type === "page") {
-            const isComponent = item.url.includes("/components/");
+            const isComponent =
+              ["/components/", "/utilities/"].some((path) =>
+                item.url.includes(path)
+              ) ?? false;
             const itemName = item.name?.toString() || "";
 
             allItems.push({
@@ -201,7 +203,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           variant="outline"
         >
           <span className="inline-flex">Search...</span>
-          <div className="absolute top-1.5 right-1.5 hidden sm:flex">
+          <div className="absolute inset-e-1.5 top-1.5 hidden sm:flex">
             <KbdGroup>
               <Kbd variant="outline">⌘</Kbd>
               <Kbd variant="outline">K</Kbd>

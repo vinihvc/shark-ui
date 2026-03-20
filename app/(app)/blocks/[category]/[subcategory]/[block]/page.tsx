@@ -3,6 +3,7 @@ import { join } from "node:path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BLOCK_MAP, getBlock } from "@/app/(app)/blocks/_data/blocks-data";
+import { CHART_BLOCK_REGISTRY } from "@/app/(app)/blocks/_data/chart-block-registry";
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
 import { ComponentSource } from "@/components/component-source";
 import { Footer } from "@/components/layout/footer";
@@ -12,6 +13,7 @@ const BLOCK_REGISTRY: Record<
   string,
   () => Promise<{ default: React.ComponentType }>
 > = {
+  ...CHART_BLOCK_REGISTRY,
   "marketing/heroes/minimal-gradient-with-ctas": () =>
     import(
       "@/registry/react/blocks/marketing/heroes/minimal-gradient-with-ctas"

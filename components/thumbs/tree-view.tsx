@@ -1,7 +1,7 @@
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const TreeViewThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const TreeViewThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="flex flex-col gap-1.5 rounded-lg border bg-muted p-3 shadow-md/5">
       <div className="flex items-center gap-2">
         <span
@@ -25,5 +25,5 @@ export const TreeViewThumb = (props: BlockThumbCardProps) => (
         <div className="h-2 w-2/5 rounded-full bg-muted-foreground/8" />
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

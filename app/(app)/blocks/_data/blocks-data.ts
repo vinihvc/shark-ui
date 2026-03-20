@@ -1,3 +1,5 @@
+import { CHART_BLOCKS_MANIFEST } from "./chart-blocks-manifest";
+
 export interface Block {
   blockUrl: string;
   category: string;
@@ -33,7 +35,20 @@ const block = (
   };
 };
 
+const CHART_BLOCKS: Block[] = CHART_BLOCKS_MANIFEST.map((chart) =>
+  block(
+    "charts",
+    "Charts",
+    chart.subcategory,
+    chart.subcategoryLabel,
+    chart.name,
+    chart.id,
+    { description: chart.description }
+  )
+);
+
 export const BLOCKS: Block[] = [
+  ...CHART_BLOCKS,
   // Marketing - Heroes
   block(
     "marketing",
@@ -67,17 +82,9 @@ export const BLOCKS: Block[] = [
     }
   ),
   // Marketing - CTA
-  block(
-    "marketing",
-    "Marketing",
-    "cta",
-    "CTA",
-    "Centered",
-    "centered",
-    {
-      description: "Centered CTA with headline and email signup form.",
-    }
-  ),
+  block("marketing", "Marketing", "cta", "CTA", "Centered", "centered", {
+    description: "Centered CTA with headline and email signup form.",
+  }),
   block(
     "marketing",
     "Marketing",
@@ -85,7 +92,10 @@ export const BLOCKS: Block[] = [
     "Heroes",
     "Gradient Dual CTAs",
     "gradient-dual-ctas",
-    { description: "Gradient hero with headline and dual CTA buttons alongside nested windows." }
+    {
+      description:
+        "Gradient hero with headline and dual CTA buttons alongside nested windows.",
+    }
   ),
   block(
     "marketing",
@@ -113,7 +123,10 @@ export const BLOCKS: Block[] = [
     "Features",
     "Gradient Two Columns",
     "gradient-two-columns",
-    { description: "Gradient background with heading and dual feature highlights side by side." }
+    {
+      description:
+        "Gradient background with heading and dual feature highlights side by side.",
+    }
   ),
   block(
     "marketing",
@@ -134,15 +147,9 @@ export const BLOCKS: Block[] = [
     { description: "Horizontal cards for features with details." }
   ),
   // Marketing - CTA
-  block(
-    "marketing",
-    "Marketing",
-    "cta",
-    "CTA",
-    "Background",
-    "background",
-    { description: "Full-width CTA with solid background." }
-  ),
+  block("marketing", "Marketing", "cta", "CTA", "Background", "background", {
+    description: "Full-width CTA with solid background.",
+  }),
   // Marketing - Stats, Team, Logos
   block(
     "marketing",
@@ -151,7 +158,10 @@ export const BLOCKS: Block[] = [
     "Stats",
     "Split Layout with Metrics",
     "split-layout-metrics",
-    { description: "Split layout with phone image plus big metrics on the right." }
+    {
+      description:
+        "Split layout with phone image plus big metrics on the right.",
+    }
   ),
   block(
     "marketing",
@@ -169,7 +179,10 @@ export const BLOCKS: Block[] = [
     "Logos",
     "Logo Cloud",
     "logo-cloud",
-    { description: "Centered headline with supportive text and partner logos row." }
+    {
+      description:
+        "Centered headline with supportive text and partner logos row.",
+    }
   ),
   // Marketing - Testimonials
   block(
@@ -179,7 +192,10 @@ export const BLOCKS: Block[] = [
     "Testimonials",
     "Gradient Panel",
     "gradient-panel",
-    { description: "Gradient panel featuring avatar, quote, and dot indicators." }
+    {
+      description:
+        "Gradient panel featuring avatar, quote, and dot indicators.",
+    }
   ),
   block(
     "marketing",
@@ -188,7 +204,10 @@ export const BLOCKS: Block[] = [
     "Testimonials",
     "Quote Block",
     "quote-block",
-    { description: "Simple quote block with author details and arrow navigation." }
+    {
+      description:
+        "Simple quote block with author details and arrow navigation.",
+    }
   ),
   // Marketing - FAQ, Newsletter, Contact
   block(
@@ -207,7 +226,10 @@ export const BLOCKS: Block[] = [
     "Newsletter",
     "Centered Headline Form",
     "centered-headline-form",
-    { description: "Centered headline and subtext with email field and subscribe button." }
+    {
+      description:
+        "Centered headline and subtext with email field and subscribe button.",
+    }
   ),
   block(
     "marketing",
@@ -216,7 +238,10 @@ export const BLOCKS: Block[] = [
     "Contact",
     "Two Column Block",
     "two-column-block",
-    { description: "Two-column contact block with headline, copy and contact button." }
+    {
+      description:
+        "Two-column contact block with headline, copy and contact button.",
+    }
   ),
   // Marketing - Navbars
   block(
@@ -226,7 +251,10 @@ export const BLOCKS: Block[] = [
     "Navbars",
     "Full Bar with Divider",
     "full-bar-with-divider",
-    { description: "Full-width bar with links and divider separating login and free-trial buttons." }
+    {
+      description:
+        "Full-width bar with links and divider separating login and free-trial buttons.",
+    }
   ),
   block(
     "marketing",
@@ -235,7 +263,9 @@ export const BLOCKS: Block[] = [
     "Navbars",
     "Links with Login & CTA",
     "links-with-login-cta",
-    { description: "Horizontal navbar with logo, links, login and CTA buttons." }
+    {
+      description: "Horizontal navbar with logo, links, login and CTA buttons.",
+    }
   ),
   // Marketing - Headers
   block(
@@ -245,7 +275,10 @@ export const BLOCKS: Block[] = [
     "Headers",
     "Headline with Email Signup",
     "headline-with-email-signup",
-    { description: "Header featuring tagline, subtext, email field, and CTA button." }
+    {
+      description:
+        "Header featuring tagline, subtext, email field, and CTA button.",
+    }
   ),
   block(
     "marketing",
@@ -254,7 +287,10 @@ export const BLOCKS: Block[] = [
     "Headers",
     "Bold Headline Dual CTAs",
     "bold-headline-dual-ctas",
-    { description: "Hero header with bold headline, subtext and dual CTA buttons." }
+    {
+      description:
+        "Hero header with bold headline, subtext and dual CTA buttons.",
+    }
   ),
   // Marketing - Footers
   block(
@@ -264,7 +300,10 @@ export const BLOCKS: Block[] = [
     "Footers",
     "Minimal Grey with Links",
     "minimal-grey-with-links",
-    { description: "Minimal grey footer with logo, link columns, copyright and icons." }
+    {
+      description:
+        "Minimal grey footer with logo, link columns, copyright and icons.",
+    }
   ),
   block(
     "marketing",
@@ -273,7 +312,10 @@ export const BLOCKS: Block[] = [
     "Footers",
     "Centered Logo Bar",
     "centered-logo-bar",
-    { description: "Minimal bar footer with centered logo, copyright and icons." }
+    {
+      description:
+        "Minimal bar footer with centered logo, copyright and icons.",
+    }
   ),
   // Marketing - Elements
   block(
@@ -293,7 +335,10 @@ export const BLOCKS: Block[] = [
     "Pricing",
     "Three Plans with Toggle",
     "three-plans-with-toggle",
-    { description: "Three plan cards with monthly/yearly toggle; pro tier emphasized." }
+    {
+      description:
+        "Three plan cards with monthly/yearly toggle; pro tier emphasized.",
+    }
   ),
   block(
     "marketing",
@@ -302,7 +347,10 @@ export const BLOCKS: Block[] = [
     "Pricing",
     "Single Plan with Toggle",
     "single-plan-with-toggle",
-    { description: "Single plan card with monthly/annual toggle and feature list." }
+    {
+      description:
+        "Single plan card with monthly/annual toggle and feature list.",
+    }
   ),
   // Marketing - Blog
   block(
@@ -312,7 +360,10 @@ export const BLOCKS: Block[] = [
     "Blog",
     "Two Column Feed",
     "two-column-feed",
-    { description: "Two-column blog feed with image thumbnails, tags and post details." }
+    {
+      description:
+        "Two-column blog feed with image thumbnails, tags and post details.",
+    }
   ),
   block(
     "marketing",
@@ -332,7 +383,8 @@ export const BLOCKS: Block[] = [
     "Sign In Simple",
     "sign-in-simple",
     {
-      description: "Login block with email, password, and social sign-in options.",
+      description:
+        "Login block with email, password, and social sign-in options.",
     }
   ),
 ];

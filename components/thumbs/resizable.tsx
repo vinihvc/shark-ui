@@ -1,7 +1,7 @@
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const ResizableThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const ResizableThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="flex size-full items-center gap-2">
       <div className="flex h-1/2 min-h-0 flex-1 items-center justify-center rounded-lg border bg-muted shadow-md/5">
         <span className="text-muted-foreground/64 text-sm">A</span>
@@ -13,5 +13,5 @@ export const ResizableThumb = (props: BlockThumbCardProps) => (
         <span className="text-muted-foreground/64 text-sm">B</span>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

@@ -41,6 +41,20 @@ interface HintContextValue {
 
 interface HintProps extends React.ComponentProps<typeof ark.div> {
   /**
+   * Initial open state when uncontrolled.
+   *
+   * @default false
+   */
+  defaultOpen?: boolean;
+  /**
+   * Called when the open state should change (hover/focus or programmatic updates).
+   */
+  onOpenChange?: (open: boolean) => void;
+  /**
+   * Controlled open state. When set, `defaultOpen` is ignored.
+   */
+  open?: boolean;
+  /**
    * Placement and offset of the hint.
    */
   positioning?: HintContextValue["positioning"];
@@ -51,7 +65,15 @@ const HintContext = React.createContext({} as HintContextValue);
 const defaultPositioning = { placement: "top", offset: "10px" } as const;
 
 export const Hint = (props: HintProps) => {
-  const { positioning, className, children, ...rest } = props;
+  const {
+    positioning,
+    className,
+    children,
+    defaultOpen = false,
+    onOpenChange,
+    open: openProp,
+    ...rest
+  } = props;
 
   const positioningValue = {
     ...defaultPositioning,
@@ -60,20 +82,32 @@ export const Hint = (props: HintProps) => {
 
   const hintId = `hint${React.useId()}`;
 
-  const [isVisible, setIsVisible] = React.useState(false);
+  const isControlled = openProp !== undefined;
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
+  const isVisible = isControlled ? openProp : uncontrolledOpen;
+
+  const setOpen = React.useCallback(
+    (next: boolean) => {
+      if (!isControlled) {
+        setUncontrolledOpen(next);
+      }
+      onOpenChange?.(next);
+    },
+    [isControlled, onOpenChange]
+  );
 
   return (
     <HintContext.Provider
       value={{
         isVisible,
         positioning: positioningValue,
-        setIsVisible,
+        setIsVisible: setOpen,
         id: hintId,
       }}
     >
       <ark.div
         aria-describedby={hintId}
-        className={cn("relative inline-flex whitespace-nowrap", className)}
+        className={cn("relative", className)}
         data-placement={positioningValue.placement}
         data-slot="hint"
         data-state={isVisible ? "open" : "closed"}
@@ -113,8 +147,8 @@ export const HintTrigger = (props: React.ComponentProps<typeof ark.button>) => {
 
 const hintContentVariants = tv({
   base: [
-    "absolute",
-    "z-50 w-fit",
+    "absolute z-50",
+    "w-fit min-w-max",
     "px-3 py-1.5",
     "bg-foreground",
     "text-background text-xs",
@@ -125,7 +159,7 @@ const hintContentVariants = tv({
   variants: {
     placement: {
       bottom: [
-        "top-full left-1/2 -translate-x-1/2",
+        "inset-s-1/2 top-full -translate-x-1/2",
         "mt-(--offset)",
         "data-[state=open]:slide-in-from-top-5 origin-bottom",
       ],
@@ -140,7 +174,7 @@ const hintContentVariants = tv({
         "data-[state=open]:slide-in-from-end-5 origin-start",
       ],
       top: [
-        "bottom-full left-1/2 mb-(--offset) -translate-x-1/2",
+        "inset-s-1/2 bottom-full mb-(--offset) -translate-x-1/2",
         "mb-(--offset)",
         "data-[state=open]:slide-in-from-bottom-5 origin-top",
       ],
@@ -196,8 +230,8 @@ const hintArrowVariants = tv({
   base: "absolute rotate-225",
   variants: {
     placement: {
-      bottom: ["-top-0.5 left-1/2 -translate-x-1/2"],
-      top: ["-bottom-0.5 left-1/2 -translate-x-1/2"],
+      bottom: ["inset-s-1/2 -top-0.5 -translate-x-1/2"],
+      top: ["inset-s-1/2 -bottom-0.5 -translate-x-1/2"],
       right: ["-inset-s-0.5 top-1/2 -translate-y-1/2"],
       left: ["-inset-e-0.5 top-1/2 -translate-y-1/2"],
     },

@@ -6,6 +6,7 @@ import { join } from "node:path";
 import type React from "react";
 import { REGISTRY_PATH } from "@/config/constants";
 import { cn } from "@/lib/utils";
+import { replaceContentForCopy } from "@/utils/formatter";
 import { CodeBlock } from "./code-block";
 import { CodeCollapsibleWrapper } from "./code-collapsible-wrapper";
 import { CopyButton } from "./copy-button";
@@ -61,7 +62,7 @@ export const ComponentSource = (props: ComponentSourceProps) => {
 
   const lang = language ?? title?.split(".").pop() ?? "tsx";
 
-  const replacedCode = replaceContent(codeContent);
+  const replacedCode = replaceContentForCopy(codeContent);
 
   if (isCollapsible) {
     return (
@@ -90,15 +91,4 @@ export const ComponentSource = (props: ComponentSourceProps) => {
       <CodeBlock code={replacedCode} lang={lang} title={title} />
     </div>
   );
-};
-
-const replaceContent = (code: string) => {
-  code = code.replaceAll("@/registry/react/components", "@/components/ui");
-  code = code.replaceAll(/export const (\w+) = \(/g, "export const $1 = (");
-  code = code.replaceAll(/export default (\w+);/g, "");
-  code = code.replaceAll(/\n$/g, "");
-  code = code.replaceAll(/\n$/g, "");
-  code = code.replaceAll(/\n$/g, "");
-
-  return code;
 };

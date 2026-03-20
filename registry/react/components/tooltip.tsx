@@ -54,7 +54,7 @@ export const TooltipContent = (
             "px-3 py-1.5",
             "bg-foreground",
             "text-background text-xs",
-            "rounded-lg shadow-md/5",
+            "rounded-lg shadow-lg/5",
             "origin-(--transform-origin) animate-in",
             "fade-in-0 zoom-in-[98%]",
             "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%]",

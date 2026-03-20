@@ -1,10 +1,14 @@
 "use client";
 
-import { Button } from "@/registry/react/components/button";
-import { Card, CardContent, CardHeader } from "@/registry/react/components/card";
-import { Switch } from "@/registry/react/components/switch";
 import { Check } from "lucide-react";
-import { useState } from "react";
+import React from "react";
+import { Button } from "@/registry/react/components/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+} from "@/registry/react/components/card";
+import { Switch } from "@/registry/react/components/switch";
 
 const plans = [
   {
@@ -31,13 +35,13 @@ const plans = [
 ];
 
 const ThreePlansWithToggle = () => {
-  const [yearly, setYearly] = useState(false);
+  const [yearly, setYearly] = React.useState(false);
 
   return (
     <div className="rounded-xl border bg-card p-8">
       <div className="mb-8 flex items-center justify-center gap-3">
         <span
-          className={`font-medium ${!yearly ? "text-foreground" : "text-muted-foreground"}`}
+          className={`font-medium ${yearly ? "text-muted-foreground" : "text-foreground"}`}
         >
           Monthly
         </span>
@@ -54,8 +58,8 @@ const ThreePlansWithToggle = () => {
       <div className="grid gap-6 sm:grid-cols-3">
         {plans.map((plan) => (
           <Card
-            key={plan.name}
             className={plan.highlighted ? "ring-2 ring-primary" : ""}
+            key={plan.name}
           >
             <CardHeader
               description={`$${yearly ? plan.yearlyPrice : plan.monthlyPrice}/mo`}
@@ -64,10 +68,7 @@ const ThreePlansWithToggle = () => {
             <CardContent>
               <ul className="mb-6 flex flex-col gap-2">
                 {plan.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-center gap-2 text-sm"
-                  >
+                  <li className="flex items-center gap-2 text-sm" key={feature}>
                     <Check className="size-4 text-primary" />
                     {feature}
                   </li>

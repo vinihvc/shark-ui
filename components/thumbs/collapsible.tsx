@@ -1,7 +1,7 @@
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const CollapsibleThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const CollapsibleThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="rounded-lg border bg-muted shadow-md/5">
       <div className="flex items-center justify-between gap-2 border-b p-3">
         <div className="h-2 w-2/3 rounded-full bg-muted-foreground/16" />
@@ -19,5 +19,5 @@ export const CollapsibleThumb = (props: BlockThumbCardProps) => (
         </div>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

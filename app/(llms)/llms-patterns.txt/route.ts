@@ -1,8 +1,9 @@
-import { getLLMFullText, getPatternPages } from "@/lib/fumadocs";
 import {
   getAllRegistryComponentNames,
   getComponentExamplesForLLM,
-} from "@/lib/llms-component-examples";
+  getLLMFullText,
+  getPatternPages,
+} from "@/lib/llms";
 
 export const revalidate = false;
 

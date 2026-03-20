@@ -27,11 +27,10 @@ export const ModeSwitcher = () => {
       <TooltipTrigger asChild>
         <Button
           aria-label="Toggle theme"
-          className={cn("group", "extend-touch-target")}
+          className={cn("group", "hitbox-2")}
           data-mode={resolvedTheme ?? "light"}
           onClick={toggleTheme}
           size="icon-md"
-          suppressHydrationWarning
           variant="ghost"
         >
           <span className="group-data-[mode=dark]:[&_svg]:rotate-180">
@@ -40,7 +39,7 @@ export const ModeSwitcher = () => {
         </Button>
       </TooltipTrigger>
 
-      <TooltipContent className="flex items-center gap-2 pr-2">
+      <TooltipContent className="flex items-center gap-2 pe-2">
         Toggle mode <Kbd>D</Kbd>
       </TooltipContent>
     </Tooltip>

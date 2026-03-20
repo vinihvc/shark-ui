@@ -1,8 +1,8 @@
 import { InfoIcon } from "lucide-react";
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const HintThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const HintThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="flex w-32 flex-col items-center gap-2">
       <div className="flex h-8 w-full items-center justify-center rounded-lg border bg-muted shadow-md/5">
         <div className="h-2 w-3/4 rounded-full bg-muted-foreground/16" />
@@ -11,5 +11,5 @@ export const HintThumb = (props: BlockThumbCardProps) => (
         <InfoIcon className="size-3 text-primary-foreground" />
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

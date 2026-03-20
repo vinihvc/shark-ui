@@ -32,7 +32,7 @@ export const MobileNav = (props: MobileNavProps) => {
         <Button
           aria-label="Toggle Menu"
           className={cn(
-            "group extend-touch-target h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
+            "group hitbox-2 h-8 touch-manipulation items-center justify-start gap-2.5 p-0! hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
             className
           )}
           variant="ghost"
@@ -41,13 +41,13 @@ export const MobileNav = (props: MobileNavProps) => {
             <div className="relative size-4">
               <span
                 className={cn(
-                  "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
+                  "absolute inset-s-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
                   "top-1 group-data-[state=open]:top-[0.4rem] group-data-[state=open]:-rotate-45"
                 )}
               />
               <span
                 className={cn(
-                  "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
+                  "absolute inset-s-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
                   "top-2.5 group-data-[state=open]:top-[0.4rem] group-data-[state=open]:rotate-45"
                 )}
               />

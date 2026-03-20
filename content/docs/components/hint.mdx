@@ -60,10 +60,15 @@ import { Hint, HintTrigger, HintContent } from "@/components/ui/hint";
 
 ## Hint vs Tooltip
 
- - **Hint**: A lightweight, minimal tooltip that shows information
+- **Hint**: A lightweight, minimal tooltip that shows information
 
 - **Tooltip**: A more complex component that provides a more full-featured tooltip with a variety of options.
 
+## Controlled
+
+Pass `open` and `onOpenChange` to controlled hint.
+
+<ComponentPreview componentName="hint" fileName="example-controlled" />
 
 ## Examples
 
@@ -79,6 +84,9 @@ Root wrapper. Provides hint context to trigger and content.
 
 | Prop | Type | Default |
 | --- | --- | --- |
+| `open` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `onOpenChange` | `(open: boolean) => void` | - |
 | `positioning` | `Positioning` | `"{ placement: 'top', offset: '10px' }"` |
 | `className` | `string` | - |
 

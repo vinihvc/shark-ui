@@ -9,7 +9,6 @@ import { AspectRatioThumb } from "@/components/thumbs/aspect-ratio";
 import { AutocompleteThumb } from "@/components/thumbs/autocomplete";
 import { AvatarThumb } from "@/components/thumbs/avatar";
 import { BadgeThumb } from "@/components/thumbs/badge";
-import type { BlockThumbCardProps } from "@/components/thumbs/block-card";
 import { BottomNavigationThumb } from "@/components/thumbs/bottom-navigation";
 import { BreadcrumbThumb } from "@/components/thumbs/breadcrumb";
 import { ButtonThumb } from "@/components/thumbs/button";
@@ -61,6 +60,7 @@ import { SegmentGroupThumb } from "@/components/thumbs/segment-group";
 import { SelectThumb } from "@/components/thumbs/select";
 import { SeparatorThumb } from "@/components/thumbs/separator";
 import { SheetThumb } from "@/components/thumbs/sheet";
+import { SidebarThumb } from "@/components/thumbs/sidebar";
 import { SignaturePadThumb } from "@/components/thumbs/signature-pad";
 import { SkeletonThumb } from "@/components/thumbs/skeleton";
 import { SkipNavThumb } from "@/components/thumbs/skip-nav";
@@ -72,6 +72,7 @@ import { SwitchThumb } from "@/components/thumbs/switch";
 import { TableThumb } from "@/components/thumbs/table";
 import { TabsThumb } from "@/components/thumbs/tabs";
 import { TextareaThumb } from "@/components/thumbs/textarea";
+import type { ThumbCardProps } from "@/components/thumbs/thumb-card";
 import { TimerThumb } from "@/components/thumbs/timer";
 import { ToastThumb } from "@/components/thumbs/toast";
 import { ToggleThumb } from "@/components/thumbs/toggle";
@@ -83,7 +84,7 @@ import { TreeViewThumb } from "@/components/thumbs/tree-view";
 import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 
-const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
+const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   accordion: AccordionThumb,
   "action-bar": ActionBarThumb,
   "alert-dialog": AlertDialogThumb,
@@ -145,6 +146,7 @@ const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
   separator: SeparatorThumb,
   "signature-pad": SignaturePadThumb,
   sheet: SheetThumb,
+  sidebar: SidebarThumb,
   skeleton: SkeletonThumb,
   "skip-nav": SkipNavThumb,
   slider: SliderThumb,

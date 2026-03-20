@@ -3,40 +3,45 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { RegistryItemType } from "../lib/registry";
 
-const extractComponentMetadata = async (
+type RegistryKind = "component" | "hook";
+
+const extractItemMetadata = async (
   framework: "react",
-  componentName: string,
-  sourceCode: string
+  itemName: string,
+  sourceCode: string,
+  kind: RegistryKind
 ) => {
   const manifestFilePath = join(
     process.cwd(),
     "registry",
     "manifest",
-    `${componentName}.ts`
+    `${itemName}.ts`
   );
 
   let manifestData: RegistryItemType;
 
   try {
-    // Check if manifest file exists
     await access(manifestFilePath);
 
-    // Dynamically import the TypeScript manifest file using file:// URL
     const manifestUrl = pathToFileURL(manifestFilePath).href;
     const manifestModule = await import(manifestUrl);
     manifestData = manifestModule.default as RegistryItemType;
   } catch {
-    throw new Error(`Manifest not found for ${componentName}`);
+    throw new Error(`Manifest not found for ${itemName}`);
   }
+
+  const subdir = kind === "hook" ? "hooks" : "components";
+  const fileType =
+    kind === "hook" ? ("registry:hook" as const) : ("registry:ui" as const);
 
   return {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     ...manifestData,
     files: [
       {
-        path: `registry/${framework}/components/${componentName}.tsx`,
+        path: `registry/${framework}/${subdir}/${itemName}.tsx`,
         content: sourceCode,
-        type: "registry:ui",
+        type: fileType,
       },
     ],
   };
@@ -50,20 +55,49 @@ const ensureDirectoryExists = async (dirPath: string) => {
   }
 };
 
-const buildRegistry = async (
-  framework: "react" = "react",
-  componentName = "avatar"
+const writeRegistryArtifact = async (
+  metadata: Awaited<ReturnType<typeof extractItemMetadata>>,
+  itemName: string
+) => {
+  const publicRDir = join(process.cwd(), "public", "r");
+  await ensureDirectoryExists(publicRDir);
+
+  const componentFilePath = join(publicRDir, `${itemName}.json`);
+  await writeFile(componentFilePath, JSON.stringify(metadata, null, 2));
+  console.log(`✅ Generated ${itemName}.json`);
+
+  const registryPath = join(process.cwd(), "registry.json");
+  let registry: { items: unknown[] };
+
+  try {
+    const registryContent = await readFile(registryPath, "utf-8");
+    const parsedRegistry = JSON.parse(registryContent);
+    registry = parsedRegistry as { items: unknown[] };
+  } catch {
+    throw new Error("Failed to read registry.json");
+  }
+
+  await writeFile(registryPath, JSON.stringify(registry, null, 2));
+  console.log("✅ Updated registry.json");
+
+  return metadata;
+};
+
+const buildRegistryItem = async (
+  framework: "react",
+  itemName: string,
+  kind: RegistryKind
 ) => {
   try {
+    const subdir = kind === "hook" ? "hooks" : "components";
     const filePath = join(
       process.cwd(),
       "registry",
       framework,
-      "components",
-      `${componentName}.tsx`
+      subdir,
+      `${itemName}.tsx`
     );
 
-    // Check if file exists before reading
     try {
       await access(filePath);
     } catch {
@@ -71,44 +105,17 @@ const buildRegistry = async (
       return null;
     }
 
-    // Read the file content
     const sourceCode = await readFile(filePath, "utf-8");
-
-    // Extract metadata from source code
-    const metadata = await extractComponentMetadata(
+    const metadata = await extractItemMetadata(
       framework,
-      componentName,
-      sourceCode
+      itemName,
+      sourceCode,
+      kind
     );
 
-    // Ensure public/r directory exists
-    const publicRDir = join(process.cwd(), "public", "r");
-    await ensureDirectoryExists(publicRDir);
-
-    // Create individual component JSON file
-    const componentFilePath = join(publicRDir, `${componentName}.json`);
-    await writeFile(componentFilePath, JSON.stringify(metadata, null, 2));
-    console.log(`✅ Generated ${componentName}.json`);
-
-    // Update main registry.json
-    const registryPath = join(process.cwd(), "registry.json");
-    let registry: { items: unknown[] };
-
-    try {
-      const registryContent = await readFile(registryPath, "utf-8");
-      const parsedRegistry = JSON.parse(registryContent);
-      registry = parsedRegistry as { items: unknown[] };
-    } catch {
-      throw new Error("Failed to read registry.json");
-    }
-
-    // Write updated registry
-    await writeFile(registryPath, JSON.stringify(registry, null, 2));
-    console.log("✅ Updated registry.json");
-
-    return metadata;
+    return await writeRegistryArtifact(metadata, itemName);
   } catch (error) {
-    console.error("Failed to build registry", error);
+    console.error(`Failed to build registry item ${itemName}`, error);
     return null;
   }
 };
@@ -122,7 +129,6 @@ const processAllComponents = async (framework: "react" = "react") => {
       "components"
     );
 
-    // Get all .tsx files in the components directory
     const { readdir } = await import("node:fs/promises");
     const files = await readdir(componentsDir);
     const componentFiles = files.filter((file) => file.endsWith(".tsx"));
@@ -132,7 +138,7 @@ const processAllComponents = async (framework: "react" = "react") => {
     for (const file of componentFiles) {
       const componentName = file.replace(".tsx", "");
       console.log(`\n📦 Processing ${componentName}...`);
-      await buildRegistry("react", componentName);
+      await buildRegistryItem("react", componentName, "component");
     }
 
     console.log(
@@ -143,9 +149,38 @@ const processAllComponents = async (framework: "react" = "react") => {
   }
 };
 
-// Execute the function - you can choose to process a single component or all components
-// For single component: buildRegistry("react", "avatar").catch(console.error);
-// For all components: processAllComponents("react").catch(console.error);
+const processAllHooks = async (framework: "react" = "react") => {
+  try {
+    const hooksDir = join(process.cwd(), "registry", framework, "hooks");
 
-// Default: process all components
-processAllComponents().catch(console.error);
+    try {
+      await access(hooksDir);
+    } catch {
+      console.log("No hooks directory; skipping hooks.");
+      return;
+    }
+
+    const { readdir } = await import("node:fs/promises");
+    const files = await readdir(hooksDir);
+    const hookFiles = files.filter((file) => file.endsWith(".tsx"));
+
+    console.log(`Found ${hookFiles.length} hooks to process:`);
+
+    for (const file of hookFiles) {
+      const hookName = file.replace(".tsx", "");
+      console.log(`\n🪝 Processing ${hookName}...`);
+      await buildRegistryItem("react", hookName, "hook");
+    }
+
+    console.log(`\n🎉 Successfully processed all ${hookFiles.length} hooks!`);
+  } catch (error) {
+    console.error("Failed to process all hooks:", error);
+  }
+};
+
+const main = async () => {
+  await processAllComponents();
+  await processAllHooks();
+};
+
+main().catch(console.error);

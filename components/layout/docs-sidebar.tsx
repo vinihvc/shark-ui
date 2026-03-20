@@ -34,7 +34,7 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
       collapsible="none"
       {...rest}
     >
-      <SidebarContent className="px-4 py-2">
+      <SidebarContent className="px-4 py-2" scrollFade>
         <div className="h-(--top-spacing) shrink-0" />
         {tree.children.map((item) => (
           <SidebarGroup className="gap-1" key={item.$id}>

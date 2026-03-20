@@ -1,8 +1,10 @@
 import z from "zod";
 
+export const registryItemFileTypes = z.enum(["registry:ui", "registry:hook"]);
+
 export const registryItemSchema = z.object({
   name: z.string(),
-  type: z.enum(["registry:ui"]),
+  type: registryItemFileTypes,
   dependencies: z.array(z.string()),
   registryDependencies: z.array(z.string()).optional(),
   cssVars: z.record(z.string(), z.record(z.string(), z.string())).optional(),
@@ -19,7 +21,7 @@ export const registrySchema = registryItemSchema.extend(
       z.object({
         path: z.string(),
         content: z.string(),
-        type: z.enum(["registry:ui"]),
+        type: registryItemFileTypes,
       })
     ),
   })

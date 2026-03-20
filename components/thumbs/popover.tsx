@@ -1,7 +1,7 @@
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const PopoverThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const PopoverThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="flex w-48 flex-col items-center gap-2">
       <div className="flex w-24 items-center justify-center gap-2 rounded-lg border bg-primary p-3 shadow-md/5">
         <div className="h-2 w-3/4 rounded-full bg-primary-foreground" />
@@ -14,5 +14,5 @@ export const PopoverThumb = (props: BlockThumbCardProps) => (
         </div>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

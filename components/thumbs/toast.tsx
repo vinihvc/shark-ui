@@ -1,8 +1,8 @@
 import { InfoIcon } from "lucide-react";
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const ToastThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
+export const ToastThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
     <div className="relative isolate flex min-h-14 items-center justify-center">
       <div className="absolute inset-x-0 -top-3 h-12 w-full scale-90 rounded-lg border bg-muted opacity-32" />
       <div className="absolute inset-x-0 -top-1 h-12 w-full scale-95 rounded-lg border bg-muted opacity-64" />
@@ -17,5 +17,5 @@ export const ToastThumb = (props: BlockThumbCardProps) => (
         </div>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

@@ -1,6 +1,5 @@
 "use client";
 
-import { getIconForLanguageExtension } from "@/lib/file-extension";
 import {
   BORDER_RADIUS,
   createCssVars,
@@ -18,6 +17,7 @@ import {
 } from "@/registry/react/components/dialog";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { useConfig } from "@/store/config";
+import { getIconForLanguageExtension } from "@/utils/file-extension";
 import { CopyButton } from "../copy-button";
 
 export const CopyThemeCodeDialog = (

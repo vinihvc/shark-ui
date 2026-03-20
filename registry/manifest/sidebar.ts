@@ -15,6 +15,7 @@ const manifest: RegistryItemType = {
     absoluteUrl("/r/sheet.json"),
     absoluteUrl("/r/skeleton.json"),
     absoluteUrl("/r/tooltip.json"),
+    absoluteUrl("/r/use-is-mobile.json"),
   ],
 };
 

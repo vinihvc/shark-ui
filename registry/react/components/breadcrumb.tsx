@@ -1,13 +1,14 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
 interface BreadcrumbProps extends React.ComponentProps<typeof ark.nav> {
   /**
    * Accessible label for the breadcrumb navigation landmark.
+   *
    * @default "Breadcrumb"
    */
   "aria-label"?: string;
@@ -25,8 +26,8 @@ export const BreadcrumbList = (props: React.ComponentProps<typeof ark.ol>) => {
   return (
     <ark.ol
       className={cn(
-        "flex flex-wrap items-center gap-1.5 text-muted-foreground text-sm sm:gap-2.5",
-        "wrap-break-word",
+        "flex flex-wrap items-center gap-1.5 sm:gap-2.5",
+        "wrap-break-word text-muted-foreground text-sm",
         className
       )}
       data-slot="breadcrumb-list"
@@ -54,9 +55,9 @@ export const BreadcrumbLink = (props: React.ComponentProps<typeof ark.a>) => {
   return (
     <ark.a
       className={cn(
-        "transition-colors",
+        "text-nowrap",
         "rounded-md border border-transparent",
-        "-mx-1 p-1",
+        "transition-colors",
         "hover:text-foreground",
         "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className
@@ -95,7 +96,7 @@ export const BreadcrumbSeparator = (
       role="presentation"
       {...rest}
     >
-      {children ?? <ChevronRight />}
+      {children ?? <ChevronRightIcon />}
     </ark.li>
   );
 };
@@ -103,17 +104,14 @@ export const BreadcrumbSeparator = (
 export const BreadcrumbEllipsis = (
   props: React.ComponentProps<typeof ark.span>
 ) => {
-  const { className, ...rest } = props;
-
   return (
     <ark.span
       aria-hidden="true"
-      className={className}
       data-slot="breadcrumb-ellipsis"
       role="presentation"
-      {...rest}
+      {...props}
     >
-      <MoreHorizontal className="size-4" />
+      <MoreHorizontalIcon className="size-4" />
     </ark.span>
   );
 };

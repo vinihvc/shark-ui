@@ -1,7 +1,7 @@
 import { CopyButton } from "@/components/copy-button";
-import { getIconForLanguageExtension } from "@/lib/file-extension";
 import { highlightCode } from "@/lib/highlight-code";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+import { getIconForLanguageExtension } from "@/utils/file-extension";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
