@@ -2,7 +2,7 @@ import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
 export const TextareaThumb = (props: ThumbCardProps) => (
   <ThumbCard {...props}>
-    <div className="relative w-52 rounded-lg border bg-muted shadow-md/5">
+    <div className="relative w-52 rounded-lg border border-input bg-muted shadow-md/5">
       <div className="flex h-16 p-3">
         <div className="h-1.5 w-2/3 rounded-full bg-muted-foreground/16" />
       </div>

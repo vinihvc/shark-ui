@@ -38,7 +38,7 @@ export const ThumbCard = (props: ThumbCardProps) => {
         className={cn(
           "h-40 w-full",
           "flex items-center justify-center",
-          "rounded-b-2xl border-t",
+          "rounded-b-xl border-t",
           "bg-card",
           "select-none",
           "[&>div:not([class^='w-'],[class*='_w-'])]:w-full",

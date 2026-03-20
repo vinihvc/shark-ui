@@ -23,13 +23,13 @@ pnpm add tailwind-variants clsx tailwind-merge lucide-react tw-animate-css
 
 Configure the path aliases in your `tsconfig.json` file.
 
-```json title="tsconfig.json" showLineNumbers
+```json title="tsconfig.json" showLineNumbers {2-6}
 {
   "compilerOptions": {
-    "baseUrl": ".", // [!code highlight]
-    "paths": { // [!code highlight]
-      "@/*": ["./*"] // [!code highlight]
-    } // [!code highlight]
+    "baseUrl": ".", 
+    "paths": { 
+      "@/*": ["./*"] 
+    } 
   }
 }
 ```
@@ -207,7 +207,7 @@ Create a file `styles/globals.css` with the following. This defines the design t
   }
 
   body {
-    @apply overflow-y-scroll bg-background text-foreground flex min-h-svh flex-col;
+    @apply bg-background text-foreground flex min-h-svh flex-col;
   }
 
   main {

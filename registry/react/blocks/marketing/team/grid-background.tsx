@@ -1,7 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-} from "@/registry/react/components/avatar";
+import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
 
 const team = [
   { name: "Leslie Alexander", role: "Co-Founder", image: "" },
@@ -22,16 +19,16 @@ const TeamGridBackground = () => {
     <div className="rounded-xl border bg-card p-8">
       <div
         aria-hidden
-        className="mb-8 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"
+        className="mb-8 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-48"
       />
-      <h2 className="mb-6 text-center font-bold text-2xl tracking-tight text-foreground">
+      <h2 className="mb-6 text-center font-bold text-2xl text-foreground tracking-tight">
         Our team
       </h2>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         {team.map((member) => (
           <div
-            key={member.name}
             className="flex flex-col items-center gap-2 text-center"
+            key={member.name}
           >
             <Avatar className="size-16" size="lg">
               <AvatarFallback>{initials(member.name)}</AvatarFallback>

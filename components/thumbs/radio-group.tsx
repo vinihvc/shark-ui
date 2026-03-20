@@ -8,7 +8,7 @@ export const RadioGroupThumb = (props: ThumbCardProps) => (
         <div className="h-2 w-16 rounded-lg bg-muted-foreground/16" />
       </div>
       <div className="flex items-center gap-2">
-        <div className="flex size-4 shrink-0 items-center justify-center rounded-full border border-primary bg-primary" />
+        <div className="flex size-4 shrink-0 items-center justify-center rounded-full bg-primary" />
         <div className="h-2 w-20 rounded-lg bg-muted-foreground/16" />
       </div>
     </div>

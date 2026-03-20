@@ -69,6 +69,7 @@ const RootLayout = (props: LayoutProps<"/">) => {
   return (
     <html
       className={cn(fontSans.variable, fontMono.variable)}
+      data-scroll-behavior="smooth"
       lang="en"
       suppressHydrationWarning
     >

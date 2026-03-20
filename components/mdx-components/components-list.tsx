@@ -5,6 +5,7 @@ import { ActionBarThumb } from "@/components/thumbs/action-bar";
 import { AlertThumb } from "@/components/thumbs/alert";
 import { AlertDialogThumb } from "@/components/thumbs/alert-dialog";
 import { AngleSliderThumb } from "@/components/thumbs/angle-slider";
+import { AnnouncementThumb } from "@/components/thumbs/announcement";
 import { AspectRatioThumb } from "@/components/thumbs/aspect-ratio";
 import { AutocompleteThumb } from "@/components/thumbs/autocomplete";
 import { AvatarThumb } from "@/components/thumbs/avatar";
@@ -25,6 +26,7 @@ import { ComboboxThumb } from "@/components/thumbs/combobox";
 import { CommandThumb } from "@/components/thumbs/command";
 import { ContextMenuThumb } from "@/components/thumbs/context-menu";
 import { DataListThumb } from "@/components/thumbs/data-list";
+import { DatePickerThumb } from "@/components/thumbs/date-picker";
 import { DialogThumb } from "@/components/thumbs/dialog";
 import { DrawerThumb } from "@/components/thumbs/drawer";
 import { EditableThumb } from "@/components/thumbs/editable";
@@ -89,6 +91,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   "action-bar": ActionBarThumb,
   "alert-dialog": AlertDialogThumb,
   "angle-slider": AngleSliderThumb,
+  announcement: AnnouncementThumb,
   alert: AlertThumb,
   "aspect-ratio": AspectRatioThumb,
   autocomplete: AutocompleteThumb,
@@ -109,6 +112,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   command: CommandThumb,
   "context-menu": ContextMenuThumb,
   "data-list": DataListThumb,
+  "date-picker": DatePickerThumb,
   calendar: CalendarThumb,
   dialog: DialogThumb,
   drawer: DrawerThumb,
