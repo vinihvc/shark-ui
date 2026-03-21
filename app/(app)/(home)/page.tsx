@@ -25,7 +25,7 @@ const HomePage = () => {
         </div>
         <div
           aria-hidden
-          className="overflow-hidden lg:max-h-[calc(100vh-var(--header-height))] lg:min-w-max lg:shrink-0"
+          className="overflow-hidden lg:max-h-[calc(100svh-var(--header-height))] lg:min-w-max lg:shrink-0"
           tabIndex={-1}
         >
           <ComponentsExamples className="max-md:hidden" />

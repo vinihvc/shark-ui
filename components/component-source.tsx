@@ -81,7 +81,10 @@ export const ComponentSource = (props: ComponentSourceProps) => {
           Copy button here because of inert issue
           https://ark-ui.com/docs/components/collapsible#partial-collapse
         */}
-        <CopyButton className="top-2" value={replacedCode} />
+        <CopyButton
+          className="absolute inset-e-1.5 top-2"
+          value={replacedCode}
+        />
       </div>
     );
   }

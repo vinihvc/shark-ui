@@ -8,6 +8,11 @@ export interface Block {
   id: string;
   name: string;
   previewUrl: string;
+  /**
+   * File under `registry/react/blocks/` when it is not
+   * `{category}/{subcategory}/{id}.tsx`.
+   */
+  registryFile?: string;
   subcategory: string;
   subcategoryLabel: string;
 }
@@ -19,9 +24,14 @@ const block = (
   subcategoryLabel: string,
   name: string,
   id: string,
-  opts?: { description?: string }
+  opts?: {
+    blockUrl?: string;
+    description?: string;
+    previewUrl?: string;
+    registryFile?: string;
+  }
 ): Block => {
-  const blockUrl = `/blocks/${category}/${subcategory}/${id}`;
+  const blockUrl = opts?.blockUrl ?? `/blocks/${category}/${subcategory}/${id}`;
   return {
     blockUrl,
     category,
@@ -29,7 +39,8 @@ const block = (
     description: opts?.description ?? `${name} block for your website.`,
     id,
     name,
-    previewUrl: blockUrl,
+    previewUrl: opts?.previewUrl ?? blockUrl,
+    registryFile: opts?.registryFile,
     subcategory,
     subcategoryLabel,
   };
@@ -385,6 +396,21 @@ export const BLOCKS: Block[] = [
     {
       description:
         "Login block with email, password, and social sign-in options.",
+    }
+  ),
+  block(
+    "sidebar",
+    "Sidebar",
+    "default",
+    "Default",
+    "Default Sidebar",
+    "default",
+    {
+      description:
+        "Application shell with collapsible sidebar, navigation, projects, and account menu.",
+      blockUrl: "/blocks/sidebar/default",
+      previewUrl: "/view/blocks/sidebar/default",
+      registryFile: "sidebar/default.tsx",
     }
   ),
 ];

@@ -117,7 +117,12 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     // Default codeblock.
     return (
       <>
-        {__raw__ && <CopyButton value={__raw__} />}
+        {__raw__ && (
+          <CopyButton
+            className="absolute inset-e-1.5 top-1.5"
+            value={__raw__}
+          />
+        )}
         <code {...props} />
       </>
     );

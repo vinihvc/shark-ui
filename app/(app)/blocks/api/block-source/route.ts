@@ -21,14 +21,15 @@ export function GET(req: Request) {
     return NextResponse.json({ error: "Unknown block key" }, { status: 404 });
   }
 
+  const relative =
+    block.registryFile ??
+    join(block.category, block.subcategory, `${block.id}.tsx`);
   const blockPath = join(
     process.cwd(),
     "registry",
     "react",
     "blocks",
-    block.category,
-    block.subcategory,
-    `${block.id}.tsx`
+    ...relative.split("/")
   );
 
   let sourceCode = "";

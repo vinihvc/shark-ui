@@ -155,6 +155,12 @@ Use `<FileUploadClearTrigger />` to remove all uploaded files at once.
 
 <ComponentPreview componentName="file-upload" fileName="example-clear-trigger" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<FileUploadDropzone />` to adjust dropzone padding (default `--spacing(8)`).
+
+<ComponentPreview componentName="file-upload" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### FileUpload
@@ -202,6 +208,10 @@ Drop zone for drag-and-drop. Exposes `data-dragging` when files are dragged over
 | `asChild` | `boolean` | `-` |
 | `disableClick` | `boolean` | `-` |
 | `className` | `string` | `-` |
+
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(8)` |
 
 ### FileUploadDropzoneIcon
 

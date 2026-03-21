@@ -58,10 +58,6 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     "utf-8"
   );
 
-  if (!Example.default) {
-    throw new Error(`Component ${componentName} not found`);
-  }
-
   return (
     <ComponentPreviewTabs
       component={<Example.default />}

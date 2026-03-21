@@ -1,17 +1,17 @@
 ---
 title: Sidebar
-description: A sidebar component for navigation and app structure.
+description: A sidebar for navigation and app structure.
 links:
   doc: https://ui.shadcn.com/docs/components/sidebar
   api: https://ui.shadcn.com/docs/components/sidebar
 ---
 import { SidebarAnatomy } from "@/components/anatomy/sidebar";
 
-<PreviewIframe src="/examples/sidebar/default" title="Sidebar Default" className="min-h-[550px]" />
+<PreviewIframe src="/view/blocks/sidebar/default" title="Sidebar Default" className="min-h-[550px]" />
 
 For full-page examples that wire the sidebar into dashboards, media apps, and other shells:
 
-[Browse the Sidebar Components](/templates).
+[Browse the Sidebar Components](/blocks/sidebar).
 
 ## Installation
 
@@ -179,7 +179,7 @@ The toggle listens for **`⌘B`** on macOS and **`Ctrl+B`** elsewhere (`SIDEBAR_
 
 ### SidebarProvider
 
-`SidebarProvider` must wrap any tree that calls `useSidebar` or renders `Sidebar` / `SidebarTrigger`. It forwards standard `div` props (including `className` and `style`).
+`<SidebarProvider />` must wrap any tree that calls `useSidebar` or renders `<Sidebar />` / `<SidebarTrigger />`. It forwards standard `div` props (including `className` and `style`).
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -203,6 +203,12 @@ Defaults live beside `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` inside the regis
   <Sidebar />
 </SidebarProvider>
 ```
+
+| Attribute | Default |
+| --- | --- |
+| `--sidebar-width` | `16rem` |
+| `--sidebar-width-mobile` | `18rem` |
+| `--sidebar-width-icon` | `3rem` |
 
 ### Sidebar
 
@@ -313,9 +319,13 @@ Wraps scrollable groups. Pass **`scrollFade`** when you want a fade on vertical 
 </Sidebar>
 ```
 
+| Attribute | Default |
+| --- | --- |
+| `--fade-size` | `3rem` |
+
 ### SidebarGroup
 
-A titled block with optional **`SidebarGroupAction`** and **`SidebarGroupContent`**.
+A titled block with optional **`<SidebarGroupAction />`** and **`<SidebarGroupContent />`**.
 
 ```tsx
 <SidebarGroup>
@@ -327,7 +337,7 @@ A titled block with optional **`SidebarGroupAction`** and **`SidebarGroupContent
 </SidebarGroup>
 ```
 
-Collapsible groups pair with [Collapsible](/docs/components/collapsible). `SidebarGroupLabel` is a plain label slot—keep the trigger beside it (or fold the pattern into `SidebarMenu` like the preview at the top of this page):
+Collapsible groups pair with [Collapsible](/docs/components/collapsible). `<SidebarGroupLabel />` is a plain label slot—keep the trigger beside it (or fold the pattern into `<SidebarMenu />` like the preview at the top of this page):
 
 ```tsx
 <Collapsible className="group/collapsible" defaultOpen>
@@ -350,7 +360,7 @@ Collapsible groups pair with [Collapsible](/docs/components/collapsible). `Sideb
 
 ### SidebarMenu
 
-Row list inside a group—map data to `SidebarMenuItem` / `SidebarMenuButton`.
+Row list inside a group—map data to `<SidebarMenuItem />` / `<SidebarMenuButton />`.
 
 ```tsx
 <SidebarMenu>
@@ -448,11 +458,11 @@ export function CustomTrigger() {
 }
 ```
 
-Prefer **`SidebarTrigger`** when you want the default styling and accessibility bundle.
+Prefer **`<SidebarTrigger />`** when you want the default styling and accessibility bundle.
 
 ### SidebarRail
 
-Draggable edge control that expands or collapses the desktop rail—place after header/content/footer inside `Sidebar`.
+Draggable edge control that expands or collapses the desktop rail—place after header/content/footer inside `<Sidebar />`.
 
 ```tsx
 <Sidebar>

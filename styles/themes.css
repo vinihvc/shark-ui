@@ -182,7 +182,6 @@
 
   --border: color-mix(in srgb, var(--color-slate-950) 8%, var(--background));
   --input: color-mix(in srgb, var(--color-slate-950) 10%, var(--background));
-  --ring: var(--color-slate-400);
 
   --sidebar: var(--color-slate-50);
   --sidebar-foreground: color-mix(
@@ -201,7 +200,6 @@
     var(--color-slate-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-slate-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-slate-950));
   --code-highlight: color-mix(in srgb, var(--color-slate-950) 4%, var(--code));
@@ -249,7 +247,6 @@
 
     --border: color-mix(in srgb, var(--color-slate-50) 6%, var(--background));
     --input: color-mix(in srgb, var(--color-slate-50) 8%, var(--background));
-    --ring: var(--color-slate-500);
 
     --sidebar: color-mix(
       in srgb,
@@ -272,7 +269,6 @@
       var(--color-slate-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-slate-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-slate-50));
     --code-highlight: color-mix(in srgb, var(--color-slate-50) 4%, var(--code));
@@ -340,7 +336,6 @@
     var(--color-gray-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-gray-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-gray-950));
   --code-highlight: color-mix(in srgb, var(--color-gray-950) 4%, var(--code));
@@ -402,7 +397,6 @@
       var(--color-gray-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-gray-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-gray-50));
     --code-highlight: color-mix(in srgb, var(--color-gray-50) 4%, var(--code));
@@ -470,7 +464,6 @@
     var(--color-zinc-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-zinc-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-zinc-950));
   --code-highlight: color-mix(in srgb, var(--color-zinc-950) 4%, var(--code));
@@ -532,7 +525,6 @@
       var(--color-zinc-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-zinc-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-zinc-50));
     --code-highlight: color-mix(in srgb, var(--color-zinc-50) 4%, var(--code));
@@ -600,7 +592,6 @@
     var(--color-stone-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-stone-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-stone-950));
   --code-highlight: color-mix(in srgb, var(--color-stone-950) 4%, var(--code));
@@ -670,7 +661,6 @@
       var(--color-stone-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-stone-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-stone-50));
     --code-highlight: color-mix(in srgb, var(--color-stone-50) 4%, var(--code));
@@ -738,7 +728,6 @@
     var(--color-mauve-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-mauve-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-mauve-950));
   --code-highlight: color-mix(in srgb, var(--color-mauve-950) 4%, var(--code));
@@ -808,7 +797,6 @@
       var(--color-mauve-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-mauve-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-mauve-50));
     --code-highlight: color-mix(in srgb, var(--color-mauve-50) 4%, var(--code));
@@ -876,7 +864,6 @@
     var(--color-olive-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-olive-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-olive-950));
   --code-highlight: color-mix(in srgb, var(--color-olive-950) 4%, var(--code));
@@ -946,7 +933,6 @@
       var(--color-olive-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-olive-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-olive-50));
     --code-highlight: color-mix(in srgb, var(--color-olive-50) 4%, var(--code));
@@ -1014,7 +1000,6 @@
     var(--color-mist-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-mist-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-mist-950));
   --code-highlight: color-mix(in srgb, var(--color-mist-950) 4%, var(--code));
@@ -1078,7 +1063,6 @@
       var(--color-mist-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-mist-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-mist-50));
     --code-highlight: color-mix(in srgb, var(--color-mist-50) 4%, var(--code));
@@ -1146,7 +1130,6 @@
     var(--color-taupe-950) 6%,
     var(--sidebar)
   );
-  --sidebar-ring: var(--color-taupe-400);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-taupe-950));
   --code-highlight: color-mix(in srgb, var(--color-taupe-950) 4%, var(--code));
@@ -1216,7 +1199,6 @@
       var(--color-taupe-50) 5%,
       var(--sidebar)
     );
-    --sidebar-ring: var(--color-taupe-400);
 
     --code: color-mix(in srgb, var(--background) 99%, var(--color-taupe-50));
     --code-highlight: color-mix(in srgb, var(--color-taupe-50) 4%, var(--code));

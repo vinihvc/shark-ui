@@ -105,6 +105,12 @@ Use `snapPoints` to allow the drawer to snap to multiple heights.
 
 <ComponentPreview componentName="drawer" fileName="example-snap-points" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` and `[--bleed:…]` on `<DrawerContent />` to tune padding and bottom bleed (defaults `--spacing(4)` and `3rem`).
+
+<ComponentPreview componentName="drawer" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### Drawer
@@ -146,6 +152,11 @@ Holds the drawer panel. Supports swipe-to-close; direction inherited from root `
 | `variant` | `"default" \| "inset"` | `"default"` |
 | `className` | `string` | `-` |
 
+| Attribute | Default |
+| --- | --- |
+| `--bleed` | `3rem` |
+| `--space` | `--spacing(4)` |
+
 ### DrawerContentInner
 
 Wrapper that constrains content to `max-w-sm` and centers it. Use to wrap the main body (header + body) or footer actions. When used inside `DrawerFooter`, inherits `flex-col-reverse` and `gap-2` for button layout.
@@ -185,7 +196,7 @@ Accessible description for the drawer. Announced to screen readers.
 
 ### DrawerBody
 
-Scrollable body content. Uses ScrollArea for overflow. Supports `scrollFade` for gradient edges.
+Scrollable body content. Uses [ScrollArea](/docs/components/scroll-area) for overflow. Supports `scrollFade` for gradient edges.
 
 | Prop | Type | Default |
 | --- | --- | --- |

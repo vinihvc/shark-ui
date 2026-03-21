@@ -82,7 +82,10 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
         </ScrollArea>
       </Tabs>
 
-      <CopyButton value={tabs[packageManager]} />
+      <CopyButton
+        className="absolute inset-e-1.5 top-1.5"
+        value={tabs[packageManager]}
+      />
     </div>
   );
 };

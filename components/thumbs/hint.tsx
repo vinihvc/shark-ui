@@ -8,7 +8,7 @@ export const HintThumb = (props: ThumbCardProps) => (
         <div className="h-2 w-3/4 rounded-full bg-muted-foreground/16" />
       </div>
       <div className="flex size-6 items-center justify-center rounded-lg border border-input bg-primary shadow-md/5">
-        <InfoIcon className="size-3 text-primary-foreground" />
+        <InfoIcon aria-hidden className="size-3 text-primary-foreground" />
       </div>
     </div>
   </ThumbCard>

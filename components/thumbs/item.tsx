@@ -11,7 +11,7 @@ export const ItemThumb = (props: ThumbCardProps) => (
             <div className="h-2 w-2/4 rounded-full bg-muted-foreground/16" />
           </div>
         </div>
-        <div className="size-4 w-8 shrink-0 rounded-lg bg-muted-foreground/16" />
+        <div className="size-4 w-8 shrink-0 rounded-lg bg-primary" />
       </div>
     </div>
   </ThumbCard>

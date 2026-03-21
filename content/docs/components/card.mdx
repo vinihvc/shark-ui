@@ -78,7 +78,9 @@ import {
 
 ### Using props
 
-Pass `title` and `description` props directly to `<CardHeader />`. This approach does not require `<CardTitle />` or `<CardDescription />` components.
+Pass `title` and `description` props directly to `<CardHeader />`. 
+
+> This approach does not require `<CardTitle />` or `<CardDescription />` components.
 
 ```tsx showLineNumbers
 <CardHeader title="Card Title" description="Card description">
@@ -114,14 +116,14 @@ A card with an icon at the top and title, description, and action button at the 
 
 ### Clickable cards
 
-For fully clickable cards, wrap the card with [Link Box and Link Overlay](/docs/components/link-overlay).
+For fully clickable cards, wrap the card with [Link Overlay](/docs/components/link-overlay).
 
 ### Custom spacing
 
 The `[--space:--spacing("value")]` utility class controls the card spacing.
 
 
-<ComponentPreview componentName="card" fileName="example-spacing" />
+<ComponentPreview componentName="card" fileName="example-custom-spacing" />
 
 Breakpoint utilities change the card spacing at different screen sizes.
 
@@ -139,6 +141,10 @@ Root wrapper for card layout. Supports header, body, footer.
 | --- | --- | --- | 
 | `className` | `string` | `-` | 
 | `asChild` | `boolean` | `false` |
+
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(4)` |
 
 ### CardMedia
 

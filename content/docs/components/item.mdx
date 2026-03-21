@@ -96,7 +96,7 @@ Use the `variant` prop to change the visual style of the item.
 
 The `[--space:--spacing("value")]` utility class controls the item padding and gap.
 
-<ComponentPreview componentName="item" fileName="example-spacing" />
+<ComponentPreview componentName="item" fileName="example-custom-spacing" />
 
 Breakpoint utilities change the spacing at different screen sizes.
 
@@ -160,9 +160,13 @@ Layout for list items with media, title, description, and actions. Use `[--space
 | `asChild` | `boolean` | `false` |
 | `className` | `string` | - |
 
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(3)` |
+
 ### ItemGroup
 
-Groups related items with consistent spacing. Use `[--space:--spacing("value")]` for gap. Has `role="list"` for accessibility.
+Groups related items with consistent spacing. Uses a fixed gap; adjust layout with `className` if needed. Has `role="list"` for accessibility.
 
 | Prop | Type | Default |
 | --- | --- | --- |

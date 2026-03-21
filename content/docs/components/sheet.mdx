@@ -112,6 +112,12 @@ Use `modal={false}` to allow interaction with elements outside the sheet. Disabl
 
 <ComponentPreview componentName="sheet" fileName="example-non-modal" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<SheetContent />` to adjust internal padding (default `--spacing(6)`).
+
+<ComponentPreview componentName="sheet" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### Sheet
@@ -152,6 +158,10 @@ Holds the sheet panel. Slides in from the configured edge.
 | `showCloseButton` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(6)` |
+
 ### SheetHeader
 
 Header area for title and description.
@@ -164,7 +174,7 @@ Header area for title and description.
 
 ### SheetBody
 
-Scrollable body. Uses ScrollArea for overflow.
+Scrollable body. Uses [ScrollArea](/docs/components/scroll-area) for overflow.
 
 | Prop | Type | Default |
 | --- | --- | --- |

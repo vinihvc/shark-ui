@@ -3,7 +3,7 @@
 - When asked for code, write it only; do not install packages or run install commands
 - Prefer simple divs over data arrays for thumb/preview components
 - Thumbs should match the component's actual use case, not generic placeholder UI
-- Use accordion thumb color pattern for other thumbs: `bg-muted-foreground/16` and `bg-muted-foreground/8`
+- Component thumbs: use accordion-style fills (`bg-muted-foreground/16`, `bg-muted-foreground/8`); bordered wrapper containers use `bg-muted`; any element with `border*` utilities must include explicit `border-input` in its `className` (do not rely on parent selector tricks in `ThumbCard`); field-style thumbs (input, select, native-select, combobox, autocomplete, command) use `h-8` with no vertical padding on the control row
 - API reference: no Description column in component tables
 - Hero preview cards: no rotation or hover scale; keep cards side by side
 - Pattern components (DotPattern, GridPattern): no animation or motion
@@ -16,15 +16,15 @@
 ## Learned Workspace Facts
 
 - Import registry components with `@/registry/react/components/<component-name>`, never `./` or `../../components/`
-- Component thumbs in `components/thumbs/` use accordion color pattern (`bg-muted-foreground/16`, `bg-muted-foreground/8`); no barrel file—derive thumb types from `ThumbCardProps`
+- Component thumbs live in `components/thumbs/`; no barrel file—derive thumb types from `ThumbCardProps`
 - Registry examples in `registry/react/examples/<component>/` use `example-*.tsx` naming
 - Sidebar examples: wrap in `absolute inset-0 overflow-hidden`, add `className="absolute"` to Sidebar, use `h-full` on SidebarProvider to prevent overflow outside preview; pass showBorders={false} to ComponentPreview
 - Footer: update `components/layout/footer.tsx` for app/templates; HomeFooter is for home page only
 - Charts: wire `ChartTooltip` with `content={(props) => <ChartTooltipContent {...props} />}` (extra props after the spread if needed) so Recharts supplies tooltip state; do not stub `active`, `payload`, or coordinates on `ChartTooltipContent`; for non-interactive previews, set `accessibilityLayer={false}` on the chart root to avoid tabindex
 - Combobox examples: use useFilter + useListCollection from @ark-ui/react; pass collection (not items); onInputValueChange calls filter(inputValue); ComboboxList children use collection.items.map()
-- When a component exposes user-customizable CSS variables (e.g. `[--ratio:1]`), document them in the component MDX API Reference using an Attribute | Default table (see aspect-ratio.mdx)
+- When a component exposes user-customizable CSS variables in `className` (e.g. `[--ratio:1]`, `[--space:…]`), document them in the component MDX API Reference using an Attribute | Default table (see aspect-ratio.mdx); for surfaces that declare `[--space:…]`, also add `registry/react/examples/<component>/example-custom-spacing.tsx` and a `### Custom spacing` section with `ComponentPreview` `fileName="example-custom-spacing"`
 - Ark UI components: add "For a complete list of props, see the [Ark UI documentation](<api-url>)" at end of MDX file
-- Blocks: import from `@/registry/react/blocks/{category}/{subfolder}/{block-name}`; chart docs point to `/blocks` (Charts); listing uses a docs-style sidebar in the blocks layout (`BlocksSidebar`), category filter via `?category=`, two-column grid in `BlocksCatalog`, click opens a sheet with copyable source (`replaceContentForCopy` from `@/utils/formatter` for pasted source); block cards should show the real block preview (e.g. iframe `blockUrl`), not a placeholder
+- Blocks: import from `@/registry/react/blocks/{category}/{subfolder}/{block-name}`; chart docs point to `/blocks` (Charts); listing uses `BlocksSidebar` and `BlocksCatalog` with URL state in `app/(app)/blocks/_lib/blocks-url-state.ts` (`?category=`, `?q=`); sheet copy uses `replaceContentForCopy` from `@/utils/formatter`; `app/(app)/blocks/api/block-source/route.ts` reads under `registry/react/blocks/` using `{category}/{subcategory}/{id}.tsx` or optional `Block.registryFile` when the file path differs; `getRegistryItem` in `lib/get-registry-item.ts` loads one path under `registry/{framework}/{type}/` (cached, traversal-safe); `/view/[type]/[...path]` is React-only: URL segments become `{segments joined}.tsx`, preview-only (no source code block there), and live block components go in `app/view/_lib/view-block-registry.tsx` keyed by the same string as `getRegistryItem` `files[0].path`; block cards should use real `previewUrl` previews, not placeholders
 - Page metadata: use `createMetadata` from `@/lib/metadata` for standard app pages (default social image `/opengraph-image.png`); docs `[[...slug]]` and changelog use dynamic `/og?title=...&description=...` for Open Graph; LLM `.txt` routes and registry-example text helpers live in `@/lib/llms`; `@/lib/fumadocs` exports only the docs `source` loader
 - RTL: prefer logical positioning and spacing (`start`/`end`, `border-s`/`border-e`, `ms`/`me`, `inset-inline-*`) over physical `left`/`right`/`ml`/`mr`; use `ltr:`/`rtl:` variants for `translate-x` when Tailwind has no logical translate utilities
 

@@ -87,7 +87,9 @@ import {
 
 ### Using props
 
-Pass `title` and `description` props directly to `<PopoverHeader />`. This approach does not require `<PopoverTitle />` or `<PopoverDescription />` components.
+Pass `title` and `description` props directly to `<PopoverHeader />`. 
+
+> This approach does not require `<PopoverTitle />` or `<PopoverDescription />` components.
 
 ```tsx showLineNumbers
 <PopoverHeader title="Popover Title" description="Popover description" />
@@ -154,6 +156,12 @@ Render a popover inside a dialog.
 
 <ComponentPreview componentName="popover" fileName="example-with-dialog" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<PopoverContent />` to adjust internal padding (default `--spacing(4)`).
+
+<ComponentPreview componentName="popover" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### Popover
@@ -195,6 +203,10 @@ Holds the popover panel content. Displayed in a portal.
 | `showCloseButton` | `boolean` | `false` |
 | `className` | `string` | - |
 
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(4)` |
+
 ### PopoverHeader
 
 Header container. Accepts `title` and `description` props or children.
@@ -225,7 +237,7 @@ Accessible description for the popover panel.
 
 ### PopoverBody
 
-Scrollable content area. Uses ScrollArea for overflow.
+Scrollable content area. Uses [ScrollArea](/docs/components/scroll-area) for overflow.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -254,6 +266,11 @@ Optional arrow pointing toward the trigger element.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | - |
+
+| Attribute | Default |
+| --- | --- |
+| `--arrow-background` | `var(--popover)` |
+| `--arrow-size` | `calc(1.5 * var(--spacing))` |
 
 ---
 

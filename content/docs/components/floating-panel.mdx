@@ -88,6 +88,12 @@ Control the panel position programmatically using the `position` and `onPosition
 
 <ComponentPreview componentName="floating-panel" fileName="example-controlled-position" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<FloatingPanelContent />` to adjust internal padding (default `--spacing(4)`).
+
+<ComponentPreview componentName="floating-panel" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### FloatingPanel
@@ -129,6 +135,10 @@ Holds the panel content.
 | --- | --- | --- |
 | `resizable` | `boolean` | `true` |
 | `className` | `string` | `-` |
+
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(4)` |
 
 ### FloatingPanelHeader
 

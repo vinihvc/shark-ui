@@ -18,7 +18,7 @@ export const FrameworksList = () => {
       {FRAMEWORKS.map((framework) => (
         <Item asChild key={framework.name}>
           <NavLink
-            className="w-full border-border transition-all"
+            className="w-full border-input transition-all"
             href={framework.href}
           >
             <ItemMedia>{framework.icon}</ItemMedia>

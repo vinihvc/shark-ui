@@ -333,6 +333,12 @@ import {
 
 <ComponentPreview componentName="color-picker" fileName="example-slider-vertical" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<ColorPickerContent />` to adjust popover padding (default `--spacing(3)`).
+
+<ComponentPreview componentName="color-picker" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### ColorPicker
@@ -368,6 +374,10 @@ Holds the color picker popover. Displayed in a portal.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | - |
+
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(3)` |
 
 ### ColorPickerControl
 

@@ -65,7 +65,10 @@ export const CopyThemeCodeDialog = (
               {getIconForLanguageExtension("css")}
               globals.css
             </figcaption>
-            <CopyButton value={cssCode} />
+            <CopyButton
+              className="absolute inset-e-1.5 top-1.5"
+              value={cssCode}
+            />
 
             <ScrollArea className="h-[300px] md:h-[450px]">
               <pre className="min-w-0 max-w-xl bg-code px-4 py-3.5 text-sm outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0">

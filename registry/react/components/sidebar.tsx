@@ -249,8 +249,8 @@ export const Sidebar = (props: SidebarProps) => {
           "h-svh",
           "transition-[inset-inline-start,inset-inline-end,width] duration-200 ease-linear",
           placement === "left"
-            ? "inset-s-0 group-data-[collapsible=offcanvas]:start-[calc(var(--sidebar-width)*-1)]"
-            : "end-0 group-data-[collapsible=offcanvas]:end-[calc(var(--sidebar-width)*-1)]",
+            ? "inset-s-0 group-data-[collapsible=offcanvas]:inset-s-[calc(var(--sidebar-width)*-1)]"
+            : "inset-e-0 group-data-[collapsible=offcanvas]:inset-e-[calc(var(--sidebar-width)*-1)]",
           variant === "floating" || variant === "inset"
             ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[placement=right]:border-s group-data-[placement=left]:border-e",
@@ -310,14 +310,14 @@ export const SidebarRail = (props: React.ComponentProps<typeof ark.button>) => {
         "w-4",
         "hidden sm:flex",
         "transition-all ease-linear",
-        "after:absolute after:inset-y-0 after:start-1/2 after:w-[2px]",
+        "after:absolute after:inset-s-1/2 after:inset-y-0 after:w-[2px]",
         "hover:after:bg-sidebar-border",
-        "group-data-[placement=right]:inset-s-0 group-data-[placement=left]:-end-4",
+        "group-data-[placement=left]:-inset-e-4 group-data-[placement=right]:inset-s-0",
         "in-data-[placement=left]:cursor-w-resize in-data-[placement=right]:cursor-e-resize",
         "[[data-placement=left][data-state=collapsed]_&]:cursor-e-resize [[data-placement=right][data-state=collapsed]_&]:cursor-w-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:after:start-full",
-        "[[data-placement=left][data-collapsible=offcanvas]_&]:-end-2",
-        "[[data-placement=right][data-collapsible=offcanvas]_&]:-start-2",
+        "[[data-placement=left][data-collapsible=offcanvas]_&]:-inset-e-2",
+        "[[data-placement=right][data-collapsible=offcanvas]_&]:-inset-s-2",
         className
       )}
       data-sidebar="rail"
@@ -581,7 +581,7 @@ export const SidebarMenuButton = ({
         "overflow-hidden",
         "transition-[width,height,padding]",
         "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-        "focus-visible:border-sidebar-border focus-visible:ring-sidebar-ring",
+        "focus-visible:sidebar-ring-[3px] outline-none focus-visible:ring-sidebar-ring/32",
         "active:bg-sidebar-accent active:text-sidebar-accent-foreground",
         "group-has-data-[sidebar=menu-action]/menu-item:pe-8",
         className

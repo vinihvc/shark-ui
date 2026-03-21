@@ -50,7 +50,7 @@ const Example = () => (
                 <code>npm install @shark-ui</code>
 
                 <CopyButton
-                  className="top-0.5"
+                  className="absolute inset-e-1.5 top-0.5"
                   value="npm install @shark-ui/collapsible"
                 />
               </pre>

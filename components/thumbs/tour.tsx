@@ -6,8 +6,7 @@ export const TourThumb = (props: ThumbCardProps) => (
       <div className="flex w-1/4 justify-center rounded-md border border-input bg-muted p-2 shadow-md/5">
         <div className="h-1 w-full rounded-full bg-muted-foreground/16" />
       </div>
-
-      <div className="flex flex-1 flex-col gap-2 rounded-lg bg-muted p-3 shadow-md/5">
+      <div className="flex flex-1 flex-col gap-2 rounded-lg border border-input border-dashed bg-muted p-3 shadow-md/5">
         <div className="h-2 w-2/4 rounded-lg bg-muted-foreground/16" />
         <div className="flex flex-col gap-1">
           <div className="h-1 w-full rounded-full bg-muted-foreground/16" />
