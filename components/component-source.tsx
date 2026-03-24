@@ -50,8 +50,15 @@ export const ComponentSource = (props: ComponentSourceProps) => {
   }
 
   if (src) {
+    const sourcePath = join(
+      /* turbopackIgnore: true */
+      process.cwd(),
+      REGISTRY_PATH,
+      src
+    );
     codeContent = readFileSync(
-      join(process.cwd(), REGISTRY_PATH, src),
+      /* turbopackIgnore: true */
+      sourcePath,
       "utf-8"
     );
   }

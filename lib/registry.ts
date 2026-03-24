@@ -30,14 +30,43 @@ export const registrySchema = registryItemSchema.extend({
 
 export interface RegistryType extends z.infer<typeof registrySchema> {}
 
+export interface GetRegistryItemArgs {
+  /**
+   * The folder type to get the registry items from.
+   */
+  folderType: "blocks" | "examples" | "templates";
+  /**
+   * The framework to get the registry items from.
+   *
+   * @default "react"
+   */
+  framework?: "react" | "vue" | "solid" | "svelte";
+}
+
+interface RegistryListItem {
+  category: string;
+  name: string;
+  type: GetRegistryItemArgs["folderType"];
+}
+
+interface RegistryListItemWithPath extends RegistryListItem {
+  path: string;
+}
+
 export const getAllRegistryItems = async (args: GetRegistryItemArgs) => {
   const { framework = "react", folderType } = args;
 
-  const registryPath = join(cwd(), "registry", framework, folderType);
+  const registryPath = join(
+    /* turbopackIgnore: true */
+    cwd(),
+    "registry",
+    framework,
+    folderType
+  );
 
   const categories = await readdir(registryPath);
 
-  const items = [];
+  const items: RegistryListItem[] = [];
 
   for (const category of categories) {
     const categoryPath = join(registryPath, category);
@@ -54,27 +83,20 @@ export const getAllRegistryItems = async (args: GetRegistryItemArgs) => {
   return items;
 };
 
-interface GetRegistryItemArgs {
-  /**
-   * The folder type to get the registry items from.
-   */
-  folderType: "blocks" | "templates";
-  /**
-   * The framework to get the registry items from.
-   *
-   * @default "react"
-   */
-  framework?: "react" | "vue" | "solid" | "svelte";
-}
-
 export const getRegistryItem = async (args: GetRegistryItemArgs) => {
   const { framework = "react", folderType } = args;
 
-  const registryPath = join(cwd(), "registry", framework, folderType);
+  const registryPath = join(
+    /* turbopackIgnore: true */
+    cwd(),
+    "registry",
+    framework,
+    folderType
+  );
 
   const categories = await readdir(registryPath);
 
-  const items = [];
+  const items: RegistryListItemWithPath[] = [];
 
   for (const category of categories) {
     const categoryPath = join(registryPath, category);

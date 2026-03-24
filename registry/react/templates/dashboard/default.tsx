@@ -73,7 +73,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const DashboardTemplatePage = () => {
+const DashboardTemplate = () => {
   return (
     <SidebarProvider className="min-h-svh">
       <SidebarRoot
@@ -230,4 +230,4 @@ const DashboardTemplatePage = () => {
   );
 };
 
-export default DashboardTemplatePage;
+export default DashboardTemplate;

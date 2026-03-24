@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { createMetadata } from "@/lib/metadata";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -11,13 +9,6 @@ import {
 } from "@/registry/react/components/card";
 import { Prose } from "@/registry/react/components/prose";
 import { Separator } from "@/registry/react/components/separator";
-
-export const metadata: Metadata = createMetadata({
-  title: "Blog Template",
-  description:
-    "MDX-powered blog with responsive design, SEO metadata, and dynamic Open Graph images.",
-  url: "/templates/blog",
-});
 
 const POSTS = [
   {
@@ -40,7 +31,7 @@ const POSTS = [
   },
 ];
 
-const BlogTemplatePage = () => {
+const BlogTemplate = () => {
   return (
     <div className="flex min-h-svh flex-col">
       <header className="container flex h-16 items-center justify-between">
@@ -135,4 +126,4 @@ const BlogTemplatePage = () => {
   );
 };
 
-export default BlogTemplatePage;
+export default BlogTemplate;

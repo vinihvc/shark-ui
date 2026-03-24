@@ -2,7 +2,7 @@ import { extname } from "node:path";
 import { notFound } from "next/navigation";
 import { getRegistryItem } from "@/lib/registry";
 
-const VIEW_REGISTRY_FOLDER_TYPES = ["blocks", "examples", "templates"] as const;
+const VIEW_REGISTRY_FOLDER_TYPES = ["blocks", "templates"] as const;
 const VIEW_REGISTRY_FOLDER_TYPE_SET = new Set(VIEW_REGISTRY_FOLDER_TYPES);
 type ViewRegistryFolderType = (typeof VIEW_REGISTRY_FOLDER_TYPES)[number];
 

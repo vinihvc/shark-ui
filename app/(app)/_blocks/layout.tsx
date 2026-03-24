@@ -7,7 +7,9 @@ import { SkipNavContent } from "@/registry/react/components/skip-nav";
 export const revalidate = false;
 export const dynamic = "force-static";
 
-const BlocksLayout = async ({ children }: LayoutProps<"/blocks">) => {
+// biome-ignore lint/suspicious/noExplicitAny: any is ok
+const BlocksLayout = async ({ children }: any) => {
+  // const BlocksLayout = async ({ children }: LayoutProps<"/blocks">) => {
   const allBlocks = await getAllRegistryItems({ folderType: "blocks" });
 
   // Group blocks by category and count the number of blocks in each category

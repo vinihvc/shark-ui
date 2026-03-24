@@ -7,7 +7,9 @@ const GRID_COLSPAN = {
   sidebar: 1,
 } as const;
 
-const BlocksCategoryPage = async (props: PageProps<"/blocks/[category]">) => {
+// biome-ignore lint/suspicious/noExplicitAny: any is ok
+const BlocksCategoryPage = async (props: any) => {
+  // const BlocksCategoryPage = async (props: PageProps<"/blocks/[category]">) => {
   const { category } = await props.params;
 
   const blocks = await getAllRegistryItems({ folderType: "blocks" });

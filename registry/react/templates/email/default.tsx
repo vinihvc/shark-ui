@@ -88,7 +88,7 @@ const EMAILS = [
   },
 ];
 
-const EmailTemplatePage = () => {
+const EmailTemplate = () => {
   const [selectedId, setSelectedId] = React.useState<string | null>(
     EMAILS[0].id
   );
@@ -219,4 +219,4 @@ const EmailTemplatePage = () => {
   );
 };
 
-export default EmailTemplatePage;
+export default EmailTemplate;

@@ -74,7 +74,7 @@ const TRACKS = [
   { title: "Vaathi Coming", artist: "Aniruth Ravichander, Thalapathy Vijay" },
 ];
 
-const PodcastTemplatePage = () => {
+const PodcastTemplate = () => {
   return (
     <div className="absolute inset-0 flex flex-col overflow-hidden">
       <SidebarProvider className="flex flex-1">
@@ -234,4 +234,4 @@ const PodcastTemplatePage = () => {
   );
 };
 
-export default PodcastTemplatePage;
+export default PodcastTemplate;

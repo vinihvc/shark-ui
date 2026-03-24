@@ -53,7 +53,7 @@ const PRICING = [
   },
 ];
 
-const LandingTemplatePage = () => {
+const LandingTemplate = () => {
   return (
     <div className="flex min-h-svh flex-col">
       <header className="container flex h-16 items-center justify-between">
@@ -183,4 +183,4 @@ const LandingTemplatePage = () => {
   );
 };
 
-export default LandingTemplatePage;
+export default LandingTemplate;

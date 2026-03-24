@@ -126,7 +126,7 @@ const typeVariantMap: Record<string, "secondary" | "destructive" | "default"> =
     Feature: "default",
   };
 
-const TaskManagerTemplatePage = () => {
+const TaskManagerTemplate = () => {
   return (
     <div className="flex min-h-svh flex-col">
       <div className="flex flex-col gap-6 p-6">
@@ -235,17 +235,13 @@ const TaskManagerTemplatePage = () => {
             0 of 100 row(s) selected
           </p>
           <div className="flex items-center gap-4">
-            <span className="text-muted-foreground text-sm">
-              Rows per page
-            </span>
+            <span className="text-muted-foreground text-sm">Rows per page</span>
             <Pagination count={100} pageSize={25}>
               <PaginationPrevious />
               <PaginationItems />
               <PaginationNext />
             </Pagination>
-            <span className="text-muted-foreground text-sm">
-              Page 1 of 4
-            </span>
+            <span className="text-muted-foreground text-sm">Page 1 of 4</span>
           </div>
         </div>
       </div>
@@ -253,4 +249,4 @@ const TaskManagerTemplatePage = () => {
   );
 };
 
-export default TaskManagerTemplatePage;
+export default TaskManagerTemplate;

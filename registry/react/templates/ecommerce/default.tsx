@@ -60,7 +60,7 @@ const PRODUCTS = [
   },
 ];
 
-const EcommerceTemplatePage = () => {
+const EcommerceTemplate = () => {
   return (
     <div className="flex min-h-svh flex-col">
       <header className="sticky top-0 z-10 border-b bg-background">
@@ -138,4 +138,4 @@ const EcommerceTemplatePage = () => {
   );
 };
 
-export default EcommerceTemplatePage;
+export default EcommerceTemplate;

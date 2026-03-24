@@ -1,9 +1,8 @@
 import {
   getAllRegistryComponentNames,
   getComponentExamplesForLLM,
-  getLLMFullText,
-  getPatternPages,
-} from "@/lib/llms";
+} from "@/lib/llms-registry-examples";
+import { getLLMFullText, getPatternPages } from "@/lib/llms";
 
 export const revalidate = false;
 
