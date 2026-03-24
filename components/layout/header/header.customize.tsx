@@ -105,7 +105,7 @@ export const HeaderCustomize = () => {
               <RadioGroup
                 className={cn(
                   "w-full",
-                  "grid grid-cols-3 gap-4",
+                  "grid grid-cols-3 gap-2 sm:gap-4",
                   "**:data-[slot=radio-group-item-control]:hidden",
                   "**:data-[slot=radio-group-item-text]:flex **:data-[slot=radio-group-item-text]:w-full **:data-[slot=radio-group-item-text]:items-center **:data-[slot=radio-group-item-text]:justify-between"
                 )}
@@ -140,7 +140,7 @@ export const HeaderCustomize = () => {
 
                     <CheckIcon
                       aria-hidden
-                      className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden"
+                      className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden max-sm:hidden"
                     />
                   </RadioGroupItem>
                 ))}
@@ -152,7 +152,7 @@ export const HeaderCustomize = () => {
               <RadioGroup
                 className={cn(
                   "w-full",
-                  "grid grid-cols-3 gap-4",
+                  "grid grid-cols-3 gap-2 sm:gap-4",
                   "**:data-[slot=radio-group-item-control]:hidden",
                   "**:data-[slot=radio-group-item-text]:flex **:data-[slot=radio-group-item-text]:w-full **:data-[slot=radio-group-item-text]:items-center **:data-[slot=radio-group-item-text]:justify-between"
                 )}
@@ -189,7 +189,7 @@ export const HeaderCustomize = () => {
                       </div>
                       <CheckIcon
                         aria-hidden
-                        className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden"
+                        className="size-3.5 shrink-0 group-data-[state=unchecked]:hidden max-sm:hidden"
                       />
                     </RadioGroupItem>
                   );

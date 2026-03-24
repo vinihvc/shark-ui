@@ -57,7 +57,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
           inputVariants({ size }),
           "w-fit",
           "flex items-center gap-2",
-          "text-base md:text-sm",
+          "text-sm",
           "data-placeholder-shown:text-muted-foreground/64",
           "data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32",
           "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",

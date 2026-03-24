@@ -41,7 +41,7 @@ export const HeroSection = (props: HeroSectionProps) => {
         </h1>
 
         <div className="max-w-xl">
-          <p className="text-muted-foreground text-xl">
+          <p className="text-base text-muted-foreground sm:text-xl">
             {`A beautifully designed and accessible set of ${count}+ components, created to help you build reusable and scalable design systems. `}
           </p>
         </div>

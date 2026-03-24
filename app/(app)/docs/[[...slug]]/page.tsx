@@ -155,10 +155,8 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                   )}
                 </div>
 
-                <SkipNavContent asChild>
-                  <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
-                    <MDX components={mdxComponents()} />
-                  </div>
+                <SkipNavContent className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
+                  <MDX components={mdxComponents()} />
                 </SkipNavContent>
               </div>
             </div>

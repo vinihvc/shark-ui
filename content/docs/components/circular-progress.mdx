@@ -1,0 +1,119 @@
+---
+title: Circular Progress
+description: Displays the status of a task in a circular indicator.
+links:
+  doc: https://ark-ui.com/react/docs/components/progress
+  api: https://ark-ui.com/react/docs/components/progress#api-reference
+---
+
+<ComponentPreview componentName="circular-progress" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark/circular-progress
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/circular-progress.tsx" src="/circular-progress.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { CircularProgress } from "@/components/ui/circular-progress";
+```
+
+```tsx showLineNumbers
+<CircularProgress value={66} />
+```
+
+## Controlled
+
+Use `value` to control the progress manually.
+
+<ComponentPreview componentName="circular-progress" fileName="example-controlled" />
+
+## Examples
+
+### With value
+
+Use `<CircularProgressValue />` to render the current value text.
+
+<ComponentPreview componentName="circular-progress" fileName="example-with-value" />
+
+### Indeterminate
+
+Use the `indeterminate` prop when the completion percentage is unknown.
+
+<ComponentPreview componentName="circular-progress" fileName="example-indeterminate" />
+
+### Custom Size
+
+Use the `size` prop to set the circle diameter in pixels.
+
+<ComponentPreview componentName="circular-progress" fileName="example-size" />
+
+### Custom Thickness
+
+Use the `thickness` prop to control the ring stroke width.
+
+<ComponentPreview componentName="circular-progress" fileName="example-thickness" />
+
+
+## API Reference
+
+### CircularProgress
+
+Root element of the circular progress indicator.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `number \| null` | - |
+| `defaultValue` | `number` | - |
+| `onValueChange` | `(details: ValueChangeDetails) => void` | - |
+| `indeterminate` | `boolean` | `false` |
+| `size` | `number` | `32` |
+| `thickness` | `number` | `4` |
+| `className` | `string` | - |
+
+### CircularProgressValue
+
+Displays the current progress value text.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/react/docs/components/progress-circular#api-reference).

@@ -3,8 +3,16 @@ import { notFound } from "next/navigation";
 import { getRegistryItem } from "@/lib/registry";
 
 const VIEW_REGISTRY_FOLDER_TYPES = ["blocks", "examples", "templates"] as const;
+const VIEW_REGISTRY_FOLDER_TYPE_SET = new Set(VIEW_REGISTRY_FOLDER_TYPES);
+type ViewRegistryFolderType = (typeof VIEW_REGISTRY_FOLDER_TYPES)[number];
+
+const isViewRegistryFolderType = (
+  value: string
+): value is ViewRegistryFolderType =>
+  VIEW_REGISTRY_FOLDER_TYPE_SET.has(value as ViewRegistryFolderType);
 
 export const revalidate = false;
+export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
   const byFolder = await Promise.all(
@@ -35,9 +43,13 @@ const ViewRegistryPage = async (
     notFound();
   }
 
+  if (!isViewRegistryFolderType(type)) {
+    notFound();
+  }
+
   const files = await getRegistryItem({
     framework: "react",
-    folderType: type as "blocks" | "examples" | "templates",
+    folderType: type,
   });
 
   const fileComponent = files.find((e) =>
@@ -57,7 +69,7 @@ const ViewRegistryPage = async (
   }
 
   return (
-    <div className="min-h-svh bg-background">
+    <div className="min-h-svh bg-background **:data-[slot=card]:rounded-none **:data-[slot=card]:border-0 **:data-[slot=card]:shadow-none">
       <Component.default />
     </div>
   );

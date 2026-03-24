@@ -4,7 +4,8 @@ import { AccordionThumb } from "@/components/thumbs/accordion";
 import { ActionBarThumb } from "@/components/thumbs/action-bar";
 import { AlertThumb } from "@/components/thumbs/alert";
 import { AlertDialogThumb } from "@/components/thumbs/alert-dialog";
-import { AngleSliderThumb } from "@/components/thumbs/angle-slider";
+import { CircularSliderThumb } from "@/components/thumbs/circular-slider";
+import { CircularProgressThumb } from "@/components/thumbs/circular-progress";
 import { AnnouncementThumb } from "@/components/thumbs/announcement";
 import { AspectRatioThumb } from "@/components/thumbs/aspect-ratio";
 import { AutocompleteThumb } from "@/components/thumbs/autocomplete";
@@ -90,7 +91,8 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   accordion: AccordionThumb,
   "action-bar": ActionBarThumb,
   "alert-dialog": AlertDialogThumb,
-  "angle-slider": AngleSliderThumb,
+  "circular-slider": CircularSliderThumb,
+  "circular-progress": CircularProgressThumb,
   announcement: AnnouncementThumb,
   alert: AlertThumb,
   "aspect-ratio": AspectRatioThumb,

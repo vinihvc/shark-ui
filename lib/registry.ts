@@ -30,9 +30,41 @@ export const registrySchema = registryItemSchema.extend({
 
 export interface RegistryType extends z.infer<typeof registrySchema> {}
 
+export const getAllRegistryItems = async (args: GetRegistryItemArgs) => {
+  const { framework = "react", folderType } = args;
+
+  const registryPath = join(cwd(), "registry", framework, folderType);
+
+  const categories = await readdir(registryPath);
+
+  const items = [];
+
+  for (const category of categories) {
+    const categoryPath = join(registryPath, category);
+    const categoryItems = await readdir(categoryPath);
+    for (const item of categoryItems) {
+      items.push({
+        type: folderType,
+        category,
+        name: item,
+      });
+    }
+  }
+
+  return items;
+};
+
 interface GetRegistryItemArgs {
-  folderType: "blocks" | "examples" | "templates";
-  framework: "react" | "vue" | "solid" | "svelte";
+  /**
+   * The folder type to get the registry items from.
+   */
+  folderType: "blocks" | "templates";
+  /**
+   * The framework to get the registry items from.
+   *
+   * @default "react"
+   */
+  framework?: "react" | "vue" | "solid" | "svelte";
 }
 
 export const getRegistryItem = async (args: GetRegistryItemArgs) => {

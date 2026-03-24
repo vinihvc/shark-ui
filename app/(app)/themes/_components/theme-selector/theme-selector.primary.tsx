@@ -1,6 +1,11 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@registry/react/components/native-select";
+import { useIsMobile } from "@registry/react/hooks/use-is-mobile";
 import { useTheme } from "next-themes";
 import { PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
@@ -20,6 +25,7 @@ import {
 } from "@/store/config";
 
 export const ThemeSelectorPrimary = () => {
+  const isMobile = useIsMobile();
   const { resolvedTheme } = useTheme();
   const [config, setConfig] = useConfig();
 
@@ -28,6 +34,26 @@ export const ThemeSelectorPrimary = () => {
   const collection = createListCollection({
     items: PRIMARY_COLORS,
   });
+
+  if (isMobile) {
+    return (
+      <Field>
+        <FieldLabel>Primary</FieldLabel>
+        <NativeSelect
+          onChange={({ target }) =>
+            setConfig({ ...config, primaryColor: target.value as PrimaryColor })
+          }
+          value={config.primaryColor}
+        >
+          {collection.items.map((item) => (
+            <NativeSelectOption key={item.value} value={item.value}>
+              {item.label}
+            </NativeSelectOption>
+          ))}
+        </NativeSelect>
+      </Field>
+    );
+  }
 
   return (
     <Field>
@@ -44,7 +70,7 @@ export const ThemeSelectorPrimary = () => {
       >
         <SelectTrigger className="w-full">
           <div className="flex items-center gap-2">
-            <div className="size-4 rounded-full bg-primary" />
+            <div className="size-4 rounded-2xl bg-primary" />
             <SelectValue placeholder="Select a theme" />
           </div>
         </SelectTrigger>
@@ -59,7 +85,7 @@ export const ThemeSelectorPrimary = () => {
             return (
               <SelectItem item={item.value} key={item.value}>
                 <div className="flex items-center gap-2">
-                  <div className={cn("size-3 rounded-full", hexColor)} />
+                  <div className={cn("size-3 rounded-2xl", hexColor)} />
                   {item.label}
                   {item.value === DEFAULT_PRIMARY_COLOR && (
                     <Badge size="sm" variant="info">

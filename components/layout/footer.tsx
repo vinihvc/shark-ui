@@ -12,9 +12,8 @@ const DOCS_LINKS = [
 ] as const;
 
 const PROJECTS_LINKS = [
-  { label: "Blocks", href: "/blocks" },
-  { label: "Showcase", href: "/showcase" },
-  { label: "Templates", href: "/templates" },
+  // { label: "Blocks", href: "/blocks" },
+  // { label: "Templates", href: "/templates" },
 ] as const;
 
 const COMMUNITY_LINKS = [

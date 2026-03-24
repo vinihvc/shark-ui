@@ -1,6 +1,10 @@
 {
   "version": 1,
   "transcripts": {
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/00e467c3-0c03-46a5-8f4d-1d9f37771898/00e467c3-0c03-46a5-8f4d-1d9f37771898.jsonl": {
+      "mtimeMs": 1774066600083.5864,
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
+    },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/09a75cc8-fc64-4110-934d-3ad5c2fcfc35/09a75cc8-fc64-4110-934d-3ad5c2fcfc35.jsonl": {
       "mtimeMs": 1773780942700.3467,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
@@ -11,7 +15,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/11b99b3d-47a1-4ea5-84fd-c5cb7a2aec32/11b99b3d-47a1-4ea5-84fd-c5cb7a2aec32.jsonl": {
       "mtimeMs": 1771987814907.31,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/15034c8c-e4e3-4979-8765-45b0cb597c4b/15034c8c-e4e3-4979-8765-45b0cb597c4b.jsonl": {
       "mtimeMs": 1773780447158.3186,
@@ -19,7 +23,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/153077e9-363e-42c6-b9de-0ebd62702230/153077e9-363e-42c6-b9de-0ebd62702230.jsonl": {
       "mtimeMs": 1772479980166.9556,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/157ce51e-0a1d-475d-8452-e22bfc818d57/157ce51e-0a1d-475d-8452-e22bfc818d57.jsonl": {
       "mtimeMs": 1773280092380.788,
@@ -31,7 +35,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/17be3b6f-3c78-4fd6-9141-1f55fd2359fa/17be3b6f-3c78-4fd6-9141-1f55fd2359fa.jsonl": {
       "mtimeMs": 1773174969425.8264,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/17be3b6f-3c78-4fd6-9141-1f55fd2359fa/subagents/982a20d1-d0c1-40c3-b14d-dfb51e3c5af3.jsonl": {
       "mtimeMs": 1773170342956.3386,
@@ -41,13 +45,17 @@
       "mtimeMs": 1773958552311.4758,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/1d9c7b9e-5baa-4e0f-9fa7-8e88d8e73e0f/1d9c7b9e-5baa-4e0f-9fa7-8e88d8e73e0f.jsonl": {
+      "mtimeMs": 1774303642223.525,
+      "lastProcessedAt": "2026-03-23T22:08:44Z"
+    },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/1e641d14-c8c9-4937-abc5-ea842971fec8/1e641d14-c8c9-4937-abc5-ea842971fec8.jsonl": {
       "mtimeMs": 1773861261525.1719,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/1f8c6bcd-a476-445f-9988-a1528622ed57/1f8c6bcd-a476-445f-9988-a1528622ed57.jsonl": {
       "mtimeMs": 1773464887351.1091,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/232e0c49-0bf5-4097-860b-39602e0e405c/232e0c49-0bf5-4097-860b-39602e0e405c.jsonl": {
       "mtimeMs": 1773091390372.3054,
@@ -63,7 +71,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/24b4c7ff-d95c-475d-9f3c-1690644ff946/24b4c7ff-d95c-475d-9f3c-1690644ff946.jsonl": {
       "mtimeMs": 1772140634442.6008,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/27c43a1a-e3d4-4aa9-b43b-ec29977628ce/27c43a1a-e3d4-4aa9-b43b-ec29977628ce.jsonl": {
       "mtimeMs": 1771363678349.613,
@@ -79,7 +87,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/2bf3e339-2ccc-49d8-9fe0-437790ad0865/2bf3e339-2ccc-49d8-9fe0-437790ad0865.jsonl": {
       "mtimeMs": 1772145684616.4282,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/2bf3e339-2ccc-49d8-9fe0-437790ad0865/subagents/168a9074-02ad-47cd-9847-7bfcab84c5b1.jsonl": {
       "mtimeMs": 1772145226878.2,
@@ -91,7 +99,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/2d4674b5-9180-4163-95ce-69f7775a6198/2d4674b5-9180-4163-95ce-69f7775a6198.jsonl": {
       "mtimeMs": 1771985622713.3225,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/2d55b193-6575-4286-bb8d-611f794fa532/2d55b193-6575-4286-bb8d-611f794fa532.jsonl": {
       "mtimeMs": 1771467051902.3125,
@@ -167,7 +175,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/3c1a6b46-6de8-44fa-9650-951ea8cdbff5/3c1a6b46-6de8-44fa-9650-951ea8cdbff5.jsonl": {
       "mtimeMs": 1773861833563.663,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/3dcd7109-70f1-4102-8ef4-74a94c2dccda/3dcd7109-70f1-4102-8ef4-74a94c2dccda.jsonl": {
       "mtimeMs": 1773982218593.2808,
@@ -197,13 +205,17 @@
       "mtimeMs": 1773776224556.2317,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/46ee4f2b-e507-4c62-a674-234d91e13da6/46ee4f2b-e507-4c62-a674-234d91e13da6.jsonl": {
+      "mtimeMs": 1774069184494.0212,
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
+    },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/47f27d03-6737-4273-b056-caf3d99a3176/47f27d03-6737-4273-b056-caf3d99a3176.jsonl": {
       "mtimeMs": 1772137791513.905,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/47f27d03-6737-4273-b056-caf3d99a3176/subagents/332bdc82-1bc0-49ea-b835-35c24f311d3f.jsonl": {
       "mtimeMs": 1772137479048.2007,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/4a54c10a-f1fb-43c3-9683-4685f658a70e/4a54c10a-f1fb-43c3-9683-4685f658a70e.jsonl": {
       "mtimeMs": 1773519023094.3635,
@@ -214,8 +226,8 @@
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/4aa95864-f650-44a4-9d64-2fc325c4af39/4aa95864-f650-44a4-9d64-2fc325c4af39.jsonl": {
-      "mtimeMs": 1774065289224.3777,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "mtimeMs": 1774065335397.3904,
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/4bbee29a-8e04-4c7c-b814-e1f080f3adab/4bbee29a-8e04-4c7c-b814-e1f080f3adab.jsonl": {
       "mtimeMs": 1774042608111.7246,
@@ -251,7 +263,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/560785d3-03ba-45b7-b123-771341d6f5ff/subagents/0ced9886-815d-40ab-9a77-366c8965c06d.jsonl": {
       "mtimeMs": 1772491705274.3057,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/560785d3-03ba-45b7-b123-771341d6f5ff/subagents/c804ee25-0784-41e6-aec8-01d3bac0af97.jsonl": {
       "mtimeMs": 1772568094601.8352,
@@ -259,7 +271,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/56b1969a-922d-4665-8db3-cccc8f46013e/56b1969a-922d-4665-8db3-cccc8f46013e.jsonl": {
       "mtimeMs": 1771602642033.899,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/56d6ab40-de5d-44d3-bf75-561a902cea6c/56d6ab40-de5d-44d3-bf75-561a902cea6c.jsonl": {
       "mtimeMs": 1773958747464.3188,
@@ -267,7 +279,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/56f10a49-8da9-4d3d-9317-faa86015896a/56f10a49-8da9-4d3d-9317-faa86015896a.jsonl": {
       "mtimeMs": 1772165548327.6204,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/588bcb08-9253-4256-bea2-197b9e3e59ad/588bcb08-9253-4256-bea2-197b9e3e59ad.jsonl": {
       "mtimeMs": 1772156646740.7039,
@@ -327,7 +339,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/73a5d51f-9d85-4daf-8833-30159a06dce2/subagents/5b6e825e-52a4-4514-bc8d-e0034a22af2d.jsonl": {
       "mtimeMs": 1773863079357.5586,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/73ce53de-5145-43b9-87f6-53fd9829201d/73ce53de-5145-43b9-87f6-53fd9829201d.jsonl": {
       "mtimeMs": 1771456338007.6555,
@@ -347,7 +359,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/749c50c9-6f8c-4a1b-ae5c-cca820ac301e/749c50c9-6f8c-4a1b-ae5c-cca820ac301e.jsonl": {
       "mtimeMs": 1772137726595.309,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/790be155-0b2f-437b-8832-41fbe4177549/790be155-0b2f-437b-8832-41fbe4177549.jsonl": {
       "mtimeMs": 1773779915661.1353,
@@ -383,11 +395,15 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/80814364-0e4d-4e51-8e4f-14bc4db19136/80814364-0e4d-4e51-8e4f-14bc4db19136.jsonl": {
       "mtimeMs": 1771457148932.4365,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/837c06dd-e8c5-4f4d-a5d8-22c89553401d/837c06dd-e8c5-4f4d-a5d8-22c89553401d.jsonl": {
       "mtimeMs": 1771547126751.5725,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+    },
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/854651ce-299a-4026-b38c-8276212862f2/854651ce-299a-4026-b38c-8276212862f2.jsonl": {
+      "mtimeMs": 1774065689078.7742,
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/878f6bc5-0939-476c-ad4e-53f5546fa414/878f6bc5-0939-476c-ad4e-53f5546fa414.jsonl": {
       "mtimeMs": 1771906762566.8718,
@@ -395,7 +411,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/87991f26-af4f-4e1c-b99e-524eca78a373/87991f26-af4f-4e1c-b99e-524eca78a373.jsonl": {
       "mtimeMs": 1774023811430.729,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/88df13b6-1382-4f32-8c0f-7939df2f8637/88df13b6-1382-4f32-8c0f-7939df2f8637.jsonl": {
       "mtimeMs": 1771805360614.1873,
@@ -408,6 +424,10 @@
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/8df81e1e-1ca2-4ada-866c-a99cc6d00525/8df81e1e-1ca2-4ada-866c-a99cc6d00525.jsonl": {
       "mtimeMs": 1772130786374.467,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+    },
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/8fc1906b-b25b-483b-a6c8-d04970e6d749/8fc1906b-b25b-483b-a6c8-d04970e6d749.jsonl": {
+      "mtimeMs": 1774300095975.0728,
+      "lastProcessedAt": "2026-03-23T22:08:44Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/908d7819-0368-4ee2-b21f-df57f322c632/908d7819-0368-4ee2-b21f-df57f322c632.jsonl": {
       "mtimeMs": 1772144976808.7993,
@@ -463,7 +483,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/a00f65fb-1e29-4e84-a0fd-b235e7309a16/subagents/16e661d8-ca3d-4f13-93f9-6ba0f5520a8a.jsonl": {
       "mtimeMs": 1773793528888.816,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/a00f65fb-1e29-4e84-a0fd-b235e7309a16/subagents/5c47aead-cd27-4805-8286-6d6d4fb42f78.jsonl": {
       "mtimeMs": 1773793537450.5083,
@@ -485,6 +505,10 @@
       "mtimeMs": 1771626481720.366,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/a2d6d623-0fa9-4be8-a1ef-659f35d64d12/a2d6d623-0fa9-4be8-a1ef-659f35d64d12.jsonl": {
+      "mtimeMs": 1774294952609.3699,
+      "lastProcessedAt": "2026-03-23T22:08:44Z"
+    },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/a55d6da5-b435-4ed0-9a19-2b460a3a46dc/a55d6da5-b435-4ed0-9a19-2b460a3a46dc.jsonl": {
       "mtimeMs": 1773864112448.6182,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
@@ -505,6 +529,10 @@
       "mtimeMs": 1773711280208.483,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
     },
+    "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/aa6e9616-c0ba-4e41-a619-eca992724d90/aa6e9616-c0ba-4e41-a619-eca992724d90.jsonl": {
+      "mtimeMs": 1774303538265.8086,
+      "lastProcessedAt": "2026-03-23T22:08:44Z"
+    },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/ad6fb92f-353f-4049-bb66-28271d1848d3/ad6fb92f-353f-4049-bb66-28271d1848d3.jsonl": {
       "mtimeMs": 1773087274987.601,
       "lastProcessedAt": "2026-03-21T03:55:30.195Z"
@@ -519,7 +547,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/b0e7c444-5d8c-462e-914a-ab671bb9b2bf/subagents/8508be07-4b2d-4746-bb00-6d475546d9ca.jsonl": {
       "mtimeMs": 1772053595714.3677,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/b1947af8-c04d-4d08-858f-8af1872e326c/b1947af8-c04d-4d08-858f-8af1872e326c.jsonl": {
       "mtimeMs": 1772135518482.142,
@@ -567,7 +595,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/c7f00931-e964-44e7-a2a9-16915fa8c5a1/c7f00931-e964-44e7-a2a9-16915fa8c5a1.jsonl": {
       "mtimeMs": 1771553866408.0444,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/c804ee25-0784-41e6-aec8-01d3bac0af97/subagents/f2eaa039-aba4-42e3-94cb-1417a4cec878.jsonl": {
       "mtimeMs": 1772568062788.0796,
@@ -599,7 +627,7 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/d6715546-cd10-4d62-86ad-d8ec6f048bb1/d6715546-cd10-4d62-86ad-d8ec6f048bb1.jsonl": {
       "mtimeMs": 1771644501955.1135,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/d79016c7-3f75-4745-b967-8631ce2cb1dc/d79016c7-3f75-4745-b967-8631ce2cb1dc.jsonl": {
       "mtimeMs": 1771779872014.0103,
@@ -643,11 +671,11 @@
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/e7d015ea-e5e5-478a-ab89-871a55748086/e7d015ea-e5e5-478a-ab89-871a55748086.jsonl": {
       "mtimeMs": 1771438028175.3079,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/ea7251c1-40f9-4d07-a278-8a1a9abbf829/ea7251c1-40f9-4d07-a278-8a1a9abbf829.jsonl": {
       "mtimeMs": 1773375112582.5632,
-      "lastProcessedAt": "2026-03-21T03:55:30.195Z"
+      "lastProcessedAt": "2026-03-23T19:42:28Z"
     },
     "/Users/vinicius/.cursor/projects/Users-vinicius-Development-shark-ui/agent-transcripts/eb42b19c-5257-4658-8ad5-084d10770636/eb42b19c-5257-4658-8ad5-084d10770636.jsonl": {
       "mtimeMs": 1772071177898.9565,

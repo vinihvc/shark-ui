@@ -72,9 +72,9 @@ Key conventions:
 
 - `default.tsx` — Primary demo (shown at top of docs page)
 - `example-*.tsx` — Feature-specific examples (e.g., `example-vertical.tsx`)
-- `variant-*.tsx` — Variant showcases
-- `size-*.tsx` — Size showcases
-- `state-*.tsx` — State showcases
+- `variant-*.tsx` — Variant examples
+- `size-*.tsx` — Size examples
+- `state-*.tsx` — State examples
 - Examples use **default exports**
 
 ### Documentation (MDX)
