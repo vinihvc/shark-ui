@@ -39,7 +39,7 @@ export const DocsCopyPage = (props: DocsCopyPageProps) => {
       <ButtonGroup>
         <Clipboard value={data}>
           <ClipboardTrigger asChild>
-            <Button className="rounded-r-none" size="sm" variant="outline">
+            <Button className="rounded-e-none" size="sm" variant="outline">
               <ClipboardIndicator />
               Copy Markdown
             </Button>

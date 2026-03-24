@@ -14,15 +14,10 @@ interface HeroSectionProps extends React.ComponentProps<"section"> {
    * The number of components
    */
   count: number;
-  /**
-   * Background pattern: "dot" | "grid"
-   * @default "dot"
-   */
-  pattern?: "dot" | "grid";
 }
 
 export const HeroSection = (props: HeroSectionProps) => {
-  const { count, className, pattern = "dot", ...rest } = props;
+  const { count, className, ...rest } = props;
 
   return (
     <section className={cn("relative", className)} {...rest}>
@@ -46,7 +41,7 @@ export const HeroSection = (props: HeroSectionProps) => {
         </h1>
 
         <div className="max-w-xl">
-          <p className="text-muted-foreground text-xl">
+          <p className="text-base text-muted-foreground sm:text-xl">
             {`A beautifully designed and accessible set of ${count}+ components, created to help you build reusable and scalable design systems. `}
           </p>
         </div>

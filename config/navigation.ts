@@ -4,16 +4,16 @@ export const NAV_ITEMS = [
     label: "Components",
     showOnHeader: true,
   },
-  {
-    href: "/blocks",
-    label: "Blocks",
-    showOnHeader: true,
-  },
-  {
-    href: "/templates",
-    label: "Templates",
-    showOnHeader: true,
-  },
+  // {
+  //   href: "/blocks",
+  //   label: "Blocks",
+  //   showOnHeader: true,
+  // },
+  // {
+  //   href: "/templates",
+  //   label: "Templates",
+  //   showOnHeader: true,
+  // },
   {
     href: "/themes",
     label: "Themes",

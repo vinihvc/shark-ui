@@ -25,7 +25,7 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
       open={isOpened}
       {...rest}
     >
-      <div className="absolute top-1.5 right-10 z-10 flex items-center">
+      <div className="absolute inset-e-10 top-1.5 z-10 flex items-center">
         <CollapsibleTrigger asChild>
           <Button className="text-muted-foreground" variant="ghost">
             {isOpened ? "Collapse" : "Expand"}

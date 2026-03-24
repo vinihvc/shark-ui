@@ -1,7 +1,7 @@
 import { CopyButton } from "@/components/copy-button";
-import { getIconForLanguageExtension } from "@/lib/file-extension";
 import { highlightCode } from "@/lib/highlight-code";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+import { getIconForLanguageExtension } from "@/utils/file-extension";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
@@ -52,7 +52,9 @@ export const CodeBlock = async (props: CodeBlockProps) => {
         </figcaption>
       )}
 
-      {copyButton && <CopyButton value={code} />}
+      {copyButton && (
+        <CopyButton className="absolute inset-e-1.5 top-1.5" value={code} />
+      )}
 
       <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:data-[orientation=horizontal]:mx-2 **:data-[slot=scroll-area-scrollbar]:data-[orientation=vertical]:my-2">
         {/** biome-ignore lint/security/noDangerouslySetInnerHtml: it's ok */}

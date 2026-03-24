@@ -1,6 +1,6 @@
 ---
 title: Tour
-description: A component that displays a tour of the application
+description: Displays a guided tour of the application.
 links:
   doc: https://ark-ui.com/docs/components/tour
   api: https://ark-ui.com/docs/components/tour#api-reference
@@ -139,6 +139,12 @@ Load data asynchronously and update step content before displaying it using the 
 
 <ComponentPreview componentName="tour" fileName="example-async" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<TourContent />` to adjust panel padding (default `--spacing(4)`).
+
+<ComponentPreview componentName="tour" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### Tour
@@ -168,6 +174,10 @@ Load data asynchronously and update step content before displaying it using the 
 | `showCloseButton` | `boolean` | `true` |
 | `className` | `string` | - |
 | `asChild` | `boolean` | - |
+
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(4)` |
 
 ### TourHeader
 

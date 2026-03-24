@@ -1,23 +1,27 @@
 import { SearchIcon } from "lucide-react";
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const CommandThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
-    <div className="flex flex-col overflow-hidden rounded-xl border bg-muted shadow-md/5">
-      <div className="flex items-center gap-2 border-b border-input/30 bg-input/30 p-1">
-        <SearchIcon aria-hidden className="size-3 shrink-0 opacity-50" />
-        <div className="h-2 w-2/3 rounded-full bg-muted-foreground/16" />
-      </div>
-      <div className="flex flex-col gap-1.5 p-1">
-        <div className="flex w-full justify-between gap-10">
-          <div className="h-2 w-full rounded-full bg-muted-foreground/16" />
-          <div className="h-2 w-6 rounded-full bg-muted-foreground/8" />
+export const CommandThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
+    <div className="flex w-full flex-col gap-2">
+      <div className="flex h-8 items-center rounded-lg border border-input bg-muted px-3 shadow-md/5">
+        <div className="flex w-full items-center gap-3">
+          <SearchIcon className="size-3 shrink-0 opacity-48" />
+          <div className="h-2 w-1/3 rounded-full bg-muted-foreground/16" />
         </div>
-        <div className="flex items-center justify-between gap-10">
-          <div className="h-2 w-full rounded-full bg-muted-foreground/16" />
-          <div className="h-2 w-6 rounded-full bg-muted-foreground/8" />
+      </div>
+      <div className="flex flex-col gap-4 rounded-lg border border-input border-dashed bg-muted p-3 shadow-md/5">
+        <div className="flex items-center gap-2">
+          <div className="size-2 rounded-full bg-muted-foreground/16" />
+          <div className="h-2 w-1/3 rounded-full bg-muted-foreground/16" />
+          <div className="ms-auto h-2 w-4 rounded-full bg-muted-foreground/16" />
+        </div>
+        <div className="flex w-full items-center gap-2">
+          <div className="size-2 rounded-full bg-muted-foreground/16" />
+          <div className="h-2 w-2/4 rounded-full bg-muted-foreground/16" />
+          <div className="ms-auto h-2 w-4 rounded-full bg-muted-foreground/16" />
         </div>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

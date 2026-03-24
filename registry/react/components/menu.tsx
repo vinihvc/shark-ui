@@ -224,11 +224,7 @@ export const MenuRadioGroup = (props: MenuRadioGroupProps) => {
 
   return (
     <ArkMenu.RadioItemGroup data-slot="menu-radio-group" {...rest}>
-      {!!heading && (
-        <MenuGroupLabel data-slot="menu-radio-group-label">
-          {heading}
-        </MenuGroupLabel>
-      )}
+      {!!heading && <MenuGroupLabel>{heading}</MenuGroupLabel>}
 
       {children}
     </ArkMenu.RadioItemGroup>
@@ -238,19 +234,19 @@ export const MenuRadioGroup = (props: MenuRadioGroupProps) => {
 export const MenuGroupLabel = (
   props: React.ComponentProps<typeof ArkMenu.ItemGroupLabel>
 ) => {
-  const { className, children, ...rest } = props;
+  const { className, ...rest } = props;
 
   return (
     <ArkMenu.ItemGroupLabel
       className={cn(
-        "pointer-events-none px-2 py-1.5 font-medium text-muted-foreground text-sm",
+        "px-2 py-1.5",
+        "font-medium text-muted-foreground text-sm",
+        "pointer-events-none",
         className
       )}
       data-slot="menu-group-label"
       {...rest}
-    >
-      {children}
-    </ArkMenu.ItemGroupLabel>
+    />
   );
 };
 

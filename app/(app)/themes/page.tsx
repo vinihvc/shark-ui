@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/footer";
 import { createMetadata } from "@/lib/metadata";
 import { CardsDemo } from "./_components/cards/cards";
 import { ThemeSelector } from "./_components/theme-selector/theme-selector";
@@ -32,7 +31,7 @@ const ThemesPage = () => {
         <CardsDemo className="pb-8" />
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

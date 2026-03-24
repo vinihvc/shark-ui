@@ -154,30 +154,11 @@ Icons can be placed alongside text for visual context.
 
 <ComponentPreview componentName="button" fileName="example-with-icon" />
 
-## Touch hitbox
+### Touch hitbox
 
-The `.touch-target` utility extends the touch hitbox for better usability on touch devices.
+For a larger tap target without changing how the button looks, use the [Hitbox](/docs/utilities/hitbox).
 
-Add a `.touch-target` utility to an element to extend the touch target.
-
-```css
-@utility touch-target {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    min-height: 44px;
-    min-width: 44px;
-    z-index: 9999;
-  }
-}
-```
+<ComponentPreview componentName="button" fileName="example-hitbox" />
 
 ### Custom color
 

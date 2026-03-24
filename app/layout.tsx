@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
-import { WebSiteJsonLd } from "@/components/seo/json-ld";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
 import { absoluteUrl } from "@/lib/url";
@@ -70,13 +69,13 @@ const RootLayout = (props: LayoutProps<"/">) => {
   return (
     <html
       className={cn(fontSans.variable, fontMono.variable)}
+      data-scroll-behavior="smooth"
       lang="en"
       suppressHydrationWarning
     >
       <body>
-        <WebSiteJsonLd />
         <Providers>
-          <SkipNavLink>Skip to content</SkipNavLink>
+          <SkipNavLink />
 
           {children}
 

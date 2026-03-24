@@ -38,7 +38,7 @@ Enforces an opinionated UI baseline to prevent AI-generated interface slop.
 
 - MUST use an `AlertDialog` for destructive or irreversible actions
 - SHOULD use structural skeletons for loading states
-- NEVER use `h-screen`, use `h-dvh`
+- NEVER use `h-screen`, use `h-svh`
 - MUST respect `safe-area-inset` for fixed elements
 - MUST show errors next to where the action happens
 - NEVER block paste in `input` or `textarea` elements

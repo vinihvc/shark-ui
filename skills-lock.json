@@ -5,6 +5,11 @@
       "source": "emilkowalski/skill",
       "sourceType": "github",
       "computedHash": "32f63a1e56fc41f53497f7b19d6391b7c3e55bedd884c5a4d10bc4eacd2310e4"
+    },
+    "next-browser": {
+      "source": "vercel-labs/next-browser",
+      "sourceType": "github",
+      "computedHash": "cda8336c36f69c91a48778b1cb6b23cc13699f7e93880bdc031ee29fb80e9d1f"
     }
   }
 }

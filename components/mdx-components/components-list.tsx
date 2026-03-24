@@ -4,12 +4,13 @@ import { AccordionThumb } from "@/components/thumbs/accordion";
 import { ActionBarThumb } from "@/components/thumbs/action-bar";
 import { AlertThumb } from "@/components/thumbs/alert";
 import { AlertDialogThumb } from "@/components/thumbs/alert-dialog";
-import { AngleSliderThumb } from "@/components/thumbs/angle-slider";
+import { CircularSliderThumb } from "@/components/thumbs/circular-slider";
+import { CircularProgressThumb } from "@/components/thumbs/circular-progress";
+import { AnnouncementThumb } from "@/components/thumbs/announcement";
 import { AspectRatioThumb } from "@/components/thumbs/aspect-ratio";
 import { AutocompleteThumb } from "@/components/thumbs/autocomplete";
 import { AvatarThumb } from "@/components/thumbs/avatar";
 import { BadgeThumb } from "@/components/thumbs/badge";
-import type { BlockThumbCardProps } from "@/components/thumbs/block-card";
 import { BottomNavigationThumb } from "@/components/thumbs/bottom-navigation";
 import { BreadcrumbThumb } from "@/components/thumbs/breadcrumb";
 import { ButtonThumb } from "@/components/thumbs/button";
@@ -26,6 +27,7 @@ import { ComboboxThumb } from "@/components/thumbs/combobox";
 import { CommandThumb } from "@/components/thumbs/command";
 import { ContextMenuThumb } from "@/components/thumbs/context-menu";
 import { DataListThumb } from "@/components/thumbs/data-list";
+import { DatePickerThumb } from "@/components/thumbs/date-picker";
 import { DialogThumb } from "@/components/thumbs/dialog";
 import { DrawerThumb } from "@/components/thumbs/drawer";
 import { EditableThumb } from "@/components/thumbs/editable";
@@ -61,6 +63,7 @@ import { SegmentGroupThumb } from "@/components/thumbs/segment-group";
 import { SelectThumb } from "@/components/thumbs/select";
 import { SeparatorThumb } from "@/components/thumbs/separator";
 import { SheetThumb } from "@/components/thumbs/sheet";
+import { SidebarThumb } from "@/components/thumbs/sidebar";
 import { SignaturePadThumb } from "@/components/thumbs/signature-pad";
 import { SkeletonThumb } from "@/components/thumbs/skeleton";
 import { SkipNavThumb } from "@/components/thumbs/skip-nav";
@@ -72,6 +75,7 @@ import { SwitchThumb } from "@/components/thumbs/switch";
 import { TableThumb } from "@/components/thumbs/table";
 import { TabsThumb } from "@/components/thumbs/tabs";
 import { TextareaThumb } from "@/components/thumbs/textarea";
+import type { ThumbCardProps } from "@/components/thumbs/thumb-card";
 import { TimerThumb } from "@/components/thumbs/timer";
 import { ToastThumb } from "@/components/thumbs/toast";
 import { ToggleThumb } from "@/components/thumbs/toggle";
@@ -83,11 +87,13 @@ import { TreeViewThumb } from "@/components/thumbs/tree-view";
 import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 
-const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
+const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   accordion: AccordionThumb,
   "action-bar": ActionBarThumb,
   "alert-dialog": AlertDialogThumb,
-  "angle-slider": AngleSliderThumb,
+  "circular-slider": CircularSliderThumb,
+  "circular-progress": CircularProgressThumb,
+  announcement: AnnouncementThumb,
   alert: AlertThumb,
   "aspect-ratio": AspectRatioThumb,
   autocomplete: AutocompleteThumb,
@@ -108,6 +114,7 @@ const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
   command: CommandThumb,
   "context-menu": ContextMenuThumb,
   "data-list": DataListThumb,
+  "date-picker": DatePickerThumb,
   calendar: CalendarThumb,
   dialog: DialogThumb,
   drawer: DrawerThumb,
@@ -145,6 +152,7 @@ const THUMB_MAP: Record<string, React.ComponentType<BlockThumbCardProps>> = {
   separator: SeparatorThumb,
   "signature-pad": SignaturePadThumb,
   sheet: SheetThumb,
+  sidebar: SidebarThumb,
   skeleton: SkeletonThumb,
   "skip-nav": SkipNavThumb,
   slider: SliderThumb,

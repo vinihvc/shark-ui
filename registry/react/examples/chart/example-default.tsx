@@ -1,9 +1,11 @@
 "use client";
 
-import { Bar, BarChart } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import {
   type ChartConfig,
   ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
 } from "@/registry/react/components/chart";
 
 const chartData = [
@@ -26,13 +28,22 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const ChartsDemo = () => {
+const ChartDemo = () => {
   return (
     <ChartContainer
-      className="min-h-[200px] w-full max-w-xs"
+      className="min-h-[200px] w-full max-w-sm"
       config={chartConfig}
     >
       <BarChart accessibilityLayer data={chartData}>
+        <CartesianGrid vertical={false} />
+        <XAxis
+          axisLine={false}
+          dataKey="month"
+          tickFormatter={(value) => value.slice(0, 3)}
+          tickLine={false}
+          tickMargin={10}
+        />
+        <ChartTooltip content={(props) => <ChartTooltipContent {...props} />} />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
       </BarChart>
@@ -40,4 +51,4 @@ const ChartsDemo = () => {
   );
 };
 
-export default ChartsDemo;
+export default ChartDemo;

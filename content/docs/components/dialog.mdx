@@ -1,6 +1,6 @@
 ---
 title: Dialog
-description: A modal window that appears on top of the main content.
+description: A dialog for displaying content.
 links:
   doc: https://ark-ui.com/docs/components/dialog
   api: https://ark-ui.com/docs/components/dialog#api-reference
@@ -89,7 +89,9 @@ import {
 
 ### Using props
 
-Pass `title` and `description` props directly to `<DialogHeader />`. This approach does not require `<DialogTitle />` or `<DialogDescription />` components.
+Pass `title` and `description` props directly to `<DialogHeader />`. 
+
+> This approach does not require `<DialogTitle />` or `<DialogDescription />` components.
 
 ```tsx showLineNumbers
 <DialogHeader title="Dialog Title" description="Dialog description" />
@@ -150,6 +152,12 @@ Nest dialogs within one another.
 
 <ComponentPreview componentName="dialog" fileName="example-nested" />
 
+### Custom spacing
+
+Use `[--space:--spacing("value")]` on `<DialogContent />` to adjust internal padding (default `--spacing(6)`).
+
+<ComponentPreview componentName="dialog" fileName="example-custom-spacing" />
+
 ## API Reference
 
 ### Dialog
@@ -189,6 +197,10 @@ Holds the dialog panel. Supports size variants from sm to fullscreen.
 | `showCloseButton` | `boolean` | `true` |
 | `className` | `string` | `-` |
 
+| Attribute | Default |
+| --- | --- |
+| `--space` | `--spacing(6)` |
+
 ### DialogHeader
 
 Header area for title and description. Accepts props or children.
@@ -201,7 +213,7 @@ Header area for title and description. Accepts props or children.
 
 ### DialogBody
 
-Scrollable body content. Uses ScrollArea for overflow.
+Scrollable body content. Uses [ScrollArea](/docs/components/scroll-area) for overflow.
 
 | Prop | Type | Default |
 |------|------|---------|

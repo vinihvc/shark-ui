@@ -1,10 +1,10 @@
 import { MinusIcon, XIcon } from "lucide-react";
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const FloatingPanelThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
-    <div className="flex flex-col overflow-hidden rounded-lg border bg-muted shadow-md/5">
-      <div className="flex items-center justify-between gap-2 border-b bg-muted px-3 py-2">
+export const FloatingPanelThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
+    <div className="flex flex-col overflow-hidden rounded-lg border border-input bg-muted shadow-md/5">
+      <div className="flex items-center justify-between gap-2 border-b border-input bg-muted px-3 py-2">
         <div className="h-2 w-1/3 min-w-0 rounded-full bg-muted-foreground/16" />
         <div className="flex items-center gap-2">
           <span aria-hidden className="text-muted-foreground/64">
@@ -21,5 +21,5 @@ export const FloatingPanelThumb = (props: BlockThumbCardProps) => (
         <div className="h-2 w-full rounded-full bg-muted-foreground/8" />
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

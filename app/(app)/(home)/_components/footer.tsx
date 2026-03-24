@@ -7,7 +7,7 @@ export const HomeFooter = (props: React.ComponentProps<"footer">) => {
   return (
     <footer
       className={cn(
-        "container right-0 bottom-4 left-4 mt-auto max-lg:py-4 lg:absolute",
+        "container right-0 bottom-2 left-4 mt-auto max-sm:absolute max-lg:py-4 lg:absolute lg:bottom-4",
         className
       )}
       {...rest}

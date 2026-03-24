@@ -2,6 +2,7 @@
 
 import { TerminalIcon } from "lucide-react";
 import React from "react";
+import { absoluteUrl } from "@/lib/url";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import {
   Tabs,
@@ -25,6 +26,7 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
   const [config, setConfig] = useConfig();
 
   const packageManager = config.packageManager || "pnpm";
+
   const tabs = React.useMemo(() => {
     return {
       bun: __bun__,
@@ -73,7 +75,8 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
                     className="relative font-mono text-[.8125rem] leading-none"
                     data-language="bash"
                   >
-                    {value}
+                    {/* TODO: Remove replace when shadcn accept @shark to registry url*/}
+                    {`${value?.replace("@shark", absoluteUrl("/r"))}.json`}
                   </code>
                 </pre>
               </TabsContent>
@@ -82,7 +85,10 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
         </ScrollArea>
       </Tabs>
 
-      <CopyButton value={tabs[packageManager]} />
+      <CopyButton
+        className="absolute inset-e-1.5 top-1.5"
+        value={tabs[packageManager]}
+      />
     </div>
   );
 };

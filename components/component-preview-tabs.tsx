@@ -49,10 +49,10 @@ export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
             >
               {showBorders && (
                 <>
-                  <div className="absolute top-4 right-0 left-0 border border-border/64 border-dashed max-sm:hidden sm:top-8" />
-                  <div className="absolute right-0 bottom-4 left-0 border border-border/64 border-dashed max-sm:hidden sm:bottom-8" />
-                  <div className="absolute top-0 bottom-0 left-4 border border-border/64 border-dashed max-sm:hidden sm:left-8" />
-                  <div className="absolute top-0 right-4 bottom-0 border border-border/64 border-dashed max-sm:hidden sm:right-8" />
+                  <div className="absolute inset-x-0 top-4 border border-border/64 border-dashed max-sm:hidden sm:top-8" />
+                  <div className="absolute inset-x-0 bottom-4 border border-border/64 border-dashed max-sm:hidden sm:bottom-8" />
+                  <div className="absolute inset-s-4 inset-y-0 border border-border/64 border-dashed max-sm:hidden sm:inset-s-8" />
+                  <div className="absolute inset-e-4 inset-y-0 border border-border/64 border-dashed max-sm:hidden sm:inset-e-8" />
                 </>
               )}
               {component}

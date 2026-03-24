@@ -1,4 +1,4 @@
-import { buildLLMIndex } from "@/lib/fumadocs";
+import { buildLLMIndex } from "@/lib/llms";
 
 export const revalidate = false;
 

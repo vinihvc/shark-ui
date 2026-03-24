@@ -1,6 +1,5 @@
 "use client";
 
-import { getIconForLanguageExtension } from "@/lib/file-extension";
 import {
   BORDER_RADIUS,
   createCssVars,
@@ -18,6 +17,7 @@ import {
 } from "@/registry/react/components/dialog";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { useConfig } from "@/store/config";
+import { getIconForLanguageExtension } from "@/utils/file-extension";
 import { CopyButton } from "../copy-button";
 
 export const CopyThemeCodeDialog = (
@@ -65,7 +65,10 @@ export const CopyThemeCodeDialog = (
               {getIconForLanguageExtension("css")}
               globals.css
             </figcaption>
-            <CopyButton value={cssCode} />
+            <CopyButton
+              className="absolute inset-e-1.5 top-1.5"
+              value={cssCode}
+            />
 
             <ScrollArea className="h-[300px] md:h-[450px]">
               <pre className="min-w-0 max-w-xl bg-code px-4 py-3.5 text-sm outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0">

@@ -257,7 +257,7 @@ export const ColorPickerSwatchTrigger = (
         "transition-[border-color,box-shadow] duration-100 ease-out will-change-transform",
         "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "data-disabled:pointer-events-none data-disabled:opacity-64",
-        "data-[state=checked]:shadow-md data-[state=checked]:ring-(--color) data-[state=checked]:ring-2",
+        "data-[state=checked]:shadow-sm/5 data-[state=checked]:ring-(--color) data-[state=checked]:ring-2",
         className
       )}
       data-slot="color-picker-swatch-trigger"

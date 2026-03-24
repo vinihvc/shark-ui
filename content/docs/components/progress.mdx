@@ -46,7 +46,7 @@ npm install @ark-ui/react tailwind-variants
 
   @keyframes indeterminate {
     0% { transform: translateX(-100%); }
-      100% { transform: translateX(400%); }
+    100% { transform: translateX(400%); }
   }
 }
 ```
@@ -73,6 +73,12 @@ import { Progress } from "@/components/ui/progress";
 <Progress value={50} />
 ```
 
+## Controlled
+
+Use `value` and to control the progress bar.
+
+<ComponentPreview componentName="progress" fileName="example-controlled" />
+
 ## Orientation
 
 Use the `orientation` prop to orient the progress bar horizontally or vertically.
@@ -92,12 +98,6 @@ Use the `orientation` prop to orient the progress bar horizontally or vertically
 Use `<ProgressValue />` and `<FieldLabel />` to add a label to the progress bar.
 
 <ComponentPreview componentName="progress" fileName="example-with-label" />
-
-### Controlled
-
-Use `value` and to control the progress bar.
-
-<ComponentPreview componentName="progress" fileName="example-controlled" />
 
 ### Indeterminate
 

@@ -1,9 +1,9 @@
-import { BlockThumbCard, type BlockThumbCardProps } from "./block-card";
+import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
-export const AccordionThumb = (props: BlockThumbCardProps) => (
-  <BlockThumbCard {...props}>
-    <div className="rounded-lg border bg-muted shadow-md/5">
-      <div className="flex items-center gap-2 border-b p-3">
+export const AccordionThumb = (props: ThumbCardProps) => (
+  <ThumbCard {...props}>
+    <div className="rounded-lg border border-input bg-muted shadow-md/5">
+      <div className="flex items-center gap-2 border-b border-input p-3">
         <span
           aria-hidden="true"
           className="rotate-180 text-muted-foreground/64 text-xs"
@@ -24,5 +24,5 @@ export const AccordionThumb = (props: BlockThumbCardProps) => (
         </div>
       </div>
     </div>
-  </BlockThumbCard>
+  </ThumbCard>
 );

@@ -1,4 +1,5 @@
-import { getLLMFullText, source } from "@/lib/fumadocs";
+import { source } from "@/lib/fumadocs";
+import { getLLMFullText } from "@/lib/llms";
 
 export const revalidate = false;
 

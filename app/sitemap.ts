@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
-import { BLOCKS } from "@/app/(app)/blocks/_data/blocks-data";
-import { MOCK_TEMPLATES } from "@/app/(app)/templates/_data/mock-templates";
+import { MOCK_TEMPLATES } from "@/app/(app)/_templates/_data/mock-templates";
 import { source } from "@/lib/fumadocs";
+import { getAllRegistryItems } from "@/lib/registry";
 import { absoluteUrl } from "@/lib/url";
 
 export const revalidate = 86_400;
 
-const sitemap = (): MetadataRoute.Sitemap => {
+const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const staticRoutes = [
     { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1 },
     {
@@ -20,11 +20,6 @@ const sitemap = (): MetadataRoute.Sitemap => {
       priority: 0.6,
     },
     { url: absoluteUrl("/blocks"), changeFrequency: "monthly", priority: 0.6 },
-    {
-      url: absoluteUrl("/showcase"),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
     { url: absoluteUrl("/themes"), changeFrequency: "monthly", priority: 0.6 },
   ];
 
@@ -37,12 +32,17 @@ const sitemap = (): MetadataRoute.Sitemap => {
       priority: 0.5,
     }));
 
-  const blockDemos = BLOCKS.map((block) => ({
-    url: absoluteUrl(block.blockUrl),
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
+  const blockItems = await getAllRegistryItems({ folderType: "blocks" });
+  const blockDemos = blockItems
+    .filter((block) => block.name.endsWith(".tsx"))
+    .map((block) => ({
+      url: absoluteUrl(
+        `/view/blocks/${block.category}/${block.name.slice(0, -".tsx".length)}`
+      ),
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    }));
 
   const docPages = source.getPages().map((page) => ({
     url: absoluteUrl(page.url),

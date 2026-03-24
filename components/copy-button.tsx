@@ -16,10 +16,7 @@ export const CopyButton = (props: React.ComponentProps<typeof Clipboard>) => {
 
   return (
     <Tooltip openDelay={400}>
-      <Clipboard
-        rootClassName={cn("absolute top-1.5 right-1.5 z-10", className)}
-        {...rest}
-      >
+      <Clipboard rootClassName={cn("z-10", className)} {...rest}>
         <ClipboardTrigger asChild>
           <TooltipTrigger asChild>
             <Button

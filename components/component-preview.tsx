@@ -52,15 +52,18 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     throw new Error(`File ${fileName} not found`);
   }
 
-  // Read the source code from the example file
+  const examplePath = join(
+    /* turbopackIgnore: true */
+    process.cwd(),
+    registryPath,
+    componentName,
+    `${fileName}.tsx`
+  );
   const sourceCode = readFileSync(
-    join(process.cwd(), registryPath, componentName, `${fileName}.tsx`),
+    /* turbopackIgnore: true */
+    examplePath,
     "utf-8"
   );
-
-  if (!Example.default) {
-    throw new Error(`Component ${componentName} not found`);
-  }
 
   return (
     <ComponentPreviewTabs

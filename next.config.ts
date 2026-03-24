@@ -6,14 +6,8 @@ const withMDX = createMDX();
 const config: NextConfig = {
   reactStrictMode: true,
   serverExternalPackages: ["@takumi-rs/core"],
-  async redirects() {
-    return [
-      {
-        destination: "/blocks/application-ui/forms/sign-in-simple",
-        permanent: true,
-        source: "/blocks/login",
-      },
-    ];
+  experimental: {
+    appNewScrollHandler: true,
   },
   async rewrites() {
     return [

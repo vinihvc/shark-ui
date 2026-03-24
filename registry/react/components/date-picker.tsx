@@ -48,6 +48,7 @@ export const DatePickerTrigger = (
           "justify-start",
           "text-left data-placeholder-shown:[&>span]:text-muted-foreground",
           "active:scale-100",
+          "[&_svg:not([class*='text-'])]:opacity-64",
           className
         )}
         data-slot="date-picker-trigger"
@@ -82,7 +83,7 @@ export const DatePickerInput = (props: DatePickerInputProps) => {
           >
             <ArkDatePicker.Trigger asChild data-slot="date-picker-trigger">
               <Button size="icon-md" variant="ghost">
-                <CalendarIcon aria-hidden />
+                <CalendarIcon aria-hidden className="text-muted-foreground" />
               </Button>
             </ArkDatePicker.Trigger>
           </InputGroupButton>
