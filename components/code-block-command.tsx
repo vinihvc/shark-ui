@@ -87,7 +87,9 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
 
       <CopyButton
         className="absolute inset-e-1.5 top-1.5"
-        value={tabs[packageManager]}
+        value={
+          tabs?.[packageManager]?.replace("@shark", absoluteUrl("/r")) ?? ""
+        }
       />
     </div>
   );
