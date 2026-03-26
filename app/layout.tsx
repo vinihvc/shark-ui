@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { MediaQuery } from "@/components/debug/media-query";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -83,6 +84,7 @@ const RootLayout = (props: LayoutProps<"/">) => {
 
           <MediaQuery />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
