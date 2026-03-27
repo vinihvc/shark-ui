@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
 import { SITE_CONFIG } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -83,8 +83,9 @@ const RootLayout = (props: LayoutProps<"/">) => {
           <Toaster />
 
           <MediaQuery />
+
+          <Analytics />
         </Providers>
-        <Analytics />
       </body>
     </html>
   );
