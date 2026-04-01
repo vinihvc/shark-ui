@@ -90,7 +90,12 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
 
                       <div className="flex items-center gap-2">
                         {neighbours.previous ? (
-                          <Button asChild size="icon-sm" variant="outline">
+                          <Button
+                            aria-label="Previous"
+                            asChild
+                            size="icon-sm"
+                            variant="outline"
+                          >
                             <Link href={neighbours.previous.url}>
                               <ChevronLeftIcon
                                 aria-hidden
@@ -108,7 +113,12 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                         )}
 
                         {neighbours.next ? (
-                          <Button asChild size="icon-sm" variant="outline">
+                          <Button
+                            aria-label="Next"
+                            asChild
+                            size="icon-sm"
+                            variant="outline"
+                          >
                             <Link href={neighbours.next.url}>
                               <ChevronRightIcon
                                 aria-hidden
