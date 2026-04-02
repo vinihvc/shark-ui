@@ -298,7 +298,6 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   img: ({ className, ...props }: React.ComponentProps<"img">) => (
     <img className={cn("rounded-md", className)} {...props} />
   ),
-
   li: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li className={cn("mt-2", className)} {...props} />
   ),

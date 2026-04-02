@@ -15,6 +15,8 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const steps: TourStepType[] = [
   {
     id: "intro",
@@ -51,7 +53,6 @@ const steps: TourStepType[] = [
     target: () => document.querySelector<HTMLInputElement>("#input-email"),
     effect({ next, target, show }) {
       show();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const [promise, cancel] = waitForEvent<HTMLInputElement>(
         target,
         "input",

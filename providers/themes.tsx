@@ -8,20 +8,20 @@ import {
   useConfig,
 } from "@/store/config";
 
-type ThemesProviderProps = {
+interface ThemesProviderProps {
   /**
-   * The primary color of the theme.
+   * The border radius of the theme.
    */
-  primaryColor: PrimaryColor;
+  borderRadius: BorderRadius;
   /**
    * The background color of the theme.
    */
   grayColor: GrayColor;
   /**
-   * The border radius of the theme.
+   * The primary color of the theme.
    */
-  borderRadius: BorderRadius;
-};
+  primaryColor: PrimaryColor;
+}
 
 const ThemesContext = React.createContext({} as ThemesProviderProps);
 

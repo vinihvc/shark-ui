@@ -3,7 +3,7 @@ import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 export const AccordionThumb = (props: ThumbCardProps) => (
   <ThumbCard {...props}>
     <div className="rounded-lg border border-input bg-muted shadow-md/5">
-      <div className="flex items-center gap-2 border-b border-input p-3">
+      <div className="flex items-center gap-2 border-input border-b p-3">
         <span
           aria-hidden="true"
           className="rotate-180 text-muted-foreground/64 text-xs"

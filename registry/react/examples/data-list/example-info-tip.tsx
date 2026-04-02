@@ -1,4 +1,5 @@
 import { InfoIcon } from "lucide-react";
+import { Button } from "@/registry/react/components/button";
 import {
   DataList,
   DataListItem,
@@ -10,7 +11,6 @@ import {
   ToggleTooltipContent,
   ToggleTooltipTrigger,
 } from "@/registry/react/components/toggle-tooltip";
-import { Button } from "@/registry/react/components/button";
 
 const data = [
   {

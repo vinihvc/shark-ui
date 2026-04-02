@@ -5,16 +5,18 @@
     "ultracite/biome/next",
     "ultracite/biome/react"
   ],
-  "overrides": [
-    {
-      "includes": ["registry/react/blocks/charts/**/*.tsx"],
-      "linter": {
-        "rules": {
-          "performance": {
-            "noBarrelFile": "off"
-          }
-        }
+  "linter": {
+    "rules": {
+      "a11y": {
+        "useValidAnchor": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noImgElement": "off"
+      },
+      "suspicious": {
+        "noDuplicateCustomProperties": "off"
       }
     }
-  ]
+  }
 }

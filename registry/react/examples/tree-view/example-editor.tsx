@@ -69,6 +69,18 @@ const Example = () => {
                     size: "icon-xs",
                   })}
                   onClick={() => setActiveItem("")}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      setActiveItem("");
+                    }
+                  }}
+                  onKeyUp={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      setActiveItem("");
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
                 >
                   <XIcon />
                 </div>

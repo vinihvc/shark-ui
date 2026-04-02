@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  Toggle as ArkToggle,
-  useToggleContext,
-} from "@ark-ui/react/toggle";
+import { Toggle as ArkToggle, useToggleContext } from "@ark-ui/react/toggle";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";

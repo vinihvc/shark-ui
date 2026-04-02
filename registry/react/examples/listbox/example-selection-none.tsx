@@ -2,6 +2,7 @@
 
 import { createListCollection } from "@ark-ui/react";
 import { PencilIcon, SquarePlusIcon, Trash2Icon } from "lucide-react";
+import { Item } from "@/registry/react/components/item";
 import {
   Listbox,
   ListboxContent,
@@ -11,7 +12,6 @@ import {
   ListboxShortcut,
 } from "@/registry/react/components/listbox";
 import { Separator } from "@/registry/react/components/separator";
-import { Item } from "@/registry/react/components/item";
 
 const Example = () => {
   return (

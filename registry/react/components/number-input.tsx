@@ -7,9 +7,9 @@ import {
 import { MinusIcon, PlusIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Input, type InputProps } from "@/registry/react/components/input";
 import { Button } from "@/registry/react/components/button";
 import { FieldLabel } from "@/registry/react/components/field";
+import { Input, type InputProps } from "@/registry/react/components/input";
 
 export const useNumberInput = useNumberInputContext;
 

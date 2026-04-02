@@ -6,7 +6,10 @@ import {
 } from "@ark-ui/react/editable";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { type ButtonProps, buttonVariants } from "@/registry/react/components/button";
+import {
+  type ButtonProps,
+  buttonVariants,
+} from "@/registry/react/components/button";
 
 export const useEditable = useEditableContext;
 

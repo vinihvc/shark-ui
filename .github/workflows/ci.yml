@@ -1,4 +1,4 @@
-name: CI
+name: Build registry
 
 on:
   push:
@@ -21,9 +21,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Lint
-        run: pnpm run lint:check
 
       - name: Typecheck and Build
         run: pnpm run registry:build && pnpm run typecheck

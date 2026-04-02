@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  Slider as ArkSlider,
-  useSliderContext,
-} from "@ark-ui/react/slider";
+import { Slider as ArkSlider, useSliderContext } from "@ark-ui/react/slider";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { FieldLabel } from "@/registry/react/components/field";
@@ -153,7 +150,7 @@ export const Slider = (props: SliderProps) => {
                 "flex w-0 flex-col items-center justify-center gap-2",
                 "data-[state=at-value]:text-foreground data-[state=under-value]:text-foreground"
               )}
-              data-interval={index % markerInterval !== 0 ? "" : undefined}
+              data-interval={index % markerInterval === 0 ? undefined : ""}
               data-slot="slider-marker"
               key={String(index)}
               value={index}
