@@ -186,6 +186,13 @@ const drawerContentVariants = tv({
   },
 });
 
+const SWIPE_DIRECTION_TO_PLACEMENT = {
+  start: "left",
+  end: "right",
+  up: "up",
+  down: "down",
+} as const;
+
 interface DrawerContentProps
   extends React.ComponentProps<typeof ArkDrawer.Content>,
     VariantProps<typeof drawerContentVariants> {}
@@ -203,7 +210,7 @@ export const DrawerContent = (props: DrawerContentProps) => {
               className={cn(
                 drawerContentVariants({
                   variant,
-                  placement: swipeDirection,
+                  placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
                 }),
                 className
               )}
@@ -376,7 +383,7 @@ export const DrawerFooter = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "[&_[data-slot=drawer-content-inner]]:flex-col-reverse [&_[data-slot=drawer-content-inner]]:gap-2",
+        "**:data-[slot=drawer-content-inner]:flex-col-reverse **:data-[slot=drawer-content-inner]:gap-2",
         "flex flex-col-reverse gap-2",
         "sm:rounded-none",
         "px-(--space) py-4",

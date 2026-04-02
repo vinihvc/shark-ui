@@ -37,7 +37,7 @@ const Example = () => (
       </DrawerContent>
     </Drawer>
 
-    <Drawer swipeDirection="left">
+    <Drawer swipeDirection="start">
       <DrawerTrigger asChild>
         <Button variant="outline">Left</Button>
       </DrawerTrigger>
@@ -51,7 +51,7 @@ const Example = () => (
       </DrawerContent>
     </Drawer>
 
-    <Drawer swipeDirection="right">
+    <Drawer swipeDirection="end">
       <DrawerTrigger asChild>
         <Button variant="outline">Right</Button>
       </DrawerTrigger>
