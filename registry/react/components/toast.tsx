@@ -27,7 +27,7 @@ const toastVariants = tv({
   base: [
     "z-(--z-index) translate-x-(--x) translate-y-(--y)",
     "relative",
-    "h-(--height) w-full min-w-90 max-sm:min-w-72",
+    "h-(--height) w-full min-w-90 max-w-fit max-sm:min-w-72",
     "px-3.5 py-3",
     "flex items-start justify-between gap-1.5",
     "bg-popover",
@@ -228,7 +228,6 @@ const createWithDedupe = (options: BaseToastOptions) => {
 const baseToaster = createToaster({
   placement: "bottom-end",
   overlap: true,
-  max: 4,
   pauseOnPageIdle: true,
 });
 

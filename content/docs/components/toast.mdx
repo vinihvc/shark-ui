@@ -69,17 +69,7 @@ toaster.create({
 });
 ```
 
-## Examples
-
-### Default
-
-<ComponentPreview componentName="toast" fileName="example-promise" />
-
-### Action
-
-<ComponentPreview componentName="toast" fileName="example-action" />
-
-### Deduplication
+## Deduplication
 
 Toasts with the same `id` are deduplicated: repeated triggers animate the existing toast.
 
@@ -96,21 +86,7 @@ toast.success({
 });
 ```
 
-### Duration
-
-Control how long a toast stays visible with the `duration` option.
-
-Use `Infinity` to keep the toast visible until the user dismisses it.
-
-<ComponentPreview componentName="toast" fileName="example-duration" />
-
-### Closable
-
-Use `closable: true` to show the close button.
-
-<ComponentPreview componentName="toast" fileName="example-closable" />
-
-### Placement
+## Placement
 
 <ComponentPreview componentName="toast" fileName="example-placement" />
 
@@ -126,7 +102,7 @@ const baseToaster = createToaster({
 });
 ```
 
-### Max visible
+## Max toasts
 
 Any extra toasts will be queued and rendered when a toast has been dismissed.
 
@@ -139,6 +115,38 @@ const baseToaster = createToaster({
   max: 4,
 });
 ```
+
+## Examples
+
+### Variants
+
+Use `success`, `error`, `warning`, and `info` for the matching icon and accent color. 
+
+You can also pass `type` on `toast.create`.
+
+<ComponentPreview componentName="toast" fileName="example-variants" />
+
+### Promise
+
+<ComponentPreview componentName="toast" fileName="example-promise" />
+
+### Action
+
+<ComponentPreview componentName="toast" fileName="example-action" />
+
+### Duration
+
+Control how long a toast stays visible with the `duration` option.
+
+Use `Infinity` to keep the toast visible until the user dismisses it.
+
+<ComponentPreview componentName="toast" fileName="example-duration" />
+
+### Closable
+
+Use `closable: true` to show the close button.
+
+<ComponentPreview componentName="toast" fileName="example-closable" />
 
 ## API Reference
 
