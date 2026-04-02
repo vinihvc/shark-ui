@@ -68,16 +68,7 @@ const Example = () => {
                     variant: "ghost",
                     size: "icon-xs",
                   })}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      setActiveItem("");
-                    }
-                  }}
-                  onKeyUp={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      setActiveItem("");
-                    }
-                  }}
+                  onClick={() => setActiveItem("")}
                   role="button"
                   tabIndex={0}
                 >

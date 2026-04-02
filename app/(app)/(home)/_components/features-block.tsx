@@ -32,7 +32,7 @@ export const FeaturesBlock = () => {
             src="/bg.svg"
             width={1000}
           />
-          <div className="relative mt-6 flex h-full w-full flex-col items-start justify-center gap-2 md:mt-0 md:items-center">
+          <div className="relative mt-6 flex size-full flex-col items-start justify-center gap-2 md:mt-0 md:items-center">
             <div className="flex items-center gap-2 rounded-full border bg-background/50 px-5 py-2.5 font-medium text-muted-foreground text-sm backdrop-blur-lg md:absolute md:-translate-x-40 md:translate-y-0 rtl:translate-x-40">
               <ShieldCheckIcon
                 aria-hidden
@@ -92,7 +92,7 @@ export const FeaturesBlock = () => {
             <div className="text-muted-foreground">
               Unstyled, Customizable, Familiar API
             </div>
-            <div className="relative mt-8 h-full w-full **:data-rehype-pretty-code-figure:mt-0!">
+            <div className="relative mt-8 size-full **:data-rehype-pretty-code-figure:mt-0!">
               <CodeBlock
                 code={accessibilityCode}
                 copyButton={false}
