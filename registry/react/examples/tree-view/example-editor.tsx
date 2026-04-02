@@ -68,7 +68,6 @@ const Example = () => {
                     variant: "ghost",
                     size: "icon-xs",
                   })}
-                  onClick={() => setActiveItem("")}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       setActiveItem("");
