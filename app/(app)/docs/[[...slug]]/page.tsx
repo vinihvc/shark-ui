@@ -11,6 +11,7 @@ import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
 import { source } from "@/lib/fumadocs";
 import { createMetadata, createOgImageUrl } from "@/lib/metadata";
+import { cn } from "@/lib/utils";
 import { mdxComponents } from "@/mdx-components";
 import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
@@ -71,15 +72,15 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
 
   return (
     <div className="size-full">
-      <div
-        className="group/docs flex items-stretch xl:w-full"
-        data-page={page.slugs}
-        data-slot="docs"
-      >
+      <div className="flex items-stretch xl:w-full" data-slot="docs">
         <div className="relative flex w-full min-w-0 flex-1 flex-col lg:me-4 lg:mt-8 lg:mb-8">
           <div className="relative flex w-full flex-col border bg-card text-card-foreground shadow-lg/5 max-lg:border-none lg:rounded-2xl">
             <div className="flex-1 px-4 py-6 sm:px-6 lg:p-8">
-              <div className="mx-auto w-full max-w-3xl group-data-[page=components]/docs:max-w-full">
+              <div
+                className={cn("mx-auto w-full", {
+                  "max-w-3xl": page.data.toc.length > 0,
+                })}
+              >
                 <div className="flex min-w-0 flex-col gap-8">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between gap-2">
@@ -187,7 +188,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
           </div>
         </div>
 
-        {page.data.toc && page.data.toc.length > 0 && (
+        {page.data.toc.length > 0 && (
           <div className="sticky top-(--header-height) z-30 ms-auto hidden h-[calc(100svh-var(--header-height))] w-64 flex-col overflow-hidden xl:flex">
             <ScrollArea
               className="[--fade-size:3rem] **:data-[slot=scroll-area-scrollbar]:hidden"
