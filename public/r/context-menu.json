@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "context-menu",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
-  "registryDependencies": ["http://localhost:3000/r/menu.json"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/menu.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/context-menu.tsx",

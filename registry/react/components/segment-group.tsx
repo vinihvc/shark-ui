@@ -106,11 +106,11 @@ export const SegmentGroupIndicator = (
         "transition-[width,height,left,top] duration-150 ease-out",
         "[transition-property:var(--transition-property,width,height,left,top)]",
         "group-data-[variant=underline]/segment-group:bg-primary",
-        "group-data-[orientation=horizontal]/segment-group:group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
-        "group-data-[orientation=vertical]/segment-group:group-data-[variant=underline]/segment-group:right-[calc(var(--left)+var(--width)-1px)]",
-        "group-data-[orientation=vertical]/segment-group:group-data-[variant=underline]/segment-group:-translate-x-px",
-        "group-data-[orientation=horizontal]/segment-group:group-data-[variant=underline]/segment-group:h-0.5",
-        "group-data-[orientation=vertical]/segment-group:group-data-[variant=underline]/segment-group:w-0.5",
+        "data-[orientation=horizontal]:group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
+        "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:right-[calc(var(--left)+var(--width)-1px)]",
+        "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:-translate-x-px",
+        "data-[orientation=horizontal]:group-data-[variant=underline]/segment-group:h-0.5",
+        "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:w-0.5",
         className
       )}
       data-slot="segment-group-indicator"

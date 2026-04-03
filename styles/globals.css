@@ -47,6 +47,7 @@
   --color-ring: var(--ring);
 
   --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
   --color-code-highlight: var(--code-highlight);
 
   --color-sidebar: var(--sidebar);
@@ -243,12 +244,12 @@
   --chart-5: var(--color-amber-500);
 
   --code: color-mix(in srgb, var(--background) 98%, var(--color-neutral-950));
+  --code-foreground: var(--foreground);
   --code-highlight: color-mix(
     in srgb,
     var(--color-neutral-950) 4%,
     var(--code)
   );
-  color-scheme: light dark;
 }
 
 .dark {
@@ -337,6 +338,7 @@
   --chart-5: var(--color-rose-500);
 
   --code: color-mix(in srgb, var(--background) 99%, var(--color-neutral-50));
+  --code-foreground: var(--foreground);
   --code-highlight: color-mix(in srgb, var(--color-neutral-50) 4%, var(--code));
 }
 
@@ -394,13 +396,8 @@
     position: relative;
     margin-top: calc(var(--spacing) * 6);
     overflow: hidden;
-    color: var(--color-muted-foreground);
     outline: none;
-    border-color: var(--border);
-    border-style: solid;
-    border-width: 1px;
-    border-radius: var(--radius-2xl);
-    @apply bg-code;
+    @apply bg-code rounded-2xl text-code-foreground border border-border;
 
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5);
@@ -415,9 +412,7 @@
     min-height: calc(var(--spacing) * 11);
     padding-block: calc(var(--spacing) * 2.5);
     padding-inline: calc(var(--spacing) * 4);
-    font-family: var(--font-mono);
-    color: var(--color-muted-foreground);
-    border-bottom: 1px solid color-mix(in srgb, var(--border) 64%, var(--code));
+    @apply border-border border-b text-muted-foreground font-mono;
   }
 
   [data-line-numbers] {
@@ -437,15 +432,14 @@
     display: inline-block;
     width: calc(var(--spacing) * 16);
     padding-right: calc(var(--spacing) * 6);
-    color: var(--color-muted-foreground);
     text-align: right;
     content: counter(line);
     counter-increment: line;
-    @apply bg-code;
+    @apply bg-code text-muted-foreground;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: var(--color-code-highlight);
+    @apply bg-code-highlight;
   }
 
   [data-line] {
@@ -466,8 +460,7 @@
 
   [data-highlighted-line],
   [data-highlighted-chars] {
-    position: relative;
-    background-color: var(--color-code-highlight);
+    @apply bg-code-highlight relative;
   }
 
   [data-highlighted-line] {
@@ -491,7 +484,8 @@
     padding-inline: 0.3rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    border-radius: var(--radius-sm);
+
+    @apply rounded-sm;
   }
 
   .highlighted-word {
@@ -506,7 +500,8 @@
       left: -2px;
       pointer-events: none;
       content: "";
-      border-radius: var(--radius-xs);
+
+      @apply rounded-xs;
     }
 
     + .highlighted-word {

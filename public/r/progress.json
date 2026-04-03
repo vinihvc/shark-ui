@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "progress",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "cssVars": {
     "theme": {
       "--animate-indeterminate": "indeterminate 1.5s ease-in-out infinite"
@@ -34,7 +37,9 @@
       }
     }
   },
-  "registryDependencies": ["http://localhost:3000/r/field.json"],
+  "registryDependencies": [
+    "http://localhost:3000/r/field.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/progress.tsx",

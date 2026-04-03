@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "editable",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
-  "registryDependencies": ["http://localhost:3000/r/input.json"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/input.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/editable.tsx",

@@ -25,6 +25,7 @@ const Example = () => {
         <SegmentGroupItem
           className="px-2 py-1.5 text-sm"
           key={page}
+          onClick={() => setValue(page)}
           onMouseEnter={() => setHoverValue(page)}
           onMouseLeave={() => setHoverValue(null)}
           value={page}

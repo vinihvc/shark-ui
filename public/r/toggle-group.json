@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle-group",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
   "registryDependencies": [
     "http://localhost:3000/r/toggle.json",
     "http://localhost:3000/r/tooltip.json"

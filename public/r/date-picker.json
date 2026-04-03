@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "date-picker",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
   "registryDependencies": [
     "http://localhost:3000/r/button.json",
     "http://localhost:3000/r/calendar.json",
