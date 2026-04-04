@@ -8,6 +8,7 @@
   ],
   "registryDependencies": [
     "http://localhost:3000/r/button.json",
+    "http://localhost:3000/r/field.json",
     "http://localhost:3000/r/input.json"
   ],
   "files": [

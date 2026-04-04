@@ -5,6 +5,9 @@
   "dependencies": [
     "@ark-ui/react"
   ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/circular-slider.tsx",

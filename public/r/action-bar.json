@@ -7,9 +7,6 @@
     "lucide-react",
     "tailwind-variants"
   ],
-  "registryDependencies": [
-    "http://localhost:3000/r/button.json"
-  ],
   "files": [
     {
       "path": "registry/react/components/action-bar.tsx",

@@ -7,7 +7,7 @@ const manifest: RegistryItemType = {
   name: "editable",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [absoluteUrl("/r/input.json")],
+  registryDependencies: [absoluteUrl("/r/button.json")],
 };
 
 export default manifest;

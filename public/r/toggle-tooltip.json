@@ -5,6 +5,9 @@
   "dependencies": [
     "@ark-ui/react"
   ],
+  "registryDependencies": [
+    "http://localhost:3000/r/popover.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/toggle-tooltip.tsx",

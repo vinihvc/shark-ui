@@ -1,9 +1,9 @@
 import type { RegistryItemType } from "@/lib/registry";
 
-const dependencies = ["@ark-ui/react", "lucide-react", "tailwind-variants"];
+const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "action-bar",
+  name: "rating",
   type: "registry:ui",
   dependencies,
 };

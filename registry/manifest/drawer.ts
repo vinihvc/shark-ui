@@ -7,10 +7,7 @@ const manifest: RegistryItemType = {
   name: "drawer",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [
-    absoluteUrl("/r/button.json"),
-    absoluteUrl("/r/scroll-area.json"),
-  ],
+  registryDependencies: [absoluteUrl("/r/scroll-area.json")],
 };
 
 export default manifest;

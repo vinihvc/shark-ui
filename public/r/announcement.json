@@ -6,6 +6,9 @@
     "@ark-ui/react",
     "tailwind-variants"
   ],
+  "registryDependencies": [
+    "http://localhost:3000/r/badge.json"
+  ],
   "cssVars": {
     "light": {
       "destructive-foreground": "var(--color-red-50)",

@@ -7,10 +7,7 @@ const manifest: RegistryItemType = {
   name: "select",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [
-    absoluteUrl("/r/button.json"),
-    absoluteUrl("/r/input.json"),
-  ],
+  registryDependencies: [absoluteUrl("/r/input.json")],
 };
 
 export default manifest;

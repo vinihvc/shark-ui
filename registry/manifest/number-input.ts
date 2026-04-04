@@ -9,6 +9,7 @@ const manifest: RegistryItemType = {
   dependencies,
   registryDependencies: [
     absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/field.json"),
     absoluteUrl("/r/input.json"),
   ],
 };

@@ -6,6 +6,9 @@
     "@ark-ui/react",
     "tailwind-variants"
   ],
+  "registryDependencies": [
+    "http://localhost:3000/r/status.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/avatar.tsx",

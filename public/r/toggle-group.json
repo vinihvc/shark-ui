@@ -6,8 +6,7 @@
     "@ark-ui/react"
   ],
   "registryDependencies": [
-    "http://localhost:3000/r/toggle.json",
-    "http://localhost:3000/r/tooltip.json"
+    "http://localhost:3000/r/toggle.json"
   ],
   "files": [
     {

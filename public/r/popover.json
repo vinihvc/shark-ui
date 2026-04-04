@@ -5,6 +5,10 @@
   "dependencies": [
     "@ark-ui/react"
   ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button.json",
+    "http://localhost:3000/r/scroll-area.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/popover.tsx",

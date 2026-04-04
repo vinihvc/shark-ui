@@ -8,7 +8,6 @@
   ],
   "registryDependencies": [
     "http://localhost:3000/r/combobox.json",
-    "http://localhost:3000/r/input.json",
     "http://localhost:3000/r/separator.json"
   ],
   "files": [

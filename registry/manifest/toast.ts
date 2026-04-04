@@ -7,7 +7,10 @@ const manifest: RegistryItemType = {
   name: "toast",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [absoluteUrl("/r/button.json")],
+  registryDependencies: [
+    absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/spinner.json"),
+  ],
 };
 
 export default manifest;

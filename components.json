@@ -1,5 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
   "rsc": true,
   "tsx": true,
   "tailwind": {
@@ -16,5 +17,8 @@
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
+  },
+  "registries": {
+    "@shark": "https://shark.vini.one/r/{name}.json"
   }
 }

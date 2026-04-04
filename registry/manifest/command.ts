@@ -10,6 +10,7 @@ const manifest: RegistryItemType = {
   registryDependencies: [
     absoluteUrl("/r/combobox.json"),
     absoluteUrl("/r/dialog.json"),
+    absoluteUrl("/r/input.json"),
     absoluteUrl("/r/input-group.json"),
     absoluteUrl("/r/menu.json"),
     absoluteUrl("/r/separator.json"),

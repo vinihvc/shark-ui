@@ -1,4 +1,5 @@
 import type { RegistryItemType } from "@/lib/registry";
+import { absoluteUrl } from "@/lib/url";
 
 const cssVars = {
   light: {
@@ -27,6 +28,7 @@ const manifest: RegistryItemType = {
   name: "announcement",
   type: "registry:ui",
   dependencies,
+  registryDependencies: [absoluteUrl("/r/badge.json")],
   cssVars,
 };
 

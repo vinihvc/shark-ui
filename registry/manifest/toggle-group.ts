@@ -7,10 +7,7 @@ const manifest: RegistryItemType = {
   name: "toggle-group",
   type: "registry:ui",
   dependencies,
-  registryDependencies: [
-    absoluteUrl("/r/toggle.json"),
-    absoluteUrl("/r/tooltip.json"),
-  ],
+  registryDependencies: [absoluteUrl("/r/toggle.json")],
 };
 
 export default manifest;
