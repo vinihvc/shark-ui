@@ -202,7 +202,7 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
             className={cn(
               "[--space:--spacing(4)]",
               "flex w-full max-w-full items-center gap-2",
-              "rounded-lg border border-input shadow-lg/5",
+              "rounded-xl border shadow-lg/5",
               "p-(--space)",
               "bg-popover",
               "text-popover-foreground",
