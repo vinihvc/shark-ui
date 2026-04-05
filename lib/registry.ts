@@ -3,7 +3,11 @@ import { join } from "node:path";
 import { cwd } from "node:process";
 import z from "zod";
 
-export const registryItemFileTypes = z.enum(["registry:ui", "registry:hook"]);
+export const registryItemFileTypes = z.enum([
+  "registry:ui",
+  "registry:hook",
+  "registry:style",
+]);
 
 export const registryItemSchema = z.object({
   name: z.string(),

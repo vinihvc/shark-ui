@@ -2,13 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "avatar",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "tailwind-variants"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/status.json"
-  ],
+  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "registryDependencies": ["http://localhost:3000/r/status.json"],
   "files": [
     {
       "path": "registry/react/components/avatar.tsx",

@@ -2,14 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drawer",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "tailwind-variants",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/scroll-area.json"
-  ],
+  "dependencies": ["@ark-ui/react", "tailwind-variants", "lucide-react"],
+  "registryDependencies": ["http://localhost:3000/r/scroll-area.json"],
   "files": [
     {
       "path": "registry/react/components/drawer.tsx",
