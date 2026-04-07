@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "breadcrumb",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "registry/react/components/breadcrumb.tsx",

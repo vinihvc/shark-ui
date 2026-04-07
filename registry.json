@@ -9,8 +9,12 @@
       "type": "components:ui",
       "description": "A accordion component built with Ark UI",
       "category": "ui",
-      "tags": ["accordion"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "accordion"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -18,11 +22,17 @@
           "content": "import { Accordion as ArkAccordion } from \"@ark-ui/react/accordion\";\nimport { ChevronDown } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Accordion = (\n  props: React.ComponentProps<typeof ArkAccordion.Root>\n) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkAccordion.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const AccordionItem = (\n  props: React.ComponentProps<typeof ArkAccordion.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAccordion.Item\n      className={cn(\"flex flex-col border-b last:border-b-0\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const AccordionTrigger = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemTrigger>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemTrigger\n      className={cn(\n        \"flex flex-1 items-start justify-between gap-4\",\n        \"py-4\",\n        \"text-left font-medium text-sm\",\n        \"rounded-md\",\n        \"outline-none\",\n        \"transition-all\",\n        \"hover:underline\",\n        \"disabled:pointer-events-none disabled:opacity-64\",\n        \"focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        \"[&_[data-state=open]>svg]:rotate-180\",\n        className\n      )}\n      {...rest}\n    >\n      {children}\n\n      <AccordionIndicator>\n        <ChevronDown className=\"pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200\" />\n      </AccordionIndicator>\n    </ArkAccordion.ItemTrigger>\n  );\n};\n\nexport const AccordionIndicator = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemIndicator>\n) => <ArkAccordion.ItemIndicator {...props} />;\n\nexport const AccordionContent = (\n  props: React.ComponentProps<typeof ArkAccordion.ItemContent>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemContent\n      className={cn(\n        \"text-sm\",\n        \"overflow-hidden\",\n        \"data-[state=open]:animate-slide-down\",\n        \"data-[state=closed]:animate-slide-up\",\n        className\n      )}\n      {...rest}\n    >\n      <div className=\"pt-0 pb-4\">{children}</div>\n    </ArkAccordion.ItemContent>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["accordion"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "accordion"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -30,8 +40,12 @@
       "type": "components:ui",
       "description": "A native select component built with Ark UI",
       "category": "ui",
-      "tags": ["native-select"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "native-select"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -39,11 +53,17 @@
           "content": "import { NativeSelect as ArkNativeSelect } from \"@ark-ui/react/native-select\";\nimport { ChevronDown } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const NativeSelect = (props: React.ComponentProps<typeof ArkNativeSelect.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkNativeSelect.Root\n      className={cn(\"relative w-fit has-[select:disabled]:opacity-64\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const NativeSelectOption = (props: React.ComponentProps<typeof ArkNativeSelect.Option>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkNativeSelect.Option\n      className={cn(\"relative w-fit has-[select:disabled]:opacity-64\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const NativeSelectOptGroup = (props: React.ComponentProps<typeof ArkNativeSelect.OptGroup>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkNativeSelect.OptGroup\n      className={cn(\"relative w-fit has-[select:disabled]:opacity-64\", className)}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["native-select"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "native-select"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -51,8 +71,12 @@
       "type": "components:ui",
       "description": "A alert component built with Ark UI",
       "category": "ui",
-      "tags": ["alert"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "alert"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -60,11 +84,17 @@
           "content": "import type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const alertVariants = tv({\n  base: [\n    \"relative\",\n    \"w-full\",\n    \"px-4 py-3\",\n    \"grid grid-cols-[0_1fr] items-start gap-y-0.5\",\n    \"text-sm\",\n    \"rounded-lg border\",\n    \"has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3\",\n    \"[&_svg]:size-4 [&_svg]:translate-y-0.5 [&_svg]:text-current\",\n  ],\n  variants: {\n    variant: {\n      solid: [\"bg-card\", \"text-card-foreground\"],\n      outline: [\"border-border\", \"bg-background\", \"text-foreground\"],\n      destructive: [\n        \"border-destructive/50\",\n        \"text-destructive\",\n        \"dark:border-destructive\",\n        \"[&_svg]:text-destructive\",\n        \"*:data-[slot=alert-description]:text-destructive/90\",\n      ],\n    },\n  },\n  defaultVariants: {\n    variant: \"solid\",\n  },\n});\n\ninterface AlertProps\n  extends React.ComponentProps<\"div\">,\n    VariantProps<typeof alertVariants> {}\n\nexport const Alert = (props: AlertProps) => {\n  const { variant, className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(alertVariants({ variant }), className)}\n      data-part=\"root\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n\nexport const AlertTitle = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight\",\n        className\n      )}\n      data-part=\"alert-title\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n\nexport const AlertDescription = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 grid justify-items-start gap-1 text-muted-foreground text-sm [&_p]:leading-relaxed\",\n        className\n      )}\n      data-part=\"alert-description\"\n      data-scope=\"alert\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["alert"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "alert"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -72,8 +102,12 @@
       "type": "components:ui",
       "description": "A avatar component built with Ark UI",
       "category": "ui",
-      "tags": ["avatar"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "avatar"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -81,11 +115,17 @@
           "content": "\"use client\";\n\nimport { Avatar as ArkAvatar } from \"@ark-ui/react/avatar\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Avatar = (props: React.ComponentProps<typeof ArkAvatar.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Root\n      className={cn(\n        \"relative\",\n        \"size-8\",\n        \"flex shrink-0\",\n        \"overflow-hidden\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarImage = (\n  props: React.ComponentProps<typeof ArkAvatar.Image>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Image\n      className={cn(\"size-full\", \"aspect-square object-cover\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const AvatarFallback = (\n  props: React.ComponentProps<typeof ArkAvatar.Fallback>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkAvatar.Fallback\n      className={cn(\n        \"size-full\",\n        \"flex items-center justify-center\",\n        \"bg-muted\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["avatar"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "avatar"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -93,8 +133,12 @@
       "type": "components:ui",
       "description": "A badge component built with Ark UI",
       "category": "ui",
-      "tags": ["badge"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "badge"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -102,11 +146,17 @@
           "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nconst badgeVariants = tv({\n  base: [\n    \"inline-flex items-center justify-center gap-1\",\n    \"px-1 py-0.5\",\n    \"rounded-md border\",\n    \"select-none font-medium text-xs\",\n    \"overflow-hidden\",\n    \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n    \"[&_svg]:pointer-events-none [&_svg]:size-3\",\n  ],\n  variants: {\n    variant: {\n      default: [\n        \"bg-primary text-primary-foreground\",\n        \"[a&]:hover:bg-primary/90\",\n      ],\n      secondary: [\n        \"bg-secondary text-secondary-foreground\",\n        \"[a&]:hover:bg-secondary/90\",\n      ],\n      destructive: [\n        \"bg-destructive dark:bg-destructive/60\",\n        \"text-destructive-foreground\",\n        \"focus-visible:ring-destructive/24\",\n        \"dark:focus-visible:ring-destructive/40\",\n        \"[a&]:hover:bg-destructive/90\",\n      ],\n      outline: [\"[a&]:hover:bg-accent\", \"[a&]:hover:text-accent-foreground\"],\n    },\n  },\n});\n\ninterface BadgeProps\n  extends React.ComponentProps<\"span\">,\n    VariantProps<typeof badgeVariants> {\n  /**\n   * If `true`, the badge will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Badge = (props: BadgeProps) => {\n  const { asChild, variant = \"default\", className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"span\";\n\n  return (\n    <Comp\n      className={cn(badgeVariants({ variant }), className)}\n      data-part=\"badge\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["badge"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "badge"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -114,8 +164,12 @@
       "type": "components:ui",
       "description": "A button component built with Ark UI",
       "category": "ui",
-      "tags": ["button"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "button"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -123,11 +177,17 @@
           "content": "import { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const buttonVariants = tv({\n  base: [\n    \"inline-flex shrink-0 items-center justify-center gap-2\",\n    \"whitespace-nowrap font-medium text-sm\",\n    \"rounded-md\",\n    \"transition-all\",\n    \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n    \"disabled:pointer-events-none disabled:opacity-64\",\n    \"aria-invalid:border-destructive aria-invalid:ring-destructive/24\",\n    \"[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  ],\n  variants: {\n    variant: {\n      solid: [\"bg-primary\", \"text-primary-foreground\", \"hover:bg-primary/90\"],\n      destructive: [\n        \"bg-destructive\",\n        \"text-white\",\n        \"hover:bg-destructive/90\",\n        \"focus-visible:ring-destructive/24\",\n        \"dark:bg-destructive/60 dark:focus-visible:ring-destructive/40\",\n      ],\n      outline: [\n        \"bg-background\",\n        \"border shadow-xs\",\n        \"hover:bg-accent hover:text-accent-foreground\",\n        \"dark:border-input dark:bg-input/30 dark:hover:bg-input/50\",\n      ],\n      secondary: [\n        \"bg-secondary\",\n        \"text-secondary-foreground\",\n        \"hover:bg-secondary/80\",\n      ],\n      ghost: [\"hover:bg-accent hover:text-accent-foreground\"],\n      link: [\"text-primary\", \"underline-offset-4\", \"hover:underline\"],\n    },\n    size: {\n      sm: [\"h-8\", \"gap-1.5\", \"rounded-md\", \"px-3\", \"has-[>svg]:px-2.5\"],\n      md: [\"h-9\", \"px-4\", \"py-2\", \"has-[>svg]:px-3\"],\n      lg: [\"h-10\", \"rounded-md\", \"px-6\", \"has-[>svg]:px-4\"],\n      \"icon-sm\": \"size-8\",\n      \"icon-md\": \"size-9\",\n      \"icon-lg\": \"size-10\",\n    },\n  },\n  defaultVariants: {\n    variant: \"solid\",\n    size: \"md\",\n  },\n});\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  /**\n   * If `true`, the button will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const Button = (props: ButtonProps) => {\n  const { asChild, variant, size, className, ...rest } = props;\n\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(buttonVariants({ variant, size }), className)}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["button"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "button"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -135,8 +195,12 @@
       "type": "components:ui",
       "description": "A card component built with Ark UI",
       "category": "ui",
-      "tags": ["card"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "card"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -144,11 +208,17 @@
           "content": "import { cn } from \"@/lib/utils\";\n\ninterface CardProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The spacing variable value\n   */\n  spacing?: number;\n}\n\nexport const Card = (props: CardProps) => {\n  const { spacing = 6, className, style, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"group/card\",\n        \"py-(--space)\",\n        \"flex flex-col gap-(--space)\",\n        \"bg-background\",\n        \"text-foreground\",\n        \"rounded-lg border shadow-xs\",\n        \"has-[table]:overflow-hidden **:[table]:overflow-hidden\",\n        \"has-[table]:not-has-data-[slot=card-footer]:pb-0 has-[table]:**:data-[slot=card-footer]:border-t\",\n        \"**:data-[slot=table-header]:bg-muted/48\",\n        className\n      )}\n      data-part=\"root\"\n      data-scope=\"card\"\n      data-spacing={spacing}\n      style={\n        {\n          \"--space\": `calc(${spacing} * var(--spacing))`,\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    />\n  );\n};\n\ninterface HeaderProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The title of the card\n   */\n  title?: string;\n  /**\n   * The description of the card\n   */\n  description?: string;\n}\n\nexport const CardHeader = (props: HeaderProps) => {\n  const { className, title, description, children, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"grid auto-rows-min grid-rows-[auto_auto] gap-1\",\n        \"px-(--space)\",\n        \"items-start\",\n        \"has-data-[slot=card-action]:grid-cols-[1fr_auto]\",\n        className\n      )}\n      data-part=\"header\"\n      data-scope=\"card\"\n      {...rest}\n    >\n      {title && <CardTitle>{title}</CardTitle>}\n      {description && <CardDescription>{description}</CardDescription>}\n      {!title && typeof children === \"string\" ? (\n        <CardTitle>{children}</CardTitle>\n      ) : (\n        children\n      )}\n    </div>\n  );\n};\n\nexport const CardTitle = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \" font-semibold text-foreground text-lg/6 sm:text-base/6\",\n        className\n      )}\n      data-part=\"title\"\n      data-scope=\"card\"\n      {...rest}\n    />\n  );\n};\n\nexport const CardDescription = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"row-start-2\",\n        \" text-muted-foreground text-sm\",\n        className\n      )}\n      data-part=\"description\"\n      data-scope=\"card\"\n      {...rest}\n    />\n  );\n};\n\nexport const CardAction = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n        className\n      )}\n      data-part=\"action\"\n      data-scope=\"card\"\n      {...rest}\n    />\n  );\n};\n\nexport const CardContent = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"px-(--space) has-[table]:border-t\", className)}\n      data-part=\"content\"\n      data-scope=\"card\"\n      {...rest}\n    />\n  );\n};\n\nexport const CardFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center\",\n        \"px-(--space)\",\n        \"group-has-[table]/card:pt-(--space)\",\n        \"[.border-t]:pt-(--space)\",\n        className\n      )}\n      data-part=\"footer\"\n      data-scope=\"card\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["card"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "card"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -156,8 +226,12 @@
       "type": "components:ui",
       "description": "A checkbox component built with Ark UI",
       "category": "ui",
-      "tags": ["checkbox"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "checkbox"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -165,11 +239,17 @@
           "content": "import { Checkbox as ArkCheckbox } from \"@ark-ui/react/checkbox\";\nimport { Check } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const CheckboxGroup = (\n  props: React.ComponentProps<typeof ArkCheckbox.Group>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkCheckbox.Group className={cn(\"space-y-2\", className)} {...rest} />;\n};\n\nexport const Checkbox = (\n  props: React.ComponentProps<typeof ArkCheckbox.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCheckbox.Root\n      className={cn(\n        \"peer\",\n        \"size-4 shrink-0\",\n        \"rounded-sm\",\n        \"border border-input shadow-xs outline-none\",\n        \"transition-shadow\",\n        \"focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        \"disabled:cursor-not-allowed disabled:opacity-64\",\n        \"aria-invalid:border-destructive aria-invalid:ring-destructive/24 dark:aria-invalid:ring-destructive/40\",\n        \"data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground\",\n        \"dark:data-[state=checked]:bg-primary\",\n        \"dark:bg-input/30\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkCheckbox.Control>\n        <ArkCheckbox.Indicator className=\"grid place-content-center text-current transition-none [&_svg]:size-3.5\">\n          <CheckIcon />\n        </ArkCheckbox.Indicator>\n      </ArkCheckbox.Control>\n\n      <ArkCheckbox.HiddenInput />\n    </ArkCheckbox.Root>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["checkbox"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "checkbox"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -177,8 +257,12 @@
       "type": "components:ui",
       "description": "A dialog component built with Ark UI",
       "category": "ui",
-      "tags": ["dialog"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "dialog"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -186,11 +270,17 @@
           "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { X } from \"lucide-react\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/react/components/button\";\n\nexport const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkDialog.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const DialogTrigger = (\n  props: React.ComponentProps<typeof ArkDialog.Trigger>\n) => <ArkDialog.Trigger {...props} />;\n\nexport const dialogBackdropVariants = tv({\n  base: [\n    \"z-50\",\n    \"fixed inset-0\",\n    \"bg-background/50 backdrop-blur-xs\",\n    \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n    \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n  ],\n});\n\nexport const DialogBackdrop = (\n  props: React.ComponentProps<typeof ArkDialog.Backdrop>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Backdrop\n      className={cn(dialogBackdropVariants(), className)}\n      {...rest}\n    />\n  );\n};\n\nexport const dialogContentVariants = tv({\n  base: [\n    \"z-50\",\n    \"-translate-1/2 fixed top-1/2 left-1/2\",\n    \"flex flex-col gap-4\",\n    \"bg-background\",\n    \"w-full max-w-[calc(100%-2rem)] sm:max-w-lg\",\n    \"rounded-lg border shadow-lg\",\n    \"focus:outline-none focus:ring-0\",\n    \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n    \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n    \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n  ],\n  variants: {\n    size: {\n      sm: [\"max-w-sm\"],\n      md: [\"max-w-md\"],\n      lg: [\"max-w-lg\"],\n      xl: [\"max-w-xl\"],\n      \"2xl\": [\"max-w-2xl\"],\n      \"3xl\": [\"max-w-3xl\"],\n      \"4xl\": [\"max-w-4xl\"],\n      \"5xl\": [\"max-w-5xl\"],\n      \"6xl\": [\"max-w-6xl\"],\n      \"7xl\": [\"max-w-7xl\"],\n      \"8xl\": [\"max-w-8xl\"],\n      fullscreen: [\"size-full\"],\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\ninterface DialogContentProps\n  extends React.ComponentProps<typeof ArkDialog.Content>,\n    VariantProps<typeof dialogContentVariants> {\n  /**\n   * Show close button at the top right corner\n   *\n   * @default true\n   */\n  showCloseButton?: boolean;\n}\n\nexport const DialogContent = (props: DialogContentProps) => {\n  const {\n    showCloseButton = true,\n    className,\n    size = \"md\",\n    children,\n    ...rest\n  } = props;\n\n  return (\n    <Portal>\n      <DialogBackdrop />\n\n      <ArkDialog.Positioner>\n        <ArkDialog.Content\n          className={cn(dialogContentVariants({ size }), className)}\n          {...rest}\n        >\n          {children}\n\n          {showCloseButton && (\n            <DialogClose asChild className=\"absolute top-4 right-4\">\n              <Button\n                className=\"size-8 border-none opacity-70 hover:opacity-100\"\n                size=\"icon-md\"\n                variant=\"ghost\"\n              >\n                <X />\n\n                <span className=\"sr-only\">Close</span>\n              </Button>\n            </DialogClose>\n          )}\n        </ArkDialog.Content>\n      </ArkDialog.Positioner>\n    </Portal>\n  );\n};\n\nexport const DialogBody = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex-1 overflow-auto p-6\", className)}\n      data-part=\"body\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogHeader = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-6 pb-0\", className)}\n      data-part=\"header\"\n      data-scope=\"dialog\"\n      {...rest}\n    />\n  );\n};\n\nexport const DialogTitle = (\n  props: React.ComponentProps<typeof ArkDialog.Title>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Title\n      className={cn(\n        \"font-semibold text-base leading-none tracking-tight\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const DialogDescription = (\n  props: React.ComponentProps<typeof ArkDialog.Description>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkDialog.Description\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const DialogClose = (\n  props: React.ComponentProps<typeof ArkDialog.CloseTrigger>\n) => <ArkDialog.CloseTrigger {...props} />;\n\nexport const DialogFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex flex-row-reverse gap-2 p-6 pt-0\", className)}\n      data-part=\"footer\"\n      data-scope=\"dialog\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["dialog"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "dialog"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -198,8 +288,12 @@
       "type": "components:ui",
       "description": "A input component built with Ark UI",
       "category": "ui",
-      "tags": ["input"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "input"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -207,11 +301,17 @@
           "content": "import type * as React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const inputVariants = tv({\n  base: [\n    \"peer\",\n    \"w-full min-w-0\",\n    \"px-3\",\n    \"bg-transparent dark:bg-input/30\",\n    \"text-base md:text-sm\",\n    \"rounded-md border border-input shadow-xs\",\n    \"placeholder:text-muted-foreground\",\n    \"file:inline-flex file:h-7 file:border-0 file:bg-transparent\",\n    \"file:font-medium file:text-foreground file:text-sm\",\n    \"transition-[color,box-shadow]\",\n    \"selection:bg-primary selection:text-primary-foreground\",\n    \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n    \"aria-invalid:border-destructive aria-invalid:ring-destructive/24 dark:aria-invalid:ring-destructive/40\",\n    \"disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64\",\n  ],\n  variants: {\n    size: {\n      sm: [\"h-8\"],\n      md: [\"h-9\"],\n      lg: [\"h-10\"],\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\ninterface InputProps\n  extends Omit<React.ComponentProps<\"input\">, \"size\">,\n    VariantProps<typeof inputVariants> {}\n\nexport const Input = (props: InputProps) => {\n  const { size = \"md\", type = \"text\", className, ...rest } = props;\n\n  return (\n    <input\n      className={cn(inputVariants({ size }), className)}\n      data-part=\"input\"\n      data-scope=\"input\"\n      data-size={size}\n      type={type}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["input"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "input"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -219,8 +319,14 @@
       "type": "components:ui",
       "description": "Accessible label for form controls. Associates with input via htmlFor and id.",
       "category": "ui",
-      "tags": ["label", "form", "accessibility"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "label",
+        "form",
+        "accessibility"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -228,11 +334,19 @@
           "content": "import { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\n\nexport interface LabelProps\n  extends React.LabelHTMLAttributes<HTMLLabelElement> {}\n\nconst Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n  ({ className, ...props }, ref) => (\n    <label\n      className={cn(\n        \"font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n        className\n      )}\n      ref={ref}\n      {...props}\n    />\n  )\n);\nLabel.displayName = \"Label\";\n\nexport { Label };\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["label", "form", "accessibility"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "label",
+          "form",
+          "accessibility"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -240,8 +354,12 @@
       "type": "components:ui",
       "description": "A menu component built with Ark UI",
       "category": "ui",
-      "tags": ["menu"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "menu"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -249,11 +367,17 @@
           "content": "import { Portal } from \"@ark-ui/react\";\nimport { Menu as ArkMenu } from \"@ark-ui/react/menu\";\nimport { Check, ChevronRight, Circle } from \"lucide-react\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkMenu.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const MenuTrigger = (\n  props: React.ComponentProps<typeof ArkMenu.Trigger>\n) => <ArkMenu.Trigger {...props} />;\n\nexport const menuContentVariants = tv({\n  base: [\n    \"z-(--z-index)\",\n    \"h-auto min-w-32\",\n    \"relative\",\n    \"p-1\",\n    \"bg-popover\",\n    \"text-popover-foreground\",\n    \"rounded-md border shadow-md\",\n    \"origin-(--transform-origin)\",\n    \"outline-none\",\n    \"overflow-y-auto overflow-x-hidden\",\n    \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n    \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n    \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n    \"data-[side=bottom]:slide-in-from-top-2\",\n    \"data-[side=left]:slide-in-from-right-2\",\n    \"data-[side=right]:slide-in-from-left-2\",\n    \"data-[side=top]:slide-in-from-bottom-2\",\n  ],\n});\n\ninterface MenuContentProps\n  extends React.ComponentProps<typeof ArkMenu.Content>,\n    VariantProps<typeof menuContentVariants> {}\n\nexport const MenuContent = (props: MenuContentProps) => {\n  const { className, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkMenu.Positioner>\n        <ArkMenu.Content\n          className={cn(menuContentVariants(), className)}\n          {...rest}\n        />\n      </ArkMenu.Positioner>\n    </Portal>\n  );\n};\n\nexport const MenuItemGroup = (\n  props: React.ComponentProps<typeof ArkMenu.ItemGroup>\n) => <ArkMenu.ItemGroup {...props} />;\n\nexport const MenuItemGroupLabel = (\n  props: React.ComponentProps<typeof ArkMenu.ItemGroupLabel>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkMenu.ItemGroupLabel\n      className={cn(\"px-2 py-1.5 font-medium text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const MenuSeparator = (\n  props: React.ComponentProps<typeof ArkMenu.Separator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkMenu.Separator\n      className={cn(\"-mx-1 my-1 h-px bg-border\", className)}\n      {...rest}\n    />\n  );\n};\n\nconst menuItemVariants = tv({\n  base: [\n    \"group/menu-item\",\n    \"relative\",\n    \"px-2 py-1.5\",\n    \"w-full\",\n    \"flex items-center gap-2 rounded-sm\",\n    \"text-sm\",\n    \"select-none outline-hidden\",\n    \"group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground\",\n    \"data-disabled:pointer-events-none data-disabled:opacity-64\",\n    \"[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  ],\n  variants: {\n    variant: {\n      default: [\n        \"data-highlighted:bg-accent data-highlighted:text-accent-foreground\",\n      ],\n      destructive: [\n        \"text-destructive\",\n        \"data-highlighted:bg-destructive/10\",\n        \"dark:data-highlighted:bg-destructive/20\",\n        \"*:[svg]:text-destructive!\",\n      ],\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\ninterface MenuItemProps\n  extends React.ComponentProps<typeof ArkMenu.Item>,\n    VariantProps<typeof menuItemVariants> {}\n\nexport const MenuItem = (props: MenuItemProps) => {\n  const { variant = \"default\", className, ...rest } = props;\n\n  return (\n    <ArkMenu.Item\n      className={cn(menuItemVariants({ variant }), className)}\n      data-variant={variant}\n      {...rest}\n    />\n  );\n};\n\nexport const MenuCheckboxItem = (\n  props: React.ComponentProps<typeof ArkMenu.CheckboxItem>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkMenu.CheckboxItem\n      className={cn(\n        menuItemVariants({ variant: \"default\" }),\n        \"pl-8\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkMenu.ItemIndicator className=\"pointer-events-none absolute left-2 flex size-3.5 items-center justify-center\">\n        <CheckIcon />\n      </ArkMenu.ItemIndicator>\n\n      <ArkMenu.ItemText>{children}</ArkMenu.ItemText>\n    </ArkMenu.CheckboxItem>\n  );\n};\n\nexport const MenuRadioGroup = (\n  props: React.ComponentProps<typeof ArkMenu.RadioItemGroup>\n) => <ArkMenu.RadioItemGroup {...props} />;\n\nexport const MenuRadioItem = (\n  props: React.ComponentProps<typeof ArkMenu.RadioItem>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkMenu.RadioItem\n      className={cn(\n        menuItemVariants({ variant: \"default\" }),\n        \"pl-8\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkMenu.ItemIndicator className=\"pointer-events-none absolute left-2 flex size-3.5 items-center justify-center\">\n        <Circle className=\"size-2 fill-current\" />\n      </ArkMenu.ItemIndicator>\n\n      <ArkMenu.ItemText>{children}</ArkMenu.ItemText>\n    </ArkMenu.RadioItem>\n  );\n};\n\nexport const MenuSub = (props: React.ComponentProps<typeof Menu>) => (\n  <Menu data-part=\"sub\" {...props} />\n);\n\nexport const MenuSubContent = (\n  props: React.ComponentProps<typeof ArkMenu.Content>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkMenu.Positioner data-part=\"sub-positioner\">\n        <ArkMenu.Content\n          className={cn(menuContentVariants(), className)}\n          data-part=\"sub-content\"\n          {...rest}\n        />\n      </ArkMenu.Positioner>\n    </Portal>\n  );\n};\n\nexport const MenuSubTrigger = (\n  props: React.ComponentProps<typeof ArkMenu.TriggerItem>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkMenu.TriggerItem\n      className={cn(menuItemVariants({ variant: \"default\" }), className)}\n      data-part=\"sub-trigger\"\n      {...rest}\n    >\n      {children}\n\n      <MenuShortcut>\n        <ChevronRight />\n      </MenuShortcut>\n    </ArkMenu.TriggerItem>\n  );\n};\n\nexport const MenuShortcut = (props: React.ComponentProps<\"span\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <span\n      className={cn(\n        \"ml-auto\",\n        \"text-muted-foreground text-xs tracking-widest\",\n        \"group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive\",\n        className\n      )}\n      data-part=\"shortcut\"\n      data-scope=\"menu\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["menu"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "menu"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -261,8 +385,12 @@
       "type": "components:ui",
       "description": "A popover component built with Ark UI",
       "category": "ui",
-      "tags": ["popover"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "popover"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -270,11 +398,17 @@
           "content": "import { Popover as ArkPopover } from \"@ark-ui/react/popover\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Popover = (\n  props: React.ComponentProps<typeof ArkPopover.Root>\n) => {\n  const {\n    positioning = {\n      placement: \"top\",\n    },\n    lazyMount = true,\n    unmountOnExit = true,\n    modal = true,\n    ...rest\n  } = props;\n\n  return (\n    <ArkPopover.Root\n      lazyMount={lazyMount}\n      modal={modal}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const PopoverTrigger = (\n  props: React.ComponentProps<typeof ArkPopover.Trigger>\n) => <ArkPopover.Trigger {...props} />;\n\nexport const PopoverContent = (\n  props: React.ComponentProps<typeof ArkPopover.Content>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkPopover.Positioner>\n        <ArkPopover.Content\n          className={cn(\n            \"z-50\",\n            \"w-72\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"rounded-md border shadow-md\",\n            \"outline-hidden\",\n            \"origin-(--transform-origin)\",\n            \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n            \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <PopoverArrow />\n\n          {children}\n        </ArkPopover.Content>\n      </ArkPopover.Positioner>\n    </Portal>\n  );\n};\n\nexport const PopoverArrow = (\n  props: React.ComponentProps<typeof ArkPopover.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkPopover.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--popover)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkPopover.ArrowTip className=\"border-t border-l\" />\n    </ArkPopover.Arrow>\n  );\n};\n\nexport const PopoverHeader = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-4 pb-0\", className)}\n      data-part=\"popover-header\"\n      data-scope=\"popover\"\n      {...rest}\n    />\n  );\n};\n\nexport const PopoverTitle = (\n  props: React.ComponentProps<typeof ArkPopover.Title>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkPopover.Title\n      className={cn(\n        \"font-semibold text-base leading-none tracking-tight\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const PopoverDescription = (\n  props: React.ComponentProps<typeof ArkPopover.Description>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkPopover.Description\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const PopoverBody = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"p-4\", className)}\n      data-part=\"popover-body\"\n      data-scope=\"popover\"\n      {...rest}\n    />\n  );\n};\n\nexport const PopoverFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"mt-4 flex flex-row-reverse gap-2 p-4\", className)}\n      data-part=\"popover-footer\"\n      data-scope=\"popover\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["popover"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "popover"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -282,8 +416,14 @@
       "type": "components:ui",
       "description": "Displays an indicator showing the completion progress of a task",
       "category": "ui",
-      "tags": ["progress", "loading", "indicator"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "progress",
+        "loading",
+        "indicator"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -291,11 +431,19 @@
           "content": "import { Progress as ArkProgress } from \"@ark-ui/react/progress\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst progressVariants = tv({\n  slots: {\n    root: \"relative h-4 w-full overflow-hidden rounded-full bg-secondary\",\n    track: \"size-full bg-secondary\",\n    range: \"h-full bg-primary transition-all\",\n    label: \"font-medium text-foreground text-sm\",\n    valueText: \"text-muted-foreground text-sm\",\n  },\n});\n\nconst { root, track, range, label, valueText } = progressVariants();\n\nexport interface ProgressProps\n  extends React.ComponentProps<typeof ArkProgress.Root>,\n    VariantProps<typeof progressVariants> {}\n\nconst ProgressRoot = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Root>,\n  ProgressProps\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Root className={cn(root(), className)} ref={ref} {...props} />\n));\nProgressRoot.displayName = \"Progress\";\n\nconst ProgressTrack = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Track>,\n  React.ComponentProps<typeof ArkProgress.Track>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Track className={cn(track(), className)} ref={ref} {...props} />\n));\nProgressTrack.displayName = \"ProgressTrack\";\n\nconst ProgressRange = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Range>,\n  React.ComponentProps<typeof ArkProgress.Range>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Range className={cn(range(), className)} ref={ref} {...props} />\n));\nProgressRange.displayName = \"ProgressRange\";\n\nconst ProgressLabel = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.Label>,\n  React.ComponentProps<typeof ArkProgress.Label>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.Label className={cn(label(), className)} ref={ref} {...props} />\n));\nProgressLabel.displayName = \"ProgressLabel\";\n\nconst ProgressValueText = React.forwardRef<\n  React.ElementRef<typeof ArkProgress.ValueText>,\n  React.ComponentProps<typeof ArkProgress.ValueText>\n>(({ className, ...props }, ref) => (\n  <ArkProgress.ValueText\n    className={cn(valueText(), className)}\n    ref={ref}\n    {...props}\n  />\n));\nProgressValueText.displayName = \"ProgressValueText\";\n\nexport const Progress = {\n  Root: ProgressRoot,\n  Track: ProgressTrack,\n  Range: ProgressRange,\n  Label: ProgressLabel,\n  ValueText: ProgressValueText,\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["progress", "loading", "indicator"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "progress",
+          "loading",
+          "indicator"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -303,8 +451,12 @@
       "type": "components:ui",
       "description": "A radio-group component built with Ark UI",
       "category": "ui",
-      "tags": ["radio-group"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "radio-group"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -312,11 +464,17 @@
           "content": "import { RadioGroup as ArkRadioGroup } from \"@ark-ui/react/radio-group\";\nimport { Circle } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const RadioGroup = (\n  props: React.ComponentProps<typeof ArkRadioGroup.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkRadioGroup.Root className={cn(\"grid gap-3\", className)} {...rest}>\n      <ArkRadioGroup.Indicator />\n\n      {children}\n    </ArkRadioGroup.Root>\n  );\n};\n\nexport const RadioGroupItem = (\n  props: React.ComponentProps<typeof ArkRadioGroup.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkRadioGroup.Item\n      className={cn(\n        \"relative inline-flex items-center gap-2\",\n        \"data-disabled:cursor-not-allowed\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkRadioGroup.ItemControl\n        className={cn(\n          \"group/radio-item\",\n          \"size-4\",\n          \"flex items-center justify-center\",\n          \"bg-background\",\n          \"data-hover:bg-accent\",\n          \"dark:bg-input/30\",\n          \"text-background\",\n          \"rounded-full border\",\n          \"transition-all\"\n        )}\n      >\n        <Circle className=\"size-2.5 fill-primary opacity-0 transition-opacity group-data-[state=checked]/radio-item:opacity-100\" />\n      </ArkRadioGroup.ItemControl>\n\n      <ArkRadioGroup.ItemText\n        className={cn(\"font-medium text-sm\", \"data-disabled:opacity-40\")}\n      >\n        {children}\n      </ArkRadioGroup.ItemText>\n\n      <ArkRadioGroup.ItemHiddenInput />\n    </ArkRadioGroup.Item>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["radio-group"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "radio-group"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -324,8 +482,12 @@
       "type": "components:ui",
       "description": "A select component built with Ark UI",
       "category": "ui",
-      "tags": ["select"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "select"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -333,11 +495,17 @@
           "content": "import { Portal } from \"@ark-ui/react\";\nimport { Select as ArkSelect } from \"@ark-ui/react/select\";\nimport { CheckIcon, ChevronsUpDown, X } from \"lucide-react\";\nimport type React from \"react\";\nimport type { VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\nimport { inputVariants } from \"./input\";\n\nexport const Select = <T,>(\n  props: React.ComponentProps<typeof ArkSelect.Root<T>>\n) => {\n  const { lazyMount = true, unmountOnExit = true, children, ...rest } = props;\n\n  return (\n    <ArkSelect.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    >\n      {children}\n\n      <ArkSelect.HiddenSelect />\n    </ArkSelect.Root>\n  );\n};\n\nexport const SelectControl = (\n  props: React.ComponentProps<typeof ArkSelect.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkSelect.Control className={cn(\"relative\", className)} {...rest} />;\n};\n\ninterface SelectTriggerProps\n  extends React.ComponentProps<typeof ArkSelect.Trigger>,\n    VariantProps<typeof inputVariants> {}\n\nexport const SelectTrigger = (props: SelectTriggerProps) => {\n  const { size = \"md\", className, children, ...rest } = props;\n\n  return (\n    <ArkSelect.Trigger\n      className={cn(\n        inputVariants({ size }),\n        \"w-fit\",\n        \"flex items-center justify-between gap-2\",\n        \"data-[state=open]:border-ring data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32\",\n        \"data-placeholder-shown:text-muted-foreground\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        className\n      )}\n      {...rest}\n    >\n      {children}\n\n      <ArkSelect.Indicator>\n        <ChevronsUpDown />\n      </ArkSelect.Indicator>\n    </ArkSelect.Trigger>\n  );\n};\n\nexport const SelectValueText = (\n  props: React.ComponentProps<typeof ArkSelect.ValueText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSelect.ValueText\n      className={cn(\"line-clamp-1 flex items-center gap-2\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const SelectClearTrigger = (\n  props: React.ComponentProps<typeof ArkSelect.ClearTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSelect.ClearTrigger\n      className={cn(\"-translate-y-1/2 absolute top-1/2 right-8\", className)}\n      {...rest}\n      asChild\n    >\n      <Button\n        className={cn(\n          \"h-6 w-4\",\n          \"text-muted-foreground\",\n          \"hover:bg-transparent hover:text-foreground\"\n        )}\n        variant=\"ghost\"\n      >\n        <X />\n      </Button>\n    </ArkSelect.ClearTrigger>\n  );\n};\n\nexport const SelectContent = (\n  props: React.ComponentProps<typeof ArkSelect.Content>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkSelect.Positioner>\n        <ArkSelect.Content\n          className={cn(\n            \"z-50\",\n            \"relative\",\n            \"max-h-96 min-w-48\",\n            \"p-1\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"rounded-md border shadow-md\",\n            \"overflow-hidden\",\n            \"outline-none\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            className\n          )}\n          {...rest}\n        />\n      </ArkSelect.Positioner>\n    </Portal>\n  );\n};\n\nexport const SelectItemGroup = (\n  props: React.ComponentProps<typeof ArkSelect.ItemGroup>\n) => <ArkSelect.ItemGroup {...props} />;\n\nexport const SelectItemGroupLabel = (\n  props: React.ComponentProps<typeof ArkSelect.ItemGroupLabel>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSelect.ItemGroupLabel\n      className={cn(\n        \"px-2 py-1.5 font-semibold text-muted-foreground text-xs\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const SelectItem = (\n  props: React.ComponentProps<typeof ArkSelect.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkSelect.Item\n      className={cn(\n        \"relative\",\n        \"py-1.5 pr-8 pl-2\",\n        \"text-sm\",\n        \"flex w-full items-center gap-2\",\n        \"rounded-sm\",\n        \"select-none\",\n        \"cursor-default\",\n        \"outline-hidden\",\n        \"data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground\",\n        \"data-highlighted:bg-accent data-highlighted:text-accent-foreground\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-64\",\n        \"[&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkSelect.ItemText>{children}</ArkSelect.ItemText>\n\n      <span className=\"absolute right-2 flex size-3.5 items-center justify-center\">\n        <ArkSelect.ItemIndicator>\n          <CheckIcon />\n        </ArkSelect.ItemIndicator>\n      </span>\n    </ArkSelect.Item>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["select"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "select"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -345,8 +513,12 @@
       "type": "components:ui",
       "description": "A separator component built with Ark UI",
       "category": "ui",
-      "tags": ["separator"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "separator"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -354,11 +526,17 @@
           "content": "import { cn } from \"@/lib/utils\";\n\ninterface SeparatorProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The orientation of the separator.\n   *\n   * @default \"horizontal\"\n   */\n  orientation?: \"horizontal\" | \"vertical\";\n}\n\nexport const Separator = (props: SeparatorProps) => {\n  const { orientation = \"horizontal\", className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"my-4 shrink-0\",\n        \"bg-border\",\n        \"data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full\",\n        \"data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px\",\n        className\n      )}\n      data-orientation={orientation}\n      data-part=\"separator\"\n      data-scope=\"separator\"\n      role=\"none\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["separator"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "separator"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -366,8 +544,12 @@
       "type": "components:ui",
       "description": "A sheet component built with Ark UI",
       "category": "ui",
-      "tags": ["sheet"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "sheet"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -375,11 +557,17 @@
           "content": "import { Dialog as ArkDialog } from \"@ark-ui/react/dialog\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { X } from \"lucide-react\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/react/components/button\";\nimport {\n  Dialog,\n  DialogBackdrop,\n  DialogBody,\n  DialogClose,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  dialogContentVariants,\n} from \"@/registry/react/components/dialog\";\n\nexport const Sheet = (props: React.ComponentProps<typeof ArkDialog.Root>) => (\n  <Dialog data-part=\"sheet\" {...props} />\n);\n\nexport const SheetTrigger = (\n  props: React.ComponentProps<typeof ArkDialog.Trigger>\n) => <ArkDialog.Trigger data-scope=\"sheet\" {...props} />;\n\nconst sheetContentVariants = tv({\n  base: [\n    \"translate-x-0 translate-y-0\",\n    \"rounded-none border-0\",\n    \"data-[state=open]:zoom-in-100\",\n    \"data-[state=closed]:zoom-out-100\",\n  ],\n  variants: {\n    side: {\n      top: [\n        \"inset-x-0 top-0\",\n        \"h-auto w-full sm:max-w-full\",\n        \"data-[state=closed]:slide-out-to-top\",\n        \"data-[state=open]:slide-in-from-top\",\n        \"border-b\",\n      ],\n      bottom: [\n        \"inset-x-0 bottom-0\",\n        \"h-auto w-full sm:max-w-full\",\n        \"data-[state=closed]:slide-out-to-bottom\",\n        \"data-[state=open]:slide-in-from-bottom\",\n        \"border-t\",\n      ],\n      left: [\n        \"inset-y-0 right-auto left-0\",\n        \"h-full w-3/4 sm:max-w-sm\",\n        \"data-[state=closed]:slide-out-to-left\",\n        \"data-[state=open]:slide-in-from-left\",\n        \"border-r\",\n      ],\n      right: [\n        \"inset-y-0 right-0 left-auto\",\n        \"h-full w-3/4 sm:max-w-sm\",\n        \"data-[state=closed]:slide-out-to-right\",\n        \"data-[state=open]:slide-in-from-right\",\n        \"border-l\",\n      ],\n    },\n  },\n  defaultVariants: {\n    side: \"right\",\n  },\n});\n\ninterface SheetContentProps\n  extends React.ComponentProps<typeof ArkDialog.Content>,\n    VariantProps<typeof sheetContentVariants> {\n  /**\n   * Show close button at the top right corner\n   *\n   * @default true\n   */\n  showCloseButton?: boolean;\n}\n\nexport const SheetContent = (props: SheetContentProps) => {\n  const { side, showCloseButton = true, className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <DialogBackdrop data-scope=\"sheet\" />\n\n      <ArkDialog.Positioner data-scope=\"sheet\">\n        <ArkDialog.Content\n          className={cn(\n            dialogContentVariants(),\n            sheetContentVariants({ side }),\n            className\n          )}\n          data-scope=\"sheet\"\n          data-side={side}\n          {...rest}\n        >\n          {children}\n\n          {showCloseButton && (\n            <ArkDialog.CloseTrigger\n              asChild\n              className=\"absolute top-4 right-4\"\n              data-scope=\"sheet\"\n            >\n              <Button\n                className=\"size-8 border-none opacity-70 hover:opacity-100\"\n                size=\"icon-md\"\n                variant=\"ghost\"\n              >\n                <X />\n\n                <span className=\"sr-only\">Close</span>\n              </Button>\n            </ArkDialog.CloseTrigger>\n          )}\n        </ArkDialog.Content>\n      </ArkDialog.Positioner>\n    </Portal>\n  );\n};\n\nexport const SheetBody = (props: React.ComponentProps<\"div\">) => (\n  <DialogBody data-scope=\"sheet\" {...props} />\n);\n\nexport const SheetHeader = (props: React.ComponentProps<\"div\">) => (\n  <DialogHeader data-scope=\"sheet\" {...props} />\n);\n\nexport const SheetTitle = (\n  props: React.ComponentProps<typeof ArkDialog.Title>\n) => <DialogTitle data-scope=\"sheet\" {...props} />;\n\nexport const SheetDescription = (\n  props: React.ComponentProps<typeof ArkDialog.Description>\n) => <DialogDescription data-scope=\"sheet\" {...props} />;\n\nexport const SheetClose = (\n  props: React.ComponentProps<typeof ArkDialog.CloseTrigger>\n) => <DialogClose data-scope=\"sheet\" {...props} />;\n\nexport const SheetFooter = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <DialogFooter\n      className={cn(\"mt-auto flex flex-col gap-2\", className)}\n      data-scope=\"sheet\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["sheet"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "sheet"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -387,8 +575,12 @@
       "type": "components:ui",
       "description": "A sidebar component",
       "category": "ui",
-      "tags": ["sidebar"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "sidebar"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -396,11 +588,17 @@
           "content": "/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */\n/** biome-ignore-all lint/style/noMagicNumbers: <explanation> */\n/** biome-ignore-all lint/nursery/noShadow: <explanation> */\n/** biome-ignore-all lint/suspicious/noDocumentCookie: <explanation> */\n\"use client\";\n\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport { PanelLeftIcon } from \"lucide-react\";\nimport React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { useIsMobile } from \"@/hooks/use-is-mobile\";\nimport { Button } from \"./button\";\nimport { Input } from \"./input\";\nimport { Separator } from \"./separator\";\nimport { Sheet } from \"./sheet\";\nimport { Skeleton } from \"./skeleton\";\nimport { Tooltip } from \"./tooltip\";\n\nconst SIDEBAR_COOKIE_NAME = \"sidebar_state\";\nconst SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;\nconst SIDEBAR_WIDTH = \"16rem\";\nconst SIDEBAR_WIDTH_MOBILE = \"18rem\";\nconst SIDEBAR_WIDTH_ICON = \"3rem\";\nconst SIDEBAR_KEYBOARD_SHORTCUT = \"b\";\n\ntype SidebarContextProps = {\n  state: \"expanded\" | \"collapsed\";\n  open: boolean;\n  setOpen: (open: boolean) => void;\n  openMobile: boolean;\n  setOpenMobile: (open: boolean) => void;\n  isMobile: boolean;\n  toggleSidebar: () => void;\n};\n\nconst SidebarContext = React.createContext<SidebarContextProps | null>(null);\n\nfunction useSidebar() {\n  const context = React.useContext(SidebarContext);\n  if (!context) {\n    throw new Error(\"useSidebar must be used within a SidebarProvider.\");\n  }\n\n  return context;\n}\n\nfunction SidebarProvider({\n  defaultOpen = true,\n  open: openProp,\n  onOpenChange: setOpenProp,\n  className,\n  style,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  defaultOpen?: boolean;\n  open?: boolean;\n  onOpenChange?: (open: boolean) => void;\n}) {\n  const isMobile = useIsMobile();\n  const [openMobile, setOpenMobile] = React.useState(false);\n\n  // This is the internal state of the sidebar.\n  // We use openProp and setOpenProp for control from outside the component.\n  const [_open, _setOpen] = React.useState(defaultOpen);\n  const open = openProp ?? _open;\n  const setOpen = React.useCallback(\n    (value: boolean | ((value: boolean) => boolean)) => {\n      const openState = typeof value === \"function\" ? value(open) : value;\n      if (setOpenProp) {\n        setOpenProp(openState);\n      } else {\n        _setOpen(openState);\n      }\n\n      // This sets the cookie to keep the sidebar state.\n      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;\n    },\n    [setOpenProp, open]\n  );\n\n  // Helper to toggle the sidebar.\n  const toggleSidebar = React.useCallback(\n    () =>\n      isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open),\n    [isMobile, setOpen, setOpenMobile]\n  );\n\n  // Adds a keyboard shortcut to toggle the sidebar.\n  React.useEffect(() => {\n    const handleKeyDown = (event: KeyboardEvent) => {\n      if (\n        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&\n        (event.metaKey || event.ctrlKey)\n      ) {\n        event.preventDefault();\n        toggleSidebar();\n      }\n    };\n\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [toggleSidebar]);\n\n  // We add a state so that we can do data-state=\"expanded\" or \"collapsed\".\n  // This makes it easier to style the sidebar with Tailwind classes.\n  const state = open ? \"expanded\" : \"collapsed\";\n\n  const contextValue = React.useMemo<SidebarContextProps>(\n    () => ({\n      state,\n      open,\n      setOpen,\n      isMobile,\n      openMobile,\n      setOpenMobile,\n      toggleSidebar,\n    }),\n    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]\n  );\n\n  return (\n    <SidebarContext.Provider value={contextValue}>\n      <div\n        className={cn(\n          \"group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar\",\n          className\n        )}\n        data-slot=\"sidebar-wrapper\"\n        style={\n          {\n            \"--sidebar-width\": SIDEBAR_WIDTH,\n            \"--sidebar-width-icon\": SIDEBAR_WIDTH_ICON,\n            ...style,\n          } as React.CSSProperties\n        }\n        {...props}\n      >\n        {children}\n      </div>\n    </SidebarContext.Provider>\n  );\n}\n\nfunction Sidebar({\n  side = \"left\",\n  variant = \"sidebar\",\n  collapsible = \"offcanvas\",\n  className,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  side?: \"left\" | \"right\";\n  variant?: \"sidebar\" | \"floating\" | \"inset\";\n  collapsible?: \"offcanvas\" | \"icon\" | \"none\";\n}) {\n  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();\n\n  if (collapsible === \"none\") {\n    return (\n      <div\n        className={cn(\n          \"flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground\",\n          className\n        )}\n        data-slot=\"sidebar\"\n        {...props}\n      >\n        {children}\n      </div>\n    );\n  }\n\n  if (isMobile) {\n    return (\n      <Sheet.Root onOpenChange={setOpenMobile} open={openMobile} {...props}>\n        <Sheet.Content\n          className=\"w-(--sidebar-width) bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden\"\n          data-mobile=\"true\"\n          data-sidebar=\"sidebar\"\n          data-slot=\"sidebar\"\n          style={\n            {\n              \"--sidebar-width\": SIDEBAR_WIDTH_MOBILE,\n            } as React.CSSProperties\n          }\n        >\n          <Sheet.Header className=\"sr-only\">\n            <Sheet.Title>Sidebar</Sheet.Title>\n            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>\n          </Sheet.Header>\n          <div className=\"flex size-full flex-col\">{children}</div>\n        </Sheet.Content>\n      </Sheet.Root>\n    );\n  }\n\n  return (\n    <div\n      className=\"group peer hidden text-sidebar-foreground md:block\"\n      data-collapsible={state === \"collapsed\" ? collapsible : \"\"}\n      data-side={side}\n      data-slot=\"sidebar\"\n      data-state={state}\n      data-variant={variant}\n    >\n      {/* This is what handles the sidebar gap on desktop */}\n      <div\n        className={cn(\n          \"relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear\",\n          \"group-data-[collapsible=offcanvas]:w-0\",\n          \"group-data-[side=right]:rotate-180\",\n          variant === \"floating\" || variant === \"inset\"\n            ? \"group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]\"\n            : \"group-data-[collapsible=icon]:w-(--sidebar-width-icon)\"\n        )}\n        data-slot=\"sidebar-gap\"\n      />\n      <div\n        className={cn(\n          \"fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex\",\n          side === \"left\"\n            ? \"left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]\"\n            : \"right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]\",\n          // Adjust the padding for floating and inset variants.\n          variant === \"floating\" || variant === \"inset\"\n            ? \"p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]\"\n            : \"group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l\",\n          className\n        )}\n        data-slot=\"sidebar-container\"\n        {...props}\n      >\n        <div\n          className=\"flex size-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow-sm\"\n          data-sidebar=\"sidebar\"\n          data-slot=\"sidebar-inner\"\n        >\n          {children}\n        </div>\n      </div>\n    </div>\n  );\n}\n\nfunction SidebarTrigger({\n  className,\n  onClick,\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  const { toggleSidebar } = useSidebar();\n\n  return (\n    <Button\n      className={cn(\"size-7\", className)}\n      data-sidebar=\"trigger\"\n      data-slot=\"sidebar-trigger\"\n      onClick={(event) => {\n        onClick?.(event);\n        toggleSidebar();\n      }}\n      size=\"icon\"\n      variant=\"ghost\"\n      {...props}\n    >\n      <PanelLeftIcon />\n      <span className=\"sr-only\">Toggle Sidebar</span>\n    </Button>\n  );\n}\n\nfunction SidebarRail({ className, ...props }: React.ComponentProps<\"button\">) {\n  const { toggleSidebar } = useSidebar();\n\n  return (\n    <button\n      aria-label=\"Toggle Sidebar\"\n      className={cn(\n        \"-translate-x-1/2 group-data-[side=left]:-right-4 absolute inset-y-0 z-20 hidden w-4 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=right]:left-0 sm:flex\",\n        \"in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize\",\n        \"[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize\",\n        \"group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:after:left-full\",\n        \"[[data-side=left][data-collapsible=offcanvas]_&]:-right-2\",\n        \"[[data-side=right][data-collapsible=offcanvas]_&]:-left-2\",\n        className\n      )}\n      data-sidebar=\"rail\"\n      data-slot=\"sidebar-rail\"\n      onClick={toggleSidebar}\n      tabIndex={-1}\n      title=\"Toggle Sidebar\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarInset({ className, ...props }: React.ComponentProps<\"main\">) {\n  return (\n    <main\n      className={cn(\n        \"relative flex w-full flex-1 flex-col bg-background\",\n        \"md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm\",\n        className\n      )}\n      data-slot=\"sidebar-inset\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof Input>) {\n  return (\n    <Input\n      className={cn(\"h-8 w-full bg-background shadow-none\", className)}\n      data-sidebar=\"input\"\n      data-slot=\"sidebar-input\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-2\", className)}\n      data-sidebar=\"header\"\n      data-slot=\"sidebar-header\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col gap-2 p-2\", className)}\n      data-sidebar=\"footer\"\n      data-slot=\"sidebar-footer\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof Separator>) {\n  return (\n    <Separator\n      className={cn(\"mx-2 w-auto bg-sidebar-border\", className)}\n      data-sidebar=\"separator\"\n      data-slot=\"sidebar-separator\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden\",\n        className\n      )}\n      data-sidebar=\"content\"\n      data-slot=\"sidebar-content\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"relative flex w-full min-w-0 flex-col p-2\", className)}\n      data-sidebar=\"group\"\n      data-slot=\"sidebar-group\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupLabel({\n  className,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"div\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"div\";\n\n  return (\n    <Comp\n      className={cn(\n        \"flex h-8 shrink-0 items-center rounded-md px-2 font-medium text-sidebar-foreground/70 text-xs outline-hidden ring-sidebar-ring transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&_svg]:size-4 [&_svg]:shrink-0\",\n        \"group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0\",\n        className\n      )}\n      data-sidebar=\"group-label\"\n      data-slot=\"sidebar-group-label\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupAction({\n  className,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"button\"> & { asChild?: boolean }) {\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(\n        \"absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&_svg]:size-4 [&_svg]:shrink-0\",\n        // Increases the hit area of the button on mobile.\n        \"after:-inset-2 after:absolute md:after:hidden\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"group-action\"\n      data-slot=\"sidebar-group-action\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarGroupContent({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"w-full text-sm\", className)}\n      data-sidebar=\"group-content\"\n      data-slot=\"sidebar-group-content\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenu({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      className={cn(\"flex w-full min-w-0 flex-col gap-1\", className)}\n      data-sidebar=\"menu\"\n      data-slot=\"sidebar-menu\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuItem({ className, ...props }: React.ComponentProps<\"li\">) {\n  return (\n    <li\n      className={cn(\"group/menu-item relative\", className)}\n      data-sidebar=\"menu-item\"\n      data-slot=\"sidebar-menu-item\"\n      {...props}\n    />\n  );\n}\n\nconst sidebarMenuButtonVariants = tv({\n  base: \"peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-64 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-64 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0\",\n  variants: {\n    variant: {\n      default: \"hover:bg-sidebar-accent hover:text-sidebar-accent-foreground\",\n      outline:\n        \"bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]\",\n    },\n    size: {\n      default: \"h-8 text-sm\",\n      sm: \"h-7 text-xs\",\n      lg: \"h-12 text-sm group-data-[collapsible=icon]:p-0!\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n  },\n});\n\nfunction SidebarMenuButton({\n  asChild = false,\n  isActive = false,\n  variant = \"default\",\n  size = \"default\",\n  tooltip,\n  className,\n  ...props\n}: React.ComponentProps<\"button\"> & {\n  asChild?: boolean;\n  isActive?: boolean;\n  tooltip?: string | React.ComponentProps<typeof Tooltip.Content>;\n} & VariantProps<typeof sidebarMenuButtonVariants>) {\n  const Comp = asChild ? Slot : \"button\";\n  const { isMobile, state } = useSidebar();\n\n  const button = (\n    <Comp\n      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}\n      data-active={isActive}\n      data-sidebar=\"menu-button\"\n      data-size={size}\n      data-slot=\"sidebar-menu-button\"\n      {...props}\n    />\n  );\n\n  if (!tooltip) {\n    return button;\n  }\n\n  if (typeof tooltip === \"string\") {\n    tooltip = {\n      children: tooltip,\n    };\n  }\n\n  return (\n    <Tooltip.Root>\n      <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>\n      <Tooltip.Content\n        hidden={state !== \"collapsed\" || isMobile}\n        {...tooltip}\n      />\n    </Tooltip.Root>\n  );\n}\n\nfunction SidebarMenuAction({\n  className,\n  asChild = false,\n  showOnHover = false,\n  ...props\n}: React.ComponentProps<\"button\"> & {\n  asChild?: boolean;\n  showOnHover?: boolean;\n}) {\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      className={cn(\n        \"absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-hidden ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&_svg]:size-4 [&_svg]:shrink-0\",\n        // Increases the hit area of the button on mobile.\n        \"after:-inset-2 after:absolute md:after:hidden\",\n        \"peer-data-[size=sm]/menu-button:top-1\",\n        \"peer-data-[size=default]/menu-button:top-1.5\",\n        \"peer-data-[size=lg]/menu-button:top-2.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        showOnHover &&\n          \"group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0\",\n        className\n      )}\n      data-sidebar=\"menu-action\"\n      data-slot=\"sidebar-menu-action\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuBadge({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 font-medium text-sidebar-foreground text-xs tabular-nums\",\n        \"peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground\",\n        \"peer-data-[size=sm]/menu-button:top-1\",\n        \"peer-data-[size=default]/menu-button:top-1.5\",\n        \"peer-data-[size=lg]/menu-button:top-2.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"menu-badge\"\n      data-slot=\"sidebar-menu-badge\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSkeleton({\n  className,\n  showIcon = false,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  showIcon?: boolean;\n}) {\n  // Random width between 50 to 90%.\n  const width = React.useMemo(\n    () => `${Math.floor(Math.random() * 40) + 50}%`,\n    []\n  );\n\n  return (\n    <div\n      className={cn(\"flex h-8 items-center gap-2 rounded-md px-2\", className)}\n      data-sidebar=\"menu-skeleton\"\n      data-slot=\"sidebar-menu-skeleton\"\n      {...props}\n    >\n      {showIcon && (\n        <Skeleton\n          className=\"size-4 rounded-md\"\n          data-sidebar=\"menu-skeleton-icon\"\n        />\n      )}\n      <Skeleton\n        className=\"h-4 max-w-(--skeleton-width) flex-1\"\n        data-sidebar=\"menu-skeleton-text\"\n        style={\n          {\n            \"--skeleton-width\": width,\n          } as React.CSSProperties\n        }\n      />\n    </div>\n  );\n}\n\nfunction SidebarMenuSub({ className, ...props }: React.ComponentProps<\"ul\">) {\n  return (\n    <ul\n      className={cn(\n        \"mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-sidebar-border border-l px-2.5 py-0.5\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-sidebar=\"menu-sub\"\n      data-slot=\"sidebar-menu-sub\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSubItem({\n  className,\n  ...props\n}: React.ComponentProps<\"li\">) {\n  return (\n    <li\n      className={cn(\"group/menu-sub-item relative\", className)}\n      data-sidebar=\"menu-sub-item\"\n      data-slot=\"sidebar-menu-sub-item\"\n      {...props}\n    />\n  );\n}\n\nfunction SidebarMenuSubButton({\n  asChild = false,\n  size = \"md\",\n  isActive = false,\n  className,\n  ...props\n}: React.ComponentProps<\"a\"> & {\n  asChild?: boolean;\n  size?: \"sm\" | \"md\";\n  isActive?: boolean;\n}) {\n  const Comp = asChild ? Slot : \"a\";\n\n  return (\n    <Comp\n      className={cn(\n        \"-translate-x-px flex h-7 min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-hidden ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-64 aria-disabled:pointer-events-none aria-disabled:opacity-64 [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-sidebar-accent-foreground\",\n        \"data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground\",\n        size === \"sm\" && \"text-xs\",\n        size === \"md\" && \"text-sm\",\n        \"group-data-[collapsible=icon]:hidden\",\n        className\n      )}\n      data-active={isActive}\n      data-sidebar=\"menu-sub-button\"\n      data-size={size}\n      data-slot=\"sidebar-menu-sub-button\"\n      {...props}\n    />\n  );\n}\n\nexport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarGroup,\n  SidebarGroupAction,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarHeader,\n  SidebarInput,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuAction,\n  SidebarMenuBadge,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarMenuSkeleton,\n  SidebarMenuSub,\n  SidebarMenuSubButton,\n  SidebarMenuSubItem,\n  SidebarProvider,\n  SidebarRail,\n  SidebarSeparator,\n  SidebarTrigger,\n  useSidebar,\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["sidebar"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "sidebar"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -408,8 +606,12 @@
       "type": "components:ui",
       "description": "A skeleton component built with Ark UI",
       "category": "ui",
-      "tags": ["skeleton"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "skeleton"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -417,11 +619,17 @@
           "content": "import { cn } from \"@/lib/utils\";\n\nexport const Skeleton = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-accent\", className)}\n      data-part=\"skeleton\"\n      data-scope=\"skeleton\"\n      {...rest}\n    />\n  );\n};\n\nexport const SkeletonCircle = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"size-10 shrink-0 animate-pulse rounded-full bg-accent\",\n        className\n      )}\n      data-part=\"skeleton-circle\"\n      data-scope=\"skeleton\"\n      {...rest}\n    />\n  );\n};\n\ninterface SkeletonTextProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The number of lines of the skeleton text.\n   *\n   * @default 1\n   */\n  lines?: number;\n}\n\nexport const SkeletonText = (props: SkeletonTextProps) => {\n  const { className, lines = 1, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\"flex w-full animate-pulse flex-col gap-2\", className)}\n      data-part=\"skeleton-text\"\n      data-scope=\"skeleton\"\n      {...rest}\n    >\n      {Array.from({ length: lines }).map((_, index) => (\n        <div\n          className=\"h-4 w-full rounded-md bg-accent last:w-3/4\"\n          key={index}\n        />\n      ))}\n    </div>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["skeleton"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "skeleton"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -429,8 +637,12 @@
       "type": "components:ui",
       "description": "A slider component built with Ark UI",
       "category": "ui",
-      "tags": ["slider"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "slider"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -438,11 +650,17 @@
           "content": "import { Slider as ArkSlider } from \"@ark-ui/react/slider\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Slider = (props: React.ComponentProps<typeof ArkSlider.Root>) => {\n  const { value, defaultValue, min = 0, max = 100, children, ...rest } = props;\n\n  const _values = React.useMemo(\n    () =>\n      Array.isArray(value)\n        ? value\n        : Array.isArray(defaultValue)\n          ? defaultValue\n          : [min, max],\n    [value, defaultValue, min, max]\n  );\n\n  return (\n    <ArkSlider.Root\n      className=\"flex w-full flex-col gap-1\"\n      defaultValue={defaultValue}\n      max={max}\n      min={min}\n      value={value}\n      {...rest}\n    >\n      <ArkSlider.Control className=\"relative flex h-4 items-center\">\n        <ArkSlider.Track\n          className={cn(\"h-1.5 flex-1 overflow-hidden rounded-full bg-muted\")}\n        >\n          <ArkSlider.Range\n            className={cn(\n              \"absolute\",\n              \"bg-primary\",\n              \"data-[orientation=horizontal]:h-full\",\n              'data-[orientation=vertical]:w-full\"'\n            )}\n          />\n        </ArkSlider.Track>\n\n        {Array.from({ length: _values.length }, (_, index) => (\n          <ArkSlider.Thumb\n            className={cn(\n              \"relative\",\n              \"size-4\",\n              \"border\",\n              \"bg-primary\",\n              \"rounded-full\",\n              \"transition-[color,box-shadow]\",\n              \"shadow-sm\",\n              \"ring-ring/32\",\n              \"data-dragging:ring-4\",\n              \"hover:ring-4\",\n              \"focus-visible:outline-hidden focus-visible:ring-4\",\n              \"disabled:pointer-events-none disabled:opacity-64\"\n            )}\n            index={index}\n            key={index}\n          >\n            <ArkSlider.HiddenInput />\n          </ArkSlider.Thumb>\n        ))}\n      </ArkSlider.Control>\n\n      {children}\n    </ArkSlider.Root>\n  );\n};\n\nexport const SliderValueText = (\n  props: React.ComponentProps<typeof ArkSlider.ValueText>\n) => <ArkSlider.ValueText {...props} />;\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["slider"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "slider"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -450,8 +668,12 @@
       "type": "components:ui",
       "description": "A switch component built with Ark UI",
       "category": "ui",
-      "tags": ["switch"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "switch"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -459,11 +681,17 @@
           "content": "import { Switch as ArkSwitch } from \"@ark-ui/react/switch\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSwitch.Root\n      className={cn(\n        \"peer\",\n        \"h-[1.15rem] w-8\",\n        \"inline-flex shrink-0 items-center\",\n        \"rounded-full border border-transparent shadow-xs\",\n        \"transition-all\",\n        \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        \"disabled:cursor-not-allowed disabled:opacity-64\",\n        \"data-[state=checked]:bg-primary\",\n        \"data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkSwitch.Control>\n        <ArkSwitch.Thumb\n          className={cn(\n            \"block\",\n            \"size-4\",\n            \"pointer-events-none\",\n            \"bg-background\",\n            \"rounded-full\",\n            \"transition-transform\",\n            \"ring-0\",\n            \"data-[state=checked]:translate-x-[calc(100%-2px)] dark:data-[state=checked]:bg-primary-foreground\",\n            \"dark:data-[state=unchecked]:bg-foreground\",\n            \"data-[state=unchecked]:translate-x-0\"\n          )}\n        />\n      </ArkSwitch.Control>\n\n      <ArkSwitch.HiddenInput />\n    </ArkSwitch.Root>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["switch"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "switch"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -471,8 +699,12 @@
       "type": "components:ui",
       "description": "A tabs component built with Ark UI",
       "category": "ui",
-      "tags": ["tabs"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "tabs"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -480,11 +712,17 @@
           "content": "import { Tabs as ArkTabs } from \"@ark-ui/react/tabs\";\nimport { cn } from \"fumadocs-ui/utils/cn\";\nimport type React from \"react\";\n\nexport const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {\n  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;\n\n  return (\n    <ArkTabs.Root\n      className={cn(\"flex flex-col gap-2\", className)}\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsList = (props: React.ComponentProps<typeof ArkTabs.List>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.List\n      className={cn(\n        \"relative\",\n        \"h-9 w-fit p-1\",\n        \"inline-flex items-center justify-center\",\n        \"bg-muted\",\n        \"text-muted-foreground\",\n        \"rounded-lg\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsTrigger = (\n  props: React.ComponentProps<typeof ArkTabs.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.Trigger\n      className={cn(\n        \"h-[calc(100%-1px)] px-2 py-1\",\n        \"inline-flex flex-1 items-center justify-center gap-1.5\",\n        \"whitespace-nowrap font-medium text-muted-foreground text-sm\",\n        \"rounded-md border border-transparent\",\n        \"transition-[color,box-shadow]\",\n        \"focus-visible:border-primary focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        \"disabled:pointer-events-none disabled:opacity-64\",\n        \"aria-selected:text-foreground\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsIndicator = (\n  props: React.ComponentProps<typeof ArkTabs.Indicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.Indicator\n      className={cn(\n        \"absolute bottom-0 h-0.5 w-(--width) bg-primary\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TabsContent = (\n  props: React.ComponentProps<typeof ArkTabs.Content>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTabs.Content\n      className={cn(\"flex-1 outline-none\", className)}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["tabs"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "tabs"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -492,8 +730,12 @@
       "type": "components:ui",
       "description": "A textarea component built with Ark UI",
       "category": "ui",
-      "tags": ["textarea"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "textarea"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -501,11 +743,17 @@
           "content": "import { Field as ArkField } from \"@ark-ui/react/field\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Textarea = (\n  props: React.ComponentProps<typeof ArkField.Textarea>\n) => {\n  const { autoresize = true, className, ...rest } = props;\n\n  return (\n    <ArkField.Textarea\n      autoresize={autoresize}\n      className={cn(\n        \"field-sizing-content min-h-16 w-full\",\n        \"flex\",\n        \"px-3 py-2\",\n        \"bg-transparent\",\n        \"text-base md:text-sm\",\n        \"rounded-md border border-input shadow-xs\",\n        \"placeholder:text-muted-foreground\",\n        \"outline-none transition-[color,box-shadow]\",\n        \"focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        \"disabled:cursor-not-allowed disabled:opacity-64\",\n        \"aria-invalid:border-destructive aria-invalid:ring-destructive/24\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["textarea"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "textarea"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -513,8 +761,12 @@
       "type": "components:ui",
       "description": "A tooltip component built with Ark UI",
       "category": "ui",
-      "tags": ["tooltip"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "tooltip"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -522,11 +774,17 @@
           "content": "import { Portal } from \"@ark-ui/react\";\nimport { Tooltip as ArkTooltip } from \"@ark-ui/react/tooltip\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Tooltip = (\n  props: React.ComponentProps<typeof ArkTooltip.Root>\n) => {\n  const {\n    positioning = {\n      placement: \"top\",\n    },\n    lazyMount = true,\n    unmountOnExit = true,\n    closeDelay = 100,\n    openDelay = 0,\n    ...rest\n  } = props;\n\n  return (\n    <ArkTooltip.Root\n      closeDelay={closeDelay}\n      lazyMount={lazyMount}\n      openDelay={openDelay}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const TooltipTrigger = (\n  props: React.ComponentProps<typeof ArkTooltip.Trigger>\n) => <ArkTooltip.Trigger {...props} />;\n\nexport const TooltipContent = (\n  props: React.ComponentProps<typeof ArkTooltip.Content>\n) => {\n  const { className, children, ...rest } = props;\n  return (\n    <Portal>\n      <ArkTooltip.Positioner>\n        <ArkTooltip.Content\n          className={cn(\n            \"z-50 w-fit origin-(--transform-origin)\",\n            \"px-3 py-1.5\",\n            \"bg-foreground\",\n            \"rounded-md\",\n            \" text-background text-xs\",\n            \"animate-in\",\n            \"fade-in-0 zoom-in-95\",\n            \"data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95\",\n            \"data-[state=closed]:animate-out\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <TooltipArrow />\n\n          {children}\n        </ArkTooltip.Content>\n      </ArkTooltip.Positioner>\n    </Portal>\n  );\n};\n\nexport const TooltipArrow = (\n  props: React.ComponentProps<typeof ArkTooltip.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkTooltip.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--foreground)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkTooltip.ArrowTip />\n    </ArkTooltip.Arrow>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["tooltip"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "tooltip"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -534,8 +792,12 @@
       "type": "components:ui",
       "description": "A carousel component built with Ark UI",
       "category": "ui",
-      "tags": ["carousel"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "carousel"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -543,11 +805,17 @@
           "content": "\"use client\";\n\nimport { Carousel as ArkCarousel } from \"@ark-ui/react/carousel\";\nimport { ChevronLeftIcon, ChevronRightIcon } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/react/components/button\";\n\nexport const Carousel = (\n  props: React.ComponentProps<typeof ArkCarousel.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkCarousel.Root className={cn(\"relative\", className)} {...rest} />;\n};\n\nexport const CarouselControl = (\n  props: React.ComponentProps<typeof ArkCarousel.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkCarousel.Control className={cn(className)} {...rest} />;\n};\n\nexport const CarouselPrevious = (\n  props: React.ComponentProps<typeof ArkCarousel.PrevTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.PrevTrigger\n      className={cn(\"-left-12 -translate-y-1/2 absolute top-1/2\", className)}\n      {...rest}\n      asChild\n    >\n      <Button className=\"rounded-full\" size=\"icon-sm\">\n        <ChevronLeftIcon />\n        <span className=\"sr-only\">Previous</span>\n      </Button>\n    </ArkCarousel.PrevTrigger>\n  );\n};\n\nexport const CarouselNext = (\n  props: React.ComponentProps<typeof ArkCarousel.NextTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.NextTrigger\n      className={cn(\"-right-12 -translate-y-1/2 absolute top-1/2\", className)}\n      {...rest}\n      asChild\n    >\n      <Button className=\"rounded-full\" size=\"icon-sm\">\n        <ChevronRightIcon />\n        <span className=\"sr-only\">Next</span>\n      </Button>\n    </ArkCarousel.NextTrigger>\n  );\n};\n\nexport const CarouselIndicatorGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.IndicatorGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.IndicatorGroup\n      className={cn(\n        \"-translate-x-1/2 absolute bottom-2 left-1/2\",\n        \"flex gap-2\",\n        \"px-3 py-3\",\n        \"bg-background/80 backdrop-blur-sm\",\n        \"rounded-lg\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselIndicator = (\n  props: React.ComponentProps<typeof ArkCarousel.Indicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Indicator\n      className={cn(\n        \"size-2\",\n        \"bg-foreground\",\n        \"opacity-64 data-current:opacity-100\",\n        \"rounded-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const CarouselItemGroup = (\n  props: React.ComponentProps<typeof ArkCarousel.ItemGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkCarousel.ItemGroup className={cn(\"flex\", className)} {...rest} />;\n};\n\nexport const CarouselItem = (\n  props: React.ComponentProps<typeof ArkCarousel.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCarousel.Item\n      className={cn(\"min-w-0 shrink-0 grow-0 basis-full\", className)}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["carousel"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "carousel"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -555,8 +823,12 @@
       "type": "components:ui",
       "description": "A clipboard component built with Ark UI",
       "category": "ui",
-      "tags": ["clipboard"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "clipboard"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -564,11 +836,17 @@
           "content": "import { Clipboard as ArkClipboard } from \"@ark-ui/react/clipboard\";\nimport { Check, ClipboardCopy } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Clipboard = (\n  props: React.ComponentProps<typeof ArkClipboard.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Root {...rest}>\n      <ArkClipboard.Control\n        className={cn(\"flex items-center gap-2\", className)}\n      >\n        {children}\n      </ArkClipboard.Control>\n    </ArkClipboard.Root>\n  );\n};\n\nexport const ClipboardContext = (\n  props: React.ComponentProps<typeof ArkClipboard.Context>\n) => <ArkClipboard.Context {...props} />;\n\nexport const ClipboardTrigger = (\n  props: React.ComponentProps<typeof ArkClipboard.Trigger>\n) => <ArkClipboard.Trigger {...props} />;\n\nexport const ClipboardInput = (\n  props: React.ComponentProps<typeof ArkClipboard.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Input {...rest} asChild={!children}>\n      {children || <Input />}\n    </ArkClipboard.Input>\n  );\n};\n\nexport const ClipboardIndicator = (\n  props: React.ComponentProps<typeof ArkClipboard.Indicator>\n) => {\n  const { copied = <CheckIcon />, children, ...rest } = props;\n\n  return (\n    <ArkClipboard.Indicator {...rest} copied={copied}>\n      {children || <ClipboardCopy />}\n    </ArkClipboard.Indicator>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["clipboard"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "clipboard"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -576,8 +854,12 @@
       "type": "components:ui",
       "description": "A collapsible component built with Ark UI",
       "category": "ui",
-      "tags": ["collapsible"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "collapsible"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -585,11 +867,17 @@
           "content": "import { Collapsible as ArkCollapsible } from \"@ark-ui/react/collapsible\";\nimport { ChevronDown } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Collapsible = (\n  props: React.ComponentProps<typeof ArkCollapsible.Root>\n) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkCollapsible.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const CollapsibleTrigger = (\n  props: React.ComponentProps<typeof ArkCollapsible.Trigger>\n) => <ArkCollapsible.Trigger {...props} />;\n\nexport const CollapsibleContent = (\n  props: React.ComponentProps<typeof ArkCollapsible.Content>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCollapsible.Content\n      className={cn(\n        \"overflow-hidden\",\n        \"data-[state=closed]:animate-in data-[state=open]:animate-out\",\n        \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n        \"data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const CollapsibleIndicator = (\n  props: React.ComponentProps<typeof ArkCollapsible.Indicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCollapsible.Indicator\n      className={cn(\"data-[state=open]:[&_svg]:rotate-180\", className)}\n      {...rest}\n    >\n      <ChevronDown className=\"transition-transform duration-200\" />\n    </ArkCollapsible.Indicator>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["collapsible"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "collapsible"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -597,8 +885,12 @@
       "type": "components:ui",
       "description": "A combobox component built with Ark UI",
       "category": "ui",
-      "tags": ["combobox"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "combobox"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -606,11 +898,17 @@
           "content": "import { Combobox as ArkCombobox } from \"@ark-ui/react/combobox\";\nimport { Portal } from \"@ark-ui/react/portal\";\nimport { CheckIcon, ChevronDownIcon, X } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\nimport { Input } from \"./input\";\n\nexport const Combobox = <T,>(\n  props: React.ComponentProps<typeof ArkCombobox.Root<T>>\n) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkCombobox.Root\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const ComboboxControl = (\n  props: React.ComponentProps<typeof ArkCombobox.Control>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCombobox.Control className={cn(\"relative\", className)} {...rest} />\n  );\n};\n\ninterface ComboboxInputProps\n  extends Omit<React.ComponentProps<typeof ArkCombobox.Input>, \"size\">,\n    React.ComponentProps<typeof Input> {}\n\nexport const ComboboxInput = (props: ComboboxInputProps) => {\n  const { size, className, ...rest } = props;\n\n  return (\n    <ArkCombobox.Input asChild {...rest}>\n      <Input className={cn(\"pr-20\", className)} size={size} />\n    </ArkCombobox.Input>\n  );\n};\n\nexport const ComboboxTrigger = (\n  props: React.ComponentProps<typeof ArkCombobox.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCombobox.Trigger\n      className={cn(\"absolute inset-y-0 right-1\", className)}\n      {...rest}\n      asChild\n    >\n      <Button\n        className={cn(\n          \"h-full w-4\",\n          \"px-2\",\n          \"text-muted-foreground\",\n          \"hover:bg-transparent hover:text-foreground\"\n        )}\n        variant=\"ghost\"\n      >\n        <ChevronDownIcon />\n      </Button>\n    </ArkCombobox.Trigger>\n  );\n};\n\nexport const ComboboxClearTrigger = (\n  props: React.ComponentProps<typeof ArkCombobox.ClearTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCombobox.ClearTrigger\n      className={cn(\"absolute inset-y-0 right-8\", className)}\n      {...rest}\n      asChild\n    >\n      <Button\n        className={cn(\n          \"h-full w-4\",\n          \"px-2\",\n          \"text-muted-foreground\",\n          \"hover:bg-transparent hover:text-foreground\"\n        )}\n        variant=\"ghost\"\n      >\n        <X />\n      </Button>\n    </ArkCombobox.ClearTrigger>\n  );\n};\n\nexport const ComboboxContent = (\n  props: React.ComponentProps<typeof ArkCombobox.Content>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkCombobox.Positioner>\n        <ArkCombobox.Content\n          className={cn(\n            \"relative z-50\",\n            \"max-h-96 min-w-48\",\n            \"origin-(--transform-origin)\",\n            \"p-1\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"rounded-md border shadow-md\",\n            \"overflow-hidden\",\n            \"outline-none\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            className\n          )}\n          {...rest}\n        >\n          {children}\n        </ArkCombobox.Content>\n      </ArkCombobox.Positioner>\n    </Portal>\n  );\n};\n\nexport const ComboboxItemGroup = (\n  props: React.ComponentProps<typeof ArkCombobox.ItemGroup>\n) => <ArkCombobox.ItemGroup {...props} />;\n\nexport const ComboboxItemGroupLabel = (\n  props: React.ComponentProps<typeof ArkCombobox.ItemGroupLabel>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkCombobox.ItemGroupLabel\n      className={cn(\n        \"px-2 py-1.5 font-semibold text-muted-foreground text-xs\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const ComboboxItem = (\n  props: React.ComponentProps<typeof ArkCombobox.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkCombobox.Item\n      className={cn(\n        \"relative\",\n        \"py-1.5 pr-8 pl-2\",\n        \"text-sm\",\n        \"flex w-full items-center gap-2\",\n        \"rounded-sm\",\n        \"select-none\",\n        \"cursor-default\",\n        \"outline-hidden\",\n        \"data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground\",\n        \"data-highlighted:bg-accent data-highlighted:text-accent-foreground\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-64\",\n        \"[&_svg]:pointer-events-none [&_svg]:shrink-0\",\n        \"[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground\",\n        className\n      )}\n      {...rest}\n    >\n      <ArkCombobox.ItemText>{children}</ArkCombobox.ItemText>\n\n      <span className=\"absolute right-2 flex size-3.5 items-center justify-center\">\n        <ArkCombobox.ItemIndicator>\n          <CheckIcon />\n        </ArkCombobox.ItemIndicator>\n      </span>\n    </ArkCombobox.Item>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["combobox"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "combobox"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -618,8 +916,12 @@
       "type": "components:ui",
       "description": "A context-menu component built with Ark UI",
       "category": "ui",
-      "tags": ["context-menu"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "context-menu"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -627,11 +929,17 @@
           "content": "import { Menu as ArkMenu } from \"@ark-ui/react/menu\";\nimport type React from \"react\";\nimport {\n  Menu,\n  MenuContent,\n  MenuItem,\n  MenuItemGroup,\n  MenuItemGroupLabel,\n  MenuSeparator,\n  MenuShortcut,\n  MenuSub,\n  MenuSubContent,\n  MenuSubTrigger,\n} from \"@/registry/react/components/menu\";\n\nexport const ContextMenu = (props: React.ComponentProps<typeof Menu>) => (\n  <Menu data-part=\"root\" data-scope=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuTrigger = (\n  props: React.ComponentProps<typeof ArkMenu.ContextTrigger>\n) => (\n  <ArkMenu.ContextTrigger\n    data-part=\"trigger\"\n    data-scope=\"context-menu\"\n    {...props}\n  />\n);\n\nexport const ContextMenuContent = (\n  props: React.ComponentProps<typeof MenuContent>\n) => <MenuContent data-part=\"content\" data-scope=\"context-menu\" {...props} />;\n\nexport const ContextMenuItemGroup = (\n  props: React.ComponentProps<typeof MenuItemGroup>\n) => (\n  <MenuItemGroup data-part=\"item-group\" data-scope=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuItemGroupLabel = (\n  props: React.ComponentProps<typeof MenuItemGroupLabel>\n) => (\n  <MenuItemGroupLabel\n    data-part=\"item-group-label\"\n    data-scope=\"context-menu\"\n    {...props}\n  />\n);\n\nexport const ContextMenuSeparator = (\n  props: React.ComponentProps<typeof MenuSeparator>\n) => (\n  <MenuSeparator data-part=\"separator\" data-scope=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuItem = (\n  props: React.ComponentProps<typeof MenuItem>\n) => <MenuItem data-part=\"item\" data-scope=\"context-menu\" {...props} />;\n\nexport const ContextMenuSub = (props: React.ComponentProps<typeof MenuSub>) => (\n  <MenuSub data-part=\"sub\" data-scope=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuSubContent = (\n  props: React.ComponentProps<typeof MenuContent>\n) => (\n  <MenuSubContent\n    data-part=\"sub-content\"\n    data-scope=\"context-menu\"\n    {...props}\n  />\n);\n\nexport const ContextMenuSubTrigger = (\n  props: React.ComponentProps<typeof MenuSubTrigger>\n) => (\n  <MenuSubTrigger\n    data-part=\"sub-trigger\"\n    data-scope=\"context-menu\"\n    {...props}\n  />\n);\n\nexport const ContextMenuShortcut = (props: React.ComponentProps<\"span\">) => (\n  <MenuShortcut data-part=\"shortcut\" data-scope=\"context-menu\" {...props} />\n);\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["context-menu"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "context-menu"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -639,8 +947,12 @@
       "type": "components:ui",
       "description": "A editable component built with Ark UI",
       "category": "ui",
-      "tags": ["editable"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "editable"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -648,11 +960,17 @@
           "content": "import { Editable as ArkEditable } from \"@ark-ui/react/editable\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Editable = (\n  props: React.ComponentProps<typeof ArkEditable.Root>\n) => {\n  const { activationMode = \"dblclick\", ...rest } = props;\n\n  return <ArkEditable.Root activationMode={activationMode} {...rest} />;\n};\n\nexport const EditableArea = (\n  props: React.ComponentProps<typeof ArkEditable.Area>\n) => <ArkEditable.Area {...props} />;\n\nexport const EditableInput = (\n  props: React.ComponentProps<typeof ArkEditable.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkEditable.Input {...rest} asChild={!children}>\n      {children || <Input />}\n    </ArkEditable.Input>\n  );\n};\n\nexport const EditablePreview = (\n  props: React.ComponentProps<typeof ArkEditable.Preview>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkEditable.Preview\n      className={cn(\n        \"relative\",\n        \"text-base md:text-sm\",\n        \"flex items-center\",\n        \"h-9 peer-data-[size=lg]:h-10 peer-data-[size=sm]:h-8\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["editable"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "editable"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -660,8 +978,12 @@
       "type": "components:ui",
       "description": "A field component built with Ark UI",
       "category": "ui",
-      "tags": ["field"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "field"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -669,11 +991,17 @@
           "content": "import { Field as ArkField } from \"@ark-ui/react/field\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input } from \"@/registry/react/components/input\";\n\nexport const Field = (props: React.ComponentProps<typeof ArkField.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.Root className={cn(\"flex flex-col gap-2\", className)} {...rest} />\n  );\n};\n\nexport const FieldLabel = (\n  props: React.ComponentProps<typeof ArkField.Label>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.Label\n      className={cn(\n        \"font-medium text-sm leading-none\",\n        \"select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-64\",\n        \"group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-64\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const FieldInput = (\n  props: React.ComponentProps<typeof ArkField.Input>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkField.Input {...rest} asChild={!!children}>\n      {children || <Input />}\n    </ArkField.Input>\n  );\n};\n\nexport const FieldHelper = (\n  props: React.ComponentProps<typeof ArkField.HelperText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.HelperText\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FieldError = (\n  props: React.ComponentProps<typeof ArkField.ErrorText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkField.ErrorText\n      className={cn(\"text-destructive text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["field"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "field"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -681,8 +1009,12 @@
       "type": "components:ui",
       "description": "A file-upload component built with Ark UI",
       "category": "ui",
-      "tags": ["file-upload"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "file-upload"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -690,11 +1022,17 @@
           "content": "\"use client\";\n\nimport {\n  FileUpload as ArkFileUpload,\n  type FileUploadFileError,\n} from \"@ark-ui/react/file-upload\";\nimport { Trash2 } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/react/components/button\";\n\nexport const ERROR_MESSAGES: Record<FileUploadFileError, string> = {\n  TOO_MANY_FILES: \"Too many files selected (max 3 allowed)\",\n  FILE_INVALID_TYPE: \"Invalid file type (only images and PDFs allowed)\",\n  FILE_TOO_LARGE: \"File too large (max 1MB)\",\n  FILE_TOO_SMALL: \"File too small (min 1KB)\",\n  FILE_INVALID: \"Invalid file\",\n  FILE_EXISTS: \"File already exists\",\n};\n\nexport const FileUpload = (\n  props: React.ComponentProps<typeof ArkFileUpload.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkFileUpload.Root\n      className={cn(\"relative flex flex-col items-start gap-4\", className)}\n      {...rest}\n    >\n      {children}\n\n      <ArkFileUpload.HiddenInput />\n    </ArkFileUpload.Root>\n  );\n};\n\nexport const FileUploadTrigger = (\n  props: React.ComponentProps<typeof ArkFileUpload.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.Trigger\n      className={cn(\"cursor-pointer\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadDropzone = (\n  props: React.ComponentProps<typeof ArkFileUpload.Dropzone>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.Dropzone\n      className={cn(\n        \"p-6\",\n        \"flex flex-col items-center justify-center gap-4\",\n        \"rounded-md border-2 border-dashed\",\n        \"cursor-pointer\",\n        \"data-cover:absolute data-cover:inset-0 data-cover:flex data-cover:items-center data-cover:justify-center\",\n        \"data-dragging:border-primary data-dragging:bg-primary/10\",\n        \"data-invalid:border-destructive data-invalid:bg-destructive/10\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadTitle = (\n  props: React.ComponentProps<typeof ArkFileUpload.Label>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.Label\n      className={cn(\"font-medium text-muted-foreground text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadItemGroup = (\n  props: React.ComponentProps<typeof ArkFileUpload.ItemGroup>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.ItemGroup\n      className={cn(\"flex flex-col gap-2\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadContext = (\n  props: React.ComponentProps<typeof ArkFileUpload.Context>\n) => <ArkFileUpload.Context {...props} />;\n\nexport const FileUploadItem = (\n  props: React.ComponentProps<typeof ArkFileUpload.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.Item\n      className={cn(\n        \"relative\",\n        \"flex flex-1 items-center gap-2\",\n        \"p-2\",\n        \"rounded-md border\",\n        \"fade-in-0 slide-in-from-top-5 animate-in\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadItemPreview = (\n  props: React.ComponentProps<typeof ArkFileUpload.ItemPreview>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkFileUpload.ItemPreview className={cn(className)} {...rest} />;\n};\n\nexport const FileUploadItemPreviewImage = (\n  props: React.ComponentProps<typeof ArkFileUpload.ItemPreviewImage>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.ItemPreviewImage\n      className={cn(\"aspect-square h-10 rounded-md object-cover\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadItemName = (\n  props: React.ComponentProps<typeof ArkFileUpload.ItemName>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.ItemName\n      className={cn(\"line-clamp-1 min-w-0 truncate text-sm\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadItemSize = (\n  props: React.ComponentProps<typeof ArkFileUpload.ItemSizeText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.ItemSizeText\n      className={cn(\"text-muted-foreground text-xs\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const FileUploadItemDeleteTrigger = (\n  props: React.ComponentProps<typeof ArkFileUpload.ItemDeleteTrigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkFileUpload.ItemDeleteTrigger\n      className={cn(className)}\n      {...rest}\n      asChild\n    >\n      <Button size=\"icon-sm\" variant=\"ghost\">\n        <Trash2 />\n      </Button>\n    </ArkFileUpload.ItemDeleteTrigger>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["file-upload"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "file-upload"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -702,8 +1040,12 @@
       "type": "components:ui",
       "description": "A hover-card component built with Ark UI",
       "category": "ui",
-      "tags": ["hover-card"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "hover-card"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -711,11 +1053,17 @@
           "content": "import { Portal } from \"@ark-ui/react\";\nimport { HoverCard as ArkHoverCard } from \"@ark-ui/react/hover-card\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const HoverCard = (\n  props: React.ComponentProps<typeof ArkHoverCard.Root>\n) => {\n  const {\n    lazyMount = true,\n    unmountOnExit = true,\n    positioning = { placement: \"top\" },\n    ...rest\n  } = props;\n\n  return (\n    <ArkHoverCard.Root\n      lazyMount={lazyMount}\n      positioning={positioning}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const HoverCardTrigger = (\n  props: React.ComponentProps<typeof ArkHoverCard.Trigger>\n) => <ArkHoverCard.Trigger {...props} />;\n\nexport const HoverCardContent = (\n  props: React.ComponentProps<typeof ArkHoverCard.Content>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <ArkHoverCard.Positioner>\n        <ArkHoverCard.Content\n          className={cn(\n            \"z-50\",\n            \"w-64\",\n            \"p-4\",\n            \"bg-popover\",\n            \"text-popover-foreground\",\n            \"origin-(--transform-origin)\",\n            \"rounded-md border\",\n            \"shadow-md\",\n            \"outline-hidden\",\n            \"data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[side=bottom]:slide-in-from-top-2\",\n            \"data-[side=left]:slide-in-from-right-2\",\n            \"data-[side=right]:slide-in-from-left-2\",\n            \"data-[side=top]:slide-in-from-bottom-2\",\n            className\n          )}\n          {...rest}\n        >\n          <HoverCardArrow />\n\n          {children}\n        </ArkHoverCard.Content>\n      </ArkHoverCard.Positioner>\n    </Portal>\n  );\n};\n\nexport const HoverCardArrow = (\n  props: React.ComponentProps<typeof ArkHoverCard.Arrow>\n) => {\n  const { style, ...rest } = props;\n\n  return (\n    <ArkHoverCard.Arrow\n      style={\n        {\n          \"--arrow-background\": \"var(--popover)\",\n          \"--arrow-size\": \"calc(1.5 * var(--spacing))\",\n          ...style,\n        } as React.CSSProperties\n      }\n      {...rest}\n    >\n      <ArkHoverCard.ArrowTip className=\"border-t border-l\" />\n    </ArkHoverCard.Arrow>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["hover-card"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "hover-card"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -723,8 +1071,12 @@
       "type": "components:ui",
       "description": "A pagination component built with Ark UI",
       "category": "ui",
-      "tags": ["pagination"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "pagination"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -732,11 +1084,17 @@
           "content": "\"use client\";\n\nimport { Pagination as ArkPagination } from \"@ark-ui/react/pagination\";\nimport { ChevronLeft, ChevronRight, Ellipsis } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/react/components/button\";\n\nexport const Pagination = (\n  props: React.ComponentProps<typeof ArkPagination.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkPagination.Root\n      className={cn(\n        \"mx-auto w-full\",\n        \"flex flex-row justify-center gap-1\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\ninterface PaginationContextProps\n  extends React.ComponentProps<typeof ArkPagination.Context> {}\n\nexport const PaginationContext = (props: PaginationContextProps) => (\n  <ArkPagination.Context {...props} />\n);\n\nexport const PaginationPrevious = (\n  props: React.ComponentProps<typeof ArkPagination.PrevTrigger>\n) => (\n  <ArkPagination.PrevTrigger asChild {...props}>\n    <Button variant=\"ghost\">\n      <ChevronLeft />\n      Previous\n    </Button>\n  </ArkPagination.PrevTrigger>\n);\n\nexport const PaginationNext = (\n  props: React.ComponentProps<typeof ArkPagination.NextTrigger>\n) => (\n  <ArkPagination.NextTrigger asChild {...props}>\n    <Button variant=\"ghost\">\n      Next\n      <ChevronRight />\n    </Button>\n  </ArkPagination.NextTrigger>\n);\n\nexport const PaginationItem = (\n  props: React.ComponentProps<typeof ArkPagination.Item>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkPagination.Item asChild {...rest}>\n      <Button\n        className={cn(\n          \"w-12\",\n          \"data-selected:not-[hover]:bg-primary data-selected:not-[hover]:text-primary-foreground\",\n          className\n        )}\n        variant=\"ghost\"\n      >\n        {children}\n      </Button>\n    </ArkPagination.Item>\n  );\n};\n\nexport const PaginationEllipsis = (\n  props: React.ComponentProps<typeof ArkPagination.Ellipsis>\n) => {\n  const { className, ...rest } = props;\n  return (\n    <ArkPagination.Ellipsis\n      className={cn(\n        \"h-8 w-12\",\n        \"flex items-end justify-center\",\n        \"text-muted-foreground\",\n        \"pointer-events-none select-none\",\n        \"[&_svg]:size-4\",\n        className\n      )}\n      {...rest}\n    >\n      <Ellipsis />\n    </ArkPagination.Ellipsis>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["pagination"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "pagination"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -744,8 +1102,12 @@
       "type": "components:ui",
       "description": "An input-otp component built with Ark UI",
       "category": "ui",
-      "tags": ["input-otp"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "input-otp"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -753,11 +1115,17 @@
           "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react\";\nimport { PinInput as ArkPinInput } from \"@ark-ui/react/pin-input\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Input, type InputProps } from \"@/registry/react/components/input\";\n\ninterface InputOtpProps\n  extends React.ComponentProps<typeof ArkPinInput.Root>,\n    Pick<InputProps, \"size\"> {\n  /**\n   * Adds a fake caret to the input\n   *\n   * @default false\n   */\n  withFakeCaret?: boolean;\n}\n\nexport const InputOtp = (props: InputOtpProps) => {\n  const { withFakeCaret, otp = true, className, children, ...rest } = props;\n\n  return (\n    <ArkPinInput.Root\n      className=\"group/input-otp\"\n      data-slot=\"input-otp\"\n      {...(!withFakeCaret && { placeholder: \"\" })}\n      otp={otp}\n      {...rest}\n    >\n      <ArkPinInput.Control\n        className={cn(\n          \"flex items-center gap-2\",\n          \"*:data-[slot=input-otp-input]:size-9\",\n          className\n        )}\n        data-slot=\"input-otp-control\"\n      >\n        {children}\n      </ArkPinInput.Control>\n\n      <ArkPinInput.HiddenInput />\n    </ArkPinInput.Root>\n  );\n};\n\nexport const InputOtpSlot = (\n  props: React.ComponentProps<typeof ArkPinInput.Input>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkPinInput.Input asChild data-slot=\"input-otp-input\" {...rest}>\n      <Input className={cn(\"relative p-0 text-center text-base\", className)} />\n    </ArkPinInput.Input>\n  );\n};\n\nexport const InputOtpSeparator = (\n  props: React.ComponentProps<typeof ark.hr>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.hr\n      className={cn(\"h-0.5 w-2 rounded-full bg-foreground\", className)}\n      data-slot=\"input-otp-separator\"\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["input-otp"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "input-otp"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -765,8 +1133,12 @@
       "type": "components:ui",
       "description": "A qr-code component built with Ark UI",
       "category": "ui",
-      "tags": ["qr-code"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "qr-code"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -774,11 +1146,17 @@
           "content": "import { QrCode as ArkQrCode } from \"@ark-ui/react/qr-code\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const QrCode = (props: React.ComponentProps<typeof ArkQrCode.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkQrCode.Root\n      className={cn(\"bg-background text-foreground\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const QrCodeFrame = (\n  props: React.ComponentProps<typeof ArkQrCode.Frame>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkQrCode.Frame\n      className={cn(\"size-full rounded-md bg-white text-black\", className)}\n      {...rest}\n    >\n      <ArkQrCode.Pattern />\n    </ArkQrCode.Frame>\n  );\n};\n\nexport const QrCodeOverlay = (\n  props: React.ComponentProps<typeof ArkQrCode.Overlay>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkQrCode.Overlay\n      className={cn(\n        \"flex size-10 items-center justify-center rounded-full bg-background outline-2\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const QrCodeDownloadTrigger = (\n  props: React.ComponentProps<typeof ArkQrCode.DownloadTrigger>\n) => <ArkQrCode.DownloadTrigger {...props} />;\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["qr-code"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "qr-code"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -786,8 +1164,12 @@
       "type": "components:ui",
       "description": "A rating-group component built with Ark UI",
       "category": "ui",
-      "tags": ["rating-group"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "rating-group"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -795,11 +1177,17 @@
           "content": "\"use client\";\n\nimport { RatingGroup as ArkRatingGroup } from \"@ark-ui/react/rating-group\";\nimport { Star } from \"lucide-react\";\nimport type React from \"react\";\n\nexport const RatingGroup = (\n  props: React.ComponentProps<typeof ArkRatingGroup.Root>\n) => {\n  const { allowHalf = false, count = 5, ...rest } = props;\n\n  return (\n    <ArkRatingGroup.Root\n      allowHalf={allowHalf}\n      className=\"text-primary\"\n      count={count}\n      {...rest}\n    >\n      <ArkRatingGroup.Control className=\"inline-flex gap-1\">\n        <ArkRatingGroup.Context>\n          {({ items }) =>\n            items.map((item) => (\n              <ArkRatingGroup.Item\n                className=\"outline-none\"\n                index={item}\n                key={item}\n              >\n                <ArkRatingGroup.ItemContext>\n                  {({ half, highlighted }) => {\n                    if (half) {\n                      return (\n                        <div className=\"relative\">\n                          <Star className=\"stroke-current\" />\n\n                          <div className=\"absolute inset-0 w-1/2 overflow-hidden\">\n                            <Star className=\"fill-current\" />\n                          </div>\n                        </div>\n                      );\n                    }\n\n                    if (highlighted) {\n                      return <Star className=\"fill-current\" />;\n                    }\n\n                    return <Star />;\n                  }}\n                </ArkRatingGroup.ItemContext>\n              </ArkRatingGroup.Item>\n            ))\n          }\n        </ArkRatingGroup.Context>\n\n        <ArkRatingGroup.HiddenInput />\n      </ArkRatingGroup.Control>\n    </ArkRatingGroup.Root>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["rating-group"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "rating-group"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -807,8 +1195,12 @@
       "type": "components:ui",
       "description": "A scroll-area component built with Ark UI",
       "category": "ui",
-      "tags": ["scroll-area"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "scroll-area"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -816,11 +1208,17 @@
           "content": "import { ScrollArea as ArkScrollArea } from \"@ark-ui/react/scroll-area\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const ScrollArea = (\n  props: React.ComponentProps<typeof ArkScrollArea.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <>\n      <style>\n        {`\n        [data-scope='scroll-area'][data-part='viewport'] {\n          scrollbar-width: none;\n          &::-webkit-scrollbar {\n            display: none;\n          }\n        }\n}`}\n      </style>\n\n      <ArkScrollArea.Root className={cn(\"flex size-full\", className)} {...rest}>\n        <ArkScrollArea.Viewport\n          className={cn(\n            \"size-full\",\n            \"rounded-md\",\n            \"-outline-offset-1 outline-1 outline-gray-300\",\n            \"transition-[color,box-shadow]\",\n            \"outline-none focus-visible:outline-1 focus-visible:ring-[3px] focus-visible:ring-ring/32\"\n          )}\n        >\n          <ArkScrollArea.Content>{children}</ArkScrollArea.Content>\n        </ArkScrollArea.Viewport>\n\n        <ScrollAreaScrollbar orientation=\"vertical\" />\n\n        <ArkScrollArea.Corner />\n      </ArkScrollArea.Root>\n    </>\n  );\n};\n\nexport const ScrollAreaScrollbar = (\n  props: React.ComponentProps<typeof ArkScrollArea.Scrollbar>\n) => {\n  const { orientation, className, ...rest } = props;\n\n  return (\n    <ArkScrollArea.Scrollbar\n      className={cn(\n        \"m-2 flex rounded-md bg-muted opacity-0 transition-opacity delay-300 duration-150\",\n        \"hover:opacity-100 hover:delay-0 hover:duration-75 data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-75\",\n        \"before:absolute before:content-['']\",\n        orientation === \"vertical\" &&\n          \"h-full w-1 justify-center before:h-full before:w-5 data-[overflow-y=false]:hidden\",\n        orientation === \"horizontal\" &&\n          \"h-1 w-full items-center before:h-5 before:w-full data-[overflow-x=false]:hidden\",\n        className\n      )}\n      orientation={orientation}\n      {...rest}\n    >\n      <ArkScrollArea.Thumb className=\"relative flex-1 rounded-md bg-primary\" />\n    </ArkScrollArea.Scrollbar>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["scroll-area"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "scroll-area"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -828,8 +1226,12 @@
       "type": "components:ui",
       "description": "A resizable component built with Ark UI",
       "category": "ui",
-      "tags": ["resizable"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "resizable"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -837,11 +1239,17 @@
           "content": "import { Splitter as ArkSplitter } from \"@ark-ui/react/splitter\";\nimport { GripVertical } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Resizable = (\n  props: React.ComponentProps<typeof ArkSplitter.Root>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSplitter.Root\n      className={cn(\"flex size-full\", className)}\n      data-slot=\"resizable\"\n      {...rest}\n    />\n  );\n};\n\nexport const ResizablePanel = (\n  props: React.ComponentProps<typeof ArkSplitter.Panel>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSplitter.Panel\n      className={cn(className)}\n      data-slot=\"resizable-panel\"\n      {...rest}\n    />\n  );\n};\n\ninterface ResizableResizeTriggerProps\n  extends React.ComponentProps<typeof ArkSplitter.ResizeTrigger> {\n  /**\n   * Whether to show the handle\n   *\n   * @default false\n   */\n  withHandle?: boolean;\n}\n\nexport const ResizableResizeTrigger = (props: ResizableResizeTriggerProps) => {\n  const { withHandle = false, className, ...rest } = props;\n\n  return (\n    <ArkSplitter.ResizeTrigger\n      aria-label=\"Resize\"\n      className={cn(\n        \"relative bg-border\",\n        \"flex w-px items-center justify-center\",\n        \"after:-translate-x-1/2 data-[orientation=vertical]:after:-translate-y-1/2\",\n        \"after:absolute after:inset-y-0 after:left-1/2 after:w-1\",\n        \"focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1\",\n        \"data-[orientation=vertical]:h-px data-[orientation=vertical]:w-full\",\n        \"data-[orientation=vertical]:after:left-0 data-[orientation=vertical]:after:h-1 data-[orientation=vertical]:after:w-full\",\n        \"data-[orientation=vertical]:after:translate-x-0\",\n        \"[&[data-orientation=vertical]>div]:rotate-90\",\n        className\n      )}\n      data-slot=\"resizable-resize-trigger\"\n      {...rest}\n    >\n      {withHandle && (\n        <div\n          className={cn(\n            \"z-10\",\n            \"h-4 w-3\",\n            \"flex items-center justify-center\",\n            \"bg-border\",\n            \"rounded-xs border\"\n          )}\n        >\n          <GripVertical className=\"size-2.5\" />\n        </div>\n      )}\n    </ArkSplitter.ResizeTrigger>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["resizable"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "resizable"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -849,8 +1257,12 @@
       "type": "components:ui",
       "description": "A steps component built with Ark UI",
       "category": "ui",
-      "tags": ["steps"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "steps"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -858,11 +1270,17 @@
           "content": "import { Steps as ArkSteps } from \"@ark-ui/react/steps\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Steps = (props: React.ComponentProps<typeof ArkSteps.Root>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Root\n      className={cn(\n        \"flex gap-4\",\n        \"data-[orientation=horizontal]:flex-col\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsList = (\n  props: React.ComponentProps<typeof ArkSteps.List>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.List\n      className={cn(\n        \"flex justify-between\",\n        \"data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start\",\n        \"data-[orientation=horizontal]:items-center\",\n        className\n      )}\n      style={\n        {\n          \"--steps-gutter\": \"12px\",\n          \"--steps-size\": \"40px\",\n          \"--steps-icon-size\": \"20px\",\n        } as React.CSSProperties\n      }\n      {...rest}\n    />\n  );\n};\n\nexport const StepsItem = (\n  props: React.ComponentProps<typeof ArkSteps.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Item\n      className={cn(\n        \"relative flex flex-1\",\n        \"data-[orientation=vertical]:items-start\",\n        \"data-[orientation=horizontal]:items-center\",\n        \"last:flex-initial last:**:data-[part=separator]:hidden\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsTrigger = (\n  props: React.ComponentProps<typeof ArkSteps.Trigger>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Trigger\n      className={cn(\"flex items-center gap-3 rounded-md\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsIndicator = (\n  props: React.ComponentProps<typeof ArkSteps.Indicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Indicator\n      className={cn(\n        \"flex shrink-0 items-center justify-center\",\n        \"size-(--steps-size)\",\n        \"font-semibold\",\n        \"rounded-full\",\n        \"border\",\n        \"data-current:bg-border\",\n        \"data-complete:bg-primary data-complete:text-primary-foreground\",\n        \"[&_svg]:size-(--steps-icon-size) [&_svg]:shrink-0\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsSeparator = (\n  props: React.ComponentProps<typeof ArkSteps.Separator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkSteps.Separator\n      className={cn(\n        \"flex-1 bg-border\",\n        \"data-complete:bg-primary\",\n        \"data-[orientation=vertical]:absolute data-[orientation=vertical]:top-[calc(var(--steps-size)+var(--steps-gutter))]\",\n        \"data-[orientation=vertical]:left-[calc(var(--steps-size)/2-1px)]\",\n        \"data-[orientation=vertical]:h-full data-[orientation=vertical]:max-h-[calc(100%-(var(--steps-size)+var(--steps-gutter)*2))]\",\n        \"data-[orientation=vertical]:w-0.5\",\n        \"data-[orientation=horizontal]:mx-(--steps-gutter)\",\n        \"data-[orientation=horizontal]:h-0.5\",\n        \"data-[orientation=horizontal]:w-full\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const StepsContent = (\n  props: React.ComponentProps<typeof ArkSteps.Content>\n) => <ArkSteps.Content {...props} />;\n\nexport const StepsCompletedContent = (\n  props: React.ComponentProps<typeof ArkSteps.CompletedContent>\n) => <ArkSteps.CompletedContent {...props} />;\n\nexport const StepsPrevious = (\n  props: React.ComponentProps<typeof ArkSteps.PrevTrigger>\n) => <ArkSteps.PrevTrigger {...props} />;\n\nexport const StepsNext = (\n  props: React.ComponentProps<typeof ArkSteps.NextTrigger>\n) => <ArkSteps.NextTrigger {...props} />;\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["steps"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "steps"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -870,8 +1288,12 @@
       "type": "components:ui",
       "description": "A toggle-group component built with Ark UI",
       "category": "ui",
-      "tags": ["toggle-group"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "toggle-group"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -879,11 +1301,17 @@
           "content": "\"use client\";\n\nimport { ToggleGroup as ArkToggleGroup } from \"@ark-ui/react/toggle-group\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Toggle, type ToggleProps } from \"@/registry/react/components/toggle\";\n\ntype ToggleGroupContextProps = Pick<ToggleProps, \"variant\" | \"size\">;\n\nconst ToggleGroupContext = React.createContext({} as ToggleGroupContextProps);\n\ninterface ToggleGroupProps\n  extends React.ComponentProps<typeof ArkToggleGroup.Root>,\n    Pick<ToggleProps, \"variant\" | \"size\"> {\n  /**\n   * The spacing variable value\n   */\n  spacing?: number;\n}\n\nexport const ToggleGroup = (props: ToggleGroupProps) => {\n  const {\n    spacing = 0,\n    variant = \"outline\",\n    size = \"md\",\n    className,\n    ...rest\n  } = props;\n\n  return (\n    <ToggleGroupContext value={{ variant, size }}>\n      <ArkToggleGroup.Root\n        className={cn(\n          \"group/toggle-group flex w-fit items-center gap-(--toggle-group-spacing) rounded-md\",\n          className\n        )}\n        data-spacing={spacing}\n        style={\n          {\n            \"--toggle-group-spacing\": `calc(${spacing} * var(--spacing))`,\n          } as React.CSSProperties\n        }\n        {...rest}\n      />\n    </ToggleGroupContext>\n  );\n};\n\nexport const ToggleGroupItem = (\n  props: React.ComponentProps<typeof ArkToggleGroup.Item>\n) => {\n  const { value, className, ...rest } = props;\n\n  const { variant, size } = useToggleGroupContext();\n\n  return (\n    <ArkToggleGroup.Item asChild value={value}>\n      <Toggle\n        className={cn(\n          \"shrink-0\",\n          \"w-auto min-w-0\",\n          \"focus:z-10 focus-visible:z-10\",\n          \"group-data-[spacing=0]/toggle-group:rounded-none\",\n          \"group-data-[spacing=0]/toggle-group:border-l-0\",\n          \"group-data-[spacing=0]/toggle-group:shadow-none\",\n          \"group-data-[spacing=0]/toggle-group:first:rounded-l-md\",\n          \"group-data-[spacing=0]/toggle-group:last:rounded-r-md\",\n          \"group-data-[spacing=0]/toggle-group:first:border-l\",\n          className\n        )}\n        size={size}\n        variant={variant}\n        {...rest}\n      />\n    </ArkToggleGroup.Item>\n  );\n};\n\nconst useToggleGroupContext = () => {\n  const context = React.useContext(ToggleGroupContext);\n\n  if (!context) {\n    throw new Error(\"useToggleGroupContext must be used within a ToggleGroup\");\n  }\n\n  return context;\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["toggle-group"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "toggle-group"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -891,8 +1319,12 @@
       "type": "components:ui",
       "description": "A toggle component built with Ark UI",
       "category": "ui",
-      "tags": ["toggle"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "toggle"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -900,11 +1332,17 @@
           "content": "import { Toggle as ArkToggle } from \"@ark-ui/react/toggle\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  type ButtonProps,\n  buttonVariants,\n} from \"@/registry/react/components/button\";\n\nexport const toggleVariants = tv({\n  base: \"\",\n  variants: {\n    size: {\n      md: \"h-9 min-w-9 px-2\",\n      sm: \"h-8 min-w-8 px-1.5\",\n      lg: \"h-10 min-w-10 px-2.5\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n  },\n});\n\nexport interface ToggleProps\n  extends React.ComponentProps<typeof ArkToggle.Root>,\n    VariantProps<typeof toggleVariants>,\n    Pick<ButtonProps, \"variant\"> {}\n\nexport const Toggle = (props: ToggleProps) => {\n  const { variant = \"outline\", size = \"md\", className, ...rest } = props;\n\n  return (\n    <ArkToggle.Root\n      className={cn(\n        \"data-[state=on]:bg-accent data-[state=on]:text-accent-foreground\",\n        buttonVariants({ variant, size }),\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const ToggleIndicator = (\n  props: React.ComponentProps<typeof ArkToggle.Indicator>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkToggle.Indicator className=\"flex items-center gap-2\" {...rest}>\n      {children}\n    </ArkToggle.Indicator>\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["toggle"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "toggle"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -912,8 +1350,12 @@
       "type": "components:ui",
       "description": "A tour component built with Ark UI",
       "category": "ui",
-      "tags": ["tour"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "tour"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -921,11 +1363,17 @@
           "content": "\"use client\";\n\nimport { Portal } from \"@ark-ui/react\";\nimport {\n  Tour as ArkTour,\n  type TourStepDetails,\n  type UseTourReturn,\n  useTour,\n} from \"@ark-ui/react/tour\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport { ChevronLeft, ChevronRight, X } from \"lucide-react\";\nimport React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"./button\";\nimport {\n  type DialogBackdrop,\n  DialogBody,\n  DialogFooter,\n  DialogHeader,\n  dialogBackdropVariants,\n} from \"./dialog\";\n\nexport type TourStepType = TourStepDetails;\n\ntype TourProviderProps = {\n  /**\n   * The tour instance\n   */\n  tour: UseTourReturn;\n  /**\n   * The function to start the tour\n   */\n  handleStart: () => void;\n};\n\nconst TourProvider = React.createContext<TourProviderProps>(\n  {} as TourProviderProps\n);\n\ninterface TourProps\n  extends Omit<React.ComponentProps<typeof ArkTour.Root>, \"tour\"> {\n  /**\n   * The steps to display in the tour\n   *\n   * @default []\n   */\n  steps: TourStepDetails[];\n}\n\nexport const Tour = (props: TourProps) => {\n  const { steps = [], lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  const [isStarted, setIsStarted] = React.useState(false);\n\n  const tour = useTour({ steps });\n\n  React.useEffect(() => {\n    if (isStarted) {\n      document.body.classList.add(\"relative\");\n    } else {\n      document.body.classList.remove(\"relative\");\n    }\n\n    return () => {\n      document.body.classList.remove(\"relative\");\n    };\n  }, [isStarted]);\n\n  const handleStart = React.useCallback(() => {\n    setIsStarted(true);\n    tour.start();\n  }, [tour]);\n\n  return (\n    <TourProvider.Provider value={{ tour, handleStart }}>\n      <ArkTour.Root\n        lazyMount={lazyMount}\n        tour={tour}\n        unmountOnExit={unmountOnExit}\n        {...rest}\n      />\n    </TourProvider.Provider>\n  );\n};\n\ninterface TourTriggerProps extends React.ComponentProps<\"button\"> {\n  /**\n   * If `true`, the trigger will render the child as a slot.\n   *\n   * @default false\n   */\n  asChild?: boolean;\n}\n\nexport const TourTrigger = (props: TourTriggerProps) => {\n  const { asChild, onClick, ...rest } = props;\n\n  const { handleStart } = useTourContext();\n\n  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {\n    onClick?.(e);\n    handleStart();\n  };\n\n  const Comp = asChild ? Slot : \"button\";\n\n  return (\n    <Comp\n      data-part=\"trigger\"\n      data-scope=\"tour\"\n      type=\"button\"\n      {...rest}\n      onClick={handleClick}\n    />\n  );\n};\n\nexport const TourActionTrigger = (\n  props: React.ComponentProps<typeof ArkTour.ActionTrigger>\n) => <ArkTour.ActionTrigger {...props} />;\n\nexport const TourBackdrop = (\n  props: React.ComponentProps<typeof DialogBackdrop>\n) => <ArkTour.Backdrop className={dialogBackdropVariants()} {...props} />;\n\ninterface TourContentProps\n  extends React.ComponentProps<typeof ArkTour.Content> {\n  /**\n   * Show close button at the top right corner\n   *\n   * @default true\n   */\n  showCloseButton?: boolean;\n}\n\nexport const TourContent = (props: TourContentProps) => {\n  const { showCloseButton = true, className, children, ...rest } = props;\n\n  return (\n    <Portal>\n      <TourBackdrop />\n\n      <ArkTour.Positioner\n        className={cn(\n          \"z-50\",\n          \"flex items-center justify-center\",\n          \"data-[type=dialog]:fixed data-[type=dialog]:inset-0\",\n          \"data-[type=tooltip]:absolute\"\n        )}\n      >\n        <ArkTour.Content\n          className={cn(\n            \"z-50\",\n            \"relative\",\n            \"w-full max-w-md\",\n            \"flex flex-col gap-4\",\n            \"bg-background\",\n            \"rounded-lg border shadow-lg\",\n            \"focus:outline-none focus:ring-0\",\n            \"data-[state=closed]:animate-out data-[state=open]:animate-in\",\n            \"data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0\",\n            \"data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95\",\n            className\n          )}\n          {...rest}\n        >\n          {children}\n\n          {showCloseButton && (\n            <TourClose asChild className=\"absolute top-4 right-4\">\n              <Button\n                className=\"size-8 border-none opacity-70 hover:opacity-100\"\n                size=\"icon-md\"\n                variant=\"ghost\"\n              >\n                <X />\n\n                <span className=\"sr-only\">Close</span>\n              </Button>\n            </TourClose>\n          )}\n        </ArkTour.Content>\n      </ArkTour.Positioner>\n\n      <ArkTour.Spotlight className=\"z-50 border-2 border-ark\" />\n    </Portal>\n  );\n};\n\nexport const TourBody = (props: React.ComponentProps<typeof DialogBody>) => (\n  <DialogBody data-scope=\"tour\" {...props} />\n);\n\nexport const TourHeader = (\n  props: React.ComponentProps<typeof DialogHeader>\n) => <DialogHeader data-scope=\"tour\" {...props} />;\n\nexport const TourTitle = (\n  props: React.ComponentProps<typeof ArkTour.Title>\n) => {\n  const { className, ...rest } = props;\n\n  const { tour } = useTourContext();\n\n  return (\n    <ArkTour.Title\n      className={cn(\n        \"font-semibold text-base leading-none tracking-tight\",\n        className\n      )}\n      {...rest}\n    >\n      {tour.step?.title}\n    </ArkTour.Title>\n  );\n};\n\nexport const TourDescription = (\n  props: React.ComponentProps<typeof ArkTour.Description>\n) => {\n  const { className, ...rest } = props;\n\n  const { tour } = useTourContext();\n\n  return (\n    <ArkTour.Description\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    >\n      {tour.step?.description}\n    </ArkTour.Description>\n  );\n};\n\nexport const TourProgressText = (\n  props: React.ComponentProps<typeof ArkTour.ProgressText>\n) => {\n  const { className, ...rest } = props;\n\n  const { tour } = useTourContext();\n\n  return (\n    <ArkTour.ProgressText\n      className={cn(\"text-muted-foreground text-sm\", className)}\n      {...rest}\n    >\n      {tour.getProgressText()}\n    </ArkTour.ProgressText>\n  );\n};\n\nexport const TourClose = (\n  props: React.ComponentProps<typeof ArkTour.CloseTrigger>\n) => <ArkTour.CloseTrigger {...props} />;\n\nexport const TourFooter = (\n  props: React.ComponentProps<typeof DialogFooter>\n) => {\n  const { children, ...rest } = props;\n\n  return (\n    <ArkTour.Control {...rest} asChild>\n      <DialogFooter data-scope=\"tour\">{children}</DialogFooter>\n    </ArkTour.Control>\n  );\n};\n\nexport const TourPreviousStep = (\n  props: Omit<React.ComponentProps<typeof TourActionTrigger>, \"action\">\n) => {\n  const { ...rest } = props;\n\n  const { tour } = useTourContext();\n\n  const prevAction = React.useMemo(\n    () => tour.step?.actions?.find((action) => action.action === \"prev\"),\n    [tour]\n  );\n\n  if (!prevAction) {\n    return null;\n  }\n\n  return (\n    <TourActionTrigger {...rest} action={prevAction} asChild>\n      <Button size=\"sm\" variant=\"outline\">\n        <ChevronLeft />\n        {prevAction.label}\n      </Button>\n    </TourActionTrigger>\n  );\n};\n\nexport const TourNextStep = (\n  props: Omit<React.ComponentProps<typeof TourActionTrigger>, \"action\">\n) => {\n  const { ...rest } = props;\n\n  const { tour } = useTourContext();\n\n  const action = React.useMemo(\n    () =>\n      tour.step?.actions?.find(\n        (a) => a.action === \"next\" || a.action === \"dismiss\"\n      ),\n    [tour]\n  );\n\n  const actionType = React.useMemo(() => action?.action, [action]);\n\n  if (!action) {\n    return null;\n  }\n\n  return (\n    <TourActionTrigger {...rest} action={action} asChild>\n      <Button size=\"sm\">\n        {action.label}\n\n        {actionType === \"next\" && <ChevronRight />}\n      </Button>\n    </TourActionTrigger>\n  );\n};\n\nexport const useTourContext = () => {\n  const context = React.useContext(TourProvider);\n\n  if (!context) {\n    throw new Error(\"useTour must be used within a TourProvider\");\n  }\n\n  return context;\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["tour"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "tour"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     },
     {
@@ -933,8 +1381,12 @@
       "type": "components:ui",
       "description": "A tree-view component built with Ark UI",
       "category": "ui",
-      "tags": ["tree-view"],
-      "dependencies": ["@ark-ui/react"],
+      "tags": [
+        "tree-view"
+      ],
+      "dependencies": [
+        "@ark-ui/react"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -942,11 +1394,17 @@
           "content": "\"use client\";\n\nimport { TreeView as ArkTreeView } from \"@ark-ui/react/tree-view\";\nimport { ChevronRight } from \"lucide-react\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const TreeView = (\n  props: React.ComponentProps<typeof ArkTreeView.Root>\n) => {\n  const { lazyMount = true, unmountOnExit = true, className, ...rest } = props;\n\n  return (\n    <ArkTreeView.Root\n      className={cn(\"text-sm\", className)}\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewLabel = (\n  props: React.ComponentProps<typeof ArkTreeView.Label>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.Label\n      className={cn(\"font-semibold text-xs\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewTree = (\n  props: React.ComponentProps<typeof ArkTreeView.Tree>\n) => {\n  const { className, ...rest } = props;\n\n  return <ArkTreeView.Tree className={cn(\"mt-5 w-60\", className)} {...rest} />;\n};\n\nexport const TreeViewNode = (\n  props: React.ComponentProps<typeof ArkTreeView.NodeProvider>\n) => <ArkTreeView.NodeProvider {...props} />;\n\nexport const TreeViewBranch = (\n  props: React.ComponentProps<typeof ArkTreeView.Branch>\n) => <ArkTreeView.Branch {...props} />;\n\nexport const TreeViewBranchControl = (\n  props: React.ComponentProps<typeof ArkTreeView.BranchControl>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.BranchControl\n      className={cn(\n        \"min-h-8\",\n        \"flex items-center gap-2\",\n        \"ps-[calc(var(--depth)*var(--spacing)*4)] pe-4\",\n        \"select-none\",\n        \"rounded-sm\",\n        \"hover:bg-accent/50\",\n        \"focus:-outline-offset-1 focus:outline-1 focus:outline-muted-foreground\",\n        \"data-selected:bg-accent\",\n        \"[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-64\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewBranchText = (\n  props: React.ComponentProps<typeof ArkTreeView.BranchText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.BranchText\n      className={cn(\"flex flex-1 items-center gap-2\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewBranchIndicator = (\n  props: React.ComponentProps<typeof ArkTreeView.BranchIndicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.BranchIndicator\n      className={cn(\n        \"flex items-center data-[state=open]:[&_svg]:rotate-90\",\n        className\n      )}\n      {...rest}\n    >\n      <ChevronRight />\n    </ArkTreeView.BranchIndicator>\n  );\n};\n\nexport const TreeViewBranchContent = (\n  props: React.ComponentProps<typeof ArkTreeView.BranchContent>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.BranchContent\n      className={cn(\n        \"relative isolate\",\n        \"max-w-full\",\n        \"overflow-hidden\",\n        \"data-[state=closed]:animate-slide-up\",\n        \"data-[state=open]:animate-slide-down\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewBranchIndentGuide = (\n  props: React.ComponentProps<typeof ArkTreeView.BranchIndentGuide>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.BranchIndentGuide\n      className={cn(\n        \"absolute z-0\",\n        \"h-full\",\n        \"border-accent border-l\",\n        \"translate-x-[calc(var(--depth)*1.25rem)]\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewItem = (\n  props: React.ComponentProps<typeof ArkTreeView.Item>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.Item\n      className={cn(\n        \"relative\",\n        \"min-h-8\",\n        \"flex items-center gap-2\",\n        \"ps-[calc(var(--depth)*var(--spacing)*4)] pe-4\",\n        \"select-none\",\n        \"rounded-sm\",\n        \"focus:-outline-offset-1 focus:outline-1 focus:outline-muted-foreground\",\n        \"hover:bg-accent/50\",\n        \"data-selected:bg-accent\",\n        \"[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:opacity-64\",\n        className\n      )}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewItemIndicator = (\n  props: React.ComponentProps<typeof ArkTreeView.ItemIndicator>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.ItemIndicator\n      className={cn(\"flex items-center justify-center\", className)}\n      {...rest}\n    />\n  );\n};\n\nexport const TreeViewItemText = (\n  props: React.ComponentProps<typeof ArkTreeView.ItemText>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkTreeView.ItemText\n      className={cn(\"flex flex-1 items-center gap-2\", className)}\n      {...rest}\n    />\n  );\n};\n"
         }
       ],
-      "categories": ["ui"],
+      "categories": [
+        "ui"
+      ],
       "meta": {
         "category": "ui",
-        "tags": ["tree-view"],
-        "dependencies": ["@ark-ui/react"]
+        "tags": [
+          "tree-view"
+        ],
+        "dependencies": [
+          "@ark-ui/react"
+        ]
       }
     }
   ]

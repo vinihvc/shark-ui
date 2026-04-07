@@ -79,11 +79,11 @@ Use the `positioning.placement` prop to position the action bar.
 
 <ComponentPreview componentName="action-bar" fileName="example-positioning" />
 
-### Offset
+### Gutter
 
-Use `positioning.offset` to control the distance from the bottom edge.
+Use `positioning.gutter` to control the distance from the bottom edge.
 
-<ComponentPreview componentName="action-bar" fileName="example-offset" />
+<ComponentPreview componentName="action-bar" fileName="example-gutter" />
 
 ### Close Trigger
 
@@ -123,7 +123,7 @@ Root context provider. Wraps the trigger and floating toolbar.
 | --- | --- | --- |
 | `open` | `boolean` | - |
 | `defaultOpen` | `boolean` | `false` |
-| `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", offset?: string }` | `{ placement: "bottom", offset: "16px" }` |
+| `positioning` | `{ placement?: "bottom" \| "bottom-start" \| "bottom-end", gutter?: string }` | `{ placement: "bottom", gutter: "16px" }` |
 | `lazyMount` | `boolean` | `true` |
 | `unmountOnExit` | `boolean` | `true` |
 | `onOpenChange` | `(open: boolean) => void` | - |
@@ -146,7 +146,7 @@ Floating toolbar positioned above selected items.
 
 | Attribute | Default |
 | --- | --- |
-| `--offset` | `16px` (from `positioning.offset`) |
+| `--gutter` | `16px` |
 | `--space` | `--spacing(4)` |
 
 ### ActionBarTrigger

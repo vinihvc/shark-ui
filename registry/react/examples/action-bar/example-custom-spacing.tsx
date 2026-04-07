@@ -32,7 +32,7 @@ const Example = () => {
             <PencilIcon />
             Edit
           </Button>
-          <Button size="sm" variant="destructive">
+          <Button className="max-sm:hidden" size="sm" variant="destructive">
             <Trash2Icon />
             Delete
           </Button>

@@ -29,11 +29,11 @@ interface ActionBarContextValue {
    */
   positioning: {
     /**
-     * The offset from the edge in pixels.
+     * The gutter from the edge in pixels.
      *
      * @default '16px'
      */
-    offset?: string;
+    gutter?: string;
     /**
      * The placement of the action bar.
      *
@@ -64,12 +64,12 @@ export interface ActionBarProps
    */
   open?: boolean;
   /**
-   * Placement and offset of the action bar.
+   * Placement and gutter of the action bar.
    */
   positioning?: ActionBarContextValue["positioning"];
 }
 
-const defaultPositioning = { placement: "bottom", offset: "16px" } as const;
+const defaultPositioning = { placement: "bottom", gutter: "16px" } as const;
 
 export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
   const {
@@ -147,7 +147,7 @@ const actionBarPositionerVariants = tv({
   base: [
     "fixed inset-x-0 bottom-0 z-50",
     "flex",
-    "px-4 pb-(--offset)",
+    "px-4 pb-(--gutter)",
     "data-[state=closed]:animate-out data-[state=open]:animate-in",
     "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
     "data-[state=open]:slide-in-from-bottom-2 data-[state=closed]:slide-out-to-bottom-2",
@@ -178,7 +178,7 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
   const { isOpen, lazyMount, unmountOnExit, positioning } = _useActionBar();
 
   const placement = positioning.placement;
-  const offset = positioning.offset;
+  const gutter = positioning.gutter;
 
   return (
     <Portal>
@@ -192,7 +192,7 @@ export const ActionBarContent = (props: ActionBarContentProps) => {
           className={cn(actionBarPositionerVariants({ placement }))}
           data-placement={placement}
           data-slot="action-bar-positioner"
-          style={{ "--offset": offset } as React.CSSProperties}
+          style={{ "--gutter": gutter } as React.CSSProperties}
         >
           <ark.div
             aria-label={

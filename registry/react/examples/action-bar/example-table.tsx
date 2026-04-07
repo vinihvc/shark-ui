@@ -130,11 +130,11 @@ const Example = () => {
         <ActionBarContent className="w-full max-w-xl">
           <ActionBarSelectionTrigger count={selectedIds.length} />
           <div className="ml-auto flex gap-2">
-            <Button size="sm" variant="secondary">
+            <Button className="max-sm:hidden" size="sm" variant="secondary">
               <SendIcon />
               Send
             </Button>
-            <Button size="sm" variant="secondary">
+            <Button className="max-sm:hidden" size="sm" variant="secondary">
               <PencilIcon />
               Edit
             </Button>
@@ -157,7 +157,11 @@ const Example = () => {
             </Menu>
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button size="sm" variant="destructive">
+                <Button
+                  className="max-sm:hidden"
+                  size="sm"
+                  variant="destructive"
+                >
                   <Trash2Icon />
                   Delete
                 </Button>

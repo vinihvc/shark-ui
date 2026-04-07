@@ -10,25 +10,25 @@ import {
 } from "@/registry/react/components/action-bar";
 import { Button } from "@/registry/react/components/button";
 
-const offsets = ["24px", "32px"] as const;
+const gutters = ["24px", "32px"] as const;
 
 const Example = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [offset, setOffset] = React.useState<(typeof offsets)[number]>("24px");
+  const [gutter, setGutter] = React.useState<(typeof gutters)[number]>("24px");
 
   return (
     <>
       <div className="flex flex-wrap gap-2">
-        {offsets.map((value) => (
+        {gutters.map((value) => (
           <Button
             key={value}
             onClick={() => {
               setIsOpen(true);
-              setOffset(value);
+              setGutter(value);
             }}
-            variant={offset === value && isOpen ? "secondary" : "outline"}
+            variant={gutter === value && isOpen ? "secondary" : "outline"}
           >
-            {`Offset ${value}`}
+            {`Gutter ${value}`}
           </Button>
         ))}
       </div>
@@ -36,7 +36,7 @@ const Example = () => {
       <ActionBar
         onOpenChange={setIsOpen}
         open={isOpen}
-        positioning={{ offset, placement: "bottom" }}
+        positioning={{ gutter, placement: "bottom" }}
       >
         <ActionBarContent className="w-full max-w-md">
           <ActionBarClose asChild>

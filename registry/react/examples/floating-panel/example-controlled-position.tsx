@@ -53,7 +53,7 @@ const Example = () => {
           </FloatingPanelHeader>
           <FloatingPanelBody className="text-center text-muted-foreground text-sm">
             <p>
-              Position: ({position.x}, {position.y}).{" "}
+              Position: ({position.x}, {position.y}).
             </p>
             <p>Use the buttons to move the panel.</p>
 

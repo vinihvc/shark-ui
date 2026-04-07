@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "cssVars": {
     "light": {
       "destructive-foreground": "var(--color-red-50)",
@@ -23,7 +26,9 @@
       "warning-foreground": "var(--color-yellow-50)"
     }
   },
-  "registryDependencies": ["http://localhost:3000/r/spinner.json"],
+  "registryDependencies": [
+    "http://localhost:3000/r/spinner.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/button.tsx",

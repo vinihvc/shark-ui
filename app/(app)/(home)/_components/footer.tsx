@@ -1,4 +1,3 @@
-import { SharkIcon } from "@/components/icons/shark";
 import { cn } from "@/lib/utils";
 
 export const HomeFooter = (props: React.ComponentProps<"footer">) => {
@@ -13,9 +12,7 @@ export const HomeFooter = (props: React.ComponentProps<"footer">) => {
       {...rest}
     >
       <p className="text-muted-foreground text-sm max-sm:text-center">
-        &copy; {new Date().getFullYear()}{" "}
-        <SharkIcon className="mx-1 inline-block h-lh w-4 -translate-y-0.5" />.
-        Built by{" "}
+        &copy; {new Date().getFullYear()} Built by{" "}
         <a
           className="underline-offset-2 outline-none hover:text-primary hover:underline focus-visible:text-primary focus-visible:underline"
           href="https://vini.one"

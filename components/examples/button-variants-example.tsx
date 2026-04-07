@@ -149,11 +149,9 @@ export const ButtonVariantsExample = (props: React.ComponentProps<"div">) => {
           }
           variant="ghost"
         >
-          {" "}
           Ghost
         </Button>
         <Button variant="link">
-          {" "}
           Link <ExternalLinkIcon aria-hidden />
         </Button>
       </CardContent>

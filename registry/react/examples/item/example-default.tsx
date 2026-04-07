@@ -33,7 +33,7 @@ const ItemDemo = () => (
       </ItemContent>
       <ItemActions>
         <ChevronRight className="size-4" />
-      </ItemActions>{" "}
+      </ItemActions>
     </Item>
   </div>
 );

@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle-tooltip",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
-  "registryDependencies": ["http://localhost:3000/r/popover.json"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/popover.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/toggle-tooltip.tsx",

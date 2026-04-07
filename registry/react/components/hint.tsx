@@ -17,17 +17,17 @@ interface HintContextValue {
    */
   isVisible: boolean;
   /**
-   * The positioning of the action bar.
+   * The positioning of the hint.
    */
   positioning: {
     /**
-     * The offset from the edge in pixels.
+     * The gutter from the trigger in pixels.
      *
-     * @default '16px'
+     * @default '10px'
      */
-    offset?: string;
+    gutter?: string;
     /**
-     * The placement of the action bar.
+     * The placement of the hint relative to the trigger.
      *
      * @default "top"
      */
@@ -55,14 +55,14 @@ interface HintProps extends React.ComponentProps<typeof ark.div> {
    */
   open?: boolean;
   /**
-   * Placement and offset of the hint.
+   * Placement and gutter of the hint.
    */
   positioning?: HintContextValue["positioning"];
 }
 
 const HintContext = React.createContext({} as HintContextValue);
 
-const defaultPositioning = { placement: "top", offset: "10px" } as const;
+const defaultPositioning = { placement: "top", gutter: "10px" } as const;
 
 export const Hint = (props: HintProps) => {
   const {
@@ -113,7 +113,7 @@ export const Hint = (props: HintProps) => {
         data-state={isVisible ? "open" : "closed"}
         style={
           {
-            "--offset": positioningValue.offset,
+            "--gutter": positioningValue.gutter,
           } as React.CSSProperties
         }
         {...rest}
@@ -160,22 +160,22 @@ const hintContentVariants = tv({
     placement: {
       bottom: [
         "inset-s-1/2 top-full -translate-x-1/2",
-        "mt-(--offset)",
+        "mt-(--gutter)",
         "data-[state=open]:slide-in-from-top-5 origin-bottom",
       ],
       right: [
-        "start-full top-1/2 ms-(--offset) -translate-y-1/2",
-        "ms-(--offset)",
+        "start-full top-1/2 ms-(--gutter) -translate-y-1/2",
+        "ms-(--gutter)",
         "data-[state=open]:slide-in-from-start-5 origin-end",
       ],
       left: [
-        "end-full top-1/2 me-(--offset) -translate-y-1/2",
-        "me-(--offset)",
+        "end-full top-1/2 me-(--gutter) -translate-y-1/2",
+        "me-(--gutter)",
         "data-[state=open]:slide-in-from-end-5 origin-start",
       ],
       top: [
-        "inset-s-1/2 bottom-full mb-(--offset) -translate-x-1/2",
-        "mb-(--offset)",
+        "inset-s-1/2 bottom-full mb-(--gutter) -translate-x-1/2",
+        "mb-(--gutter)",
         "data-[state=open]:slide-in-from-bottom-5 origin-top",
       ],
     },

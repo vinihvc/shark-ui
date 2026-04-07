@@ -5,7 +5,7 @@ import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
 const Example = () => (
   <Button variant="outline">
     <SaveIcon />
-    Save{" "}
+    Save
     <KbdGroup className="translate-x-0.5">
       <Kbd variant="outline">Ctrl+S</Kbd>
     </KbdGroup>

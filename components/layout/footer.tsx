@@ -56,7 +56,7 @@ export const Footer = (props: FooterProps) => {
                 target="_blank"
               >
                 Vinicius Vicentini
-              </a>{" "}
+              </a>
             </p>
           </div>
           <nav

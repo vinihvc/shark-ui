@@ -2,8 +2,13 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
-  "registryDependencies": ["http://localhost:3000/r/button.json"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/button.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/toggle.tsx",

@@ -2,8 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "circular-slider",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
-  "registryDependencies": ["http://localhost:3000/r/field.json"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "registryDependencies": [
+    "http://localhost:3000/r/field.json"
+  ],
   "files": [
     {
       "path": "registry/react/components/circular-slider.tsx",

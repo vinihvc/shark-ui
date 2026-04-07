@@ -32,15 +32,15 @@ const ActionBarDemo = () => {
           <Button asChild size="sm" variant="secondary">
             <SendIcon />
             Send
-          </Button>{" "}
-          <Button size="sm" variant="secondary">
+          </Button>
+          <Button className="max-sm:hidden" size="sm" variant="secondary">
             <PencilIcon />
             Edit
           </Button>
           <Button size="sm" variant="secondary">
             <EllipsisIcon />
           </Button>
-          <Button size="sm" variant="destructive">
+          <Button className="max-sm:hidden" size="sm" variant="destructive">
             <Trash2Icon />
             Delete
           </Button>
