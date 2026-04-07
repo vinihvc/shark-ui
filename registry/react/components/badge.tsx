@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 export const badgeVariants = tv({
   base: [
+    "relative",
     "inline-flex items-center justify-center gap-1",
     "select-none whitespace-nowrap font-medium",
     "rounded-md border border-transparent",
