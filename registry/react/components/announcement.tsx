@@ -9,6 +9,7 @@ import { badgeVariants } from "@/registry/react/components/badge";
 export const announcementVariants = tv({
   base: [
     "group/announcement",
+    "relative",
     "inline-flex items-center gap-2",
     "py-0.5 ps-3 pe-3",
     "has-data-[slot=announcement-badge]:ps-0.5",

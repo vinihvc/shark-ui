@@ -58,8 +58,10 @@ export const BottomNavigationItem = (
   return (
     <ArkTabs.Trigger
       className={cn(
-        "relative flex flex-1 flex-col items-center justify-center gap-0.5",
-        "min-w-0 p-2",
+        "relative",
+        "min-w-0",
+        "flex flex-1 flex-col items-center justify-center gap-0.5",
+        "p-2",
         "text-muted-foreground",
         "cursor-pointer",
         "transition-colors",
