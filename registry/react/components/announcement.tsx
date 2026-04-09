@@ -19,7 +19,6 @@ export const announcementVariants = tv({
     "has-data-[slot=badge]:ps-0.5",
     "[button&,a&]:cursor-pointer",
     "[&>svg]:text-muted-foreground",
-    "[&_[data-slot=announcement-title]_svg]:text-muted-foreground",
     "[a&]:hover:bg-input/12",
     "**:data-[slot=badge]:h-6.5 **:data-[slot=badge]:rounded-xl **:data-[slot=badge]:px-2 **:data-[slot=badge]:sm:text-xs",
     "[button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
