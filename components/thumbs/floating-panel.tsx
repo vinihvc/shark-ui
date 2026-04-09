@@ -3,7 +3,7 @@ import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
 export const FloatingPanelThumb = (props: ThumbCardProps) => (
   <ThumbCard {...props}>
-    <div className="flex flex-col overflow-hidden rounded-lg border border-input bg-muted shadow-md/5">
+    <div className="flex flex-col overflow-hidden rounded-lg border border-input border-dashed bg-muted shadow-md/5">
       <div className="flex items-center justify-between gap-2 border-input border-b bg-muted px-3 py-2">
         <div className="h-2 w-1/3 min-w-0 rounded-full bg-muted-foreground/16" />
         <div className="flex items-center gap-2">

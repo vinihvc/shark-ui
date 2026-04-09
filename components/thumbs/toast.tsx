@@ -4,10 +4,10 @@ import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 export const ToastThumb = (props: ThumbCardProps) => (
   <ThumbCard {...props}>
     <div className="relative isolate flex min-h-14 items-center justify-center">
-      <div className="absolute inset-x-0 -top-3 h-12 w-full scale-90 rounded-lg border border-input bg-muted opacity-32" />
-      <div className="absolute inset-x-0 -top-1 h-12 w-full scale-95 rounded-lg border border-input bg-muted opacity-64" />
+      <div className="absolute inset-x-0 -top-3 h-12 w-full scale-90 rounded-lg border border-input border-dashed bg-muted opacity-32" />
+      <div className="absolute inset-x-0 -top-1 h-12 w-full scale-95 rounded-lg border border-input border-dashed bg-muted opacity-64" />
 
-      <div className="relative z-10 flex h-12 w-full items-center justify-start gap-2 rounded-lg border border-input bg-muted px-3 shadow-md/5">
+      <div className="relative z-10 flex h-12 w-full items-center justify-start gap-2 rounded-lg border border-input border-dashed bg-muted px-3 shadow-md/5">
         <div className="mt-4 flex h-full items-start justify-start">
           <InfoIcon aria-hidden className="size-3 text-muted-foreground/64" />
         </div>
