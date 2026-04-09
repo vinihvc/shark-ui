@@ -1,15 +1,15 @@
+import { Badge } from "@registry/react/components/badge";
 import { TriangleAlertIcon } from "lucide-react";
 import {
   Announcement,
-  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/registry/react/components/announcement";
 
 const Example = () => (
   <Announcement>
-    <AnnouncementBadge variant="warning">
+    <Badge variant="warning">
       <TriangleAlertIcon /> Trial ending
-    </AnnouncementBadge>
+    </Badge>
     <AnnouncementTitle>
       Your free trial expires in 3 days. Upgrade to keep access.
     </AnnouncementTitle>

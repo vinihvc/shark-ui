@@ -4,7 +4,6 @@ import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { badgeVariants } from "@/registry/react/components/badge";
 
 export const announcementVariants = tv({
   base: [
@@ -12,16 +11,16 @@ export const announcementVariants = tv({
     "relative",
     "inline-flex items-center gap-2",
     "py-0.5 ps-3 pe-3",
-    "has-data-[slot=announcement-badge]:ps-0.5",
-    "bg-input/4 dark:bg-input/12",
-    "rounded-full border border-input",
+    "bg-input/4",
+    "rounded-2xl border border-input",
     "transition-colors",
     "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
     "[&_svg]:size-3.5 [&_svg]:shrink-0",
+    "has-data-[slot=badge]:ps-0.5",
     "[button&,a&]:cursor-pointer",
     "[&>svg]:text-muted-foreground",
-    "[&_[data-slot=announcement-title]_svg]:text-muted-foreground",
-    "[a&]:hover:bg-input/8 dark:[a&]:hover:bg-input/24",
+    "[a&]:hover:bg-input/12",
+    "**:data-[slot=badge]:h-6.5 **:data-[slot=badge]:rounded-xl **:data-[slot=badge]:px-2 **:data-[slot=badge]:sm:text-xs",
     "[button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
   ],
 });
@@ -45,26 +44,6 @@ export const Announcement = (props: AnnouncementProps) => {
       className={cn(announcementVariants(), className)}
       data-slot="announcement"
       role={role}
-      {...rest}
-    />
-  );
-};
-
-interface AnnouncementBadgeProps
-  extends React.ComponentProps<typeof ark.span>,
-    VariantProps<typeof badgeVariants> {}
-
-export const AnnouncementBadge = (props: AnnouncementBadgeProps) => {
-  const { variant = "default", className, ...rest } = props;
-
-  return (
-    <ark.span
-      className={cn(
-        badgeVariants({ variant, size: "lg", pill: true }),
-        "px-2 opacity-90 sm:text-xs",
-        className
-      )}
-      data-slot="announcement-badge"
       {...rest}
     />
   );

@@ -1,15 +1,15 @@
+import { Badge } from "@registry/react/components/badge";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import {
   Announcement,
-  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/registry/react/components/announcement";
 
 const Example = () => (
   <Announcement asChild>
     <Link href="/">
-      <AnnouncementBadge>Latest update</AnnouncementBadge>
+      <Badge>Latest update</Badge>
       <AnnouncementTitle>
         New feature added
         <ArrowUpRight aria-hidden />
