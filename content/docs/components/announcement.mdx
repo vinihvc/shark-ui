@@ -49,21 +49,17 @@ npm install @ark-ui/react tailwind-variants
 ```tsx
 import {
   Announcement,
-  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/components/ui/announcement";
 ```
 
 ```tsx showLineNumbers
 <Announcement>
-  <AnnouncementBadge>Latest update</AnnouncementBadge>
   <AnnouncementTitle>New feature added</AnnouncementTitle>
 </Announcement>
 ```
 
 ## Variants
-
-The `variant` prop on `<AnnouncementBadge />` controls the badge visual style.
 
 ### Info
 
@@ -110,16 +106,6 @@ Root wrapper for announcement banners or notices.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `role` | `status`, `alert`, or other ARIA live region role | `status` |
-| `className` | `string` | `-` |
-| `asChild` | `boolean` | `false` |
-
-### AnnouncementBadge
-
-Optional badge (e.g. New, Sale) shown alongside the title.
-
-| Prop | Type | Default |
-| --- | --- | --- |
-| `variant` | `default`, `secondary`, `outline`, `success`, `info`, `warning`, `destructive` | `default` |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 

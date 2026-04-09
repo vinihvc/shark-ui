@@ -1,12 +1,12 @@
+import { Badge } from "@registry/react/components/badge";
 import {
   Announcement,
-  AnnouncementBadge,
   AnnouncementTitle,
 } from "@/registry/react/components/announcement";
 
 const Example = () => (
   <Announcement>
-    <AnnouncementBadge>Release</AnnouncementBadge>
+    <Badge>Release</Badge>
     <AnnouncementTitle>
       v2.1.0 — Dark mode, faster builds, and 12 new components
     </AnnouncementTitle>
