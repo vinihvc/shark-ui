@@ -110,7 +110,7 @@ export const TableHead = (props: React.ComponentProps<typeof ark.th>) => {
   return (
     <ark.th
       className={cn(
-        "h-10 px-4",
+        "h-10 px-2",
         "text-left align-middle",
         "font-normal text-muted-foreground",
         "rtl:text-right",
