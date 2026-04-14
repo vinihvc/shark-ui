@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "autocomplete",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "lucide-solid"],
+  "registryDependencies": [
+    "http://localhost:3000/s/combobox.json",
+    "http://localhost:3000/s/separator.json"
+  ],
+  "files": [
+    {
+      "path": "registry/solid/components/autocomplete.tsx",
+      "content": "import type { Combobox as ArkCombobox } from \"@ark-ui/solid/combobox\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport {\n  Combobox,\n  ComboboxClear,\n  ComboboxContent,\n  ComboboxControl,\n  ComboboxEmpty,\n  ComboboxGroup,\n  ComboboxGroupLabel,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n  ComboboxTrigger,\n} from \"@/registry/solid/components/combobox\";\nimport { Separator } from \"@/registry/solid/components/separator\";\n\nexport const Autocomplete: ArkCombobox.RootComponent = (props) => {\n  return (\n    <Combobox\n      allowCustomValue\n      data-slot=\"autocomplete\"\n      inputBehavior=\"autocomplete\"\n      {...props}\n    />\n  );\n};\n\nexport const AutocompleteControl = (\n  props: ComponentProps<typeof ComboboxControl>\n) => <ComboboxControl data-slot=\"autocomplete-control\" {...props} />;\n\nexport const AutocompleteInput = (\n  props: ComponentProps<typeof ComboboxInput>\n) => {\n  const { showClear = false, showTrigger = false, ...rest } = props;\n\n  return (\n    <ComboboxInput\n      data-slot=\"autocomplete-input\"\n      showClear={showClear}\n      showTrigger={showTrigger}\n      {...rest}\n    />\n  );\n};\n\nexport const AutocompleteGroupLabel = (\n  props: ComponentProps<typeof ComboboxGroupLabel>\n) => <ComboboxGroupLabel data-slot=\"autocomplete-group-label\" {...props} />;\n\nexport const AutocompleteItem = (\n  props: ComponentProps<typeof ComboboxItem>\n) => <ComboboxItem data-slot=\"autocomplete-item\" {...props} />;\n\nexport const AutocompleteContent = (\n  props: ComponentProps<typeof ComboboxContent>\n) => <ComboboxContent data-slot=\"autocomplete-content\" {...props} />;\n\nexport const AutocompleteTrigger = (\n  props: ComponentProps<typeof ComboboxTrigger>\n) => <ComboboxTrigger data-slot=\"autocomplete-trigger\" {...props} />;\n\nexport const AutocompleteClear = (\n  props: ComponentProps<typeof ComboboxClear>\n) => <ComboboxClear data-slot=\"autocomplete-clear\" {...props} />;\n\nexport const AutocompleteGroup = (\n  props: ComponentProps<typeof ComboboxGroup>\n) => <ComboboxGroup data-slot=\"autocomplete-group\" {...props} />;\n\nexport const AutocompleteEmpty = (\n  props: ComponentProps<typeof ComboboxEmpty>\n) => <ComboboxEmpty data-slot=\"autocomplete-empty\" {...props} />;\n\nexport const AutocompleteList = (\n  props: ComponentProps<typeof ComboboxList>\n) => <ComboboxList data-slot=\"autocomplete-list\" {...props} />;\n\nexport const AutocompleteCollection = (\n  props: ComponentProps<typeof ComboboxList>\n) => <ComboboxList data-slot=\"autocomplete-collection\" {...props} />;\n\nexport const AutocompleteSeparator = (\n  props: ComponentProps<typeof Separator>\n) => <Separator data-slot=\"autocomplete-separator\" {...props} />;\n",
+      "type": "registry:ui"
+    }
+  ]
+}

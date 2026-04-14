@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "download-trigger",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "lucide-solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/download-trigger.tsx",
+      "content": "import { DownloadTrigger as ArkDownloadTrigger } from \"@ark-ui/solid/download-trigger\";\nimport type { ComponentProps } from \"solid-js\";\n\nexport const DownloadTrigger = (\n  props: ComponentProps<typeof ArkDownloadTrigger>\n) => {\n  return <ArkDownloadTrigger data-slot=\"download-trigger\" {...props} />;\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

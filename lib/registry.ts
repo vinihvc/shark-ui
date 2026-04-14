@@ -44,7 +44,7 @@ export interface GetRegistryItemArgs {
    *
    * @default "react"
    */
-  framework?: "react" | "vue" | "solid" | "svelte";
+  framework?: "react" | "solid";
 }
 
 interface RegistryListItem {

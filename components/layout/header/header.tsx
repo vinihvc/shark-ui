@@ -10,6 +10,7 @@ import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Separator } from "@/registry/react/components/separator";
+import { FrameworkSwitcher } from "../framework-switcher";
 import { HeaderCustomize } from "./header.customize";
 
 export const SiteHeader = (props: React.ComponentProps<"header">) => {
@@ -71,6 +72,10 @@ export const SiteHeader = (props: React.ComponentProps<"header">) => {
                 <GithubIcon />
               </a>
             </Button>
+
+            <Separator orientation="vertical" />
+
+            <FrameworkSwitcher />
 
             <Separator orientation="vertical" />
 

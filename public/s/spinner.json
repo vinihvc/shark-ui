@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "lucide-solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/spinner.tsx",
+      "content": "import { Loader2Icon } from \"lucide-solid\";\nimport type { ComponentProps } from \"solid-js\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Spinner = (props: ComponentProps<\"svg\">) => {\n  const { \"aria-label\": ariaLabel, className, ...rest } = props;\n\n  return (\n    <Loader2Icon\n      aria-label={ariaLabel ?? \"Loading\"}\n      class={cn(\"size-4 animate-spin\", className)}\n      data-slot=\"spinner\"\n      role=\"status\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

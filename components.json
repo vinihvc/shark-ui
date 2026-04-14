@@ -19,6 +19,7 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@shark": "https://shark.vini.one/r/{name}.json"
+    "@shark/react": "https://shark.vini.one/r/{name}.json",
+    "@shark/solid": "https://shark.vini.one/s/{name}.json"
   }
 }

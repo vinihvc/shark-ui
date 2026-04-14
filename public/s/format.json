@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "format",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/format.tsx",
+      "content": "import { Format as ArkFormat } from \"@ark-ui/solid/format\";\nimport type { ComponentProps } from \"solid-js\";\n\nexport const FormatByte = (props: ComponentProps<typeof ArkFormat.Byte>) => {\n  return <ArkFormat.Byte data-slot=\"format-byte\" {...props} />;\n};\n\nexport const FormatNumber = (\n  props: ComponentProps<typeof ArkFormat.Number>\n) => {\n  return <ArkFormat.Number data-slot=\"format-number\" {...props} />;\n};\n\nexport const FormatRelativeTime = (\n  props: ComponentProps<typeof ArkFormat.RelativeTime>\n) => {\n  return <ArkFormat.RelativeTime data-slot=\"format-relative-time\" {...props} />;\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

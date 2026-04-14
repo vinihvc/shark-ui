@@ -1,6 +1,12 @@
 import { SITE_CONFIG } from "@/config/site";
+import type { RegistryBuildFramework } from "@/lib/registry-framework";
 
 const TRAILING_SLASH = /\/$/;
+
+const REGISTRY_URL_PREFIX: Record<RegistryBuildFramework, string> = {
+  react: "/r",
+  solid: "/s",
+};
 
 const getBaseUrl = (): string => {
   const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
@@ -24,3 +30,9 @@ export const absoluteUrl = (path: string) => {
 
   return path.startsWith("/") ? `${base}${path}` : `${base}/${path}`;
 };
+
+/** Absolute URL to a published registry item JSON for a given framework. */
+export const absoluteRegistryItemUrl = (
+  framework: RegistryBuildFramework,
+  itemName: string
+) => absoluteUrl(`${REGISTRY_URL_PREFIX[framework]}/${itemName}.json`);

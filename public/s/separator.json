@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/separator.tsx",
+      "content": "import { ark } from \"@ark-ui/solid/factory\";\nimport type { ComponentProps } from \"solid-js\";\nimport { cn } from \"@/lib/utils\";\n\ninterface SeparatorProps extends ComponentProps<typeof ark.div> {\n  /**\n   * The orientation of the separator.\n   *\n   * @default \"horizontal\"\n   */\n  orientation?: \"horizontal\" | \"vertical\";\n}\n\nexport const Separator = (props: SeparatorProps) => {\n  const { orientation = \"horizontal\", className, ...rest } = props;\n\n  return (\n    <ark.div\n      aria-orientation={orientation}\n      class={cn(\n        \"shrink-0\",\n        \"bg-input\",\n        \"data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full\",\n        \"data-[orientation=vertical]:w-px data-[orientation=vertical]:not-[[class^='h-']]:not-[[class*='_h-']]:self-stretch\",\n        className\n      )}\n      data-orientation={orientation}\n      data-slot=\"separator\"\n      role=\"separator\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

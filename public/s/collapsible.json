@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "lucide-solid"],
+  "cssVars": {
+    "theme": {
+      "--animate-expand": "expand 0.2s ease-out",
+      "--animate-collapse": "collapse 0.2s ease-out"
+    }
+  },
+  "css": {
+    "@keyframes expand": {
+      "from": {
+        "height": "var(--collapsed-height, 0)"
+      },
+      "to": {
+        "height": "var(--height)"
+      }
+    },
+    "@keyframes collapse": {
+      "from": {
+        "height": "var(--height)"
+      },
+      "to": {
+        "height": "var(--collapsed-height, 0)"
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "registry/solid/components/collapsible.tsx",
+      "content": "import {\n  Collapsible as ArkCollapsible,\n  useCollapsibleContext,\n} from \"@ark-ui/solid/collapsible\";\nimport { ChevronDownIcon } from \"lucide-solid\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport const useCollapsible = useCollapsibleContext;\n\nexport const Collapsible = (\n  props: ComponentProps<typeof ArkCollapsible.Root>\n) => {\n  const {\n    collapsedHeight,\n    lazyMount = true,\n    unmountOnExit = true,\n    class: className,\n    ...rest\n  } = props;\n\n  return (\n    <ArkCollapsible.Root\n      class={cn(\"group/collapsible\", className)}\n      collapsedHeight={collapsedHeight}\n      data-partial-collapse={collapsedHeight ? \"\" : undefined}\n      data-slot=\"collapsible\"\n      lazyMount={collapsedHeight ? false : lazyMount}\n      unmountOnExit={collapsedHeight ? false : unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const CollapsibleTrigger = (\n  props: ComponentProps<typeof ArkCollapsible.Trigger>\n) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ArkCollapsible.Trigger\n      class={cn(\n        \"cursor-pointer\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-64\",\n        \"has-data-[slot=collapsible-indicator]:[button]:justify-between\",\n        className\n      )}\n      data-slot=\"collapsible-trigger\"\n      {...rest}\n    />\n  );\n};\n\nexport const CollapsibleContent = (\n  props: ComponentProps<typeof ArkCollapsible.Content>\n) => {\n  const { class: className, children, ...rest } = props;\n\n  return (\n    <ArkCollapsible.Content\n      class={cn(\n        \"h-(--collapsed-height)\",\n        \"group-data-partial-collapse/collapsible:h-full\",\n        \"transition-[height] duration-200\",\n        \"overflow-hidden\",\n        \"data-[state=open]:animate-expand\",\n        \"data-[state=closed]:animate-collapse\"\n      )}\n      data-slot=\"collapsible-content\"\n      {...rest}\n    >\n      <div class={className}>{children}</div>\n    </ArkCollapsible.Content>\n  );\n};\n\nexport const CollapsibleIndicator = (\n  props: ComponentProps<typeof ArkCollapsible.Indicator>\n) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ArkCollapsible.Indicator\n      class={cn(\"data-[state=open]:[&_svg]:rotate-180\", className)}\n      data-slot=\"collapsible-indicator\"\n      {...rest}\n    >\n      <ChevronDownIcon aria-hidden class=\"transition-transform duration-200\" />\n    </ArkCollapsible.Indicator>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

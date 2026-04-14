@@ -2,13 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-group",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "http://localhost:3000/r/separator.json"
-  ],
+  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "registryDependencies": ["http://localhost:3000/r/separator.json"],
   "files": [
     {
       "path": "registry/react/components/button-group.tsx",

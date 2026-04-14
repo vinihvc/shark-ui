@@ -1,0 +1,65 @@
+import { ark } from "@ark-ui/solid/factory";
+import type { ComponentProps } from "solid-js";
+
+import { tv, type VariantProps } from "tailwind-variants";
+import { cn } from "@/lib/utils";
+
+export const announcementVariants = tv({
+  base: [
+    "group/announcement",
+    "relative",
+    "inline-flex items-center gap-2",
+    "py-0.5 ps-3 pe-3",
+    "bg-input/4",
+    "rounded-2xl border border-input",
+    "transition-colors",
+    "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "[&_svg]:size-3.5 [&_svg]:shrink-0",
+    "has-data-[slot=badge]:ps-0.5",
+    "[button&,a&]:cursor-pointer",
+    "[&>svg]:text-muted-foreground",
+    "[a&]:hover:bg-input/12",
+    "**:data-[slot=badge]:h-6.5 **:data-[slot=badge]:rounded-xl **:data-[slot=badge]:px-2 **:data-[slot=badge]:sm:text-xs",
+    "[button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
+  ],
+});
+
+interface AnnouncementProps
+  extends ComponentProps<typeof ark.div>,
+    VariantProps<typeof announcementVariants> {
+  /**
+   * The ARIA role of the announcement.
+   *
+   * @default "status"
+   */
+  role?: "status" | "alert";
+}
+
+export const Announcement = (props: AnnouncementProps) => {
+  const { class: className, role = "status", ...rest } = props;
+
+  return (
+    <ark.div
+      class={cn(announcementVariants(), className)}
+      data-slot="announcement"
+      role={role}
+      {...rest}
+    />
+  );
+};
+
+export const AnnouncementTitle = (props: ComponentProps<typeof ark.span>) => {
+  const { class: className, ...rest } = props;
+
+  return (
+    <ark.span
+      class={cn(
+        "inline-flex items-center gap-1",
+        "select-none font-medium text-sm",
+        className
+      )}
+      data-slot="announcement-title"
+      {...rest}
+    />
+  );
+};

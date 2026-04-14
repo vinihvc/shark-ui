@@ -30,6 +30,12 @@ export const Select: ArkSelect.RootComponent = (props) => {
   );
 };
 
+export const SelectControl = (
+  props: React.ComponentProps<typeof ArkSelect.Control>
+) => {
+  return <ArkSelect.Control data-slot="select-control" {...props} />;
+};
+
 interface SelectTriggerProps
   extends React.ComponentProps<typeof ArkSelect.Trigger>,
     VariantProps<typeof inputVariants> {
@@ -51,7 +57,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
   } = props;
 
   return (
-    <ArkSelect.Control data-slot="select-control">
+    <SelectControl>
       <ArkSelect.Trigger
         className={cn(
           inputVariants({ size }),
@@ -68,7 +74,10 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
       >
         {children}
 
-        <div className="ms-auto flex items-center gap-1 rtl:me-auto">
+        <div
+          className="ms-auto flex items-center gap-1 rtl:me-auto"
+          data-slot="select-trigger-actions"
+        >
           {showClearTrigger && (
             <SelectClearTrigger>
               <XIcon />
@@ -79,7 +88,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
           </ArkSelect.Indicator>
         </div>
       </ArkSelect.Trigger>
-    </ArkSelect.Control>
+    </SelectControl>
   );
 };
 
@@ -181,20 +190,25 @@ export const SelectGroupLabel = (
   );
 };
 
-export const SelectItem = (
-  props: React.ComponentProps<typeof ArkSelect.Item>
-) => {
-  const { className, children, ...rest } = props;
+interface SelectItemProps extends React.ComponentProps<typeof ArkSelect.Item> {
+  /**
+   * Whether to show the indicator
+   */
+  showIndicator?: boolean;
+}
+
+export const SelectItem = (props: SelectItemProps) => {
+  const { showIndicator = true, className, children, ...rest } = props;
 
   return (
     <ArkSelect.Item
       className={cn(
         "relative",
         "w-full",
-        "py-1.5 ps-2 pe-8",
+        "py-1.5 ps-2 pe-2",
         "flex items-center gap-2",
         "select-none text-base md:text-sm",
-        "rounded-md",
+        "rounded-lg",
         "cursor-default",
         "outline-hidden",
         "in-[[data-slot=select-content]:has([data-slot=select-group-label])]:ps-4",
@@ -202,6 +216,7 @@ export const SelectItem = (
         "data-disabled:pointer-events-none data-disabled:opacity-64",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0",
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:text-muted-foreground",
+        showIndicator && "pe-8",
         className
       )}
       data-slot="select-item"
@@ -214,11 +229,13 @@ export const SelectItem = (
         {children}
       </ArkSelect.ItemText>
 
-      <span className="absolute inset-e-2 flex size-4 items-center justify-center">
-        <ArkSelect.ItemIndicator data-slot="select-item-indicator">
-          <CheckIcon />
-        </ArkSelect.ItemIndicator>
-      </span>
+      {showIndicator && (
+        <span className="absolute inset-e-2 flex size-4 items-center justify-center">
+          <ArkSelect.ItemIndicator data-slot="select-item-indicator">
+            <CheckIcon />
+          </ArkSelect.ItemIndicator>
+        </span>
+      )}
     </ArkSelect.Item>
   );
 };

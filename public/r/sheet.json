@@ -2,11 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sheet",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "tailwind-variants",
-    "lucide-react"
-  ],
+  "dependencies": ["@ark-ui/react", "tailwind-variants", "lucide-react"],
   "registryDependencies": [
     "http://localhost:3000/r/button.json",
     "http://localhost:3000/r/dialog.json"

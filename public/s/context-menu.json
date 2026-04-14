@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "registryDependencies": ["http://localhost:3000/s/menu.json"],
+  "files": [
+    {
+      "path": "registry/solid/components/context-menu.tsx",
+      "content": "import { Menu as ArkMenu, useMenuContext } from \"@ark-ui/solid/menu\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { cn } from \"@/lib/utils\";\nimport {\n  Menu,\n  MenuContent,\n  MenuGroup,\n  MenuItem,\n  MenuSeparator,\n  MenuShortcut,\n  MenuSub,\n  MenuSubContent,\n  MenuSubTrigger,\n} from \"@/registry/solid/components/menu\";\n\nexport const useContextMenu = useMenuContext;\n\nexport const ContextMenu = (props: ComponentProps<typeof Menu>) => (\n  <Menu data-slot=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuTrigger = (\n  props: ComponentProps<typeof ArkMenu.ContextTrigger>\n) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ArkMenu.ContextTrigger\n      class={cn(\"cursor-default select-none\", className)}\n      data-slot=\"context-menu\"\n      {...rest}\n    />\n  );\n};\n\nexport const ContextMenuContent = (\n  props: ComponentProps<typeof MenuContent>\n) => <MenuContent data-slot=\"context-menu\" {...props} />;\n\nexport const ContextMenuGroup = (props: ComponentProps<typeof MenuGroup>) => (\n  <MenuGroup data-slot=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuSeparator = (\n  props: ComponentProps<typeof MenuSeparator>\n) => <MenuSeparator data-slot=\"context-menu\" {...props} />;\n\nexport const ContextMenuItem = (props: ComponentProps<typeof MenuItem>) => (\n  <MenuItem data-slot=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuSub = (props: ComponentProps<typeof MenuSub>) => (\n  <MenuSub data-slot=\"context-menu\" {...props} />\n);\n\nexport const ContextMenuSubContent = (\n  props: ComponentProps<typeof MenuContent>\n) => <MenuSubContent data-slot=\"context-menu\" {...props} />;\n\nexport const ContextMenuSubTrigger = (\n  props: ComponentProps<typeof MenuSubTrigger>\n) => <MenuSubTrigger data-slot=\"context-menu\" {...props} />;\n\nexport const ContextMenuShortcut = (\n  props: ComponentProps<typeof MenuShortcut>\n) => <MenuShortcut data-slot=\"context-menu\" {...props} />;\n",
+      "type": "registry:ui"
+    }
+  ]
+}

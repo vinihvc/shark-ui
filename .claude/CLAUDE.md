@@ -26,13 +26,13 @@ Linting uses **Ultracite** (wraps Biome). Run `pnpm lint:fix` before committing.
 
 Components are distributed via a registry system:
 
-- **`registry/react/components/*.tsx`** — Component implementations (wrap Ark UI primitives)
-- **`registry/manifest/*.ts`** — Component metadata (dependencies, registryDependencies, cssVars)
-- **`registry/react/examples/[component]/*.tsx`** — Usage examples
-- **`public/r/*.json`** — Built registry output (generated, do not edit)
+- **`registry/<framework>/components/*`** — Implementations per framework (`react` → `.tsx`, `solid` → `.tsx`)
+- **`registry/manifest/<framework>/*.ts`** — Metadata for that framework (dependencies, `registryDependencies`, `cssVars`)
+- **`registry/react/examples/[component]/*.tsx`** — Usage examples (Solid uses `registry/solid/examples/` with `*.solid` snippets where needed)
+- **`public/r/*.json`**, **`public/s/*.json`** — Built registry output (generated, do not edit)
 - **`registry.json`** — Registry index (generated, do not edit)
 
-The build script (`scripts/build-registry.mts`) reads components + manifests and outputs JSON files to `public/r/`.
+The build script (`scripts/build-registry.mts`) reads components + per-framework manifests and writes JSON to `public/r` and `public/s`.
 
 ### Component Authoring Pattern
 

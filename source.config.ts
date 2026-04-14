@@ -7,6 +7,7 @@ import {
 import rehypePrettyCode from "rehype-pretty-code";
 import { z } from "zod";
 import { transformers } from "@/lib/highlight-code";
+import { REGISTRY_FRAMEWORKS } from "./lib/registry-frameworks";
 
 export default defineConfig({
   mdxOptions: {
@@ -38,6 +39,7 @@ export const docs = defineDocs({
         .object({
           doc: z.url().optional(),
           api: z.url().optional(),
+          frameworks: z.array(z.enum(REGISTRY_FRAMEWORKS)).optional(),
         })
         .optional(),
     }),

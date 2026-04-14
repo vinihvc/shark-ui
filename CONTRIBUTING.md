@@ -39,11 +39,11 @@ Thanks for your interest in contributing to shark-ui. This document covers how t
 
 ## Project Structure
 
-- **`registry/react/components/`** — Component implementations
-- **`registry/manifest/`** — Component metadata (dependencies, etc.)
-- **`registry/react/examples/`** — Usage examples shown in docs
+- **`registry/react/components/`** — React component implementations (also `registry/solid/components/`)
+- **`registry/manifest/<framework>/`** — Per-framework metadata (`react`, `solid`)
+- **`registry/react/examples/`** — Usage examples shown in docs (Solid uses `*.solid` text snippets under `registry/solid/examples/` so Next does not typecheck Solid JSX as React)
 - **`content/docs/`** — MDX documentation
-- **`public/r/`** — Built registry output (generated)
+- **`public/r/`**, **`public/s/`** — Built registry JSON (generated)
 
 ## Component Guidelines
 

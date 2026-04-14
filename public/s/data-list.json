@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-list",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "tailwind-variants"],
+  "files": [
+    {
+      "path": "registry/solid/components/data-list.tsx",
+      "content": "import { ark } from \"@ark-ui/solid/factory\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface DataListProps extends ComponentProps<typeof ark.dl> {\n  /**\n   * The orientation of the data list.\n   *\n   * @default \"horizontal\"\n   */\n  orientation?: \"horizontal\" | \"vertical\";\n}\n\nexport const DataList = (props: DataListProps) => {\n  const { orientation = \"horizontal\", className, children, ...rest } = props;\n\n  return (\n    <ark.dl\n      class={cn(\"group/data-list\", \"flex flex-col gap-1\", \"text-sm\", className)}\n      data-orientation={orientation}\n      data-slot=\"data-list\"\n      {...rest}\n    >\n      {children}\n    </ark.dl>\n  );\n};\n\nexport const DataListItem = (props: ComponentProps<typeof ark.div>) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ark.div\n      class={cn(\n        \"flex gap-4 py-2\",\n        \"group-data-[orientation=horizontal]/data-list:flex-row group-data-[orientation=horizontal]/data-list:items-center\",\n        \"group-data-[orientation=vertical]/data-list:flex-col group-data-[orientation=vertical]/data-list:gap-1\",\n        className\n      )}\n      data-slot=\"data-list-item\"\n      {...rest}\n    />\n  );\n};\n\nexport const DataListItemLabel = (props: ComponentProps<typeof ark.dt>) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ark.dt\n      class={cn(\n        \"min-w-24 shrink-0\",\n        \"font-medium text-muted-foreground\",\n        \"group-data-[orientation=vertical]/data-list:min-w-0\",\n        className\n      )}\n      data-slot=\"data-list-item-label\"\n      {...rest}\n    />\n  );\n};\n\nexport const DataListItemValue = (props: ComponentProps<typeof ark.dd>) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ark.dd\n      class={cn(\"flex-1\", \"text-foreground\", className)}\n      data-slot=\"data-list-item-value\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

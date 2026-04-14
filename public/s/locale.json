@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "locale",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/locale.tsx",
+      "content": "import {\n  LocaleProvider as ArkLocaleProvider,\n  useLocaleContext as useArkLocaleContext,\n} from \"@ark-ui/solid/locale\";\n\nexport const LocaleProvider = ArkLocaleProvider;\n\nexport const useLocale = useArkLocaleContext;\n",
+      "type": "registry:ui"
+    }
+  ]
+}

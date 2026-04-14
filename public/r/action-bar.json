@@ -2,11 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "action-bar",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "lucide-react",
-    "tailwind-variants"
-  ],
+  "dependencies": ["@ark-ui/react", "lucide-react", "tailwind-variants"],
   "files": [
     {
       "path": "registry/react/components/action-bar.tsx",

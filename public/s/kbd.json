@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/kbd.tsx",
+      "content": "import { ark } from \"@ark-ui/solid/factory\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nconst kbdVariants = tv({\n  base: [\n    \"h-5 min-w-5\",\n    \"px-1\",\n    \"inline-flex items-center justify-center gap-1\",\n    \"select-none font-medium font-sans text-foreground text-xs\",\n    \"rounded-sm border border-transparent\",\n    \"pointer-events-none\",\n    \"in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background\",\n    \"[&_svg:not([class*='size-'])]:size-3\",\n  ],\n  variants: {\n    variant: {\n      default: \"bg-muted\",\n      outline: \"border border-border\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n  },\n});\n\ninterface KbdProps\n  extends ComponentProps<typeof ark.kbd>,\n    VariantProps<typeof kbdVariants> {}\n\nexport const Kbd = (props: KbdProps) => {\n  const { variant = \"default\", className, ...rest } = props;\n\n  return (\n    <ark.kbd\n      class={cn(kbdVariants({ variant }), className)}\n      data-slot=\"kbd\"\n      {...rest}\n    />\n  );\n};\n\nexport const KbdGroup = (props: ComponentProps<typeof ark.div>) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ark.div\n      class={cn(\"inline-flex items-center gap-1\", className)}\n      data-slot=\"kbd-group\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

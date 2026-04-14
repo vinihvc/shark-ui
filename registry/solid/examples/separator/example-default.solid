@@ -1,0 +1,7 @@
+"use client";
+
+import { Separator } from "@/registry/solid/components/separator";
+
+export default function Example() {
+  return <Separator />;
+}
