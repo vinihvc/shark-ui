@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "lucide-solid"],
+  "cssVars": {
+    "theme": {
+      "--animate-slide-up": "slideUp 0.2s ease-out",
+      "--animate-slide-down": "slideDown 0.2s ease-out"
+    }
+  },
+  "css": {
+    "@keyframes slideUp": {
+      "from": {
+        "height": "var(--height)"
+      },
+      "to": {
+        "height": "0"
+      }
+    },
+    "@keyframes slideDown": {
+      "from": {
+        "height": "0"
+      },
+      "to": {
+        "height": "var(--height)"
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "registry/solid/components/accordion.tsx",
+      "content": "import {\n  Accordion as ArkAccordion,\n  useAccordionContext,\n} from \"@ark-ui/solid/accordion\";\nimport { ChevronDownIcon } from \"lucide-solid\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport const useAccordion = useAccordionContext;\n\nexport const Accordion = (props: ComponentProps<typeof ArkAccordion.Root>) => {\n  const {\n    collapsible = true,\n    lazyMount = true,\n    unmountOnExit = true,\n    ...rest\n  } = props;\n\n  return (\n    <ArkAccordion.Root\n      collapsible={collapsible}\n      data-slot=\"accordion\"\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const AccordionItem = (\n  props: ComponentProps<typeof ArkAccordion.Item>\n) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ArkAccordion.Item\n      class={cn(\"flex flex-col border-b last:border-b-0\", className)}\n      data-slot=\"accordion-item\"\n      {...rest}\n    />\n  );\n};\n\nexport const AccordionTrigger = (\n  props: ComponentProps<typeof ArkAccordion.ItemTrigger>\n) => {\n  const { class: className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemTrigger\n      class={cn(\n        \"flex flex-1 items-center justify-between gap-3\",\n        \"py-4\",\n        \"text-left font-medium text-sm\",\n        \"rounded-md border border-transparent\",\n        \"outline-none\",\n        \"transition-all\",\n        \"disabled:pointer-events-none disabled:opacity-64 disabled:grayscale\",\n        \"focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n        \"[&_[data-state=open]>svg]:rotate-180\",\n        className\n      )}\n      data-slot=\"accordion-trigger\"\n      {...rest}\n    >\n      {children}\n\n      <ArkAccordion.ItemIndicator data-slot=\"accordion-indicator\">\n        <ChevronDownIcon\n          class={cn(\n            \"translate-y-0.5\",\n            \"size-4\",\n            \"shrink-0\",\n            \"text-muted-foreground\",\n            \"pointer-events-none\",\n            \"transition-transform duration-300\"\n          )}\n        />\n      </ArkAccordion.ItemIndicator>\n    </ArkAccordion.ItemTrigger>\n  );\n};\n\nexport const AccordionContent = (\n  props: ComponentProps<typeof ArkAccordion.ItemContent>\n) => {\n  const { class: className, children, ...rest } = props;\n\n  return (\n    <ArkAccordion.ItemContent\n      class={cn(\n        \"overflow-hidden rounded-md text-sm\",\n        \"data-[state=open]:animate-slide-down\",\n        \"data-[state=closed]:animate-slide-up\",\n        className\n      )}\n      data-slot=\"accordion-content\"\n      {...rest}\n    >\n      <div class=\"pt-0 pb-4\">{children}</div>\n    </ArkAccordion.ItemContent>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

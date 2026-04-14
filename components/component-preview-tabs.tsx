@@ -9,10 +9,19 @@ import {
 
 interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
   /**
-   * The component to display in the preview
-   *
+   * The component to display in the preview (React docs site only).
    */
-  component: React.ReactNode;
+  component?: React.ReactNode;
+  /**
+   * Initial tab
+   *
+   * @default "preview"
+   */
+  defaultTab?: "preview" | "code";
+  /**
+   * When set, shown in the Preview tab instead of a live render (e.g. Solid source-only).
+   */
+  previewNote?: string;
   /**
    * Whether to show the dashed padding guide borders around the preview
    *
@@ -27,14 +36,22 @@ interface ComponentPreviewTabsProps extends React.ComponentProps<"div"> {
 }
 
 export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
-  const { component, source, showBorders = true, className, ...rest } = props;
+  const {
+    component,
+    previewNote,
+    defaultTab = "preview",
+    source,
+    showBorders = true,
+    className,
+    ...rest
+  } = props;
 
   return (
     <div
       className={cn("group relative mt-4 mb-12 flex flex-col gap-2", className)}
       {...rest}
     >
-      <Tabs defaultValue="preview">
+      <Tabs defaultValue={defaultTab}>
         <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
@@ -55,7 +72,13 @@ export const ComponentPreviewTabs = (props: ComponentPreviewTabsProps) => {
                   <div className="absolute inset-e-4 inset-y-0 border border-border/64 border-dashed max-sm:hidden sm:inset-e-8" />
                 </>
               )}
-              {component}
+              {previewNote ? (
+                <p className="max-w-md text-center text-muted-foreground text-sm">
+                  {previewNote}
+                </p>
+              ) : (
+                component
+              )}
             </div>
           </TabsContent>
 

@@ -16,3 +16,7 @@ export const replaceContentForCopy = (inputCode: string) => {
 
   return code;
 };
+
+export const capitalize = (text: string) => {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+};

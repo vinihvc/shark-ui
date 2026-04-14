@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "presence",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/presence.tsx",
+      "content": "import { Presence as ArkPresence } from \"@ark-ui/solid/presence\";\nimport type { ComponentProps } from \"solid-js\";\n\nexport const Presence = (props: ComponentProps<typeof ArkPresence>) => {\n  const { lazyMount = true, unmountOnExit = true, ...rest } = props;\n\n  return (\n    <ArkPresence\n      data-slot=\"presence\"\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

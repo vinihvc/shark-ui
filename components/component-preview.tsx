@@ -3,10 +3,17 @@
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import type { GetRegistryItemArgs } from "@/lib/registry";
 import { ComponentPreviewTabs } from "./component-preview-tabs";
 import { ComponentSource } from "./component-source";
 
-const registryPath = "registry/react/examples";
+type PreviewFramework = NonNullable<GetRegistryItemArgs["framework"]>;
+
+const exampleExtension: Record<PreviewFramework, string> = {
+  react: "tsx",
+  /** Plain-text snippet so Next does not typecheck or bundle Solid JSX as React. */
+  solid: "solid",
+};
 
 interface ComponentPreviewProps
   extends Omit<React.ComponentProps<"div">, "ref"> {
@@ -27,6 +34,12 @@ interface ComponentPreviewProps
    */
   fileName?: string;
   /**
+   * Registry framework for the example source file (React is live-rendered; others are source-only).
+   *
+   * @default "react"
+   */
+  framework?: PreviewFramework;
+  /**
    * Whether to show the dashed padding guide borders around the preview
    *
    * @default true
@@ -40,34 +53,51 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     fileName = "example-default",
     align = "center",
     showBorders,
+    framework = "react",
     ...rest
   } = props;
 
-  // Dynamically import the example component
-  const Example = await import(
-    `${registryPath}/${componentName}/${fileName}.tsx`
-  );
-
-  if (!Example.default) {
-    throw new Error(`File ${fileName} not found`);
-  }
-
+  const ext = exampleExtension[framework];
+  const examplesRoot = `registry/${framework}/examples`;
   const examplePath = join(
     /* turbopackIgnore: true */
     process.cwd(),
-    registryPath,
+    examplesRoot,
     componentName,
-    `${fileName}.tsx`
+    `${fileName}.${ext}`
   );
+
   const sourceCode = readFileSync(
     /* turbopackIgnore: true */
     examplePath,
     "utf-8"
   );
 
+  if (framework === "react") {
+    const Example = await import(
+      `${examplesRoot}/${componentName}/${fileName}.tsx`
+    );
+
+    if (!Example.default) {
+      throw new Error(`File ${fileName} not found`);
+    }
+
+    return (
+      <ComponentPreviewTabs
+        component={<Example.default />}
+        showBorders={showBorders}
+        source={<ComponentSource code={sourceCode} isCollapsible={false} />}
+        {...rest}
+      />
+    );
+  }
+
+  const previewNote = `This documentation site only live-renders React. Below is the ${framework} example source.`;
+
   return (
     <ComponentPreviewTabs
-      component={<Example.default />}
+      defaultTab="code"
+      previewNote={previewNote}
       showBorders={showBorders}
       source={<ComponentSource code={sourceCode} isCollapsible={false} />}
       {...rest}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid", "tailwind-variants"],
+  "registryDependencies": ["http://localhost:3000/s/badge.json"],
+  "cssVars": {
+    "light": {
+      "destructive-foreground": "var(--color-red-50)",
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-400)",
+      "warning-foreground": "var(--color-yellow-950)"
+    },
+    "dark": {
+      "destructive-foreground": "var(--color-red-50)",
+      "success": "var(--color-emerald-600)",
+      "success-foreground": "var(--color-green-50)",
+      "info": "var(--color-sky-600)",
+      "info-foreground": "var(--color-sky-50)",
+      "warning": "var(--color-yellow-600)",
+      "warning-foreground": "var(--color-yellow-50)"
+    }
+  },
+  "files": [
+    {
+      "path": "registry/solid/components/announcement.tsx",
+      "content": "import { ark } from \"@ark-ui/solid/factory\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const announcementVariants = tv({\n  base: [\n    \"group/announcement\",\n    \"relative\",\n    \"inline-flex items-center gap-2\",\n    \"py-0.5 ps-3 pe-3\",\n    \"bg-input/4\",\n    \"rounded-2xl border border-input\",\n    \"transition-colors\",\n    \"outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n    \"[&_svg]:size-3.5 [&_svg]:shrink-0\",\n    \"has-data-[slot=badge]:ps-0.5\",\n    \"[button&,a&]:cursor-pointer\",\n    \"[&>svg]:text-muted-foreground\",\n    \"[a&]:hover:bg-input/12\",\n    \"**:data-[slot=badge]:h-6.5 **:data-[slot=badge]:rounded-xl **:data-[slot=badge]:px-2 **:data-[slot=badge]:sm:text-xs\",\n    \"[button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11\",\n  ],\n});\n\ninterface AnnouncementProps\n  extends ComponentProps<typeof ark.div>,\n    VariantProps<typeof announcementVariants> {\n  /**\n   * The ARIA role of the announcement.\n   *\n   * @default \"status\"\n   */\n  role?: \"status\" | \"alert\";\n}\n\nexport const Announcement = (props: AnnouncementProps) => {\n  const { class: className, role = \"status\", ...rest } = props;\n\n  return (\n    <ark.div\n      class={cn(announcementVariants(), className)}\n      data-slot=\"announcement\"\n      role={role}\n      {...rest}\n    />\n  );\n};\n\nexport const AnnouncementTitle = (props: ComponentProps<typeof ark.span>) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ark.span\n      class={cn(\n        \"inline-flex items-center gap-1\",\n        \"select-none font-medium text-sm\",\n        className\n      )}\n      data-slot=\"announcement-title\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

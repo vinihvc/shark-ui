@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "recharts"
-  ],
+  "dependencies": ["@ark-ui/react", "recharts"],
   "files": [
     {
       "path": "registry/react/components/chart.tsx",

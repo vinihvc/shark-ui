@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlight",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/highlight.tsx",
+      "content": "import {\n  Highlight as ArkHighlight,\n  useHighlight as useArkHighlight,\n} from \"@ark-ui/solid/highlight\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport const useHighlight = useArkHighlight;\n\nexport const Highlight = (props: ComponentProps<typeof ArkHighlight>) => {\n  const { class: className, ...rest } = props;\n\n  return (\n    <ArkHighlight\n      class={cn(\n        \"px-1\",\n        \"bg-primary/20\",\n        \"text-primary\",\n        \"rounded-md\",\n        \"box-decoration-clone\",\n        className\n      )}\n      data-slot=\"highlight\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+import { ark } from "@ark-ui/solid/factory";
+import {
+  Tour as ArkTour,
+  type TourStepDetails,
+  type UseTourReturn,
+  useTour,
+} from "@ark-ui/solid/tour";
+import { ChevronLeft, ChevronRight, X } from "lucide-solid";
+import type { ComponentProps } from "solid-js";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/registry/solid/components/button";
+import {
+  DialogBody,
+  DialogFooter,
+  DialogHeader,
+  type DialogOverlay,
+  dialogOverlayVariants,
+} from "@/registry/solid/components/dialog";
+
+export type TourStepType = TourStepDetails;
+
+interface TourProviderProps {
+  /**
+   * The function to start the tour
+   */
+  handleStart: () => void;
+  /**
+   * The tour instance
+   */
+  tour: UseTourReturn;
+}
+
+const TourProvider = createContext<TourProviderProps>({} as TourProviderProps);
+
+interface TourProps extends Omit<ComponentProps<typeof ArkTour.Root>, "tour"> {
+  /**
+   * Enable arrow key navigation between steps
+   */
+  keyboardNavigation?: boolean;
+  /**
+   * Called when the tour status changes
+   */
+  onStatusChange?: (details: { status: string }) => void;
+  /**
+   * Called when the current step changes
+   */
+  onStepChange?: (details: { stepId: string | null }) => void;
+  /**
+   * The steps to display in the tour
+   *
+   * @default []
+   */
+  steps: TourStepDetails[];
+}
+
+export const Tour = (props: TourProps) => {
+  const { steps = [], lazyMount = true, unmountOnExit = true, ...rest } = props;
+
+  const [isStarted, setIsStarted] = React.useState(false);
+
+  const tour = useTour({ steps });
+
+  React.useEffect(() => {
+    if (isStarted) {
+      document.body.classList.add("relative");
+    } else {
+      document.body.classList.remove("relative");
+    }
+
+    return () => {
+      document.body.classList.remove("relative");
+    };
+  }, [isStarted]);
+
+  const handleStart = React.useCallback(() => {
+    setIsStarted(true);
+    tour.start();
+  }, [tour]);
+
+  return (
+    <TourProvider.Provider value={{ tour, handleStart }}>
+      <ArkTour.Root
+        data-slot="tour"
+        lazyMount={lazyMount}
+        tour={tour}
+        unmountOnExit={unmountOnExit}
+        {...rest}
+      />
+    </TourProvider.Provider>
+  );
+};
+
+interface TourTriggerProps extends ComponentProps<typeof ark.button> {}
+
+export const TourTrigger = (props: TourTriggerProps) => {
+  const { onClick, ...rest } = props;
+
+  const { handleStart } = useTourContext();
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    onClick?.(e);
+    handleStart();
+  };
+
+  return (
+    <ark.button
+      data-slot="tour-trigger"
+      type="button"
+      {...rest}
+      onClick={handleClick}
+    />
+  );
+};
+
+export const TourActionTrigger = (
+  props: ComponentProps<typeof ArkTour.ActionTrigger>
+) => <ArkTour.ActionTrigger data-slot="tour-action-trigger" {...props} />;
+
+export const TourOverlay = (props: ComponentProps<typeof DialogOverlay>) => {
+  const { class: className, ...rest } = props;
+
+  return (
+    <ArkTour.Backdrop
+      class={cn(dialogOverlayVariants(), "duration-initial", className)}
+      data-slot="tour-overlay"
+      {...rest}
+    />
+  );
+};
+export const TourPositioner = (
+  props: ComponentProps<typeof ArkTour.Positioner>
+) => (
+  <ArkTour.Positioner
+    class={cn(
+      "z-50",
+      "flex items-center justify-center",
+      "data-[type=dialog]:fixed data-[type=dialog]:inset-0",
+      "data-[type=tooltip]:absolute"
+    )}
+    data-slot="tour-positioner"
+    {...props}
+  />
+);
+
+interface TourContentProps extends ComponentProps<typeof ArkTour.Content> {
+  /**
+   * Show close button at the top right corner
+   *
+   * @default true
+   */
+  showCloseButton?: boolean;
+}
+
+export const TourContent = (props: TourContentProps) => {
+  const { showCloseButton = true, className, children, ...rest } = props;
+
+  return (
+    <>
+      <TourOverlay />
+      <TourPositioner>
+        <ArkTour.Content
+          class={cn(
+            "[--space:--spacing(4)]",
+            "z-[calc(50+var(--layer-index,0))]",
+            "relative",
+            "w-full max-w-md",
+            "flex flex-col gap-4",
+            "bg-background",
+            "rounded-lg border shadow-lg",
+            "focus:outline-none focus:ring-0",
+            "data-[state=closed]:animate-out data-[state=open]:animate-in",
+            "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
+            "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
+            className
+          )}
+          data-slot="tour-content"
+          {...rest}
+        >
+          {children}
+
+          {!!showCloseButton && (
+            <TourClose asChild class="absolute top-4 right-4">
+              <Button
+                class="size-8 border-none opacity-70 hover:opacity-100"
+                size="icon-md"
+                variant="ghost"
+              >
+                <X />
+
+                <span class="sr-only">Close</span>
+              </Button>
+            </TourClose>
+          )}
+        </ArkTour.Content>
+      </TourPositioner>
+
+      <TourSpotlight />
+    </>
+  );
+};
+
+export const TourBody = (props: ComponentProps<typeof DialogBody>) => (
+  <DialogBody data-slot="tour-body" {...props} />
+);
+
+export const TourSpotlight = (
+  props: ComponentProps<typeof ArkTour.Spotlight>
+) => (
+  <ArkTour.Spotlight
+    class="z-50 border-2 border-primary"
+    data-slot="tour-spotlight"
+    {...props}
+  />
+);
+
+export const TourHeader = (props: ComponentProps<typeof DialogHeader>) => (
+  <DialogHeader data-slot="tour-header" {...props} />
+);
+
+export const TourTitle = (props: ComponentProps<typeof ArkTour.Title>) => {
+  const { class: className, ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  return (
+    <ArkTour.Title
+      class={cn(
+        "font-semibold text-base leading-none tracking-tight",
+        className
+      )}
+      data-slot="tour-title"
+      {...rest}
+    >
+      {tour.step?.title}
+    </ArkTour.Title>
+  );
+};
+
+export const TourDescription = (
+  props: ComponentProps<typeof ArkTour.Description>
+) => {
+  const { class: className, ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  return (
+    <ArkTour.Description
+      class={cn("text-muted-foreground text-sm", className)}
+      data-slot="tour-description"
+      {...rest}
+    >
+      {tour.step?.description}
+    </ArkTour.Description>
+  );
+};
+
+export const TourProgressText = (
+  props: ComponentProps<typeof ArkTour.ProgressText>
+) => {
+  const { class: className, ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  return (
+    <ArkTour.ProgressText
+      class={cn("text-muted-foreground text-sm", className)}
+      data-slot="tour-progress-text"
+      {...rest}
+    >
+      {tour.getProgressText()}
+    </ArkTour.ProgressText>
+  );
+};
+
+export const TourClose = (
+  props: ComponentProps<typeof ArkTour.CloseTrigger>
+) => <ArkTour.CloseTrigger data-slot="tour-close-trigger" {...props} />;
+
+export const TourFooter = (props: ComponentProps<typeof DialogFooter>) => {
+  const { children, ...rest } = props;
+
+  return (
+    <ArkTour.Control {...rest} asChild>
+      <DialogFooter data-slot="tour-control">{children}</DialogFooter>
+    </ArkTour.Control>
+  );
+};
+
+export const TourActions = (props: ComponentProps<typeof DialogFooter>) => {
+  const { class: className, ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  const actions = tour.step?.actions ?? [];
+
+  if (actions.length === 0) {
+    return null;
+  }
+
+  return (
+    <ArkTour.Control {...rest} asChild>
+      <DialogFooter
+        class={cn("flex flex-wrap gap-2", className)}
+        data-slot="tour-actions"
+      >
+        {actions.map((action) => (
+          <TourActionTrigger action={action} asChild key={action.label}>
+            <Button
+              size="sm"
+              variant={
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default"
+              }
+            >
+              {action.action === "prev" && <ChevronLeft />}
+              {action.label}
+              {action.action === "next" && <ChevronRight />}
+            </Button>
+          </TourActionTrigger>
+        ))}
+      </DialogFooter>
+    </ArkTour.Control>
+  );
+};
+export const TourPreviousStep = (
+  props: Omit<ComponentProps<typeof TourActionTrigger>, "action">
+) => {
+  const { ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  const prevAction = React.useMemo(
+    () => tour.step?.actions?.find((action) => action.action === "prev"),
+    [tour]
+  );
+
+  if (!prevAction) {
+    return null;
+  }
+
+  return (
+    <TourActionTrigger
+      data-slot="tour-previous-step"
+      {...rest}
+      action={prevAction}
+      asChild
+    >
+      <Button size="sm" variant="outline">
+        <ChevronLeft />
+        {prevAction.label}
+      </Button>
+    </TourActionTrigger>
+  );
+};
+
+export const TourNextStep = (
+  props: Omit<ComponentProps<typeof TourActionTrigger>, "action">
+) => {
+  const { ...rest } = props;
+
+  const { tour } = useTourContext();
+
+  const action = React.useMemo(
+    () =>
+      tour.step?.actions?.find(
+        (a) => a.action === "next" || a.action === "dismiss"
+      ),
+    [tour]
+  );
+
+  const actionType = React.useMemo(() => action?.action, [action]);
+
+  if (!action) {
+    return null;
+  }
+
+  return (
+    <TourActionTrigger
+      data-slot="tour-next-step"
+      {...rest}
+      action={action}
+      asChild
+    >
+      <Button size="sm">
+        {action.label}
+
+        {actionType === "next" && <ChevronRight />}
+      </Button>
+    </TourActionTrigger>
+  );
+};
+
+export const useTourContext = () => {
+  const context = React.use(TourProvider);
+
+  if (!context) {
+    throw new Error("useTour must be used within a TourProvider");
+  }
+
+  return context;
+};

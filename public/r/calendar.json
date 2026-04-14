@@ -2,11 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar",
   "type": "registry:ui",
-  "dependencies": [
-    "@ark-ui/react",
-    "date-fns",
-    "lucide-react"
-  ],
+  "dependencies": ["@ark-ui/react", "date-fns", "lucide-react"],
   "registryDependencies": [
     "http://localhost:3000/r/button.json",
     "http://localhost:3000/r/native-select.json"

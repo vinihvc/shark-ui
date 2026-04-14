@@ -9,6 +9,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsCopyPage } from "@/components/layout/docs-copy-page";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
+import { SupportedComponent } from "@/components/layout/supported-component";
 import { source } from "@/lib/fumadocs";
 import { createMetadata, createOgImageUrl } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
@@ -62,6 +63,7 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
   const rawContent = await page.data.getText("raw");
 
   const isChangelog = params.slug?.[0] === "changelog";
+  const isComponent = params.slug?.[0] === "components";
   const neighbours = isChangelog
     ? { previous: null, next: null }
     : findNeighbour(source.pageTree, page.url);
@@ -178,6 +180,10 @@ const DocsPage = async (props: PageProps<"/docs/[[...slug]]">) => {
                       </div>
                     )}
                   </div>
+
+                  {isComponent && (
+                    <SupportedComponent supportedFrameworks={["react"]} />
+                  )}
 
                   <SkipNavContent className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
                     <MDX components={mdxComponents()} />

@@ -3,18 +3,33 @@ import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { RegistryItemType } from "../lib/registry";
 
+const REGISTRY_BUILD_FRAMEWORKS = ["react", "solid"] as const;
+type RegistryBuildFramework = (typeof REGISTRY_BUILD_FRAMEWORKS)[number];
+
+const REGISTRY_PUBLIC_SEGMENT: Record<RegistryBuildFramework, string> = {
+  react: "r",
+  solid: "s",
+};
+
+const REGISTRY_SOURCE_EXTENSION: Record<RegistryBuildFramework, string> = {
+  react: ".tsx",
+  solid: ".tsx",
+};
+
 type RegistryKind = "component" | "hook";
 
 const extractItemMetadata = async (
-  framework: "react",
+  framework: RegistryBuildFramework,
   itemName: string,
   sourceCode: string,
-  kind: RegistryKind
+  kind: RegistryKind,
+  sourceExtension: string
 ) => {
   const manifestFilePath = join(
     process.cwd(),
     "registry",
     "manifest",
+    framework,
     `${itemName}.ts`
   );
 
@@ -27,7 +42,7 @@ const extractItemMetadata = async (
     const manifestModule = await import(manifestUrl);
     manifestData = manifestModule.default as RegistryItemType;
   } catch {
-    throw new Error(`Manifest not found for ${itemName}`);
+    throw new Error(`Manifest not found for ${framework}/${itemName}`);
   }
 
   const subdir = kind === "hook" ? "hooks" : "components";
@@ -39,7 +54,7 @@ const extractItemMetadata = async (
     ...manifestData,
     files: [
       {
-        path: `registry/${framework}/${subdir}/${itemName}.tsx`,
+        path: `registry/${framework}/${subdir}/${itemName}${sourceExtension}`,
         content: sourceCode,
         type: fileType,
       },
@@ -57,45 +72,34 @@ const ensureDirectoryExists = async (dirPath: string) => {
 
 const writeRegistryArtifact = async (
   metadata: Awaited<ReturnType<typeof extractItemMetadata>>,
+  framework: RegistryBuildFramework,
   itemName: string
 ) => {
-  const publicRDir = join(process.cwd(), "public", "r");
-  await ensureDirectoryExists(publicRDir);
+  const segment = REGISTRY_PUBLIC_SEGMENT[framework];
+  const publicDir = join(process.cwd(), "public", segment);
+  await ensureDirectoryExists(publicDir);
 
-  const componentFilePath = join(publicRDir, `${itemName}.json`);
-  await writeFile(componentFilePath, JSON.stringify(metadata, null, 2));
-  console.log(`✅ Generated ${itemName}.json`);
-
-  const registryPath = join(process.cwd(), "registry.json");
-  let registry: { items: unknown[] };
-
-  try {
-    const registryContent = await readFile(registryPath, "utf-8");
-    const parsedRegistry = JSON.parse(registryContent);
-    registry = parsedRegistry as { items: unknown[] };
-  } catch {
-    throw new Error("Failed to read registry.json");
-  }
-
-  await writeFile(registryPath, JSON.stringify(registry, null, 2));
-  console.log("✅ Updated registry.json");
+  const outPath = join(publicDir, `${itemName}.json`);
+  await writeFile(outPath, JSON.stringify(metadata, null, 2));
+  console.log(`✅ Generated ${segment}/${itemName}.json`);
 
   return metadata;
 };
 
 const buildRegistryItem = async (
-  framework: "react",
+  framework: RegistryBuildFramework,
   itemName: string,
   kind: RegistryKind
 ) => {
   try {
     const subdir = kind === "hook" ? "hooks" : "components";
+    const ext = REGISTRY_SOURCE_EXTENSION[framework];
     const filePath = join(
       process.cwd(),
       "registry",
       framework,
       subdir,
-      `${itemName}.tsx`
+      `${itemName}${ext}`
     );
 
     try {
@@ -110,17 +114,21 @@ const buildRegistryItem = async (
       framework,
       itemName,
       sourceCode,
-      kind
+      kind,
+      ext
     );
 
-    return await writeRegistryArtifact(metadata, itemName);
+    return await writeRegistryArtifact(metadata, framework, itemName);
   } catch (error) {
-    console.error(`Failed to build registry item ${itemName}`, error);
+    console.error(
+      `Failed to build registry item ${framework}/${itemName}`,
+      error
+    );
     return null;
   }
 };
 
-const processAllComponents = async (framework: "react" = "react") => {
+const processAllComponents = async (framework: RegistryBuildFramework) => {
   try {
     const componentsDir = join(
       process.cwd(),
@@ -129,58 +137,77 @@ const processAllComponents = async (framework: "react" = "react") => {
       "components"
     );
 
+    try {
+      await access(componentsDir);
+    } catch {
+      console.log(`No components directory for ${framework}; skipping.`);
+      return;
+    }
+
     const { readdir } = await import("node:fs/promises");
     const files = await readdir(componentsDir);
-    const componentFiles = files.filter((file) => file.endsWith(".tsx"));
+    const ext = REGISTRY_SOURCE_EXTENSION[framework];
+    const componentFiles = files.filter((file) => file.endsWith(ext));
 
-    console.log(`Found ${componentFiles.length} components to process:`);
+    console.log(
+      `Found ${componentFiles.length} ${framework} components to process:`
+    );
 
     for (const file of componentFiles) {
-      const componentName = file.replace(".tsx", "");
-      console.log(`\n📦 Processing ${componentName}...`);
-      await buildRegistryItem("react", componentName, "component");
+      const componentName = file.replace(ext, "");
+      console.log(`\n📦 [${framework}] Processing ${componentName}...`);
+      await buildRegistryItem(framework, componentName, "component");
     }
 
     console.log(
-      `\n🎉 Successfully processed all ${componentFiles.length} components!`
+      `\n🎉 Successfully processed all ${componentFiles.length} ${framework} components!`
     );
   } catch (error) {
-    console.error("Failed to process all components:", error);
+    console.error(`Failed to process ${framework} components:`, error);
   }
 };
 
-const processAllHooks = async (framework: "react" = "react") => {
+const processAllHooks = async (framework: RegistryBuildFramework) => {
   try {
     const hooksDir = join(process.cwd(), "registry", framework, "hooks");
 
     try {
       await access(hooksDir);
     } catch {
-      console.log("No hooks directory; skipping hooks.");
       return;
     }
 
     const { readdir } = await import("node:fs/promises");
     const files = await readdir(hooksDir);
-    const hookFiles = files.filter((file) => file.endsWith(".tsx"));
+    const ext = REGISTRY_SOURCE_EXTENSION[framework];
+    const hookFiles = files.filter((file) => file.endsWith(ext));
 
-    console.log(`Found ${hookFiles.length} hooks to process:`);
-
-    for (const file of hookFiles) {
-      const hookName = file.replace(".tsx", "");
-      console.log(`\n🪝 Processing ${hookName}...`);
-      await buildRegistryItem("react", hookName, "hook");
+    if (hookFiles.length === 0) {
+      return;
     }
 
-    console.log(`\n🎉 Successfully processed all ${hookFiles.length} hooks!`);
+    console.log(`Found ${hookFiles.length} ${framework} hooks to process:`);
+
+    for (const file of hookFiles) {
+      const hookName = file.replace(ext, "");
+      console.log(`\n🪝 [${framework}] Processing ${hookName}...`);
+      await buildRegistryItem(framework, hookName, "hook");
+    }
+
+    console.log(
+      `\n🎉 Successfully processed all ${hookFiles.length} ${framework} hooks!`
+    );
   } catch (error) {
-    console.error("Failed to process all hooks:", error);
+    console.error(`Failed to process ${framework} hooks:`, error);
   }
 };
 
 const main = async () => {
-  await processAllComponents();
-  await processAllHooks();
+  for (const framework of REGISTRY_BUILD_FRAMEWORKS) {
+    console.log(`\n========== Framework: ${framework} ==========`);
+    await processAllComponents(framework);
+    await processAllHooks(framework);
+  }
 };
 
 main().catch(console.error);

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/solid"],
+  "files": [
+    {
+      "path": "registry/solid/components/switch.tsx",
+      "content": "import { Switch as ArkSwitch, useSwitchContext } from \"@ark-ui/solid/switch\";\nimport type { ComponentProps } from \"solid-js\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport const useSwitch = useSwitchContext;\n\nexport const Switch = (props: ComponentProps<typeof ArkSwitch.Root>) => {\n  const { class: className, tabIndex, ...rest } = props;\n\n  return (\n    <ArkSwitch.Root\n      class={cn(\n        \"group/switch\",\n        \"[--thumb-size:--spacing(5)] sm:[--thumb-size:--spacing(4)]\",\n        \"h-[calc(var(--thumb-size)+2px)] w-[calc(var(--thumb-size)*2-2px)]\",\n        \"p-px\",\n        \"inline-flex shrink-0 items-center\",\n        \"rounded-full border border-transparent\",\n        \"transition-all\",\n        \"outline-none [[data-focus-visible],[data-invalid]]:ring-[3px]\",\n        \"data-focus-visible:border-primary data-focus-visible:ring-ring/32\",\n        \"data-invalid:border-destructive data-invalid:ring-destructive/24\",\n        \"dark:data-invalid:border-destructive-foreground dark:data-invalid:ring-destructive-foreground/20\",\n        \"data-[state=checked]:bg-primary\",\n        \"data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-64\",\n        className\n      )}\n      data-slot=\"switch\"\n      {...rest}\n    >\n      <ArkSwitch.Control\n        class=\"flex size-full items-center\"\n        data-slot=\"switch-control\"\n      >\n        <ArkSwitch.Thumb\n          class={cn(\n            \"block\",\n            \"aspect-square h-full w-auto\",\n            \"bg-background\",\n            \"rounded-full ring-0\",\n            \"pointer-events-none\",\n            \"transition-transform\",\n            \"data-[state=checked]:translate-x-[calc(var(--thumb-size)-4px)]\",\n            \"dark:data-[state=checked]:bg-primary-foreground\",\n            \"data-[state=unchecked]:translate-x-0\",\n            \"dark:data-[state=unchecked]:bg-foreground\"\n          )}\n          data-slot=\"switch-thumb\"\n        />\n      </ArkSwitch.Control>\n\n      <ArkSwitch.HiddenInput tabIndex={tabIndex} />\n    </ArkSwitch.Root>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

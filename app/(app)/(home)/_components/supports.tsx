@@ -1,7 +1,5 @@
 import { ReactIcon } from "@/components/icons/react";
 import { SolidIcon } from "@/components/icons/solid";
-import { SvelteIcon } from "@/components/icons/svelte";
-import { VueIcon } from "@/components/icons/vue";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -15,10 +13,8 @@ const FRAMEWORKS = [
     name: "Solid",
     hex: "var(--color-foreground)",
     icon: SolidIcon,
-    soon: true,
+    soon: false,
   },
-  { name: "Vue", hex: "#42b883", icon: VueIcon, soon: true },
-  { name: "Svelte", hex: "#ff3e00", icon: SvelteIcon, soon: true },
 ];
 
 export const Supports = (props: React.ComponentProps<"section">) => {
