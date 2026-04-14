@@ -112,7 +112,7 @@ export const TableHead = (props: React.ComponentProps<typeof ark.th>) => {
       className={cn(
         "h-10 px-2",
         "text-left align-middle",
-        "font-normal text-muted-foreground",
+        "font-medium text-foreground",
         "rtl:text-right",
         "[&:has([role=checkbox])]:ps-2 [&:has([role=checkbox])]:pe-0",
         className
