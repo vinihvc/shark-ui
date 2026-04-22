@@ -4,7 +4,7 @@ import { source } from "@/lib/fumadocs";
 import { getAllRegistryItems } from "@/lib/registry";
 import { absoluteUrl } from "@/lib/url";
 
-export const revalidate = 86_400;
+export const revalidate = false;
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const staticRoutes = [

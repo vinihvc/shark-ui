@@ -3,6 +3,9 @@ import { source } from "@/lib/fumadocs";
 import { cn } from "@/lib/utils";
 import { SidebarProvider } from "@/registry/react/components/sidebar";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 const DocsLayout = ({ children }: LayoutProps<"/docs">) => (
   <main>
     <SidebarProvider
