@@ -1,7 +1,6 @@
 export const SITE_CONFIG = {
   name: "Shark UI",
-  description:
-    "Shark UI is a beautiful and customizable UI library for Next.js.",
+  description: "shadcn/ui-style components built on Ark UI.",
   url: "https://shark.vini.one",
   creator: "@vinihvc",
   repoUrl: "https://github.com/vinihvc/shark-ui",
