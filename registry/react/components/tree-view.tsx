@@ -124,9 +124,7 @@ export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType>
 
 export const TreeViewNode = <T extends TreeNodeType>(
   props: NodeProviderProps<T>
-) => {
-  return <ArkTreeView.NodeProvider data-slot="tree-view-node" {...props} />;
-};
+) => <ArkTreeView.NodeProvider data-slot="tree-view-node" {...props} />;
 
 export const TreeViewBranch = (
   props: React.ComponentProps<typeof ArkTreeView.Branch>
@@ -454,9 +452,7 @@ const _useTreeView = () => {
 
 type CreateFileIconsArgs = Record<`.${string}`, React.JSX.ElementType | null>;
 
-export const createFileIcons = (args: CreateFileIconsArgs) => {
-  return { ...args };
-};
+export const createFileIcons = (args: CreateFileIconsArgs) => ({ ...args });
 
 const getFileExtension = (file: string) => {
   const name = file.includes(".")

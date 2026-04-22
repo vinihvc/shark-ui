@@ -1,9 +1,8 @@
-export const slugify = (text: string) => {
-  return text
+export const slugify = (text: string) =>
+  text
     .toLowerCase()
     .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "");
-};
 
 export const replaceContentForCopy = (inputCode: string) => {
   let code = inputCode;

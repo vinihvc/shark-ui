@@ -6,6 +6,7 @@ import {
   ColorPickerArea,
   ColorPickerAreaThumb,
   ColorPickerContent,
+  ColorPickerControl,
   ColorPickerInput,
   ColorPickerSlider,
   ColorPickerSwatchPreview,
@@ -27,26 +28,28 @@ const Example = () => (
     defaultValue={parseColor("#0485F7").toString("hsla")}
     format="hsla"
   >
-    <InputGroup>
-      <ColorPickerTrigger asChild>
-        <InputGroupAddon>
-          <ColorPickerSwatchPreview aria-hidden />
+    <ColorPickerControl>
+      <InputGroup>
+        <ColorPickerTrigger asChild>
+          <InputGroupAddon>
+            <ColorPickerSwatchPreview aria-hidden />
+          </InputGroupAddon>
+        </ColorPickerTrigger>
+        <ColorPickerInput asChild channel="hex" className="flex-1">
+          <InputGroupInput />
+        </ColorPickerInput>
+        <Separator orientation="vertical" />
+        <ColorPickerInput asChild channel="alpha">
+          <InputGroupInput
+            aria-label="Opacity percentage"
+            className="max-w-1/4 text-right"
+          />
+        </ColorPickerInput>
+        <InputGroupAddon align="inline-end">
+          <PercentIcon aria-hidden />
         </InputGroupAddon>
-      </ColorPickerTrigger>
-      <ColorPickerInput asChild channel="hex" className="flex-1">
-        <InputGroupInput />
-      </ColorPickerInput>
-      <Separator orientation="vertical" />
-      <ColorPickerInput asChild channel="alpha">
-        <InputGroupInput
-          aria-label="Opacity percentage"
-          className="max-w-1/4 text-right"
-        />
-      </ColorPickerInput>
-      <InputGroupAddon align="inline-end">
-        <PercentIcon aria-hidden />
-      </InputGroupAddon>
-    </InputGroup>
+      </InputGroup>
+    </ColorPickerControl>
     <ColorPickerContent>
       <ColorPickerArea showDots>
         <ColorPickerAreaThumb />

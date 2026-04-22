@@ -93,9 +93,7 @@ export const ColorPickerControl = (
 
 export const ColorPickerTrigger = (
   props: React.ComponentProps<typeof ArkColorPicker.Trigger>
-) => {
-  return <ArkColorPicker.Trigger data-slot="color-picker-trigger" {...props} />;
-};
+) => <ArkColorPicker.Trigger data-slot="color-picker-trigger" {...props} />;
 
 export const ColorPickerTransparencyGrid = (
   props: React.ComponentProps<typeof ArkColorPicker.TransparencyGrid>

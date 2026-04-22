@@ -4,6 +4,7 @@ import { Button } from "@/registry/react/components/button";
 import {
   ColorPicker,
   ColorPickerContent,
+  ColorPickerControl,
   ColorPickerSlider,
   ColorPickerSwatchPreview,
   ColorPickerTransparencyGrid,
@@ -14,12 +15,14 @@ import { Field, FieldLabel } from "@/registry/react/components/field";
 
 const Example = () => (
   <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" format="hsla">
-    <ColorPickerTrigger asChild>
-      <Button size="lg" variant="ghost">
-        <ColorPickerSwatchPreview className="size-6" />
-        Pick a color
-      </Button>
-    </ColorPickerTrigger>
+    <ColorPickerControl>
+      <ColorPickerTrigger asChild>
+        <Button size="lg" variant="ghost">
+          <ColorPickerSwatchPreview className="size-6" />
+          Pick a color
+        </Button>
+      </ColorPickerTrigger>
+    </ColorPickerControl>
     <ColorPickerContent>
       <ColorPickerView format="hsla">
         <div className="flex flex-col gap-4">

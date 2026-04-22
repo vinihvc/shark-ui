@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/react/components/client-only.tsx",
-      "content": "\"use client\";\n\nimport { ClientOnly as ArkClientOnly } from \"@ark-ui/react/client-only\";\n\nexport const ClientOnly = (\n  props: React.ComponentProps<typeof ArkClientOnly>\n) => {\n  return <ArkClientOnly data-slot=\"client-only\" {...props} />;\n};\n",
+      "content": "\"use client\";\n\nimport { ClientOnly as ArkClientOnly } from \"@ark-ui/react/client-only\";\n\nexport const ClientOnly = (\n  props: React.ComponentProps<typeof ArkClientOnly>\n) => <ArkClientOnly data-slot=\"client-only\" {...props} />;\n",
       "type": "registry:ui"
     }
   ]

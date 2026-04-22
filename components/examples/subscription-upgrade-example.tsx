@@ -41,105 +41,103 @@ const plans = [
 
 export const SubscriptionUpgradeExample = (
   props: React.ComponentProps<"div">
-) => {
-  return (
-    <Card {...props}>
-      <CardHeader
-        description="You are currently on the free plan. Upgrade to the pro plan to get access to all features."
-        title="Upgrade your Subscription"
-      />
+) => (
+  <Card {...props}>
+    <CardHeader
+      description="You are currently on the free plan. Upgrade to the pro plan to get access to all features."
+      title="Upgrade your Subscription"
+    />
 
-      <CardContent>
-        <form>
-          <FieldGroup>
-            <FieldGroup className="grid grid-cols-2">
-              <Field>
-                <FieldLabel>Name</FieldLabel>
-                <Input placeholder="Vinicius Vicentini" />
-              </Field>
-
-              <Field>
-                <FieldLabel>Email</FieldLabel>
-                <Input placeholder="mail@acme.com" />
-              </Field>
-            </FieldGroup>
-
-            <FieldGroup className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
-              <Field>
-                <FieldLabel>Card Number</FieldLabel>
-                <Input
-                  className="col-span-2 md:col-span-1"
-                  placeholder="1234 1234 1234 1234"
-                />
-              </Field>
-
-              <Field>
-                <FieldLabel>Expiry Date</FieldLabel>
-                <Input placeholder="MM/YY" />
-              </Field>
-
-              <Field>
-                <FieldLabel>CVC</FieldLabel>
-                <Input placeholder="CVC" />
-              </Field>
-            </FieldGroup>
-
-            <FieldSet>
-              <FieldLegend>Plan</FieldLegend>
-              <FieldDescription>
-                Select the plan that best fits your needs.
-              </FieldDescription>
-
-              <RadioGroup
-                className="grid grid-cols-2 gap-2"
-                defaultValue="starter"
-              >
-                {plans.map((plan) => (
-                  <FieldLabel key={plan.id}>
-                    <Field orientation="horizontal">
-                      <FieldContent>
-                        <FieldTitle>{plan.name}</FieldTitle>
-                        <FieldDescription className="text-xs">
-                          {plan.description}
-                        </FieldDescription>
-                      </FieldContent>
-                      <RadioGroupItem value={plan.id} />
-                    </Field>
-                  </FieldLabel>
-                ))}
-              </RadioGroup>
-            </FieldSet>
-
+    <CardContent>
+      <form>
+        <FieldGroup>
+          <FieldGroup className="grid grid-cols-2">
             <Field>
-              <FieldLabel>Notes</FieldLabel>
-              <Textarea placeholder="Enter notes" />
+              <FieldLabel>Name</FieldLabel>
+              <Input placeholder="Vinicius Vicentini" />
             </Field>
 
             <Field>
-              <Field orientation="horizontal">
-                <Checkbox />
-                <FieldLabel className="font-normal">
-                  I agree to the terms and conditions
-                </FieldLabel>
-              </Field>
-
-              <Field orientation="horizontal">
-                <Checkbox defaultChecked />
-                <FieldLabel className="font-normal">
-                  Allow us to send you emails
-                </FieldLabel>
-              </Field>
-            </Field>
-
-            <Field className="flex-row-reverse" orientation="horizontal">
-              <Button size="sm">Upgrade Plan</Button>
-              <Button size="sm" variant="outline">
-                Cancel
-              </Button>
+              <FieldLabel>Email</FieldLabel>
+              <Input placeholder="mail@acme.com" />
             </Field>
           </FieldGroup>
-        </form>
-      </CardContent>
-    </Card>
-  );
-};
+
+          <FieldGroup className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_80px_60px]">
+            <Field>
+              <FieldLabel>Card Number</FieldLabel>
+              <Input
+                className="col-span-2 md:col-span-1"
+                placeholder="1234 1234 1234 1234"
+              />
+            </Field>
+
+            <Field>
+              <FieldLabel>Expiry Date</FieldLabel>
+              <Input placeholder="MM/YY" />
+            </Field>
+
+            <Field>
+              <FieldLabel>CVC</FieldLabel>
+              <Input placeholder="CVC" />
+            </Field>
+          </FieldGroup>
+
+          <FieldSet>
+            <FieldLegend>Plan</FieldLegend>
+            <FieldDescription>
+              Select the plan that best fits your needs.
+            </FieldDescription>
+
+            <RadioGroup
+              className="grid grid-cols-2 gap-2"
+              defaultValue="starter"
+            >
+              {plans.map((plan) => (
+                <FieldLabel key={plan.id}>
+                  <Field orientation="horizontal">
+                    <FieldContent>
+                      <FieldTitle>{plan.name}</FieldTitle>
+                      <FieldDescription className="text-xs">
+                        {plan.description}
+                      </FieldDescription>
+                    </FieldContent>
+                    <RadioGroupItem value={plan.id} />
+                  </Field>
+                </FieldLabel>
+              ))}
+            </RadioGroup>
+          </FieldSet>
+
+          <Field>
+            <FieldLabel>Notes</FieldLabel>
+            <Textarea placeholder="Enter notes" />
+          </Field>
+
+          <Field>
+            <Field orientation="horizontal">
+              <Checkbox />
+              <FieldLabel className="font-normal">
+                I agree to the terms and conditions
+              </FieldLabel>
+            </Field>
+
+            <Field orientation="horizontal">
+              <Checkbox defaultChecked />
+              <FieldLabel className="font-normal">
+                Allow us to send you emails
+              </FieldLabel>
+            </Field>
+          </Field>
+
+          <Field className="flex-row-reverse" orientation="horizontal">
+            <Button size="sm">Upgrade Plan</Button>
+            <Button size="sm" variant="outline">
+              Cancel
+            </Button>
+          </Field>
+        </FieldGroup>
+      </form>
+    </CardContent>
+  </Card>
+);

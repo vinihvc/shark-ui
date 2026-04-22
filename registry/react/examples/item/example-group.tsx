@@ -33,30 +33,28 @@ const people = [
   },
 ];
 
-const Example = () => {
-  return (
-    <ItemGroup className="max-w-sm">
-      {people.map((person) => (
-        <Item key={person.username} variant="outline">
-          <ItemMedia>
-            <Avatar>
-              <AvatarImage className="grayscale" src={person.avatar} />
-              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-            </Avatar>
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>{person.username}</ItemTitle>
-            <ItemDescription>{person.email}</ItemDescription>
-          </ItemContent>
-          <ItemActions>
-            <Button className="rounded-full" size="icon-md" variant="ghost">
-              <PlusIcon />
-            </Button>
-          </ItemActions>
-        </Item>
-      ))}
-    </ItemGroup>
-  );
-};
+const Example = () => (
+  <ItemGroup className="max-w-sm">
+    {people.map((person) => (
+      <Item key={person.username} variant="outline">
+        <ItemMedia>
+          <Avatar>
+            <AvatarImage className="grayscale" src={person.avatar} />
+            <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+          </Avatar>
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>{person.username}</ItemTitle>
+          <ItemDescription>{person.email}</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button className="rounded-full" size="icon-md" variant="ghost">
+            <PlusIcon />
+          </Button>
+        </ItemActions>
+      </Item>
+    ))}
+  </ItemGroup>
+);
 
 export default Example;

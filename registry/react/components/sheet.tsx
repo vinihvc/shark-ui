@@ -29,9 +29,7 @@ export const SheetTrigger = (
 
 export const SheetOverlay = (
   props: React.ComponentProps<typeof DialogOverlay>
-) => {
-  return <DialogOverlay data-slot="sheet-overlay" {...props} />;
-};
+) => <DialogOverlay data-slot="sheet-overlay" {...props} />;
 
 const sheetPositionerVariants = tv({
   base: ["fixed inset-0 z-50 grid h-svh w-screen"],
@@ -174,19 +172,15 @@ export const SheetContent = (props: SheetContentProps) => {
 
 export const SheetHeader = (
   props: React.ComponentProps<typeof DialogHeader>
-) => {
-  return <DialogHeader data-slot="sheet-header" {...props} />;
-};
+) => <DialogHeader data-slot="sheet-header" {...props} />;
 
-export const SheetTitle = (props: React.ComponentProps<typeof DialogTitle>) => {
-  return <DialogTitle data-slot="sheet-title" {...props} />;
-};
+export const SheetTitle = (props: React.ComponentProps<typeof DialogTitle>) => (
+  <DialogTitle data-slot="sheet-title" {...props} />
+);
 
 export const SheetDescription = (
   props: React.ComponentProps<typeof DialogDescription>
-) => {
-  return <DialogDescription data-slot="sheet-description" {...props} />;
-};
+) => <DialogDescription data-slot="sheet-description" {...props} />;
 
 export const SheetBody = (props: React.ComponentProps<typeof DialogBody>) => {
   const { className, ...rest } = props;

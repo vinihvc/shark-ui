@@ -28,7 +28,7 @@ const CollapsibleDemo = () => (
 
         <CardAction>
           <CollapsibleTrigger asChild>
-            <Button size="sm" variant="outline">
+            <Button clickEffect={false} size="sm" variant="outline">
               Details
               <CollapsibleIndicator />
             </Button>

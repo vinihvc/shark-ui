@@ -22,7 +22,7 @@ const Example = () => (
     <CardContent>
       <Collapsible>
         <CollapsibleTrigger asChild>
-          <Button className="w-full" variant="outline">
+          <Button className="w-full" clickEffect={false} variant="outline">
             View details
             <CollapsibleIndicator />
           </Button>

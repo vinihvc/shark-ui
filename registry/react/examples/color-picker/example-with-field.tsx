@@ -1,5 +1,6 @@
 import {
   ColorPicker,
+  ColorPickerControl,
   ColorPickerInput,
 } from "@/registry/react/components/color-picker";
 import {
@@ -13,9 +14,11 @@ const Example = () => (
   <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41">
     <Field>
       <FieldLabel>Color</FieldLabel>
-      <ColorPickerInput asChild>
-        <Input />
-      </ColorPickerInput>
+      <ColorPickerControl>
+        <ColorPickerInput asChild>
+          <Input />
+        </ColorPickerInput>
+      </ColorPickerControl>
       <FieldHelper>Enter your brand's primary color</FieldHelper>
     </Field>
   </ColorPicker>

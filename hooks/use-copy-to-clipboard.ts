@@ -47,13 +47,14 @@ export const useCopyToClipboard = (props: UseCopyToClipboardProps = {}) => {
     }, console.error);
   };
 
-  React.useEffect(() => {
-    return (): void => {
+  React.useEffect(
+    () => (): void => {
       if (timeoutIdRef.current) {
         clearTimeout(timeoutIdRef.current);
       }
-    };
-  }, []);
+    },
+    []
+  );
 
   return { copyToClipboard, isCopied };
 };

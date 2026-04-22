@@ -15,27 +15,23 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 
-export const AlertDialog = (props: React.ComponentProps<typeof Dialog>) => {
-  return <Dialog data-slot="alert-dialog-root" role="alertdialog" {...props} />;
-};
+export const AlertDialog = (props: React.ComponentProps<typeof Dialog>) => (
+  <Dialog data-slot="alert-dialog-root" role="alertdialog" {...props} />
+);
 
 export const AlertDialogTrigger = (
   props: React.ComponentProps<typeof DialogTrigger>
-) => {
-  return <DialogTrigger data-slot="alert-dialog-trigger" {...props} />;
-};
+) => <DialogTrigger data-slot="alert-dialog-trigger" {...props} />;
 
 export const AlertDialogContent = (
   props: React.ComponentProps<typeof DialogContent>
-) => {
-  return (
-    <DialogContent
-      data-slot="alert-dialog-content"
-      showCloseButton={false}
-      {...props}
-    />
-  );
-};
+) => (
+  <DialogContent
+    data-slot="alert-dialog-content"
+    showCloseButton={false}
+    {...props}
+  />
+);
 
 export const AlertDialogBody = (
   props: React.ComponentProps<typeof DialogBody>
@@ -55,33 +51,23 @@ export const AlertDialogBody = (
 
 export const AlertDialogHeader = (
   props: React.ComponentProps<typeof DialogHeader>
-) => {
-  return <DialogHeader data-slot="alert-dialog-header" {...props} />;
-};
+) => <DialogHeader data-slot="alert-dialog-header" {...props} />;
 
 export const AlertDialogTitle = (
   props: React.ComponentProps<typeof DialogTitle>
-) => {
-  return <DialogTitle data-slot="alert-dialog-title" {...props} />;
-};
+) => <DialogTitle data-slot="alert-dialog-title" {...props} />;
 
 export const AlertDialogDescription = (
   props: React.ComponentProps<typeof DialogDescription>
-) => {
-  return <DialogDescription data-slot="alert-dialog-description" {...props} />;
-};
+) => <DialogDescription data-slot="alert-dialog-description" {...props} />;
 
 export const AlertDialogClose = (
   props: React.ComponentProps<typeof DialogClose>
-) => {
-  return <DialogClose data-slot="alert-dialog-close" {...props} />;
-};
+) => <DialogClose data-slot="alert-dialog-close" {...props} />;
 
 export const AlertDialogFooter = (
   props: React.ComponentProps<typeof DialogFooter>
-) => {
-  return <DialogFooter data-slot="alert-dialog-footer" {...props} />;
-};
+) => <DialogFooter data-slot="alert-dialog-footer" {...props} />;
 
 interface AlertDialogActionProps
   extends React.ComponentProps<typeof DialogClose>,
@@ -108,10 +94,8 @@ interface AlertDialogCancelProps
   extends React.ComponentProps<typeof DialogClose>,
     Omit<ButtonProps, "variant"> {}
 
-export const AlertDialogCancel = (props: AlertDialogCancelProps) => {
-  return (
-    <DialogClose asChild data-slot="alert-dialog-cancel">
-      <Button variant="outline" {...props} />
-    </DialogClose>
-  );
-};
+export const AlertDialogCancel = (props: AlertDialogCancelProps) => (
+  <DialogClose asChild data-slot="alert-dialog-cancel">
+    <Button variant="outline" {...props} />
+  </DialogClose>
+);

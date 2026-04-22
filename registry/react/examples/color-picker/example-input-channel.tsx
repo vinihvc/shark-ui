@@ -2,6 +2,7 @@
 
 import {
   ColorPicker,
+  ColorPickerControl,
   ColorPickerInput,
   ColorPickerSwatchPreview,
   ColorPickerView,
@@ -81,13 +82,15 @@ const Example = () => (
     >
       <FieldLabel>Hex</FieldLabel>
       <Field orientation="horizontal">
-        <ColorPickerInput asChild channel="hex">
-          <Input />
-        </ColorPickerInput>
-        <ColorPickerInput asChild channel="alpha">
-          <Input />
-        </ColorPickerInput>
-        <ColorPickerSwatchPreview className="size-6" />
+        <ColorPickerControl className="min-w-0 flex-1">
+          <ColorPickerInput asChild channel="hex">
+            <Input />
+          </ColorPickerInput>
+          <ColorPickerInput asChild channel="alpha">
+            <Input />
+          </ColorPickerInput>
+          <ColorPickerSwatchPreview className="size-6" />
+        </ColorPickerControl>
       </Field>
     </ColorPicker>
   </div>

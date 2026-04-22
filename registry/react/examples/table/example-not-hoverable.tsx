@@ -8,29 +8,27 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const Example = () => {
-  return (
-    <Table className="mx-auto w-full max-w-xl" isHoverable={false}>
-      <TableCaption className="sr-only">
-        Table with row hover disabled (isHoverable=false).
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
+const Example = () => (
+  <Table className="mx-auto w-full max-w-xl" isHoverable={false}>
+    <TableCaption className="sr-only">
+      Table with row hover disabled (isHoverable=false).
+    </TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Email</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {users.map((user) => (
+        <TableRow key={user.id}>
+          <TableCell>{user.name}</TableCell>
+          <TableCell>{user.email}</TableCell>
         </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
+      ))}
+    </TableBody>
+  </Table>
+);
 
 const users = [
   {

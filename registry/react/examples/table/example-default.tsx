@@ -9,38 +9,33 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const TableDemo = () => {
-  return (
-    <Table className="mx-auto w-full max-w-xl">
-      <TableCaption>A list of users in your workspace.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead className="text-center">Status</TableHead>
+const TableDemo = () => (
+  <Table className="mx-auto w-full max-w-xl">
+    <TableCaption>A list of users in your workspace.</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Email</TableHead>
+        <TableHead>Role</TableHead>
+        <TableHead className="text-center">Status</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {users.map((user) => (
+        <TableRow key={user.id}>
+          <TableCell>{user.name}</TableCell>
+          <TableCell>{user.email}</TableCell>
+          <TableCell>{user.role}</TableCell>
+          <TableCell className="text-center">
+            <Badge className="capitalize" variant={statusVariants[user.status]}>
+              {user.status}
+            </Badge>
+          </TableCell>
         </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell className="text-center">
-              <Badge
-                className="capitalize"
-                variant={statusVariants[user.status]}
-              >
-                {user.status}
-              </Badge>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
+      ))}
+    </TableBody>
+  </Table>
+);
 
 const statusVariants: Record<string, BadgeVariant> = {
   active: "success",

@@ -12,9 +12,8 @@ export const getLLMFullText = async (page: LLMPage) => {
 ${processed}`;
 };
 
-export const getLLMText = (page: LLMPage) => {
-  return `- [${page.data.title}](${page.url}): ${page.data.description}`;
-};
+export const getLLMText = (page: LLMPage) =>
+  `- [${page.data.title}](${page.url}): ${page.data.description}`;
 
 export const getComponentPages = () =>
   source.getPages().filter((p: LLMPage) => p.slugs[0] === "components");

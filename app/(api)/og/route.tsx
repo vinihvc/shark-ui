@@ -1,6 +1,6 @@
 import { Buffer } from "node:buffer";
 import type { Font } from "@takumi-rs/core";
-import { ImageResponse } from "@takumi-rs/image-response";
+import { ImageResponse } from "takumi-js/response";
 
 async function loadAssets(): Promise<
   { name: string; data: ArrayBuffer; weight: 400 | 600; style: "normal" }[]

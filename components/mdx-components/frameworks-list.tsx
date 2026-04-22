@@ -12,25 +12,23 @@ import {
   ItemTitle,
 } from "@/registry/react/components/item";
 
-export const FrameworksList = () => {
-  return (
-    <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-      {FRAMEWORKS.map((framework) => (
-        <Item asChild key={framework.name}>
-          <NavLink
-            className="w-full border-input transition-all"
-            href={framework.href}
-          >
-            <ItemMedia>{framework.icon}</ItemMedia>
-            <ItemContent>
-              <ItemTitle>{framework.name}</ItemTitle>
-            </ItemContent>
-          </NavLink>
-        </Item>
-      ))}
-    </div>
-  );
-};
+export const FrameworksList = () => (
+  <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
+    {FRAMEWORKS.map((framework) => (
+      <Item asChild key={framework.name}>
+        <NavLink
+          className="w-full border-input transition-all"
+          href={framework.href}
+        >
+          <ItemMedia>{framework.icon}</ItemMedia>
+          <ItemContent>
+            <ItemTitle>{framework.name}</ItemTitle>
+          </ItemContent>
+        </NavLink>
+      </Item>
+    ))}
+  </div>
+);
 
 const FRAMEWORKS = [
   {

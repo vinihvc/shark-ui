@@ -54,6 +54,33 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 </CodeTabs>
 
+## Anatomy
+
+```text
+SidebarProvider
+├── Sidebar
+│   ├── SidebarHeader
+│   ├── SidebarContent
+│   │   └── SidebarGroup
+│   │       ├── SidebarGroupLabel
+│   │       ├── SidebarGroupAction
+│   │       ├── SidebarGroupContent
+│   │       └── SidebarMenu
+│   │           ├── SidebarMenuItem
+│   │           │   ├── SidebarMenuButton
+│   │           │   ├── SidebarMenuAction
+│   │           │   └── SidebarMenuBadge
+│   │           └── SidebarMenuSub
+│   │               ├── SidebarMenuSubButton
+│   │               └── SidebarMenuSubItem
+│   ├── SidebarFooter
+│   ├── SidebarSeparator
+│   └── SidebarInput
+├── SidebarTrigger
+├── SidebarRail
+└── SidebarInset
+```
+
 ## Structure
 
 Piecing a `Sidebar` together usually means:

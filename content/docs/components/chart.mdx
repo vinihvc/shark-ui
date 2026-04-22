@@ -51,6 +51,18 @@ npm install recharts
 
 </CodeTabs>
 
+## Anatomy
+
+```text
+ChartContainer
+├── ChartStyle
+├── Recharts surface (BarChart, LineChart, …)
+├── ChartTooltip
+│   └── ChartTooltipContent
+└── ChartLegend
+    └── ChartLegendContent
+```
+
 ## Component
 
 These pieces follow the familiar [shadcn/ui](https://ui.shadcn.com/docs/components/base/chart) chart pattern—container, tooltips, and legend helpers around standard Recharts charts—restyled and wired to Shark UI tokens and imports so the result feels native to this kit.

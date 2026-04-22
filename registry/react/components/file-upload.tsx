@@ -132,11 +132,7 @@ export const FileUploadHelper = (
 
 export const FileUploadItemGroup = (
   props: React.ComponentProps<typeof ArkFileUpload.ItemGroup>
-) => {
-  return (
-    <ArkFileUpload.ItemGroup data-slot="file-upload-item-group" {...props} />
-  );
-};
+) => <ArkFileUpload.ItemGroup data-slot="file-upload-item-group" {...props} />;
 
 interface FileUploadListProps
   extends Omit<React.ComponentProps<typeof ArkFileUpload.Item>, "file"> {}
@@ -301,25 +297,21 @@ export const FileUploadItemSize = (
 
 export const FileUploadItemDeleteTrigger = (
   props: React.ComponentProps<typeof ArkFileUpload.ItemDeleteTrigger>
-) => {
-  return (
-    <ArkFileUpload.ItemDeleteTrigger
-      data-slot="file-upload-item-delete-trigger"
-      {...props}
-    />
-  );
-};
+) => (
+  <ArkFileUpload.ItemDeleteTrigger
+    data-slot="file-upload-item-delete-trigger"
+    {...props}
+  />
+);
 
 export const FileUploadClearTrigger = (
   props: React.ComponentProps<typeof ArkFileUpload.ClearTrigger>
-) => {
-  return (
-    <ArkFileUpload.ClearTrigger
-      data-slot="file-upload-clear-trigger"
-      {...props}
-    />
-  );
-};
+) => (
+  <ArkFileUpload.ClearTrigger
+    data-slot="file-upload-clear-trigger"
+    {...props}
+  />
+);
 
 export const FileUploadRootProvider = (
   props: React.ComponentProps<typeof ArkFileUpload.RootProvider>

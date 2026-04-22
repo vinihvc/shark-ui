@@ -60,39 +60,35 @@ export const Progress = (props: ProgressProps) => {
 
 export const ProgressTrack = (
   props: React.ComponentProps<typeof ArkProgress.Track>
-) => {
-  return (
-    <ArkProgress.Track
-      className={cn(
-        "bg-input",
-        "rounded-full",
-        "overflow-x-hidden",
-        "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
-        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2"
-      )}
-      data-slot="progress-track"
-      {...props}
-    />
-  );
-};
+) => (
+  <ArkProgress.Track
+    className={cn(
+      "bg-input",
+      "rounded-full",
+      "overflow-x-hidden",
+      "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
+      "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2"
+    )}
+    data-slot="progress-track"
+    {...props}
+  />
+);
 
 export const ProgressRange = (
   props: React.ComponentProps<typeof ArkProgress.Range>
-) => {
-  return (
-    <ArkProgress.Range
-      className={cn(
-        "bg-primary",
-        "transition-all duration-300 ease-out",
-        "data-[orientation=horizontal]:h-full",
-        "data-[orientation=vertical]:h-full",
-        "data-[state=indeterminate]:w-1/3 data-[state=indeterminate]:animate-indeterminate data-[state=indeterminate]:duration-100"
-      )}
-      data-slot="progress-range"
-      {...props}
-    />
-  );
-};
+) => (
+  <ArkProgress.Range
+    className={cn(
+      "bg-primary",
+      "transition-all duration-300 ease-out",
+      "data-[orientation=horizontal]:h-full",
+      "data-[orientation=vertical]:h-full",
+      "data-[state=indeterminate]:w-1/3 data-[state=indeterminate]:animate-indeterminate data-[state=indeterminate]:duration-100"
+    )}
+    data-slot="progress-range"
+    {...props}
+  />
+);
 
 export const ProgressValue = (
   props: React.ComponentProps<typeof ArkProgress.ValueText>

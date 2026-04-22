@@ -75,12 +75,8 @@ export const NativeSelect = (props: NativeSelectProps) => {
 
 export const NativeSelectOption = (
   props: React.ComponentProps<typeof ark.option>
-) => {
-  return <ark.option data-slot="native-select-option" {...props} />;
-};
+) => <ark.option data-slot="native-select-option" {...props} />;
 
 export const NativeSelectOptGroup = (
   props: React.ComponentProps<typeof ark.optgroup>
-) => {
-  return <ark.optgroup data-slot="native-select-optgroup" {...props} />;
-};
+) => <ark.optgroup data-slot="native-select-optgroup" {...props} />;

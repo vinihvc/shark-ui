@@ -86,18 +86,16 @@ function ChartLineDotsColors() {
             />
             <Line
               dataKey="visitors"
-              dot={({ payload, ...props }) => {
-                return (
-                  <Dot
-                    cx={props.cx}
-                    cy={props.cy}
-                    fill={payload.fill}
-                    key={payload.browser}
-                    r={5}
-                    stroke={payload.fill}
-                  />
-                );
-              }}
+              dot={({ payload, ...props }) => (
+                <Dot
+                  cx={props.cx}
+                  cy={props.cy}
+                  fill={payload.fill}
+                  key={payload.browser}
+                  r={5}
+                  stroke={payload.fill}
+                />
+              )}
               stroke="var(--color-visitors)"
               strokeWidth={2}
               type="natural"

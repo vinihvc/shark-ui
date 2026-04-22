@@ -14,23 +14,21 @@ const items = [
   { icon: CreditCardIcon },
 ];
 
-const Example = () => {
-  return (
-    <Steps className="w-full max-w-md" count={items.length}>
-      <StepsList>
-        {items.map((item, index) => (
-          <StepsItem index={index} key={index}>
-            <StepsTrigger>
-              <StepsIndicator>
-                <item.icon />
-              </StepsIndicator>
-            </StepsTrigger>
-            <StepsSeparator />
-          </StepsItem>
-        ))}
-      </StepsList>
-    </Steps>
-  );
-};
+const Example = () => (
+  <Steps className="w-full max-w-md" count={items.length}>
+    <StepsList>
+      {items.map((item, index) => (
+        <StepsItem index={index} key={index}>
+          <StepsTrigger>
+            <StepsIndicator>
+              <item.icon />
+            </StepsIndicator>
+          </StepsTrigger>
+          <StepsSeparator />
+        </StepsItem>
+      ))}
+    </StepsList>
+  </Steps>
+);
 
 export default Example;

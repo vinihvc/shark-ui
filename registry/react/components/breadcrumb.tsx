@@ -103,15 +103,13 @@ export const BreadcrumbSeparator = (
 
 export const BreadcrumbEllipsis = (
   props: React.ComponentProps<typeof ark.span>
-) => {
-  return (
-    <ark.span
-      aria-hidden="true"
-      data-slot="breadcrumb-ellipsis"
-      role="presentation"
-      {...props}
-    >
-      <MoreHorizontalIcon className="size-4" />
-    </ark.span>
-  );
-};
+) => (
+  <ark.span
+    aria-hidden="true"
+    data-slot="breadcrumb-ellipsis"
+    role="presentation"
+    {...props}
+  >
+    <MoreHorizontalIcon className="size-4" />
+  </ark.span>
+);

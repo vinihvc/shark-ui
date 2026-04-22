@@ -32,9 +32,7 @@ export const ToggleTooltip = (
 
 export const ToggleTooltipTrigger = (
   props: React.ComponentProps<typeof ArkPopover.Trigger>
-) => {
-  return <PopoverTrigger data-slot="toggle-tooltip-trigger" {...props} />;
-};
+) => <PopoverTrigger data-slot="toggle-tooltip-trigger" {...props} />;
 
 export const ToggleTooltipContent = (
   props: React.ComponentProps<typeof ArkPopover.Content>

@@ -14,27 +14,25 @@ export const createMetadata = ({
   description,
   url,
   imageUrl = "/opengraph-image.png",
-}: CreateMetadataProps): Metadata => {
-  return {
+}: CreateMetadataProps): Metadata => ({
+  title,
+  description,
+  alternates: { canonical: absoluteUrl(url) },
+  openGraph: {
     title,
     description,
-    alternates: { canonical: absoluteUrl(url) },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: absoluteUrl(url),
-      images: [{ url: absoluteUrl(imageUrl) }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [absoluteUrl(imageUrl)],
-      creator: SITE_CONFIG.creator,
-    },
-  };
-};
+    type: "website",
+    url: absoluteUrl(url),
+    images: [{ url: absoluteUrl(imageUrl) }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [absoluteUrl(imageUrl)],
+    creator: SITE_CONFIG.creator,
+  },
+});
 
 interface CreateOgImageUrlProps {
   description: string;
@@ -44,6 +42,5 @@ interface CreateOgImageUrlProps {
 export const createOgImageUrl = ({
   title,
   description,
-}: CreateOgImageUrlProps) => {
-  return `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
-};
+}: CreateOgImageUrlProps) =>
+  `/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;

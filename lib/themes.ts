@@ -1277,8 +1277,7 @@ export const createCssVars = (
   primaryCss: PrimaryColor["cssVars"],
   grayCss: GrayColor["cssVars"],
   radiusCss: BorderRadius["cssVars"]
-) => {
-  return `:root {
+) => `:root {
   --radius: ${radiusCss?.radius};
   --background: ${grayCss?.light.background};
   --foreground: ${grayCss?.light.foreground};
@@ -1360,4 +1359,3 @@ export const createCssVars = (
   --chart-4: var(--color-purple-500);
   --chart-5: var(--color-rose-500);
 }`;
-};

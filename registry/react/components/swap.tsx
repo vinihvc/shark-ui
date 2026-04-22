@@ -63,6 +63,4 @@ export const Swap = (props: SwapProps) => {
 
 export const SwapIndicator = (
   props: React.ComponentProps<typeof ArkSwap.Indicator>
-) => {
-  return <ArkSwap.Indicator data-slot="swap-indicator" {...props} />;
-};
+) => <ArkSwap.Indicator data-slot="swap-indicator" {...props} />;

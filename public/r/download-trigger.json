@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/react/components/download-trigger.tsx",
-      "content": "\"use client\";\n\nimport { DownloadTrigger as ArkDownloadTrigger } from \"@ark-ui/react/download-trigger\";\nimport type React from \"react\";\n\nexport const DownloadTrigger = (\n  props: React.ComponentProps<typeof ArkDownloadTrigger>\n) => {\n  return <ArkDownloadTrigger data-slot=\"download-trigger\" {...props} />;\n};\n",
+      "content": "\"use client\";\n\nimport { DownloadTrigger as ArkDownloadTrigger } from \"@ark-ui/react/download-trigger\";\nimport type React from \"react\";\n\nexport const DownloadTrigger = (\n  props: React.ComponentProps<typeof ArkDownloadTrigger>\n) => <ArkDownloadTrigger data-slot=\"download-trigger\" {...props} />;\n",
       "type": "registry:ui"
     }
   ]

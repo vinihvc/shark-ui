@@ -35,108 +35,106 @@ const collection = createListCollection({
   ],
 });
 
-export const ShareCardExample = (props: React.ComponentProps<"div">) => {
-  return (
-    <Card {...props}>
-      <CardHeader
-        description="Anyone with the link can view this document."
-        title="Share this document"
-      />
+export const ShareCardExample = (props: React.ComponentProps<"div">) => (
+  <Card {...props}>
+    <CardHeader
+      description="Anyone with the link can view this document."
+      title="Share this document"
+    />
 
-      <CardContent>
-        <div className="flex space-x-2">
-          <Input readOnly value="http://example.com/link/to/document" />
-          <Button className="shrink-0" variant="secondary">
-            Copy Link
-          </Button>
-        </div>
+    <CardContent>
+      <div className="flex space-x-2">
+        <Input readOnly value="http://example.com/link/to/document" />
+        <Button className="shrink-0" variant="secondary">
+          Copy Link
+        </Button>
+      </div>
 
-        <Separator className="my-4" />
+      <Separator className="my-4" />
 
-        <div className="space-y-4">
-          <div className="font-medium text-sm">People with access</div>
-          <div className="grid gap-6">
-            <div className="flex items-center justify-between space-x-4">
-              <div className="flex items-center space-x-4">
-                <Avatar>
-                  <AvatarImage src="/avatars/03.png" />
-                  <AvatarFallback>OM</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-medium text-sm leading-none">
-                    Olivia Martin
-                  </p>
-                  <p className="text-muted-foreground text-sm">m@example.com</p>
-                </div>
+      <div className="space-y-4">
+        <div className="font-medium text-sm">People with access</div>
+        <div className="grid gap-6">
+          <div className="flex items-center justify-between space-x-4">
+            <div className="flex items-center space-x-4">
+              <Avatar>
+                <AvatarImage src="/avatars/03.png" />
+                <AvatarFallback>OM</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-medium text-sm leading-none">
+                  Olivia Martin
+                </p>
+                <p className="text-muted-foreground text-sm">m@example.com</p>
               </div>
-              <Select collection={collection} defaultValue={["edit"]}>
-                <SelectTrigger className="ml-auto w-[110px]">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  {collection.items.map((item) => (
-                    <SelectItem item={item} key={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
-            <div className="flex items-center justify-between space-x-4">
-              <div className="flex items-center space-x-4">
-                <Avatar>
-                  <AvatarImage src="/avatars/05.png" />
-                  <AvatarFallback>IN</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-medium text-sm leading-none">
-                    Isabella Nguyen
-                  </p>
-                  <p className="text-muted-foreground text-sm">b@example.com</p>
-                </div>
+            <Select collection={collection} defaultValue={["edit"]}>
+              <SelectTrigger className="ml-auto w-[110px]">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                {collection.items.map((item) => (
+                  <SelectItem item={item} key={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center justify-between space-x-4">
+            <div className="flex items-center space-x-4">
+              <Avatar>
+                <AvatarImage src="/avatars/05.png" />
+                <AvatarFallback>IN</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-medium text-sm leading-none">
+                  Isabella Nguyen
+                </p>
+                <p className="text-muted-foreground text-sm">b@example.com</p>
               </div>
-              <Select collection={collection} defaultValue={["view"]}>
-                <SelectTrigger className="ml-auto w-[110px]">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  {collection.items.map((item) => (
-                    <SelectItem item={item} key={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
-            <div className="flex items-center justify-between space-x-4">
-              <div className="flex items-center space-x-4">
-                <Avatar>
-                  <AvatarImage src="https://github.com/vinihvc.png" />
-                  <AvatarFallback>VV</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-medium text-sm leading-none">
-                    Vinicius Vicentini
-                  </p>
-                  <p className="text-muted-foreground text-sm">v@example.com</p>
-                </div>
+            <Select collection={collection} defaultValue={["view"]}>
+              <SelectTrigger className="ml-auto w-[110px]">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                {collection.items.map((item) => (
+                  <SelectItem item={item} key={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center justify-between space-x-4">
+            <div className="flex items-center space-x-4">
+              <Avatar>
+                <AvatarImage src="https://github.com/vinihvc.png" />
+                <AvatarFallback>VV</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="font-medium text-sm leading-none">
+                  Vinicius Vicentini
+                </p>
+                <p className="text-muted-foreground text-sm">v@example.com</p>
               </div>
-              <Select collection={collection} defaultValue={["view"]}>
-                <SelectTrigger className="ml-auto w-[110px]">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  {collection.items.map((item) => (
-                    <SelectItem item={item} key={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
+            <Select collection={collection} defaultValue={["view"]}>
+              <SelectTrigger className="ml-auto w-[110px]">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                {collection.items.map((item) => (
+                  <SelectItem item={item} key={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
-      </CardContent>
-    </Card>
-  );
-};
+      </div>
+    </CardContent>
+  </Card>
+);

@@ -26,19 +26,17 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const Example = () => {
-  return (
-    <div className="w-full max-w-40">
-      <TreeView collection={collection}>
-        <TreeViewTree>
-          {collection.rootNode.children?.map((node, index) => (
-            <TreeNode indexPath={[index]} key={node.id} node={node} />
-          ))}
-        </TreeViewTree>
-      </TreeView>
-    </div>
-  );
-};
+const Example = () => (
+  <div className="w-full max-w-40">
+    <TreeView collection={collection}>
+      <TreeViewTree>
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode indexPath={[index]} key={node.id} node={node} />
+        ))}
+      </TreeViewTree>
+    </TreeView>
+  </div>
+);
 
 const collection = createTreeCollection({
   rootNode: {

@@ -9,7 +9,7 @@ export const announcementVariants = tv({
   base: [
     "group/announcement",
     "relative",
-    "inline-flex items-center gap-2",
+    "inline-flex min-w-0 max-w-full items-center gap-2",
     "py-0.5 ps-3 pe-3",
     "bg-input/4",
     "rounded-2xl border border-input",
@@ -57,7 +57,7 @@ export const AnnouncementTitle = (
   return (
     <ark.span
       className={cn(
-        "inline-flex items-center gap-1",
+        "inline-flex min-w-0 flex-1 items-center gap-1 truncate",
         "select-none font-medium text-sm",
         className
       )}

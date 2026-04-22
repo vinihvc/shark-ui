@@ -20,29 +20,27 @@ import {
   DatePickerValue,
 } from "@/registry/react/components/date-picker";
 
-const Example = () => {
-  return (
-    <DatePicker focusedValue={parseDate(new Date())} selectionMode="range">
-      <DatePickerTrigger asChild>
-        <Button className="min-w-56" variant="outline">
-          <CalendarIcon aria-hidden="true" />
-          <DatePickerValue placeholder="Pick a date range" />
-        </Button>
-      </DatePickerTrigger>
-      <DatePickerContent>
-        <CalendarViewControl>
-          <CalendarPrevTrigger />
-          <CalendarMonthSelect />
-          <CalendarYearSelect />
-          <CalendarNextTrigger />
-        </CalendarViewControl>
-        <CalendarTable>
-          <CalendarWeekDays />
-          <CalendarTableDays />
-        </CalendarTable>
-      </DatePickerContent>
-    </DatePicker>
-  );
-};
+const Example = () => (
+  <DatePicker focusedValue={parseDate(new Date())} selectionMode="range">
+    <DatePickerTrigger asChild>
+      <Button className="min-w-56" variant="outline">
+        <CalendarIcon aria-hidden="true" />
+        <DatePickerValue placeholder="Pick a date range" />
+      </Button>
+    </DatePickerTrigger>
+    <DatePickerContent>
+      <CalendarViewControl>
+        <CalendarPrevTrigger />
+        <CalendarMonthSelect />
+        <CalendarYearSelect />
+        <CalendarNextTrigger />
+      </CalendarViewControl>
+      <CalendarTable>
+        <CalendarWeekDays />
+        <CalendarTableDays />
+      </CalendarTable>
+    </DatePickerContent>
+  </DatePicker>
+);
 
 export default Example;

@@ -10,9 +10,10 @@ export const CodeTabs = (props: React.ComponentProps<typeof Tabs>) => {
 
   const [config, setConfig] = useConfig();
 
-  const installationType = React.useMemo(() => {
-    return config.installationMethod || "cli";
-  }, [config]);
+  const installationType = React.useMemo(
+    () => config.installationMethod || "cli",
+    [config]
+  );
 
   return (
     <Tabs

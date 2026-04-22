@@ -164,8 +164,6 @@ export const DatePickerValue = (
 
 export const DatePickerPresetTrigger = (
   props: React.ComponentProps<typeof ArkDatePicker.PresetTrigger>
-) => {
-  return (
-    <CalendarPresetTrigger data-slot="date-picker-preset-trigger" {...props} />
-  );
-};
+) => (
+  <CalendarPresetTrigger data-slot="date-picker-preset-trigger" {...props} />
+);

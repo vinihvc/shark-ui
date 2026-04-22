@@ -3,6 +3,7 @@
 import React from "react";
 import {
   ColorPicker,
+  ColorPickerControl,
   ColorPickerInput,
   parseColor,
 } from "@/registry/react/components/color-picker";
@@ -17,9 +18,11 @@ const Example = () => {
         onValueChange={({ valueAsString }) => setValue(valueAsString)}
         value={value}
       >
-        <ColorPickerInput asChild>
-          <Input />
-        </ColorPickerInput>
+        <ColorPickerControl>
+          <ColorPickerInput asChild>
+            <Input />
+          </ColorPickerInput>
+        </ColorPickerControl>
       </ColorPicker>
 
       <p className="text-center text-muted-foreground text-sm">

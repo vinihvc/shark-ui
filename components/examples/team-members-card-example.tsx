@@ -68,50 +68,48 @@ const collection = createListCollection({
   ],
 });
 
-export const TeamMembersCardExample = (props: React.ComponentProps<"div">) => {
-  return (
-    <Card className="gap-4" {...props}>
-      <CardHeader
-        description="Invite your team members to collaborate."
-        title="Team Members"
-      />
+export const TeamMembersCardExample = (props: React.ComponentProps<"div">) => (
+  <Card className="gap-4" {...props}>
+    <CardHeader
+      description="Invite your team members to collaborate."
+      title="Team Members"
+    />
 
-      <CardContent>
-        {teamMembers.map((member) => (
-          <Item className="gap-4 px-0" key={member.name}>
-            <Avatar className="shrink-0 self-start border">
-              <AvatarImage alt="Image" src={member.avatar} />
-              <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-            </Avatar>
+    <CardContent>
+      {teamMembers.map((member) => (
+        <Item className="gap-4 px-0" key={member.name}>
+          <Avatar className="shrink-0 self-start border">
+            <AvatarImage alt="Image" src={member.avatar} />
+            <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+          </Avatar>
 
-            <ItemContent>
-              <ItemTitle>{member.name}</ItemTitle>
-              <ItemDescription>{member.email}</ItemDescription>
-            </ItemContent>
+          <ItemContent>
+            <ItemTitle>{member.name}</ItemTitle>
+            <ItemDescription>{member.email}</ItemDescription>
+          </ItemContent>
 
-            <ItemActions>
-              <Select collection={collection} defaultValue={[member.role]}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select role..." />
-                </SelectTrigger>
+          <ItemActions>
+            <Select collection={collection} defaultValue={[member.role]}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select role..." />
+              </SelectTrigger>
 
-                <SelectContent>
-                  {collection.items.map((role) => (
-                    <SelectItem item={role} key={role.value}>
-                      <div className="flex flex-col">
-                        <p className="font-medium text-sm">{role.value}</p>
-                        <p className="text-muted-foreground">
-                          {role.description}
-                        </p>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </ItemActions>
-          </Item>
-        ))}
-      </CardContent>
-    </Card>
-  );
-};
+              <SelectContent>
+                {collection.items.map((role) => (
+                  <SelectItem item={role} key={role.value}>
+                    <div className="flex flex-col">
+                      <p className="font-medium text-sm">{role.value}</p>
+                      <p className="text-muted-foreground">
+                        {role.description}
+                      </p>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </ItemActions>
+        </Item>
+      ))}
+    </CardContent>
+  </Card>
+);

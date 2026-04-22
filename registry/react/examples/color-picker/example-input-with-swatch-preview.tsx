@@ -1,5 +1,6 @@
 import {
   ColorPicker,
+  ColorPickerControl,
   ColorPickerInput,
   ColorPickerSwatchPreview,
 } from "@/registry/react/components/color-picker";
@@ -11,14 +12,16 @@ import {
 
 const Example = () => (
   <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41">
-    <InputGroup>
-      <InputGroupAddon align="inline-start">
-        <ColorPickerSwatchPreview />
-      </InputGroupAddon>
-      <ColorPickerInput asChild>
-        <InputGroupInput />
-      </ColorPickerInput>
-    </InputGroup>
+    <ColorPickerControl>
+      <InputGroup>
+        <InputGroupAddon align="inline-start">
+          <ColorPickerSwatchPreview />
+        </InputGroupAddon>
+        <ColorPickerInput asChild>
+          <InputGroupInput />
+        </ColorPickerInput>
+      </InputGroup>
+    </ColorPickerControl>
   </ColorPicker>
 );
 

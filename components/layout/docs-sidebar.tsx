@@ -44,8 +44,8 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
             <SidebarGroupContent>
               {item.type === "folder" && (
                 <SidebarMenu className="gap-1">
-                  {item.children.map((item) => {
-                    return (
+                  {item.children.map(
+                    (item) =>
                       item.type === "page" && (
                         <SidebarMenuItem key={item.url}>
                           <SidebarMenuButton
@@ -57,8 +57,7 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       )
-                    );
-                  })}
+                  )}
                 </SidebarMenu>
               )}
             </SidebarGroupContent>

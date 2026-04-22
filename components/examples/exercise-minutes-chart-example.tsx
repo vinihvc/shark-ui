@@ -65,73 +65,71 @@ const chartConfig = {
 
 export const ExerciseMinutesChartExample = (
   props: React.ComponentProps<"div">
-) => {
-  return (
-    <Card {...props}>
-      <CardHeader
-        description="Your exercise minutes are normal."
-        title="Exercise Minutes"
-      />
-      <CardContent>
-        <ChartContainer className="w-full md:h-[200px]" config={chartConfig}>
-          <LineChart
-            accessibilityLayer={false}
-            data={data}
-            margin={{
-              top: 5,
-              right: 10,
-              left: 16,
-              bottom: 0,
+) => (
+  <Card {...props}>
+    <CardHeader
+      description="Your exercise minutes are normal."
+      title="Exercise Minutes"
+    />
+    <CardContent>
+      <ChartContainer className="w-full md:h-[200px]" config={chartConfig}>
+        <LineChart
+          accessibilityLayer={false}
+          data={data}
+          margin={{
+            top: 5,
+            right: 10,
+            left: 16,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid vertical={false} />
+          <XAxis
+            axisLine={false}
+            dataKey="day"
+            tickFormatter={(value) => value.slice(0, 3)}
+            tickLine={false}
+            tickMargin={8}
+          />
+          <Line
+            activeDot={{
+              r: 5,
             }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              axisLine={false}
-              dataKey="day"
-              tickFormatter={(value) => value.slice(0, 3)}
-              tickLine={false}
-              tickMargin={8}
-            />
-            <Line
-              activeDot={{
-                r: 5,
-              }}
-              dataKey="today"
-              dot={{
-                fill: "var(--color-today)",
-              }}
-              stroke="var(--color-today)"
-              strokeWidth={2}
-              type="monotone"
-            />
-            <Line
-              activeDot={{
-                r: 5,
-              }}
-              dataKey="average"
-              dot={{
-                fill: "var(--color-average)",
-                opacity: 0.5,
-              }}
-              stroke="var(--color-average)"
-              strokeOpacity={0.5}
-              strokeWidth={2}
-              type="monotone"
-            />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  accessibilityLayer={false}
-                  active={false}
-                  activeIndex={undefined}
-                  coordinate={undefined}
-                  payload={[]}
-                />
-              }
-            />
-          </LineChart>
-        </ChartContainer>
-      </CardContent>
-    </Card>
-  );
-};
+            dataKey="today"
+            dot={{
+              fill: "var(--color-today)",
+            }}
+            stroke="var(--color-today)"
+            strokeWidth={2}
+            type="monotone"
+          />
+          <Line
+            activeDot={{
+              r: 5,
+            }}
+            dataKey="average"
+            dot={{
+              fill: "var(--color-average)",
+              opacity: 0.5,
+            }}
+            stroke="var(--color-average)"
+            strokeOpacity={0.5}
+            strokeWidth={2}
+            type="monotone"
+          />
+          <ChartTooltip
+            content={
+              <ChartTooltipContent
+                accessibilityLayer={false}
+                active={false}
+                activeIndex={undefined}
+                coordinate={undefined}
+                payload={[]}
+              />
+            }
+          />
+        </LineChart>
+      </ChartContainer>
+    </CardContent>
+  </Card>
+);

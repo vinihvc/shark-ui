@@ -56,9 +56,10 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 function ChartPieDonutText() {
-  const totalVisitors = useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
-  }, []);
+  const totalVisitors = useMemo(
+    () => chartData.reduce((acc, curr) => acc + curr.visitors, 0),
+    []
+  );
 
   return (
     <Card className="flex flex-col">

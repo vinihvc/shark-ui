@@ -126,127 +126,125 @@ const typeVariantMap: Record<string, "secondary" | "destructive" | "default"> =
     Feature: "default",
   };
 
-const TaskManagerTemplate = () => {
-  return (
-    <div className="flex min-h-svh flex-col">
-      <div className="flex flex-col gap-6 p-6">
-        <div>
-          <h1 className="font-semibold text-2xl">Welcome back!</h1>
-          <p className="text-muted-foreground">
-            Here&apos;s a list of your tasks for this month.
-          </p>
-        </div>
+const TaskManagerTemplate = () => (
+  <div className="flex min-h-svh flex-col">
+    <div className="flex flex-col gap-6 p-6">
+      <div>
+        <h1 className="font-semibold text-2xl">Welcome back!</h1>
+        <p className="text-muted-foreground">
+          Here&apos;s a list of your tasks for this month.
+        </p>
+      </div>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <Select collection={statusCollection}>
-            <SelectTrigger className="w-36">
-              <SelectValue placeholder="Status" />
-            </SelectTrigger>
-            <SelectContent>
-              {statusCollection.items.map((item) => (
-                <SelectItem item={item} key={item}>
-                  {item}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Select collection={priorityCollection}>
-            <SelectTrigger className="w-36">
-              <SelectValue placeholder="Priority" />
-            </SelectTrigger>
-            <SelectContent>
-              {priorityCollection.items.map((item) => (
-                <SelectItem item={item} key={item}>
-                  {item}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Menu>
-            <MenuTrigger asChild>
-              <Button variant="outline">View</Button>
-            </MenuTrigger>
-            <MenuContent>
-              <MenuItem value="table">Table</MenuItem>
-              <MenuItem value="list">List</MenuItem>
-            </MenuContent>
-          </Menu>
-          <Button className="ml-auto">
-            <PlusIcon aria-hidden className="size-4" />
-            Add Task
-          </Button>
-        </div>
+      <div className="flex flex-wrap items-center gap-4">
+        <Select collection={statusCollection}>
+          <SelectTrigger className="w-36">
+            <SelectValue placeholder="Status" />
+          </SelectTrigger>
+          <SelectContent>
+            {statusCollection.items.map((item) => (
+              <SelectItem item={item} key={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select collection={priorityCollection}>
+          <SelectTrigger className="w-36">
+            <SelectValue placeholder="Priority" />
+          </SelectTrigger>
+          <SelectContent>
+            {priorityCollection.items.map((item) => (
+              <SelectItem item={item} key={item}>
+                {item}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Menu>
+          <MenuTrigger asChild>
+            <Button variant="outline">View</Button>
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem value="table">Table</MenuItem>
+            <MenuItem value="list">List</MenuItem>
+          </MenuContent>
+        </Menu>
+        <Button className="ml-auto">
+          <PlusIcon aria-hidden className="size-4" />
+          Add Task
+        </Button>
+      </div>
 
-        <div className="rounded-lg border">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Task</TableHead>
-                <TableHead>Title</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Priority</TableHead>
-                <TableHead className="w-12" />
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {TASKS.map((task) => (
-                <TableRow key={task.id}>
-                  <TableCell className="font-mono text-xs">{task.id}</TableCell>
-                  <TableCell>
-                    <div className="flex flex-col gap-1">
-                      <Badge
-                        className="w-fit"
-                        variant={typeVariantMap[task.type] ?? "secondary"}
+      <div className="rounded-lg border">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Task</TableHead>
+              <TableHead>Title</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Priority</TableHead>
+              <TableHead className="w-12" />
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {TASKS.map((task) => (
+              <TableRow key={task.id}>
+                <TableCell className="font-mono text-xs">{task.id}</TableCell>
+                <TableCell>
+                  <div className="flex flex-col gap-1">
+                    <Badge
+                      className="w-fit"
+                      variant={typeVariantMap[task.type] ?? "secondary"}
+                    >
+                      {task.type}
+                    </Badge>
+                    <span className="line-clamp-2">{task.title}</span>
+                  </div>
+                </TableCell>
+                <TableCell>{task.status}</TableCell>
+                <TableCell>{task.priority}</TableCell>
+                <TableCell>
+                  <Menu>
+                    <MenuTrigger asChild>
+                      <Button
+                        aria-label="Open menu"
+                        size="icon-sm"
+                        variant="ghost"
                       >
-                        {task.type}
-                      </Badge>
-                      <span className="line-clamp-2">{task.title}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>{task.status}</TableCell>
-                  <TableCell>{task.priority}</TableCell>
-                  <TableCell>
-                    <Menu>
-                      <MenuTrigger asChild>
-                        <Button
-                          aria-label="Open menu"
-                          size="icon-sm"
-                          variant="ghost"
-                        >
-                          <EllipsisIcon aria-hidden className="size-4" />
-                        </Button>
-                      </MenuTrigger>
-                      <MenuContent>
-                        <MenuItem value="edit">Edit</MenuItem>
-                        <MenuItem value="delete" variant="destructive">
-                          Delete
-                        </MenuItem>
-                      </MenuContent>
-                    </Menu>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+                        <EllipsisIcon aria-hidden className="size-4" />
+                      </Button>
+                    </MenuTrigger>
+                    <MenuContent>
+                      <MenuItem value="edit">Edit</MenuItem>
+                      <MenuItem value="delete" variant="destructive">
+                        Delete
+                      </MenuItem>
+                    </MenuContent>
+                  </Menu>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            0 of 100 row(s) selected
-          </p>
-          <div className="flex items-center gap-4">
-            <span className="text-muted-foreground text-sm">Rows per page</span>
-            <Pagination count={100} pageSize={25}>
-              <PaginationPrevious />
-              <PaginationItems />
-              <PaginationNext />
-            </Pagination>
-            <span className="text-muted-foreground text-sm">Page 1 of 4</span>
-          </div>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <p className="text-muted-foreground text-sm">
+          0 of 100 row(s) selected
+        </p>
+        <div className="flex items-center gap-4">
+          <span className="text-muted-foreground text-sm">Rows per page</span>
+          <Pagination count={100} pageSize={25}>
+            <PaginationPrevious />
+            <PaginationItems />
+            <PaginationNext />
+          </Pagination>
+          <span className="text-muted-foreground text-sm">Page 1 of 4</span>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default TaskManagerTemplate;

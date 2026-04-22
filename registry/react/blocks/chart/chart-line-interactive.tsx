@@ -202,13 +202,13 @@ function ChartLineInteractive() {
               content={
                 <ChartTooltipContent
                   className="w-[150px]"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                  labelFormatter={(value) =>
+                    new Date(value).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
-                    });
-                  }}
+                    })
+                  }
                   nameKey="views"
                 />
               }

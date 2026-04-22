@@ -10,28 +10,26 @@ import {
   ListboxItemText,
 } from "@/registry/react/components/listbox";
 
-const Example = () => {
-  return (
-    <Item className="w-full max-w-64 p-1" variant="outline">
-      <Listbox collection={collection}>
-        <ListboxContent
-          className="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
-          style={
-            { "--column-count": collection.columnCount } as React.CSSProperties
-          }
-        >
-          {collection.items.map((item) => (
-            <ListboxItem item={item} key={item.value}>
-              <ListboxItemText className="text-center text-xl">
-                {item.label}
-              </ListboxItemText>
-            </ListboxItem>
-          ))}
-        </ListboxContent>
-      </Listbox>
-    </Item>
-  );
-};
+const Example = () => (
+  <Item className="w-full max-w-64 p-1" variant="outline">
+    <Listbox collection={collection}>
+      <ListboxContent
+        className="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
+        style={
+          { "--column-count": collection.columnCount } as React.CSSProperties
+        }
+      >
+        {collection.items.map((item) => (
+          <ListboxItem item={item} key={item.value}>
+            <ListboxItemText className="text-center text-xl">
+              {item.label}
+            </ListboxItemText>
+          </ListboxItem>
+        ))}
+      </ListboxContent>
+    </Listbox>
+  </Item>
+);
 
 const collection = createGridCollection({
   columnCount: 5,

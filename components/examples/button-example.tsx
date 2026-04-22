@@ -9,19 +9,17 @@ const VARIANTS = [
   "link",
 ] as const;
 
-export const ButtonExample = () => {
-  return (
-    <div className="grid grid-cols-3 gap-2">
-      {VARIANTS.map((variant) => (
-        <Button
-          className="w-full capitalize"
-          key={variant}
-          tabIndex={-1}
-          variant={variant}
-        >
-          {variant}
-        </Button>
-      ))}
-    </div>
-  );
-};
+export const ButtonExample = () => (
+  <div className="grid grid-cols-3 gap-2">
+    {VARIANTS.map((variant) => (
+      <Button
+        className="w-full capitalize"
+        key={variant}
+        tabIndex={-1}
+        variant={variant}
+      >
+        {variant}
+      </Button>
+    ))}
+  </div>
+);

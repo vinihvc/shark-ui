@@ -32,24 +32,22 @@ const ICONS = [
   { Icon: CheckIcon, label: "Confirm" },
 ];
 
-export const IconsGridExample = (props: React.ComponentProps<"div">) => {
-  return (
-    <Card {...props}>
-      <CardContent>
-        <div className="grid grid-cols-6 gap-2">
-          {ICONS.map(({ Icon, label }) => (
-            <Button
-              aria-label={label}
-              key={label}
-              size="icon-md"
-              tabIndex={-1}
-              variant="outline"
-            >
-              <Icon aria-hidden />
-            </Button>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
+export const IconsGridExample = (props: React.ComponentProps<"div">) => (
+  <Card {...props}>
+    <CardContent>
+      <div className="grid grid-cols-6 gap-2">
+        {ICONS.map(({ Icon, label }) => (
+          <Button
+            aria-label={label}
+            key={label}
+            size="icon-md"
+            tabIndex={-1}
+            variant="outline"
+          >
+            <Icon aria-hidden />
+          </Button>
+        ))}
+      </div>
+    </CardContent>
+  </Card>
+);

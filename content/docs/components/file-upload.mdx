@@ -49,6 +49,29 @@ npm install @ark-ui/react lucide-react
 
 </CodeTabs>
 
+## Anatomy
+
+```text
+FileUpload
+├── FileUploadTrigger
+├── FileUploadDropzone
+│   ├── FileUploadDropzoneIcon
+│   ├── FileUploadTitle
+│   ├── FileUploadDescription
+│   └── FileUploadHelper
+├── FileUploadItemGroup
+│   └── FileUploadList
+│       └── FileUploadItem
+│           ├── FileUploadItemPreview
+│           │   └── FileUploadItemPreviewImage
+│           ├── FileUploadItemName
+│           ├── FileUploadItemSize
+│           └── FileUploadItemDeleteTrigger
+└── FileUploadClearTrigger
+
+FileUploadRootProvider (alternate root for advanced wiring)
+```
+
 ## Usage
 
 ```tsx

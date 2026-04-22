@@ -9,8 +9,6 @@ export const metadata = createMetadata({
   url: "/blocks",
 });
 
-const BlocksPage = async () => {
-  return <div>all blocks</div>;
-};
+const BlocksPage = async () => <div>all blocks</div>;
 
 export default BlocksPage;

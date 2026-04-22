@@ -73,21 +73,19 @@ function ChartPieLabelCustom() {
             <Pie
               data={chartData}
               dataKey="visitors"
-              label={({ payload, ...props }) => {
-                return (
-                  <text
-                    cx={props.cx}
-                    cy={props.cy}
-                    dominantBaseline={props.dominantBaseline}
-                    fill="hsla(var(--foreground))"
-                    textAnchor={props.textAnchor}
-                    x={props.x}
-                    y={props.y}
-                  >
-                    {payload.visitors}
-                  </text>
-                );
-              }}
+              label={({ payload, ...props }) => (
+                <text
+                  cx={props.cx}
+                  cy={props.cy}
+                  dominantBaseline={props.dominantBaseline}
+                  fill="hsla(var(--foreground))"
+                  textAnchor={props.textAnchor}
+                  x={props.x}
+                  y={props.y}
+                >
+                  {payload.visitors}
+                </text>
+              )}
               labelLine={false}
               nameKey="browser"
             />

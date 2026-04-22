@@ -54,11 +54,11 @@ function ChartTooltipIcons() {
             <XAxis
               axisLine={false}
               dataKey="date"
-              tickFormatter={(value) => {
-                return new Date(value).toLocaleDateString("en-US", {
+              tickFormatter={(value) =>
+                new Date(value).toLocaleDateString("en-US", {
                   weekday: "short",
-                });
-              }}
+                })
+              }
               tickLine={false}
               tickMargin={10}
             />

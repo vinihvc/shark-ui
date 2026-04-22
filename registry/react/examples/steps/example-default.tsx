@@ -15,51 +15,49 @@ import {
 
 const steps = Array.from({ length: 3 }, (_, index) => index + 1);
 
-const StepsDemo = () => {
-  return (
-    <Steps className="size-full max-w-md" count={steps.length}>
-      <StepsList>
-        {steps.map((step) => (
-          <StepsItem index={step - 1} key={step}>
-            <StepsTrigger>
-              <StepsIndicator>{step}</StepsIndicator>
-            </StepsTrigger>
-            <StepsSeparator />
-          </StepsItem>
-        ))}
-      </StepsList>
+const StepsDemo = () => (
+  <Steps className="size-full max-w-md" count={steps.length}>
+    <StepsList>
       {steps.map((step) => (
-        <StepsContent
-          className="flex h-full items-center justify-center rounded-md border"
-          index={step - 1}
-          key={step}
-        >
-          <p className="text-muted-foreground text-sm">Step {step}</p>
-        </StepsContent>
+        <StepsItem index={step - 1} key={step}>
+          <StepsTrigger>
+            <StepsIndicator>{step}</StepsIndicator>
+          </StepsTrigger>
+          <StepsSeparator />
+        </StepsItem>
       ))}
+    </StepsList>
+    {steps.map((step) => (
+      <StepsContent
+        className="flex h-full items-center justify-center rounded-md border"
+        index={step - 1}
+        key={step}
+      >
+        <p className="text-muted-foreground text-sm">Step {step}</p>
+      </StepsContent>
+    ))}
 
-      <StepsCompletedContent className="flex h-full items-center justify-center rounded-md border">
-        <p className="text-muted-foreground text-sm">
-          All steps completed. You&apos;re all set!
-        </p>
-      </StepsCompletedContent>
+    <StepsCompletedContent className="flex h-full items-center justify-center rounded-md border">
+      <p className="text-muted-foreground text-sm">
+        All steps completed. You&apos;re all set!
+      </p>
+    </StepsCompletedContent>
 
-      <div className="flex flex-row-reverse gap-2">
-        <StepsNext asChild>
-          <Button>
-            Next
-            <ChevronRight />
-          </Button>
-        </StepsNext>
-        <StepsPrevious asChild>
-          <Button variant="outline">
-            <ChevronLeftIcon />
-            Back
-          </Button>
-        </StepsPrevious>
-      </div>
-    </Steps>
-  );
-};
+    <div className="flex flex-row-reverse gap-2">
+      <StepsNext asChild>
+        <Button>
+          Next
+          <ChevronRight />
+        </Button>
+      </StepsNext>
+      <StepsPrevious asChild>
+        <Button variant="outline">
+          <ChevronLeftIcon />
+          Back
+        </Button>
+      </StepsPrevious>
+    </div>
+  </Steps>
+);
 
 export default StepsDemo;

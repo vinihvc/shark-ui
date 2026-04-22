@@ -91,14 +91,12 @@ export const FloatingPanelContent = (props: FloatingPanelContentProps) => {
 
 export const FloatingPanelDragTrigger = (
   props: React.ComponentProps<typeof ArkFloatingPanel.DragTrigger>
-) => {
-  return (
-    <ArkFloatingPanel.DragTrigger
-      data-slot="floating-panel-drag-trigger"
-      {...props}
-    />
-  );
-};
+) => (
+  <ArkFloatingPanel.DragTrigger
+    data-slot="floating-panel-drag-trigger"
+    {...props}
+  />
+);
 
 export const FloatingPanelHeader = (
   props: React.ComponentProps<typeof ArkFloatingPanel.Header>

@@ -51,11 +51,11 @@ function ChartTooltipLabelFormatter() {
             <XAxis
               axisLine={false}
               dataKey="date"
-              tickFormatter={(value) => {
-                return new Date(value).toLocaleDateString("en-US", {
+              tickFormatter={(value) =>
+                new Date(value).toLocaleDateString("en-US", {
                   weekday: "short",
-                });
-              }}
+                })
+              }
               tickLine={false}
               tickMargin={10}
             />
@@ -74,13 +74,13 @@ function ChartTooltipLabelFormatter() {
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                  labelFormatter={(value) =>
+                    new Date(value).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",
-                    });
-                  }}
+                    })
+                  }
                 />
               }
               cursor={false}

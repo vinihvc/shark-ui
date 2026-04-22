@@ -79,23 +79,21 @@ export const PaginationItem = (
 
 export const PaginationItems = (
   props: Omit<React.ComponentProps<typeof ArkPagination.Context>, "children">
-) => {
-  return (
-    <ArkPagination.Context data-slot="pagination-item s" {...props}>
-      {({ pages }) =>
-        pages.map((page, index) =>
-          page.type === "page" ? (
-            <PaginationItem key={page.value} type="page" value={page.value}>
-              {page.value}
-            </PaginationItem>
-          ) : (
-            <PaginationEllipsis index={index} key={`ellipsis-${index}`} />
-          )
+) => (
+  <ArkPagination.Context data-slot="pagination-item s" {...props}>
+    {({ pages }) =>
+      pages.map((page, index) =>
+        page.type === "page" ? (
+          <PaginationItem key={page.value} type="page" value={page.value}>
+            {page.value}
+          </PaginationItem>
+        ) : (
+          <PaginationEllipsis index={index} key={`ellipsis-${index}`} />
         )
-      }
-    </ArkPagination.Context>
-  );
-};
+      )
+    }
+  </ArkPagination.Context>
+);
 
 interface PaginationItemLinkProps extends React.ComponentProps<typeof Button> {
   /**

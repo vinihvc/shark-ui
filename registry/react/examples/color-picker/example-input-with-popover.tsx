@@ -3,6 +3,7 @@ import {
   ColorPickerArea,
   ColorPickerAreaThumb,
   ColorPickerContent,
+  ColorPickerControl,
   ColorPickerInput,
   ColorPickerSlider,
   ColorPickerSwatchPreview,
@@ -17,16 +18,18 @@ import {
 
 const Example = () => (
   <ColorPicker className="w-full max-w-64" defaultValue="#eb5e41" format="hsla">
-    <InputGroup>
-      <ColorPickerTrigger asChild>
-        <InputGroupAddon>
-          <ColorPickerSwatchPreview />
-        </InputGroupAddon>
-      </ColorPickerTrigger>
-      <ColorPickerInput asChild>
-        <InputGroupInput />
-      </ColorPickerInput>
-    </InputGroup>
+    <ColorPickerControl>
+      <InputGroup>
+        <ColorPickerTrigger asChild>
+          <InputGroupAddon>
+            <ColorPickerSwatchPreview />
+          </InputGroupAddon>
+        </ColorPickerTrigger>
+        <ColorPickerInput asChild>
+          <InputGroupInput />
+        </ColorPickerInput>
+      </InputGroup>
+    </ColorPickerControl>
 
     <ColorPickerContent>
       <ColorPickerArea>

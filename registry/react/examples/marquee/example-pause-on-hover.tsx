@@ -7,22 +7,20 @@ import {
 
 const items = Array.from({ length: 10 });
 
-const Example = () => {
-  return (
-    <Marquee pauseOnInteraction>
-      <MarqueeContent>
-        {items.map((_, index) => (
-          <MarqueeItem key={index}>
-            <Card className="shadow-none">
-              <CardContent>
-                <p>Sponsor {index + 1}</p>
-              </CardContent>
-            </Card>
-          </MarqueeItem>
-        ))}
-      </MarqueeContent>
-    </Marquee>
-  );
-};
+const Example = () => (
+  <Marquee pauseOnInteraction>
+    <MarqueeContent>
+      {items.map((_, index) => (
+        <MarqueeItem key={index}>
+          <Card className="shadow-none">
+            <CardContent>
+              <p>Sponsor {index + 1}</p>
+            </CardContent>
+          </Card>
+        </MarqueeItem>
+      ))}
+    </MarqueeContent>
+  </Marquee>
+);
 
 export default Example;

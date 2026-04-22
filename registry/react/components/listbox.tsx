@@ -215,6 +215,4 @@ export const ListboxEmpty = (
 
 export const ListboxShortcut = (
   props: React.ComponentProps<typeof MenuShortcut>
-) => {
-  return <MenuShortcut data-slot="listbox-shortcut" {...props} />;
-};
+) => <MenuShortcut data-slot="listbox-shortcut" {...props} />;

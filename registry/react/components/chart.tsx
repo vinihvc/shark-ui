@@ -341,7 +341,7 @@ export const ChartLegendContent = (props: ChartLegendContentProps) => {
 
 const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
   if (typeof payload !== "object" || payload === null) {
-    return undefined;
+    return;
   }
 
   const payloadPayload =

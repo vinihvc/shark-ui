@@ -14,30 +14,28 @@ import {
 } from "@/registry/react/components/field";
 import { Switch } from "@/registry/react/components/switch";
 
-export const CookieSettingsExample = (props: React.ComponentProps<"div">) => {
-  return (
-    <Card {...props}>
-      <CardHeader
-        description="Manage your cookie settings here."
-        title="Cookie Settings"
-      />
-      <CardContent className="grid gap-6">
-        <Field orientation="horizontal">
-          <FieldContent>
-            <FieldLabel>Strictly Necessary</FieldLabel>
-            <FieldDescription>
-              These cookies are essential in order to use the website and use
-              its features.
-            </FieldDescription>
-          </FieldContent>
+export const CookieSettingsExample = (props: React.ComponentProps<"div">) => (
+  <Card {...props}>
+    <CardHeader
+      description="Manage your cookie settings here."
+      title="Cookie Settings"
+    />
+    <CardContent className="grid gap-6">
+      <Field orientation="horizontal">
+        <FieldContent>
+          <FieldLabel>Strictly Necessary</FieldLabel>
+          <FieldDescription>
+            These cookies are essential in order to use the website and use its
+            features.
+          </FieldDescription>
+        </FieldContent>
 
-          <Switch aria-label="Necessary" defaultChecked />
-        </Field>
+        <Switch aria-label="Necessary" defaultChecked />
+      </Field>
 
-        <Field>
-          <Button variant="outline">Save preferences</Button>
-        </Field>
-      </CardContent>
-    </Card>
-  );
-};
+      <Field>
+        <Button variant="outline">Save preferences</Button>
+      </Field>
+    </CardContent>
+  </Card>
+);

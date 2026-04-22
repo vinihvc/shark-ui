@@ -148,15 +148,13 @@ export const ComboboxTrigger = (
 
 export const ComboboxClear = (
   props: React.ComponentProps<typeof ArkCombobox.ClearTrigger>
-) => {
-  return (
-    <ArkCombobox.ClearTrigger data-slot="combobox-clear" {...props} asChild>
-      <InputGroupButton size="icon-xs" variant="ghost">
-        <XIcon />
-      </InputGroupButton>
-    </ArkCombobox.ClearTrigger>
-  );
-};
+) => (
+  <ArkCombobox.ClearTrigger data-slot="combobox-clear" {...props} asChild>
+    <InputGroupButton size="icon-xs" variant="ghost">
+      <XIcon />
+    </InputGroupButton>
+  </ArkCombobox.ClearTrigger>
+);
 
 export const ComboboxPositioner = (
   props: React.ComponentProps<typeof ArkCombobox.Positioner>

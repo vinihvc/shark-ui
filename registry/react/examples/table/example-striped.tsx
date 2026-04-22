@@ -8,33 +8,31 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const Example = () => {
-  return (
-    <Table className="mx-auto w-full max-w-xl" variant="striped">
-      <TableCaption className="sr-only">
-        Users with alternating row backgrounds.
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead className="text-center">Status</TableHead>
+const Example = () => (
+  <Table className="mx-auto w-full max-w-xl" variant="striped">
+    <TableCaption className="sr-only">
+      Users with alternating row backgrounds.
+    </TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Email</TableHead>
+        <TableHead>Role</TableHead>
+        <TableHead className="text-center">Status</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {users.map((user) => (
+        <TableRow key={user.id}>
+          <TableCell>{user.name}</TableCell>
+          <TableCell>{user.email}</TableCell>
+          <TableCell>{user.role}</TableCell>
+          <TableCell className="text-center">{user.status}</TableCell>
         </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.role}</TableCell>
-            <TableCell className="text-center">{user.status}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
+      ))}
+    </TableBody>
+  </Table>
+);
 
 const users = [
   {

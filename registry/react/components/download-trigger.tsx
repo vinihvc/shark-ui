@@ -5,6 +5,4 @@ import type React from "react";
 
 export const DownloadTrigger = (
   props: React.ComponentProps<typeof ArkDownloadTrigger>
-) => {
-  return <ArkDownloadTrigger data-slot="download-trigger" {...props} />;
-};
+) => <ArkDownloadTrigger data-slot="download-trigger" {...props} />;

@@ -28,30 +28,28 @@ const models = [
   },
 ];
 
-const Example = () => {
-  return (
-    <div className="flex w-full max-w-xl flex-col gap-6">
-      <ItemGroup className="grid grid-cols-3 gap-4">
-        {models.map((model) => (
-          <Item key={model.name} variant="outline">
-            <ItemHeader>
-              <img
-                alt={model.name}
-                className="aspect-square grayscale"
-                height={128}
-                src={model.image}
-                width={128}
-              />
-            </ItemHeader>
-            <ItemContent>
-              <ItemTitle>{model.name}</ItemTitle>
-              <ItemDescription>{model.description}</ItemDescription>
-            </ItemContent>
-          </Item>
-        ))}
-      </ItemGroup>
-    </div>
-  );
-};
+const Example = () => (
+  <div className="flex w-full max-w-xl flex-col gap-6">
+    <ItemGroup className="grid grid-cols-3 gap-4">
+      {models.map((model) => (
+        <Item key={model.name} variant="outline">
+          <ItemHeader>
+            <img
+              alt={model.name}
+              className="aspect-square grayscale"
+              height={128}
+              src={model.image}
+              width={128}
+            />
+          </ItemHeader>
+          <ItemContent>
+            <ItemTitle>{model.name}</ItemTitle>
+            <ItemDescription>{model.description}</ItemDescription>
+          </ItemContent>
+        </Item>
+      ))}
+    </ItemGroup>
+  </div>
+);
 
 export default Example;

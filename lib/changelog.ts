@@ -39,8 +39,8 @@ export const getDateFromFile = (slugs: string[]) => {
 };
 
 // Gets all changelog pages sorted by date descending.
-export const getChangelogPages = () => {
-  return source
+export const getChangelogPages = () =>
+  source
     .getPages()
     .filter((page) => page.slugs[0] === "changelog" && page.slugs.length > 1)
     .map((page) => ({
@@ -52,4 +52,3 @@ export const getChangelogPages = () => {
       const dateB = b.date?.getTime() ?? 0;
       return dateB - dateA;
     });
-};

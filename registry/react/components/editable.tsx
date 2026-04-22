@@ -126,24 +126,16 @@ export const EditableControl = (
 
 export const EditableEditTrigger = (
   props: React.ComponentProps<typeof ArkEditable.EditTrigger>
-) => {
-  return (
-    <ArkEditable.EditTrigger data-slot="editable-edit-trigger" {...props} />
-  );
-};
+) => <ArkEditable.EditTrigger data-slot="editable-edit-trigger" {...props} />;
 
 export const EditableCancelTrigger = (
   props: React.ComponentProps<typeof ArkEditable.CancelTrigger>
-) => {
-  return (
-    <ArkEditable.CancelTrigger data-slot="editable-cancel-trigger" {...props} />
-  );
-};
+) => (
+  <ArkEditable.CancelTrigger data-slot="editable-cancel-trigger" {...props} />
+);
 
 export const EditableSubmitTrigger = (
   props: React.ComponentProps<typeof ArkEditable.SubmitTrigger>
-) => {
-  return (
-    <ArkEditable.SubmitTrigger data-slot="editable-submit-trigger" {...props} />
-  );
-};
+) => (
+  <ArkEditable.SubmitTrigger data-slot="editable-submit-trigger" {...props} />
+);

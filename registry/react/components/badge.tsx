@@ -8,7 +8,7 @@ export const badgeVariants = tv({
   base: [
     "relative",
     "inline-flex items-center justify-center gap-1",
-    "select-none whitespace-nowrap font-medium",
+    "select-none whitespace-nowrap font-medium text-xs",
     "rounded-md border border-transparent",
     "overflow-hidden",
     "transition-colors",
@@ -69,21 +69,9 @@ export const badgeVariants = tv({
       ],
     },
     size: {
-      sm: [
-        "h-5 min-w-5 sm:h-4 sm:min-w-4",
-        "px-1",
-        "text-xs sm:text-[.625rem]",
-      ],
-      md: [
-        "h-5.5 min-w-5.5 sm:h-4.5 sm:min-w-4.5",
-        "px-1.5",
-        "text-sm sm:text-xs",
-      ],
-      lg: [
-        "h-6.5 min-w-6.5 sm:h-5.5 sm:min-w-5.5",
-        "px-2 sm:px-1.5",
-        "text-base sm:text-sm",
-      ],
+      sm: ["h-5 min-w-5", "px-1"],
+      md: ["h-5.5 min-w-5.5", "px-1.5"],
+      lg: ["h-6.5 min-w-6.5", "px-2", "text-sm"],
     },
     pill: {
       true: [

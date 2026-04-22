@@ -152,9 +152,9 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
       </figcaption>
     );
   },
-  figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn(className)} {...props} />;
-  },
+  figure: ({ className, ...props }: React.ComponentProps<"figure">) => (
+    <figure className={cn(className)} {...props} />
+  ),
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
       className={cn("mt-2 scroll-m-20 font-semibold text-3xl", className)}
@@ -322,21 +322,19 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
     tabIndex,
     id: _id,
     ...props
-  }: React.ComponentProps<"pre">) => {
-    return (
-      <ScrollArea>
-        <pre
-          className={cn(
-            "w-max min-w-full px-4 py-3.5 text-[.8125rem] outline-none has-data-[slot=tabs]:p-0 has-data-highlighted-line:px-0 has-data-line-numbers:px-0",
-            className
-          )}
-          {...props}
-        >
-          {children}
-        </pre>
-      </ScrollArea>
-    );
-  },
+  }: React.ComponentProps<"pre">) => (
+    <ScrollArea>
+      <pre
+        className={cn(
+          "w-max min-w-full px-4 py-3.5 text-[.8125rem] outline-none has-data-[slot=tabs]:p-0 has-data-highlighted-line:px-0 has-data-line-numbers:px-0",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </pre>
+    </ScrollArea>
+  ),
   Steps: ({ ...props }) => (
     <div
       className="[&>h3]:step steps mb-12 [counter-reset:step] md:ms-4 md:border-s md:ps-8"

@@ -242,12 +242,12 @@ function ChartAreaInteractive() {
               content={
                 <ChartTooltipContent
                   indicator="dot"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                  labelFormatter={(value) =>
+                    new Date(value).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
-                    });
-                  }}
+                    })
+                  }
                 />
               }
               cursor={false}

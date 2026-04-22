@@ -79,17 +79,15 @@ function ChartBarActive() {
               cursor={false}
             />
             <Bar
-              activeBar={({ ...props }) => {
-                return (
-                  <Rectangle
-                    {...props}
-                    fillOpacity={0.8}
-                    stroke={props.payload.fill}
-                    strokeDasharray={4}
-                    strokeDashoffset={4}
-                  />
-                );
-              }}
+              activeBar={({ ...props }) => (
+                <Rectangle
+                  {...props}
+                  fillOpacity={0.8}
+                  stroke={props.payload.fill}
+                  strokeDasharray={4}
+                  strokeDashoffset={4}
+                />
+              )}
               dataKey="visitors"
               radius={8}
               strokeWidth={2}

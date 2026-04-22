@@ -22,56 +22,54 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const Example = () => {
-  return (
-    <Table className="mx-auto w-full max-w-xl">
-      <TableCaption className="sr-only">
-        Users with row actions (edit, delete).
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead className="text-right">Actions</TableHead>
+const Example = () => (
+  <Table className="mx-auto w-full max-w-xl">
+    <TableCaption className="sr-only">
+      Users with row actions (edit, delete).
+    </TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Email</TableHead>
+        <TableHead className="text-right">Actions</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {users.map((user) => (
+        <TableRow key={user.id}>
+          <TableCell className="font-medium">{user.name}</TableCell>
+          <TableCell>{user.email}</TableCell>
+          <TableCell className="text-right">
+            <Menu positioning={{ placement: "left-end" }}>
+              <MenuTrigger asChild>
+                <Button size="icon-sm" variant="outline">
+                  <EllipsisVerticalIcon />
+                </Button>
+              </MenuTrigger>
+              <MenuContent className="min-w-40">
+                <MenuItem value="view">
+                  <EyeIcon />
+                  View
+                  <MenuShortcut>⌘ V</MenuShortcut>
+                </MenuItem>
+                <MenuItem value="edit">
+                  <PencilIcon />
+                  Edit
+                  <MenuShortcut>⌘ E</MenuShortcut>
+                </MenuItem>
+                <MenuItem value="delete" variant="destructive">
+                  <Trash2Icon />
+                  Delete
+                  <MenuShortcut>⌘ ⌫</MenuShortcut>
+                </MenuItem>
+              </MenuContent>
+            </Menu>
+          </TableCell>
         </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user.id}>
-            <TableCell className="font-medium">{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell className="text-right">
-              <Menu positioning={{ placement: "left-end" }}>
-                <MenuTrigger asChild>
-                  <Button size="icon-sm" variant="outline">
-                    <EllipsisVerticalIcon />
-                  </Button>
-                </MenuTrigger>
-                <MenuContent className="min-w-40">
-                  <MenuItem value="view">
-                    <EyeIcon />
-                    View
-                    <MenuShortcut>⌘ V</MenuShortcut>
-                  </MenuItem>
-                  <MenuItem value="edit">
-                    <PencilIcon />
-                    Edit
-                    <MenuShortcut>⌘ E</MenuShortcut>
-                  </MenuItem>
-                  <MenuItem value="delete" variant="destructive">
-                    <Trash2Icon />
-                    Delete
-                    <MenuShortcut>⌘ ⌫</MenuShortcut>
-                  </MenuItem>
-                </MenuContent>
-              </Menu>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
+      ))}
+    </TableBody>
+  </Table>
+);
 
 const users = [
   { id: "1", name: "Alice Johnson", email: "alice@example.com" },

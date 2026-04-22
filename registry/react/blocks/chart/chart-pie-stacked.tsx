@@ -85,11 +85,11 @@ function ChartPieStacked() {
               content={
                 <ChartTooltipContent
                   indicator="line"
-                  labelFormatter={(_, payload) => {
-                    return chartConfig[
+                  labelFormatter={(_, payload) =>
+                    chartConfig[
                       payload?.[0].dataKey as keyof typeof chartConfig
-                    ].label;
-                  }}
+                    ].label
+                  }
                   labelKey="visitors"
                   nameKey="month"
                 />

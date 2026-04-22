@@ -39,9 +39,7 @@ export const CommandDialog = Dialog;
 
 export const CommandDialogTrigger = (
   props: React.ComponentProps<typeof DialogTrigger>
-) => {
-  return <DialogTrigger data-slot="command-dialog-trigger" {...props} />;
-};
+) => <DialogTrigger data-slot="command-dialog-trigger" {...props} />;
 
 interface CommandDialogContentProps
   extends React.ComponentProps<typeof DialogContent> {
@@ -212,15 +210,11 @@ export const CommandEmpty = (
 
 export const CommandGroup = (
   props: React.ComponentProps<typeof ComboboxGroup>
-) => {
-  return <ComboboxGroup data-slot="command-group" {...props} />;
-};
+) => <ComboboxGroup data-slot="command-group" {...props} />;
 
 export const CommandGroupLabel = (
   props: React.ComponentProps<typeof ComboboxGroupLabel>
-) => {
-  return <ComboboxGroupLabel data-slot="command-group-label" {...props} />;
-};
+) => <ComboboxGroupLabel data-slot="command-group-label" {...props} />;
 
 export const CommandItem = (props: ComponentProps<typeof ComboboxItem>) => {
   const { className, ...rest } = props;
@@ -249,9 +243,7 @@ export const CommandSeparator = (props: React.ComponentProps<"div">) => {
 
 export const CommandShortcut = (
   props: React.ComponentProps<typeof MenuShortcut>
-) => {
-  return <MenuShortcut data-slot="command-shortcut" {...props} />;
-};
+) => <MenuShortcut data-slot="command-shortcut" {...props} />;
 
 export const CommandFooter = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
