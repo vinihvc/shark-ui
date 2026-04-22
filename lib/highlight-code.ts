@@ -63,7 +63,7 @@ export const transformers = [
 export const highlightCode = async (
   code: string,
   language = "tsx",
-  options?: { showshowLineNumbers?: boolean }
+  options?: { showLineNumbers?: boolean }
 ) => {
   // Create cache key from code content and language.
   const cacheKey = createHash("sha256")
@@ -76,7 +76,7 @@ export const highlightCode = async (
     return cached;
   }
 
-  const { showshowLineNumbers = true } = options ?? {};
+  const { showLineNumbers = true } = options ?? {};
 
   const html = await codeToHtml(code, {
     lang: language,
@@ -88,7 +88,7 @@ export const highlightCode = async (
     transformers: [
       {
         code(node) {
-          if (showshowLineNumbers) {
+          if (showLineNumbers) {
             node.properties["data-line-numbers"] = "";
           }
         },

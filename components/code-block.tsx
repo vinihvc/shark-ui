@@ -19,7 +19,7 @@ export interface CodeBlockProps extends React.ComponentProps<"figure"> {
    *
    * @default true
    */
-  showshowLineNumbers?: boolean;
+  showLineNumbers?: boolean;
   /**
    * The title of the code block
    */
