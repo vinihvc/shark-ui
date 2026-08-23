@@ -54,6 +54,7 @@ import { NumberInputThumb } from "@/components/thumbs/number-input";
 import { PaginationThumb } from "@/components/thumbs/pagination";
 import { PasswordInputThumb } from "@/components/thumbs/password-input";
 import { PopoverThumb } from "@/components/thumbs/popover";
+import { PowerSearchThumb } from "@/components/thumbs/power-search";
 import { ProgressThumb } from "@/components/thumbs/progress";
 import { ProseThumb } from "@/components/thumbs/prose";
 import { QrCodeThumb } from "@/components/thumbs/qr-code";
@@ -145,6 +146,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   "password-input": PasswordInputThumb,
   pagination: PaginationThumb,
   popover: PopoverThumb,
+  "power-search": PowerSearchThumb,
   progress: ProgressThumb,
   prose: ProseThumb,
   "qr-code": QrCodeThumb,

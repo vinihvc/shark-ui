@@ -1,0 +1,100 @@
+---
+title: Power Search
+description: A structured filter bar for complex data filtering.
+---
+
+<ComponentPreview componentName="power-search" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+  
+```bash
+npx shadcn@latest add @shark/power-search
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [TagsInput](/docs/components/tags-input), [Autocomplete](/docs/components/autocomplete), [Select](/docs/components/select), and [DateInput](/docs/components/date-input). Install them first if you haven't already.</Step>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/power-search.tsx" src="/power-search.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { PowerSearch, usePowerSearchConfig } from "@/components/ui/power-search";
+import type { PowerSearchFilter } from "@/components/ui/power-search";
+```
+
+```tsx
+const config = usePowerSearchConfig([
+  { key: "title", type: "string", label: "Title" },
+  { key: "year", type: "number", label: "Publication Year" },
+]);
+
+const [filters, setFilters] = useState<readonly PowerSearchFilter[]>([]);
+const filteredData = config.applyFilters(mockData, filters);
+
+<PowerSearch
+  config={config}
+  filters={filters}
+  onChange={setFilters}
+  placeholder="Search..."
+/>
+```
+
+## API Reference
+
+### Power Search
+
+The main UI component.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `config` | `PowerSearchConfig` | **required** |
+| `filters` | `readonly PowerSearchFilter[]` | **required** |
+| `onChange` | `(filters: readonly PowerSearchFilter[]) => void` | **required** |
+| `placeholder` | `string` | `"Search..."` |
+| `resultCount` | `number \| string` | - |
+| `disabled` | `boolean` | `false` |
+| `readOnly` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### usePowerSearchConfig
+
+A hook to build the configuration object.
+
+```tsx
+function usePowerSearchConfig(
+  definitions: ReadonlyArray<FieldDefinition>,
+  name?: string
+): PowerSearchConfig
+```
