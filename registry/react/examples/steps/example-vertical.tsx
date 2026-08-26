@@ -52,13 +52,13 @@ const Example = () => (
         <StepsNext asChild>
           <Button variant="outline">
             Next
-            <ChevronRightIcon />
+            <ChevronRightIcon className="size-4" />
           </Button>
         </StepsNext>
 
         <StepsPrevious asChild>
           <Button variant="outline">
-            <ChevronLeftIcon />
+            <ChevronLeftIcon className="size-4" />
             Back
           </Button>
         </StepsPrevious>
@@ -68,9 +68,9 @@ const Example = () => (
 );
 
 const items = [
-  { title: "Info", description: "Personal" },
-  { title: "Docs", description: "Company" },
-  { title: "Team", description: "Create" },
+  { description: "Personal", title: "Info" },
+  { description: "Company", title: "Docs" },
+  { description: "Create", title: "Team" },
 ];
 
 export default Example;

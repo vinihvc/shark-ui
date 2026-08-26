@@ -1,0 +1,81 @@
+---
+title: Model Selector
+description: A popover picker for choosing models or agents.
+---
+
+<ComponentPreview componentName="model-selector" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/model-selector
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Popover](/docs/components/popover). Install required dependencies first if you haven&apos;t already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/model-selector.tsx" src="/model-selector.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+ModelSelector
+├── ModelSelectorTrigger
+└── ModelSelectorContent
+    ├── ModelSelectorInput
+    └── ModelSelectorList
+        ├── ModelSelectorEmpty
+        └── ModelSelectorGroup
+            ├── ModelSelectorLabel
+            └── ModelSelectorItem
+```
+
+## Usage
+
+```tsx
+import {
+  ModelSelector,
+  ModelSelectorContent,
+  ModelSelectorItem,
+  ModelSelectorList,
+  ModelSelectorTrigger,
+} from "@/components/ui/model-selector";
+```
+
+```tsx
+<ModelSelector value={value} onValueChange={setValue}>
+  <ModelSelectorTrigger>{label}</ModelSelectorTrigger>
+  <ModelSelectorContent>
+    <ModelSelectorList>
+      <ModelSelectorItem value="gpt-4.1">GPT-4.1</ModelSelectorItem>
+    </ModelSelectorList>
+  </ModelSelectorContent>
+</ModelSelector>
+```
+
+
+

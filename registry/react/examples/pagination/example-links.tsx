@@ -1,6 +1,3 @@
-"use client";
-
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import {
   Pagination,
   PaginationItemLink,
@@ -9,15 +6,9 @@ import {
 
 const Example = () => (
   <Pagination count={50} pageSize={10}>
-    <PaginationItemLink page="previous">
-      <ChevronLeftIcon />
-      Previous
-    </PaginationItemLink>
+    <PaginationItemLink page="previous">Previous</PaginationItemLink>
     <PaginationItems />
-    <PaginationItemLink page="next">
-      Next
-      <ChevronRightIcon />
-    </PaginationItemLink>
+    <PaginationItemLink page="next">Next</PaginationItemLink>
   </Pagination>
 );
 

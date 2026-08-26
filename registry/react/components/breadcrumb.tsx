@@ -97,7 +97,7 @@ export const BreadcrumbSeparator = (
       role="presentation"
       {...rest}
     >
-      {children ?? <ChevronRightIcon />}
+      {children ?? <ChevronRightIcon className="size-4" />}
     </ark.li>
   );
 };

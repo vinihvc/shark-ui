@@ -194,7 +194,7 @@ Wraps label, description, and error. Use with horizontal orientation.
 
 ### FieldLabel
 
-Label associated with the control.
+Label associated with Field-aware controls (`Input`, `Select`, `Combobox`, `Checkbox`, `Switch`, and similar). For Slider, Date Input, Date Picker, Listbox, Progress, and Radio Group, use that primitive's own Label inside its root.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -211,7 +211,7 @@ Label associated with the control.
 
 ### FieldTitle
 
-Title wrapper for grouped field content.
+Visual title for grouped field content (for example inside a wrapping `FieldLabel` card). Not a `<label>` and does not set `htmlFor`.
 
 | Prop | Type | Default |
 | --- | --- | --- |

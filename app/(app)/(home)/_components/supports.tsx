@@ -10,15 +10,15 @@ import {
 } from "@/registry/react/components/tooltip";
 
 const FRAMEWORKS = [
-  { name: "React", hex: "#61dafb", icon: ReactIcon, soon: false },
+  { hex: "#61dafb", icon: ReactIcon, name: "React", soon: false },
   {
-    name: "Solid",
     hex: "var(--color-foreground)",
     icon: SolidIcon,
+    name: "Solid",
     soon: true,
   },
-  { name: "Vue", hex: "#42b883", icon: VueIcon, soon: true },
-  { name: "Svelte", hex: "#ff3e00", icon: SvelteIcon, soon: true },
+  { hex: "#42b883", icon: VueIcon, name: "Vue", soon: true },
+  { hex: "#ff3e00", icon: SvelteIcon, name: "Svelte", soon: true },
 ];
 
 export const Supports = (props: React.ComponentProps<"section">) => {

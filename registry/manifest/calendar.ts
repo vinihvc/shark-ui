@@ -4,13 +4,13 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "calendar",
-  type: "registry:ui",
   dependencies,
+  name: "calendar",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
     absoluteUrl("/r/native-select.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

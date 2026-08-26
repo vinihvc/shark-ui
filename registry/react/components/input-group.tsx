@@ -15,6 +15,7 @@ const inpuGroupVariants = tv({
     "w-full min-w-0",
     "flex items-center",
     "bg-background dark:bg-input/30",
+    "[--input-group-inset:calc(var(--spacing)*3-0.45rem)]",
     "rounded-lg border border-input shadow-xs/5",
     "transition-[color,box-shadow]",
     "has-[>textarea]:h-auto",
@@ -27,15 +28,15 @@ const inpuGroupVariants = tv({
     "dark:has-[[data-slot][aria-invalid=true]]:border-destructive-foreground dark:has-[[data-slot][aria-invalid=true]]:ring-destructive-foreground/40",
     "motion-reduce:transition-none!",
   ],
-  variants: {
-    size: {
-      sm: ["h-7"],
-      md: ["h-8"],
-      lg: ["h-9"],
-    },
-  },
   defaultVariants: {
     size: "md",
+  },
+  variants: {
+    size: {
+      lg: ["h-9"],
+      md: ["h-8"],
+      sm: ["h-7"],
+    },
   },
 });
 
@@ -65,35 +66,37 @@ const inputGroupAddonVariants = tv({
     "select-none font-medium text-muted-foreground text-sm",
     "cursor-text",
     "group-data-[disabled=true]/input-group:opacity-64",
-    "[&>kbd]:rounded-[calc(var(--radius)-5px)]",
+    "[&>kbd]:rounded-[max(0px,calc(var(--radius)-var(--input-group-inset)))]",
     "[&_svg:not([class*='size-'])]:size-4",
   ],
+  defaultVariants: {
+    align: "inline-start",
+  },
   variants: {
     align: {
-      "inline-start": [
-        "order-first ps-3",
-        "has-[>button]:ms-[-0.45rem]",
-        "has-[>kbd]:ms-[-0.35rem]",
+      "block-end": [
+        "[--input-group-inset:--spacing(3)]",
+        "order-last w-full justify-start px-3 pb-3",
+        "group-has-[>input]/input-group:pb-2.5",
+        "[.border-t]:pt-3",
+      ],
+      "block-start": [
+        "[--input-group-inset:--spacing(3)]",
+        "order-first w-full justify-start px-3 pt-3",
+        "group-has-[>input]/input-group:pt-2.5",
+        "[.border-b]:pb-3",
       ],
       "inline-end": [
         "order-last pe-3",
         "has-[>button]:me-[-0.45rem]",
         "has-[>kbd]:me-[-0.35rem]",
       ],
-      "block-start": [
-        "order-first w-full justify-start px-3 pt-3",
-        "group-has-[>input]/input-group:pt-2.5",
-        "[.border-b]:pb-3",
-      ],
-      "block-end": [
-        "order-last w-full justify-start px-3 pb-3",
-        "group-has-[>input]/input-group:pb-2.5",
-        "[.border-t]:pt-3",
+      "inline-start": [
+        "order-first ps-3",
+        "has-[>button]:ms-[-0.45rem]",
+        "has-[>kbd]:ms-[-0.35rem]",
       ],
     },
-  },
-  defaultVariants: {
-    align: "inline-start",
   },
 });
 
@@ -127,30 +130,26 @@ const inputGroupButtonVariants = tv({
     "flex items-center gap-2",
     "text-sm",
     "shadow-none",
+    "[--input-group-inner-radius:max(0px,calc(var(--radius)-var(--input-group-inset)))]",
+    "rounded-(--input-group-inner-radius)",
     "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
   ],
+  defaultVariants: {
+    size: "xs",
+  },
   variants: {
     size: {
+      "icon-sm": ["size-8", "p-0", "has-[>svg]:p-0"],
+      "icon-xs": ["size-6", "p-0", "has-[>svg]:p-0"],
+      sm: ["h-8", "gap-1.5", "px-2.5", "has-[>svg]:px-2.5"],
       xs: [
         "h-6",
         "gap-1",
         "px-2",
-        "rounded-[calc(var(--radius)-5px)]",
         "has-[>svg]:px-2",
         "[&_svg:not([class*='size-'])]:size-3.5",
       ],
-      sm: ["h-8", "gap-1.5", "px-2.5", "rounded-md", "has-[>svg]:px-2.5"],
-      "icon-xs": [
-        "size-6",
-        "rounded-[calc(var(--radius)-5px)]",
-        "p-0",
-        "has-[>svg]:p-0",
-      ],
-      "icon-sm": ["size-8", "p-0", "has-[>svg]:p-0"],
     },
-  },
-  defaultVariants: {
-    size: "xs",
   },
 });
 

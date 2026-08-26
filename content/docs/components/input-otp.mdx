@@ -125,6 +125,18 @@ Use the `blurOnComplete` prop to blur the input when all slots are filled.
 
 <ComponentPreview componentName="input-otp" fileName="example-blur-on-complete" />
 
+### Auto submit
+
+Use `autoSubmit` to submit the owning form when every slot is filled. Backspace compacts values instead of leaving empty gaps.
+
+<ComponentPreview componentName="input-otp" fileName="example-auto-submit" />
+
+### Sanitize value
+
+Use `sanitizeValue` to clean pasted text before validation, for example stripping dashes.
+
+<ComponentPreview componentName="input-otp" fileName="example-sanitize-value" />
+
 ### Mask
 
 Use the `mask` prop to mask the input value.
@@ -151,6 +163,8 @@ Pass `*:data-[slot=input-otp-input]:size-*` and `*:data-[slot=input-otp-input]:t
 | `invalid` | `boolean` | - |
 | `otp` | `boolean` | `true` |
 | `blurOnComplete` | `boolean` | - |
+| `autoSubmit` | `boolean` | - |
+| `sanitizeValue` | `(value: string) => string` | - |
 | `mask` | `boolean` | - |
 
 ### InputOTPSlot

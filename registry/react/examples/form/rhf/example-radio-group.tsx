@@ -34,21 +34,21 @@ const formSchema = z.object({
 
 export function Example() {
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       plan: "",
     },
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "plan-submitted",
-      title: "Plan submitted",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
+      id: "plan-submitted",
+      title: "Plan submitted",
     });
   };
 
@@ -113,19 +113,19 @@ export function Example() {
 
 const plans = [
   {
+    description: "For everyday use with basic features.",
     id: "starter",
     title: "Starter (100K tokens/month)",
-    description: "For everyday use with basic features.",
   },
   {
+    description: "For advanced AI usage with more features.",
     id: "pro",
     title: "Pro (1M tokens/month)",
-    description: "For advanced AI usage with more features.",
   },
   {
+    description: "For large teams and heavy usage.",
     id: "enterprise",
     title: "Enterprise (Unlimited tokens)",
-    description: "For large teams and heavy usage.",
   },
 ];
 

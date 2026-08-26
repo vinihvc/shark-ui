@@ -4,6 +4,8 @@ Thanks for your interest in contributing to shark-ui. This document covers how t
 
 ## Development Setup
 
+Requires **Node.js 26+** (`engines` in `package.json`).
+
 1. **Clone and install**
 
    ```bash
@@ -22,20 +24,22 @@ Thanks for your interest in contributing to shark-ui. This document covers how t
 
 ## Commands
 
-| Command           | Description                          |
-| ----------------- | ------------------------------------ |
-| `pnpm dev`        | Start docs site (Turbo mode)         |
-| `pnpm build`      | Build production                     |
-| `pnpm typecheck`  | Run TypeScript type-check            |
-| `pnpm lint:check` | Run lint (Ultracite/Biome)           |
-| `pnpm lint:fix`   | Auto-fix lint issues                |
-| `pnpm registry:build` | Rebuild component registry JSON |
+| Command               | Description                                              |
+| --------------------- | -------------------------------------------------------- |
+| `pnpm dev`            | Start docs site (`next dev`)                             |
+| `pnpm build`          | Production Next.js build plus Serwist                    |
+| `pnpm typecheck`      | Production Next.js build (includes typecheck). Slow.     |
+| `pnpm test`           | Node test runner (`tsx --test`) for lib helpers          |
+| `pnpm lint:check`     | Run lint (Ultracite/Biome)                               |
+| `pnpm lint:fix`       | Auto-fix lint issues                                     |
+| `pnpm registry:build` | Rebuild component registry JSON                          |
 
 ## Before Submitting
 
-- Run `pnpm lint:fix` before committing (lint-staged runs automatically on pre-commit).
-- Run `pnpm typecheck` to ensure there are no type errors.
-- Run `pnpm build` to verify the project builds.
+- Run `pnpm lint:fix` before opening a PR. The repo currently has a large Ultracite backlog, so CI does not gate on `pnpm lint:check` yet.
+- Run `pnpm test`.
+- Run `pnpm typecheck` to ensure the project compiles.
+- Run `pnpm build` to verify the production build.
 
 ## Project Structure
 
@@ -56,7 +60,7 @@ Thanks for your interest in contributing to shark-ui. This document covers how t
 
 1. Open an issue or discuss the change first if it's substantial.
 2. Fork, create a branch, and make your changes.
-3. Ensure lint and build pass.
+3. Ensure lint, tests, and build pass.
 4. Submit a PR with a clear description of the change.
 
 ## License

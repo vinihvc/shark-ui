@@ -26,15 +26,15 @@ import { Textarea } from "@/registry/react/components/textarea";
 
 const plans = [
   {
+    description: "For small businesses.",
     id: "starter",
     name: "Starter Plan",
-    description: "For small businesses.",
     price: "$10",
   },
   {
+    description: "More features and storage.",
     id: "pro",
     name: "Pro Plan",
-    description: "More features and storage.",
     price: "$20",
   },
 ] as const;

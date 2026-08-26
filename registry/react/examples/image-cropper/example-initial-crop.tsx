@@ -8,10 +8,10 @@ const Example = () => (
   <ImageCropper
     className="max-w-lg"
     initialCrop={{
+      height: 150,
+      width: 200,
       x: 100,
       y: 80,
-      width: 200,
-      height: 150,
     }}
   >
     <ImageCropperImage

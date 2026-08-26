@@ -6,6 +6,7 @@ export type LLMPage = InferPageType<typeof source>;
 
 const SECTIONS = [
   "components",
+  "ai-elements",
   "installation",
   "utilities",
   "hooks",
@@ -14,12 +15,13 @@ const SECTIONS = [
 ] as const;
 
 const SECTION_LABELS: Record<(typeof SECTIONS)[number], string> = {
+  "ai-elements": "AI Elements",
+  changelog: "Changelog",
   components: "Components",
+  forms: "Forms",
+  hooks: "Hooks",
   installation: "Installation",
   utilities: "Utilities",
-  hooks: "Hooks",
-  forms: "Forms",
-  changelog: "Changelog",
 };
 
 function groupPagesBySection(pages: LLMPage[]) {

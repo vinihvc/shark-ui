@@ -1,15 +1,15 @@
 import { JsonTreeView } from "@/registry/react/components/json-tree-view";
 
 const data = {
-  name: "John Doe",
-  age: 30,
-  email: "john.doe@example.com",
   address: {
-    street: "123 Main St",
     city: "Anytown",
     state: "CA",
+    street: "123 Main St",
     zip: "12345",
   },
+  age: 30,
+  email: "john.doe@example.com",
+  name: "John Doe",
 };
 
 const Example = () => (

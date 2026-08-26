@@ -131,16 +131,16 @@ const chartData = [
 ];
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
   desktop: {
-    label: "Desktop",
     color: "var(--chart-1)",
+    label: "Desktop",
   },
   mobile: {
-    label: "Mobile",
     color: "var(--chart-2)",
+    label: "Mobile",
+  },
+  visitors: {
+    label: "Visitors",
   },
 } satisfies ChartConfig;
 
@@ -230,8 +230,8 @@ function ChartAreaInteractive() {
               tickFormatter={(value) => {
                 const date = new Date(value);
                 return date.toLocaleDateString("en-US", {
-                  month: "short",
                   day: "numeric",
+                  month: "short",
                 });
               }}
               tickLine={false}
@@ -242,9 +242,9 @@ function ChartAreaInteractive() {
                 <ChartTooltipContent
                   indicator="dot"
                   labelFormatter={(value) =>
-                    new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
+                    new Date(String(value)).toLocaleDateString("en-US", {
                       day: "numeric",
+                      month: "short",
                     })
                   }
                 />

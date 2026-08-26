@@ -20,12 +20,12 @@ const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
+    filter: contains,
     initialItems: [
       { label: "Brazil", value: "br" },
       { label: "Mexico", value: "mx" },
       { label: "Ireland", value: "ie" },
     ],
-    filter: contains,
   });
 
   const isEmpty = collection.items.length === 0 && search;

@@ -1,7 +1,10 @@
 "use client";
 
 import {
+  FileIcon,
   FilePlusIcon,
+  FolderIcon,
+  FolderOpenIcon,
   FolderPlusIcon,
   PencilIcon,
   Trash2Icon,
@@ -40,28 +43,28 @@ const Example = () => (
 
 const collection = createTreeCollection({
   rootNode: {
-    id: "ROOT",
-    name: "",
     children: [
       {
-        id: "app",
-        name: "app",
         children: [
           { id: "app/page.tsx", name: "page.tsx" },
           { id: "app/layout.tsx", name: "layout.tsx" },
         ],
+        id: "app",
+        name: "app",
       },
       {
-        id: "components",
-        name: "components",
         children: [
           { id: "components/button.tsx", name: "button.tsx" },
           { id: "components/input.tsx", name: "input.tsx" },
         ],
+        id: "components",
+        name: "components",
       },
       { id: "package.json", name: "package.json" },
       { id: "readme.md", name: "README.md" },
     ],
+    id: "ROOT",
+    name: "",
   },
 });
 
@@ -74,7 +77,13 @@ const TreeNode = (props: NodeProviderProps) => {
         <TreeViewBranch>
           <ContextMenu>
             <ContextMenuTrigger asChild>
-              <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
+              <TreeViewBranchItem
+                expandedIcon={FolderOpenIcon}
+                icon={FolderIcon}
+                showIndicator
+              >
+                {node.name}
+              </TreeViewBranchItem>
             </ContextMenuTrigger>
             <ContextMenuContent className="w-40">
               <ContextMenuItem value="add-folder">
@@ -111,7 +120,7 @@ const TreeNode = (props: NodeProviderProps) => {
         <ContextMenu>
           <ContextMenuTrigger asChild>
             <TreeViewContent>
-              <TreeViewItem>{node.name}</TreeViewItem>
+              <TreeViewItem icon={FileIcon}>{node.name}</TreeViewItem>
             </TreeViewContent>
           </ContextMenuTrigger>
           <ContextMenuContent className="w-40">

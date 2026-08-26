@@ -1,13 +1,21 @@
-import { ComponentsExamples } from "@/app/(app)/(home)/_components/components-examples";
+import { ComponentsExamplesLoader } from "@/app/(app)/(home)/_components/components-examples-loader";
 import { DotPattern } from "@/components/background/dot-pattern";
 import { source } from "@/lib/fumadocs";
 import type { LLMPage } from "@/lib/llms";
+import { createMetadata } from "@/lib/metadata";
 import { HomeFooter } from "./_components/footer";
 import { HeroSection } from "./_components/hero";
 import { Supports } from "./_components/supports";
 
 export const dynamic = "force-static";
 export const revalidate = false;
+
+export const metadata = createMetadata({
+  description:
+    "Open-source, shadcn-style React components built on Ark UI. Install, own, and customize the code in your project.",
+  title: "React components built on Ark UI",
+  url: "/",
+});
 
 const rawCount = source
   .getPages()
@@ -32,9 +40,8 @@ const HomePage = () => {
         <div
           aria-hidden
           className="overflow-hidden lg:max-h-[calc(100svh-var(--header-height))] lg:min-w-max lg:shrink-0"
-          tabIndex={-1}
         >
-          <ComponentsExamples className="max-md:hidden" />
+          <ComponentsExamplesLoader />
         </div>
       </div>
 

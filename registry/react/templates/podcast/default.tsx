@@ -30,48 +30,48 @@ import {
 } from "@/registry/react/components/sidebar";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "#", icon: HomeIcon },
-  { label: "Search", href: "#", icon: SearchIcon },
-  { label: "Your Library", href: "#", icon: LibraryIcon },
+  { href: "#", icon: HomeIcon, label: "Home" },
+  { href: "#", icon: SearchIcon, label: "Search" },
+  { href: "#", icon: LibraryIcon, label: "Your Library" },
 ];
 
 const FEATURED_CHARTS = [
   {
+    subtitle: "Your weekly update of the most played tracks",
     title: "Top 50 Global",
-    subtitle: "Your weekly update of the most played tracks",
   },
   {
+    subtitle: "Your weekly update of the most played tracks",
     title: "Top 50 India",
-    subtitle: "Your weekly update of the most played tracks",
   },
   {
+    subtitle: "Your weekly update of the most played tracks",
     title: "Trending India",
-    subtitle: "Your weekly update of the most played tracks",
   },
   {
+    subtitle: "Your weekly update of the most played tracks",
     title: "Trending Global",
-    subtitle: "Your weekly update of the most played tracks",
   },
   {
+    subtitle: "Your weekly update of the most played tracks",
     title: "Mega Hits",
-    subtitle: "Your weekly update of the most played tracks",
   },
   {
-    title: "Happy Favorites",
     subtitle: "Your weekly update of the most played tracks",
+    title: "Happy Favorites",
   },
 ];
 
 const TRACKS = [
-  { title: "Kutti Story", artist: "Aniruth Ravichander, Thalapathy Vijay" },
-  { title: "VIP Title Song", artist: "Anirudh Ravichander" },
-  { title: "Dharala Prabhu Title Track", artist: "Anirudh Ravichander" },
+  { artist: "Aniruth Ravichander, Thalapathy Vijay", title: "Kutti Story" },
+  { artist: "Anirudh Ravichander", title: "VIP Title Song" },
+  { artist: "Anirudh Ravichander", title: "Dharala Prabhu Title Track" },
   {
-    title: "Hukum - Thalaivar Alappara",
     artist: "Anirudh Ravichander, Super Subu",
+    title: "Hukum - Thalaivar Alappara",
   },
-  { title: "Illuminati", artist: "Sushin Shyam, Dabzee, Vinayak Sasikumar" },
-  { title: "Vaathi Coming", artist: "Aniruth Ravichander, Thalapathy Vijay" },
+  { artist: "Sushin Shyam, Dabzee, Vinayak Sasikumar", title: "Illuminati" },
+  { artist: "Aniruth Ravichander, Thalapathy Vijay", title: "Vaathi Coming" },
 ];
 
 const PodcastTemplate = () => (

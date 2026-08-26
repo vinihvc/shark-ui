@@ -1,0 +1,188 @@
+"use client";
+
+import { BotIcon } from "lucide-react";
+import type React from "react";
+import { useCallback, useState } from "react";
+import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
+import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
+import {
+  Diff,
+  DiffContent,
+  DiffHeader,
+  DiffLine,
+} from "@/registry/react/components/diff";
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageHeader,
+} from "@/registry/react/components/message";
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerViewport,
+} from "@/registry/react/components/message-scroller";
+import {
+  Plan,
+  PlanAction,
+  PlanContent,
+  PlanDescription,
+  PlanHeader,
+  PlanTitle,
+  PlanTrigger,
+} from "@/registry/react/components/plan";
+import {
+  PromptInput,
+  PromptInputFooter,
+  PromptInputSubmit,
+  PromptInputTextarea,
+} from "@/registry/react/components/prompt-input";
+import {
+  Task,
+  TaskContent,
+  TaskItemFile,
+  TaskTrigger,
+} from "@/registry/react/components/task";
+import {
+  Tool,
+  ToolContent,
+  ToolFile,
+  ToolInput,
+  ToolLabel,
+  ToolName,
+  ToolOutput,
+  ToolStatusBadge,
+  ToolTrigger,
+} from "@/registry/react/components/tool";
+
+export const IdeChat = () => {
+  const [draft, setDraft] = useState("");
+
+  const handleSubmit = useCallback(() => {
+    setDraft("");
+  }, []);
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+      setDraft(event.target.value),
+    []
+  );
+
+  return (
+    <div className="flex h-full min-h-0 flex-col">
+      <div className="border-b p-3">
+        <Plan>
+          <PlanHeader>
+            <div className="min-w-0">
+              <PlanTitle>Add email validation</PlanTitle>
+              <PlanDescription>Helper, form, then tests.</PlanDescription>
+            </div>
+            <PlanAction>
+              <PlanTrigger />
+            </PlanAction>
+          </PlanHeader>
+          <PlanContent>
+            <Task status="completed">
+              <TaskTrigger status="completed" title="Read helpers.ts" />
+              <TaskContent>
+                <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
+              </TaskContent>
+            </Task>
+            <Task status="in-progress">
+              <TaskTrigger status="in-progress" title="Patch isValidEmail" />
+              <TaskContent>
+                <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
+              </TaskContent>
+            </Task>
+          </PlanContent>
+        </Plan>
+      </div>
+      <MessageScroller className="min-h-0 flex-1">
+        <MessageScrollerViewport>
+          <MessageScrollerContent className="flex flex-col gap-4 p-3">
+            <MessageScrollerItem>
+              <Message align="end">
+                <MessageContent>
+                  <Bubble align="end" variant="secondary">
+                    <BubbleContent>
+                      Add email format validation to the form.
+                    </BubbleContent>
+                  </Bubble>
+                </MessageContent>
+              </Message>
+            </MessageScrollerItem>
+            <MessageScrollerItem>
+              <Message>
+                <MessageAvatar>
+                  <Avatar size="sm">
+                    <AvatarFallback>
+                      <BotIcon aria-hidden="true" className="size-4" />
+                    </AvatarFallback>
+                  </Avatar>
+                </MessageAvatar>
+                <MessageContent>
+                  <MessageHeader>Shark Agent</MessageHeader>
+                  <Tool status="completed">
+                    <ToolTrigger>
+                      <ToolName>Read</ToolName>
+                      <ToolStatusBadge status="completed" />
+                    </ToolTrigger>
+                    <ToolContent>
+                      <ToolInput>
+                        <ToolLabel>Path</ToolLabel>
+                        <ToolFile>src/utils/helpers.ts</ToolFile>
+                      </ToolInput>
+                    </ToolContent>
+                  </Tool>
+                  <Diff>
+                    <DiffHeader>src/utils/helpers.ts</DiffHeader>
+                    <DiffContent>
+                      <DiffLine type="delete">
+                        {"  return Boolean(email);"}
+                      </DiffLine>
+                      <DiffLine type="add">
+                        {
+                          "  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);"
+                        }
+                      </DiffLine>
+                    </DiffContent>
+                  </Diff>
+                  <Tool status="completed">
+                    <ToolTrigger>
+                      <ToolName>Shell</ToolName>
+                      <ToolStatusBadge status="completed" />
+                    </ToolTrigger>
+                    <ToolContent>
+                      <ToolOutput>
+                        <ToolLabel>pnpm test</ToolLabel>
+                        <p className="font-mono text-muted-foreground text-xs">
+                          All tests passed
+                        </p>
+                      </ToolOutput>
+                    </ToolContent>
+                  </Tool>
+                </MessageContent>
+              </Message>
+            </MessageScrollerItem>
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+        <MessageScrollerButton />
+      </MessageScroller>
+      <div className="border-t p-3">
+        <PromptInput onSubmit={handleSubmit}>
+          <PromptInputTextarea
+            aria-label="Message"
+            className="min-h-16"
+            onChange={handleChange}
+            placeholder="Ask about the code..."
+            value={draft}
+          />
+          <PromptInputFooter>
+            <PromptInputSubmit />
+          </PromptInputFooter>
+        </PromptInput>
+      </div>
+    </div>
+  );
+};

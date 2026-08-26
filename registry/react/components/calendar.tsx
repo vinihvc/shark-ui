@@ -196,7 +196,7 @@ export const CalendarPrevTrigger = (
 ) => (
   <ArkCalendar.PrevTrigger asChild data-slot="calendar-prev-trigger" {...props}>
     <Button className="me-auto" size="icon-md" variant="ghost">
-      <ChevronLeftIcon aria-hidden className="rtl:rotate-180" />
+      <ChevronLeftIcon aria-hidden className="size-4 rtl:rotate-180" />
     </Button>
   </ArkCalendar.PrevTrigger>
 );
@@ -206,7 +206,7 @@ export const CalendarNextTrigger = (
 ) => (
   <ArkCalendar.NextTrigger asChild data-slot="calendar-next-trigger" {...props}>
     <Button className="ms-auto" size="icon-md" variant="ghost">
-      <ChevronRightIcon aria-hidden className="rtl:rotate-180" />
+      <ChevronRightIcon aria-hidden className="size-4 rtl:rotate-180" />
     </Button>
   </ArkCalendar.NextTrigger>
 );
@@ -243,6 +243,7 @@ export const CalendarWeekDays = (props: CalendarWeekDaysProps) => {
       {(calendar) => (
         <CalendarTableHead data-slot="calendar-table-head" {...rest}>
           <CalendarTableRow>
+            {calendar.showWeekNumbers ? <CalendarWeekNumberHeaderCell /> : null}
             {calendar.weekDays.map((weekDay) => (
               <CalendarTableHeader key={weekDay.short}>
                 {weekDay[format]}
@@ -265,6 +266,11 @@ export const CalendarTableDays = (
         <CalendarTableBody {...rest}>
           {calendar.weeks.map((week, index) => (
             <CalendarTableRow key={index}>
+              {calendar.showWeekNumbers ? (
+                <CalendarWeekNumberCell week={week} weekIndex={index}>
+                  {calendar.getWeekNumber(week)}
+                </CalendarWeekNumberCell>
+              ) : null}
               {week.map((day) => (
                 <CalendarTableCell
                   key={day.day}
@@ -304,6 +310,11 @@ export const CalendarTableNextMonth = (props: CalendarTableNextMonthProps) => {
           <CalendarTableBody {...rest}>
             {offset.weeks.map((week, index) => (
               <CalendarTableRow key={index}>
+                {calendar.showWeekNumbers ? (
+                  <CalendarWeekNumberCell week={week} weekIndex={index}>
+                    {calendar.getWeekNumber(week)}
+                  </CalendarWeekNumberCell>
+                ) : null}
                 {week.map((day) => (
                   <CalendarTableCell
                     key={day.day}
@@ -320,6 +331,46 @@ export const CalendarTableNextMonth = (props: CalendarTableNextMonthProps) => {
         );
       }}
     </CalendarContext>
+  );
+};
+
+export const CalendarWeekNumberHeaderCell = (
+  props: React.ComponentProps<typeof ArkCalendar.WeekNumberHeaderCell>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <ArkCalendar.WeekNumberHeaderCell
+      className={cn(
+        "h-(--cell-size) w-full min-w-(--cell-size)",
+        "flex items-center justify-center",
+        "select-none font-medium text-muted-foreground/64 text-xs",
+        className
+      )}
+      data-slot="calendar-week-number-header"
+      {...rest}
+    >
+      {children}
+    </ArkCalendar.WeekNumberHeaderCell>
+  );
+};
+
+export const CalendarWeekNumberCell = (
+  props: React.ComponentProps<typeof ArkCalendar.WeekNumberCell>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ArkCalendar.WeekNumberCell
+      className={cn(
+        "h-(--cell-size) w-full min-w-(--cell-size)",
+        "flex items-center justify-center",
+        "select-none font-medium text-muted-foreground/64 text-xs tabular-nums",
+        className
+      )}
+      data-slot="calendar-week-number-cell"
+      {...rest}
+    />
   );
 };
 

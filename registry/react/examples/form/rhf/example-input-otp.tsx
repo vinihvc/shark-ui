@@ -33,19 +33,19 @@ const formSchema = z.object({
 
 const Example = () => {
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: { backupCode: ["", "", "", "", "", ""] },
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "backup-code-submitted",
-      title: "Backup code verified",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
+      id: "backup-code-submitted",
+      title: "Backup code verified",
     });
   };
 

@@ -41,14 +41,12 @@ const formSchema = v.object({
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { resume: [] as File[] },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "resume-submitted",
-      title: "Resume uploaded",
       description: (
         <div className="mt-2 flex flex-col gap-2">
           <p className="text-muted-foreground text-sm">
@@ -70,6 +68,8 @@ const Example = () => {
           </pre>
         </div>
       ),
+      id: "resume-submitted",
+      title: "Resume uploaded",
     });
   };
 

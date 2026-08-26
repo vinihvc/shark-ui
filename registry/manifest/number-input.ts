@@ -4,14 +4,14 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "number-input",
-  type: "registry:ui",
   dependencies,
+  name: "number-input",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
     absoluteUrl("/r/field.json"),
     absoluteUrl("/r/input.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

@@ -25,16 +25,16 @@ import {
 export const description = "A radial chart with text";
 
 const chartData = [
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "safari", fill: "var(--color-safari)", visitors: 200 },
 ];
 
 const chartConfig = {
+  safari: {
+    color: "var(--chart-2)",
+    label: "Safari",
+  },
   visitors: {
     label: "Visitors",
-  },
-  safari: {
-    label: "Safari",
-    color: "var(--chart-2)",
   },
 } satisfies ChartConfig;
 

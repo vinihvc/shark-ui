@@ -1,13 +1,24 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ],
+      "source": "/sw.js"
+    }
+  ],
   "routes": [
     {
-      "src": "/(docs|view)(/.*)?",
+      "src": "/view(/.*)?",
       "has": [
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|anthropic-ai|PerplexityBot|Perplexity-User|CCBot|Bytespider|Amazonbot|Applebot-Extended|Meta-ExternalAgent|FacebookBot|Diffbot|ImagesiftBot|YouBot|cohere-ai|Timpibot).*"
+          "value": ".*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|Claude-User|Claude-SearchBot|anthropic-ai|PerplexityBot|Perplexity-User|CCBot|Bytespider|Amazonbot|Applebot-Extended|Meta-ExternalAgent|FacebookBot|Diffbot|ImagesiftBot|YouBot|cohere-ai|Timpibot).*"
         }
       ],
       "mitigate": {
@@ -15,12 +26,25 @@
       }
     },
     {
-      "src": "/(llms-full\\.txt|llms-components\\.txt|llms-patterns\\.txt|og|api/raw/.*)",
+      "src": "/(docs(/.*)?|llms\\.txt|llms-full\\.txt|llms-components\\.txt|llms-patterns\\.txt)",
       "has": [
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|anthropic-ai|PerplexityBot|Perplexity-User|CCBot|Bytespider|Amazonbot|Applebot-Extended|Meta-ExternalAgent|FacebookBot|Diffbot|ImagesiftBot|YouBot|cohere-ai|Timpibot).*"
+          "value": ".*(GPTBot|ClaudeBot|anthropic-ai|CCBot|Bytespider|Amazonbot|Applebot-Extended|Meta-ExternalAgent|FacebookBot|Diffbot|ImagesiftBot|YouBot|cohere-ai|Timpibot).*"
+        }
+      ],
+      "mitigate": {
+        "action": "deny"
+      }
+    },
+    {
+      "src": "/(og|api/raw/.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|Claude-User|Claude-SearchBot|anthropic-ai|PerplexityBot|Perplexity-User|CCBot|Bytespider|Amazonbot|Applebot-Extended|Meta-ExternalAgent|FacebookBot|Diffbot|ImagesiftBot|YouBot|cohere-ai|Timpibot).*"
         }
       ],
       "mitigate": {

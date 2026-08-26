@@ -74,10 +74,10 @@ const Example = () => (
 );
 
 const presets = [
-  { label: "Today", days: 0 },
-  { label: "Tomorrow", days: 1 },
-  { label: "In 3 days", days: 3 },
-  { label: "In a week", days: 7 },
+  { days: 0, label: "Today" },
+  { days: 1, label: "Tomorrow" },
+  { days: 3, label: "In 3 days" },
+  { days: 7, label: "In a week" },
 ] as const;
 
 export default Example;

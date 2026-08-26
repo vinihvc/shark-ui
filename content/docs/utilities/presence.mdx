@@ -57,13 +57,32 @@ const [visible, setVisible] = React.useState(false);
 
 Setting `lazyMount` and `unmountOnExit` to `true` lazy mounts and unmounts the content.
 
-It will remove the element from the DOM when it is not present.
+It will remove the element from the DOM when it is not present. Shark defaults both to `true`.
 
 ```tsx showLineNumbers
 <Presence lazyMount unmountOnExit {...}>
   {/** content */}
 </Presence>
 ```
+
+## Hide mode
+
+When content stays mounted after close, `hideMode` chooses how it is hidden:
+
+- `'display-none'` (default): HTML `hidden`. Effects stay alive.
+- `'activity'`: React 19 Activity. Effects pause.
+
+`hideMode` does nothing when `unmountOnExit` is `true`, because the tree is removed on close.
+
+```tsx
+<Presence present={visible} unmountOnExit={false} hideMode="activity">
+  {/** content */}
+</Presence>
+```
+
+The same prop is available on overlays that keep content mounted (Dialog, Drawer, Sheet, Accordion, Collapsible, Tree View). Shark overlays default `unmountOnExit`, so set `unmountOnExit={false}` if you want `hideMode` to apply.
+
+`onEnterComplete` fires once the enter animation finishes, matching `onExitComplete`.
 
 ## States
 
@@ -84,6 +103,9 @@ Presence automatically manages the attribute `data-state` to `open` and `closed`
 | `present` | `boolean` | `false` |
 | `unmountOnExit` | `boolean` | `true` |
 | `lazyMount` | `boolean` | `true` |
+| `hideMode` | `"display-none" \| "activity"` | `"display-none"` |
+| `onEnterComplete` | `() => void` | - |
+| `onExitComplete` | `() => void` | - |
 | `asChild` | `boolean` | `false` |
 
 ---

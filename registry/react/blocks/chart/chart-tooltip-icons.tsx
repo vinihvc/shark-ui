@@ -30,14 +30,14 @@ const chartData = [
 
 const chartConfig = {
   running: {
-    label: "Running",
     color: "var(--chart-1)",
     icon: Footprints,
+    label: "Running",
   },
   swimming: {
-    label: "Swimming",
     color: "var(--chart-2)",
     icon: Waves,
+    label: "Swimming",
   },
 } satisfies ChartConfig;
 

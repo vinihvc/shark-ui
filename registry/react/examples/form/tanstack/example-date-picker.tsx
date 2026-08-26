@@ -27,6 +27,7 @@ import {
 import {
   DatePicker,
   DatePickerContent,
+  DatePickerLabel,
   DatePickerTrigger,
   DatePickerValue,
 } from "@/registry/react/components/date-picker";
@@ -34,7 +35,6 @@ import {
   Field,
   FieldError,
   FieldGroup,
-  FieldLabel,
 } from "@/registry/react/components/field";
 
 const formSchema = z.object({
@@ -50,13 +50,8 @@ const Example = () => {
     defaultValues: {
       interviewDate: [] as DateValue[],
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "interview-date-submitted",
-        title: "Interview preference saved",
         description: (
           <pre className="mt-2">
             <code>
@@ -68,7 +63,12 @@ const Example = () => {
             </code>
           </pre>
         ),
+        id: "interview-date-submitted",
+        title: "Interview preference saved",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -93,11 +93,11 @@ const Example = () => {
             <form.Field
               children={(field) => (
                 <Field invalid={!field.state.meta.isValid}>
-                  <FieldLabel>Preferred interview date</FieldLabel>
                   <DatePicker
                     onValueChange={({ value }) => field.handleChange(value)}
                     value={field.state.value}
                   >
+                    <DatePickerLabel>Preferred interview date</DatePickerLabel>
                     <DatePickerTrigger asChild>
                       <Button className="w-full" variant="outline">
                         <CalendarIcon />

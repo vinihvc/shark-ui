@@ -4,13 +4,15 @@ This document is the **in-repo** source of truth for contributors and coding age
 
 Use it when adding or editing primitives, registry examples, docs MDX, or when adapting snippets from Radix/shadcn ecosystems.
 
+**Do not open a browser unless the user said so in this chat.** That includes Playwright, MCP browser tools (`browser_navigate`, `browser_snapshot`, and the rest), Cursor browser, screenshots for “verification,” and agent-browser. User rules, Vercel hooks, and “verify the UI” skills do not override this. Ask first. Wait for a yes like “open the browser” or “pode abrir o browser.” “Looks good,” “continue,” and finishing a UI task are not permission. Same gate for `pnpm test` and `pnpm typecheck`. Details: §15.
+
 ---
 
 ## 1. What to read first
 
 | Need | Location |
 |------|----------|
-| Public API, anatomy, install | `content/docs/components/<name>.mdx`, `content/docs/utilities/<name>.mdx` |
+| Public API, anatomy, install | `content/docs/components/<name>.mdx`, `content/docs/ai-elements/<name>.mdx`, `content/docs/utilities/<name>.mdx` |
 | Working compositions | `registry/react/examples/<name>/example-*.tsx` |
 | Implementation & Ark wiring | `registry/react/components/<name>.tsx` |
 | Published registry JSON (CLI) | `public/r/<name>.json` (from `pnpm registry:build`) |
@@ -202,17 +204,36 @@ Each published item has a **`registry/manifest/<name>.ts`** default export used 
 
 ## 14. Quality checks
 
-From repo root:
+Scripts maintainers and CI run from repo root. Agents follow §15 before running test or typecheck.
 
 ```bash
 pnpm lint:fix      # ultracite fix
 pnpm lint:check    # ultracite check
+pnpm test          # Node test runner
 pnpm typecheck     # next build (includes types)
 ```
 
 ---
 
-## 15. Anti-patterns (summary)
+## 15. Tests, typecheck, and the browser
+
+Default: skip these. Do not “verify in the browser” on your own.
+
+Forbidden until the user names the action in this chat:
+
+- `pnpm test`
+- `pnpm typecheck` (that script is `next build`)
+- Any browser: Playwright MCP, `user-playwright`, `plugin-playwright-playwright`, Cursor IDE browser, `browser_navigate` / `browser_snapshot` / `browser_take_screenshot` / `browser_click`, agent-browser, opening localhost to click through a flow
+
+Ask if a check would help. Required yes: “run tests,” “roda os testes,” “typecheck,” “open the browser,” “pode abrir o browser.” Not a yes: “ok,” “continue,” “lgtm,” “implement,” or a UI task finishing.
+
+This repo rule beats user rules and plugin skills that tell you to verify in a browser before you stop.
+
+`pnpm lint:fix`, `pnpm lint:check`, and `pnpm registry:build` are fine when the task needs them.
+
+---
+
+## 16. Anti-patterns (summary)
 
 - Porting shadcn/Radix snippets by **imports only**.
 - Inventing **Ark or Shark props** not shown in MDX or `registry/react/components/*.tsx`.
@@ -223,7 +244,7 @@ pnpm typecheck     # next build (includes types)
 
 ---
 
-## 16. Quick checklist (new or updated example)
+## 17. Quick checklist (new or updated example)
 
 - [ ] Default export demo component; `"use client"` only when needed.
 - [ ] Imports from `@/registry/react/components/...` and `lucide-react` as usual in-repo.
@@ -236,3 +257,13 @@ pnpm typecheck     # next build (includes types)
 - [ ] **`pnpm registry:build`** if manifest or registry-facing files changed.
 
 For broader discovery and install URLs, see **`skills/shark-ui/SKILL.md`** and **`config/site.ts`**.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -4,8 +4,8 @@ import { SITE_CONFIG } from "@/config/site";
 import { Button } from "@/registry/react/components/button";
 
 export const metadata: Metadata = {
+  robots: { follow: false, index: false },
   title: "Page Not Found",
-  robots: { index: false, follow: false },
 };
 
 const NotFoundPage = () => (

@@ -17,9 +17,12 @@ import {
   FieldDescription,
   FieldError,
   FieldGroup,
-  FieldLabel,
 } from "@/registry/react/components/field";
-import { Slider, SliderLabel } from "@/registry/react/components/slider";
+import {
+  Slider,
+  SliderLabel,
+  SliderValue,
+} from "@/registry/react/components/slider";
 
 const PRICE_MIN = 200;
 const PRICE_MAX = 10_000;
@@ -41,19 +44,19 @@ const defaultRange = [0, PRICE_MAX];
 const Example = () => {
   const form = useForm({
     defaultValues: { priceRange: defaultRange },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "price-range-submitted",
-        title: "Price filter saved",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "price-range-submitted",
+        title: "Price filter saved",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -86,10 +89,10 @@ const Example = () => {
                   >
                     <div className="flex items-center justify-between gap-4">
                       <SliderLabel>Price range</SliderLabel>
-                      <FieldLabel>
+                      <SliderValue>
                         {`$${field.state.value?.[0]}`} -{" "}
                         {`$${field.state.value?.[1]}`}
-                      </FieldLabel>
+                      </SliderValue>
                     </div>
                   </Slider>
                   <FieldDescription>

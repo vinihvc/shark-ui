@@ -28,9 +28,9 @@ const Example = () => (
 
 const collection = createListCollection({
   items: [
-    { label: "Brazil", value: "brazil", icon: "🇧🇷" },
-    { label: "Mexico", value: "mexico", icon: "🇲🇽" },
-    { label: "Ireland", value: "ireland", icon: "🇮🇪" },
+    { icon: "🇧🇷", label: "Brazil", value: "brazil" },
+    { icon: "🇲🇽", label: "Mexico", value: "mexico" },
+    { icon: "🇮🇪", label: "Ireland", value: "ireland" },
   ],
 });
 

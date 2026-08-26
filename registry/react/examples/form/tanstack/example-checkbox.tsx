@@ -54,19 +54,19 @@ export const Example = () => {
       responses: true,
       tasks: [] as string[],
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "tasks-submitted",
-        title: "Tasks submitted",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "tasks-submitted",
+        title: "Tasks submitted",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

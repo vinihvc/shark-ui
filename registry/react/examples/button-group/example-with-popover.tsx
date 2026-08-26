@@ -20,7 +20,7 @@ const Example = () => (
     <Popover positioning={{ placement: "bottom-end" }}>
       <PopoverTrigger asChild>
         <Button aria-label="Settings" size="icon-md" variant="outline">
-          <ChevronDownIcon />
+          <ChevronDownIcon className="size-4" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full max-w-80">

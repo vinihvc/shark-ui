@@ -2,9 +2,8 @@
 /** biome-ignore-all lint/style/noParameterAssign: it's ok */
 
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import type React from "react";
-import { REGISTRY_PATH } from "@/config/constants";
+import { resolveRegistrySourcePath } from "@/lib/registry-source-path";
 import { replaceContentForCopy } from "@/utils/formatter";
 import { CodeBlock } from "./code-block";
 import { CodeCollapsibleWrapper } from "./code-collapsible-wrapper";
@@ -48,8 +47,7 @@ export const ComponentSource = (props: ComponentSourceProps) => {
   }
 
   if (src) {
-    const sourcePath = join(process.cwd(), REGISTRY_PATH, src);
-    codeContent = readFileSync(sourcePath, "utf-8");
+    codeContent = readFileSync(resolveRegistrySourcePath(src), "utf-8");
   }
 
   if (!codeContent) {

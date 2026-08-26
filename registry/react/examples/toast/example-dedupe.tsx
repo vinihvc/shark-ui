@@ -8,9 +8,9 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.create({
+          description: "This is a toast with id.",
           id: "dedupe-on",
           title: "Heads up!",
-          description: "This is a toast with id.",
         })
       }
       variant="outline"
@@ -20,8 +20,8 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.create({
-          title: "Heads up!",
           description: "This is a toast without id.",
+          title: "Heads up!",
         })
       }
       variant="outline"

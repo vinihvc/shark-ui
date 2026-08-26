@@ -14,15 +14,15 @@ import {
 
 const data = [
   {
+    info: "Total new user signups this month",
     label: "New Users",
     value: "234",
-    info: "Total new user signups this month",
   },
-  { label: "Sales", value: "£12,340", info: "Revenue from product sales" },
+  { info: "Revenue from product sales", label: "Sales", value: "£12,340" },
   {
+    info: "Total revenue in the last quarter",
     label: "Revenue",
     value: "3,450",
-    info: "Total revenue in the last quarter",
   },
 ];
 

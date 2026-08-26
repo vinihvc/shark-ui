@@ -35,38 +35,38 @@ const Example = () => (
 
 const collection = createTreeCollection({
   rootNode: {
-    id: "ROOT",
-    name: "",
     children: [
       {
-        id: "docs",
-        name: "Documentation",
         children: [
           {
+            href: "/docs",
             id: "docs/introduction",
             name: "Introduction",
-            href: "/docs",
           },
           {
+            href: "/docs/components",
             id: "docs/components",
             name: "Components",
-            href: "/docs/components",
           },
         ],
+        id: "docs",
+        name: "Documentation",
       },
       {
-        id: "external",
-        name: "External Links",
         children: [
           {
+            href: "https://github.com/sharkui-inc/shark-ui",
             id: "external/github",
             name: "GitHub Repository",
-            href: "https://github.com/sharkui-inc/shark-ui",
           },
         ],
+        id: "external",
+        name: "External Links",
       },
-      { id: "llms.txt", name: "llms.txt", href: "/llms.txt" },
+      { href: "/llms.txt", id: "llms.txt", name: "llms.txt" },
     ],
+    id: "ROOT",
+    name: "",
   },
 });
 
@@ -77,7 +77,7 @@ const TreeNode = (props: NodeProviderProps<TreeNodeWithLinks>) => {
     <TreeViewNode indexPath={indexPath} node={node}>
       {node.children ? (
         <TreeViewBranch>
-          <TreeViewBranchItem icon={null}>{node.name}</TreeViewBranchItem>
+          <TreeViewBranchItem showIndicator>{node.name}</TreeViewBranchItem>
           <TreeViewBranchContent>
             {node.children.map((child, index) => (
               <TreeNode

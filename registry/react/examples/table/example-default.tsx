@@ -39,36 +39,36 @@ const TableDemo = () => (
 
 const statusVariants: Record<string, BadgeVariant> = {
   active: "success",
-  invited: "info",
   inactive: "destructive",
+  invited: "info",
 };
 
 const users = [
   {
+    email: "alice.johnson@example.com",
     id: "1",
     name: "Alice Johnson",
-    email: "alice.johnson@example.com",
     role: "Admin",
     status: "active",
   },
   {
+    email: "bruno.silva@example.com",
     id: "2",
     name: "Bruno Silva",
-    email: "bruno.silva@example.com",
     role: "Editor",
     status: "invited",
   },
   {
+    email: "clara.mendes@example.com",
     id: "3",
     name: "Clara Mendes",
-    email: "clara.mendes@example.com",
     role: "Viewer",
     status: "inactive",
   },
   {
+    email: "david.park@example.com",
     id: "4",
     name: "David Park",
-    email: "david.park@example.com",
     role: "Editor",
     status: "active",
   },

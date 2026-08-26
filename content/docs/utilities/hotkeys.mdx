@@ -1,0 +1,179 @@
+---
+title: Hotkeys
+description: Register keyboard shortcuts.
+links:
+  doc: https://ark-ui.com/docs/utilities/hotkeys
+  api: https://ark-ui.com/docs/utilities/hotkeys#api-reference
+---
+
+<ComponentPreview componentName="hotkeys" />
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/hotkeys
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+  <ComponentSource title="components/ui/hotkeys.tsx" src="/hotkeys.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { useFormatHotkey, useHotkey } from "@/components/ui/hotkeys";
+```
+
+```tsx
+const formatHotkey = useFormatHotkey()
+
+useHotkey({
+  hotkey: "mod+K",
+  action: () => setOpen(true),
+})
+
+return <kbd>{formatHotkey("mod+K")}</kbd>
+```
+
+## Examples
+
+### Multiple shortcuts
+
+<ComponentPreview componentName="hotkeys" fileName="example-multiple" />
+
+### Sequences
+
+<ComponentPreview componentName="hotkeys" fileName="example-sequence" />
+
+### Sequence timeout
+
+<ComponentPreview componentName="hotkeys" fileName="example-sequence-timeout" />
+
+### Scopes
+
+<ComponentPreview componentName="hotkeys" fileName="example-scopes" />
+
+### Key state
+
+<ComponentPreview componentName="hotkeys" fileName="example-key-state" />
+
+### Recording a shortcut
+
+<ComponentPreview componentName="hotkeys" fileName="example-recorder" />
+
+## API Reference
+
+### createHotkeyStore
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `activeScopes` | `string \| string[]` | `["*"]` |
+| `conflictBehavior` | `"warn" \| "error" \| "replace" \| "allow"` | `"warn"` |
+| `defaultOptions` | `HotkeyOptions` | - |
+| `sequenceTimeoutMs` | `number` | `1000` |
+
+### useHotkey
+
+Registers one command. Takes every field of `UseHotkeysCommand`, plus an optional `store`.
+
+### useHotkeys
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `commands` | `UseHotkeysCommand[]` | - |
+| `store` | `HotkeyStore` | shared default store |
+| `id` | `string` | generated |
+
+### UseHotkeysCommand
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `id` | `string` | generated |
+| `hotkey` | `string` | - |
+| `action` | `(event: KeyboardEvent) => void` | - |
+| `label` | `string` | - |
+| `description` | `string` | - |
+| `category` | `string` | - |
+| `keywords` | `string[]` | - |
+| `scopes` | `string \| string[]` | `"*"` |
+| `enabled` | `boolean \| (() => boolean)` | `true` |
+| `options` | `HotkeyOptions` | - |
+
+### HotkeyOptions
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `preventDefault` | `boolean` | - |
+| `stopPropagation` | `boolean` | - |
+| `enableOnFormTags` | `boolean \| ("input" \| "textarea" \| "select")[]` | `false` |
+| `enableOnContentEditable` | `boolean` | `false` |
+| `capture` | `boolean` | `true` |
+| `requireReset` | `boolean` | `false` |
+| `eventType` | `"keydown" \| "keyup"` | `"keydown"` |
+| `target` | `Element \| (() => Element \| null)` | - |
+
+### useHotkeyRegistrations
+
+Returns every command currently registered on the store, with its `label`, `category`, `keywords` and resolved hotkey.
+
+### useHotkeyStore
+
+Returns the store you passed, or the shared default store. Use `setScope`, `addScope`, `removeScope` and `toggleScope` to change which commands are live, and `isPressed` to test a combination directly.
+
+### usePressedKeys
+
+Returns the keys currently held down.
+
+### useIsKeyPressed
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `hotkey` | `string` | - |
+| `store` | `HotkeyStore` | shared default store |
+
+### usePlatform
+
+Returns `'mac'`, `'windows'` or `'linux'`. Resolves after mount, so server and client render the same markup.
+
+### useFormatHotkey
+
+Returns `(hotkey: string, options?: HotkeyFormatOptions) => string`. Prefer this over importing `formatHotkey` directly inside a component.
+
+### useHotkeyRecorder
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `onRecord` | `(hotkey: RecordedHotkey) => void` | - |
+| `onCancel` | `() => void` | - |
+| `onClear` | `() => void` | - |
+| `formatOptions` | `HotkeyFormatOptions` | - |
+| `sequenceTimeoutMs` | `number` | - |
+
+Returns `{ recording, value, start, stop, cancel, clear }`.
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/utilities/hotkeys#api-reference).

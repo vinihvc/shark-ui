@@ -85,7 +85,7 @@ export const TagsInputControl = (props: TagsInputControlProps) => {
       <InputGroup
         className={cn(
           "h-auto in-data-[size=lg]:min-h-9 in-data-[size=sm]:min-h-7 min-h-8",
-          "p-1",
+          "p-1 [--input-group-inset:--spacing(1)]",
           "flex-wrap content-start items-center gap-1",
           "data-disabled:pointer-events-none data-disabled:opacity-64",
           className
@@ -124,6 +124,7 @@ export const TagsInputItem = (props: TagsInputItemProps) => {
         "inline-flex shrink-0 items-center gap-1",
         "bg-secondary",
         "in-data-[size=lg]:text-sm text-secondary-foreground text-xs",
+        "[--input-group-inset:--spacing(0.5)]",
         "rounded-md border outline-none",
         "data-highlighted:border-primary/30 data-highlighted:bg-primary/10",
         className
@@ -184,7 +185,6 @@ export const TagsInputItemDeleteTrigger = (
           "in-data-[size=lg]:size-6 in-data-[size=sm]:size-4 size-5",
           "shrink-0",
           "text-muted-foreground",
-          "rounded-[calc(var(--radius)-5px)]",
           "[&_svg:not([class*='size-'])]:size-3",
           "hover:text-foreground",
           className

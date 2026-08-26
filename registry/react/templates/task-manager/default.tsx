@@ -41,88 +41,88 @@ const priorityCollection = createListCollection({ items: PRIORITY_OPTIONS });
 const TASKS = [
   {
     id: "TASK-8782",
+    priority: "Medium",
+    status: "In Progress",
     title:
       "You can't compress the program without quantifying the open-source SSD pixel!",
     type: "Documentation",
-    status: "In Progress",
-    priority: "Medium",
   },
   {
     id: "TASK-7878",
+    priority: "Medium",
+    status: "Backlog",
     title:
       "Try to calculate the EXE feed, maybe it will index the multi-byte pixel!",
     type: "Documentation",
-    status: "Backlog",
-    priority: "Medium",
   },
   {
     id: "TASK-7839",
+    priority: "High",
+    status: "Todo",
     title: "We need to bypass the neural TCP card!",
     type: "Bug",
-    status: "Todo",
-    priority: "High",
   },
   {
     id: "TASK-5562",
+    priority: "Medium",
+    status: "Backlog",
     title:
       "The SAS interface is down, bypass the open-source pixel so we can back up the PNG bandwidth!",
     type: "Feature",
-    status: "Backlog",
-    priority: "Medium",
   },
   {
     id: "TASK-8686",
+    priority: "Medium",
+    status: "Canceled",
     title:
       "I'll parse the wireless SSL protocol, that should driver the API panel!",
     type: "Feature",
-    status: "Canceled",
-    priority: "Medium",
   },
   {
     id: "TASK-1280",
+    priority: "High",
+    status: "Done",
     title:
       "Use the digital TLS panel, then you can transmit the haptic system!",
     type: "Bug",
-    status: "Done",
-    priority: "High",
   },
   {
     id: "TASK-7262",
+    priority: "High",
+    status: "Done",
     title:
       "The UTF8 application is down, parse the neural bandwidth so we can back up the PNG firewall!",
     type: "Feature",
-    status: "Done",
-    priority: "High",
   },
   {
     id: "TASK-1138",
+    priority: "Medium",
+    status: "In Progress",
     title:
       "Generating the driver won't do anything, we need to quantify the 1080p SMTP bandwidth!",
     type: "Feature",
-    status: "In Progress",
-    priority: "Medium",
   },
   {
     id: "TASK-7184",
+    priority: "Low",
+    status: "Todo",
     title: "We need to program the back-end THX pixel!",
     type: "Feature",
-    status: "Todo",
-    priority: "Low",
   },
   {
     id: "TASK-5160",
+    priority: "High",
+    status: "In Progress",
     title:
       "Calculating the bus won't do anything, we need to navigate the back-end JSON protocol!",
     type: "Documentation",
-    status: "In Progress",
-    priority: "High",
   },
 ];
 
 const typeVariantMap: Record<string, "secondary" | "destructive" | "default"> =
   {
-    Documentation: "secondary",
     Bug: "destructive",
+    Documentation: "secondary",
     Feature: "default",
   };
 

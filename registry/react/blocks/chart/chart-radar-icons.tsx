@@ -23,24 +23,24 @@ import {
 export const description = "A radar chart with icons";
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { desktop: 186, mobile: 80, month: "January" },
+  { desktop: 305, mobile: 200, month: "February" },
+  { desktop: 237, mobile: 120, month: "March" },
+  { desktop: 73, mobile: 190, month: "April" },
+  { desktop: 209, mobile: 130, month: "May" },
+  { desktop: 214, mobile: 140, month: "June" },
 ];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
     color: "var(--chart-1)",
     icon: ArrowDownFromLine,
+    label: "Desktop",
   },
   mobile: {
-    label: "Mobile",
     color: "var(--chart-2)",
     icon: ArrowUpFromLine,
+    label: "Mobile",
   },
 } satisfies ChartConfig;
 
@@ -61,8 +61,8 @@ function ChartRadarIcons() {
           <RadarChart
             data={chartData}
             margin={{
-              top: -40,
               bottom: -10,
+              top: -40,
             }}
           >
             <ChartTooltip
@@ -77,7 +77,7 @@ function ChartRadarIcons() {
               fillOpacity={0.6}
             />
             <Radar dataKey="mobile" fill="var(--color-mobile)" />
-            <ChartLegend className="mt-8" content={<ChartLegendContent />} />
+            <ChartLegend content={<ChartLegendContent className="mt-8" />} />
           </RadarChart>
         </ChartContainer>
       </CardContent>

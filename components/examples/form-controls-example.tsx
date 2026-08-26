@@ -8,18 +8,16 @@ import { Switch } from "@/registry/react/components/switch";
 
 export const FormControlsExample = () => (
   <div className="flex flex-wrap items-center gap-6">
-    <Checkbox defaultChecked tabIndex={-1} />
-    <Checkbox tabIndex={-1} />
-    <Switch defaultChecked tabIndex={-1} />
+    <Checkbox defaultChecked />
+    <Checkbox />
+    <Switch defaultChecked />
     <RadioGroup className="flex-row gap-6" defaultValue="b">
       <RadioGroupItem
         className="**:data-[slot=radio-group-item-text]:hidden"
-        tabIndex={-1}
         value="a"
       />
       <RadioGroupItem
         className="**:data-[slot=radio-group-item-text]:hidden"
-        tabIndex={-1}
         value="b"
       />
     </RadioGroup>

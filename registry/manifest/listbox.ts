@@ -4,10 +4,13 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "lucide-react", "tailwind-variants"];
 
 const manifest: RegistryItemType = {
-  name: "listbox",
-  type: "registry:ui",
   dependencies,
-  registryDependencies: [absoluteUrl("/r/menu.json")],
+  name: "listbox",
+  registryDependencies: [
+    absoluteUrl("/r/field.json"),
+    absoluteUrl("/r/menu.json"),
+  ],
+  type: "registry:ui",
 };
 
 export default manifest;

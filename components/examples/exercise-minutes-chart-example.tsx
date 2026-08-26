@@ -17,49 +17,49 @@ import {
 const data = [
   {
     average: 400,
-    today: 240,
     day: "Monday",
+    today: 240,
   },
   {
     average: 300,
-    today: 139,
     day: "Tuesday",
+    today: 139,
   },
   {
     average: 200,
-    today: 980,
     day: "Wednesday",
+    today: 980,
   },
   {
     average: 278,
-    today: 390,
     day: "Thursday",
+    today: 390,
   },
   {
     average: 189,
-    today: 480,
     day: "Friday",
+    today: 480,
   },
   {
     average: 239,
-    today: 380,
     day: "Saturday",
+    today: 380,
   },
   {
     average: 349,
-    today: 430,
     day: "Sunday",
+    today: 430,
   },
 ];
 
 const chartConfig = {
-  today: {
-    label: "Today",
-    color: "var(--primary)",
-  },
   average: {
-    label: "Average",
     color: "var(--primary)",
+    label: "Average",
+  },
+  today: {
+    color: "var(--primary)",
+    label: "Today",
   },
 } satisfies ChartConfig;
 
@@ -77,10 +77,10 @@ export const ExerciseMinutesChartExample = (
           accessibilityLayer={false}
           data={data}
           margin={{
-            top: 5,
-            right: 10,
-            left: 16,
             bottom: 0,
+            left: 16,
+            right: 10,
+            top: 5,
           }}
         >
           <CartesianGrid vertical={false} />

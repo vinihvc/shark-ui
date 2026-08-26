@@ -16,6 +16,9 @@ export const alertVariants = tv({
     "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
     "has-data-[slot=alert-action]:grid-cols-[1fr_auto]",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: [
@@ -26,31 +29,28 @@ export const alertVariants = tv({
       destructive: [
         "bg-destructive/4",
         "border-destructive/32",
-        "[&_svg]:text-destructive",
+        "[&_svg]:text-destructive-foreground",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-destructive/10",
       ],
       info: [
         "bg-info/4",
         "border-info/32",
-        "[&_svg]:text-info",
+        "[&_svg]:text-info-foreground",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-info/10",
-      ],
-      warning: [
-        "bg-warning/4",
-        "border-warning/32",
-        "[&_svg]:text-warning",
-        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-warning/10",
       ],
       success: [
         "bg-success/4",
         "border-success/32",
-        "[&_svg]:text-success",
+        "[&_svg]:text-success-foreground",
         "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-success/10",
       ],
+      warning: [
+        "bg-warning/4",
+        "border-warning/32",
+        "[&_svg]:text-warning-foreground",
+        "[&_[data-slot=alert-action]_[data-variant=ghost]]:hover:bg-warning/10",
+      ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 

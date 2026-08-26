@@ -1,3 +1,5 @@
+"use client";
+
 import { AvatarGroupEmptyExample } from "@/components/examples/avatar-group-empty-example";
 import { BrowserShareExample } from "@/components/examples/browser-share-example";
 import { ButtonExample } from "@/components/examples/button-example";
@@ -15,44 +17,42 @@ import { LoginFormExample } from "@/components/examples/login-form-example";
 import { StyleOverviewExample } from "@/components/examples/style-overview-example";
 import { TabsExample } from "@/components/examples/tabs-example";
 import { cn } from "@/lib/utils";
+import { HomeExamplesTabGuard } from "./home-examples-tab-guard";
 
 export const ComponentsExamples = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
 
   return (
-    <div
-      className={cn(
-        "grid gap-6 sm:p-6 md:grid-cols-2 lg:grid-cols-3",
-        className
-      )}
-      {...rest}
-    >
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full lg:*:[div]:max-w-xs">
-        <InputOTPExample />
-        <FormControlsExample />
-        <ButtonExample />
-        <IconsGridExample />
-        <ButtonGroupInputGroupExample />
-        <ExerciseMinutesChartExample />
-        <FieldSliderExample />
-        <ItemExample />
-        <LoginFormExample className="flex lg:hidden" />
-        <AvatarGroupEmptyExample className="flex lg:hidden" />
+    <HomeExamplesTabGuard>
+      <div className={cn("sm:p-6", className)} {...rest}>
+        <div className="columns-2 gap-6 lg:columns-3">
+          {[
+            <InputOTPExample key="input-otp" />,
+            <FormControlsExample key="form-controls" />,
+            <ButtonExample key="button" />,
+            <IconsGridExample key="icons" />,
+            <ButtonGroupInputGroupExample key="button-group" />,
+            <ExerciseMinutesChartExample key="exercise" />,
+            <FieldSliderExample key="field-slider" />,
+            <ItemExample key="item" />,
+            <StyleOverviewExample key="style" />,
+            <TabsExample key="tabs" />,
+            <CalendarRangeExample key="calendar" />,
+            <BrowserShareExample key="browser-share" />,
+            <ComputeEnvironmentExample key="compute" />,
+            <CommerceTableExample key="commerce" />,
+            <LoginFormExample key="login" />,
+            <AvatarGroupEmptyExample key="avatar-group" />,
+          ].map((example) => (
+            <div
+              className="mb-6 break-inside-avoid *:[div]:w-full *:[div]:max-w-full lg:*:[div]:max-w-xs"
+              key={example.key}
+            >
+              {example}
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full lg:*:[div]:max-w-xs">
-        <StyleOverviewExample />
-        <TabsExample />
-        <CalendarRangeExample />
-        <BrowserShareExample />
-        <ComputeEnvironmentExample className="flex lg:hidden" />
-        <CommerceTableExample className="flex lg:hidden" />
-      </div>
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full lg:*:[div]:max-w-xs">
-        <ComputeEnvironmentExample className="hidden lg:flex" />
-        <CommerceTableExample className="hidden lg:flex" />
-        <LoginFormExample className="hidden lg:flex" />
-        <AvatarGroupEmptyExample className="hidden lg:flex" />
-      </div>
-    </div>
+    </HomeExamplesTabGuard>
   );
 };

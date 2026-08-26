@@ -31,21 +31,21 @@ const formSchema = z.object({
 
 export const Example = () => {
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       twoFactor: false,
     },
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "about-submitted",
-      title: "About submitted",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
+      id: "about-submitted",
+      title: "About submitted",
     });
   };
 

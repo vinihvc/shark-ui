@@ -21,26 +21,26 @@ import {
 export const description = "A stacked area chart with expand stacking";
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80, other: 45 },
-  { month: "February", desktop: 305, mobile: 200, other: 100 },
-  { month: "March", desktop: 237, mobile: 120, other: 150 },
-  { month: "April", desktop: 73, mobile: 190, other: 50 },
-  { month: "May", desktop: 209, mobile: 130, other: 100 },
-  { month: "June", desktop: 214, mobile: 140, other: 160 },
+  { desktop: 186, mobile: 80, month: "January", other: 45 },
+  { desktop: 305, mobile: 200, month: "February", other: 100 },
+  { desktop: 237, mobile: 120, month: "March", other: 150 },
+  { desktop: 73, mobile: 190, month: "April", other: 50 },
+  { desktop: 209, mobile: 130, month: "May", other: 100 },
+  { desktop: 214, mobile: 140, month: "June", other: 160 },
 ];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
     color: "var(--chart-1)",
+    label: "Desktop",
   },
   mobile: {
-    label: "Mobile",
     color: "var(--chart-2)",
+    label: "Mobile",
   },
   other: {
-    label: "Other",
     color: "var(--chart-3)",
+    label: "Other",
   },
 } satisfies ChartConfig;
 

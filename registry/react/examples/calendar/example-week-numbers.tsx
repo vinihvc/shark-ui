@@ -1,0 +1,31 @@
+import {
+  Calendar,
+  CalendarNextTrigger,
+  CalendarPrevTrigger,
+  CalendarTable,
+  CalendarTableDays,
+  CalendarViewControl,
+  CalendarViewDate,
+  CalendarWeekDays,
+} from "@/registry/react/components/calendar";
+import { Card, CardContent } from "@/registry/react/components/card";
+
+const Example = () => (
+  <Card className="[--space:--spacing(2)]">
+    <CardContent>
+      <Calendar showWeekNumbers>
+        <CalendarViewControl>
+          <CalendarPrevTrigger />
+          <CalendarViewDate />
+          <CalendarNextTrigger />
+        </CalendarViewControl>
+        <CalendarTable>
+          <CalendarWeekDays />
+          <CalendarTableDays />
+        </CalendarTable>
+      </Calendar>
+    </CardContent>
+  </Card>
+);
+
+export default Example;

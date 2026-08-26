@@ -2,10 +2,8 @@ import { RssIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocsTableOfContents } from "@/components/layout/docs-toc";
-import { SITE_FEATURES } from "@/config/features";
 import { type ChangelogPageData, getChangelogPages } from "@/lib/changelog";
-import { createMetadata, createOgImageUrl } from "@/lib/metadata";
-import { mdxComponents } from "@/mdx-components";
+import { createMetadata } from "@/lib/metadata";
 import { Button } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { SkipNavContent } from "@/registry/react/components/skip-nav";
@@ -18,14 +16,14 @@ export const generateMetadata = (): Metadata => {
   const description = "Latest updates and announcements.";
 
   return createMetadata({
-    title,
     description,
+    title,
     url: "/docs/changelog",
-    imageUrl: SITE_FEATURES.dynamicOgImages
-      ? createOgImageUrl({ title, description })
-      : undefined,
   });
 };
+
+const formatReleaseDate = (date: Date) =>
+  new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(date);
 
 const ChangelogPage = () => {
   const pages = getChangelogPages();
@@ -71,18 +69,35 @@ const ChangelogPage = () => {
                   <div className="w-full flex-1 pb-16 sm:pb-0">
                     {latestPages.map((page) => {
                       const data = page.data as ChangelogPageData;
-                      const MDX = page.data.body;
+                      const date =
+                        page.date && !Number.isNaN(page.date.getTime())
+                          ? page.date
+                          : null;
 
                       return (
                         <article
                           className="mb-12 border-b pb-12"
                           key={page.url}
                         >
-                          <h2 className="font-semibold text-xl tracking-tight">
-                            {data.title}
-                          </h2>
-                          <div className="prose-changelog mt-6 *:first:mt-0">
-                            <MDX components={mdxComponents} />
+                          <div className="flex flex-col gap-2">
+                            <h2 className="font-semibold text-xl tracking-tight">
+                              <Link className="hover:underline" href={page.url}>
+                                {data.title}
+                              </Link>
+                            </h2>
+                            {date ? (
+                              <time
+                                className="text-muted-foreground text-sm"
+                                dateTime={date.toISOString().slice(0, 10)}
+                              >
+                                {formatReleaseDate(date)}
+                              </time>
+                            ) : null}
+                            {data.description ? (
+                              <p className="max-w-2xl text-muted-foreground">
+                                {data.description}
+                              </p>
+                            ) : null}
                           </div>
                         </article>
                       );
@@ -130,18 +145,18 @@ const ChangelogPage = () => {
                 {latestPages.length > 0 && (
                   <DocsTableOfContents
                     data={latestPages.map((page) => ({
+                      depth: 1,
                       title: page.data.title,
                       url: page.url,
-                      depth: 1,
                     }))}
                   />
                 )}
                 {olderPages.length > 0 && (
                   <DocsTableOfContents
                     data={olderPages.map((page) => ({
+                      depth: 1,
                       title: page.data.title,
                       url: page.url,
-                      depth: 1,
                     }))}
                   />
                 )}

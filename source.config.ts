@@ -33,17 +33,19 @@ export default defineConfig({
 // see https://fumadocs.dev/docs/mdx/collections
 export const docs = defineDocs({
   docs: {
-    schema: frontmatterSchema.extend({
-      links: z
-        .object({
-          doc: z.url().optional(),
-          api: z.url().optional(),
-        })
-        .optional(),
-    }),
     postprocess: {
       includeProcessedMarkdown: true,
     },
+    schema: frontmatterSchema.extend({
+      links: z
+        .object({
+          api: z.url().optional(),
+          doc: z.url().optional(),
+        })
+        .optional(),
+      seoDescription: z.string().optional(),
+      seoTitle: z.string().optional(),
+    }),
   },
   meta: {
     schema: metaSchema,

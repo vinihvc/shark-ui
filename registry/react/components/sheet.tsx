@@ -39,12 +39,15 @@ const sheetPositionerVariants = tv({
     "grid",
     "overflow-hidden",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     placement: {
       bottom: "grid grid-rows-[1fr_auto] not-data-[variant=inset]:pt-12",
-      top: "grid grid-rows-[auto_1fr] not-data-[variant=inset]:pb-12",
       left: "flex justify-start",
       right: "flex justify-end",
+      top: "grid grid-rows-[auto_1fr] not-data-[variant=inset]:pb-12",
     },
     variant: {
       default: "",
@@ -56,9 +59,6 @@ const sheetPositionerVariants = tv({
         "data-[placement=right]:pt-(--inset) data-[placement=right]:pb-(--inset)",
       ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 
@@ -94,15 +94,15 @@ const sheetContentVariants = tv({
     "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
     "motion-reduce:animate-none! motion-reduce:transition-none!",
   ],
+  defaultVariants: {
+    placement: "right",
+    variant: "default",
+  },
   variants: {
     placement: {
       bottom: [
         "row-start-2 border-t",
         "data-[state=closed]:slide-in-from-bottom-10 data-[state=open]:slide-in-from-bottom-10",
-      ],
-      top: [
-        "border-b",
-        "data-[state=closed]:slide-out-to-top-10 data-[state=open]:slide-in-from-top-10",
       ],
       left: [
         "w-[calc(100%-(--spacing(12)))] max-w-md",
@@ -116,6 +116,10 @@ const sheetContentVariants = tv({
         "border-s",
         "data-[state=closed]:slide-out-to-end-10 data-[state=open]:slide-in-from-end-10",
       ],
+      top: [
+        "border-b",
+        "data-[state=closed]:slide-out-to-top-10 data-[state=open]:slide-in-from-top-10",
+      ],
     },
     variant: {
       default: "",
@@ -124,10 +128,6 @@ const sheetContentVariants = tv({
         "sm:**:data-[slot=sheet-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
       ],
     },
-  },
-  defaultVariants: {
-    placement: "right",
-    variant: "default",
   },
 });
 

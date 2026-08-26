@@ -1,0 +1,76 @@
+---
+title: Task
+description: An agent task row with status, files, and collapsible details.
+---
+
+<ComponentPreview componentName="task" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/task
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Collapsible](/docs/components/collapsible) and [Badge](/docs/components/badge). Install them first if you haven't already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/task.tsx" src="/task.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+TaskList
+└── Task
+    ├── TaskTrigger
+    └── TaskContent
+        └── TaskItemFile
+```
+
+## Usage
+
+```tsx
+import { Task, TaskContent, TaskItemFile, TaskTrigger } from "@/components/ui/task";
+```
+
+```tsx
+<Task status="in-progress">
+  <TaskTrigger status="in-progress" title="Patch isValidEmail" />
+  <TaskContent>
+    <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
+  </TaskContent>
+</Task>
+```
+
+Nest tasks inside [Plan](/docs/ai-elements/plan).
+
+## API Reference
+
+### Task
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `status` | `"pending" \| "in-progress" \| "completed"` | `"pending"` |

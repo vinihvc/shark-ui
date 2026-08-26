@@ -4,13 +4,13 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "tailwind-variants"];
 
 const manifest: RegistryItemType = {
-  name: "drawer",
-  type: "registry:ui",
   dependencies,
+  name: "drawer",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
     absoluteUrl("/r/scroll-area.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

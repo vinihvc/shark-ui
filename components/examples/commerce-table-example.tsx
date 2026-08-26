@@ -43,7 +43,7 @@ export const CommerceTableExample = (props: React.ComponentProps<"div">) => {
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  <Button size="icon-sm" tabIndex={-1} variant="outline">
+                  <Button size="icon-sm" variant="outline">
                     <EllipsisIcon />
                   </Button>
                 </TableCell>
@@ -57,15 +57,15 @@ export const CommerceTableExample = (props: React.ComponentProps<"div">) => {
 };
 
 const DATA = [
-  { id: "1", name: "Vinicius V.", amount: 100, status: "success" },
-  { id: "2", name: "Bruno S.", amount: 200, status: "processing" },
-  { id: "3", name: "Clara M.", amount: 300, status: "failed" },
-  { id: "4", name: "David P.", amount: 400, status: "pending" },
+  { amount: 100, id: "1", name: "Vinicius V.", status: "success" },
+  { amount: 200, id: "2", name: "Bruno S.", status: "processing" },
+  { amount: 300, id: "3", name: "Clara M.", status: "failed" },
+  { amount: 400, id: "4", name: "David P.", status: "pending" },
 ];
 
 const BADGE_VARIANTS: Record<string, BadgeVariant> = {
-  success: "success",
-  processing: "info",
   failed: "destructive",
   pending: "warning",
+  processing: "info",
+  success: "success",
 } as const;

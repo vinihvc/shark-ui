@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { applyBodyThemeClasses } from "@/lib/preview-theme";
 import {
   type BorderRadius,
   type GrayColor,
@@ -29,17 +30,11 @@ export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
   const [{ primaryColor, grayColor, borderRadius }] = useConfig();
 
   React.useEffect(() => {
-    for (const className of Array.from(document.body.classList)) {
-      document.body.classList.remove(className);
-    }
-
-    document.body.classList.add(`bg-${grayColor}`);
-    document.body.classList.add(`radius-${borderRadius}`);
-    document.body.classList.add(`theme-${primaryColor}`);
+    applyBodyThemeClasses({ borderRadius, grayColor, primaryColor });
   }, [primaryColor, grayColor, borderRadius]);
 
   return (
-    <ThemesContext value={{ primaryColor, grayColor, borderRadius }}>
+    <ThemesContext value={{ borderRadius, grayColor, primaryColor }}>
       {children}
     </ThemesContext>
   );

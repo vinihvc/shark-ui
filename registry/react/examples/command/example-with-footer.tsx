@@ -68,14 +68,14 @@ const Example = () => {
 };
 
 const initialItems = [
-  { label: "Settings", shortcut: "⌘,", value: "settings", group: "App" },
+  { group: "App", label: "Settings", shortcut: "⌘,", value: "settings" },
   {
+    group: "App",
     label: "Keyboard Shortcuts",
     shortcut: "⌘K",
     value: "shortcuts",
-    group: "App",
   },
-  { label: "Help", shortcut: "⌘?", value: "help", group: "App" },
+  { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
 ];
 
 export default Example;

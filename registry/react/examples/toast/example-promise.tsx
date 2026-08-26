@@ -12,18 +12,18 @@ const Example = () => (
             setTimeout(() => resolve({ name: "Event" }), 2000)
           ),
         {
+          error: {
+            description: "Something went wrong.",
+            title: "Error generating event",
+          },
           loading: {
-            title: "Generating event...",
             description: "Please wait while we generate the event.",
+            title: "Generating event...",
           },
           success: (data) => ({
-            title: "Event generated!",
             description: `${data.name} has been created`,
+            title: "Event generated!",
           }),
-          error: {
-            title: "Error generating event",
-            description: "Something went wrong.",
-          },
         }
       );
     }}

@@ -29,19 +29,19 @@ import {
 
 const plans = [
   {
+    description: "For everyday use with basic features.",
     id: "starter",
     title: "Starter (100K tokens/month)",
-    description: "For everyday use with basic features.",
   },
   {
+    description: "For advanced AI usage with more features.",
     id: "pro",
     title: "Pro (1M tokens/month)",
-    description: "For advanced AI usage with more features.",
   },
   {
+    description: "For large teams and heavy usage.",
     id: "enterprise",
     title: "Enterprise (Unlimited tokens)",
-    description: "For large teams and heavy usage.",
   },
 ];
 
@@ -54,19 +54,19 @@ export function Example() {
     defaultValues: {
       plan: "",
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "plan-submitted",
-        title: "Plan submitted",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "plan-submitted",
+        title: "Plan submitted",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

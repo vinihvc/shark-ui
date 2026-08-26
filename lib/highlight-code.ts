@@ -11,6 +11,50 @@ const highlightCache = new LRUCache<string, string>({
   ttl: 1000 * 60 * 60, // 1 hour.
 });
 
+export const packageManagerCommandVariants = (raw: string) => {
+  if (raw.startsWith("npm install")) {
+    return {
+      bun: raw.replace("npm install", "bun add"),
+      npm: raw,
+      pnpm: raw.replace("npm install", "pnpm add"),
+      yarn: raw.replace("npm install", "yarn add"),
+    };
+  }
+  if (raw.startsWith("npx create-")) {
+    return {
+      bun: raw.replace("npx", "bunx --bun"),
+      npm: raw,
+      pnpm: raw.replace("npx create-", "pnpm create "),
+      yarn: raw.replace("npx create-", "yarn create "),
+    };
+  }
+  if (raw.startsWith("npm create")) {
+    return {
+      bun: raw.replace("npm create", "bun create"),
+      npm: raw,
+      pnpm: raw.replace("npm create", "pnpm create"),
+      yarn: raw.replace("npm create", "yarn create"),
+    };
+  }
+  if (raw.startsWith("npx")) {
+    return {
+      bun: raw.replace("npx", "bunx --bun"),
+      npm: raw,
+      pnpm: raw.replace("npx", "pnpm dlx"),
+      yarn: raw.replace("npx", "yarn"),
+    };
+  }
+  if (raw.startsWith("npm run")) {
+    return {
+      bun: raw.replace("npm run", "bun"),
+      npm: raw,
+      pnpm: raw.replace("npm run", "pnpm"),
+      yarn: raw.replace("npm run", "yarn"),
+    };
+  }
+  return null;
+};
+
 export const transformers = [
   {
     code(node) {
@@ -18,42 +62,12 @@ export const transformers = [
         const raw = this.source;
         node.properties.__raw__ = raw;
 
-        if (raw.startsWith("npm install")) {
-          node.properties.__npm__ = raw;
-          node.properties.__yarn__ = raw.replace("npm install", "yarn add");
-          node.properties.__pnpm__ = raw.replace("npm install", "pnpm add");
-          node.properties.__bun__ = raw.replace("npm install", "bun add");
-        }
-
-        if (raw.startsWith("npx create-")) {
-          node.properties.__npm__ = raw;
-          node.properties.__yarn__ = raw.replace("npx create-", "yarn create ");
-          node.properties.__pnpm__ = raw.replace("npx create-", "pnpm create ");
-          node.properties.__bun__ = raw.replace("npx", "bunx --bun");
-        }
-
-        // npm create.
-        if (raw.startsWith("npm create")) {
-          node.properties.__npm__ = raw;
-          node.properties.__yarn__ = raw.replace("npm create", "yarn create");
-          node.properties.__pnpm__ = raw.replace("npm create", "pnpm create");
-          node.properties.__bun__ = raw.replace("npm create", "bun create");
-        }
-
-        // npx.
-        if (raw.startsWith("npx")) {
-          node.properties.__npm__ = raw;
-          node.properties.__yarn__ = raw.replace("npx", "yarn");
-          node.properties.__pnpm__ = raw.replace("npx", "pnpm dlx");
-          node.properties.__bun__ = raw.replace("npx", "bunx --bun");
-        }
-
-        // npm run.
-        if (raw.startsWith("npm run")) {
-          node.properties.__npm__ = raw;
-          node.properties.__yarn__ = raw.replace("npm run", "yarn");
-          node.properties.__pnpm__ = raw.replace("npm run", "pnpm");
-          node.properties.__bun__ = raw.replace("npm run", "bun");
+        const variants = packageManagerCommandVariants(raw);
+        if (variants) {
+          node.properties.__bun__ = variants.bun;
+          node.properties.__npm__ = variants.npm;
+          node.properties.__pnpm__ = variants.pnpm;
+          node.properties.__yarn__ = variants.yarn;
         }
       }
     },
@@ -65,26 +79,23 @@ export const highlightCode = async (
   language = "tsx",
   options?: { showLineNumbers?: boolean }
 ) => {
-  // Create cache key from code content and language.
+  const { showLineNumbers = true } = options ?? {};
   const cacheKey = createHash("sha256")
-    .update(`pre-tab-size-2:${language}:${code}`)
+    .update(`pre-tab-size-2:${language}:${showLineNumbers}:${code}`)
     .digest("hex");
 
-  // Check cache first.
   const cached = highlightCache.get(cacheKey);
   if (cached) {
     return cached;
   }
 
-  const { showLineNumbers = true } = options ?? {};
-
   const html = await codeToHtml(code, {
+    defaultColor: false,
     lang: language,
     themes: {
-      light: "github-light",
       dark: "github-dark",
+      light: "github-light",
     },
-    defaultColor: false,
     transformers: [
       {
         code(node) {
@@ -104,7 +115,6 @@ export const highlightCode = async (
     ],
   });
 
-  // Cache the result.
   highlightCache.set(cacheKey, html);
 
   return html;

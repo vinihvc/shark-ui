@@ -13,3 +13,7 @@ export const FormatNumber = (
 export const FormatRelativeTime = (
   props: React.ComponentProps<typeof ArkFormat.RelativeTime>
 ) => <ArkFormat.RelativeTime data-slot="format-relative-time" {...props} />;
+
+export const FormatTime = (
+  props: React.ComponentProps<typeof ArkFormat.Time>
+) => <ArkFormat.Time data-slot="format-time" {...props} />;

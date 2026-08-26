@@ -30,6 +30,9 @@ const cardMediaVariants = tv({
     "[&_svg]:pointer-events-none",
     "px-(--space)",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: "bg-transparent",
@@ -40,9 +43,6 @@ const cardMediaVariants = tv({
         "[&_img]:size-full [&_img]:object-cover",
       ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 

@@ -31,19 +31,19 @@ const formSchema = z.object({
 const Example = () => {
   const form = useForm({
     defaultValues: { recommendScore: 0 },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "rating-submitted",
-        title: "Feedback saved",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "rating-submitted",
+        title: "Feedback saved",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

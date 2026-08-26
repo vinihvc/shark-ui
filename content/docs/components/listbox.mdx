@@ -29,7 +29,7 @@ npx shadcn@latest add @shark/listbox
 
 <Steps>
 
-<Step>This component depends on [Menu](/docs/components/menu). Install it first if you haven't already.</Step>
+<Step>This component depends on [Field](/docs/components/field) and [Menu](/docs/components/menu). Install them first if you haven't already.</Step>
 
 <Step>Install the following dependencies:</Step>
 
@@ -53,6 +53,7 @@ npm install @ark-ui/react tailwind-variants lucide-react
 
 ```text
 Listbox
+├── ListboxLabel
 ├── ListboxValueText
 └── ListboxContent
     ├── ListboxEmpty
@@ -86,6 +87,7 @@ const collection = createListCollection({
 });
 
 <Listbox collection={collection}>
+  <ListboxLabel>Country</ListboxLabel>
   <ListboxContent>
     {collection.items.map((item) => (
       <ListboxItem item={item} key={item.value}>
@@ -197,6 +199,14 @@ Root component. Manages selection state and keyboard navigation.
 | `disabled` | `boolean` | - |
 | `deselectable` | `boolean` | - |
 | `loopFocus` | `boolean` | `false` |
+
+### ListboxLabel
+
+Accessible label. Render as a child of `Listbox`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
 
 ### ListboxContent
 

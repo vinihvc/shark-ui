@@ -21,11 +21,11 @@ const css = {
 };
 
 const manifest: RegistryItemType = {
+  css,
+  cssVars,
+  dependencies,
   name: "swap",
   type: "registry:ui",
-  dependencies,
-  cssVars,
-  css,
 };
 
 export default manifest;

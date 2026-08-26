@@ -162,6 +162,9 @@ Root component. Uses Ark UI Dialog. Controls open state and slide direction.
 | `closeOnInteractOutside` | `boolean` | `true` |
 | `initialFocusEl` | `() => MaybeElement` | `-` |
 | `finalFocusEl` | `() => MaybeElement` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `hideMode` | `"display-none" \| "activity"` | `"display-none"` |
 | `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | `-` |
 | `onInteractOutside` | `(event: InteractOutsideEvent) => void` | `-` |
 | `className` | `string` | `-` |
@@ -173,6 +176,7 @@ Opens the sheet on click. Use `asChild` for custom triggers.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `asChild` | `boolean` | `false` |
+| `value` | `string` | `-` |
 | `className` | `string` | `-` |
 
 ### SheetContent

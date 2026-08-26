@@ -55,10 +55,10 @@ export const CircularSlider = (props: CircularSliderProps) => {
 
   const values = React.useMemo(
     () => ({
+      ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
+      ringRadius: size / 2 - thickness / 2,
       size,
       thickness,
-      ringRadius: size / 2 - thickness / 2,
-      ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
       thumbSize: Math.max(thickness + 8, 16),
     }),
     [size, thickness]
@@ -77,9 +77,9 @@ export const CircularSlider = (props: CircularSliderProps) => {
         step={step}
         style={
           {
-            width: size,
-            height: size,
             "--thickness": `${thickness}px`,
+            height: size,
+            width: size,
           } as React.CSSProperties
         }
         {...rest}
@@ -143,6 +143,20 @@ const CircularSliderProgressRing = () => {
         strokeWidth={thickness}
       />
     </svg>
+  );
+};
+
+export const CircularSliderLabel = (
+  props: React.ComponentProps<typeof ArkAngleSlider.Label>
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkAngleSlider.Label data-slot="circular-slider-label" {...rest}>
+        {children}
+      </ArkAngleSlider.Label>
+    </FieldLabel>
   );
 };
 
@@ -272,8 +286,8 @@ export const CircularSliderMarker = (
       style={
         {
           ...style,
-          "--marker-offset": `${markerOffset}px`,
           "--marker-height": `${markerHeight}px`,
+          "--marker-offset": `${markerOffset}px`,
           "--marker-width": `${markerWidth}px`,
         } as React.CSSProperties
       }

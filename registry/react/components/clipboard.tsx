@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { inputVariants } from "@/registry/react/components/input";
 
 export const useClipboard = useClipboardContext;
+export const ClipboardContext = ArkClipboard.Context;
 
 interface ClipboardProps
   extends React.ComponentProps<typeof ArkClipboard.Root> {
@@ -65,17 +66,17 @@ const clipboardValueVariants = tv({
     "text-base md:text-sm",
     "rounded-lg border border-input shadow-sm/5",
   ],
-  variants: {
-    size: {
-      xs: "h-6",
-      sm: "h-7",
-      md: "h-8",
-      lg: "h-9",
-      xl: "h-10",
-    },
-  },
   defaultVariants: {
     size: "md",
+  },
+  variants: {
+    size: {
+      lg: "h-9",
+      md: "h-8",
+      sm: "h-7",
+      xl: "h-10",
+      xs: "h-6",
+    },
   },
 });
 
@@ -102,6 +103,7 @@ export const ClipboardIndicator = (
 
   return (
     <ArkClipboard.Indicator
+      aria-hidden="true"
       className={cn("pointer-events-none", className)}
       copied={copied}
       data-slot="clipboard-indicator"

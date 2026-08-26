@@ -3,6 +3,7 @@
 import { Badge } from "@registry/react/components/badge";
 import { usePathname } from "next/navigation";
 import { NavLink } from "@/components/nav-link";
+import { DOCS_NEW_ITEMS, DOCS_UPDATED_ITEMS } from "@/config/docs-nav";
 import type { source } from "@/lib/fumadocs";
 import {
   Sidebar,
@@ -23,17 +24,6 @@ interface DocsSidebarProps extends React.ComponentProps<typeof Sidebar> {
    */
   tree: typeof source.pageTree;
 }
-
-const NEW_ITEMS = [
-  "/docs/components/date-input",
-  //
-];
-
-const UPDATED_ITEMS = [
-  "/docs/components/drawer",
-  "/docs/components/status",
-  "/docs/components/float",
-];
 
 export const DocsSidebar = (props: DocsSidebarProps) => {
   const { tree, className, ...rest } = props;
@@ -68,11 +58,11 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
                             <NavLink href={item.url}>
                               {item.name}
 
-                              {UPDATED_ITEMS.includes(item.url) && (
+                              {DOCS_UPDATED_ITEMS.includes(item.url) && (
                                 <Badge variant="outline">Updated</Badge>
                               )}
 
-                              {NEW_ITEMS.includes(item.url) && (
+                              {DOCS_NEW_ITEMS.includes(item.url) && (
                                 <Badge variant="info">New</Badge>
                               )}
                             </NavLink>

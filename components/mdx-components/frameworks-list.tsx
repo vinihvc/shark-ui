@@ -35,38 +35,38 @@ export const FrameworksList = () => (
 
 const FRAMEWORKS = [
   {
-    name: "Next.js",
     href: "/docs/installation/next",
     icon: <NextIcon className="size-8" />,
+    name: "Next.js",
   },
   {
-    name: "Vite",
     href: "/docs/installation/vite",
     icon: <ViteIcon className="size-8" />,
+    name: "Vite",
   },
   {
-    name: "TanStack Start",
     href: "/docs/installation/tanstack-start",
     icon: <TanstackIcon className="size-8" />,
+    name: "TanStack Start",
   },
   {
-    name: "Astro",
     href: "/docs/installation/astro",
     icon: <AstroIcon className="size-8" />,
+    name: "Astro",
   },
   {
-    name: "React Router",
     href: "/docs/installation/react-router",
     icon: <ReactRouterIcon className="size-8" />,
+    name: "React Router",
   },
   {
-    name: "Laravel",
     href: "/docs/installation/laravel",
     icon: <LaravelIcon className="size-8" />,
+    name: "Laravel",
   },
   {
-    name: "Manual",
     href: "/docs/installation/manual",
     icon: <ReactIcon className="size-8" />,
+    name: "Manual",
   },
 ];

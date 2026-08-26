@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react"];
 
 const manifest: RegistryItemType = {
-  name: "input-otp",
-  type: "registry:ui",
   dependencies,
+  name: "input-otp",
   registryDependencies: [absoluteUrl("/r/input.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

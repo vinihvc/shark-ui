@@ -1,6 +1,7 @@
 ---
 title: Dialog
 description: A dialog for displaying content.
+seoDescription: "Create accessible React dialogs with Shark UI, including modal content, titles, descriptions, triggers, controlled state, and Ark UI overlay behavior."
 links:
   doc: https://ark-ui.com/docs/components/dialog
   api: https://ark-ui.com/docs/components/dialog#api-reference
@@ -172,6 +173,18 @@ Use `initialFocusEl` to control which element receives focus when the dialog ope
 
 <ComponentPreview componentName="dialog" fileName="example-initial-focus" />
 
+### Autofocus
+
+Focus order is `initialFocusEl`, then `[data-autofocus]`, then the first tabbable element without `[data-no-autofocus]`. Mark chrome like the close button with `data-no-autofocus` so the real field receives focus.
+
+<ComponentPreview componentName="dialog" fileName="example-autofocus" />
+
+### Multiple triggers
+
+Give each `DialogTrigger` a `value` to reuse one dialog across several buttons. The panel repositions to the trigger that opened it.
+
+<ComponentPreview componentName="dialog" fileName="example-multiple-triggers" />
+
 ### Nested
 
 Nest dialogs within one another.
@@ -208,6 +221,10 @@ Root context provider. Controls open state and modal behavior.
 | `closeOnInteractOutside` | `boolean` | `true` |
 | `initialFocusEl` | `() => MaybeElement` | `-` |
 | `finalFocusEl` | `() => MaybeElement` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `hideMode` | `"display-none" \| "activity"` | `"display-none"` |
+| `onEnterComplete` | `() => void` | `-` |
 | `onEscapeKeyDown` | `(event: KeyboardEvent) => void` | `-` |
 | `onInteractOutside` | `(event: InteractOutsideEvent) => void` | `-` |
 | `className` | `string` | `-` |
@@ -219,6 +236,7 @@ Opens the dialog on click. Use `asChild` for custom trigger elements.
 | Prop | Type | Default |
 |------|------|---------|
 | `asChild` | `boolean` | `false` |
+| `value` | `string` | `-` |
 | `className` | `string` | `-` |
 
 ### DialogContent

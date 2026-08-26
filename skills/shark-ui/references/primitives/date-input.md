@@ -72,9 +72,7 @@ const formatter = useDateFormatter({
   formatter={formatter}
   granularity="minute"
   hourCycle={12}
->
-  <DateInputSegmentGroup />
-</DateInput>
+/>
 ```
 
 Clear button with built-in `showClear`:
@@ -86,14 +84,21 @@ const [value, setValue] = useState([parseDate("2024-04-04")]);
   showClear
   value={value}
   onValueChange={(details) => setValue(details.value)}
->
-  <DateInputSegmentGroup />
-</DateInput>
+/>
 ```
 
 Inside an existing `DateInput` tree, use `useDateInputContext()` to read state.
 
-Use [Field](/docs/components/field) + `FieldLabel` for labeled forms (no built-in label part).
+Use [Field](/docs/components/field) for helper and error text. Put `DateInputLabel` **inside** `DateInput` — `FieldLabel` does not associate with the segments.
+
+```tsx
+<Field>
+  <DateInput>
+    <DateInputLabel>Date of birth</DateInputLabel>
+  </DateInput>
+  <FieldDescription>Use your local date format.</FieldDescription>
+</Field>
+```
 
 ## Common pitfalls
 

@@ -35,14 +35,12 @@ const formSchema = z.object({
 
 const Example = () => {
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: { resume: [] as File[] },
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "resume-submitted",
-      title: "Resume uploaded",
       description: (
         <div className="mt-2 flex flex-col gap-2">
           <p className="text-muted-foreground text-sm">
@@ -64,6 +62,8 @@ const Example = () => {
           </pre>
         </div>
       ),
+      id: "resume-submitted",
+      title: "Resume uploaded",
     });
   };
 

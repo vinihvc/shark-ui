@@ -15,43 +15,43 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "welcome",
-    type: "dialog",
-    title: "Welcome!",
+    actions: [{ action: "next", label: "Start Tour" }],
     description:
       "This tour demonstrates different step types: dialog, tooltip, and floating.",
-    actions: [{ label: "Start Tour", action: "next" }],
+    id: "welcome",
+    title: "Welcome!",
+    type: "dialog",
   },
   {
-    id: "tooltip-step",
-    type: "tooltip",
-    title: "Tooltip Step",
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description:
       "This step appears as a tooltip anchored to a specific element.",
+    id: "tooltip-step",
     target: () => document.querySelector<HTMLElement>("#tour-target-element"),
-    actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    title: "Tooltip Step",
+    type: "tooltip",
   },
   {
-    id: "floating-step",
-    type: "floating",
-    placement: "bottom-end",
-    title: "Floating Step",
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description:
       "This step floats at a fixed position on the screen, independent of any target.",
-    actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    id: "floating-step",
+    placement: "bottom-end",
+    title: "Floating Step",
+    type: "floating",
   },
   {
-    id: "complete",
-    type: "dialog",
-    title: "Tour Complete!",
+    actions: [{ action: "dismiss", label: "Done" }],
     description: "You have seen all the different step types available.",
-    actions: [{ label: "Done", action: "dismiss" }],
+    id: "complete",
+    title: "Tour Complete!",
+    type: "dialog",
   },
 ];
 

@@ -29,7 +29,6 @@ export const ButtonGroupInputGroupExample = () => (
             aria-pressed={false}
             data-active={false}
             size="icon-xs"
-            tabIndex={-1}
             variant="ghost"
           >
             <AudioLinesIcon />
@@ -38,28 +37,28 @@ export const ButtonGroupInputGroupExample = () => (
         <TooltipContent>Voice Mode</TooltipContent>
       </Tooltip>
     </InputGroupAddon>
-    <InputGroupInput placeholder="Ask anything..." tabIndex={-1} />
+    <InputGroupInput placeholder="Ask anything..." />
     <Menu>
       <InputGroupAddon align="inline-end">
         <MenuTrigger asChild>
-          <InputGroupButton size="icon-xs" tabIndex={-1} variant="ghost">
+          <InputGroupButton size="icon-xs" variant="ghost">
             <PlusIcon />
           </InputGroupButton>
         </MenuTrigger>
-        <MenuContent>
-          <MenuItem value="add-new-item">
+        <MenuContent aria-hidden data-home-examples-portal tabIndex={-1}>
+          <MenuItem tabIndex={-1} value="add-new-item">
             <PlusIcon />
             Upload file
           </MenuItem>
-          <MenuItem value="upload-image">
+          <MenuItem tabIndex={-1} value="upload-image">
             <ImageIcon />
             Upload image
           </MenuItem>
-          <MenuItem value="upload-video">
+          <MenuItem tabIndex={-1} value="upload-video">
             <VideoIcon />
             Upload video
           </MenuItem>
-          <MenuItem value="upload-audio">
+          <MenuItem tabIndex={-1} value="upload-audio">
             <AudioLinesIcon />
             Upload audio
           </MenuItem>

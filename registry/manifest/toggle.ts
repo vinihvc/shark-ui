@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "tailwind-variants"];
 
 const manifest: RegistryItemType = {
-  name: "toggle",
-  type: "registry:ui",
   dependencies,
+  name: "toggle",
   registryDependencies: [absoluteUrl("/r/button.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

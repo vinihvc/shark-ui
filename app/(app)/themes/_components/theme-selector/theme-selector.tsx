@@ -12,36 +12,32 @@ import { ThemeSelectorGray } from "./theme-selector.gray";
 import { ThemeSelectorPrimary } from "./theme-selector.primary";
 import { ThemeSelectorRadius } from "./theme-selector.radius";
 
-export const ThemeSelector = (props: React.ComponentProps<typeof Card>) => {
-  const { children, ...rest } = props;
+export const ThemeSelector = (props: React.ComponentProps<typeof Card>) => (
+  <div className="grid gap-4 lg:grid-cols-2">
+    <Card {...props}>
+      <CardHeader
+        description="Select a theme to preview"
+        title="Theme Selector"
+      >
+        <CardAction>
+          <CopyThemeCodeDialog>
+            <Button size="sm" variant="outline">
+              <ClipboardIcon />
+              Copy theme
+            </Button>
+          </CopyThemeCodeDialog>
+        </CardAction>
+      </CardHeader>
 
-  return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      <Card {...rest}>
-        <CardHeader
-          description="Select a theme to preview"
-          title="Theme Selector"
-        >
-          <CardAction>
-            <CopyThemeCodeDialog>
-              <Button size="sm" variant="outline">
-                <ClipboardIcon />
-                Copy theme
-              </Button>
-            </CopyThemeCodeDialog>
-          </CardAction>
-        </CardHeader>
+      <CardContent>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <ThemeSelectorGray />
+          <ThemeSelectorPrimary />
+          <ThemeSelectorRadius />
+        </div>
+      </CardContent>
+    </Card>
 
-        <CardContent>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <ThemeSelectorGray />
-            <ThemeSelectorPrimary />
-            <ThemeSelectorRadius />
-          </div>
-        </CardContent>
-      </Card>
-
-      <ButtonVariantsExample />
-    </div>
-  );
-};
+    <ButtonVariantsExample />
+  </div>
+);

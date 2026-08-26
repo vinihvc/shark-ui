@@ -18,6 +18,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/react/components/input-group";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const useCombobox = useArkComboboxContext;
 
@@ -141,7 +142,7 @@ export const ComboboxTrigger = (
     >
       {children ?? (
         <Button className="size-4" variant="ghost">
-          <ChevronsUpDownIcon />
+          <ChevronsUpDownIcon className="size-4" />
         </Button>
       )}
     </ArkCombobox.Trigger>
@@ -174,11 +175,10 @@ export const ComboboxContent = (
             "relative z-50",
             "max-h-96 min-w-48",
             "origin-(--transform-origin)",
-            "p-1",
+            "flex min-h-0 flex-col overflow-hidden p-0",
             "bg-popover",
             "text-popover-foreground",
             "rounded-xl border shadow-lg/5",
-            "overflow-y-auto",
             "outline-none",
             "data-[state=closed]:animate-out data-[state=open]:animate-in",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -193,7 +193,11 @@ export const ComboboxContent = (
           data-slot="combobox-content"
           {...rest}
         >
-          {children}
+          <ScrollArea className="min-h-0 flex-1">
+            <div className="p-1" data-slot="combobox-scroll">
+              {children}
+            </div>
+          </ScrollArea>
         </ArkCombobox.Content>
       </ComboboxPositioner>
     </Portal>
@@ -252,14 +256,14 @@ export const comboboxItemVariants = tv({
     "data-disabled:pointer-events-none data-disabled:opacity-64",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
-  variants: {
-    showIndicator: {
-      true: "pe-8",
-      false: "pe-2",
-    },
-  },
   defaultVariants: {
     showIndicator: true,
+  },
+  variants: {
+    showIndicator: {
+      false: "pe-2",
+      true: "pe-8",
+    },
   },
 });
 

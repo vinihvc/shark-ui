@@ -6,6 +6,7 @@ import React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/registry/react/components/button";
+import { useHotkey } from "@/registry/react/components/hotkeys";
 import { Input } from "@/registry/react/components/input";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { Separator } from "@/registry/react/components/separator";
@@ -96,32 +97,22 @@ export const SidebarProvider = (props: SidebarProviderProps) => {
     }
   }, [isMobile, setOpen]);
 
-  React.useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
-        (event.metaKey || event.ctrlKey)
-      ) {
-        event.preventDefault();
-        toggleSidebar();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [toggleSidebar]);
+  useHotkey({
+    action: toggleSidebar,
+    hotkey: `mod+${SIDEBAR_KEYBOARD_SHORTCUT}`,
+    options: { preventDefault: true },
+  });
 
   const state = open ? "expanded" : "collapsed";
 
   const contextValue = React.useMemo<SidebarContextProps>(
     () => ({
-      state,
-      open,
-      setOpen,
       isMobile,
+      open,
       openMobile,
+      setOpen,
       setOpenMobile,
+      state,
       toggleSidebar,
     }),
     [state, open, setOpen, isMobile, openMobile, toggleSidebar]
@@ -496,9 +487,9 @@ export const SidebarGroupAction = (
     <ark.button
       className={cn(
         buttonVariants({
-          variant: "ghost",
-          size: "icon-xs",
           clickEffect: false,
+          size: "icon-xs",
+          variant: "ghost",
         }),
         "absolute inset-e-3 top-3.5",
         "text-sidebar-foreground",
@@ -650,9 +641,9 @@ export const SidebarMenuAction = (props: SidebarMenuActionProps) => {
     <ark.button
       className={cn(
         buttonVariants({
-          variant: "ghost",
-          size: "icon-xs",
           clickEffect: false,
+          size: "icon-xs",
+          variant: "ghost",
         }),
         "absolute inset-e-1 top-1.5",
         "text-sidebar-foreground",
@@ -787,7 +778,7 @@ export const SidebarMenuSubButton = (props: SidebarMenuSubButtonProps) => {
   return (
     <ark.a
       className={cn(
-        buttonVariants({ size, variant: "ghost", clickEffect: false }),
+        buttonVariants({ clickEffect: false, size, variant: "ghost" }),
         "w-full min-w-0",
         "justify-start",
         "px-2",

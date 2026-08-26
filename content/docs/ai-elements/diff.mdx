@@ -1,0 +1,80 @@
+---
+title: Diff
+description: Unified diff hunks with add, delete, and context lines.
+---
+
+<ComponentPreview componentName="diff" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/diff
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/diff.tsx" src="/diff.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Diff
+├── DiffHeader
+└── DiffContent
+    └── DiffLine
+```
+
+## Usage
+
+```tsx
+import { Diff, DiffContent, DiffHeader, DiffLine } from "@/components/ui/diff";
+```
+
+```tsx
+<Diff>
+  <DiffHeader>src/utils/helpers.ts</DiffHeader>
+  <DiffContent>
+    <DiffLine type="delete">  return Boolean(email);</DiffLine>
+    <DiffLine type="add">  return isValidEmail(email);</DiffLine>
+  </DiffContent>
+</Diff>
+```
+
+Use in a [Tool](/docs/ai-elements/tool) result or beside the transcript as an artifact.
+
+## API Reference
+
+### DiffLine
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `type` | `"add" \| "delete" \| "context"` | `"context"` |

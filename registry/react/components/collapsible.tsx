@@ -15,20 +15,24 @@ export const Collapsible = (
 ) => {
   const {
     collapsedHeight,
+    collapsedWidth,
     lazyMount = true,
     unmountOnExit = true,
     className,
     ...rest
   } = props;
 
+  const isPartialCollapse = Boolean(collapsedHeight || collapsedWidth);
+
   return (
     <ArkCollapsible.Root
       className={cn("group/collapsible", className)}
       collapsedHeight={collapsedHeight}
-      data-partial-collapse={collapsedHeight ? "" : undefined}
+      collapsedWidth={collapsedWidth}
+      data-partial-collapse={isPartialCollapse ? "" : undefined}
       data-slot="collapsible"
-      lazyMount={collapsedHeight ? false : lazyMount}
-      unmountOnExit={collapsedHeight ? false : unmountOnExit}
+      lazyMount={isPartialCollapse ? false : lazyMount}
+      unmountOnExit={isPartialCollapse ? false : unmountOnExit}
       {...rest}
     />
   );
@@ -84,11 +88,15 @@ export const CollapsibleIndicator = (
 
   return (
     <ArkCollapsible.Indicator
-      className={cn("data-[state=open]:[&_svg]:rotate-180", className)}
+      className={cn(
+        "inline-flex size-4 items-center justify-center",
+        "data-[state=open]:[&_svg]:rotate-180",
+        className
+      )}
       data-slot="collapsible-indicator"
       {...rest}
     >
-      <ChevronDownIcon className="transition-transform duration-200 motion-reduce:transition-none!" />
+      <ChevronDownIcon className="size-4 shrink-0 transition-transform duration-200 motion-reduce:transition-none!" />
     </ArkCollapsible.Indicator>
   );
 };

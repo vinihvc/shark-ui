@@ -24,15 +24,15 @@ export const nativeSelectVariants = tv({
     "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
     "motion-reduce:transition-none!",
   ],
-  variants: {
-    size: {
-      sm: ["h-7"],
-      md: ["h-8"],
-      lg: ["h-9"],
-    },
-  },
   defaultVariants: {
     size: "md",
+  },
+  variants: {
+    size: {
+      lg: ["h-9"],
+      md: ["h-8"],
+      sm: ["h-7"],
+    },
   },
 });
 
@@ -68,7 +68,10 @@ export const NativeSelect = (props: NativeSelectProps) => {
       />
       <ChevronsUpDownIcon
         aria-hidden="true"
-        className={cn("absolute inset-e-2.5 top-1/2 -translate-y-1/2")}
+        className={cn(
+          "absolute inset-e-2.5 top-1/2 -translate-y-1/2",
+          "size-4"
+        )}
         data-slot="native-select-icon"
       />
     </ark.div>

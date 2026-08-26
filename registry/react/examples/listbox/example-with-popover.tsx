@@ -28,13 +28,13 @@ const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
+    filter: contains,
     initialItems: [
       { label: "Brazil", value: "br" },
       { label: "Mexico", value: "mx" },
       { label: "Ireland", value: "ie" },
       { label: "Canada", value: "ca" },
     ],
-    filter: contains,
   });
 
   const isEmpty = collection.items.length === 0 && search;
@@ -55,7 +55,7 @@ const Example = () => {
             variant="outline"
           >
             <ListboxValueText placeholder="Select framework" />
-            <ChevronsUpDown className="opacity-64" />
+            <ChevronsUpDown className="size-4 opacity-64" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="min-w-64 gap-2 p-1">

@@ -70,12 +70,12 @@ const Example = () => (
 
 const collection = createListCollection({
   items: [
-    { label: "New file", value: "new-file", section: "actions" },
-    { label: "Edit file", value: "edit-file", section: "actions" },
+    { label: "New file", section: "actions", value: "new-file" },
+    { label: "Edit file", section: "actions", value: "edit-file" },
     {
       label: "Delete file",
-      value: "delete-file",
       section: "danger",
+      value: "delete-file",
     },
   ],
 });

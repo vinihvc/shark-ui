@@ -115,7 +115,7 @@ Collapsibles can be nested to create hierarchical structures.
 
 ### Partial Collapse
 
-Use the `collapsedHeight` prop to show a portion of the content when collapsed.
+Use the `collapsedHeight` or `collapsedWidth` prop to show a portion of the content when collapsed.
 
 <ComponentPreview componentName="collapsible" fileName="example-partial-collapse" />
 
@@ -140,6 +140,10 @@ Root component. Controls expand/collapse state and animation.
 | `defaultOpen` | `boolean` | `false` |
 | `onOpenChange` | `({ open }: OpenChangeDetails) => void` | `-` |
 | `collapsedHeight` | `string` | `-` |
+| `collapsedWidth` | `string` | `-` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `hideMode` | `"display-none" \| "activity"` | `"display-none"` |
 | `className` | `string` | `-` |
 
 ### CollapsibleTrigger

@@ -2,10 +2,17 @@ name: Build registry
 
 on:
   push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SITE_URL: https://shark.vini.one
     steps:
       - uses: actions/checkout@v4
 
@@ -13,11 +20,14 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version: "26"
           cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck and Build
-        run: pnpm run registry:build && pnpm run typecheck
+      - name: Registry build
+        run: pnpm run registry:build
+
+      - name: Typecheck
+        run: pnpm run typecheck

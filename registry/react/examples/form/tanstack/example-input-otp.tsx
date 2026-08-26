@@ -33,19 +33,19 @@ const formSchema = z.object({
 const Example = () => {
   const form = useForm({
     defaultValues: { backupCode: ["", "", "", "", "", ""] },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "backup-code-submitted",
-        title: "Backup code verified",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "backup-code-submitted",
+        title: "Backup code verified",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

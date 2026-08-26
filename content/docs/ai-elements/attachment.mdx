@@ -1,0 +1,144 @@
+---
+title: Attachment
+description: A file or image card with upload state, actions, and a full-card trigger.
+---
+
+<ComponentPreview componentName="attachment" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/attachment
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Button](/docs/components/button). Install it first if you haven't already.</Step>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/attachment.tsx" src="/attachment.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+AttachmentGroup
+└── Attachment
+    ├── AttachmentTrigger
+    ├── AttachmentMedia
+    ├── AttachmentContent
+    │   ├── AttachmentTitle
+    │   └── AttachmentDescription
+    └── AttachmentActions
+        └── AttachmentAction
+```
+
+## Usage
+
+```tsx
+import {
+  Attachment,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@/components/ui/attachment";
+```
+
+```tsx
+<Attachment>
+  <AttachmentMedia />
+  <AttachmentContent>
+    <AttachmentTitle />
+    <AttachmentDescription />
+  </AttachmentContent>
+</Attachment>
+```
+
+`uploading` and `processing` apply the `shimmer` utility to the title. Pair `AttachmentTrigger` with `asChild` when the whole card should open a dialog or link.
+
+## Image
+
+Set `variant="image"` on `AttachmentMedia` and render an image inside it. Use `orientation="vertical"` to stack the media above the content.
+
+<ComponentPreview componentName="attachment" fileName="example-image" />
+
+## States
+
+Set `state` to reflect the upload lifecycle. `uploading` and `processing` shimmer the title, and `error` switches to a destructive treatment.
+
+<ComponentPreview componentName="attachment" fileName="example-states" />
+
+## Sizes
+
+Use `size` to switch between `default`, `sm`, and `xs`.
+
+<ComponentPreview componentName="attachment" fileName="example-sizes" />
+
+## Group
+
+Wrap attachments in `AttachmentGroup` to lay them out in a horizontally scrollable, snapping row.
+
+<ComponentPreview componentName="attachment" fileName="example-group" />
+
+## Trigger
+
+Add an `AttachmentTrigger` to make the whole card open a link or dialog. It fills the card behind the actions, so the actions stay clickable.
+
+<ComponentPreview componentName="attachment" fileName="example-trigger" />
+
+```tsx
+<Dialog>
+  <Attachment>
+    {/* media, content, actions */}
+    <DialogTrigger asChild>
+      <AttachmentTrigger aria-label="Preview research-summary.pdf" />
+    </DialogTrigger>
+  </Attachment>
+  <DialogContent>{/* ... */}</DialogContent>
+</Dialog>
+```
+
+## API Reference
+
+### Attachment
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `state` | `"idle" \| "uploading" \| "processing" \| "error" \| "done"` | `"done"` |
+| `size` | `"default" \| "sm" \| "xs"` | `"default"` |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentTrigger
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |

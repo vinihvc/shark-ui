@@ -133,6 +133,9 @@ const drawerPositionerVariants = tv({
     "data-[swipe-direction=left]:items-stretch data-[swipe-direction=left]:justify-start",
     "data-[swipe-direction=right]:items-stretch data-[swipe-direction=right]:justify-end",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: "",
@@ -144,9 +147,6 @@ const drawerPositionerVariants = tv({
         "data-[swipe-direction=right]:pt-(--inset) data-[swipe-direction=right]:pb-(--inset)",
       ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 
@@ -222,6 +222,9 @@ const drawerContentVariants = tv({
     "data-[swipe-direction=right]:data-[state=open]:animate-drawer-slide-in-right",
     "data-[swipe-direction=right]:data-[state=closed]:animate-drawer-slide-out-right",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: "",
@@ -230,9 +233,6 @@ const drawerContentVariants = tv({
         "sm:**:data-[slot=drawer-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
       ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 
@@ -469,14 +469,14 @@ const drawerFooterVariants = tv({
     "sm:rounded-none",
     "px-(--space) py-4",
   ],
-  variants: {
-    variant: {
-      default: "border-t bg-muted/48",
-      bare: "",
-    },
-  },
   defaultVariants: {
     variant: "default",
+  },
+  variants: {
+    variant: {
+      bare: "",
+      default: "border-t bg-muted/48",
+    },
   },
 });
 

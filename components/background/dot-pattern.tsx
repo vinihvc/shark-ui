@@ -29,14 +29,14 @@ export const DotPattern = (props: DotPatternProps) => {
   } = props;
 
   const containerRef = React.useRef<SVGSVGElement>(null);
-  const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
+  const [dimensions, setDimensions] = React.useState({ height: 0, width: 0 });
 
   React.useEffect(() => {
     const updateDimensions = () => {
       if (containerRef.current) {
         const { width: w, height: h } =
           containerRef.current.getBoundingClientRect();
-        setDimensions({ width: w, height: h });
+        setDimensions({ height: h, width: w });
       }
     };
 

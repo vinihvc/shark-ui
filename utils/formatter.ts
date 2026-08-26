@@ -15,3 +15,6 @@ export const replaceContentForCopy = (inputCode: string) => {
 
   return code;
 };
+
+export const replaceRegistryImportsForCopy = (inputCode: string) =>
+  inputCode.replaceAll("@/registry/react/components", "@/components/ui");

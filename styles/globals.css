@@ -3,6 +3,7 @@
 @import "./themes.css";
 @import "./prose.css";
 @import "./hitbox.css";
+@import "./shimmer.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -125,6 +126,19 @@
     }
     to {
       height: var(--height);
+    }
+  }
+
+  @keyframes templates-workbench-in {
+    from {
+      opacity: 0.72;
+      transform: translateY(1rem);
+      filter: blur(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
     }
   }
 
@@ -328,16 +342,16 @@
   --accent: color-mix(in srgb, var(--color-neutral-950) 6%, var(--background));
   --accent-foreground: var(--color-neutral-800);
 
-  --destructive: var(--color-red-500);
+  --destructive: var(--color-red-600);
   --destructive-foreground: var(--color-red-700);
 
-  --info: var(--color-blue-500);
+  --info: var(--color-blue-600);
   --info-foreground: var(--color-blue-700);
 
-  --success: var(--color-emerald-500);
+  --success: var(--color-emerald-600);
   --success-foreground: var(--color-emerald-700);
 
-  --warning: var(--color-amber-500);
+  --warning: var(--color-amber-600);
   --warning-foreground: var(--color-amber-700);
 
   --border: color-mix(in srgb, var(--color-neutral-950) 12%, var(--background));
@@ -410,20 +424,16 @@
   --accent: color-mix(in srgb, var(--color-neutral-50) 8%, var(--background));
   --accent-foreground: var(--color-neutral-100);
 
-  --destructive: color-mix(
-    in srgb,
-    var(--color-red-600) 90%,
-    var(--color-neutral-50)
-  );
+  --destructive: var(--color-red-600);
   --destructive-foreground: var(--color-red-400);
 
-  --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-400);
+  --info: var(--color-blue-600);
+  --info-foreground: var(--color-blue-300);
 
-  --success: var(--color-emerald-500);
+  --success: var(--color-emerald-600);
   --success-foreground: var(--color-emerald-400);
 
-  --warning: var(--color-amber-500);
+  --warning: var(--color-amber-600);
   --warning-foreground: var(--color-amber-400);
 
   --border: color-mix(in srgb, var(--color-neutral-50) 12%, var(--background));
@@ -480,7 +490,7 @@
   }
 
   body {
-    @apply bg-background min-h-svh text-foreground flex flex-col scrollbar-thin overflow-y-scroll scrollbar-track-transparent scrollbar-thumb-foreground/20 font-sans;
+    @apply bg-background min-h-svh text-foreground flex flex-col scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 font-sans;
   }
 
   main {
@@ -645,6 +655,37 @@
     font-size: 0.8rem;
 
     @apply rounded-sm;
+  }
+
+  [data-slot="composition-code-viewer"] [data-rehype-pretty-code-figure] {
+    margin-top: 0;
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  [data-slot="composition-code-viewer"] [data-rehype-pretty-code-figure] pre {
+    min-width: 100%;
+    padding-block: calc(var(--spacing) * 4);
+    padding-inline: 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  [data-slot="composition-code-viewer"]
+    [data-line-numbers]
+    [data-line]::before {
+    width: calc(var(--spacing) * 11);
+    padding-right: calc(var(--spacing) * 4);
+    color: color-mix(in oklab, var(--muted-foreground) 72%, transparent);
+    background: transparent;
+  }
+
+  [data-slot="composition-code-viewer"] [data-line] {
+    min-height: calc(var(--spacing) * 5.5);
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .highlighted-word {

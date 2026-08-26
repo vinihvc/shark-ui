@@ -1,10 +1,10 @@
 import type { RegistryItemType } from "@/lib/registry";
 
 const manifest: RegistryItemType = {
-  name: "use-is-mobile",
-  type: "registry:hook",
   dependencies: [],
+  name: "use-is-mobile",
   registryDependencies: [],
+  type: "registry:hook",
 };
 
 export default manifest;

@@ -1,0 +1,89 @@
+---
+title: Code Block
+description: A code panel with a filename, copy control, and optional line numbers.
+---
+
+<ComponentPreview componentName="code-block" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/code-block
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Clipboard](/docs/components/clipboard) and [Button](/docs/components/button). Install them first if you haven't already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/code-block.tsx" src="/code-block.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+CodeBlock
+├── CodeBlockHeader
+│   ├── CodeBlockTitle
+│   └── CodeBlockCopy
+└── CodeBlockContent
+```
+
+## Usage
+
+```tsx
+import {
+  CodeBlock,
+  CodeBlockContent,
+  CodeBlockCopy,
+  CodeBlockHeader,
+  CodeBlockTitle,
+} from "@/components/ui/code-block";
+```
+
+```tsx
+<CodeBlock code={source}>
+  <CodeBlockHeader>
+    <CodeBlockTitle>helpers.ts</CodeBlockTitle>
+    <CodeBlockCopy />
+  </CodeBlockHeader>
+  <CodeBlockContent showLineNumbers>{source}</CodeBlockContent>
+</CodeBlock>
+```
+
+This is a presentational panel. Pass already-highlighted nodes as children of `CodeBlockContent` if you need syntax colors. For file edits, prefer [Diff](/docs/ai-elements/diff).
+
+## API Reference
+
+### CodeBlock
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `code` | `string` | `""` |
+
+### CodeBlockContent
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showLineNumbers` | `boolean` | `false` |

@@ -33,6 +33,136 @@ import {
 } from "./registry/react/components/table";
 
 export const mdxComponents = {
+  Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (
+    <Alert className={cn("my-6", className)} {...props} />
+  ),
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+  a: ({ href, className, children, ...props }: React.ComponentProps<"a">) => {
+    const isExternal = typeof href === "string" && href.startsWith("http");
+
+    return (
+      <Link
+        className={cn(
+          "inline-flex items-center gap-0.5",
+          "font-medium text-foreground",
+          "rounded-md border border-transparent",
+          "underline underline-offset-4",
+          "hover:underline",
+          "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "**:[code]:decoration-primary",
+          className
+        )}
+        href={href ?? "#"}
+        {...(isExternal && {
+          rel: "noopener noreferrer",
+          target: "_blank",
+        })}
+        {...props}
+      >
+        {children}
+        {isExternal && <ArrowUpRightIcon className="size-3.5 opacity-90" />}
+      </Link>
+    );
+  },
+  Button,
+  blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
+    <blockquote
+      className={cn("mt-6 border-l-2 ps-6 italic", className)}
+      {...props}
+    />
+  ),
+  CodeCollapsibleWrapper,
+  CodeTabs,
+  ComponentPreview,
+  ComponentSource,
+  code: ({
+    className,
+    __raw__,
+    __src__,
+    __npm__,
+    __yarn__,
+    __pnpm__,
+    __bun__,
+    ...props
+  }: React.ComponentProps<"code"> & {
+    __raw__?: string;
+    __src__?: string;
+    __npm__?: string;
+    __yarn__?: string;
+    __pnpm__?: string;
+    __bun__?: string;
+  }) => {
+    // Inline Code.
+    if (typeof props.children === "string") {
+      return (
+        <code
+          className={cn(
+            "relative",
+            "px-1",
+            "bg-primary/5",
+            "font-mono text-primary text-sm",
+            "rounded-md",
+            "outline-none",
+            className
+          )}
+          {...props}
+        />
+      );
+    }
+
+    // npm command.
+    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__;
+    if (isNpmCommand) {
+      return (
+        <CodeBlockCommand
+          __bun__={__bun__}
+          __npm__={__npm__}
+          __pnpm__={__pnpm__}
+          __yarn__={__yarn__}
+        />
+      );
+    }
+
+    // Default codeblock.
+    return (
+      <>
+        {__raw__ && (
+          <CopyButton
+            className="absolute inset-e-1.5 top-1.5"
+            value={__raw__}
+          />
+        )}
+        <code {...props} />
+      </>
+    );
+  },
+  figcaption: ({
+    className,
+    children,
+    ...props
+  }: React.ComponentProps<"figcaption">) => {
+    const iconExtension =
+      "data-language" in props && typeof props["data-language"] === "string"
+        ? getIconForLanguageExtension(props["data-language"])
+        : null;
+
+    return (
+      <figcaption
+        className={cn(
+          "flex items-center gap-2",
+          "text-[.8125rem] text-code-foreground",
+          "[&_svg]:size-4.5 [&_svg]:text-code-foreground [&_svg]:opacity-64 sm:[&_svg]:size-4",
+          className
+        )}
+        {...props}
+      >
+        {iconExtension}
+        {children}
+      </figcaption>
+    );
+  },
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
       className={cn(
@@ -137,6 +267,23 @@ export const mdxComponents = {
       </h6>
     );
   },
+  hr: ({ ...props }: React.ComponentProps<"hr">) => (
+    <hr className="my-4 md:my-8" {...props} />
+  ),
+  InfoIcon,
+  img: ({ className, ...props }: React.ComponentProps<"img">) => (
+    <img className={cn("rounded-lg", className)} {...props} />
+  ),
+  li: ({ className, ...props }: React.ComponentProps<"li">) => (
+    <li className={cn("mt-2", className)} {...props} />
+  ),
+  ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
+    <ol
+      className={cn("my-6 ms-6 list-decimal text-muted-foreground", className)}
+      {...props}
+    />
+  ),
+  PreviewIframe,
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
       className={cn(
@@ -145,132 +292,6 @@ export const mdxComponents = {
       )}
       {...props}
     />
-  ),
-  a: ({ href, className, children, ...props }: React.ComponentProps<"a">) => {
-    const isExternal = typeof href === "string" && href.startsWith("http");
-
-    return (
-      <Link
-        className={cn(
-          "inline-flex items-center gap-0.5",
-          "font-medium text-foreground",
-          "rounded-md border border-transparent",
-          "underline underline-offset-4",
-          "hover:underline",
-          "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          "**:[code]:decoration-primary",
-          className
-        )}
-        href={href ?? "#"}
-        {...(isExternal && {
-          rel: "noopener noreferrer",
-          target: "_blank",
-        })}
-        {...props}
-      >
-        {children}
-        {isExternal && <ArrowUpRightIcon className="size-3.5 opacity-90" />}
-      </Link>
-    );
-  },
-  Button,
-  blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
-    <blockquote
-      className={cn("mt-6 border-l-2 ps-6 italic", className)}
-      {...props}
-    />
-  ),
-  code: ({
-    className,
-    __raw__,
-    __src__,
-    __npm__,
-    __yarn__,
-    __pnpm__,
-    __bun__,
-    ...props
-  }: React.ComponentProps<"code"> & {
-    __raw__?: string;
-    __src__?: string;
-    __npm__?: string;
-    __yarn__?: string;
-    __pnpm__?: string;
-    __bun__?: string;
-  }) => {
-    // Inline Code.
-    if (typeof props.children === "string") {
-      return (
-        <code
-          className={cn(
-            "relative",
-            "px-1",
-            "bg-primary/5",
-            "font-mono text-primary text-sm",
-            "rounded-md",
-            "outline-none",
-            className
-          )}
-          {...props}
-        />
-      );
-    }
-
-    // npm command.
-    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__;
-    if (isNpmCommand) {
-      return (
-        <CodeBlockCommand
-          __bun__={__bun__}
-          __npm__={__npm__}
-          __pnpm__={__pnpm__}
-          __yarn__={__yarn__}
-        />
-      );
-    }
-
-    // Default codeblock.
-    return (
-      <>
-        {__raw__ && (
-          <CopyButton
-            className="absolute inset-e-1.5 top-1.5"
-            value={__raw__}
-          />
-        )}
-        <code {...props} />
-      </>
-    );
-  },
-  figcaption: ({
-    className,
-    children,
-    ...props
-  }: React.ComponentProps<"figcaption">) => {
-    const iconExtension =
-      "data-language" in props && typeof props["data-language"] === "string"
-        ? getIconForLanguageExtension(props["data-language"])
-        : null;
-
-    return (
-      <figcaption
-        className={cn(
-          "flex items-center gap-2",
-          "text-[.8125rem] text-code-foreground",
-          "[&_svg]:size-4.5 [&_svg]:text-code-foreground [&_svg]:opacity-64 sm:[&_svg]:size-4",
-          className
-        )}
-        {...props}
-      >
-        {iconExtension}
-        {children}
-      </figcaption>
-    );
-  },
-  hr: ({ ...props }: React.ComponentProps<"hr">) => (
-    <hr className="my-4 md:my-8" {...props} />
-  ),
-  img: ({ className, ...props }: React.ComponentProps<"img">) => (
-    <img className={cn("rounded-lg", className)} {...props} />
   ),
   pre: ({
     className,
@@ -288,15 +309,15 @@ export const mdxComponents = {
       />
     </ScrollArea>
   ),
-  Steps: ({ ...props }) => (
-    <div
-      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ms-4 md:border-s md:ps-8"
-      {...props}
-    />
-  ),
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn("mt-8 scroll-m-32 tracking-tight", className)}
+      {...props}
+    />
+  ),
+  Steps: ({ ...props }) => (
+    <div
+      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ms-4 md:border-s md:ps-8"
       {...props}
     />
   ),
@@ -306,6 +327,21 @@ export const mdxComponents = {
       {...props}
     />
   ),
+  Tabs,
+  TabsContent: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsContent>) => (
+    <TabsContent
+      className={cn(
+        "relative [&>.steps]:mt-6 [&_h3]:font-medium [&_h3]:text-base *:[figure]:first:mt-0",
+        className
+      )}
+      {...props}
+    />
+  ),
+  TabsList,
+  TabsTrigger,
   table: ({ className, ...props }: React.ComponentProps<typeof Table>) => (
     <ScrollArea className="my-6 rounded-xl border">
       <Table
@@ -327,14 +363,14 @@ export const mdxComponents = {
       {...props}
     />
   ),
+  th: ({ className, ...props }: React.ComponentProps<typeof TableHead>) => (
+    <TableHead className={cn("font-medium", className)} {...props} />
+  ),
   thead: ({
     className,
     ...props
   }: React.ComponentProps<typeof TableHeader>) => (
     <TableHeader className={cn("bg-muted", className)} {...props} />
-  ),
-  th: ({ className, ...props }: React.ComponentProps<typeof TableHead>) => (
-    <TableHead className={cn("font-medium", className)} {...props} />
   ),
   tr: (props: React.ComponentProps<typeof TableRow>) => <TableRow {...props} />,
   ul: ({ className, ...props }: React.ComponentProps<"ul">) => (
@@ -343,42 +379,6 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  ol: ({ className, ...props }: React.ComponentProps<"ol">) => (
-    <ol
-      className={cn("my-6 ms-6 list-decimal text-muted-foreground", className)}
-      {...props}
-    />
-  ),
-  li: ({ className, ...props }: React.ComponentProps<"li">) => (
-    <li className={cn("mt-2", className)} {...props} />
-  ),
-  Alert: ({ className, ...props }: React.ComponentProps<typeof Alert>) => (
-    <Alert className={cn("my-6", className)} {...props} />
-  ),
-  AlertAction,
-  AlertDescription,
-  AlertTitle,
-  Tabs,
-  TabsList,
-  TabsContent: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsContent>) => (
-    <TabsContent
-      className={cn(
-        "relative [&>.steps]:mt-6 [&_h3]:font-medium [&_h3]:text-base *:[figure]:first:mt-0",
-        className
-      )}
-      {...props}
-    />
-  ),
-  TabsTrigger,
-  InfoIcon,
-  ComponentPreview,
-  ComponentSource,
-  CodeTabs,
-  PreviewIframe,
-  CodeCollapsibleWrapper,
 };
 
 const getHeadingId = (children: React.ReactNode) =>

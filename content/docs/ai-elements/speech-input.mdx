@@ -1,0 +1,62 @@
+---
+title: Speech Input
+description: A microphone control that captures voice with the Web Speech API.
+---
+
+<ComponentPreview componentName="speech-input" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/speech-input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Button](/docs/components/button). Install required dependencies first if you haven&apos;t already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/speech-input.tsx" src="/speech-input.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+SpeechInput
+```
+
+## Usage
+
+```tsx
+import { SpeechInput } from "@/components/ui/speech-input";
+```
+
+```tsx
+<SpeechInput onTranscriptionChange={(text) => append(text)} />
+```
+
+Uses the browser Web Speech API when available. The control is disabled with a tooltip when speech recognition is unsupported. Requires a secure context (HTTPS or localhost).
+
+
+

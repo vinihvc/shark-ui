@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["authentication"],
+  "dependencies": ["lucide-react"],
+  "description": "A focused sign-in page with email, password, and SSO actions.",
+  "files": [
+    {
+      "content": "import { WavesIcon } from \"lucide-react\";\nimport { LoginForm } from \"@/components/login-form\";\n\nconst LoginPage = () => (\n  <main className=\"grid min-h-svh bg-muted/35 lg:grid-cols-[minmax(0,1.05fr)_minmax(28rem,0.95fr)]\">\n    <section className=\"relative hidden overflow-hidden border-e bg-foreground text-background lg:flex lg:flex-col lg:justify-between lg:p-12\">\n      <div className=\"flex items-center gap-2 font-semibold\">\n        <span className=\"grid size-9 place-items-center rounded-lg bg-background text-foreground\">\n          <WavesIcon aria-hidden=\"true\" className=\"size-5\" />\n        </span>\n        Northstar\n      </div>\n      <div className=\"max-w-xl\">\n        <p className=\"text-balance font-medium text-3xl leading-tight tracking-[-0.025em] xl:text-4xl\">\n          Bring your team, priorities, and progress into one clear view.\n        </p>\n        <p className=\"mt-4 max-w-lg text-background/70\">\n          Make better decisions with a workspace that stays useful from the\n          first task to the quarterly review.\n        </p>\n      </div>\n      <p className=\"text-background/60 text-sm\">\n        Trusted by product teams at Northstar, Helix, and Cove.\n      </p>\n    </section>\n\n    <section className=\"flex min-h-svh items-center justify-center px-5 py-10 sm:px-8\">\n      <div className=\"w-full max-w-md\">\n        <a\n          className=\"mb-8 flex items-center gap-2 font-semibold lg:hidden\"\n          href=\"#\"\n        >\n          <span className=\"grid size-8 place-items-center rounded-lg bg-primary text-primary-foreground\">\n            <WavesIcon aria-hidden=\"true\" className=\"size-4\" />\n          </span>\n          Northstar\n        </a>\n        <LoginForm />\n      </div>\n    </section>\n  </main>\n);\n\nexport default LoginPage;\n",
+      "path": "blocks/login-01/page.tsx",
+      "target": "app/login/page.tsx",
+      "type": "registry:page"
+    },
+    {
+      "content": "\"use client\";\n\nimport { KeyRoundIcon } from \"lucide-react\";\nimport { useCallback } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSeparator,\n} from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nexport const LoginForm = () => {\n  const handleSubmit = useCallback(\n    (event: React.FormEvent<HTMLFormElement>) => event.preventDefault(),\n    []\n  );\n\n  return (\n    <Card className=\"shadow-sm\">\n      <CardHeader>\n        <CardTitle className=\"text-2xl tracking-[-0.02em]\">\n          Welcome back\n        </CardTitle>\n        <CardDescription>Enter your work email to continue.</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <form onSubmit={handleSubmit}>\n          <FieldGroup>\n            <Field>\n              <FieldLabel>Email address</FieldLabel>\n              <Input\n                autoComplete=\"email\"\n                name=\"email\"\n                placeholder=\"you@company.com\"\n                required\n                type=\"email\"\n              />\n            </Field>\n            <Field>\n              <div className=\"flex items-center justify-between gap-4\">\n                <FieldLabel>Password</FieldLabel>\n                <a\n                  className=\"text-sm underline-offset-4 hover:underline\"\n                  href=\"#\"\n                >\n                  Forgot password?\n                </a>\n              </div>\n              <Input\n                autoComplete=\"current-password\"\n                name=\"password\"\n                required\n                type=\"password\"\n              />\n            </Field>\n            <Button className=\"w-full\" type=\"submit\">\n              Sign in\n            </Button>\n            <FieldSeparator>or continue with</FieldSeparator>\n            <Button className=\"w-full\" type=\"button\" variant=\"outline\">\n              <KeyRoundIcon aria-hidden=\"true\" className=\"size-4\" />\n              Single sign-on\n            </Button>\n            <FieldDescription className=\"text-center\">\n              New to Northstar?{\" \"}\n              <a className=\"font-medium text-foreground\" href=\"#\">\n                Create an account\n              </a>\n            </FieldDescription>\n          </FieldGroup>\n        </form>\n      </CardContent>\n    </Card>\n  );\n};\n",
+      "path": "blocks/login-01/components/login-form.tsx",
+      "target": "@components/login-form.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "featured": true,
+    "order": 1,
+    "previewHeight": 720
+  },
+  "name": "login-01",
+  "registryDependencies": [
+    "https://shark.vini.one/r/button.json",
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/field.json",
+    "https://shark.vini.one/r/input.json",
+    "https://shark.vini.one/r/separator.json"
+  ],
+  "title": "Login",
+  "type": "registry:block"
+}

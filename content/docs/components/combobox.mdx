@@ -1,6 +1,7 @@
 ---
 title: Combobox
 description: Displays a searchable list of options.
+seoDescription: "Build a searchable React combobox with Shark UI and Ark UI collections, supporting filtering, selected values, grouping, form fields, and accessible keyboard control."
 links:
   doc: https://ark-ui.com/docs/components/combobox
   api: https://ark-ui.com/docs/components/combobox#api-reference
@@ -171,6 +172,12 @@ Pass `showClear` to `ComboboxInput` to show a clear button.
 
 <ComponentPreview componentName="combobox" fileName="example-with-start-icon" />
 
+### Submit on Enter
+
+By default, Enter selects the highlighted item and a second Enter submits the form. Set `alwaysSubmitOnEnter` to submit immediately, which is useful for single-field autocomplete.
+
+<ComponentPreview componentName="combobox" fileName="example-always-submit-on-enter" />
+
 ## API Reference
 
 ### Combobox
@@ -187,6 +194,7 @@ Root component.
 | `multiple` | `boolean` | `false` |
 | `disabled` | `boolean` | - |
 | `openOnClick` | `boolean` | `true` |
+| `alwaysSubmitOnEnter` | `boolean` | - |
 | `lazyMount` | `boolean` | `true` |
 | `unmountOnExit` | `boolean` | `true` |
 | `className` | `string` | - |

@@ -81,6 +81,8 @@ FieldSet grouping related fields:
 
 Always include `FieldLegend` as the accessible group heading.
 
+`FieldLabel` does not associate Slider, Date Input, Date Picker, Listbox, Progress, or Radio Group. Use each primitive's own Label inside its root. `FieldTitle` is not a label.
+
 ## Common pitfalls
 
 - Rendering errors detached from the related control, breaking context.

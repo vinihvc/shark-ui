@@ -48,7 +48,7 @@ Use preview mode when the user asks what will change, a component may already ex
 |----------|------|
 | Published registry JSON | `public/r/<name>.json` |
 | Component source | `registry/react/components/<name>.tsx` |
-| Docs | `content/docs/components/<name>.mdx` |
+| Docs | `content/docs/components/<name>.mdx` or `content/docs/ai-elements/<name>.mdx` |
 | Examples | `registry/react/examples/<name>/example-*.tsx` |
 
 ## Discovery (public)

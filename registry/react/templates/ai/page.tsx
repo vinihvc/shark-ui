@@ -27,8 +27,8 @@ import {
 import { Textarea } from "@/registry/react/components/textarea";
 
 const AI_TEMPLATE_SIDEBAR = [
-  { label: "Projects", icon: LayoutGridIcon, href: "#" },
-  { label: "Library", icon: BookIcon, href: "#" },
+  { href: "#", icon: LayoutGridIcon, label: "Projects" },
+  { href: "#", icon: BookIcon, label: "Library" },
 ];
 
 const PINNED = ["Research & Analysis", "Web Search", "Knowledge Base"];

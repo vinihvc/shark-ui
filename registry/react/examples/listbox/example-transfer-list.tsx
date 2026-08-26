@@ -71,7 +71,7 @@ const Example = () => {
           size="icon-md"
           variant="outline"
         >
-          <ChevronRightIcon />
+          <ChevronRightIcon className="size-4" />
         </Button>
         <Button
           disabled={selectedValue.length === 0}
@@ -79,7 +79,7 @@ const Example = () => {
           size="icon-md"
           variant="outline"
         >
-          <ChevronLeftIcon />
+          <ChevronLeftIcon className="size-4" />
         </Button>
       </div>
       <Item className="w-full p-1" variant="outline">

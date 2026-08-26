@@ -1,13 +1,13 @@
 "use client";
 
-import { useDateFormatter } from "@ark-ui/react";
 import { DateInput } from "@/registry/react/components/date-input";
+import { useDateFormatter } from "@/registry/react/components/locale";
 
 const Example = () => {
   const formatter = useDateFormatter({
     hour: "numeric",
-    minute: "2-digit",
     hourCycle: "h12",
+    minute: "2-digit",
   });
 
   return (

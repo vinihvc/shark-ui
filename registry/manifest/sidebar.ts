@@ -4,11 +4,11 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "tailwind-variants", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "sidebar",
-  type: "registry:ui",
   dependencies,
+  name: "sidebar",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/hotkeys.json"),
     absoluteUrl("/r/input.json"),
     absoluteUrl("/r/scroll-area.json"),
     absoluteUrl("/r/separator.json"),
@@ -17,6 +17,7 @@ const manifest: RegistryItemType = {
     absoluteUrl("/r/tooltip.json"),
     absoluteUrl("/r/use-is-mobile.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

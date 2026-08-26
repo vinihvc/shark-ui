@@ -7,6 +7,7 @@ import React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
+import { useHotkey } from "@/registry/react/components/hotkeys";
 import { Separator } from "@/registry/react/components/separator";
 
 interface ActionBarPositioning {
@@ -79,7 +80,7 @@ export interface ActionBarProps
   positioning?: ActionBarContextValue["positioning"];
 }
 
-const defaultPositioning = { placement: "bottom", gutter: "16px" } as const;
+const defaultPositioning = { gutter: "16px", placement: "bottom" } as const;
 
 export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
   const {
@@ -114,40 +115,25 @@ export const ActionBar = (props: React.PropsWithChildren<ActionBarProps>) => {
     onOpenChange?.(true);
   }, [isControlled, onOpenChange]);
 
-  React.useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    if (!closeOnEscape) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") {
-        return;
-      }
-
+  useHotkey({
+    action: (event) => {
       if (event.defaultPrevented) {
         return;
       }
-
-      event.preventDefault();
       handleClose();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [closeOnEscape, handleClose, isOpen]);
+    },
+    enabled: () => isOpen && closeOnEscape,
+    hotkey: "escape",
+    options: { preventDefault: true },
+  });
 
   const context = React.useMemo(
     () => ({
+      isOpen,
+      lazyMount,
       onClose: handleClose,
       onOpen: handleOpen,
-      isOpen,
       positioning: { ...defaultPositioning, ...positioning },
-      lazyMount,
       unmountOnExit,
     }),
     [handleClose, handleOpen, isOpen, lazyMount, unmountOnExit, positioning]
@@ -192,15 +178,15 @@ const actionBarPositionerVariants = tv({
     "data-[state=open]:slide-in-from-bottom-2 data-[state=closed]:slide-out-to-bottom-2",
     "motion-reduce:animate-none!",
   ],
+  defaultVariants: {
+    placement: "bottom",
+  },
   variants: {
     placement: {
       bottom: "justify-center",
       "bottom-end": "justify-end",
       "bottom-start": "justify-start",
     },
-  },
-  defaultVariants: {
-    placement: "bottom",
   },
 });
 

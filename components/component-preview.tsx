@@ -49,7 +49,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
 
   // Dynamically import the example component
   const Example = await import(
-    `${registryPath}/${componentName}/${fileName}.tsx`
+    `../${registryPath}/${componentName}/${fileName}.tsx`
   );
 
   if (!Example.default) {

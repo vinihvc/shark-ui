@@ -1,0 +1,85 @@
+---
+title: Plan
+description: A collapsible agent plan with a title, description, and nested tasks.
+---
+
+<ComponentPreview componentName="plan" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/plan
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Collapsible](/docs/components/collapsible). Install [Task](/docs/ai-elements/task) to nest steps.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/plan.tsx" src="/plan.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Plan
+├── PlanHeader
+│   ├── PlanTitle
+│   ├── PlanDescription
+│   └── PlanAction
+│       └── PlanTrigger
+└── PlanContent
+    └── Task
+```
+
+## Usage
+
+```tsx
+import {
+  Plan,
+  PlanAction,
+  PlanContent,
+  PlanHeader,
+  PlanTitle,
+  PlanTrigger,
+} from "@/components/ui/plan";
+```
+
+```tsx
+<Plan>
+  <PlanHeader>
+    <PlanTitle>Add email validation</PlanTitle>
+    <PlanAction>
+      <PlanTrigger />
+    </PlanAction>
+  </PlanHeader>
+  <PlanContent />
+</Plan>
+```
+
+Compose [Task](/docs/ai-elements/task) inside `PlanContent`.
+
+## API Reference
+
+`Plan` forwards Collapsible props. `defaultOpen` is `true`.

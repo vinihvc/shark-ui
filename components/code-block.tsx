@@ -32,11 +32,12 @@ export const CodeBlock = async (props: CodeBlockProps) => {
     code,
     copyButton = true,
     lang = "tsx",
+    showLineNumbers = true,
     className,
     ...rest
   } = props;
 
-  const highlightedCode = await highlightCode(code, lang);
+  const highlightedCode = await highlightCode(code, lang, { showLineNumbers });
 
   return (
     <figure data-rehype-pretty-code-figure="" data-slot="code-block" {...rest}>

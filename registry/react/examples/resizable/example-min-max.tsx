@@ -8,7 +8,7 @@ const Example = () => (
   <Resizable
     className="rounded-md border"
     defaultSize={[30, 70]}
-    panels={[{ id: "1", minSize: 25, maxSize: 40 }, { id: "2" }]}
+    panels={[{ id: "1", maxSize: 40, minSize: 25 }, { id: "2" }]}
   >
     <ResizablePanel className="flex items-center justify-center" id="1">
       Sidebar

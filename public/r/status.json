@@ -1,18 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "status",
-  "type": "registry:ui",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
   "cssVars": {
-    "light": {
-      "destructive-foreground": "var(--color-red-700)",
-      "info": "var(--color-blue-500)",
-      "info-foreground": "var(--color-blue-700)",
-      "success": "var(--color-emerald-500)",
-      "success-foreground": "var(--color-emerald-700)",
-      "warning": "var(--color-amber-500)",
-      "warning-foreground": "var(--color-amber-700)"
-    },
     "dark": {
       "destructive-foreground": "var(--color-red-400)",
       "info": "var(--color-blue-500)",
@@ -21,12 +9,24 @@
       "success-foreground": "var(--color-emerald-400)",
       "warning": "var(--color-amber-500)",
       "warning-foreground": "var(--color-amber-400)"
+    },
+    "light": {
+      "destructive-foreground": "var(--color-red-700)",
+      "info": "var(--color-blue-500)",
+      "info-foreground": "var(--color-blue-700)",
+      "success": "var(--color-emerald-500)",
+      "success-foreground": "var(--color-emerald-700)",
+      "warning": "var(--color-amber-500)",
+      "warning-foreground": "var(--color-amber-700)"
     }
   },
+  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "name": "status",
+  "type": "registry:ui",
   "files": [
     {
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const statusVariants = tv({\n  base: [\n    \"shrink-0 rounded-full\",\n    \"flex items-center justify-center\",\n    \"font-medium text-[10px]\",\n    \"ring-2 ring-background\",\n  ],\n  defaultVariants: {\n    size: \"md\",\n    variant: \"default\",\n  },\n  variants: {\n    size: {\n      lg: \"size-3 [&_svg:not([class*='size-'])]:size-2.5 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n      md: \"size-2.5 [&_svg:not([class*='size-'])]:size-2 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n      sm: \"size-2 [&_svg:not([class*='size-'])]:size-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    },\n    variant: {\n      default: \"bg-foreground text-background\",\n      destructive: \"bg-destructive text-white\",\n      info: \"bg-info text-white\",\n      success: \"bg-success text-white\",\n      warning: \"bg-warning text-white\",\n    },\n  },\n});\n\ninterface StatusProps\n  extends React.ComponentProps<typeof ark.span>,\n    VariantProps<typeof statusVariants> {}\n\nexport const Status = (props: StatusProps) => {\n  const { variant, size, className, ...rest } = props;\n\n  return (\n    <ark.span\n      aria-hidden=\"true\"\n      className={cn(statusVariants({ size, variant }), className)}\n      data-size={size}\n      data-slot=\"status-indicator\"\n      {...rest}\n    />\n  );\n};\n",
       "path": "registry/react/components/status.tsx",
-      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const statusVariants = tv({\n  base: [\n    \"shrink-0 rounded-full\",\n    \"flex items-center justify-center\",\n    \"font-medium text-[10px]\",\n    \"ring-2 ring-background\",\n  ],\n  variants: {\n    variant: {\n      default: \"bg-foreground text-background\",\n      success: \"bg-success text-white\",\n      info: \"bg-info text-white\",\n      warning: \"bg-warning text-white\",\n      destructive: \"bg-destructive text-white dark:bg-destructive-foreground\",\n    },\n    size: {\n      sm: \"size-2 [&_svg:not([class*='size-'])]:size-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n      md: \"size-2.5 [&_svg:not([class*='size-'])]:size-2 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n      lg: \"size-3 [&_svg:not([class*='size-'])]:size-2.5 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    },\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"md\",\n  },\n});\n\ninterface StatusProps\n  extends React.ComponentProps<typeof ark.span>,\n    VariantProps<typeof statusVariants> {}\n\nexport const Status = (props: StatusProps) => {\n  const { variant, size, className, ...rest } = props;\n\n  return (\n    <ark.span\n      aria-hidden=\"true\"\n      className={cn(statusVariants({ variant, size }), className)}\n      data-size={size}\n      data-slot=\"status-indicator\"\n      {...rest}\n    />\n  );\n};\n",
       "type": "registry:ui"
     }
   ]

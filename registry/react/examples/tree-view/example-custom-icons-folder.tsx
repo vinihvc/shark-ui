@@ -1,6 +1,6 @@
 "use client";
 
-import { PackageIcon, PackageOpenIcon } from "lucide-react";
+import { FileIcon, PackageIcon, PackageOpenIcon } from "lucide-react";
 import {
   createTreeCollection,
   TreeView,
@@ -27,32 +27,32 @@ const Example = () => (
 
 const collection = createTreeCollection({
   rootNode: {
-    id: "ROOT",
-    name: "",
     children: [
       {
-        id: "app",
-        name: "app",
-        icon: PackageIcon,
-        expandedIcon: PackageOpenIcon,
         children: [
           { id: "app/page.tsx", name: "page.tsx" },
           { id: "app/layout.tsx", name: "layout.tsx" },
         ],
+        expandedIcon: PackageOpenIcon,
+        icon: PackageIcon,
+        id: "app",
+        name: "app",
       },
       {
-        id: "components",
-        name: "components",
-        icon: null,
-        expandedIcon: null,
         children: [
           { id: "components/button.tsx", name: "button.tsx" },
           { id: "components/input.tsx", name: "input.tsx" },
         ],
+        expandedIcon: null,
+        icon: null,
+        id: "components",
+        name: "components",
       },
       { id: "package.json", name: "package.json" },
       { id: "readme.md", name: "README.md" },
     ],
+    id: "ROOT",
+    name: "",
   },
 });
 
@@ -63,7 +63,11 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
     <TreeViewNode indexPath={indexPath} node={node} {...rest}>
       {node.children ? (
         <TreeViewBranch>
-          <TreeViewBranchItem expandedIcon={node.expandedIcon} icon={node.icon}>
+          <TreeViewBranchItem
+            expandedIcon={node.expandedIcon}
+            icon={node.icon}
+            showIndicator
+          >
             {node.name}
           </TreeViewBranchItem>
 
@@ -79,7 +83,7 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
         </TreeViewBranch>
       ) : (
         <TreeViewContent>
-          <TreeViewItem>{node.name}</TreeViewItem>
+          <TreeViewItem icon={FileIcon}>{node.name}</TreeViewItem>
         </TreeViewContent>
       )}
     </TreeViewNode>

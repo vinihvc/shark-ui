@@ -45,29 +45,29 @@ const Example = () => {
 const collection = createListCollection({
   items: [
     {
+      alt: "Scenic mountain view",
       label: "Mountain Landscape",
       value: "mountain",
-      alt: "Scenic mountain view",
     },
     {
+      alt: "Ocean waves",
       label: "Ocean Waves",
       value: "ocean",
-      alt: "Ocean waves",
     },
     {
+      alt: "Forest path",
       label: "Forest Path",
       value: "forest",
-      alt: "Forest path",
     },
     {
+      alt: "City skyline",
       label: "City Skyline",
       value: "city",
-      alt: "City skyline",
     },
     {
+      alt: "Desert dunes",
       label: "Desert Dunes",
       value: "desert",
-      alt: "Desert dunes",
     },
   ],
 });

@@ -51,7 +51,7 @@ export const DocsCopyPage = (props: DocsCopyPageProps) => {
         <Menu positioning={{ placement: "bottom-end" }}>
           <MenuTrigger asChild>
             <Button aria-label="Open" size="icon-sm" variant="outline">
-              <ChevronDownIcon aria-hidden />
+              <ChevronDownIcon aria-hidden className="size-4" />
             </Button>
           </MenuTrigger>
 
@@ -74,19 +74,6 @@ export const DocsCopyPage = (props: DocsCopyPageProps) => {
 };
 
 const menuItems = {
-  markdown: (url: string) =>
-    SITE_FEATURES.rawMarkdownRoutes ? (
-      <a href={`${url}.md`} rel="noopener noreferrer" target="_blank">
-        <MarkdownIcon />
-        View as Markdown
-      </a>
-    ) : (
-      <div aria-disabled>
-        <MarkdownIcon />
-        View as Markdown
-        <Badge variant="outline">Disabled</Badge>
-      </div>
-    ),
   chatgpt: (url: string) => (
     <a
       href={getPromptUrl("https://chatgpt.com", url)}
@@ -107,6 +94,19 @@ const menuItems = {
       Open in Claude
     </a>
   ),
+  markdown: (url: string) =>
+    SITE_FEATURES.rawMarkdownRoutes ? (
+      <a href={`${url}.md`} rel="noopener noreferrer" target="_blank">
+        <MarkdownIcon />
+        View as Markdown
+      </a>
+    ) : (
+      <div aria-disabled>
+        <MarkdownIcon />
+        View as Markdown
+        <Badge variant="outline">Disabled</Badge>
+      </div>
+    ),
 };
 
 const getPromptUrl = (baseURL: string, url: string) =>

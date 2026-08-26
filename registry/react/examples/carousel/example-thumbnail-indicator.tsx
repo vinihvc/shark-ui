@@ -11,11 +11,11 @@ import {
 
 const Example = () => {
   const slides = [
-    { src: "https://picsum.photos/seed/1/500/300", alt: "Nature landscape" },
-    { src: "https://picsum.photos/seed/2/500/300", alt: "City skyline" },
-    { src: "https://picsum.photos/seed/3/500/300", alt: "Mountain view" },
-    { src: "https://picsum.photos/seed/4/500/300", alt: "Ocean sunset" },
-    { src: "https://picsum.photos/seed/5/500/300", alt: "Forest path" },
+    { alt: "Nature landscape", src: "https://picsum.photos/seed/1/500/300" },
+    { alt: "City skyline", src: "https://picsum.photos/seed/2/500/300" },
+    { alt: "Mountain view", src: "https://picsum.photos/seed/3/500/300" },
+    { alt: "Ocean sunset", src: "https://picsum.photos/seed/4/500/300" },
+    { alt: "Forest path", src: "https://picsum.photos/seed/5/500/300" },
   ];
 
   return (

@@ -33,19 +33,19 @@ const Example = () => (
 const collection = createListCollection({
   items: [
     {
+      description: "South America's country, Portuguese speaking.",
       label: "Brazil",
       value: "br",
-      description: "South America's country, Portuguese speaking.",
     },
     {
+      description: "North America's country, Spanish speaking.",
       label: "Mexico",
       value: "mx",
-      description: "North America's country, Spanish speaking.",
     },
     {
+      description: "Europe's country, Irish/English speaking.",
       label: "Ireland",
       value: "ie",
-      description: "Europe's country, Irish/English speaking.",
     },
   ],
 });

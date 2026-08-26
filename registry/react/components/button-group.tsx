@@ -14,6 +14,9 @@ const buttonGroupVariants = tv({
     "has-[>[data-slot=button-group]]:gap-2",
     "has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-e-md",
   ],
+  defaultVariants: {
+    orientation: "horizontal",
+  },
   variants: {
     orientation: {
       horizontal: [
@@ -28,9 +31,6 @@ const buttonGroupVariants = tv({
         "[&>*:not(:last-child)]:rounded-b-none [&>*:not(:last-child)]:shadow-none",
       ],
     },
-  },
-  defaultVariants: {
-    orientation: "horizontal",
   },
 });
 

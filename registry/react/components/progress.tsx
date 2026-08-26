@@ -91,6 +91,20 @@ export const ProgressRange = (
   />
 );
 
+export const ProgressLabel = (
+  props: React.ComponentProps<typeof ArkProgress.Label>
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkProgress.Label data-slot="progress-label" {...rest}>
+        {children}
+      </ArkProgress.Label>
+    </FieldLabel>
+  );
+};
+
 export const ProgressValue = (
   props: React.ComponentProps<typeof ArkProgress.ValueText>
 ) => {

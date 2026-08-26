@@ -43,10 +43,10 @@ const formSchema = z.object({
 
 const Example = () => {
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       emails: [{ address: "" }],
     },
+    resolver: zodResolver(formSchema),
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -56,13 +56,13 @@ const Example = () => {
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "rhf-array-emails-submitted",
-      title: "Contact emails saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
+      id: "rhf-array-emails-submitted",
+      title: "Contact emails saved",
     });
   };
 

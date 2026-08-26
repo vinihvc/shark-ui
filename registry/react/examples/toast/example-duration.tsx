@@ -8,9 +8,9 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.create({
-          title: "Short duration.",
           description: "This toast disappears after 2 seconds.",
           duration: 2000,
+          title: "Short duration.",
         })
       }
       variant="outline"
@@ -20,9 +20,9 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.create({
-          title: "Long duration.",
           description: "This toast stays for 10 seconds.",
           duration: 10_000,
+          title: "Long duration.",
         })
       }
       variant="outline"
@@ -32,10 +32,10 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.create({
-          title: "Persistent.",
+          closable: true,
           description: "This toast stays until you close it.",
           duration: Number.POSITIVE_INFINITY,
-          closable: true,
+          title: "Persistent.",
         })
       }
       variant="outline"

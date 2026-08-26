@@ -7,33 +7,25 @@ export const dynamic = "force-static";
 export const revalidate = false;
 
 export const metadata: Metadata = createMetadata({
-  title: "Themes",
   description: "Hand-picked color themes for Shark UI.",
+  title: "Themes",
   url: "/themes",
 });
 
-const ThemesPage = () => {
-  return (
-    <>
-      <main className="container flex flex-col gap-4">
-        <div className="grid gap-2 pt-8 pb-4">
-          <h1 className="font-extrabold text-3xl">
-            Pick a Color. Make it yours.
-          </h1>
+const ThemesPage = () => (
+  <main className="container flex flex-col gap-4">
+    <div className="grid gap-2 pt-8 pb-4">
+      <h1 className="font-extrabold text-3xl">Pick a Color. Make it yours.</h1>
 
-          <p className="text-lg text-muted-foreground">
-            Try our hand-picked themes. Copy and paste them into your project.
-          </p>
-        </div>
+      <p className="text-lg text-muted-foreground">
+        Try our hand-picked themes. Copy and paste them into your project.
+      </p>
+    </div>
 
-        <ThemeSelector />
+    <ThemeSelector />
 
-        <CardsDemo className="pb-8" />
-      </main>
-
-      {/* <Footer /> */}
-    </>
-  );
-};
+    <CardsDemo className="pb-8" />
+  </main>
+);
 
 export default ThemesPage;

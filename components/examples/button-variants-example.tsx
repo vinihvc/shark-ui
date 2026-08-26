@@ -140,9 +140,9 @@ export const ButtonVariantsExample = (props: React.ComponentProps<"div">) => (
       <Button
         onClick={() =>
           toast.create({
+            description: "Congratulations!",
             id: "easter-egg",
             title: "You found the easter egg!",
-            description: "Congratulations!",
             type: "success",
           })
         }

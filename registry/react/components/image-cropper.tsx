@@ -9,6 +9,10 @@ import { cn } from "@/lib/utils";
 
 export const useImageCropper = useArkImageCropper;
 
+export const ImageCropperContext = (
+  props: React.ComponentProps<typeof ArkImageCropper.Context>
+) => <ArkImageCropper.Context {...props} />;
+
 interface ImageCropperProps
   extends React.ComponentProps<typeof ArkImageCropper.Root> {}
 

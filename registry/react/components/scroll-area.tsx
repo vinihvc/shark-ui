@@ -12,12 +12,14 @@ export const useScrollArea = useScrollAreaContext;
 
 const scrollAreaVariants = tv({
   base: [
-    "h-full",
+    "max-h-[inherit] min-h-0 w-full flex-1",
     "rounded-[inherit]",
     "outline-none",
     "scrollbar-none",
-    "outline-none",
   ],
+  defaultVariants: {
+    scrollFade: false,
+  },
   variants: {
     scrollFade: {
       true: [
@@ -30,9 +32,6 @@ const scrollAreaVariants = tv({
       ],
     },
   },
-  defaultVariants: {
-    scrollFade: false,
-  },
 });
 
 interface ScrollAreaProps
@@ -44,7 +43,11 @@ export const ScrollArea = (props: ScrollAreaProps) => {
 
   return (
     <ArkScrollArea.Root
-      className={cn("size-full min-h-0 [--fade-size:1.5rem]", className)}
+      className={cn(
+        "relative flex min-h-0 w-full flex-col overflow-hidden [--fade-size:1.5rem]",
+        "size-full",
+        className
+      )}
       data-slot="scroll-area"
       {...rest}
     >

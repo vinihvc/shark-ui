@@ -29,6 +29,8 @@ npx shadcn@latest add @shark/date-input
 
 <Steps>
 
+<Step>This component depends on [Field](/docs/components/field) and [Input Group](/docs/components/input-group). Install them first if you haven't already.</Step>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -97,13 +99,13 @@ Use the `size` prop to change the input height.
 
 ### With Field
 
-Use [Field](/docs/components/field) components for a labeled date input with helper text.
+Use [Field](/docs/components/field) for helper text. Put `DateInputLabel` inside `DateInput`. `FieldLabel` does not associate with the date segments.
 
 <ComponentPreview componentName="date-input" fileName="example-with-field" />
 
 ### Granularity
 
-Use the `granularity` prop to control which date fields are displayed.
+Use the `granularity` prop to control which date fields are displayed. When the value is a `ZonedDateTime`, the time zone segment is shown automatically. Set `hideTimeZone` to hide it.
 
 <ComponentPreview componentName="date-input" fileName="example-granularity" />
 
@@ -158,9 +160,18 @@ Root component for the date input.
 | `min` | `DateValue` | - |
 | `max` | `DateValue` | - |
 | `shouldForceLeadingZeros` | `boolean` | `true` |
+| `hideTimeZone` | `boolean` | - |
 | `disabled` | `boolean` | - |
 | `invalid` | `boolean` | - |
 | `className` | `string` | - |
+
+### DateInputLabel
+
+Accessible label. Render as a child of `DateInput`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
 
 ---
 

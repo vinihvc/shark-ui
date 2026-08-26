@@ -35,9 +35,7 @@ export const ComputeEnvironmentExample = (
           <FieldLabel>
             <Field>
               <FieldContent>
-                <RadioGroupItem tabIndex={-1} value="kubernetes">
-                  Kubernetes
-                </RadioGroupItem>
+                <RadioGroupItem value="kubernetes">Kubernetes</RadioGroupItem>
                 <FieldDescription>
                   Managed containers and orchestration.
                 </FieldDescription>
@@ -47,9 +45,7 @@ export const ComputeEnvironmentExample = (
           <FieldLabel>
             <Field>
               <FieldContent>
-                <RadioGroupItem tabIndex={-1} value="vm">
-                  Virtual Machine
-                </RadioGroupItem>
+                <RadioGroupItem value="vm">Virtual Machine</RadioGroupItem>
                 <FieldDescription>Traditional VM workloads.</FieldDescription>
               </FieldContent>
             </Field>
@@ -64,15 +60,15 @@ export const ComputeEnvironmentExample = (
         </FieldContent>
         <NumberInput className="max-w-40" defaultValue="4" max={99} min={1}>
           <NumberInputGroup>
-            <NumberInputDecrement tabIndex={-1} />
-            <NumberInputInput tabIndex={-1} />
-            <NumberInputIncrement tabIndex={-1} />
+            <NumberInputDecrement />
+            <NumberInputInput />
+            <NumberInputIncrement />
           </NumberInputGroup>
         </NumberInput>
       </Field>
 
       <Field className="w-full" orientation="horizontal" reverse>
-        <Switch tabIndex={-1} />
+        <Switch />
         <FieldLabel>Wallpaper Tinting</FieldLabel>
       </Field>
     </div>

@@ -28,21 +28,21 @@ import {
 
 const teamMembers = [
   {
-    name: "Vinicius Vicentini",
-    email: "m@example.com",
     avatar: "https://github.com/vinihvc.png",
+    email: "m@example.com",
+    name: "Vinicius Vicentini",
     role: "Owner",
   },
   {
-    name: "Shadcn",
-    email: "p@example.com",
     avatar: "https://github.com/shadcn.png",
+    email: "p@example.com",
+    name: "Shadcn",
     role: "Developer",
   },
   {
-    name: "Pasquale Vitiello",
-    email: "i@example.com",
     avatar: "https://github.com/pasqualevitiello.png",
+    email: "i@example.com",
+    name: "Pasquale Vitiello",
     role: "Billing",
   },
 ];
@@ -50,20 +50,20 @@ const teamMembers = [
 const collection = createListCollection({
   items: [
     {
-      value: "Viewer",
       description: "Can view and comment.",
+      value: "Viewer",
     },
     {
-      value: "Developer",
       description: "Can view, comment and edit.",
+      value: "Developer",
     },
     {
-      value: "Billing",
       description: "Can view, comment and manage billing.",
+      value: "Billing",
     },
     {
-      value: "Owner",
       description: "Admin-level access to all resources.",
+      value: "Owner",
     },
   ],
 });

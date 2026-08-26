@@ -17,20 +17,20 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "step-1",
-    type: "dialog",
-    title: "Custom spacing",
+    actions: [{ action: "next" as const, label: "Next" }],
     description:
       "`TourContent` uses `[--space:--spacing(2)]` here for tighter padding than the default.",
-    actions: [{ label: "Next", action: "next" as const }],
+    id: "step-1",
+    title: "Custom spacing",
+    type: "dialog",
   },
   {
-    id: "step-2",
-    type: "dialog",
-    title: "Breakpoint utilities",
+    actions: [{ action: "dismiss" as const, label: "Done" }],
     description:
       "You can pair `[--space]` with responsive variants, e.g. `md:[--space:--spacing(6)]`.",
-    actions: [{ label: "Done", action: "dismiss" as const }],
+    id: "step-2",
+    title: "Breakpoint utilities",
+    type: "dialog",
   },
 ];
 

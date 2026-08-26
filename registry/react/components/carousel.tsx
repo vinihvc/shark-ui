@@ -73,7 +73,7 @@ export const CarouselPrevious = (
         size="icon-md"
         variant="outline"
       >
-        <ChevronLeftIcon aria-hidden />
+        <ChevronLeftIcon aria-hidden className="size-4" />
       </Button>
     </ArkCarousel.PrevTrigger>
   );
@@ -103,7 +103,7 @@ export const CarouselNext = (
         size="icon-md"
         variant="outline"
       >
-        <ChevronRightIcon aria-hidden />
+        <ChevronRightIcon aria-hidden className="size-4" />
       </Button>
     </ArkCarousel.NextTrigger>
   );

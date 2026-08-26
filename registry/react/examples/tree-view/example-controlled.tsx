@@ -1,5 +1,7 @@
 "use client";
 
+import { FileIcon, FolderIcon, FolderOpenIcon } from "lucide-react";
+
 import React from "react";
 import {
   createTreeCollection,
@@ -44,19 +46,19 @@ const Example = () => {
 
 const collection = createTreeCollection({
   rootNode: {
-    id: "ROOT",
-    name: "",
     children: [
       {
-        id: "components",
-        name: "components",
         children: [
           { id: "components/button.tsx", name: "button.tsx" },
           { id: "components/input.tsx", name: "input.tsx" },
         ],
+        id: "components",
+        name: "components",
       },
       { id: "package.json", name: "package.json" },
     ],
+    id: "ROOT",
+    name: "",
   },
 });
 
@@ -67,7 +69,13 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
     <TreeViewNode indexPath={indexPath} key={node.id} node={node}>
       {node.children ? (
         <TreeViewBranch>
-          <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
+          <TreeViewBranchItem
+            expandedIcon={FolderOpenIcon}
+            icon={FolderIcon}
+            showIndicator
+          >
+            {node.name}
+          </TreeViewBranchItem>
 
           <TreeViewBranchContent>
             {node.children.map((child, index) => (
@@ -81,7 +89,7 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
         </TreeViewBranch>
       ) : (
         <TreeViewContent>
-          <TreeViewItem>{node.name}</TreeViewItem>
+          <TreeViewItem icon={FileIcon}>{node.name}</TreeViewItem>
         </TreeViewContent>
       )}
     </TreeViewNode>

@@ -10,19 +10,21 @@ import {
 } from "lucide-react";
 import React from "react";
 import { CopyThemeCodeDialog } from "@/components/dialog/copy-theme";
-import { useHotKeys } from "@/hooks/use-hot-keys";
+import { OfflineDocsSettings } from "@/components/pwa/offline-docs-settings";
 import { BORDER_RADIUS, GRAY_COLORS, PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
   Field,
   FieldGroup,
-  FieldLabel,
+  FieldSeparator,
 } from "@/registry/react/components/field";
+import { useHotkey } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 import {
   RadioGroup,
   RadioGroupItem,
+  RadioGroupLabel,
 } from "@/registry/react/components/radio-group";
 import {
   Sheet,
@@ -32,7 +34,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/registry/react/components/sheet";
-import { Slider } from "@/registry/react/components/slider";
+import { Slider, SliderLabel } from "@/registry/react/components/slider";
 import {
   Tooltip,
   TooltipContent,
@@ -54,9 +56,22 @@ export const HeaderCustomize = () => {
 
   const [isOpen, setIsOpen] = React.useState(false);
 
-  useHotKeys(["c", "C"], () => setIsOpen((prev) => !prev));
+  useHotkey({
+    action: () => setIsOpen((open) => !open),
+    hotkey: "c",
+    options: { preventDefault: true },
+  });
 
   const isLight = resolvedTheme === "light";
+  const storedRadiusIndex = BORDER_RADIUS.findIndex(
+    (radius) => radius.value === config.borderRadius
+  );
+  const radiusIndex =
+    storedRadiusIndex >= 0
+      ? storedRadiusIndex
+      : BORDER_RADIUS.findIndex(
+          (radius) => radius.value === DEFAULT_BORDER_RADIUS
+        );
 
   const handleSelectGrayColor = (color: GrayColor) => {
     setConfig({
@@ -69,6 +84,15 @@ export const HeaderCustomize = () => {
     setConfig({
       ...config,
       primaryColor: color,
+    });
+  };
+
+  const handleSelectRadius = ({ value }: { value: number[] }) => {
+    const next = BORDER_RADIUS[value[0]]?.value ?? DEFAULT_BORDER_RADIUS;
+
+    setConfig({
+      ...config,
+      borderRadius: next,
     });
   };
 
@@ -101,7 +125,6 @@ export const HeaderCustomize = () => {
         <SheetBody>
           <FieldGroup className="gap-6">
             <Field>
-              <FieldLabel>Gray Color</FieldLabel>
               <RadioGroup
                 className={cn(
                   "w-full",
@@ -114,6 +137,9 @@ export const HeaderCustomize = () => {
                 }
                 value={config.grayColor}
               >
+                <RadioGroupLabel className="col-span-3">
+                  Gray Color
+                </RadioGroupLabel>
                 {GRAY_COLORS.map((color) => (
                   <RadioGroupItem
                     className={cn(
@@ -147,7 +173,6 @@ export const HeaderCustomize = () => {
             </Field>
 
             <Field>
-              <FieldLabel>Primary Color</FieldLabel>
               <RadioGroup
                 className={cn(
                   "w-full",
@@ -160,6 +185,9 @@ export const HeaderCustomize = () => {
                 }
                 value={config.primaryColor}
               >
+                <RadioGroupLabel className="col-span-3">
+                  Primary Color
+                </RadioGroupLabel>
                 {PRIMARY_COLORS.map((color) => {
                   const hex =
                     typeof color.hex === "string"
@@ -196,27 +224,22 @@ export const HeaderCustomize = () => {
             </Field>
 
             <Field>
-              <FieldLabel>Radius</FieldLabel>
               <Slider
-                defaultValue={[5]}
                 markerInterval={1}
                 markerLabels={BORDER_RADIUS.map((radius) => radius.value)}
                 max={BORDER_RADIUS.length - 1}
                 min={0}
-                onValueChange={({ value }) =>
-                  setConfig({
-                    ...config,
-                    borderRadius: BORDER_RADIUS[value[0]].value as BorderRadius,
-                  })
-                }
+                onValueChange={handleSelectRadius}
                 showMarkers
-                value={[
-                  BORDER_RADIUS.findIndex(
-                    (radius) => radius.value === config.borderRadius
-                  ),
-                ]}
-              />
+                value={[radiusIndex]}
+              >
+                <SliderLabel>Radius</SliderLabel>
+              </Slider>
             </Field>
+
+            <FieldSeparator />
+
+            <OfflineDocsSettings />
           </FieldGroup>
         </SheetBody>
 
@@ -225,9 +248,9 @@ export const HeaderCustomize = () => {
             onClick={() =>
               setConfig({
                 ...config,
-                primaryColor: DEFAULT_PRIMARY_COLOR,
-                grayColor: DEFAULT_GRAY_COLOR,
                 borderRadius: DEFAULT_BORDER_RADIUS,
+                grayColor: DEFAULT_GRAY_COLOR,
+                primaryColor: DEFAULT_PRIMARY_COLOR,
               })
             }
             variant="outline"
@@ -247,9 +270,9 @@ export const HeaderCustomize = () => {
                 BORDER_RADIUS[Math.floor(Math.random() * BORDER_RADIUS.length)];
               setConfig({
                 ...config,
+                borderRadius: randomRadius.value as BorderRadius,
                 grayColor: randomGray.value as GrayColor,
                 primaryColor: randomPrimary.value as PrimaryColor,
-                borderRadius: randomRadius.value as BorderRadius,
               });
             }}
             variant="outline"

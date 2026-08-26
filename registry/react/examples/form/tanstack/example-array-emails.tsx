@@ -45,19 +45,19 @@ const Example = () => {
     defaultValues: {
       emails: [{ address: "" }],
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "rhf-array-emails-submitted",
-        title: "Contact emails saved",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "rhf-array-emails-submitted",
+        title: "Contact emails saved",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

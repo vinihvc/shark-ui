@@ -113,16 +113,16 @@ const chartData = [
 ];
 
 const chartConfig = {
-  views: {
-    label: "Page Views",
-  },
   desktop: {
-    label: "Desktop",
     color: "var(--chart-2)",
+    label: "Desktop",
   },
   mobile: {
-    label: "Mobile",
     color: "var(--chart-1)",
+    label: "Mobile",
+  },
+  views: {
+    label: "Page Views",
   },
 } satisfies ChartConfig;
 
@@ -190,8 +190,8 @@ function ChartBarInteractive() {
               tickFormatter={(value) => {
                 const date = new Date(value);
                 return date.toLocaleDateString("en-US", {
-                  month: "short",
                   day: "numeric",
+                  month: "short",
                 });
               }}
               tickLine={false}
@@ -202,9 +202,9 @@ function ChartBarInteractive() {
                 <ChartTooltipContent
                   className="w-[150px]"
                   labelFormatter={(value) =>
-                    new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
+                    new Date(String(value)).toLocaleDateString("en-US", {
                       day: "numeric",
+                      month: "short",
                       year: "numeric",
                     })
                   }

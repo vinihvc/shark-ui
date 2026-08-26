@@ -1,0 +1,83 @@
+---
+title: Reasoning
+description: Expandable model thinking with a duration label and streaming shimmer.
+---
+
+<ComponentPreview componentName="reasoning" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/reasoning
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Collapsible](/docs/components/collapsible) and [Shimmer](/docs/utilities/shimmer). Install them first if you haven't already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/reasoning.tsx" src="/reasoning.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Reasoning
+├── ReasoningTrigger
+└── ReasoningContent
+```
+
+## Usage
+
+```tsx
+import {
+  Reasoning,
+  ReasoningContent,
+  ReasoningTrigger,
+} from "@/components/ui/reasoning";
+```
+
+```tsx
+<Reasoning duration={8}>
+  <ReasoningTrigger duration={8} />
+  <ReasoningContent>The helper already checks empty fields...</ReasoningContent>
+</Reasoning>
+```
+
+Place reasoning above the assistant [Bubble](/docs/ai-elements/bubble) inside [Message](/docs/ai-elements/message).
+
+## Streaming
+
+Set `isStreaming` so the trigger uses the [shimmer](/docs/utilities/shimmer) class.
+
+<ComponentPreview componentName="reasoning" fileName="example-streaming" />
+
+## API Reference
+
+### Reasoning
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `duration` | `number` | — |
+| `isStreaming` | `boolean` | `false` |

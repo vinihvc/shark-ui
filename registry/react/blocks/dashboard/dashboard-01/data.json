@@ -1,0 +1,32 @@
+[
+  {
+    "channel": "Organic search",
+    "visitors": 12840,
+    "conversion": "4.8%",
+    "trend": "+18.2%"
+  },
+  {
+    "channel": "Direct",
+    "visitors": 9320,
+    "conversion": "3.9%",
+    "trend": "+8.7%"
+  },
+  {
+    "channel": "Product Hunt",
+    "visitors": 5140,
+    "conversion": "6.1%",
+    "trend": "+24.5%"
+  },
+  {
+    "channel": "Partner referrals",
+    "visitors": 3860,
+    "conversion": "5.3%",
+    "trend": "-2.4%"
+  },
+  {
+    "channel": "Social",
+    "visitors": 2740,
+    "conversion": "2.7%",
+    "trend": "+5.1%"
+  }
+]

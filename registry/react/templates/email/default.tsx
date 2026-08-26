@@ -33,58 +33,58 @@ import {
 } from "@/registry/react/components/sidebar";
 
 const FOLDERS = [
-  { label: "Inbox", href: "#", icon: InboxIcon },
-  { label: "Drafts", href: "#", icon: FileEditIcon },
-  { label: "Sent", href: "#", icon: SendIcon },
-  { label: "Junk", href: "#", icon: AlertCircleIcon },
-  { label: "Trash", href: "#", icon: Trash2Icon },
+  { href: "#", icon: InboxIcon, label: "Inbox" },
+  { href: "#", icon: FileEditIcon, label: "Drafts" },
+  { href: "#", icon: SendIcon, label: "Sent" },
+  { href: "#", icon: AlertCircleIcon, label: "Junk" },
+  { href: "#", icon: Trash2Icon, label: "Trash" },
 ];
 
 const EMAILS = [
   {
+    body: "Hi team,\n\nJust a reminder about our meeting tomorrow at 10 AM. Please come prepared with your project updates.\n\nLooking forward to it.\n\nWilliam",
     id: "1",
-    sender: "William Smith",
-    time: "09:34 AM",
-    subject: "Meeting Tomorrow",
     preview:
       "Hi team, just a reminder about our meeting tomorrow at 10 AM. Please come prepared with your project updates.",
-    body: "Hi team,\n\nJust a reminder about our meeting tomorrow at 10 AM. Please come prepared with your project updates.\n\nLooking forward to it.\n\nWilliam",
+    sender: "William Smith",
+    subject: "Meeting Tomorrow",
+    time: "09:34 AM",
   },
   {
+    body: "Thanks for the update. The progress looks great so far. Let's schedule a call to discuss the next steps.\n\nBest,\nAlice",
     id: "2",
-    sender: "Alice Smith",
-    time: "Yesterday",
-    subject: "Re: Project Update",
     preview:
       "Thanks for the update. The progress looks great so far. Let's schedule a call to discuss the next steps.",
-    body: "Thanks for the update. The progress looks great so far. Let's schedule a call to discuss the next steps.\n\nBest,\nAlice",
+    sender: "Alice Smith",
+    subject: "Re: Project Update",
+    time: "Yesterday",
   },
   {
+    body: "Hey everyone!\n\nI'm thinking of organizing a team outing this weekend. Would you be interested in a hiking trip or a beach day?\n\nLet me know!\nBob",
     id: "3",
-    sender: "Bob Johnson",
-    time: "2 days ago",
-    subject: "Weekend Plans",
     preview:
       "Hey everyone! I'm thinking of organizing a team outing this weekend. Would you be interested in a hiking trip or a beach day?",
-    body: "Hey everyone!\n\nI'm thinking of organizing a team outing this weekend. Would you be interested in a hiking trip or a beach day?\n\nLet me know!\nBob",
+    sender: "Bob Johnson",
+    subject: "Weekend Plans",
+    time: "2 days ago",
   },
   {
+    body: "I've reviewed the budget numbers you sent over. Can we set up a quick call to discuss some potential adjustments?\n\nThanks,\nEmily",
     id: "4",
-    sender: "Emily Davis",
-    time: "2 days ago",
-    subject: "Re: Question about Budget",
     preview:
       "I've reviewed the budget numbers you sent over. Can we set up a quick call to discuss some potential adjustments?",
-    body: "I've reviewed the budget numbers you sent over. Can we set up a quick call to discuss some potential adjustments?\n\nThanks,\nEmily",
+    sender: "Emily Davis",
+    subject: "Re: Question about Budget",
+    time: "2 days ago",
   },
   {
+    body: "Please join us for an all-hands meeting this Friday at 3 PM. We have some exciting news to share about the company's future.\n\nSee you there!\nMichael",
     id: "5",
-    sender: "Michael Wilson",
-    time: "1 week ago",
-    subject: "Important Announcement",
     preview:
       "Please join us for an all-hands meeting this Friday at 3 PM. We have some exciting news to share about the company's future.",
-    body: "Please join us for an all-hands meeting this Friday at 3 PM. We have some exciting news to share about the company's future.\n\nSee you there!\nMichael",
+    sender: "Michael Wilson",
+    subject: "Important Announcement",
+    time: "1 week ago",
   },
 ];
 

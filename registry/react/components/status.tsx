@@ -12,23 +12,23 @@ export const statusVariants = tv({
     "font-medium text-[10px]",
     "ring-2 ring-background",
   ],
+  defaultVariants: {
+    size: "md",
+    variant: "default",
+  },
   variants: {
+    size: {
+      lg: "size-3 [&_svg:not([class*='size-'])]:size-2.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      md: "size-2.5 [&_svg:not([class*='size-'])]:size-2 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      sm: "size-2 [&_svg:not([class*='size-'])]:size-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    },
     variant: {
       default: "bg-foreground text-background",
-      success: "bg-success text-white",
+      destructive: "bg-destructive text-white",
       info: "bg-info text-white",
+      success: "bg-success text-white",
       warning: "bg-warning text-white",
-      destructive: "bg-destructive text-white dark:bg-destructive-foreground",
     },
-    size: {
-      sm: "size-2 [&_svg:not([class*='size-'])]:size-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-      md: "size-2.5 [&_svg:not([class*='size-'])]:size-2 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-      lg: "size-3 [&_svg:not([class*='size-'])]:size-2.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "md",
   },
 });
 
@@ -42,7 +42,7 @@ export const Status = (props: StatusProps) => {
   return (
     <ark.span
       aria-hidden="true"
-      className={cn(statusVariants({ variant, size }), className)}
+      className={cn(statusVariants({ size, variant }), className)}
       data-size={size}
       data-slot="status-indicator"
       {...rest}

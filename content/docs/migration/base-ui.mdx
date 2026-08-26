@@ -1,0 +1,137 @@
+---
+title: Base UI
+description: Move Base UI components to Shark UI.
+seoTitle: "Migrate from Base UI to Shark UI"
+seoDescription: "Migrate Base UI components to Shark UI. Replace render props with asChild, map list components to Ark collections, and match Shark anatomy."
+links:
+  doc: https://base-ui.com
+---
+
+[Base UI](https://base-ui.com) and [Ark UI](https://ark-ui.com) are both headless libraries with named parts. Shark UI wraps Ark with Tailwind styling and installs source into your repo.
+
+Install the Shark component, read its anatomy, then adapt markup and state. The main composition shift is `render` to `asChild`.
+
+## What changes
+
+| Base UI habit | Shark / Ark pattern |
+| --- | --- |
+| `render` on triggers and items | `asChild` with one host child |
+| Inline item lists on Select / Menu | Ark `collection` where the docs require it |
+| `@base-ui/react/*` imports | Shark component from [Components](/docs/components) |
+| Unstyled primitive parts | Named Shark parts with default Tailwind classes |
+
+## Triggers
+
+Base UI uses a `render` prop. Shark uses `asChild`:
+
+```tsx
+import { Menu } from "@base-ui/react/menu";
+
+<Menu.Root>
+  <Menu.Trigger render={<button type="button">Open</button>} />
+</Menu.Root>
+```
+
+```tsx
+import { Menu, MenuTrigger } from "@/components/ui/menu";
+import { Button } from "@/components/ui/button";
+
+<Menu>
+  <MenuTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </MenuTrigger>
+</Menu>;
+```
+
+Pass exactly one child. Do not port `render` callbacks unchanged.
+
+## Component equivalents
+
+| Base UI | Shark UI |
+| --- | --- |
+| Number Field | [Number Input](/docs/components/number-input) |
+
+Browse [Components](/docs/components) for same-name primitives (Menu, Dialog, Select, and others).
+
+## Select
+
+```tsx
+import { Select } from "@base-ui/react/select";
+
+<Select.Root defaultValue="next">
+  <Select.Trigger render={<button type="button" />} />
+  <Select.Popup>
+    <Select.Item value="next">Next.js</Select.Item>
+    <Select.Item value="vite">Vite</Select.Item>
+  </Select.Popup>
+</Select.Root>
+```
+
+```tsx
+import { createListCollection } from "@ark-ui/react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const frameworks = createListCollection({
+  items: ["Next.js", "Vite"],
+});
+
+<Select collection={frameworks} defaultValue={["Next.js"]}>
+  <SelectTrigger>
+    <SelectValue placeholder="Framework" />
+  </SelectTrigger>
+  <SelectContent>
+    {frameworks.items.map((item) => (
+      <SelectItem key={item} value={item}>
+        {item}
+      </SelectItem>
+    ))}
+  </SelectContent>
+</Select>;
+```
+
+For [Combobox](/docs/components/combobox), wire `useFilter` and `useListCollection` so filtering updates the same collection that renders items.
+
+## Toggle Group and Accordion
+
+Base UI and Ark both use value arrays on these primitives. Drop Base UI-specific `type` props and match the Shark docs page:
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+
+<ToggleGroup defaultValue={["daily"]}>
+  <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
+</ToggleGroup>;
+```
+
+```tsx
+import { Accordion, AccordionItem } from "@/components/ui/accordion";
+
+<Accordion defaultValue={["details"]}>
+  <AccordionItem value="details">...</AccordionItem>
+</Accordion>;
+```
+
+## Overlays
+
+Include a title part on Dialog, Sheet, and Drawer. Use `className="sr-only"` when the title should not show visually.
+
+## Theming
+
+Map your Base UI theme variables to Shark semantic tokens. See [Colors](/docs/colors) and [Styling](/docs/styling). Shark adds `destructive-foreground`, `success`, `warning`, and `info` pairs.
+
+## Checklist
+
+- Rewrite `render` to `asChild` on triggers and slotted controls.
+- Install Shark components from the docs; do not keep `@base-ui/react` imports.
+- Add collections on list primitives when required.
+- Re-check controlled values against the Shark docs page.
+- Keep overlay titles and labels accessible.
+- Use logical spacing for [RTL](/docs/rtl).
+
+Coming from shadcn on the Base UI base? See the [shadcn/ui guide](/docs/migration/shadcn).

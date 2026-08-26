@@ -2,6 +2,8 @@
 
 Use this guide when adapting snippets that were originally written with shadcn/Radix mental models.
 
+The public counterpart is [`/docs/migration/shadcn`](../../../../content/docs/migration/shadcn.mdx). Keep behavioral claims and examples aligned when either guide changes.
+
 ## Core idea
 
 Shark UI is close to shadcn ergonomically (also uses `asChild` prop for composition), but its primitives and composition model are aligned to Ark UI patterns.

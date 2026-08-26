@@ -84,7 +84,7 @@ export const EditablePreview = (props: EditablePreviewProps) => {
   return (
     <ArkEditable.Preview
       className={cn(
-        buttonVariants({ variant, size, clickEffect: false }),
+        buttonVariants({ clickEffect: false, size, variant }),
         "w-full justify-start",
         "px-3",
         "whitespace-pre-wrap font-normal text-base sm:text-sm",

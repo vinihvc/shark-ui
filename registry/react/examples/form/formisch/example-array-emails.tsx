@@ -58,19 +58,19 @@ const formSchema = v.object({
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { emails: [{ contact: { address: "" } }] },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "formisch-array-emails-submitted",
-      title: "Contact emails saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "formisch-array-emails-submitted",
+      title: "Contact emails saved",
     });
   };
 
@@ -119,8 +119,8 @@ const Example = () => {
                                     aria-label={`Remove email ${String(index + 1)}`}
                                     onClick={() =>
                                       remove(form, {
-                                        path: ["emails"],
                                         at: index,
+                                        path: ["emails"],
                                       })
                                     }
                                     size="icon-xs"
@@ -141,8 +141,8 @@ const Example = () => {
                     disabled={arrayField.items.length >= 5}
                     onClick={() =>
                       insert(form, {
-                        path: ["emails"],
                         initialInput: { contact: { address: "" } },
+                        path: ["emails"],
                       })
                     }
                     size="sm"

@@ -1,0 +1,154 @@
+---
+title: Radix UI
+description: Move Radix Primitives to Shark UI.
+seoTitle: "Migrate from Radix UI to Shark UI"
+seoDescription: "Migrate Radix Primitives to Shark UI. Map Radix parts to Ark UI collections, value arrays, and Shark component anatomy."
+links:
+  doc: https://radix-ui.com/primitives
+---
+
+[Radix Primitives](https://radix-ui.com/primitives) and [Ark UI](https://ark-ui.com) solve the same problem: accessible headless behavior you style yourself. Shark UI wraps Ark with Tailwind defaults and a copy-and-own install flow.
+
+Install the Shark component, read its anatomy, then adapt markup and state. `asChild` works the same way on triggers.
+
+## What changes
+
+| Radix habit | Shark / Ark pattern |
+| --- | --- |
+| Map children as the list data source | Pass an Ark `collection` on Select, Combobox, and similar |
+| `type="single"` / string `defaultValue` on Toggle Group | Value arrays |
+| `type` / `collapsible` on Accordion | Value arrays; check Shark defaults |
+| `@radix-ui/react-dropdown-menu` | [Menu](/docs/components/menu) |
+| Separate primitive imports per package | One Shark component per feature area |
+
+## Component equivalents
+
+| Radix Primitive | Shark UI |
+| --- | --- |
+| Dropdown Menu | [Menu](/docs/components/menu) |
+| Label | [Field](/docs/components/field) |
+
+Browse [Components](/docs/components) for same-name primitives (Dialog, Select, Tabs, and others).
+
+## Triggers
+
+Keep `asChild` with one host child:
+
+```tsx
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
+<DropdownMenu.Root>
+  <DropdownMenu.Trigger asChild>
+    <button type="button">Open</button>
+  </DropdownMenu.Trigger>
+</DropdownMenu.Root>
+```
+
+```tsx
+import { Menu, MenuTrigger } from "@/components/ui/menu";
+import { Button } from "@/components/ui/button";
+
+<Menu>
+  <MenuTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </MenuTrigger>
+</Menu>;
+```
+
+## Select
+
+Radix Select maps items from JSX. Shark Select reads from a collection:
+
+```tsx
+import * as Select from "@radix-ui/react-select";
+
+<Select.Root defaultValue="next">
+  <Select.Trigger>
+    <Select.Value placeholder="Framework" />
+  </Select.Trigger>
+  <Select.Content>
+    <Select.Item value="next">Next.js</Select.Item>
+    <Select.Item value="vite">Vite</Select.Item>
+  </Select.Content>
+</Select.Root>
+```
+
+```tsx
+import { createListCollection } from "@ark-ui/react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const frameworks = createListCollection({
+  items: ["Next.js", "Vite"],
+});
+
+<Select collection={frameworks} defaultValue={["Next.js"]}>
+  <SelectTrigger>
+    <SelectValue placeholder="Framework" />
+  </SelectTrigger>
+  <SelectContent>
+    {frameworks.items.map((item) => (
+      <SelectItem key={item} value={item}>
+        {item}
+      </SelectItem>
+    ))}
+  </SelectContent>
+</Select>;
+```
+
+## Toggle Group and Accordion
+
+```tsx
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
+
+<ToggleGroup.Root type="single" defaultValue="daily">
+  <ToggleGroup.Item value="daily">Daily</ToggleGroup.Item>
+</ToggleGroup.Root>
+```
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+
+<ToggleGroup defaultValue={["daily"]}>
+  <ToggleGroupItem value="daily">Daily</ToggleGroupItem>
+</ToggleGroup>;
+```
+
+```tsx
+import * as Accordion from "@radix-ui/react-accordion";
+
+<Accordion.Root type="single" collapsible defaultValue="details">
+  <Accordion.Item value="details">...</Accordion.Item>
+</Accordion.Root>
+```
+
+```tsx
+import { Accordion, AccordionItem } from "@/components/ui/accordion";
+
+<Accordion defaultValue={["details"]}>
+  <AccordionItem value="details">...</AccordionItem>
+</Accordion>;
+```
+
+## Overlays
+
+Radix Dialog expects a `Title`. Shark uses the same rule with named parts (`DialogTitle`, `SheetTitle`, `DrawerTitle`). Hide visually with `className="sr-only"` when needed.
+
+## Theming
+
+Radix ships unstyled. If you styled primitives yourself, map your CSS variables to Shark tokens. See [Colors](/docs/colors) and [Styling](/docs/styling). Shark adds `destructive-foreground`, `success`, `warning`, and `info` pairs.
+
+## Checklist
+
+- Replace `@radix-ui/react-*` imports with Shark components from the docs.
+- Add collections where list primitives require them.
+- Re-check controlled values; do not assume Radix string shapes.
+- Keep overlay titles and control labels accessible.
+- Use logical spacing for [RTL](/docs/rtl).
+
+Coming from styled shadcn on top of Radix? See the [shadcn/ui guide](/docs/migration/shadcn).

@@ -21,18 +21,18 @@ import {
 export const description = "A radar chart";
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { desktop: 186, month: "January" },
+  { desktop: 305, month: "February" },
+  { desktop: 237, month: "March" },
+  { desktop: 273, month: "April" },
+  { desktop: 209, month: "May" },
+  { desktop: 214, month: "June" },
 ];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
     color: "var(--chart-1)",
+    label: "Desktop",
   },
 } satisfies ChartConfig;
 

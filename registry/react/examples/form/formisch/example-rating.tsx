@@ -37,19 +37,19 @@ const formSchema = v.object({
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { recommendScore: 0 },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "rating-submitted",
-      title: "Feedback saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "rating-submitted",
+      title: "Feedback saved",
     });
   };
 

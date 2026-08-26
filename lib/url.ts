@@ -8,15 +8,7 @@ const getBaseUrl = (): string => {
     return envUrl.replace(TRAILING_SLASH, "");
   }
 
-  if (process.env.NODE_ENV === "production") {
-    return SITE_CONFIG.url.replace(TRAILING_SLASH, "");
-  }
-
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL.replace(TRAILING_SLASH, "")}`;
-  }
-
-  return "http://localhost:3000";
+  return SITE_CONFIG.url.replace(TRAILING_SLASH, "");
 };
 
 export const absoluteUrl = (path: string) => {

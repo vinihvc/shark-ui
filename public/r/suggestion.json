@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [],
+  "description": "Starter prompt chips for empty chat states.",
+  "name": "suggestion",
+  "registryDependencies": ["https://shark.vini.one/r/button.json"],
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport type React from \"react\";\nimport { useCallback } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/react/components/button\";\n\nexport const Suggestions = (props: React.ComponentProps<\"div\">) => {\n  const { className, ...rest } = props;\n\n  return (\n    <div\n      className={cn(\n        \"flex w-full flex-wrap items-center justify-center gap-2\",\n        className\n      )}\n      data-slot=\"suggestions\"\n      {...rest}\n    />\n  );\n};\n\ninterface SuggestionProps\n  extends Omit<React.ComponentProps<typeof Button>, \"onClick\"> {\n  onClick?: (suggestion: string) => void;\n  suggestion: string;\n}\n\nexport const Suggestion = (props: SuggestionProps) => {\n  const {\n    children,\n    className,\n    onClick,\n    suggestion,\n    type = \"button\",\n    variant = \"outline\",\n    size = \"sm\",\n    ...rest\n  } = props;\n\n  const handleClick = useCallback(() => {\n    onClick?.(suggestion);\n  }, [onClick, suggestion]);\n\n  return (\n    <Button\n      className={cn(\"rounded-full font-normal\", className)}\n      data-slot=\"suggestion\"\n      onClick={handleClick}\n      size={size}\n      type={type}\n      variant={variant}\n      {...rest}\n    >\n      {children ?? suggestion}\n    </Button>\n  );\n};\n",
+      "path": "registry/react/components/suggestion.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

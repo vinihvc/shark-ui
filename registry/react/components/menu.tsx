@@ -11,6 +11,7 @@ import { CheckIcon, ChevronRight } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 
 export const useMenu = useMenuContext;
 
@@ -55,13 +56,12 @@ export const menuContentVariants = tv({
   base: [
     "z-[calc(50+var(--nested-layer-count,0))]",
     "max-h-(--available-height) not-[class*='w-']:min-w-32",
-    "p-1",
+    "flex min-h-0 flex-col overflow-hidden p-0",
     "bg-popover",
     "text-popover-foreground",
     "rounded-xl border shadow-lg/5",
     "origin-(--transform-origin)",
     "outline-none",
-    "overflow-y-auto",
     "duration-100",
     "data-[state=open]:animate-in",
     "data-[state=open]:fade-in-0",
@@ -85,7 +85,11 @@ export const MenuContent = (props: MenuContentProps) => {
           data-slot="menu-content"
           {...rest}
         >
-          {children}
+          <ScrollArea className="min-h-0 flex-1">
+            <div className="p-1" data-slot="menu-scroll">
+              {children}
+            </div>
+          </ScrollArea>
         </ArkMenu.Content>
       </MenuPositioner>
     </Portal>
@@ -140,6 +144,9 @@ const menuItemVariants = tv({
     "data-disabled:pointer-events-none data-disabled:opacity-64",
     "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: [
@@ -151,9 +158,6 @@ const menuItemVariants = tv({
         "**:[svg]:text-destructive! dark:**:[svg]:text-destructive-foreground!",
       ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 
@@ -291,7 +295,7 @@ export const MenuSub = (props: React.ComponentProps<typeof Menu>) => (
 export const MenuSubContent = (
   props: React.ComponentProps<typeof ArkMenu.Content>
 ) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -300,7 +304,13 @@ export const MenuSubContent = (
           className={cn(menuContentVariants(), className)}
           data-slot="menu-sub-content"
           {...rest}
-        />
+        >
+          <ScrollArea className="min-h-0 flex-1">
+            <div className="p-1" data-slot="menu-sub-scroll">
+              {children}
+            </div>
+          </ScrollArea>
+        </ArkMenu.Content>
       </MenuPositioner>
     </Portal>
   );
@@ -320,7 +330,7 @@ export const MenuSubTrigger = (
       {children}
 
       <MenuShortcut>
-        <ChevronRight />
+        <ChevronRight className="size-3.5" />
       </MenuShortcut>
     </ArkMenu.TriggerItem>
   );

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["ai"],
+  "dependencies": ["lucide-react"],
+  "description": "Projects grid with create CTA and workflow cards.",
+  "files": [
+    {
+      "content": "import { ChatProjects } from \"@/components/ai-chat-projects/chat-projects\";\n\nconst ProjectsPage = () => (\n  <main className=\"min-h-svh bg-background\">\n    <ChatProjects />\n  </main>\n);\n\nexport default ProjectsPage;\n",
+      "path": "blocks/ai/ai-chat-projects-01/page.tsx",
+      "target": "app/ai-chat-projects/page.tsx",
+      "type": "registry:page"
+    },
+    {
+      "content": "\"use client\";\n\nimport {\n  FileSearchIcon,\n  GlobeIcon,\n  LayoutGridIcon,\n  PlusIcon,\n  SearchIcon,\n} from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport { Card, CardHeader, CardMedia } from \"@/components/ui/card\";\n\nconst PROJECTS = [\n  {\n    description: \"Summarize findings and compare sources across documents.\",\n    icon: FileSearchIcon,\n    id: \"research-analysis\",\n    title: \"Research & Analysis\",\n  },\n  {\n    description: \"Search the web and cite results in your workspace.\",\n    icon: GlobeIcon,\n    id: \"web-search\",\n    title: \"Web Search\",\n  },\n  {\n    description: \"Turn docs into answers with grounded citations.\",\n    icon: LayoutGridIcon,\n    id: \"knowledge-base\",\n    title: \"Knowledge Base\",\n  },\n  {\n    description: \"Generate endpoint examples and request schemas.\",\n    icon: FileSearchIcon,\n    id: \"api-docs\",\n    title: \"API Documentation\",\n  },\n  {\n    description: \"Draft release notes from commits and changelogs.\",\n    icon: LayoutGridIcon,\n    id: \"release-notes\",\n    title: \"Release Notes\",\n  },\n  {\n    description: \"Cluster feedback themes for product prioritization.\",\n    icon: SearchIcon,\n    id: \"user-feedback\",\n    title: \"User Feedback\",\n  },\n] as const;\n\nexport const ChatProjects = () => (\n  <div className=\"mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-8 sm:px-6\">\n    <div className=\"flex flex-wrap items-center justify-between gap-3\">\n      <div>\n        <h2 className=\"font-semibold text-xl\">Projects</h2>\n        <p className=\"text-muted-foreground text-sm\">\n          Organize chats around a goal, document set, or workflow.\n        </p>\n      </div>\n      <Button>\n        <PlusIcon aria-hidden=\"true\" className=\"size-4\" />\n        Create project\n      </Button>\n    </div>\n\n    <div className=\"grid grid-cols-1 gap-4 md:grid-cols-2\">\n      {PROJECTS.map((project) => {\n        const Icon = project.icon;\n        return (\n          <Card key={project.id}>\n            <CardMedia variant=\"icon\">\n              <Icon aria-hidden=\"true\" />\n            </CardMedia>\n            <CardHeader\n              description={project.description}\n              title={project.title}\n            />\n          </Card>\n        );\n      })}\n    </div>\n  </div>\n);\n",
+      "path": "blocks/ai/ai-chat-projects-01/components/chat-projects.tsx",
+      "target": "@components/ai-chat-projects/chat-projects.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 5,
+    "previewHeight": 720
+  },
+  "name": "ai-chat-projects-01",
+  "registryDependencies": [
+    "https://shark.vini.one/r/button.json",
+    "https://shark.vini.one/r/card.json"
+  ],
+  "title": "AI Chat Projects",
+  "type": "registry:block"
+}

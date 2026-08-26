@@ -42,24 +42,24 @@ const formSchema = z.object({
 const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    initialItems,
     filter: contains,
+    initialItems,
   });
 
   const form = useForm({
     defaultValues: { stack: [""] },
-    validators: { onSubmit: formSchema },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "stack-submitted",
-        title: "Stack preference saved",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "stack-submitted",
+        title: "Stack preference saved",
       });
     },
+    validators: { onSubmit: formSchema },
   });
 
   return (

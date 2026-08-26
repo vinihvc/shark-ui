@@ -47,14 +47,16 @@ npm install @ark-ui/react
 import { 
   FormatByte, 
   FormatNumber, 
-  FormatRelativeTime 
-} from "@/registry/react/components/format";
+  FormatRelativeTime,
+  FormatTime,
+} from "@/components/ui/format";
 ```
 
 ```tsx
 <FormatByte value={120_000} />
 <FormatNumber value={1234567} />
 <FormatRelativeTime value={new Date("2025-05-05")} />
+<FormatTime value={new Date("2026-08-24T14:30:00")} />
 ```
 
 ## Examples
@@ -88,6 +90,12 @@ Format dates as relative time.
 Use the `style` prop for long, short, or narrow format.
 
 <ComponentPreview componentName="format" fileName="example-relative-time-short" />
+
+### Format Time
+
+Format a `Date` or ISO time string. Use `format="12h"` with `amLabel` / `pmLabel` for meridiem text.
+
+<ComponentPreview componentName="format" fileName="example-time" />
 
 ### Format Number
 
@@ -132,6 +140,17 @@ Use `notation="compact"` for compact display.
 | `value` | `Date` \| `number` | - |
 | `numeric` | `"always"` \| `"auto"` | - |
 | `style` | `"long"` \| `"short"` \| `"narrow"` | - |
+| `locale` | `string` | - |
+
+### FormatTime
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `Date` \| `string` | - |
+| `format` | `"12h" \| "24h"` | - |
+| `amLabel` | `string` | - |
+| `pmLabel` | `string` | - |
+| `withSeconds` | `boolean` | - |
 | `locale` | `string` | - |
 
 ### FormatNumber

@@ -30,9 +30,9 @@ const collection = createListCollection({
     { label: "Free", value: "free" },
     { label: "Pro", value: "pro" },
     {
+      disabled: true,
       label: "Enterprise",
       value: "enterprise",
-      disabled: true,
     },
     { label: "Custom", value: "custom" },
   ],

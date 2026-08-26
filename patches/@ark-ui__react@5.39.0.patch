@@ -1,0 +1,21 @@
+diff --git a/package.json b/package.json
+index 7919ffcb78837224c9d68d35c8a7be7d310660ae..df47c66c6b1f86bee03d8af174d2dbe5d1c82cf8 100644
+--- a/package.json
++++ b/package.json
+@@ -111,6 +111,16 @@
+         "default": "./dist/providers/locale/index.cjs"
+       }
+     },
++    "./hotkeys": {
++      "import": {
++        "types": "./dist/providers/hotkeys/index.d.ts",
++        "default": "./dist/providers/hotkeys/index.js"
++      },
++      "require": {
++        "types": "./dist/providers/hotkeys/index.d.cts",
++        "default": "./dist/providers/hotkeys/index.cjs"
++      }
++    },
+     "./utils": {
+       "import": {
+         "types": "./dist/utils/index.d.ts",

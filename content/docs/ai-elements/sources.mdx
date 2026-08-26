@@ -1,0 +1,78 @@
+---
+title: Sources
+description: Collapsible citations and inline footnotes for assistant answers.
+---
+
+<ComponentPreview componentName="sources" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/sources
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Collapsible](/docs/components/collapsible). Install required dependencies first if you haven&apos;t already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/sources.tsx" src="/sources.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Sources
+├── SourcesTrigger
+└── SourcesContent
+    └── Source
+
+InlineCitation
+```
+
+## Usage
+
+```tsx
+import {
+  InlineCitation,
+  Source,
+  Sources,
+  SourcesContent,
+  SourcesTrigger,
+} from "@/components/ui/sources";
+```
+
+```tsx
+<Sources>
+  <SourcesTrigger count={2} />
+  <SourcesContent>
+    <Source href="https://react.dev" title="React Documentation" />
+  </SourcesContent>
+</Sources>
+```
+
+Use `InlineCitation` inside message text for superscript footnotes with an optional hover card.
+
+
+

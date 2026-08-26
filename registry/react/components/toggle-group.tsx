@@ -32,14 +32,14 @@ const toggleGroupVariants = tv({
     "flex items-center gap-[--spacing(var(--gap))]",
     "rounded-lg",
   ],
+  defaultVariants: {
+    orientation: "horizontal",
+  },
   variants: {
     orientation: {
       horizontal: "flex-row pointer-coarse:*:after:min-w-auto",
       vertical: "flex-col items-stretch pointer-coarse:*:after:min-h-auto",
     },
-  },
-  defaultVariants: {
-    orientation: "horizontal",
   },
 });
 
@@ -56,7 +56,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
   } = props;
 
   return (
-    <ToggleGroupContext.Provider value={{ variant, size, spacing }}>
+    <ToggleGroupContext.Provider value={{ size, spacing, variant }}>
       <ArkToggleGroup.Root
         className={cn(toggleGroupVariants({ orientation }), className)}
         data-slot="toggle-group"

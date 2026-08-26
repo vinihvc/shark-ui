@@ -1,0 +1,76 @@
+---
+title: Queue
+description: A collapsible list of pending and completed prompts.
+---
+
+<ComponentPreview componentName="queue" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/queue
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Collapsible](/docs/components/collapsible). Install required dependencies first if you haven&apos;t already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/queue.tsx" src="/queue.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Queue
+└── QueueSection
+    ├── QueueSectionTrigger
+    │   └── QueueSectionLabel
+    └── QueueSectionContent
+        └── QueueList
+            └── QueueItem
+                ├── QueueItemIndicator
+                ├── QueueItemContent
+                └── QueueItemActions
+                    └── QueueItemAction
+```
+
+## Usage
+
+```tsx
+import {
+  Queue,
+  QueueItem,
+  QueueItemContent,
+  QueueItemIndicator,
+  QueueList,
+  QueueSection,
+  QueueSectionContent,
+  QueueSectionLabel,
+  QueueSectionTrigger,
+} from "@/components/ui/queue";
+```
+
+
+

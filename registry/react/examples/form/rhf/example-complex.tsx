@@ -40,13 +40,6 @@ import { Switch } from "@/registry/react/components/switch";
 import { toast } from "@/registry/react/components/toast";
 
 const formSchema = z.object({
-  plan: z.enum(["basic", "pro"], {
-    message: "Please select a subscription plan.",
-  }),
-  billingPeriod: z
-    .array(z.string())
-    .min(1, "Please select a billing period.")
-    .refine((val) => val[0] !== "", "Please select a billing period."),
   addons: z
     .array(z.string())
     .min(1, "Please select at least one add-on.")
@@ -57,29 +50,36 @@ const formSchema = z.object({
         message: "You selected an invalid add-on.",
       }
     ),
+  billingPeriod: z
+    .array(z.string())
+    .min(1, "Please select a billing period.")
+    .refine((val) => val[0] !== "", "Please select a billing period."),
   emailNotifications: z.boolean(),
+  plan: z.enum(["basic", "pro"], {
+    message: "Please select a subscription plan.",
+  }),
 });
 
 const Example = () => {
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: {
-      plan: "basic",
-      billingPeriod: [""],
       addons: [],
+      billingPeriod: [""],
       emailNotifications: false,
+      plan: "basic",
     },
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "rhf-complex-submitted",
-      title: "Preferences saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
+      id: "rhf-complex-submitted",
+      title: "Preferences saved",
     });
   };
 
@@ -251,19 +251,19 @@ const collection = createListCollection({
 
 const addons = [
   {
+    description: "Advanced analytics and reporting",
     id: "analytics",
     title: "Analytics",
-    description: "Advanced analytics and reporting",
   },
   {
+    description: "Automated daily backups",
     id: "backup",
     title: "Backup",
-    description: "Automated daily backups",
   },
   {
+    description: "24/7 premium customer support",
     id: "support",
     title: "Priority Support",
-    description: "24/7 premium customer support",
   },
 ] as const;
 

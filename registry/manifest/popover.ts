@@ -4,13 +4,13 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "popover",
-  type: "registry:ui",
   dependencies,
+  name: "popover",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
     absoluteUrl("/r/scroll-area.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

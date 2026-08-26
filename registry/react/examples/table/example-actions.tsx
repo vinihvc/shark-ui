@@ -72,9 +72,9 @@ const Example = () => (
 );
 
 const users = [
-  { id: "1", name: "Alice Johnson", email: "alice@example.com" },
-  { id: "2", name: "Bruno Silva", email: "bruno@example.com" },
-  { id: "3", name: "Clara Mendes", email: "clara@example.com" },
+  { email: "alice@example.com", id: "1", name: "Alice Johnson" },
+  { email: "bruno@example.com", id: "2", name: "Bruno Silva" },
+  { email: "clara@example.com", id: "3", name: "Clara Mendes" },
 ];
 
 export default Example;

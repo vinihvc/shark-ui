@@ -111,6 +111,18 @@ Use with `showMarkers` and `markerLabels` to show custom labels on the markers.
 
 <ComponentPreview componentName="slider" fileName="example-step" />
 
+### Large step
+
+Hold `Shift` or press `PageUp` / `PageDown` to move by `largeStep` (defaults to `10 * step`).
+
+<ComponentPreview componentName="slider" fileName="example-large-step" />
+
+### Thumb collision
+
+On a range slider, `thumbCollisionBehavior` controls what happens when thumbs meet: `none`, `push`, or `swap`.
+
+<ComponentPreview componentName="slider" fileName="example-thumb-collision" />
+
 <Alert>
   <InfoIcon />
   <AlertDescription>
@@ -132,6 +144,8 @@ Root component. Manages value, track, range, and thumb(s).
 | `min` | `number` | `0` |
 | `max` | `number` | `100` |
 | `step` | `number` | `1` |
+| `largeStep` | `number` | `10 * step` |
+| `thumbCollisionBehavior` | `"none" \| "push" \| "swap"` | - |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
 | `disabled` | `boolean` | `false` |
 | `showMarkers` | `boolean` | `false` |

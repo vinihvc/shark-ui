@@ -23,11 +23,11 @@ const css = {
 };
 
 const manifest: RegistryItemType = {
+  css,
+  cssVars,
+  dependencies,
   name: "marquee",
   type: "registry:ui",
-  dependencies,
-  cssVars,
-  css,
 };
 
 export default manifest;

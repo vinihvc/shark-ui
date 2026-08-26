@@ -19,8 +19,6 @@ export type PrimaryColor =
   | "purple"
   | "fuchsia"
   | "pink"
-  | "rose"
-  | "pink"
   | "rose";
 
 export type GrayColor =
@@ -34,7 +32,7 @@ export type GrayColor =
   | "mist"
   | "taupe";
 
-export type BorderRadius = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+export type BorderRadius = "none" | "xs" | "sm" | "md" | "lg";
 
 export type PackageManager = "npm" | "pnpm" | "yarn" | "bun";
 
@@ -55,11 +53,11 @@ export interface Config {
 }
 
 export const configAtom = atomWithStorage<Config>("config", {
-  primaryColor: DEFAULT_PRIMARY_COLOR,
-  grayColor: DEFAULT_GRAY_COLOR,
   borderRadius: DEFAULT_BORDER_RADIUS,
-  packageManager: DEFAULT_PACKAGE_MANAGER,
+  grayColor: DEFAULT_GRAY_COLOR,
   installationMethod: DEFAULT_INSTALLATION_METHOD,
+  packageManager: DEFAULT_PACKAGE_MANAGER,
+  primaryColor: DEFAULT_PRIMARY_COLOR,
 });
 
 export const useConfig = () => useAtom(configAtom);

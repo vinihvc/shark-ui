@@ -87,7 +87,7 @@ For example, `--qr-code-size:6rem` for small, `--qr-code-size:10rem` for large
 
 ### With an overlay
 
-Use `QrCodeOverlay` to add an overlay in the center.
+Use `QrCodeOverlay` to add an overlay in the center. Downloads and `getDataUrl()` include the overlay in the exported image.
 
 <ComponentPreview componentName="qr-code" fileName="example-overlay" />
 
@@ -106,7 +106,7 @@ Use the `encoding.ecc` property to set the error correction level:
 
 ### Download
 
-Use `QrCodeDownload` with `fileName` and `mimeType` to let users download the QR code as an image.
+Use `QrCodeDownload` with `fileName` and `mimeType` to let users download the QR code as an image. The file includes any overlay placed on the code.
 
 <ComponentPreview componentName="qr-code" fileName="example-download" />
 

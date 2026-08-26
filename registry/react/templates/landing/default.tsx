@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Landing Template",
   description:
     "Marketing landing page with hero, features, pricing, and CTA sections. Optimized for conversions.",
+  title: "Landing Template",
   url: "/templates/landing",
 });
 
@@ -22,34 +22,34 @@ import { Separator } from "@/registry/react/components/separator";
 
 const FEATURES = [
   {
-    title: "Fast",
     description:
       "Built for performance. Ship quickly with pre-optimized components.",
+    title: "Fast",
   },
   {
-    title: "Accessible",
     description:
       "Follows WCAG guidelines. Keyboard navigable and screen-reader friendly.",
+    title: "Accessible",
   },
   {
-    title: "Customizable",
     description:
       "Tailwind-based styling. Themes and tokens for consistent design.",
+    title: "Customizable",
   },
 ];
 
 const PRICING = [
   {
-    name: "Starter",
-    price: "$0",
     description: "For side projects and experiments",
     features: ["5 projects", "Basic components", "Community support"],
+    name: "Starter",
+    price: "$0",
   },
   {
-    name: "Pro",
-    price: "$29",
     description: "For teams and professionals",
     features: ["Unlimited projects", "All components", "Priority support"],
+    name: "Pro",
+    price: "$29",
   },
 ];
 

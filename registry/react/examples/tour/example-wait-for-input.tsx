@@ -21,19 +21,15 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const steps: TourStepType[] = [
   {
-    id: "intro",
-    type: "dialog",
-    title: "Form Tutorial",
+    actions: [{ action: "next", label: "Start" }],
     description:
       "Learn how to fill out the form by following the guided steps.",
-    actions: [{ label: "Start", action: "next" }],
+    id: "intro",
+    title: "Form Tutorial",
+    type: "dialog",
   },
   {
-    id: "enter-name",
-    type: "tooltip",
-    title: "Enter Your Name",
     description: "Type your name in the input field to continue.",
-    target: () => document.querySelector<HTMLInputElement>("#input-name"),
     effect({ next, target, show }) {
       show();
       const [promise, cancel] = waitForEvent<HTMLInputElement>(
@@ -46,13 +42,13 @@ const steps: TourStepType[] = [
       promise.then(() => next());
       return cancel;
     },
+    id: "enter-name",
+    target: () => document.querySelector<HTMLInputElement>("#input-name"),
+    title: "Enter Your Name",
+    type: "tooltip",
   },
   {
-    id: "enter-email",
-    type: "tooltip",
-    title: "Enter Your Email",
     description: "Now enter a valid email address.",
-    target: () => document.querySelector<HTMLInputElement>("#input-email"),
     effect({ next, target, show }) {
       show();
       const [promise, cancel] = waitForEvent<HTMLInputElement>(
@@ -65,13 +61,13 @@ const steps: TourStepType[] = [
       promise.then(() => next());
       return cancel;
     },
+    id: "enter-email",
+    target: () => document.querySelector<HTMLInputElement>("#input-email"),
+    title: "Enter Your Email",
+    type: "tooltip",
   },
   {
-    id: "check-terms",
-    type: "tooltip",
-    title: "Accept Terms",
     description: "Check the checkbox to accept the terms.",
-    target: () => document.querySelector<HTMLInputElement>("#checkbox-terms"),
     effect({ next, target, show }) {
       show();
       const [promise, cancel] = waitForEvent<HTMLInputElement>(
@@ -84,13 +80,17 @@ const steps: TourStepType[] = [
       promise.then(() => next());
       return cancel;
     },
+    id: "check-terms",
+    target: () => document.querySelector<HTMLInputElement>("#checkbox-terms"),
+    title: "Accept Terms",
+    type: "tooltip",
   },
   {
-    id: "complete",
-    type: "dialog",
-    title: "Form Complete!",
+    actions: [{ action: "dismiss", label: "Done" }],
     description: "You have successfully filled out the form.",
-    actions: [{ label: "Done", action: "dismiss" }],
+    id: "complete",
+    title: "Form Complete!",
+    type: "dialog",
   },
 ];
 

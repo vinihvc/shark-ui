@@ -8,7 +8,7 @@ import {
 } from "@/registry/react/components/item";
 
 export const ItemExample = () => (
-  <Item tabIndex={-1} variant="outline">
+  <Item variant="outline">
     <ItemMedia>
       <BadgeCheck className="size-5" />
     </ItemMedia>

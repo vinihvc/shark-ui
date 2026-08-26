@@ -17,19 +17,19 @@ import {
 
 const people = [
   {
-    username: "vinihvc",
     avatar: "https://github.com/vinihvc.png",
     email: "vinihvc@example.com",
+    username: "vinihvc",
   },
   {
-    username: "segunadebayo",
     avatar: "https://github.com/segunadebayo.png",
     email: "segunadebayo@example.com",
+    username: "segunadebayo",
   },
   {
-    username: "pasqualevitiello",
     avatar: "https://github.com/pasqualevitiello.png",
     email: "pasqualevitiello@example.com",
+    username: "pasqualevitiello",
   },
 ];
 

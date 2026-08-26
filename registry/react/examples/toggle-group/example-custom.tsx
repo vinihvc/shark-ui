@@ -8,10 +8,10 @@ import {
 } from "@/registry/react/components/toggle-group";
 
 const FONT_WEIGHTS = [
-  { value: "light", label: "Light", className: "font-light" },
-  { value: "normal", label: "Normal", className: "font-normal" },
-  { value: "medium", label: "Medium", className: "font-medium" },
-  { value: "bold", label: "Bold", className: "font-bold" },
+  { className: "font-light", label: "Light", value: "light" },
+  { className: "font-normal", label: "Normal", value: "normal" },
+  { className: "font-medium", label: "Medium", value: "medium" },
+  { className: "font-bold", label: "Bold", value: "bold" },
 ] as const;
 
 const Example = () => {

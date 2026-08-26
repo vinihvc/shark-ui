@@ -1,0 +1,234 @@
+---
+title: Table of Contents
+description: Tracks the active heading as the reader scrolls.
+links:
+  doc: https://ark-ui.com/docs/components/toc
+  api: https://ark-ui.com/docs/components/toc#api-reference
+---
+
+<ComponentPreview componentName="toc" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/toc
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/toc.tsx" src="/toc.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Toc
+├── TocContent
+└── TocNav
+    ├── TocTitle
+    └── TocList
+        ├── TocIndicator
+        └── TocItem
+            └── TocLink
+```
+
+## Usage
+
+```tsx
+import {
+  Toc,
+  TocContent,
+  TocItem,
+  TocLink,
+  TocList,
+  TocNav,
+  TocTitle,
+} from "@/components/ui/toc";
+```
+
+```tsx
+<Toc items={items} scrollEl={() => contentRef.current}>
+  <TocContent ref={contentRef}>
+    <h2 id="intro">Introduction</h2>
+  </TocContent>
+  <TocNav>
+    <TocTitle>On this page</TocTitle>
+    <TocList>
+      {items.map((item) => (
+        <TocItem item={item} key={item.value}>
+          <TocLink href={`#${item.value}`}>{item.label}</TocLink>
+        </TocItem>
+      ))}
+    </TocList>
+  </TocNav>
+</Toc>
+```
+
+## Examples
+
+### Nested
+
+<ComponentPreview componentName="toc" fileName="example-nested" />
+
+### Collapsible
+
+<ComponentPreview componentName="toc" fileName="example-collapsible" />
+
+### Indicator
+
+Add `TocIndicator` inside `TocList` for a marker that slides to the active item.
+
+<ComponentPreview componentName="toc" fileName="example-indicator" />
+
+### Rail
+
+Give each item a small SVG offset by `depth`. Where neighbouring items sit at different depths, a bezier joins the two positions so the rail steps rather than breaks.
+
+<ComponentPreview componentName="toc" fileName="example-rail" />
+
+### Tree View
+
+<ComponentPreview componentName="toc" fileName="example-tree-view" />
+
+## API Reference
+
+### Toc
+
+Root. Tracks visible headings and owns scroll behavior.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `items` | `TocItemData[]` | `[]` |
+| `scrollEl` | `() => HTMLElement \| null` | `-` |
+| `activeIds` | `string[]` | `-` |
+| `defaultActiveIds` | `string[]` | `-` |
+| `autoScroll` | `boolean` | `true` |
+| `scrollBehavior` | `ScrollBehavior` | `"smooth"` |
+| `rootMargin` | `string` | `"-20px 0px -40% 0px"` |
+| `threshold` | `number \| number[]` | `0` |
+| `onActiveChange` | `(details: TocActiveChangeDetails) => void` | `-` |
+| `id` | `string` | `-` |
+| `ids` | `Partial<{ root: string; title: string; list: string; item: (value: string) => string; link: (value: string) => string; indicator: string }>` | `-` |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+| CSS Variable | Description |
+| --- | --- |
+| `--top` | Indicator offset from the top of the list |
+| `--height` | Indicator height for the active range |
+| `--left` | Indicator horizontal offset |
+| `--width` | Indicator width |
+
+### TocContent
+
+Scrollable document region observed by the TOC.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### TocNav
+
+Sticky navigation column for the list of links.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placement` | `"left" \| "right"` | `-` |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### TocTitle
+
+Accessible title for the navigation.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### TocList
+
+List container for items. Relatively positioned so `TocIndicator` can slide.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### TocIndicator
+
+Optional marker that slides to span the active item(s). Place inside `TocList`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### TocItem
+
+One TOC entry. Indent follows `--depth` from the item's heading level.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `item` | `TocItemData` | **required** |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+| Attribute | Description |
+| --- | --- |
+| `data-value` | Item `value` (heading id) |
+| `data-active` | Present when the heading is active |
+| `data-first` | First item in the active range |
+| `data-last` | Last item in the active range |
+| `data-depth` | Heading depth |
+
+| CSS Variable | Description |
+| --- | --- |
+| `--depth` | Heading depth for indentation |
+
+### TocLink
+
+Anchor to a heading. Sets `aria-current="location"` when active. Clicks scroll inside `TocContent` when present.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+| Attribute | Description |
+| --- | --- |
+| `data-value` | Linked heading id |
+| `data-active` | Present when the linked heading is active |
+
+---
+
+For a complete list of props, see the [Ark UI documentation](https://ark-ui.com/docs/components/toc#api-reference).

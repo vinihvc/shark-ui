@@ -1,0 +1,147 @@
+---
+title: Message
+description: A conversation row with avatar, alignment, header, content, and footer.
+seoDescription: "Render flexible AI chat messages in React with Shark UI, including avatars, alignment, metadata headers, rich content, actions, and message footers."
+---
+
+<ComponentPreview componentName="message" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/message
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/message.tsx" src="/message.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+MessageGroup
+└── Message
+    ├── MessageAvatar
+    └── MessageContent
+        ├── MessageHeader
+        ├── …
+        └── MessageFooter
+            └── MessageActions
+                └── MessageAction
+```
+
+## Usage
+
+```tsx
+import {
+  Message,
+  MessageAction,
+  MessageActions,
+  MessageAvatar,
+  MessageContent,
+  MessageFooter,
+  MessageHeader,
+} from "@/components/ui/message";
+```
+
+```tsx
+<Message>
+  <MessageAvatar />
+  <MessageContent>
+    <MessageHeader />
+    <MessageFooter>
+      <MessageActions>
+        <MessageAction tooltip="Copy" />
+      </MessageActions>
+    </MessageFooter>
+  </MessageContent>
+</Message>
+```
+
+Compose with [Bubble](/docs/ai-elements/bubble) for the message surface. Use `align="end"` for the current user.
+
+## Alignment
+
+<ComponentPreview componentName="message" fileName="example-align" />
+
+## Avatar
+
+Use `MessageAvatar` to render an avatar next to the message. Set `align="end"` on the message to align the avatar to the end of the row.
+
+<ComponentPreview componentName="message" fileName="example-avatar" />
+
+| align | Description |
+| --- | --- |
+| `start` | Align the message to the start of the conversation. |
+| `end` | Align the message to the end of the conversation. |
+
+## Group
+
+Use `MessageGroup` to stack consecutive messages from the same sender. Render an empty `MessageAvatar` on the earlier messages to keep them aligned with the avatar on the last one.
+
+<ComponentPreview componentName="message" fileName="example-group" />
+
+## Header and Footer
+
+Use `MessageHeader` for a sender name and `MessageFooter` for metadata such as a delivery or read status.
+
+<ComponentPreview componentName="message" fileName="example-header-footer" />
+
+## Actions
+
+Place `MessageActions` inside `MessageFooter` for copy, regenerate, or feedback controls. `MessageAction` accepts optional `tooltip` and `label`.
+
+<ComponentPreview componentName="message" fileName="example-actions" />
+
+## Attachment
+
+<ComponentPreview componentName="message" fileName="example-attachment" />
+
+## API Reference
+
+### Message
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `align` | `"start" \| "end"` | `"start"` |
+| `asChild` | `boolean` | `false` |
+
+`MessageGroup`, `MessageAvatar`, `MessageContent`, `MessageHeader`, `MessageFooter`, and `MessageActions` accept `className` and `asChild`.
+
+### MessageAction
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `tooltip` | `string` | — |
+| `label` | `string` | — |
+| `variant` | `Button` variant | `"ghost"` |
+| `size` | `Button` size | `"icon-xs"` |

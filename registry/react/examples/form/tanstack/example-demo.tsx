@@ -26,35 +26,35 @@ import {
 } from "@/registry/react/components/input-group";
 
 const formSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
   description: z
     .string()
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
 });
 
 export const BugReportForm = () => {
   const form = useForm({
     defaultValues: {
-      title: "",
       description: "",
-    },
-    validators: {
-      onSubmit: formSchema,
+      title: "",
     },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "bug-report-submitted",
-        title: "Bug submitted",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "bug-report-submitted",
+        title: "Bug submitted",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

@@ -7,6 +7,7 @@ import {
 } from "@ark-ui/react/progress";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { FieldLabel } from "@/registry/react/components/field";
 
 export const useCircularProgress = useProgressContext;
 
@@ -117,6 +118,20 @@ export const CircularProgressTrack = (props: CircularProgressTrackProps) => {
         strokeWidth={thickness}
       />
     </ark.svg>
+  );
+};
+
+export const CircularProgressLabel = (
+  props: React.ComponentProps<typeof ArkProgress.Label>
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkProgress.Label data-slot="circular-progress-label" {...rest}>
+        {children}
+      </ArkProgress.Label>
+    </FieldLabel>
   );
 };
 

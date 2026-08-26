@@ -18,7 +18,7 @@ import {
 } from "@/registry/react/components/floating-panel";
 
 const Example = () => {
-  const [size, setSize] = React.useState({ width: 360, height: 200 });
+  const [size, setSize] = React.useState({ height: 200, width: 360 });
 
   return (
     <FloatingPanel
@@ -56,8 +56,8 @@ const Example = () => {
               onClick={() =>
                 setSize((prev) => ({
                   ...prev,
-                  width: prev.width - 50,
                   height: prev.height - 40,
+                  width: prev.width - 50,
                 }))
               }
               variant="outline"
@@ -69,8 +69,8 @@ const Example = () => {
               onClick={() =>
                 setSize((prev) => ({
                   ...prev,
-                  width: prev.width + 50,
                   height: prev.height + 40,
+                  width: prev.width + 50,
                 }))
               }
               variant="outline"

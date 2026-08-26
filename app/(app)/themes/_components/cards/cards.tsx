@@ -25,7 +25,7 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
           <div className="hidden sm:flex">
             <CalendarRangeCardExample />
           </div>
-          <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
+          <div className="pt-3 sm:ps-2 sm:pt-0 xl:ps-4">
             <ActivityGoalExample />
           </div>
         </div>
@@ -46,7 +46,7 @@ export const CardsDemo = (props: React.ComponentProps<"div">) => {
       <div className="flex flex-col gap-4 lg:col-span-6 xl:col-span-5">
         <div className="hidden gap-1 md:grid lg:grid-cols-[auto_1fr]">
           <CalendarRangeCardExample className="**:[data-slot=calendar]:w-full" />
-          <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-3">
+          <div className="pt-3 sm:ps-2 sm:pt-0 xl:ps-3">
             <ActivityGoalExample />
           </div>
         </div>

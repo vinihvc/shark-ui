@@ -38,7 +38,7 @@ const collection = createListCollection({
 });
 
 const Example = () => (
-  <FloatingPanel defaultSize={{ width: 360, height: 300 }}>
+  <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
     <FloatingPanelTrigger asChild>
       <Button variant="outline">Open</Button>
     </FloatingPanelTrigger>

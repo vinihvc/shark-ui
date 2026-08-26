@@ -29,12 +29,12 @@ const chartData = [
 
 const chartConfig = {
   running: {
-    label: "Running",
     color: "var(--chart-1)",
+    label: "Running",
   },
   swimming: {
-    label: "Swimming",
     color: "var(--chart-2)",
+    label: "Swimming",
   },
 } satisfies ChartConfig;
 
@@ -75,7 +75,7 @@ function ChartTooltipLabelFormatter() {
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) =>
-                    new Date(value).toLocaleDateString("en-US", {
+                    new Date(String(value)).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",

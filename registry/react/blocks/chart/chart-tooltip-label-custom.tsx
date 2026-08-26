@@ -32,12 +32,12 @@ const chartConfig = {
     label: "Activities",
   },
   running: {
-    label: "Running",
     color: "var(--chart-1)",
+    label: "Running",
   },
   swimming: {
-    label: "Swimming",
     color: "var(--chart-2)",
+    label: "Swimming",
   },
 } satisfies ChartConfig;
 

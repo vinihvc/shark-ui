@@ -2,85 +2,96 @@
 
 import type { TOCItemType } from "fumadocs-core/toc";
 import { AlignLeftIcon, CircleArrowUpIcon } from "lucide-react";
-import React from "react";
+import { type ComponentProps, useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Presence } from "@/registry/react/components/presence";
+import {
+  Toc,
+  TocIndicator,
+  TocItem,
+  TocLink,
+  TocList,
+  TocNav,
+  TocTitle,
+} from "@/registry/react/components/toc";
 
-interface DocsTableOfContentsProps extends React.ComponentProps<"div"> {
+interface DocsTableOfContentsProps
+  extends Omit<ComponentProps<typeof Toc>, "items"> {
   /**
    * The table of contents data
    */
   data: TOCItemType[];
 }
 
-export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
-  const { data, className } = props;
+const toTocItems = (data: TOCItemType[]) =>
+  data.map((item) => ({
+    depth: item.depth,
+    href: item.url,
+    title: item.title,
+    value: item.url.startsWith("#") ? item.url.slice(1) : item.url,
+  }));
 
-  const itemIds = React.useMemo(
-    () => data.map((item) => item.url.replace("#", "")),
-    [data]
-  );
-  const activeHeading = useActiveItem(itemIds);
+export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
+  const { data, className, ...rest } = props;
+
+  const items = useMemo(() => toTocItems(data), [data]);
   const showScrollToTop = useShowScrollToTop();
 
-  if (!data?.length) {
+  if (!items.length) {
     return null;
   }
 
   return (
-    <div
+    <Toc
       className={cn(
         "z-10",
-        "flex flex-col gap-1",
+        "flex-col gap-1",
         "py-2 ps-6 pe-4",
         "text-sm",
         className
       )}
+      items={items}
+      {...rest}
+      autoScroll={false}
     >
-      <p className="inline-flex h-7 items-center gap-2 font-medium text-xs">
-        <AlignLeftIcon aria-hidden className="size-3" />
-        On This Page
-      </p>
-
-      <div className="relative ms-4.5 flex flex-col gap-0.5 before:absolute before:-inset-s-3.25 before:inset-y-0 before:w-px before:bg-border">
-        {data.map((item) => (
-          <TOCItem
-            data-active={item.url === `#${activeHeading}`}
-            data-depth={item.depth}
-            href={item.url}
-            key={item.url}
-          >
-            {item.title}
-          </TOCItem>
-        ))}
-      </div>
-
-      <Presence
-        className={cn(
-          "mt-2 ps-3.5",
-          "duration-200",
-          "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
-          "data-[state=open]:fade-in-0 data-[state=open]:animate-in"
-        )}
-        present={showScrollToTop}
-      >
-        <TOCItem
-          className="inline-flex items-center gap-2"
-          data-active={false}
-          data-depth={0}
-          href="#page-title"
+      <TocNav className="static w-full">
+        <TocTitle className="mb-0 inline-flex h-7 items-center gap-2 text-xs">
+          <AlignLeftIcon aria-hidden className="size-3" />
+          On This Page
+        </TocTitle>
+        <TocList>
+          <TocIndicator className="bg-primary" />
+          {items.map((item) => (
+            <TocItem item={item} key={item.value}>
+              <TocLink href={item.href}>{item.title}</TocLink>
+            </TocItem>
+          ))}
+        </TocList>
+        <Presence
+          className={cn(
+            "mt-2 ps-3.5",
+            "duration-200",
+            "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
+            "data-[state=open]:fade-in-0 data-[state=open]:animate-in"
+          )}
+          present={showScrollToTop}
         >
-          <CircleArrowUpIcon aria-hidden className="size-4" /> Scroll to top
-        </TOCItem>
-      </Presence>
-    </div>
+          <a
+            className="inline-flex items-center gap-2 py-1 text-muted-foreground outline-none hover:text-foreground focus-visible:text-foreground"
+            href="#page-title"
+          >
+            <CircleArrowUpIcon aria-hidden className="size-4" /> Scroll to top
+          </a>
+        </Presence>
+      </TocNav>
+    </Toc>
   );
 };
 
 const useShowScrollToTop = () => {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const updateVisibility = () => {
       const scrollableHeight =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -96,69 +107,4 @@ const useShowScrollToTop = () => {
   }, []);
 
   return show;
-};
-
-const useActiveItem = (itemIds: string[]) => {
-  const [activeId, setActiveId] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    // Default to first item on mount if nothing is active yet
-    if (!activeId && itemIds?.length) {
-      setActiveId(itemIds[0] ?? null);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        }
-      },
-      { rootMargin: "0% 0% -80% 0%" }
-    );
-
-    for (const id of itemIds ?? []) {
-      const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
-    }
-
-    return () => {
-      for (const id of itemIds ?? []) {
-        const element = document.getElementById(id);
-        if (element) {
-          observer.unobserve(element);
-        }
-      }
-    };
-  }, [itemIds, activeId]);
-
-  return activeId;
-};
-
-const TOCItem = (props: React.ComponentProps<"a">) => {
-  const { className, ...rest } = props;
-
-  return (
-    <a
-      className={cn(
-        "relative",
-        "-mx-1 px-2 py-1",
-        "text-muted-foreground leading-4.5",
-        "rounded-md border border-transparent no-underline",
-        "transition-colors",
-        "before:absolute before:-inset-s-3 before:inset-y-px before:w-px ltr:before:translate-x-0.5 rtl:before:-translate-x-0.5",
-        "hover:text-foreground",
-        "data-[active=true]:text-foreground",
-        "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        "data-[active=true]:before:w-0.5 data-[active=true]:before:bg-primary",
-        "data-[depth=3]:ps-3.5",
-        "data-[depth=4]:ps-5.5",
-        className
-      )}
-      {...rest}
-    />
-  );
 };

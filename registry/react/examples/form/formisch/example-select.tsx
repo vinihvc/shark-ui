@@ -48,19 +48,19 @@ const formSchema = v.object({
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { language: [""] },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "language-submitted",
-      title: "Language submitted",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "language-submitted",
+      title: "Language submitted",
     });
   };
 

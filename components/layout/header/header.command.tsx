@@ -4,18 +4,23 @@ import { useFilter, useListCollection } from "@ark-ui/react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRightIcon,
+  BlocksIcon,
   CheckIcon,
   CircleDashed,
   CircleDotDashed,
   CornerDownLeftIcon,
+  SparklesIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { DOCS_NEW_ITEMS, DOCS_UPDATED_ITEMS } from "@/config/docs-nav";
 import type { NavItem } from "@/config/navigation";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-import { useIsMac } from "@/hooks/use-is-mac";
+import type { CommandCompositionItem } from "@/lib/command-composition-items";
 import type { source } from "@/lib/fumadocs";
+import { formatShadcnCommandDisplay } from "@/lib/shadcn-command";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/registry/react/components/badge";
 import { Button } from "@/registry/react/components/button";
 import {
   Command,
@@ -30,27 +35,50 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/react/components/command";
-import { Kbd, KbdGroup } from "@/registry/react/components/kbd";
+import {
+  useFormatHotkey,
+  useHotkey,
+} from "@/registry/react/components/hotkeys";
+import { Kbd } from "@/registry/react/components/kbd";
 import { useConfig } from "@/store/config";
 
 interface PageItem {
   group: string;
+  installName?: string;
   isComponent: boolean;
+  keywords?: string;
   label: string;
   url: string;
   value: string;
 }
 
 const GROUP_ICON_MAP: Record<string, LucideIcon> = {
-  sections: ArrowRightIcon,
+  "ai elements": SparklesIcon,
+  blocks: BlocksIcon,
   components: CircleDashed,
+  sections: ArrowRightIcon,
   utilities: CircleDotDashed,
 };
 
 const DEFAULT_GROUP_ICON = ArrowRightIcon;
 
+const isFormFieldFocused = () => {
+  const target = document.activeElement;
+
+  return (
+    (target instanceof HTMLElement && target.isContentEditable) ||
+    target instanceof HTMLInputElement ||
+    target instanceof HTMLTextAreaElement ||
+    target instanceof HTMLSelectElement
+  );
+};
+
 interface HeaderCommandProps
   extends React.ComponentProps<typeof CommandDialog> {
+  /**
+   * Blocks indexed for search
+   */
+  compositionItems: CommandCompositionItem[];
   /**
    * The navigation items to display in the command menu
    */
@@ -77,11 +105,11 @@ const getAddCommand = (packageManager: string) => {
 };
 
 export const HeaderCommand = (props: HeaderCommandProps) => {
-  const { navItems, tree, ...rest } = props;
+  const { compositionItems, navItems, tree, ...rest } = props;
 
   const router = useRouter();
 
-  const isMac = useIsMac();
+  const formatHotkey = useFormatHotkey();
   const [{ packageManager }] = useConfig();
   const { copyToClipboard, isCopied } = useCopyToClipboard({ timeout: 400 });
 
@@ -115,33 +143,46 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
         for (const item of group.children) {
           if (item.type === "page") {
             const isComponent =
-              ["/components/", "/utilities/", "/hooks/"].some((path) =>
-                item.url.includes(path)
+              ["/components/", "/ai-elements/", "/utilities/", "/hooks/"].some(
+                (path) => item.url.includes(path)
               ) ?? false;
             const itemName = item.name?.toString() || "";
 
             allItems.push({
-              isComponent,
-              label: itemName,
-              url: item.url,
-              value: item.url,
               group:
                 typeof group.name === "string"
                   ? group.name
                   : String(group.name),
+              isComponent,
+              label: itemName,
+              url: item.url,
+              value: item.url,
             });
           }
         }
       }
     }
 
+    for (const item of compositionItems) {
+      allItems.push(item);
+    }
+
     return allItems;
-  }, [navItems, tree]);
+  }, [compositionItems, navItems, tree]);
+
+  const filterItems = React.useCallback(
+    (_itemText: string, inputValue: string, item: PageItem) =>
+      contains(
+        [item.label, item.keywords ?? "", item.url].join(" "),
+        inputValue
+      ),
+    [contains]
+  );
 
   const { collection, filter } = useListCollection({
-    filter: contains,
-    initialItems: groupedItems,
+    filter: filterItems,
     groupBy: (item) => item.group,
+    initialItems: groupedItems,
   });
 
   const handleHighlightChange = React.useCallback(
@@ -155,38 +196,37 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
         setCopyPayload("");
         return;
       }
-      const componentName = item.url.split("/").at(-1) ?? "";
+      const componentName =
+        item.installName ?? item.url.split("/").at(-1)?.split("?")[0] ?? "";
       const addCmd = getAddCommand(packageManager);
       setCopyPayload(`${addCmd} @shark/${componentName}`);
     },
     [groupedItems, packageManager]
   );
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
-        if (
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
-        ) {
-          return;
-        }
+  const toggleOpen = React.useCallback(() => {
+    setIsOpen((open) => !open);
+  }, []);
 
-        e.preventDefault();
-        setIsOpen((open) => !open);
-      }
+  useHotkey({
+    action: toggleOpen,
+    enabled: () => !isFormFieldFocused(),
+    hotkey: "mod+K",
+    options: { preventDefault: true },
+  });
 
-      if (e.key === "c" && (e.metaKey || e.ctrlKey) && isOpen && copyPayload) {
-        e.preventDefault();
-        copyToClipboard(copyPayload);
-      }
-    };
+  useHotkey({
+    action: toggleOpen,
+    hotkey: "/",
+    options: { preventDefault: true },
+  });
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, [copyPayload, copyToClipboard, isOpen]);
+  useHotkey({
+    action: () => copyToClipboard(copyPayload),
+    enabled: () => isOpen && Boolean(copyPayload),
+    hotkey: "mod+C",
+    options: { preventDefault: true },
+  });
 
   return (
     <CommandDialog
@@ -205,10 +245,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
           variant="outline"
         >
           <span className="inline-flex">Search...</span>
-          <KbdGroup>
-            <Kbd variant="outline">⌘</Kbd>
-            <Kbd variant="outline">K</Kbd>
-          </KbdGroup>
+          <Kbd variant="outline">{formatHotkey("mod+K")}</Kbd>
         </Button>
       </CommandDialogTrigger>
       <CommandDialogContent>
@@ -222,7 +259,7 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
               setIsOpen(false);
             });
           }}
-          placeholder="Search documentation…"
+          placeholder="Search docs, blocks…"
         >
           <CommandInput />
           <CommandContent>
@@ -238,6 +275,16 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
                       <CommandItem item={item} key={item.value}>
                         <ItemIcon />
                         {item.label}
+                        {DOCS_UPDATED_ITEMS.includes(item.url) && (
+                          <Badge className="ms-auto" variant="outline">
+                            Updated
+                          </Badge>
+                        )}
+                        {DOCS_NEW_ITEMS.includes(item.url) && (
+                          <Badge className="ms-auto" variant="info">
+                            New
+                          </Badge>
+                        )}
                       </CommandItem>
                     );
                   })}
@@ -260,11 +307,10 @@ export const HeaderCommand = (props: HeaderCommandProps) => {
                 </div>
               ) : (
                 <div className="flex min-w-0 items-center gap-2">
-                  <span className="truncate font-mono">{copyPayload}</span>
-                  <KbdGroup>
-                    <Kbd variant="outline">{isMac ? "⌘" : "Ctrl"}</Kbd>
-                    <Kbd variant="outline">C</Kbd>
-                  </KbdGroup>
+                  <span className="truncate font-mono">
+                    {formatShadcnCommandDisplay(copyPayload)}
+                  </span>
+                  <Kbd variant="outline">{formatHotkey("mod+C")}</Kbd>
                 </div>
               ))}
           </CommandFooter>

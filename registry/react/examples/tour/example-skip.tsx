@@ -15,38 +15,38 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "step-1",
-    type: "tooltip",
-    title: "First Feature",
+    actions: [
+      { action: "dismiss", label: "Skip" },
+      { action: "next", label: "Next" },
+    ],
     description: "You can skip this tour at any time using the Skip button.",
+    id: "step-1",
     target: () => document.querySelector<HTMLElement>("#tour-item-1"),
-    actions: [
-      { label: "Skip", action: "dismiss" },
-      { label: "Next", action: "next" },
-    ],
+    title: "First Feature",
+    type: "tooltip",
   },
   {
-    id: "step-2",
-    type: "tooltip",
-    title: "Second Feature",
+    actions: [
+      { action: "dismiss", label: "Skip" },
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description: "Continue or skip to end the tour early.",
+    id: "step-2",
     target: () => document.querySelector<HTMLElement>("#tour-item-2"),
-    actions: [
-      { label: "Skip", action: "dismiss" },
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    title: "Second Feature",
+    type: "tooltip",
   },
   {
-    id: "step-3",
-    type: "tooltip",
-    title: "Final Feature",
-    description: "This is the last step of the tour.",
-    target: () => document.querySelector<HTMLElement>("#tour-item-3"),
     actions: [
-      { label: "Back", action: "prev" },
-      { label: "Finish", action: "dismiss" },
+      { action: "prev", label: "Back" },
+      { action: "dismiss", label: "Finish" },
     ],
+    description: "This is the last step of the tour.",
+    id: "step-3",
+    target: () => document.querySelector<HTMLElement>("#tour-item-3"),
+    title: "Final Feature",
+    type: "tooltip",
   },
 ];
 

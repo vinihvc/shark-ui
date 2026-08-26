@@ -32,19 +32,19 @@ const Example = () => (
 
 const users = [
   {
+    email: "alice@example.com",
     id: "1",
     name: "Alice Johnson",
-    email: "alice@example.com",
   },
   {
+    email: "bruno@example.com",
     id: "2",
     name: "Bruno Silva",
-    email: "bruno@example.com",
   },
   {
+    email: "clara@example.com",
     id: "3",
     name: "Clara Mendes",
-    email: "clara@example.com",
   },
 ];
 

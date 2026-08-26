@@ -8,14 +8,12 @@ import {
 } from "@/lib/themes";
 import {
   Dialog,
-  DialogBody,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/registry/react/components/dialog";
-import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { useConfig } from "@/store/config";
 import { getIconForLanguageExtension } from "@/utils/file-extension";
 import { CopyButton } from "../copy-button";
@@ -39,6 +37,10 @@ export const CopyThemeCodeDialog = (
       : "";
 
   const lines = cssCode.split("\n");
+  const title =
+    primary && gray && radius
+      ? `${gray.label} / ${primary.label} / ${radius.label}`
+      : "Theme";
 
   return (
     <Dialog {...rest}>
@@ -46,14 +48,17 @@ export const CopyThemeCodeDialog = (
 
       <DialogContent size="xl">
         <DialogHeader>
-          <DialogTitle className="capitalize">{cfg.primaryColor}</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
           <DialogDescription>
             Copy and paste the following code into your CSS file.
           </DialogDescription>
         </DialogHeader>
-        <DialogBody>
+        <div
+          className="min-h-0 min-w-0 flex-1 overflow-hidden p-(--space) in-[[data-slot=dialog-content]:has([data-slot=dialog-header])]:pt-0"
+          data-slot="dialog-body"
+        >
           <figure
-            className="relative overflow-hidden rounded-xl"
+            className="relative mt-0 w-full min-w-0 overflow-hidden rounded-xl"
             data-rehype-pretty-code-figure
           >
             <figcaption
@@ -70,27 +75,31 @@ export const CopyThemeCodeDialog = (
               value={cssCode}
             />
 
-            <ScrollArea className="h-[300px] md:h-[450px]">
-              <pre className="min-w-0 max-w-xl bg-code px-4 py-3.5 text-sm outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0">
-                <code data-language="css" data-line-numbers>
+            <div className="h-[300px] w-full min-w-0 overflow-auto md:h-[450px]">
+              <pre className="m-0 w-max min-w-full bg-code py-3.5 text-sm outline-none">
+                <code
+                  className="flex w-max min-w-full flex-col font-mono"
+                  data-language="css"
+                >
                   {lines.map((line, index) => {
                     const key = line ? `line-${index}` : `blank-${index}`;
 
                     return (
-                      <span
-                        className="line text-code-foreground"
-                        data-line
-                        key={key}
-                      >
-                        {line || "\u00a0"}
+                      <span className="flex min-h-6 w-max min-w-full" key={key}>
+                        <span className="sticky left-0 z-1 w-16 shrink-0 select-none bg-code pe-6 text-end text-muted-foreground tabular-nums">
+                          {index + 1}
+                        </span>
+                        <span className="whitespace-pre pe-4 text-code-foreground">
+                          {line || "\u00a0"}
+                        </span>
                       </span>
                     );
                   })}
                 </code>
               </pre>
-            </ScrollArea>
+            </div>
           </figure>
-        </DialogBody>
+        </div>
       </DialogContent>
     </Dialog>
   );

@@ -8,6 +8,7 @@ import type React from "react";
 import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { inputVariants } from "@/registry/react/components/input";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { Separator } from "@/registry/react/components/separator";
 
 export const useSelect = useSelectContext;
@@ -76,7 +77,7 @@ export const SelectTrigger = (props: SelectTriggerProps) => {
             </SelectClearTrigger>
           )}
           <ArkSelect.Indicator data-slot="select-indicator">
-            <ChevronsUpDownIcon />
+            <ChevronsUpDownIcon className="size-4" />
           </ArkSelect.Indicator>
         </div>
       </ArkSelect.Trigger>
@@ -119,7 +120,7 @@ export const SelectValue = (
 export const SelectContent = (
   props: React.ComponentProps<typeof ArkSelect.Content>
 ) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <Portal>
@@ -129,13 +130,12 @@ export const SelectContent = (
             "z-50",
             "relative",
             "max-h-96 min-w-(--reference-width)",
-            "p-1",
+            "flex min-h-0 flex-col overflow-hidden p-0",
             "bg-popover",
             "text-popover-foreground",
             "rounded-xl border shadow-lg/5",
             "origin-(--transform-origin)",
             "outline-none",
-            "overflow-y-auto",
             "duration-100",
             "data-[state=open]:animate-in",
             "data-[state=open]:fade-in-0",
@@ -149,7 +149,13 @@ export const SelectContent = (
           )}
           data-slot="select-content"
           {...rest}
-        />
+        >
+          <ScrollArea className="min-h-0 flex-1">
+            <div className="p-1" data-slot="select-scroll">
+              {children}
+            </div>
+          </ScrollArea>
+        </ArkSelect.Content>
       </ArkSelect.Positioner>
     </Portal>
   );

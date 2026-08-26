@@ -2,6 +2,7 @@
 
 import { TerminalIcon } from "lucide-react";
 import React from "react";
+import { formatShadcnCommandDisplay } from "@/lib/shadcn-command";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import {
   Tabs,
@@ -28,9 +29,9 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
 
   const tabs = React.useMemo(
     () => ({
-      pnpm: __pnpm__,
       bun: __bun__,
       npm: __npm__,
+      pnpm: __pnpm__,
       yarn: __yarn__,
     }),
     [__npm__, __pnpm__, __yarn__, __bun__]
@@ -72,7 +73,7 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
                   className="relative font-mono text-[.8125rem] leading-none"
                   data-language="bash"
                 >
-                  {value}
+                  {formatShadcnCommandDisplay(value ?? "")}
                 </code>
               </pre>
             </TabsContent>

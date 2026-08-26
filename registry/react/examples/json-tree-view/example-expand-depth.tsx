@@ -5,8 +5,8 @@ const data = {
     profile: {
       name: "Jane",
       settings: {
-        theme: "dark",
         notifications: true,
+        theme: "dark",
       },
     },
   },

@@ -4,6 +4,7 @@ import { Portal } from "@ark-ui/react/portal";
 import {
   Toast as ArkToast,
   Toaster as ArkToaster,
+  type CreateToasterReturn,
   createToaster,
   useToastContext,
 } from "@ark-ui/react/toast";
@@ -22,24 +23,20 @@ import { Spinner } from "@/registry/react/components/spinner";
 export const useToast = useToastContext;
 
 export const toast = createToaster({
-  placement: "bottom-end",
-  overlap: true,
   max: 3,
+  overlap: true,
+  placement: "bottom-end",
 });
 
-interface ToasterProps
-  extends Omit<
-    React.ComponentProps<typeof ArkToaster>,
-    "toaster" | "children"
-  > {
+type ToasterProps = Omit<React.ComponentProps<"div">, "children"> & {
   /**
    * Toaster instance
    */
-  toaster?: ReturnType<typeof createToaster>;
-}
+  toaster?: CreateToasterReturn<React.ReactNode>;
+};
 
 export const Toaster = (props: ToasterProps) => {
-  const { toaster: toasterInstance = toast, className, style, ...rest } = props;
+  const { toaster: toasterInstance = toast, className, style } = props;
 
   return (
     <Portal>
@@ -51,8 +48,9 @@ export const Toaster = (props: ToasterProps) => {
           className
         )}
         style={{ "--width": "356px", ...style } as React.CSSProperties}
-        toaster={toasterInstance}
-        {...rest}
+        toaster={
+          toasterInstance as React.ComponentProps<typeof ArkToaster>["toaster"]
+        }
       >
         {(toastItem) => <ToastItem toast={toastItem} />}
       </ArkToaster>
@@ -61,11 +59,11 @@ export const Toaster = (props: ToasterProps) => {
 };
 
 const TOAST_ICONS = {
-  loading: <Spinner />,
-  success: <CircleCheckIcon />,
-  error: <CircleAlertIcon />,
-  info: <InfoIcon />,
-  warning: <TriangleAlertIcon />,
+  error: CircleAlertIcon,
+  info: InfoIcon,
+  loading: Spinner,
+  success: CircleCheckIcon,
+  warning: TriangleAlertIcon,
 } as const;
 
 interface ToastItemProps extends React.ComponentProps<typeof ArkToast.Root> {
@@ -80,7 +78,7 @@ export const ToastItem = (props: ToastItemProps) => {
 
   const ToastIcon = toastData.type
     ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS]
-    : null;
+    : undefined;
 
   const isExplicitClosable = toastData.closable === false;
 
@@ -110,15 +108,15 @@ export const ToastItem = (props: ToastItemProps) => {
       <div className="flex items-start gap-1.5">
         <div
           className={cn(
-            "in-data-[type=warning]:text-warning",
-            "in-data-[type=success]:text-success",
-            "in-data-[type=error]:text-destructive",
-            "in-data-[type=info]:text-info",
+            "in-data-[type=warning]:text-warning-foreground",
+            "in-data-[type=success]:text-success-foreground",
+            "in-data-[type=error]:text-destructive-foreground",
+            "in-data-[type=info]:text-info-foreground",
             "[&_svg]:pointer-events-none [&_svg]:h-lh [&_svg]:w-4 [&_svg]:shrink-0"
           )}
           data-slot="toast-icon"
         >
-          {ToastIcon}
+          {ToastIcon ? <ToastIcon /> : null}
         </div>
 
         <div className="flex flex-col gap-0.5">

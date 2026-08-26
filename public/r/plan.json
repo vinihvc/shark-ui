@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@ark-ui/react"],
+  "description": "Collapsible agent plan with title, description, and tasks.",
+  "name": "plan",
+  "registryDependencies": ["https://shark.vini.one/r/collapsible.json"],
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleIndicator,\n  CollapsibleTrigger,\n} from \"@/registry/react/components/collapsible\";\n\nexport const Plan = (props: React.ComponentProps<typeof Collapsible>) => {\n  const { className, defaultOpen = true, ...rest } = props;\n\n  return (\n    <Collapsible\n      className={cn(\n        \"w-full min-w-0 overflow-hidden rounded-xl border bg-card text-card-foreground\",\n        className\n      )}\n      data-slot=\"plan\"\n      defaultOpen={defaultOpen}\n      {...rest}\n    />\n  );\n};\n\nexport const PlanHeader = (props: React.ComponentProps<typeof ark.div>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\"flex min-w-0 items-start gap-2 px-3 py-2\", className)}\n      data-slot=\"plan-header\"\n      {...rest}\n    />\n  );\n};\n\nexport const PlanTitle = (props: React.ComponentProps<typeof ark.p>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.p\n      className={cn(\"font-medium text-sm\", className)}\n      data-slot=\"plan-title\"\n      {...rest}\n    />\n  );\n};\n\nexport const PlanDescription = (props: React.ComponentProps<typeof ark.p>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.p\n      className={cn(\"text-muted-foreground text-xs\", className)}\n      data-slot=\"plan-description\"\n      {...rest}\n    />\n  );\n};\n\nexport const PlanAction = (props: React.ComponentProps<typeof ark.div>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(\"ms-auto shrink-0\", className)}\n      data-slot=\"plan-action\"\n      {...rest}\n    />\n  );\n};\n\nexport const PlanTrigger = (\n  props: React.ComponentProps<typeof CollapsibleTrigger>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <CollapsibleTrigger\n      className={cn(\"rounded-lg p-1 text-muted-foreground\", className)}\n      data-slot=\"plan-trigger\"\n      {...rest}\n    >\n      {children ?? <CollapsibleIndicator />}\n    </CollapsibleTrigger>\n  );\n};\n\nexport const PlanContent = (\n  props: React.ComponentProps<typeof CollapsibleContent>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <CollapsibleContent\n      className={cn(\"flex flex-col gap-2 border-t px-3 py-3\", className)}\n      data-slot=\"plan-content\"\n      {...rest}\n    />\n  );\n};\n",
+      "path": "registry/react/components/plan.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

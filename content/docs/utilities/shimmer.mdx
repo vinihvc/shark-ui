@@ -1,0 +1,107 @@
+---
+title: Shimmer
+description: A text shimmer for live status such as thinking or uploading.
+---
+
+<ComponentPreview componentName="shimmer" />
+
+Kudos to [shadcn](https://ui.shadcn.com/docs/utils/shimmer) for the original implementation.
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/shimmer
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Import the following CSS rules into your `globals.css`</Step>
+
+```css title="globals.css"
+@import "./shimmer.css";
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+<p className="shimmer text-muted-foreground text-sm">Thinking…</p>
+```
+
+## Examples
+
+### Duration
+
+Use `shimmer-duration-*` to set the duration of one sweep in milliseconds.
+
+<ComponentPreview componentName="shimmer" fileName="example-duration" />
+
+### Spread
+
+Use `shimmer-spread-*` to set the width of the highlight band using the spacing scale.
+
+<ComponentPreview componentName="shimmer" fileName="example-spread" />
+
+### Angle
+
+Use `shimmer-angle-*` to set the tilt of the highlight band in degrees.
+
+<ComponentPreview componentName="shimmer" fileName="example-angle" />
+
+### Reverse
+
+Use `shimmer-reverse` to sweep the highlight in the opposite direction. In RTL layouts the sweep already follows the reading direction.
+
+<ComponentPreview componentName="shimmer" fileName="example-reverse" />
+
+### Custom Color
+
+Use `shimmer-color-*` to set the highlight color explicitly.
+
+<ComponentPreview componentName="shimmer" fileName="example-color" />
+
+### Play Once
+
+Use `shimmer-once` to play a single sweep instead of looping.
+
+<ComponentPreview componentName="shimmer" fileName="example-once" />
+
+### Disabling the Shimmer
+
+Use `shimmer-none` to turn the effect off and render the text normally.
+
+<ComponentPreview componentName="shimmer" fileName="example-none" />
+
+> You can use breakpoint utilities to disable the shimmer at different screen sizes.
+
+```css
+  shimmer md:shimmer-none
+```
+
+## API Reference
+
+| Class | Effect | Default |
+| --- | --- | --- |
+| `shimmer` | Sweep highlight across text | - |
+| `shimmer-once` | Play a single cycle | - |
+| `shimmer-reverse` | Reverse the sweep | - |
+| `shimmer-none` | Disable the effect | - |
+| `shimmer-color-*` | Set highlight color | - |
+| `shimmer-duration-*` | Sweep duration in milliseconds | `2000` (`2s`) |
+| `shimmer-spread-*` | Highlight band width | `calc(3ch + 40px)` |
+| `shimmer-angle-*` | Highlight tilt in degrees | `20` |

@@ -49,24 +49,24 @@ const formSchema = v.object({
 const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    initialItems,
     filter: contains,
+    initialItems,
   });
 
   const form = useForm({
-    schema: formSchema,
     initialInput: { stack: [""] },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "stack-submitted",
-      title: "Stack preference saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "stack-submitted",
+      title: "Stack preference saved",
     });
   };
 

@@ -28,7 +28,7 @@ Use this skill to:
 
 ## Source of truth
 
-- Component docs: `content/docs/components/*.mdx`
+- Component docs: `content/docs/components/*.mdx`, `content/docs/ai-elements/*.mdx`
 - Registry examples: `registry/react/examples/<component>/example-*.tsx`
 - Implementations: `registry/react/components/<component>.tsx`
 - Published registry items: `public/r/<name>.json` (built from `registry/manifest/<name>.ts`)
@@ -100,7 +100,7 @@ Consult [`references/component-registry.md`](references/component-registry.md) f
 
 1. Identify intent (overlay, form, collection control, chart, etc.).
 2. Open `references/component-registry.md` and the target `./references/primitives/<name>.md` when present.
-3. Read `content/docs/components/<name>.mdx` for install, anatomy, API, Ark doc link.
+3. Read `content/docs/components/<name>.mdx` or `content/docs/ai-elements/<name>.mdx` for install, anatomy, API, Ark doc link.
 4. Open at least one `registry/react/examples/<component>/example-*.tsx`.
 5. If behavior is unclear, read `registry/react/components/<component>.tsx` for Ark imports and prop passthrough.
 6. In consumer apps, avoid re-adding components already under `resolvedPaths`.

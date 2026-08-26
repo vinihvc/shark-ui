@@ -6,20 +6,20 @@ export const MediaQuery = () => {
   return (
     <div
       style={{
-        position: "fixed",
-        bottom: "calc(var(--spacing) * 1.5)",
-        left: "calc(var(--spacing) * 1.5)",
-        zIndex: 50,
-        height: "calc(var(--spacing) * 4)",
-        width: "calc(var(--spacing) * 5)",
-        display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        backgroundColor: "var(--foreground)",
         borderRadius: "var(--radius-md)",
+        bottom: "calc(var(--spacing) * 1.5)",
+        color: "var(--background)",
+        display: "flex",
         fontSize: "10px",
         fontWeight: "bold",
-        color: "var(--background)",
-        backgroundColor: "var(--foreground)",
+        height: "calc(var(--spacing) * 4)",
+        justifyContent: "center",
+        left: "calc(var(--spacing) * 1.5)",
+        position: "fixed",
+        width: "calc(var(--spacing) * 5)",
+        zIndex: 50,
       }}
     >
       <div className="block sm:hidden">XS</div>

@@ -62,7 +62,7 @@ interface HintProps extends React.ComponentProps<typeof ark.div> {
 
 const HintContext = React.createContext({} as HintContextValue);
 
-const defaultPositioning = { placement: "top", gutter: "10px" } as const;
+const defaultPositioning = { gutter: "10px", placement: "top" } as const;
 
 export const Hint = (props: HintProps) => {
   const {
@@ -99,10 +99,10 @@ export const Hint = (props: HintProps) => {
   return (
     <HintContext.Provider
       value={{
+        id: hintId,
         isVisible,
         positioning: positioningValue,
         setIsVisible: setOpen,
-        id: hintId,
       }}
     >
       <ark.div
@@ -157,6 +157,9 @@ const hintContentVariants = tv({
     "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
     "motion-reduce:animate-none!",
   ],
+  defaultVariants: {
+    placement: "top",
+  },
   variants: {
     placement: {
       bottom: [
@@ -164,15 +167,15 @@ const hintContentVariants = tv({
         "mt-(--gutter)",
         "data-[state=open]:slide-in-from-top-5 origin-bottom",
       ],
-      right: [
-        "inset-s-full top-1/2 ms-(--gutter) -translate-y-1/2",
-        "ms-(--gutter)",
-        "data-[state=open]:slide-in-from-start-5 origin-end",
-      ],
       left: [
         "inset-e-full top-1/2 me-(--gutter) -translate-y-1/2",
         "me-(--gutter)",
         "data-[state=open]:slide-in-from-end-5 origin-start",
+      ],
+      right: [
+        "inset-s-full top-1/2 ms-(--gutter) -translate-y-1/2",
+        "ms-(--gutter)",
+        "data-[state=open]:slide-in-from-start-5 origin-end",
       ],
       top: [
         "inset-s-1/2 bottom-full mb-(--gutter) -translate-x-1/2",
@@ -180,9 +183,6 @@ const hintContentVariants = tv({
         "data-[state=open]:slide-in-from-bottom-5 origin-top",
       ],
     },
-  },
-  defaultVariants: {
-    placement: "top",
   },
 });
 
@@ -232,9 +232,9 @@ const hintArrowVariants = tv({
   variants: {
     placement: {
       bottom: ["inset-s-1/2 -top-0.5 -translate-x-1/2"],
-      top: ["inset-s-1/2 -bottom-0.5 -translate-x-1/2"],
-      right: ["-inset-s-0.5 top-1/2 -translate-y-1/2"],
       left: ["-inset-e-0.5 top-1/2 -translate-y-1/2"],
+      right: ["-inset-s-0.5 top-1/2 -translate-y-1/2"],
+      top: ["inset-s-1/2 -bottom-0.5 -translate-x-1/2"],
     },
   },
 });

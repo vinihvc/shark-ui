@@ -73,11 +73,11 @@ const Example = () => {
 
 const items = [
   {
-    title: "Your details",
     content: "Please provide your name and email address.",
+    title: "Your details",
   },
-  { title: "Company details", content: "A few details about your company." },
-  { title: "Invite your team", content: "Start collaborating with your team." },
+  { content: "A few details about your company.", title: "Company details" },
+  { content: "Start collaborating with your team.", title: "Invite your team" },
 ];
 
 export default Example;

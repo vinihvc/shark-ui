@@ -32,36 +32,36 @@ import {
 } from "@/registry/react/components/input-group";
 
 const formSchema = v.object({
-  title: v.pipe(
-    v.string(),
-    v.minLength(5, "Bug title must be at least 5 characters."),
-    v.maxLength(32, "Bug title must be at most 32 characters.")
-  ),
   description: v.pipe(
     v.string(),
     v.minLength(20, "Description must be at least 20 characters."),
     v.maxLength(100, "Description must be at most 100 characters.")
   ),
+  title: v.pipe(
+    v.string(),
+    v.minLength(5, "Bug title must be at least 5 characters."),
+    v.maxLength(32, "Bug title must be at most 32 characters.")
+  ),
 });
 
 export const BugReportForm = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: {
-      title: "",
       description: "",
+      title: "",
     },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "bug-report-submitted",
-      title: "Bug submitted",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "bug-report-submitted",
+      title: "Bug submitted",
     });
   };
 

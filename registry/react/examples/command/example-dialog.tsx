@@ -72,13 +72,13 @@ const Example = () => {
 };
 
 const initialItems = [
-  { label: "New File", shortcut: "⌘N", value: "new", group: "File" },
-  { label: "Save", shortcut: "⌘S", value: "save", group: "File" },
-  { label: "Open", shortcut: "⌘O", value: "open", group: "File" },
-  { label: "Undo", shortcut: "⌘Z", value: "undo", group: "Edit" },
-  { label: "Redo", shortcut: "⌘Z", value: "redo", group: "Edit" },
-  { label: "Cut", shortcut: "⌘X", value: "cut", group: "Edit" },
-  { label: "Copy", shortcut: "⌘C", value: "copy", group: "Edit" },
+  { group: "File", label: "New File", shortcut: "⌘N", value: "new" },
+  { group: "File", label: "Save", shortcut: "⌘S", value: "save" },
+  { group: "File", label: "Open", shortcut: "⌘O", value: "open" },
+  { group: "Edit", label: "Undo", shortcut: "⌘Z", value: "undo" },
+  { group: "Edit", label: "Redo", shortcut: "⌘Z", value: "redo" },
+  { group: "Edit", label: "Cut", shortcut: "⌘X", value: "cut" },
+  { group: "Edit", label: "Copy", shortcut: "⌘C", value: "copy" },
 ];
 
 export default Example;

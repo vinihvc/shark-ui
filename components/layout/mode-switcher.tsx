@@ -3,9 +3,9 @@
 import { useTheme } from "@teispace/next-themes";
 import React from "react";
 import { ToggleThemeIcon } from "@/components/icons/toggle-theme";
-import { useHotKeys } from "@/hooks/use-hot-keys";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
+import { useHotkey } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 import {
   Tooltip,
@@ -20,7 +20,11 @@ export const ModeSwitcher = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   }, [resolvedTheme, setTheme]);
 
-  useHotKeys(["d", "D"], () => toggleTheme());
+  useHotkey({
+    action: toggleTheme,
+    hotkey: "d",
+    options: { preventDefault: true },
+  });
 
   return (
     <Tooltip>
@@ -31,6 +35,7 @@ export const ModeSwitcher = () => {
           data-mode={resolvedTheme ?? "light"}
           onClick={toggleTheme}
           size="icon-md"
+          suppressHydrationWarning
           variant="ghost"
         >
           <span className="group-data-[mode=dark]:[&_svg]:rotate-180">

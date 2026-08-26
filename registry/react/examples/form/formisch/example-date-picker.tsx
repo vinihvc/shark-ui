@@ -33,6 +33,7 @@ import {
 import {
   DatePicker,
   DatePickerContent,
+  DatePickerLabel,
   DatePickerTrigger,
   DatePickerValue,
 } from "@/registry/react/components/date-picker";
@@ -40,7 +41,6 @@ import {
   Field,
   FieldError,
   FieldGroup,
-  FieldLabel,
 } from "@/registry/react/components/field";
 
 const formSchema = v.object({
@@ -52,14 +52,12 @@ const formSchema = v.object({
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { interviewDate: [] as DateValue[] },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "interview-date-submitted",
-      title: "Interview preference saved",
       description: (
         <pre className="mt-2">
           <code>
@@ -71,6 +69,8 @@ const Example = () => {
           </code>
         </pre>
       ),
+      id: "interview-date-submitted",
+      title: "Interview preference saved",
     });
   };
 
@@ -91,11 +91,13 @@ const Example = () => {
                 const value = (field.input as DateValue[]) ?? [];
                 return (
                   <Field invalid={Boolean(field.errors?.length)}>
-                    <FieldLabel>Preferred interview date</FieldLabel>
                     <DatePicker
                       onValueChange={({ value }) => field.onChange(value)}
                       value={value}
                     >
+                      <DatePickerLabel>
+                        Preferred interview date
+                      </DatePickerLabel>
                       <DatePickerTrigger asChild>
                         <Button className="w-full" variant="outline">
                           <CalendarIcon />

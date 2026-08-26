@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-25T00:33:47Z",
+  "title": "Design System: Shark UI",
+  "extensions": {
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-level statements only; use balanced wrapping and slightly tighter tracking."
+      },
+      "editorialDisplay": {
+        "displayName": "Editorial Display",
+        "purpose": "Persuasive catalog first viewports where one product promise must lead.",
+        "responsiveScale": [
+          { "minWidth": "0px", "fontSize": "3rem" },
+          { "minWidth": "640px", "fontSize": "3.75rem" },
+          { "minWidth": "1024px", "fontSize": "4.5rem" },
+          { "minWidth": "1280px", "fontSize": "6rem" }
+        ]
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major content units and named compositions."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Cards, dialogs, and bounded interface regions."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Primary explanatory content and dense product UI."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Controls, field labels, navigation, and compact metadata."
+      },
+      "mono": {
+        "displayName": "Technical Mono",
+        "purpose": "Commands, paths, code, and keyboard-oriented data only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hairline-ambient",
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "Inputs, cards, and subtle outlined controls where a border needs slight separation."
+      },
+      {
+        "name": "compact-raised",
+        "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "purpose": "Primary actions and compact contained surfaces."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-standard",
+        "value": "200ms ease-in-out",
+        "purpose": "Compact control and indicator state changes; remove under reduced motion."
+      },
+      {
+        "name": "press-compact",
+        "value": "scale(0.98)",
+        "purpose": "Pointer activation feedback for ordinary buttons without popup semantics."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Compact primary action using the active semantic accent pair.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Primary action</button>",
+      "css": ".ds-button-primary { height: 2rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0 0.75rem; border: 1px solid transparent; border-radius: var(--radius-lg, 0.5rem); background: var(--primary); color: var(--primary-foreground); box-shadow: 0 1px 3px color-mix(in srgb, var(--primary) 24%, transparent); font-family: var(--font-sans, sans-serif); font-size: 0.875rem; font-weight: 500; transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; } .ds-button-primary:hover { background: color-mix(in srgb, var(--primary) 90%, transparent); } .ds-button-primary:focus-visible { outline: none; border-color: var(--background); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 32%, transparent); } .ds-button-primary:active { transform: scale(0.98); } @media (prefers-reduced-motion: reduce) { .ds-button-primary { transition: none; } }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Quiet secondary action with stable border geometry.",
+      "html": "<button class=\"ds-button-outline\" type=\"button\">Secondary action</button>",
+      "css": ".ds-button-outline { height: 2rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0 0.75rem; border: 1px solid var(--input); border-radius: var(--radius-lg, 0.5rem); background: transparent; color: var(--foreground); box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); font-family: var(--font-sans, sans-serif); font-size: 0.875rem; font-weight: 500; transition: background-color 200ms ease, color 200ms ease, transform 200ms ease; } .ds-button-outline:hover { background: var(--accent); color: var(--accent-foreground); } .ds-button-outline:focus-visible { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 32%, transparent); } .ds-button-outline:active { transform: scale(0.98); } @media (prefers-reduced-motion: reduce) { .ds-button-outline { transition: none; } }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Low-emphasis action that gains its surface only on interaction.",
+      "html": "<button class=\"ds-button-ghost\" type=\"button\">Ghost action</button>",
+      "css": ".ds-button-ghost { height: 2rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0 0.75rem; border: 1px solid transparent; border-radius: var(--radius-lg, 0.5rem); background: transparent; color: var(--foreground); font-family: var(--font-sans, sans-serif); font-size: 0.875rem; font-weight: 500; transition: background-color 200ms ease, color 200ms ease, transform 200ms ease; } .ds-button-ghost:hover { background: var(--accent); color: var(--accent-foreground); } .ds-button-ghost:focus-visible { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 32%, transparent); } .ds-button-ghost:active { transform: scale(0.98); } @media (prefers-reduced-motion: reduce) { .ds-button-ghost { transition: none; } }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Compact semantic field with a strong keyboard-focus state.",
+      "html": "<input class=\"ds-input\" type=\"text\" aria-label=\"Example field\" placeholder=\"Type something…\">",
+      "css": ".ds-input { width: 100%; min-width: 0; height: 2rem; padding: 0 0.75rem; border: 1px solid var(--input); border-radius: var(--radius-lg, 0.5rem); background: transparent; color: var(--foreground); box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); font-family: var(--font-sans, sans-serif); font-size: 0.875rem; transition: border-color 200ms ease, box-shadow 200ms ease; } .ds-input::placeholder { color: color-mix(in srgb, var(--muted-foreground) 64%, transparent); } .ds-input:hover { border-color: color-mix(in srgb, var(--foreground) 20%, var(--input)); } .ds-input:focus-visible { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 32%, transparent); } .ds-input:disabled { cursor: not-allowed; opacity: 0.64; } @media (prefers-reduced-motion: reduce) { .ds-input { transition: none; } }"
+    },
+    {
+      "name": "Secondary Badge",
+      "kind": "chip",
+      "refersTo": "badge-secondary",
+      "description": "Small, low-noise marker for status, counts, and supporting metadata.",
+      "html": "<span class=\"ds-badge-secondary\">New</span>",
+      "css": ".ds-badge-secondary { min-width: 1.375rem; height: 1.375rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.25rem; padding: 0 0.375rem; overflow: hidden; border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent); border-radius: var(--radius-md, 0.375rem); background: var(--secondary); color: var(--secondary-foreground); font-family: var(--font-sans, sans-serif); font-size: 0.75rem; font-weight: 500; transition: background-color 200ms ease; } .ds-badge-secondary:hover { background: color-mix(in srgb, var(--secondary) 90%, transparent); } .ds-badge-secondary:focus-visible { outline: none; border-color: var(--foreground); box-shadow: 0 0 0 3px color-mix(in srgb, var(--foreground) 20%, transparent); } @media (prefers-reduced-motion: reduce) { .ds-badge-secondary { transition: none; } }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat-by-default content container with proportional corners and restrained separation.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">Inspectable composition</h3><p class=\"ds-card-copy\">A quiet semantic surface keeps the product content in focus.</p></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-xl, 0.75rem); background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); font-family: var(--font-sans, sans-serif); transition: border-color 200ms ease, box-shadow 200ms ease; } .ds-card:hover { border-color: color-mix(in srgb, var(--foreground) 18%, var(--border)); } .ds-card:focus-within { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 24%, transparent); } .ds-card-title { margin: 0; color: var(--foreground); font-family: var(--font-heading, var(--font-sans, sans-serif)); font-size: 1.125rem; line-height: 1.5rem; font-weight: 600; } .ds-card-copy { margin: 0; color: var(--muted-foreground); font-size: 0.875rem; line-height: 1.25rem; }"
+    },
+    {
+      "name": "Active Tab",
+      "kind": "nav",
+      "refersTo": "tab-active",
+      "description": "Compact active navigation state carried by a quiet accent surface.",
+      "html": "<button class=\"ds-tab-active\" type=\"button\" aria-selected=\"true\">Preview</button>",
+      "css": ".ds-tab-active { height: 2rem; display: inline-flex; align-items: center; justify-content: center; padding: 0 0.625rem; border: 1px solid transparent; border-radius: var(--radius-lg, 0.5rem); background: var(--accent); color: var(--foreground); font-family: var(--font-sans, sans-serif); font-size: 0.875rem; font-weight: 500; transition: color 200ms ease, background-color 200ms ease, box-shadow 200ms ease; } .ds-tab-active:hover { color: color-mix(in srgb, var(--foreground) 72%, transparent); } .ds-tab-active:focus-visible { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 32%, transparent); } @media (prefers-reduced-motion: reduce) { .ds-tab-active { transition: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Workbench",
+    "overview": "Shark UI feels like a well-kept technical workbench: quiet enough for the interface under examination to lead, but precise enough that the surrounding controls always feel intentional. Its identity comes from compact geometry, semantic surface layering, restrained borders, and real product compositions rather than ornamental framing.\n\nThe system is designed to survive customization. A user can change the neutral family, primary accent, base radius, and light or dark mode without changing the component grammar. Strong hierarchy comes from weight, scale, spacing, and state—not from accumulating colors or effects.",
+    "keyCharacteristics": [
+      "Neutral semantic surfaces with one active primary accent.",
+      "Compact, consistently sized controls with generous keyboard focus indicators.",
+      "Restrained borders and shallow shadows that clarify structure without decorating it.",
+      "Real, usable interface compositions as the visual material.",
+      "Direction-aware layout and reduced-motion fallbacks built into component behavior."
+    ],
+    "rules": [
+      {
+        "name": "The Semantic Roles Rule",
+        "body": "Build with semantic color roles; never bind a reusable component to a raw palette color when a surface, text, border, state, or feedback token exists.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "A screen may use one configured primary hue. Keep surrounding surfaces neutral so the accent communicates state and action rather than decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Pair Rule",
+        "body": "Primary, card, popover, sidebar, code, and feedback surfaces travel with their matching foreground roles; do not mix foreground tokens across surface families.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Family Rule",
+        "body": "Use Hanken Grotesk for both display and interface typography; create hierarchy with scale, weight, line-height, and restrained negative tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Semantic Mono Rule",
+        "body": "Reserve JetBrains Mono for code, commands, file names, keyboard-oriented data, and similarly technical strings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Density Ladder Rule",
+        "body": "Use the tightest rhythm inside controls, a moderate rhythm inside components, and the widest rhythm between independent content regions.",
+        "section": "layout"
+      },
+      {
+        "name": "The Content-Earns-Columns Rule",
+        "body": "Do not preserve a desktop column count on small screens; stack content until each region remains readable and operable.",
+        "section": "layout"
+      },
+      {
+        "name": "The Border-Before-Shadow Rule",
+        "body": "Establish structure with surface tone and a restrained border; add only the smallest shadow needed to separate a bounded or interactive element.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Proportional Radius Rule",
+        "body": "Use the shared radius scale and its component roles; do not introduce unrelated one-off corner values.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do compose new interfaces from semantic surfaces, matched foreground roles, and existing component variants.",
+      "Do keep one configured primary accent surrounded by neutral structure.",
+      "Do use compact controls, visible three-pixel focus rings, and stable transparent borders so state changes do not shift layout.",
+      "Do use one-pixel borders and shallow shadows to clarify containment.",
+      "Do use Hanken Grotesk for product hierarchy and JetBrains Mono only for technical strings.",
+      "Do preserve responsive stacking, horizontal overflow where appropriate, reduced-motion behavior, and logical start/end layout."
+    ],
+    "donts": [
+      "Don't hard-code raw palette colors into reusable components when semantic roles exist.",
+      "Don't introduce a second accent hue to decorate an otherwise neutral surface.",
+      "Don't replace live, functional UI with ornamental imagery when the interface itself can carry the material.",
+      "Don't use large elevation, glow, or decorative shadow as the main hierarchy device.",
+      "Don't invent isolated radius or spacing values outside the established proportional scales.",
+      "Don't use monospace as a general display treatment or compress mobile content to preserve a desktop layout."
+    ]
+  }
+}

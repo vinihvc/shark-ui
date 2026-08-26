@@ -35,9 +35,9 @@ Use `value` / `onValueChange` for controlled usage; enable `allowHalf` for half-
 
 ## Common pitfalls
 
-- Importing `RatingGroup` from MDX snippets—Shark exports **`Rating`** / **`RatingItem`** from `rating.tsx` while Ark’s module is `rating-group`.
+- Importing `RatingGroup` from MDX snippets—Shark exports **`Rating`** / **`RatingItem`** from `rating.tsx` while Ark’s module is `rating`.
 - Missing `lucide-react` when relying on default star icons.
-- Using string values—`value` is numeric; see Ark `rating-group` docs for `ValueChangeDetails`.
+- Using string values—`value` is numeric; see Ark `rating` docs for `ValueChangeDetails`.
 
 ## Registry example files
 

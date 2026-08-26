@@ -4,9 +4,9 @@ import { REGISTRY_EXAMPLES_PATH } from "@/config/constants";
 
 const COMPONENT_DESCRIPTIONS: Record<string, string> = {
   checkbox: "Control for multiple selections in a set.",
-  switch: "A control element that allows for a binary selection.",
-  "radio-group": "Allows single selection from multiple options.",
   form: "React Hook Form, TanStack Form, and Formisch patterns with Shark UI Field primitives.",
+  "radio-group": "Allows single selection from multiple options.",
+  switch: "A control element that allows for a binary selection.",
   "tags-input":
     "Multi-value tag entry with keyboard navigation and optional combobox autocomplete.",
 };
@@ -61,8 +61,8 @@ function readExampleEntriesFlat(componentPath: string): ExampleEntry[] {
         componentPath,
         file
       ),
-      heading: file.replace(EXAMPLE_PREFIX, "").replace(TSX_EXT, ""),
       fence: "tsx" as const,
+      heading: file.replace(EXAMPLE_PREFIX, "").replace(TSX_EXT, ""),
     }));
 }
 
@@ -98,8 +98,8 @@ function readExampleEntriesForm(componentPath: string): ExampleEntry[] {
           fwPath,
           file
         ),
-        heading: `${fw}/${base}`,
         fence: file.endsWith(".ts") ? "ts" : "tsx",
+        heading: `${fw}/${base}`,
       });
     }
   }

@@ -8,6 +8,7 @@ import { CheckIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import { FieldLabel } from "@/registry/react/components/field";
 import { MenuShortcut } from "@/registry/react/components/menu";
 
 export const useListbox = useListboxContext;
@@ -26,6 +27,20 @@ export const Listbox: ArkListbox.RootComponent = (props) => {
       data-slot="listbox"
       {...rest}
     />
+  );
+};
+
+export const ListboxLabel = (
+  props: React.ComponentProps<typeof ArkListbox.Label>
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkListbox.Label data-slot="listbox-label" {...rest}>
+        {children}
+      </ArkListbox.Label>
+    </FieldLabel>
   );
 };
 
@@ -63,6 +78,9 @@ const listboxItemVariants = tv({
     "data-disabled:pointer-events-none data-disabled:opacity-64",
     "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: [
@@ -78,9 +96,6 @@ const listboxItemVariants = tv({
         "**:[svg]:text-destructive! dark:**:[svg]:text-destructive-foreground!",
       ],
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 

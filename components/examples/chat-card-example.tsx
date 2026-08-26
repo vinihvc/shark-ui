@@ -24,20 +24,20 @@ import {
 export const ChatCardExample = (props: React.ComponentProps<"div">) => {
   const [messages, setMessages] = React.useState([
     {
-      role: "agent",
       content: "Hi, how can I help you today?",
-    },
-    {
-      role: "user",
-      content: "Hey, I'm having trouble with my account.",
-    },
-    {
       role: "agent",
-      content: "What seems to be the problem?",
     },
     {
+      content: "Hey, I'm having trouble with my account.",
       role: "user",
+    },
+    {
+      content: "What seems to be the problem?",
+      role: "agent",
+    },
+    {
       content: "I can't log in.",
+      role: "user",
     },
   ]);
 
@@ -92,8 +92,8 @@ export const ChatCardExample = (props: React.ComponentProps<"div">) => {
             setMessages([
               ...messages,
               {
-                role: "user",
                 content: input,
+                role: "user",
               },
             ]);
             setInput("");

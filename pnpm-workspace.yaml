@@ -1,10 +1,16 @@
 allowBuilds:
   esbuild: true
+  node-pty: true
   sharp: true
 minimumReleaseAgeExclude:
   - '@tanstack/form-core@1.33.0'
   - '@tanstack/react-form@1.33.0'
   - fumadocs-core@16.9.2
   - fumadocs-ui@16.9.2
-  - lucide-react@1.17.0
+  - lucide-react@1.17.0 || 1.34.0
   - '@formisch/react@1.0.0'
+  - '@types/react-dom@19.2.5'
+  - jotai@2.20.3
+  - '@types/node@26.3.0'
+patchedDependencies:
+  '@ark-ui/react@5.39.0': patches/@ark-ui__react@5.39.0.patch

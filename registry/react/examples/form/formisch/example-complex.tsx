@@ -45,12 +45,6 @@ import {
 import { Switch } from "@/registry/react/components/switch";
 
 const formSchema = v.object({
-  plan: v.picklist(["basic", "pro"], "Please select a subscription plan."),
-  billingPeriod: v.pipe(
-    v.array(v.string()),
-    v.minLength(1, "Please select a billing period."),
-    v.check((val) => val[0] !== "", "Please select a billing period.")
-  ),
   addons: v.pipe(
     v.array(v.string()),
     v.minLength(1, "Please select at least one add-on."),
@@ -60,31 +54,37 @@ const formSchema = v.object({
       "You selected an invalid add-on."
     )
   ),
+  billingPeriod: v.pipe(
+    v.array(v.string()),
+    v.minLength(1, "Please select a billing period."),
+    v.check((val) => val[0] !== "", "Please select a billing period.")
+  ),
   emailNotifications: v.boolean(),
+  plan: v.picklist(["basic", "pro"], "Please select a subscription plan."),
 });
 
 const initialInput = {
-  plan: "basic" as "basic" | "pro",
-  billingPeriod: [""],
   addons: [] as string[],
+  billingPeriod: [""],
   emailNotifications: false,
+  plan: "basic" as "basic" | "pro",
 };
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput,
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "rhf-complex-submitted",
-      title: "Preferences saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "rhf-complex-submitted",
+      title: "Preferences saved",
     });
   };
 
@@ -258,19 +258,19 @@ const collection = createListCollection({
 
 const addons = [
   {
+    description: "Advanced analytics and reporting",
     id: "analytics",
     title: "Analytics",
-    description: "Advanced analytics and reporting",
   },
   {
+    description: "Automated daily backups",
     id: "backup",
     title: "Backup",
-    description: "Automated daily backups",
   },
   {
+    description: "24/7 premium customer support",
     id: "support",
     title: "Priority Support",
-    description: "24/7 premium customer support",
   },
 ] as const;
 

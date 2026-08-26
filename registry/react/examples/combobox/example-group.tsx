@@ -44,15 +44,15 @@ const Example = () => {
 };
 
 const initialItems = [
-  { label: "Canada", value: "ca", continent: "North America" },
-  { label: "United States", value: "us", continent: "North America" },
-  { label: "Mexico", value: "mx", continent: "North America" },
-  { label: "United Kingdom", value: "uk", continent: "Europe" },
-  { label: "Germany", value: "de", continent: "Europe" },
-  { label: "France", value: "fr", continent: "Europe" },
-  { label: "Japan", value: "jp", continent: "Asia" },
-  { label: "South Korea", value: "kr", continent: "Asia" },
-  { label: "China", value: "cn", continent: "Asia" },
+  { continent: "North America", label: "Canada", value: "ca" },
+  { continent: "North America", label: "United States", value: "us" },
+  { continent: "North America", label: "Mexico", value: "mx" },
+  { continent: "Europe", label: "United Kingdom", value: "uk" },
+  { continent: "Europe", label: "Germany", value: "de" },
+  { continent: "Europe", label: "France", value: "fr" },
+  { continent: "Asia", label: "Japan", value: "jp" },
+  { continent: "Asia", label: "South Korea", value: "kr" },
+  { continent: "Asia", label: "China", value: "cn" },
 ];
 
 export default Example;

@@ -1,0 +1,96 @@
+---
+title: Prompt Input
+description: A chat composer with a textarea, tool slots, attachments, and send or stop.
+seoDescription: "Build an AI chat composer in React with Shark UI’s Prompt Input: textarea editing, attachments, tool slots, submit states, and accessible controls."
+---
+
+<ComponentPreview componentName="prompt-input" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/prompt-input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Input Group](/docs/components/input-group). Install it first if you haven't already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/prompt-input.tsx" src="/prompt-input.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+PromptInput
+├── PromptInputHeader
+├── PromptInputTextarea
+└── PromptInputFooter
+    ├── PromptInputTools
+    │   └── PromptInputButton
+    └── PromptInputSubmit
+```
+
+## Usage
+
+```tsx
+import {
+  PromptInput,
+  PromptInputFooter,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  PromptInputTools,
+} from "@/components/ui/prompt-input";
+```
+
+```tsx
+<PromptInput onSubmit={({ text }) => send(text)} onStop={stop}>
+  <PromptInputTextarea aria-label="Message" />
+  <PromptInputFooter>
+    <PromptInputTools />
+    <PromptInputSubmit />
+  </PromptInputFooter>
+</PromptInput>
+```
+
+`PromptInput` is a form around [Input Group](/docs/components/input-group). Enter submits, Shift+Enter inserts a new line.
+
+## Attachments
+
+Wrap the composer in [File Upload](/docs/components/file-upload) and place chips in `PromptInputHeader`. Use `FileUploadTrigger` with `asChild` on `PromptInputButton`.
+
+<ComponentPreview componentName="prompt-input" fileName="example-attachments" />
+
+## API Reference
+
+### PromptInput
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `status` | `"ready" \| "submitted" \| "streaming" \| "error"` | `"ready"` |
+| `onSubmit` | `(detail: { text: string; event: FormEvent }) => void` | — |
+| `onStop` | `() => void` | — |
+
+`PromptInputSubmit` shows a spinner for `submitted` and a stop control for `streaming`.

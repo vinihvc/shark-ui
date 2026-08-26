@@ -1,12 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@ark-ui/react"],
   "name": "client-only",
   "type": "registry:ui",
-  "dependencies": ["@ark-ui/react"],
   "files": [
     {
-      "path": "registry/react/components/client-only.tsx",
       "content": "\"use client\";\n\nimport { ClientOnly as ArkClientOnly } from \"@ark-ui/react/client-only\";\n\nexport const ClientOnly = (\n  props: React.ComponentProps<typeof ArkClientOnly>\n) => <ArkClientOnly data-slot=\"client-only\" {...props} />;\n",
+      "path": "registry/react/components/client-only.tsx",
       "type": "registry:ui"
     }
   ]

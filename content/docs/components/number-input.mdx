@@ -162,6 +162,12 @@ Use the `step` prop to set the increment/decrement amount.
 
 <ComponentPreview componentName="number-input" fileName="example-step" />
 
+### Keyboard step
+
+Hold `Shift` for `largeStep` (defaults to `10 * step`) and `Alt` for `smallStep` (defaults to `step / 10`). `onValueCommit` fires when the input blurs or Enter is pressed.
+
+<ComponentPreview componentName="number-input" fileName="example-keyboard-step" />
+
 ### Mouse Wheel
 
 Use the `allowMouseWheel` prop to increment or decrement the value with the mouse wheel.
@@ -183,6 +189,8 @@ Root component. Manages numeric value and stepper controls.
 | `min` | `number` | `Number.MIN_SAFE_INTEGER` |
 | `max` | `number` | `Number.MAX_SAFE_INTEGER` |
 | `step` | `number` | `1` |
+| `largeStep` | `number` | `10 * step` |
+| `smallStep` | `number` | `step / 10` |
 | `formatOptions` | `Intl.NumberFormatOptions` | - |
 | `disabled` | `boolean` | - |
 | `invalid` | `boolean` | - |
@@ -190,6 +198,7 @@ Root component. Manages numeric value and stepper controls.
 | `clampValueOnBlur` | `boolean` | `true` |
 | `allowMouseWheel` | `boolean` | `false` |
 | `onValueChange` | `(details: ValueChangeDetails) => void` | - |
+| `onValueCommit` | `(details: ValueChangeDetails) => void` | - |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 

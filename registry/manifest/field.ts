@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "tailwind-variants"];
 
 const manifest: RegistryItemType = {
-  name: "field",
-  type: "registry:ui",
   dependencies,
+  name: "field",
   registryDependencies: [absoluteUrl("/r/separator.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

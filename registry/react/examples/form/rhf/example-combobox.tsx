@@ -42,24 +42,24 @@ const formSchema = z.object({
 const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    initialItems,
     filter: contains,
+    initialItems,
   });
 
   const form = useForm({
-    resolver: zodResolver(formSchema),
     defaultValues: { department: [""] },
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     toast.info({
-      id: "department-submitted",
-      title: "Team preference saved",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
+      id: "department-submitted",
+      title: "Team preference saved",
     });
   };
 

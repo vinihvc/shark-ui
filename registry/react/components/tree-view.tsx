@@ -7,14 +7,7 @@ import {
   type TreeCollection as arkTreeCollection,
   useTreeViewContext as useArkTreeViewContext,
 } from "@ark-ui/react/tree-view";
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  FileIcon,
-  FolderIcon,
-  FolderOpenIcon,
-  MinusIcon,
-} from "lucide-react";
+import { CheckIcon, ChevronRightIcon, MinusIcon } from "lucide-react";
 import React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -34,8 +27,8 @@ export const createTreeCollection = <T extends TreeNodeType>(
   options: Parameters<typeof arkCreateTreeCollection<T>>[0]
 ) =>
   arkCreateTreeCollection<T>({
-    nodeToValue: (node) => node.id,
     nodeToString: (node) => node.name,
+    nodeToValue: (node) => node.id,
     ...options,
   });
 
@@ -158,10 +151,24 @@ const treeViewControlVariants = tv({
 
 interface TreeViewBranchItemProps
   extends React.ComponentProps<typeof ArkTreeView.BranchControl>,
-    Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon"> {}
+    Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon"> {
+  /**
+   * Whether to show the expand/collapse chevron.
+   *
+   * @default false
+   */
+  showIndicator?: boolean;
+}
 
 export const TreeViewBranchItem = (props: TreeViewBranchItemProps) => {
-  const { icon, expandedIcon, className, children, ...rest } = props;
+  const {
+    icon,
+    expandedIcon,
+    showIndicator = false,
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <ArkTreeView.BranchControl
@@ -169,7 +176,7 @@ export const TreeViewBranchItem = (props: TreeViewBranchItemProps) => {
       data-slot="tree-view-branch-control"
       {...rest}
     >
-      <TreeViewBranchIndicator />
+      {showIndicator ? <TreeViewBranchIndicator /> : null}
       <TreeViewBranchTitle expandedIcon={expandedIcon} icon={icon}>
         {children}
       </TreeViewBranchTitle>
@@ -180,15 +187,15 @@ export const TreeViewBranchItem = (props: TreeViewBranchItemProps) => {
 interface TreeViewBranchTitleProps
   extends React.ComponentProps<typeof ArkTreeView.BranchText> {
   /**
-   * Custom expanded icon
+   * Expanded branch icon. Pass a component to show; omit or `null` to hide.
    *
-   * @default <FolderOpenIcon />
+   * @default null
    */
   expandedIcon?: React.JSX.ElementType | null;
   /**
-   * Custom icon
+   * Collapsed branch icon. Pass a component to show; omit or `null` to hide.
    *
-   * @default <FolderIcon />
+   * @default null
    */
   icon?: React.JSX.ElementType | null;
 }
@@ -218,16 +225,16 @@ const TreeViewBranchTitle = (props: TreeViewBranchTitleProps) => {
               data-slot="tree-view-branch-title"
               {...rest}
             >
-              {Icon !== null && !nodeState.expanded && (
+              {Icon && !nodeState.expanded ? (
                 <TreeViewItemIcon>
-                  {Icon ? <Icon /> : <FolderIcon />}
+                  <Icon />
                 </TreeViewItemIcon>
-              )}
-              {ExpandedIcon !== null && nodeState.expanded && (
+              ) : null}
+              {ExpandedIcon && nodeState.expanded ? (
                 <TreeViewItemIcon>
-                  {ExpandedIcon ? <ExpandedIcon /> : <FolderOpenIcon />}
+                  <ExpandedIcon />
                 </TreeViewItemIcon>
-              )}
+              ) : null}
               {children}
             </ArkTreeView.BranchText>
           )}
@@ -256,7 +263,7 @@ export const TreeViewBranchIndicator = (
       data-slot="tree-view-branch-indicator"
       {...rest}
     >
-      <ChevronRightIcon />
+      <ChevronRightIcon className="size-3.5" />
     </ArkTreeView.BranchIndicator>
   );
 };
@@ -323,22 +330,26 @@ export const TreeViewContent = (
 interface TreeViewItemProps
   extends React.ComponentProps<typeof TreeViewItemTitle> {
   /**
-   * Custom file icon
+   * Leaf icon. Pass a component to show; omit or `null` to hide.
+   * When `fileIcons` matches the node id extension, that mapping wins.
    *
-   * @default <FileIcon />
+   * @default null
    */
-  icon?: React.JSX.ElementType;
+  icon?: React.JSX.ElementType | null;
 }
 
 export const TreeViewItem = (props: TreeViewItemProps) => {
-  const { icon: Icon = FileIcon, className, children, ...rest } = props;
+  const { icon: Icon = null, className, children, ...rest } = props;
 
   const { fileIcons } = _useTreeView();
 
-  const getFileIcon = (value: string): React.JSX.ElementType => {
+  const getFileIcon = (value: string): React.JSX.ElementType | null => {
     const extension = getFileExtension(value);
     const resolved = extension ? fileIcons?.[extension] : undefined;
-    return resolved ?? Icon;
+    if (resolved !== undefined) {
+      return resolved;
+    }
+    return Icon;
   };
 
   return (
@@ -348,9 +359,11 @@ export const TreeViewItem = (props: TreeViewItemProps) => {
 
         return (
           <>
-            <TreeViewItemIcon>
-              <ResolvedIcon />
-            </TreeViewItemIcon>
+            {ResolvedIcon ? (
+              <TreeViewItemIcon>
+                <ResolvedIcon />
+              </TreeViewItemIcon>
+            ) : null}
 
             {nodeState.renaming ? (
               <TreeViewNodeInput />

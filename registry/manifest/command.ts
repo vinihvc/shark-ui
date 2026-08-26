@@ -4,9 +4,8 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "command",
-  type: "registry:ui",
   dependencies,
+  name: "command",
   registryDependencies: [
     absoluteUrl("/r/combobox.json"),
     absoluteUrl("/r/dialog.json"),
@@ -15,6 +14,7 @@ const manifest: RegistryItemType = {
     absoluteUrl("/r/menu.json"),
     absoluteUrl("/r/separator.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

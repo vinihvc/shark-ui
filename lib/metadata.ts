@@ -4,6 +4,7 @@ import { absoluteUrl } from "@/lib/url";
 
 interface CreateMetadataProps {
   description: string;
+  imageAlt?: string;
   imageUrl?: string;
   title: string;
   url: string;
@@ -13,24 +14,34 @@ export const createMetadata = ({
   title,
   description,
   url,
-  imageUrl = "/opengraph-image.png",
+  imageAlt = `${title} | ${SITE_CONFIG.name}`,
+  imageUrl = SITE_CONFIG.ogImage,
 }: CreateMetadataProps): Metadata => ({
-  title,
-  description,
   alternates: { canonical: absoluteUrl(url) },
+  description,
   openGraph: {
-    title,
     description,
+    images: [
+      {
+        alt: imageAlt,
+        height: 630,
+        url: absoluteUrl(imageUrl),
+        width: 1200,
+      },
+    ],
+    locale: "en_US",
+    siteName: SITE_CONFIG.name,
+    title,
     type: "website",
     url: absoluteUrl(url),
-    images: [{ url: absoluteUrl(imageUrl) }],
   },
+  title,
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: [absoluteUrl(imageUrl)],
     creator: SITE_CONFIG.creator,
+    description,
+    images: [{ alt: imageAlt, url: absoluteUrl(imageUrl) }],
+    title,
   },
 });
 

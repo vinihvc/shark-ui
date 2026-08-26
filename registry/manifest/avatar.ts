@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "tailwind-variants"];
 
 const manifest: RegistryItemType = {
-  name: "avatar",
-  type: "registry:ui",
   dependencies,
+  name: "avatar",
   registryDependencies: [absoluteUrl("/r/status.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

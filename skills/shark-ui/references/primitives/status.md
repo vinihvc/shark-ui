@@ -52,5 +52,6 @@ Combine with `Badge` or icons from examples; use `size` props for density in tab
 - [`example-variant-info.tsx`](/registry/react/examples/status/example-variant-info.tsx)
 - [`example-variant-success.tsx`](/registry/react/examples/status/example-variant-success.tsx)
 - [`example-variant-warning.tsx`](/registry/react/examples/status/example-variant-warning.tsx)
+- [`example-with-avatar.tsx`](/registry/react/examples/status/example-with-avatar.tsx)
 - [`example-with-badge.tsx`](/registry/react/examples/status/example-with-badge.tsx)
 - [`example-with-icon.tsx`](/registry/react/examples/status/example-with-icon.tsx)

@@ -1,19 +1,20 @@
 "use client";
 
 import { createListCollection } from "@ark-ui/react";
-import { Field, FieldLabel } from "@/registry/react/components/field";
+import { Field } from "@/registry/react/components/field";
 import {
   Listbox,
   ListboxContent,
   ListboxItem,
   ListboxItemIndicator,
   ListboxItemText,
+  ListboxLabel,
 } from "@/registry/react/components/listbox";
 
 const Example = () => (
   <Field className="w-full max-w-xl">
-    <FieldLabel>Favorite album</FieldLabel>
     <Listbox collection={collection} orientation="horizontal">
+      <ListboxLabel>Favorite album</ListboxLabel>
       <ListboxContent className="overflow-x-auto">
         {collection.items.map((item) => (
           <ListboxItem
@@ -36,13 +37,13 @@ const Example = () => (
 
 const collection = createListCollection({
   items: [
-    { title: "Rappa Mundi", artist: "O Rappa" },
-    { title: "Acústico MTV", artist: "Charlie Brown Jr." },
-    { title: "Thriller", artist: "Michael Jackson" },
-    { title: "The Eminem Show", artist: "Eminem" },
+    { artist: "O Rappa", title: "Rappa Mundi" },
+    { artist: "Charlie Brown Jr.", title: "Acústico MTV" },
+    { artist: "Michael Jackson", title: "Thriller" },
+    { artist: "Eminem", title: "The Eminem Show" },
   ],
-  itemToValue: (item) => item.title,
   itemToString: (item) => item.title,
+  itemToValue: (item) => item.title,
 });
 
 export default Example;

@@ -1,63 +1,47 @@
 import type { MetadataRoute } from "next";
-import { MOCK_TEMPLATES } from "@/app/(app)/_templates/_data/mock-templates";
+import { getPublishedBlocks } from "@/lib/blocks";
 import { source } from "@/lib/fumadocs";
-import { getAllRegistryItems } from "@/lib/registry";
 import { absoluteUrl } from "@/lib/url";
+import { BLOCK_CATEGORIES } from "@/registry/react/blocks/_categories";
 
 export const dynamic = "force-static";
 export const revalidate = false;
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const staticRoutes = [
-    { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1 },
-    {
-      url: absoluteUrl("/docs/changelog"),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: absoluteUrl("/templates"),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    { url: absoluteUrl("/blocks"), changeFrequency: "monthly", priority: 0.6 },
-    { url: absoluteUrl("/themes"), changeFrequency: "monthly", priority: 0.6 },
+    { changeFrequency: "weekly", priority: 1, url: absoluteUrl("/") },
+    { changeFrequency: "monthly", priority: 0.6, url: absoluteUrl("/blocks") },
+    { changeFrequency: "monthly", priority: 0.6, url: absoluteUrl("/themes") },
   ];
 
-  const templateDemos = MOCK_TEMPLATES.filter((t) => t.status === "available")
-    .filter((t) => t.previewUrl)
-    .map((t) => ({
-      url: absoluteUrl(t.previewUrl as string),
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    }));
-
-  const blockItems = await getAllRegistryItems({ folderType: "blocks" });
-  const blockDemos = blockItems
-    .filter((block) => block.name.endsWith(".tsx"))
-    .map((block) => ({
-      url: absoluteUrl(
-        `/view/blocks/${block.category}/${block.name.slice(0, -".tsx".length)}`
-      ),
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    }));
-
-  const docPages = source.getPages().map((page) => ({
-    url: absoluteUrl(page.url),
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: page.url === "/docs" ? 0.9 : 0.7,
+  const blockCategories = BLOCK_CATEGORIES.map((category) => ({
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+    url: absoluteUrl(`/blocks/${category.slug}`),
   }));
 
-  return [
+  const blockDetails = (await getPublishedBlocks()).map((block) => ({
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+    url: absoluteUrl(`/blocks/${block.category}/${block.name}`),
+  }));
+
+  const docPages = source.getPages().map((page) => ({
+    changeFrequency: "weekly" as const,
+    priority: page.url === "/docs" ? 0.9 : 0.7,
+    url: absoluteUrl(page.url),
+  }));
+
+  const routes = [
     ...staticRoutes,
-    ...templateDemos,
-    ...blockDemos,
+    ...blockCategories,
+    ...blockDetails,
     ...docPages,
-  ] as MetadataRoute.Sitemap;
+  ];
+
+  return Array.from(
+    new Map(routes.map((route) => [route.url, route])).values()
+  ) as MetadataRoute.Sitemap;
 };
 
 export default sitemap;

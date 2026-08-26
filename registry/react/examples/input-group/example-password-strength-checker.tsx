@@ -52,15 +52,15 @@ interface PasswordStrengthProps {
 }
 
 const STRENGTH_STYLES = {
-  weak: "bg-red-500 text-white dark:bg-red-600 dark:text-white",
   moderate: "bg-orange-500 text-white dark:bg-orange-600 dark:text-white",
   strong: "bg-green-500 text-white dark:bg-green-600 dark:text-white",
+  weak: "bg-red-500 text-white dark:bg-red-600 dark:text-white",
 } as const;
 
 const STRENGTH_LABELS = {
-  weak: "Weak Password",
   moderate: "Moderate Password",
   strong: "Strong Password",
+  weak: "Weak Password",
 } as const;
 
 function PasswordStrength({ password }: PasswordStrengthProps) {

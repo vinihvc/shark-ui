@@ -94,7 +94,7 @@ Use the `orientation` prop to orient the progress bar horizontally or vertically
 
 ### With label
 
-Use `ProgressValue` and `FieldLabel` to add a label to the progress bar.
+Use `ProgressLabel` inside `Progress` to label the bar. `FieldLabel` as a sibling does not associate.
 
 <ComponentPreview componentName="progress" fileName="example-with-label" />
 
@@ -119,6 +119,14 @@ Root element of the progress bar.
 | `min` | `number` | `0` |
 | `max` | `number` | `100` |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | - |
+
+### ProgressLabel
+
+Accessible label. Render as a child of `Progress`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
 | `className` | `string` | - |
 
 ---

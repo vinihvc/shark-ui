@@ -35,12 +35,12 @@ const Example = () => {
 
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    initialItems: frameworkItems,
     filter: contains,
+    initialItems: frameworkItems,
   });
 
   const tagsInput = useTagsInput({
-    ids: { input: `tags-input-${uid}`, control: `tags-control-${uid}` },
+    ids: { control: `tags-control-${uid}`, input: `tags-input-${uid}` },
   });
 
   const availableItems = collection.items.filter(
@@ -53,7 +53,7 @@ const Example = () => {
       <Combobox
         allowCustomValue
         collection={collection}
-        ids={{ input: `tags-input-${uid}`, control: `tags-control-${uid}` }}
+        ids={{ control: `tags-control-${uid}`, input: `tags-input-${uid}` }}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
         onValueChange={({ value }) => {
           const next = value[0];

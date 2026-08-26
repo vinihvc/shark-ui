@@ -32,6 +32,7 @@ import {
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 import { MenuShortcut } from "@/registry/react/components/menu";
+import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { Separator } from "@/registry/react/components/separator";
 
 export const CommandDialog = Dialog;
@@ -134,22 +135,25 @@ interface CommandInputProps
 export const CommandContent = (
   props: React.ComponentProps<typeof ArkCombobox.Content>
 ) => {
-  const { className, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
     <ArkCombobox.Content
       className={cn(
         "flex flex-1 flex-col",
         "max-h-(--available-height) min-h-0",
-        "-mr-2",
+        "overflow-hidden",
         "outline-none",
-        "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 overflow-auto overscroll-contain",
         "[:not(.has-[+[data-slot=command-footer]])]:rounded-b-2xl [:not(.has-[+[data-slot=command-footer]])]:border-b",
         className
       )}
       data-slot="command-content"
       {...rest}
-    />
+    >
+      <ScrollArea className="min-h-0 flex-1">
+        <div data-slot="command-scroll">{children}</div>
+      </ScrollArea>
+    </ArkCombobox.Content>
   );
 };
 
@@ -182,7 +186,7 @@ export const CommandList = (props: CommandListProps) => {
   return (
     <div className="max-h-72 min-h-0 flex-1">
       <ComboboxList
-        className={cn("flex-1 pr-2.5", className)}
+        className={cn("flex-1", className)}
         data-slot="command-list"
         {...rest}
       />

@@ -67,6 +67,7 @@ Use this file to quickly identify the right shark-ui primitive for a UI task. Ea
 - **Steps** — Stepper / wizard progress UI. `./references/primitives/steps.md`
 - **Tour** — Guided product tour steps. `./references/primitives/tour.md`
 - **TreeView** — Hierarchical expandable tree. `./references/primitives/tree-view.md`
+- **Toc** — In-page heading tracker with an active indicator. `./references/primitives/toc.md`
 
 ## Content & Display
 - **Card** — Content container with sections. `./references/primitives/card.md`
@@ -98,7 +99,7 @@ Use this file to quickly identify the right shark-ui primitive for a UI task. Ea
 - **Timer** — Countdown, stopwatch, and interval displays. `./references/primitives/timer.md`
 - **SignaturePad** — Handwritten signature capture. `./references/primitives/signature-pad.md`
 - **Rating** — Star ratings (reviews, forms). `./references/primitives/rating.md`
-- **RatingGroup** — Alternate rating primitive guide. `./references/primitives/rating-group.md`
+- **RatingGroup** — Alternate rating primitive guide. `./references/primitives/rating.md`
 - **Chart** — Recharts + Shark chart helpers. `./references/primitives/chart.md`
 
 ## Actions
@@ -106,6 +107,5 @@ Use this file to quickly identify the right shark-ui primitive for a UI task. Ea
 - **ActionBar** — Bulk selection action toolbar. `./references/primitives/action-bar.md`
 - **ButtonGroup** — Visually connected button cluster. `./references/primitives/button-group.md`
 - **Clipboard** — Copy-to-clipboard trigger and feedback. `./references/primitives/clipboard.md`
-
 ## Utilities & accessibility
 - **SkipNav** — Skip link to main content. `./references/primitives/skip-nav.md`

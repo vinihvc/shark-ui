@@ -37,6 +37,22 @@ Use `Field orientation="horizontal"` for settings pages. Use `FieldLabel classNa
 
 Don't need to use htmlFor and id, Ark UI will handle this for you.
 
+`FieldLabel` associates with native Field-aware controls (`Input`, `Select`, `Combobox`, `Checkbox`, `Switch`, `NumberInput`, and similar). For widgets that keep their own label part, put that label **inside** the primitive root instead of a sibling `FieldLabel`:
+
+| Control | Label |
+| --- | --- |
+| Slider | `SliderLabel` |
+| RadioGroup (group) | `RadioGroupLabel` or `FieldSet` + `FieldLegend` |
+| DateInput | `DateInputLabel` |
+| DatePicker | `DatePickerLabel` |
+| Listbox | `ListboxLabel` |
+| Progress | `ProgressLabel` |
+| CircularProgress | `CircularProgressLabel` |
+| CircularSlider | `CircularSliderLabel` |
+| ToggleGroup | `id` on the title + `aria-labelledby` on the group |
+
+`FieldTitle` is visual only (for example inside a wrapping `FieldLabel` card). It does not set `htmlFor`.
+
 **Choosing form controls:**
 
 - Simple text input → `Input`

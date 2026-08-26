@@ -11,8 +11,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
   Calendar,
+  CalendarLabel,
   CalendarPresetTrigger,
 } from "@/registry/react/components/calendar";
+import { FieldLabel } from "@/registry/react/components/field";
 import type { Input, InputProps } from "@/registry/react/components/input";
 import {
   InputGroup,
@@ -33,6 +35,20 @@ export const DatePicker = (props: React.ComponentProps<typeof Calendar>) => {
       positioning={positioning}
       {...rest}
     />
+  );
+};
+
+export const DatePickerLabel = (
+  props: React.ComponentProps<typeof CalendarLabel>
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <CalendarLabel data-slot="date-picker-label" {...rest}>
+        {children}
+      </CalendarLabel>
+    </FieldLabel>
   );
 };
 

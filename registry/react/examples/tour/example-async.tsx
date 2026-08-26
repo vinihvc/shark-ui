@@ -15,22 +15,18 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "intro",
-    type: "dialog",
-    title: "Async Data Loading",
+    actions: [{ action: "next", label: "Next" }],
     description: "This tour demonstrates loading data before showing a step.",
-    actions: [{ label: "Next", action: "next" }],
+    id: "intro",
+    title: "Async Data Loading",
+    type: "dialog",
   },
   {
-    id: "user-info",
-    type: "tooltip",
-    title: "Loading...",
-    description: "Fetching user data...",
-    target: () => document.querySelector<HTMLElement>("#user-card"),
     actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
     ],
+    description: "Fetching user data...",
     effect({ show, update }) {
       const controller = new AbortController();
 
@@ -40,29 +36,33 @@ const steps: TourStepType[] = [
         .then((res) => res.json())
         .then((data) => {
           update({
-            title: `Welcome, ${data.name ?? data.login}!`,
             description: `You have ${data.public_repos} public repositories and ${data.followers} followers.`,
+            title: `Welcome, ${data.name ?? data.login}!`,
           });
           show();
         })
         .catch(() => {
           update({
-            title: "User Profile",
             description: "Could not load user data. Please try again.",
+            title: "User Profile",
           });
           show();
         });
 
       return () => controller.abort();
     },
+    id: "user-info",
+    target: () => document.querySelector<HTMLElement>("#user-card"),
+    title: "Loading...",
+    type: "tooltip",
   },
   {
-    id: "complete",
-    type: "dialog",
-    title: "Tour Complete",
+    actions: [{ action: "dismiss", label: "Done" }],
     description:
       "The async step loaded data from the GitHub API before displaying.",
-    actions: [{ label: "Done", action: "dismiss" }],
+    id: "complete",
+    title: "Tour Complete",
+    type: "dialog",
   },
 ];
 

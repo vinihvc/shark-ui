@@ -1,10 +1,11 @@
-import { Field, FieldLabel } from "@/registry/react/components/field";
-import { Progress } from "@/registry/react/components/progress";
+import { Field } from "@/registry/react/components/field";
+import { Progress, ProgressLabel } from "@/registry/react/components/progress";
 
 const Example = () => (
   <Field className="w-full max-w-xs">
-    <FieldLabel>Establishing connection...</FieldLabel>
-    <Progress indeterminate />
+    <Progress indeterminate>
+      <ProgressLabel>Establishing connection...</ProgressLabel>
+    </Progress>
   </Field>
 );
 

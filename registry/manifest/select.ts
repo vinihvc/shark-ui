@@ -4,13 +4,13 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "tailwind-variants", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "select",
-  type: "registry:ui",
   dependencies,
+  name: "select",
   registryDependencies: [
     absoluteUrl("/r/input.json"),
     absoluteUrl("/r/separator.json"),
   ],
+  type: "registry:ui",
 };
 
 export default manifest;

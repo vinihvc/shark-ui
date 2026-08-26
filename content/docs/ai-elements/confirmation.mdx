@@ -1,0 +1,87 @@
+---
+title: Confirmation
+description: An inline card to approve or reject a destructive tool call.
+---
+
+<ComponentPreview componentName="confirmation" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/confirmation
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Button](/docs/components/button). Install it first if you haven't already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/confirmation.tsx" src="/confirmation.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Confirmation
+├── ConfirmationRequest
+│   └── ConfirmationTitle
+├── ConfirmationAccepted
+├── ConfirmationRejected
+└── ConfirmationActions
+    └── ConfirmationAction
+```
+
+## Usage
+
+```tsx
+import {
+  Confirmation,
+  ConfirmationAction,
+  ConfirmationActions,
+  ConfirmationRequest,
+  ConfirmationTitle,
+} from "@/components/ui/confirmation";
+```
+
+```tsx
+<Confirmation state="request">
+  <ConfirmationRequest>
+    <ConfirmationTitle>Allow write to helpers.ts?</ConfirmationTitle>
+  </ConfirmationRequest>
+  <ConfirmationActions>
+    <ConfirmationAction variant="outline">Reject</ConfirmationAction>
+    <ConfirmationAction>Approve</ConfirmationAction>
+  </ConfirmationActions>
+</Confirmation>
+```
+
+Use this in the transcript, not a modal. Pair with [Tool](/docs/ai-elements/tool).
+
+## API Reference
+
+### Confirmation
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `state` | `"request" \| "accepted" \| "rejected"` | `"request"` |

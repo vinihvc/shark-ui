@@ -23,15 +23,15 @@ const avatarVariants = tv({
     "rounded-full",
     "after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
   ],
-  variants: {
-    size: {
-      sm: "size-6",
-      md: "size-8",
-      lg: "size-10",
-    },
-  },
   defaultVariants: {
     size: "md",
+  },
+  variants: {
+    size: {
+      lg: "size-10",
+      md: "size-8",
+      sm: "size-6",
+    },
   },
 });
 

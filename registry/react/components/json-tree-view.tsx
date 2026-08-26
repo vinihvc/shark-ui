@@ -60,11 +60,11 @@ const JsonTreeViewTree = (
 
   return (
     <ArkJsonTreeView.Tree
-      arrow={<ChevronRightIcon />}
+      arrow={<ChevronRightIcon className="size-3.5" />}
       className={cn(
         "flex w-full min-w-0 flex-col **:gap-1",
         "text-muted-foreground text-xs leading-7",
-        "[&_svg]:size-4",
+        "[&_svg]:size-3.5",
         "**:data-[type=string]:text-success",
         "**:data-[type=number]:text-info",
         "**:data-[type=boolean]:font-semibold **:data-[type=boolean]:text-warning",

@@ -16,34 +16,34 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "step-1",
-    type: "tooltip",
-    title: "Keyboard Navigation",
+    actions: [{ action: "next", label: "Next" }],
     description: "Press the right arrow key (→) to go to the next step.",
+    id: "step-1",
     target: () => document.querySelector<HTMLElement>("#tour-key-1"),
-    actions: [{ label: "Next", action: "next" }],
+    title: "Keyboard Navigation",
+    type: "tooltip",
   },
   {
-    id: "step-2",
-    type: "tooltip",
-    title: "Go Back",
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description: "Press the left arrow key (←) to go back.",
+    id: "step-2",
     target: () => document.querySelector<HTMLElement>("#tour-key-2"),
-    actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    title: "Go Back",
+    type: "tooltip",
   },
   {
-    id: "step-3",
-    type: "tooltip",
-    title: "Close Tour",
-    description: "Press Escape to close the tour at any time.",
-    target: () => document.querySelector<HTMLElement>("#tour-key-3"),
     actions: [
-      { label: "Back", action: "prev" },
-      { label: "Finish", action: "dismiss" },
+      { action: "prev", label: "Back" },
+      { action: "dismiss", label: "Finish" },
     ],
+    description: "Press Escape to close the tour at any time.",
+    id: "step-3",
+    target: () => document.querySelector<HTMLElement>("#tour-key-3"),
+    title: "Close Tour",
+    type: "tooltip",
   },
 ];
 

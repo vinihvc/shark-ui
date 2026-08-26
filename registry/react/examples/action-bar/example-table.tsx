@@ -219,39 +219,39 @@ export default Example;
 
 const orders = [
   {
+    amount: "245,12 $",
     id: "SO-01",
     name: "Macbook Pro 16",
     status: "progress",
-    amount: "245,12 $",
   },
   {
+    amount: "122,18 $",
     id: "SO-02",
     name: "Apple Watch Series 9",
     status: "transit",
-    amount: "122,18 $",
   },
   {
+    amount: "89,50 $",
     id: "SO-03",
     name: "AirPods Max",
     status: "pending",
-    amount: "89,50 $",
   },
   {
+    amount: "310,00 $",
     id: "SO-04",
     name: "iPad Pro 13",
     status: "pending",
-    amount: "310,00 $",
   },
   {
+    amount: "156,75 $",
     id: "SO-05",
     name: "iPhone 15 Pro Max",
     status: "transit",
-    amount: "156,75 $",
   },
 ];
 
 const statusVariants: Record<string, BadgeVariant> = {
-  transit: "success",
   pending: "warning",
   progress: "info",
+  transit: "success",
 };

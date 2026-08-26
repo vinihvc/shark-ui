@@ -12,9 +12,9 @@ import {
 import { Input } from "@/registry/react/components/input";
 
 export const metadata: Metadata = createMetadata({
-  title: "Auth Template",
   description:
     "Complete login and signup flows with form validation. Includes password reset and OAuth-ready structure.",
+  title: "Auth Template",
   url: "/templates/auth",
 });
 
@@ -89,7 +89,7 @@ const AuthTemplate = () => (
     </div>
     <div className="relative hidden bg-muted lg:block">
       <img
-        alt="placeholder image"
+        alt="Acme workspace"
         className="absolute inset-0 size-full object-cover dark:brightness-[0.2] dark:grayscale"
         src="/images/placeholder.svg"
       />

@@ -12,22 +12,22 @@ import { Separator } from "@/registry/react/components/separator";
 
 const POSTS = [
   {
+    date: "2025-03-01",
+    excerpt: "Learn the fundamentals and set up your first project in minutes.",
     slug: "getting-started",
     title: "Getting started with the design system",
-    excerpt: "Learn the fundamentals and set up your first project in minutes.",
-    date: "2025-03-01",
   },
   {
+    date: "2025-03-05",
+    excerpt: "Explore common patterns for building consistent interfaces.",
     slug: "component-patterns",
     title: "Component patterns and best practices",
-    excerpt: "Explore common patterns for building consistent interfaces.",
-    date: "2025-03-05",
   },
   {
+    date: "2025-03-10",
+    excerpt: "Customize colors, typography, and spacing to match your brand.",
     slug: "theming",
     title: "Theming and customization",
-    excerpt: "Customize colors, typography, and spacing to match your brand.",
-    date: "2025-03-10",
   },
 ];
 

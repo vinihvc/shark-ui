@@ -40,19 +40,19 @@ export const Example = () => {
     defaultValues: {
       expectedSalary: undefined as number | undefined,
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "salary-expectation-submitted",
-        title: "Salary expectation saved",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "salary-expectation-submitted",
+        title: "Salary expectation saved",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

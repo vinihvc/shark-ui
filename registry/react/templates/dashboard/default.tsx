@@ -39,15 +39,15 @@ import {
 } from "@/registry/react/components/table";
 
 const DASHBOARD_NAV = [
-  { label: "Overview", href: "#" },
-  { label: "Analytics", href: "#" },
-  { label: "Products", href: "#" },
-  { label: "Orders", href: "#" },
+  { href: "#", label: "Overview" },
+  { href: "#", label: "Analytics" },
+  { href: "#", label: "Products" },
+  { href: "#", label: "Orders" },
 ];
 
 const DASHBOARD_OTHER = [
-  { label: "Settings", href: "#" },
-  { label: "Support", href: "#" },
+  { href: "#", label: "Settings" },
+  { href: "#", label: "Support" },
 ];
 
 const CHANNEL_DATA = [
@@ -68,8 +68,8 @@ const CHART_DATA = [
 
 const chartConfig = {
   value: {
-    label: "Sales",
     color: "hsl(var(--chart-1))",
+    label: "Sales",
   },
 } satisfies ChartConfig;
 

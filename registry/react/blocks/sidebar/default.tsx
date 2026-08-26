@@ -66,27 +66,8 @@ import {
 } from "@/registry/react/components/sidebar";
 
 const data = {
-  user: {
-    name: "vini",
-    email: "m@example.com",
-    avatar: "https://github.com/vinihvc.png",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Shark Corp.",
-      logo: SharkIcon,
-      plan: "Startup",
-    },
-  ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
@@ -103,10 +84,10 @@ const data = {
           url: "#",
         },
       ],
+      title: "Playground",
+      url: "#",
     },
     {
-      title: "Models",
-      url: "#",
       icon: Bot,
       items: [
         {
@@ -122,10 +103,10 @@ const data = {
           url: "#",
         },
       ],
+      title: "Models",
+      url: "#",
     },
     {
-      title: "Documentation",
-      url: "#",
       icon: BookOpen,
       items: [
         {
@@ -145,10 +126,10 @@ const data = {
           url: "#",
         },
       ],
+      title: "Documentation",
+      url: "#",
     },
     {
-      title: "Settings",
-      url: "#",
       icon: Settings2,
       items: [
         {
@@ -168,25 +149,44 @@ const data = {
           url: "#",
         },
       ],
+      title: "Settings",
+      url: "#",
     },
   ],
   projects: [
     {
+      icon: Frame,
       name: "Design Engineering",
       url: "#",
-      icon: Frame,
     },
     {
+      icon: PieChart,
       name: "Sales & Marketing",
       url: "#",
-      icon: PieChart,
     },
     {
+      icon: MapIcon,
       name: "Travel",
       url: "#",
-      icon: MapIcon,
     },
   ],
+  teams: [
+    {
+      logo: GalleryVerticalEnd,
+      name: "Acme Inc",
+      plan: "Enterprise",
+    },
+    {
+      logo: SharkIcon,
+      name: "Shark Corp.",
+      plan: "Startup",
+    },
+  ],
+  user: {
+    avatar: "https://github.com/vinihvc.png",
+    email: "m@example.com",
+    name: "vini",
+  },
 };
 
 interface TeamSwitcherProps {
@@ -224,7 +224,7 @@ const TeamSwitcher = ({ teams }: TeamSwitcherProps) => {
                 <span className="truncate font-medium">{activeTeam.name}</span>
                 <span className="truncate text-xs">{activeTeam.plan}</span>
               </div>
-              <ChevronsUpDown className="ms-auto" />
+              <ChevronsUpDown className="ms-auto size-4" />
             </SidebarMenuButton>
           </MenuTrigger>
           <MenuContent className="w-(--reference-width) min-w-56 rounded-lg">
@@ -294,7 +294,7 @@ const NavMain = ({ items }: NavMainProps) => (
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
-                <ChevronRight className="ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                <ChevronRight className="ms-auto size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
               </SidebarMenuButton>
             </CollapsibleTrigger>
             <CollapsibleContent>

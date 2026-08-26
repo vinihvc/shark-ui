@@ -28,45 +28,45 @@ const TourProgressBar = () => {
 
 const steps: TourStepType[] = [
   {
-    id: "step-1",
-    type: "tooltip",
-    title: "Progress Tracking",
+    actions: [{ action: "next", label: "Next" }],
     description: "Watch the progress bar at the bottom as you navigate.",
+    id: "step-1",
     target: () => document.querySelector<HTMLElement>("#progress-1"),
-    actions: [{ label: "Next", action: "next" }],
+    title: "Progress Tracking",
+    type: "tooltip",
   },
   {
-    id: "step-2",
-    type: "tooltip",
-    title: "Halfway There",
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description: "The progress bar shows how far along you are.",
+    id: "step-2",
     target: () => document.querySelector<HTMLElement>("#progress-2"),
-    actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    title: "Halfway There",
+    type: "tooltip",
   },
   {
-    id: "step-3",
-    type: "tooltip",
-    title: "Almost Done",
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description: "One more step to complete the tour.",
+    id: "step-3",
     target: () => document.querySelector<HTMLElement>("#progress-3"),
-    actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    title: "Almost Done",
+    type: "tooltip",
   },
   {
-    id: "step-4",
-    type: "tooltip",
-    title: "Complete!",
-    description: "You have completed all the steps.",
-    target: () => document.querySelector<HTMLElement>("#progress-4"),
     actions: [
-      { label: "Back", action: "prev" },
-      { label: "Finish", action: "dismiss" },
+      { action: "prev", label: "Back" },
+      { action: "dismiss", label: "Finish" },
     ],
+    description: "You have completed all the steps.",
+    id: "step-4",
+    target: () => document.querySelector<HTMLElement>("#progress-4"),
+    title: "Complete!",
+    type: "tooltip",
   },
 ];
 

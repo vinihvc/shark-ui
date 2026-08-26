@@ -9,22 +9,22 @@ import {
 
 const models = [
   {
-    name: "v0-1.5-sm",
+    credit: "Valeria Reverdo on Unsplash",
     description: "Everyday tasks and UI generation.",
     image: "https://picsum.photos/seed/1/500/300",
-    credit: "Valeria Reverdo on Unsplash",
+    name: "v0-1.5-sm",
   },
   {
-    name: "v0-1.5-lg",
+    credit: "Michael Oeser on Unsplash",
     description: "Advanced thinking or reasoning.",
     image: "https://picsum.photos/seed/2/500/300",
-    credit: "Michael Oeser on Unsplash",
+    name: "v0-1.5-lg",
   },
   {
-    name: "v0-2.0-mini",
+    credit: "Cherry Laithang on Unsplash",
     description: "Open Source model for everyone.",
     image: "https://picsum.photos/seed/3/500/300",
-    credit: "Cherry Laithang on Unsplash",
+    name: "v0-2.0-mini",
   },
 ];
 

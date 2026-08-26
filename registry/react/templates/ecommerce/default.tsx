@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Ecommerce Template",
   description:
     "Online store with product grid, cart, checkout, and product detail pages.",
+  title: "Ecommerce Template",
   url: "/templates/ecommerce",
 });
 
@@ -24,39 +24,39 @@ import { Separator } from "@/registry/react/components/separator";
 const PRODUCTS = [
   {
     id: "1",
+    image: "/images/placeholder.svg",
     name: "Wireless Headphones",
     price: "$99",
-    image: "/images/placeholder.svg",
   },
   {
     id: "2",
+    image: "/images/placeholder.svg",
     name: "Smart Watch",
     price: "$249",
-    image: "/images/placeholder.svg",
   },
   {
     id: "3",
+    image: "/images/placeholder.svg",
     name: "Portable Speaker",
     price: "$79",
-    image: "/images/placeholder.svg",
   },
   {
     id: "4",
+    image: "/images/placeholder.svg",
     name: "USB-C Hub",
     price: "$45",
-    image: "/images/placeholder.svg",
   },
   {
     id: "5",
+    image: "/images/placeholder.svg",
     name: "Mechanical Keyboard",
     price: "$149",
-    image: "/images/placeholder.svg",
   },
   {
     id: "6",
+    image: "/images/placeholder.svg",
     name: "Ergonomic Mouse",
     price: "$59",
-    image: "/images/placeholder.svg",
   },
 ];
 

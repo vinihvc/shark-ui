@@ -1,0 +1,90 @@
+---
+title: Context
+description: A usage meter for context window tokens with breakdown and cost.
+---
+
+<ComponentPreview componentName="context" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/context
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Hover Card](/docs/components/hover-card). Install required dependencies first if you haven&apos;t already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/context.tsx" src="/context.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Context
+├── ContextTrigger
+└── ContextContent
+    ├── ContextHeader
+    ├── ContextBody
+    │   ├── ContextInputUsage
+    │   ├── ContextOutputUsage
+    │   ├── ContextReasoningUsage
+    │   └── ContextCacheUsage
+    └── ContextFooter
+```
+
+## Usage
+
+```tsx
+import {
+  Context,
+  ContextBody,
+  ContextContent,
+  ContextFooter,
+  ContextHeader,
+  ContextInputUsage,
+  ContextOutputUsage,
+  ContextTrigger,
+} from "@/components/ui/context";
+```
+
+```tsx
+<Context maxTokens={128000} usedTokens={18420} costLabel="$0.042">
+  <ContextTrigger />
+  <ContextContent>
+    <ContextHeader />
+    <ContextBody>
+      <ContextInputUsage />
+      <ContextOutputUsage />
+    </ContextBody>
+    <ContextFooter />
+  </ContextContent>
+</Context>
+```
+
+Pass numeric `usedTokens` and `maxTokens`. Optional `usage` breaks down input, output, reasoning, and cache. Optional `costLabel` is display-only.
+
+
+

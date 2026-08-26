@@ -30,15 +30,15 @@ const Example = () => (
 );
 
 const collection = createListCollection({
-  items: [
-    { label: "Next.js", value: "next", category: "Frontend" },
-    { label: "Vite", value: "vite", category: "Frontend" },
-    { label: "Astro", value: "astro", category: "Frontend" },
-    { label: "Express", value: "express", category: "Backend" },
-    { label: "Fastify", value: "fastify", category: "Backend" },
-    { label: "NestJS", value: "nestjs", category: "Backend" },
-  ],
   groupBy: (item) => (item as { category: string }).category,
+  items: [
+    { category: "Frontend", label: "Next.js", value: "next" },
+    { category: "Frontend", label: "Vite", value: "vite" },
+    { category: "Frontend", label: "Astro", value: "astro" },
+    { category: "Backend", label: "Express", value: "express" },
+    { category: "Backend", label: "Fastify", value: "fastify" },
+    { category: "Backend", label: "NestJS", value: "nestjs" },
+  ],
 });
 
 export default Example;

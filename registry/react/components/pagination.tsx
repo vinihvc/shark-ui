@@ -4,10 +4,16 @@ import {
   Pagination as ArkPagination,
   usePaginationContext,
 } from "@ark-ui/react/pagination";
-import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
+import {
+  ChevronFirstIcon,
+  ChevronLastIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  EllipsisIcon,
+} from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
+import { Button, type ButtonProps } from "@/registry/react/components/button";
 
 export const usePagination = usePaginationContext;
 
@@ -31,27 +37,101 @@ export const Pagination = (props: PaginationProps) => {
   );
 };
 
-export const PaginationPrevious = (
-  props: React.ComponentProps<typeof ArkPagination.PrevTrigger>
-) => (
-  <ArkPagination.PrevTrigger asChild data-slot="pagination-previous" {...props}>
-    <Button variant="ghost">
-      <ChevronLeft />
-      Previous
-    </Button>
-  </ArkPagination.PrevTrigger>
-);
+interface PaginationFirstProps
+  extends React.ComponentProps<typeof ArkPagination.FirstTrigger>,
+    ButtonProps {
+  /**
+   * Whether to show the label.
+   */
+  withLabel?: boolean;
+}
 
-export const PaginationNext = (
-  props: React.ComponentProps<typeof ArkPagination.NextTrigger>
-) => (
-  <ArkPagination.NextTrigger asChild data-slot="pagination-next" {...props}>
-    <Button variant="ghost">
-      Next
-      <ChevronRight />
-    </Button>
-  </ArkPagination.NextTrigger>
-);
+export const PaginationFirst = (props: PaginationFirstProps) => {
+  const { withLabel = true, variant = "ghost", children, ...rest } = props;
+
+  return (
+    <ArkPagination.FirstTrigger asChild data-slot="pagination-first">
+      <Button variant={variant} {...rest}>
+        <ChevronFirstIcon />
+        <span className={cn({ "sr-only": !withLabel })}>
+          {children || "First"}
+        </span>
+      </Button>
+    </ArkPagination.FirstTrigger>
+  );
+};
+
+interface PaginationPreviousProps
+  extends React.ComponentProps<typeof ArkPagination.PrevTrigger>,
+    ButtonProps {
+  /**
+   * Whether to show the label.
+   */
+  withLabel?: boolean;
+}
+
+export const PaginationPrevious = (props: PaginationPreviousProps) => {
+  const { withLabel = true, variant = "ghost", children, ...rest } = props;
+
+  return (
+    <ArkPagination.PrevTrigger asChild data-slot="pagination-previous">
+      <Button variant={variant} {...rest}>
+        <ChevronLeftIcon />
+        <span className={cn({ "sr-only": !withLabel })}>
+          {children || "Previous"}
+        </span>
+      </Button>
+    </ArkPagination.PrevTrigger>
+  );
+};
+
+interface PaginationNextProps
+  extends React.ComponentProps<typeof ArkPagination.NextTrigger>,
+    ButtonProps {
+  /**
+   * Whether to show the label.
+   */
+  withLabel?: boolean;
+}
+
+export const PaginationNext = (props: PaginationNextProps) => {
+  const { withLabel = true, variant = "ghost", children, ...rest } = props;
+
+  return (
+    <ArkPagination.NextTrigger asChild data-slot="pagination-next">
+      <Button variant={variant} {...rest}>
+        <span className={cn({ "sr-only": !withLabel })}>
+          {children || "Next"}
+        </span>
+        <ChevronRightIcon />
+      </Button>
+    </ArkPagination.NextTrigger>
+  );
+};
+
+interface PaginationLastProps
+  extends React.ComponentProps<typeof ArkPagination.LastTrigger>,
+    ButtonProps {
+  /**
+   * Whether to show the label.
+   */
+  withLabel?: boolean;
+}
+
+export const PaginationLast = (props: PaginationLastProps) => {
+  const { withLabel = true, variant = "ghost", children, ...rest } = props;
+
+  return (
+    <ArkPagination.LastTrigger asChild data-slot="pagination-last">
+      <Button variant={variant} {...rest}>
+        <span className={cn({ "sr-only": !withLabel })}>
+          {children || "Last"}
+        </span>
+        <ChevronLastIcon />
+      </Button>
+    </ArkPagination.LastTrigger>
+  );
+};
 
 export const PaginationItem = (
   props: React.ComponentProps<typeof ArkPagination.Item>
@@ -152,7 +232,7 @@ export const PaginationEllipsis = (
       data-slot="pagination-ellipsis"
       {...rest}
     >
-      <Ellipsis />
+      <EllipsisIcon />
     </ArkPagination.Ellipsis>
   );
 };

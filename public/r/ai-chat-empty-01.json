@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["ai"],
+  "dependencies": ["lucide-react"],
+  "description": "Personalized empty chat state with greeting and suggestion chips.",
+  "files": [
+    {
+      "content": "import { ChatEmpty } from \"@/components/ai-chat-empty/chat-empty\";\n\nconst EmptyChatPage = () => <ChatEmpty />;\n\nexport default EmptyChatPage;\n",
+      "path": "blocks/ai/ai-chat-empty-01/page.tsx",
+      "target": "app/ai-chat-empty/page.tsx",
+      "type": "registry:page"
+    },
+    {
+      "content": "\"use client\";\n\nimport { BotIcon } from \"lucide-react\";\nimport {\n  Suggestion,\n  Suggestions,\n} from \"@/components/ui/suggestion\";\n\ninterface ChatEmptyProps {\n  onSuggestion?: (text: string) => void;\n  userName?: string;\n}\n\nexport const ChatEmpty = ({\n  onSuggestion,\n  userName = \"James\",\n}: ChatEmptyProps) => (\n  <div className=\"flex min-h-svh flex-col items-center justify-center px-6 py-16 text-center\">\n    <span className=\"mb-5 grid size-8 place-items-center text-muted-foreground\">\n      <BotIcon aria-hidden=\"true\" className=\"size-8\" />\n    </span>\n    <h2 className=\"font-medium text-lg\">Hello {userName}</h2>\n    <p className=\"mt-1 text-muted-foreground text-sm\">\n      What can I help you with today?\n    </p>\n    <Suggestions className=\"mt-6 max-w-lg\">\n      <Suggestion\n        onClick={onSuggestion}\n        suggestion=\"Turn this launch brief into a plan\"\n      />\n      <Suggestion\n        onClick={onSuggestion}\n        suggestion=\"Summarize research themes\"\n      />\n      <Suggestion\n        onClick={onSuggestion}\n        suggestion=\"Draft a release checklist\"\n      />\n    </Suggestions>\n  </div>\n);\n",
+      "path": "blocks/ai/ai-chat-empty-01/components/chat-empty.tsx",
+      "target": "@components/ai-chat-empty/chat-empty.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 3,
+    "previewHeight": 480
+  },
+  "name": "ai-chat-empty-01",
+  "registryDependencies": ["https://shark.vini.one/r/suggestion.json"],
+  "title": "AI Chat Empty State",
+  "type": "registry:block"
+}

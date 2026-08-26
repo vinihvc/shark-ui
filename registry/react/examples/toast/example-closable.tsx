@@ -8,9 +8,9 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.create({
-          title: "Event has been created.",
-          description: "Tuesday, February 10, 2026 at 10:00 AM.",
           closable: false,
+          description: "Tuesday, February 10, 2026 at 10:00 AM.",
+          title: "Event has been created.",
         })
       }
       variant="outline"

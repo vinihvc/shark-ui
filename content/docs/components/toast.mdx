@@ -130,7 +130,7 @@ const baseToaster = createToaster({
 
 ## Max toasts
 
-Any extra toasts will be queued and rendered when a toast has been dismissed.
+Any extra toasts will be queued and rendered when a toast has been dismissed. The queue is ordered by `priority` (`1` highest, `8` lowest). Types such as `error` sort ahead of `info` unless you pass `priority` on `toast()`.
 
 By default, the toaster displays up to 3 toasts. Update the `max` option in `createToaster()` to change the maximum number of visible toasts.
 

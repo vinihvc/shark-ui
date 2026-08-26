@@ -44,19 +44,19 @@ const Example = () => {
     defaultValues: {
       language: [""],
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: ({ value }) => {
       toast.info({
-        id: "language-submitted",
-        title: "Language submitted",
         description: (
           <pre className="mt-2">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
+        id: "language-submitted",
+        title: "Language submitted",
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 

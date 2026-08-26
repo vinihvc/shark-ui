@@ -29,7 +29,7 @@ npx shadcn@latest add @shark/date-picker
 
 <Steps>
 
-<Step>This component depends on [Button](/docs/components/button), [Calendar](/docs/components/calendar), [Input](/docs/components/input), and [Input Group](/docs/components/input-group). Install them first if you haven't already.</Step>
+<Step>This component depends on [Button](/docs/components/button), [Calendar](/docs/components/calendar), [Field](/docs/components/field), [Input](/docs/components/input), and [Input Group](/docs/components/input-group). Install them first if you haven't already.</Step>
 
 <Step>Install the following dependencies:</Step>
 
@@ -53,6 +53,7 @@ npm install @ark-ui/react lucide-react
 
 ```text
 DatePicker
+├── DatePickerLabel
 ├── DatePickerTrigger
 └── DatePickerContent
     ── (Calendar components)
@@ -118,6 +119,8 @@ Add quick single-date presets in a side panel.
 
 <ComponentPreview componentName="date-picker" fileName="example-with-presets" />
 
+The same calendar props (`createCalendar`, `showWeekNumbers`, `maxSelectedDates`, `required`, `invalid`) apply on `DatePicker`. See [Calendar](/docs/components/calendar#examples) for those examples. `Calendar` always renders `inline`; `DatePicker` is the overlay form of the same machine.
+
 ### Custom format
 
 Customize the format of the presets using external date formatting library like `date-fns`.
@@ -136,9 +139,23 @@ Root element. Extends [Calendar](/docs/components/calendar#api-reference).
 | `defaultValue` | `DateValue[]` | - |
 | `onValueChange` | `(details: ValueChangeDetails) => void` | - |
 | `selectionMode` | `"single" \| "range" \| "multiple"` | `"single"` |
+| `createCalendar` | `(identifier: string) => Calendar` | - |
+| `showWeekNumbers` | `boolean` | - |
+| `maxSelectedDates` | `number` | - |
+| `openOnClick` | `boolean` | - |
+| `required` | `boolean` | - |
+| `invalid` | `boolean` | - |
 | `positioning` | `PositioningOptions` | `{ placement: "top" }` |
 | `lazyMount` | `boolean` | - |
 | `unmountOnExit` | `boolean` | - |
+
+### DatePickerLabel
+
+Accessible label. Render as a child of `DatePicker`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
 
 ### DatePickerTrigger
 

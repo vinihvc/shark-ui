@@ -30,9 +30,9 @@ interface ComponentResizerProps extends React.ComponentProps<"figure"> {
 }
 
 const MEDIA_QUERY = {
+  desktop: "(min-width: 1025px)",
   mobile: "(max-width: 768px)",
   tablet: "(max-width: 1024px)",
-  desktop: "(min-width: 1025px)",
 };
 
 type MediaQuery = keyof typeof MEDIA_QUERY;

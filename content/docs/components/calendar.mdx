@@ -131,6 +131,24 @@ import {
 
 <ComponentPreview componentName="calendar" fileName="example-booked-dates" />
 
+### Week numbers
+
+Set `showWeekNumbers` to render a week-number column. `CalendarWeekDays` and `CalendarTableDays` include it automatically.
+
+<ComponentPreview componentName="calendar" fileName="example-week-numbers" />
+
+### Max selected dates
+
+In `selectionMode="multiple"`, `maxSelectedDates` caps how many days can be selected.
+
+<ComponentPreview componentName="calendar" fileName="example-max-selected" />
+
+### Custom calendar
+
+Pass `createCalendar` to use a non-Gregorian calendar from `@internationalized/date`. Pair it with a matching `locale`.
+
+<ComponentPreview componentName="calendar" fileName="example-create-calendar" />
+
 ### Custom Cell Size
 
 Use `[--cell-size:--spacing("value")]` to set the size of the calendar cells.
@@ -157,12 +175,18 @@ Root component. Manages date view, selection, and navigation.
 | `defaultValue` | `DateValue[]` | - |
 | `onValueChange` | `(details: ValueChangeDetails) => void` | - |
 | `selectionMode` | `"single" \| "range" \| "multiple"` | `"single"` |
+| `createCalendar` | `(identifier: string) => Calendar` | - |
+| `showWeekNumbers` | `boolean` | - |
+| `maxSelectedDates` | `number` | - |
 | `min` | `DateValue` | - |
 | `max` | `DateValue` | - |
 | `isDateUnavailable` | `(date: DateValue) => boolean` | - |
 | `fixedWeeks` | `boolean` | `false` |
 | `outsideDaySelectable` | `boolean` | `false` |
 | `numOfMonths` | `number` | `1` |
+| `required` | `boolean` | - |
+| `invalid` | `boolean` | - |
+| `locale` | `string` | - |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |
 

@@ -206,6 +206,11 @@ Root element of the popover.
 | `modal` | `boolean` | `true` |
 | `closeOnInteractOutside` | `boolean` | `true` |
 | `closeOnEscape` | `boolean` | `true` |
+| `finalFocusEl` | `() => MaybeElement` | - |
+| `restoreFocus` | `boolean` | `true` |
+| `lazyMount` | `boolean` | `true` |
+| `unmountOnExit` | `boolean` | `true` |
+| `hideMode` | `"display-none" \| "activity"` | `"display-none"` |
 
 ### PopoverTrigger
 
@@ -214,6 +219,7 @@ Opens the popover on click. Use `asChild` for custom trigger elements.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `asChild` | `boolean` | - |
+| `value` | `string` | - |
 
 ### PopoverAnchor
 

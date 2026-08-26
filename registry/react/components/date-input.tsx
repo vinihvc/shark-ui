@@ -8,6 +8,7 @@ import {
 import { XIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
+import { FieldLabel } from "@/registry/react/components/field";
 import type { InputProps } from "@/registry/react/components/input";
 import {
   InputGroup,
@@ -55,6 +56,7 @@ export const DateInput = (props: DateInputProps) => {
     shouldForceLeadingZeros = true,
     separator = "-",
     className,
+    children,
     ...rest
   } = props;
 
@@ -71,6 +73,7 @@ export const DateInput = (props: DateInputProps) => {
       shouldForceLeadingZeros={shouldForceLeadingZeros}
       {...rest}
     >
+      {children}
       <DateInputControl showClear={showClear} size={size}>
         <DateInputSegmentGroup index={0} />
         {selectionMode === "range" && (
@@ -90,6 +93,20 @@ export const DateInput = (props: DateInputProps) => {
         <ArkDateInput.HiddenInput index={1} key="date-input-hidden-1" />
       )}
     </ArkDateInput.Root>
+  );
+};
+
+export const DateInputLabel = (
+  props: React.ComponentProps<typeof ArkDateInput.Label>
+) => {
+  const { children, ...rest } = props;
+
+  return (
+    <FieldLabel asChild>
+      <ArkDateInput.Label data-slot="date-input-label" {...rest}>
+        {children}
+      </ArkDateInput.Label>
+    </FieldLabel>
   );
 };
 

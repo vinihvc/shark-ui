@@ -51,6 +51,20 @@ Shark UI components rely on logical CSS properties wherever possible. That means
 
 Setting `dir={dir}` on the root ensures that direction propagates down. Ark UI’s overlays, tooltips, and menus respect the document direction, so they position themselves correctly whether the user reads left-to-right or right-to-left.
 
+## Date formatting
+
+`useDateFormatter` returns an `Intl.DateTimeFormat` bound to the current locale from `LocaleProvider`.
+
+```tsx
+import { useDateFormatter } from "@/components/ui/locale";
+
+const Example = () => {
+  const formatter = useDateFormatter({ dateStyle: "medium" });
+
+  return <span>{formatter.format(new Date())}</span>;
+};
+```
+
 ## Animations
 
 Animations should follow the reading direction. Physical utilities like `slide-in-from-right` will slide the wrong way in RTL. Use logical alternatives so motion stays consistent:

@@ -6,10 +6,6 @@ import { toast } from "@/registry/react/components/toast";
 const Example = () => {
   const handleAction = () => {
     const id = toast.create({
-      id: "action-performed",
-      title: "User has been deleted.",
-      description: "You can restore the user.",
-      type: "error",
       action: {
         label: "Undo",
         onClick() {
@@ -21,6 +17,10 @@ const Example = () => {
           });
         },
       },
+      description: "You can restore the user.",
+      id: "action-performed",
+      title: "User has been deleted.",
+      type: "error",
     });
   };
 

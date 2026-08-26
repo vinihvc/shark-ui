@@ -8,8 +8,8 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.success({
-          title: "Success!",
           description: "Event has been created.",
+          title: "Success!",
         })
       }
       variant="outline"
@@ -19,8 +19,8 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.error({
-          title: "Something went wrong.",
           description: "Event has not been created.",
+          title: "Something went wrong.",
         })
       }
       variant="outline"
@@ -30,8 +30,8 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.warning({
-          title: "Warning!",
           description: "Your session will expire soon.",
+          title: "Warning!",
         })
       }
       variant="outline"
@@ -41,8 +41,8 @@ const Example = () => (
     <Button
       onClick={() =>
         toast.info({
-          title: "Heads up!",
           description: "You have a new event.",
+          title: "Heads up!",
         })
       }
       variant="outline"

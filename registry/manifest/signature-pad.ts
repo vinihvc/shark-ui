@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react", "lucide-react"];
 
 const manifest: RegistryItemType = {
-  name: "signature-pad",
-  type: "registry:ui",
   dependencies,
+  name: "signature-pad",
   registryDependencies: [absoluteUrl("/r/button.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

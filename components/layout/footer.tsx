@@ -5,22 +5,19 @@ import { cn } from "@/lib/utils";
 import { SharkIcon } from "../icons/shark";
 
 const DOCS_LINKS = [
-  { label: "Components", href: "/docs/components" },
-  { label: "Theming", href: "/themes" },
-  { label: "Installation", href: "/docs/installation" },
-  { label: "Get Started", href: "/docs" },
+  { href: "/docs/components", label: "Components" },
+  { href: "/themes", label: "Theming" },
+  { href: "/docs/installation", label: "Installation" },
+  { href: "/docs", label: "Get Started" },
 ] as const;
 
-const PROJECTS_LINKS = [
-  // { label: "Blocks", href: "/blocks" },
-  // { label: "Templates", href: "/templates" },
-] as const;
+const PROJECTS_LINKS = [{ href: "/blocks", label: "Blocks" }] as const;
 
 const COMMUNITY_LINKS = [
-  { label: "GitHub", href: SITE_CONFIG.repoUrl },
+  { href: SITE_CONFIG.repoUrl, label: "GitHub" },
   {
-    label: "Twitter",
     href: `https://x.com/${SITE_CONFIG.creator.replace("@", "")}`,
+    label: "Twitter",
   },
 ] as const;
 

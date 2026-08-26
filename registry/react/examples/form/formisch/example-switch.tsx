@@ -40,19 +40,19 @@ const formSchema = v.object({
 
 export const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { twoFactor: false },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "about-submitted",
-      title: "About submitted",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "about-submitted",
+      title: "About submitted",
     });
   };
 

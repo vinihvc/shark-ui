@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/url";
 const dependencies = ["@ark-ui/react"];
 
 const manifest: RegistryItemType = {
-  name: "slider",
-  type: "registry:ui",
   dependencies,
+  name: "slider",
   registryDependencies: [absoluteUrl("/r/field.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

@@ -18,8 +18,8 @@ import {
 
 const chartConfig = {
   goal: {
-    label: "Goal",
     color: "var(--primary)",
+    label: "Goal",
   },
 } satisfies ChartConfig;
 

@@ -69,7 +69,11 @@ export const SkeletonText = (props: SkeletonTextProps) => {
         const key = `skeleton-text-${index}`;
 
         return (
-          <div className="w-full rounded-md bg-muted last:w-3/4" key={key} />
+          <div
+            className="w-full rounded-md bg-muted last:w-3/4"
+            data-slot="skeleton-text-line"
+            key={key}
+          />
         );
       })}
     </ark.div>

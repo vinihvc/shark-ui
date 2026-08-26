@@ -14,6 +14,7 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
   const { className, children, collapsedHeight = "256px", ...rest } = props;
 
   const [isOpened, setIsOpened] = React.useState(false);
+  const [hasToggled, setHasToggled] = React.useState(false);
   const [contentHeight, setContentHeight] = React.useState<number | null>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
@@ -38,6 +39,7 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
   }, []);
 
   const toggle = () => {
+    setHasToggled(true);
     setIsOpened((value) => !value);
   };
 
@@ -77,7 +79,7 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
           className={cn(
             "overflow-hidden",
             "transition-[height] duration-200",
-            isOpened ? "animate-expand" : "animate-collapse",
+            hasToggled && (isOpened ? "animate-expand" : "animate-collapse"),
             "motion-reduce:animate-none! motion-reduce:transition-none!"
           )}
           style={heightStyle}

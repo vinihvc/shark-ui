@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "description": "Status line, system note, or labeled separator for chat transcripts.",
+  "name": "marker",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const markerVariants = tv({\n  base: [\n    \"group/marker relative flex min-h-4 w-full items-center gap-2\",\n    \"text-left text-muted-foreground text-sm\",\n    \"[&_svg:not([class*='size-'])]:size-4\",\n    \"[a]:underline [a]:underline-offset-3 [a]:hover:text-foreground\",\n  ],\n  defaultVariants: {\n    variant: \"default\",\n  },\n  variants: {\n    variant: {\n      border: \"border-border border-b pb-2\",\n      default: \"\",\n      separator: [\n        \"before:me-1 before:h-px before:min-w-0 before:flex-1 before:bg-border\",\n        \"after:ms-1 after:h-px after:min-w-0 after:flex-1 after:bg-border\",\n      ],\n    },\n  },\n});\n\ninterface MarkerProps\n  extends React.ComponentProps<typeof ark.div>,\n    VariantProps<typeof markerVariants> {}\n\nexport const Marker = (props: MarkerProps) => {\n  const { variant = \"default\", className, ...rest } = props;\n\n  return (\n    <ark.div\n      className={cn(markerVariants({ variant }), className)}\n      data-slot=\"marker\"\n      data-variant={variant}\n      {...rest}\n    />\n  );\n};\n\nexport const MarkerIcon = (props: React.ComponentProps<typeof ark.span>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.span\n      aria-hidden=\"true\"\n      className={cn(\n        \"size-4 shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n        className\n      )}\n      data-slot=\"marker-icon\"\n      {...rest}\n    />\n  );\n};\n\nexport const MarkerContent = (props: React.ComponentProps<typeof ark.span>) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ark.span\n      className={cn(\n        \"wrap-break-word min-w-0\",\n        \"group-data-[variant=separator]/marker:flex-none group-data-[variant=separator]/marker:text-center\",\n        \"*:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground\",\n        className\n      )}\n      data-slot=\"marker-content\"\n      {...rest}\n    />\n  );\n};\n",
+      "path": "registry/react/components/marker.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -17,12 +17,12 @@ const css = {
 };
 
 const manifest: RegistryItemType = {
-  name: "progress",
-  type: "registry:ui",
-  dependencies,
-  cssVars,
   css,
+  cssVars,
+  dependencies,
+  name: "progress",
   registryDependencies: [absoluteUrl("/r/field.json")],
+  type: "registry:ui",
 };
 
 export default manifest;

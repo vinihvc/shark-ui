@@ -5,12 +5,15 @@ import { ActionBarThumb } from "@/components/thumbs/action-bar";
 import { AlertThumb } from "@/components/thumbs/alert";
 import { AlertDialogThumb } from "@/components/thumbs/alert-dialog";
 import { AnnouncementThumb } from "@/components/thumbs/announcement";
+import { ApprovalCardThumb } from "@/components/thumbs/approval-card";
 import { AspectRatioThumb } from "@/components/thumbs/aspect-ratio";
+import { AttachmentThumb } from "@/components/thumbs/attachment";
 import { AutocompleteThumb } from "@/components/thumbs/autocomplete";
 import { AvatarThumb } from "@/components/thumbs/avatar";
 import { BadgeThumb } from "@/components/thumbs/badge";
 import { BottomNavigationThumb } from "@/components/thumbs/bottom-navigation";
 import { BreadcrumbThumb } from "@/components/thumbs/breadcrumb";
+import { BubbleThumb } from "@/components/thumbs/bubble";
 import { ButtonThumb } from "@/components/thumbs/button";
 import { ButtonGroupThumb } from "@/components/thumbs/button-group";
 import { CalendarThumb } from "@/components/thumbs/calendar";
@@ -21,15 +24,19 @@ import { CheckboxThumb } from "@/components/thumbs/checkbox";
 import { CircularProgressThumb } from "@/components/thumbs/circular-progress";
 import { CircularSliderThumb } from "@/components/thumbs/circular-slider";
 import { ClipboardThumb } from "@/components/thumbs/clipboard";
+import { CodeBlockThumb } from "@/components/thumbs/code-block";
 import { CollapsibleThumb } from "@/components/thumbs/collapsible";
 import { ColorPickerThumb } from "@/components/thumbs/color-picker";
 import { ComboboxThumb } from "@/components/thumbs/combobox";
 import { CommandThumb } from "@/components/thumbs/command";
+import { ConfirmationThumb } from "@/components/thumbs/confirmation";
+import { ContextThumb } from "@/components/thumbs/context";
 import { ContextMenuThumb } from "@/components/thumbs/context-menu";
 import { DataListThumb } from "@/components/thumbs/data-list";
 import { DateInputThumb } from "@/components/thumbs/date-input";
 import { DatePickerThumb } from "@/components/thumbs/date-picker";
 import { DialogThumb } from "@/components/thumbs/dialog";
+import { DiffThumb } from "@/components/thumbs/diff";
 import { DrawerThumb } from "@/components/thumbs/drawer";
 import { EditableThumb } from "@/components/thumbs/editable";
 import { FieldThumb } from "@/components/thumbs/field";
@@ -47,18 +54,26 @@ import { ItemThumb } from "@/components/thumbs/item";
 import { KbdThumb } from "@/components/thumbs/kbd";
 import { LinkOverlayThumb } from "@/components/thumbs/link-overlay";
 import { ListboxThumb } from "@/components/thumbs/listbox";
+import { MarkerThumb } from "@/components/thumbs/marker";
 import { MarqueeThumb } from "@/components/thumbs/marquee";
 import { MenuThumb } from "@/components/thumbs/menu";
+import { MessageThumb } from "@/components/thumbs/message";
+import { MessageScrollerThumb } from "@/components/thumbs/message-scroller";
+import { ModelSelectorThumb } from "@/components/thumbs/model-selector";
 import { NativeSelectThumb } from "@/components/thumbs/native-select";
 import { NumberInputThumb } from "@/components/thumbs/number-input";
 import { PaginationThumb } from "@/components/thumbs/pagination";
 import { PasswordInputThumb } from "@/components/thumbs/password-input";
+import { PlanThumb } from "@/components/thumbs/plan";
 import { PopoverThumb } from "@/components/thumbs/popover";
 import { ProgressThumb } from "@/components/thumbs/progress";
+import { PromptInputThumb } from "@/components/thumbs/prompt-input";
 import { ProseThumb } from "@/components/thumbs/prose";
 import { QrCodeThumb } from "@/components/thumbs/qr-code";
+import { QueueThumb } from "@/components/thumbs/queue";
 import { RadioGroupThumb } from "@/components/thumbs/radio-group";
-import { RatingGroupThumb } from "@/components/thumbs/rating-group";
+import { RatingGroupThumb } from "@/components/thumbs/rating";
+import { ReasoningThumb } from "@/components/thumbs/reasoning";
 import { ResizableThumb } from "@/components/thumbs/resizable";
 import { ScrollAreaThumb } from "@/components/thumbs/scroll-area";
 import { SegmentGroupThumb } from "@/components/thumbs/segment-group";
@@ -70,20 +85,27 @@ import { SignaturePadThumb } from "@/components/thumbs/signature-pad";
 import { SkeletonThumb } from "@/components/thumbs/skeleton";
 import { SkipNavThumb } from "@/components/thumbs/skip-nav";
 import { SliderThumb } from "@/components/thumbs/slider";
+import { SourcesThumb } from "@/components/thumbs/sources";
+import { SpeechInputThumb } from "@/components/thumbs/speech-input";
 import { SpinnerThumb } from "@/components/thumbs/spinner";
 import { StatusThumb } from "@/components/thumbs/status";
 import { StepsThumb } from "@/components/thumbs/steps";
+import { SuggestionThumb } from "@/components/thumbs/suggestion";
 import { SwitchThumb } from "@/components/thumbs/switch";
 import { TableThumb } from "@/components/thumbs/table";
 import { TabsThumb } from "@/components/thumbs/tabs";
 import { TagsInputThumb } from "@/components/thumbs/tags-input";
+import { TaskThumb } from "@/components/thumbs/task";
+import { TerminalThumb } from "@/components/thumbs/terminal";
 import { TextareaThumb } from "@/components/thumbs/textarea";
 import type { ThumbCardProps } from "@/components/thumbs/thumb-card";
 import { TimerThumb } from "@/components/thumbs/timer";
 import { ToastThumb } from "@/components/thumbs/toast";
+import { TocThumb } from "@/components/thumbs/toc";
 import { ToggleThumb } from "@/components/thumbs/toggle";
 import { ToggleGroupThumb } from "@/components/thumbs/toggle-group";
 import { ToggleTooltipThumb } from "@/components/thumbs/toggle-tooltip";
+import { ToolThumb } from "@/components/thumbs/tool";
 import { TooltipThumb } from "@/components/thumbs/tooltip";
 import { TourThumb } from "@/components/thumbs/tour";
 import { TreeViewThumb } from "@/components/thumbs/tree-view";
@@ -93,34 +115,42 @@ import { cn } from "@/lib/utils";
 const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   accordion: AccordionThumb,
   "action-bar": ActionBarThumb,
-  "alert-dialog": AlertDialogThumb,
-  "circular-slider": CircularSliderThumb,
-  "circular-progress": CircularProgressThumb,
-  announcement: AnnouncementThumb,
   alert: AlertThumb,
+  "alert-dialog": AlertDialogThumb,
+  announcement: AnnouncementThumb,
+  "approval-card": ApprovalCardThumb,
   "aspect-ratio": AspectRatioThumb,
+  attachment: AttachmentThumb,
   autocomplete: AutocompleteThumb,
   avatar: AvatarThumb,
   badge: BadgeThumb,
-  breadcrumb: BreadcrumbThumb,
   "bottom-navigation": BottomNavigationThumb,
-  "button-group": ButtonGroupThumb,
+  breadcrumb: BreadcrumbThumb,
+  bubble: BubbleThumb,
   button: ButtonThumb,
+  "button-group": ButtonGroupThumb,
+  calendar: CalendarThumb,
   card: CardThumb,
   carousel: CarouselThumb,
   chart: ChartThumb,
   checkbox: CheckboxThumb,
+  "circular-progress": CircularProgressThumb,
+  "circular-slider": CircularSliderThumb,
   clipboard: ClipboardThumb,
+  "code-block": CodeBlockThumb,
   collapsible: CollapsibleThumb,
   "color-picker": ColorPickerThumb,
   combobox: ComboboxThumb,
   command: CommandThumb,
+  confirmation: ConfirmationThumb,
+  context: ContextThumb,
   "context-menu": ContextMenuThumb,
   "data-list": DataListThumb,
-  "date-picker": DatePickerThumb,
+  "data-table": TableThumb,
   "date-input": DateInputThumb,
-  calendar: CalendarThumb,
+  "date-picker": DatePickerThumb,
   dialog: DialogThumb,
+  diff: DiffThumb,
   drawer: DrawerThumb,
   editable: EditableThumb,
   field: FieldThumb,
@@ -131,49 +161,64 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   hint: HintThumb,
   "hover-card": HoverCardThumb,
   "image-cropper": ImageCropperThumb,
+  input: InputThumb,
   "input-group": InputGroupThumb,
   "input-otp": InputOTPThumb,
-  input: InputThumb,
   item: ItemThumb,
   kbd: KbdThumb,
   "link-overlay": LinkOverlayThumb,
   listbox: ListboxThumb,
+  marker: MarkerThumb,
   marquee: MarqueeThumb,
   menu: MenuThumb,
+  message: MessageThumb,
+  "message-scroller": MessageScrollerThumb,
+  "model-selector": ModelSelectorThumb,
   "native-select": NativeSelectThumb,
   "number-input": NumberInputThumb,
-  "password-input": PasswordInputThumb,
   pagination: PaginationThumb,
+  "password-input": PasswordInputThumb,
+  plan: PlanThumb,
   popover: PopoverThumb,
   progress: ProgressThumb,
+  "prompt-input": PromptInputThumb,
   prose: ProseThumb,
   "qr-code": QrCodeThumb,
+  queue: QueueThumb,
   "radio-group": RadioGroupThumb,
   rating: RatingGroupThumb,
+  reasoning: ReasoningThumb,
   resizable: ResizableThumb,
   "scroll-area": ScrollAreaThumb,
   "segment-group": SegmentGroupThumb,
   select: SelectThumb,
   separator: SeparatorThumb,
-  "signature-pad": SignaturePadThumb,
   sheet: SheetThumb,
   sidebar: SidebarThumb,
+  "signature-pad": SignaturePadThumb,
   skeleton: SkeletonThumb,
   "skip-nav": SkipNavThumb,
   slider: SliderThumb,
+  sources: SourcesThumb,
+  "speech-input": SpeechInputThumb,
   spinner: SpinnerThumb,
   status: StatusThumb,
   steps: StepsThumb,
+  suggestion: SuggestionThumb,
   switch: SwitchThumb,
   table: TableThumb,
   tabs: TabsThumb,
   "tags-input": TagsInputThumb,
+  task: TaskThumb,
+  terminal: TerminalThumb,
   textarea: TextareaThumb,
   timer: TimerThumb,
   toast: ToastThumb,
-  "toggle-group": ToggleGroupThumb,
+  toc: TocThumb,
   toggle: ToggleThumb,
+  "toggle-group": ToggleGroupThumb,
   "toggle-tooltip": ToggleTooltipThumb,
+  tool: ToolThumb,
   tooltip: TooltipThumb,
   tour: TourThumb,
   "tree-view": TreeViewThumb,
@@ -184,7 +229,7 @@ interface ComponentsListProps extends React.ComponentProps<"div"> {}
 export const ComponentsList = (props: ComponentsListProps) => {
   const { className, ...rest } = props;
 
-  const pageTree = source.pageTree;
+  const { pageTree } = source;
 
   return (
     <div

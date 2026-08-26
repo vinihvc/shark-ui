@@ -1,0 +1,78 @@
+---
+title: shadcn/ui
+description: Move shadcn/ui components to Shark UI.
+seoTitle: "Migrate from shadcn/ui to Shark UI"
+seoDescription: "Map shadcn/ui components to Shark UI. Base-specific trigger patterns, component equivalents, token differences, and API shifts."
+links:
+  doc: https://ui.shadcn.com
+---
+
+[shadcn/ui](https://ui.shadcn.com) ships styled components on Radix, Base UI, or React Aria. Shark UI is built on [Ark UI](https://ark-ui.com) with the same copy-and-own workflow.
+
+What you change depends on which base your project uses. For Radix or Base UI without shadcn styling, see [Radix UI](/docs/migration/radix) and [Base UI](/docs/migration/base-ui).
+
+## Which base are you on?
+
+See how triggers and list components are composed in your repo.
+
+| Base | Config | What to change |
+| --- | --- | --- |
+| Radix | `radix` | Part names, collections, value arrays |
+| Base UI | `base` | `render` → `asChild` on triggers; collections on lists |
+| React Aria | `aria` | Slots, labels, anatomy per component |
+
+Shark uses **`asChild`**, not `render`. Radix-based shadcn already matches that. Base UI shadcn does not.
+
+```tsx
+// shadcn (Radix base)
+<DropdownMenuTrigger asChild>
+  <Button variant="outline">Open</Button>
+</DropdownMenuTrigger>
+
+// shadcn (Base UI base)
+<DropdownMenuTrigger render={<Button variant="outline">Open</Button>} />
+
+// Shark UI
+<MenuTrigger asChild>
+  <Button variant="outline">Open</Button>
+</MenuTrigger>
+```
+
+## What changes
+
+| Area | Difference |
+| --- | --- |
+| Select, Combobox | Pass Ark `collection`; Combobox filters with `useFilter` |
+| Toggle Group | Array values; no `type` prop |
+| Accordion | Array values; no `type` / `collapsible` |
+| Input OTP | Drop `input-otp` and `InputOTPGroup` |
+| Sidebar | Check `placement` and provider |
+| Dialog, Sheet, Drawer | Title part still required |
+
+## Component equivalents
+
+| shadcn/ui | Shark UI |
+| --- | --- |
+| Dropdown Menu | [Menu](/docs/components/menu) |
+| Sonner | [Toast](/docs/components/toast) |
+| Form + Label | [Field](/docs/components/field) |
+
+Full registry: [Components](/docs/components). Shark-only primitives include [Autocomplete](/docs/components/autocomplete), [Segment Group](/docs/components/segment-group), and [Floating Panel](/docs/components/floating-panel).
+
+## Colors and tokens
+
+Same semantic model as shadcn (`background`, `primary`, `muted`, and the rest). Shark also ships:
+
+- `destructive-foreground`
+- `success` / `success-foreground`
+- `warning` / `warning-foreground`
+- `info` / `info-foreground`
+
+See [Colors](/docs/colors), [Styling](/docs/styling), and the [Theme editor](/themes).
+
+## Checklist
+
+- Match your shadcn base to the trigger pattern above.
+- Check API differences for same-name components; use the equivalents table for renames.
+- Port theme variables; add the extra token pairs if you use status colors.
+- Re-check controlled values, collections, and [RTL](/docs/rtl) spacing.

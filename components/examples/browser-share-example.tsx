@@ -18,33 +18,33 @@ import {
 import { Progress } from "@/registry/react/components/progress";
 
 const data = [
-  { name: "chrome", value: 394, label: "Chrome" },
-  { name: "safari", value: 225, label: "Safari" },
-  { name: "firefox", value: 293, label: "Firefox" },
-  { name: "edge", value: 135, label: "Edge" },
-  { name: "other", value: 78, label: "Other" },
+  { label: "Chrome", name: "chrome", value: 394 },
+  { label: "Safari", name: "safari", value: 225 },
+  { label: "Firefox", name: "firefox", value: 293 },
+  { label: "Edge", name: "edge", value: 135 },
+  { label: "Other", name: "other", value: 78 },
 ];
 
 const chartConfig = {
   chrome: {
-    label: "Chrome",
     color: "var(--chart-1)",
-  },
-  safari: {
-    label: "Safari",
-    color: "var(--chart-2)",
-  },
-  firefox: {
-    label: "Firefox",
-    color: "var(--chart-3)",
+    label: "Chrome",
   },
   edge: {
-    label: "Edge",
     color: "var(--chart-4)",
+    label: "Edge",
+  },
+  firefox: {
+    color: "var(--chart-3)",
+    label: "Firefox",
   },
   other: {
-    label: "Other",
     color: "var(--chart-5)",
+    label: "Other",
+  },
+  safari: {
+    color: "var(--chart-2)",
+    label: "Safari",
   },
 } satisfies ChartConfig;
 

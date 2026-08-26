@@ -43,19 +43,19 @@ const emptyCode = ["", "", "", "", "", ""] as const;
 
 const Example = () => {
   const form = useForm({
-    schema: formSchema,
     initialInput: { backupCode: [...emptyCode] },
+    schema: formSchema,
   });
 
   const onSubmit: SubmitHandler<typeof formSchema> = (output) => {
     toast.info({
-      id: "backup-code-submitted",
-      title: "Backup code verified",
       description: (
         <pre className="mt-2">
           <code>{JSON.stringify(output, null, 2)}</code>
         </pre>
       ),
+      id: "backup-code-submitted",
+      title: "Backup code verified",
     });
   };
 

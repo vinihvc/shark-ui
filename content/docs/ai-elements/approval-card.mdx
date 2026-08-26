@@ -1,0 +1,80 @@
+---
+title: Approval Card
+description: A human-in-the-loop card for questions, shell commands, or plan approval.
+---
+
+<ComponentPreview componentName="approval-card" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/approval-card
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Button](/docs/components/button). Install required dependencies first if you haven&apos;t already.</Step>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/approval-card.tsx" src="/approval-card.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+ApprovalCard
+```
+
+## Usage
+
+```tsx
+import { ApprovalCard } from "@/components/ui/approval-card";
+```
+
+```tsx
+<ApprovalCard
+  variant="plan"
+  planTitle="Session auth migration"
+  plan={steps}
+  onApprove={() => {}}
+  onReject={() => {}}
+/>
+```
+
+Variants: `questions`, `command`, and `plan`. Keep [Confirmation](/docs/ai-elements/confirmation) for simple tool accept or reject.
+
+
+## API Reference
+
+### ApprovalCard
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"questions" \| "command" \| "plan"` | `"questions"` |
+| `questions` | `ApprovalQuestion[]` | `[]` |
+| `command` | `string` | — |
+| `plan` | `ApprovalPlanStep[]` | `[]` |
+| `onApprove` | `(payload?) => void` | — |
+| `onReject` | `() => void` | — |
+

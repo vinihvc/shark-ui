@@ -18,33 +18,30 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "intro",
-    type: "dialog",
-    title: "Dynamic Elements",
+    actions: [{ action: "next", label: "Start" }],
     description:
       "This tour demonstrates waiting for elements that appear dynamically.",
-    actions: [{ label: "Start", action: "next" }],
+    id: "intro",
+    title: "Dynamic Elements",
+    type: "dialog",
   },
   {
-    id: "add-item",
-    type: "tooltip",
-    title: "Add an Item",
     description: "Click the button to add a new item to the list.",
-    target: () => document.querySelector<HTMLElement>("#btn-add-item"),
     effect({ next, target, show }) {
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
       return cancel;
     },
+    id: "add-item",
+    target: () => document.querySelector<HTMLElement>("#btn-add-item"),
+    title: "Add an Item",
+    type: "tooltip",
   },
   {
-    id: "new-item",
-    type: "tooltip",
-    title: "New Item Added!",
+    actions: [{ action: "next", label: "Next" }],
     description:
       "The tour waited for this element to appear before showing this step.",
-    target: () => document.querySelector<HTMLElement>('[data-item="new"]'),
     effect({ show }) {
       const [promise, cancel] = waitForElement(
         () => document.querySelector<HTMLElement>('[data-item="new"]'),
@@ -53,14 +50,17 @@ const steps: TourStepType[] = [
       promise.then(() => show());
       return () => cancel();
     },
-    actions: [{ label: "Next", action: "next" }],
+    id: "new-item",
+    target: () => document.querySelector<HTMLElement>('[data-item="new"]'),
+    title: "New Item Added!",
+    type: "tooltip",
   },
   {
-    id: "complete",
-    type: "dialog",
-    title: "Tour Complete",
+    actions: [{ action: "dismiss", label: "Done" }],
     description: "You learned how to use waitForElement for dynamic content.",
-    actions: [{ label: "Done", action: "dismiss" }],
+    id: "complete",
+    title: "Tour Complete",
+    type: "dialog",
   },
 ];
 

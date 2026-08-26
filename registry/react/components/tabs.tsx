@@ -26,6 +26,9 @@ export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
 };
 
 const tabsListVariants = tv({
+  defaultVariants: {
+    variant: "default",
+  },
   slots: {
     base: [
       "relative z-0",
@@ -62,9 +65,6 @@ const tabsListVariants = tv({
         ],
       },
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 interface TabsListProps

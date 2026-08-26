@@ -84,7 +84,7 @@ export const Tour = (props: TourProps) => {
   }, [tour]);
 
   return (
-    <TourProvider.Provider value={{ tour, handleStart }}>
+    <TourProvider.Provider value={{ handleStart, tour }}>
       <ArkTour.Root
         data-slot="tour"
         lazyMount={lazyMount}
@@ -329,9 +329,11 @@ export const TourActions = (
                   : "default"
               }
             >
-              {action.action === "prev" && <ChevronLeft />}
+              {action.action === "prev" && <ChevronLeft className="size-3.5" />}
               {action.label}
-              {action.action === "next" && <ChevronRight />}
+              {action.action === "next" && (
+                <ChevronRight className="size-3.5" />
+              )}
             </Button>
           </TourActionTrigger>
         ))}
@@ -363,7 +365,7 @@ export const TourPreviousStep = (
       asChild
     >
       <Button size="sm" variant="outline">
-        <ChevronLeft />
+        <ChevronLeft className="size-3.5" />
         {prevAction.label}
       </Button>
     </TourActionTrigger>
@@ -401,7 +403,7 @@ export const TourNextStep = (
       <Button size="sm">
         {action.label}
 
-        {actionType === "next" && <ChevronRight />}
+        {actionType === "next" && <ChevronRight className="size-3.5" />}
       </Button>
     </TourActionTrigger>
   );

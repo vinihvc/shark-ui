@@ -53,9 +53,11 @@ npm install @ark-ui/react lucide-react
 
 ```text
 Pagination
+├── PaginationFirst
 ├── PaginationPrevious
 ├── PaginationItems
-└── PaginationNext
+├── PaginationNext
+└── PaginationLast
 ```
 
 ## Usage
@@ -63,7 +65,9 @@ Pagination
 ```tsx
 import {
   Pagination,
+  PaginationFirst,
   PaginationItems,
+  PaginationLast,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
@@ -71,9 +75,11 @@ import {
 
 ```tsx
 <Pagination>
+  <PaginationFirst />
   <PaginationPrevious />
   <PaginationItems />
   <PaginationNext />
+  <PaginationLast />
 </Pagination>
 ```
 
@@ -91,9 +97,17 @@ Use `page` and `pageSize` properties to show which items are visible.
 
 <ComponentPreview componentName="pagination" fileName="example-page-range" />
 
+### First and last
+
+Use `PaginationFirst` and `PaginationLast` to jump to the first or last page.
+
+<ComponentPreview componentName="pagination" fileName="example-first-last" />
+
 ### With Links
 
-> Under development
+`PaginationItemLink` renders an `<a>` whose `href` is `?page=`. Ark’s `type="link"` and `getPageUrl` set `href` on native First / Previous / Item / Next / Last parts. Shark wraps those parts in `Button`, so use `PaginationItemLink` for query-string links.
+
+<ComponentPreview componentName="pagination" fileName="example-links" />
 
 ### Table
 
@@ -113,6 +127,9 @@ Use `Pagination` with `Table` to paginate a table.
 | `pageSize` | `number` | - |
 | `defaultPageSize` | `number` | `10` |
 | `siblingCount` | `number` | `1` |
+| `boundaryCount` | `number` | `1` |
+| `type` | `"button" \| "link"` | `"button"` |
+| `getPageUrl` | `(details: PageUrlDetails) => string` | - |
 | `onPageChange` | `(details: PageChangeDetails) => void` | - |
 | `onPageSizeChange` | `(details: PageSizeChangeDetails) => void` | - |
 

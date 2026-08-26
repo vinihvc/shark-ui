@@ -17,34 +17,34 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "step-1",
-    type: "tooltip",
-    title: "First Step",
+    actions: [{ action: "next", label: "Next" }],
     description: "Watch the event log below as you navigate.",
+    id: "step-1",
     target: () => document.querySelector<HTMLElement>("#event-1"),
-    actions: [{ label: "Next", action: "next" }],
+    title: "First Step",
+    type: "tooltip",
   },
   {
-    id: "step-2",
-    type: "tooltip",
-    title: "Second Step",
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
     description: "Each step change triggers an event.",
+    id: "step-2",
     target: () => document.querySelector<HTMLElement>("#event-2"),
-    actions: [
-      { label: "Back", action: "prev" },
-      { label: "Next", action: "next" },
-    ],
+    title: "Second Step",
+    type: "tooltip",
   },
   {
-    id: "step-3",
-    type: "tooltip",
-    title: "Final Step",
-    description: "Complete the tour to see the status change.",
-    target: () => document.querySelector<HTMLElement>("#event-3"),
     actions: [
-      { label: "Back", action: "prev" },
-      { label: "Finish", action: "dismiss" },
+      { action: "prev", label: "Back" },
+      { action: "dismiss", label: "Finish" },
     ],
+    description: "Complete the tour to see the status change.",
+    id: "step-3",
+    target: () => document.querySelector<HTMLElement>("#event-3"),
+    title: "Final Step",
+    type: "tooltip",
   },
 ];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { XIcon } from "lucide-react";
+import { FileIcon, FolderIcon, FolderOpenIcon, XIcon } from "lucide-react";
 import React from "react";
 import { buttonVariants } from "@/registry/react/components/button";
 import {
@@ -65,8 +65,8 @@ const Example = () => {
 
                 <div
                   className={buttonVariants({
-                    variant: "ghost",
                     size: "icon-xs",
+                    variant: "ghost",
                   })}
                   onClick={() => setActiveItem("")}
                   role="button"
@@ -91,28 +91,28 @@ const Example = () => {
 
 const collection = createTreeCollection({
   rootNode: {
-    id: "ROOT",
-    name: "",
     children: [
       {
-        id: "app",
-        name: "app",
         children: [
           { id: "app/page.tsx", name: "page.tsx" },
           { id: "app/layout.tsx", name: "layout.tsx" },
         ],
+        id: "app",
+        name: "app",
       },
       {
-        id: "components",
-        name: "components",
         children: [
           { id: "components/button.tsx", name: "button.tsx" },
           { id: "components/input.tsx", name: "input.tsx" },
         ],
+        id: "components",
+        name: "components",
       },
       { id: "package.json", name: "package.json" },
       { id: "readme.md", name: "README.md" },
     ],
+    id: "ROOT",
+    name: "",
   },
 });
 
@@ -123,7 +123,13 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
     <TreeViewNode indexPath={indexPath} node={node} {...rest}>
       {node.children ? (
         <TreeViewBranch>
-          <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
+          <TreeViewBranchItem
+            expandedIcon={FolderOpenIcon}
+            icon={FolderIcon}
+            showIndicator
+          >
+            {node.name}
+          </TreeViewBranchItem>
 
           <TreeViewBranchContent>
             {node.children.map((child, index) => (
@@ -137,7 +143,7 @@ const TreeNode = (props: React.ComponentProps<typeof TreeViewNode>) => {
         </TreeViewBranch>
       ) : (
         <TreeViewContent>
-          <TreeViewItem>{node.name}</TreeViewItem>
+          <TreeViewItem icon={FileIcon}>{node.name}</TreeViewItem>
         </TreeViewContent>
       )}
     </TreeViewNode>

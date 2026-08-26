@@ -52,15 +52,15 @@ const itemVariants = tv({
     "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: "border-transparent",
-      outline: "border-border shadow-xs/5",
       muted: "border-transparent bg-muted/48 shadow-muted/5 shadow-xs",
+      outline: "border-border shadow-xs/5",
     },
-  },
-  defaultVariants: {
-    variant: "default",
   },
 });
 
@@ -87,6 +87,9 @@ const itemMediaVariants = tv({
     "group-has-data-[slot=item-description]/item:translate-y-0.5 group-has-data-[slot=item-description]/item:self-start",
     "[&_svg]:pointer-events-none",
   ],
+  defaultVariants: {
+    variant: "default",
+  },
   variants: {
     variant: {
       default: "bg-transparent",
@@ -99,9 +102,6 @@ const itemMediaVariants = tv({
       ],
     },
   },
-  defaultVariants: {
-    variant: "default",
-  },
 });
 
 interface ItemMediaProps
@@ -113,7 +113,7 @@ export const ItemMedia = (props: ItemMediaProps) => {
 
   return (
     <ark.div
-      className={cn(itemMediaVariants({ variant, className }))}
+      className={cn(itemMediaVariants({ className, variant }))}
       data-slot="item-media"
       data-variant={variant}
       {...rest}

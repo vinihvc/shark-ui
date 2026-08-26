@@ -16,58 +16,58 @@ import {
 
 const steps: TourStepType[] = [
   {
-    id: "intro",
-    type: "dialog",
-    title: "Interactive Tutorial",
+    actions: [{ action: "next", label: "Begin" }],
     description:
       "This tour will guide you through actions. You must complete each step to proceed.",
-    actions: [{ label: "Begin", action: "next" }],
-  },
-  {
-    id: "click-add",
-    type: "tooltip",
-    title: "Click the Add Button",
-    description: 'Click the "Add Item" button to continue.',
-    target: () => document.querySelector<HTMLElement>("#btn-add"),
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
-    },
-  },
-  {
-    id: "click-edit",
-    type: "tooltip",
-    title: "Click the Edit Button",
-    description: 'Now click the "Edit" button.',
-    target: () => document.querySelector<HTMLElement>("#btn-edit"),
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
-    },
-  },
-  {
-    id: "click-delete",
-    type: "tooltip",
-    title: "Click the Delete Button",
-    description: 'Finally, click the "Delete" button.',
-    target: () => document.querySelector<HTMLElement>("#btn-delete"),
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
-    },
-  },
-  {
-    id: "complete",
+    id: "intro",
+    title: "Interactive Tutorial",
     type: "dialog",
-    title: "Well Done!",
+  },
+  {
+    description: 'Click the "Add Item" button to continue.',
+    effect({ next, target, show }) {
+      show();
+      const [promise, cancel] = waitForEvent(target, "click");
+      promise.then(() => next());
+      return cancel;
+    },
+    id: "click-add",
+    target: () => document.querySelector<HTMLElement>("#btn-add"),
+    title: "Click the Add Button",
+    type: "tooltip",
+  },
+  {
+    description: 'Now click the "Edit" button.',
+    effect({ next, target, show }) {
+      show();
+      const [promise, cancel] = waitForEvent(target, "click");
+      promise.then(() => next());
+      return cancel;
+    },
+    id: "click-edit",
+    target: () => document.querySelector<HTMLElement>("#btn-edit"),
+    title: "Click the Edit Button",
+    type: "tooltip",
+  },
+  {
+    description: 'Finally, click the "Delete" button.',
+    effect({ next, target, show }) {
+      show();
+      const [promise, cancel] = waitForEvent(target, "click");
+      promise.then(() => next());
+      return cancel;
+    },
+    id: "click-delete",
+    target: () => document.querySelector<HTMLElement>("#btn-delete"),
+    title: "Click the Delete Button",
+    type: "tooltip",
+  },
+  {
+    actions: [{ action: "dismiss", label: "Finish" }],
     description: "You completed all the interactive steps.",
-    actions: [{ label: "Finish", action: "dismiss" }],
+    id: "complete",
+    title: "Well Done!",
+    type: "dialog",
   },
 ];
 

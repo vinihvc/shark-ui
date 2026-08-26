@@ -1,0 +1,203 @@
+---
+title: Data Table
+description: A composable data table built using TanStack Table.
+---
+
+<ComponentPreview componentName="data-table" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/data-table
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Button](/docs/components/button), [Menu](/docs/components/menu), [Native Select](/docs/components/native-select), and [Table](/docs/components/table).</Step>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @tanstack/react-table lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/data-table.tsx" src="/data-table.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+"use client";
+
+import { createColumnHelper } from "@tanstack/react-table";
+import {
+  DataTable,
+  DataTableColumnHeader,
+  type DataTableFeatures,
+} from "@/components/ui/data-table";
+
+type Payment = {
+  amount: number;
+  email: string;
+  id: string;
+  status: "pending" | "processing" | "success" | "failed";
+};
+
+const columnHelper = createColumnHelper<DataTableFeatures, Payment>();
+
+const columns = columnHelper.columns([
+  columnHelper.accessor("status", {
+    header: "Status",
+  }),
+  columnHelper.accessor("email", {
+    header: "Email",
+  }),
+  columnHelper.accessor("amount", {
+    cell: ({ getValue }) =>
+      new Intl.NumberFormat("en-US", {
+        currency: "USD",
+        style: "currency",
+      }).format(getValue()),
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Amount" />
+    ),
+  }),
+]);
+
+export function PaymentsTable({ data }: { data: Payment[] }) {
+  return (
+    <DataTable
+      caption="Recent payments"
+      columns={columns}
+      data={data}
+    />
+  );
+}
+```
+
+## Examples
+
+### Basic
+
+`DataTable` with static columns.
+
+<ComponentPreview componentName="data-table" fileName="example-basic" />
+
+### Sortable columns
+
+`DataTableColumnHeader` for sort and hide.
+
+<ComponentPreview componentName="data-table" fileName="example-sortable" />
+
+### Pagination
+
+`useTable` plus `DataTablePagination`.
+
+<ComponentPreview
+  componentName="data-table"
+  fileName="example-pagination"
+  hasMaxHeight={false}
+/>
+
+### Global filter
+
+`globalFilteringFeature` across all columns.
+
+<ComponentPreview componentName="data-table" fileName="example-global-filter" />
+
+### Expandable rows
+
+`rowExpandingFeature` with a detail panel per row.
+
+<ComponentPreview componentName="data-table" fileName="example-expandable" />
+
+## Features
+
+`dataTableFeatures` is exported so custom compositions can use exactly the same v9 feature set with `useTable`. TanStack Table includes the core row model by default; the optional row models are registered by this component with `createFilteredRowModel`, `createSortedRowModel`, and `createPaginatedRowModel`.
+
+```tsx
+import { useTable } from "@tanstack/react-table";
+import { dataTableFeatures } from "@/components/ui/data-table";
+
+const table = useTable({
+  columns,
+  data,
+  features: dataTableFeatures,
+});
+```
+
+Use `DataTableColumnHeader` in a column header for an Ark UI menu with ascending, descending, and hide actions.
+
+## Pagination and view options
+
+For a custom table composition created with `useTable`, pass its instance to `DataTablePagination` and `DataTableViewOptions`.
+
+```tsx
+import {
+  DataTablePagination,
+  DataTableViewOptions,
+} from "@/components/ui/data-table";
+
+<div className="flex items-center gap-2">
+  <DataTableViewOptions table={table} />
+</div>
+
+<DataTablePagination table={table} />
+```
+
+## API Reference
+
+### DataTable
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `columns` | `ColumnDef<DataTableFeatures, TData>[]` | - |
+| `data` | `TData[]` | - |
+| `caption` | `ReactNode` | - |
+| `emptyMessage` | `ReactNode` | `"No results."` |
+| `tableOptions` | `TableOptions` without `columns`, `data`, and `features` | - |
+| `className` | `string` | - |
+
+### DataTableColumnHeader
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `column` | `Column<DataTableFeatures, TData, TValue>` | - |
+| `title` | `string` | - |
+| `className` | `string` | - |
+
+### DataTablePagination
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `table` | `ReactTable<DataTableFeatures, TData>` | - |
+| `className` | `string` | - |
+
+### DataTableViewOptions
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `table` | `ReactTable<DataTableFeatures, TData>` | - |
+| `className` | `string` | - |

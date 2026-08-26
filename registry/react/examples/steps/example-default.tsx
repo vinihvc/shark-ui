@@ -47,12 +47,12 @@ const StepsDemo = () => (
       <StepsNext asChild>
         <Button>
           Next
-          <ChevronRight />
+          <ChevronRight className="size-4" />
         </Button>
       </StepsNext>
       <StepsPrevious asChild>
         <Button variant="outline">
-          <ChevronLeftIcon />
+          <ChevronLeftIcon className="size-4" />
           Back
         </Button>
       </StepsPrevious>

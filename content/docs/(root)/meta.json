@@ -3,6 +3,7 @@
   "pages": [
     "index",
     "[Installation](/docs/installation)",
+    "migration",
     "styling",
     "colors",
     "[Forms](/docs/forms)",
