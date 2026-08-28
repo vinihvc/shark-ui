@@ -10,19 +10,14 @@ import {
 } from "@/registry/react/components/input-group";
 
 const Example = () => (
-  <InputGroup className="max-w-xs">
+  <InputGroup className="max-w-xs" pill>
     <InputGroupTextarea placeholder="Ask, Search or Chat…" />
     <InputGroupAddon align="block-end">
-      <Button
-        aria-label="Add files"
-        className="rounded-full"
-        size="icon-sm"
-        variant="ghost"
-      >
+      <Button aria-label="Add files" pill size="icon-sm" variant="ghost">
         <PlusIcon />
       </Button>
-      <InputGroupText className="ml-auto">33% used</InputGroupText>
-      <Button aria-label="Send" className="rounded-full" size="icon-sm">
+      <InputGroupText className="ms-auto">33% used</InputGroupText>
+      <Button aria-label="Send" pill size="icon-sm">
         <ArrowUpIcon />
       </Button>
     </InputGroupAddon>

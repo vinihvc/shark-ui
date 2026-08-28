@@ -154,7 +154,7 @@ export const aiBlocks = [
       absoluteUrl("/r/sources.json"),
       absoluteUrl("/r/suggestion.json"),
       absoluteUrl("/r/task.json"),
-      absoluteUrl("/r/tool.json"),
+      absoluteUrl("/r/tool-result.json"),
       absoluteUrl("/r/tooltip.json"),
     ],
     title: "AI Chat Thread",

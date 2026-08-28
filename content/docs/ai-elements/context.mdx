@@ -86,5 +86,92 @@ import {
 
 Pass numeric `usedTokens` and `maxTokens`. Optional `usage` breaks down input, output, reasoning, and cache. Optional `costLabel` is display-only.
 
+## API Reference
+
+### Context
+
+Root [Hover Card](/docs/components/hover-card). Provides token usage to child parts.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `usedTokens` | `number` | **required** |
+| `maxTokens` | `number` | **required** |
+| `usage` | `ContextUsage` | `-` |
+| `costLabel` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### ContextTrigger
+
+Shows the hover card. Default children are a usage ring and percent label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `asChild` | `boolean` | `-` |
+| `className` | `string` | `-` |
+
+### ContextContent
+
+Holds the usage panel. Forwards [HoverCardContent](/docs/components/hover-card) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `-` |
+
+### ContextHeader
+
+Header with percent used and a progress bar. Children replace the default meter.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ContextBody
+
+Body for token breakdown rows.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ContextFooter
+
+Footer with total cost. Children replace the default `costLabel` row.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ContextInputUsage
+
+Input token row. Hidden when `usage.input` is missing or zero.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ContextOutputUsage
+
+Output token row. Hidden when `usage.output` is missing or zero.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ContextReasoningUsage
+
+Reasoning token row. Hidden when `usage.reasoning` is missing or zero.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ContextCacheUsage
+
+Cache token row. Hidden when `usage.cache` is missing or zero.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
 
 

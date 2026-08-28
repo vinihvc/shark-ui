@@ -1,11 +1,13 @@
+"use client";
+
 import { InputOTP, InputOTPSlot } from "@/registry/react/components/input-otp";
 
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+};
+
 const Example = () => (
-  <form
-    onSubmit={(event) => {
-      event.preventDefault();
-    }}
-  >
+  <form onSubmit={handleSubmit}>
     <InputOTP autoSubmit>
       <InputOTPSlot index={0} />
       <InputOTPSlot index={1} />

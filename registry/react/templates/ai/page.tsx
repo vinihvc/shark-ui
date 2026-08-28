@@ -165,7 +165,7 @@ const AITemplatePage = () => (
               </Button>
             </div>
             <p className="mt-2 text-center text-muted-foreground text-xs">
-              GPT-4 · AI can make mistakes — please double-check
+              GPT-4 · AI can make mistakes. Please double-check
             </p>
           </div>
         </div>

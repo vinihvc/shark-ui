@@ -17,42 +17,39 @@ import { LoginFormExample } from "@/components/examples/login-form-example";
 import { StyleOverviewExample } from "@/components/examples/style-overview-example";
 import { TabsExample } from "@/components/examples/tabs-example";
 import { cn } from "@/lib/utils";
-import { HomeExamplesTabGuard } from "./home-examples-tab-guard";
 
 export const ComponentsExamples = (props: React.ComponentProps<"div">) => {
   const { className, ...rest } = props;
 
   return (
-    <HomeExamplesTabGuard>
-      <div className={cn("sm:p-6", className)} {...rest}>
-        <div className="columns-2 gap-6 lg:columns-3">
-          {[
-            <InputOTPExample key="input-otp" />,
-            <FormControlsExample key="form-controls" />,
-            <ButtonExample key="button" />,
-            <IconsGridExample key="icons" />,
-            <ButtonGroupInputGroupExample key="button-group" />,
-            <ExerciseMinutesChartExample key="exercise" />,
-            <FieldSliderExample key="field-slider" />,
-            <ItemExample key="item" />,
-            <StyleOverviewExample key="style" />,
-            <TabsExample key="tabs" />,
-            <CalendarRangeExample key="calendar" />,
-            <BrowserShareExample key="browser-share" />,
-            <ComputeEnvironmentExample key="compute" />,
-            <CommerceTableExample key="commerce" />,
-            <LoginFormExample key="login" />,
-            <AvatarGroupEmptyExample key="avatar-group" />,
-          ].map((example) => (
-            <div
-              className="mb-6 break-inside-avoid *:[div]:w-full *:[div]:max-w-full lg:*:[div]:max-w-xs"
-              key={example.key}
-            >
-              {example}
-            </div>
-          ))}
-        </div>
+    <div className={cn("sm:p-6", className)} {...rest}>
+      <div className="columns-2 gap-6 lg:columns-3">
+        {[
+          <InputOTPExample key="input-otp" />,
+          <FormControlsExample key="form-controls" />,
+          <ButtonExample key="button" />,
+          <IconsGridExample key="icons" />,
+          <ButtonGroupInputGroupExample key="button-group" />,
+          <ExerciseMinutesChartExample key="exercise" />,
+          <FieldSliderExample key="field-slider" />,
+          <ItemExample key="item" />,
+          <StyleOverviewExample key="style" />,
+          <TabsExample key="tabs" />,
+          <CalendarRangeExample key="calendar" />,
+          <BrowserShareExample key="browser-share" />,
+          <ComputeEnvironmentExample key="compute" />,
+          <CommerceTableExample key="commerce" />,
+          <LoginFormExample key="login" />,
+          <AvatarGroupEmptyExample key="avatar-group" />,
+        ].map((example) => (
+          <div
+            className="mb-6 break-inside-avoid *:[div]:w-full *:[div]:max-w-full lg:*:[div]:max-w-xs"
+            key={example.key}
+          >
+            {example}
+          </div>
+        ))}
       </div>
-    </HomeExamplesTabGuard>
+    </div>
   );
 };

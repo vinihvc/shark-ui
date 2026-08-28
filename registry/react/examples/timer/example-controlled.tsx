@@ -23,7 +23,7 @@ const Example = () => {
   return (
     <div className="flex flex-col gap-4">
       <output className="text-center text-muted-foreground text-sm tabular-nums">
-        Ticks: {ticks} {completed ? " — Completed!" : ""}
+        Ticks: {ticks} {completed ? " (completed)" : ""}
       </output>
       <Card className="rounded-3xl [--space:--spacing(6)]">
         <CardContent>

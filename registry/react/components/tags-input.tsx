@@ -23,6 +23,12 @@ interface TagsInputProps
   extends React.ComponentProps<typeof ArkTagsInput.Root>,
     Pick<InputGroupProps, "size"> {
   /**
+   * Whether tag chips use fully rounded corners.
+   *
+   * @default false
+   */
+  pill?: boolean;
+  /**
    * Whether to show the clear button.
    *
    * @default true
@@ -34,6 +40,7 @@ export const TagsInput = (props: TagsInputProps) => {
   const {
     size = "md",
     showClear,
+    pill = false,
     editable = false,
     tabIndex,
     className,
@@ -48,6 +55,7 @@ export const TagsInput = (props: TagsInputProps) => {
         "flex w-full flex-col gap-2",
         className
       )}
+      data-pill={pill}
       data-size={size}
       data-slot="tags-input"
       editable={editable}
@@ -125,7 +133,7 @@ export const TagsInputItem = (props: TagsInputItemProps) => {
         "bg-secondary",
         "in-data-[size=lg]:text-sm text-secondary-foreground text-xs",
         "[--input-group-inset:--spacing(0.5)]",
-        "rounded-md border outline-none",
+        "in-data-[pill=true]/tags-input:rounded-full rounded-md border outline-none",
         "data-highlighted:border-primary/30 data-highlighted:bg-primary/10",
         className
       )}
@@ -253,6 +261,12 @@ interface TagsInputRootProviderProps
   extends React.ComponentProps<typeof ArkTagsInput.RootProvider>,
     Pick<InputGroupProps, "size"> {
   /**
+   * Whether tag chips use fully rounded corners.
+   *
+   * @default false
+   */
+  pill?: boolean;
+  /**
    * Whether to show the clear button.
    *
    * @default true
@@ -261,7 +275,14 @@ interface TagsInputRootProviderProps
 }
 
 export const TagsInputRootProvider = (props: TagsInputRootProviderProps) => {
-  const { size = "md", showClear, className, children, ...rest } = props;
+  const {
+    size = "md",
+    showClear,
+    pill = false,
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <ArkTagsInput.RootProvider
@@ -270,6 +291,7 @@ export const TagsInputRootProvider = (props: TagsInputRootProviderProps) => {
         "flex w-full flex-col gap-2",
         className
       )}
+      data-pill={pill}
       data-size={size}
       data-slot="tags-input-root-provider"
       {...rest}

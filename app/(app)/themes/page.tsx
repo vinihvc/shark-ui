@@ -15,10 +15,10 @@ export const metadata: Metadata = createMetadata({
 const ThemesPage = () => (
   <main className="container flex flex-col gap-4">
     <div className="grid gap-2 pt-8 pb-4">
-      <h1 className="font-extrabold text-3xl">Pick a Color. Make it yours.</h1>
+      <h1 className="font-extrabold text-3xl">Pick a color theme</h1>
 
       <p className="text-lg text-muted-foreground">
-        Try our hand-picked themes. Copy and paste them into your project.
+        Preview the palettes, then copy them into your project.
       </p>
     </div>
 

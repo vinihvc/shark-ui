@@ -5,7 +5,7 @@
     "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
     "severity": "advisory",
     "category": "quality",
-    "file": "/Users/vinicius/Development/shark-ui/app/(app)/templates/page.tsx",
+    "file": "/Users/vinicius/Development/shark-ui/app/(app)/_templates/page.tsx",
     "line": 90,
     "snippet": "text-[…] class: 5.5rem is off the DESIGN.md type ramp",
     "ignoreValue": "5.5rem"

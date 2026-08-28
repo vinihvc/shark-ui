@@ -41,6 +41,7 @@ export const IconsGridExample = (props: React.ComponentProps<"div">) => (
             aria-label={label}
             key={label}
             size="icon-md"
+            tabIndex={-1}
             variant="outline"
           >
             <Icon aria-hidden />

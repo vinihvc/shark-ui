@@ -4,7 +4,7 @@ export const PRIMARY_COLORS = [
       dark: {
         primary: "var(--color-neutral-100)",
         "primary-foreground": "var(--color-neutral-800)",
-        ring: "var(--color-neutral-500)",
+        ring: "var(--color-neutral-400)",
         "sidebar-primary": "var(--color-neutral-100)",
         "sidebar-primary-foreground": "var(--color-neutral-800)",
         "sidebar-ring": "var(--color-neutral-400)",
@@ -56,15 +56,15 @@ export const PRIMARY_COLORS = [
         "sidebar-ring": "var(--color-orange-900)",
       },
       light: {
-        primary: "var(--color-orange-700)",
+        primary: "var(--color-orange-600)",
         "primary-foreground": "var(--color-orange-50)",
         ring: "var(--color-orange-400)",
-        "sidebar-primary": "var(--color-orange-700)",
+        "sidebar-primary": "var(--color-orange-600)",
         "sidebar-primary-foreground": "var(--color-orange-50)",
         "sidebar-ring": "var(--color-orange-400)",
       },
     },
-    hex: { dark: "bg-orange-700", light: "bg-orange-700" },
+    hex: { dark: "bg-orange-700", light: "bg-orange-600" },
     label: "Orange",
     value: "orange",
   },
@@ -401,15 +401,15 @@ export const PRIMARY_COLORS = [
         "sidebar-ring": "var(--color-rose-900)",
       },
       light: {
-        primary: "var(--color-rose-700)",
+        primary: "var(--color-rose-600)",
         "primary-foreground": "var(--color-rose-50)",
         ring: "var(--color-rose-400)",
-        "sidebar-primary": "var(--color-rose-700)",
+        "sidebar-primary": "var(--color-rose-600)",
         "sidebar-primary-foreground": "var(--color-rose-50)",
         "sidebar-ring": "var(--color-rose-400)",
       },
     },
-    hex: { dark: "bg-rose-500", light: "bg-rose-700" },
+    hex: { dark: "bg-rose-500", light: "bg-rose-600" },
     label: "Rose",
     value: "rose",
   },
@@ -420,21 +420,19 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-slate-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-slate-50) 10%, var(--background))",
         "accent-foreground": "var(--color-slate-100)",
         background: "var(--color-slate-950)",
         border:
           "color-mix(in srgb, var(--color-slate-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-slate-50))",
         "card-foreground": "var(--color-slate-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-slate-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-slate-100)",
         input:
-          "color-mix(in srgb, var(--color-slate-50) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-slate-50) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-slate-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-slate-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-slate-500) 70%, var(--color-slate-50))",
         popover:
@@ -442,40 +440,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-slate-100)",
         primary: "var(--color-slate-100)",
         "primary-foreground": "var(--color-slate-800)",
-        ring: "var(--color-slate-500)",
+        ring: "var(--color-slate-400)",
         secondary:
           "color-mix(in srgb, var(--color-slate-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-slate-100)",
         sidebar:
           "color-mix(in srgb, var(--color-slate-950) 97%, var(--color-slate-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-slate-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-slate-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-slate-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-slate-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-slate-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-slate-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-slate-100)",
         "sidebar-primary-foreground": "var(--color-slate-800)",
         "sidebar-ring": "var(--color-slate-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-slate-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-slate-950) 8%, var(--background))",
         "accent-foreground": "var(--color-slate-800)",
         background: "var(--color-slate-50)",
         border:
           "color-mix(in srgb, var(--color-slate-950) 12%, var(--background))",
-        card: "var(--color-slate-50)",
+        card: "color-mix(in srgb, var(--color-slate-950) 2%, var(--background))",
         "card-foreground": "var(--color-slate-800)",
         foreground: "var(--color-slate-800)",
         input:
-          "color-mix(in srgb, var(--color-slate-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-slate-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-slate-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-slate-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-slate-500) 80%, var(--color-slate-950))",
-        popover: "var(--color-slate-50)",
+        popover:
+          "color-mix(in srgb, var(--color-slate-950) 3%, var(--background))",
         "popover-foreground": "var(--color-slate-800)",
         primary: "var(--color-slate-800)",
         "primary-foreground": "var(--color-slate-50)",
@@ -485,12 +484,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-slate-800)",
         sidebar: "var(--color-slate-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-slate-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-slate-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-slate-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-slate-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-slate-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-slate-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-slate-800)",
         "sidebar-primary-foreground": "var(--color-slate-50)",
         "sidebar-ring": "var(--color-slate-400)",
@@ -504,20 +503,18 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-gray-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-gray-50) 10%, var(--background))",
         "accent-foreground": "var(--color-gray-100)",
         background: "var(--color-gray-950)",
         border:
           "color-mix(in srgb, var(--color-gray-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-gray-50))",
         "card-foreground": "var(--color-gray-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-gray-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-gray-100)",
         input:
-          "color-mix(in srgb, var(--color-gray-50) 13%, var(--background))",
-        muted: "color-mix(in srgb, var(--color-gray-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-gray-50) 15%, var(--background))",
+        muted: "color-mix(in srgb, var(--color-gray-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-gray-500) 70%, var(--color-gray-50))",
         popover:
@@ -525,40 +522,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-gray-100)",
         primary: "var(--color-gray-100)",
         "primary-foreground": "var(--color-gray-800)",
-        ring: "var(--color-gray-500)",
+        ring: "var(--color-gray-400)",
         secondary:
           "color-mix(in srgb, var(--color-gray-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-gray-100)",
         sidebar:
           "color-mix(in srgb, var(--color-gray-950) 97%, var(--color-gray-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-gray-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-gray-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-gray-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-gray-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-gray-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-gray-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-gray-100)",
         "sidebar-primary-foreground": "var(--color-gray-800)",
         "sidebar-ring": "var(--color-gray-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-gray-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-gray-950) 8%, var(--background))",
         "accent-foreground": "var(--color-gray-800)",
         background: "var(--color-gray-50)",
         border:
           "color-mix(in srgb, var(--color-gray-950) 12%, var(--background))",
-        card: "var(--color-gray-50)",
+        card: "color-mix(in srgb, var(--color-gray-950) 2%, var(--background))",
         "card-foreground": "var(--color-gray-800)",
         foreground: "var(--color-gray-800)",
         input:
-          "color-mix(in srgb, var(--color-gray-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-gray-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-gray-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-gray-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-gray-500) 80%, var(--color-gray-950))",
-        popover: "var(--color-gray-50)",
+        popover:
+          "color-mix(in srgb, var(--color-gray-950) 3%, var(--background))",
         "popover-foreground": "var(--color-gray-800)",
         primary: "var(--color-gray-800)",
         "primary-foreground": "var(--color-gray-50)",
@@ -568,12 +566,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-gray-800)",
         sidebar: "var(--color-gray-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-gray-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-gray-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-gray-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-gray-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-gray-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-gray-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-gray-800)",
         "sidebar-primary-foreground": "var(--color-gray-50)",
         "sidebar-ring": "var(--color-gray-400)",
@@ -587,20 +585,18 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-zinc-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-zinc-50) 10%, var(--background))",
         "accent-foreground": "var(--color-zinc-100)",
         background: "var(--color-zinc-950)",
         border:
           "color-mix(in srgb, var(--color-zinc-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-zinc-50))",
         "card-foreground": "var(--color-zinc-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-zinc-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-zinc-100)",
         input:
-          "color-mix(in srgb, var(--color-zinc-50) 13%, var(--background))",
-        muted: "color-mix(in srgb, var(--color-zinc-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-zinc-50) 15%, var(--background))",
+        muted: "color-mix(in srgb, var(--color-zinc-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-zinc-500) 70%, var(--color-zinc-50))",
         popover:
@@ -608,40 +604,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-zinc-100)",
         primary: "var(--color-zinc-100)",
         "primary-foreground": "var(--color-zinc-800)",
-        ring: "var(--color-zinc-500)",
+        ring: "var(--color-zinc-400)",
         secondary:
           "color-mix(in srgb, var(--color-zinc-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-zinc-100)",
         sidebar:
           "color-mix(in srgb, var(--color-zinc-950) 97%, var(--color-zinc-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-zinc-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-zinc-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-zinc-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-zinc-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-zinc-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-zinc-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-zinc-100)",
         "sidebar-primary-foreground": "var(--color-zinc-800)",
         "sidebar-ring": "var(--color-zinc-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-zinc-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-zinc-950) 8%, var(--background))",
         "accent-foreground": "var(--color-zinc-800)",
         background: "var(--color-zinc-50)",
         border:
           "color-mix(in srgb, var(--color-zinc-950) 12%, var(--background))",
-        card: "var(--color-zinc-50)",
+        card: "color-mix(in srgb, var(--color-zinc-950) 2%, var(--background))",
         "card-foreground": "var(--color-zinc-800)",
         foreground: "var(--color-zinc-800)",
         input:
-          "color-mix(in srgb, var(--color-zinc-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-zinc-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-zinc-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-zinc-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-zinc-500) 80%, var(--color-zinc-950))",
-        popover: "var(--color-zinc-50)",
+        popover:
+          "color-mix(in srgb, var(--color-zinc-950) 3%, var(--background))",
         "popover-foreground": "var(--color-zinc-800)",
         primary: "var(--color-zinc-800)",
         "primary-foreground": "var(--color-zinc-50)",
@@ -651,12 +648,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-zinc-800)",
         sidebar: "var(--color-zinc-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-zinc-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-zinc-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-zinc-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-zinc-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-zinc-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-zinc-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-zinc-800)",
         "sidebar-primary-foreground": "var(--color-zinc-50)",
         "sidebar-ring": "var(--color-zinc-400)",
@@ -670,21 +667,19 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-neutral-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-neutral-50) 10%, var(--background))",
         "accent-foreground": "var(--color-neutral-100)",
         background: "var(--color-neutral-950)",
         border:
           "color-mix(in srgb, var(--color-neutral-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-neutral-50))",
         "card-foreground": "var(--color-neutral-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-neutral-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-neutral-100)",
         input:
-          "color-mix(in srgb, var(--color-neutral-50) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-neutral-50) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-neutral-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-neutral-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-neutral-500) 70%, var(--color-neutral-50))",
         popover:
@@ -692,40 +687,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-neutral-100)",
         primary: "var(--color-neutral-100)",
         "primary-foreground": "var(--color-neutral-800)",
-        ring: "var(--color-neutral-500)",
+        ring: "var(--color-neutral-400)",
         secondary:
-          "color-mix(in srgb, var(--color-neutral-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-white) 8%, var(--background))",
         "secondary-foreground": "var(--color-neutral-100)",
         sidebar:
           "color-mix(in srgb, var(--color-neutral-950) 97%, var(--color-neutral-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-neutral-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-neutral-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-neutral-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-neutral-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-neutral-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-neutral-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-neutral-100)",
         "sidebar-primary-foreground": "var(--color-neutral-800)",
         "sidebar-ring": "var(--color-neutral-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-neutral-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-neutral-950) 8%, var(--background))",
         "accent-foreground": "var(--color-neutral-800)",
         background: "var(--color-neutral-50)",
         border:
           "color-mix(in srgb, var(--color-neutral-950) 12%, var(--background))",
-        card: "var(--color-neutral-50)",
+        card: "color-mix(in srgb, var(--color-neutral-950) 2%, var(--background))",
         "card-foreground": "var(--color-neutral-800)",
         foreground: "var(--color-neutral-800)",
         input:
-          "color-mix(in srgb, var(--color-neutral-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-neutral-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-neutral-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-neutral-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-neutral-500) 80%, var(--color-neutral-950))",
-        popover: "var(--color-neutral-50)",
+        popover:
+          "color-mix(in srgb, var(--color-neutral-950) 3%, var(--background))",
         "popover-foreground": "var(--color-neutral-800)",
         primary: "var(--color-neutral-800)",
         "primary-foreground": "var(--color-neutral-50)",
@@ -735,12 +731,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-neutral-800)",
         sidebar: "var(--color-neutral-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-neutral-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-neutral-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-neutral-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-neutral-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-neutral-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-neutral-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-neutral-800)",
         "sidebar-primary-foreground": "var(--color-neutral-50)",
         "sidebar-ring": "var(--color-neutral-400)",
@@ -754,21 +750,19 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-stone-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-stone-50) 10%, var(--background))",
         "accent-foreground": "var(--color-stone-100)",
         background: "var(--color-stone-950)",
         border:
           "color-mix(in srgb, var(--color-stone-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-stone-50))",
         "card-foreground": "var(--color-stone-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-stone-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-stone-100)",
         input:
-          "color-mix(in srgb, var(--color-stone-50) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-stone-50) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-stone-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-stone-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-stone-500) 70%, var(--color-stone-50))",
         popover:
@@ -776,40 +770,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-stone-100)",
         primary: "var(--color-stone-100)",
         "primary-foreground": "var(--color-stone-800)",
-        ring: "var(--color-stone-500)",
+        ring: "var(--color-stone-400)",
         secondary:
           "color-mix(in srgb, var(--color-stone-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-stone-100)",
         sidebar:
           "color-mix(in srgb, var(--color-stone-950) 97%, var(--color-stone-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-stone-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-stone-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-stone-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-stone-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-stone-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-stone-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-stone-100)",
         "sidebar-primary-foreground": "var(--color-stone-800)",
         "sidebar-ring": "var(--color-stone-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-stone-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-stone-950) 8%, var(--background))",
         "accent-foreground": "var(--color-stone-800)",
         background: "var(--color-stone-50)",
         border:
           "color-mix(in srgb, var(--color-stone-950) 12%, var(--background))",
-        card: "var(--color-stone-50)",
+        card: "color-mix(in srgb, var(--color-stone-950) 2%, var(--background))",
         "card-foreground": "var(--color-stone-800)",
         foreground: "var(--color-stone-800)",
         input:
-          "color-mix(in srgb, var(--color-stone-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-stone-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-stone-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-stone-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-stone-500) 80%, var(--color-stone-950))",
-        popover: "var(--color-stone-50)",
+        popover:
+          "color-mix(in srgb, var(--color-stone-950) 3%, var(--background))",
         "popover-foreground": "var(--color-stone-800)",
         primary: "var(--color-stone-800)",
         "primary-foreground": "var(--color-stone-50)",
@@ -819,12 +814,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-stone-800)",
         sidebar: "var(--color-stone-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-stone-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-stone-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-stone-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-stone-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-stone-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-stone-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-stone-800)",
         "sidebar-primary-foreground": "var(--color-stone-50)",
         "sidebar-ring": "var(--color-stone-400)",
@@ -838,21 +833,19 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-mauve-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-mauve-50) 10%, var(--background))",
         "accent-foreground": "var(--color-mauve-100)",
         background: "var(--color-mauve-950)",
         border:
           "color-mix(in srgb, var(--color-mauve-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-mauve-50))",
         "card-foreground": "var(--color-mauve-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-mauve-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-mauve-100)",
         input:
-          "color-mix(in srgb, var(--color-mauve-50) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-mauve-50) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-mauve-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-mauve-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-mauve-500) 70%, var(--color-mauve-50))",
         popover:
@@ -860,40 +853,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-mauve-100)",
         primary: "var(--color-mauve-100)",
         "primary-foreground": "var(--color-mauve-800)",
-        ring: "var(--color-mauve-500)",
+        ring: "var(--color-mauve-400)",
         secondary:
           "color-mix(in srgb, var(--color-mauve-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-mauve-100)",
         sidebar:
           "color-mix(in srgb, var(--color-mauve-950) 97%, var(--color-mauve-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-mauve-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mauve-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-mauve-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-mauve-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-mauve-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mauve-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-mauve-100)",
         "sidebar-primary-foreground": "var(--color-mauve-800)",
         "sidebar-ring": "var(--color-mauve-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-mauve-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-mauve-950) 8%, var(--background))",
         "accent-foreground": "var(--color-mauve-800)",
         background: "var(--color-mauve-50)",
         border:
           "color-mix(in srgb, var(--color-mauve-950) 12%, var(--background))",
-        card: "var(--color-mauve-50)",
+        card: "color-mix(in srgb, var(--color-mauve-950) 2%, var(--background))",
         "card-foreground": "var(--color-mauve-800)",
         foreground: "var(--color-mauve-800)",
         input:
-          "color-mix(in srgb, var(--color-mauve-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-mauve-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-mauve-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-mauve-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-mauve-500) 80%, var(--color-mauve-950))",
-        popover: "var(--color-mauve-50)",
+        popover:
+          "color-mix(in srgb, var(--color-mauve-950) 3%, var(--background))",
         "popover-foreground": "var(--color-mauve-800)",
         primary: "var(--color-mauve-800)",
         "primary-foreground": "var(--color-mauve-50)",
@@ -903,12 +897,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-mauve-800)",
         sidebar: "var(--color-mauve-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-mauve-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mauve-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-mauve-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-mauve-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-mauve-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mauve-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-mauve-800)",
         "sidebar-primary-foreground": "var(--color-mauve-50)",
         "sidebar-ring": "var(--color-mauve-400)",
@@ -922,21 +916,19 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-olive-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-olive-50) 10%, var(--background))",
         "accent-foreground": "var(--color-olive-100)",
         background: "var(--color-olive-950)",
         border:
           "color-mix(in srgb, var(--color-olive-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-olive-50))",
         "card-foreground": "var(--color-olive-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-olive-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-olive-100)",
         input:
-          "color-mix(in srgb, var(--color-olive-50) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-olive-50) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-olive-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-olive-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-olive-500) 70%, var(--color-olive-50))",
         popover:
@@ -944,40 +936,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-olive-100)",
         primary: "var(--color-olive-100)",
         "primary-foreground": "var(--color-olive-800)",
-        ring: "var(--color-olive-500)",
+        ring: "var(--color-olive-400)",
         secondary:
           "color-mix(in srgb, var(--color-olive-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-olive-100)",
         sidebar:
           "color-mix(in srgb, var(--color-olive-950) 97%, var(--color-olive-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-olive-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-olive-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-olive-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-olive-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-olive-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-olive-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-olive-100)",
         "sidebar-primary-foreground": "var(--color-olive-800)",
         "sidebar-ring": "var(--color-olive-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-olive-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-olive-950) 8%, var(--background))",
         "accent-foreground": "var(--color-olive-800)",
         background: "var(--color-olive-50)",
         border:
           "color-mix(in srgb, var(--color-olive-950) 12%, var(--background))",
-        card: "var(--color-olive-50)",
+        card: "color-mix(in srgb, var(--color-olive-950) 2%, var(--background))",
         "card-foreground": "var(--color-olive-800)",
         foreground: "var(--color-olive-800)",
         input:
-          "color-mix(in srgb, var(--color-olive-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-olive-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-olive-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-olive-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-olive-500) 80%, var(--color-olive-950))",
-        popover: "var(--color-olive-50)",
+        popover:
+          "color-mix(in srgb, var(--color-olive-950) 3%, var(--background))",
         "popover-foreground": "var(--color-olive-800)",
         primary: "var(--color-olive-800)",
         "primary-foreground": "var(--color-olive-50)",
@@ -987,12 +980,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-olive-800)",
         sidebar: "var(--color-olive-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-olive-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-olive-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-olive-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-olive-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-olive-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-olive-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-olive-800)",
         "sidebar-primary-foreground": "var(--color-olive-50)",
         "sidebar-ring": "var(--color-olive-400)",
@@ -1006,20 +999,18 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-mist-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-mist-50) 10%, var(--background))",
         "accent-foreground": "var(--color-mist-100)",
         background: "var(--color-mist-950)",
         border:
           "color-mix(in srgb, var(--color-mist-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-mist-50))",
         "card-foreground": "var(--color-mist-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-mist-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-mist-100)",
         input:
-          "color-mix(in srgb, var(--color-mist-50) 13%, var(--background))",
-        muted: "color-mix(in srgb, var(--color-mist-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-mist-50) 15%, var(--background))",
+        muted: "color-mix(in srgb, var(--color-mist-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-mist-500) 70%, var(--color-mist-50))",
         popover:
@@ -1027,40 +1018,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-mist-100)",
         primary: "var(--color-mist-100)",
         "primary-foreground": "var(--color-mist-800)",
-        ring: "var(--color-mist-500)",
+        ring: "var(--color-mist-400)",
         secondary:
           "color-mix(in srgb, var(--color-mist-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-mist-100)",
         sidebar:
           "color-mix(in srgb, var(--color-mist-950) 97%, var(--color-mist-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-mist-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mist-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-mist-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-mist-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-mist-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mist-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-mist-100)",
         "sidebar-primary-foreground": "var(--color-mist-800)",
         "sidebar-ring": "var(--color-mist-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-mist-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-mist-950) 8%, var(--background))",
         "accent-foreground": "var(--color-mist-800)",
         background: "var(--color-mist-50)",
         border:
           "color-mix(in srgb, var(--color-mist-950) 12%, var(--background))",
-        card: "var(--color-mist-50)",
+        card: "color-mix(in srgb, var(--color-mist-950) 2%, var(--background))",
         "card-foreground": "var(--color-mist-800)",
         foreground: "var(--color-mist-800)",
         input:
-          "color-mix(in srgb, var(--color-mist-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-mist-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-mist-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-mist-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-mist-500) 80%, var(--color-mist-950))",
-        popover: "var(--color-mist-50)",
+        popover:
+          "color-mix(in srgb, var(--color-mist-950) 3%, var(--background))",
         "popover-foreground": "var(--color-mist-800)",
         primary: "var(--color-mist-800)",
         "primary-foreground": "var(--color-mist-50)",
@@ -1070,12 +1062,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-mist-800)",
         sidebar: "var(--color-mist-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-mist-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mist-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-mist-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-mist-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-mist-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-mist-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-mist-800)",
         "sidebar-primary-foreground": "var(--color-mist-50)",
         "sidebar-ring": "var(--color-mist-400)",
@@ -1089,21 +1081,19 @@ export const GRAY_COLORS = [
     cssVars: {
       dark: {
         accent:
-          "color-mix(in srgb, var(--color-taupe-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-taupe-50) 10%, var(--background))",
         "accent-foreground": "var(--color-taupe-100)",
         background: "var(--color-taupe-950)",
         border:
           "color-mix(in srgb, var(--color-taupe-50) 12%, var(--background))",
         card: "color-mix(in srgb, var(--background) 98%, var(--color-taupe-50))",
         "card-foreground": "var(--color-taupe-100)",
-        destructive:
-          "color-mix(in srgb, var(--color-red-600) 90%, var(--color-taupe-50))",
         "destructive-foreground": "var(--color-red-400)",
         foreground: "var(--color-taupe-100)",
         input:
-          "color-mix(in srgb, var(--color-taupe-50) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-taupe-50) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-taupe-50) 8%, var(--background))",
+          "color-mix(in srgb, var(--color-taupe-50) 6%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-taupe-500) 70%, var(--color-taupe-50))",
         popover:
@@ -1111,40 +1101,41 @@ export const GRAY_COLORS = [
         "popover-foreground": "var(--color-taupe-100)",
         primary: "var(--color-taupe-100)",
         "primary-foreground": "var(--color-taupe-800)",
-        ring: "var(--color-taupe-500)",
+        ring: "var(--color-taupe-400)",
         secondary:
           "color-mix(in srgb, var(--color-taupe-50) 8%, var(--background))",
         "secondary-foreground": "var(--color-taupe-100)",
         sidebar:
           "color-mix(in srgb, var(--color-taupe-950) 97%, var(--color-taupe-50))",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-taupe-50) 8%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-taupe-50) 10%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-taupe-100)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-taupe-50) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-taupe-100) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-taupe-100) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-taupe-100)",
         "sidebar-primary-foreground": "var(--color-taupe-800)",
         "sidebar-ring": "var(--color-taupe-400)",
       },
       light: {
         accent:
-          "color-mix(in srgb, var(--color-taupe-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-taupe-950) 8%, var(--background))",
         "accent-foreground": "var(--color-taupe-800)",
         background: "var(--color-taupe-50)",
         border:
           "color-mix(in srgb, var(--color-taupe-950) 12%, var(--background))",
-        card: "var(--color-taupe-50)",
+        card: "color-mix(in srgb, var(--color-taupe-950) 2%, var(--background))",
         "card-foreground": "var(--color-taupe-800)",
         foreground: "var(--color-taupe-800)",
         input:
-          "color-mix(in srgb, var(--color-taupe-950) 13%, var(--background))",
+          "color-mix(in srgb, var(--color-taupe-950) 15%, var(--background))",
         muted:
-          "color-mix(in srgb, var(--color-taupe-950) 6%, var(--background))",
+          "color-mix(in srgb, var(--color-taupe-950) 5%, var(--background))",
         "muted-foreground":
           "color-mix(in srgb, var(--color-taupe-500) 80%, var(--color-taupe-950))",
-        popover: "var(--color-taupe-50)",
+        popover:
+          "color-mix(in srgb, var(--color-taupe-950) 3%, var(--background))",
         "popover-foreground": "var(--color-taupe-800)",
         primary: "var(--color-taupe-800)",
         "primary-foreground": "var(--color-taupe-50)",
@@ -1154,12 +1145,12 @@ export const GRAY_COLORS = [
         "secondary-foreground": "var(--color-taupe-800)",
         sidebar: "var(--color-taupe-50)",
         "sidebar-accent":
-          "color-mix(in srgb, var(--color-taupe-950) 6%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-taupe-950) 8%, var(--sidebar))",
         "sidebar-accent-foreground": "var(--color-taupe-800)",
         "sidebar-border":
           "color-mix(in srgb, var(--color-taupe-950) 11%, var(--sidebar))",
         "sidebar-foreground":
-          "color-mix(in srgb, var(--color-taupe-800) 64%, var(--sidebar))",
+          "color-mix(in srgb, var(--color-taupe-800) 76%, var(--sidebar))",
         "sidebar-primary": "var(--color-taupe-800)",
         "sidebar-primary-foreground": "var(--color-taupe-50)",
         "sidebar-ring": "var(--color-taupe-400)",

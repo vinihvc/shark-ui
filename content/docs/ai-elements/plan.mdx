@@ -82,4 +82,65 @@ Compose [Task](/docs/ai-elements/task) inside `PlanContent`.
 
 ## API Reference
 
-`Plan` forwards Collapsible props. `defaultOpen` is `true`.
+### Plan
+
+Root collapsible. Forwards [Collapsible](/docs/components/collapsible) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultOpen` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### PlanHeader
+
+Header area for title, description, and actions.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### PlanTitle
+
+Title text for the plan.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### PlanDescription
+
+Supporting description under the title.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### PlanAction
+
+Container for the collapse trigger. Aligns to the end.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### PlanTrigger
+
+Toggles the plan. Default children are the collapsible indicator.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### PlanContent
+
+Holds nested [Task](/docs/ai-elements/task) rows.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

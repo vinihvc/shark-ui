@@ -5,7 +5,7 @@ description: Guide to styling components with the color system.
 
 ## Overview
 
-Shark UI’s styling system is built for clarity and consistent theming. It follows [shadcn/ui theme tokens](https://ui.shadcn.com/docs/theming#theme-tokens) and adds three extra tokens: `success`, `warning`, and `info` to cover status states.
+Shark UI uses [shadcn/ui theme tokens](https://ui.shadcn.com/docs/theming#theme-tokens) plus `success`, `warning`, and `info` for status states.
 
 ## CSS Configuration
 
@@ -191,6 +191,41 @@ See [Installation](/docs/installation#new-project-setup) for installing with CLI
   --chart-3: var(--color-amber-500);
   --chart-4: var(--color-purple-500);
   --chart-5: var(--color-rose-500);
+}
+```
+</CodeCollapsibleWrapper>
+
+## Base styles
+
+Add the following base layer rules to `globals.css` for default document styling, selection colors, and pointer cursors on interactive elements:
+
+<CodeCollapsibleWrapper>
+```css title="globals.css"
+@layer base {
+  ::selection {
+    @apply bg-primary/80 text-primary-foreground;
+  }
+
+  * {
+    @apply border-border outline-ring/50 ring-ring;
+  }
+
+  body {
+    @apply bg-background text-foreground flex min-h-svh flex-col font-sans;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  main {
+    @apply flex-1 flex flex-col;
+  }
 }
 ```
 </CodeCollapsibleWrapper>

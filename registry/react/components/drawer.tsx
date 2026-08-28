@@ -404,6 +404,7 @@ export const DrawerTitle = (
   props: React.ComponentProps<typeof ArkDrawer.Title>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkDrawer.Title
       className={cn(
@@ -420,6 +421,7 @@ export const DrawerDescription = (
   props: React.ComponentProps<typeof ArkDrawer.Description>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkDrawer.Description
       className={cn("text-center text-muted-foreground text-sm", className)}

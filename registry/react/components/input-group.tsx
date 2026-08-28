@@ -16,7 +16,7 @@ const inpuGroupVariants = tv({
     "flex items-center",
     "bg-background dark:bg-input/30",
     "[--input-group-inset:calc(var(--spacing)*3-0.45rem)]",
-    "rounded-lg border border-input shadow-xs/5",
+    "border border-input shadow-xs/5",
     "transition-[color,box-shadow]",
     "has-[>textarea]:h-auto",
     "has-[>[data-align=inline-start]]:[&>input]:ps-2",
@@ -29,9 +29,14 @@ const inpuGroupVariants = tv({
     "motion-reduce:transition-none!",
   ],
   defaultVariants: {
+    pill: false,
     size: "md",
   },
   variants: {
+    pill: {
+      false: "rounded-lg",
+      true: "rounded-full",
+    },
     size: {
       lg: ["h-9"],
       md: ["h-8"],
@@ -45,11 +50,11 @@ export interface InputGroupProps
     VariantProps<typeof inpuGroupVariants> {}
 
 export const InputGroup = (props: InputGroupProps) => {
-  const { size = "md", className, ...rest } = props;
+  const { size = "md", pill = false, className, ...rest } = props;
 
   return (
     <ark.div
-      className={cn(inpuGroupVariants({ size }), className)}
+      className={cn(inpuGroupVariants({ pill, size }), className)}
       data-size={size}
       data-slot="input-group"
       role="group"

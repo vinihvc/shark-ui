@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A radial chart example with simple.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport { RadialBar, RadialBarChart } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A radial chart\";\n\nconst chartData = [\n  { browser: \"chrome\", fill: \"var(--color-chrome)\", visitors: 275 },\n  { browser: \"safari\", fill: \"var(--color-safari)\", visitors: 200 },\n  { browser: \"firefox\", fill: \"var(--color-firefox)\", visitors: 187 },\n  { browser: \"edge\", fill: \"var(--color-edge)\", visitors: 173 },\n  { browser: \"other\", fill: \"var(--color-other)\", visitors: 90 },\n];\n\nconst chartConfig = {\n  chrome: {\n    color: \"var(--chart-1)\",\n    label: \"Chrome\",\n  },\n  edge: {\n    color: \"var(--chart-4)\",\n    label: \"Edge\",\n  },\n  firefox: {\n    color: \"var(--chart-3)\",\n    label: \"Firefox\",\n  },\n  other: {\n    color: \"var(--chart-5)\",\n    label: \"Other\",\n  },\n  safari: {\n    color: \"var(--chart-2)\",\n    label: \"Safari\",\n  },\n  visitors: {\n    label: \"Visitors\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartRadialSimple() {\n  return (\n    <Card className=\"flex flex-col\">\n      <CardHeader className=\"items-center pb-0\">\n        <CardTitle>Radial Chart</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent className=\"flex-1 pb-0\">\n        <ChartContainer\n          className=\"mx-auto aspect-square max-h-[250px]\"\n          config={chartConfig}\n        >\n          <RadialBarChart data={chartData} innerRadius={30} outerRadius={110}>\n            <ChartTooltip\n              content={<ChartTooltipContent hideLabel nameKey=\"browser\" />}\n              cursor={false}\n            />\n            <RadialBar background dataKey=\"visitors\" />\n          </RadialBarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"text-muted-foreground leading-none\">\n          Showing total visitors for the last 6 months\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartRadialSimple;\n",
+      "path": "blocks/chart/chart-radial-simple.tsx",
+      "target": "app/charts/chart-radial-simple/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 59,
+    "previewHeight": 560
+  },
+  "name": "chart-radial-simple",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Radial Chart: Simple",
+  "type": "registry:block"
+}

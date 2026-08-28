@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A line chart example with multiple.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport { CartesianGrid, Line, LineChart, XAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A multiple line chart\";\n\nconst chartData = [\n  { desktop: 186, mobile: 80, month: \"January\" },\n  { desktop: 305, mobile: 200, month: \"February\" },\n  { desktop: 237, mobile: 120, month: \"March\" },\n  { desktop: 73, mobile: 190, month: \"April\" },\n  { desktop: 209, mobile: 130, month: \"May\" },\n  { desktop: 214, mobile: 140, month: \"June\" },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--chart-1)\",\n    label: \"Desktop\",\n  },\n  mobile: {\n    color: \"var(--chart-2)\",\n    label: \"Mobile\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartLineMultiple() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Line Chart - Multiple</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={chartConfig}>\n          <LineChart\n            accessibilityLayer\n            data={chartData}\n            margin={{\n              left: 12,\n              right: 12,\n            }}\n          >\n            <CartesianGrid vertical={false} />\n            <XAxis\n              axisLine={false}\n              dataKey=\"month\"\n              tickFormatter={(value) => value.slice(0, 3)}\n              tickLine={false}\n              tickMargin={8}\n            />\n            <ChartTooltip content={<ChartTooltipContent />} cursor={false} />\n            <Line\n              dataKey=\"desktop\"\n              dot={false}\n              stroke=\"var(--color-desktop)\"\n              strokeWidth={2}\n              type=\"monotone\"\n            />\n            <Line\n              dataKey=\"mobile\"\n              dot={false}\n              stroke=\"var(--color-mobile)\"\n              strokeWidth={2}\n              type=\"monotone\"\n            />\n          </LineChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter>\n        <div className=\"flex w-full items-start gap-2 text-sm\">\n          <div className=\"grid gap-2\">\n            <div className=\"flex items-center gap-2 font-medium leading-none\">\n              Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n            </div>\n            <div className=\"flex items-center gap-2 text-muted-foreground leading-none\">\n              Showing total visitors for the last 6 months\n            </div>\n          </div>\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartLineMultiple;\n",
+      "path": "blocks/chart/chart-line-multiple.tsx",
+      "target": "app/charts/chart-line-multiple/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 29,
+    "previewHeight": 560
+  },
+  "name": "chart-line-multiple",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Line Chart: Multiple",
+  "type": "registry:block"
+}

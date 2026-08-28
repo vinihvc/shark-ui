@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["sidebar"],
+  "dependencies": ["lucide-react"],
+  "description": "A simple sidebar with navigation grouped by section.",
+  "files": [
+    {
+      "content": "import { Separator } from \"@/components/ui/separator\";\nimport {\n  SidebarInset,\n  SidebarProvider,\n  SidebarTrigger,\n} from \"@/components/ui/sidebar\";\nimport { AppSidebar } from \"@/components/sidebar-01/app-sidebar\";\n\nconst summaryCards = [\"activity\", \"coverage\", \"usage\"] as const;\n\nexport default function Sidebar01Page() {\n  return (\n    <SidebarProvider>\n      <AppSidebar />\n      <SidebarInset>\n        <header className=\"flex h-14 shrink-0 items-center gap-2 border-b px-4\">\n          <SidebarTrigger className=\"-ms-1\" />\n          <Separator className=\"h-4\" orientation=\"vertical\" />\n          <div className=\"flex min-w-0 items-center gap-2 text-sm\">\n            <span className=\"hidden text-muted-foreground sm:inline\">\n              Documentation\n            </span>\n            <span\n              aria-hidden=\"true\"\n              className=\"hidden text-muted-foreground sm:inline\"\n            >\n              /\n            </span>\n            <span className=\"truncate font-medium\">Getting started</span>\n          </div>\n        </header>\n        <main className=\"flex flex-1 flex-col gap-4 p-4\">\n          <div className=\"grid gap-4 md:grid-cols-3\">\n            {summaryCards.map((card) => (\n              <div\n                className=\"aspect-video rounded-xl border bg-muted/35\"\n                key={card}\n              />\n            ))}\n          </div>\n          <div className=\"min-h-96 flex-1 rounded-xl border bg-muted/35\" />\n        </main>\n      </SidebarInset>\n    </SidebarProvider>\n  );\n}\n",
+      "path": "blocks/sidebar/sidebar-01/page.tsx",
+      "target": "app/dashboard/page.tsx",
+      "type": "registry:page"
+    },
+    {
+      "content": "\"use client\";\n\nimport {\n  BookOpenIcon,\n  BotIcon,\n  Code2Icon,\n  LifeBuoyIcon,\n  Settings2Icon,\n  ShapesIcon,\n} from \"lucide-react\";\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarHeader,\n  SidebarInput,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarRail,\n} from \"@/components/ui/sidebar\";\n\nconst navigation = [\n  {\n    items: [\n      { icon: BookOpenIcon, label: \"Introduction\" },\n      { icon: Code2Icon, label: \"Installation\" },\n      { icon: ShapesIcon, label: \"Components\" },\n    ],\n    label: \"Documentation\",\n  },\n  {\n    items: [\n      { icon: BotIcon, label: \"AI elements\" },\n      { icon: Settings2Icon, label: \"Configuration\" },\n    ],\n    label: \"Build\",\n  },\n];\n\nexport function AppSidebar() {\n  return (\n    <Sidebar>\n      <SidebarHeader>\n        <SidebarMenu>\n          <SidebarMenuItem>\n            <SidebarMenuButton className=\"font-semibold\" size=\"lg\">\n              <span className=\"flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground\">\n                S\n              </span>\n              <span>Shark UI</span>\n            </SidebarMenuButton>\n          </SidebarMenuItem>\n        </SidebarMenu>\n        <SidebarInput\n          aria-label=\"Search documentation\"\n          placeholder=\"Search\"\n          type=\"search\"\n        />\n      </SidebarHeader>\n      <SidebarContent>\n        {navigation.map((section) => (\n          <SidebarGroup key={section.label}>\n            <SidebarGroupLabel>{section.label}</SidebarGroupLabel>\n            <SidebarGroupContent>\n              <SidebarMenu>\n                {section.items.map((item) => (\n                  <SidebarMenuItem key={item.label}>\n                    <SidebarMenuButton\n                      asChild\n                      isActive={item.label === \"Introduction\"}\n                    >\n                      <a href=\"#\">\n                        <item.icon aria-hidden=\"true\" />\n                        <span>{item.label}</span>\n                      </a>\n                    </SidebarMenuButton>\n                  </SidebarMenuItem>\n                ))}\n              </SidebarMenu>\n            </SidebarGroupContent>\n          </SidebarGroup>\n        ))}\n      </SidebarContent>\n      <SidebarFooter>\n        <SidebarMenu>\n          <SidebarMenuItem>\n            <SidebarMenuButton asChild>\n              <a href=\"#\">\n                <LifeBuoyIcon aria-hidden=\"true\" />\n                <span>Support</span>\n              </a>\n            </SidebarMenuButton>\n          </SidebarMenuItem>\n        </SidebarMenu>\n      </SidebarFooter>\n      <SidebarRail />\n    </Sidebar>\n  );\n}\n",
+      "path": "blocks/sidebar/sidebar-01/components/app-sidebar.tsx",
+      "target": "@components/sidebar-01/app-sidebar.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "featured": true,
+    "order": 1,
+    "previewHeight": 760
+  },
+  "name": "sidebar-01",
+  "registryDependencies": [
+    "https://shark.vini.one/r/separator.json",
+    "https://shark.vini.one/r/sidebar.json"
+  ],
+  "title": "Sidebar 01",
+  "type": "registry:block"
+}

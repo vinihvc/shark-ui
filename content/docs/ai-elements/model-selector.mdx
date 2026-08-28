@@ -77,5 +77,87 @@ import {
 </ModelSelector>
 ```
 
+## API Reference
+
+### ModelSelector
+
+Root [Popover](/docs/components/popover). Holds the selected model value.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | `-` |
+| `onValueChange` | `(value: string) => void` | `-` |
+| `open` | `boolean` | `-` |
+| `onOpenChange` | `(details: OpenChangeDetails) => void` | `-` |
+
+### ModelSelectorTrigger
+
+Opens the picker. Built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"outline"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"sm"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ModelSelectorContent
+
+Holds the search field and list. Forwards [PopoverContent](/docs/components/popover) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ModelSelectorInput
+
+Search field for filtering models.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `type` | `string` | `"search"` |
+| `className` | `string` | `-` |
+
+### ModelSelectorList
+
+Scrollable list of model options.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ModelSelectorEmpty
+
+Shown when the list has no matching models.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ModelSelectorGroup
+
+Groups related models under a label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ModelSelectorLabel
+
+Legend for a model group.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ModelSelectorItem
+
+Selectable model option. Closes the popover on click.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `className` | `string` | `-` |
 
 

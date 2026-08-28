@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A radar chart example with icons.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { ArrowDownFromLine, ArrowUpFromLine, TrendingUp } from \"lucide-react\";\nimport { PolarAngleAxis, PolarGrid, Radar, RadarChart } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartLegend,\n  ChartLegendContent,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A radar chart with icons\";\n\nconst chartData = [\n  { desktop: 186, mobile: 80, month: \"January\" },\n  { desktop: 305, mobile: 200, month: \"February\" },\n  { desktop: 237, mobile: 120, month: \"March\" },\n  { desktop: 73, mobile: 190, month: \"April\" },\n  { desktop: 209, mobile: 130, month: \"May\" },\n  { desktop: 214, mobile: 140, month: \"June\" },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--chart-1)\",\n    icon: ArrowDownFromLine,\n    label: \"Desktop\",\n  },\n  mobile: {\n    color: \"var(--chart-2)\",\n    icon: ArrowUpFromLine,\n    label: \"Mobile\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartRadarIcons() {\n  return (\n    <Card>\n      <CardHeader className=\"items-center pb-4\">\n        <CardTitle>Radar Chart - Icons</CardTitle>\n        <CardDescription>\n          Showing total visitors for the last 6 months\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer\n          className=\"mx-auto aspect-square max-h-[250px]\"\n          config={chartConfig}\n        >\n          <RadarChart\n            data={chartData}\n            margin={{\n              bottom: -10,\n              top: -40,\n            }}\n          >\n            <ChartTooltip\n              content={<ChartTooltipContent indicator=\"line\" />}\n              cursor={false}\n            />\n            <PolarAngleAxis dataKey=\"month\" />\n            <PolarGrid />\n            <Radar\n              dataKey=\"desktop\"\n              fill=\"var(--color-desktop)\"\n              fillOpacity={0.6}\n            />\n            <Radar dataKey=\"mobile\" fill=\"var(--color-mobile)\" />\n            <ChartLegend content={<ChartLegendContent className=\"mt-8\" />} />\n          </RadarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 pt-4 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"flex items-center gap-2 text-muted-foreground leading-none\">\n          January - June 2024\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartRadarIcons;\n",
+      "path": "blocks/chart/chart-radar-icons.tsx",
+      "target": "app/charts/chart-radar-icons/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 50,
+    "previewHeight": 560
+  },
+  "name": "chart-radar-icons",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Radar Chart: Icons",
+  "type": "registry:block"
+}

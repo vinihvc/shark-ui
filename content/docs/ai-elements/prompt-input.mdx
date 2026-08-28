@@ -1,7 +1,6 @@
 ---
 title: Prompt Input
 description: A chat composer with a textarea, tool slots, attachments, and send or stop.
-seoDescription: "Build an AI chat composer in React with Shark UI’s Prompt Input: textarea editing, attachments, tool slots, submit states, and accessible controls."
 ---
 
 <ComponentPreview componentName="prompt-input" />
@@ -87,10 +86,65 @@ Wrap the composer in [File Upload](/docs/components/file-upload) and place chips
 
 ### PromptInput
 
+Form around [Input Group](/docs/components/input-group). Enter submits, Shift+Enter inserts a new line.
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `status` | `"ready" \| "submitted" \| "streaming" \| "error"` | `"ready"` |
-| `onSubmit` | `(detail: { text: string; event: FormEvent }) => void` | — |
-| `onStop` | `() => void` | — |
+| `onSubmit` | `(detail: { text: string; event: FormEvent }) => void` | `-` |
+| `onStop` | `() => void` | `-` |
+| `className` | `string` | `-` |
 
-`PromptInputSubmit` shows a spinner for `submitted` and a stop control for `streaming`.
+### PromptInputHeader
+
+Addon above the textarea. Place attachment chips here.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### PromptInputTextarea
+
+Message field. Submits on Enter unless `status` is `"submitted"` or `"streaming"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### PromptInputFooter
+
+Addon below the textarea for tools and submit.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### PromptInputTools
+
+Container for composer actions.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### PromptInputButton
+
+Tool button. Alias of [InputGroupButton](/docs/components/input-group).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"ghost"` |
+| `size` | `"xs" \| "sm" \| "icon-xs" \| "icon-sm"` | `"xs"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### PromptInputSubmit
+
+Send control. Shows a spinner for `"submitted"` and a stop control for `"streaming"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"default"` |
+| `size` | `"xs" \| "sm" \| "icon-xs" \| "icon-sm"` | `"icon-sm"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

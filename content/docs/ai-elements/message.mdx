@@ -1,7 +1,7 @@
 ---
 title: Message
 description: A conversation row with avatar, alignment, header, content, and footer.
-seoDescription: "Render flexible AI chat messages in React with Shark UI, including avatars, alignment, metadata headers, rich content, actions, and message footers."
+seoDescription: "Chat message row with avatar, alignment, header, and footer."
 ---
 
 <ComponentPreview componentName="message" />
@@ -128,20 +128,79 @@ Place `MessageActions` inside `MessageFooter` for copy, regenerate, or feedback 
 
 ## API Reference
 
+### MessageGroup
+
+Stacks related messages.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
 ### Message
+
+A single transcript row. Use `align="end"` for the current user.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `align` | `"start" \| "end"` | `"start"` |
+| `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
-`MessageGroup`, `MessageAvatar`, `MessageContent`, `MessageHeader`, `MessageFooter`, and `MessageActions` accept `className` and `asChild`.
+### MessageAvatar
 
-### MessageAction
+Avatar slot. Aligns to the end of the row.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `tooltip` | `string` | — |
-| `label` | `string` | — |
-| `variant` | `Button` variant | `"ghost"` |
-| `size` | `Button` size | `"icon-xs"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageContent
+
+Column for header, bubble, and footer.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageHeader
+
+Name or timestamp above the bubble.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageFooter
+
+Timestamp or actions below the bubble.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageActions
+
+Container for message action buttons.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageAction
+
+Icon button with an optional tooltip. Built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `tooltip` | `string` | `-` |
+| `label` | `string` | `-` |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"ghost"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"icon-xs"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

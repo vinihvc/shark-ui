@@ -12,7 +12,7 @@ export const inputVariants = tv({
     "px-3",
     "bg-transparent dark:bg-input/30",
     "text-base md:text-sm",
-    "rounded-lg border border-input shadow-xs/5",
+    "border border-input shadow-xs/5",
     "placeholder:text-muted-foreground/64",
     "file:inline-flex file:h-7 file:items-center file:border-0",
     "file:font-medium file:text-foreground file:text-sm",
@@ -26,9 +26,14 @@ export const inputVariants = tv({
     "motion-reduce:transition-none!",
   ],
   defaultVariants: {
+    pill: false,
     size: "md",
   },
   variants: {
+    pill: {
+      false: "rounded-lg",
+      true: "rounded-full",
+    },
     size: {
       lg: ["h-9"],
       md: ["h-8"],
@@ -42,11 +47,17 @@ export interface InputProps
     VariantProps<typeof inputVariants> {}
 
 export const Input = (props: InputProps) => {
-  const { size = "md", type = "text", className, ...rest } = props;
+  const {
+    size = "md",
+    pill = false,
+    type = "text",
+    className,
+    ...rest
+  } = props;
 
   return (
     <FieldInput
-      className={cn(inputVariants({ size }), className)}
+      className={cn(inputVariants({ pill, size }), className)}
       data-size={size}
       data-slot="input"
       type={type}

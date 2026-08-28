@@ -46,16 +46,12 @@ import {
   TaskTrigger,
 } from "@/registry/react/components/task";
 import {
-  Tool,
-  ToolContent,
-  ToolFile,
-  ToolInput,
-  ToolLabel,
-  ToolName,
-  ToolOutput,
-  ToolStatusBadge,
-  ToolTrigger,
-} from "@/registry/react/components/tool";
+  ToolResult,
+  ToolResultContent,
+  ToolResultName,
+  ToolResultTitle,
+  ToolResultTrigger,
+} from "@/registry/react/components/tool-result";
 
 export const IdeChat = () => {
   const [draft, setDraft] = useState("");
@@ -123,18 +119,12 @@ export const IdeChat = () => {
                 </MessageAvatar>
                 <MessageContent>
                   <MessageHeader>Shark Agent</MessageHeader>
-                  <Tool status="completed">
-                    <ToolTrigger>
-                      <ToolName>Read</ToolName>
-                      <ToolStatusBadge status="completed" />
-                    </ToolTrigger>
-                    <ToolContent>
-                      <ToolInput>
-                        <ToolLabel>Path</ToolLabel>
-                        <ToolFile>src/utils/helpers.ts</ToolFile>
-                      </ToolInput>
-                    </ToolContent>
-                  </Tool>
+                  <ToolResult status="success">
+                    <ToolResultTrigger>
+                      <ToolResultTitle>Read helpers.ts</ToolResultTitle>
+                      <ToolResultName>Read</ToolResultName>
+                    </ToolResultTrigger>
+                  </ToolResult>
                   <Diff>
                     <DiffHeader>src/utils/helpers.ts</DiffHeader>
                     <DiffContent>
@@ -148,20 +138,17 @@ export const IdeChat = () => {
                       </DiffLine>
                     </DiffContent>
                   </Diff>
-                  <Tool status="completed">
-                    <ToolTrigger>
-                      <ToolName>Shell</ToolName>
-                      <ToolStatusBadge status="completed" />
-                    </ToolTrigger>
-                    <ToolContent>
-                      <ToolOutput>
-                        <ToolLabel>pnpm test</ToolLabel>
-                        <p className="font-mono text-muted-foreground text-xs">
-                          All tests passed
-                        </p>
-                      </ToolOutput>
-                    </ToolContent>
-                  </Tool>
+                  <ToolResult status="success">
+                    <ToolResultTrigger>
+                      <ToolResultTitle>Tests passed</ToolResultTitle>
+                      <ToolResultName>Shell</ToolResultName>
+                    </ToolResultTrigger>
+                    <ToolResultContent>
+                      <p className="font-mono text-muted-foreground text-xs">
+                        All tests passed
+                      </p>
+                    </ToolResultContent>
+                  </ToolResult>
                 </MessageContent>
               </Message>
             </MessageScrollerItem>

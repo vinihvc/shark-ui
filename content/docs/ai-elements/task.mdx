@@ -69,8 +69,50 @@ Nest tasks inside [Plan](/docs/ai-elements/plan).
 
 ## API Reference
 
+### TaskList
+
+Container for stacked tasks.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
 ### Task
+
+Root collapsible. Forwards [Collapsible](/docs/components/collapsible) props. `defaultOpen` is `true` when `status` is `"in-progress"`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `status` | `"pending" \| "in-progress" \| "completed"` | `"pending"` |
+| `className` | `string` | `-` |
+
+### TaskTrigger
+
+Toggles the task. Default children show status, `title`, and the chevron.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `title` | `string` | **required** |
+| `status` | `"pending" \| "in-progress" \| "completed"` | `"pending"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### TaskContent
+
+Holds nested files and details.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### TaskItemFile
+
+File chip built on [Badge](/docs/components/badge).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "secondary" \| "outline" \| "success" \| "info" \| "warning" \| "destructive"` | `"outline"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

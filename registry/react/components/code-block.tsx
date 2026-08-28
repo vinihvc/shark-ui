@@ -52,7 +52,8 @@ export const CodeBlockHeader = (
   return (
     <ark.div
       className={cn(
-        "flex min-w-0 items-center gap-2 border-b bg-muted/48 px-3 py-2 text-muted-foreground text-xs",
+        "flex min-w-0 items-center gap-2 border-b bg-muted/48 px-4 py-2.5 text-muted-foreground text-xs",
+        "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
         className
       )}
       data-slot="code-block-header"

@@ -11,7 +11,14 @@ interface InputOTPProps
     Pick<InputProps, "size"> {}
 
 export const InputOTP = (props: InputOTPProps) => {
-  const { placeholder, otp = true, className, children, ...rest } = props;
+  const {
+    placeholder,
+    otp = true,
+    className,
+    children,
+    tabIndex,
+    ...rest
+  } = props;
 
   return (
     <ArkPinInput.Root
@@ -32,7 +39,7 @@ export const InputOTP = (props: InputOTPProps) => {
         {children}
       </ArkPinInput.Control>
 
-      <ArkPinInput.HiddenInput />
+      <ArkPinInput.HiddenInput tabIndex={tabIndex} />
     </ArkPinInput.Root>
   );
 };

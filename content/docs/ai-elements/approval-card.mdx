@@ -69,12 +69,23 @@ Variants: `questions`, `command`, and `plan`. Keep [Confirmation](/docs/ai-eleme
 
 ### ApprovalCard
 
+Self-contained approval surface for questions, a command, or a plan.
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `variant` | `"questions" \| "command" \| "plan"` | `"questions"` |
+| `title` | `string` | From `variant` |
 | `questions` | `ApprovalQuestion[]` | `[]` |
-| `command` | `string` | — |
+| `command` | `string` | `"pnpm build"` |
+| `cwd` | `string` | `"~/project"` |
 | `plan` | `ApprovalPlanStep[]` | `[]` |
-| `onApprove` | `(payload?) => void` | — |
-| `onReject` | `() => void` | — |
+| `planTitle` | `string` | `"Implementation plan"` |
+| `planSummary` | `string` | `-` |
+| `planPreviewCount` | `number` | `3` |
+| `autoApproveSeconds` | `number` | `30` |
+| `approveLabel` | `string` | From `variant` |
+| `rejectLabel` | `string` | From `variant` |
+| `onApprove` | `(payload?: { answers?: Record<string, string> }) => void` | `-` |
+| `onReject` | `() => void` | `-` |
+| `className` | `string` | `-` |
 

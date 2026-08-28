@@ -316,10 +316,10 @@
   --background: var(--color-neutral-50);
   --foreground: var(--color-neutral-800);
 
-  --card: var(--color-neutral-50);
+  --card: color-mix(in srgb, var(--color-neutral-950) 2%, var(--background));
   --card-foreground: var(--color-neutral-800);
 
-  --popover: var(--color-neutral-50);
+  --popover: color-mix(in srgb, var(--color-neutral-950) 3%, var(--background));
   --popover-foreground: var(--color-neutral-800);
 
   --primary: var(--color-neutral-800);
@@ -332,14 +332,14 @@
   );
   --secondary-foreground: var(--color-neutral-800);
 
-  --muted: color-mix(in srgb, var(--color-neutral-950) 6%, var(--background));
+  --muted: color-mix(in srgb, var(--color-neutral-950) 5%, var(--background));
   --muted-foreground: color-mix(
     in srgb,
     var(--color-neutral-500) 80%,
     var(--color-neutral-950)
   );
 
-  --accent: color-mix(in srgb, var(--color-neutral-950) 6%, var(--background));
+  --accent: color-mix(in srgb, var(--color-neutral-950) 8%, var(--background));
   --accent-foreground: var(--color-neutral-800);
 
   --destructive: var(--color-red-600);
@@ -355,7 +355,7 @@
   --warning-foreground: var(--color-amber-700);
 
   --border: color-mix(in srgb, var(--color-neutral-950) 12%, var(--background));
-  --input: color-mix(in srgb, var(--color-neutral-950) 13%, var(--background));
+  --input: color-mix(in srgb, var(--color-neutral-950) 15%, var(--background));
   --ring: var(--color-neutral-400);
 
   --sidebar: color-mix(
@@ -365,14 +365,14 @@
   );
   --sidebar-foreground: color-mix(
     in srgb,
-    var(--color-neutral-800) 64%,
+    var(--color-neutral-800) 76%,
     var(--sidebar)
   );
   --sidebar-primary: var(--color-neutral-800);
   --sidebar-primary-foreground: var(--color-neutral-50);
   --sidebar-accent: color-mix(
     in srgb,
-    var(--color-neutral-950) 6%,
+    var(--color-neutral-950) 8%,
     var(--sidebar)
   );
   --sidebar-accent-foreground: var(--color-neutral-800);
@@ -414,14 +414,14 @@
   --secondary: color-mix(in srgb, var(--color-white) 8%, var(--background));
   --secondary-foreground: var(--color-neutral-100);
 
-  --muted: color-mix(in srgb, var(--color-neutral-50) 8%, var(--background));
+  --muted: color-mix(in srgb, var(--color-neutral-50) 6%, var(--background));
   --muted-foreground: color-mix(
     in srgb,
     var(--color-neutral-500) 70%,
     var(--color-neutral-50)
   );
 
-  --accent: color-mix(in srgb, var(--color-neutral-50) 8%, var(--background));
+  --accent: color-mix(in srgb, var(--color-neutral-50) 10%, var(--background));
   --accent-foreground: var(--color-neutral-100);
 
   --destructive: var(--color-red-600);
@@ -437,8 +437,8 @@
   --warning-foreground: var(--color-amber-400);
 
   --border: color-mix(in srgb, var(--color-neutral-50) 12%, var(--background));
-  --input: color-mix(in srgb, var(--color-neutral-50) 13%, var(--background));
-  --ring: var(--color-neutral-500);
+  --input: color-mix(in srgb, var(--color-neutral-50) 15%, var(--background));
+  --ring: var(--color-neutral-400);
 
   --sidebar: color-mix(
     in srgb,
@@ -447,14 +447,14 @@
   );
   --sidebar-foreground: color-mix(
     in srgb,
-    var(--color-neutral-100) 64%,
+    var(--color-neutral-100) 76%,
     var(--sidebar)
   );
   --sidebar-primary: var(--color-neutral-100);
   --sidebar-primary-foreground: var(--color-neutral-800);
   --sidebar-accent: color-mix(
     in srgb,
-    var(--color-neutral-50) 8%,
+    var(--color-neutral-50) 10%,
     var(--sidebar)
   );
   --sidebar-accent-foreground: var(--color-neutral-100);

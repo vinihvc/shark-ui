@@ -40,6 +40,7 @@ const SignaturePadControl = (
   props: React.ComponentProps<typeof ArkSignaturePad.Control>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkSignaturePad.Control
       className={cn(
@@ -61,6 +62,7 @@ const SignaturePadSegment = (
   props: React.ComponentProps<typeof ArkSignaturePad.Segment>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkSignaturePad.Segment
       className={cn(

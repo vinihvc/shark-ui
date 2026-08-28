@@ -102,7 +102,7 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
             "absolute inset-x-0 -bottom-4",
             "h-20",
             "flex items-center justify-center",
-            "bg-linear-to-b from-transparent via-card/64 to-card",
+            "bg-linear-to-b from-transparent via-background/64 to-background",
             "font-medium text-muted-foreground text-sm",
             "rounded-b-lg border border-t-0",
             "transition-colors",

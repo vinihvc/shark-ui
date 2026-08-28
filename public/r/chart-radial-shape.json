@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A radial chart example with shape.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport {\n  Label,\n  PolarGrid,\n  PolarRadiusAxis,\n  RadialBar,\n  RadialBarChart,\n} from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A radial chart with a custom shape\";\n\nconst chartData = [\n  { browser: \"safari\", fill: \"var(--color-safari)\", visitors: 1260 },\n];\n\nconst chartConfig = {\n  safari: {\n    color: \"var(--chart-2)\",\n    label: \"Safari\",\n  },\n  visitors: {\n    label: \"Visitors\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartRadialShape() {\n  return (\n    <Card className=\"flex flex-col\">\n      <CardHeader className=\"items-center pb-0\">\n        <CardTitle>Radial Chart - Shape</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent className=\"flex-1 pb-0\">\n        <ChartContainer\n          className=\"mx-auto aspect-square max-h-[250px]\"\n          config={chartConfig}\n        >\n          <RadialBarChart\n            data={chartData}\n            endAngle={100}\n            innerRadius={80}\n            outerRadius={140}\n          >\n            <PolarGrid\n              className=\"first:fill-muted last:fill-background\"\n              gridType=\"circle\"\n              polarRadius={[86, 74]}\n              radialLines={false}\n              stroke=\"none\"\n            />\n            <RadialBar background dataKey=\"visitors\" />\n            <PolarRadiusAxis axisLine={false} tick={false} tickLine={false}>\n              <Label\n                content={({ viewBox }) => {\n                  if (viewBox && \"cx\" in viewBox && \"cy\" in viewBox) {\n                    return (\n                      <text\n                        dominantBaseline=\"middle\"\n                        textAnchor=\"middle\"\n                        x={viewBox.cx}\n                        y={viewBox.cy}\n                      >\n                        <tspan\n                          className=\"fill-foreground font-bold text-4xl\"\n                          x={viewBox.cx}\n                          y={viewBox.cy}\n                        >\n                          {chartData[0].visitors.toLocaleString()}\n                        </tspan>\n                        <tspan\n                          className=\"fill-muted-foreground\"\n                          x={viewBox.cx}\n                          y={(viewBox.cy || 0) + 24}\n                        >\n                          Visitors\n                        </tspan>\n                      </text>\n                    );\n                  }\n                }}\n              />\n            </PolarRadiusAxis>\n          </RadialBarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"text-muted-foreground leading-none\">\n          Showing total visitors for the last 6 months\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartRadialShape;\n",
+      "path": "blocks/chart/chart-radial-shape.tsx",
+      "target": "app/charts/chart-radial-shape/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 58,
+    "previewHeight": 560
+  },
+  "name": "chart-radial-shape",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Radial Chart: Shape",
+  "type": "registry:block"
+}

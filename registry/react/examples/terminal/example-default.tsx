@@ -15,9 +15,9 @@ const output = [
 ].join("\n");
 
 const Example = () => (
-  <Terminal className="max-w-lg">
+  <Terminal className="max-w-lg" output={output}>
     <TerminalHeader>zsh · pnpm test</TerminalHeader>
-    <TerminalContent output={output} />
+    <TerminalContent />
   </Terminal>
 );
 

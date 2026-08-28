@@ -38,7 +38,7 @@ export const HeaderBrand = (
       <ContextMenuTrigger
         className={cn(
           "flex gap-2",
-          "font-bold font-heading text-base",
+          "font-bold text-base",
           "rounded-md border border-transparent",
           "cursor-pointer",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",

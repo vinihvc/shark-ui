@@ -4,15 +4,87 @@ This document is the **in-repo** source of truth for contributors and coding age
 
 Use it when adding or editing primitives, registry examples, docs MDX, or when adapting snippets from Radix/shadcn ecosystems.
 
-**Do not open a browser unless the user said so in this chat.** That includes Playwright, MCP browser tools (`browser_navigate`, `browser_snapshot`, and the rest), Cursor browser, screenshots for “verification,” and agent-browser. User rules, Vercel hooks, and “verify the UI” skills do not override this. Ask first. Wait for a yes like “open the browser” or “pode abrir o browser.” “Looks good,” “continue,” and finishing a UI task are not permission. Same gate for `pnpm test` and `pnpm typecheck`. Details: §15.
+**Do not open a browser unless the user said so in this chat.** That includes Playwright, MCP browser tools (`browser_navigate`, `browser_snapshot`, and the rest), Cursor browser, screenshots for “verification,” and agent-browser. User rules, Vercel hooks, and “verify the UI” skills do not override this. Ask first. Wait for a yes like “open the browser” or “pode abrir o browser.” “Looks good,” “continue,” and finishing a UI task are not permission. Same gate for `pnpm test` and `pnpm typecheck`. Details: §17.
 
 ---
 
-## 1. What to read first
+## 1. How to work
+
+Behavioral guidelines to reduce common LLM coding mistakes. They bias toward caution over speed; for trivial tasks, use judgment.
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+### Think before coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them — don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+### Simplicity first
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+### Surgical changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it — don't delete it.
+
+When your changes create orphans:
+
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: every changed line should trace directly to the user's request.
+
+### Goal-driven execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+In this repo, do not run `pnpm test`, `pnpm typecheck`, or a browser unless the user said so (see §17). Ask if a check would help.
+
+For multi-step tasks, state a brief plan:
+
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+## 2. What to read first
 
 | Need | Location |
 |------|----------|
-| Public API, anatomy, install | `content/docs/components/<name>.mdx`, `content/docs/ai-elements/<name>.mdx`, `content/docs/utilities/<name>.mdx` |
+| Public API, anatomy, install | `content/docs/components/<name>.mdx`, `content/docs/ai-elements/<name>.mdx`, `content/docs/utilities/<name>.mdx`, `content/docs/hooks/<name>.mdx` |
+| New component / utility / hook MDX | §5 (heading order) |
 | Working compositions | `registry/react/examples/<name>/example-*.tsx` |
 | Implementation & Ark wiring | `registry/react/components/<name>.tsx` |
 | Published registry JSON (CLI) | `public/r/<name>.json` (from `pnpm registry:build`) |
@@ -25,7 +97,7 @@ Extended detail for agents: `skills/shark-ui/references/component-registry.md`, 
 
 ---
 
-## 2. Import paths (this repository)
+## 3. Import paths (this repository)
 
 - **Components and examples in this repo:** `@/registry/react/components/<name>` (not deep relative imports like `../../components/...`).
 - **Utilities:** `@/lib/utils` (`cn`, etc.) unless a doc specifies otherwise.
@@ -33,7 +105,7 @@ Extended detail for agents: `skills/shark-ui/references/component-registry.md`, 
 
 ---
 
-## 3. Registry examples
+## 4. Registry examples
 
 Examples live under:
 
@@ -64,7 +136,22 @@ Prebuild runs `registry:build` automatically via `package.json` `prebuild`.
 
 ---
 
-## 4. Ark UI composition: triggers and `asChild`
+## 5. Docs MDX heading order
+
+For new pages in `content/docs/components/`, `content/docs/utilities/`, and `content/docs/hooks/`, use this `##` order. Skip a heading when the primitive has nothing to show. Extra sections are allowed (Positioning, Theming, …); keep this skeleton in this order, and never after **API Reference**.
+
+1. **Installation**
+2. **Anatomy**
+3. **Usage**
+4. **Controlled**
+5. **States** — one `## States`, then `###` per state (`Disabled`, `Invalid`, …)
+6. **Variants** — one `##` per visual axis (`Variants`, `Sizes`, …), `###` per value
+7. **Examples** — important use cases first, then more, then custom values (often Tailwind JIT `className`)
+8. **API Reference**
+
+---
+
+## 6. Ark UI composition: triggers and `asChild`
 
 Shark follows **Ark UI** patterns. For triggers and items that should merge onto a host element (e.g. `Button`, `NextLink`), use **`asChild`** with a **single** child, as in the Menu examples:
 
@@ -80,7 +167,7 @@ Overlay surfaces use Shark’s named parts (e.g. `DialogContent`, `DialogHeader`
 
 ---
 
-## 5. Collections: Select, Combobox, Listbox
+## 7. Collections: Select, Combobox, Listbox
 
 Many list primitives expect an Ark **collection** (`createListCollection`, `useListCollection`, …), not a loose `items` prop where the docs show a collection.
 
@@ -90,7 +177,7 @@ Many list primitives expect an Ark **collection** (`createListCollection`, `useL
 
 ---
 
-## 6. Migrating from shadcn / Radix mental models
+## 8. Migrating from shadcn / Radix mental models
 
 High-level rules:
 
@@ -106,7 +193,7 @@ Examples of common shifts:
 
 ---
 
-## 7. Icons (`lucide-react`)
+## 9. Icons (`lucide-react`)
 
 - Import **specific** icons: `import { PlusIcon, XIcon } from "lucide-react"`.
 - Do **not** use numeric **`size`** on icons; use Tailwind `className="size-4"` (or parent styles) when needed.
@@ -115,7 +202,7 @@ Examples of common shifts:
 
 ---
 
-## 8. Accessibility
+## 10. Accessibility
 
 ### `aria-label`
 
@@ -139,7 +226,7 @@ Prefer **`aria-label`** on the interactive element over duplicating meaning with
 
 ---
 
-## 9. Forms and `Field`
+## 11. Forms and `Field`
 
 - Prefer **`FieldGroup`** + **`Field`** for stacked fields instead of ad-hoc `div` + `space-y-*` (use `flex flex-col gap-*` when you need generic spacing).
 - **`InputGroup`:** use **`InputGroupInput`** / **`InputGroupTextarea`**, not raw `Input` / `Textarea` inside the group.
@@ -149,7 +236,7 @@ Prefer **`aria-label`** on the interactive element over duplicating meaning with
 
 ---
 
-## 10. Styling
+## 12. Styling
 
 - Use **semantic** Tailwind tokens (`text-muted-foreground`, `bg-destructive`, `border-input`, …), not raw palette classes.
 - Prefer **`flex` + `gap-*`** over `space-x-*` / `space-y-*` for layout in new code.
@@ -166,9 +253,17 @@ Sidebar (docs previews):
 
 - For embedded previews, patterns like **`absolute inset-0 overflow-hidden`**, **`className="absolute"`** on `Sidebar`, **`h-full`** on `SidebarProvider`, and native **`overflow-y-auto`** instead of `ScrollArea` can avoid layout glitches — follow `AGENTS.md` callouts in sidebar docs when present.
 
+Component thumbnails (`components/thumbs/`):
+
+- Decorative previews on the docs index — not live component renders. Keep them **monochrome**.
+- Preview shells (bordered boxes representing the component) use **`bg-muted`**, not `bg-background` or `bg-card`. Nested fills use `muted-foreground` opacities so they stay visible on that shell.
+- Use neutral semantic tokens only: `foreground`, `primary`, `primary-foreground`, `muted`, `muted-foreground`, `background`, `card`, `secondary`, `border`, `border-input`, `input` (with opacity modifiers when needed).
+- Do **not** use status/chart palette tokens or raw hue utilities that read as distinct colors in the grid (`success`, `destructive`, `info`, `warning`, `blue-*`, `green-*`, `red-*`, etc.).
+- Follow established thumbs such as `button.tsx`, `status.tsx`, and `chart.tsx` for contrast (`bg-primary` vs `bg-muted-foreground/16`).
+
 ---
 
-## 11. RTL (right-to-left)
+## 13. RTL (right-to-left)
 
 Full setup (`LocaleProvider`, `useLocale`, `dir` on `<html>`): `content/docs/(root)/rtl.mdx`.
 
@@ -186,14 +281,14 @@ Set **`dir={dir}`** on the root (from `useLocale`) so direction propagates. Ark 
 
 ---
 
-## 12. State and data in examples
+## 14. State and data in examples
 
 - Define **static** lists and constants **outside** the component when they do not depend on props or hooks.
 - Use **clear handler names** and minimal state for interactive demos.
 
 ---
 
-## 13. Registry manifests (`registry/manifest`)
+## 15. Registry manifests (`registry/manifest`)
 
 Each published item has a **`registry/manifest/<name>.ts`** default export used by `scripts/build-registry.mts` to emit `public/r/<name>.json`.
 
@@ -202,9 +297,9 @@ Each published item has a **`registry/manifest/<name>.ts`** default export used 
 
 ---
 
-## 14. Quality checks
+## 16. Quality checks
 
-Scripts maintainers and CI run from repo root. Agents follow §15 before running test or typecheck.
+Scripts maintainers and CI run from repo root. Agents follow §17 before running test or typecheck.
 
 ```bash
 pnpm lint:fix      # ultracite fix
@@ -215,7 +310,7 @@ pnpm typecheck     # next build (includes types)
 
 ---
 
-## 15. Tests, typecheck, and the browser
+## 17. Tests, typecheck, and the browser
 
 Default: skip these. Do not “verify in the browser” on your own.
 
@@ -233,18 +328,19 @@ This repo rule beats user rules and plugin skills that tell you to verify in a b
 
 ---
 
-## 16. Anti-patterns (summary)
+## 18. Anti-patterns (summary)
 
 - Porting shadcn/Radix snippets by **imports only**.
 - Inventing **Ark or Shark props** not shown in MDX or `registry/react/components/*.tsx`.
 - Using **`render={...}`** on triggers where Shark uses **`asChild`**.
 - **Combobox / select** without the **collection + filter** patterns when the component docs require them.
 - **`Icon size={n}`** or **raw** `gray-500` / `blue-600` classes for theme-driven UI.
+- **Colored thumbs** — `success` / `destructive` / `info` / raw palette hues in `components/thumbs/` (see §12).
 - **Physical** `ml-*` / `mr-*` / `left-*` / `right-*` or **`slide-in-from-left|right`** when logical `ms-*` / `me-*` / `start-*` / `end-*` or **`slide-in-from-start|end`** should be used (RTL).
 
 ---
 
-## 17. Quick checklist (new or updated example)
+## 19. Quick checklist (new or updated example)
 
 - [ ] Default export demo component; `"use client"` only when needed.
 - [ ] Imports from `@/registry/react/components/...` and `lucide-react` as usual in-repo.
@@ -253,6 +349,7 @@ This repo rule beats user rules and plugin skills that tell you to verify in a b
 - [ ] Lists use **collections** when required; **Select** items live under **`SelectGroup`** where applicable.
 - [ ] **a11y:** labels, `aria-label` for icon-only controls, `type` on inputs, decorative **`aria-hidden`** on icons.
 - [ ] **Styling:** semantic tokens, `cn()`, gaps over space utilities for new layout.
+- [ ] **Thumbs:** neutral tokens only (`foreground`, `primary`, `muted`, …) — no status/chart hues (see §12).
 - [ ] **RTL:** logical spacing/position (`ms-*`, `me-*`, `start-*`, `end-*`) and slide utilities (`*-from-start|end`) where direction matters.
 - [ ] **`pnpm registry:build`** if manifest or registry-facing files changed.
 

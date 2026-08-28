@@ -19,7 +19,7 @@ export const DOCS_NEW_ITEMS = [
   "/docs/ai-elements/suggestion",
   "/docs/ai-elements/task",
   "/docs/ai-elements/terminal",
-  "/docs/ai-elements/tool",
+  "/docs/ai-elements/tool-result",
   "/docs/components/data-table",
   "/docs/components/toc",
   "/docs/utilities/hotkeys",
@@ -27,7 +27,6 @@ export const DOCS_NEW_ITEMS = [
 ];
 
 export const DOCS_UPDATED_ITEMS = [
-  "/docs/ai-elements/message",
   "/docs/components/calendar",
   "/docs/components/checkbox",
   "/docs/components/collapsible",

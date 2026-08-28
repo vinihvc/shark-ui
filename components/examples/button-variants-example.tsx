@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLinkIcon, PlusIcon, Trash2Icon } from "lucide-react";
+import { ArrowUpRight, PlusIcon, Trash2Icon } from "lucide-react";
 import type React from "react";
 import { Button } from "@/registry/react/components/button";
 import { ButtonGroup } from "@/registry/react/components/button-group";
@@ -151,7 +151,7 @@ export const ButtonVariantsExample = (props: React.ComponentProps<"div">) => (
         Ghost
       </Button>
       <Button variant="link">
-        Link <ExternalLinkIcon aria-hidden />
+        Link <ArrowUpRight aria-hidden />
       </Button>
     </CardContent>
   </Card>

@@ -3,7 +3,7 @@
 import { Separator } from "@registry/react/components/separator";
 import { useTheme } from "@teispace/next-themes";
 import {
-  ExternalLinkIcon,
+  ArrowUpRight,
   MonitorIcon,
   RefreshCwIcon,
   SmartphoneIcon,
@@ -288,7 +288,7 @@ export const CompositionViewer = ({
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <ExternalLinkIcon aria-hidden="true" className="size-4" />
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
                 </a>
               </Button>
             </div>

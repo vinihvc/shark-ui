@@ -28,7 +28,8 @@ export const toggleVariants = tv({
 
 export interface ToggleProps
   extends React.ComponentProps<typeof ArkToggle.Root>,
-    VariantProps<typeof toggleVariants> {
+    VariantProps<typeof toggleVariants>,
+    Pick<VariantProps<typeof buttonVariants>, "pill"> {
   /**
    * The variant of the toggle
    *
@@ -41,12 +42,18 @@ export interface ToggleProps
 }
 
 export const Toggle = (props: ToggleProps) => {
-  const { variant = "ghost", size = "md", className, ...rest } = props;
+  const {
+    variant = "ghost",
+    size = "md",
+    pill = false,
+    className,
+    ...rest
+  } = props;
 
   return (
     <ArkToggle.Root
       className={cn(
-        buttonVariants({ clickEffect: false, variant }),
+        buttonVariants({ clickEffect: false, pill, variant }),
         toggleVariants({ size }),
         className
       )}

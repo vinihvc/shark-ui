@@ -26,11 +26,31 @@ export const Tabs = (props: React.ComponentProps<typeof ArkTabs.Root>) => {
 };
 
 const tabsListVariants = tv({
+  compoundVariants: [
+    {
+      class: {
+        base: "rounded-lg",
+        indicator: "rounded-lg",
+      },
+      pill: false,
+      variant: "default",
+    },
+    {
+      class: {
+        base: "rounded-full",
+        indicator: "rounded-full",
+      },
+      pill: true,
+      variant: "default",
+    },
+  ],
   defaultVariants: {
+    pill: false,
     variant: "default",
   },
   slots: {
     base: [
+      "group/tabs-list",
       "relative z-0",
       "w-fit",
       "text-muted-foreground",
@@ -45,10 +65,13 @@ const tabsListVariants = tv({
     ],
   },
   variants: {
+    pill: {
+      false: {},
+      true: {},
+    },
     variant: {
       default: {
-        base: ["rounded-lg"],
-        indicator: ["-z-1 rounded-lg bg-accent"],
+        indicator: ["-z-1 bg-accent"],
       },
       underline: {
         base: [
@@ -72,13 +95,20 @@ interface TabsListProps
     VariantProps<typeof tabsListVariants> {}
 
 export const TabsList = (props: TabsListProps) => {
-  const { variant = "default", className, children, ...rest } = props;
+  const {
+    variant = "default",
+    pill = false,
+    className,
+    children,
+    ...rest
+  } = props;
 
-  const { base, indicator } = tabsListVariants({ variant });
+  const { base, indicator } = tabsListVariants({ pill, variant });
 
   return (
     <ArkTabs.List
       className={cn(base(), className)}
+      data-pill={pill}
       data-slot="tabs-list"
       {...rest}
     >
@@ -105,7 +135,7 @@ export const TabsTrigger = (
         "flex shrink-0 grow items-center justify-center gap-1.5",
         "px-[calc(--spacing(2.5)-1px)]",
         "whitespace-nowrap font-medium text-sm",
-        "rounded-lg border border-transparent",
+        "in-data-[pill=true]/tabs-list:rounded-full rounded-lg border border-transparent",
         "cursor-pointer",
         "transition-[color,background-color,box-shadow]",
         "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",

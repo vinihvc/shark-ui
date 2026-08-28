@@ -116,6 +116,12 @@ Use `variant` to change the visual style of the toggle buttons.
 
 <ComponentPreview componentName="toggle-group" fileName="example-outline" />
 
+## Pill
+
+The `pill` prop creates fully rounded toggle groups. With `spacing={0}`, the group becomes a segmented pill control. With spacing, each item is individually pill-shaped.
+
+<ComponentPreview componentName="toggle-group" fileName="example-pill" />
+
 ## Examples
 
 ### With spacing
@@ -147,6 +153,7 @@ Root component. Provides shared variant and size to child toggles via context.
 | `variant` | `"outline" \| "ghost"` | `"ghost"` |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` |
 | `spacing` | `"0" \| "1" \| "2" \| "3" \| "4" \| "5" \| "6" \| "8" \| "10"` | `"0"` |
+| `pill` | `boolean` | `false` |
 | `multiple` | `boolean` | `true` |
 | `defaultValue` | `string[]` | - |
 | `value` | `string[]` | - |

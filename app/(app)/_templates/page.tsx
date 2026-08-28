@@ -18,8 +18,7 @@ export const revalidate = false;
 export const dynamic = "force-static";
 
 export const metadata: Metadata = createMetadata({
-  description:
-    "Production-ready Shark UI starters you can preview, install, and adapt.",
+  description: "Shark UI starters you can preview and install.",
   title: "Templates",
   url: "/templates",
 });
@@ -80,8 +79,7 @@ const TemplatesPage = async () => {
               </h1>
 
               <p className="mt-7 max-w-2xl text-balance text-base text-muted-foreground leading-relaxed sm:text-xl">
-                Production-ready Shark UI starters with live previews,
-                copy-ready files, and the structure to make them your own.
+                Shark UI starters with live previews and copy-ready files.
               </p>
 
               <div className="mt-8 flex w-full max-w-sm flex-col justify-center gap-2 sm:w-auto sm:max-w-none sm:flex-row">

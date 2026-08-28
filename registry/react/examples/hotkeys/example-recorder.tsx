@@ -1,52 +1,55 @@
 "use client";
 
-import { Button } from "@registry/react/components/button";
-import { Card, CardContent } from "@registry/react/components/card";
-import { Separator } from "@registry/react/components/separator";
-import React from "react";
+import { useState } from "react";
+import { Button } from "@/registry/react/components/button";
 import { useHotkeyRecorder } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
 const Example = () => {
-  const [binding, setBinding] = React.useState<string | null>(null);
+  const [binding, setBinding] = useState<string | null>(null);
+  const [lastEvent, setLastEvent] = useState<string | null>(null);
 
   const recorder = useHotkeyRecorder({
-    onClear: () => setBinding(null),
-    onRecord: (hotkey) => setBinding(hotkey.display),
+    onCancel: () => setLastEvent("cancelled"),
+    onClear: () => {
+      setBinding(null);
+      setLastEvent("cleared");
+    },
+    onRecord: (hotkey) => {
+      setBinding(hotkey.display);
+      setLastEvent("recorded");
+    },
   });
 
-  const shortcut = recorder.recording
-    ? (recorder.value?.display ?? "…")
-    : binding;
-
   return (
-    <Card className="w-full max-w-sm">
-      <CardContent>
-        <p className="text-muted-foreground text-sm">
-          {recorder.recording
-            ? "Press a shortcut · Esc cancels"
-            : "Record a keyboard shortcut"}
-        </p>
-
-        <Separator className="my-4" />
-
-        <div className="flex items-center justify-between gap-3">
-          <Button
-            disabled={recorder.recording}
-            onClick={recorder.start}
-            size="sm"
-            variant="outline"
-          >
-            {recorder.recording ? "Listening…" : "Record"}
-          </Button>
-          {shortcut ? (
-            <Kbd>{shortcut}</Kbd>
-          ) : (
-            <span className="text-muted-foreground text-sm">None</span>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex w-full max-w-sm flex-col gap-4">
+      <p className="text-muted-foreground text-sm">
+        Click record, then press a shortcut. Esc cancels, Backspace clears.
+      </p>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button
+          disabled={recorder.recording}
+          onClick={recorder.start}
+          variant="outline"
+        >
+          {recorder.recording ? "Listening…" : "Record shortcut"}
+        </Button>
+        {recorder.recording ? (
+          <Kbd>{recorder.value?.display ?? "Press a key"}</Kbd>
+        ) : null}
+      </div>
+      <p className="text-sm">
+        <span className="text-muted-foreground">Bound to </span>
+        {binding ? (
+          <Kbd className="align-middle">{binding}</Kbd>
+        ) : (
+          <span className="text-foreground">nothing yet</span>
+        )}
+      </p>
+      <p className="text-muted-foreground text-sm">
+        Last event: {lastEvent ?? "none"}
+      </p>
+    </div>
   );
 };
 

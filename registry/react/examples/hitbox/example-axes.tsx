@@ -7,7 +7,7 @@ import { Field, FieldLabel } from "@/registry/react/components/field";
 import { Switch } from "@/registry/react/components/switch";
 
 const Example = () => {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = React.useState(true);
 
   return (
     <div className="relative flex size-full items-center justify-center">

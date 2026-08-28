@@ -6,6 +6,7 @@ import React from "react";
 import {
   useFormatHotkey,
   useHotkeys,
+  usePlatform,
 } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
@@ -15,6 +16,7 @@ const commands = [
 ];
 
 const Example = () => {
+  const platform = usePlatform();
   const formatHotkey = useFormatHotkey();
 
   const [selected, setSelected] = React.useState<string | null>(null);

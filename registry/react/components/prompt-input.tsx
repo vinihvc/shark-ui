@@ -69,7 +69,7 @@ export const PromptInput = (props: PromptInputProps) => {
         onSubmit={handleSubmit}
         {...rest}
       >
-        <InputGroup className="h-auto flex-col items-stretch">
+        <InputGroup className="h-auto flex-col items-stretch focus-within:border-input focus-within:ring-0">
           {children}
         </InputGroup>
       </form>

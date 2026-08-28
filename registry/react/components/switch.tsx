@@ -13,9 +13,11 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
     <ArkSwitch.Root
       className={cn(
         "group/switch",
-        "[--thumb-size:--spacing(5)] sm:[--thumb-size:--spacing(4)]",
-        "h-[calc(var(--thumb-size)+2px)] w-[calc(var(--thumb-size)*2-2px)]",
-        "p-px",
+        "[--switch-size:var(--size,--spacing(5))]",
+        "[--switch-thumb-height:calc(var(--switch-size)-4px)]",
+        "[--switch-thumb-width:calc(var(--switch-thumb-height)*1.375)]",
+        "h-[var(--switch-size)] w-[calc(var(--switch-size)*2)]",
+        "p-0.5",
         "inline-flex shrink-0 items-center",
         "rounded-full border border-transparent",
         "transition-all",
@@ -33,20 +35,19 @@ export const Switch = (props: React.ComponentProps<typeof ArkSwitch.Root>) => {
       {...rest}
     >
       <ArkSwitch.Control
-        className="flex size-full items-center"
+        className="relative flex size-full items-center"
         data-slot="switch-control"
       >
         <ArkSwitch.Thumb
           className={cn(
-            "block",
-            "aspect-square h-full w-auto",
+            "absolute inset-s-[-1px] block",
+            "h-(--switch-thumb-height) w-(--switch-thumb-width)",
             "bg-background",
-            "rounded-full ring-0",
+            "rounded-full shadow-xs/5 ring-0",
             "pointer-events-none",
-            "transition-transform",
-            "data-[state=checked]:translate-x-[calc(var(--thumb-size)-4px)]",
+            "transition-[inset-inline-start]",
+            "data-[state=checked]:inset-s-[calc(100%_-_var(--switch-thumb-width)_+_1px)]",
             "dark:data-[state=checked]:bg-primary-foreground",
-            "data-[state=unchecked]:translate-x-0",
             "dark:data-[state=unchecked]:bg-foreground",
             "motion-reduce:transition-none!"
           )}

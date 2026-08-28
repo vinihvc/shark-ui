@@ -185,43 +185,27 @@ Use the tree view to create a file editor.
 
 ## Custom icons
 
-Icons are off by default. Pass icon components (and `showIndicator` for the expand chevron) when you want a file-tree look:
-
-```tsx
-import { FileIcon, FolderIcon, FolderOpenIcon } from "lucide-react";
-
-<TreeViewBranchItem
-  expandedIcon={FolderOpenIcon}
-  icon={FolderIcon}
-  showIndicator
->
-  {node.name}
-</TreeViewBranchItem>
-
-<TreeViewItem icon={FileIcon}>{node.name}</TreeViewItem>
-```
-
 There are three ways to customize icons:
 
-1. **Folder** — `icon` and `expandedIcon` props on `TreeViewBranchItem`, or per-node via `TreeNodeType`
-2. **Single item** — `icon` prop on `TreeViewItem`
-3. **By extension** — `fileIcons` prop on `TreeView` with `createFileIcons`
+1. **Folder**: `icon` and `expandedIcon` props on `TreeViewBranchItem`, or per-node via `TreeNodeType`
+2. **Single item**: `icon` prop on `TreeViewItem`
+3. **By extension**: `fileIcons` prop on `TreeView` with `createFileIcons`
 
 ### Folder icons
 
-Use the `icon` and `expandedIcon` props on `TreeViewBranchItem` to customize folder icons. Omit them (or pass `null`) to hide. Set `showIndicator` to show the expand chevron.
+Use the `icon` and `expandedIcon` props on `TreeViewBranchItem` to customize folder icons. Pass `null` to hide the icon.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons-folder" />
 
 ### Single item icon
 
-Pass the `icon` prop to `TreeViewItem` to show an icon for a specific leaf node.
+Pass the `icon` prop to `TreeViewItem` to override the icon for a specific leaf node.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons-item" />
 
 ### With file extensions
 
-Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extensions to icon components. Icons are resolved from each node's id; unmatched extensions fall back to the `icon` prop on `TreeViewItem` (or no icon).
+Use the `fileIcons` prop on `TreeView` with `createFileIcons` to map file extensions to icon components. Icons are resolved from each node's id; unmatched extensions fall back to `FileIcon`.
 
 <ComponentPreview componentName="tree-view" fileName="example-custom-icons" />
 
@@ -300,14 +284,13 @@ Expandable branch with children. Toggles open/closed.
 
 ### TreeViewBranchItem
 
-Clickable area to expand or collapse a branch. Icons and the expand chevron are off by default.
+Clickable area to expand or collapse a branch.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `asChild` | `boolean` | `false` |
-| `showIndicator` | `boolean` | `false` |
-| `icon` | `React.JSX.ElementType \| null` | `null` |
-| `expandedIcon` | `React.JSX.ElementType \| null` | `null` |
+| `icon` | `React.JSX.ElementType \| null` | `FolderIcon` |
+| `expandedIcon` | `React.JSX.ElementType \| null` | `FolderOpenIcon` |
 | `className` | `string` | - |
 
 ### TreeViewBranchContent
@@ -330,11 +313,11 @@ Wrapper for leaf (non-expandable) items.
 
 ### TreeViewItem
 
-Leaf node (non-expandable). Pass `icon` to show a leaf icon; `fileIcons` on `TreeView` wins when the node id matches an extension.
+Leaf node (non-expandable). The `icon` prop is fallback when no `fileIcons` match.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `icon` | `React.JSX.ElementType \| null` | `null` |
+| `icon` | `React.JSX.ElementType` | `FileIcon` |
 | `className` | `string` | - |
 
 ### TreeViewCheckbox
@@ -357,7 +340,7 @@ Creates a tree collection from node data. Use with `collection` prop on `TreeVie
 | `nodeToValue` | `(node: T) => string` | `(node) => node.id` |
 | `nodeToString` | `(node: T) => string` | `(node) => node.name` |
 
-**TreeNodeType** — Shape of each node (extend with generic `T` for custom props):
+**TreeNodeType**: shape of each node (extend with generic `T` for custom props):
 
 | Property | Type | Default |
 | --- | --- | --- |

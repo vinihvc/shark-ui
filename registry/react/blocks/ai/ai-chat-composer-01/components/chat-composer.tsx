@@ -176,9 +176,8 @@ export const ChatComposer = ({
 
       <p className="text-center text-muted-foreground text-xs">
         AI can make{" "}
-        <span className="font-medium text-foreground">mistakes</span>
-        {" — "}
-        please double-check
+        <span className="font-medium text-foreground">mistakes</span>. Please
+        double-check.
       </p>
     </div>
   );

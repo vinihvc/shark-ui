@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A bar chart example with label custom.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport {\n  Bar,\n  BarChart,\n  CartesianGrid,\n  LabelList,\n  XAxis,\n  YAxis,\n} from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A bar chart with a custom label\";\n\nconst chartData = [\n  { desktop: 186, mobile: 80, month: \"January\" },\n  { desktop: 305, mobile: 200, month: \"February\" },\n  { desktop: 237, mobile: 120, month: \"March\" },\n  { desktop: 73, mobile: 190, month: \"April\" },\n  { desktop: 209, mobile: 130, month: \"May\" },\n  { desktop: 214, mobile: 140, month: \"June\" },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--chart-2)\",\n    label: \"Desktop\",\n  },\n  label: {\n    color: \"var(--background)\",\n  },\n  mobile: {\n    color: \"var(--chart-2)\",\n    label: \"Mobile\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartBarLabelCustom() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Bar Chart - Custom Label</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={chartConfig}>\n          <BarChart\n            accessibilityLayer\n            data={chartData}\n            layout=\"vertical\"\n            margin={{\n              right: 16,\n            }}\n          >\n            <CartesianGrid horizontal={false} />\n            <YAxis\n              axisLine={false}\n              dataKey=\"month\"\n              hide\n              tickFormatter={(value) => value.slice(0, 3)}\n              tickLine={false}\n              tickMargin={10}\n              type=\"category\"\n            />\n            <XAxis dataKey=\"desktop\" hide type=\"number\" />\n            <ChartTooltip\n              content={<ChartTooltipContent indicator=\"line\" />}\n              cursor={false}\n            />\n            <Bar dataKey=\"desktop\" fill=\"var(--color-desktop)\" radius={4}>\n              <LabelList\n                className=\"fill-(--color-label)\"\n                dataKey=\"month\"\n                fontSize={12}\n                offset={8}\n                position=\"insideLeft\"\n              />\n              <LabelList\n                className=\"fill-foreground\"\n                dataKey=\"desktop\"\n                fontSize={12}\n                offset={8}\n                position=\"right\"\n              />\n            </Bar>\n          </BarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col items-start gap-2 text-sm\">\n        <div className=\"flex gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"text-muted-foreground leading-none\">\n          Showing total visitors for the last 6 months\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartBarLabelCustom;\n",
+      "path": "blocks/chart/chart-bar-label-custom.tsx",
+      "target": "app/charts/chart-bar-label-custom/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 16,
+    "previewHeight": 560
+  },
+  "name": "chart-bar-label-custom",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Bar Chart: Label Custom",
+  "type": "registry:block"
+}

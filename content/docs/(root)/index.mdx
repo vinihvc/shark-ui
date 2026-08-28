@@ -1,32 +1,26 @@
 ---
 title: Introduction
-description: "Modern, accessible, beautifully designed UI components."
-seoTitle: "Shark UI — shadcn-style React components built on Ark UI"
-seoDescription: "Install accessible, shadcn-style React components built on Ark UI. Own the source code, customize every part, and build a scalable design system."
+description: "Accessible React components you copy into your project."
+seoTitle: "Shark UI: shadcn-style React components built on Ark UI"
+seoDescription: "shadcn-style React components built on Ark UI. Install the source into your repo and change it there."
 ---
 
-Built on top of [Ark UI](https://ark-ui.com) and [shadcn](https://ui.shadcn.com), it includes sensible defaults for styling, variants, and structure, so you can drop components into a project without starting from scratch. It’s not a black-box framework; you own the code, tweak what you need, and build on top of something that’s already thought through.
+Shark UI is [Ark UI](https://ark-ui.com) primitives with [shadcn](https://ui.shadcn.com)-style copy-and-own files: Tailwind defaults, variants, and a registry you install with the CLI.
 
-The name blends the two projects it’s built on: **sh** from shadcn and **ark** from Ark UI. **Shark**.
+The name is **sh** from shadcn and **ark** from Ark UI. **Shark**.
 
 ## Motivation
 
-[Ark UI](https://ark-ui.com) offers a broad set of headless components and serves as a direct alternative to [Radix Primitives](https://radix-ui.com/primitives) and [Base UI](https://base-ui.com). It gives you accessible primitives and state management, but it leaves styling and layout entirely to you. **shadcn**, on the other hand, ships copy-paste components that look great. The gap is that Ark’s docs don’t show how to pair its primitives with Tailwind, or how to turn them into a reusable design system you can install, theme, and extend.
+[Ark UI](https://ark-ui.com) is a headless alternative to [Radix Primitives](https://radix-ui.com/primitives) and [Base UI](https://base-ui.com). You get accessible state and parts; you still have to style them. shadcn ships styled copy-paste components. Ark's docs don't show how to pair those primitives with Tailwind or turn them into an installable design system.
 
 ## How it works
 
-Instead of only installing a package from npm and importing opaque pieces, you keep source in your repository and change it with your app. That sidesteps the usual spiral of wrappers, style overrides, and mismatched APIs when defaults are not enough.
+You keep component source in your repository and edit it with the rest of the app. That avoids wrapping a package, fighting its API, and chasing style overrides.
 
-This approach, where you keep and own the source code, means:
+You can read every file. You change the source. Teammates and coding agents see the same implementations.
 
-- **Full transparency:** You see exactly how each component is built, with no hidden layers between you and the implementation.
-- **Easy customization:** Adjust any part of a component to match your design and functionality; you edit the source instead of working around a package API.
-- **AI-friendly workflows:** Because the code lives in your repo, LLMs and teammates can read, reason about, and help improve components without reverse-engineering a library.
+Coming from shadcn/ui or Radix UI? Read the [migration guide](/docs/migration/shadcn) for collection, state, and composition differences.
 
-Coming from shadcn/ui or Radix UI? Read the [migration guide](/docs/migration/shadcn) for the Ark UI collection, state, and composition differences that matter most.
+## AI
 
-## AI Ready
-
-The library is designed so **people and AI tools** can rely on it equally. Components are written to stay clear, readable, and predictable so assistants can understand structure, reason about changes, and modify files with less guesswork.
-
-Because the source sits in your repository with **inspectable implementations** and **consistent patterns** from component to component, models get the context they need to read your UI layer end to end. An assistant can learn how your pieces work, propose refactors or small fixes, or generate new components that match your existing tokens, layout, and conventions.
+Source lives in your repo, so models can read the components you actually ship. Use the [Shark UI skill](/docs/skills) and [/llms.txt](/llms.txt) when an assistant is writing UI.

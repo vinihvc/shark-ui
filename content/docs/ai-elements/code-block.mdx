@@ -78,12 +78,46 @@ This is a presentational panel. Pass already-highlighted nodes as children of `C
 
 ### CodeBlock
 
+Root panel. Provides `code` to copy and content parts.
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `code` | `string` | `""` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### CodeBlockHeader
+
+Header for title and copy control.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### CodeBlockTitle
+
+Filename or language label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### CodeBlockCopy
+
+Copies `code` from `CodeBlock`. Built on [Clipboard](/docs/components/clipboard).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `timeout` | `number` | `2000` |
+| `className` | `string` | `-` |
 
 ### CodeBlockContent
+
+Renders `code` or string children as lines.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `showLineNumbers` | `boolean` | `false` |
+| `className` | `string` | `-` |

@@ -144,24 +144,42 @@ Pair a bubble with a [Popover](/docs/components/popover) to surface more informa
 
 ## API Reference
 
+### BubbleGroup
+
+Stacks related bubbles.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
 ### Bubble
+
+Message surface. Sets variant and alignment for `BubbleContent`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `variant` | `"default" \| "secondary" \| "muted" \| "tinted" \| "outline" \| "ghost" \| "destructive"` | `"default"` |
 | `align` | `"start" \| "end"` | `"start"` |
+| `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
 ### BubbleContent
 
+Body of the bubble. Use `asChild` to render a link or button as the surface.
+
 | Prop | Type | Default |
 | --- | --- | --- |
+| `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
 ### BubbleReactions
+
+Reaction cluster anchored to the bubble.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `side` | `"top" \| "bottom"` | `"bottom"` |
 | `align` | `"start" \| "end"` | `"end"` |
+| `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |

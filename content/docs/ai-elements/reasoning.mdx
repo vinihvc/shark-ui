@@ -77,7 +77,30 @@ Set `isStreaming` so the trigger uses the [shimmer](/docs/utilities/shimmer) cla
 
 ### Reasoning
 
+Root collapsible. Forwards [Collapsible](/docs/components/collapsible) props. `defaultOpen` follows `isStreaming` when unset.
+
 | Prop | Type | Default |
 | --- | --- | --- |
-| `duration` | `number` | — |
+| `duration` | `number` | `-` |
 | `isStreaming` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### ReasoningTrigger
+
+Toggles the reasoning. Default label is `Thought`, `Thinking` while streaming, or `Thought for {duration}s`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `duration` | `number` | `-` |
+| `isStreaming` | `boolean` | `false` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ReasoningContent
+
+Holds the reasoning text.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

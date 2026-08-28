@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLinkIcon, Link } from "lucide-react";
+import { ArrowUpRight, Link } from "lucide-react";
 import {
   createTreeCollection,
   type NodeProviderProps,
@@ -99,7 +99,7 @@ const TreeNode = (props: NodeProviderProps<TreeNodeWithLinks>) => {
           >
             <TreeViewItem icon={Link}>
               {node.name}
-              {node.href?.startsWith("http") && <ExternalLinkIcon />}
+              {node.href?.startsWith("http") && <ArrowUpRight />}
             </TreeViewItem>
           </a>
         </TreeViewContent>

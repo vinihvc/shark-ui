@@ -68,9 +68,12 @@ export const IdeWorkspace = ({ path }: IdeWorkspaceProps) => {
       </ResizablePanel>
       <ResizableResizeTrigger id="editor:terminal" />
       <ResizablePanel className="min-h-0" id="terminal">
-        <Terminal className="h-full rounded-none border-0 border-t">
+        <Terminal
+          className="h-full rounded-none border-0 border-t"
+          output={TERMINAL_OUTPUT}
+        >
           <TerminalHeader>zsh · pnpm test</TerminalHeader>
-          <TerminalContent className="max-h-none" output={TERMINAL_OUTPUT} />
+          <TerminalContent />
         </Terminal>
       </ResizablePanel>
     </Resizable>

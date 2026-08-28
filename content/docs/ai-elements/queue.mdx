@@ -72,5 +72,105 @@ import {
 } from "@/components/ui/queue";
 ```
 
+## API Reference
+
+### Queue
+
+Root container for collapsible prompt sections.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### QueueSection
+
+Collapsible section. Forwards [Collapsible](/docs/components/collapsible) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `defaultOpen` | `boolean` | `true` |
+| `className` | `string` | `-` |
+
+### QueueSectionTrigger
+
+Toggles the section. Forwards [CollapsibleTrigger](/docs/components/collapsible) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### QueueSectionLabel
+
+Label, optional count, and optional icon for the section trigger.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `label` | `string` | **required** |
+| `count` | `number` | `-` |
+| `icon` | `React.ReactNode` | `-` |
+| `className` | `string` | `-` |
+
+### QueueSectionContent
+
+Holds the list that expands and collapses.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### QueueList
+
+List of queued items.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### QueueItem
+
+A single queued prompt row.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### QueueItemIndicator
+
+Status dot for the row.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `completed` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### QueueItemContent
+
+Prompt text. Strikes through when `completed` is true.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `completed` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### QueueItemActions
+
+Container for row actions.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### QueueItemAction
+
+Icon button for a row action. Built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"ghost"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"icon-xs"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 

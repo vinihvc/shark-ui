@@ -1,26 +1,19 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "dependencies": [],
-  "description": "Conversation primitives for chat: transcript, composer, tools, usage, and voice.",
+  "description": "Conversation primitives for chat: transcript, composer, tool calls, and reasoning.",
   "name": "chat",
   "registryDependencies": [
-    "https://shark.vini.one/r/approval-card.json",
     "https://shark.vini.one/r/attachment.json",
     "https://shark.vini.one/r/bubble.json",
     "https://shark.vini.one/r/confirmation.json",
-    "https://shark.vini.one/r/context.json",
     "https://shark.vini.one/r/marker.json",
     "https://shark.vini.one/r/message.json",
     "https://shark.vini.one/r/message-scroller.json",
-    "https://shark.vini.one/r/model-selector.json",
     "https://shark.vini.one/r/prompt-input.json",
-    "https://shark.vini.one/r/queue.json",
     "https://shark.vini.one/r/reasoning.json",
     "https://shark.vini.one/r/shimmer.json",
-    "https://shark.vini.one/r/sources.json",
-    "https://shark.vini.one/r/speech-input.json",
-    "https://shark.vini.one/r/suggestion.json",
-    "https://shark.vini.one/r/tool.json"
+    "https://shark.vini.one/r/tool-result.json"
   ],
   "type": "registry:ui"
 }

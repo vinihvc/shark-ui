@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A radar chart example with grid circle.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport { PolarAngleAxis, PolarGrid, Radar, RadarChart } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A radar chart with a grid and circle\";\n\nconst chartData = [\n  { desktop: 186, month: \"January\" },\n  { desktop: 305, month: \"February\" },\n  { desktop: 237, month: \"March\" },\n  { desktop: 273, month: \"April\" },\n  { desktop: 209, month: \"May\" },\n  { desktop: 214, month: \"June\" },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--chart-1)\",\n    label: \"Desktop\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartRadarGridCircle() {\n  return (\n    <Card>\n      <CardHeader className=\"items-center pb-4\">\n        <CardTitle>Radar Chart - Grid Circle</CardTitle>\n        <CardDescription>\n          Showing total visitors for the last 6 months\n        </CardDescription>\n      </CardHeader>\n      <CardContent className=\"pb-0\">\n        <ChartContainer\n          className=\"mx-auto aspect-square max-h-[250px]\"\n          config={chartConfig}\n        >\n          <RadarChart data={chartData}>\n            <ChartTooltip\n              content={<ChartTooltipContent hideLabel />}\n              cursor={false}\n            />\n            <PolarGrid gridType=\"circle\" />\n            <PolarAngleAxis dataKey=\"month\" />\n            <Radar\n              dataKey=\"desktop\"\n              dot={{\n                fillOpacity: 1,\n                r: 4,\n              }}\n              fill=\"var(--color-desktop)\"\n              fillOpacity={0.6}\n            />\n          </RadarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"flex items-center gap-2 text-muted-foreground leading-none\">\n          January - June 2024\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartRadarGridCircle;\n",
+      "path": "blocks/chart/chart-radar-grid-circle.tsx",
+      "target": "app/charts/chart-radar-grid-circle/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 44,
+    "previewHeight": 560
+  },
+  "name": "chart-radar-grid-circle",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Radar Chart: Grid Circle",
+  "type": "registry:block"
+}

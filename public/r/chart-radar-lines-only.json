@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A radar chart example with lines only.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport { PolarAngleAxis, PolarGrid, Radar, RadarChart } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A radar chart with lines only\";\n\nconst chartData = [\n  { desktop: 186, mobile: 160, month: \"January\" },\n  { desktop: 185, mobile: 170, month: \"February\" },\n  { desktop: 207, mobile: 180, month: \"March\" },\n  { desktop: 173, mobile: 160, month: \"April\" },\n  { desktop: 160, mobile: 190, month: \"May\" },\n  { desktop: 174, mobile: 204, month: \"June\" },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--chart-1)\",\n    label: \"Desktop\",\n  },\n  mobile: {\n    color: \"var(--chart-2)\",\n    label: \"Mobile\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartRadarLinesOnly() {\n  return (\n    <Card>\n      <CardHeader className=\"items-center pb-4\">\n        <CardTitle>Radar Chart - Lines Only</CardTitle>\n        <CardDescription>\n          Showing total visitors for the last 6 months\n        </CardDescription>\n      </CardHeader>\n      <CardContent className=\"pb-0\">\n        <ChartContainer\n          className=\"mx-auto aspect-square max-h-[250px]\"\n          config={chartConfig}\n        >\n          <RadarChart data={chartData}>\n            <ChartTooltip\n              content={<ChartTooltipContent indicator=\"line\" />}\n              cursor={false}\n            />\n            <PolarAngleAxis dataKey=\"month\" />\n            <PolarGrid radialLines={false} />\n            <Radar\n              dataKey=\"desktop\"\n              fill=\"var(--color-desktop)\"\n              fillOpacity={0}\n              stroke=\"var(--color-desktop)\"\n              strokeWidth={2}\n            />\n            <Radar\n              dataKey=\"mobile\"\n              fill=\"var(--color-mobile)\"\n              fillOpacity={0}\n              stroke=\"var(--color-mobile)\"\n              strokeWidth={2}\n            />\n          </RadarChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"flex items-center gap-2 text-muted-foreground leading-none\">\n          January - June 2024\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartRadarLinesOnly;\n",
+      "path": "blocks/chart/chart-radar-lines-only.tsx",
+      "target": "app/charts/chart-radar-lines-only/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 53,
+    "previewHeight": 560
+  },
+  "name": "chart-radar-lines-only",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Radar Chart: Lines Only",
+  "type": "registry:block"
+}

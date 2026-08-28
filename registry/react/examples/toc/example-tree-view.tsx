@@ -49,16 +49,12 @@ const Example = () => {
 
   return (
     <Toc
-      autoScroll={false}
       className="size-full rounded-lg border p-4"
       items={items}
       onActiveChange={handleActiveChange}
       scrollEl={getScrollEl}
     >
-      <TocContent
-        className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 h-80 overflow-y-auto pe-4"
-        ref={contentRef}
-      >
+      <TocContent className="h-80 overflow-y-auto pe-4" ref={contentRef}>
         <Article items={items} />
       </TocContent>
       <TocNav className="w-48">
@@ -201,7 +197,7 @@ const TreeNode = (props: NodeProviderProps<TocNode>) => {
     return (
       <TreeViewNode indexPath={indexPath} node={node}>
         <TreeViewBranch>
-          <TreeViewBranchItem showIndicator>{node.name}</TreeViewBranchItem>
+          <TreeViewBranchItem>{node.name}</TreeViewBranchItem>
           <TreeViewBranchContent>
             {node.children.map((child, index) => (
               <TreeNode

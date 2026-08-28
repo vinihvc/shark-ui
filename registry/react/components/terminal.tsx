@@ -1,8 +1,152 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import type React from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
+import {
+  ScrollArea,
+  useScrollArea,
+} from "@/registry/react/components/scroll-area";
+
+interface TerminalContextValue {
+  autoScroll: boolean;
+  output: string;
+}
+
+const TerminalContext = React.createContext<TerminalContextValue>({
+  autoScroll: true,
+  output: "",
+});
+
+interface TerminalProps extends React.ComponentProps<typeof ark.div> {
+  /**
+   * Follow new output in the viewport.
+   */
+  autoScroll?: boolean;
+  /**
+   * The output of the terminal.
+   */
+  output?: string;
+}
+
+export const Terminal = (props: TerminalProps) => {
+  const { autoScroll = true, className, output = "", ...rest } = props;
+
+  const value = React.useMemo(
+    () => ({
+      autoScroll,
+      output,
+    }),
+    [autoScroll, output]
+  );
+
+  return (
+    <TerminalContext.Provider value={value}>
+      <ark.div
+        className={cn(
+          "w-full min-w-0",
+          "flex flex-col",
+          "bg-card",
+          "text-card-foreground",
+          "rounded-xl border",
+          "overflow-hidden",
+          className
+        )}
+        data-slot="terminal"
+        {...rest}
+      />
+    </TerminalContext.Provider>
+  );
+};
+
+const TerminalFollow = () => {
+  const { autoScroll, output } = _useTerminal();
+  const { scrollToEdge } = useScrollArea();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Re-run when `output` changes so the viewport follows new lines.
+  React.useLayoutEffect(() => {
+    if (!autoScroll) {
+      return;
+    }
+    scrollToEdge({ edge: "bottom" });
+  }, [autoScroll, output, scrollToEdge]);
+
+  return null;
+};
+
+export const TerminalHeader = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn(
+        "min-w-0",
+        "flex items-center gap-2",
+        "px-4 py-2.5",
+        "bg-muted/48",
+        "font-mono text-muted-foreground text-xs",
+        "border-b",
+        "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
+        className
+      )}
+      data-slot="terminal-header"
+      {...rest}
+    />
+  );
+};
+
+export const TerminalAction = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn("ms-auto flex shrink-0 items-center gap-1", className)}
+      data-slot="terminal-action"
+      {...rest}
+    />
+  );
+};
+
+interface TerminalContentProps extends React.ComponentProps<"div"> {
+  /**
+   * The output of the terminal. Falls back to `output` on `Terminal`.
+   */
+  output?: string;
+}
+
+export const TerminalContent = (props: TerminalContentProps) => {
+  const { className, output: outputProp, children, ...rest } = props;
+
+  const { output: outputFromContext } = _useTerminal();
+  const output = outputProp ?? outputFromContext;
+
+  const tokens = parseAnsi(output);
+
+  return (
+    <div
+      className={cn(
+        "min-h-0 w-full min-w-0",
+        "flex flex-1 flex-col",
+        "overflow-hidden",
+        className
+      )}
+      data-slot="terminal-content"
+      {...rest}
+    >
+      <ScrollArea className="min-h-0 w-full flex-1">
+        <TerminalFollow />
+        <pre className="w-max min-w-full p-3 font-mono text-[0.8125rem] leading-6">
+          {children ??
+            tokens.map((token) => (
+              <span className={token.className} key={token.start}>
+                {token.text}
+              </span>
+            ))}
+        </pre>
+      </ScrollArea>
+    </div>
+  );
+};
 
 const ESC = String.fromCharCode(27);
 const ANSI_RE = new RegExp(`${ESC}\\[([0-9;]*)m`, "g");
@@ -13,7 +157,7 @@ const ANSI_CLASS: Record<string, string> = {
   "32": "text-success-foreground",
   "33": "text-warning-foreground",
   "34": "text-info-foreground",
-  "36": "text-info-foreground",
+  "36": "text-info-foreground ",
   "90": "text-muted-foreground",
 };
 
@@ -58,64 +202,12 @@ export const parseAnsi = (value: string): AnsiToken[] => {
   return tokens;
 };
 
-interface TerminalProps extends React.ComponentProps<typeof ark.div> {
-  isStreaming?: boolean;
-}
+/**
+ * Visible terminal text with ANSI SGR codes removed. Line breaks are kept.
+ */
+export const toPlainOutput = (value: string): string =>
+  parseAnsi(value)
+    .map((token) => token.text)
+    .join("");
 
-export const Terminal = (props: TerminalProps) => {
-  const { className, isStreaming = false, ...rest } = props;
-
-  return (
-    <ark.div
-      className={cn(
-        "flex w-full min-w-0 flex-col overflow-hidden rounded-xl border bg-card text-card-foreground",
-        className
-      )}
-      data-slot="terminal"
-      data-streaming={isStreaming ? "" : undefined}
-      {...rest}
-    />
-  );
-};
-
-export const TerminalHeader = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
-
-  return (
-    <ark.div
-      className={cn(
-        "flex min-w-0 items-center gap-2 border-b bg-muted/48 px-3 py-2 font-mono text-muted-foreground text-xs",
-        className
-      )}
-      data-slot="terminal-header"
-      {...rest}
-    />
-  );
-};
-
-interface TerminalContentProps extends React.ComponentProps<"pre"> {
-  output?: string;
-}
-
-export const TerminalContent = (props: TerminalContentProps) => {
-  const { className, output = "", children, ...rest } = props;
-  const tokens = parseAnsi(output);
-
-  return (
-    <pre
-      className={cn(
-        "max-h-64 min-w-0 overflow-auto p-3 font-mono text-[0.8125rem] leading-6",
-        className
-      )}
-      data-slot="terminal-content"
-      {...rest}
-    >
-      {children ??
-        tokens.map((token) => (
-          <span className={token.className} key={token.start}>
-            {token.text}
-          </span>
-        ))}
-    </pre>
-  );
-};
+const _useTerminal = () => React.useContext(TerminalContext);

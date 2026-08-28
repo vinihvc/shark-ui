@@ -17,6 +17,7 @@ export const FieldSliderExample = () => {
         max={1000}
         min={0}
         onValueChange={(e) => setValue(e.value)}
+        tabIndex={-1}
         value={value}
       >
         <div className="flex items-center justify-between">

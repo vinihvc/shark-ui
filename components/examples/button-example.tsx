@@ -12,7 +12,12 @@ const VARIANTS = [
 export const ButtonExample = () => (
   <div className="grid grid-cols-3 gap-2">
     {VARIANTS.map((variant) => (
-      <Button className="w-full capitalize" key={variant} variant={variant}>
+      <Button
+        className="w-full capitalize"
+        key={variant}
+        tabIndex={-1}
+        variant={variant}
+      >
         {variant}
       </Button>
     ))}

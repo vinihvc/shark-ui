@@ -1,6 +1,6 @@
 import {
+  ArrowUpRight,
   DownloadIcon,
-  ExternalLinkIcon,
   HeartIcon,
   PlusIcon,
   SettingsIcon,
@@ -27,7 +27,7 @@ const Example = () => (
     </Button>
     <Button variant="link">
       Visit website
-      <ExternalLinkIcon />
+      <ArrowUpRight />
     </Button>
   </div>
 );

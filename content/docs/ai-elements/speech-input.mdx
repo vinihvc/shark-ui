@@ -58,5 +58,20 @@ import { SpeechInput } from "@/components/ui/speech-input";
 
 Uses the browser Web Speech API when available. The control is disabled with a tooltip when speech recognition is unsupported. Requires a secure context (HTTPS or localhost).
 
+## API Reference
+
+### SpeechInput
+
+Microphone control built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `lang` | `string` | `"en-US"` |
+| `onTranscriptionChange` | `(text: string) => void` | `-` |
+| `onListeningChange` | `(listening: boolean) => void` | `-` |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"ghost"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"icon-sm"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 
 

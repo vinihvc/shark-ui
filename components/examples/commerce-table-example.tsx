@@ -43,7 +43,7 @@ export const CommerceTableExample = (props: React.ComponentProps<"div">) => {
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  <Button size="icon-sm" variant="outline">
+                  <Button size="icon-sm" tabIndex={-1} variant="outline">
                     <EllipsisIcon />
                   </Button>
                 </TableCell>

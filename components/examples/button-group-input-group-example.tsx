@@ -29,6 +29,7 @@ export const ButtonGroupInputGroupExample = () => (
             aria-pressed={false}
             data-active={false}
             size="icon-xs"
+            tabIndex={-1}
             variant="ghost"
           >
             <AudioLinesIcon />
@@ -37,11 +38,11 @@ export const ButtonGroupInputGroupExample = () => (
         <TooltipContent>Voice Mode</TooltipContent>
       </Tooltip>
     </InputGroupAddon>
-    <InputGroupInput placeholder="Ask anything..." />
+    <InputGroupInput placeholder="Ask anything..." tabIndex={-1} />
     <Menu>
       <InputGroupAddon align="inline-end">
         <MenuTrigger asChild>
-          <InputGroupButton size="icon-xs" variant="ghost">
+          <InputGroupButton size="icon-xs" tabIndex={-1} variant="ghost">
             <PlusIcon />
           </InputGroupButton>
         </MenuTrigger>

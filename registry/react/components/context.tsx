@@ -204,7 +204,7 @@ export const ContextFooter = (props: React.ComponentProps<"div">) => {
       {children ?? (
         <>
           <span className="text-muted-foreground">Total cost</span>
-          <span className="font-medium tabular-nums">{costLabel ?? "—"}</span>
+          <span className="font-medium tabular-nums">{costLabel ?? "-"}</span>
         </>
       )}
     </div>

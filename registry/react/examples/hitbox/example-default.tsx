@@ -26,7 +26,7 @@ const Example = () => {
         clickEffect={false}
         size="lg"
       >
-        <span className="font-mono group-hover/hitbox:hidden">hit-area-6</span>
+        <span className="font-mono group-hover/hitbox:hidden">hitbox-6</span>
         <span className="not-group-hover/hitbox:hidden group-active:hidden">
           Hovered
         </span>

@@ -19,15 +19,11 @@ const Example = () => {
 
   return (
     <Toc
-      autoScroll={false}
       className="size-full rounded-lg border p-4"
       items={items}
       scrollEl={getScrollEl}
     >
-      <TocContent
-        className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 h-80 overflow-y-auto pe-4"
-        ref={contentRef}
-      >
+      <TocContent className="h-80 overflow-y-auto pe-4" ref={contentRef}>
         <Article />
       </TocContent>
       <TocNav>

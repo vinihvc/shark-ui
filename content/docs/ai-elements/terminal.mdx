@@ -26,6 +26,47 @@ npx shadcn@latest add @shark/terminal
 
 <Steps>
 
+<Step>This component depends on [ScrollArea](/docs/components/scroll-area), [Clipboard](/docs/components/clipboard), and [Button](/docs/components/button). Install them first if you haven't already.</Step>
+
+<Step>Import the following variables into your CSS file</Step>
+
+<CodeCollapsibleWrapper>
+```css
+@theme inline {
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+:root {
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-red-700);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+}
+
+.dark {
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-red-400);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-400);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
+}
+```
+</CodeCollapsibleWrapper>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource title="components/ui/terminal.tsx" src="/terminal.tsx" />
@@ -43,6 +84,7 @@ npx shadcn@latest add @shark/terminal
 ```text
 Terminal
 ├── TerminalHeader
+│   └── TerminalAction
 └── TerminalContent
 ```
 
@@ -53,24 +95,76 @@ import { Terminal, TerminalContent, TerminalHeader } from "@/components/ui/termi
 ```
 
 ```tsx
-<Terminal>
+<Terminal output={"\u001B[32m✓\u001B[0m All tests passed"}>
   <TerminalHeader>zsh · pnpm test</TerminalHeader>
-  <TerminalContent output={"\u001B[32m✓\u001B[0m All tests passed"} />
+  <TerminalContent />
 </Terminal>
 ```
 
-`TerminalContent` maps a small set of ANSI colors (`31`, `32`, `33`, `34`, `36`, `90`) onto semantic text tokens. Use this as the result of a `Shell` [Tool](/docs/ai-elements/tool).
+## Examples
+
+### ANSI colors
+
+<ComponentPreview componentName="terminal" fileName="example-ansi" />
+
+### Without header
+
+<ComponentPreview componentName="terminal" fileName="example-no-header" />
+
+### With Icon
+
+<ComponentPreview componentName="terminal" fileName="example-icon" />
+
+### With Action
+
+Copy with `toPlainOutput` so the clipboard gets visible text, not ANSI codes.
+
+<ComponentPreview componentName="terminal" fileName="example-with-action" />
+
+### Children
+
+<ComponentPreview componentName="terminal" fileName="example-children" />
 
 ## API Reference
 
 ### Terminal
 
-| Prop | Type | Default |
-| --- | --- | --- |
-| `isStreaming` | `boolean` | `false` |
-
-### TerminalContent
+Root panel. Provides `output` to copy and content parts. `autoScroll` keeps the viewport on the latest line.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `output` | `string` | `""` |
+| `autoScroll` | `boolean` | `true` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### TerminalHeader
+
+Header for the session label and actions.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### TerminalAction
+
+Container for header actions. Aligns to the end.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### TerminalContent
+
+Renders parsed ANSI `output`. Children replace parsed tokens. Mapped SGR codes: `31` destructive, `32` success, `33` warning, `34`/`36` info, `90` muted.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `output` | `string` | `Terminal` `output` |
+| `className` | `string` | `-` |
+
+### toPlainOutput
+
+`toPlainOutput(output)` returns the visible text with ANSI SGR codes removed. Line breaks are kept. Use it as the `Clipboard` value when copying.

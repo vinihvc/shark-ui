@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A area chart example with step.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { Activity, TrendingUp } from \"lucide-react\";\nimport { Area, AreaChart, CartesianGrid, XAxis } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A step area chart\";\n\nconst chartData = [\n  { desktop: 186, month: \"January\" },\n  { desktop: 305, month: \"February\" },\n  { desktop: 237, month: \"March\" },\n  { desktop: 73, month: \"April\" },\n  { desktop: 209, month: \"May\" },\n  { desktop: 214, month: \"June\" },\n];\n\nconst chartConfig = {\n  desktop: {\n    color: \"var(--chart-1)\",\n    icon: Activity,\n    label: \"Desktop\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartAreaStep() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Area Chart - Step</CardTitle>\n        <CardDescription>\n          Showing total visitors for the last 6 months\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={chartConfig}>\n          <AreaChart\n            accessibilityLayer\n            data={chartData}\n            margin={{\n              left: 12,\n              right: 12,\n            }}\n          >\n            <CartesianGrid vertical={false} />\n            <XAxis\n              axisLine={false}\n              dataKey=\"month\"\n              tickFormatter={(value) => value.slice(0, 3)}\n              tickLine={false}\n              tickMargin={8}\n            />\n            <ChartTooltip\n              content={<ChartTooltipContent hideLabel />}\n              cursor={false}\n            />\n            <Area\n              dataKey=\"desktop\"\n              fill=\"var(--color-desktop)\"\n              fillOpacity={0.4}\n              stroke=\"var(--color-desktop)\"\n              type=\"step\"\n            />\n          </AreaChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter>\n        <div className=\"flex w-full items-start gap-2 text-sm\">\n          <div className=\"grid gap-2\">\n            <div className=\"flex items-center gap-2 font-medium leading-none\">\n              Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n            </div>\n            <div className=\"flex items-center gap-2 text-muted-foreground leading-none\">\n              January - June 2024\n            </div>\n          </div>\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartAreaStep;\n",
+      "path": "blocks/chart/chart-area-step.tsx",
+      "target": "app/charts/chart-area-step/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 10,
+    "previewHeight": 560
+  },
+  "name": "chart-area-step",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Area Chart: Step",
+  "type": "registry:block"
+}

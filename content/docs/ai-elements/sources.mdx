@@ -74,5 +74,54 @@ import {
 
 Use `InlineCitation` inside message text for superscript footnotes with an optional hover card.
 
+## API Reference
+
+### Sources
+
+Root collapsible. Forwards [Collapsible](/docs/components/collapsible) props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### SourcesTrigger
+
+Toggles the citation list. Default children are `Used {count} sources`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `count` | `number` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### SourcesContent
+
+Holds the list of sources.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### Source
+
+Link to a cited source. Children replace `title` when provided.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `href` | `string` | `-` |
+| `title` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### InlineCitation
+
+Superscript footnote. Shows a [Hover Card](/docs/components/hover-card) when `title` or `href` is set.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `index` | `number` | `-` |
+| `href` | `string` | `-` |
+| `title` | `string` | `-` |
+| `className` | `string` | `-` |
 
 

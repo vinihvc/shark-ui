@@ -17,8 +17,7 @@ const BLOCKS_DIRECTION_CONTRACT = {
 } as const;
 
 export const metadata = createMetadata({
-  description:
-    "Composed Shark UI interfaces you can copy, install, and make your own.",
+  description: "Composed Shark UI interfaces you can copy or install.",
   title: "Blocks",
   url: "/blocks",
 });

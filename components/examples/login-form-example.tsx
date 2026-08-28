@@ -24,7 +24,9 @@ export const LoginFormExample = (props: React.ComponentProps<"div">) => (
       </CardDescription>
     </CardHeader>
     <CardContent className="flex flex-col gap-4">
-      <Button className="w-full">Get Started</Button>
+      <Button className="w-full" tabIndex={-1}>
+        Get Started
+      </Button>
       <div className="relative flex items-center">
         <Separator className="flex-1" />
         <span className="bg-card px-3 text-muted-foreground text-xs">OR</span>
@@ -32,11 +34,11 @@ export const LoginFormExample = (props: React.ComponentProps<"div">) => (
       </div>
     </CardContent>
     <CardFooter className="flex-col">
-      <Button className="w-full" variant="outline">
+      <Button className="w-full" tabIndex={-1} variant="outline">
         <GoogleIcon />
         Continue with Google
       </Button>
-      <Button className="w-full" variant="outline">
+      <Button className="w-full" tabIndex={-1} variant="outline">
         <AppleIcon />
         Continue with Apple
       </Button>

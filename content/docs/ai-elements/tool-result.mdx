@@ -1,0 +1,202 @@
+---
+title: Tool Result
+description: A collapsible tool result row with title, meta, and status.
+---
+
+<ComponentPreview componentName="tool-result" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/tool-result
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>This component depends on [Collapsible](/docs/components/collapsible). Install it first if you haven't already.</Step>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react
+```
+
+<Step>Import the following variables into your CSS file</Step>
+
+<CodeCollapsibleWrapper>
+```css
+@theme inline {
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info-foreground: var(--info-foreground);
+  --color-success-foreground: var(--success-foreground);
+}
+
+:root {
+  --destructive-foreground: var(--color-red-700);
+  --info-foreground: var(--color-blue-700);
+  --success-foreground: var(--color-emerald-700);
+}
+
+.dark {
+  --destructive-foreground: var(--color-red-400);
+  --info-foreground: var(--color-blue-400);
+  --success-foreground: var(--color-emerald-400);
+}
+```
+</CodeCollapsibleWrapper>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/tool-result.tsx" src="/tool-result.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+ToolResult
+├── ToolResultTrigger
+│   ├── ToolResultTitle
+│   ├── ToolResultMeta
+│   ├── ToolResultName
+│   └── ToolResultStatus
+└── ToolResultContent
+```
+
+## Usage
+
+```tsx
+import {
+  ToolResult,
+  ToolResultContent,
+  ToolResultMeta,
+  ToolResultName,
+  ToolResultTitle,
+  ToolResultTrigger,
+} from "@/components/ui/tool-result";
+```
+
+```tsx
+<ToolResult status="success">
+  <ToolResultTrigger>
+    <ToolResultTitle>Tests passed</ToolResultTitle>
+    <ToolResultMeta>2.9s</ToolResultMeta>
+    <ToolResultName>terminal.run</ToolResultName>
+  </ToolResultTrigger>
+  <ToolResultContent />
+</ToolResult>
+```
+
+## Status
+
+### Running
+
+<ComponentPreview componentName="tool-result" fileName="example-running" />
+
+### Success
+
+<ComponentPreview componentName="tool-result" fileName="example-success" />
+
+### Error
+
+<ComponentPreview componentName="tool-result" fileName="example-error" />
+
+### Cancelled
+
+<ComponentPreview componentName="tool-result" fileName="example-cancelled" />
+
+## With Icon
+
+<ComponentPreview componentName="tool-result" fileName="example-icon" />
+
+## API Reference
+
+### ToolResult
+
+Root [Collapsible](/docs/components/collapsible). `aria-busy` is set while `status` is `"running"`. `defaultOpen` is `true` when `status` is `"running"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `status` | `"running" \| "success" \| "error" \| "cancelled"` | `"success"` |
+| `defaultOpen` | `boolean` | `true` when `status` is `"running"` |
+| `className` | `string` | `-` |
+
+### ToolResultTrigger
+
+Toggles the result. Renders children, then status and the chevron.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ToolResultTitle
+
+Primary label in the trigger.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ToolResultMeta
+
+Secondary text such as duration.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ToolResultName
+
+Tool name in the trigger.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ToolResultStatus
+
+Status icon and label. Children replace the default label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+| Status | Label |
+| --- | --- |
+| `running` | Running |
+| `success` | Completed |
+| `error` | Failed |
+| `cancelled` | Cancelled |
+
+### ToolResultContent
+
+Holds [Terminal](/docs/ai-elements/terminal) or [Diff](/docs/ai-elements/diff).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

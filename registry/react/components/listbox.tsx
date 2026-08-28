@@ -163,6 +163,7 @@ export const ListboxItemGroupLabel = (
   props: React.ComponentProps<typeof ArkListbox.ItemGroupLabel>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkListbox.ItemGroupLabel
       className={cn(

@@ -59,5 +59,33 @@ import { Suggestion, Suggestions } from "@/components/ui/suggestion";
 </Suggestions>
 ```
 
+## Pill
 
+The `pill` prop creates fully rounded suggestion chips. Defaults to `true`.
+
+<ComponentPreview componentName="suggestion" fileName="example-pill" />
+
+## API Reference
+
+### Suggestions
+
+Container for suggestion chips.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### Suggestion
+
+Prompt chip built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `suggestion` | `string` | **required** |
+| `pill` | `boolean` | `true` |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"outline"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"sm"` |
+| `onClick` | `(suggestion: string) => void` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
 

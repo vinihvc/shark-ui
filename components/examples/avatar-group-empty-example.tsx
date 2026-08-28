@@ -27,7 +27,7 @@ export const AvatarGroupEmptyExample = (props: React.ComponentProps<"div">) => (
           Invite your team to collaborate on this project.
         </p>
       </div>
-      <Button>
+      <Button tabIndex={-1}>
         <PlusIcon />
         Invite Members
       </Button>

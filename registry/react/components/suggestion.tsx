@@ -35,6 +35,7 @@ export const Suggestion = (props: SuggestionProps) => {
     type = "button",
     variant = "outline",
     size = "sm",
+    pill = true,
     ...rest
   } = props;
 
@@ -44,9 +45,10 @@ export const Suggestion = (props: SuggestionProps) => {
 
   return (
     <Button
-      className={cn("rounded-full font-normal", className)}
+      className={cn("font-normal", className)}
       data-slot="suggestion"
       onClick={handleClick}
+      pill={pill}
       size={size}
       type={type}
       variant={variant}

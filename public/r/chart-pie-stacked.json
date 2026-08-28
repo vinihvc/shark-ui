@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["chart"],
+  "dependencies": ["@ark-ui/react", "lucide-react", "recharts"],
+  "description": "A pie chart example with stacked.",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { TrendingUp } from \"lucide-react\";\nimport { Pie, PieChart } from \"recharts\";\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  type ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nexport const description = \"A pie chart with stacked sections\";\n\nconst desktopData = [\n  { desktop: 186, fill: \"var(--color-january)\", month: \"january\" },\n  { desktop: 305, fill: \"var(--color-february)\", month: \"february\" },\n  { desktop: 237, fill: \"var(--color-march)\", month: \"march\" },\n  { desktop: 173, fill: \"var(--color-april)\", month: \"april\" },\n  { desktop: 209, fill: \"var(--color-may)\", month: \"may\" },\n];\n\nconst mobileData = [\n  { fill: \"var(--color-january)\", mobile: 80, month: \"january\" },\n  { fill: \"var(--color-february)\", mobile: 200, month: \"february\" },\n  { fill: \"var(--color-march)\", mobile: 120, month: \"march\" },\n  { fill: \"var(--color-april)\", mobile: 190, month: \"april\" },\n  { fill: \"var(--color-may)\", mobile: 130, month: \"may\" },\n];\n\nconst chartConfig = {\n  april: {\n    color: \"var(--chart-4)\",\n    label: \"April\",\n  },\n  desktop: {\n    label: \"Desktop\",\n  },\n  february: {\n    color: \"var(--chart-2)\",\n    label: \"February\",\n  },\n  january: {\n    color: \"var(--chart-1)\",\n    label: \"January\",\n  },\n  march: {\n    color: \"var(--chart-3)\",\n    label: \"March\",\n  },\n  may: {\n    color: \"var(--chart-5)\",\n    label: \"May\",\n  },\n  mobile: {\n    label: \"Mobile\",\n  },\n  visitors: {\n    label: \"Visitors\",\n  },\n} satisfies ChartConfig;\n\nfunction ChartPieStacked() {\n  return (\n    <Card className=\"flex flex-col\">\n      <CardHeader className=\"items-center pb-0\">\n        <CardTitle>Pie Chart - Stacked</CardTitle>\n        <CardDescription>January - June 2024</CardDescription>\n      </CardHeader>\n      <CardContent className=\"flex-1 pb-0\">\n        <ChartContainer\n          className=\"mx-auto aspect-square max-h-[250px]\"\n          config={chartConfig}\n        >\n          <PieChart>\n            <ChartTooltip\n              content={\n                <ChartTooltipContent\n                  indicator=\"line\"\n                  labelFormatter={(_, payload) =>\n                    chartConfig[\n                      payload?.[0].dataKey as keyof typeof chartConfig\n                    ].label\n                  }\n                  labelKey=\"visitors\"\n                  nameKey=\"month\"\n                />\n              }\n            />\n            <Pie data={desktopData} dataKey=\"desktop\" outerRadius={60} />\n            <Pie\n              data={mobileData}\n              dataKey=\"mobile\"\n              innerRadius={70}\n              outerRadius={90}\n            />\n          </PieChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col gap-2 text-sm\">\n        <div className=\"flex items-center gap-2 font-medium leading-none\">\n          Trending up by 5.2% this month <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"text-muted-foreground leading-none\">\n          Showing total visitors for the last 6 months\n        </div>\n      </CardFooter>\n    </Card>\n  );\n}\n\nexport default ChartPieStacked;\n",
+      "path": "blocks/chart/chart-pie-stacked.tsx",
+      "target": "app/charts/chart-pie-stacked/page.tsx",
+      "type": "registry:page"
+    }
+  ],
+  "meta": {
+    "featured": false,
+    "order": 41,
+    "previewHeight": 560
+  },
+  "name": "chart-pie-stacked",
+  "registryDependencies": [
+    "https://shark.vini.one/r/card.json",
+    "https://shark.vini.one/r/chart.json"
+  ],
+  "title": "Pie Chart: Stacked",
+  "type": "registry:block"
+}

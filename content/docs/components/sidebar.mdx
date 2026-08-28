@@ -1,7 +1,7 @@
 ---
 title: Sidebar
 description: A sidebar for navigation and app structure.
-seoDescription: "Build responsive React sidebars with Shark UI, including navigation groups, collapsible rails, mobile sheets, keyboard shortcuts, and accessible app structure."
+seoDescription: "Responsive sidebar with groups, a collapsible rail, and a mobile sheet."
 links:
   doc: https://ui.shadcn.com/docs/components/sidebar
   api: https://ui.shadcn.com/docs/components/sidebar
@@ -86,15 +86,15 @@ SidebarProvider
 
 Piecing a `Sidebar` together usually means:
 
-- `<SidebarProvider>` — Owns open/collapsed state, mobile sheet state, and keyboard shortcut handling.
-- `<Sidebar>` — Fixed (or sheet) column: `placement`, `variant`, and `collapsible` behavior.
-- `<SidebarHeader>` / `<SidebarFooter>` — Pin content to the top or bottom of the column.
-- `<SidebarContent>` — Scrollable middle; optional `scrollFade` on the inner scroll area.
-- `<SidebarGroup>` — Labeled section inside the scroll region.
-- `<SidebarTrigger>` — Icon/control wired to `useSidebar().toggleSidebar`.
-- `<SidebarInset>` — Main document column beside the sidebar (required for `variant="inset"`).
+- `<SidebarProvider>`: owns open/collapsed state, mobile sheet state, and keyboard shortcut handling.
+- `<Sidebar>`: fixed (or sheet) column: `placement`, `variant`, and `collapsible` behavior.
+- `<SidebarHeader>` / `<SidebarFooter>`: pin content to the top or bottom of the column.
+- `<SidebarContent>`: scrollable middle; optional `scrollFade` on the inner scroll area.
+- `<SidebarGroup>`: labeled section inside the scroll region.
+- `<SidebarTrigger>`: icon/control wired to `useSidebar().toggleSidebar`.
+- `<SidebarInset>`: main document column beside the sidebar (required for `variant="inset"`).
 
-Optional helpers: `<SidebarRail>` (edge hit target), the `<SidebarMenu>` building blocks (submenus, badges, skeletons, actions)—same roles as in the upstream doc.
+Optional helpers: `<SidebarRail>` (edge hit target), the `<SidebarMenu>` building blocks (submenus, badges, skeletons, actions). Same roles as in the upstream doc.
 
 <SidebarAnatomy title="Sidebar Anatomy" />
 
@@ -171,12 +171,12 @@ Sidebar uses CSS variables to style the sidebar. See the full palette in [Colors
 
 ### Variable Reference
 
-- <div className="inline-block size-5 rounded border border-border bg-sidebar me-2 align-middle" /> `--sidebar` — Sidebar background
-- <div className="inline-block size-5 rounded border border-border bg-sidebar-foreground me-2 align-middle" /> `--sidebar-foreground` — Sidebar text
-- <div className="inline-block size-5 rounded border border-border bg-sidebar-primary me-2 align-middle" /> `--sidebar-primary` — Active item background
-- <div className="inline-block size-5 rounded border border-border bg-sidebar-accent me-2 align-middle" /> `--sidebar-accent` — Hover and active states
-- <div className="inline-block size-5 rounded border border-border bg-sidebar-border me-2 align-middle" /> `--sidebar-border` — Sidebar borders
-- <div className="inline-block size-5 rounded border border-border bg-sidebar-ring me-2 align-middle" /> `--sidebar-ring` — Focus rings
+- <div className="inline-block size-5 rounded border border-border bg-sidebar me-2 align-middle" /> `--sidebar`: sidebar background
+- <div className="inline-block size-5 rounded border border-border bg-sidebar-foreground me-2 align-middle" /> `--sidebar-foreground`: sidebar text
+- <div className="inline-block size-5 rounded border border-border bg-sidebar-primary me-2 align-middle" /> `--sidebar-primary`: active item background
+- <div className="inline-block size-5 rounded border border-border bg-sidebar-accent me-2 align-middle" /> `--sidebar-accent`: hover and active states
+- <div className="inline-block size-5 rounded border border-border bg-sidebar-border me-2 align-middle" /> `--sidebar-border`: sidebar borders
+- <div className="inline-block size-5 rounded border border-border bg-sidebar-ring me-2 align-middle" /> `--sidebar-ring`: focus rings
 
 Learn more about styling in the [Styling](/docs/styling) section.
 
@@ -297,7 +297,7 @@ export function Example() {
 
 ### SidebarHeader
 
-Sticky top region—common pattern: workspace switcher or brand row inside a `SidebarMenu`.
+Sticky top region. Common pattern: workspace switcher or brand row inside a `SidebarMenu`.
 
 ```tsx
 <Sidebar>
@@ -318,7 +318,7 @@ Wire menus or [Menu](/docs/components/menu) triggers to `SidebarMenuButton` as n
 
 ### SidebarFooter
 
-Sticky bottom slot—profile, settings entry, sign-out, etc.
+Sticky bottom slot: profile, settings entry, sign-out, etc.
 
 ```tsx
 <Sidebar>
@@ -365,7 +365,7 @@ A titled block with optional `SidebarGroupAction` and `SidebarGroupContent`.
 </SidebarGroup>
 ```
 
-Collapsible groups pair with [Collapsible](/docs/components/collapsible). `SidebarGroupLabel` is a plain label slot—keep the trigger beside it (or fold the pattern into `SidebarMenu` like the preview at the top of this page):
+Collapsible groups pair with [Collapsible](/docs/components/collapsible). `SidebarGroupLabel` is a plain label slot. Keep the trigger beside it (or fold the pattern into `SidebarMenu` like the preview at the top of this page):
 
 ```tsx
 <Collapsible className="group/collapsible" defaultOpen>
@@ -388,7 +388,7 @@ Collapsible groups pair with [Collapsible](/docs/components/collapsible). `Sideb
 
 ### SidebarMenu
 
-Row list inside a group—map data to `SidebarMenuItem` / `SidebarMenuButton`.
+Row list inside a group. Map data to `SidebarMenuItem` / `SidebarMenuButton`.
 
 ```tsx
 <SidebarMenu>
@@ -475,7 +475,7 @@ Placeholder rows while async routes or prefs load.
 
 ### SidebarTrigger
 
-Prebuilt toggle wired to context—drop next to your page title or in a toolbar.
+Prebuilt toggle wired to context. Drop it next to your page title or in a toolbar.
 
 ```tsx
 import { useSidebar } from "@/components/ui/sidebar";
@@ -490,7 +490,7 @@ Prefer `SidebarTrigger` when you want the default styling and accessibility bund
 
 ### SidebarRail
 
-Draggable edge control that expands or collapses the desktop rail—place after header/content/footer inside `Sidebar`.
+Draggable edge control that expands or collapses the desktop rail. Place it after header/content/footer inside `Sidebar`.
 
 ```tsx
 <Sidebar>

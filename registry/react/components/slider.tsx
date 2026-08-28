@@ -112,7 +112,7 @@ export const Slider = (props: SliderProps) => {
               className={cn(
                 "relative",
                 "shrink-0",
-                "size-4.5",
+                "h-4.5 w-[calc(--spacing(4.5)*1.375)]",
                 "bg-white",
                 "rounded-full border border-input shadow-xs/5",
                 "cursor-grab select-none",

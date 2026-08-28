@@ -76,15 +76,11 @@ import {
   TaskTrigger,
 } from "@/registry/react/components/task";
 import {
-  Tool,
-  ToolContent,
-  ToolFile,
-  ToolInput,
-  ToolLabel,
-  ToolName,
-  ToolStatusBadge,
-  ToolTrigger,
-} from "@/registry/react/components/tool";
+  ToolResult,
+  ToolResultName,
+  ToolResultTitle,
+  ToolResultTrigger,
+} from "@/registry/react/components/tool-result";
 
 export interface ChatMessageAttachment {
   description: string;
@@ -188,24 +184,17 @@ const MessageReasoning = ({
 const MessageTool = ({
   file,
   name,
-  pathLabel,
 }: {
   file: string;
   name: string;
   pathLabel?: string;
 }) => (
-  <Tool status="completed">
-    <ToolTrigger>
-      <ToolName>{name}</ToolName>
-      <ToolStatusBadge status="completed" />
-    </ToolTrigger>
-    <ToolContent>
-      <ToolInput>
-        <ToolLabel>{pathLabel ?? "Path"}</ToolLabel>
-        <ToolFile>{file}</ToolFile>
-      </ToolInput>
-    </ToolContent>
-  </Tool>
+  <ToolResult status="success">
+    <ToolResultTrigger>
+      <ToolResultTitle>{name}</ToolResultTitle>
+      <ToolResultName>{file}</ToolResultName>
+    </ToolResultTrigger>
+  </ToolResult>
 );
 
 const MessageConfirmation = ({ title }: { title: string }) => (

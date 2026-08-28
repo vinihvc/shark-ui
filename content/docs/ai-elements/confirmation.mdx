@@ -76,12 +76,72 @@ import {
 </Confirmation>
 ```
 
-Use this in the transcript, not a modal. Pair with [Tool](/docs/ai-elements/tool).
+Use this in the transcript, not a modal. Pair with [Tool Result](/docs/ai-elements/tool-result).
 
 ## API Reference
 
 ### Confirmation
 
+Root card. `state` shows the request, accepted, or rejected slot.
+
 | Prop | Type | Default |
 | --- | --- | --- |
 | `state` | `"request" \| "accepted" \| "rejected"` | `"request"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ConfirmationRequest
+
+Visible while `state` is `"request"`. Holds the title.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ConfirmationTitle
+
+Title text for the pending request.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ConfirmationAccepted
+
+Visible while `state` is `"accepted"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ConfirmationRejected
+
+Visible while `state` is `"rejected"`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ConfirmationActions
+
+Container for action buttons. Hidden after accept or reject.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ConfirmationAction
+
+Action button. Built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"default"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"sm"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

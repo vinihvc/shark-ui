@@ -91,10 +91,51 @@ Give `MessageScrollerButton` `direction="start"` or `direction="end"`. The contr
 
 ## API Reference
 
+### MessageScroller
+
+Root scroll area for a transcript. Forwards [Scroll Area](/docs/components/scroll-area) root props.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+| Attribute | Default |
+| --- | --- |
+| `--fade-size` | `1.5rem` |
+
+### MessageScrollerViewport
+
+Scrollable viewport with edge fade masks.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### MessageScrollerContent
+
+Column of messages inside the viewport.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### MessageScrollerItem
+
+A single message row. Uses `content-visibility` for long threads.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
 ### MessageScrollerButton
+
+Jump control. Built on [Button](/docs/components/button). Hides when that edge is already in view.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `direction` | `"start" \| "end"` | `"end"` |
-
-Also accepts [Button](/docs/components/button) props. `MessageScroller`, `MessageScrollerViewport`, `MessageScrollerContent`, and `MessageScrollerItem` accept `className` and `asChild`.
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"secondary"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"icon-sm"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

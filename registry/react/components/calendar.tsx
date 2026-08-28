@@ -260,6 +260,7 @@ export const CalendarTableDays = (
   props: React.ComponentProps<typeof CalendarTableBody>
 ) => {
   const { tabIndex, ...rest } = props;
+
   return (
     <CalendarContext>
       {(calendar) => (
@@ -382,6 +383,7 @@ export const CalendarTableRow = (
   props: React.ComponentProps<typeof ArkCalendar.TableRow>
 ) => {
   const { className, ...rest } = props;
+
   return (
     <ArkCalendar.TableRow
       className={cn("mt-1 flex w-full", className)}

@@ -1,10 +1,8 @@
 "use client";
 
-import { Badge } from "@registry/react/components/badge";
-import { Button } from "@registry/react/components/button";
-import { Card, CardContent } from "@registry/react/components/card";
-import { Separator } from "@registry/react/components/separator";
-import React from "react";
+import { useState } from "react";
+import { Badge } from "@/registry/react/components/badge";
+import { Button } from "@/registry/react/components/button";
 import {
   createHotkeyStore,
   useFormatHotkey,
@@ -14,19 +12,19 @@ import { Kbd } from "@/registry/react/components/kbd";
 
 const commands = [
   { hotkey: "mod+shift+B", id: "bold", label: "Bold", scope: "editor" },
-  { hotkey: "mod+shift+U", id: "print", label: "Print", scope: "reader" },
+  { hotkey: "mod+shift+R", id: "print", label: "Print", scope: "reader" },
 ];
 
 const store = createHotkeyStore({ activeScopes: ["editor"] });
 
 const Example = () => {
   const formatHotkey = useFormatHotkey();
-  const [scope, setScope] = React.useState("editor");
-  const [selected, setSelected] = React.useState<string | null>(null);
+  const [scope, setScope] = useState("editor");
+  const [fired, setFired] = useState<string | null>(null);
 
   useHotkeys({
     commands: commands.map((command) => ({
-      action: () => setSelected(command.id),
+      action: () => setFired(command.id),
       hotkey: command.hotkey,
       id: command.id,
       options: { preventDefault: true },
@@ -38,44 +36,46 @@ const Example = () => {
   const toggle = () => {
     const next = scope === "editor" ? "reader" : "editor";
     setScope(next);
-    setSelected(null);
+    setFired(null);
     store.setScope(next);
   };
 
   return (
-    <Card className="w-full max-w-sm">
-      <CardContent>
-        <p className="flex items-center justify-between gap-2 text-muted-foreground text-sm">
-          <span>Active scope</span>
-          <span className="flex items-center gap-2">
-            <Button onClick={toggle} size="sm" variant="outline">
-              Switch
-            </Button>
-            <Badge variant="secondary">{scope}</Badge>
-          </span>
-        </p>
-        <Separator className="my-4" />
-        <ul className="flex flex-col gap-2">
-          {commands.map((command) => {
-            const active = command.scope === scope;
+    <div className="flex w-full max-w-sm flex-col gap-4">
+      <p className="text-muted-foreground text-sm">
+        Only commands in the active scope respond.
+      </p>
+      <div className="flex items-center justify-between gap-3">
+        <Button onClick={toggle} size="sm" variant="outline">
+          Switch scope
+        </Button>
+        <Badge variant="secondary">{scope}</Badge>
+      </div>
+      <ul className="flex flex-col gap-2">
+        {commands.map((command) => {
+          const active = command.scope === scope;
 
-            return (
-              <li
-                className="flex items-center justify-between gap-3 rounded-lg p-2 text-sm data-[selected=true]:bg-primary data-[active=false]:text-muted-foreground data-[selected=true]:text-primary-foreground"
-                data-active={active}
-                data-selected={selected === command.id}
-                key={command.id}
+          return (
+            <li
+              className="flex items-center justify-between gap-3 text-sm"
+              key={command.id}
+            >
+              <span
+                className={active ? "text-foreground" : "text-muted-foreground"}
               >
-                <span>
-                  {command.label} · {command.scope}
-                </span>
-                <Kbd>{formatHotkey(command.hotkey)}</Kbd>
-              </li>
-            );
-          })}
-        </ul>
-      </CardContent>
-    </Card>
+                {command.label} · {command.scope}
+              </span>
+              <Kbd>{formatHotkey(command.hotkey)}</Kbd>
+            </li>
+          );
+        })}
+      </ul>
+      {fired ? (
+        <Badge className="self-start" variant="secondary">
+          Last fired: {fired}
+        </Badge>
+      ) : null}
+    </div>
   );
 };
 

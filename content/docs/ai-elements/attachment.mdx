@@ -128,17 +128,89 @@ Add an `AttachmentTrigger` to make the whole card open a link or dialog. It fill
 
 ## API Reference
 
+### AttachmentGroup
+
+Horizontal scroller for attachment cards.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
 ### Attachment
+
+File or image card. Sets state, size, and orientation for child parts.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `state` | `"idle" \| "uploading" \| "processing" \| "error" \| "done"` | `"done"` |
 | `size` | `"default" \| "sm" \| "xs"` | `"default"` |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
 ### AttachmentTrigger
 
+Full-card hit target. Place first so it sits under media and actions.
+
 | Prop | Type | Default |
 | --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentMedia
+
+Thumbnail or icon slot.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"icon" \| "image"` | `"icon"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentContent
+
+Column for title and description.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentTitle
+
+Filename or label.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentDescription
+
+Secondary text such as size or status.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentActions
+
+Container for action buttons.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### AttachmentAction
+
+Icon button on the card. Built on [Button](/docs/components/button).
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"ghost"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"icon-xs"` |
+| `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |

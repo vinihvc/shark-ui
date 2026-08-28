@@ -2,6 +2,7 @@ import type { RegistryItemType } from "@/lib/registry";
 
 const cssVars = {
   dark: {
+    destructive: "var(--color-red-600)",
     "destructive-foreground": "var(--color-red-400)",
     info: "var(--color-blue-500)",
     "info-foreground": "var(--color-blue-400)",
@@ -11,6 +12,7 @@ const cssVars = {
     "warning-foreground": "var(--color-amber-400)",
   },
   light: {
+    destructive: "var(--color-red-600)",
     "destructive-foreground": "var(--color-red-700)",
     info: "var(--color-blue-500)",
     "info-foreground": "var(--color-blue-700)",

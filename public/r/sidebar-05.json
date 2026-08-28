@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "categories": ["sidebar"],
+  "dependencies": ["lucide-react"],
+  "description": "A sidebar with collapsible sections and nested navigation.",
+  "files": [
+    {
+      "content": "import { Separator } from \"@/components/ui/separator\";\nimport {\n  SidebarInset,\n  SidebarProvider,\n  SidebarTrigger,\n} from \"@/components/ui/sidebar\";\nimport { AppSidebar } from \"@/components/sidebar-05/app-sidebar\";\n\nexport default function Sidebar05Page() {\n  return (\n    <SidebarProvider>\n      <AppSidebar />\n      <SidebarInset>\n        <header className=\"flex h-14 shrink-0 items-center gap-2 border-b px-4\">\n          <SidebarTrigger className=\"-ms-1\" />\n          <Separator className=\"h-4\" orientation=\"vertical\" />\n          <p className=\"font-medium text-sm\">Workspace overview</p>\n        </header>\n        <main className=\"grid flex-1 gap-4 p-4 md:grid-cols-2\">\n          <section className=\"min-h-64 rounded-xl border bg-muted/35\" />\n          <section className=\"min-h-64 rounded-xl border bg-muted/35\" />\n          <section className=\"min-h-80 rounded-xl border bg-muted/35 md:col-span-2\" />\n        </main>\n      </SidebarInset>\n    </SidebarProvider>\n  );\n}\n",
+      "path": "blocks/sidebar/sidebar-05/page.tsx",
+      "target": "app/dashboard/page.tsx",
+      "type": "registry:page"
+    },
+    {
+      "content": "\"use client\";\n\nimport {\n  ChartNoAxesCombinedIcon,\n  ChevronRightIcon,\n  CircleGaugeIcon,\n  FileTextIcon,\n  FolderKanbanIcon,\n  SettingsIcon,\n  UsersIcon,\n} from \"lucide-react\";\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \"@/components/ui/collapsible\";\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarGroup,\n  SidebarGroupLabel,\n  SidebarHeader,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarMenuSub,\n  SidebarMenuSubButton,\n  SidebarMenuSubItem,\n  SidebarRail,\n} from \"@/components/ui/sidebar\";\n\nconst navigation = [\n  {\n    icon: CircleGaugeIcon,\n    items: [\"Overview\", \"Activity\", \"Reports\"],\n    label: \"Dashboard\",\n  },\n  {\n    icon: FolderKanbanIcon,\n    items: [\"Active\", \"Archived\", \"Templates\"],\n    label: \"Projects\",\n  },\n  {\n    icon: UsersIcon,\n    items: [\"Members\", \"Teams\", \"Invitations\"],\n    label: \"People\",\n  },\n];\n\nexport function AppSidebar() {\n  return (\n    <Sidebar>\n      <SidebarHeader>\n        <SidebarMenu>\n          <SidebarMenuItem>\n            <SidebarMenuButton className=\"font-semibold\" size=\"lg\">\n              <ChartNoAxesCombinedIcon aria-hidden=\"true\" />\n              <span>Northstar</span>\n            </SidebarMenuButton>\n          </SidebarMenuItem>\n        </SidebarMenu>\n      </SidebarHeader>\n      <SidebarContent>\n        <SidebarGroup>\n          <SidebarGroupLabel>Workspace</SidebarGroupLabel>\n          <SidebarMenu>\n            {navigation.map((item, index) => (\n              <Collapsible\n                asChild\n                className=\"group/collapsible\"\n                defaultOpen={index === 0}\n                key={item.label}\n              >\n                <SidebarMenuItem>\n                  <CollapsibleTrigger asChild>\n                    <SidebarMenuButton tooltip={item.label}>\n                      <item.icon aria-hidden=\"true\" />\n                      <span>{item.label}</span>\n                      <ChevronRightIcon\n                        aria-hidden=\"true\"\n                        className=\"ms-auto transition-transform group-data-[state=open]/collapsible:rotate-90 motion-reduce:transition-none\"\n                      />\n                    </SidebarMenuButton>\n                  </CollapsibleTrigger>\n                  <CollapsibleContent>\n                    <SidebarMenuSub>\n                      {item.items.map((subItem) => (\n                        <SidebarMenuSubItem key={subItem}>\n                          <SidebarMenuSubButton asChild>\n                            <a href=\"#\">{subItem}</a>\n                          </SidebarMenuSubButton>\n                        </SidebarMenuSubItem>\n                      ))}\n                    </SidebarMenuSub>\n                  </CollapsibleContent>\n                </SidebarMenuItem>\n              </Collapsible>\n            ))}\n          </SidebarMenu>\n        </SidebarGroup>\n      </SidebarContent>\n      <SidebarFooter>\n        <SidebarMenu>\n          {[\n            { icon: FileTextIcon, label: \"Documentation\" },\n            { icon: SettingsIcon, label: \"Settings\" },\n          ].map((item) => (\n            <SidebarMenuItem key={item.label}>\n              <SidebarMenuButton asChild>\n                <a href=\"#\">\n                  <item.icon aria-hidden=\"true\" />\n                  <span>{item.label}</span>\n                </a>\n              </SidebarMenuButton>\n            </SidebarMenuItem>\n          ))}\n        </SidebarMenu>\n      </SidebarFooter>\n      <SidebarRail />\n    </Sidebar>\n  );\n}\n",
+      "path": "blocks/sidebar/sidebar-05/components/app-sidebar.tsx",
+      "target": "@components/sidebar-05/app-sidebar.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "featured": true,
+    "order": 2,
+    "previewHeight": 760
+  },
+  "name": "sidebar-05",
+  "registryDependencies": [
+    "https://shark.vini.one/r/collapsible.json",
+    "https://shark.vini.one/r/separator.json",
+    "https://shark.vini.one/r/sidebar.json"
+  ],
+  "title": "Sidebar 05",
+  "type": "registry:block"
+}

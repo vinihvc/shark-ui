@@ -40,7 +40,7 @@ export const HeroSection = (props: HeroSectionProps) => {
 
         <div className="max-w-xl">
           <p className="text-base text-muted-foreground sm:text-xl">
-            {`A beautifully designed and accessible set of ${count}+ components, created to help you build reusable and scalable design systems. `}
+            {`${count}+ accessible React components. Copy them into your repo and restyle them.`}
           </p>
         </div>
 

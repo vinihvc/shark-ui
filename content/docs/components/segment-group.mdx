@@ -108,6 +108,12 @@ Use the `disabled` prop on individual items to disable specific options.
 
 <ComponentPreview componentName="segment-group" fileName="example-variant-underline" />
 
+## Pill
+
+The `pill` prop creates fully rounded segment groups. Only applies when `variant` is `"default"`.
+
+<ComponentPreview componentName="segment-group" fileName="example-pill" />
+
 ## Orientation
 
 Use `orientation` to change the direction of the items.
@@ -151,6 +157,7 @@ Root component. Manages segmented control state (single or multi-select).
 | `onValueChange` | `(details: ValueChangeDetails) => void` | - |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
 | `variant` | `"default" \| "underline"` | `"default"` |
+| `pill` | `boolean` | `false` |
 | `disabled` | `boolean` | - |
 | `className` | `string` | - |
 | `asChild` | `boolean` | - |

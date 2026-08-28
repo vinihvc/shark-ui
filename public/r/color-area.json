@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-area",
+  "type": "registry:ui",
+  "dependencies": ["@ark-ui/react"],
+  "files": [
+    {
+      "path": "registry/react/components/color-area.tsx",
+      "content": "\"use client\";\n\nimport {\n  ColorPicker as ArkColorPicker,\n  parseColor as parseColorArk,\n} from \"@ark-ui/react/color-picker\";\nimport type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const parseColor = parseColorArk;\n\nexport const ColorArea = (\n  props: React.ComponentProps<typeof ArkColorPicker.Root>\n) => {\n  const { className, children, ...rest } = props;\n\n  return (\n    <ArkColorPicker.Root\n      className={cn(\"flex w-full flex-col gap-2 text-foreground\", className)}\n      data-slot=\"color-area-root\"\n      inline\n      {...rest}\n    >\n      {children}\n      <ArkColorPicker.HiddenInput />\n    </ArkColorPicker.Root>\n  );\n};\n\nexport const ColorArea = (\n  props: React.ComponentProps<typeof ArkColorPicker.Area>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkColorPicker.Area\n      className={cn(\n        \"relative h-40 touch-none overflow-hidden rounded-md\",\n        className\n      )}\n      data-slot=\"color-area\"\n      {...rest}\n    />\n  );\n};\n\nexport const ColorAreaBackground = (\n  props: React.ComponentProps<typeof ArkColorPicker.AreaBackground>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkColorPicker.AreaBackground\n      className={cn(\"size-full rounded-lg border\", className)}\n      data-slot=\"color-area-background\"\n      {...rest}\n    />\n  );\n};\n\nexport const ColorAreaThumb = (\n  props: React.ComponentProps<typeof ArkColorPicker.AreaThumb>\n) => {\n  const { className, ...rest } = props;\n\n  return (\n    <ArkColorPicker.AreaThumb\n      className={cn(\n        \"-translate-1/2\",\n        \"size-4 rounded-full border-2 border-white shadow-xs/5\",\n        \"outline-none ring-border/64 focus-visible:ring-1\",\n        className\n      )}\n      data-slot=\"color-area-thumb\"\n      {...rest}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -105,7 +105,7 @@ import { TocThumb } from "@/components/thumbs/toc";
 import { ToggleThumb } from "@/components/thumbs/toggle";
 import { ToggleGroupThumb } from "@/components/thumbs/toggle-group";
 import { ToggleTooltipThumb } from "@/components/thumbs/toggle-tooltip";
-import { ToolThumb } from "@/components/thumbs/tool";
+import { ToolResultThumb } from "@/components/thumbs/tool-result";
 import { TooltipThumb } from "@/components/thumbs/tooltip";
 import { TourThumb } from "@/components/thumbs/tour";
 import { TreeViewThumb } from "@/components/thumbs/tree-view";
@@ -218,7 +218,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   toggle: ToggleThumb,
   "toggle-group": ToggleGroupThumb,
   "toggle-tooltip": ToggleTooltipThumb,
-  tool: ToolThumb,
+  "tool-result": ToolResultThumb,
   tooltip: TooltipThumb,
   tour: TourThumb,
   "tree-view": TreeViewThumb,

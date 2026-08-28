@@ -85,27 +85,27 @@ import {
 
 ## Tooltip vs Toggle Tooltip
 
-You're viewing **Toggle Tooltip**—a popover that opens on hover or click. Use it when the content is essential and should be accessible to everyone, including touch users and screen readers.
+You're viewing **Toggle Tooltip**, a popover that opens on hover or click. Use it when the content is essential and should be accessible to everyone, including touch users and screen readers.
 
 ### Use Toggle Tooltip when
 
 - The trigger's **primary purpose** is to reveal the content.
 - The content is **essential** and should be accessible to touch users and screen readers.
-- You need **click-to-open** so everyone can access it—no hover required.
+- You need **click-to-open** so everyone can access it, with no hover required.
 - The content may be **interactive** (links, buttons) since Toggle Tooltip is a popover under the hood.
 
 ### Toggle Tooltip behavior
 
-- **Touch and keyboard** — Opens on click as well as hover, so touch and keyboard users can access the content.
-- **Screen reader exposure** — Content is exposed to assistive technologies.
-- **Escape to close** — Press Escape to dismiss when open.
-- **Icon-only triggers** — Add an `aria-label` when the trigger is an icon without visible text.
+- **Touch and keyboard**: opens on click as well as hover, so touch and keyboard users can access the content.
+- **Screen reader exposure**: content is exposed to assistive technologies.
+- **Escape to close**: press Escape to dismiss when open.
+- **Icon-only triggers**: add an `aria-label` when the trigger is an icon without visible text.
 
 ### Consider Tooltip when
 
 - The trigger has its own purpose and the popup is **supplementary**.
-- The content is **non-essential**—nice-to-have clarity.
-- Touch users don't need to access it—tooltips only open on hover/focus.
+- The content is **non-essential**: nice-to-have clarity.
+- Touch users don't need to access it. Tooltips only open on hover/focus.
 - The content is **short and non-interactive** (no links or buttons inside).
 
 ## Positioning

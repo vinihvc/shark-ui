@@ -20,7 +20,7 @@ import {
 } from "@/registry/react/components/message-scroller";
 
 const turns = [
-  { from: "ada", text: "Morning — did the preview deploy?" },
+  { from: "ada", text: "Morning. Did the preview deploy?" },
   { from: "you", text: "Yes. Checking the chat primitives next." },
   { from: "ada", text: "Scroller first. Jump buttons if I scroll away." },
   { from: "you", text: "Ark ScrollArea, no extra headless package." },

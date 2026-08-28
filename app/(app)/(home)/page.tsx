@@ -12,7 +12,7 @@ export const revalidate = false;
 
 export const metadata = createMetadata({
   description:
-    "Open-source, shadcn-style React components built on Ark UI. Install, own, and customize the code in your project.",
+    "Open-source React components built on Ark UI. Install the source into your project.",
   title: "React components built on Ark UI",
   url: "/",
 });
