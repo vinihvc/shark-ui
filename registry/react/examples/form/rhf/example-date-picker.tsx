@@ -38,14 +38,6 @@ import {
   FieldGroup,
 } from "@/registry/react/components/field";
 
-const formSchema = z.object({
-  interviewDate: z
-    .array(z.custom<DateValue>((val) => val != null && typeof val === "object"))
-    .min(1, {
-      message: "Please choose your preferred interview date.",
-    }),
-});
-
 const Example = () => {
   const form = useForm({
     defaultValues: {
@@ -125,5 +117,13 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  interviewDate: z
+    .array(z.custom<DateValue>((val) => val != null && typeof val === "object"))
+    .min(1, {
+      message: "Please choose your preferred interview date.",
+    }),
+});
 
 export default Example;

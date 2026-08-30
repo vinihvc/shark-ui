@@ -1,0 +1,137 @@
+---
+title: useAsyncList
+description: Load, filter, sort, and paginate asynchronous lists.
+links:
+  doc: https://ark-ui.com/docs/collections/async-list
+  api: https://ark-ui.com/docs/collections/async-list#api-reference
+---
+
+<ComponentPreview componentName="use-async-list" />
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/use-async-list
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="hooks/use-async-list.ts" src="../hooks/use-async-list.ts" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { useAsyncList } from "@/hooks/use-async-list";
+```
+
+```tsx
+const list = useAsyncList<User>({
+  autoReload: true,
+  async load({ signal }) {
+    const response = await fetch("/api/users", { signal });
+    if (!response.ok) throw new Error("Failed to load users");
+    const items: User[] = await response.json();
+    return { items };
+  },
+});
+```
+
+Use `list.items`, `list.loading`, and `list.error` to render the result. Pass the supplied `signal` to `fetch` so requests can be canceled. `setFilterText` starts a new load immediately; the hook does not add a debounce.
+
+The examples retain Ark's data sources: DummyJSON, JSONPlaceholder, Fake Store API, and local user fixtures. Network examples require those services to be available and show an error when a request fails.
+
+## Examples
+
+### Infinite loading
+
+Return the next cursor from `load` and call `loadMore` to append another page. Omit the cursor when no pages remain.
+
+<ComponentPreview componentName="use-async-list" fileName="example-infinite-loading" />
+
+### Filtering
+
+Filter local users by name or email. The simulated delay makes the loading state visible; the input remains usable while results load.
+
+<ComponentPreview componentName="use-async-list" fileName="example-filter" />
+
+### Client-side sorting
+
+Provide a `sort` callback to reorder loaded items locally. This example uses locale-aware comparison and leaves the original array unchanged.
+
+<ComponentPreview componentName="use-async-list" fileName="example-sort-client-side" />
+
+### Server-side sorting
+
+Without a `sort` callback, `list.sort` invokes `load` with the new descriptor. This example sends the direction to Fake Store API; it does not request sorting by product title.
+
+<ComponentPreview componentName="use-async-list" fileName="example-sort-server-side" />
+
+### Dependencies
+
+Changes to the department or role reload the list automatically. Keep dependency values primitive; they identify the external values used by `load`.
+
+<ComponentPreview componentName="use-async-list" fileName="example-dependencies" />
+
+## API Reference
+
+### useAsyncList
+
+A direct export of Ark's `useAsyncList<T, C = string>`. The module also exports `UseAsyncListProps<T, C>` and `UseAsyncListReturn<T, C>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `load` | Async function returning `{ items: T[], cursor?: C }` | Required |
+| `sort` | Function returning `{ items: T[] }`, synchronously or asynchronously | — |
+| `initialItems` | `T[]` | `[]` |
+| `initialFilterText` | `string` | `""` |
+| `initialSortDescriptor` | `{ column: keyof T; direction: "ascending" \| "descending" }` | — |
+| `dependencies` | Array of strings, numbers, booleans, `null`, or `undefined` | — |
+| `autoReload` | `boolean` | `false` |
+| `onSuccess` | `(details: { items: T[] }) => void` | — |
+| `onError` | `(details: { error: Error }) => void` | — |
+
+`autoReload` enables the initial load. Changes to `dependencies` trigger a reload even when `autoReload` is omitted.
+
+### Callback details
+
+`load` receives `signal`, `filterText`, `cursor`, and `sortDescriptor`. The signal and cursor may be absent. The cursor type is the second generic parameter, for example `useAsyncList<Post, number>`.
+
+`sort` receives `items`, `descriptor`, and `filterText`. The descriptor's `column` is a key of `T`.
+
+### Return value
+
+| Member | Description |
+| --- | --- |
+| `items` | Current items. |
+| `loading`, `sorting` | Loading and local sorting states. |
+| `empty`, `hasMore` | Whether the list is empty or has another cursor. |
+| `error` | Error from the latest failed operation, if any. |
+| `filterText`, `sortDescriptor`, `cursor` | Current filter, sorting, and pagination state. |
+| `reload()` | Reload the list. |
+| `loadMore()` | Append the next page when a cursor exists. |
+| `sort(descriptor)` | Sort locally when a callback exists, otherwise load with the descriptor. |
+| `setFilterText(text)`, `clearFilter()` | Update the filter and load matching items. |
+| `abort()` | Cancel the current request. |

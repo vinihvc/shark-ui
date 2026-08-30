@@ -17,11 +17,6 @@ import {
   MessageScrollerViewport,
 } from "@/registry/react/components/message-scroller";
 
-const lines = Array.from(
-  { length: 16 },
-  (_, index) => `Turn ${index + 1}: keep scrolling to reveal the jump controls.`
-);
-
 const Example = () => (
   <MessageScroller className="h-96 w-full max-w-md rounded-xl border">
     <MessageScrollerViewport className="px-4 py-6">
@@ -60,6 +55,11 @@ const Example = () => (
     <MessageScrollerButton direction="start" />
     <MessageScrollerButton direction="end" />
   </MessageScroller>
+);
+
+const lines = Array.from(
+  { length: 16 },
+  (_, index) => `Turn ${index + 1}: keep scrolling to reveal the jump controls.`
 );
 
 export default Example;

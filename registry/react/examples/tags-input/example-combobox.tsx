@@ -19,17 +19,6 @@ import {
   useTagsInput,
 } from "@/registry/react/components/tags-input";
 
-const frameworkItems = [
-  "React",
-  "Solid",
-  "Vue",
-  "Svelte",
-  "Angular",
-  "Preact",
-  "Next.js",
-  "Astro",
-];
-
 const Example = () => {
   const uid = React.useId();
 
@@ -94,5 +83,16 @@ const Example = () => {
     </Field>
   );
 };
+
+const frameworkItems = [
+  "React",
+  "Solid",
+  "Vue",
+  "Svelte",
+  "Angular",
+  "Preact",
+  "Next.js",
+  "Astro",
+];
 
 export default Example;

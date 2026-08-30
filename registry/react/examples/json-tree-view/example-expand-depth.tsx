@@ -1,17 +1,5 @@
 import { JsonTreeView } from "@/registry/react/components/json-tree-view";
 
-const data = {
-  user: {
-    profile: {
-      name: "Jane",
-      settings: {
-        notifications: true,
-        theme: "dark",
-      },
-    },
-  },
-};
-
 const Example = () => (
   <div className="flex flex-col gap-6">
     <div>
@@ -28,5 +16,17 @@ const Example = () => (
     </div>
   </div>
 );
+
+const data = {
+  user: {
+    profile: {
+      name: "Jane",
+      settings: {
+        notifications: true,
+        theme: "dark",
+      },
+    },
+  },
+};
 
 export default Example;

@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { REGISTRY_EXAMPLES_PATH } from "@/config/constants";
+import { replaceRegistryImportsForCopy } from "@/utils/formatter";
 
 const COMPONENT_DESCRIPTIONS: Record<string, string> = {
   checkbox: "Control for multiple selections in a set.",
@@ -15,8 +16,7 @@ const EXAMPLE_PREFIX = /^example-/;
 const TSX_EXT = /\.tsx$/;
 const TS_EXT = /\.ts$/;
 
-const transformImports = (code: string) =>
-  code.replaceAll("@/registry/react/components", "@/components/ui");
+const transformImports = replaceRegistryImportsForCopy;
 
 const examplesRoot = join(
   /* turbopackIgnore: true */

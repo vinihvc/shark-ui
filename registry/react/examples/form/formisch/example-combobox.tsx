@@ -34,17 +34,6 @@ import {
   FieldLabel,
 } from "@/registry/react/components/field";
 
-const formSchema = v.object({
-  department: v.pipe(
-    v.array(v.string()),
-    v.minLength(1, "Select the department that best matches your role."),
-    v.check(
-      (val) => val[0] !== "",
-      "Select the department that best matches your role."
-    )
-  ),
-});
-
 const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
@@ -123,6 +112,17 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  department: v.pipe(
+    v.array(v.string()),
+    v.minLength(1, "Select the department that best matches your role."),
+    v.check(
+      (val) => val[0] !== "",
+      "Select the department that best matches your role."
+    )
+  ),
+});
 
 const initialItems = [
   { label: "Engineering", value: "engineering" },

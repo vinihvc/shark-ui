@@ -30,17 +30,6 @@ import {
 } from "@/registry/react/components/input-group";
 import { toast } from "@/registry/react/components/toast";
 
-const formSchema = z.object({
-  emails: z
-    .array(
-      z.object({
-        address: z.string().email("Enter a valid email address."),
-      })
-    )
-    .min(1, "Add at least one email address.")
-    .max(5, "You can add up to 5 email addresses."),
-});
-
 const Example = () => {
   const form = useForm({
     defaultValues: {
@@ -165,5 +154,16 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  emails: z
+    .array(
+      z.object({
+        address: z.string().email("Enter a valid email address."),
+      })
+    )
+    .min(1, "Add at least one email address.")
+    .max(5, "You can add up to 5 email addresses."),
+});
 
 export default Example;

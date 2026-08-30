@@ -7,13 +7,6 @@ import {
   ToggleGroupItem,
 } from "@/registry/react/components/toggle-group";
 
-const FONT_WEIGHTS = [
-  { className: "font-light", label: "Light", value: "light" },
-  { className: "font-normal", label: "Normal", value: "normal" },
-  { className: "font-medium", label: "Medium", value: "medium" },
-  { className: "font-bold", label: "Bold", value: "bold" },
-] as const;
-
 const Example = () => {
   const [value, setValue] = React.useState<string[]>(["normal"]);
 
@@ -48,5 +41,12 @@ const Example = () => {
     </div>
   );
 };
+
+const FONT_WEIGHTS = [
+  { className: "font-light", label: "Light", value: "light" },
+  { className: "font-normal", label: "Normal", value: "normal" },
+  { className: "font-medium", label: "Medium", value: "medium" },
+  { className: "font-bold", label: "Bold", value: "bold" },
+] as const;
 
 export default Example;

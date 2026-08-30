@@ -44,32 +44,6 @@ import {
 } from "@/registry/react/components/select";
 import { Switch } from "@/registry/react/components/switch";
 
-const formSchema = v.object({
-  addons: v.pipe(
-    v.array(v.string()),
-    v.minLength(1, "Please select at least one add-on."),
-    v.maxLength(3, "You can select up to 3 add-ons."),
-    v.check(
-      (value) => value.every((addon) => addons.some((a) => a.id === addon)),
-      "You selected an invalid add-on."
-    )
-  ),
-  billingPeriod: v.pipe(
-    v.array(v.string()),
-    v.minLength(1, "Please select a billing period."),
-    v.check((val) => val[0] !== "", "Please select a billing period.")
-  ),
-  emailNotifications: v.boolean(),
-  plan: v.picklist(["basic", "pro"], "Please select a subscription plan."),
-});
-
-const initialInput = {
-  addons: [] as string[],
-  billingPeriod: [""],
-  emailNotifications: false,
-  plan: "basic" as "basic" | "pro",
-};
-
 const Example = () => {
   const form = useForm({
     initialInput,
@@ -247,6 +221,32 @@ const Example = () => {
       </Form>
     </Card>
   );
+};
+
+const formSchema = v.object({
+  addons: v.pipe(
+    v.array(v.string()),
+    v.minLength(1, "Please select at least one add-on."),
+    v.maxLength(3, "You can select up to 3 add-ons."),
+    v.check(
+      (value) => value.every((addon) => addons.some((a) => a.id === addon)),
+      "You selected an invalid add-on."
+    )
+  ),
+  billingPeriod: v.pipe(
+    v.array(v.string()),
+    v.minLength(1, "Please select a billing period."),
+    v.check((val) => val[0] !== "", "Please select a billing period.")
+  ),
+  emailNotifications: v.boolean(),
+  plan: v.picklist(["basic", "pro"], "Please select a subscription plan."),
+});
+
+const initialInput = {
+  addons: [] as string[],
+  billingPeriod: [""],
+  emailNotifications: false,
+  plan: "basic" as "basic" | "pro",
 };
 
 const collection = createListCollection({

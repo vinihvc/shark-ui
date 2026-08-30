@@ -13,6 +13,33 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
+const Example = () => (
+  <div className="flex flex-col gap-4">
+    <Tour steps={steps}>
+      <TourTrigger asChild>
+        <Button variant="outline">Start Tour</Button>
+      </TourTrigger>
+
+      <div
+        className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+        id="tour-target-element"
+      >
+        Target Element
+      </div>
+
+      <TourContent>
+        <TourHeader>
+          <TourProgressText />
+          <TourTitle />
+          <TourDescription />
+        </TourHeader>
+
+        <TourActions />
+      </TourContent>
+    </Tour>
+  </div>
+);
+
 const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Start Tour" }],
@@ -54,32 +81,5 @@ const steps: TourStepType[] = [
     type: "dialog",
   },
 ];
-
-const Example = () => (
-  <div className="flex flex-col gap-4">
-    <Tour steps={steps}>
-      <TourTrigger asChild>
-        <Button variant="outline">Start Tour</Button>
-      </TourTrigger>
-
-      <div
-        className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-        id="tour-target-element"
-      >
-        Target Element
-      </div>
-
-      <TourContent>
-        <TourHeader>
-          <TourProgressText />
-          <TourTitle />
-          <TourDescription />
-        </TourHeader>
-
-        <TourActions />
-      </TourContent>
-    </Tour>
-  </div>
-);
 
 export default Example;

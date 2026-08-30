@@ -11,13 +11,6 @@ import {
   QrCodeFrame,
 } from "@/registry/react/components/qr-code";
 
-const QUALITY_BY_LEVEL = {
-  0: "L",
-  20: "M",
-  40: "Q",
-  60: "H",
-} as const;
-
 const Example = () => {
   const [value, setValue] = React.useState("");
 
@@ -60,6 +53,13 @@ const Example = () => {
     </QrCode>
   );
 };
+
+const QUALITY_BY_LEVEL = {
+  0: "L",
+  20: "M",
+  40: "Q",
+  60: "H",
+} as const;
 
 const getQualityLevel = (length: number) => {
   if (length < 20) {

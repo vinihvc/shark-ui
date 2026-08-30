@@ -10,10 +10,6 @@ import {
 } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
-const TIMEOUT_MS = 600;
-
-const store = createHotkeyStore({ sequenceTimeoutMs: TIMEOUT_MS });
-
 const Example = () => {
   const [count, setCount] = React.useState(0);
 
@@ -57,5 +53,9 @@ const Example = () => {
     </Card>
   );
 };
+
+const TIMEOUT_MS = 600;
+
+const store = createHotkeyStore({ sequenceTimeoutMs: TIMEOUT_MS });
 
 export default Example;

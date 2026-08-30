@@ -10,8 +10,6 @@ import {
   parseColor,
 } from "@/registry/react/components/color-picker";
 
-const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
-
 const Example = () => {
   const [value, setValue] = React.useState("#0485F7");
 
@@ -39,5 +37,7 @@ const Example = () => {
     </div>
   );
 };
+
+const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 
 export default Example;

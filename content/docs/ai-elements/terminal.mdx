@@ -129,7 +129,7 @@ Copy with `toPlainOutput` so the clipboard gets visible text, not ANSI codes.
 
 ### Terminal
 
-Root panel. Provides `output` to copy and content parts. `autoScroll` keeps the viewport on the latest line.
+Root panel.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -158,13 +158,14 @@ Container for header actions. Aligns to the end.
 
 ### TerminalContent
 
-Renders parsed ANSI `output`. Children replace parsed tokens. Mapped SGR codes: `31` destructive, `32` success, `33` warning, `34`/`36` info, `90` muted.
+Renders parsed ANSI `output`. Children replace parsed tokens.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `output` | `string` | `Terminal` `output` |
+| `children` | `React.ReactNode` | `-` |
 | `className` | `string` | `-` |
 
 ### toPlainOutput
 
-`toPlainOutput(output)` returns the visible text with ANSI SGR codes removed. Line breaks are kept. Use it as the `Clipboard` value when copying.
+Returns the visible text with ANSI SGR codes removed.

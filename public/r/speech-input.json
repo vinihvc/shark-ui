@@ -1,6 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Microphone button for Web Speech API voice transcription.",
   "name": "speech-input",
   "registryDependencies": [

@@ -22,7 +22,10 @@
       "warning-foreground": "var(--color-amber-700)"
     }
   },
-  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
   "name": "json-tree-view",
   "type": "registry:ui",
   "files": [

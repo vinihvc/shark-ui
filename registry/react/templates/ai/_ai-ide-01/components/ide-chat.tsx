@@ -40,10 +40,10 @@ import {
   PromptInputTextarea,
 } from "@/registry/react/components/prompt-input";
 import {
-  Task,
-  TaskContent,
-  TaskItemFile,
-  TaskTrigger,
+  TaskItem,
+  TaskItemContent,
+  TaskItemDetailFile,
+  TaskItemTrigger,
 } from "@/registry/react/components/task";
 import {
   ToolResult,
@@ -79,18 +79,21 @@ export const IdeChat = () => {
             </PlanAction>
           </PlanHeader>
           <PlanContent>
-            <Task status="completed">
-              <TaskTrigger status="completed" title="Read helpers.ts" />
-              <TaskContent>
-                <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
-              </TaskContent>
-            </Task>
-            <Task status="in-progress">
-              <TaskTrigger status="in-progress" title="Patch isValidEmail" />
-              <TaskContent>
-                <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
-              </TaskContent>
-            </Task>
+            <TaskItem status="completed">
+              <TaskItemTrigger status="completed" title="Read helpers.ts" />
+              <TaskItemContent>
+                <TaskItemDetailFile>src/utils/helpers.ts</TaskItemDetailFile>
+              </TaskItemContent>
+            </TaskItem>
+            <TaskItem status="in-progress">
+              <TaskItemTrigger
+                status="in-progress"
+                title="Patch isValidEmail"
+              />
+              <TaskItemContent>
+                <TaskItemDetailFile>src/utils/helpers.ts</TaskItemDetailFile>
+              </TaskItemContent>
+            </TaskItem>
           </PlanContent>
         </Plan>
       </div>

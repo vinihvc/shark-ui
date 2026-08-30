@@ -9,8 +9,6 @@ import {
 } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
-const HOTKEY = "mod+shift+H";
-
 const Example = () => {
   const formatHotkey = useFormatHotkey();
 
@@ -42,5 +40,7 @@ const Example = () => {
     </Card>
   );
 };
+
+const HOTKEY = "mod+shift+H";
 
 export default Example;

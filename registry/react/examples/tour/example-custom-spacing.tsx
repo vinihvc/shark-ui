@@ -15,25 +15,6 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
-const steps: TourStepType[] = [
-  {
-    actions: [{ action: "next" as const, label: "Next" }],
-    description:
-      "`TourContent` uses `[--space:--spacing(2)]` here for tighter padding than the default.",
-    id: "step-1",
-    title: "Custom spacing",
-    type: "dialog",
-  },
-  {
-    actions: [{ action: "dismiss" as const, label: "Done" }],
-    description:
-      "You can pair `[--space]` with responsive variants, e.g. `md:[--space:--spacing(6)]`.",
-    id: "step-2",
-    title: "Breakpoint utilities",
-    type: "dialog",
-  },
-];
-
 const Example = () => (
   <Tour steps={steps}>
     <TourTrigger asChild>
@@ -52,5 +33,24 @@ const Example = () => (
     </TourContent>
   </Tour>
 );
+
+const steps: TourStepType[] = [
+  {
+    actions: [{ action: "next" as const, label: "Next" }],
+    description:
+      "`TourContent` uses `[--space:--spacing(2)]` here for tighter padding than the default.",
+    id: "step-1",
+    title: "Custom spacing",
+    type: "dialog",
+  },
+  {
+    actions: [{ action: "dismiss" as const, label: "Done" }],
+    description:
+      "You can pair `[--space]` with responsive variants, e.g. `md:[--space:--spacing(6)]`.",
+    id: "step-2",
+    title: "Breakpoint utilities",
+    type: "dialog",
+  },
+];
 
 export default Example;

@@ -16,54 +16,6 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
-const steps: TourStepType[] = [
-  {
-    actions: [{ action: "next", label: "Start" }],
-    description:
-      "This tour demonstrates waiting for elements that appear dynamically.",
-    id: "intro",
-    title: "Dynamic Elements",
-    type: "dialog",
-  },
-  {
-    description: "Click the button to add a new item to the list.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
-    },
-    id: "add-item",
-    target: () => document.querySelector<HTMLElement>("#btn-add-item"),
-    title: "Add an Item",
-    type: "tooltip",
-  },
-  {
-    actions: [{ action: "next", label: "Next" }],
-    description:
-      "The tour waited for this element to appear before showing this step.",
-    effect({ show }) {
-      const [promise, cancel] = waitForElement(
-        () => document.querySelector<HTMLElement>('[data-item="new"]'),
-        { timeout: 5000 }
-      );
-      promise.then(() => show());
-      return () => cancel();
-    },
-    id: "new-item",
-    target: () => document.querySelector<HTMLElement>('[data-item="new"]'),
-    title: "New Item Added!",
-    type: "tooltip",
-  },
-  {
-    actions: [{ action: "dismiss", label: "Done" }],
-    description: "You learned how to use waitForElement for dynamic content.",
-    id: "complete",
-    title: "Tour Complete",
-    type: "dialog",
-  },
-];
-
 const Example = () => {
   const [items, setItems] = React.useState(["Item 1", "Item 2"]);
 
@@ -120,5 +72,53 @@ const Example = () => {
     </div>
   );
 };
+
+const steps: TourStepType[] = [
+  {
+    actions: [{ action: "next", label: "Start" }],
+    description:
+      "This tour demonstrates waiting for elements that appear dynamically.",
+    id: "intro",
+    title: "Dynamic Elements",
+    type: "dialog",
+  },
+  {
+    description: "Click the button to add a new item to the list.",
+    effect({ next, target, show }) {
+      show();
+      const [promise, cancel] = waitForEvent(target, "click");
+      promise.then(() => next());
+      return cancel;
+    },
+    id: "add-item",
+    target: () => document.querySelector<HTMLElement>("#btn-add-item"),
+    title: "Add an Item",
+    type: "tooltip",
+  },
+  {
+    actions: [{ action: "next", label: "Next" }],
+    description:
+      "The tour waited for this element to appear before showing this step.",
+    effect({ show }) {
+      const [promise, cancel] = waitForElement(
+        () => document.querySelector<HTMLElement>('[data-item="new"]'),
+        { timeout: 5000 }
+      );
+      promise.then(() => show());
+      return () => cancel();
+    },
+    id: "new-item",
+    target: () => document.querySelector<HTMLElement>('[data-item="new"]'),
+    title: "New Item Added!",
+    type: "tooltip",
+  },
+  {
+    actions: [{ action: "dismiss", label: "Done" }],
+    description: "You learned how to use waitForElement for dynamic content.",
+    id: "complete",
+    title: "Tour Complete",
+    type: "dialog",
+  },
+];
 
 export default Example;

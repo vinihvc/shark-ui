@@ -239,7 +239,9 @@
     }
   },
   "cssVars": {},
-  "dependencies": ["@ark-ui/react"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
   "name": "prose",
   "type": "registry:ui",
   "files": [

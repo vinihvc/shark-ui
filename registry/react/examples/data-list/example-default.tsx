@@ -5,12 +5,6 @@ import {
   DataListItemValue,
 } from "@/registry/react/components/data-list";
 
-const data = [
-  { label: "New Users", value: "234" },
-  { label: "Sales", value: "£12,340" },
-  { label: "Revenue", value: "3,450" },
-];
-
 const DataListDemo = () => (
   <DataList>
     {data.map((item) => (
@@ -21,5 +15,11 @@ const DataListDemo = () => (
     ))}
   </DataList>
 );
+
+const data = [
+  { label: "New Users", value: "234" },
+  { label: "Sales", value: "£12,340" },
+  { label: "Revenue", value: "3,450" },
+];
 
 export default DataListDemo;

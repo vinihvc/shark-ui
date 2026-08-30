@@ -1,7 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "categories": ["dashboard"],
-  "dependencies": ["lucide-react", "recharts"],
+  "categories": [
+    "dashboard"
+  ],
+  "dependencies": [
+    "lucide-react",
+    "recharts"
+  ],
   "description": "An analytics dashboard with navigation, metrics, a chart, and channel data.",
   "files": [
     {

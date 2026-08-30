@@ -27,12 +27,6 @@ import {
   FileUploadList,
 } from "@/registry/react/components/file-upload";
 
-const formSchema = z.object({
-  resume: z
-    .array(z.instanceof(File))
-    .min(1, "Please upload at least one PDF or Word document."),
-});
-
 const Example = () => {
   const form = useForm({
     defaultValues: { resume: [] as File[] },
@@ -111,5 +105,11 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  resume: z
+    .array(z.instanceof(File))
+    .min(1, "Please upload at least one PDF or Word document."),
+});
 
 export default Example;

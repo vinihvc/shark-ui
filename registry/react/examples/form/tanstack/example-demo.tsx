@@ -25,17 +25,6 @@ import {
   InputGroupTextarea,
 } from "@/registry/react/components/input-group";
 
-const formSchema = z.object({
-  description: z
-    .string()
-    .min(20, "Description must be at least 20 characters.")
-    .max(100, "Description must be at most 100 characters."),
-  title: z
-    .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
-});
-
 export const BugReportForm = () => {
   const form = useForm({
     defaultValues: {
@@ -135,5 +124,16 @@ export const BugReportForm = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+});
 
 export default BugReportForm;

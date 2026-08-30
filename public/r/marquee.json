@@ -24,7 +24,9 @@
       "--animate-marquee-y": "marqueeY var(--marquee-duration) linear infinite var(--marquee-delay)"
     }
   },
-  "dependencies": ["@ark-ui/react"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
   "name": "marquee",
   "type": "registry:ui",
   "files": [

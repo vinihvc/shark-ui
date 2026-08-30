@@ -110,11 +110,19 @@
       "font-sans": "var(--font-sans, ui-sans-serif, system-ui, sans-serif)"
     }
   },
-  "dependencies": ["@base-ui/react", "tailwind-variants", "lucide-react"],
+  "dependencies": [
+    "@base-ui/react",
+    "tailwind-variants",
+    "lucide-react"
+  ],
   "description": "Complete Shark theme: colors, sidebar, fonts, and base styles. Use with the shadcn CLI after `init` (e.g. `npx shadcn@latest init @shark/style`).",
-  "devDependencies": ["tw-animate-css"],
+  "devDependencies": [
+    "tw-animate-css"
+  ],
   "extends": "none",
   "name": "style",
-  "registryDependencies": ["https://shark.vini.one/r/utils.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/utils.json"
+  ],
   "type": "registry:style"
 }

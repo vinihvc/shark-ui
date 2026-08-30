@@ -7,7 +7,9 @@
     "recharts",
     "tailwind-variants"
   ],
-  "devDependencies": ["tw-animate-css"],
+  "devDependencies": [
+    "tw-animate-css"
+  ],
   "name": "ui",
   "registryDependencies": [
     "https://shark.vini.one/r/accordion.json",
@@ -54,6 +56,7 @@
     "https://shark.vini.one/r/file-upload.json",
     "https://shark.vini.one/r/float.json",
     "https://shark.vini.one/r/floating-panel.json",
+    "https://shark.vini.one/r/focus-trap.json",
     "https://shark.vini.one/r/format.json",
     "https://shark.vini.one/r/frame.json",
     "https://shark.vini.one/r/highlight.json",
@@ -77,6 +80,7 @@
     "https://shark.vini.one/r/message.json",
     "https://shark.vini.one/r/message-scroller.json",
     "https://shark.vini.one/r/native-select.json",
+    "https://shark.vini.one/r/navigation-menu.json",
     "https://shark.vini.one/r/number-input.json",
     "https://shark.vini.one/r/pagination.json",
     "https://shark.vini.one/r/password-input.json",
@@ -87,6 +91,7 @@
     "https://shark.vini.one/r/prompt-input.json",
     "https://shark.vini.one/r/prose.json",
     "https://shark.vini.one/r/qr-code.json",
+    "https://shark.vini.one/r/questionnaire.json",
     "https://shark.vini.one/r/radio-group.json",
     "https://shark.vini.one/r/rating.json",
     "https://shark.vini.one/r/reasoning.json",

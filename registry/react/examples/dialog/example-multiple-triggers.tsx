@@ -9,11 +9,6 @@ import {
   DialogTrigger,
 } from "@/registry/react/components/dialog";
 
-const users = [
-  { name: "Alice", value: "alice" },
-  { name: "Bob", value: "bob" },
-];
-
 const Example = () => (
   <Dialog>
     <div className="flex flex-wrap justify-center gap-2">
@@ -44,5 +39,10 @@ const Example = () => (
     </DialogContent>
   </Dialog>
 );
+
+const users = [
+  { name: "Alice", value: "alice" },
+  { name: "Bob", value: "bob" },
+];
 
 export default Example;

@@ -1,6 +1,6 @@
 "use client";
 
-import { BookIcon, ExternalLinkIcon } from "lucide-react";
+import { ArrowUpRightIcon, BookIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -38,7 +38,9 @@ export const SourcesTrigger = (props: SourcesTriggerProps) => {
   return (
     <CollapsibleTrigger
       className={cn(
-        "inline-flex items-center gap-1.5 text-muted-foreground text-xs hover:text-foreground",
+        "inline-flex items-center gap-1.5",
+        "text-muted-foreground text-xs",
+        "hover:text-foreground",
         className
       )}
       data-slot="sources-trigger"
@@ -69,16 +71,23 @@ export const SourcesContent = (
 };
 
 interface SourceProps extends React.ComponentProps<"a"> {
+  /**
+   * The title of the source.
+   */
   title?: string;
 }
 
 export const Source = (props: SourceProps) => {
-  const { children, className, href, title, ...rest } = props;
+  const { href, title, className, children, ...rest } = props;
 
   return (
     <a
       className={cn(
-        "inline-flex min-w-0 items-center gap-2 rounded-md px-2 py-1.5 text-muted-foreground text-xs hover:bg-muted hover:text-foreground",
+        "inline-flex min-w-0 items-center gap-2",
+        "px-2 py-1.5",
+        "text-muted-foreground text-xs",
+        "rounded-md",
+        "hover:bg-muted hover:text-foreground",
         className
       )}
       data-slot="source"
@@ -89,7 +98,7 @@ export const Source = (props: SourceProps) => {
     >
       <BookIcon aria-hidden="true" className="size-3.5 shrink-0" />
       <span className="min-w-0 truncate">{children ?? title}</span>
-      <ExternalLinkIcon
+      <ArrowUpRightIcon
         aria-hidden="true"
         className="size-3 shrink-0 opacity-64"
       />
@@ -97,7 +106,7 @@ export const Source = (props: SourceProps) => {
   );
 };
 
-interface InlineCitationProps extends React.ComponentProps<"span"> {
+interface InlineCitationProps extends React.ComponentProps<"button"> {
   href?: string;
   index?: number;
   title?: string;
@@ -105,12 +114,20 @@ interface InlineCitationProps extends React.ComponentProps<"span"> {
 
 export const InlineCitation = (props: InlineCitationProps) => {
   const { children, className, href, index, title, ...rest } = props;
+
   const label = index === undefined ? "Source" : String(index);
 
   const trigger = (
     <button
       className={cn(
-        "ms-0.5 inline-flex size-4 translate-y-[-0.125rem] items-center justify-center rounded-full bg-muted font-medium text-muted-foreground text-xs hover:bg-accent hover:text-accent-foreground",
+        "size-4",
+        "inline-flex items-center justify-center",
+        "ms-0.5",
+        "bg-muted",
+        "font-medium text-muted-foreground text-xs",
+        "rounded-full",
+        "-translate-y-0.5",
+        "hover:bg-accent hover:text-accent-foreground",
         className
       )}
       data-slot="inline-citation"

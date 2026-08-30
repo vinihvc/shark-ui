@@ -7,8 +7,6 @@ import {
   TagsInputItem,
 } from "@/registry/react/components/tags-input";
 
-const tagDelimiter = /[,\s]+/;
-
 const Example = () => (
   <Field className="w-full max-w-sm">
     <FieldLabel>Frameworks</FieldLabel>
@@ -29,5 +27,7 @@ const Example = () => (
     </TagsInput>
   </Field>
 );
+
+const tagDelimiter = /[,\s]+/;
 
 export default Example;

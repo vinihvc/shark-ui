@@ -29,16 +29,6 @@ import {
 } from "@/registry/react/components/field";
 import { toast } from "@/registry/react/components/toast";
 
-const formSchema = z.object({
-  stack: z
-    .array(z.string())
-    .min(1, "Pick a suggestion or type your primary technology.")
-    .refine(
-      (val) => val[0] !== "",
-      "Pick a suggestion or type your primary technology."
-    ),
-});
-
 const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
@@ -137,3 +127,13 @@ const initialItems = [
 ];
 
 export default Example;
+
+const formSchema = z.object({
+  stack: z
+    .array(z.string())
+    .min(1, "Pick a suggestion or type your primary technology.")
+    .refine(
+      (val) => val[0] !== "",
+      "Pick a suggestion or type your primary technology."
+    ),
+});

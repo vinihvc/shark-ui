@@ -1,5 +1,7 @@
 import { JsonTreeView } from "@/registry/react/components/json-tree-view";
 
+const Example = () => <JsonTreeView data={data} defaultExpandedDepth={1} />;
+
 const preferences = new Map([
   ["theme", "dark"],
   ["language", "en"],
@@ -12,7 +14,5 @@ const data = {
   preferences,
   visitedPages,
 };
-
-const Example = () => <JsonTreeView data={data} defaultExpandedDepth={1} />;
 
 export default Example;

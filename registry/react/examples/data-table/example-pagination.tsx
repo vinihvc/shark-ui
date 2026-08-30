@@ -23,6 +23,75 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
+const Example = () => {
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+
+  const table = useTable({
+    columns,
+    data,
+    features: dataTableFeatures,
+    getRowId: (row) => row.id,
+    initialState: {
+      pagination: {
+        pageIndex: 0,
+        pageSize: 5,
+      },
+    },
+    onRowSelectionChange: setRowSelection,
+    state: {
+      rowSelection,
+    },
+  });
+
+  return (
+    <div className="flex w-full max-w-2xl flex-col gap-4">
+      <div className="overflow-hidden rounded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder ? null : (
+                      <table.FlexRender header={header} />
+                    )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  data-state={row.getIsSelected() ? "selected" : undefined}
+                  key={row.id}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      <table.FlexRender cell={cell} />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  className="h-24 text-center"
+                  colSpan={columns.length}
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <DataTablePagination table={table} />
+    </div>
+  );
+};
+
 interface InventoryItem {
   id: string;
   location: string;
@@ -124,74 +193,5 @@ const data: InventoryItem[] = Array.from({ length: 24 }, (_, index) => {
     status: statuses[index % statuses.length] ?? "in-stock",
   };
 });
-
-const Example = () => {
-  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-
-  const table = useTable({
-    columns,
-    data,
-    features: dataTableFeatures,
-    getRowId: (row) => row.id,
-    initialState: {
-      pagination: {
-        pageIndex: 0,
-        pageSize: 5,
-      },
-    },
-    onRowSelectionChange: setRowSelection,
-    state: {
-      rowSelection,
-    },
-  });
-
-  return (
-    <div className="flex w-full max-w-2xl flex-col gap-4">
-      <div className="overflow-hidden rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder ? null : (
-                      <table.FlexRender header={header} />
-                    )}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  data-state={row.getIsSelected() ? "selected" : undefined}
-                  key={row.id}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      <table.FlexRender cell={cell} />
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  className="h-24 text-center"
-                  colSpan={columns.length}
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-      <DataTablePagination table={table} />
-    </div>
-  );
-};
 
 export default Example;

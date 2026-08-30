@@ -17,6 +17,43 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
+const Example = () => (
+  <div className="flex flex-col gap-4">
+    <Tour steps={steps}>
+      <TourTrigger asChild>
+        <Button variant="outline">Start Form Tutorial</Button>
+      </TourTrigger>
+
+      <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-border bg-muted/50 p-4">
+        <Field>
+          <FieldLabel htmlFor="input-name">Name</FieldLabel>
+          <Input id="input-name" placeholder="Enter your name" type="text" />
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="input-email">Email</FieldLabel>
+          <Input id="input-email" placeholder="Enter your email" type="email" />
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox id="checkbox-terms" />
+          <FieldLabel htmlFor="checkbox-terms">
+            I accept the terms and conditions
+          </FieldLabel>
+        </Field>
+      </div>
+
+      <TourContent>
+        <TourHeader>
+          <TourProgressText />
+          <TourTitle />
+          <TourDescription />
+        </TourHeader>
+
+        <TourActions />
+      </TourContent>
+    </Tour>
+  </div>
+);
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const steps: TourStepType[] = [
@@ -93,42 +130,5 @@ const steps: TourStepType[] = [
     type: "dialog",
   },
 ];
-
-const Example = () => (
-  <div className="flex flex-col gap-4">
-    <Tour steps={steps}>
-      <TourTrigger asChild>
-        <Button variant="outline">Start Form Tutorial</Button>
-      </TourTrigger>
-
-      <div className="flex max-w-xs flex-col gap-4 rounded-lg border border-border bg-muted/50 p-4">
-        <Field>
-          <FieldLabel htmlFor="input-name">Name</FieldLabel>
-          <Input id="input-name" placeholder="Enter your name" type="text" />
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="input-email">Email</FieldLabel>
-          <Input id="input-email" placeholder="Enter your email" type="email" />
-        </Field>
-        <Field orientation="horizontal">
-          <Checkbox id="checkbox-terms" />
-          <FieldLabel htmlFor="checkbox-terms">
-            I accept the terms and conditions
-          </FieldLabel>
-        </Field>
-      </div>
-
-      <TourContent>
-        <TourHeader>
-          <TourProgressText />
-          <TourTitle />
-          <TourDescription />
-        </TourHeader>
-
-        <TourActions />
-      </TourContent>
-    </Tour>
-  </div>
-);
 
 export default Example;

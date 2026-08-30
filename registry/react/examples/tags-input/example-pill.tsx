@@ -7,8 +7,6 @@ import {
   TagsInputItem,
 } from "@/registry/react/components/tags-input";
 
-const defaultValue = ["Design", "Engineering", "Marketing"];
-
 const Example = () => (
   <Field className="w-full max-w-sm">
     <FieldLabel>Teams</FieldLabel>
@@ -25,5 +23,7 @@ const Example = () => (
     </TagsInput>
   </Field>
 );
+
+const defaultValue = ["Design", "Engineering", "Marketing"];
 
 export default Example;

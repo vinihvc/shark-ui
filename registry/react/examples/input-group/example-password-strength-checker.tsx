@@ -12,6 +12,17 @@ import {
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 
+const Example = () => {
+  const [password, setPassword] = React.useState("");
+
+  return (
+    <div className="flex w-full max-w-sm flex-col gap-4">
+      <PasswordChecker onPasswordChange={setPassword} password={password} />
+      <PasswordStrength password={password} />
+    </div>
+  );
+};
+
 const UPPERCASE_REGEX = /[A-Z]/;
 const LOWERCASE_REGEX = /[a-z]/;
 const NUMBER_REGEX = /\d/;
@@ -146,16 +157,5 @@ function PasswordChecker({ password, onPasswordChange }: PasswordCheckerProps) {
     </Field>
   );
 }
-
-const Example = () => {
-  const [password, setPassword] = React.useState("");
-
-  return (
-    <div className="flex w-full max-w-sm flex-col gap-4">
-      <PasswordChecker onPasswordChange={setPassword} password={password} />
-      <PasswordStrength password={password} />
-    </div>
-  );
-};
 
 export default Example;

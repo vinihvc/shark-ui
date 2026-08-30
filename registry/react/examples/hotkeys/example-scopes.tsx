@@ -10,13 +10,6 @@ import {
 } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
-const commands = [
-  { hotkey: "mod+shift+B", id: "bold", label: "Bold", scope: "editor" },
-  { hotkey: "mod+shift+R", id: "print", label: "Print", scope: "reader" },
-];
-
-const store = createHotkeyStore({ activeScopes: ["editor"] });
-
 const Example = () => {
   const formatHotkey = useFormatHotkey();
   const [scope, setScope] = useState("editor");
@@ -78,5 +71,12 @@ const Example = () => {
     </div>
   );
 };
+
+const commands = [
+  { hotkey: "mod+shift+B", id: "bold", label: "Bold", scope: "editor" },
+  { hotkey: "mod+shift+R", id: "print", label: "Print", scope: "reader" },
+];
+
+const store = createHotkeyStore({ activeScopes: ["editor"] });
 
 export default Example;

@@ -28,16 +28,6 @@ import {
 } from "@/registry/react/components/field";
 import { Switch } from "@/registry/react/components/switch";
 
-const formSchema = v.object({
-  twoFactor: v.pipe(
-    v.boolean(),
-    v.check(
-      (val) => val === true,
-      "It is highly recommended to enable two-factor authentication."
-    )
-  ),
-});
-
 export const Example = () => {
   const form = useForm({
     initialInput: { twoFactor: false },
@@ -100,5 +90,15 @@ export const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  twoFactor: v.pipe(
+    v.boolean(),
+    v.check(
+      (val) => val === true,
+      "It is highly recommended to enable two-factor authentication."
+    )
+  ),
+});
 
 export default Example;

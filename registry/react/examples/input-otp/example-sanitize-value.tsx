@@ -2,8 +2,6 @@
 
 import { InputOTP, InputOTPSlot } from "@/registry/react/components/input-otp";
 
-const sanitizeValue = (value: string) => value.replaceAll("-", "");
-
 const Example = () => (
   <InputOTP sanitizeValue={sanitizeValue}>
     <InputOTPSlot index={0} />
@@ -12,5 +10,7 @@ const Example = () => (
     <InputOTPSlot index={3} />
   </InputOTP>
 );
+
+const sanitizeValue = (value: string) => value.replaceAll("-", "");
 
 export default Example;

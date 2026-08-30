@@ -11,8 +11,6 @@ import {
   SelectValue,
 } from "@/registry/react/components/select";
 
-const MAX_SELECTION = 3;
-
 const Example = () => {
   const [value, setValue] = React.useState<string[]>([]);
 
@@ -43,6 +41,8 @@ const Example = () => {
     </Select>
   );
 };
+
+const MAX_SELECTION = 3;
 
 const renderValue = (value: string[]) => {
   if (value.length === 0) {

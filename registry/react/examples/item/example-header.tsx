@@ -7,27 +7,6 @@ import {
   ItemTitle,
 } from "@/registry/react/components/item";
 
-const models = [
-  {
-    credit: "Valeria Reverdo on Unsplash",
-    description: "Everyday tasks and UI generation.",
-    image: "https://picsum.photos/seed/1/500/300",
-    name: "v0-1.5-sm",
-  },
-  {
-    credit: "Michael Oeser on Unsplash",
-    description: "Advanced thinking or reasoning.",
-    image: "https://picsum.photos/seed/2/500/300",
-    name: "v0-1.5-lg",
-  },
-  {
-    credit: "Cherry Laithang on Unsplash",
-    description: "Open Source model for everyone.",
-    image: "https://picsum.photos/seed/3/500/300",
-    name: "v0-2.0-mini",
-  },
-];
-
 const Example = () => (
   <div className="flex w-full max-w-xl flex-col gap-6">
     <ItemGroup className="grid grid-cols-3 gap-4">
@@ -51,5 +30,26 @@ const Example = () => (
     </ItemGroup>
   </div>
 );
+
+const models = [
+  {
+    credit: "Valeria Reverdo on Unsplash",
+    description: "Everyday tasks and UI generation.",
+    image: "https://picsum.photos/seed/1/500/300",
+    name: "v0-1.5-sm",
+  },
+  {
+    credit: "Michael Oeser on Unsplash",
+    description: "Advanced thinking or reasoning.",
+    image: "https://picsum.photos/seed/2/500/300",
+    name: "v0-1.5-lg",
+  },
+  {
+    credit: "Cherry Laithang on Unsplash",
+    description: "Open Source model for everyone.",
+    image: "https://picsum.photos/seed/3/500/300",
+    name: "v0-2.0-mini",
+  },
+];
 
 export default Example;

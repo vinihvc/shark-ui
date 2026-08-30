@@ -24,23 +24,6 @@ import {
   SliderValue,
 } from "@/registry/react/components/slider";
 
-const PRICE_MIN = 200;
-const PRICE_MAX = 10_000;
-
-const formSchema = z.object({
-  priceRange: z
-    .array(z.number())
-    .length(2)
-    .refine(([low, high]) => low < high, {
-      message: "The minimum price must be less than the maximum.",
-    })
-    .refine(([low, high]) => low >= PRICE_MIN && high <= PRICE_MAX, {
-      message: `Keep both values between $${PRICE_MIN.toLocaleString()} and $${PRICE_MAX.toLocaleString()}.`,
-    }),
-});
-
-const defaultRange = [0, PRICE_MAX];
-
 const Example = () => {
   const form = useForm({
     defaultValues: { priceRange: defaultRange },
@@ -117,5 +100,22 @@ const Example = () => {
     </Card>
   );
 };
+
+const PRICE_MIN = 200;
+const PRICE_MAX = 10_000;
+
+const formSchema = z.object({
+  priceRange: z
+    .array(z.number())
+    .length(2)
+    .refine(([low, high]) => low < high, {
+      message: "The minimum price must be less than the maximum.",
+    })
+    .refine(([low, high]) => low >= PRICE_MIN && high <= PRICE_MAX, {
+      message: `Keep both values between $${PRICE_MIN.toLocaleString()} and $${PRICE_MAX.toLocaleString()}.`,
+    }),
+});
+
+const defaultRange = [0, PRICE_MAX];
 
 export default Example;

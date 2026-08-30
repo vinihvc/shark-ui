@@ -14,39 +14,6 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
-const steps: TourStepType[] = [
-  {
-    actions: [{ action: "next", label: "Next" }],
-    description: "Press the right arrow key (→) to go to the next step.",
-    id: "step-1",
-    target: () => document.querySelector<HTMLElement>("#tour-key-1"),
-    title: "Keyboard Navigation",
-    type: "tooltip",
-  },
-  {
-    actions: [
-      { action: "prev", label: "Back" },
-      { action: "next", label: "Next" },
-    ],
-    description: "Press the left arrow key (←) to go back.",
-    id: "step-2",
-    target: () => document.querySelector<HTMLElement>("#tour-key-2"),
-    title: "Go Back",
-    type: "tooltip",
-  },
-  {
-    actions: [
-      { action: "prev", label: "Back" },
-      { action: "dismiss", label: "Finish" },
-    ],
-    description: "Press Escape to close the tour at any time.",
-    id: "step-3",
-    target: () => document.querySelector<HTMLElement>("#tour-key-3"),
-    title: "Close Tour",
-    type: "tooltip",
-  },
-];
-
 const Example = () => (
   <div className="flex flex-col gap-4">
     <Tour keyboardNavigation steps={steps}>
@@ -92,5 +59,38 @@ const Example = () => (
     </Tour>
   </div>
 );
+
+const steps: TourStepType[] = [
+  {
+    actions: [{ action: "next", label: "Next" }],
+    description: "Press the right arrow key (→) to go to the next step.",
+    id: "step-1",
+    target: () => document.querySelector<HTMLElement>("#tour-key-1"),
+    title: "Keyboard Navigation",
+    type: "tooltip",
+  },
+  {
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
+    description: "Press the left arrow key (←) to go back.",
+    id: "step-2",
+    target: () => document.querySelector<HTMLElement>("#tour-key-2"),
+    title: "Go Back",
+    type: "tooltip",
+  },
+  {
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "dismiss", label: "Finish" },
+    ],
+    description: "Press Escape to close the tour at any time.",
+    id: "step-3",
+    target: () => document.querySelector<HTMLElement>("#tour-key-3"),
+    title: "Close Tour",
+    type: "tooltip",
+  },
+];
 
 export default Example;

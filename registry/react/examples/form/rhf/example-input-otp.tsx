@@ -22,15 +22,6 @@ import {
 } from "@/registry/react/components/field";
 import { InputOTP, InputOTPSlot } from "@/registry/react/components/input-otp";
 
-const formSchema = z.object({
-  backupCode: z
-    .array(z.string())
-    .length(6)
-    .refine((digits) => digits.every((d) => d.length === 1), {
-      message: "Enter all 6 digits of your backup code.",
-    }),
-});
-
 const Example = () => {
   const form = useForm({
     defaultValues: { backupCode: ["", "", "", "", "", ""] },
@@ -96,5 +87,14 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  backupCode: z
+    .array(z.string())
+    .length(6)
+    .refine((digits) => digits.every((d) => d.length === 1), {
+      message: "Enter all 6 digits of your backup code.",
+    }),
+});
 
 export default Example;

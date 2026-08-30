@@ -1,0 +1,106 @@
+---
+title: useListSelection
+description: Manage single, multiple, and range selection in a collection.
+links:
+  doc: https://ark-ui.com/docs/collections/list-selection
+  api: https://ark-ui.com/docs/collections/list-selection#api-reference
+---
+
+<ComponentPreview componentName="use-list-selection" />
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/use-list-selection
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="hooks/use-list-selection.ts" src="../hooks/use-list-selection.ts" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { createListCollection } from "@ark-ui/react/collection";
+import { useListSelection } from "@/hooks/use-list-selection";
+```
+
+```tsx
+const selection = useListSelection({ collection, selectionMode: "multiple" });
+
+selection.isSelected("react");
+selection.toggle("react");
+selection.clear();
+```
+
+Create the collection outside your component when its items are static. The hook manages selection state; your controls still provide their own labels and keyboard interactions.
+
+## Examples
+
+### Multiple selection
+
+Select several items, then select or clear the entire collection.
+
+<ComponentPreview componentName="use-list-selection" fileName="example-multiple" />
+
+### Range selection
+
+Click to replace the selection, Shift+click to extend from the first selected item in collection order, or Cmd/Ctrl+click to toggle one item. Each row is a keyboard-accessible button with `aria-pressed`.
+
+<ComponentPreview componentName="use-list-selection" fileName="example-range" />
+
+## API Reference
+
+### useListSelection
+
+A direct export of the Ark hook. `UseListSelectionProps<T>` and `UseListSelectionReturn` are also exported.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `collection` | `ListCollection<T>` | Required |
+| `selectionMode` | `"single" \| "multiple" \| "none"` | `"single"` |
+| `deselectable` | `boolean` | `true` |
+| `initialSelectedValues` | `string[]` | `[]` |
+| `resetOnCollectionChange` | `boolean` | `false` |
+
+`initialSelectedValues` initializes the selection; it is not a controlled value prop. Use `setSelectedValues` for subsequent updates. Setting `resetOnCollectionChange` clears selection when the collection changes.
+
+### Return value
+
+| Member | Description |
+| --- | --- |
+| `selectedValues` | Selected values as a string array. |
+| `isEmpty` | Whether no values are selected. |
+| `firstSelectedValue`, `lastSelectedValue` | First and last selected values in collection order, or `null`. |
+| `isSelected(value)` | Whether a value is selected. |
+| `canSelect(value)` | Whether the collection allows selecting a value. |
+| `isAllSelected()`, `isSomeSelected()` | Query selection across the collection. |
+| `select(value, forceToggle?)` | Select using the current selection mode. |
+| `deselect(value)`, `toggle(value)` | Remove or toggle a value. |
+| `replace(value)` | Replace selection with one value; accepts `null`. |
+| `extend(anchorValue, targetValue)` | Extend selection across a range. |
+| `setSelectedValues(values)` | Set the selected values. |
+| `clear()`, `resetSelection()` | Clear selection. `resetSelection()` creates a new empty selection; it does not restore `initialSelectedValues`. |

@@ -11,12 +11,6 @@ import {
 } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
-const commands = [
-  { category: "File", hotkey: "mod+S", id: "save", label: "Save" },
-  { category: "Edit", hotkey: "mod+Z", id: "undo", label: "Undo" },
-  { category: "Edit", hotkey: "mod+Y", id: "redo", label: "Redo" },
-];
-
 const Example = () => {
   const platform = usePlatform();
   const formatHotkey = useFormatHotkey();
@@ -57,5 +51,11 @@ const Example = () => {
     </Card>
   );
 };
+
+const commands = [
+  { category: "File", hotkey: "mod+S", id: "save", label: "Save" },
+  { category: "Edit", hotkey: "mod+Z", id: "undo", label: "Undo" },
+  { category: "Edit", hotkey: "mod+Y", id: "redo", label: "Redo" },
+];
 
 export default Example;

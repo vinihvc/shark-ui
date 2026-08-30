@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import { ThumbCard, type ThumbCardProps } from "./thumb-card";
 
 export const LinkOverlayThumb = (props: ThumbCardProps) => (
@@ -10,7 +10,7 @@ export const LinkOverlayThumb = (props: ThumbCardProps) => (
           aria-hidden
           className="absolute inset-0 flex items-center justify-center rounded-md border border-input border-dashed"
         >
-          <ExternalLink className="size-4 text-muted-foreground/64" />
+          <ArrowUpRightIcon className="size-4 text-muted-foreground/64" />
         </div>
       </div>
     </div>

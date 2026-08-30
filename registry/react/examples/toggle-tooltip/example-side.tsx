@@ -5,8 +5,6 @@ import {
   ToggleTooltipTrigger,
 } from "@/registry/react/components/toggle-tooltip";
 
-const placements = ["left", "top", "bottom", "right"] as const;
-
 const Example = () => (
   <div className="flex flex-wrap items-center justify-center gap-4">
     {placements.map((placement) => (
@@ -21,5 +19,7 @@ const Example = () => (
     ))}
   </div>
 );
+
+const placements = ["left", "top", "bottom", "right"] as const;
 
 export default Example;

@@ -1,6 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Collapsible queue of pending prompts and completed items.",
   "name": "queue",
   "registryDependencies": [

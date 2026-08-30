@@ -17,15 +17,6 @@ import {
   ToolResultTrigger,
 } from "@/registry/react/components/tool-result";
 
-const LINES = [
-  "\u001B[34mRunning tests...\u001B[0m",
-  "",
-  " \u001B[32m✓\u001B[0m validateForm › returns error for invalid email",
-  " \u001B[32m✓\u001B[0m validateForm › passes for valid input",
-  "",
-  "\u001B[90m2 passed (2.9s)\u001B[0m",
-];
-
 const Example = () => {
   const [lineCount, setLineCount] = useState(1);
   const [status, setStatus] = useState<ToolResultStatus>("running");
@@ -93,5 +84,14 @@ const Example = () => {
     </div>
   );
 };
+
+const LINES = [
+  "\u001B[34mRunning tests...\u001B[0m",
+  "",
+  " \u001B[32m✓\u001B[0m validateForm › returns error for invalid email",
+  " \u001B[32m✓\u001B[0m validateForm › passes for valid input",
+  "",
+  "\u001B[90m2 passed (2.9s)\u001B[0m",
+];
 
 export default Example;

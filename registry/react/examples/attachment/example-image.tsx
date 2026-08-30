@@ -9,12 +9,6 @@ import {
   AttachmentTitle,
 } from "@/registry/react/components/attachment";
 
-const files = [
-  { meta: "PNG · 820 KB", name: "workspace.png" },
-  { meta: "JPG · 1.1 MB", name: "desk-reference.jpg" },
-  { meta: "JPG · 940 KB", name: "office-reference.jpg" },
-] as const;
-
 const Example = () => (
   <div className="flex flex-wrap gap-3">
     {files.map((file) => (
@@ -35,5 +29,11 @@ const Example = () => (
     ))}
   </div>
 );
+
+const files = [
+  { meta: "PNG · 820 KB", name: "workspace.png" },
+  { meta: "JPG · 1.1 MB", name: "desk-reference.jpg" },
+  { meta: "JPG · 940 KB", name: "office-reference.jpg" },
+] as const;
 
 export default Example;

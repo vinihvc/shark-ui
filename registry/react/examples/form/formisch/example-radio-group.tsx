@@ -33,13 +33,6 @@ import {
   RadioGroupItem,
 } from "@/registry/react/components/radio-group";
 
-const formSchema = v.object({
-  plan: v.pipe(
-    v.string(),
-    v.minLength(1, "You must select a subscription plan to continue.")
-  ),
-});
-
 export function Example() {
   const form = useForm({
     initialInput: { plan: "" },
@@ -114,6 +107,13 @@ export function Example() {
     </Card>
   );
 }
+
+const formSchema = v.object({
+  plan: v.pipe(
+    v.string(),
+    v.minLength(1, "You must select a subscription plan to continue.")
+  ),
+});
 
 const plans = [
   {

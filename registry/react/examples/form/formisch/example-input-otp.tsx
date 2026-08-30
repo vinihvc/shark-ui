@@ -27,20 +27,6 @@ import {
 } from "@/registry/react/components/field";
 import { InputOTP, InputOTPSlot } from "@/registry/react/components/input-otp";
 
-const formSchema = v.object({
-  backupCode: v.pipe(
-    v.array(v.string()),
-    v.minLength(6, "Enter all 6 digits of your backup code."),
-    v.maxLength(6, "Enter all 6 digits of your backup code."),
-    v.check(
-      (digits) => digits.every((d) => d.length === 1),
-      "Enter all 6 digits of your backup code."
-    )
-  ),
-});
-
-const emptyCode = ["", "", "", "", "", ""] as const;
-
 const Example = () => {
   const form = useForm({
     initialInput: { backupCode: [...emptyCode] },
@@ -108,5 +94,19 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  backupCode: v.pipe(
+    v.array(v.string()),
+    v.minLength(6, "Enter all 6 digits of your backup code."),
+    v.maxLength(6, "Enter all 6 digits of your backup code."),
+    v.check(
+      (digits) => digits.every((d) => d.length === 1),
+      "Enter all 6 digits of your backup code."
+    )
+  ),
+});
+
+const emptyCode = ["", "", "", "", "", ""] as const;
 
 export default Example;

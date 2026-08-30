@@ -3,6 +3,12 @@ import {
   TerminalContent,
 } from "@/registry/react/components/terminal";
 
+const Example = () => (
+  <Terminal className="max-w-lg" output={output}>
+    <TerminalContent />
+  </Terminal>
+);
+
 const output = [
   "GET /api/session",
   "",
@@ -10,11 +16,5 @@ const output = [
   "",
   '{ "error": "unauthorized" }',
 ].join("\n");
-
-const Example = () => (
-  <Terminal className="max-w-lg" output={output}>
-    <TerminalContent />
-  </Terminal>
-);
 
 export default Example;

@@ -4,36 +4,6 @@ import { createToaster } from "@ark-ui/react/toast";
 import { Button } from "@/registry/react/components/button";
 import { Toaster } from "@/registry/react/components/toast";
 
-const topStartToaster = createToaster({
-  overlap: true,
-  placement: "top-start",
-});
-
-const topToaster = createToaster({
-  overlap: true,
-  placement: "top",
-});
-
-const topEndToaster = createToaster({
-  overlap: true,
-  placement: "top-end",
-});
-
-const bottomStartToaster = createToaster({
-  overlap: true,
-  placement: "bottom-start",
-});
-
-const bottomToaster = createToaster({
-  overlap: true,
-  placement: "bottom",
-});
-
-const bottomEndToaster = createToaster({
-  overlap: true,
-  placement: "bottom-end",
-});
-
 const Example = () => (
   <>
     <Toaster toaster={topStartToaster} />
@@ -118,5 +88,35 @@ const Example = () => (
     </div>
   </>
 );
+
+const topStartToaster = createToaster({
+  overlap: true,
+  placement: "top-start",
+});
+
+const topToaster = createToaster({
+  overlap: true,
+  placement: "top",
+});
+
+const topEndToaster = createToaster({
+  overlap: true,
+  placement: "top-end",
+});
+
+const bottomStartToaster = createToaster({
+  overlap: true,
+  placement: "bottom-start",
+});
+
+const bottomToaster = createToaster({
+  overlap: true,
+  placement: "bottom",
+});
+
+const bottomEndToaster = createToaster({
+  overlap: true,
+  placement: "bottom-end",
+});
 
 export default Example;

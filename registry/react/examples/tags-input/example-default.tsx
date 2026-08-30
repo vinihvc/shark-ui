@@ -7,8 +7,6 @@ import {
   TagsInputItem,
 } from "@/registry/react/components/tags-input";
 
-const defaultValue = ["React", "Solid", "Vue", "Svelte"];
-
 const TagsInputDemo = () => (
   <Field className="w-full max-w-sm">
     <FieldLabel>Frameworks</FieldLabel>
@@ -25,5 +23,7 @@ const TagsInputDemo = () => (
     </TagsInput>
   </Field>
 );
+
+const defaultValue = ["React", "Solid", "Vue", "Svelte"];
 
 export default TagsInputDemo;

@@ -1,8 +1,14 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@ark-ui/react", "lucide-react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react",
+    "tailwind-variants"
+  ],
   "name": "clipboard",
-  "registryDependencies": ["https://shark.vini.one/r/input.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/input.json"
+  ],
   "type": "registry:ui",
   "files": [
     {

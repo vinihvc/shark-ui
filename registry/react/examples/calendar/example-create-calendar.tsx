@@ -13,15 +13,6 @@ import {
 } from "@/registry/react/components/calendar";
 import { Card, CardContent } from "@/registry/react/components/card";
 
-const createCalendar = (identifier: string) => {
-  switch (identifier) {
-    case "persian":
-      return new PersianCalendar();
-    default:
-      throw new Error(`Unsupported calendar: ${identifier}`);
-  }
-};
-
 const Example = () => (
   <Card className="[--space:--spacing(2)]">
     <CardContent>
@@ -39,5 +30,14 @@ const Example = () => (
     </CardContent>
   </Card>
 );
+
+const createCalendar = (identifier: string) => {
+  switch (identifier) {
+    case "persian":
+      return new PersianCalendar();
+    default:
+      throw new Error(`Unsupported calendar: ${identifier}`);
+  }
+};
 
 export default Example;

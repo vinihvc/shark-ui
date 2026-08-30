@@ -10,11 +10,6 @@ import {
 } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 
-const commands = [
-  { hotkey: "G > H", id: "home", keys: ["G", "H"], label: "Home" },
-  { hotkey: "G > S", id: "settings", keys: ["G", "S"], label: "Settings" },
-];
-
 const Example = () => {
   const platform = usePlatform();
   const formatHotkey = useFormatHotkey();
@@ -56,5 +51,10 @@ const Example = () => {
     </Card>
   );
 };
+
+const commands = [
+  { hotkey: "G > H", id: "home", keys: ["G", "H"], label: "Home" },
+  { hotkey: "G > S", id: "settings", keys: ["G", "S"], label: "Settings" },
+];
 
 export default Example;

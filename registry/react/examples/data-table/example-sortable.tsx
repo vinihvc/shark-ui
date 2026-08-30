@@ -7,6 +7,15 @@ import {
   type DataTableFeatures,
 } from "@/registry/react/components/data-table";
 
+const Example = () => (
+  <DataTable
+    caption="Project files"
+    className="w-full max-w-2xl"
+    columns={columns}
+    data={data}
+  />
+);
+
 interface FileRow {
   id: string;
   name: string;
@@ -99,14 +108,5 @@ const data: FileRow[] = [
     updatedAt: "2026-08-24",
   },
 ];
-
-const Example = () => (
-  <DataTable
-    caption="Project files"
-    className="w-full max-w-2xl"
-    columns={columns}
-    data={data}
-  />
-);
 
 export default Example;

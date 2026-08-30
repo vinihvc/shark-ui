@@ -14,6 +14,38 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
+const Example = () => (
+  <div className="flex flex-col gap-4">
+    <Tour steps={steps}>
+      <TourTrigger asChild>
+        <Button variant="outline">Start Interactive Tour</Button>
+      </TourTrigger>
+
+      <div className="flex flex-wrap gap-2">
+        <Button id="btn-add" size="sm" type="button" variant="outline">
+          Add Item
+        </Button>
+        <Button id="btn-edit" size="sm" type="button" variant="outline">
+          Edit
+        </Button>
+        <Button id="btn-delete" size="sm" type="button" variant="outline">
+          Delete
+        </Button>
+      </div>
+
+      <TourContent>
+        <TourHeader>
+          <TourProgressText />
+          <TourTitle />
+          <TourDescription />
+        </TourHeader>
+
+        <TourActions />
+      </TourContent>
+    </Tour>
+  </div>
+);
+
 const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Begin" }],
@@ -70,37 +102,5 @@ const steps: TourStepType[] = [
     type: "dialog",
   },
 ];
-
-const Example = () => (
-  <div className="flex flex-col gap-4">
-    <Tour steps={steps}>
-      <TourTrigger asChild>
-        <Button variant="outline">Start Interactive Tour</Button>
-      </TourTrigger>
-
-      <div className="flex flex-wrap gap-2">
-        <Button id="btn-add" size="sm" type="button" variant="outline">
-          Add Item
-        </Button>
-        <Button id="btn-edit" size="sm" type="button" variant="outline">
-          Edit
-        </Button>
-        <Button id="btn-delete" size="sm" type="button" variant="outline">
-          Delete
-        </Button>
-      </div>
-
-      <TourContent>
-        <TourHeader>
-          <TourProgressText />
-          <TourTitle />
-          <TourDescription />
-        </TourHeader>
-
-        <TourActions />
-      </TourContent>
-    </Tour>
-  </div>
-);
 
 export default Example;

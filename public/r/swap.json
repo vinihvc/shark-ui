@@ -24,7 +24,10 @@
       "--animate-flip-out": "flip-out 0.2s ease-out"
     }
   },
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "name": "swap",
   "type": "registry:ui",
   "files": [

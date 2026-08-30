@@ -13,8 +13,6 @@ import {
   StepsTrigger,
 } from "@/registry/react/components/steps";
 
-const steps = Array.from({ length: 3 }, (_, index) => index + 1);
-
 const StepsDemo = () => (
   <Steps className="size-full max-w-md" count={steps.length}>
     <StepsList>
@@ -59,5 +57,7 @@ const StepsDemo = () => (
     </div>
   </Steps>
 );
+
+const steps = Array.from({ length: 3 }, (_, index) => index + 1);
 
 export default StepsDemo;

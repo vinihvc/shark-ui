@@ -22,7 +22,10 @@
       "warning-foreground": "var(--color-amber-700)"
     }
   },
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "name": "status",
   "type": "registry:ui",
   "files": [

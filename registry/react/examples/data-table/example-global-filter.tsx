@@ -20,6 +20,80 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
+const Example = () => {
+  const [globalFilter, setGlobalFilter] = useState("");
+
+  const table = useTable({
+    columns,
+    data,
+    features,
+    globalFilterFn: "includesString",
+    onGlobalFilterChange: setGlobalFilter,
+    state: {
+      globalFilter,
+    },
+  });
+
+  const handleSearchChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      table.setGlobalFilter(event.target.value);
+    },
+    [table]
+  );
+
+  return (
+    <div className="flex w-full max-w-2xl flex-col gap-4">
+      <Input
+        aria-label="Search contacts"
+        className="max-w-xs"
+        onChange={handleSearchChange}
+        placeholder="Search…"
+        type="search"
+        value={globalFilter}
+      />
+      <div className="overflow-hidden rounded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder ? null : (
+                      <table.FlexRender header={header} />
+                    )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id}>
+                  {row.getAllCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      <table.FlexRender cell={cell} />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  className="h-24 text-center"
+                  colSpan={columns.length}
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  );
+};
+
 const features = tableFeatures({
   columnFilteringFeature,
   filteredRowModel: createFilteredRowModel(),
@@ -96,79 +170,5 @@ const data: Contact[] = [
     role: "Brand Strategist",
   },
 ];
-
-const Example = () => {
-  const [globalFilter, setGlobalFilter] = useState("");
-
-  const table = useTable({
-    columns,
-    data,
-    features,
-    globalFilterFn: "includesString",
-    onGlobalFilterChange: setGlobalFilter,
-    state: {
-      globalFilter,
-    },
-  });
-
-  const handleSearchChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      table.setGlobalFilter(event.target.value);
-    },
-    [table]
-  );
-
-  return (
-    <div className="flex w-full max-w-2xl flex-col gap-4">
-      <Input
-        aria-label="Search contacts"
-        className="max-w-xs"
-        onChange={handleSearchChange}
-        placeholder="Search…"
-        type="search"
-        value={globalFilter}
-      />
-      <div className="overflow-hidden rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder ? null : (
-                      <table.FlexRender header={header} />
-                    )}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
-                  {row.getAllCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      <table.FlexRender cell={cell} />
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  className="h-24 text-center"
-                  colSpan={columns.length}
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
-};
 
 export default Example;

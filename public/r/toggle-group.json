@@ -1,8 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "name": "toggle-group",
-  "registryDependencies": ["https://shark.vini.one/r/toggle.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/toggle.json"
+  ],
   "type": "registry:ui",
   "files": [
     {

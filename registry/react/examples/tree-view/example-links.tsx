@@ -16,10 +16,6 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-interface TreeNodeWithLinks extends TreeNodeType<unknown> {
-  href?: string;
-}
-
 const Example = () => (
   <div className="w-full max-w-48">
     <TreeView collection={collection}>
@@ -32,6 +28,10 @@ const Example = () => (
     </TreeView>
   </div>
 );
+
+interface TreeNodeWithLinks extends TreeNodeType<unknown> {
+  href?: string;
+}
 
 const collection = createTreeCollection({
   rootNode: {

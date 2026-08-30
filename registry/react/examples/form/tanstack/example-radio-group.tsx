@@ -27,28 +27,6 @@ import {
   RadioGroupItem,
 } from "@/registry/react/components/radio-group";
 
-const plans = [
-  {
-    description: "For everyday use with basic features.",
-    id: "starter",
-    title: "Starter (100K tokens/month)",
-  },
-  {
-    description: "For advanced AI usage with more features.",
-    id: "pro",
-    title: "Pro (1M tokens/month)",
-  },
-  {
-    description: "For large teams and heavy usage.",
-    id: "enterprise",
-    title: "Enterprise (Unlimited tokens)",
-  },
-];
-
-const formSchema = z.object({
-  plan: z.string().min(1, "You must select a subscription plan to continue."),
-});
-
 export function Example() {
   const form = useForm({
     defaultValues: {
@@ -139,5 +117,27 @@ export function Example() {
     </Card>
   );
 }
+
+const plans = [
+  {
+    description: "For everyday use with basic features.",
+    id: "starter",
+    title: "Starter (100K tokens/month)",
+  },
+  {
+    description: "For advanced AI usage with more features.",
+    id: "pro",
+    title: "Pro (1M tokens/month)",
+  },
+  {
+    description: "For large teams and heavy usage.",
+    id: "enterprise",
+    title: "Enterprise (Unlimited tokens)",
+  },
+];
+
+const formSchema = z.object({
+  plan: z.string().min(1, "You must select a subscription plan to continue."),
+});
 
 export default Example;

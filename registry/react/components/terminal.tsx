@@ -63,13 +63,17 @@ const TerminalFollow = () => {
   const { autoScroll, output } = _useTerminal();
   const { scrollToEdge } = useScrollArea();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Re-run when `output` changes so the viewport follows new lines.
-  React.useLayoutEffect(() => {
+  const followOutput = React.useEffectEvent((_nextOutput: string) => {
     if (!autoScroll) {
       return;
     }
+
     scrollToEdge({ edge: "bottom" });
-  }, [autoScroll, output, scrollToEdge]);
+  });
+
+  React.useLayoutEffect(() => {
+    followOutput(output);
+  }, [output]);
 
   return null;
 };

@@ -14,13 +14,6 @@ import {
   ModelSelectorTrigger,
 } from "@/registry/react/components/model-selector";
 
-const models = [
-  { group: "Models", label: "GPT-4.1", value: "gpt-4.1" },
-  { group: "Models", label: "GPT-4.1 Mini", value: "gpt-4.1-mini" },
-  { group: "Agents", label: "Research", value: "agent-research" },
-  { group: "Agents", label: "Coding", value: "agent-coding" },
-] as const;
-
 const Example = () => {
   const [value, setValue] = useState("gpt-4.1");
   const [query, setQuery] = useState("");
@@ -77,5 +70,12 @@ const Example = () => {
     </div>
   );
 };
+
+const models = [
+  { group: "Models", label: "GPT-4.1", value: "gpt-4.1" },
+  { group: "Models", label: "GPT-4.1 Mini", value: "gpt-4.1-mini" },
+  { group: "Agents", label: "Research", value: "agent-research" },
+  { group: "Agents", label: "Coding", value: "agent-coding" },
+] as const;
 
 export default Example;

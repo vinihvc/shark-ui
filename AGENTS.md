@@ -283,7 +283,7 @@ Set **`dir={dir}`** on the root (from `useLocale`) so direction propagates. Ark 
 
 ## 14. State and data in examples
 
-- Define **static** lists and constants **outside** the component when they do not depend on props or hooks.
+- Define **static** lists and constants **outside** the component when they do not depend on props or hooks. Place them **after** the demo component and **before** `export default`, not above the component.
 - Use **clear handler names** and minimal state for interactive demos.
 
 ---

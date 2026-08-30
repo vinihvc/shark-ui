@@ -25,19 +25,6 @@ import { toast } from "@registry/react/components/toast";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 
-const formSchema = z.object({
-  responses: z.boolean(),
-  tasks: z
-    .array(z.string())
-    .min(1, "Please select at least one notification type.")
-    .refine(
-      (value) => value.every((task) => tasks.some((t) => t.id === task)),
-      {
-        message: "Invalid notification type selected.",
-      }
-    ),
-});
-
 export const Example = () => {
   const form = useForm({
     defaultValues: {
@@ -148,6 +135,19 @@ export const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  responses: z.boolean(),
+  tasks: z
+    .array(z.string())
+    .min(1, "Please select at least one notification type.")
+    .refine(
+      (value) => value.every((task) => tasks.some((t) => t.id === task)),
+      {
+        message: "Invalid notification type selected.",
+      }
+    ),
+});
 
 const tasks = [
   {

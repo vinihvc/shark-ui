@@ -27,14 +27,6 @@ import {
 } from "@/registry/react/components/field";
 import { Rating } from "@/registry/react/components/rating";
 
-const formSchema = v.object({
-  recommendScore: v.pipe(
-    v.number(),
-    v.minValue(1, "Please rate how likely you are to recommend us."),
-    v.maxValue(5)
-  ),
-});
-
 const Example = () => {
   const form = useForm({
     initialInput: { recommendScore: 0 },
@@ -93,5 +85,13 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  recommendScore: v.pipe(
+    v.number(),
+    v.minValue(1, "Please rate how likely you are to recommend us."),
+    v.maxValue(5)
+  ),
+});
 
 export default Example;

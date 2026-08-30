@@ -16,7 +16,9 @@
       "chart-5": "var(--color-amber-500)"
     }
   },
-  "dependencies": ["recharts"],
+  "dependencies": [
+    "recharts"
+  ],
   "name": "chart",
   "type": "registry:ui",
   "files": [

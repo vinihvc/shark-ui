@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "description": "Message surface with variants, alignment, and reaction clusters.",
   "name": "bubble",
   "type": "registry:ui",

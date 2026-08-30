@@ -136,7 +136,7 @@ export const DiffContent = (props: React.ComponentProps<"div">) => {
       {...rest}
     >
       <ScrollArea className="min-h-0 w-full flex-1">
-        <div className="w-max min-w-full text-sm leading-5">{children}</div>
+        <div className="w-max min-w-full text-xs leading-5">{children}</div>
       </ScrollArea>
     </div>
   );

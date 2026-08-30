@@ -28,10 +28,6 @@ import {
 } from "@/registry/react/components/radio-group";
 import { toast } from "@/registry/react/components/toast";
 
-const formSchema = z.object({
-  plan: z.string().min(1, "You must select a subscription plan to continue."),
-});
-
 export function Example() {
   const form = useForm({
     defaultValues: {
@@ -110,6 +106,10 @@ export function Example() {
     </Card>
   );
 }
+
+const formSchema = z.object({
+  plan: z.string().min(1, "You must select a subscription plan to continue."),
+});
 
 const plans = [
   {

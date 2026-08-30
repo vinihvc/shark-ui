@@ -1,0 +1,95 @@
+---
+title: Focus Trap
+description: Keep keyboard focus inside a container while it is active.
+links:
+  doc: https://ark-ui.com/docs/utilities/focus-trap
+  api: https://ark-ui.com/docs/utilities/focus-trap#api-reference
+---
+
+<ComponentPreview componentName="focus-trap" />
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/focus-trap
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/focus-trap.tsx" src="/focus-trap.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Anatomy
+
+```text
+FocusTrap
+└── Focusable controls
+```
+
+## Usage
+
+```tsx
+import { FocusTrap } from "@/components/ui/focus-trap";
+```
+
+```tsx
+<FocusTrap disabled={!active}>
+  <Input aria-label="Name" type="text" />
+  <Button onClick={endTrap} type="button">End trap</Button>
+</FocusTrap>
+```
+
+The wrapper has no visual styles. Use `className` to lay out the container, or `asChild` with a single element. Always provide a way to end the trap from inside it. Existing Shark dialogs and drawers already manage focus; they do not need an additional trap.
+
+## Examples
+
+### Autofocus
+
+Mount the contents after the user activates the trap. The second input uses `autoFocus`, and focus returns to the start button when the trap is removed.
+
+<ComponentPreview componentName="focus-trap" fileName="example-autofocus" />
+
+### Initial focus
+
+Use a ref and `initialFocus` to choose which control receives focus on activation.
+
+<ComponentPreview componentName="focus-trap" fileName="example-initial-focus" />
+
+## API Reference
+
+### FocusTrap
+
+Accepts Ark's `FocusTrap` props, native div attributes, and a ref. Adds `data-slot="focus-trap"` without changing Ark's defaults.
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `disabled` | `boolean` | Disable the trap. The examples start disabled. |
+| `asChild` | `boolean` | Merge onto a single child element. |
+| `initialFocus` | Focus target or function; also accepts `false` | Choose initial focus, or skip it. |
+| `fallbackFocus` | Focus target or function | Target to focus if no tabbable controls exist. Give a fallback container `tabIndex={-1}`. |
+| `returnFocusOnDeactivate` | `boolean` | Return focus after deactivation; defaults to `true`. The basic example explicitly sets it to `false`. |
+| `setReturnFocus` | Focus target or function | Choose the target for restored focus. |
+| `persistentElements` | `(() => Element \| null)[]` | Additional elements, such as portalled content, treated as inside the trap. |
+| `onActivate`, `onDeactivate` | `() => void` | Callbacks when the trap activates or deactivates. |

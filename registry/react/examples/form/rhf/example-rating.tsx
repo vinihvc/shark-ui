@@ -22,13 +22,6 @@ import {
 } from "@/registry/react/components/field";
 import { Rating } from "@/registry/react/components/rating";
 
-const formSchema = z.object({
-  recommendScore: z
-    .number()
-    .min(1, "Please rate how likely you are to recommend us.")
-    .max(5),
-});
-
 const Example = () => {
   const form = useForm({
     defaultValues: { recommendScore: 0 },
@@ -89,5 +82,12 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  recommendScore: z
+    .number()
+    .min(1, "Please rate how likely you are to recommend us.")
+    .max(5),
+});
 
 export default Example;

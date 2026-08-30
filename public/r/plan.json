@@ -1,9 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@ark-ui/react"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
   "description": "Collapsible agent plan with title, description, and tasks.",
   "name": "plan",
-  "registryDependencies": ["https://shark.vini.one/r/collapsible.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/collapsible.json"
+  ],
   "type": "registry:ui",
   "files": [
     {

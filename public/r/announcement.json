@@ -22,9 +22,14 @@
       "warning-foreground": "var(--color-amber-700)"
     }
   },
-  "dependencies": ["@ark-ui/react", "tailwind-variants"],
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
   "name": "announcement",
-  "registryDependencies": ["https://shark.vini.one/r/badge.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/badge.json"
+  ],
   "type": "registry:ui",
   "files": [
     {

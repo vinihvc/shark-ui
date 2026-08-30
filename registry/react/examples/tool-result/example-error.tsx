@@ -10,18 +10,6 @@ import {
   ToolResultTrigger,
 } from "@/registry/react/components/tool-result";
 
-const output = [
-  "GET /api/session",
-  "",
-  "\u001B[31m401 Unauthorized\u001B[0m",
-  "www-authenticate: Bearer",
-  "",
-  "{",
-  '  "error": "unauthorized",',
-  '  "message": "Session cookie expired. Sign in again."',
-  "}",
-].join("\n");
-
 const Example = () => (
   <ToolResult className="max-w-lg" defaultOpen status="error">
     <ToolResultTrigger>
@@ -35,5 +23,17 @@ const Example = () => (
     </ToolResultContent>
   </ToolResult>
 );
+
+const output = [
+  "GET /api/session",
+  "",
+  "\u001B[31m401 Unauthorized\u001B[0m",
+  "www-authenticate: Bearer",
+  "",
+  "{",
+  '  "error": "unauthorized",',
+  '  "message": "Session cookie expired. Sign in again."',
+  "}",
+].join("\n");
 
 export default Example;

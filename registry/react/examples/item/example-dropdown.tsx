@@ -20,24 +20,6 @@ import {
   MenuTrigger,
 } from "@/registry/react/components/menu";
 
-const people = [
-  {
-    avatar: "https://github.com/vinihvc.png",
-    email: "vinihvc@example.com",
-    username: "vinihvc",
-  },
-  {
-    avatar: "https://github.com/segunadebayo.png",
-    email: "segunadebayo@example.com",
-    username: "segunadebayo",
-  },
-  {
-    avatar: "https://github.com/pasqualevitiello.png",
-    email: "pasqualevitiello@example.com",
-    username: "pasqualevitiello",
-  },
-];
-
 const Example = () => (
   <Menu>
     <MenuTrigger asChild>
@@ -63,5 +45,23 @@ const Example = () => (
     </MenuContent>
   </Menu>
 );
+
+const people = [
+  {
+    avatar: "https://github.com/vinihvc.png",
+    email: "vinihvc@example.com",
+    username: "vinihvc",
+  },
+  {
+    avatar: "https://github.com/segunadebayo.png",
+    email: "segunadebayo@example.com",
+    username: "segunadebayo",
+  },
+  {
+    avatar: "https://github.com/pasqualevitiello.png",
+    email: "pasqualevitiello@example.com",
+    username: "pasqualevitiello",
+  },
+];
 
 export default Example;

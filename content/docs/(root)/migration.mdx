@@ -1,15 +1,13 @@
 ---
 title: Migration
-description: Guides for moving components from another design system to Shark UI.
+description: Guides for moving components from another library to Shark UI.
 seoTitle: "Migration guides for Shark UI"
-seoDescription: "Guides for moving components from another design system to Shark UI."
+seoDescription: "Guides for moving components from another library to Shark UI."
 ---
 
 import { MigrationList } from "@/components/mdx-components/migration-list";
 
-Install the Shark component, read its anatomy, then adapt markup and state. Work one component at a time.
-
-## Pick a design system
+## Migrate from
 
 <MigrationList />
 
@@ -19,30 +17,10 @@ Each linked guide covers API differences, examples, and a checklist for that sou
 
 Shark UI follows the copy-and-own model: components land in your repository through the CLI or by copying source from the docs. You edit the files directly. There is no opaque package layer between your app and the implementation.
 
-Each component pairs headless primitives with Tailwind CSS v4 styling. Behavior lives in the primitive layer; look and layout live in the component source you keep. See [Installation](/docs/installation) for setup and [Introduction](/docs) for the full picture.
-
-## Principles
-
-- **One component at a time.** Install or copy a single component, wire it up, then move to the next.
-- **Anatomy first.** Read the component page before translating markup. Child structure and prop names differ across design systems.
-- **Semantic tokens.** Style with `bg-primary`, `text-muted-foreground`, `border-input`, and related tokens, not raw palette classes.
-- **Accessible parts.** Overlays need titles; icon-only controls need labels. Match the patterns in each component doc.
-- **Logical layout.** Use `ms-*`, `me-*`, `start-*`, and `end-*` so spacing follows text direction. See [RTL](/docs/rtl).
-
 ## Colors and styling
-
-The theme uses CSS variables on `:root` and `.dark`, wired into Tailwind through `@theme inline`. Each fill token has a matching `-foreground` token for text and icons on that surface.
 
 Shark adds `success`, `warning`, and `info` on top of the usual semantic set. Radius scales from a single `--radius` variable.
 
 - [Colors](/docs/colors): token reference and neutral scale
 - [Styling](/docs/styling): `globals.css` setup, token convention, radius scale
 - [Theme editor](/themes): preview primary, gray, and radius without editing CSS by hand
-
-If your old project used a different token naming scheme, map your variables to Shark's before restyling components.
-
-## Related
-
-- [Components](/docs/components): browse primitives and install commands
-- [Forms](/docs/forms): form library guides after the UI layer is in place
-- [Skills](/docs/skills): agent skill for correct implementation in your repo

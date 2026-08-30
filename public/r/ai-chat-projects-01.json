@@ -1,7 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "categories": ["ai"],
-  "dependencies": ["lucide-react"],
+  "categories": [
+    "ai"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Projects grid with create CTA and workflow cards.",
   "files": [
     {

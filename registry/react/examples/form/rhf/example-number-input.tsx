@@ -29,13 +29,6 @@ import {
 } from "@/registry/react/components/number-input";
 import { toast } from "@/registry/react/components/toast";
 
-const formSchema = z.object({
-  expectedSalary: z
-    .number("Please provide a salary amount.")
-    .min(1000, "Salary must be at least €1,000.")
-    .max(1_000_000, "Salary must be less than €1,000,000.00."),
-});
-
 export const Example = () => {
   const form = useForm({
     defaultValues: {
@@ -106,5 +99,12 @@ export const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  expectedSalary: z
+    .number("Please provide a salary amount.")
+    .min(1000, "Salary must be at least €1,000.")
+    .max(1_000_000, "Salary must be less than €1,000,000.00."),
+});
 
 export default Example;

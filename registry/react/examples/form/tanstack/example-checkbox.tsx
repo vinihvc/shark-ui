@@ -24,30 +24,6 @@ import {
   FieldSet,
 } from "@/registry/react/components/field";
 
-const tasks = [
-  {
-    id: "push",
-    label: "Push notifications",
-  },
-  {
-    id: "email",
-    label: "Email notifications",
-  },
-];
-
-const formSchema = z.object({
-  responses: z.boolean(),
-  tasks: z
-    .array(z.string())
-    .min(1, "Please select at least one notification type.")
-    .refine(
-      (value) => value.every((task) => tasks.some((t) => t.id === task)),
-      {
-        message: "Invalid notification type selected.",
-      }
-    ),
-});
-
 export const Example = () => {
   const form = useForm({
     defaultValues: {
@@ -169,5 +145,29 @@ export const Example = () => {
     </Card>
   );
 };
+
+const tasks = [
+  {
+    id: "push",
+    label: "Push notifications",
+  },
+  {
+    id: "email",
+    label: "Email notifications",
+  },
+];
+
+const formSchema = z.object({
+  responses: z.boolean(),
+  tasks: z
+    .array(z.string())
+    .min(1, "Please select at least one notification type.")
+    .refine(
+      (value) => value.every((task) => tasks.some((t) => t.id === task)),
+      {
+        message: "Invalid notification type selected.",
+      }
+    ),
+});
 
 export default Example;

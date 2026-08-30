@@ -18,8 +18,6 @@ import {
 } from "@/registry/react/components/action-bar";
 import { Button } from "@/registry/react/components/button";
 
-type Placement = "bottom" | "bottom-start" | "bottom-end";
-
 const Example = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState<Placement>("bottom");
@@ -87,5 +85,7 @@ const Example = () => {
     </>
   );
 };
+
+type Placement = "bottom" | "bottom-start" | "bottom-end";
 
 export default Example;

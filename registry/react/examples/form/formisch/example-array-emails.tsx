@@ -38,24 +38,6 @@ import {
   InputGroupInput,
 } from "@/registry/react/components/input-group";
 
-const formSchema = v.object({
-  emails: v.pipe(
-    v.array(
-      v.object({
-        contact: v.object({
-          address: v.pipe(
-            v.string(),
-            v.nonEmpty("Enter an email address."),
-            v.email("Enter a valid email address.")
-          ),
-        }),
-      })
-    ),
-    v.minLength(1, "Add at least one email address."),
-    v.maxLength(5, "You can add up to 5 email addresses.")
-  ),
-});
-
 const Example = () => {
   const form = useForm({
     initialInput: { emails: [{ contact: { address: "" } }] },
@@ -170,5 +152,23 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  emails: v.pipe(
+    v.array(
+      v.object({
+        contact: v.object({
+          address: v.pipe(
+            v.string(),
+            v.nonEmpty("Enter an email address."),
+            v.email("Enter a valid email address.")
+          ),
+        }),
+      })
+    ),
+    v.minLength(1, "Add at least one email address."),
+    v.maxLength(5, "You can add up to 5 email addresses.")
+  ),
+});
 
 export default Example;

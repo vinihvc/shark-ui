@@ -1,9 +1,9 @@
 ---
 title: Approval Card
-description: A human-in-the-loop card for questions, shell commands, or plan approval.
+description: A composable card for agent permissions, plan reviews, and clarification flows.
 ---
 
-<ComponentPreview componentName="approval-card" />
+<ComponentPreview componentName="approval-card" fileName="example-permission-scope" hasMaxHeight={false} />
 
 ## Installation
 
@@ -26,7 +26,7 @@ npx shadcn@latest add @shark/approval-card
 
 <Steps>
 
-<Step>This component depends on [Button](/docs/components/button). Install required dependencies first if you haven&apos;t already.</Step>
+<Step>Install [Button](/docs/components/button) and [Questionnaire](/docs/components/questionnaire).</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -44,48 +44,194 @@ npx shadcn@latest add @shark/approval-card
 
 ```text
 ApprovalCard
+├── ApprovalCardHeader
+│   ├── ApprovalCardIcon
+│   ├── ApprovalCardTitle
+│   └── ApprovalCardDescription
+├── ApprovalCardContent
+│   └── QuestionnaireItem
+│       ├── QuestionnaireTitle
+│       ├── QuestionnaireChoices
+│       └── QuestionnaireError
+└── ApprovalCardFooter
+    └── ApprovalCardActions
+        ├── ApprovalCardReject
+        └── ApprovalCardApprove
 ```
 
 ## Usage
 
 ```tsx
-import { ApprovalCard } from "@/components/ui/approval-card";
+import type { SubmitEvent } from "react";
+import {
+  ApprovalCard,
+  ApprovalCardActions,
+  ApprovalCardApprove,
+  ApprovalCardContent,
+  ApprovalCardFooter,
+  ApprovalCardHeader,
+  ApprovalCardReject,
+  ApprovalCardTitle,
+} from "@/components/ui/approval-card";
 ```
+
+`ApprovalCard` is a Questionnaire with card chrome. Pass Questionnaire props on the card (`items`, `onSubmit`, `shortcuts`, `item`, `value`, …) and compose command output, a plan, or any application-specific content in `ApprovalCardContent`. Handle approval in `onSubmit` so button clicks and keyboard confirmation follow the same path.
+
+For approvals without questions, omit `items`. The card registers one optional step. It does not require a choice or a `QuestionnaireItem`, but gives the form an active step for submission and keyboard confirmation. An empty `items` array prevents submission.
 
 ```tsx
-<ApprovalCard
-  variant="plan"
-  planTitle="Session auth migration"
-  plan={steps}
-  onApprove={() => {}}
-  onReject={() => {}}
-/>
+function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  event.preventDefault();
+  runCommand();
+}
+
+<ApprovalCard onReject={cancelCommand} onSubmit={handleSubmit}>
+  <ApprovalCardHeader>
+    <ApprovalCardTitle>Run this command?</ApprovalCardTitle>
+  </ApprovalCardHeader>
+  <ApprovalCardContent>
+    <pre>pnpm db:migrate && pnpm build</pre>
+  </ApprovalCardContent>
+  <ApprovalCardFooter>
+    <ApprovalCardActions>
+      <ApprovalCardReject>Cancel</ApprovalCardReject>
+      <ApprovalCardApprove>Run</ApprovalCardApprove>
+    </ApprovalCardActions>
+  </ApprovalCardFooter>
+</ApprovalCard>
 ```
 
-Variants: `questions`, `command`, and `plan`. Keep [Confirmation](/docs/ai-elements/confirmation) for simple tool accept or reject.
+## Questionnaire approval
 
+When approval depends on answers, place Questionnaire question parts inside `ApprovalCardContent`. The card validates the answers before calling `onSubmit`. Prevent browser navigation there and read the answers with `new FormData(event.currentTarget)`.
+
+```tsx
+import {
+  QuestionnaireChoice,
+  QuestionnaireChoices,
+  QuestionnaireError,
+  QuestionnaireItem,
+  QuestionnaireTitle,
+} from "@/components/ui/questionnaire";
+
+const items = [{ name: "format", required: true }] as const;
+
+function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  event.preventDefault();
+  const answers = new FormData(event.currentTarget);
+  approveFormat(answers.get("format"));
+}
+
+<ApprovalCard items={items} onReject={skip} onSubmit={handleSubmit} shortcuts="letters">
+  <ApprovalCardHeader>
+    <ApprovalCardTitle>Choose a handoff format</ApprovalCardTitle>
+  </ApprovalCardHeader>
+  <ApprovalCardContent>
+    <QuestionnaireItem name="format">
+      <QuestionnaireTitle>How should we share the update?</QuestionnaireTitle>
+      <QuestionnaireChoices>
+        <QuestionnaireChoice value="summary">Short summary</QuestionnaireChoice>
+        <QuestionnaireChoice value="brief">Detailed brief</QuestionnaireChoice>
+      </QuestionnaireChoices>
+      <QuestionnaireError />
+    </QuestionnaireItem>
+  </ApprovalCardContent>
+  <ApprovalCardFooter>
+    <ApprovalCardActions>
+      <ApprovalCardReject>Skip</ApprovalCardReject>
+      <ApprovalCardApprove>Approve format</ApprovalCardApprove>
+    </ApprovalCardActions>
+  </ApprovalCardFooter>
+</ApprovalCard>
+```
+
+With focus inside the card, `Cmd/Ctrl+Enter` validates and advances or submits the current step. Set `shortcuts="letters"` or `"numbers"` for answer shortcuts, and use `QuestionnaireChoiceShortcut` to display each choice's assigned key. Enter confirms a selected answer; focused buttons retain their native keyboard behavior.
+
+`ApprovalCardReject` still calls `onReject` without submitting or validating the form. If `onSubmit` does not call `preventDefault`, the card calls `onApprove` with the form data. Do not nest another Questionnaire or `<form>` inside the card.
+
+<ComponentPreview componentName="approval-card" fileName="example-default" />
+
+## Examples
+
+These interactive demos adapt approval patterns from coding agents to Shark components; they are not replicas or integrations. They only display the decision locally. No commands run, files change, issues get created, or permissions persist.
+
+### Command execution
+
+Show the command, working directory, target environment, and expected effect before asking for approval. This staging migration uses the default optional step and no answer fields.
+
+<ComponentPreview componentName="approval-card" fileName="example-command" />
+
+### Permission scope
+
+[Claude Code command permissions](https://code.claude.com/docs/en/permissions#permission-system) distinguish one-time approval from a remembered rule for a repository and command. Use a required Questionnaire answer to capture that scope explicitly, without preselecting broader access.
+
+Read `answers.get("scope")` from the FormData in `onSubmit`. Persist and enforce the chosen rule in your application; Approval Card does not manage permissions itself.
+
+<ComponentPreview componentName="approval-card" fileName="example-permission-scope" hasMaxHeight={false} />
+
+### Plan review
+
+[Cursor Plan Mode](https://cursor.com/docs/agent/plan-mode) lets users review and revise an implementation plan before building. Compose [Plan](/docs/ai-elements/plan) with Questionnaire question parts to approve the approach or send a freeform revision.
+
+The example reads the controlled answer in `onSubmit` to distinguish an explicit approval from revision text. Only the selected “Implement this plan” option authorizes implementation. A revision keeps work paused, and approving the plan does not bypass individual tool permissions.
+
+<ComponentPreview componentName="approval-card" fileName="example-plan" hasMaxHeight={false} />
+
+### File edit
+
+For a file modification checkpoint, show the exact proposed patch with [Diff](/docs/ai-elements/diff). This example approves one patch only, unlike the broader session-level edit approval available in [Claude Code](https://code.claude.com/docs/en/permissions#permission-system).
+
+<ComponentPreview componentName="approval-card" fileName="example-file-edit" />
+
+### MCP tool call
+
+[Cursor MCP approvals](https://cursor.com/docs/mcp#tool-approval) let users inspect tool arguments before execution. Show the server, tool name, arguments, destination, and external side effects before approving a call that creates a GitHub issue.
+
+Approval applies to this specific call and its displayed arguments, not every tool exposed by the server.
+
+<ComponentPreview componentName="approval-card" fileName="example-mcp-tool" hasMaxHeight={false} />
+
+### Network access
+
+[Codex permissions](https://developers.openai.com/codex/permissions#network-permissions) separate command execution boundaries from network access. This example requests access to a specific host for a package metadata lookup, with a one-request or session scope.
+
+Keep the destination and data being sent visible. The scope choices are application data; enforce them in your agent runtime, not in the card. A host approval must not silently grant unrestricted network access.
+
+<ComponentPreview componentName="approval-card" fileName="example-network-access" hasMaxHeight={false} />
+
+### Clarifying requirements
+
+Before asking for approval to implement, collect the missing requirements, as in [Cursor's planning flow](https://cursor.com/docs/agent/plan-mode#how-it-works). This example combines multiple selection, a second question, and a freeform alternative.
+
+Use `answers.getAll("formats")` in `onSubmit` to read every selected format, including answers from hidden steps. Track `item` / `onItemChange` to show `ApprovalCardApprove` only on the final question. Confirming these answers authorizes drafting a plan, not executing it.
+
+<ComponentPreview componentName="approval-card" fileName="example-clarification" hasMaxHeight={false} />
 
 ## API Reference
 
 ### ApprovalCard
 
-Self-contained approval surface for questions, a command, or a plan.
+Extends [Questionnaire](/docs/components/questionnaire) form props. `items` defaults to `[{ name: "approval" }]`.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `variant` | `"questions" \| "command" \| "plan"` | `"questions"` |
-| `title` | `string` | From `variant` |
-| `questions` | `ApprovalQuestion[]` | `[]` |
-| `command` | `string` | `"pnpm build"` |
-| `cwd` | `string` | `"~/project"` |
-| `plan` | `ApprovalPlanStep[]` | `[]` |
-| `planTitle` | `string` | `"Implementation plan"` |
-| `planSummary` | `string` | `-` |
-| `planPreviewCount` | `number` | `3` |
-| `autoApproveSeconds` | `number` | `30` |
-| `approveLabel` | `string` | From `variant` |
-| `rejectLabel` | `string` | From `variant` |
-| `onApprove` | `(payload?: { answers?: Record<string, string> }) => void` | `-` |
-| `onReject` | `() => void` | `-` |
-| `className` | `string` | `-` |
+| `items` | `readonly QuestionnaireItemDefinition[]` | `[{ name: "approval" }]` |
+| `onApprove` | `(details?: { formData?: FormData }) => void` | — |
+| `onReject` | `() => void` | — |
+| `onSubmit` | `React.FormEventHandler<HTMLFormElement>` | — |
 
+### Parts
+
+| Part | Props and behavior |
+| --- | --- |
+| `ApprovalCardHeader` | Native div props; layout for the icon and heading. |
+| `ApprovalCardIcon` | Native div props; neutral icon surface. |
+| `ApprovalCardTitle` | Native paragraph props; card title. |
+| `ApprovalCardDescription` | Native paragraph props; supporting copy. |
+| `ApprovalCardContent` | Native div props; content region. |
+| `ApprovalCardFooter` | Native div props; footer layout. |
+| `ApprovalCardActions` | Native div props; aligns actions at the end of the footer. |
+| `ApprovalCardApprove` | Button props; submits the card form. |
+| `ApprovalCardReject` | Button props; calls `onReject()`. |
+
+All parts accept `className` and expose a corresponding `data-slot="approval-card-*"` attribute. Do not nest a Questionnaire or another form inside the card.

@@ -4,13 +4,22 @@ import {
   BotIcon,
   CopyIcon,
   FileTextIcon,
+  ListTodoIcon,
   RefreshCcwIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
 } from "lucide-react";
 import {
   ApprovalCard,
-  type ApprovalPlanStep,
+  ApprovalCardActions,
+  ApprovalCardApprove,
+  ApprovalCardContent,
+  ApprovalCardDescription,
+  ApprovalCardFooter,
+  ApprovalCardHeader,
+  ApprovalCardIcon,
+  ApprovalCardReject,
+  ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
 import {
   Attachment,
@@ -70,10 +79,10 @@ import {
   Suggestions,
 } from "@/registry/react/components/suggestion";
 import {
-  Task,
-  TaskContent,
-  TaskItemFile,
-  TaskTrigger,
+  TaskItem,
+  TaskItemContent,
+  TaskItemDetailFile,
+  TaskItemTrigger,
 } from "@/registry/react/components/task";
 import {
   ToolResult,
@@ -89,6 +98,12 @@ export interface ChatMessageAttachment {
 
 export interface ChatMessageSource {
   href: string;
+  title: string;
+}
+
+interface ApprovalPlanStep {
+  detail?: string;
+  id: string;
   title: string;
 }
 
@@ -209,6 +224,50 @@ const MessageConfirmation = ({ title }: { title: string }) => (
   </Confirmation>
 );
 
+const MessageApprovalPlan = ({
+  steps,
+  summary,
+  title,
+}: NonNullable<ChatMessage["approvalPlan"]>) => (
+  <ApprovalCard onApprove={noop} onReject={noop}>
+    <ApprovalCardHeader>
+      <ApprovalCardIcon>
+        <ListTodoIcon aria-hidden="true" />
+      </ApprovalCardIcon>
+      <div className="min-w-0">
+        <ApprovalCardTitle>{title}</ApprovalCardTitle>
+        <ApprovalCardDescription>{summary}</ApprovalCardDescription>
+      </div>
+    </ApprovalCardHeader>
+    <ApprovalCardContent>
+      <ol className="flex flex-col gap-1 rounded-lg border bg-muted/30 p-2">
+        {steps.map((step) => (
+          <li
+            className="flex items-start gap-2 px-2 py-1.5 text-xs"
+            key={step.id}
+          >
+            <span className="mt-1 size-2 shrink-0 rounded-full border border-muted-foreground/50" />
+            <span className="min-w-0">
+              <span className="font-medium">{step.title}</span>
+              {step.detail ? (
+                <span className="mt-0.5 block text-muted-foreground">
+                  {step.detail}
+                </span>
+              ) : null}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </ApprovalCardContent>
+    <ApprovalCardFooter>
+      <ApprovalCardActions>
+        <ApprovalCardReject>View plan</ApprovalCardReject>
+        <ApprovalCardApprove>Approve</ApprovalCardApprove>
+      </ApprovalCardActions>
+    </ApprovalCardFooter>
+  </ApprovalCard>
+);
+
 const MessagePlan = ({
   description,
   tasks,
@@ -226,14 +285,14 @@ const MessagePlan = ({
     </PlanHeader>
     <PlanContent>
       {tasks.map((task) => (
-        <Task key={task.title} status={task.status}>
-          <TaskTrigger status={task.status} title={task.title} />
+        <TaskItem key={task.title} status={task.status}>
+          <TaskItemTrigger status={task.status} title={task.title} />
           {task.file ? (
-            <TaskContent>
-              <TaskItemFile>{task.file}</TaskItemFile>
-            </TaskContent>
+            <TaskItemContent>
+              <TaskItemDetailFile>{task.file}</TaskItemDetailFile>
+            </TaskItemContent>
           ) : null}
-        </Task>
+        </TaskItem>
       ))}
     </PlanContent>
   </Plan>
@@ -311,15 +370,7 @@ const ChatMessageItem = ({ message }: { message: ChatMessage }) => {
             <MessageConfirmation title={message.confirmation} />
           ) : null}
           {message.approvalPlan ? (
-            <ApprovalCard
-              autoApproveSeconds={0}
-              onApprove={noop}
-              onReject={noop}
-              plan={message.approvalPlan.steps}
-              planSummary={message.approvalPlan.summary}
-              planTitle={message.approvalPlan.title}
-              variant="plan"
-            />
+            <MessageApprovalPlan {...message.approvalPlan} />
           ) : null}
           {message.plan ? <MessagePlan {...message.plan} /> : null}
           <Bubble

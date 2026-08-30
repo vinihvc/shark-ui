@@ -1,7 +1,5 @@
 import { QrCode, QrCodeFrame } from "@/registry/react/components/qr-code";
 
-const eccLevels = ["L", "M", "Q", "H"] as const;
-
 const Example = () => (
   <div className="flex flex-wrap items-center gap-6">
     {eccLevels.map((ecc) => (
@@ -19,5 +17,7 @@ const Example = () => (
     ))}
   </div>
 );
+
+const eccLevels = ["L", "M", "Q", "H"] as const;
 
 export default Example;

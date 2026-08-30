@@ -21,6 +21,79 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
+const Example = () => {
+  const [expanded, setExpanded] = useState<ExpandedState>({});
+
+  const table = useTable({
+    columns,
+    data,
+    features,
+    getRowCanExpand: () => true,
+    onExpandedChange: setExpanded,
+    state: {
+      expanded,
+    },
+  });
+
+  return (
+    <div className="w-full max-w-2xl overflow-hidden rounded-md border">
+      <Table>
+        <TableHeader>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <TableHead
+                  className={
+                    header.column.id === "total" ? "text-right" : undefined
+                  }
+                  key={header.id}
+                >
+                  {header.isPlaceholder ? null : (
+                    <table.FlexRender header={header} />
+                  )}
+                </TableHead>
+              ))}
+            </TableRow>
+          ))}
+        </TableHeader>
+        <TableBody>
+          {table.getRowModel().rows.length ? (
+            table.getRowModel().rows.map((row) => (
+              <Fragment key={row.id}>
+                <TableRow>
+                  {row.getAllCells().map((cell) => (
+                    <TableCell
+                      className={
+                        cell.column.id === "total" ? "text-right" : undefined
+                      }
+                      key={cell.id}
+                    >
+                      <table.FlexRender cell={cell} />
+                    </TableCell>
+                  ))}
+                </TableRow>
+                {row.getIsExpanded() ? (
+                  <TableRow>
+                    <TableCell className="p-0" colSpan={columns.length}>
+                      <OrderDetail order={row.original} />
+                    </TableCell>
+                  </TableRow>
+                ) : null}
+              </Fragment>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell className="h-24 text-center" colSpan={columns.length}>
+                No results.
+              </TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
 const features = tableFeatures({
   expandedRowModel: createExpandedRowModel(),
   rowExpandingFeature,
@@ -144,78 +217,5 @@ const OrderDetail = ({ order }: { order: Order }) => (
     </Table>
   </div>
 );
-
-const Example = () => {
-  const [expanded, setExpanded] = useState<ExpandedState>({});
-
-  const table = useTable({
-    columns,
-    data,
-    features,
-    getRowCanExpand: () => true,
-    onExpandedChange: setExpanded,
-    state: {
-      expanded,
-    },
-  });
-
-  return (
-    <div className="w-full max-w-2xl overflow-hidden rounded-md border">
-      <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead
-                  className={
-                    header.column.id === "total" ? "text-right" : undefined
-                  }
-                  key={header.id}
-                >
-                  {header.isPlaceholder ? null : (
-                    <table.FlexRender header={header} />
-                  )}
-                </TableHead>
-              ))}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows.length ? (
-            table.getRowModel().rows.map((row) => (
-              <Fragment key={row.id}>
-                <TableRow>
-                  {row.getAllCells().map((cell) => (
-                    <TableCell
-                      className={
-                        cell.column.id === "total" ? "text-right" : undefined
-                      }
-                      key={cell.id}
-                    >
-                      <table.FlexRender cell={cell} />
-                    </TableCell>
-                  ))}
-                </TableRow>
-                {row.getIsExpanded() ? (
-                  <TableRow>
-                    <TableCell className="p-0" colSpan={columns.length}>
-                      <OrderDetail order={row.original} />
-                    </TableCell>
-                  </TableRow>
-                ) : null}
-              </Fragment>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell className="h-24 text-center" colSpan={columns.length}>
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </div>
-  );
-};
 
 export default Example;

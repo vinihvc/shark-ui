@@ -8,11 +8,6 @@ import {
   DrawerTrigger,
 } from "@/registry/react/components/drawer";
 
-const users = [
-  { name: "Alice", value: "alice" },
-  { name: "Bob", value: "bob" },
-];
-
 const Example = () => (
   <Drawer>
     <div className="flex flex-wrap justify-center gap-2">
@@ -37,5 +32,10 @@ const Example = () => (
     </DrawerContent>
   </Drawer>
 );
+
+const users = [
+  { name: "Alice", value: "alice" },
+  { name: "Bob", value: "bob" },
+];
 
 export default Example;

@@ -1,6 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Popover picker for models and agents with optional search.",
   "name": "model-selector",
   "registryDependencies": [

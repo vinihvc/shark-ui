@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "name": "use-async-list",
+  "type": "registry:hook",
+  "files": [
+    {
+      "content": "\"use client\";\n\nexport {\n  type UseAsyncListProps,\n  type UseAsyncListReturn,\n  useAsyncList,\n} from \"@ark-ui/react/collection\";\n",
+      "path": "registry/react/hooks/use-async-list.ts",
+      "type": "registry:hook"
+    }
+  ]
+}

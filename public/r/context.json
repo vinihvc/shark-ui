@@ -1,6 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Context window usage meter with token breakdown and optional cost.",
   "name": "context",
   "registryDependencies": [

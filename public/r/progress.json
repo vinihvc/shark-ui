@@ -15,9 +15,13 @@
       "--animate-indeterminate": "indeterminate 1.5s ease-in-out infinite"
     }
   },
-  "dependencies": ["@ark-ui/react"],
+  "dependencies": [
+    "@ark-ui/react"
+  ],
   "name": "progress",
-  "registryDependencies": ["https://shark.vini.one/r/field.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/field.json"
+  ],
   "type": "registry:ui",
   "files": [
     {

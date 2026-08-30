@@ -30,18 +30,6 @@ import {
 } from "@/registry/react/components/field";
 import { toast } from "@/registry/react/components/toast";
 
-const formSchema = v.object({
-  responses: v.boolean(),
-  tasks: v.pipe(
-    v.array(v.string()),
-    v.minLength(1, "Please select at least one notification type."),
-    v.check(
-      (value) => value.every((task) => tasks.some((t) => t.id === task)),
-      "Invalid notification type selected."
-    )
-  ),
-});
-
 export const Example = () => {
   const form = useForm({
     initialInput: {
@@ -150,6 +138,18 @@ export const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  responses: v.boolean(),
+  tasks: v.pipe(
+    v.array(v.string()),
+    v.minLength(1, "Please select at least one notification type."),
+    v.check(
+      (value) => value.every((task) => tasks.some((t) => t.id === task)),
+      "Invalid notification type selected."
+    )
+  ),
+});
 
 const tasks = [
   {

@@ -1,0 +1,212 @@
+---
+title: Navigation Menu
+description: A collection of links and menus for website navigation.
+links:
+  doc: https://ark-ui.com/docs/components/navigation-menu
+  api: https://ark-ui.com/docs/components/navigation-menu#api-reference
+---
+
+<ComponentPreview componentName="navigation-menu" />
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/navigation-menu
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react@^5.39.1
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/navigation-menu.tsx" src="/navigation-menu.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+Ark UI **5.39.1 or later** is required. That patch fixes server rendering of `NavigationMenuContent`.
+
+## Anatomy
+
+```text
+NavigationMenu
+├── NavigationMenuList
+│   ├── NavigationMenuItem
+│   │   ├── NavigationMenuTrigger
+│   │   ├── NavigationMenuItemIndicator (optional)
+│   │   └── NavigationMenuContent
+│   │       └── NavigationMenuLink
+│   └── NavigationMenuIndicator (optional)
+│       └── NavigationMenuArrow (optional)
+└── NavigationMenuViewportPositioner (optional)
+    └── NavigationMenuViewport
+```
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+```
+
+```tsx
+<NavigationMenu aria-label="Main navigation">
+  <NavigationMenuList>
+    <NavigationMenuItem value="components">
+      <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink href="/docs/components/button">Button</NavigationMenuLink>
+        <NavigationMenuLink href="/docs/components/menu">Menu</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem value="docs">
+      <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+Triggers and links support `asChild` with one child. Chevrons are explicit children in the examples, so the trigger can also merge onto your own button.
+
+## Controlled
+
+Pass `value` and handle `onValueChange` to own the active item. An empty string closes the menu.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-controlled" />
+
+## Examples
+
+### Shared viewport
+
+Keep content inside its item and add one viewport after the list. Ark moves the active content into it and measures its dimensions. Do not add another Portal or render the content a second time inside the viewport.
+
+Set `lazyMount={false}` and `unmountOnExit={false}` on the root when using a shared viewport. Ark detects the viewport during initial mounting, so it must remain in the DOM while closed. This example overrides the Shark defaults for that composition.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-viewport" />
+
+### Current link
+
+Set `current` on the active page's link. This adds `aria-current="page"` and the Shark active style.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-current-link" />
+
+### Vertical
+
+Use `orientation="vertical"` for a column of links with panels opening at the inline end. Use the existing `LocaleProvider` setup for RTL.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-vertical" />
+
+### Indicator
+
+Place `NavigationMenuIndicator` directly inside the list. The list keeps item positioning static so the indicator's coordinates remain relative to the list. `NavigationMenuItemIndicator` is available for a marker attached to an individual item.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-indicator" />
+
+### Root provider
+
+Use `useNavigationMenu` with `NavigationMenuRootProvider` when state must be accessed outside the menu. Use the provider instead of `NavigationMenu`, not inside it.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-root-provider" />
+
+### Context
+
+Read the active menu with `NavigationMenuContext` or `useNavigationMenuContext` inside the root.
+
+<ComponentPreview componentName="navigation-menu" fileName="example-context" />
+
+## Custom links
+
+Compose with Next.js links without nesting anchors:
+
+```tsx
+import NextLink from "next/link";
+import { NavigationMenuLink } from "@/components/ui/navigation-menu";
+
+<NavigationMenuLink asChild>
+  <NextLink href="/docs/components/button">Button</NextLink>
+</NavigationMenuLink>
+```
+
+## Sizing and motion
+
+Content uses the same surface tokens as Shark Menu. Standalone panels own their border and shadow; inside a shared viewport, the viewport owns that surface instead.
+
+Panels are limited to `70dvh` and scroll when needed. Use `className` to set the content layout and size. Shared viewport dimensions and indicators transition over 200 ms. Reduced motion disables animations and transitions.
+
+## Accessibility
+
+Give the navigation an accessible name with `aria-label`. Triggers expose expanded state and links support `aria-current`. Arrow keys move through navigation items, Home/End reach the ends, and Escape dismisses an open panel. Tab follows the focusable content. Vertical navigation and RTL use Ark's direction-aware keyboard behavior.
+
+## API Reference
+
+### NavigationMenu
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value`, `defaultValue` | `string` | — |
+| `onValueChange` | `(details: NavigationMenuValueChangeDetails) => void` | — |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `openDelay` | `number` | `200` |
+| `closeDelay` | `number` | `300` |
+| `disableClickTrigger`, `disableHoverTrigger`, `disablePointerLeaveClose` | `boolean` | `false` |
+| `lazyMount`, `unmountOnExit` | `boolean` | `true` |
+| `hideMode` | `"display-none" \| "activity"` | `"display-none"` |
+| `id`, `ids`, `translations` | Ark root options | — |
+| `asChild` | `boolean` | `false` |
+
+### Parts
+
+All DOM parts accept their Ark props, refs, `className`, and `asChild`. Each has a matching `data-slot="navigation-menu-*"` attribute; both roots use `data-slot="navigation-menu"`.
+
+| Part | Additional props or behavior |
+| --- | --- |
+| `NavigationMenuRootProvider` | Requires `value` from `useNavigationMenu`; shares root styling and mount defaults. |
+| `NavigationMenuList` | Contains items and the optional shared indicator. |
+| `NavigationMenuItem` | Requires a unique `value`; supports `disabled`. |
+| `NavigationMenuTrigger` | Controls its containing item; icons are explicit children. |
+| `NavigationMenuLink` | Supports `href`, `current`, `closeOnClick` (default `true`), `onSelect`, and `value`. |
+| `NavigationMenuContent` | Uses its containing item's value; accepts an explicit `value`. |
+| `NavigationMenuIndicator` | Shared active trigger marker. |
+| `NavigationMenuItemIndicator` | Active marker for one item. |
+| `NavigationMenuArrow` | Decorative arrow inside the shared indicator. |
+| `NavigationMenuViewportPositioner` | `align="start" \| "center" \| "end"`; default `"center"`. |
+| `NavigationMenuViewport` | Shared panel sized by Ark's content measurements. |
+| `NavigationMenuContext` | Render function receiving the menu API; no DOM wrapper. |
+
+### Hooks and types
+
+`useNavigationMenu` creates the state used by `NavigationMenuRootProvider`. `useNavigationMenuContext` reads the surrounding root. The API includes `value`, `open`, `orientation`, `setValue`, `reposition`, `isViewportRendered`, and `getViewportNode`.
+
+The module exports `UseNavigationMenuProps`, `UseNavigationMenuReturn`, `UseNavigationMenuContext`, `NavigationMenuValueChangeDetails`, and props types for the named parts. The root props type is `NavigationMenuProps`.
+
+### CSS variables
+
+| Variable | Description |
+| --- | --- |
+| `--trigger-width`, `--trigger-height` | Active trigger dimensions. |
+| `--trigger-x`, `--trigger-y` | Active trigger coordinates used by the shared indicator. |
+| `--viewport-width`, `--viewport-height` | Active content dimensions used by the viewport. |
+| `--viewport-x`, `--viewport-y` | Viewport coordinates calculated by Ark. |

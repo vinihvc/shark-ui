@@ -23,12 +23,6 @@ import { toast } from "@registry/react/components/toast";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 
-const formSchema = z.object({
-  twoFactor: z.boolean().refine((val) => val === true, {
-    message: "It is highly recommended to enable two-factor authentication.",
-  }),
-});
-
 export const Example = () => {
   const form = useForm({
     defaultValues: {
@@ -92,5 +86,11 @@ export const Example = () => {
     </Card>
   );
 };
+
+const formSchema = z.object({
+  twoFactor: z.boolean().refine((val) => val === true, {
+    message: "It is highly recommended to enable two-factor authentication.",
+  }),
+});
 
 export default Example;

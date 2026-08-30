@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -23,7 +23,7 @@ const Example = () => (
         >
           External link
           <MenuShortcut>
-            <ExternalLink />
+            <ArrowUpRightIcon />
           </MenuShortcut>
         </a>
       </MenuItem>

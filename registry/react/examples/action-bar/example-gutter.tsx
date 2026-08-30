@@ -18,8 +18,6 @@ import {
 } from "@/registry/react/components/action-bar";
 import { Button } from "@/registry/react/components/button";
 
-const gutters = ["24px", "32px"] as const;
-
 const Example = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [gutter, setGutter] = React.useState<(typeof gutters)[number]>("24px");
@@ -79,5 +77,7 @@ const Example = () => {
     </>
   );
 };
+
+const gutters = ["24px", "32px"] as const;
 
 export default Example;

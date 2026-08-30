@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "name": "use-list-selection",
+  "type": "registry:hook",
+  "files": [
+    {
+      "content": "\"use client\";\n\nexport {\n  type UseListSelectionProps,\n  type UseListSelectionReturn,\n  useListSelection,\n} from \"@ark-ui/react/collection\";\n",
+      "path": "registry/react/hooks/use-list-selection.ts",
+      "type": "registry:hook"
+    }
+  ]
+}

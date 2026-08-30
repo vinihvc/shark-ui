@@ -3,7 +3,7 @@
 ## When to use
 
 - Bulk actions after selecting rows or items in a list or table.
-- A compact toolbar anchored to a trigger (e.g. “3 selected”) with dismiss and primary actions.
+- A compact, fixed non-modal action surface with a selection count, dismiss control, and primary actions.
 
 ## Install
 
@@ -17,7 +17,7 @@ Manual deps from docs:
 npm install @ark-ui/react lucide-react tailwind-variants
 ```
 
-Install Shark `button` first if it is not already in the project (action bar examples compose buttons inside the surface).
+Install Shark `badge` and `separator` for the component, and `button` for the examples.
 
 ## Canonical imports
 
@@ -39,7 +39,7 @@ import {
   <ActionBarTrigger asChild>
     <Button variant="outline">Open</Button>
   </ActionBarTrigger>
-  <ActionBarContent className="w-full max-w-xl">
+  <ActionBarContent aria-label="Bulk actions" className="w-full max-w-xl">
     <ActionBarClose asChild>
       <Button size="icon-sm" variant="ghost">
         <XIcon />
@@ -54,6 +54,15 @@ import {
 ### Key patterns
 
 `ActionBarValue` shows selection count; `ActionBarBody` holds the action row. Prefer `asChild` on triggers and close controls so real `Button` elements handle focus and keyboard.
+
+`ActionBarTrigger` and `ActionBarClose` wrap Ark's native Popover trigger parts.
+The trigger toggles the bar open and closed.
+
+The surface uses Ark Popover with `role="dialog"`, without automatic focus,
+focus trapping, or outside-interaction dismissal. Supply an accessible name.
+Escape and focus restoration follow Ark's native Popover behavior. Without
+`ActionBarTrigger`, the application owns the focus flow when removing a focused
+control. Configure custom action shortcuts in the application.
 
 ## Common pitfalls
 

@@ -21,7 +21,12 @@ export const DOCS_NEW_ITEMS = [
   "/docs/ai-elements/terminal",
   "/docs/ai-elements/tool-result",
   "/docs/components/data-table",
+  "/docs/components/navigation-menu",
+  "/docs/components/questionnaire",
   "/docs/components/toc",
+  "/docs/hooks/use-async-list",
+  "/docs/hooks/use-list-selection",
+  "/docs/utilities/focus-trap",
   "/docs/utilities/hotkeys",
   "/docs/utilities/shimmer",
 ];

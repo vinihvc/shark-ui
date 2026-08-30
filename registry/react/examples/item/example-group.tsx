@@ -15,24 +15,6 @@ import {
   ItemTitle,
 } from "@/registry/react/components/item";
 
-const people = [
-  {
-    avatar: "https://github.com/vinihvc.png",
-    email: "vinihvc@example.com",
-    username: "vinihvc",
-  },
-  {
-    avatar: "https://github.com/segunadebayo.png",
-    email: "segunadebayo@example.com",
-    username: "segunadebayo",
-  },
-  {
-    avatar: "https://github.com/pasqualevitiello.png",
-    email: "pasqualevitiello@example.com",
-    username: "pasqualevitiello",
-  },
-];
-
 const Example = () => (
   <ItemGroup className="max-w-sm">
     {people.map((person) => (
@@ -56,5 +38,23 @@ const Example = () => (
     ))}
   </ItemGroup>
 );
+
+const people = [
+  {
+    avatar: "https://github.com/vinihvc.png",
+    email: "vinihvc@example.com",
+    username: "vinihvc",
+  },
+  {
+    avatar: "https://github.com/segunadebayo.png",
+    email: "segunadebayo@example.com",
+    username: "segunadebayo",
+  },
+  {
+    avatar: "https://github.com/pasqualevitiello.png",
+    email: "pasqualevitiello@example.com",
+    username: "pasqualevitiello",
+  },
+];
 
 export default Example;

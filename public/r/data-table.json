@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@tanstack/react-table", "lucide-react"],
+  "dependencies": [
+    "@tanstack/react-table",
+    "lucide-react"
+  ],
   "name": "data-table",
   "registryDependencies": [
     "https://shark.vini.one/r/button.json",

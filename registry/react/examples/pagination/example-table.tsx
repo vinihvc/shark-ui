@@ -19,12 +19,6 @@ import {
   TableRow,
 } from "@/registry/react/components/table";
 
-const users = Array.from({ length: 48 }, (_, i) => ({
-  email: `user${i + 1}@example.com`,
-  id: `user-${i + 1}`,
-  name: `User ${i + 1}`,
-}));
-
 const Example = () => {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(2);
@@ -77,5 +71,11 @@ const Example = () => {
     </div>
   );
 };
+
+const users = Array.from({ length: 48 }, (_, i) => ({
+  email: `user${i + 1}@example.com`,
+  id: `user-${i + 1}`,
+  name: `User ${i + 1}`,
+}));
 
 export default Example;

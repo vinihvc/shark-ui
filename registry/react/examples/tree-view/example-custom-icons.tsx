@@ -20,12 +20,6 @@ import {
   TreeViewTree,
 } from "@/registry/react/components/tree-view";
 
-const fileIcons = createFileIcons({
-  ".json": FileJsonIcon,
-  ".md": FileTextIcon,
-  ".tsx": FileCodeIcon,
-});
-
 const Example = () => (
   <div className="w-full max-w-48">
     <TreeView collection={collection} fileIcons={fileIcons}>
@@ -37,6 +31,12 @@ const Example = () => (
     </TreeView>
   </div>
 );
+
+const fileIcons = createFileIcons({
+  ".json": FileJsonIcon,
+  ".md": FileTextIcon,
+  ".tsx": FileCodeIcon,
+});
 
 const collection = createTreeCollection({
   rootNode: {

@@ -61,6 +61,7 @@ import { MessageThumb } from "@/components/thumbs/message";
 import { MessageScrollerThumb } from "@/components/thumbs/message-scroller";
 import { ModelSelectorThumb } from "@/components/thumbs/model-selector";
 import { NativeSelectThumb } from "@/components/thumbs/native-select";
+import { NavigationMenuThumb } from "@/components/thumbs/navigation-menu";
 import { NumberInputThumb } from "@/components/thumbs/number-input";
 import { PaginationThumb } from "@/components/thumbs/pagination";
 import { PasswordInputThumb } from "@/components/thumbs/password-input";
@@ -70,6 +71,7 @@ import { ProgressThumb } from "@/components/thumbs/progress";
 import { PromptInputThumb } from "@/components/thumbs/prompt-input";
 import { ProseThumb } from "@/components/thumbs/prose";
 import { QrCodeThumb } from "@/components/thumbs/qr-code";
+import { QuestionnaireThumb } from "@/components/thumbs/questionnaire";
 import { QueueThumb } from "@/components/thumbs/queue";
 import { RadioGroupThumb } from "@/components/thumbs/radio-group";
 import { RatingGroupThumb } from "@/components/thumbs/rating";
@@ -175,6 +177,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   "message-scroller": MessageScrollerThumb,
   "model-selector": ModelSelectorThumb,
   "native-select": NativeSelectThumb,
+  "navigation-menu": NavigationMenuThumb,
   "number-input": NumberInputThumb,
   pagination: PaginationThumb,
   "password-input": PasswordInputThumb,
@@ -184,6 +187,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   "prompt-input": PromptInputThumb,
   prose: ProseThumb,
   "qr-code": QrCodeThumb,
+  questionnaire: QuestionnaireThumb,
   queue: QueueThumb,
   "radio-group": RadioGroupThumb,
   rating: RatingGroupThumb,

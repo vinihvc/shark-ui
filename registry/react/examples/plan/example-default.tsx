@@ -8,10 +8,10 @@ import {
   PlanTrigger,
 } from "@/registry/react/components/plan";
 import {
-  Task,
-  TaskContent,
-  TaskItemFile,
-  TaskTrigger,
+  TaskItem,
+  TaskItemContent,
+  TaskItemDetailFile,
+  TaskItemTrigger,
 } from "@/registry/react/components/task";
 
 const Example = () => (
@@ -26,22 +26,22 @@ const Example = () => (
       </PlanAction>
     </PlanHeader>
     <PlanContent>
-      <Task status="completed">
-        <TaskTrigger status="completed" title="Read current validator" />
-        <TaskContent>
-          <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
-        </TaskContent>
-      </Task>
-      <Task status="in-progress">
-        <TaskTrigger status="in-progress" title="Patch isValidEmail" />
-        <TaskContent>
-          <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
-          <TaskItemFile>src/app.tsx</TaskItemFile>
-        </TaskContent>
-      </Task>
-      <Task status="pending">
-        <TaskTrigger status="pending" title="Run unit tests" />
-      </Task>
+      <TaskItem status="completed">
+        <TaskItemTrigger status="completed" title="Read current validator" />
+        <TaskItemContent>
+          <TaskItemDetailFile>src/utils/helpers.ts</TaskItemDetailFile>
+        </TaskItemContent>
+      </TaskItem>
+      <TaskItem status="in-progress">
+        <TaskItemTrigger status="in-progress" title="Patch isValidEmail" />
+        <TaskItemContent>
+          <TaskItemDetailFile>src/utils/helpers.ts</TaskItemDetailFile>
+          <TaskItemDetailFile>src/app.tsx</TaskItemDetailFile>
+        </TaskItemContent>
+      </TaskItem>
+      <TaskItem status="pending">
+        <TaskItemTrigger status="pending" title="Run unit tests" />
+      </TaskItem>
     </PlanContent>
   </Plan>
 );

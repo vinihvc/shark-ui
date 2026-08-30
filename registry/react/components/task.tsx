@@ -1,7 +1,8 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import type React from "react";
+import { CircleCheckIcon, CircleIcon, CircleXIcon } from "lucide-react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
 import {
@@ -12,64 +13,88 @@ import {
 } from "@/registry/react/components/collapsible";
 import { Spinner } from "@/registry/react/components/spinner";
 
-export type TaskStatus = "completed" | "in-progress" | "pending";
+export type TaskStatus = "completed" | "error" | "in-progress" | "pending";
 
-interface TaskProps extends React.ComponentProps<typeof Collapsible> {
+const TaskItemStatusContext = React.createContext({} as TaskStatus);
+
+interface TaskItemProps extends React.ComponentProps<typeof Collapsible> {
+  /**
+   * The status of the task.
+   */
   status?: TaskStatus;
 }
 
-export const Task = (props: TaskProps) => {
+export const TaskItem = (props: TaskItemProps) => {
   const { className, defaultOpen, status = "pending", ...rest } = props;
 
   return (
-    <Collapsible
-      className={cn("w-full min-w-0 text-sm", className)}
-      data-slot="task"
-      data-status={status}
-      defaultOpen={defaultOpen ?? status === "in-progress"}
-      {...rest}
-    />
+    <TaskItemStatusContext.Provider value={status}>
+      <Collapsible
+        className={cn(
+          "w-full min-w-0 text-sm",
+          "[&>[data-slot=collapsible-content]]:w-full",
+          "[&>[data-slot=collapsible-content]]:min-w-0",
+          className
+        )}
+        data-slot="task-item"
+        data-status={status}
+        defaultOpen={defaultOpen ?? status === "in-progress"}
+        {...rest}
+      />
+    </TaskItemStatusContext.Provider>
   );
 };
 
-interface TaskTriggerProps
+interface TaskItemTriggerProps
   extends React.ComponentProps<typeof CollapsibleTrigger> {
+  /**
+   * The status of the task.
+   */
   status?: TaskStatus;
+  /**
+   * The title of the task.
+   */
   title: string;
 }
 
-export const TaskTrigger = (props: TaskTriggerProps) => {
-  const { className, status = "pending", title, children, ...rest } = props;
+export const TaskItemTrigger = (props: TaskItemTriggerProps) => {
+  const inheritedStatus = useTaskItem();
+
+  const {
+    status = inheritedStatus ?? "pending",
+    title,
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <CollapsibleTrigger
       className={cn(
-        "flex w-full min-w-0 items-center gap-2 rounded-lg py-1 text-start",
+        "w-full min-w-0",
+        "flex items-center gap-2",
+        "px-2 py-1.5",
+        "text-start",
+        "rounded-lg",
+        "transition-colors",
+        "hover:bg-muted/60",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className
       )}
-      data-slot="task-trigger"
+      data-slot="task-item-trigger"
       {...rest}
     >
       {children ?? (
         <>
-          {status === "in-progress" ? (
-            <Spinner className="size-3.5" />
-          ) : (
-            <span
-              aria-hidden="true"
-              className={cn(
-                "size-3.5 rounded-full border",
-                status === "completed" && "border-success bg-success",
-                status === "pending" && "border-muted-foreground/40"
-              )}
-            />
-          )}
+          <TaskStatusIcon status={status} />
           <span
             className={cn(
               "min-w-0 flex-1 truncate",
-              status === "completed" && "text-muted-foreground line-through"
+              status === "completed" && "text-muted-foreground",
+              status === "error" && "text-destructive-foreground"
             )}
           >
+            <span className="sr-only">{statusLabels[status]}: </span>
             {title}
           </span>
           <CollapsibleIndicator className="text-muted-foreground" />
@@ -79,27 +104,60 @@ export const TaskTrigger = (props: TaskTriggerProps) => {
   );
 };
 
-export const TaskContent = (
+export const TaskItemContent = (
   props: React.ComponentProps<typeof CollapsibleContent>
 ) => {
   const { className, ...rest } = props;
 
   return (
     <CollapsibleContent
-      className={cn("flex flex-wrap items-start gap-1.5 ps-6 pt-1", className)}
-      data-slot="task-content"
+      className={cn(
+        "min-w-0",
+        "flex flex-col gap-1",
+        "ms-4 ps-4 pt-1",
+        "border-s",
+        className
+      )}
+      data-slot="task-item-content"
       {...rest}
     />
   );
 };
 
-export const TaskItemFile = (props: React.ComponentProps<typeof Badge>) => {
-  const { className, variant = "outline", ...rest } = props;
+export const TaskItemDetail = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  return (
+    <ark.div
+      className={cn(
+        "min-w-0",
+        "px-2 py-1",
+        "text-muted-foreground text-sm leading-6",
+        "rounded-md",
+        className
+      )}
+      data-slot="task-item-detail"
+      {...rest}
+    />
+  );
+};
+
+export const TaskItemDetailFile = (
+  props: React.ComponentProps<typeof Badge>
+) => {
+  const { variant = "outline", className, ...rest } = props;
 
   return (
     <Badge
-      className={cn("w-fit max-w-full font-mono", className)}
-      data-slot="task-item-file"
+      className={cn(
+        "w-fit max-w-full",
+        "truncate",
+        "align-baseline",
+        "mx-1",
+        "font-mono text-xs",
+        className
+      )}
+      data-slot="task-item-detail-file"
       size="sm"
       variant={variant}
       {...rest}
@@ -107,14 +165,81 @@ export const TaskItemFile = (props: React.ComponentProps<typeof Badge>) => {
   );
 };
 
-export const TaskList = (props: React.ComponentProps<typeof ark.div>) => {
-  const { className, ...rest } = props;
+interface TaskProps extends React.ComponentProps<typeof ark.div> {
+  /**
+   * The number of completed tasks.
+   */
+  completed?: number;
+  /**
+   * The total number of tasks.
+   */
+  total?: number;
+}
+
+export const Task = (props: TaskProps) => {
+  const { children, className, completed, total, ...rest } = props;
+
+  const hasProgress = completed !== undefined && total !== undefined;
 
   return (
     <ark.div
-      className={cn("flex flex-col gap-1", className)}
-      data-slot="task-list"
+      className={cn("flex w-full min-w-0 flex-col gap-2", className)}
+      data-slot="task"
       {...rest}
+    >
+      {children}
+      {hasProgress ? (
+        <span
+          aria-live="polite"
+          className="pt-1 text-muted-foreground text-sm tabular-nums"
+          data-slot="task-progress"
+        >
+          {completed} of {total} tasks complete
+        </span>
+      ) : null}
+    </ark.div>
+  );
+};
+
+const statusLabels: Record<TaskStatus, string> = {
+  completed: "Completed",
+  error: "Failed",
+  "in-progress": "In progress",
+  pending: "Pending",
+};
+
+const TaskStatusIcon = ({ status }: { status: TaskStatus }) => {
+  if (status === "in-progress") {
+    return <Spinner aria-hidden="true" className="size-4 shrink-0" />;
+  }
+
+  let Icon = CircleIcon;
+  if (status === "completed") {
+    Icon = CircleCheckIcon;
+  }
+  if (status === "error") {
+    Icon = CircleXIcon;
+  }
+
+  return (
+    <Icon
+      aria-hidden="true"
+      className={cn(
+        "size-4 shrink-0",
+        status === "completed" && "text-success-foreground",
+        status === "error" && "text-destructive-foreground",
+        status === "pending" && "text-muted-foreground"
+      )}
     />
   );
+};
+
+const useTaskItem = () => {
+  const context = React.useContext(TaskItemStatusContext);
+
+  if (!context) {
+    throw new Error("TaskItemStatusContext not found");
+  }
+
+  return context;
 };

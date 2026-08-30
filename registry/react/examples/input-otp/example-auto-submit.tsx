@@ -2,10 +2,6 @@
 
 import { InputOTP, InputOTPSlot } from "@/registry/react/components/input-otp";
 
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-};
-
 const Example = () => (
   <form onSubmit={handleSubmit}>
     <InputOTP autoSubmit>
@@ -16,5 +12,9 @@ const Example = () => (
     </InputOTP>
   </form>
 );
+
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+};
 
 export default Example;

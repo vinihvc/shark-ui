@@ -6,6 +6,15 @@ import {
   type DataTableFeatures,
 } from "@/registry/react/components/data-table";
 
+const Example = () => (
+  <DataTable
+    caption="Team members"
+    className="w-full max-w-xl"
+    columns={columns}
+    data={data}
+  />
+);
+
 interface TeamMember {
   department: string;
   id: string;
@@ -59,14 +68,5 @@ const data: TeamMember[] = [
     role: "Ops Specialist",
   },
 ];
-
-const Example = () => (
-  <DataTable
-    caption="Team members"
-    className="w-full max-w-xl"
-    columns={columns}
-    data={data}
-  />
-);
 
 export default Example;

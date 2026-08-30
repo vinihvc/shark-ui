@@ -6,10 +6,6 @@ import {
   CodeBlockTitle,
 } from "@/registry/react/components/code-block";
 
-const CODE = `export function isValidEmail(email: string) {
-  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
-}`;
-
 const Example = () => (
   <CodeBlock className="max-w-lg" code={CODE}>
     <CodeBlockHeader>
@@ -19,5 +15,9 @@ const Example = () => (
     <CodeBlockContent showLineNumbers>{CODE}</CodeBlockContent>
   </CodeBlock>
 );
+
+const CODE = `export function isValidEmail(email: string) {
+  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
+}`;
 
 export default Example;

@@ -27,14 +27,6 @@ import {
 } from "@/registry/react/components/field";
 import { Textarea } from "@/registry/react/components/textarea";
 
-const formSchema = v.object({
-  about: v.pipe(
-    v.string(),
-    v.minLength(10, "Please provide at least 10 characters."),
-    v.maxLength(200, "Please keep it under 200 characters.")
-  ),
-});
-
 const Example = () => {
   const form = useForm({
     initialInput: { about: "" },
@@ -94,5 +86,13 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  about: v.pipe(
+    v.string(),
+    v.minLength(10, "Please provide at least 10 characters."),
+    v.maxLength(200, "Please keep it under 200 characters.")
+  ),
+});
 
 export default Example;

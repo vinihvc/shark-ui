@@ -1,7 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "categories": ["authentication"],
-  "dependencies": ["lucide-react"],
+  "categories": [
+    "authentication"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "A focused sign-in page with email, password, and SSO actions.",
   "files": [
     {

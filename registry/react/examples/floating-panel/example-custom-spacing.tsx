@@ -33,10 +33,6 @@ import {
   SelectValue,
 } from "@/registry/react/components/select";
 
-const collection = createListCollection({
-  items: ["Inter", "Roboto", "Helvetica", "Geist"],
-});
-
 const Example = () => (
   <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
     <FloatingPanelTrigger asChild>
@@ -90,5 +86,9 @@ const Example = () => (
     </FloatingPanelContent>
   </FloatingPanel>
 );
+
+const collection = createListCollection({
+  items: ["Inter", "Roboto", "Helvetica", "Geist"],
+});
 
 export default Example;

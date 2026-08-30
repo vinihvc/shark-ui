@@ -1,7 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "categories": ["ai"],
-  "dependencies": ["lucide-react"],
+  "categories": [
+    "ai"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Align UI–style chat sidebar with search, pinned projects, grouped history, and user footer.",
   "files": [
     {

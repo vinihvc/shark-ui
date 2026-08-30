@@ -1,7 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "categories": ["ai"],
-  "dependencies": ["lucide-react"],
+  "categories": [
+    "ai"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
   "description": "Personalized empty chat state with greeting and suggestion chips.",
   "files": [
     {
@@ -23,7 +27,9 @@
     "previewHeight": 480
   },
   "name": "ai-chat-empty-01",
-  "registryDependencies": ["https://shark.vini.one/r/suggestion.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/suggestion.json"
+  ],
   "title": "AI Chat Empty State",
   "type": "registry:block"
 }

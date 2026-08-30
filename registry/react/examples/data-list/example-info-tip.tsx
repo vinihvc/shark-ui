@@ -12,20 +12,6 @@ import {
   ToggleTooltipTrigger,
 } from "@/registry/react/components/toggle-tooltip";
 
-const data = [
-  {
-    info: "Total new user signups this month",
-    label: "New Users",
-    value: "234",
-  },
-  { info: "Revenue from product sales", label: "Sales", value: "£12,340" },
-  {
-    info: "Total revenue in the last quarter",
-    label: "Revenue",
-    value: "3,450",
-  },
-];
-
 const Example = () => (
   <DataList>
     {data.map((item) => (
@@ -50,5 +36,19 @@ const Example = () => (
     ))}
   </DataList>
 );
+
+const data = [
+  {
+    info: "Total new user signups this month",
+    label: "New Users",
+    value: "234",
+  },
+  { info: "Revenue from product sales", label: "Sales", value: "£12,340" },
+  {
+    info: "Total revenue in the last quarter",
+    label: "Revenue",
+    value: "3,450",
+  },
+];
 
 export default Example;

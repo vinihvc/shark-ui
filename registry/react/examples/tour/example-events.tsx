@@ -15,39 +15,6 @@ import {
   TourTrigger,
 } from "@/registry/react/components/tour";
 
-const steps: TourStepType[] = [
-  {
-    actions: [{ action: "next", label: "Next" }],
-    description: "Watch the event log below as you navigate.",
-    id: "step-1",
-    target: () => document.querySelector<HTMLElement>("#event-1"),
-    title: "First Step",
-    type: "tooltip",
-  },
-  {
-    actions: [
-      { action: "prev", label: "Back" },
-      { action: "next", label: "Next" },
-    ],
-    description: "Each step change triggers an event.",
-    id: "step-2",
-    target: () => document.querySelector<HTMLElement>("#event-2"),
-    title: "Second Step",
-    type: "tooltip",
-  },
-  {
-    actions: [
-      { action: "prev", label: "Back" },
-      { action: "dismiss", label: "Finish" },
-    ],
-    description: "Complete the tour to see the status change.",
-    id: "step-3",
-    target: () => document.querySelector<HTMLElement>("#event-3"),
-    title: "Final Step",
-    type: "tooltip",
-  },
-];
-
 const Example = () => {
   const [logs, setLogs] = React.useState<string[]>([]);
 
@@ -113,5 +80,38 @@ const Example = () => {
     </div>
   );
 };
+
+const steps: TourStepType[] = [
+  {
+    actions: [{ action: "next", label: "Next" }],
+    description: "Watch the event log below as you navigate.",
+    id: "step-1",
+    target: () => document.querySelector<HTMLElement>("#event-1"),
+    title: "First Step",
+    type: "tooltip",
+  },
+  {
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "next", label: "Next" },
+    ],
+    description: "Each step change triggers an event.",
+    id: "step-2",
+    target: () => document.querySelector<HTMLElement>("#event-2"),
+    title: "Second Step",
+    type: "tooltip",
+  },
+  {
+    actions: [
+      { action: "prev", label: "Back" },
+      { action: "dismiss", label: "Finish" },
+    ],
+    description: "Complete the tour to see the status change.",
+    id: "step-3",
+    target: () => document.querySelector<HTMLElement>("#event-3"),
+    title: "Final Step",
+    type: "tooltip",
+  },
+];
 
 export default Example;

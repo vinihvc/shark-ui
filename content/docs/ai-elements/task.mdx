@@ -1,6 +1,6 @@
 ---
 title: Task
-description: An agent task row with status, files, and collapsible details.
+description: Collapsible agent workflow tasks with progress states and details.
 ---
 
 <ComponentPreview componentName="task" />
@@ -26,7 +26,7 @@ npx shadcn@latest add @shark/task
 
 <Steps>
 
-<Step>This component depends on [Collapsible](/docs/components/collapsible) and [Badge](/docs/components/badge). Install them first if you haven't already.</Step>
+<Step>This component depends on [Collapsible](/docs/components/collapsible), [Badge](/docs/components/badge), and [Spinner](/docs/components/spinner). Install them first if you haven't already.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -43,73 +43,122 @@ npx shadcn@latest add @shark/task
 ## Anatomy
 
 ```text
-TaskList
-└── Task
-    ├── TaskTrigger
-    └── TaskContent
-        └── TaskItemFile
+Task
+└── TaskItem
+    ├── TaskItemTrigger
+    └── TaskItemContent
+        └── TaskItemDetail
+            └── TaskItemDetailFile
 ```
 
 ## Usage
 
 ```tsx
-import { Task, TaskContent, TaskItemFile, TaskTrigger } from "@/components/ui/task";
+import {
+  Task,
+  TaskItem,
+  TaskItemContent,
+  TaskItemDetail,
+  TaskItemDetailFile,
+  TaskItemTrigger,
+} from "@/components/ui/task";
 ```
 
 ```tsx
-<Task status="in-progress">
-  <TaskTrigger status="in-progress" title="Patch isValidEmail" />
-  <TaskContent>
-    <TaskItemFile>src/utils/helpers.ts</TaskItemFile>
-  </TaskContent>
+<Task completed={1} total={3}>
+  <TaskItem status="in-progress">
+    <TaskItemTrigger title="Patch isValidEmail" />
+    <TaskItemContent>
+      <TaskItemDetail>
+        Updating <TaskItemDetailFile>src/utils/helpers.ts</TaskItemDetailFile>
+      </TaskItemDetail>
+    </TaskItemContent>
+  </TaskItem>
 </Task>
 ```
 
-Nest tasks inside [Plan](/docs/ai-elements/plan).
+## Status
+
+### Success
+
+<ComponentPreview componentName="task" fileName="example-success" />
+
+### Error
+
+<ComponentPreview componentName="task" fileName="example-error" />
+
+### In progress
+
+<ComponentPreview componentName="task" fileName="example-in-progress" />
+
+## Examples
+
+### Single item
+
+<ComponentPreview componentName="task" fileName="example-single-item" />
+
+### Custom trigger
+
+<ComponentPreview componentName="task" fileName="example-custom-trigger" />
+
+### Progress summary
+
+<ComponentPreview componentName="task" fileName="example-default" />
 
 ## API Reference
 
-### TaskList
+### Task
 
-Container for stacked tasks.
+Groups related task items and can show their overall progress.
 
 | Prop | Type | Default |
 | --- | --- | --- |
+| `completed` | `number` | `-` |
+| `total` | `number` | `-` |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
-### Task
+### TaskItem
 
-Root collapsible. Forwards [Collapsible](/docs/components/collapsible) props. `defaultOpen` is `true` when `status` is `"in-progress"`.
+A collapsible unit of work with a status and optional details.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `status` | `"pending" \| "in-progress" \| "completed"` | `"pending"` |
+| `status` | `"pending" \| "in-progress" \| "completed" \| "error"` | `"pending"` |
 | `className` | `string` | `-` |
 
-### TaskTrigger
+### TaskItemTrigger
 
-Toggles the task. Default children show status, `title`, and the chevron.
+Toggles the item and, by default, displays its status, title, and indicator.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `title` | `string` | **required** |
-| `status` | `"pending" \| "in-progress" \| "completed"` | `"pending"` |
+| `status` | `"pending" \| "in-progress" \| "completed" \| "error"` | inherits `TaskItem` status |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
-### TaskContent
+### TaskItemContent
 
-Holds nested files and details.
+Contains the details revealed when the item is open.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
-### TaskItemFile
+### TaskItemDetail
 
-File chip built on [Badge](/docs/components/badge).
+A supporting line for progress, context, files, or custom content.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### TaskItemDetailFile
+
+A compact file reference for use inside a task detail.
 
 | Prop | Type | Default |
 | --- | --- | --- |

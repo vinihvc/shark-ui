@@ -8,7 +8,6 @@ const manifest: RegistryItemType = {
   name: "action-bar",
   registryDependencies: [
     absoluteUrl("/r/badge.json"),
-    absoluteUrl("/r/hotkeys.json"),
     absoluteUrl("/r/separator.json"),
   ],
   type: "registry:ui",

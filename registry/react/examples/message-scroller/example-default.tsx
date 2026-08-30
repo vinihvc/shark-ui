@@ -19,19 +19,6 @@ import {
   MessageScrollerViewport,
 } from "@/registry/react/components/message-scroller";
 
-const turns = [
-  { from: "ada", text: "Morning. Did the preview deploy?" },
-  { from: "you", text: "Yes. Checking the chat primitives next." },
-  { from: "ada", text: "Scroller first. Jump buttons if I scroll away." },
-  { from: "you", text: "Ark ScrollArea, no extra headless package." },
-  { from: "ada", text: "Nice. Marker for the date break?" },
-  { from: "you", text: "Separator variant. Coming up." },
-  { from: "ada", text: "Attachments too, if you still have time." },
-  { from: "you", text: "File card is in. Image cards after lunch." },
-  { from: "ada", text: "Ship a draft when the docs page renders." },
-  { from: "you", text: "On it." },
-] as const;
-
 const Example = () => (
   <MessageScroller className="h-96 w-full max-w-md rounded-xl border">
     <MessageScrollerViewport className="px-4 py-6">
@@ -76,5 +63,18 @@ const Example = () => (
     <MessageScrollerButton />
   </MessageScroller>
 );
+
+const turns = [
+  { from: "ada", text: "Morning. Did the preview deploy?" },
+  { from: "you", text: "Yes. Checking the chat primitives next." },
+  { from: "ada", text: "Scroller first. Jump buttons if I scroll away." },
+  { from: "you", text: "Ark ScrollArea, no extra headless package." },
+  { from: "ada", text: "Nice. Marker for the date break?" },
+  { from: "you", text: "Separator variant. Coming up." },
+  { from: "ada", text: "Attachments too, if you still have time." },
+  { from: "you", text: "File card is in. Image cards after lunch." },
+  { from: "ada", text: "Ship a draft when the docs page renders." },
+  { from: "you", text: "On it." },
+] as const;
 
 export default Example;

@@ -1,0 +1,324 @@
+---
+title: Questionnaire
+description: A composable multi-step form.
+---
+
+<ComponentPreview
+  className="**:data-[slot=preview]:h-[580px]"
+  componentName="questionnaire"
+  hasMaxHeight={false}
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/questionnaire
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install [Button](/docs/components/button), [Checkbox](/docs/components/checkbox), [Field](/docs/components/field), [Hotkeys](/docs/utilities/hotkeys), [Input](/docs/components/input), [Kbd](/docs/components/kbd), and [Radio Group](/docs/components/radio-group).</Step>
+
+<Step>Install the following dependency if it is not already installed.</Step>
+
+```bash
+npm install @ark-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/questionnaire.tsx" src="/questionnaire.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+Questionnaire
+├── QuestionnaireProgress
+├── QuestionnaireItem
+│   ├── QuestionnaireTitle
+│   ├── QuestionnaireDescription
+│   ├── QuestionnaireChoices
+│   │   ├── QuestionnaireChoice
+│   │   │   └── QuestionnaireChoiceShortcut
+│   │   └── QuestionnaireInput
+│   └── QuestionnaireError
+└── QuestionnaireActions
+    ├── QuestionnairePrevious
+    ├── QuestionnaireSkip
+    ├── QuestionnaireNext
+    └── QuestionnaireSubmit
+```
+
+## Usage
+
+```tsx
+import {
+  Questionnaire,
+  QuestionnaireActions,
+  QuestionnaireChoice,
+  QuestionnaireChoices,
+  QuestionnaireChoiceShortcut,
+  QuestionnaireDescription,
+  QuestionnaireError,
+  QuestionnaireItem,
+  QuestionnaireSubmit,
+  QuestionnaireTitle,
+} from "@/components/ui/questionnaire";
+```
+
+```tsx
+const items = [{ name: "delivery", required: true }] as const;
+
+<Questionnaire items={items} onSubmit={handleSubmit}>
+  <QuestionnaireItem name="delivery">
+    <QuestionnaireTitle>How should we send your order?</QuestionnaireTitle>
+    <QuestionnaireDescription>Choose a delivery method.</QuestionnaireDescription>
+    <QuestionnaireChoices>
+      <QuestionnaireChoice value="standard">Standard delivery</QuestionnaireChoice>
+      <QuestionnaireChoice value="express">Express delivery</QuestionnaireChoice>
+    </QuestionnaireChoices>
+    <QuestionnaireError />
+  </QuestionnaireItem>
+  <QuestionnaireActions>
+    <QuestionnaireSubmit>Save delivery method</QuestionnaireSubmit>
+  </QuestionnaireActions>
+</Questionnaire>
+```
+
+## Reading answers
+
+Answers are in the native `FormData`, including hidden steps. Empty optional answers and whitespace-only freeform answers are omitted.
+
+```tsx
+function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  const answers = new FormData(event.currentTarget);
+  const delivery = answers.get("delivery");
+  // For multiple-choice questions: answers.getAll("interests").
+}
+```
+
+## Controlled
+
+Use `item` / `onItemChange` and `value` / `onValueChange`.
+
+<ComponentPreview componentName="questionnaire" fileName="example-controlled" />
+
+## Uncontrolled
+
+Use `defaultItem` and `defaultValue`.
+
+<ComponentPreview componentName="questionnaire" fileName="example-uncontrolled" />
+
+## States
+
+### Invalid
+
+When a required question is invalid it shows the error.
+
+<ComponentPreview componentName="questionnaire" fileName="example-invalid" />
+
+### Disabled
+
+Set `disabled` on `QuestionnaireChoice` or `QuestionnaireInput`.
+
+<ComponentPreview componentName="questionnaire" fileName="example-disabled" />
+
+## Shortcuts
+
+Set `shortcuts` to `"letters"` or `"numbers"` to enable keyboard shortcuts.
+
+### Letters
+
+<ComponentPreview componentName="questionnaire" fileName="example-shortcuts" />
+
+### Numbers
+
+<ComponentPreview componentName="questionnaire" fileName="example-shortcuts-numbers" />
+
+## Examples
+
+### Multiple selection
+
+Set `multiple: true`.
+
+<ComponentPreview componentName="questionnaire" fileName="example-multiple" />
+
+### Freeform answer
+
+Add `QuestionnaireInput` with a visible label or `aria-label`.
+
+<ComponentPreview componentName="questionnaire" fileName="example-freeform" />
+
+### Optional questions
+
+Skip clears the current optional answer and advances if another question exists.
+
+<ComponentPreview componentName="questionnaire" fileName="example-optional" />
+
+## API Reference
+
+### Questionnaire
+
+Questionnaire form root.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `items` | `readonly QuestionnaireItemDefinition[]` | **required** |
+| `item` | `string` | - |
+| `defaultItem` | `string` | - |
+| `onItemChange` | `(details: QuestionnaireItemChangeDetails) => void` | - |
+| `value` | `QuestionnaireValue` | - |
+| `defaultValue` | `QuestionnaireValue` | `{}` |
+| `onValueChange` | `(details: QuestionnaireValueChangeDetails) => void` | - |
+| `shortcuts` | `"letters" \| "numbers"` | - |
+| `onSubmit` | `FormEventHandler<HTMLFormElement>` | - |
+| `className` | `string` | - |
+
+### QuestionnaireItem
+
+One question step. Renders a `<fieldset>`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `name` | `string` | **required** |
+| `id` | `string` | generated |
+| `className` | `string` | - |
+
+### QuestionnaireTitle
+
+Question legend.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### QuestionnaireDescription
+
+Supporting question text.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### QuestionnaireChoices
+
+Container for radio or checkbox choices.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### QuestionnaireChoice
+
+One selectable answer.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | - |
+
+### QuestionnaireChoiceShortcut
+
+Shortcut badge for a choice.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### QuestionnaireInput
+
+Freeform text answer.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `string` | - |
+| `disabled` | `boolean` | `false` |
+| `onChange` | `ChangeEventHandler<HTMLInputElement>` | - |
+| `className` | `string` | - |
+
+### QuestionnaireError
+
+Validation message for the active question.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | `"Choose an answer to continue."` |
+| `className` | `string` | - |
+
+### QuestionnaireProgress
+
+Current question progress.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Question progress"` |
+| `className` | `string` | - |
+
+### QuestionnaireActions
+
+Container for navigation actions.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+
+### QuestionnairePrevious
+
+Returns to the previous question.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `onClick` | `MouseEventHandler<HTMLButtonElement>` | - |
+| `className` | `string` | - |
+
+### QuestionnaireNext
+
+Validates and advances to the next question.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `onClick` | `MouseEventHandler<HTMLButtonElement>` | - |
+| `className` | `string` | - |
+
+### QuestionnaireSkip
+
+Skips an optional question.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `onClick` | `MouseEventHandler<HTMLButtonElement>` | - |
+| `className` | `string` | - |
+
+### QuestionnaireSubmit
+
+Submits the final question.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | - |

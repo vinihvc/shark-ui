@@ -5,8 +5,6 @@ import {
   HoverCardTrigger,
 } from "@/registry/react/components/hover-card";
 
-const placements = ["left", "top", "bottom", "right"] as const;
-
 const Example = () => (
   <div className="flex flex-wrap justify-center gap-2">
     {placements.map((placement) => (
@@ -26,5 +24,7 @@ const Example = () => (
     ))}
   </div>
 );
+
+const placements = ["left", "top", "bottom", "right"] as const;
 
 export default Example;

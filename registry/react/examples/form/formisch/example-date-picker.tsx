@@ -43,13 +43,6 @@ import {
   FieldGroup,
 } from "@/registry/react/components/field";
 
-const formSchema = v.object({
-  interviewDate: v.custom<DateValue[]>(
-    (val) => Array.isArray(val) && val.length >= 1,
-    "Please choose your preferred interview date."
-  ),
-});
-
 const Example = () => {
   const form = useForm({
     initialInput: { interviewDate: [] as DateValue[] },
@@ -134,5 +127,12 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  interviewDate: v.custom<DateValue[]>(
+    (val) => Array.isArray(val) && val.length >= 1,
+    "Please choose your preferred interview date."
+  ),
+});
 
 export default Example;

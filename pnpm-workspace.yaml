@@ -12,5 +12,6 @@ minimumReleaseAgeExclude:
   - '@types/react-dom@19.2.5'
   - jotai@2.20.3
   - '@types/node@26.3.0'
+  - '@ark-ui/react@5.39.1'
 patchedDependencies:
-  '@ark-ui/react@5.39.0': patches/@ark-ui__react@5.39.0.patch
+  '@ark-ui/react@5.39.1': patches/@ark-ui__react@5.39.1.patch

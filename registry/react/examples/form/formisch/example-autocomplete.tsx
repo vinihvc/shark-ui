@@ -35,17 +35,6 @@ import {
   FieldLabel,
 } from "@/registry/react/components/field";
 
-const formSchema = v.object({
-  stack: v.pipe(
-    v.array(v.string()),
-    v.minLength(1, "Pick a suggestion or type your primary technology."),
-    v.check(
-      (val) => val[0] !== "",
-      "Pick a suggestion or type your primary technology."
-    )
-  ),
-});
-
 const Example = () => {
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
@@ -125,6 +114,17 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  stack: v.pipe(
+    v.array(v.string()),
+    v.minLength(1, "Pick a suggestion or type your primary technology."),
+    v.check(
+      (val) => val[0] !== "",
+      "Pick a suggestion or type your primary technology."
+    )
+  ),
+});
 
 const initialItems = [
   { label: "React", value: "react" },

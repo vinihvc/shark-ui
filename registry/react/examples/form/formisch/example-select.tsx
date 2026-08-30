@@ -35,17 +35,6 @@ import {
   SelectValue,
 } from "@/registry/react/components/select";
 
-const formSchema = v.object({
-  language: v.pipe(
-    v.array(v.string()),
-    v.check((val) => val[0] !== "", "Please select your spoken language."),
-    v.check(
-      (val) => !val.includes("auto"),
-      "Auto-detection is not allowed. Please select a specific language."
-    )
-  ),
-});
-
 const Example = () => {
   const form = useForm({
     initialInput: { language: [""] },
@@ -120,6 +109,17 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  language: v.pipe(
+    v.array(v.string()),
+    v.check((val) => val[0] !== "", "Please select your spoken language."),
+    v.check(
+      (val) => !val.includes("auto"),
+      "Auto-detection is not allowed. Please select a specific language."
+    )
+  ),
+});
 
 const collection = createListCollection({
   items: [

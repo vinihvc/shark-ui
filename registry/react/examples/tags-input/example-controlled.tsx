@@ -8,8 +8,6 @@ import {
   TagsInputItem,
 } from "@/registry/react/components/tags-input";
 
-const initialValue = ["React", "Solid"];
-
 const Example = () => {
   const [value, setValue] = React.useState(initialValue);
 
@@ -34,5 +32,7 @@ const Example = () => {
     </Field>
   );
 };
+
+const initialValue = ["React", "Solid"];
 
 export default Example;

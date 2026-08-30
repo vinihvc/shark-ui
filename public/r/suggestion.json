@@ -3,7 +3,9 @@
   "dependencies": [],
   "description": "Starter prompt chips for empty chat states.",
   "name": "suggestion",
-  "registryDependencies": ["https://shark.vini.one/r/button.json"],
+  "registryDependencies": [
+    "https://shark.vini.one/r/button.json"
+  ],
   "type": "registry:ui",
   "files": [
     {

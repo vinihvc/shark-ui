@@ -8,8 +8,6 @@ import {
   PasswordInputTrigger,
 } from "@/registry/react/components/password-input";
 
-const HIDE_DELAY_MS = 3000;
-
 const Example = () => {
   const [visible, setVisible] = React.useState(false);
 
@@ -36,5 +34,7 @@ const Example = () => {
     </PasswordInput>
   );
 };
+
+const HIDE_DELAY_MS = 3000;
 
 export default Example;

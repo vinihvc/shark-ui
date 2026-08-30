@@ -1,78 +1,92 @@
 "use client";
 
-import type React from "react";
-import { useCallback, useState } from "react";
+import { MessageCircleQuestionIcon } from "lucide-react";
+import React, { type SubmitEvent } from "react";
 import {
   ApprovalCard,
-  type ApprovalVariant,
+  ApprovalCardActions,
+  ApprovalCardApprove,
+  ApprovalCardContent,
+  ApprovalCardFooter,
+  ApprovalCardHeader,
+  ApprovalCardIcon,
+  ApprovalCardReject,
+  ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
-import { Button } from "@/registry/react/components/button";
+import {
+  QuestionnaireChoice,
+  QuestionnaireChoiceShortcut,
+  QuestionnaireChoices,
+  QuestionnaireError,
+  QuestionnaireItem,
+  QuestionnaireNext,
+  QuestionnairePrevious,
+  QuestionnaireProgress,
+  QuestionnaireTitle,
+} from "@/registry/react/components/questionnaire";
 
-const noop = () => undefined;
+const ApprovalCardDemo = () => {
+  const [result, setResult] = React.useState<string>();
 
-const VARIANTS = ["plan", "questions", "command"] as const;
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const answers = new FormData(event.currentTarget);
+    setResult(String(answers.get("format") ?? "Approved"));
+  };
 
-const Example = () => {
-  const [variant, setVariant] = useState<ApprovalVariant>("plan");
-
-  const handleVariantClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      const next = event.currentTarget.dataset.variant as
-        | ApprovalVariant
-        | undefined;
-      if (next) {
-        setVariant(next);
-      }
-    },
-    []
-  );
+  const handleReject = () => setResult("Rejected");
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-3">
-      <div className="flex flex-wrap gap-2">
-        {VARIANTS.map((next) => (
-          <Button
-            data-variant={next}
-            key={next}
-            onClick={handleVariantClick}
-            size="sm"
-            type="button"
-            variant={variant === next ? "default" : "outline"}
-          >
-            {next}
-          </Button>
-        ))}
-      </div>
+    <div className="flex w-full max-w-md flex-col gap-3">
       <ApprovalCard
-        command="pnpm db:migrate && pnpm build"
-        cwd="~/shark-ui"
-        key={variant}
-        onApprove={noop}
-        onReject={noop}
-        plan={[
-          { id: "1", title: "Add sessions migration" },
-          { id: "2", title: "Wire auth middleware" },
-          { id: "3", title: "Update login flow" },
-          { id: "4", title: "Write rollout notes" },
-        ]}
-        planSummary="Ship cookie-based sessions with middleware and tests."
-        planTitle="Session auth migration"
-        questions={[
-          {
-            id: "q1",
-            options: ["Session cookies", "JWT bearer", "OAuth only"],
-            prompt: "Which auth approach should we use?",
-          },
-          {
-            id: "q2",
-            options: [".env.local", "Vault", "CI only"],
-            prompt: "Where should secrets live?",
-          },
-        ]}
-        variant={variant}
-      />
+        items={items}
+        onReject={handleReject}
+        onSubmit={handleSubmit}
+        shortcuts="letters"
+      >
+        <ApprovalCardHeader>
+          <ApprovalCardIcon>
+            <MessageCircleQuestionIcon aria-hidden="true" />
+          </ApprovalCardIcon>
+          <ApprovalCardTitle>Choose a handoff format</ApprovalCardTitle>
+        </ApprovalCardHeader>
+        <ApprovalCardContent>
+          <QuestionnaireProgress />
+          <QuestionnaireItem className="mt-3" name="format">
+            <QuestionnaireTitle>
+              How should we share the update?
+            </QuestionnaireTitle>
+            <QuestionnaireChoices className="mt-3">
+              <QuestionnaireChoice value="summary">
+                Short summary
+                <QuestionnaireChoiceShortcut />
+              </QuestionnaireChoice>
+              <QuestionnaireChoice value="brief">
+                Detailed brief
+                <QuestionnaireChoiceShortcut />
+              </QuestionnaireChoice>
+              <QuestionnaireChoice value="slides">
+                Slide deck
+                <QuestionnaireChoiceShortcut />
+              </QuestionnaireChoice>
+            </QuestionnaireChoices>
+            <QuestionnaireError className="mt-2" />
+          </QuestionnaireItem>
+        </ApprovalCardContent>
+        <ApprovalCardFooter>
+          <QuestionnairePrevious />
+          <ApprovalCardActions>
+            <ApprovalCardReject>Skip</ApprovalCardReject>
+            <QuestionnaireNext />
+            <ApprovalCardApprove>Approve format</ApprovalCardApprove>
+          </ApprovalCardActions>
+        </ApprovalCardFooter>
+      </ApprovalCard>
+      {result ? <p aria-live="polite">{result}</p> : null}
     </div>
   );
 };
 
-export default Example;
+const items = [{ name: "format", required: true }] as const;
+
+export default ApprovalCardDemo;

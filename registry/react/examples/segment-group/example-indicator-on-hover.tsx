@@ -7,8 +7,6 @@ import {
   SegmentGroupItemText,
 } from "@/registry/react/components/segment-group";
 
-const pages = ["Profile", "Account", "Security", "Notifications"];
-
 const Example = () => {
   const [value, setValue] = React.useState("Profile");
   const [hoverValue, setHoverValue] = React.useState<string | null>(null);
@@ -34,5 +32,7 @@ const Example = () => {
     </SegmentGroup>
   );
 };
+
+const pages = ["Profile", "Account", "Security", "Notifications"];
 
 export default Example;

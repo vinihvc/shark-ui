@@ -14,6 +14,55 @@ import {
   useTourContext,
 } from "@/registry/react/components/tour";
 
+const Example = () => (
+  <div className="flex w-full max-w-sm flex-col gap-4">
+    <Tour steps={steps}>
+      <TourTrigger asChild>
+        <Button variant="outline">Start Tour</Button>
+      </TourTrigger>
+
+      <div className="flex flex-wrap gap-2">
+        <div
+          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-1"
+        >
+          Step 1
+        </div>
+        <div
+          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-2"
+        >
+          Step 2
+        </div>
+        <div
+          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-3"
+        >
+          Step 3
+        </div>
+        <div
+          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+          id="progress-4"
+        >
+          Step 4
+        </div>
+      </div>
+
+      <TourContent>
+        <TourHeader>
+          <TourProgressText />
+          <TourTitle />
+          <TourDescription />
+        </TourHeader>
+
+        <TourActions />
+
+        <TourProgressBar />
+      </TourContent>
+    </Tour>
+  </div>
+);
+
 const TourProgressBar = () => {
   const { tour } = useTourContext();
   return (
@@ -69,54 +118,5 @@ const steps: TourStepType[] = [
     type: "tooltip",
   },
 ];
-
-const Example = () => (
-  <div className="flex w-full max-w-sm flex-col gap-4">
-    <Tour steps={steps}>
-      <TourTrigger asChild>
-        <Button variant="outline">Start Tour</Button>
-      </TourTrigger>
-
-      <div className="flex flex-wrap gap-2">
-        <div
-          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
-          id="progress-1"
-        >
-          Step 1
-        </div>
-        <div
-          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
-          id="progress-2"
-        >
-          Step 2
-        </div>
-        <div
-          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
-          id="progress-3"
-        >
-          Step 3
-        </div>
-        <div
-          className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
-          id="progress-4"
-        >
-          Step 4
-        </div>
-      </div>
-
-      <TourContent>
-        <TourHeader>
-          <TourProgressText />
-          <TourTitle />
-          <TourDescription />
-        </TourHeader>
-
-        <TourActions />
-
-        <TourProgressBar />
-      </TourContent>
-    </Tour>
-  </div>
-);
 
 export default Example;

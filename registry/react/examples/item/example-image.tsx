@@ -6,24 +6,6 @@ import {
   ItemTitle,
 } from "@/registry/react/components/item";
 
-const images = [
-  {
-    alt: "Midnight City Lights",
-    description: "Electric Nights · Neon Dreams · 3:45",
-    src: "https://picsum.photos/seed/1/500/300",
-  },
-  {
-    alt: "Coffee Shop Conversations",
-    description: "Urban Stories · The Morning Brew · 4:05",
-    src: "https://picsum.photos/seed/2/500/300",
-  },
-  {
-    alt: "Digital Rain",
-    description: "Binary Beats · Cyber Symphony · 3:30",
-    src: "https://picsum.photos/seed/3/500/300",
-  },
-];
-
 const Example = () => (
   <div className="flex w-full max-w-md flex-col gap-4">
     {images.map((image) => (
@@ -45,5 +27,23 @@ const Example = () => (
     ))}
   </div>
 );
+
+const images = [
+  {
+    alt: "Midnight City Lights",
+    description: "Electric Nights · Neon Dreams · 3:45",
+    src: "https://picsum.photos/seed/1/500/300",
+  },
+  {
+    alt: "Coffee Shop Conversations",
+    description: "Urban Stories · The Morning Brew · 4:05",
+    src: "https://picsum.photos/seed/2/500/300",
+  },
+  {
+    alt: "Digital Rain",
+    description: "Binary Beats · Cyber Symphony · 3:30",
+    src: "https://picsum.photos/seed/3/500/300",
+  },
+];
 
 export default Example;

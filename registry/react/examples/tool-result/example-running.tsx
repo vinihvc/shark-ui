@@ -10,16 +10,6 @@ import {
   ToolResultTrigger,
 } from "@/registry/react/components/tool-result";
 
-const output = [
-  "\u001B[90m$ axe --quiet http://localhost:3000/login\u001B[0m",
-  "",
-  "Running 9 rules…",
-  " \u001B[32m✓\u001B[0m color-contrast",
-  " \u001B[32m✓\u001B[0m document-title",
-  " \u001B[32m✓\u001B[0m html-has-lang",
-  " \u001B[33m…\u001B[0m label",
-].join("\n");
-
 const Example = () => (
   <ToolResult className="max-w-lg" status="running">
     <ToolResultTrigger>
@@ -33,5 +23,15 @@ const Example = () => (
     </ToolResultContent>
   </ToolResult>
 );
+
+const output = [
+  "\u001B[90m$ axe --quiet http://localhost:3000/login\u001B[0m",
+  "",
+  "Running 9 rules…",
+  " \u001B[32m✓\u001B[0m color-contrast",
+  " \u001B[32m✓\u001B[0m document-title",
+  " \u001B[32m✓\u001B[0m html-has-lang",
+  " \u001B[33m…\u001B[0m label",
+].join("\n");
 
 export default Example;

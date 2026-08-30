@@ -32,13 +32,6 @@ import {
   FileUploadList,
 } from "@/registry/react/components/file-upload";
 
-const formSchema = v.object({
-  resume: v.pipe(
-    v.array(v.custom<File>((i) => i instanceof File)),
-    v.minLength(1, "Please upload at least one PDF or Word document.")
-  ),
-});
-
 const Example = () => {
   const form = useForm({
     initialInput: { resume: [] as File[] },
@@ -115,5 +108,12 @@ const Example = () => {
     </Card>
   );
 };
+
+const formSchema = v.object({
+  resume: v.pipe(
+    v.array(v.custom<File>((i) => i instanceof File)),
+    v.minLength(1, "Please upload at least one PDF or Word document.")
+  ),
+});
 
 export default Example;

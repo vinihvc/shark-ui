@@ -7,8 +7,6 @@ import {
   TagsInputItem,
 } from "@/registry/react/components/tags-input";
 
-const validTagPattern = /^[a-zA-Z0-9-]+$/;
-
 const Example = () => (
   <Field className="w-full max-w-sm">
     <FieldLabel>Min 3 chars, alphanumeric + hyphen</FieldLabel>
@@ -36,5 +34,7 @@ const Example = () => (
     </TagsInput>
   </Field>
 );
+
+const validTagPattern = /^[a-zA-Z0-9-]+$/;
 
 export default Example;

@@ -24,7 +24,10 @@
       "--animate-expand": "expand 0.2s ease-out"
     }
   },
-  "dependencies": ["@ark-ui/react", "lucide-react"],
+  "dependencies": [
+    "@ark-ui/react",
+    "lucide-react"
+  ],
   "name": "collapsible",
   "type": "registry:ui",
   "files": [

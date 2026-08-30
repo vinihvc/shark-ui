@@ -4,8 +4,6 @@ import React from "react";
 import { Highlight } from "@/registry/react/components/highlight";
 import { Input } from "@/registry/react/components/input";
 
-const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
-
 const Example = () => {
   const [query, setQuery] = React.useState("spot");
 
@@ -36,5 +34,7 @@ const Example = () => {
     </div>
   );
 };
+
+const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
 
 export default Example;
