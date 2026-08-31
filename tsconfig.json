@@ -33,5 +33,12 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "app/sw.ts", "public/sw.js"]
+  "exclude": [
+    "node_modules",
+    "app/sw.ts",
+    "public/sw.js",
+    "registry/solid",
+    "registry/svelte",
+    "registry/vue"
+  ]
 }

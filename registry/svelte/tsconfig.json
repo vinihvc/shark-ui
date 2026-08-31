@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "incremental": false,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "types": ["node", "svelte"]
+  },
+  "include": [
+    "components/**/*.ts",
+    "components/**/*.svelte",
+    "fixtures/**/*.svelte"
+  ],
+  "exclude": ["../../node_modules"]
+}

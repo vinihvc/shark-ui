@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "types": ["node", "react", "react-dom"]
+  },
+  "include": ["fixtures/**/*.tsx"],
+  "exclude": ["../../node_modules"]
+}

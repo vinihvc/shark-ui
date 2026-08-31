@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "name": "hotkeys",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nexport type {\n  CommandDefinition,\n  ConflictBehavior,\n  HotkeyAction,\n  HotkeyCommand,\n  HotkeyFormatOptions,\n  HotkeyOptions,\n  HotkeyStore,\n  HotkeyStoreOptions,\n  ParsedHotkey,\n  Platform,\n  RecordedHotkey,\n  UseFormatHotkeyReturn,\n  UseHotkeyProps,\n  UseHotkeyRecorderProps,\n  UseHotkeyRecorderReturn,\n  UseHotkeyStoreProps,\n  UseHotkeysCommand,\n  UseHotkeysProps,\n  UseIsKeyPressedProps,\n} from \"@ark-ui/react/hotkeys\";\nexport {\n  createHotkeyStore,\n  formatHotkey,\n  isHotKey,\n  isHotkeyEqual,\n  parseHotkey,\n  useFormatHotkey,\n  useHotkey,\n  useHotkeyRecorder,\n  useHotkeyRegistrations,\n  useHotkeyStore,\n  useHotkeys,\n  useIsKeyPressed,\n  usePlatform,\n  usePressedKeys,\n  validateHotkey,\n} from \"@ark-ui/react/hotkeys\";\n",
+      "path": "registry/react/components/hotkeys.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

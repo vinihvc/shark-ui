@@ -5,12 +5,20 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "lucide-react";
 import React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
+import {
+  dialogContentVariants,
+  dialogOverlayVariants,
+} from "./_shark/dialog.contract";
 
 export const useDialog = useDialogContext;
+export {
+  dialogContentVariants,
+  dialogOverlayVariants,
+} from "./_shark/dialog.contract";
 
 interface DialogContextProps {
   /**
@@ -45,19 +53,7 @@ export const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {
 
 export const DialogTrigger = (
   props: React.ComponentProps<typeof ArkDialog.Trigger>
-) => <ArkDialog.Trigger {...props} />;
-
-export const dialogOverlayVariants = tv({
-  base: [
-    "fixed inset-0 z-50",
-    "bg-black/32 backdrop-blur-xs",
-    "duration-200",
-    "peer peer-data-[slot=dialog-overlay]:hidden",
-    "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
-    "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
-    "motion-reduce:animate-none!",
-  ],
-});
+) => <ArkDialog.Trigger data-slot="dialog-trigger" {...props} />;
 
 export const DialogOverlay = (
   props: React.ComponentProps<typeof ArkDialog.Backdrop>
@@ -98,55 +94,6 @@ export const DialogPositioner = (
     />
   );
 };
-
-export const dialogContentVariants = tv({
-  base: [
-    "[--space:--spacing(6)]",
-    "z-[calc(50+var(--layer-index,0))]",
-    "relative",
-    "row-start-2",
-    "max-h-[calc(100svh-2rem)] min-h-0 w-full min-w-0",
-    "flex flex-col overflow-hidden",
-    "bg-popover",
-    "text-popover-foreground",
-    "rounded-2xl border shadow-lg/5",
-    "outline-none",
-    "translate-y-[calc(-1.25rem*var(--nested-layer-count))]",
-    "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
-    "data-[nested=dialog]:data-[state=closed]:slide-in-from-bottom-10 data-[nested=dialog]:data-[state=open]:slide-in-from-bottom-10 data-[has-nested=dialog]:origin-top",
-    "scale-[calc(1-0.1*var(--nested-layer-count))] opacity-[calc(1-0.1*var(--nested-layer-count))]",
-    "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
-    "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
-    "motion-reduce:animate-none! motion-reduce:transition-none!",
-  ],
-  defaultVariants: {
-    size: "md",
-  },
-  variants: {
-    bottomStickOnMobile: {
-      true: [
-        "max-sm:max-h-[calc(100svh-3rem)]",
-        "max-sm:max-w-none",
-        "max-sm:rounded-none max-sm:rounded-t-2xl max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
-        "max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))]",
-        "max-sm:data-[state=closed]:slide-out-to-bottom-5 max-sm:data-[state=open]:slide-in-from-bottom-5",
-        "max-sm:data-[state=closed]:zoom-out-100 max-sm:data-[state=open]:zoom-in-100",
-      ],
-    },
-    size: {
-      "2xl": ["max-w-3xl"],
-      "3xl": ["max-w-4xl"],
-      "4xl": ["max-w-5xl"],
-      "5xl": ["max-w-6xl"],
-      "6xl": ["max-w-7xl"],
-      fullscreen: ["size-full"],
-      lg: ["max-w-xl"],
-      md: ["max-w-lg"],
-      sm: ["max-w-md"],
-      xl: ["max-w-2xl"],
-    },
-  },
-});
 
 interface DialogContentProps
   extends React.ComponentProps<typeof ArkDialog.Content>,

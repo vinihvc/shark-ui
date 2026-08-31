@@ -12,6 +12,17 @@ Components require [Tailwind CSS v4](https://tailwindcss.com). You need a projec
 
 ## Adding components
 
+React remains available through the original `@shark` registry. The multi-framework pilot also publishes explicit preview registries:
+
+| Framework | Registry alias | Pilot components |
+| --- | --- | --- |
+| React | `@shark-react` | Button, Checkbox, Dialog, Sidebar |
+| Vue | `@shark-vue` | Button, Checkbox, Dialog, Sidebar |
+| Solid | `@shark-solid` | Button, Checkbox, Dialog, Sidebar |
+| Svelte | `@shark-svelte` | Button, Checkbox, Dialog, Sidebar |
+
+Configure the matching registry URL in `components.json`, then install an item with commands such as `npx shadcn@latest add @shark-vue/button`. Preview adapters preserve the Shark interface and use the native Ark UI package for their framework.
+
 ### CLI
 
 ```bash

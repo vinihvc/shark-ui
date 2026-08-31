@@ -29,5 +29,11 @@ jobs:
       - name: Registry build
         run: pnpm run registry:build
 
+      - name: Generated registry is committed
+        run: git diff --exit-code
+
+      - name: Framework adapter parity
+        run: pnpm run registry:check:adapters
+
       - name: Typecheck
         run: pnpm run typecheck

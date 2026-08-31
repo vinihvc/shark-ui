@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "name": "focus-trap",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { FocusTrap as ArkFocusTrap } from \"@ark-ui/react/focus-trap\";\nimport type React from \"react\";\n\nexport const FocusTrap = (props: React.ComponentProps<typeof ArkFocusTrap>) => (\n  <ArkFocusTrap data-slot=\"focus-trap\" {...props} />\n);\n",
+      "path": "registry/react/components/focus-trap.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

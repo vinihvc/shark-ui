@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "incremental": false,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["components/**/*.ts", "components/**/*.vue", "fixtures/**/*.vue"],
+  "exclude": ["../../node_modules"]
+}

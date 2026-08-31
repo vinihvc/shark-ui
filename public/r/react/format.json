@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "@ark-ui/react"
+  ],
+  "name": "format",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { Format as ArkFormat } from \"@ark-ui/react/format\";\n\nexport const FormatByte = (\n  props: React.ComponentProps<typeof ArkFormat.Byte>\n) => <ArkFormat.Byte data-slot=\"format-byte\" {...props} />;\n\nexport const FormatNumber = (\n  props: React.ComponentProps<typeof ArkFormat.Number>\n) => <ArkFormat.Number data-slot=\"format-number\" {...props} />;\n\nexport const FormatRelativeTime = (\n  props: React.ComponentProps<typeof ArkFormat.RelativeTime>\n) => <ArkFormat.RelativeTime data-slot=\"format-relative-time\" {...props} />;\n\nexport const FormatTime = (\n  props: React.ComponentProps<typeof ArkFormat.Time>\n) => <ArkFormat.Time data-slot=\"format-time\" {...props} />;\n",
+      "path": "registry/react/components/format.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

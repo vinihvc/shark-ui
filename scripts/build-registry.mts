@@ -1,14 +1,20 @@
 import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { SITE_CONFIG } from "../config/site";
 import { getBlockRegistryArtifacts } from "../lib/blocks";
 import { validateUniqueCompositionNames } from "../lib/compositions";
 import type { RegistryItemType } from "../lib/registry";
 import { getTemplateRegistryArtifacts } from "../lib/templates";
+import {
+  FRAMEWORKS,
+  type RegistryComponentDefinition,
+  type RegistryFramework,
+  registryDefinitions,
+} from "../registry/definitions";
 
 type RegistryKind = "component" | "hook" | "lib";
-type SourceExt = "ts" | "tsx";
+type SourceExt = "svelte" | "ts" | "tsx" | "vue";
 
 interface KindConfig {
   emoji: string;
@@ -24,7 +30,10 @@ const TRAILING_SLASH = /\/$/;
 const LOCALHOST_RE = /localhost|127\.0\.0\.1/i;
 
 /** Source extensions in priority order (first wins on ambiguity). */
-const SOURCE_EXTS: readonly SourceExt[] = ["tsx", "ts"];
+const SOURCE_EXTS: readonly SourceExt[] = ["tsx", "ts", "vue", "svelte"];
+const definitionByName = new Map<string, RegistryComponentDefinition>(
+  registryDefinitions.map((definition) => [definition.name, definition])
+);
 
 const KINDS = {
   component: {
@@ -72,19 +81,39 @@ const loadManifest = (itemName: string): Promise<RegistryItemType> => {
 
 interface SourceInput {
   code: string;
-  ext: SourceExt;
+  path: string;
 }
 
 const buildMetadata = async (
   itemName: string,
   kind: RegistryKind,
-  source?: SourceInput,
-  framework = "react"
+  sources: readonly SourceInput[] = [],
+  framework: RegistryFramework = "react",
+  frameworkRegistry = false
 ) => {
   const manifest = await loadManifest(itemName);
-  const base = { $schema: SCHEMA, ...manifest };
+  const definition = definitionByName.get(itemName);
+  const frameworkOverrides =
+    frameworkRegistry && definition
+      ? {
+          dependencies: [
+            ...definition.dependencies.common,
+            ...definition.dependencies.frameworks[framework],
+          ],
+          meta: {
+            ...(manifest.meta ?? {}),
+            framework,
+            status: definition.adapters[framework].status,
+          },
+          registryDependencies: definition.dependencies.registry[framework].map(
+            (dependency) =>
+              `${SITE_CONFIG.url.replace(TRAILING_SLASH, "")}/r/${framework}/${dependency}.json`
+          ),
+        }
+      : {};
+  const base = { $schema: SCHEMA, ...manifest, ...frameworkOverrides };
 
-  if (!source?.code.trim()) {
+  if (sources.length === 0 || sources.every(({ code }) => !code.trim())) {
     console.warn(
       `[build-registry] ${itemName}: manifest type is "${manifest.type}" — skipping embedded`
     );
@@ -102,20 +131,26 @@ const buildMetadata = async (
 
   return {
     ...base,
-    files: [
-      {
-        content: source.code,
-        path: `registry/${framework}/${subdir}/${itemName}.${source.ext}`,
-        type: manifest.type,
-      },
-    ],
+    files: sources.map((source) => ({
+      content: source.code,
+      path: `registry/${framework}/${subdir}/${source.path}`,
+      type: manifest.type,
+    })),
   };
 };
 
-const writeArtifact = async (metadata: unknown, itemName: string) => {
-  const filePath = join(PUBLIC_DIR, `${itemName}.json`);
+const writeArtifact = async (
+  metadata: unknown,
+  itemName: string,
+  framework?: RegistryFramework
+) => {
+  const directory = framework ? join(PUBLIC_DIR, framework) : PUBLIC_DIR;
+  await mkdir(directory, { recursive: true });
+  const filePath = join(directory, `${itemName}.json`);
   await writeFile(filePath, JSON.stringify(metadata, null, 2));
-  console.log(`✅ Generated ${itemName}.json`);
+  console.log(
+    `✅ Generated ${framework ? `${framework}/` : ""}${itemName}.json`
+  );
 };
 
 /** Pick the best source file per item, honoring SOURCE_EXTS priority. */
@@ -161,17 +196,72 @@ const processKind = async (kind: RegistryKind, framework = "react") => {
     Array.from(chosen, async ([itemName, ext]) => {
       console.log(`${emoji} Processing ${itemName}...`);
       const code = await readFile(join(dirPath, `${itemName}.${ext}`), "utf-8");
+      const sources: SourceInput[] = [{ code, path: `${itemName}.${ext}` }];
+      if (kind === "component" && definitionByName.has(itemName)) {
+        const contractPath = join(dirPath, "_shark", `${itemName}.contract.ts`);
+        sources.push({
+          code: await readFile(contractPath, "utf8"),
+          path: `_shark/${itemName}.contract.ts`,
+        });
+      }
       const metadata = await buildMetadata(
         itemName,
         kind,
-        { code, ext },
-        framework
+        sources,
+        framework as RegistryFramework
       );
       await writeArtifact(metadata, itemName);
+      if (framework === "react") {
+        const frameworkMetadata = await buildMetadata(
+          itemName,
+          kind,
+          sources,
+          "react",
+          true
+        );
+        await writeArtifact(frameworkMetadata, itemName, "react");
+      }
     })
   );
 
   console.log(`🎉 Successfully processed all ${chosen.size} ${label}!\n`);
+};
+
+const processFrameworkComponents = async (framework: RegistryFramework) => {
+  if (framework === "react") {
+    return;
+  }
+  const componentRoot = join(CWD, "registry", framework, "components");
+  const definitions = registryDefinitions.filter(
+    (definition) => definition.adapters[framework].status !== "unsupported"
+  );
+  console.log(
+    `Found ${definitions.length} ${framework} pilot components to process:`
+  );
+
+  await Promise.all(
+    definitions.map(async (definition) => {
+      const adapter = definition.adapters[framework];
+      const sourcePaths = [
+        ...adapter.sources,
+        `_shark/${definition.name}.contract.ts`,
+      ];
+      const sources = await Promise.all(
+        sourcePaths.map(async (path) => ({
+          code: await readFile(join(componentRoot, path), "utf8"),
+          path,
+        }))
+      );
+      const metadata = await buildMetadata(
+        definition.name,
+        "component",
+        sources,
+        framework,
+        true
+      );
+      await writeArtifact(metadata, definition.name, framework);
+    })
+  );
 };
 
 const processStandaloneManifests = async (itemNames: string[]) => {
@@ -234,6 +324,7 @@ const main = async () => {
   await Promise.all(
     (["component", "hook", "lib"] as const).map((kind) => processKind(kind))
   );
+  await Promise.all(FRAMEWORKS.map(processFrameworkComponents));
 
   await processCompositions();
 
@@ -250,14 +341,25 @@ const main = async () => {
 
 const assertPublishedRegistryUrls = async () => {
   const siteOrigin = SITE_CONFIG.url.replace(TRAILING_SLASH, "");
-  const names = (await readdir(PUBLIC_DIR)).filter((name) =>
-    name.endsWith(".json")
-  );
+  const listJsonFiles = async (directory: string): Promise<string[]> => {
+    const entries = await readdir(directory, { withFileTypes: true });
+    const nested = await Promise.all(
+      entries.map((entry) => {
+        const path = join(directory, entry.name);
+        if (entry.isDirectory()) {
+          return listJsonFiles(path);
+        }
+        return entry.name.endsWith(".json") ? [path] : [];
+      })
+    );
+    return nested.flat();
+  };
+  const names = await listJsonFiles(PUBLIC_DIR);
 
   const files = await Promise.all(
     names.map(async (name) => ({
-      name,
-      raw: await readFile(join(PUBLIC_DIR, name), "utf8"),
+      name: relative(PUBLIC_DIR, name),
+      raw: await readFile(name, "utf8"),
     }))
   );
 

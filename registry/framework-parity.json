@@ -1,0 +1,243 @@
+{
+  "components": {
+    "button": {
+      "react": {
+        "bindings": {
+          "class": "className",
+          "loading": "isLoading"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "stable"
+      },
+      "vue": {
+        "bindings": {
+          "class": "class",
+          "loading": "isLoading"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "solid": {
+        "bindings": {
+          "class": "class",
+          "loading": "isLoading"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "svelte": {
+        "bindings": {
+          "class": "class",
+          "loading": "isLoading"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.24.1",
+        "status": "preview"
+      }
+    },
+    "checkbox": {
+      "react": {
+        "bindings": {
+          "checked": "checked",
+          "checkedChange": "onCheckedChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "stable"
+      },
+      "vue": {
+        "bindings": {
+          "checked": "checked",
+          "checkedChange": "update:checked"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "solid": {
+        "bindings": {
+          "checked": "checked",
+          "checkedChange": "onCheckedChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "svelte": {
+        "bindings": {
+          "checked": "checked",
+          "checkedChange": "onCheckedChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.24.1",
+        "status": "preview"
+      }
+    },
+    "dialog": {
+      "react": {
+        "bindings": {
+          "open": "open",
+          "openChange": "onOpenChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "stable"
+      },
+      "vue": {
+        "bindings": {
+          "open": "open",
+          "openChange": "update:open"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "solid": {
+        "bindings": {
+          "open": "open",
+          "openChange": "onOpenChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "svelte": {
+        "bindings": {
+          "open": "open",
+          "openChange": "onOpenChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.24.1",
+        "status": "preview"
+      }
+    },
+    "sidebar": {
+      "react": {
+        "bindings": {
+          "open": "open",
+          "openChange": "onOpenChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "stable"
+      },
+      "vue": {
+        "bindings": {
+          "open": "open",
+          "openChange": "update:open"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "solid": {
+        "bindings": {
+          "open": "open",
+          "openChange": "onOpenChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.39.1",
+        "status": "preview"
+      },
+      "svelte": {
+        "bindings": {
+          "open": "open",
+          "openChange": "onOpenChange"
+        },
+        "missingEvidence": [],
+        "missingParts": [],
+        "missingProps": [],
+        "missingRecipes": [],
+        "missingSlots": [],
+        "missingSources": [],
+        "packageVersion": "5.24.1",
+        "status": "preview"
+      }
+    }
+  },
+  "frameworks": [
+    "react",
+    "vue",
+    "solid",
+    "svelte"
+  ],
+  "schemaVersion": 1
+}

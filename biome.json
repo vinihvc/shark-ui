@@ -21,6 +21,34 @@
   },
   "overrides": [
     {
+      "includes": [
+        "registry/*/components/_shark/**",
+        "registry/generated-docs/**"
+      ],
+      "assist": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": [
+        "registry/solid/**",
+        "registry/svelte/**",
+        "registry/vue/**"
+      ],
+      "assist": {
+        "enabled": false
+      },
+      "linter": {
+        "enabled": false
+      }
+    },
+    {
       "includes": ["registry/react/examples/form/**"],
       "linter": {
         "rules": {

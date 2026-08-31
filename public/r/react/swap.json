@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "css": {
+    "@keyframes flip-in": {
+      "from": {
+        "transform": "rotateY(180deg)"
+      },
+      "to": {
+        "transform": "rotateY(0deg)"
+      }
+    },
+    "@keyframes flip-out": {
+      "from": {
+        "transform": "rotateY(0deg)"
+      },
+      "to": {
+        "transform": "rotateY(180deg)"
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--animate-flip-in": "flip-in 0.2s ease-out",
+      "--animate-flip-out": "flip-out 0.2s ease-out"
+    }
+  },
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "name": "swap",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { Swap as ArkSwap, useSwapContext } from \"@ark-ui/react/swap\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const useSwap = useSwapContext;\n\nconst swapIndicatorVariants = tv({\n  base: [\"[&>span]:motion-reduce:animate-none!\"],\n  defaultVariants: {\n    variant: \"fade\",\n  },\n  variants: {\n    variant: {\n      blur: [\n        \"[&>span]:data-[state=open]:fade-in-0 [&>span]:data-[state=open]:zoom-in-50 [&>span]:data-[state=open]:animate-in [&>span]:data-[state=open]:blur-in-sm [&>span]:data-[state=open]:duration-250\",\n        \"[&>span]:data-[state=closed]:fade-out-0 [&>span]:data-[state=closed]:zoom-out-50 [&>span]:data-[state=closed]:animate-out [&>span]:data-[state=closed]:blur-out-sm [&>span]:data-[state=closed]:duration-150\",\n      ],\n      fade: [\n        \"[&>span]:data-[state=open]:fade-in-0 [&>span]:data-[state=open]:animate-in [&>span]:data-[state=open]:duration-200\",\n        \"[&>span]:data-[state=closed]:fade-out-0 [&>span]:data-[state=closed]:animate-out [&>span]:data-[state=closed]:duration-100\",\n      ],\n      flip: [\n        \"[&>span]:backface-hidden\",\n        \"[&>span]:data-[state=open]:animate-[flip-in_400ms_ease]\",\n        \"[&>span]:data-[state=closed]:animate-[flip-out_200ms_ease]\",\n      ],\n      rotate: [\n        \"[&>span]:data-[state=open]:spin-in-[-90deg] [&>span]:data-[state=open]:fade-in-0 [&>span]:data-[state=open]:animate-in [&>span]:data-[state=open]:duration-250\",\n        \"[&>span]:data-[state=closed]:spin-out-[90deg] [&>span]:data-[state=closed]:fade-out-0 [&>span]:data-[state=closed]:animate-out [&>span]:data-[state=closed]:duration-100\",\n      ],\n      scale: [\n        \"[&>span]:data-[state=open]:zoom-in-0 [&>span]:data-[state=open]:fade-in-0 [&>span]:data-[state=open]:animate-in [&>span]:data-[state=open]:duration-200\",\n        \"[&>span]:data-[state=closed]:zoom-out-100 [&>span]:data-[state=closed]:fade-out-0 [&>span]:data-[state=closed]:animate-out [&>span]:data-[state=closed]:duration-100\",\n      ],\n    },\n  },\n});\n\ninterface SwapProps\n  extends React.ComponentProps<typeof ArkSwap.Root>,\n    VariantProps<typeof swapIndicatorVariants> {}\n\nexport const Swap = (props: SwapProps) => {\n  const {\n    variant = \"fade\",\n    lazyMount = true,\n    unmountOnExit = true,\n    className,\n    ...rest\n  } = props;\n\n  return (\n    <ArkSwap.Root\n      className={cn(swapIndicatorVariants({ variant }), className)}\n      data-slot=\"swap\"\n      lazyMount={lazyMount}\n      unmountOnExit={unmountOnExit}\n      {...rest}\n    />\n  );\n};\n\nexport const SwapIndicator = (\n  props: React.ComponentProps<typeof ArkSwap.Indicator>\n) => <ArkSwap.Indicator data-slot=\"swap-indicator\" {...props} />;\n",
+      "path": "registry/react/components/swap.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

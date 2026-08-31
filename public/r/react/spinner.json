@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "name": "spinner",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "\"use client\";\n\nimport { Loader2Icon } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\nexport const Spinner = (props: React.ComponentProps<\"svg\">) => {\n  const { \"aria-label\": ariaLabel, className, ...rest } = props;\n\n  return (\n    <Loader2Icon\n      aria-label={ariaLabel ?? \"Loading\"}\n      className={cn(\"size-4 animate-spin\", className)}\n      data-slot=\"spinner\"\n      role=\"status\"\n      {...rest}\n    />\n  );\n};\n",
+      "path": "registry/react/components/spinner.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

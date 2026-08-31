@@ -6,8 +6,10 @@ import {
 } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "lucide-react";
 import type React from "react";
-import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
+import { checkboxVariants } from "./_shark/checkbox.contract";
+
+export { checkboxVariants } from "./_shark/checkbox.contract";
 
 export const useCheckbox = useCheckboxContext;
 
@@ -24,25 +26,6 @@ export const CheckboxGroup = (
     />
   );
 };
-
-export const checkboxVariants = tv({
-  base: [
-    "relative",
-    "inline-flex shrink-0 items-center justify-center",
-    "size-4",
-    "bg-transparent",
-    "rounded-sm border border-input shadow-xs/5",
-    "transition-shadow",
-    "data-focus-visible:border-primary data-focus-visible:ring-[3px] data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
-    "dark:data-focus-visible:data-invalid:border-destructive-foreground/64 dark:data-focus-visible:data-invalid:ring-destructive-foreground/48",
-    "data-disabled:opacity-64",
-    "[[data-disabled],[data-checked],[data-invalid]]:shadow-none",
-    "data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24",
-    "dark:data-invalid:border-destructive-foreground dark:data-invalid:text-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
-    "dark:not-data-checked:bg-input/32 dark:data-invalid:ring-destructive-foreground/24",
-    "motion-reduce:transition-none!",
-  ],
-});
 
 export const Checkbox = (
   props: React.ComponentProps<typeof ArkCheckbox.Root>

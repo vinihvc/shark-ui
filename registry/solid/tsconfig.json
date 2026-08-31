@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["components/**/*.ts", "components/**/*.tsx", "fixtures/**/*.tsx"],
+  "exclude": ["../../node_modules"]
+}
