@@ -230,17 +230,28 @@ Add the following base layer rules to `globals.css` for default document styling
 ```
 </CodeCollapsibleWrapper>
 
+{/* TODO: work on font-heading
 ## Font Variables
 
-The theme preset provides font tokens with system fallbacks. Use `--font-sans` for body text, `--font-heading` with `font-heading` for headings, and `--font-mono` for code. Define these variables with any font tooling you use.
+The theme preset defines `--font-sans` with system fallbacks. To use custom typefaces, set this variable in your layout via `next/font` or `@fontsource-variable`:
 
-```css title="globals.css"
-:root {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Fraunces", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+```tsx title="app/layout.tsx"
+import { Inter } from "next/font/google";
+
+const fontSans = Inter({ variable: "--font-sans", subsets: ["latin"] });
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body
+        className={fontSans.variable}
+      >
+        {children}
+      </body>
+    </html>
+  );
 }
-```
+``` */}
 
 ## Token convention
 
