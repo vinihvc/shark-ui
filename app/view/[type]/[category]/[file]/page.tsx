@@ -1,7 +1,7 @@
 import { extname } from "node:path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { ComponentType } from "react";
+import type React from "react";
 import { PreviewThemeSync } from "@/components/registry-compositions/preview-theme-sync";
 import { getBlockDefinition } from "@/lib/blocks";
 import { getRegistryItem } from "@/lib/registry";
@@ -114,7 +114,7 @@ const ViewRegistryPage = async (
     notFound();
   }
 
-  let Preview: ComponentType;
+  let Preview: React.ComponentType;
   const block = type === "blocks" ? getBlockDefinition(category, file) : null;
   const template =
     type === "templates" ? getTemplateDefinition(category, file) : null;

@@ -14,7 +14,7 @@ export const Textarea = (
       className={cn(
         "field-sizing-content min-h-16 w-full",
         "flex",
-        "px-3 py-2",
+        "px-[calc(--spacing(3)-1px)] py-2",
         "bg-transparent dark:bg-input/30",
         "text-base md:text-sm",
         "rounded-lg border border-input shadow-xs/5",

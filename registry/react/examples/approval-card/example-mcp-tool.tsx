@@ -1,45 +1,44 @@
 "use client";
 
 import { PlugIcon } from "lucide-react";
-import { type SubmitEvent, useState } from "react";
+import type { SubmitEvent } from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
   ApprovalCardContent,
-  ApprovalCardDescription,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
+import { toast } from "@/registry/react/components/toast";
 
-const ApprovalCardMcpToolDemo = () => {
-  const [result, setResult] = useState("");
+const Example = () => {
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setResult("Approved this create_issue call only.");
+    toast.create({
+      description: "Approved this create_issue call only.",
+      title: "Tool call approved",
+      type: "success",
+    });
   };
-  const handleReject = () =>
-    setResult("Tool call denied. No issue will be created.");
+
+  const handleReject = () => {
+    toast.create({
+      description: "No GitHub issue will be created.",
+      title: "Tool call denied",
+      type: "info",
+    });
+  };
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-3">
+    <div className="w-full max-w-lg">
       <ApprovalCard onReject={handleReject} onSubmit={handleSubmit}>
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <PlugIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <div className="flex min-w-0 flex-col gap-1">
-            <ApprovalCardTitle>Create an issue on GitHub?</ApprovalCardTitle>
-            <ApprovalCardDescription>
-              The connected MCP server will publish these details to
-              acme/storefront.
-            </ApprovalCardDescription>
-          </div>
+          <PlugIcon aria-hidden="true" />
+          <ApprovalCardTitle>Create an issue on GitHub?</ApprovalCardTitle>
         </ApprovalCardHeader>
-        <ApprovalCardContent className="flex flex-col gap-3">
+        <ApprovalCardContent>
           <div className="flex flex-wrap items-center gap-2 text-xs">
             <span className="text-muted-foreground">Server: github</span>
             <code>create_issue</code>
@@ -53,15 +52,10 @@ const ApprovalCardMcpToolDemo = () => {
           </p>
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <ApprovalCardActions>
-            <ApprovalCardReject>Deny</ApprovalCardReject>
-            <ApprovalCardApprove>Create issue</ApprovalCardApprove>
-          </ApprovalCardActions>
+          <ApprovalCardReject>Deny</ApprovalCardReject>
+          <ApprovalCardSubmit>Create issue</ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      <p aria-live="polite" className="text-muted-foreground text-sm">
-        {result}
-      </p>
     </div>
   );
 };
@@ -73,4 +67,4 @@ const toolArguments = {
   title: "First page skips 20 orders",
 };
 
-export default ApprovalCardMcpToolDemo;
+export default Example;

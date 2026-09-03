@@ -58,6 +58,7 @@ export const dashboardBlocks = [
       absoluteUrl("/r/button.json"),
       absoluteUrl("/r/card.json"),
       absoluteUrl("/r/chart.json"),
+      absoluteUrl("/r/icon-tile.json"),
       absoluteUrl("/r/separator.json"),
       absoluteUrl("/r/sidebar.json"),
       absoluteUrl("/r/table.json"),

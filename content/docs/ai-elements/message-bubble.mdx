@@ -1,0 +1,225 @@
+---
+title: Message Bubble
+description: A message surface with variants, alignment, and reactions.
+---
+
+<ComponentPreview componentName="message-bubble" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/message-bubble
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react lucide-react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/message-bubble.tsx" src="/message-bubble.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+MessageBubbleGroup
+└── MessageBubble
+    ├── MessageBubbleContent
+    ├── MessageBubbleTrigger
+    └── MessageBubbleReactions
+```
+
+## Usage
+
+```tsx
+import {
+  MessageBubble,
+  MessageBubbleContent,
+  MessageBubbleGroup,
+  MessageBubbleReactions,
+  MessageBubbleTrigger,
+} from "@/components/ui/message-bubble";
+```
+
+```tsx
+<MessageBubbleGroup>
+  <MessageBubble variant="secondary">
+    <MessageBubbleContent>You still coming Thursday?</MessageBubbleContent>
+  </MessageBubble>
+  <MessageBubble variant="secondary">
+    <MessageBubbleContent>
+      Door's unlocked if you get here first.
+    </MessageBubbleContent>
+  </MessageBubble>
+</MessageBubbleGroup>
+<MessageBubbleGroup>
+  <MessageBubble align="end">
+    <MessageBubbleContent>Yeah, around 7.</MessageBubbleContent>
+  </MessageBubble>
+  <MessageBubble align="end">
+    <MessageBubbleContent>I'll grab ice.</MessageBubbleContent>
+    <MessageBubbleReactions aria-label="Reactions: thumbs up" role="img">
+      <span>👍</span>
+    </MessageBubbleReactions>
+  </MessageBubble>
+</MessageBubbleGroup>
+```
+
+## Variants
+
+Use `variant` to change the visual treatment of the bubble.
+
+### Default
+
+<ComponentPreview componentName="message-bubble" fileName="example-variant-default" />
+
+### Secondary
+
+<ComponentPreview componentName="message-bubble" fileName="example-variant-secondary" />
+
+### Tinted
+
+<ComponentPreview componentName="message-bubble" fileName="example-variant-tinted" />
+
+### Outline
+
+<ComponentPreview componentName="message-bubble" fileName="example-variant-outline" />
+
+### Ghost
+
+Ghost drops the 80% max-width so the bubble can fill the row.
+
+<ComponentPreview componentName="message-bubble" fileName="example-variant-ghost" />
+
+### Destructive
+
+<ComponentPreview componentName="message-bubble" fileName="example-variant-destructive" />
+
+## Alignment
+
+Use `align` to pin the bubble to the `start` or `end` of the conversation.
+
+<ComponentPreview componentName="message-bubble" fileName="example-align" />
+
+## Group
+
+<ComponentPreview componentName="message-bubble" fileName="example-group" />
+
+## Links and Buttons
+
+Turn a bubble into a link or button with `asChild` on `MessageBubbleContent`.
+
+<ComponentPreview componentName="message-bubble" fileName="example-links" />
+
+## Reactions
+
+Use `side` to position the row.
+
+<ComponentPreview componentName="message-bubble" fileName="example-reactions" />
+
+## Trigger
+
+The chevron shows on hover with a mouse and opens the action list on click.
+
+<ComponentPreview componentName="message-bubble" fileName="example-trigger" />
+
+## Collapsible
+
+Long bubble content can be composed with [Collapsible](/docs/components/collapsible).
+
+<ComponentPreview componentName="message-bubble" fileName="example-collapsible" />
+
+## Tooltip
+
+To reveal metadata on hover
+
+<ComponentPreview componentName="message-bubble" fileName="example-tooltip" />
+
+## Toggle Tooltip
+
+Use when the details should open on click, including on touch devices.
+
+<ComponentPreview componentName="message-bubble" fileName="example-popover" />
+
+## Context Menu
+
+Keep it as a second root next to the chevron Menu so each overlay positions on its own trigger.
+
+<ComponentPreview componentName="message-bubble" fileName="example-context-menu" />
+
+## API Reference
+
+### MessageBubbleGroup
+
+Stacks related bubbles.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageBubble
+
+Message surface. 
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "secondary" \| "tinted" \| "outline" \| "ghost" \| "destructive"` | `"default"` |
+| `align` | `"start" \| "end"` | `"start"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageBubbleContent
+
+Body of the bubble.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageBubbleTrigger
+
+Hover-revealed control in the top-end corner.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Message actions"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### MessageBubbleReactions
+
+Reaction cluster anchored to the bubble.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `side` | `"top" \| "bottom"` | `"bottom"` |
+| `align` | `"start" \| "end"` | `"end"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

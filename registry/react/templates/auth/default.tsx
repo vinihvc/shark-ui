@@ -9,6 +9,7 @@ import {
   FieldLabel,
   FieldSeparator,
 } from "@/registry/react/components/field";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import { Input } from "@/registry/react/components/input";
 
 export const metadata: Metadata = createMetadata({
@@ -23,9 +24,14 @@ const AuthTemplate = () => (
     <div className="flex flex-col gap-4 p-6 md:p-10">
       <div className="flex justify-center gap-2 md:justify-start">
         <a className="flex items-center gap-2 font-medium" href="#">
-          <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+          <IconTile
+            aria-hidden="true"
+            className="rounded-md border-transparent shadow-none"
+            size="xs"
+            variant="primary"
+          >
             <GalleryVerticalEndIcon aria-hidden className="size-4" />
-          </div>
+          </IconTile>
           Acme Inc.
         </a>
       </div>

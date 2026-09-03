@@ -6,6 +6,7 @@ import { getBlockRegistryArtifacts } from "../lib/blocks";
 import { validateUniqueCompositionNames } from "../lib/compositions";
 import type { RegistryItemType } from "../lib/registry";
 import { getTemplateRegistryArtifacts } from "../lib/templates";
+import { replaceRegistryImportsForCopy } from "../utils/formatter";
 
 type RegistryKind = "component" | "hook" | "lib";
 type SourceExt = "ts" | "tsx";
@@ -100,14 +101,25 @@ const buildMetadata = async (
     return base;
   }
 
+  const extraFiles = await Promise.all(
+    (manifest.files ?? []).map(async (file) => ({
+      ...file,
+      content: replaceRegistryImportsForCopy(
+        await readFile(join(CWD, file.path), "utf-8")
+      ),
+    }))
+  );
+  const primaryPath = `registry/${framework}/${subdir}/${itemName}.${source.ext}`;
+
   return {
     ...base,
     files: [
       {
         content: source.code,
-        path: `registry/${framework}/${subdir}/${itemName}.${source.ext}`,
+        path: primaryPath,
         type: manifest.type,
       },
+      ...extraFiles.filter((file) => file.path !== primaryPath),
     ],
   };
 };
@@ -160,7 +172,9 @@ const processKind = async (kind: RegistryKind, framework = "react") => {
   await Promise.all(
     Array.from(chosen, async ([itemName, ext]) => {
       console.log(`${emoji} Processing ${itemName}...`);
-      const code = await readFile(join(dirPath, `${itemName}.${ext}`), "utf-8");
+      const code = replaceRegistryImportsForCopy(
+        await readFile(join(dirPath, `${itemName}.${ext}`), "utf-8")
+      );
       const metadata = await buildMetadata(
         itemName,
         kind,

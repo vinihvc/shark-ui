@@ -1,7 +1,7 @@
 import { ArrowDownIcon, ArrowRightIcon, SparklesIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
+import React from "react";
 import { CompositionViewer } from "@/components/registry-compositions/composition-viewer";
 import { createMetadata } from "@/lib/metadata";
 import { createTemplateFileTree, getPublishedTemplates } from "@/lib/templates";
@@ -23,46 +23,11 @@ export const metadata: Metadata = createMetadata({
   url: "/templates",
 });
 
-const TEMPLATES_DIRECTION_CONTRACT = {
-  finish:
-    "unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance",
-  firstViewport:
-    "A centered, oversized product statement fills most of the canvas, followed by an honest technical stack and the opening edge of the live AI Chat showcase. The primary action moves directly into the working template.",
-  form: "User-pinned editorial catalog inspired by the supplied Magic UI Pro reference, translated into Shark UI's established visual world. A concept roll is not applicable because the reference fixes the direction.",
-  ownWorld:
-    "Shark UI semantic neutrals, Hanken Grotesk hierarchy, compact controls, restrained borders, proportional radii, and one configurable accent.",
-  story:
-    "Understand the value of a complete starter, see the real stack behind it, then exercise the app, inspect every file, and install it into an isolated route.",
-  thesis:
-    "The template is the proof: a bold promise gives way to a complete, live, source-backed product shell within the first scroll.",
-} as const;
-
-const TEMPLATE_STACK = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "Ark UI",
-] as const;
-
 const TemplatesPage = async () => {
   const templates = await getPublishedTemplates();
 
   return (
     <SkipNavContent>
-      <script
-        // This is inert, auditable build metadata rather than executable code.
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON is serialized from a local constant and escaped before emission.
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(TEMPLATES_DIRECTION_CONTRACT).replaceAll(
-            "<",
-            "\\u003c"
-          ),
-        }}
-        data-impeccable-direction-contract="templates"
-        type="application/json"
-      />
-
       <main>
         <section className="overflow-hidden border-b">
           <div className="container px-0">
@@ -97,22 +62,6 @@ const TemplatesPage = async () => {
                 </Button>
               </div>
 
-              <div className="mt-12 border-t pt-5 sm:mt-14">
-                <p className="text-muted-foreground text-sm">
-                  Built for the tools already in your workflow
-                </p>
-                <ul
-                  aria-label="Template technology stack"
-                  className="mt-3 flex max-w-3xl flex-wrap justify-center gap-x-5 gap-y-2"
-                >
-                  {TEMPLATE_STACK.map((technology) => (
-                    <li className="font-medium text-sm" key={technology}>
-                      {technology}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               <Announcement className="mt-6 bg-background p-0 shadow-sm/5">
                 <Link
                   className="inline-flex min-w-0 max-w-full items-center gap-2 rounded-2xl py-0.5 ps-0.5 pe-3 outline-none transition-colors hover:bg-input/12 focus-visible:ring-[3px] focus-visible:ring-ring/32 motion-reduce:transition-none"
@@ -136,7 +85,7 @@ const TemplatesPage = async () => {
           <div className="container border-x px-4 py-14 motion-safe:animate-[templates-workbench-in_1s_cubic-bezier(0.16,1,0.3,1)_both] sm:px-6 sm:py-16 lg:px-8 lg:py-20 motion-safe:[animation-range:entry_0%_entry_30%] motion-safe:[animation-timeline:view()]">
             <div className="flex flex-col gap-16">
               {templates.map((item) => (
-                <Suspense
+                <React.Suspense
                   fallback={<Skeleton className="h-[820px] w-full" />}
                   key={item.name}
                 >
@@ -145,7 +94,7 @@ const TemplatesPage = async () => {
                     kind="templates"
                     tree={createTemplateFileTree(item.files)}
                   />
-                </Suspense>
+                </React.Suspense>
               ))}
             </div>
           </div>

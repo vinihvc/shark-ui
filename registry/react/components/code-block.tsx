@@ -1,8 +1,8 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
-import type React from "react";
-import { createContext, useContext, useMemo } from "react";
+import { createContext } from "@ark-ui/react/utils";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -15,9 +15,10 @@ interface CodeBlockContextValue {
   code: string;
 }
 
-const CodeBlockContext = createContext<CodeBlockContextValue>({ code: "" });
-
-const useCodeBlock = () => useContext(CodeBlockContext);
+const [CodeBlockProvider, useCodeBlock] = createContext<CodeBlockContextValue>({
+  name: "CodeBlockContext",
+  providerName: "CodeBlock",
+});
 
 interface CodeBlockProps extends React.ComponentProps<typeof ark.div> {
   code?: string;
@@ -26,10 +27,10 @@ interface CodeBlockProps extends React.ComponentProps<typeof ark.div> {
 export const CodeBlock = (props: CodeBlockProps) => {
   const { className, code = "", children, ...rest } = props;
 
-  const value = useMemo(() => ({ code }), [code]);
+  const value = React.useMemo(() => ({ code }), [code]);
 
   return (
-    <CodeBlockContext.Provider value={value}>
+    <CodeBlockProvider value={value}>
       <ark.div
         className={cn(
           "flex w-full min-w-0 flex-col overflow-hidden rounded-xl border bg-card text-card-foreground",
@@ -40,7 +41,7 @@ export const CodeBlock = (props: CodeBlockProps) => {
       >
         {children}
       </ark.div>
-    </CodeBlockContext.Provider>
+    </CodeBlockProvider>
   );
 };
 
@@ -80,6 +81,7 @@ export const CodeBlockCopy = (
   props: Omit<React.ComponentProps<typeof Clipboard>, "value" | "children">
 ) => {
   const { className, ...rest } = props;
+
   const { code } = useCodeBlock();
 
   return (
@@ -98,16 +100,20 @@ export const CodeBlockCopy = (
   );
 };
 
-interface CodeBlockContentProps extends React.ComponentProps<"pre"> {
+interface CodeBlockContentProps extends React.ComponentProps<typeof ark.pre> {
   showLineNumbers?: boolean;
 }
 
 export const CodeBlockContent = (props: CodeBlockContentProps) => {
-  const { className, children, showLineNumbers = false, ...rest } = props;
+  const { showLineNumbers = false, className, children, ...rest } = props;
+
   const { code } = useCodeBlock();
+
   const text = typeof children === "string" ? children : code;
+
   const keyedLines: { key: string; line: string; lineNumber: number }[] = [];
   let lineNumber = 0;
+
   for (const line of text.split("\n")) {
     lineNumber += 1;
     keyedLines.push({
@@ -118,7 +124,7 @@ export const CodeBlockContent = (props: CodeBlockContentProps) => {
   }
 
   return (
-    <pre
+    <ark.pre
       className={cn(
         "max-h-80 min-w-0 overflow-auto p-3 font-mono text-[0.8125rem] leading-6",
         className
@@ -138,6 +144,6 @@ export const CodeBlockContent = (props: CodeBlockContentProps) => {
           </span>
         ))}
       </code>
-    </pre>
+    </ark.pre>
   );
 };

@@ -1,23 +1,32 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
+import { XIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button, type ButtonProps } from "@/registry/react/components/button";
+import { FileThumbnail } from "@/registry/react/components/file-thumbnail";
+import { IconTile } from "@/registry/react/components/icon-tile";
+import { ScrollArea } from "./scroll-area";
 
 export const attachmentVariants = tv({
   base: [
-    "group/attachment relative flex w-fit min-w-0 max-w-full shrink-0 flex-wrap",
-    "rounded-xl border bg-card text-card-foreground",
+    "group/attachment",
+    "relative",
+    "w-fit min-w-0 max-w-full",
+    "flex shrink-0 flex-nowrap",
+    "px-2.5 has-[>[data-variant=image]]:px-0",
+    "bg-card text-card-foreground",
+    "rounded-xl border border-input",
     "transition-colors",
-    "focus-within:ring-1 focus-within:ring-ring/50",
     "has-[>a,>button]:hover:bg-muted/50",
-    "data-[state=error]:border-destructive/30 data-[state=idle]:border-dashed",
+    "data-[state=idle]:border-dashed",
+    "data-[state=error]:border-destructive/64 dark:data-[state=error]:border-destructive-foreground/64",
   ],
   defaultVariants: {
     orientation: "horizontal",
-    size: "default",
+    size: "md",
   },
   variants: {
     orientation: {
@@ -25,10 +34,10 @@ export const attachmentVariants = tv({
       vertical: "w-24 flex-col has-data-[slot=attachment-content]:w-30",
     },
     size: {
-      default:
-        "gap-2 text-sm has-data-[slot=attachment-media]:p-2 has-data-[slot=attachment-content]:px-2.5 has-data-[slot=attachment-content]:py-2",
-      sm: "gap-2.5 text-xs has-data-[slot=attachment-media]:p-1.5 has-data-[slot=attachment-content]:px-2 has-data-[slot=attachment-content]:py-1.5",
-      xs: "gap-1.5 rounded-lg text-xs has-data-[slot=attachment-media]:p-1 has-data-[slot=attachment-content]:px-1.5 has-data-[slot=attachment-content]:py-1",
+      lg: "gap-3 text-base has-data-[slot=attachment-content]:py-2.5",
+      md: "gap-2 text-sm has-data-[slot=attachment-content]:py-2",
+      sm: "gap-2.5 text-xs has-data-[slot=attachment-content]:py-1.5",
+      xs: "gap-1.5 rounded-lg text-xs has-data-[slot=attachment-content]:py-1",
     },
   },
 });
@@ -36,15 +45,18 @@ export const attachmentVariants = tv({
 interface AttachmentProps
   extends React.ComponentProps<typeof ark.div>,
     VariantProps<typeof attachmentVariants> {
+  /**
+   * Set the state of the attachment
+   */
   state?: "done" | "error" | "idle" | "processing" | "uploading";
 }
 
 export const Attachment = (props: AttachmentProps) => {
   const {
-    className,
     state = "done",
-    size = "default",
+    size = "md",
     orientation = "horizontal",
+    className,
     ...rest
   } = props;
 
@@ -62,14 +74,18 @@ export const Attachment = (props: AttachmentProps) => {
 
 export const attachmentMediaVariants = tv({
   base: [
-    "relative flex aspect-square w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-muted text-foreground",
+    "relative",
+    "aspect-square w-10",
+    "flex shrink-0 items-center justify-center",
+    "bg-muted",
+    "text-foreground",
+    "overflow-hidden",
     "group-data-[orientation=vertical]/attachment:w-full",
-    "group-data-[size=sm]/attachment:w-8",
-    "group-data-[size=xs]/attachment:w-7 group-data-[size=xs]/attachment:rounded-md",
-    "group-data-[state=error]/attachment:bg-destructive/10 group-data-[state=error]/attachment:text-destructive",
-    "group-data-[orientation=vertical]/attachment:*:data-[slot=spinner]:size-6!",
+    "group-data-[size=lg]/attachment:w-12 group-data-[size=sm]/attachment:w-8 group-data-[size=xs]/attachment:w-7",
+    "group-data-[orientation=vertical]/attachment:**:data-[slot=spinner]:size-6!",
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
     "group-data-[orientation=vertical]/attachment:[&_svg:not([class*='size-'])]:size-6",
+    "group-data-[size=lg]/attachment:[&_svg:not([class*='size-'])]:size-5",
     "group-data-[size=xs]/attachment:[&_svg:not([class*='size-'])]:size-3.5",
   ],
   defaultVariants: {
@@ -77,10 +93,16 @@ export const attachmentMediaVariants = tv({
   },
   variants: {
     variant: {
+      file: [
+        "w-8 overflow-visible bg-transparent",
+        "group-data-[size=lg]/attachment:w-10",
+        "group-data-[size=sm]/attachment:w-6.5",
+        "group-data-[size=xs]/attachment:w-6",
+      ],
       icon: "",
       image: [
-        "opacity-60 group-data-[state=done]/attachment:opacity-100 group-data-[state=idle]/attachment:opacity-100",
-        "*:[img]:aspect-square *:[img]:w-full *:[img]:object-cover",
+        "rounded-[inherit]",
+        "[&>img]:aspect-square [&>img]:size-full [&>img]:object-cover",
       ],
     },
   },
@@ -88,10 +110,15 @@ export const attachmentMediaVariants = tv({
 
 interface AttachmentMediaProps
   extends React.ComponentProps<typeof ark.div>,
-    VariantProps<typeof attachmentMediaVariants> {}
+    VariantProps<typeof attachmentMediaVariants> {
+  /**
+   * The format of the attachment
+   */
+  format?: string;
+}
 
 export const AttachmentMedia = (props: AttachmentMediaProps) => {
-  const { className, variant = "icon", ...rest } = props;
+  const { children, className, format, variant = "icon", ...rest } = props;
 
   return (
     <ark.div
@@ -99,7 +126,21 @@ export const AttachmentMedia = (props: AttachmentMediaProps) => {
       data-slot="attachment-media"
       data-variant={variant}
       {...rest}
-    />
+    >
+      {variant === "file" ? (
+        <FileThumbnail
+          className="group-data-[size=lg]/attachment:scale-[1.2] group-data-[size=sm]/attachment:scale-[.8] group-data-[size=xs]/attachment:scale-[.7]"
+          format={format}
+          size="sm"
+        />
+      ) : variant === "icon" ? (
+        <IconTile aria-hidden="true" className="size-full">
+          {children}
+        </IconTile>
+      ) : (
+        children
+      )}
+    </ark.div>
   );
 };
 
@@ -111,7 +152,10 @@ export const AttachmentContent = (
   return (
     <ark.div
       className={cn(
-        "min-w-0 max-w-full flex-1 leading-tight group-data-[orientation=vertical]/attachment:px-1",
+        "min-w-0 max-w-full",
+        "flex-1",
+        "leading-tight",
+        "group-data-[orientation=vertical]/attachment:px-1",
         className
       )}
       data-slot="attachment-content"
@@ -146,8 +190,12 @@ export const AttachmentDescription = (
   return (
     <ark.span
       className={cn(
-        "mt-0.5 block min-w-0 max-w-full truncate text-muted-foreground text-xs",
-        "group-data-[state=error]/attachment:text-destructive/80",
+        "block",
+        "min-w-0 max-w-full",
+        "mt-0.5",
+        "truncate text-muted-foreground text-xs",
+        "group-data-[state=error]/attachment:text-destructive",
+        "dark:group-data-[state=error]/attachment:text-destructive-foreground",
         className
       )}
       data-slot="attachment-description"
@@ -164,8 +212,11 @@ export const AttachmentActions = (
   return (
     <ark.div
       className={cn(
-        "relative z-20 flex shrink-0 items-center",
-        "group-data-[orientation=vertical]/attachment:absolute group-data-[orientation=vertical]/attachment:end-3 group-data-[orientation=vertical]/attachment:top-3 group-data-[orientation=vertical]/attachment:gap-1",
+        "relative z-20",
+        "flex shrink-0 items-center self-start",
+        "gap-1",
+        "group-data-[orientation=vertical]/attachment:absolute group-data-[orientation=vertical]/attachment:inset-e-1.5 group-data-[orientation=vertical]/attachment:top-1.5",
+        "group-data-[orientation=vertical]/attachment:*:data-[slot=attachment-action]:size-5",
         className
       )}
       data-slot="attachment-actions"
@@ -175,18 +226,24 @@ export const AttachmentActions = (
 };
 
 export const AttachmentAction = (props: ButtonProps) => {
-  const { className, variant, size = "icon-xs", ...rest } = props;
+  const { variant = "ghost", size = "icon-xs", pill = true, ...rest } = props;
 
   return (
     <Button
-      className={cn(className)}
       data-slot="attachment-action"
+      pill={pill}
       size={size}
-      variant={variant ?? "ghost"}
+      variant={variant}
       {...rest}
     />
   );
 };
+
+export const AttachmentRemove = (props: ButtonProps) => (
+  <AttachmentAction data-slot="attachment-remove" {...props}>
+    <XIcon aria-hidden="true" />
+  </AttachmentAction>
+);
 
 export const AttachmentTrigger = (
   props: React.ComponentProps<typeof ark.button>
@@ -206,17 +263,24 @@ export const AttachmentTrigger = (
 export const AttachmentGroup = (
   props: React.ComponentProps<typeof ark.div>
 ) => {
-  const { className, ...rest } = props;
+  const { children, className, ...rest } = props;
 
   return (
-    <ark.div
-      className={cn(
-        "scrollbar-none flex min-w-0 snap-x snap-mandatory scroll-px-1 gap-3 overflow-x-auto overscroll-x-contain py-1",
-        "*:data-[slot=attachment]:flex-none *:data-[slot=attachment]:snap-start",
-        className
-      )}
-      data-slot="attachment-group"
-      {...rest}
-    />
+    <ScrollArea
+      className={cn("h-auto py-1", className)}
+      orientation="horizontal"
+    >
+      <ark.div
+        className={cn(
+          "flex h-14 w-max min-w-full gap-3",
+          "*:data-[slot=attachment]:h-full! *:data-[slot=attachment]:flex-none",
+          "[&>[data-slot=attachment]:not(:has([data-slot=attachment-content]))]:w-14"
+        )}
+        data-slot="attachment-group"
+        {...rest}
+      >
+        {children}
+      </ark.div>
+    </ScrollArea>
   );
 };

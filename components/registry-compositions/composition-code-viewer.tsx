@@ -1,7 +1,7 @@
 "use client";
 
 import { FilesIcon } from "lucide-react";
-import { useCallback, useMemo, useState } from "react";
+import React from "react";
 import { CopyButton } from "@/components/copy-button";
 import type {
   CompositionFileTreeNode,
@@ -34,15 +34,17 @@ export const CompositionCodeViewer = ({
   label,
   tree,
 }: CompositionCodeViewerProps) => {
-  const [activePath, setActivePath] = useState(files[0]?.displayPath ?? "");
-  const [sheetOpen, setSheetOpen] = useState(false);
+  const [activePath, setActivePath] = React.useState(
+    files[0]?.displayPath ?? ""
+  );
+  const [sheetOpen, setSheetOpen] = React.useState(false);
   const activeFile =
     files.find((file) => file.displayPath === activePath) ?? files[0];
-  const activeLanguage = useMemo(
+  const activeLanguage = React.useMemo(
     () => getLanguageFromPath(activeFile?.displayPath ?? "tsx"),
     [activeFile?.displayPath]
   );
-  const handleSheetOpenChange = useCallback(
+  const handleSheetOpenChange = React.useCallback(
     ({ open }: { open: boolean }) => setSheetOpen(open),
     []
   );

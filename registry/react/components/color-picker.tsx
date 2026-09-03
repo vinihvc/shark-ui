@@ -2,7 +2,6 @@
 
 import {
   ColorPicker as ArkColorPicker,
-  type ColorPickerValueChangeDetails,
   parseColor as parseColorArk,
   useColorPickerContext,
 } from "@ark-ui/react/color-picker";
@@ -50,21 +49,19 @@ export const ColorPicker = (props: ColorPickerProps) => {
 
   const isControlled = value !== undefined;
 
-  const handleValueChange = (e: ColorPickerValueChangeDetails) => {
-    if (isControlled) {
-      onValueChange?.(e);
-    } else {
-      setInternalValue(e.valueAsString);
-    }
-  };
-
   return (
     <ArkColorPicker.Root
       className={cn("group/color-picker", "w-fit", "flex gap-2", className)}
       data-slot="color-picker"
       defaultValue={internalValue ? parseColor(internalValue) : undefined}
       lazyMount={lazyMount}
-      onValueChange={handleValueChange}
+      onValueChange={(e) => {
+        if (isControlled) {
+          onValueChange?.(e);
+        } else {
+          setInternalValue(e.valueAsString);
+        }
+      }}
       positioning={positioning}
       unmountOnExit={unmountOnExit}
       value={isControlled ? parseColor(value) : undefined}

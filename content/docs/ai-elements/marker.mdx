@@ -69,57 +69,41 @@ import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
 
 Use `variant` to switch between an inline marker, bordered row, and labeled separator.
 
-<ComponentPreview componentName="marker" fileName="example-variants" />
+### Default
 
-| Variant | Description |
-| --- | --- |
-| `default` | An inline marker for status, notes, and actions. |
-| `border` | A default marker with a bottom border under the row. |
-| `separator` | A centered label with divider lines on each side. |
+<ComponentPreview componentName="marker" fileName="example-variant-default" />
 
-## Status
+### Border
+
+<ComponentPreview componentName="marker" fileName="example-variant-border" />
+
+### Separator
+
+<ComponentPreview componentName="marker" fileName="example-variant-separator" />
+
+## Examples
+
+### Status
 
 Set `role="status"` and include a [Spinner](/docs/components/spinner) for streaming or in-progress markers so updates are announced.
 
 <ComponentPreview componentName="marker" fileName="example-status" />
 
-## Shimmer
+### Shimmer
 
 Add the [shimmer](/docs/utilities/shimmer) utility class to `MarkerContent` for an animated streaming-text effect.
 
 <ComponentPreview componentName="marker" fileName="example-shimmer" />
 
-## Separator
-
-Use the `separator` variant for labeled dividers, such as dates or section breaks, in a conversation.
-
-<ComponentPreview componentName="marker" fileName="example-separator" />
-
-## Border
-
-Use the `border` variant for status rows that should keep the default marker alignment while separating the next row.
-
-<ComponentPreview componentName="marker" fileName="example-border" />
-
-## With Icon
-
-Use `MarkerIcon` to render an icon alongside the content. Use `flex-col` to stack the icon above the content.
+### With Icon
 
 <ComponentPreview componentName="marker" fileName="example-icon" />
 
-## Links and Buttons
+### Links and Buttons
 
 Turn a marker into a link or button with `asChild` on `Marker`.
 
 <ComponentPreview componentName="marker" fileName="example-links" />
-
-```tsx
-<Marker asChild>
-  <a href="#">
-    <MarkerContent>View the pull request</MarkerContent>
-  </a>
-</Marker>
-```
 
 ## API Reference
 

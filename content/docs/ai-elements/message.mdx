@@ -1,10 +1,10 @@
 ---
 title: Message
-description: A conversation row with avatar, alignment, header, content, and footer.
-seoDescription: "Chat message row with avatar, alignment, header, and footer."
+description: Chat row with avatar, header, and footer.
+seoDescription: "Chat row with avatar, header, and footer."
 ---
 
-<ComponentPreview componentName="message" />
+<ComponentPreview componentName="message" autoHeight />
 
 ## Installation
 
@@ -53,7 +53,7 @@ MessageGroup
     ├── MessageAvatar
     └── MessageContent
         ├── MessageHeader
-        ├── …
+        ├── MessageBubble
         └── MessageFooter
             └── MessageActions
                 └── MessageAction
@@ -62,69 +62,87 @@ MessageGroup
 ## Usage
 
 ```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Message,
-  MessageAction,
-  MessageActions,
   MessageAvatar,
   MessageContent,
-  MessageFooter,
-  MessageHeader,
 } from "@/components/ui/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/components/ui/message-bubble";
 ```
 
 ```tsx
 <Message>
-  <MessageAvatar />
+  <MessageAvatar>
+    <Avatar>
+      <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
+      <AvatarFallback>VV</AvatarFallback>
+    </Avatar>
+  </MessageAvatar>
   <MessageContent>
-    <MessageHeader />
-    <MessageFooter>
-      <MessageActions>
-        <MessageAction tooltip="Copy" />
-      </MessageActions>
-    </MessageFooter>
+    <MessageBubble>
+      <MessageBubbleContent>How can I help you today?</MessageBubbleContent>
+    </MessageBubble>
   </MessageContent>
 </Message>
 ```
 
-Compose with [Bubble](/docs/ai-elements/bubble) for the message surface. Use `align="end"` for the current user.
+The row is `Message`. Put the surface in [Message Bubble](/docs/ai-elements/message-bubble), set `align="end"` for the current user, and scroll the thread with [Message Scroller](/docs/ai-elements/message-scroller).
 
 ## Alignment
+
+Flip the row with `align`.
 
 <ComponentPreview componentName="message" fileName="example-align" />
 
 ## Avatar
 
-Use `MessageAvatar` to render an avatar next to the message. Set `align="end"` on the message to align the avatar to the end of the row.
+`MessageAvatar` sits beside the bubble and follows `align`.
 
 <ComponentPreview componentName="message" fileName="example-avatar" />
 
-| align | Description |
-| --- | --- |
-| `start` | Align the message to the start of the conversation. |
-| `end` | Align the message to the end of the conversation. |
-
 ## Group
 
-Use `MessageGroup` to stack consecutive messages from the same sender. Render an empty `MessageAvatar` on the earlier messages to keep them aligned with the avatar on the last one.
+Stack same-sender turns in `MessageGroup`. Leave `MessageAvatar` empty on earlier rows so the last avatar still lines up.
 
 <ComponentPreview componentName="message" fileName="example-group" />
 
 ## Header and Footer
 
-Use `MessageHeader` for a sender name and `MessageFooter` for metadata such as a delivery or read status.
+Name in `MessageHeader`, status in `MessageFooter`.
 
 <ComponentPreview componentName="message" fileName="example-header-footer" />
 
 ## Actions
 
-Place `MessageActions` inside `MessageFooter` for copy, regenerate, or feedback controls. `MessageAction` accepts optional `tooltip` and `label`.
+`MessageActions` go in `MessageFooter`. Pass `tooltip` or `label` on each `MessageAction`.
 
 <ComponentPreview componentName="message" fileName="example-actions" />
 
+## Context Menu
+
+<ComponentPreview componentName="message" fileName="example-context-menu" />
+
 ## Attachment
 
-<ComponentPreview componentName="message" fileName="example-attachment" />
+Put [Attachment](/docs/ai-elements/attachment) in `MessageContent`.
+
+<ComponentPreview
+  autoHeight
+  className="**:data-[slot=preview]:h-[540px]"
+  componentName="message"
+  fileName="example-attachment"
+/>
+
+## Open Graph
+
+<ComponentPreview
+  componentName="message"
+  fileName="example-open-graph"
+/>
 
 ## API Reference
 
@@ -139,7 +157,7 @@ Stacks related messages.
 
 ### Message
 
-A single transcript row. Use `align="end"` for the current user.
+Transcript row. `align="end"` is the current user.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -149,7 +167,7 @@ A single transcript row. Use `align="end"` for the current user.
 
 ### MessageAvatar
 
-Avatar slot. Aligns to the end of the row.
+Bottom of the bubble. Shifts up past a footer or bottom reactions.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -194,7 +212,7 @@ Container for message action buttons.
 
 ### MessageAction
 
-Icon button with an optional tooltip. Built on [Button](/docs/components/button).
+Icon button with an optional tooltip.
 
 | Prop | Type | Default |
 | --- | --- | --- |

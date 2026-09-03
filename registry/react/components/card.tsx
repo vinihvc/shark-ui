@@ -13,8 +13,8 @@ export const Card = (props: React.ComponentProps<typeof ark.div>) => {
         "py-(--space)",
         "flex flex-col gap-4",
         "bg-card",
-        "text-foreground",
-        "has-data-[variant=image]:pt-0 has-data-[slot=card-footer]:pb-0",
+        "text-card-foreground",
+        "has-[>_[data-variant=image]]:pt-0 has-[>_[data-slot=card-footer]]:pb-0",
         "rounded-xl border shadow-xs/5",
         className
       )}
@@ -38,9 +38,10 @@ const cardMediaVariants = tv({
       default: "bg-transparent",
       icon: "[&_svg:not([class*='size-'])]:size-4",
       image: [
-        "overflow-hidden rounded-t-sm",
         "px-0",
-        "[&_img]:size-full [&_img]:object-cover",
+        "rounded-t-[calc(var(--radius-xl)-1px)]",
+        "overflow-hidden",
+        "[&_img]:size-full [&_img]:object-cover [&_video]:size-full [&_video]:object-cover",
       ],
     },
   },
@@ -106,7 +107,7 @@ export const CardTitle = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "font-heading font-semibold text-foreground text-lg/6",
+        "font-heading font-semibold text-card-foreground text-lg/6",
         className
       )}
       data-slot="card-title"
@@ -165,7 +166,7 @@ export const CardFooter = (props: React.ComponentProps<typeof ark.div>) => {
         "flex items-center gap-2",
         "px-(--space)",
         "bg-muted/48",
-        "rounded-b-xl border-t",
+        "rounded-b-[calc(var(--radius-xl)-1px)] border-t",
         "py-(--space)",
         className
       )}

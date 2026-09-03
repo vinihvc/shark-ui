@@ -4,7 +4,8 @@ import {
   ToggleGroup as ArkToggleGroup,
   useToggleGroupContext as useArkToggleGroupContext,
 } from "@ark-ui/react/toggle-group";
-import React from "react";
+import { createContext } from "@ark-ui/react/utils";
+import type React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Toggle, type ToggleProps } from "@/registry/react/components/toggle";
@@ -23,7 +24,11 @@ type ToggleGroupContextProps = Pick<
   spacing?: number;
 };
 
-const ToggleGroupContext = React.createContext({} as ToggleGroupContextProps);
+const [ToggleGroupProvider, _useToggleGroup] =
+  createContext<ToggleGroupContextProps>({
+    name: "ToggleGroupContext",
+    providerName: "ToggleGroup",
+  });
 
 interface ToggleGroupProps
   extends React.ComponentProps<typeof ArkToggleGroup.Root>,
@@ -61,7 +66,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
   } = props;
 
   return (
-    <ToggleGroupContext.Provider value={{ pill, size, spacing, variant }}>
+    <ToggleGroupProvider value={{ pill, size, spacing, variant }}>
       <ArkToggleGroup.Root
         className={cn(toggleGroupVariants({ orientation, pill }), className)}
         data-slot="toggle-group"
@@ -75,7 +80,7 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
         }
         {...rest}
       />
-    </ToggleGroupContext.Provider>
+    </ToggleGroupProvider>
   );
 };
 
@@ -117,14 +122,4 @@ export const ToggleGroupItem = (props: ToggleGroupItemProps) => {
       />
     </ArkToggleGroup.Item>
   );
-};
-
-const _useToggleGroup = () => {
-  const context = React.useContext(ToggleGroupContext);
-
-  if (!context) {
-    throw new Error("useToggleGroupContext must be used within a ToggleGroup");
-  }
-
-  return context;
 };

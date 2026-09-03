@@ -120,11 +120,11 @@ export const DiffStats = (props: DiffStatsProps) => {
   );
 };
 
-export const DiffContent = (props: React.ComponentProps<"div">) => {
+export const DiffContent = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, children, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "min-h-0 w-full min-w-0",
         "flex flex-1 flex-col",
@@ -138,7 +138,7 @@ export const DiffContent = (props: React.ComponentProps<"div">) => {
       <ScrollArea className="min-h-0 w-full flex-1">
         <div className="w-max min-w-full text-xs leading-5">{children}</div>
       </ScrollArea>
-    </div>
+    </ark.div>
   );
 };
 
@@ -184,7 +184,7 @@ const diffGutterVariants = tv({
 });
 
 interface DiffLineProps
-  extends React.ComponentProps<"div">,
+  extends React.ComponentProps<typeof ark.div>,
     VariantProps<typeof diffLineVariants> {
   /**
    * The line number to display.

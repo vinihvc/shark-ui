@@ -3,41 +3,73 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
+import { Marker, MarkerContent } from "@/registry/react/components/marker";
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageFooter,
-  MessageHeader,
 } from "@/registry/react/components/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/registry/react/components/message-bubble";
 
-const Example = () => (
-  <div className="flex w-full max-w-md flex-col gap-6">
-    <Message>
+const MessageDemo = () => (
+  <div className="flex w-full max-w-sm flex-col gap-6">
+    <Message align="end">
       <MessageAvatar>
         <Avatar size="sm">
-          <AvatarImage alt="Ada" src="https://github.com/shadcn.png" />
-          <AvatarFallback>A</AvatarFallback>
+          <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
+          <AvatarFallback>VV</AvatarFallback>
         </Avatar>
       </MessageAvatar>
       <MessageContent>
-        <MessageHeader>Ada</MessageHeader>
-        <Bubble>
-          <BubbleContent>The thread is looking good. Ship it?</BubbleContent>
-        </Bubble>
-        <MessageFooter>10:04 AM</MessageFooter>
+        <MessageBubble align="end">
+          <MessageBubbleContent>
+            Deploying to prod real quick.
+          </MessageBubbleContent>
+        </MessageBubble>
+      </MessageContent>
+    </Message>
+    <Message>
+      <MessageAvatar>
+        <Avatar size="sm">
+          <AvatarImage
+            alt="@segunadebayo"
+            src="https://github.com/segunadebayo.png"
+          />
+          <AvatarFallback>SA</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageContent>
+        <MessageBubble variant="secondary">
+          <MessageBubbleContent>
+            It's 4:55 PM. On a Friday.
+          </MessageBubbleContent>
+        </MessageBubble>
       </MessageContent>
     </Message>
     <Message align="end">
+      <MessageAvatar>
+        <Avatar size="sm">
+          <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
+          <AvatarFallback>VV</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
       <MessageContent>
-        <Bubble align="end" variant="secondary">
-          <BubbleContent>Give me two minutes and I’ll push.</BubbleContent>
-        </Bubble>
-        <MessageFooter>10:05 AM</MessageFooter>
+        <MessageBubble align="end">
+          <MessageBubbleContent>It's a one-line change.</MessageBubbleContent>
+        </MessageBubble>
+        <MessageFooter>Delivered</MessageFooter>
       </MessageContent>
     </Message>
+    <Marker role="status">
+      <MarkerContent className="shimmer">
+        <span className="font-medium">Sage</span> is typing...
+      </MarkerContent>
+    </Marker>
   </div>
 );
 
-export default Example;
+export default MessageDemo;

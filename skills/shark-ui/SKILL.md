@@ -31,7 +31,7 @@ Use this skill to:
 - Component docs: `content/docs/components/*.mdx`, `content/docs/ai-elements/*.mdx`
 - Registry examples: `registry/react/examples/<component>/example-*.tsx`
 - Implementations: `registry/react/components/<component>.tsx`
-- Published registry items: `public/r/<name>.json` (built from `registry/manifest/<name>.ts`)
+- Published registry items: `public/r/<name>.json` (generated from `registry/manifest/<name>.ts`; Vercel regenerates on deploy)
 - LLM-oriented routes: `app/(llms)/` and `lib/llms.ts`
 - Repository conventions: `AGENTS.md`
 
@@ -39,6 +39,7 @@ Use this skill to:
 
 - Next.js app routing, marketing pages, and non-registry app code unless the user explicitly asks.
 - Hand-editing generated `public/r/*.json` unless explicitly requested.
+- Running `pnpm registry:build` unless the user asks. Edit source and manifests; CI fails if committed JSON is stale; Vercel always regenerates on deploy.
 
 ## Critical rules
 

@@ -1,6 +1,5 @@
 "use client";
 
-import type { ComponentProps } from "react";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   Card,
@@ -15,27 +14,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/react/components/chart";
-
-const chartData = [
-  { date: "May 26", visitors: 1860 },
-  { date: "May 31", visitors: 2240 },
-  { date: "Jun 05", visitors: 2180 },
-  { date: "Jun 10", visitors: 2910 },
-  { date: "Jun 15", visitors: 2680 },
-  { date: "Jun 20", visitors: 3420 },
-  { date: "Jun 24", visitors: 3890 },
-];
-
-const chartConfig = {
-  visitors: {
-    color: "var(--primary)",
-    label: "Visitors",
-  },
-} satisfies ChartConfig;
-
-const VisitorsTooltip = (props: ComponentProps<typeof ChartTooltipContent>) => (
-  <ChartTooltipContent {...props} />
-);
 
 export const VisitorsChart = () => (
   <Card>
@@ -72,7 +50,7 @@ export const VisitorsChart = () => (
             tickMargin={12}
           />
           <YAxis axisLine={false} tickLine={false} tickMargin={8} width={48} />
-          <ChartTooltip content={VisitorsTooltip} />
+          <ChartTooltip content={ChartTooltipContent} />
           <Area
             dataKey="visitors"
             fill="url(#visitors-fill)"
@@ -85,3 +63,20 @@ export const VisitorsChart = () => (
     </CardContent>
   </Card>
 );
+
+const chartData = [
+  { date: "May 26", visitors: 1860 },
+  { date: "May 31", visitors: 2240 },
+  { date: "Jun 05", visitors: 2180 },
+  { date: "Jun 10", visitors: 2910 },
+  { date: "Jun 15", visitors: 2680 },
+  { date: "Jun 20", visitors: 3420 },
+  { date: "Jun 24", visitors: 3890 },
+];
+
+const chartConfig = {
+  visitors: {
+    color: "var(--primary)",
+    label: "Visitors",
+  },
+} satisfies ChartConfig;

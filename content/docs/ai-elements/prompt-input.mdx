@@ -26,7 +26,7 @@ npx shadcn@latest add @shark/prompt-input
 
 <Steps>
 
-<Step>This component depends on [Input Group](/docs/components/input-group). Install it first if you haven't already.</Step>
+<Step>This component depends on [Input Group](/docs/components/input-group) and [Popover](/docs/components/popover). Install them first if you haven't already.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -48,6 +48,10 @@ PromptInput
 ├── PromptInputTextarea
 └── PromptInputFooter
     ├── PromptInputTools
+    │   ├── PromptInputActions
+    │   │   ├── PopoverTrigger
+    │   │   └── PromptInputActionsContent
+    │   │       └── PromptInputAction
     │   └── PromptInputButton
     └── PromptInputSubmit
 ```
@@ -66,7 +70,7 @@ import {
 
 ```tsx
 <PromptInput onSubmit={({ text }) => send(text)} onStop={stop}>
-  <PromptInputTextarea aria-label="Message" />
+  <PromptInputTextarea aria-label="Prompt" />
   <PromptInputFooter>
     <PromptInputTools />
     <PromptInputSubmit />
@@ -74,7 +78,33 @@ import {
 </PromptInput>
 ```
 
-`PromptInput` is a form around [Input Group](/docs/components/input-group). Enter submits, Shift+Enter inserts a new line.
+`PromptInput` is a form around [Input Group](/docs/components/input-group). Compose actions with `PromptInputActions` and a [Model Selector](/docs/ai-elements/model-selector) in the footer. Enter submits, Shift+Enter inserts a new line.
+
+## Controlled
+
+Control the textarea value and composer `status` from the parent.
+
+<ComponentPreview componentName="prompt-input" fileName="example-controlled" />
+
+## States
+
+### Streaming
+
+Use `status="streaming"` to show the stop control while a response is generating.
+
+<ComponentPreview componentName="prompt-input" fileName="example-status-streaming" />
+
+### Error
+
+Use `status="error"` after a failed generation.
+
+<ComponentPreview componentName="prompt-input" fileName="example-status-error" />
+
+### Disabled
+
+Disable the textarea, tools, and submit control together.
+
+<ComponentPreview componentName="prompt-input" fileName="example-disabled" />
 
 ## Attachments
 
@@ -86,7 +116,7 @@ Wrap the composer in [File Upload](/docs/components/file-upload) and place chips
 
 ### PromptInput
 
-Form around [Input Group](/docs/components/input-group). Enter submits, Shift+Enter inserts a new line.
+Form around [Input Group](/docs/components/input-group). The textarea sits above a footer toolbar inside the same field. Enter submits, Shift+Enter inserts a new line.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -127,6 +157,25 @@ Container for composer actions.
 | --- | --- | --- |
 | `className` | `string` | `-` |
 
+### PromptInputActions
+
+Popover for attach and context actions. Built on [Popover](/docs/components/popover). Open it with `PopoverTrigger` and `asChild` on a `PromptInputButton`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `modal` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### PromptInputAction
+
+Action row inside `PromptInputActionsContent`. Closes the popover on select.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `icon` | `ReactNode` | `-` |
+| `description` | `ReactNode` | `-` |
+| `className` | `string` | `-` |
+
 ### PromptInputButton
 
 Tool button. Alias of [InputGroupButton](/docs/components/input-group).
@@ -140,7 +189,7 @@ Tool button. Alias of [InputGroupButton](/docs/components/input-group).
 
 ### PromptInputSubmit
 
-Send control. Shows a spinner for `"submitted"` and a stop control for `"streaming"`.
+Send control. Uses an up arrow when ready, a spinner for `"submitted"`, and a stop control for `"streaming"`. Disabled while the textarea is empty unless streaming.
 
 | Prop | Type | Default |
 | --- | --- | --- |

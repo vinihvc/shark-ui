@@ -20,7 +20,7 @@ We’ll build a form with a text input and textarea. When you submit, the form d
   </AlertDescription>
 </Alert>
 
-<ComponentPreview componentName="form/tanstack" fileName="example-demo" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-demo" showBorders={false} autoHeight />
 
 ## Approach
 
@@ -229,28 +229,28 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 - Bind `field.state.value` and `field.handleChange` to `Input`.
 - Add the `invalid` prop to the `Field` component and pass the error message to the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-input" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-input" showBorders={false} autoHeight />
 
 ### Textarea
 
 - Bind `field.state.value` and `field.handleChange` to `Textarea`.
 - Add the `invalid` prop to the `Field` component and pass the error message to the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-textarea" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-textarea" showBorders={false} autoHeight />
 
 ### NativeSelect
 
 - Bind `field.state.value` and `field.handleChange` to `NativeSelect`.
 - Add the `invalid` prop to the `Field` component and pass the error message to the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-native-select" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-native-select" showBorders={false} autoHeight />
 
 ### Select
 
 - Wire `value` and `onValueChange` on `Select`. For overlays, call `field.handleBlur()` from `onInteractOutside` when your example needs blur sync.
 - Add the `invalid` prop to the `Field` component and pass the error message to the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-select" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-select" showBorders={false} autoHeight />
 
 ### Checkbox
 
@@ -259,83 +259,83 @@ Display errors next to the field using `FieldError`. For styling and accessibili
 - For checkbox arrays, use `mode="array"` on the `form.Field` component and TanStack Form's array helpers.
 - Remember to add `data-slot="checkbox-group"` to the `FieldGroup` component for proper styling and spacing.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-checkbox" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-checkbox" showBorders={false} autoHeight />
 
 ### Radio group
 
 - Wire `field.state.value` and `field.handleChange` to `RadioGroup`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-radio-group" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-radio-group" showBorders={false} autoHeight />
 
 ### Switch
 
 - Use `field.state.value` and `field.handleChange` with `Switch`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-switch" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-switch" showBorders={false} autoHeight />
 
 ### NumberInput
 
 - Wire `field.state.value` and `field.handleChange` to `NumberInput`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-number-input" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-number-input" showBorders={false} autoHeight />
 
 ### Slider
 
 - Wire `field.state.value` and `field.handleChange` to `Slider`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-slider" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-slider" showBorders={false} autoHeight />
 
 ### Combobox
 
 - Wire `field.state.value` and `field.handleChange` to `Combobox`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-combobox" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-combobox" showBorders={false} autoHeight />
 
 ### Autocomplete
 
 - Wire `field.state.value` and `field.handleChange` to `Autocomplete`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-autocomplete" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-autocomplete" showBorders={false} autoHeight />
 
 ### Date Picker
 
 - Wire `field.state.value` and `field.handleChange` to `DatePicker`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-date-picker" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-date-picker" showBorders={false} autoHeight />
 
 ### Input OTP
 
 - Use `field.state.value` (as `string[]`) and `field.handleChange` with `InputOTP`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-input-otp" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-input-otp" showBorders={false} autoHeight />
 
 ### Rating
 
 - Wire `field.state.value` and `field.handleChange` to `Rating`.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-rating" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-rating" showBorders={false} autoHeight />
 
 ### File Upload
 
 - Wire `onFileAccept` to sync files into form state.
 - Add the `invalid` prop to the `Field` component and pass the `FieldError` component.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-file-upload" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-file-upload" showBorders={false} autoHeight />
 
 ### Complex Forms
 
 Here is an example of a more complex form with multiple fields and validation.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-complex" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-complex" showBorders={false} autoHeight />
 
 ## Resetting the Form
 
@@ -351,7 +351,7 @@ Use `form.reset()` to reset the form to its default values.
 
 TanStack Form supports array fields with `mode="array"`. You can add, remove, and update items with the same validation as other fields.
 
-<ComponentPreview componentName="form/tanstack" fileName="example-array-emails" showBorders={false} hasMaxHeight={false} />
+<ComponentPreview componentName="form/tanstack" fileName="example-array-emails" showBorders={false} autoHeight />
 
 ### Array Field Structure
 

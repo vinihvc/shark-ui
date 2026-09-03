@@ -1,5 +1,6 @@
 "use client";
 
+import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import { applyBodyThemeClasses } from "@/lib/preview-theme";
 import {
@@ -24,7 +25,11 @@ interface ThemesProviderProps {
   primaryColor: PrimaryColor;
 }
 
-const ThemesContext = React.createContext({} as ThemesProviderProps);
+const [ThemesContextProvider, useThemes] = createContext<ThemesProviderProps>({
+  hookName: "useThemes",
+  name: "ThemesContext",
+  providerName: "ThemesProvider",
+});
 
 export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
   const [{ primaryColor, grayColor, borderRadius }] = useConfig();
@@ -34,18 +39,10 @@ export const ThemesProvider = ({ children }: React.PropsWithChildren) => {
   }, [primaryColor, grayColor, borderRadius]);
 
   return (
-    <ThemesContext value={{ borderRadius, grayColor, primaryColor }}>
+    <ThemesContextProvider value={{ borderRadius, grayColor, primaryColor }}>
       {children}
-    </ThemesContext>
+    </ThemesContextProvider>
   );
 };
 
-export const useThemes = () => {
-  const context = React.useContext(ThemesContext);
-
-  if (!context) {
-    throw new Error("useThemes must be used within a ThemesProvider");
-  }
-
-  return context;
-};
+export { useThemes };

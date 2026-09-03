@@ -1,16 +1,8 @@
 "use client";
 
+import { createContext } from "@ark-ui/react/utils";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
-import type React from "react";
-import {
-  Children,
-  createContext,
-  isValidElement,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import React from "react";
 import { formatShadcnCommandDisplay } from "@/lib/shadcn-command";
 import { cn } from "@/lib/utils";
 import {
@@ -64,22 +56,15 @@ interface SnippetContextValue {
   setSelectedValue: (value: string) => void;
 }
 
-const SnippetContext = createContext<SnippetContextValue | null>(null);
-
-const _useSnippet = () => {
-  const context = useContext(SnippetContext);
-
-  if (!context) {
-    throw new Error("Snippet parts must be used within Snippet.");
-  }
-
-  return context;
-};
+const [SnippetProvider, _useSnippet] = createContext<SnippetContextValue>({
+  name: "SnippetContext",
+  providerName: "Snippet",
+});
 
 interface SnippetProps
   extends Omit<
     React.ComponentProps<typeof Clipboard>,
-    "value" | "children" | "defaultValue"
+    "value" | "children" | "defaultValue" | "onValueChange"
   > {
   /**
    * SnippetSelect, SnippetPrompt, SnippetCode, and SnippetCopy slots. When omitted,
@@ -188,10 +173,11 @@ export const Snippet = (props: SnippetProps) => {
   } = props;
 
   const isControlled = value !== undefined;
-  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
+  const [uncontrolledValue, setUncontrolledValue] =
+    React.useState(defaultValue);
   const selectedValue = isControlled ? value : uncontrolledValue;
 
-  const setSelectedValue = useCallback(
+  const setSelectedValue = React.useCallback(
     (next: string) => {
       if (!isControlled) {
         setUncontrolledValue(next);
@@ -205,14 +191,14 @@ export const Snippet = (props: SnippetProps) => {
   const selectedOption =
     items?.find((item) => item.value === selectedValue) ?? items?.[0];
 
-  const fallbackLines = useMemo(() => toLines(text), [text]);
+  const fallbackLines = React.useMemo(() => toLines(text), [text]);
   const lines = selectedOption ? toLines(selectedOption.code) : fallbackLines;
   const isMultiline = lines.length > 1;
   const copyValue =
     copyText ??
     (selectedOption ? toCopyString(selectedOption.code) : toCopyString(text));
 
-  const handleStatusChange = useCallback(
+  const handleStatusChange = React.useCallback(
     (details: { copied: boolean }) => {
       onStatusChange?.(details);
       if (details.copied) {
@@ -222,7 +208,7 @@ export const Snippet = (props: SnippetProps) => {
     [onCopy, onStatusChange]
   );
 
-  const contextValue = useMemo(
+  const contextValue = React.useMemo(
     () => ({
       fallbackLines,
       items,
@@ -251,7 +237,7 @@ export const Snippet = (props: SnippetProps) => {
     ));
 
   return (
-    <SnippetContext.Provider value={contextValue}>
+    <SnippetProvider value={contextValue}>
       <Clipboard
         {...rest}
         className="w-full"
@@ -271,7 +257,7 @@ export const Snippet = (props: SnippetProps) => {
           {content}
         </InputGroup>
       </Clipboard>
-    </SnippetContext.Provider>
+    </SnippetProvider>
   );
 };
 
@@ -281,7 +267,7 @@ const SnippetMenuItem = (props: { item: SnippetOption }) => {
   const { selectedValue, setSelectedValue } = _useSnippet();
   const isSelected = selectedValue === item.value;
 
-  const handleSelect = useCallback(() => {
+  const handleSelect = React.useCallback(() => {
     setSelectedValue(item.value);
   }, [item.value, setSelectedValue]);
 
@@ -367,7 +353,7 @@ export const SnippetPrompt = () => (
 );
 
 const isSnippetPrompt = (child: React.ReactNode) =>
-  isValidElement(child) && child.type === SnippetPrompt;
+  React.isValidElement(child) && child.type === SnippetPrompt;
 
 export const SnippetCode = (props: React.ComponentProps<"div">) => {
   const { children, className, ...rest } = props;
@@ -381,7 +367,7 @@ export const SnippetCode = (props: React.ComponentProps<"div">) => {
   const isMultiline = lines.length > 1;
 
   if (children !== undefined) {
-    const childArray = Children.toArray(children);
+    const childArray = React.Children.toArray(children);
     const prompt = childArray.find(isSnippetPrompt);
     const content = childArray.filter((child) => !isSnippetPrompt(child));
     const usesAutoCommand = content.length === 0;
@@ -439,7 +425,7 @@ export const SnippetCopy = (
 ) => {
   const { className, ...rest } = props;
 
-  const handleCopyMouseDown = useCallback(
+  const handleCopyMouseDown = React.useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     },

@@ -3,7 +3,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
 import { Marker, MarkerContent } from "@/registry/react/components/marker";
 import {
   Message,
@@ -12,6 +11,10 @@ import {
   MessageHeader,
 } from "@/registry/react/components/message";
 import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/registry/react/components/message-bubble";
+import {
   MessageScroller,
   MessageScrollerButton,
   MessageScrollerContent,
@@ -19,7 +22,7 @@ import {
   MessageScrollerViewport,
 } from "@/registry/react/components/message-scroller";
 
-const Example = () => (
+const MessageScrollerDemo = () => (
   <MessageScroller className="h-96 w-full max-w-md rounded-xl border">
     <MessageScrollerViewport className="px-4 py-6">
       <MessageScrollerContent>
@@ -47,12 +50,12 @@ const Example = () => (
                 )}
                 <MessageContent>
                   {isYou ? null : <MessageHeader>Ada</MessageHeader>}
-                  <Bubble
+                  <MessageBubble
                     align={isYou ? "end" : "start"}
                     variant={isYou ? "secondary" : "default"}
                   >
-                    <BubbleContent>{turn.text}</BubbleContent>
-                  </Bubble>
+                    <MessageBubbleContent>{turn.text}</MessageBubbleContent>
+                  </MessageBubble>
                 </MessageContent>
               </Message>
             </MessageScrollerItem>
@@ -77,4 +80,4 @@ const turns = [
   { from: "you", text: "On it." },
 ] as const;
 
-export default Example;
+export default MessageScrollerDemo;

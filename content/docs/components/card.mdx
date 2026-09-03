@@ -113,15 +113,30 @@ Use `CardTitle` and `CardDescription` as children for more control.
 </CardHeader>
 ```
 
-## Examples
+## Variants
 
-### Product card
+`CardMedia` supports `default`, `icon`, and `image` variants.
+
+### Default
+
+Use the default variant for inline media content, such as a badge and metadata.
+
+<ComponentPreview componentName="card" fileName="example-media-default" />
+
+### Icon
+
+Use the icon variant to apply the default icon sizing.
+
+
+<ComponentPreview componentName="card" fileName="example-icon" />
+
+### Image
+
+Use the image variant for full-width media at the top of the card.
 
 <ComponentPreview componentName="card" fileName="example-product" />
 
-### Icon card
-
-<ComponentPreview componentName="card" fileName="example-icon" />
+## Examples
 
 ### Custom spacing
 
@@ -136,6 +151,8 @@ Default spacing is `--spacing(6)`.
 ```css
   md:[--space:--spacing(6)] lg:[--space:--spacing(8)]
 ```
+
+For a whole-card destination, use [Link Overlay](/docs/components/link-overlay) with `LinkBox` rather than making the Card primitive itself a link.
 
 ## API Reference
 

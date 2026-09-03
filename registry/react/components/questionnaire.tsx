@@ -1,5 +1,6 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
 import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import { cn } from "@/lib/utils";
@@ -41,7 +42,10 @@ export interface QuestionnaireItemChangeDetails {
 }
 
 export interface QuestionnaireProps
-  extends Omit<React.ComponentProps<"form">, "defaultValue" | "noValidate"> {
+  extends Omit<
+    React.ComponentProps<typeof ark.form>,
+    "defaultValue" | "noValidate"
+  > {
   defaultItem?: string;
   defaultValue?: QuestionnaireValue;
   item?: string;
@@ -162,6 +166,14 @@ const isTextEntryTarget = (target: EventTarget | null) => {
 
   return target instanceof HTMLElement && target.isContentEditable;
 };
+
+const isChoiceNavigationTarget = (target: EventTarget | null) =>
+  target instanceof HTMLElement &&
+  Boolean(
+    target.closest(
+      '[data-slot="radio-group"], [data-questionnaire-answer="choice"]'
+    )
+  );
 
 const isInteractiveHotkeyTarget = (target: EventTarget | null) => {
   if (isTextEntryTarget(target)) {
@@ -385,10 +397,12 @@ export const Questionnaire = (props: QuestionnaireProps) => {
             controls.findIndex(({ input }) => input.checked)
           )
         : controls.length - 1;
+
     const nextIndex =
       currentIndex < 0
         ? fallbackIndex
         : (currentIndex + direction + controls.length) % controls.length;
+
     const current = controls[currentIndex];
     const nextControl = controls[nextIndex];
 
@@ -438,7 +452,10 @@ export const Questionnaire = (props: QuestionnaireProps) => {
       },
       {
         action: (event) => {
-          if (isTextEntryTarget(event.target)) {
+          if (
+            isTextEntryTarget(event.target) ||
+            isChoiceNavigationTarget(event.target)
+          ) {
             return;
           }
 
@@ -462,7 +479,10 @@ export const Questionnaire = (props: QuestionnaireProps) => {
       },
       {
         action: (event) => {
-          if (isTextEntryTarget(event.target)) {
+          if (
+            isTextEntryTarget(event.target) ||
+            isChoiceNavigationTarget(event.target)
+          ) {
             return;
           }
 
@@ -540,54 +560,6 @@ export const Questionnaire = (props: QuestionnaireProps) => {
     ],
   });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (!activeItem) {
-      event.preventDefault();
-      return;
-    }
-
-    if (index < items.length - 1) {
-      event.preventDefault();
-      next();
-      return;
-    }
-
-    if (!validate(items)) {
-      event.preventDefault();
-      return;
-    }
-
-    onSubmit?.(event as React.SubmitEvent<HTMLFormElement>);
-  };
-
-  const handlePointerDown = (event: React.PointerEvent<HTMLFormElement>) => {
-    onPointerDown?.(event);
-    if (event.defaultPrevented || isInteractiveHotkeyTarget(event.target)) {
-      return;
-    }
-
-    event.currentTarget.focus({ preventScroll: true });
-  };
-
-  const handleReset = (event: React.FormEvent<HTMLFormElement>) => {
-    onReset?.(event);
-    if (event.defaultPrevented) {
-      return;
-    }
-
-    event.preventDefault();
-    changeValue(defaultValue);
-    setInvalidItems([]);
-    setSkippedItems([]);
-
-    const initialItem =
-      items.find((entry) => entry.name === defaultItem) ?? items[0];
-
-    if (initialItem) {
-      changeItem(initialItem.name);
-    }
-  };
-
   return (
     <QuestionnaireProvider
       value={{
@@ -606,7 +578,7 @@ export const Questionnaire = (props: QuestionnaireProps) => {
         value,
       }}
     >
-      <form
+      <ark.form
         {...rest}
         className={cn(
           "flex w-full min-w-0 flex-col gap-4 text-sm outline-none",
@@ -614,14 +586,60 @@ export const Questionnaire = (props: QuestionnaireProps) => {
         )}
         data-slot="questionnaire"
         noValidate
-        onPointerDown={handlePointerDown}
-        onReset={handleReset}
-        onSubmit={handleSubmit}
+        onPointerDown={(event) => {
+          onPointerDown?.(event);
+          if (
+            event.defaultPrevented ||
+            isInteractiveHotkeyTarget(event.target)
+          ) {
+            return;
+          }
+
+          event.currentTarget.focus({ preventScroll: true });
+        }}
+        onReset={(event) => {
+          onReset?.(event);
+
+          if (event.defaultPrevented) {
+            return;
+          }
+
+          event.preventDefault();
+          changeValue(defaultValue);
+          setInvalidItems([]);
+          setSkippedItems([]);
+
+          const initialItem =
+            items.find((entry) => entry.name === defaultItem) ?? items[0];
+
+          if (initialItem) {
+            changeItem(initialItem.name);
+          }
+        }}
+        onSubmit={(event) => {
+          if (!activeItem) {
+            event.preventDefault();
+            return;
+          }
+
+          if (index < items.length - 1) {
+            event.preventDefault();
+            next();
+            return;
+          }
+
+          if (!validate(items)) {
+            event.preventDefault();
+            return;
+          }
+
+          onSubmit?.(event as React.SubmitEvent<HTMLFormElement>);
+        }}
         ref={setFormRef}
         tabIndex={-1}
       >
         {children}
-      </form>
+      </ark.form>
     </QuestionnaireProvider>
   );
 };
@@ -771,14 +789,14 @@ export const QuestionnaireTitle = (
 };
 
 export const QuestionnaireDescription = (
-  props: Omit<React.ComponentProps<"p">, "id">
+  props: Omit<React.ComponentProps<typeof ark.p>, "id">
 ) => {
   const { className, ...rest } = props;
 
   const { descriptionId } = _useQuestionnaireItem();
 
   return (
-    <p
+    <ark.p
       {...rest}
       className={cn("text-pretty text-muted-foreground", className)}
       data-slot="questionnaire-description"
@@ -787,7 +805,9 @@ export const QuestionnaireDescription = (
   );
 };
 
-export const QuestionnaireChoices = (props: React.ComponentProps<"div">) => {
+export const QuestionnaireChoices = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
   const { children, className, ...rest } = props;
 
   const {
@@ -822,24 +842,20 @@ export const QuestionnaireChoices = (props: React.ComponentProps<"div">) => {
     return React.cloneElement(child, { shortcut });
   });
 
-  const handleValueChange = ({ value }: { value: string | null }) => {
-    setAnswer(definition.name, { input: "", values: value ? [value] : [] });
-  };
-
   if (definition.multiple) {
     return (
-      <div
+      <ark.div
         className={cn("flex flex-col gap-2", className)}
         data-slot="questionnaire-choices"
         {...rest}
       >
         {content}
-      </div>
+      </ark.div>
     );
   }
 
   return (
-    <div
+    <ark.div
       {...rest}
       className={cn("flex flex-col gap-2", className)}
       data-slot="questionnaire-choices"
@@ -853,23 +869,47 @@ export const QuestionnaireChoices = (props: React.ComponentProps<"div">) => {
         className="flex flex-col gap-2"
         invalid={invalid}
         name={definition.name}
-        onValueChange={handleValueChange}
+        onValueChange={({ value }) => {
+          setAnswer(definition.name, {
+            input: "",
+            values: value ? [value] : [],
+          });
+        }}
         value={answer.input.trim() ? null : (answer.values[0] ?? null)}
       >
         {content}
       </RadioGroup>
-    </div>
+    </ark.div>
   );
 };
 
-export interface QuestionnaireChoiceProps extends React.ComponentProps<"div"> {
+export interface QuestionnaireChoiceProps
+  extends React.ComponentProps<typeof ark.div> {
+  /**
+   * Whether the choice is disabled
+   */
   disabled?: boolean;
+  /**
+   *
+   */
   shortcut?: string;
+  /**
+   *
+   */
   value: string;
 }
 
 export const QuestionnaireChoice = (props: QuestionnaireChoiceProps) => {
-  const { children, className, disabled, shortcut, value, ...rest } = props;
+  const {
+    children,
+    className,
+    disabled,
+    onClick,
+    onClickCapture,
+    shortcut,
+    value,
+    ...rest
+  } = props;
 
   const {
     answer,
@@ -887,23 +927,31 @@ export const QuestionnaireChoice = (props: QuestionnaireChoiceProps) => {
     (definition.multiple || !answer.input.trim()) &&
     answer.values.includes(value);
 
-  const handleCheckedChange = ({
-    checked: nextChecked,
-  }: {
-    checked: boolean | "indeterminate";
-  }) => {
-    setAnswer(definition.name, {
-      input: answer.input,
-      values:
-        nextChecked === true
-          ? [...new Set([...answer.values, value])]
-          : answer.values.filter((entry) => entry !== value),
-    });
+  const choiceProps = {
+    ...rest,
+    onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+      onClick?.(event);
+
+      if (
+        event.defaultPrevented ||
+        disabled ||
+        !definition.multiple ||
+        !(event.target instanceof HTMLElement) ||
+        event.target.dataset.slot !== "field"
+      ) {
+        return;
+      }
+
+      event.target
+        .querySelector<HTMLElement>('[data-questionnaire-answer="choice"]')
+        ?.click();
+    },
+    onClickCapture,
   };
 
   return (
     <QuestionnaireChoiceProvider value={{ shortcut }}>
-      <div
+      <ark.div
         className={cn(
           "relative",
           "min-w-0",
@@ -917,11 +965,15 @@ export const QuestionnaireChoice = (props: QuestionnaireChoiceProps) => {
         data-disabled={disabled ? "" : undefined}
         data-slot="questionnaire-choice"
         data-state={checked ? "checked" : "unchecked"}
-        {...rest}
+        {...choiceProps}
       >
         {definition.multiple ? (
           <Field
-            className={cn("items-start p-2.5", shortcut && "pe-12")}
+            className={cn(
+              "items-start p-2.5",
+              !disabled && "cursor-pointer",
+              shortcut && "pe-12"
+            )}
             disabled={disabled}
             invalid={invalid}
             orientation="horizontal"
@@ -936,11 +988,19 @@ export const QuestionnaireChoice = (props: QuestionnaireChoiceProps) => {
                 checked={checked}
                 data-questionnaire-answer="choice"
                 name={definition.name}
-                onCheckedChange={handleCheckedChange}
+                onCheckedChange={({ checked: nextChecked }) => {
+                  setAnswer(definition.name, {
+                    input: answer.input,
+                    values:
+                      nextChecked === true
+                        ? [...new Set([...answer.values, value])]
+                        : answer.values.filter((entry) => entry !== value),
+                  });
+                }}
                 value={value}
               />
             </span>
-            <FieldLabel className="min-w-0 flex-1 cursor-pointer">
+            <FieldLabel className="flex min-w-0 flex-1 cursor-pointer flex-col gap-0.5">
               {children}
             </FieldLabel>
           </Field>
@@ -952,6 +1012,11 @@ export const QuestionnaireChoice = (props: QuestionnaireChoiceProps) => {
               "p-2.5",
               "cursor-pointer",
               "*:data-[slot=radio-group-item-control]:mt-[calc((1lh-1rem)/2)]",
+              "*:data-[slot=radio-group-item-text]:min-w-0",
+              "*:data-[slot=radio-group-item-text]:w-full",
+              "*:data-[slot=radio-group-item-text]:flex-1",
+              "*:data-[slot=radio-group-item-text]:flex-col",
+              "*:data-[slot=radio-group-item-text]:gap-0.5",
               shortcut && "pe-12"
             )}
             data-questionnaire-answer="choice"
@@ -961,7 +1026,7 @@ export const QuestionnaireChoice = (props: QuestionnaireChoiceProps) => {
             {children}
           </RadioGroupItem>
         )}
-      </div>
+      </ark.div>
     </QuestionnaireChoiceProvider>
   );
 };
@@ -1014,17 +1079,6 @@ export const QuestionnaireInput = (props: QuestionnaireInputProps) => {
 
   const { setAnswer } = _useQuestionnaire();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event);
-
-    if (!event.defaultPrevented) {
-      setAnswer(definition.name, {
-        input: event.target.value,
-        values: definition.multiple ? answer.values : [],
-      });
-    }
-  };
-
   return (
     <Input
       {...rest}
@@ -1038,7 +1092,16 @@ export const QuestionnaireInput = (props: QuestionnaireInputProps) => {
       data-questionnaire-answer="input"
       data-slot="questionnaire-input"
       name={answer.input.trim() ? definition.name : undefined}
-      onChange={handleChange}
+      onChange={(event) => {
+        onChange?.(event);
+
+        if (!event.defaultPrevented) {
+          setAnswer(definition.name, {
+            input: event.target.value,
+            values: definition.multiple ? answer.values : [],
+          });
+        }
+      }}
       type="text"
       value={answer.input}
     />
@@ -1046,18 +1109,14 @@ export const QuestionnaireInput = (props: QuestionnaireInputProps) => {
 };
 
 export const QuestionnaireError = (
-  props: Omit<React.ComponentProps<"p">, "id">
+  props: Omit<React.ComponentProps<typeof ark.p>, "id">
 ) => {
-  const {
-    className,
-    children = "Choose an answer to continue.",
-    ...rest
-  } = props;
+  const { className, children, ...rest } = props;
 
   const { errorId, invalid } = _useQuestionnaireItem();
 
   return (
-    <p
+    <ark.p
       {...rest}
       aria-live="polite"
       className={cn(
@@ -1068,35 +1127,35 @@ export const QuestionnaireError = (
       hidden={!invalid}
       id={errorId}
     >
-      {invalid ? children : null}
-    </p>
+      {invalid ? children || "Choose an answer to continue." : null}
+    </ark.p>
   );
 };
 
-export const QuestionnaireProgress = (props: React.ComponentProps<"div">) => {
+export const QuestionnaireProgress = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
   const { "aria-label": ariaLabel, children, className, ...rest } = props;
 
   const { index, items } = _useQuestionnaire();
 
-  const text = items.length
-    ? `Question ${index + 1} of ${items.length}`
-    : "0 / 0";
+  const text = items.length ? `${index + 1} of ${items.length}` : "0 / 0";
 
   if (!items.length) {
     return (
-      <div
+      <ark.div
         {...rest}
         className={cn("text-muted-foreground tabular-nums", className)}
         data-slot="questionnaire-progress"
         role="status"
       >
         {children ?? text}
-      </div>
+      </ark.div>
     );
   }
 
   return (
-    <div
+    <ark.div
       {...rest}
       aria-label={ariaLabel ?? "Question progress"}
       aria-valuemax={items.length}
@@ -1108,17 +1167,20 @@ export const QuestionnaireProgress = (props: React.ComponentProps<"div">) => {
       role="progressbar"
     >
       {children ?? text}
-    </div>
+    </ark.div>
   );
 };
 
-export const QuestionnaireActions = (props: React.ComponentProps<"div">) => {
+export const QuestionnaireActions = (
+  props: React.ComponentProps<typeof ark.div>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
-        "grid min-h-11 w-full grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2 sm:min-h-8",
+        "min-h-11 w-full sm:min-h-8",
+        "grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-2",
         className
       )}
       data-slot="questionnaire-actions"
@@ -1133,13 +1195,7 @@ type QuestionnaireActionProps = Omit<
 >;
 
 export const QuestionnairePrevious = (props: QuestionnaireActionProps) => {
-  const {
-    children = "Previous",
-    className,
-    disabled,
-    onClick,
-    ...rest
-  } = props;
+  const { children, className, disabled, onClick, ...rest } = props;
 
   const { index, navigate } = _useQuestionnaire();
 
@@ -1147,41 +1203,31 @@ export const QuestionnairePrevious = (props: QuestionnaireActionProps) => {
     return null;
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(event);
-
-    if (!event.defaultPrevented) {
-      navigate(index - 1);
-    }
-  };
-
   return (
     <Button
       {...rest}
       className={cn("col-start-1 row-start-1 justify-self-start", className)}
       data-slot="questionnaire-previous"
       disabled={disabled}
-      onClick={handleClick}
+      onClick={(event) => {
+        onClick?.(event);
+
+        if (!event.defaultPrevented) {
+          navigate(index - 1);
+        }
+      }}
       type="button"
       variant="outline"
     >
-      {children}
+      {children || "Previous"}
     </Button>
   );
 };
 
 export const QuestionnaireNext = (props: QuestionnaireActionProps) => {
-  const { className, disabled, onClick, children = "Next", ...rest } = props;
+  const { className, disabled, onClick, children, ...rest } = props;
 
   const { index, items, next } = _useQuestionnaire();
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(event);
-
-    if (!event.defaultPrevented) {
-      next();
-    }
-  };
 
   if (index < 0 || index >= items.length - 1) {
     return null;
@@ -1190,30 +1236,28 @@ export const QuestionnaireNext = (props: QuestionnaireActionProps) => {
   return (
     <Button
       {...rest}
-      aria-keyshortcuts={disabled ? undefined : "ArrowRight Enter"}
+      aria-keyshortcuts={disabled ? undefined : "Enter"}
       className={cn("col-start-3 row-start-1 justify-self-end", className)}
       data-slot="questionnaire-next"
       disabled={disabled}
-      onClick={handleClick}
+      onClick={(event) => {
+        onClick?.(event);
+
+        if (!event.defaultPrevented) {
+          next();
+        }
+      }}
       type="button"
     >
-      {children}
+      {children || "Next"}
     </Button>
   );
 };
 
 export const QuestionnaireSkip = (props: QuestionnaireActionProps) => {
-  const { className, onClick, children = "Skip", ...rest } = props;
+  const { className, onClick, children, ...rest } = props;
 
   const { activeItem, index, items, skip } = _useQuestionnaire();
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(event);
-
-    if (!event.defaultPrevented) {
-      skip();
-    }
-  };
 
   if (!activeItem || activeItem.required || index >= items.length - 1) {
     return null;
@@ -1224,17 +1268,23 @@ export const QuestionnaireSkip = (props: QuestionnaireActionProps) => {
       {...rest}
       className={cn("col-start-2 row-start-1 justify-self-end", className)}
       data-slot="questionnaire-skip"
-      onClick={handleClick}
+      onClick={(event) => {
+        onClick?.(event);
+
+        if (!event.defaultPrevented) {
+          skip();
+        }
+      }}
       type="button"
       variant="ghost"
     >
-      {children}
+      {children || "Skip"}
     </Button>
   );
 };
 
 export const QuestionnaireSubmit = (props: QuestionnaireActionProps) => {
-  const { children = "Submit", className, disabled, ...rest } = props;
+  const { children, className, disabled, ...rest } = props;
 
   const { index, items } = _useQuestionnaire();
 
@@ -1253,7 +1303,7 @@ export const QuestionnaireSubmit = (props: QuestionnaireActionProps) => {
       disabled={disabled}
       type="submit"
     >
-      {children}
+      {children || "Submit"}
     </Button>
   );
 };

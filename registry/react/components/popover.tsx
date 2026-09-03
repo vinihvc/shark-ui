@@ -174,7 +174,7 @@ export const PopoverBody = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <ScrollArea>
+    <ScrollArea scrollFade>
       <ark.div
         className={cn(
           "flex-1",
@@ -198,10 +198,9 @@ export const PopoverFooter = (props: React.ComponentProps<typeof ark.div>) => {
     <ark.div
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        "sm:rounded-b-[calc(var(--radius-lg)-1px)]",
         "px-(--space) py-4",
         "bg-muted/64",
-        "border-t",
+        "rounded-b-[calc(var(--radius-xl)-1px)] border-t",
         className
       )}
       data-slot="popover-footer"

@@ -2,7 +2,7 @@
 
 import { PanelLeftIcon, SearchXIcon } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import React from "react";
 import { CompositionViewer } from "@/components/registry-compositions/composition-viewer";
 import type {
   BlockCategory,
@@ -139,7 +139,7 @@ export const BlocksBrowser = ({
   categorySlug,
   isDetailPage = false,
 }: BlocksBrowserProps) => {
-  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [navigationOpen, setNavigationOpen] = React.useState(false);
 
   const visibleBlocks = blocks.filter(
     (entry) => !categorySlug || entry.block.category === categorySlug
@@ -147,12 +147,16 @@ export const BlocksBrowser = ({
   const activeEntry =
     visibleBlocks.find((entry) => entry.block.name === activeBlockName) ??
     visibleBlocks[0];
-  const handleNavigationClose = useCallback(() => setNavigationOpen(false), []);
-  const handleNavigationOpenChange = useCallback(
+
+  const handleNavigationClose = React.useCallback(
+    () => setNavigationOpen(false),
+    []
+  );
+  const handleNavigationOpenChange = React.useCallback(
     ({ open }: { open: boolean }) => setNavigationOpen(open),
     []
   );
-  const getBlockHref = useCallback(
+  const getBlockHref = React.useCallback(
     (entry: BrowserBlock) =>
       `/blocks/${entry.block.category}/${entry.block.name}`,
     []

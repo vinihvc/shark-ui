@@ -2,7 +2,7 @@
 
 import type { TOCItemType } from "fumadocs-core/toc";
 import { AlignLeftIcon, CircleArrowUpIcon } from "lucide-react";
-import { type ComponentProps, useEffect, useMemo, useState } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Presence } from "@/registry/react/components/presence";
 import {
@@ -16,7 +16,7 @@ import {
 } from "@/registry/react/components/toc";
 
 interface DocsTableOfContentsProps
-  extends Omit<ComponentProps<typeof Toc>, "items"> {
+  extends Omit<React.ComponentProps<typeof Toc>, "items"> {
   /**
    * The table of contents data
    */
@@ -34,7 +34,7 @@ const toTocItems = (data: TOCItemType[]) =>
 export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
   const { data, className, ...rest } = props;
 
-  const items = useMemo(() => toTocItems(data), [data]);
+  const items = React.useMemo(() => toTocItems(data), [data]);
   const showScrollToTop = useShowScrollToTop();
 
   if (!items.length) {
@@ -89,9 +89,9 @@ export const DocsTableOfContents = (props: DocsTableOfContentsProps) => {
 };
 
 const useShowScrollToTop = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const updateVisibility = () => {
       const scrollableHeight =
         document.documentElement.scrollHeight - window.innerHeight;

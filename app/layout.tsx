@@ -3,8 +3,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { MediaQuery } from "@/components/debug/media-query";
-import { PwaProvider } from "@/components/pwa/pwa-provider";
 import { JsonLd } from "@/components/seo/json-ld";
+import { UnregisterLegacyServiceWorker } from "@/components/unregister-legacy-service-worker";
 import { SITE_CONFIG } from "@/config/site";
 import { fontHeading, fontMono, fontSans } from "@/lib/fonts";
 import { absoluteUrl } from "@/lib/url";
@@ -80,19 +80,18 @@ const RootLayout = (props: LayoutProps<"/">) => {
           }}
         />
         <Providers>
-          <PwaProvider>
-            <SkipNavLink />
+          <UnregisterLegacyServiceWorker />
+          <SkipNavLink />
 
-            {children}
+          {children}
 
-            <Toaster />
+          <Toaster />
 
-            <MediaQuery />
+          <MediaQuery />
 
-            <Analytics />
+          <Analytics />
 
-            <SpeedInsights />
-          </PwaProvider>
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

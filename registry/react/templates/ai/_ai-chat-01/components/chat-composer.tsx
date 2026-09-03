@@ -1,8 +1,9 @@
 "use client";
 
+import { useFilter, useListCollection } from "@ark-ui/react";
 import { BrainIcon, PaperclipIcon, SparklesIcon } from "lucide-react";
 import type React from "react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   Announcement,
@@ -16,7 +17,9 @@ import {
 import {
   ModelSelector,
   ModelSelectorContent,
+  ModelSelectorEmpty,
   ModelSelectorGroup,
+  ModelSelectorInput,
   ModelSelectorItem,
   ModelSelectorLabel,
   ModelSelectorList,
@@ -62,13 +65,13 @@ export const ChatComposer = ({
   const selectedModel =
     modelOptions.find((option) => option.value === model) ?? modelOptions[0];
 
-  const modelGroups = useMemo(() => {
-    const groups = ["Models", "Agents"] as const;
-    return groups.map((group) => ({
-      group,
-      items: modelOptions.filter((option) => option.group === group),
-    }));
-  }, [modelOptions]);
+  const { contains } = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter: contains,
+    groupBy: (item) => item.group,
+    groupSort: ["Models", "Agents"],
+    initialItems: [...modelOptions],
+  });
 
   const handleStop = useCallback(() => setStatus("ready"), []);
   const handleChange = useCallback(
@@ -104,7 +107,7 @@ export const ChatComposer = ({
           <span aria-hidden="true" className="text-muted-foreground/60 text-xs">
             ·
           </span>
-          <Button className="h-auto px-0 text-xs" type="button" variant="link">
+          <Button className="h-auto px-0 text-xs" variant="link">
             Upgrade
           </Button>
         </Announcement>
@@ -131,20 +134,24 @@ export const ChatComposer = ({
                     <PaperclipIcon aria-hidden="true" />
                   </PromptInputButton>
                 </FileUploadTrigger>
-                <ModelSelector onValueChange={onModelChange} value={model}>
-                  <ModelSelectorTrigger size="xs" variant="secondary">
+                <ModelSelector
+                  collection={collection}
+                  onInputValueChange={({ inputValue }) => filter(inputValue)}
+                  onValueChange={({ value }) => onModelChange(value[0] ?? "")}
+                  value={[model]}
+                >
+                  <ModelSelectorTrigger size="xs" variant="ghost">
                     {selectedModel?.label ?? "Model"}
                   </ModelSelectorTrigger>
                   <ModelSelectorContent>
+                    <ModelSelectorInput placeholder="Search models" />
                     <ModelSelectorList>
-                      {modelGroups.map(({ group, items }) => (
+                      <ModelSelectorEmpty />
+                      {collection.group().map(([group, items]) => (
                         <ModelSelectorGroup key={group}>
                           <ModelSelectorLabel>{group}</ModelSelectorLabel>
                           {items.map((item) => (
-                            <ModelSelectorItem
-                              key={item.value}
-                              value={item.value}
-                            >
+                            <ModelSelectorItem item={item} key={item.value}>
                               {item.label}
                             </ModelSelectorItem>
                           ))}
@@ -161,7 +168,6 @@ export const ChatComposer = ({
                   )}
                   onClick={handleThinkModeClick}
                   size="xs"
-                  type="button"
                 >
                   <BrainIcon aria-hidden="true" />
                   Think

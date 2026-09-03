@@ -43,9 +43,11 @@ export const MessageScrollerViewport = (
     <ArkScrollArea.Viewport
       className={cn(
         "scrollbar-none size-full min-h-0 min-w-0 overflow-y-auto overscroll-contain outline-none contain-content",
-        "mask-t-from-[calc(100%-var(--fade-size))] mask-b-from-[calc(100%-var(--fade-size))]",
-        "data-at-top:mask-t-from-100% data-at-bottom:mask-b-from-100%",
-        "transition-shadow motion-reduce:transition-none!",
+        "data-overflow-y:not-data-at-top:mask-t-from-[calc(100%-var(--fade-size))]",
+        "data-overflow-y:not-data-at-bottom:mask-b-from-[calc(100%-var(--fade-size))]",
+        "data-overflow-x:not-data-at-left:mask-l-from-[calc(100%-var(--fade-size))]",
+        "data-overflow-x:not-data-at-right:mask-r-from-[calc(100%-var(--fade-size))]",
+        "motion-reduce:transition-none!",
         className
       )}
       data-slot="message-scroller-viewport"
@@ -108,14 +110,6 @@ export const MessageScrollerButton = (props: MessageScrollerButtonProps) => {
     ariaLabel = direction === "end" ? "Scroll to end" : "Scroll to start";
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(event);
-    scrollArea.scrollToEdge({
-      behavior: "smooth",
-      edge: direction === "end" ? "bottom" : "top",
-    });
-  };
-
   return (
     <Button
       aria-label={ariaLabel}
@@ -136,7 +130,13 @@ export const MessageScrollerButton = (props: MessageScrollerButtonProps) => {
       size={size}
       variant={variant}
       {...rest}
-      onClick={handleClick}
+      onClick={(event) => {
+        onClick?.(event);
+        scrollArea.scrollToEdge({
+          behavior: "smooth",
+          edge: direction === "end" ? "bottom" : "top",
+        });
+      }}
     >
       {children ?? <ArrowDownIcon aria-hidden="true" />}
     </Button>

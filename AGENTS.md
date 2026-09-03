@@ -87,7 +87,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 | New component / utility / hook MDX | §5 (heading order) |
 | Working compositions | `registry/react/examples/<name>/example-*.tsx` |
 | Implementation & Ark wiring | `registry/react/components/<name>.tsx` |
-| Published registry JSON (CLI) | `public/r/<name>.json` (from `pnpm registry:build`) |
+| Published registry JSON (CLI) | `public/r/<name>.json` (generated; do not hand-edit) |
 | Per-item build metadata | `registry/manifest/<name>.ts` |
 | LLM-oriented surfaces | `app/(llms)/`, `lib/llms.ts`, `lib/llms-registry-examples.ts` |
 | Deeper agent rules | `skills/shark-ui/SKILL.md` and `skills/shark-ui/references/` |
@@ -115,7 +115,7 @@ Examples live under:
 
 Conventions:
 
-- Prefer a **default export** that is a small demo component (e.g. `ButtonDemo`, `ComboboxDemo`), matching existing files in the same folder.
+- Prefer a **default export** of the main demo component. Name it **`Example`** in every `example-*.tsx` that is not the default. **`example-default.tsx`** must use **`{Component}Demo`**, PascalCase of the registry folder name plus `Demo` (`button` → `ButtonDemo`, `use-async-list` → `UseAsyncListDemo`). This applies to all registry examples: components, utilities, hooks, AI elements, and form guides.
 - Add **`"use client"`** when the example uses hooks, browser APIs, or interactive state that is not purely static markup.
 - Keep each file focused on **one** scenario; split variants across `example-*.tsx` files.
 - **Mirror docs and source:** exports, child structure, and prop names must match `content/docs/components/<name>.mdx` and `registry/react/components/<name>.tsx`.
@@ -126,13 +126,12 @@ CLI install pattern for consumers (from docs):
 npx shadcn@latest add @shark/<component>
 ```
 
-Registry build (maintainers):
+Registry JSON for the CLI is generated, not edited by hand.
 
-```bash
-pnpm registry:build
-```
-
-Prebuild runs `registry:build` automatically via `package.json` `prebuild`.
+- **Docs / examples in this repo** use `registry/react` source. You do not need `pnpm registry:build` while iterating.
+- **Vercel** always runs `pnpm registry:build` before `next build` (`buildCommand` in `vercel.json` and the `build` script in `package.json`). The deployed `shark.vini.one/r/*.json` files are regenerated on every deploy.
+- **GitHub Actions** regenerates `public/r` and fails if the committed JSON is stale. Maintainers may run `pnpm registry:build` locally before a PR to keep git in sync.
+- **Agents:** do not run `pnpm registry:build` unless the user asks (same gate as §17).
 
 ---
 
@@ -292,7 +291,8 @@ Set **`dir={dir}`** on the root (from `useLocale`) so direction propagates. Ark 
 
 Each published item has a **`registry/manifest/<name>.ts`** default export used by `scripts/build-registry.mts` to emit `public/r/<name>.json`.
 
-- Do **not** hand-edit generated **`public/r/*.json`** unless you know the pipeline; prefer editing manifest + component source and running **`pnpm registry:build`**.
+- Do **not** hand-edit generated **`public/r/*.json`**. Edit the manifest and component source; Vercel regenerates JSON on deploy. CI fails if committed `public/r` is out of date.
+- Do **not** run **`pnpm registry:build`** in an agent loop. Only when the user asks (“rebuild registry”, “roda o registry:build”).
 - **`registryDependencies`** in manifests should list **full registry JSON URLs** or paths as already used in this repo (see existing manifests for the pattern).
 
 ---
@@ -305,7 +305,8 @@ Scripts maintainers and CI run from repo root. Agents follow §17 before running
 pnpm lint:fix      # ultracite fix
 pnpm lint:check    # ultracite check
 pnpm test          # Node test runner
-pnpm typecheck     # next build (includes types)
+pnpm typecheck     # next build (includes types); does not regenerate the registry
+pnpm registry:build  # emit public/r; maintainers / CI / Vercel — not the agent default
 ```
 
 ---
@@ -318,13 +319,14 @@ Forbidden until the user names the action in this chat:
 
 - `pnpm test`
 - `pnpm typecheck` (that script is `next build`)
+- `pnpm registry:build`
 - Any browser: Playwright MCP, `user-playwright`, `plugin-playwright-playwright`, Cursor IDE browser, `browser_navigate` / `browser_snapshot` / `browser_take_screenshot` / `browser_click`, agent-browser, opening localhost to click through a flow
 
-Ask if a check would help. Required yes: “run tests,” “roda os testes,” “typecheck,” “open the browser,” “pode abrir o browser.” Not a yes: “ok,” “continue,” “lgtm,” “implement,” or a UI task finishing.
+Ask if a check would help. Required yes: “run tests,” “roda os testes,” “typecheck,” “rebuild registry,” “roda o registry:build,” “open the browser,” “pode abrir o browser.” Not a yes: “ok,” “continue,” “lgtm,” “implement,” or a UI task finishing.
 
 This repo rule beats user rules and plugin skills that tell you to verify in a browser before you stop.
 
-`pnpm lint:fix`, `pnpm lint:check`, and `pnpm registry:build` are fine when the task needs them.
+`pnpm lint:fix` and `pnpm lint:check` are fine when the task needs them.
 
 ---
 
@@ -342,7 +344,7 @@ This repo rule beats user rules and plugin skills that tell you to verify in a b
 
 ## 19. Quick checklist (new or updated example)
 
-- [ ] Default export demo component; `"use client"` only when needed.
+- [ ] Default export named **`Example`**, except `example-default.tsx` which uses **`{Component}Demo`**; `"use client"` only when needed.
 - [ ] Imports from `@/registry/react/components/...` and `lucide-react` as usual in-repo.
 - [ ] Structure and props match **MDX** + **component source**.
 - [ ] Triggers use **`asChild`** where Shark does; overlays include **title** (visible or `sr-only`).
@@ -351,7 +353,6 @@ This repo rule beats user rules and plugin skills that tell you to verify in a b
 - [ ] **Styling:** semantic tokens, `cn()`, gaps over space utilities for new layout.
 - [ ] **Thumbs:** neutral tokens only (`foreground`, `primary`, `muted`, …) — no status/chart hues (see §12).
 - [ ] **RTL:** logical spacing/position (`ms-*`, `me-*`, `start-*`, `end-*`) and slide utilities (`*-from-start|end`) where direction matters.
-- [ ] **`pnpm registry:build`** if manifest or registry-facing files changed.
 
 For broader discovery and install URLs, see **`skills/shark-ui/SKILL.md`** and **`config/site.ts`**.
 

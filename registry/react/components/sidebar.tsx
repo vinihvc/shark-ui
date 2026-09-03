@@ -1,6 +1,7 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
+import { createContext } from "@ark-ui/react/utils";
 import { PanelLeftIcon } from "lucide-react";
 import React from "react";
 import type { VariantProps } from "tailwind-variants";
@@ -40,9 +41,15 @@ interface SidebarContextProps {
   toggleSidebar: () => void;
 }
 
-const SidebarContext = React.createContext<SidebarContextProps | null>(null);
+const [SidebarContextProvider, useSidebar] = createContext<SidebarContextProps>(
+  {
+    hookName: "useSidebar",
+    name: "SidebarContext",
+    providerName: "SidebarProvider",
+  }
+);
 
-interface SidebarProviderProps extends React.ComponentProps<"div"> {
+interface SidebarProviderProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The default open state of the sidebar.
    *
@@ -91,9 +98,9 @@ export const SidebarProvider = (props: SidebarProviderProps) => {
 
   const toggleSidebar = React.useCallback(() => {
     if (isMobile) {
-      setOpenMobile((open) => !open);
+      setOpenMobile((prev) => !prev);
     } else {
-      setOpen((open) => !open);
+      setOpen((prev) => !prev);
     }
   }, [isMobile, setOpen]);
 
@@ -119,7 +126,7 @@ export const SidebarProvider = (props: SidebarProviderProps) => {
   );
 
   return (
-    <SidebarContext.Provider value={contextValue}>
+    <SidebarContextProvider value={contextValue}>
       <ark.div
         className={cn(
           "group/sidebar-wrapper",
@@ -138,11 +145,11 @@ export const SidebarProvider = (props: SidebarProviderProps) => {
         }
         {...rest}
       />
-    </SidebarContext.Provider>
+    </SidebarContextProvider>
   );
 };
 
-interface SidebarProps extends React.ComponentProps<typeof Sheet> {
+interface SidebarProps extends React.ComponentProps<typeof ark.div> {
   className?: string;
   collapsible?: "offcanvas" | "icon" | "none";
   placement?: "left" | "right";
@@ -181,11 +188,7 @@ export const Sidebar = (props: SidebarProps) => {
 
   if (isMobile) {
     return (
-      <Sheet
-        {...props}
-        onOpenChange={({ open }) => setOpenMobile(open)}
-        open={openMobile}
-      >
+      <Sheet onOpenChange={({ open }) => setOpenMobile(open)} open={openMobile}>
         <SheetContent
           className={cn(
             "w-(--sidebar-width)",
@@ -256,7 +259,7 @@ export const Sidebar = (props: SidebarProps) => {
           className
         )}
         data-slot="sidebar-container"
-        {...props}
+        {...rest}
       >
         <ark.div
           className={cn(
@@ -312,7 +315,7 @@ export const SidebarRail = (props: React.ComponentProps<typeof ark.button>) => {
         "w-4",
         "hidden sm:flex",
         "transition-all ease-linear",
-        "after:absolute after:inset-s-1/2 after:inset-y-0 after:w-[2px]",
+        "after:absolute after:inset-s-1/2 after:inset-y-0 after:w-0.5",
         "hover:after:bg-sidebar-border",
         "group-data-[placement=left]:-inset-e-4 group-data-[placement=right]:inset-s-0",
         "in-data-[placement=left]:cursor-w-resize in-data-[placement=right]:cursor-e-resize",
@@ -406,16 +409,16 @@ export const SidebarSeparator = (
   );
 };
 
-interface SidebarContentProps extends React.ComponentProps<"div"> {
+interface SidebarContentProps extends React.ComponentProps<typeof ark.div> {
   /**
    * Whether to add a scroll fade effect to the sidebar content.
    *
-   * @default false
+   * @default true
    */
   scrollFade?: boolean;
 }
 export const SidebarContent = (props: SidebarContentProps) => {
-  const { scrollFade = false, className, ...rest } = props;
+  const { scrollFade = true, className, ...rest } = props;
 
   return (
     <ScrollArea
@@ -802,12 +805,4 @@ export const SidebarMenuSubButton = (props: SidebarMenuSubButtonProps) => {
   );
 };
 
-export const useSidebar = () => {
-  const context = React.useContext(SidebarContext);
-
-  if (context === null) {
-    throw new Error("useSidebar must be used within a SidebarProvider.");
-  }
-
-  return context;
-};
+export { useSidebar };

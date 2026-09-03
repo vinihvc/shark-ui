@@ -2,6 +2,7 @@ import Link from "next/link";
 import type React from "react";
 import { SITE_CONFIG } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import { SharkIcon } from "../icons/shark";
 
 const DOCS_LINKS = [
@@ -35,9 +36,13 @@ export const Footer = (props: FooterProps) => {
       {...rest}
     >
       <div className="absolute inset-s-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
-        <div className="rounded-xl bg-primary p-2">
+        <IconTile
+          aria-hidden="true"
+          className="size-12 rounded-xl border-transparent shadow-none"
+          variant="primary"
+        >
           <SharkIcon className="size-8 text-primary-foreground" />
-        </div>
+        </IconTile>
       </div>
 
       <div className="container pt-24 pb-8">

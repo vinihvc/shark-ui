@@ -13,7 +13,6 @@ import { AvatarThumb } from "@/components/thumbs/avatar";
 import { BadgeThumb } from "@/components/thumbs/badge";
 import { BottomNavigationThumb } from "@/components/thumbs/bottom-navigation";
 import { BreadcrumbThumb } from "@/components/thumbs/breadcrumb";
-import { BubbleThumb } from "@/components/thumbs/bubble";
 import { ButtonThumb } from "@/components/thumbs/button";
 import { ButtonGroupThumb } from "@/components/thumbs/button-group";
 import { CalendarThumb } from "@/components/thumbs/calendar";
@@ -29,7 +28,6 @@ import { CollapsibleThumb } from "@/components/thumbs/collapsible";
 import { ColorPickerThumb } from "@/components/thumbs/color-picker";
 import { ComboboxThumb } from "@/components/thumbs/combobox";
 import { CommandThumb } from "@/components/thumbs/command";
-import { ConfirmationThumb } from "@/components/thumbs/confirmation";
 import { ContextThumb } from "@/components/thumbs/context";
 import { ContextMenuThumb } from "@/components/thumbs/context-menu";
 import { DataListThumb } from "@/components/thumbs/data-list";
@@ -40,6 +38,7 @@ import { DiffThumb } from "@/components/thumbs/diff";
 import { DrawerThumb } from "@/components/thumbs/drawer";
 import { EditableThumb } from "@/components/thumbs/editable";
 import { FieldThumb } from "@/components/thumbs/field";
+import { FileThumbnailThumb } from "@/components/thumbs/file-thumbnail";
 import { FileUploadThumb } from "@/components/thumbs/file-upload";
 import { FloatThumb } from "@/components/thumbs/float";
 import { FloatingPanelThumb } from "@/components/thumbs/floating-panel";
@@ -58,6 +57,7 @@ import { MarkerThumb } from "@/components/thumbs/marker";
 import { MarqueeThumb } from "@/components/thumbs/marquee";
 import { MenuThumb } from "@/components/thumbs/menu";
 import { MessageThumb } from "@/components/thumbs/message";
+import { MessageBubbleThumb } from "@/components/thumbs/message-bubble";
 import { MessageScrollerThumb } from "@/components/thumbs/message-scroller";
 import { ModelSelectorThumb } from "@/components/thumbs/model-selector";
 import { NativeSelectThumb } from "@/components/thumbs/native-select";
@@ -90,6 +90,7 @@ import { SliderThumb } from "@/components/thumbs/slider";
 import { SourcesThumb } from "@/components/thumbs/sources";
 import { SpeechInputThumb } from "@/components/thumbs/speech-input";
 import { SpinnerThumb } from "@/components/thumbs/spinner";
+import { StateThumb } from "@/components/thumbs/state";
 import { StatusThumb } from "@/components/thumbs/status";
 import { StepsThumb } from "@/components/thumbs/steps";
 import { SuggestionThumb } from "@/components/thumbs/suggestion";
@@ -128,7 +129,6 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   badge: BadgeThumb,
   "bottom-navigation": BottomNavigationThumb,
   breadcrumb: BreadcrumbThumb,
-  bubble: BubbleThumb,
   button: ButtonThumb,
   "button-group": ButtonGroupThumb,
   calendar: CalendarThumb,
@@ -144,7 +144,6 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   "color-picker": ColorPickerThumb,
   combobox: ComboboxThumb,
   command: CommandThumb,
-  confirmation: ConfirmationThumb,
   context: ContextThumb,
   "context-menu": ContextMenuThumb,
   "data-list": DataListThumb,
@@ -156,6 +155,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   drawer: DrawerThumb,
   editable: EditableThumb,
   field: FieldThumb,
+  "file-thumbnail": FileThumbnailThumb,
   "file-upload": FileUploadThumb,
   float: FloatThumb,
   "floating-panel": FloatingPanelThumb,
@@ -174,6 +174,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   marquee: MarqueeThumb,
   menu: MenuThumb,
   message: MessageThumb,
+  "message-bubble": MessageBubbleThumb,
   "message-scroller": MessageScrollerThumb,
   "model-selector": ModelSelectorThumb,
   "native-select": NativeSelectThumb,
@@ -206,6 +207,7 @@ const THUMB_MAP: Record<string, React.ComponentType<ThumbCardProps>> = {
   sources: SourcesThumb,
   "speech-input": SpeechInputThumb,
   spinner: SpinnerThumb,
+  state: StateThumb,
   status: StatusThumb,
   steps: StepsThumb,
   suggestion: SuggestionThumb,

@@ -4,7 +4,6 @@ import { BotIcon } from "lucide-react";
 import type React from "react";
 import { useCallback, useState } from "react";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
 import {
   Diff,
   DiffContent,
@@ -17,6 +16,10 @@ import {
   MessageContent,
   MessageHeader,
 } from "@/registry/react/components/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/registry/react/components/message-bubble";
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -103,11 +106,11 @@ export const IdeChat = () => {
             <MessageScrollerItem>
               <Message align="end">
                 <MessageContent>
-                  <Bubble align="end" variant="secondary">
-                    <BubbleContent>
+                  <MessageBubble align="end" variant="secondary">
+                    <MessageBubbleContent>
                       Add email format validation to the form.
-                    </BubbleContent>
-                  </Bubble>
+                    </MessageBubbleContent>
+                  </MessageBubble>
                 </MessageContent>
               </Message>
             </MessageScrollerItem>

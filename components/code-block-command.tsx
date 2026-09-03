@@ -2,7 +2,10 @@
 
 import { TerminalIcon } from "lucide-react";
 import React from "react";
-import { formatShadcnCommandDisplay } from "@/lib/shadcn-command";
+import {
+  formatShadcnCommandDisplay,
+  packageManagerCommandVariants,
+} from "@/lib/shadcn-command";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import {
   Tabs,
@@ -27,15 +30,16 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
 
   const packageManager = config.packageManager || "pnpm";
 
-  const tabs = React.useMemo(
-    () => ({
-      bun: __bun__,
-      npm: __npm__,
-      pnpm: __pnpm__,
-      yarn: __yarn__,
-    }),
-    [__npm__, __pnpm__, __yarn__, __bun__]
-  );
+  const tabs = React.useMemo(() => {
+    const variants = packageManagerCommandVariants(__npm__ ?? "");
+
+    return {
+      bun: variants?.bun ?? __bun__,
+      npm: variants?.npm ?? __npm__,
+      pnpm: variants?.pnpm ?? __pnpm__,
+      yarn: variants?.yarn ?? __yarn__,
+    };
+  }, [__npm__, __pnpm__, __yarn__, __bun__]);
 
   return (
     <div>
@@ -83,7 +87,7 @@ export const CodeBlockCommand = (props: CodeBlockCommandProps) => {
 
       <CopyButton
         className="absolute inset-e-1.5 top-1.5"
-        value={tabs?.[packageManager] ?? ""}
+        value={tabs[packageManager] ?? ""}
       />
     </div>
   );

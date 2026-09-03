@@ -57,6 +57,7 @@ import {
   DataTableColumnHeader,
   type DataTableFeatures,
 } from "@/components/ui/data-table";
+import { FormatNumber } from "@/components/ui/format";
 
 type Payment = {
   amount: number;
@@ -75,11 +76,9 @@ const columns = columnHelper.columns([
     header: "Email",
   }),
   columnHelper.accessor("amount", {
-    cell: ({ getValue }) =>
-      new Intl.NumberFormat("en-US", {
-        currency: "USD",
-        style: "currency",
-      }).format(getValue()),
+    cell: ({ getValue }) => (
+      <FormatNumber currency="USD" style="currency" value={getValue()} />
+    ),
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Amount" />
     ),
@@ -118,7 +117,7 @@ export function PaymentsTable({ data }: { data: Payment[] }) {
 <ComponentPreview
   componentName="data-table"
   fileName="example-pagination"
-  hasMaxHeight={false}
+  autoHeight
 />
 
 ### Global filter

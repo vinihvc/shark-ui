@@ -10,14 +10,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/react/components/card";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import { Separator } from "@/registry/react/components/separator";
 
 export const LoginFormExample = (props: React.ComponentProps<"div">) => (
   <Card {...props}>
     <CardHeader className="flex flex-col items-center gap-2 text-center">
-      <div className="flex size-12 items-center justify-center rounded-full bg-muted">
+      <IconTile
+        aria-hidden="true"
+        className="border-transparent bg-muted shadow-none"
+        fill
+        size="lg"
+      >
         <UserIcon className="size-6" />
-      </div>
+      </IconTile>
       <CardTitle>Create an account</CardTitle>
       <CardDescription>
         Start your free 7-day trial. No credit card required.

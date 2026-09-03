@@ -2,12 +2,13 @@ import type { RegistryItemType } from "@/lib/registry";
 import { absoluteUrl } from "@/lib/url";
 
 const manifest: RegistryItemType = {
-  dependencies: ["lucide-react"],
-  description: "Popover picker for models and agents with optional search.",
+  dependencies: ["@ark-ui/react", "lucide-react"],
+  description: "Combobox picker for models and agents with optional search.",
   name: "model-selector",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
-    absoluteUrl("/r/popover.json"),
+    absoluteUrl("/r/combobox.json"),
+    absoluteUrl("/r/input-group.json"),
   ],
   type: "registry:ui",
 };

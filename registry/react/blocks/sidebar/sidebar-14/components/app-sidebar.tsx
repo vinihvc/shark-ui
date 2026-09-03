@@ -10,6 +10,7 @@ import {
   StarIcon,
   Trash2Icon,
 } from "lucide-react";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   Sidebar,
   SidebarContent,
@@ -39,9 +40,14 @@ export function AppSidebar() {
     <Sidebar placement="right">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-1.5">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+          <IconTile
+            aria-hidden="true"
+            className="border-transparent bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
+            size="sm"
+            variant="primary"
+          >
             <MessageSquareTextIcon aria-hidden="true" className="size-4" />
-          </span>
+          </IconTile>
           <div className="min-w-0">
             <p className="truncate font-semibold text-sm">Messages</p>
             <p className="truncate text-sidebar-foreground/65 text-xs">

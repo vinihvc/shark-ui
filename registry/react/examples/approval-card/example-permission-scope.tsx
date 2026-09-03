@@ -1,46 +1,67 @@
 "use client";
 
 import { ShieldCheckIcon } from "lucide-react";
-import { type SubmitEvent, useState } from "react";
+import type React from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
+  ApprovalCardChoice,
+  ApprovalCardChoiceShortcut,
+  ApprovalCardChoices,
   ApprovalCardContent,
-  ApprovalCardDescription,
+  ApprovalCardError,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
+  ApprovalCardItem,
+  ApprovalCardItemTitle,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
 import {
-  QuestionnaireChoice,
-  QuestionnaireChoiceShortcut,
-  QuestionnaireChoices,
-  QuestionnaireError,
-  QuestionnaireItem,
-  QuestionnaireTitle,
-} from "@/registry/react/components/questionnaire";
+  DataList,
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+} from "@/registry/react/components/data-list";
+import {
+  Terminal,
+  TerminalContent,
+  TerminalHeader,
+} from "@/registry/react/components/terminal";
+import { toast } from "@/registry/react/components/toast";
 
-const ApprovalCardPermissionScopeDemo = () => {
-  const [result, setResult] = useState("");
-  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+const Example = () => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const answers = new FormData(event.currentTarget);
+
     const scope = answers.get("scope");
     if (scope === "once") {
-      setResult("Approved this run only. Future commands still need approval.");
+      toast.create({
+        description: "Future commands will still require approval.",
+        title: "Allowed once",
+        type: "success",
+      });
     } else if (scope === "project") {
-      setResult(
-        "Approved pnpm test for this repository, including future sessions."
-      );
+      toast.create({
+        description:
+          "pnpm test is allowed for this repository in future sessions.",
+        title: "Repository permission saved",
+        type: "success",
+      });
     }
   };
-  const handleReject = () => setResult("Denied. No command was authorized.");
+  const handleReject = () => {
+    toast.create({
+      description: "No command was authorized.",
+      title: "Permission denied",
+      type: "info",
+    });
+  };
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-3">
+    <div className="w-full max-w-lg">
       <ApprovalCard
         items={items}
         onReject={handleReject}
@@ -48,63 +69,66 @@ const ApprovalCardPermissionScopeDemo = () => {
         shortcuts="numbers"
       >
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <ShieldCheckIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <div className="flex min-w-0 flex-col gap-1">
-            <ApprovalCardTitle>Allow the agent to run tests?</ApprovalCardTitle>
-            <ApprovalCardDescription>
-              Verify the pagination fix in ~/projects/storefront.
-            </ApprovalCardDescription>
-          </div>
+          <ShieldCheckIcon aria-hidden="true" />
+          <ApprovalCardTitle>Allow the agent to run tests?</ApprovalCardTitle>
         </ApprovalCardHeader>
-        <ApprovalCardContent>
-          <pre className="overflow-x-auto rounded-lg border bg-muted/40 px-3 py-2 font-mono text-xs">
-            <code>pnpm test</code>
-          </pre>
-        </ApprovalCardContent>
-        <ApprovalCardContent>
-          <QuestionnaireItem name="scope">
-            <QuestionnaireTitle>
+        <ApprovalCardContent className="flex flex-col gap-4">
+          <Terminal className="rounded-lg bg-muted/30" output={command}>
+            <TerminalHeader>storefront · zsh</TerminalHeader>
+            <TerminalContent />
+          </Terminal>
+          <DataList>
+            {facts.map((item) => (
+              <DataListItem className="py-1.5" key={item.label}>
+                <DataListItemLabel>{item.label}</DataListItemLabel>
+                <DataListItemValue className="font-mono text-xs">
+                  {item.value}
+                </DataListItemValue>
+              </DataListItem>
+            ))}
+          </DataList>
+          <ApprovalCardItem name="scope">
+            <ApprovalCardItemTitle>
               How long should approval last?
-            </QuestionnaireTitle>
-            <QuestionnaireChoices>
-              <QuestionnaireChoice value="once">
-                <span className="flex min-w-0 flex-col gap-1">
-                  <span>Allow once</span>
-                  <span className="text-muted-foreground">
-                    Ask again for the next run.
-                  </span>
+            </ApprovalCardItemTitle>
+            <ApprovalCardChoices>
+              <ApprovalCardChoice value="once">
+                Allow once
+                <span className="text-muted-foreground">
+                  Ask again for the next run.
                 </span>
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-              <QuestionnaireChoice value="project">
-                <span className="flex min-w-0 flex-col gap-1">
-                  <span>Remember for this repository</span>
-                  <span className="text-muted-foreground">
-                    Only pnpm test, not other commands.
-                  </span>
+                <ApprovalCardChoiceShortcut />
+              </ApprovalCardChoice>
+              <ApprovalCardChoice value="project">
+                Remember for this repository
+                <span className="text-muted-foreground">
+                  Only pnpm test, not other commands.
                 </span>
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-            </QuestionnaireChoices>
-            <QuestionnaireError>Choose an approval scope.</QuestionnaireError>
-          </QuestionnaireItem>
+                <ApprovalCardChoiceShortcut />
+              </ApprovalCardChoice>
+            </ApprovalCardChoices>
+            <ApprovalCardError>Choose an approval scope.</ApprovalCardError>
+          </ApprovalCardItem>
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <ApprovalCardActions>
-            <ApprovalCardReject>Deny</ApprovalCardReject>
-            <ApprovalCardApprove>Allow command</ApprovalCardApprove>
-          </ApprovalCardActions>
+          <ApprovalCardReject>Deny</ApprovalCardReject>
+          <ApprovalCardSubmit>Allow command</ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      <p aria-live="polite" className="text-muted-foreground text-sm">
-        {result}
-      </p>
     </div>
   );
 };
 
+const command = [
+  "\u001B[90m~/projects/storefront\u001B[0m",
+  "$ pnpm test",
+].join("\n");
+
+const facts = [
+  { label: "Repository", value: "acme/storefront" },
+  { label: "Command", value: "pnpm test" },
+] as const;
+
 const items = [{ name: "scope", required: true }] as const;
 
-export default ApprovalCardPermissionScopeDemo;
+export default Example;

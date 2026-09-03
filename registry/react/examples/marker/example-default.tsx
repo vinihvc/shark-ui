@@ -1,4 +1,4 @@
-import { CalendarIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import {
   Marker,
   MarkerContent,
@@ -6,20 +6,14 @@ import {
 } from "@/registry/react/components/marker";
 
 const Example = () => (
-  <div className="flex w-full max-w-sm flex-col gap-4">
-    <Marker>
-      <MarkerIcon>
-        <CalendarIcon />
-      </MarkerIcon>
-      <MarkerContent>Ada joined the conversation</MarkerContent>
-    </Marker>
-    <Marker variant="separator">
-      <MarkerContent>Today</MarkerContent>
-    </Marker>
-    <Marker variant="border">
-      <MarkerContent>Streaming paused</MarkerContent>
-    </Marker>
-  </div>
+  <Marker className="w-full max-w-sm">
+    <MarkerIcon>
+      <SearchIcon />
+    </MarkerIcon>
+    <MarkerContent className="shimmer">
+      Searching 12 files for authentication logic
+    </MarkerContent>
+  </Marker>
 );
 
 export default Example;

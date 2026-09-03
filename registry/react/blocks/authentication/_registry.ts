@@ -32,6 +32,7 @@ export const authenticationBlocks = [
       absoluteUrl("/r/button.json"),
       absoluteUrl("/r/card.json"),
       absoluteUrl("/r/field.json"),
+      absoluteUrl("/r/icon-tile.json"),
       absoluteUrl("/r/input.json"),
       absoluteUrl("/r/separator.json"),
     ],

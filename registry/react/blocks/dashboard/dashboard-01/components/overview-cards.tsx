@@ -14,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/react/components/card";
+import { IconTile } from "@/registry/react/components/icon-tile";
 
 const metrics = [
   {
@@ -60,9 +61,13 @@ export const OverviewCards = () => (
               {metric.value}
             </CardTitle>
           </div>
-          <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground">
+          <IconTile
+            aria-hidden="true"
+            className="size-9 border-transparent bg-muted shadow-none"
+            size="sm"
+          >
             <metric.icon aria-hidden="true" className="size-4" />
-          </span>
+          </IconTile>
         </CardHeader>
         <CardContent>
           <Badge variant={metric.positive ? "secondary" : "outline"}>

@@ -1,45 +1,65 @@
 "use client";
 
 import { GlobeIcon } from "lucide-react";
-import { type SubmitEvent, useState } from "react";
+import type { SubmitEvent } from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
+  ApprovalCardChoice,
+  ApprovalCardChoiceShortcut,
+  ApprovalCardChoices,
   ApprovalCardContent,
-  ApprovalCardDescription,
+  ApprovalCardError,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
+  ApprovalCardItem,
+  ApprovalCardItemTitle,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
 import {
-  QuestionnaireChoice,
-  QuestionnaireChoiceShortcut,
-  QuestionnaireChoices,
-  QuestionnaireError,
-  QuestionnaireItem,
-  QuestionnaireTitle,
-} from "@/registry/react/components/questionnaire";
+  CodeBlock,
+  CodeBlockContent,
+  CodeBlockHeader,
+  CodeBlockTitle,
+} from "@/registry/react/components/code-block";
+import {
+  DataList,
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+} from "@/registry/react/components/data-list";
+import { toast } from "@/registry/react/components/toast";
 
-const ApprovalCardNetworkAccessDemo = () => {
-  const [result, setResult] = useState("");
+const Example = () => {
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const answers = new FormData(event.currentTarget);
     const scope = answers.get("network-scope");
     if (scope === "once") {
-      setResult("Approved this request to registry.npmjs.org:443 only.");
+      toast.create({
+        description: "Approved this request to registry.npmjs.org:443 only.",
+        title: "Network access approved",
+        type: "success",
+      });
     } else if (scope === "session") {
-      setResult("Approved registry.npmjs.org:443 for this session only.");
+      toast.create({
+        description: "Approved registry.npmjs.org:443 for this session only.",
+        title: "Network access approved",
+        type: "success",
+      });
     }
   };
-  const handleReject = () =>
-    setResult("Network access denied. Continue with local information.");
+  const handleReject = () => {
+    toast.create({
+      description: "Continue with local information only.",
+      title: "Network access denied",
+      type: "info",
+    });
+  };
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-3">
+    <div className="w-full max-w-lg">
       <ApprovalCard
         items={items}
         onReject={handleReject}
@@ -47,62 +67,70 @@ const ApprovalCardNetworkAccessDemo = () => {
         shortcuts="numbers"
       >
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <GlobeIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <div className="flex min-w-0 flex-col gap-1">
-            <ApprovalCardTitle>
-              Allow access to the package registry?
-            </ApprovalCardTitle>
-            <ApprovalCardDescription>
-              The sandbox blocked a metadata request needed to check package
-              compatibility.
-            </ApprovalCardDescription>
-          </div>
+          <GlobeIcon aria-hidden="true" />
+          <ApprovalCardTitle>
+            Allow access to the package registry?
+          </ApprovalCardTitle>
         </ApprovalCardHeader>
-        <ApprovalCardContent className="flex flex-col gap-3">
-          <pre className="overflow-x-auto rounded-lg border bg-muted/40 px-3 py-2 font-mono text-xs">
-            <code>curl https://registry.npmjs.org/@ark-ui%2freact/latest</code>
-          </pre>
-          <p className="text-muted-foreground text-xs">
-            Destination: registry.npmjs.org:443. Reads public package metadata;
-            no workspace files are uploaded.
-          </p>
-        </ApprovalCardContent>
-        <ApprovalCardContent>
-          <QuestionnaireItem name="network-scope">
-            <QuestionnaireTitle>
+        <ApprovalCardContent className="flex flex-col gap-4">
+          <CodeBlock className="rounded-lg bg-muted/30" code={request}>
+            <CodeBlockHeader>
+              <CodeBlockTitle>GET · registry.npmjs.org</CodeBlockTitle>
+            </CodeBlockHeader>
+            <CodeBlockContent>{request}</CodeBlockContent>
+          </CodeBlock>
+          <DataList>
+            {facts.map((item) => (
+              <DataListItem className="py-1.5" key={item.label}>
+                <DataListItemLabel>{item.label}</DataListItemLabel>
+                <DataListItemValue className="font-mono text-xs">
+                  {item.value}
+                </DataListItemValue>
+              </DataListItem>
+            ))}
+          </DataList>
+          <ApprovalCardItem name="network-scope">
+            <ApprovalCardItemTitle>
               Allow this network destination?
-            </QuestionnaireTitle>
-            <QuestionnaireChoices>
-              <QuestionnaireChoice value="once">
+            </ApprovalCardItemTitle>
+            <ApprovalCardChoices>
+              <ApprovalCardChoice value="once">
                 Allow this request once
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-              <QuestionnaireChoice value="session">
+                <span className="text-muted-foreground">
+                  Ask again for the next lookup.
+                </span>
+                <ApprovalCardChoiceShortcut />
+              </ApprovalCardChoice>
+              <ApprovalCardChoice value="session">
                 Allow this host for this session
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-            </QuestionnaireChoices>
-            <QuestionnaireError>
+                <span className="text-muted-foreground">
+                  registry.npmjs.org:443 only, not the open web.
+                </span>
+                <ApprovalCardChoiceShortcut />
+              </ApprovalCardChoice>
+            </ApprovalCardChoices>
+            <ApprovalCardError>
               Choose how long to allow access.
-            </QuestionnaireError>
-          </QuestionnaireItem>
+            </ApprovalCardError>
+          </ApprovalCardItem>
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <ApprovalCardActions>
-            <ApprovalCardReject>Stay offline</ApprovalCardReject>
-            <ApprovalCardApprove>Allow access</ApprovalCardApprove>
-          </ApprovalCardActions>
+          <ApprovalCardReject>Stay offline</ApprovalCardReject>
+          <ApprovalCardSubmit>Allow access</ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      <p aria-live="polite" className="text-muted-foreground text-sm">
-        {result}
-      </p>
     </div>
   );
 };
 
+const request = "GET /@ark-ui/react/latest HTTP/1.1";
+
+const facts = [
+  { label: "Host", value: "registry.npmjs.org:443" },
+  { label: "Method", value: "GET" },
+  { label: "Purpose", value: "Public metadata · no upload" },
+] as const;
+
 const items = [{ name: "network-scope", required: true }] as const;
 
-export default ApprovalCardNetworkAccessDemo;
+export default Example;

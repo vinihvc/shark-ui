@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { dirname, extname, join, posix, resolve } from "node:path";
-import { cache } from "react";
+import React from "react";
 import { highlightCode } from "@/lib/highlight-code";
 import type {
   CompositionArtifact,
@@ -191,7 +191,7 @@ export const createCompositionCatalog = <
     return replaceRegistryImportsForCopy(withConsumerImports);
   };
 
-  const loadPreparedFiles = async (
+  const loadPreparedFiles = (
     composition: CompositionDefinition
   ): Promise<CompositionArtifactFile[]> => {
     const knownCategory = categories.some(
@@ -298,7 +298,7 @@ export const createCompositionCatalog = <
     return { ...published, files };
   };
 
-  const loadPublishedComposition = cache(
+  const loadPublishedComposition = React.cache(
     async (
       composition: CompositionDefinition
     ): Promise<PublishedComposition> => {
@@ -336,7 +336,7 @@ export const createCompositionCatalog = <
       );
     });
 
-  const getCompositionArtifacts = cache(async () => {
+  const getCompositionArtifacts = React.cache(async () => {
     assertUniqueNames(definitions);
     const compositions = await Promise.all(
       definitions.map(async (composition) =>
@@ -349,7 +349,7 @@ export const createCompositionCatalog = <
     return sortCompositions(compositions);
   });
 
-  const getPublishedCompositions = cache(async () => {
+  const getPublishedCompositions = React.cache(async () => {
     assertUniqueNames(definitions);
     const compositions = await Promise.all(
       definitions.map(loadPublishedComposition)
@@ -357,12 +357,14 @@ export const createCompositionCatalog = <
     return sortCompositions(compositions);
   });
 
-  const getPublishedComposition = cache((category: string, name: string) => {
-    const composition = definitions.find(
-      (item) => item.category === category && item.name === name
-    );
-    return composition ? loadPublishedComposition(composition) : null;
-  });
+  const getPublishedComposition = React.cache(
+    (category: string, name: string) => {
+      const composition = definitions.find(
+        (item) => item.category === category && item.name === name
+      );
+      return composition ? loadPublishedComposition(composition) : null;
+    }
+  );
 
   const getDefinition = (category: string, name: string) =>
     definitions.find(

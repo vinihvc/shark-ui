@@ -1,10 +1,13 @@
 import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@registry/react/components/message-bubble";
+import {
   CopyIcon,
   RefreshCcwIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
 } from "lucide-react";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
 import {
   Message,
   MessageAction,
@@ -17,11 +20,11 @@ const Example = () => (
   <div className="flex w-full max-w-md flex-col gap-6">
     <Message>
       <MessageContent>
-        <Bubble>
-          <BubbleContent>
+        <MessageBubble>
+          <MessageBubbleContent>
             The install failure is coming from the workspace package.
-          </BubbleContent>
-        </Bubble>
+          </MessageBubbleContent>
+        </MessageBubble>
         <MessageFooter>
           <MessageActions>
             <MessageAction tooltip="Copy">
@@ -42,9 +45,11 @@ const Example = () => (
     </Message>
     <Message align="end">
       <MessageContent>
-        <Bubble align="end" variant="secondary">
-          <BubbleContent>Okay drop me a link. Taking a look...</BubbleContent>
-        </Bubble>
+        <MessageBubble align="end" variant="secondary">
+          <MessageBubbleContent>
+            Okay drop me a link. Taking a look...
+          </MessageBubbleContent>
+        </MessageBubble>
         <MessageFooter>Failed to send</MessageFooter>
       </MessageContent>
     </Message>

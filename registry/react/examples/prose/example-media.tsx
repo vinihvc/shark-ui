@@ -4,9 +4,9 @@ const Example = () => (
   <Prose>
     <figure>
       <img
-        alt="Placeholder"
+        alt="Green mesh gradient"
         height={200}
-        src="/images/placeholder.svg"
+        src="/images/gradients/green-dark.svg"
         width={200}
       />
       <figcaption>A description of the image.</figcaption>

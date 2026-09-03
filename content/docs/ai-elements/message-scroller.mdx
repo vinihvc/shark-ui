@@ -3,9 +3,7 @@ title: Message Scroller
 description: A conversation scroll container with jump-to-start and jump-to-end controls.
 ---
 
-<ComponentPreview componentName="message-scroller" hasMaxHeight={false} />
-
-Built on Ark UI [Scroll Area](https://ark-ui.com/docs/components/scroll-area). It jumps to the start or end of the thread. It does not auto-follow a stream, restore a saved position, or preserve scroll when older messages prepend.
+<ComponentPreview componentName="message-scroller" autoHeight />
 
 ## Installation
 
@@ -81,19 +79,17 @@ import {
 </MessageScroller>
 ```
 
-The viewport uses the same edge fade as [Scroll Area](/docs/components/scroll-area) (`scrollFade`).
-
 ## Jump controls
 
-Give `MessageScrollerButton` `direction="start"` or `direction="end"`. The control hides when that edge is already in view.
+Use `direction` to jump to the `start` or `end` of the thread.
 
-<ComponentPreview componentName="message-scroller" fileName="example-jump" hasMaxHeight={false} />
+<ComponentPreview componentName="message-scroller" fileName="example-jump" autoHeight />
 
 ## API Reference
 
 ### MessageScroller
 
-Root scroll area for a transcript. Forwards [Scroll Area](/docs/components/scroll-area) root props.
+Root scroll area for a transcript.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -121,7 +117,7 @@ Column of messages inside the viewport.
 
 ### MessageScrollerItem
 
-A single message row. Uses `content-visibility` for long threads.
+A single message row.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -130,7 +126,7 @@ A single message row. Uses `content-visibility` for long threads.
 
 ### MessageScrollerButton
 
-Jump control. Built on [Button](/docs/components/button). Hides when that edge is already in view.
+Jump control.
 
 | Prop | Type | Default |
 | --- | --- | --- |

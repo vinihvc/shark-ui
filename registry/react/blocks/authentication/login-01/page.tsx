@@ -1,13 +1,18 @@
 import { WavesIcon } from "lucide-react";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import { LoginForm } from "./components/login-form";
 
 const LoginPage = () => (
   <main className="grid min-h-svh bg-muted/35 lg:grid-cols-[minmax(0,1.05fr)_minmax(28rem,0.95fr)]">
     <section className="relative hidden overflow-hidden border-e bg-foreground text-background lg:flex lg:flex-col lg:justify-between lg:p-12">
       <div className="flex items-center gap-2 font-semibold">
-        <span className="grid size-9 place-items-center rounded-lg bg-background text-foreground">
+        <IconTile
+          aria-hidden="true"
+          className="size-9 border-transparent bg-background text-foreground shadow-none"
+          size="sm"
+        >
           <WavesIcon aria-hidden="true" className="size-5" />
-        </span>
+        </IconTile>
         Northstar
       </div>
       <div className="max-w-xl">
@@ -30,9 +35,14 @@ const LoginPage = () => (
           className="mb-8 flex items-center gap-2 font-semibold lg:hidden"
           href="#"
         >
-          <span className="grid size-8 place-items-center rounded-lg bg-primary text-primary-foreground">
+          <IconTile
+            aria-hidden="true"
+            className="border-transparent shadow-none"
+            size="sm"
+            variant="primary"
+          >
             <WavesIcon aria-hidden="true" className="size-4" />
-          </span>
+          </IconTile>
           Northstar
         </a>
         <LoginForm />

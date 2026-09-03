@@ -1,0 +1,215 @@
+---
+title: File Thumbnail
+description: A compact visual identifier for a file format.
+---
+
+<ComponentPreview componentName="file-thumbnail" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/file-thumbnail
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependency:</Step>
+
+```bash
+npm install tailwind-variants
+```
+
+<Step>Import the following variables into your CSS file.</Step>
+
+<CodeCollapsibleWrapper>
+```css
+@theme inline {
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+
+:root {
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-red-700);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-700);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-700);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-700);
+}
+
+.dark {
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-red-400);
+  --info: var(--color-blue-500);
+  --info-foreground: var(--color-blue-400);
+  --success: var(--color-emerald-500);
+  --success-foreground: var(--color-emerald-400);
+  --warning: var(--color-amber-500);
+  --warning-foreground: var(--color-amber-400);
+}
+```
+</CodeCollapsibleWrapper>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/file-thumbnail.tsx" src="/file-thumbnail.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { FileThumbnail } from "@/components/ui/file-thumbnail";
+```
+
+```tsx
+<FileThumbnail format="PDF" />
+```
+
+The file sheet stays white in light and dark themes; only the extension badge changes tone.
+
+When `format` is omitted, the component shows a neutral `FILE` badge.
+
+## Sizes
+
+Use `size` to change the sheet and extension badge together.
+
+### Small
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-size-md" />
+
+### Large
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-size-lg" />
+
+## Tones
+
+Pass `tone` to override the inferred value.
+
+Badge labels use the semantic foreground token so the compact extension text stays legible across every supported tone.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-tone" />
+
+## Supported file types
+
+Each supported category has a fixed tone so related formats remain visually consistent.
+
+
+-  <span className="size-4 rounded-sm bg-info inline-block relative top-0.5" /> **Documents and text**:  `doc`, `docm`, `docx`, `epub`, `md`, `odt`, `pages`, `rtf`, `tex`, `txt`
+-  <span className="size-4 rounded-sm bg-primary inline-block relative top-0.5" /> **Images**:  `apng`, `avif`, `bmp`, `gif`, `heic`, `ico`, `jpeg`, `jpg`, `png`, `svg`, `tif`, `tiff`, `webp`
+-  <span className="size-4 rounded-sm bg-destructive inline-block relative top-0.5" /> **Audio**: `aac`, `aiff`, `flac`, `m4a`, `mid`, `midi`, `mp3`, `oga`, `ogg`, `opus`, `wav`, `wma`
+-  <span className="size-4 rounded-sm bg-destructive inline-block relative top-0.5" /> **Video**: `3g2`, `3gp`, `avi`, `f4v`, `flv`, `m2ts`, `m4v`, `mkv`, `mov`, `mp4`, `mpeg`, `mpg`, `ogv`, `ts`, `webm`, `wmv`
+-  <span className="size-4 rounded-sm bg-destructive inline-block relative top-0.5" /> **PDF and similars**: `djv`, `djvu`, `oxps`, `pdf`, `xps`
+-  <span className="size-4 rounded-sm bg-warning inline-block relative top-0.5" /> **Presentations**:  `key`, `odp`, `pot`, `potx`, `pps`, `ppsx`, `ppt`, `pptm`, `pptx`
+-  <span className="size-4 rounded-sm bg-success inline-block relative top-0.5" /> **Archives**: `7z`, `bz2`, `cab`, `gz`, `rar`, `tar`, `tgz`, `xz`, `zip`, `zst`
+-  <span className="size-4 rounded-sm bg-success inline-block relative top-0.5" /> **Spreadsheets**:  `csv`, `numbers`, `ods`, `tsv`, `xls`, `xlsb`, `xlsm`, `xlsx`
+-  <span className="size-4 rounded-sm bg-warning inline-block relative top-0.5" /> **JavaScript and Swift**: `cjs`, `js`, `jsx`, `mjs`, `swift`
+-  <span className="size-4 rounded-sm bg-info inline-block relative top-0.5" /> **TypeScript and blue source formats**: `c`, `cpp`, `cxx`, `d.ts`, `go`, `h`, `hpp`, `json`, `ts`, `tsx`
+-  <span className="size-4 rounded-sm bg-success inline-block relative top-0.5" /> **Python**: `py`, `pyw`
+-  <span className="size-4 rounded-sm bg-primary inline-block relative top-0.5" /> **PHP and C#**: `cs`, `php`
+-  <span className="size-4 rounded-sm bg-destructive inline-block relative top-0.5" /> **Java, Ruby, Rust, and web markup**: `css`, `htm`, `html`, `java`, `rb`, `rs`, `sass`, `scss`
+-  <span className="size-4 rounded-sm bg-muted-foreground inline-block relative top-0.5" /> **Unsupported**:  Any extension not listed above, such as `bin` and `exe`
+
+## Examples
+
+### Format input
+
+`format` accepts whitespace, an optional leading dot, and any casing while preserving the supplied label.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-formats" />
+
+### No extension
+
+Files without an extension show the neutral `FILE` badge.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-no-extension" />
+
+### Documents and text
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-documents" />
+
+### Images
+
+Every supported image format uses the primary tone.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-images" />
+
+### PDF and similars
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-pdf" />
+
+### Presentations
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-presentations" />
+
+### Spreadsheets
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-spreadsheets" />
+
+### Programming languages
+
+Common source formats use their familiar tone: JavaScript is warning, TypeScript is info, Python is success, PHP is primary, and Java is destructive.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-programming-languages" />
+
+### Unsupported formats
+
+Formats outside the supported list always use the neutral default tone.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-unsupported-formats" />
+
+### Custom color
+
+Target the extension badge through its `data-slot` to apply a custom color.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-custom-color" />
+
+### Custom size
+
+Target the sheet and badge slots together when the predefined sizes do not fit your layout.
+
+<ComponentPreview componentName="file-thumbnail" fileName="example-custom-size" />
+
+## API Reference
+
+### FileThumbnail
+
+A visual file-format identifier.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `format` | `string` | - |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `tone` | `"default" \| "destructive" \| "info" \| "primary" \| "success" \| "warning"` | inferred from `format`, otherwise `"default"` |
+| `className` | `string` | - |

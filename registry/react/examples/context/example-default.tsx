@@ -1,37 +1,40 @@
 import {
   Context,
   ContextBody,
-  ContextCacheUsage,
   ContextContent,
   ContextFooter,
   ContextHeader,
-  ContextInputUsage,
-  ContextOutputUsage,
-  ContextReasoningUsage,
+  ContextMeter,
+  ContextTitle,
   ContextTrigger,
+  ContextUsageRow,
 } from "@/registry/react/components/context";
 
 const Example = () => (
   <div className="flex justify-center">
-    <Context
-      costLabel="$0.042"
-      maxTokens={128_000}
-      usage={{ cache: 1200, input: 4200, output: 860, reasoning: 640 }}
-      usedTokens={18_420}
-    >
+    <Context costLabel="$0.042" maxTokens={128_000} usedTokens={18_420}>
       <ContextTrigger />
       <ContextContent>
-        <ContextHeader />
+        <ContextHeader>
+          <ContextTitle showCloseButton>Context Usage</ContextTitle>
+          <ContextMeter />
+        </ContextHeader>
         <ContextBody>
-          <ContextInputUsage />
-          <ContextOutputUsage />
-          <ContextReasoningUsage />
-          <ContextCacheUsage />
+          {contextUsage.map((usage) => (
+            <ContextUsageRow key={usage.title} {...usage} />
+          ))}
         </ContextBody>
         <ContextFooter />
       </ContextContent>
     </Context>
   </div>
 );
+
+const contextUsage = [
+  { title: "Input", value: 4200 },
+  { title: "Output", value: 860 },
+  { title: "Reasoning", value: 640 },
+  { title: "Cache", value: 1200 },
+];
 
 export default Example;

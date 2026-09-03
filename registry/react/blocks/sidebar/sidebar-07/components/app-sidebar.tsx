@@ -12,6 +12,7 @@ import {
   Settings2Icon,
   SquareTerminalIcon,
 } from "lucide-react";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   Sidebar,
   SidebarContent,
@@ -41,9 +42,14 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" tooltip="Acme workspace">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <IconTile
+                aria-hidden="true"
+                className="border-transparent bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
+                size="sm"
+                variant="primary"
+              >
                 <GalleryVerticalEndIcon aria-hidden="true" className="size-4" />
-              </span>
+              </IconTile>
               <span className="grid flex-1 text-start text-sm leading-tight">
                 <span className="truncate font-semibold">Acme Inc.</span>
                 <span className="truncate text-xs">Enterprise</span>
@@ -101,9 +107,13 @@ export function AppSidebar() {
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" tooltip="vini@example.com">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-sidebar-accent">
+              <IconTile
+                aria-hidden="true"
+                className="border-transparent bg-sidebar-accent text-sidebar-foreground shadow-none"
+                size="sm"
+              >
                 <CircleUserRoundIcon aria-hidden="true" className="size-4" />
-              </span>
+              </IconTile>
               <span className="grid flex-1 text-start text-sm leading-tight">
                 <span className="truncate font-medium">Vini</span>
                 <span className="truncate text-xs">vini@example.com</span>

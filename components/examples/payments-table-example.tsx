@@ -23,6 +23,7 @@ import {
   DataTableColumnHeader,
   type DataTableFeatures,
 } from "@/registry/react/components/data-table";
+import { FormatNumber } from "@/registry/react/components/format";
 import {
   Menu,
   MenuContent,
@@ -47,12 +48,6 @@ const statusVariant = {
   processing: "info",
   success: "success",
 } as const;
-
-const formatAmount = (amount: number) =>
-  new Intl.NumberFormat("en-US", {
-    currency: "USD",
-    style: "currency",
-  }).format(amount);
 
 const data: Payment[] = [
   {
@@ -140,7 +135,9 @@ const columns = columnHelper.columns([
   }),
   columnHelper.accessor("amount", {
     cell: ({ getValue }) => (
-      <div className="text-right font-medium">{formatAmount(getValue())}</div>
+      <div className="text-right font-medium">
+        <FormatNumber currency="USD" style="currency" value={getValue()} />
+      </div>
     ),
     header: ({ column }) => (
       <DataTableColumnHeader

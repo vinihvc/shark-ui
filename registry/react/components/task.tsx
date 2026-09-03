@@ -1,8 +1,9 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
+import { createContext } from "@ark-ui/react/utils";
 import { CircleCheckIcon, CircleIcon, CircleXIcon } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/registry/react/components/badge";
 import {
@@ -15,7 +16,10 @@ import { Spinner } from "@/registry/react/components/spinner";
 
 export type TaskStatus = "completed" | "error" | "in-progress" | "pending";
 
-const TaskItemStatusContext = React.createContext({} as TaskStatus);
+const [TaskItemStatusProvider, useTaskItem] = createContext<TaskStatus>({
+  name: "TaskItemStatusContext",
+  providerName: "TaskItem",
+});
 
 interface TaskItemProps extends React.ComponentProps<typeof Collapsible> {
   /**
@@ -28,7 +32,7 @@ export const TaskItem = (props: TaskItemProps) => {
   const { className, defaultOpen, status = "pending", ...rest } = props;
 
   return (
-    <TaskItemStatusContext.Provider value={status}>
+    <TaskItemStatusProvider value={status}>
       <Collapsible
         className={cn(
           "w-full min-w-0 text-sm",
@@ -41,7 +45,7 @@ export const TaskItem = (props: TaskItemProps) => {
         defaultOpen={defaultOpen ?? status === "in-progress"}
         {...rest}
       />
-    </TaskItemStatusContext.Provider>
+    </TaskItemStatusProvider>
   );
 };
 
@@ -232,14 +236,4 @@ const TaskStatusIcon = ({ status }: { status: TaskStatus }) => {
       )}
     />
   );
-};
-
-const useTaskItem = () => {
-  const context = React.useContext(TaskItemStatusContext);
-
-  if (!context) {
-    throw new Error("TaskItemStatusContext not found");
-  }
-
-  return context;
 };

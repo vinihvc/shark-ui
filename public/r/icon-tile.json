@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [
+    "@ark-ui/react",
+    "tailwind-variants"
+  ],
+  "name": "icon-tile",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "import { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport const iconTileVariants = tv({\n  base: [\n    \"size-(--size)\",\n    \"relative isolate\",\n    \"inline-flex shrink-0 items-center justify-center\",\n    \"font-medium text-muted-foreground\",\n    \"rounded-lg border\",\n    \"overflow-hidden\",\n    \"[&_svg:not([class*='size-'])]:size-(--icon-size)\",\n    \"[&_svg]:pointer-events-none [&_svg]:shrink-0\",\n    \"[a&]:cursor-pointer [button&]:cursor-pointer\",\n    \"[a&]:transition-colors [button&]:transition-colors\",\n    \"disabled:pointer-events-none disabled:opacity-64\",\n    \"aria-disabled:pointer-events-none aria-disabled:opacity-64\",\n    \"outline-none focus-visible:ring-[3px] focus-visible:ring-ring/32\",\n    \"motion-reduce:transition-none!\",\n  ],\n  defaultVariants: {\n    fill: false,\n    size: \"md\",\n    variant: \"default\",\n  },\n  variants: {\n    fill: {\n      false: \"\",\n      true: \"rounded-full before:rounded-full\",\n    },\n    size: {\n      lg: [\"[--size:--spacing(12)]\", \"[--icon-size:--spacing(5.5)]\"],\n      md: [\"[--size:--spacing(10)]\", \"[--icon-size:--spacing(4.5)]\"],\n      sm: [\"[--size:--spacing(8)]\", \"[--icon-size:--spacing(4)]\"],\n      xl: [\"[--size:--spacing(14)]\", \"[--icon-size:--spacing(7)]\"],\n      xs: [\"[--size:--spacing(6)]\", \"[--icon-size:--spacing(3.5)]\"],\n    },\n    variant: {\n      default: [\n        \"border-border bg-muted shadow-sm/5 ring-2 ring-background\",\n        \"text-foreground\",\n        \"[a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"[button&]:hover:bg-accent [button&]:hover:text-accent-foreground\",\n      ],\n      frame: [\n        \"border-transparent bg-muted p-1\",\n        \"before:absolute before:inset-1 before:-z-10 before:rounded-lg before:border before:bg-background before:shadow-xs/5\",\n      ],\n      outline: [\n        \"border-border bg-background shadow-xs/5\",\n        \"[a&]:hover:bg-accent [a&]:hover:text-accent-foreground\",\n        \"[button&]:hover:bg-accent [button&]:hover:text-accent-foreground\",\n      ],\n      primary: [\n        \"border-primary bg-primary text-primary-foreground shadow-primary/24 shadow-sm\",\n        \"[a&]:hover:bg-primary/90 [button&]:hover:bg-primary/90\",\n      ],\n    },\n  },\n});\n\nexport interface IconTileProps\n  extends React.ComponentProps<typeof ark.span>,\n    VariantProps<typeof iconTileVariants> {}\n\nexport const IconTile = (props: IconTileProps) => {\n  const {\n    variant = \"default\",\n    size = \"md\",\n    fill = false,\n    className,\n    ...rest\n  } = props;\n\n  return (\n    <ark.span\n      className={cn(iconTileVariants({ fill, size, variant }), className)}\n      data-fill={fill}\n      data-size={size}\n      data-slot=\"icon-tile\"\n      data-variant={variant}\n      {...rest}\n    />\n  );\n};\n",
+      "path": "registry/react/components/icon-tile.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

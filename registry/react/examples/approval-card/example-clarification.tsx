@@ -1,42 +1,42 @@
 "use client";
 
 import { MessageCircleQuestionIcon } from "lucide-react";
-import { type SubmitEvent, useState } from "react";
+import React from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
+  ApprovalCardAction,
+  ApprovalCardChoice,
+  ApprovalCardChoiceShortcut,
+  ApprovalCardChoices,
   ApprovalCardContent,
-  ApprovalCardDescription,
+  ApprovalCardError,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
+  ApprovalCardInput,
+  ApprovalCardItem,
+  type ApprovalCardItemChangeDetails,
+  ApprovalCardItemDescription,
+  ApprovalCardItemTitle,
+  ApprovalCardNext,
+  ApprovalCardPrevious,
+  ApprovalCardProgress,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
-import {
-  QuestionnaireChoice,
-  QuestionnaireChoiceShortcut,
-  QuestionnaireChoices,
-  QuestionnaireDescription,
-  QuestionnaireError,
-  QuestionnaireInput,
-  QuestionnaireItem,
-  type QuestionnaireItemChangeDetails,
-  QuestionnaireNext,
-  QuestionnairePrevious,
-  QuestionnaireProgress,
-  QuestionnaireTitle,
-} from "@/registry/react/components/questionnaire";
+import { toast } from "@/registry/react/components/toast";
 
-const ApprovalCardClarificationDemo = () => {
-  const [item, setItem] = useState<string>(items[0].name);
-  const [result, setResult] = useState("");
-  const handleItemChange = (details: QuestionnaireItemChangeDetails) =>
+const Example = () => {
+  const [item, setItem] = React.useState<string>(items[0].name);
+
+  const handleItemChange = (details: ApprovalCardItemChangeDetails) =>
     setItem(details.item);
-  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const answers = new FormData(event.currentTarget);
+
     const summary = items.map((question) =>
       answers
         .getAll(question.name)
@@ -47,15 +47,22 @@ const ApprovalCardClarificationDemo = () => {
         )
         .join(", ")
     );
-    setResult(
-      `Requirements confirmed: ${summary.join(" · ")}. Ready to draft a plan.`
-    );
+    toast.create({
+      description: `${summary.join(" · ")}. Ready to draft a plan.`,
+      title: "Requirements confirmed",
+      type: "success",
+    });
   };
-  const handleReject = () =>
-    setResult("Questions dismissed. No requirements confirmed.");
+  const handleReject = () => {
+    toast.create({
+      description: "No requirements were confirmed.",
+      title: "Questions dismissed",
+      type: "info",
+    });
+  };
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-3">
+    <div className="w-full max-w-lg">
       <ApprovalCard
         item={item}
         items={items}
@@ -65,58 +72,49 @@ const ApprovalCardClarificationDemo = () => {
         shortcuts="letters"
       >
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <MessageCircleQuestionIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <div className="flex min-w-0 flex-col gap-1">
-            <ApprovalCardTitle>
-              A couple of details before I plan
-            </ApprovalCardTitle>
-            <ApprovalCardDescription>
-              Confirm what the orders export should include.
-            </ApprovalCardDescription>
-          </div>
+          <MessageCircleQuestionIcon aria-hidden="true" />
+          <ApprovalCardTitle>
+            A couple of details before I plan
+          </ApprovalCardTitle>
+          <ApprovalCardAction>
+            <ApprovalCardProgress className="text-xs" />
+          </ApprovalCardAction>
         </ApprovalCardHeader>
-        <ApprovalCardContent className="flex flex-col gap-4">
-          <QuestionnaireProgress />
+        <ApprovalCardContent>
           {items.map((question) => (
-            <QuestionnaireItem key={question.name} name={question.name}>
-              <QuestionnaireTitle>{question.title}</QuestionnaireTitle>
-              <QuestionnaireDescription>
+            <ApprovalCardItem key={question.name} name={question.name}>
+              <ApprovalCardItemTitle>{question.title}</ApprovalCardItemTitle>
+              <ApprovalCardItemDescription>
                 {question.description}
-              </QuestionnaireDescription>
-              <QuestionnaireChoices>
+              </ApprovalCardItemDescription>
+              <ApprovalCardChoices>
                 {question.choices.map((choice) => (
-                  <QuestionnaireChoice key={choice.value} value={choice.value}>
+                  <ApprovalCardChoice key={choice.value} value={choice.value}>
                     {choice.label}
-                    <QuestionnaireChoiceShortcut />
-                  </QuestionnaireChoice>
+                    <span className="text-muted-foreground">
+                      {choice.description}
+                    </span>
+                    <ApprovalCardChoiceShortcut />
+                  </ApprovalCardChoice>
                 ))}
-                {question.name === "scope" ? (
-                  <QuestionnaireInput
-                    aria-label="Another export scope"
-                    placeholder="Describe another export scope…"
+                {"input" in question && question.input ? (
+                  <ApprovalCardInput
+                    aria-label={question.input.label}
+                    placeholder={question.input.placeholder}
                   />
                 ) : null}
-              </QuestionnaireChoices>
-              <QuestionnaireError />
-            </QuestionnaireItem>
+              </ApprovalCardChoices>
+              <ApprovalCardError />
+            </ApprovalCardItem>
           ))}
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <QuestionnairePrevious />
-          <ApprovalCardActions>
-            <ApprovalCardReject>Cancel</ApprovalCardReject>
-            <QuestionnaireNext />
-            {item === items.at(-1)?.name ? (
-              <ApprovalCardApprove>Confirm requirements</ApprovalCardApprove>
-            ) : null}
-          </ApprovalCardActions>
+          <ApprovalCardPrevious />
+          <ApprovalCardReject>Cancel</ApprovalCardReject>
+          <ApprovalCardNext />
+          <ApprovalCardSubmit>Confirm requirements</ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      <p aria-live="polite" className="text-muted-foreground text-sm">
-        {result}
-      </p>
     </div>
   );
 };
@@ -124,8 +122,16 @@ const ApprovalCardClarificationDemo = () => {
 const items = [
   {
     choices: [
-      { label: "CSV for spreadsheets", value: "csv" },
-      { label: "JSON for integrations", value: "json" },
+      {
+        description: "Open in Sheets or Excel.",
+        label: "CSV for spreadsheets",
+        value: "csv",
+      },
+      {
+        description: "Pipe into another system.",
+        label: "JSON for integrations",
+        value: "json",
+      },
     ],
     description: "Choose one or more formats.",
     multiple: true,
@@ -135,15 +141,31 @@ const items = [
   },
   {
     choices: [
-      { label: "All orders matching the active filters", value: "filtered" },
-      { label: "Only the selected rows", value: "selected" },
-      { label: "Only the current page", value: "page" },
+      {
+        description: "Honor search, date, and status filters.",
+        label: "Orders matching the current filters",
+        value: "filtered",
+      },
+      {
+        description: "Export only the rows you selected.",
+        label: "Only the selected rows",
+        value: "selected",
+      },
+      {
+        description: "Leave later pages out of this export.",
+        label: "Only the current page",
+        value: "page",
+      },
     ],
     description: "Choose a scope or describe a different requirement.",
+    input: {
+      label: "Another export scope",
+      placeholder: "Describe another export scope…",
+    },
     name: "scope",
     required: true,
     title: "Which orders should be exported?",
   },
 ] as const;
 
-export default ApprovalCardClarificationDemo;
+export default Example;

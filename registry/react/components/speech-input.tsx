@@ -1,8 +1,7 @@
 "use client";
 
 import { MicIcon, SquareIcon } from "lucide-react";
-import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import { Spinner } from "@/registry/react/components/spinner";
@@ -101,16 +100,16 @@ export const SpeechInput = (props: SpeechInputProps) => {
     ...rest
   } = props;
 
-  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
-  const [supported, setSupported] = useState(false);
-  const [listening, setListening] = useState(false);
-  const [starting, setStarting] = useState(false);
+  const recognitionRef = React.useRef<SpeechRecognitionLike | null>(null);
+  const [supported, setSupported] = React.useState(false);
+  const [listening, setListening] = React.useState(false);
+  const [starting, setStarting] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setSupported(Boolean(getSpeechRecognition()));
   }, []);
 
-  useEffect(
+  React.useEffect(
     () => () => {
       recognitionRef.current?.stop();
       recognitionRef.current = null;
@@ -123,62 +122,8 @@ export const SpeechInput = (props: SpeechInputProps) => {
     onListeningChange?.(next);
   };
 
-  const handleClick = () => {
-    const SpeechRecognitionCtor = getSpeechRecognition();
-    if (!SpeechRecognitionCtor) {
-      return;
-    }
-
-    if (listening && recognitionRef.current) {
-      recognitionRef.current.stop();
-      return;
-    }
-
-    const recognition = new SpeechRecognitionCtor();
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = lang;
-    recognition.onresult = (event) => {
-      let finalTranscript = "";
-      for (
-        let index = event.resultIndex;
-        index < event.results.length;
-        index += 1
-      ) {
-        const result = event.results[index];
-        if (result?.isFinal) {
-          finalTranscript += result[0]?.transcript ?? "";
-        }
-      }
-      const trimmed = finalTranscript.trim();
-      if (trimmed) {
-        onTranscriptionChange?.(trimmed);
-      }
-    };
-    recognition.onerror = () => {
-      setStarting(false);
-      setListeningState(false);
-    };
-    recognition.onend = () => {
-      setStarting(false);
-      setListeningState(false);
-      recognitionRef.current = null;
-    };
-
-    recognitionRef.current = recognition;
-    setStarting(true);
-    try {
-      recognition.start();
-      setStarting(false);
-      setListeningState(true);
-    } catch {
-      setStarting(false);
-      setListeningState(false);
-      recognitionRef.current = null;
-    }
-  };
-
   const unavailable = !supported;
+
   const button = (
     <Button
       aria-label={getSpeechAriaLabel(unavailable, listening)}
@@ -187,9 +132,61 @@ export const SpeechInput = (props: SpeechInputProps) => {
       data-listening={listening ? "" : undefined}
       data-slot="speech-input"
       disabled={disabled || unavailable || starting}
-      onClick={handleClick}
+      onClick={() => {
+        const SpeechRecognitionCtor = getSpeechRecognition();
+        if (!SpeechRecognitionCtor) {
+          return;
+        }
+
+        if (listening && recognitionRef.current) {
+          recognitionRef.current.stop();
+          return;
+        }
+
+        const recognition = new SpeechRecognitionCtor();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = lang;
+        recognition.onresult = (event) => {
+          let finalTranscript = "";
+          for (
+            let index = event.resultIndex;
+            index < event.results.length;
+            index += 1
+          ) {
+            const result = event.results[index];
+            if (result?.isFinal) {
+              finalTranscript += result[0]?.transcript ?? "";
+            }
+          }
+          const trimmed = finalTranscript.trim();
+          if (trimmed) {
+            onTranscriptionChange?.(trimmed);
+          }
+        };
+        recognition.onerror = () => {
+          setStarting(false);
+          setListeningState(false);
+        };
+        recognition.onend = () => {
+          setStarting(false);
+          setListeningState(false);
+          recognitionRef.current = null;
+        };
+
+        recognitionRef.current = recognition;
+        setStarting(true);
+        try {
+          recognition.start();
+          setStarting(false);
+          setListeningState(true);
+        } catch {
+          setStarting(false);
+          setListeningState(false);
+          recognitionRef.current = null;
+        }
+      }}
       size={size}
-      type="button"
       variant={variant}
       {...rest}
     >

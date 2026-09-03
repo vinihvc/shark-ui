@@ -14,6 +14,12 @@ interface ComponentPreviewProps
    */
   align?: "start" | "center" | "end";
   /**
+   * Grow with content instead of locking the preview to 450px.
+   *
+   * @default false
+   */
+  autoHeight?: boolean;
+  /**
    * The name of the component to display in the preview
    *
    * @default ""
@@ -23,12 +29,6 @@ interface ComponentPreviewProps
    * The file name of the component
    */
   fileName?: string;
-  /**
-   * The height of the preview
-   *
-   * @default true
-   */
-  hasMaxHeight?: boolean;
   /**
    * Whether to show the dashed padding guide borders around the preview
    *
@@ -43,7 +43,7 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
     fileName = "example-default",
     align = "center",
     showBorders,
-    hasMaxHeight = true,
+    autoHeight = false,
     ...rest
   } = props;
 
@@ -66,8 +66,8 @@ export const ComponentPreview = async (props: ComponentPreviewProps) => {
 
   return (
     <ComponentPreviewTabs
+      autoHeight={autoHeight}
       component={<Example.default />}
-      hasMaxHeight={hasMaxHeight}
       showBorders={showBorders}
       source={<ComponentSource code={sourceCode} isCollapsible={false} />}
       {...rest}

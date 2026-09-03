@@ -3,7 +3,18 @@ title: Approval Card
 description: A composable card for agent permissions, plan reviews, and clarification flows.
 ---
 
-<ComponentPreview componentName="approval-card" fileName="example-permission-scope" hasMaxHeight={false} />
+<Alert>
+  <InfoIcon />
+  <AlertDescription>
+  Approval Card is built on top of the [Questionnaire](/docs/components/questionnaire) component. Check it out for more examples.
+  </AlertDescription>
+</Alert>
+
+<ComponentPreview 
+  componentName="approval-card" 
+  fileName="example-default" autoHeight
+  className="**:data-[slot=preview]:h-[540px]"
+/>
 
 ## Installation
 
@@ -26,7 +37,7 @@ npx shadcn@latest add @shark/approval-card
 
 <Steps>
 
-<Step>Install [Button](/docs/components/button) and [Questionnaire](/docs/components/questionnaire).</Step>
+<Step>Install [Button](/docs/components/button), [Card](/docs/components/card), and [Questionnaire](/docs/components/questionnaire).</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -45,193 +56,354 @@ npx shadcn@latest add @shark/approval-card
 ```text
 ApprovalCard
 ├── ApprovalCardHeader
-│   ├── ApprovalCardIcon
 │   ├── ApprovalCardTitle
-│   └── ApprovalCardDescription
+│   └── ApprovalCardAction
+│       └── ApprovalCardProgress
 ├── ApprovalCardContent
-│   └── QuestionnaireItem
-│       ├── QuestionnaireTitle
-│       ├── QuestionnaireChoices
-│       └── QuestionnaireError
+│   └── ApprovalCardItem
+│       ├── ApprovalCardItemTitle
+│       ├── ApprovalCardItemDescription
+│       ├── ApprovalCardChoices
+│       │   ├── ApprovalCardChoice
+│       │   │   └── ApprovalCardChoiceShortcut
+│       │   └── ApprovalCardInput
+│       └── ApprovalCardError
 └── ApprovalCardFooter
-    └── ApprovalCardActions
-        ├── ApprovalCardReject
-        └── ApprovalCardApprove
+    ├── ApprovalCardPrevious
+    ├── ApprovalCardSkip
+    ├── ApprovalCardReject
+    ├── ApprovalCardNext
+    └── ApprovalCardSubmit
 ```
 
 ## Usage
 
 ```tsx
-import type { SubmitEvent } from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
+  ApprovalCardAction,
+  ApprovalCardChoice,
+  ApprovalCardChoices,
   ApprovalCardContent,
+  ApprovalCardError,
   ApprovalCardFooter,
   ApprovalCardHeader,
+  ApprovalCardItem,
+  ApprovalCardItemTitle,
+  ApprovalCardProgress,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/components/ui/approval-card";
 ```
 
-`ApprovalCard` is a Questionnaire with card chrome. Pass Questionnaire props on the card (`items`, `onSubmit`, `shortcuts`, `item`, `value`, …) and compose command output, a plan, or any application-specific content in `ApprovalCardContent`. Handle approval in `onSubmit` so button clicks and keyboard confirmation follow the same path.
+## Title
 
-For approvals without questions, omit `items`. The card registers one optional step. It does not require a choice or a `QuestionnaireItem`, but gives the form an active step for submission and keyboard confirmation. An empty `items` array prevents submission.
+`ApprovalCardHeader` supports two title patterns:
 
-```tsx
-function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
-  event.preventDefault();
-  runCommand();
-}
+### Using props
 
-<ApprovalCard onReject={cancelCommand} onSubmit={handleSubmit}>
-  <ApprovalCardHeader>
-    <ApprovalCardTitle>Run this command?</ApprovalCardTitle>
-  </ApprovalCardHeader>
-  <ApprovalCardContent>
-    <pre>pnpm db:migrate && pnpm build</pre>
-  </ApprovalCardContent>
-  <ApprovalCardFooter>
-    <ApprovalCardActions>
-      <ApprovalCardReject>Cancel</ApprovalCardReject>
-      <ApprovalCardApprove>Run</ApprovalCardApprove>
-    </ApprovalCardActions>
-  </ApprovalCardFooter>
-</ApprovalCard>
+Pass the `title` prop directly to `ApprovalCardHeader`.
+
+```tsx showLineNumbers
+<ApprovalCardHeader title="Apply the staging migration?">
+  <TerminalIcon aria-hidden="true" />
+  <ApprovalCardAction>
+    <ApprovalCardProgress />
+  </ApprovalCardAction>
+</ApprovalCardHeader>
 ```
 
-## Questionnaire approval
+> This approach does not require the `ApprovalCardTitle` component.
 
-When approval depends on answers, place Questionnaire question parts inside `ApprovalCardContent`. The card validates the answers before calling `onSubmit`. Prevent browser navigation there and read the answers with `new FormData(event.currentTarget)`.
+### Using components
 
-```tsx
-import {
-  QuestionnaireChoice,
-  QuestionnaireChoices,
-  QuestionnaireError,
-  QuestionnaireItem,
-  QuestionnaireTitle,
-} from "@/components/ui/questionnaire";
+Use `ApprovalCardTitle` as a child for more control.
 
-const items = [{ name: "format", required: true }] as const;
-
-function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
-  event.preventDefault();
-  const answers = new FormData(event.currentTarget);
-  approveFormat(answers.get("format"));
-}
-
-<ApprovalCard items={items} onReject={skip} onSubmit={handleSubmit} shortcuts="letters">
-  <ApprovalCardHeader>
-    <ApprovalCardTitle>Choose a handoff format</ApprovalCardTitle>
-  </ApprovalCardHeader>
-  <ApprovalCardContent>
-    <QuestionnaireItem name="format">
-      <QuestionnaireTitle>How should we share the update?</QuestionnaireTitle>
-      <QuestionnaireChoices>
-        <QuestionnaireChoice value="summary">Short summary</QuestionnaireChoice>
-        <QuestionnaireChoice value="brief">Detailed brief</QuestionnaireChoice>
-      </QuestionnaireChoices>
-      <QuestionnaireError />
-    </QuestionnaireItem>
-  </ApprovalCardContent>
-  <ApprovalCardFooter>
-    <ApprovalCardActions>
-      <ApprovalCardReject>Skip</ApprovalCardReject>
-      <ApprovalCardApprove>Approve format</ApprovalCardApprove>
-    </ApprovalCardActions>
-  </ApprovalCardFooter>
-</ApprovalCard>
+```tsx showLineNumbers
+<ApprovalCardHeader>
+  <TerminalIcon aria-hidden="true" />
+  <ApprovalCardTitle>Apply the staging migration?</ApprovalCardTitle>
+  <ApprovalCardAction>
+    <ApprovalCardProgress />
+  </ApprovalCardAction>
+</ApprovalCardHeader>
 ```
 
-With focus inside the card, `Cmd/Ctrl+Enter` validates and advances or submits the current step. Set `shortcuts="letters"` or `"numbers"` for answer shortcuts, and use `QuestionnaireChoiceShortcut` to display each choice's assigned key. Enter confirms a selected answer; focused buttons retain their native keyboard behavior.
+## Controlled
 
-`ApprovalCardReject` still calls `onReject` without submitting or validating the form. If `onSubmit` does not call `preventDefault`, the card calls `onApprove` with the form data. Do not nest another Questionnaire or `<form>` inside the card.
+Control the active item and selected values when the surrounding application owns the flow state.
 
-<ComponentPreview componentName="approval-card" fileName="example-default" />
+<ComponentPreview componentName="approval-card" fileName="example-controlled" autoHeight />
+
+## States
+
+### Invalid
+
+Render validation feedback after a required approval choice has not been made.
+
+<ComponentPreview componentName="approval-card" fileName="example-invalid" autoHeight />
+
+### Disabled
+
+Disable unavailable choices and freeform input while preserving available paths.
+
+<ComponentPreview componentName="approval-card" fileName="example-disabled" autoHeight />
 
 ## Examples
 
-These interactive demos adapt approval patterns from coding agents to Shark components; they are not replicas or integrations. They only display the decision locally. No commands run, files change, issues get created, or permissions persist.
+### With close button
+
+Place a dismiss action beside the title with `ApprovalCardAction`. The
+surrounding application owns the card's open state.
+
+<ComponentPreview componentName="approval-card" fileName="example-with-close-button" autoHeight />
+
+### Custom spacing
+
+The `[--space:--spacing("value")]` custom property from `Card` controls the Approval Card's internal spacing.
+
+Default spacing is `--spacing(6)`.
+
+<ComponentPreview componentName="approval-card" fileName="example-custom-spacing" autoHeight />
+
+> You can use breakpoint utilities to change the internal spacing at different screen sizes.
 
 ### Command execution
 
-Show the command, working directory, target environment, and expected effect before asking for approval. This staging migration uses the default optional step and no answer fields.
+Show the command, working directory, target environment, and expected effect before asking for approval.
 
-<ComponentPreview componentName="approval-card" fileName="example-command" />
+<ComponentPreview componentName="approval-card" fileName="example-command" autoHeight />
 
 ### Permission scope
 
-[Claude Code command permissions](https://code.claude.com/docs/en/permissions#permission-system) distinguish one-time approval from a remembered rule for a repository and command. Use a required Questionnaire answer to capture that scope explicitly, without preselecting broader access.
+Use a required answer to capture whether approval applies once or to the current repository.
 
-Read `answers.get("scope")` from the FormData in `onSubmit`. Persist and enforce the chosen rule in your application; Approval Card does not manage permissions itself.
-
-<ComponentPreview componentName="approval-card" fileName="example-permission-scope" hasMaxHeight={false} />
+<ComponentPreview componentName="approval-card" fileName="example-permission-scope" autoHeight />
 
 ### Plan review
 
-[Cursor Plan Mode](https://cursor.com/docs/agent/plan-mode) lets users review and revise an implementation plan before building. Compose [Plan](/docs/ai-elements/plan) with Questionnaire question parts to approve the approach or send a freeform revision.
+Compose [Plan](/docs/ai-elements/plan) with Approval Card to review an approach before implementation.
 
-The example reads the controlled answer in `onSubmit` to distinguish an explicit approval from revision text. Only the selected “Implement this plan” option authorizes implementation. A revision keeps work paused, and approving the plan does not bypass individual tool permissions.
-
-<ComponentPreview componentName="approval-card" fileName="example-plan" hasMaxHeight={false} />
+<ComponentPreview componentName="approval-card" fileName="example-plan" autoHeight />
 
 ### File edit
 
-For a file modification checkpoint, show the exact proposed patch with [Diff](/docs/ai-elements/diff). This example approves one patch only, unlike the broader session-level edit approval available in [Claude Code](https://code.claude.com/docs/en/permissions#permission-system).
+Compose [Diff](/docs/ai-elements/diff) with Approval Card to show the proposed change before applying it.
 
-<ComponentPreview componentName="approval-card" fileName="example-file-edit" />
+<ComponentPreview componentName="approval-card" fileName="example-file-edit" autoHeight />
 
 ### MCP tool call
 
-[Cursor MCP approvals](https://cursor.com/docs/mcp#tool-approval) let users inspect tool arguments before execution. Show the server, tool name, arguments, destination, and external side effects before approving a call that creates a GitHub issue.
+Show the server, tool name, arguments, and external side effects before approving a call.
 
-Approval applies to this specific call and its displayed arguments, not every tool exposed by the server.
-
-<ComponentPreview componentName="approval-card" fileName="example-mcp-tool" hasMaxHeight={false} />
+<ComponentPreview componentName="approval-card" fileName="example-mcp-tool" autoHeight />
 
 ### Network access
 
-[Codex permissions](https://developers.openai.com/codex/permissions#network-permissions) separate command execution boundaries from network access. This example requests access to a specific host for a package metadata lookup, with a one-request or session scope.
+Ask for access to a specific network destination and scope before making a request.
 
-Keep the destination and data being sent visible. The scope choices are application data; enforce them in your agent runtime, not in the card. A host approval must not silently grant unrestricted network access.
-
-<ComponentPreview componentName="approval-card" fileName="example-network-access" hasMaxHeight={false} />
+<ComponentPreview componentName="approval-card" fileName="example-network-access" autoHeight />
 
 ### Clarifying requirements
 
-Before asking for approval to implement, collect the missing requirements, as in [Cursor's planning flow](https://cursor.com/docs/agent/plan-mode#how-it-works). This example combines multiple selection, a second question, and a freeform alternative.
+Use multiple steps and a freeform alternative to gather requirements before drafting a plan.
 
-Use `answers.getAll("formats")` in `onSubmit` to read every selected format, including answers from hidden steps. Track `item` / `onItemChange` to show `ApprovalCardApprove` only on the final question. Confirming these answers authorizes drafting a plan, not executing it.
-
-<ComponentPreview componentName="approval-card" fileName="example-clarification" hasMaxHeight={false} />
+<ComponentPreview componentName="approval-card" fileName="example-clarification" autoHeight />
 
 ## API Reference
 
 ### ApprovalCard
 
-Extends [Questionnaire](/docs/components/questionnaire) form props. `items` defaults to `[{ name: "approval" }]`.
+Form root.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `items` | `readonly QuestionnaireItemDefinition[]` | `[{ name: "approval" }]` |
-| `onApprove` | `(details?: { formData?: FormData }) => void` | — |
-| `onReject` | `() => void` | — |
-| `onSubmit` | `React.FormEventHandler<HTMLFormElement>` | — |
+| `items` | `readonly ApprovalCardItemDefinition[]` | `[{ name: "approval" }]` |
+| `item` | `string` | `-` |
+| `defaultItem` | `string` | `-` |
+| `onItemChange` | `(details: ApprovalCardItemChangeDetails) => void` | `-` |
+| `value` | `ApprovalCardValue` | `-` |
+| `defaultValue` | `ApprovalCardValue` | `{}` |
+| `onValueChange` | `(details: ApprovalCardValueChangeDetails) => void` | `-` |
+| `shortcuts` | `"letters" \| "numbers"` | `-` |
+| `onSubmit` | `FormEventHandler<HTMLFormElement>` | `-` |
+| `onApprove` | `(details?: ApprovalCardSubmitDetails) => void` | `-` |
+| `onReject` | `() => void` | `-` |
+| `className` | `string` | `-` |
 
-### Parts
+### ApprovalCardHeader
 
-| Part | Props and behavior |
-| --- | --- |
-| `ApprovalCardHeader` | Native div props; layout for the icon and heading. |
-| `ApprovalCardIcon` | Native div props; neutral icon surface. |
-| `ApprovalCardTitle` | Native paragraph props; card title. |
-| `ApprovalCardDescription` | Native paragraph props; supporting copy. |
-| `ApprovalCardContent` | Native div props; content region. |
-| `ApprovalCardFooter` | Native div props; footer layout. |
-| `ApprovalCardActions` | Native div props; aligns actions at the end of the footer. |
-| `ApprovalCardApprove` | Button props; submits the card form. |
-| `ApprovalCardReject` | Button props; calls `onReject()`. |
+Header row for the icon, title, and optional action.
 
-All parts accept `className` and expose a corresponding `data-slot="approval-card-*"` attribute. Do not nest a Questionnaire or another form inside the card.
+| Prop | Type | Default |
+| --- | --- | --- |
+| `title` | `string` | `-` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ApprovalCardTitle
+
+Card title.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ApprovalCardAction
+
+Aligns a header action, such as progress, at the end.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ApprovalCardProgress
+
+Current question progress.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `aria-label` | `string` | `"Question progress"` |
+| `className` | `string` | `-` |
+
+### ApprovalCardContent
+
+Main body.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ApprovalCardItem
+
+One question step.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `name` | `string` | **required** |
+| `id` | `string` | generated |
+| `className` | `string` | `-` |
+
+### ApprovalCardItemTitle
+
+Question title.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ApprovalCardItemDescription
+
+Supporting question text.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ApprovalCardChoices
+
+Container for radio or checkbox choices.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ApprovalCardChoice
+
+One selectable answer.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | **required** |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### ApprovalCardChoiceShortcut
+
+Shortcut badge for a choice.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
+### ApprovalCardInput
+
+Freeform text answer.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `placeholder` | `string` | `-` |
+| `disabled` | `boolean` | `false` |
+| `onChange` | `ChangeEventHandler<HTMLInputElement>` | `-` |
+| `className` | `string` | `-` |
+
+### ApprovalCardError
+
+Validation message for the active question.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `children` | `ReactNode` | `"Choose an answer to continue."` |
+| `className` | `string` | `-` |
+
+### ApprovalCardFooter
+
+Footer for navigation and approve or reject.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |
+
+### ApprovalCardPrevious
+
+Returns to the previous question. Default label is `Previous`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `onClick` | `MouseEventHandler<HTMLButtonElement>` | `-` |
+| `className` | `string` | `-` |
+
+### ApprovalCardNext
+
+Validates and advances to the next question. Default label is `Next`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `onClick` | `MouseEventHandler<HTMLButtonElement>` | `-` |
+| `className` | `string` | `-` |
+
+### ApprovalCardSkip
+
+Skips an optional question. Default label is `Skip`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `onClick` | `MouseEventHandler<HTMLButtonElement>` | `-` |
+| `className` | `string` | `-` |
+
+### ApprovalCardSubmit
+
+Submits the final question. Default label is `Approve`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### ApprovalCardReject
+
+Calls `onReject()`. Default label is `Reject`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "secondary" \| "ghost" \| "link" \| "destructive"` | `"ghost"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl" \| "icon-xs" \| "icon-sm" \| "icon-md" \| "icon-lg" \| "icon-xl"` | `"md"` |
+| `className` | `string` | `-` |
+| `asChild` | `boolean` | `false` |

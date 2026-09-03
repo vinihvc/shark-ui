@@ -7,8 +7,9 @@ import {
   type TreeCollection as arkTreeCollection,
   useTreeViewContext as useArkTreeViewContext,
 } from "@ark-ui/react/tree-view";
+import { createContext } from "@ark-ui/react/utils";
 import { CheckIcon, ChevronRightIcon, MinusIcon } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { checkboxVariants } from "@/registry/react/components/checkbox";
@@ -41,7 +42,11 @@ interface TreeViewContextProps {
   fileIcons?: Record<string, React.JSX.ElementType | null>;
 }
 
-const TreeViewContext = React.createContext({} as TreeViewContextProps);
+const [TreeViewContextProvider, _useTreeView] =
+  createContext<TreeViewContextProps>({
+    name: "TreeViewContext",
+    providerName: "TreeView",
+  });
 
 interface TreeViewProps
   extends ArkTreeView.RootComponentProps,
@@ -57,7 +62,7 @@ export const TreeView: ArkTreeView.RootComponent<TreeViewProps> = (props) => {
   } = props;
 
   return (
-    <TreeViewContext.Provider value={{ fileIcons }}>
+    <TreeViewContextProvider value={{ fileIcons }}>
       <ArkTreeView.Root
         className={cn(
           "[--indentation:--spacing(4)] [--item-gap:--spacing(2)]",
@@ -73,7 +78,7 @@ export const TreeView: ArkTreeView.RootComponent<TreeViewProps> = (props) => {
         unmountOnExit={unmountOnExit}
         {...rest}
       />
-    </TreeViewContext.Provider>
+    </TreeViewContextProvider>
   );
 };
 
@@ -451,18 +456,6 @@ const TreeViewNodeInput = (
       {...rest}
     />
   );
-};
-
-const _useTreeView = () => {
-  const context = React.useContext(TreeViewContext);
-
-  if (!context) {
-    throw new Error(
-      "useTreeViewContext must be used within a TreeViewProvider"
-    );
-  }
-
-  return context;
 };
 
 type CreateFileIconsArgs = Record<`.${string}`, React.JSX.ElementType | null>;

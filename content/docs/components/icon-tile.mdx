@@ -1,0 +1,145 @@
+---
+title: Icon Tile
+description: A consistent surface for icons, initials, and short text.
+---
+
+<ComponentPreview componentName="icon-tile" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/icon-tile
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/icon-tile.tsx" src="/icon-tile.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+IconTile
+```
+
+## Usage
+
+```tsx
+import { FolderIcon } from "lucide-react";
+import { IconTile } from "@/components/ui/icon-tile";
+```
+
+```tsx
+<IconTile aria-hidden="true">
+  <FolderIcon />
+</IconTile>
+```
+
+## Variants
+
+### Default
+
+<ComponentPreview componentName="icon-tile" fileName="example-variant-default" />
+
+### Outline
+
+<ComponentPreview componentName="icon-tile" fileName="example-variant-outline" />
+
+### Primary
+
+<ComponentPreview componentName="icon-tile" fileName="example-variant-primary" />
+
+### Frame
+
+<ComponentPreview componentName="icon-tile" fileName="example-variant-frame" />
+
+## Sizes
+
+Use the `size` prop to set the tile size.
+
+### Extra Small
+
+<ComponentPreview componentName="icon-tile" fileName="example-size-xs" />
+
+### Small
+
+<ComponentPreview componentName="icon-tile" fileName="example-size-sm" />
+
+### Medium
+
+<ComponentPreview componentName="icon-tile" fileName="example-size-md" />
+
+### Large
+
+<ComponentPreview componentName="icon-tile" fileName="example-size-lg" />
+
+### Extra Large
+
+<ComponentPreview componentName="icon-tile" fileName="example-size-xl" />
+
+## Fill
+
+Use `fill` to create a circular tile.
+
+<ComponentPreview componentName="icon-tile" fileName="example-circular" />
+
+## Examples
+
+### Custom size
+
+Override `--size` and `--icon-size` together to keep a custom tile in proportion with its icon.
+
+<ComponentPreview componentName="icon-tile" fileName="example-custom-size" />
+
+### Custom color
+
+Use `className` to apply a custom foreground, border, and surface color.
+
+<ComponentPreview componentName="icon-tile" fileName="example-custom-color" />
+
+## API Reference
+
+### IconTile
+
+A single surface that centers an icon, initials, or short text. Supports `asChild`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "primary" \| "frame"` | `"default"` |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` |
+| `fill` | `boolean` | `false` |
+| `asChild` | `boolean` | `false` |
+| `className` | `string` | - |
+
+| CSS Variable | Default at `size="md"` | Description |
+| --- | --- | --- |
+| `--size` | `--spacing(10)` | Tile width and height. |
+| `--icon-size` | `--spacing(4.5)` | Default size for child SVGs. |

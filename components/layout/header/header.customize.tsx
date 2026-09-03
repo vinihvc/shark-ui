@@ -10,15 +10,10 @@ import {
 } from "lucide-react";
 import React from "react";
 import { CopyThemeCodeDialog } from "@/components/dialog/copy-theme";
-import { OfflineDocsSettings } from "@/components/pwa/offline-docs-settings";
 import { BORDER_RADIUS, GRAY_COLORS, PRIMARY_COLORS } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
-import {
-  Field,
-  FieldGroup,
-  FieldSeparator,
-} from "@/registry/react/components/field";
+import { Field, FieldGroup } from "@/registry/react/components/field";
 import { useHotkey } from "@/registry/react/components/hotkeys";
 import { Kbd } from "@/registry/react/components/kbd";
 import {
@@ -236,10 +231,6 @@ export const HeaderCustomize = () => {
                 <SliderLabel>Radius</SliderLabel>
               </Slider>
             </Field>
-
-            <FieldSeparator />
-
-            <OfflineDocsSettings />
           </FieldGroup>
         </SheetBody>
 

@@ -3,6 +3,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { Popover as ArkPopover } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
+import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -26,9 +27,10 @@ interface ActionBarPositioning {
 
 const defaultPositioning = { gutter: "16px", placement: "bottom" } as const;
 
-const ActionBarContext = React.createContext(
-  defaultPositioning as ActionBarPositioning
-);
+const [ActionBarProvider, _useActionBar] = createContext<ActionBarPositioning>({
+  name: "ActionBarContext",
+  providerName: "ActionBar",
+});
 
 export interface ActionBarProps
   extends Omit<ArkPopover.RootProps, "positioning"> {
@@ -56,7 +58,7 @@ export const ActionBar = (props: ActionBarProps) => {
   );
 
   return (
-    <ActionBarContext.Provider value={context}>
+    <ActionBarProvider value={context}>
       <ArkPopover.Root
         autoFocus={false}
         closeOnEscape={closeOnEscape}
@@ -68,7 +70,7 @@ export const ActionBar = (props: ActionBarProps) => {
         unmountOnExit={unmountOnExit}
         {...rest}
       />
-    </ActionBarContext.Provider>
+    </ActionBarProvider>
   );
 };
 
@@ -215,14 +217,4 @@ export const ActionBarBody = (props: React.ComponentProps<typeof ark.div>) => {
       {...rest}
     />
   );
-};
-
-const _useActionBar = () => {
-  const context = React.useContext(ActionBarContext);
-
-  if (!context) {
-    throw new Error("ActionBarContext not found");
-  }
-
-  return context;
 };

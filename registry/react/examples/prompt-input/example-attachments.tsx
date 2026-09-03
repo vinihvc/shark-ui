@@ -53,7 +53,7 @@ const Example = () => {
           </Attachment>
         </PromptInputHeader>
         <PromptInputTextarea
-          aria-label="Message"
+          aria-label="Prompt"
           onChange={handleChange}
           placeholder="Ask about a file..."
           value={value}

@@ -11,14 +11,11 @@ import {
 } from "lucide-react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
   ApprovalCardContent,
-  ApprovalCardDescription,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
 import {
@@ -29,14 +26,6 @@ import {
   AttachmentTitle,
 } from "@/registry/react/components/attachment";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
-import {
-  Confirmation,
-  ConfirmationAction,
-  ConfirmationActions,
-  ConfirmationRequest,
-  ConfirmationTitle,
-} from "@/registry/react/components/confirmation";
 import {
   Message,
   MessageAction,
@@ -46,6 +35,10 @@ import {
   MessageFooter,
   MessageHeader,
 } from "@/registry/react/components/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/registry/react/components/message-bubble";
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -110,7 +103,6 @@ interface ApprovalPlanStep {
 export interface ChatMessage {
   approvalPlan?: {
     steps: ApprovalPlanStep[];
-    summary: string;
     title: string;
   };
   attachment?: ChatMessageAttachment;
@@ -213,31 +205,25 @@ const MessageTool = ({
 );
 
 const MessageConfirmation = ({ title }: { title: string }) => (
-  <Confirmation state="request">
-    <ConfirmationRequest>
-      <ConfirmationTitle>{title}</ConfirmationTitle>
-    </ConfirmationRequest>
-    <ConfirmationActions>
-      <ConfirmationAction variant="outline">Reject</ConfirmationAction>
-      <ConfirmationAction>Approve</ConfirmationAction>
-    </ConfirmationActions>
-  </Confirmation>
+  <ApprovalCard onApprove={noop} onReject={noop}>
+    <ApprovalCardHeader>
+      <ApprovalCardTitle>{title}</ApprovalCardTitle>
+    </ApprovalCardHeader>
+    <ApprovalCardFooter>
+      <ApprovalCardReject variant="outline">Reject</ApprovalCardReject>
+      <ApprovalCardSubmit>Approve</ApprovalCardSubmit>
+    </ApprovalCardFooter>
+  </ApprovalCard>
 );
 
 const MessageApprovalPlan = ({
   steps,
-  summary,
   title,
 }: NonNullable<ChatMessage["approvalPlan"]>) => (
   <ApprovalCard onApprove={noop} onReject={noop}>
     <ApprovalCardHeader>
-      <ApprovalCardIcon>
-        <ListTodoIcon aria-hidden="true" />
-      </ApprovalCardIcon>
-      <div className="min-w-0">
-        <ApprovalCardTitle>{title}</ApprovalCardTitle>
-        <ApprovalCardDescription>{summary}</ApprovalCardDescription>
-      </div>
+      <ListTodoIcon aria-hidden="true" />
+      <ApprovalCardTitle>{title}</ApprovalCardTitle>
     </ApprovalCardHeader>
     <ApprovalCardContent>
       <ol className="flex flex-col gap-1 rounded-lg border bg-muted/30 p-2">
@@ -260,10 +246,8 @@ const MessageApprovalPlan = ({
       </ol>
     </ApprovalCardContent>
     <ApprovalCardFooter>
-      <ApprovalCardActions>
-        <ApprovalCardReject>View plan</ApprovalCardReject>
-        <ApprovalCardApprove>Approve</ApprovalCardApprove>
-      </ApprovalCardActions>
+      <ApprovalCardReject>View plan</ApprovalCardReject>
+      <ApprovalCardSubmit>Approve</ApprovalCardSubmit>
     </ApprovalCardFooter>
   </ApprovalCard>
 );
@@ -373,11 +357,11 @@ const ChatMessageItem = ({ message }: { message: ChatMessage }) => {
             <MessageApprovalPlan {...message.approvalPlan} />
           ) : null}
           {message.plan ? <MessagePlan {...message.plan} /> : null}
-          <Bubble
+          <MessageBubble
             align={isUser ? "end" : "start"}
             variant={isUser ? "secondary" : "ghost"}
           >
-            <BubbleContent>
+            <MessageBubbleContent>
               {message.content}
               {firstSource ? (
                 <InlineCitation
@@ -386,8 +370,8 @@ const ChatMessageItem = ({ message }: { message: ChatMessage }) => {
                   title={firstSource.title}
                 />
               ) : null}
-            </BubbleContent>
-          </Bubble>
+            </MessageBubbleContent>
+          </MessageBubble>
           {message.attachment ? (
             <MessageAttachmentBlock {...message.attachment} />
           ) : null}

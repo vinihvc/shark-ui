@@ -1,10 +1,12 @@
 "use client";
 
-import { Portal } from "@ark-ui/react";
 import { Combobox as ArkCombobox } from "@ark-ui/react/combobox";
 import { Dialog as ArkDialog } from "@ark-ui/react/dialog";
+import { ark } from "@ark-ui/react/factory";
+import { Portal } from "@ark-ui/react/portal";
 import { SearchIcon } from "lucide-react";
 import type React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import {
   Combobox,
@@ -41,8 +43,43 @@ export const CommandDialogTrigger = (
   props: React.ComponentProps<typeof DialogTrigger>
 ) => <DialogTrigger data-slot="command-dialog-trigger" {...props} />;
 
+const commandDialogPositionerVariants = tv({
+  base: ["[--inset:--spacing(0)]"],
+  defaultVariants: {
+    variant: "default",
+  },
+  variants: {
+    variant: {
+      default: "",
+      inset: [
+        "p-(--inset) px-(--inset) pt-(--inset) pb-(--inset)",
+        "sm:[--inset:--spacing(4)]",
+      ],
+    },
+  },
+});
+
+const commandDialogContentVariants = tv({
+  base: ["max-sm:row-start-1"],
+  defaultVariants: {
+    variant: "default",
+  },
+  variants: {
+    variant: {
+      default: ["border-0 p-0"],
+      inset: [
+        "p-0 max-sm:border-0",
+        "sm:rounded-2xl sm:border",
+        "sm:**:data-[slot=command-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
+        "sm:**:data-[slot=command]:rounded-none sm:**:data-[slot=command]:border-0",
+      ],
+    },
+  },
+});
+
 interface CommandDialogContentProps
-  extends React.ComponentProps<typeof DialogContent> {
+  extends React.ComponentProps<typeof DialogContent>,
+    VariantProps<typeof commandDialogContentVariants> {
   /**
    * The description of the dialog
    *
@@ -60,6 +97,7 @@ interface CommandDialogContentProps
 export const CommandDialogContent = (props: CommandDialogContentProps) => {
   const {
     size = "lg",
+    variant = "default",
     title = "Command Palette",
     description = "Search for a command to run...",
     className,
@@ -71,15 +109,18 @@ export const CommandDialogContent = (props: CommandDialogContentProps) => {
     <Portal>
       <DialogOverlay />
 
-      <DialogPositioner>
+      <DialogPositioner
+        className={commandDialogPositionerVariants({ variant })}
+        data-variant={variant}
+      >
         <ArkDialog.Content
           className={cn(
-            "max-sm:row-start-1",
             dialogContentVariants({ size }),
-            "border-0 p-0",
+            commandDialogContentVariants({ variant }),
             className
           )}
           data-slot="command-dialog-content"
+          data-variant={variant}
           {...rest}
         >
           <DialogHeader
@@ -110,6 +151,7 @@ export const Command: ArkCombobox.RootComponent = (props) => {
         className
       )}
       closeOnSelect={false}
+      data-slot="command"
       disableLayer
       inputBehavior="autohighlight"
       lazyMount={lazyMount}
@@ -142,7 +184,7 @@ export const CommandContent = (
       className={cn(
         "flex flex-1 flex-col",
         "max-h-(--available-height) min-h-0",
-        "overflow-hidden",
+        "overflow-clip",
         "outline-none",
         "[:not(.has-[+[data-slot=command-footer]])]:rounded-b-2xl [:not(.has-[+[data-slot=command-footer]])]:border-b",
         className
@@ -150,7 +192,10 @@ export const CommandContent = (
       data-slot="command-content"
       {...rest}
     >
-      <ScrollArea className="min-h-0 flex-1">
+      <ScrollArea
+        className="min-h-0 flex-1 **:data-[slot=scroll-area-scrollbar]:me-0"
+        scrollFade
+      >
         <div data-slot="command-scroll">{children}</div>
       </ScrollArea>
     </ArkCombobox.Content>
@@ -158,7 +203,7 @@ export const CommandContent = (
 };
 
 export const CommandInput = (props: CommandInputProps) => {
-  const { size = "md", className, ...rest } = props;
+  const { size = "lg", className, ...rest } = props;
 
   return (
     <ComboboxControl className="mb-2">
@@ -233,7 +278,9 @@ export const CommandItem = (
   );
 };
 
-export const CommandSeparator = (props: React.ComponentProps<"div">) => {
+export const CommandSeparator = (
+  props: React.ComponentProps<typeof Separator>
+) => {
   const { className, ...rest } = props;
 
   return (
@@ -249,11 +296,11 @@ export const CommandShortcut = (
   props: React.ComponentProps<typeof MenuShortcut>
 ) => <MenuShortcut data-slot="command-shortcut" {...props} />;
 
-export const CommandFooter = (props: React.ComponentProps<"div">) => {
+export const CommandFooter = (props: React.ComponentProps<typeof ark.div>) => {
   const { className, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "z-10",
         "flex items-center justify-between gap-2",

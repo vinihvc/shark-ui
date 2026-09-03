@@ -8,6 +8,7 @@ import {
   type UseTourReturn,
   useTour,
 } from "@ark-ui/react/tour";
+import { createContext } from "@ark-ui/react/utils";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
@@ -33,9 +34,11 @@ interface TourProviderProps {
   tour: UseTourReturn;
 }
 
-const TourProvider = React.createContext<TourProviderProps>(
-  {} as TourProviderProps
-);
+const [TourContextProvider, useTourContext] = createContext<TourProviderProps>({
+  hookName: "useTourContext",
+  name: "TourContext",
+  providerName: "Tour",
+});
 
 interface TourProps
   extends Omit<React.ComponentProps<typeof ArkTour.Root>, "tour"> {
@@ -84,7 +87,7 @@ export const Tour = (props: TourProps) => {
   }, [tour]);
 
   return (
-    <TourProvider.Provider value={{ handleStart, tour }}>
+    <TourContextProvider value={{ handleStart, tour }}>
       <ArkTour.Root
         data-slot="tour"
         lazyMount={lazyMount}
@@ -92,7 +95,7 @@ export const Tour = (props: TourProps) => {
         unmountOnExit={unmountOnExit}
         {...rest}
       />
-    </TourProvider.Provider>
+    </TourContextProvider>
   );
 };
 
@@ -103,17 +106,15 @@ export const TourTrigger = (props: TourTriggerProps) => {
 
   const { handleStart } = useTourContext();
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    onClick?.(e);
-    handleStart();
-  };
-
   return (
     <ark.button
       data-slot="tour-trigger"
       type="button"
       {...rest}
-      onClick={handleClick}
+      onClick={(e) => {
+        onClick?.(e);
+        handleStart();
+      }}
     />
   );
 };
@@ -409,12 +410,4 @@ export const TourNextStep = (
   );
 };
 
-export const useTourContext = () => {
-  const context = React.use(TourProvider);
-
-  if (!context) {
-    throw new Error("useTour must be used within a TourProvider");
-  }
-
-  return context;
-};
+export { useTourContext };

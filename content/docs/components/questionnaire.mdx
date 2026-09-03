@@ -6,7 +6,7 @@ description: A composable multi-step form.
 <ComponentPreview
   className="**:data-[slot=preview]:h-[580px]"
   componentName="questionnaire"
-  hasMaxHeight={false}
+  autoHeight
 />
 
 ## Installation
@@ -148,6 +148,13 @@ Set `disabled` on `QuestionnaireChoice` or `QuestionnaireInput`.
 ## Shortcuts
 
 Set `shortcuts` to `"letters"` or `"numbers"` to enable keyboard shortcuts.
+
+When the active question is answered, use `ArrowRight` and `ArrowLeft` to
+navigate between questions while focus is outside an answer choice. Use
+`ArrowUp` and `ArrowDown` to move focus between answers. Inside a radio group,
+`ArrowLeft` and `ArrowRight` keep their native radio-selection behavior. Press
+`Enter` on an answered answer control to continue, or `Mod+Enter` to confirm
+the active question.
 
 ### Letters
 

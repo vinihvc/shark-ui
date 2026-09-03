@@ -14,9 +14,16 @@ export const BLOCK_CATEGORIES = [
     slug: "dashboard",
   },
   {
+    description:
+      "Application sidebars with navigation, workspace switching, and messaging layouts.",
+    label: "Sidebar",
+    order: 3,
+    slug: "sidebar",
+  },
+  {
     description: "Chat sidebars, composers, threads, and AI workspace shells.",
     label: "AI",
-    order: 3,
+    order: 4,
     slug: "ai",
   },
 ] as const satisfies readonly BlockCategory[];

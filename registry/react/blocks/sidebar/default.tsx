@@ -34,6 +34,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/react/components/collapsible";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   Menu,
   MenuContent,
@@ -217,9 +218,14 @@ const TeamSwitcher = ({ teams }: TeamSwitcherProps) => {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               size="lg"
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <IconTile
+                aria-hidden="true"
+                className="border-transparent bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
+                size="sm"
+                variant="primary"
+              >
                 <activeTeam.logo className="size-4" />
-              </div>
+              </IconTile>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{activeTeam.name}</span>
                 <span className="truncate text-xs">{activeTeam.plan}</span>
@@ -239,9 +245,13 @@ const TeamSwitcher = ({ teams }: TeamSwitcherProps) => {
                   onClick={() => setActiveTeam(team)}
                   value={team.name}
                 >
-                  <div className="flex size-6 items-center justify-center rounded-md border border-input">
+                  <IconTile
+                    aria-hidden="true"
+                    className="rounded-md border-input bg-transparent shadow-none"
+                    size="xs"
+                  >
                     <team.logo className="size-3.5 shrink-0" />
-                  </div>
+                  </IconTile>
                   {team.name}
                   <MenuShortcut>⌘{index + 1}</MenuShortcut>
                 </MenuItem>
@@ -250,9 +260,13 @@ const TeamSwitcher = ({ teams }: TeamSwitcherProps) => {
             <MenuSeparator />
             <MenuGroup>
               <MenuItem className="gap-2 p-2" value="add-team">
-                <div className="flex size-6 items-center justify-center rounded-md border border-input bg-transparent">
+                <IconTile
+                  aria-hidden="true"
+                  className="rounded-md border-input bg-transparent shadow-none"
+                  size="xs"
+                >
                   <Plus className="size-4" />
-                </div>
+                </IconTile>
                 <div className="font-medium text-muted-foreground">
                   Add team
                 </div>
@@ -468,7 +482,7 @@ const NavUser = ({ user }: NavUserProps) => {
 
 const AppSidebar = () => (
   <SidebarProvider>
-    <Sidebar collapsible="icon" defaultOpen>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>

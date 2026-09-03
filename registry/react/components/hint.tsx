@@ -1,6 +1,7 @@
 "use client";
 
 import { ark, Presence, type PresenceProps } from "@ark-ui/react";
+import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import { tv } from "tailwind-variants";
 import { cn } from "@/lib/utils";
@@ -60,7 +61,10 @@ interface HintProps extends React.ComponentProps<typeof ark.div> {
   positioning?: HintContextValue["positioning"];
 }
 
-const HintContext = React.createContext({} as HintContextValue);
+const [HintProvider, _useHint] = createContext<HintContextValue>({
+  name: "HintContext",
+  providerName: "Hint",
+});
 
 const defaultPositioning = { gutter: "10px", placement: "top" } as const;
 
@@ -97,7 +101,7 @@ export const Hint = (props: HintProps) => {
   );
 
   return (
-    <HintContext.Provider
+    <HintProvider
       value={{
         id: hintId,
         isVisible,
@@ -120,7 +124,7 @@ export const Hint = (props: HintProps) => {
       >
         {children}
       </ark.div>
-    </HintContext.Provider>
+    </HintProvider>
   );
 };
 
@@ -257,14 +261,4 @@ export const HintArrow = (props: React.ComponentProps<typeof ark.div>) => {
       <ark.div className="size-2 bg-foreground" data-slot="hint-arrow-tip" />
     </ark.div>
   );
-};
-
-const _useHint = () => {
-  const context = React.useContext(HintContext);
-
-  if (!context) {
-    throw new Error("useHint must be used within a Hint");
-  }
-
-  return context;
 };

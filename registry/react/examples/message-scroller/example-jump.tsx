@@ -3,12 +3,15 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
 import {
   Message,
   MessageAvatar,
   MessageContent,
 } from "@/registry/react/components/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/registry/react/components/message-bubble";
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -39,12 +42,12 @@ const Example = () => (
                   </MessageAvatar>
                 )}
                 <MessageContent>
-                  <Bubble
+                  <MessageBubble
                     align={isYou ? "end" : "start"}
-                    variant={isYou ? "secondary" : "muted"}
+                    variant="secondary"
                   >
-                    <BubbleContent>{text}</BubbleContent>
-                  </Bubble>
+                    <MessageBubbleContent>{text}</MessageBubbleContent>
+                  </MessageBubble>
                 </MessageContent>
               </Message>
             </MessageScrollerItem>

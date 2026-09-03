@@ -1,17 +1,14 @@
 "use client";
 
 import { FilePenLineIcon } from "lucide-react";
-import { type SubmitEvent, useState } from "react";
+import type { SubmitEvent } from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
   ApprovalCardContent,
-  ApprovalCardDescription,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
 import {
@@ -22,29 +19,31 @@ import {
   DiffLine,
   DiffStats,
 } from "@/registry/react/components/diff";
+import { toast } from "@/registry/react/components/toast";
 
-const ApprovalCardFileEditDemo = () => {
-  const [result, setResult] = useState("");
+const Example = () => {
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setResult("Approved this patch to pagination.ts only.");
+    toast.create({
+      description: "Approved this patch to pagination.ts only.",
+      title: "Patch approved",
+      type: "success",
+    });
   };
-  const handleReject = () =>
-    setResult("Patch rejected. Keep the current file.");
+  const handleReject = () => {
+    toast.create({
+      description: "The current file will remain unchanged.",
+      title: "Patch rejected",
+      type: "info",
+    });
+  };
 
   return (
-    <div className="flex w-full max-w-lg flex-col gap-3">
+    <div className="w-full max-w-lg">
       <ApprovalCard onReject={handleReject} onSubmit={handleSubmit}>
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <FilePenLineIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <div className="flex min-w-0 flex-col gap-1">
-            <ApprovalCardTitle>Apply this file change?</ApprovalCardTitle>
-            <ApprovalCardDescription>
-              Fix the first page skipping the first 20 orders.
-            </ApprovalCardDescription>
-          </div>
+          <FilePenLineIcon aria-hidden="true" />
+          <ApprovalCardTitle>Apply this file change?</ApprovalCardTitle>
         </ApprovalCardHeader>
         <ApprovalCardContent>
           <Diff>
@@ -68,17 +67,12 @@ const ApprovalCardFileEditDemo = () => {
           </Diff>
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <ApprovalCardActions>
-            <ApprovalCardReject>Keep file</ApprovalCardReject>
-            <ApprovalCardApprove>Apply patch</ApprovalCardApprove>
-          </ApprovalCardActions>
+          <ApprovalCardReject>Keep file</ApprovalCardReject>
+          <ApprovalCardSubmit>Apply patch</ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      <p aria-live="polite" className="text-muted-foreground text-sm">
-        {result}
-      </p>
     </div>
   );
 };
 
-export default ApprovalCardFileEditDemo;
+export default Example;

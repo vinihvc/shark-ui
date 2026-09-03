@@ -3,48 +3,80 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
 import {
   Message,
   MessageAvatar,
   MessageContent,
 } from "@/registry/react/components/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+  MessageBubbleGroup,
+  MessageBubbleReactions,
+} from "@/registry/react/components/message-bubble";
 
 const Example = () => (
-  <div className="flex w-full max-w-md flex-col gap-2">
+  <div className="flex w-full max-w-sm flex-col gap-6">
     <Message>
       <MessageAvatar>
         <Avatar size="sm">
-          <AvatarImage alt="R" src="https://github.com/shadcn.png" />
-          <AvatarFallback>R</AvatarFallback>
+          <AvatarImage
+            alt="@segunadebayo"
+            src="https://github.com/segunadebayo.png"
+          />
+          <AvatarFallback>SA</AvatarFallback>
         </Avatar>
       </MessageAvatar>
       <MessageContent>
-        <Bubble>
-          <BubbleContent>
+        <MessageBubble variant="secondary">
+          <MessageBubbleContent>
             The build failed during dependency installation.
-          </BubbleContent>
-        </Bubble>
-      </MessageContent>
-    </Message>
-    <Message>
-      <MessageAvatar>
-        <Avatar size="sm">
-          <AvatarImage alt="R" src="https://github.com/shadcn.png" />
-          <AvatarFallback>R</AvatarFallback>
-        </Avatar>
-      </MessageAvatar>
-      <MessageContent>
-        <Bubble>
-          <BubbleContent>Can you share the exact error?</BubbleContent>
-        </Bubble>
+          </MessageBubbleContent>
+        </MessageBubble>
       </MessageContent>
     </Message>
     <Message align="end">
+      <MessageAvatar>
+        <Avatar size="sm">
+          <AvatarImage alt="@vinihvc" src="https://github.com/vinihvc.png" />
+          <AvatarFallback>VV</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
       <MessageContent>
-        <Bubble align="end" variant="secondary">
-          <BubbleContent>Here's the error from the logs</BubbleContent>
-        </Bubble>
+        <MessageBubble align="end">
+          <MessageBubbleContent>
+            Can you share the exact error?
+          </MessageBubbleContent>
+        </MessageBubble>
+      </MessageContent>
+    </Message>
+    <Message>
+      <MessageAvatar>
+        <Avatar size="sm">
+          <AvatarImage
+            alt="@segunadebayo"
+            src="https://github.com/segunadebayo.png"
+          />
+          <AvatarFallback>SA</AvatarFallback>
+        </Avatar>
+      </MessageAvatar>
+      <MessageContent>
+        <MessageBubbleGroup>
+          <MessageBubble variant="secondary">
+            <MessageBubbleContent>
+              Here's the error from the logs
+            </MessageBubbleContent>
+            <MessageBubbleReactions>
+              <span>👀</span>
+            </MessageBubbleReactions>
+          </MessageBubble>
+          <MessageBubble variant="secondary">
+            <MessageBubbleContent>
+              Something went wrong with the build. The libraries are not
+              installed correctly. Try running the build again.
+            </MessageBubbleContent>
+          </MessageBubble>
+        </MessageBubbleGroup>
       </MessageContent>
     </Message>
   </div>

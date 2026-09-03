@@ -26,7 +26,7 @@ npx shadcn@latest add @shark/attachment
 
 <Steps>
 
-<Step>This component depends on [Button](/docs/components/button). Install it first if you haven't already.</Step>
+<Step>This component depends on [Button](/docs/components/button), [File Thumbnail](/docs/components/file-thumbnail), [Icon Tile](/docs/components/icon-tile), [Scroll Area](/docs/components/scroll-area), and [Shimmer](/docs/utilities/shimmer). Install them first if you haven't already.</Step>
 
 <Step>Install the following dependencies:</Step>
 
@@ -82,49 +82,91 @@ import {
 </Attachment>
 ```
 
-`uploading` and `processing` apply the `shimmer` utility to the title. Pair `AttachmentTrigger` with `asChild` when the whole card should open a dialog or link.
+## Types
 
-## Image
+Use the `variant` to switch between the different types of attachments.
 
-Set `variant="image"` on `AttachmentMedia` and render an image inside it. Use `orientation="vertical"` to stack the media above the content.
+### Icon
 
-<ComponentPreview componentName="attachment" fileName="example-image" />
+<ComponentPreview componentName="attachment" fileName="example-type-icon" />
+
+### File
+
+<ComponentPreview componentName="attachment" fileName="example-type-file" />
+
+### Image
+
+<ComponentPreview componentName="attachment" fileName="example-type-image" />
 
 ## States
 
-Set `state` to reflect the upload lifecycle. `uploading` and `processing` shimmer the title, and `error` switches to a destructive treatment.
+Set `state` to reflect the upload lifecycle.
 
-<ComponentPreview componentName="attachment" fileName="example-states" />
+### Idle
+
+<ComponentPreview componentName="attachment" fileName="example-state-idle" />
+
+### Uploading
+
+<ComponentPreview componentName="attachment" fileName="example-state-uploading" />
+
+### Processing
+
+<ComponentPreview componentName="attachment" fileName="example-state-processing" />
+
+### Error
+
+<ComponentPreview componentName="attachment" fileName="example-state-error" />
+
+### Done
+
+<ComponentPreview componentName="attachment" fileName="example-state-done" />
 
 ## Sizes
 
-Use `size` to switch between `default`, `sm`, and `xs`.
+Use `size` to switch between the different sizes of attachments.
 
-<ComponentPreview componentName="attachment" fileName="example-sizes" />
+### Large
 
-## Group
+<ComponentPreview componentName="attachment" fileName="example-size-lg" />
 
-Wrap attachments in `AttachmentGroup` to lay them out in a horizontally scrollable, snapping row.
+### Medium
+
+<ComponentPreview componentName="attachment" fileName="example-size-default" />
+
+### Small
+
+<ComponentPreview componentName="attachment" fileName="example-size-sm" />
+
+### Extra small
+
+<ComponentPreview componentName="attachment" fileName="example-size-xs" />
+
+## Orientation
+
+Use `orientation` to switch between the different orientations of attachments.
+
+### Horizontal
+
+<ComponentPreview componentName="attachment" fileName="example-orientation-horizontal" />
+
+### Vertical
+
+<ComponentPreview componentName="attachment" fileName="example-orientation-vertical" />
+
+# Examples
+
+### Actions
+
+<ComponentPreview componentName="attachment" fileName="example-actions" />
+
+### Group
 
 <ComponentPreview componentName="attachment" fileName="example-group" />
 
-## Trigger
-
-Add an `AttachmentTrigger` to make the whole card open a link or dialog. It fills the card behind the actions, so the actions stay clickable.
+### Trigger
 
 <ComponentPreview componentName="attachment" fileName="example-trigger" />
-
-```tsx
-<Dialog>
-  <Attachment>
-    {/* media, content, actions */}
-    <DialogTrigger asChild>
-      <AttachmentTrigger aria-label="Preview research-summary.pdf" />
-    </DialogTrigger>
-  </Attachment>
-  <DialogContent>{/* ... */}</DialogContent>
-</Dialog>
-```
 
 ## API Reference
 
@@ -144,7 +186,7 @@ File or image card. Sets state, size, and orientation for child parts.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `state` | `"idle" \| "uploading" \| "processing" \| "error" \| "done"` | `"done"` |
-| `size` | `"default" \| "sm" \| "xs"` | `"default"` |
+| `size` | `"lg" \| "md" \| "sm" \| "xs"` | `"md"` |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
@@ -164,7 +206,8 @@ Thumbnail or icon slot.
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `variant` | `"icon" \| "image"` | `"icon"` |
+| `variant` | `"icon" \| "file" \| "image"` | `"icon"` |
+| `format` | `string` | `-` |
 | `className` | `string` | `-` |
 | `asChild` | `boolean` | `false` |
 
@@ -206,7 +249,7 @@ Container for action buttons.
 
 ### AttachmentAction
 
-Icon button on the card. Built on [Button](/docs/components/button).
+Icon button on the card.
 
 | Prop | Type | Default |
 | --- | --- | --- |

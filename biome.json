@@ -12,7 +12,8 @@
       },
       "performance": {
         "noBarrelFile": "off",
-        "noImgElement": "off"
+        "noImgElement": "off",
+        "noJsxPropsBind": "off"
       },
       "suspicious": {
         "noDuplicateCustomProperties": "off"

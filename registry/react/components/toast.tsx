@@ -28,7 +28,10 @@ export const toast = createToaster({
   placement: "bottom-end",
 });
 
-type ToasterProps = Omit<React.ComponentProps<"div">, "children"> & {
+type ToasterProps = Omit<
+  React.ComponentProps<typeof ArkToaster>,
+  "children"
+> & {
   /**
    * Toaster instance
    */
@@ -36,7 +39,7 @@ type ToasterProps = Omit<React.ComponentProps<"div">, "children"> & {
 };
 
 export const Toaster = (props: ToasterProps) => {
-  const { toaster: toasterInstance = toast, className, style } = props;
+  const { toaster: toasterInstance = toast, className, style, ...rest } = props;
 
   return (
     <Portal>
@@ -51,6 +54,7 @@ export const Toaster = (props: ToasterProps) => {
         toaster={
           toasterInstance as React.ComponentProps<typeof ArkToaster>["toaster"]
         }
+        {...rest}
       >
         {(toastItem) => <ToastItem toast={toastItem} />}
       </ArkToaster>

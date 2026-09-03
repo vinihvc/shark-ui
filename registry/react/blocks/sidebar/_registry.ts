@@ -24,6 +24,7 @@ export const sidebarBlocks = [
     name: "sidebar-01",
     preview: () => import("./sidebar-01/page"),
     registryDependencies: [
+      absoluteUrl("/r/icon-tile.json"),
       absoluteUrl("/r/separator.json"),
       absoluteUrl("/r/sidebar.json"),
     ],
@@ -81,6 +82,7 @@ export const sidebarBlocks = [
     name: "sidebar-07",
     preview: () => import("./sidebar-07/page"),
     registryDependencies: [
+      absoluteUrl("/r/icon-tile.json"),
       absoluteUrl("/r/separator.json"),
       absoluteUrl("/r/sidebar.json"),
     ],
@@ -109,7 +111,10 @@ export const sidebarBlocks = [
     meta: { featured: false, order: 4, previewHeight: 760 },
     name: "sidebar-14",
     preview: () => import("./sidebar-14/page"),
-    registryDependencies: [absoluteUrl("/r/sidebar.json")],
+    registryDependencies: [
+      absoluteUrl("/r/icon-tile.json"),
+      absoluteUrl("/r/sidebar.json"),
+    ],
     title: "Sidebar 14",
     type: "registry:block",
   },

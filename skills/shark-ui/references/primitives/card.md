@@ -14,7 +14,7 @@ npx shadcn@latest add @shark/card
 Manual deps from docs:
 
 ```bash
-npm install @ark-ui/react
+npm install @ark-ui/react tailwind-variants
 ```
 
 ## Canonical imports
@@ -94,7 +94,7 @@ Card with `CardMedia` via the `variant` prop (`icon`|`image`|`default`):
 
 Use `[--space:--spacing("value")]` on `<Card />` to adjust internal spacing.
 
-Default spacing is `--spacing(4)`.
+Default spacing is `--spacing(6)`.
 
 ```tsx
 <Card className="[--space:--spacing(8)]">
@@ -115,4 +115,5 @@ Keep `CardHeader`, `CardContent`, and `CardFooter` as direct children of `Card` 
 - [`example-custom-spacing.tsx`](/registry/react/examples/card/example-custom-spacing.tsx)
 - [`example-default.tsx`](/registry/react/examples/card/example-default.tsx)
 - [`example-icon.tsx`](/registry/react/examples/card/example-icon.tsx)
+- [`example-media-default.tsx`](/registry/react/examples/card/example-media-default.tsx)
 - [`example-product.tsx`](/registry/react/examples/card/example-product.tsx)

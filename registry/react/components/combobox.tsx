@@ -37,6 +37,9 @@ export const Combobox: ArkCombobox.RootComponent = (props) => {
       data-slot="combobox"
       lazyMount={lazyMount}
       openOnClick={openOnClick}
+      scrollToIndexFn={({ getElement }) =>
+        getElement()?.scrollIntoView({ block: "nearest" })
+      }
       unmountOnExit={unmountOnExit}
       {...rest}
     />
@@ -162,6 +165,26 @@ export const ComboboxPositioner = (
   props: React.ComponentProps<typeof ArkCombobox.Positioner>
 ) => <ArkCombobox.Positioner data-slot="combobox-positioner" {...props} />;
 
+export const comboboxContentVariants = tv({
+  base: [
+    "relative z-50",
+    "origin-(--transform-origin)",
+    "flex min-h-0 flex-col overflow-hidden",
+    "bg-popover",
+    "text-popover-foreground",
+    "rounded-xl border shadow-lg/5",
+    "outline-none",
+    "data-[state=closed]:animate-out data-[state=open]:animate-in",
+    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+    "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
+    "data-[placement=top]:slide-in-from-bottom-2",
+    "data-[placement=bottom]:slide-in-from-top-2",
+    "data-[placement=right]:slide-in-from-start-2",
+    "data-[placement=left]:slide-in-from-end-2",
+    "motion-reduce:animate-none!",
+  ],
+});
+
 export const ComboboxContent = (
   props: React.ComponentProps<typeof ArkCombobox.Content>
 ) => {
@@ -172,28 +195,14 @@ export const ComboboxContent = (
       <ComboboxPositioner>
         <ArkCombobox.Content
           className={cn(
-            "relative z-50",
-            "max-h-96 min-w-48",
-            "origin-(--transform-origin)",
-            "flex min-h-0 flex-col overflow-hidden p-0",
-            "bg-popover",
-            "text-popover-foreground",
-            "rounded-xl border shadow-lg/5",
-            "outline-none",
-            "data-[state=closed]:animate-out data-[state=open]:animate-in",
-            "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-            "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
-            "data-[placement=top]:slide-in-from-bottom-2",
-            "data-[placement=bottom]:slide-in-from-top-2",
-            "data-[placement=right]:slide-in-from-start-2",
-            "data-[placement=left]:slide-in-from-end-2",
-            "motion-reduce:animate-none!",
+            comboboxContentVariants(),
+            "max-h-96 min-w-48 p-0",
             className
           )}
           data-slot="combobox-content"
           {...rest}
         >
-          <ScrollArea className="min-h-0 flex-1">
+          <ScrollArea className="min-h-0 flex-1" scrollFade>
             <div className="p-1" data-slot="combobox-scroll">
               {children}
             </div>

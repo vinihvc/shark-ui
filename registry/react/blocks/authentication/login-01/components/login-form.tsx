@@ -1,7 +1,7 @@
 "use client";
 
 import { KeyRoundIcon } from "lucide-react";
-import { useCallback } from "react";
+import React from "react";
 import { Button } from "@/registry/react/components/button";
 import {
   Card,
@@ -20,8 +20,8 @@ import {
 import { Input } from "@/registry/react/components/input";
 
 export const LoginForm = () => {
-  const handleSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => event.preventDefault(),
+  const handleSubmit = React.useCallback(
+    (event: React.SubmitEvent<HTMLFormElement>) => event.preventDefault(),
     []
   );
 

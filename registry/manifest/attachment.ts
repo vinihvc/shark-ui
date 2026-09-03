@@ -10,6 +10,9 @@ const manifest: RegistryItemType = {
   name: "attachment",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/file-thumbnail.json"),
+    absoluteUrl("/r/icon-tile.json"),
+    absoluteUrl("/r/scroll-area.json"),
     absoluteUrl("/r/shimmer.json"),
   ],
   type: "registry:ui",

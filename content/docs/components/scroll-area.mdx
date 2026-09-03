@@ -63,9 +63,15 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 ### Scroll Fade
 
-Use `scrollFade` to add a subtle fade effect to the edges of the scroll area. Ark also sets `--scroll-area-overflow-{x,y}-{start,end}` on the root if you want to drive a custom fade from those variables.
+Use `scrollFade` to fade the edges of the scroll area. The fade only appears on an axis that overflows, and only on the side you can still scroll toward — it hides at the top when you are already at the top, at the bottom when you cannot scroll further, and the same for left and right on horizontal overflow.
 
 <ComponentPreview componentName="scroll-area" fileName="example-scroll-fade" />
+
+### Scrollbar Gutter
+
+Use `scrollbarGutter` to reserve padding when content overflows, so the overlay scrollbar does not cover trailing content.
+
+<ComponentPreview componentName="scroll-area" fileName="example-scrollbar-gutter" />
 
 ### Horizontal Scroll
 
@@ -90,6 +96,8 @@ Custom-styled scrollable region. Hides native scrollbars; preserves scroll behav
 | Prop | Type | Default | 
 | --- | --- | --- | 
 | scrollFade | `boolean` | `false` | 
+| scrollbarGutter | `boolean` | `false` | 
+| orientation | `"both" \| "horizontal" \| "vertical"` | `"both"` |
 
 | Attribute | Default |
 | --- | --- |

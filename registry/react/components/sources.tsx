@@ -1,5 +1,6 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
 import { ArrowUpRightIcon, BookIcon } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
@@ -70,7 +71,7 @@ export const SourcesContent = (
   );
 };
 
-interface SourceProps extends React.ComponentProps<"a"> {
+interface SourceProps extends React.ComponentProps<typeof ark.a> {
   /**
    * The title of the source.
    */
@@ -81,7 +82,7 @@ export const Source = (props: SourceProps) => {
   const { href, title, className, children, ...rest } = props;
 
   return (
-    <a
+    <ark.a
       className={cn(
         "inline-flex min-w-0 items-center gap-2",
         "px-2 py-1.5",
@@ -102,23 +103,32 @@ export const Source = (props: SourceProps) => {
         aria-hidden="true"
         className="size-3 shrink-0 opacity-64"
       />
-    </a>
+    </ark.a>
   );
 };
 
-interface InlineCitationProps extends React.ComponentProps<"button"> {
+interface InlineCitationProps extends React.ComponentProps<typeof ark.button> {
+  /**
+   * The href of the citation.
+   */
   href?: string;
+  /**
+   * The index of the citation.
+   */
   index?: number;
+  /**
+   * The title of the citation.
+   */
   title?: string;
 }
 
 export const InlineCitation = (props: InlineCitationProps) => {
-  const { children, className, href, index, title, ...rest } = props;
+  const { href, index, title, className, children, ...rest } = props;
 
   const label = index === undefined ? "Source" : String(index);
 
   const trigger = (
-    <button
+    <ark.button
       className={cn(
         "size-4",
         "inline-flex items-center justify-center",
@@ -135,7 +145,7 @@ export const InlineCitation = (props: InlineCitationProps) => {
       {...rest}
     >
       {children ?? label}
-    </button>
+    </ark.button>
   );
 
   if (!(title || href)) {

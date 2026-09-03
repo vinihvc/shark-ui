@@ -1,63 +1,89 @@
 "use client";
 
 import { TerminalIcon } from "lucide-react";
-import { type SubmitEvent, useState } from "react";
+import type React from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
   ApprovalCardContent,
-  ApprovalCardDescription,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
   ApprovalCardReject,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
+import {
+  DataList,
+  DataListItem,
+  DataListItemLabel,
+  DataListItemValue,
+} from "@/registry/react/components/data-list";
+import {
+  Terminal,
+  TerminalContent,
+  TerminalHeader,
+} from "@/registry/react/components/terminal";
+import { toast } from "@/registry/react/components/toast";
 
-const ApprovalCardCommandDemo = () => {
-  const [result, setResult] = useState<string>();
-  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+const Example = () => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setResult("Approved the staging migration only.");
+
+    toast.create({
+      description: "Approved the staging migration only.",
+      title: "Migration approved",
+      type: "success",
+    });
   };
-  const handleReject = () =>
-    setResult("Migration rejected. No database changes authorized.");
+
+  const handleReject = () => {
+    toast.create({
+      description: "No database changes were authorized.",
+      title: "Migration denied",
+      type: "info",
+    });
+  };
+
   return (
-    <div className="flex w-full max-w-md flex-col gap-3">
+    <div className="w-full max-w-lg">
       <ApprovalCard onReject={handleReject} onSubmit={handleSubmit}>
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <TerminalIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <div className="flex min-w-0 flex-col gap-1">
-            <ApprovalCardTitle>Apply the staging migration?</ApprovalCardTitle>
-            <ApprovalCardDescription>
-              Add the order export jobs table before verifying the new feature.
-            </ApprovalCardDescription>
-          </div>
+          <TerminalIcon aria-hidden="true" />
+          <ApprovalCardTitle>Apply the staging migration?</ApprovalCardTitle>
         </ApprovalCardHeader>
-        <ApprovalCardContent className="flex flex-col gap-3">
-          <pre className="overflow-x-auto rounded-lg border bg-muted/40 px-3 py-2 font-mono text-xs">
-            <code>pnpm db:migrate --env staging</code>
-          </pre>
-          <p className="text-muted-foreground text-xs">
-            Working directory: ~/projects/storefront. This changes the staging
-            database schema. Production is not targeted.
-          </p>
+        <ApprovalCardContent className="flex flex-col gap-4">
+          <Terminal className="rounded-lg bg-muted/30" output={command}>
+            <TerminalHeader>storefront · zsh</TerminalHeader>
+            <TerminalContent />
+          </Terminal>
+          <DataList>
+            {facts.map((item) => (
+              <DataListItem className="py-1.5" key={item.label}>
+                <DataListItemLabel>{item.label}</DataListItemLabel>
+                <DataListItemValue className="font-mono text-xs">
+                  {item.value}
+                </DataListItemValue>
+              </DataListItem>
+            ))}
+          </DataList>
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <ApprovalCardActions>
-            <ApprovalCardReject>Reject</ApprovalCardReject>
-            <ApprovalCardApprove>Run migration</ApprovalCardApprove>
-          </ApprovalCardActions>
+          <ApprovalCardReject>Reject</ApprovalCardReject>
+          <ApprovalCardSubmit>Run migration</ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      <p aria-live="polite" className="text-muted-foreground text-sm">
-        {result}
-      </p>
     </div>
   );
 };
 
-export default ApprovalCardCommandDemo;
+const command = [
+  "\u001B[90m~/projects/storefront\u001B[0m",
+  "$ pnpm db:migrate --env staging",
+].join("\n");
+
+const facts = [
+  { label: "Directory", value: "~/projects/storefront" },
+  { label: "Environment", value: "staging" },
+  { label: "Effect", value: "Schema only · production untouched" },
+] as const;
+
+export default Example;

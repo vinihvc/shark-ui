@@ -6,6 +6,7 @@ const manifest: RegistryItemType = {
   name: "approval-card",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
+    absoluteUrl("/r/card.json"),
     absoluteUrl("/r/questionnaire.json"),
   ],
   type: "registry:ui",

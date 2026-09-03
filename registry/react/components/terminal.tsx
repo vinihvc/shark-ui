@@ -1,6 +1,7 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
+import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -13,9 +14,9 @@ interface TerminalContextValue {
   output: string;
 }
 
-const TerminalContext = React.createContext<TerminalContextValue>({
-  autoScroll: true,
-  output: "",
+const [TerminalProvider, _useTerminal] = createContext<TerminalContextValue>({
+  name: "TerminalContext",
+  providerName: "Terminal",
 });
 
 interface TerminalProps extends React.ComponentProps<typeof ark.div> {
@@ -41,7 +42,7 @@ export const Terminal = (props: TerminalProps) => {
   );
 
   return (
-    <TerminalContext.Provider value={value}>
+    <TerminalProvider value={value}>
       <ark.div
         className={cn(
           "w-full min-w-0",
@@ -55,7 +56,7 @@ export const Terminal = (props: TerminalProps) => {
         data-slot="terminal"
         {...rest}
       />
-    </TerminalContext.Provider>
+    </TerminalProvider>
   );
 };
 
@@ -111,7 +112,7 @@ export const TerminalAction = (props: React.ComponentProps<typeof ark.div>) => {
   );
 };
 
-interface TerminalContentProps extends React.ComponentProps<"div"> {
+interface TerminalContentProps extends React.ComponentProps<typeof ark.div> {
   /**
    * The output of the terminal. Falls back to `output` on `Terminal`.
    */
@@ -127,7 +128,7 @@ export const TerminalContent = (props: TerminalContentProps) => {
   const tokens = parseAnsi(output);
 
   return (
-    <div
+    <ark.div
       className={cn(
         "min-h-0 w-full min-w-0",
         "flex flex-1 flex-col",
@@ -148,7 +149,7 @@ export const TerminalContent = (props: TerminalContentProps) => {
             ))}
         </pre>
       </ScrollArea>
-    </div>
+    </ark.div>
   );
 };
 
@@ -213,5 +214,3 @@ export const toPlainOutput = (value: string): string =>
   parseAnsi(value)
     .map((token) => token.text)
     .join("");
-
-const _useTerminal = () => React.useContext(TerminalContext);

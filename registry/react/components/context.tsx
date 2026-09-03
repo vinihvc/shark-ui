@@ -1,201 +1,260 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
+import { createContext } from "@ark-ui/react/utils";
+import { XIcon } from "lucide-react";
 import type React from "react";
-import { createContext, useContext } from "react";
+import type { VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/registry/react/components/hover-card";
+  Button,
+  type buttonVariants,
+} from "@/registry/react/components/button";
+import { CircularProgress } from "@/registry/react/components/circular-progress";
+import { FormatNumber } from "@/registry/react/components/format";
+import {
+  Popover,
+  PopoverBody,
+  PopoverClose,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/registry/react/components/popover";
 import { Progress } from "@/registry/react/components/progress";
-
-export interface ContextUsage {
-  cache?: number;
-  input?: number;
-  output?: number;
-  reasoning?: number;
-}
 
 interface ContextValue {
   costLabel?: string;
   maxTokens: number;
-  usage?: ContextUsage;
   usedTokens: number;
 }
 
-const ContextValueContext = createContext<ContextValue | null>(null);
+const [ContextValueProvider, _useContextValue] = createContext<ContextValue>({
+  name: "ContextValueContext",
+  providerName: "Context",
+});
 
-const useContextValue = () => {
-  const value = useContext(ContextValueContext);
-  if (!value) {
-    throw new Error("Context components must be used within Context");
-  }
-  return value;
-};
-
-const formatCompact = (value: number) =>
-  new Intl.NumberFormat("en-US", { notation: "compact" }).format(value);
-
-const formatPercent = (value: number) =>
-  new Intl.NumberFormat("en-US", {
-    maximumFractionDigits: 1,
-    style: "percent",
-  }).format(value);
-
-interface ContextProps extends React.ComponentProps<typeof HoverCard> {
+interface ContextProps extends React.ComponentProps<typeof Popover> {
   costLabel?: string;
   maxTokens: number;
-  usage?: ContextUsage;
   usedTokens: number;
 }
 
 export const Context = (props: ContextProps) => {
-  const { children, costLabel, maxTokens, usage, usedTokens, ...rest } = props;
+  const { costLabel, maxTokens, usedTokens, modal = false, ...rest } = props;
 
   return (
-    <ContextValueContext.Provider
-      value={{ costLabel, maxTokens, usage, usedTokens }}
-    >
-      <HoverCard
+    <ContextValueProvider value={{ costLabel, maxTokens, usedTokens }}>
+      <Popover
         data-slot="context"
+        modal={modal}
         positioning={{ placement: "top" }}
         {...rest}
-      >
-        {children}
-      </HoverCard>
-    </ContextValueContext.Provider>
+      />
+    </ContextValueProvider>
   );
 };
 
-const ContextIcon = ({ className }: { className?: string }) => {
-  const { maxTokens, usedTokens } = useContextValue();
-  const radius = 10;
-  const circumference = 2 * Math.PI * radius;
+export const ContextIcon = ({ className }: { className?: string }) => {
+  const { maxTokens, usedTokens } = _useContextValue();
+
   const usedPercent = maxTokens > 0 ? usedTokens / maxTokens : 0;
-  const dashOffset =
-    circumference * (1 - Math.min(Math.max(usedPercent, 0), 1));
 
   return (
-    <svg
+    <CircularProgress
       aria-hidden="true"
       className={cn("size-4 shrink-0", className)}
-      fill="none"
-      viewBox="0 0 24 24"
-    >
-      <circle
-        className="stroke-muted-foreground/24"
-        cx="12"
-        cy="12"
-        r={radius}
-        strokeWidth="2"
-      />
-      <circle
-        className="origin-center -rotate-90 stroke-foreground"
-        cx="12"
-        cy="12"
-        r={radius}
-        strokeDasharray={circumference}
-        strokeDashoffset={dashOffset}
-        strokeLinecap="round"
-        strokeWidth="2"
-      />
-    </svg>
+      size={16}
+      thickness={2}
+      value={usedPercent * 100}
+    />
   );
 };
 
-export const ContextTrigger = (
-  props: React.ComponentProps<typeof HoverCardTrigger>
-) => {
-  const { children, asChild, ...rest } = props;
-  const { maxTokens, usedTokens } = useContextValue();
+interface ContextButtonProps
+  extends React.ComponentProps<typeof PopoverTrigger>,
+    VariantProps<typeof buttonVariants> {}
+
+export const ContextTrigger = (props: ContextButtonProps) => {
+  const {
+    size = "sm",
+    variant = "ghost",
+    asChild: _,
+    children,
+    ...rest
+  } = props;
+
+  const { maxTokens, usedTokens } = _useContextValue();
+
   const usedPercent = maxTokens > 0 ? usedTokens / maxTokens : 0;
 
-  if (children) {
-    return (
-      <HoverCardTrigger asChild={asChild} data-slot="context-trigger" {...rest}>
-        {children}
-      </HoverCardTrigger>
-    );
-  }
+  const content = (
+    <>
+      <span>
+        <span className="sr-only">Context used </span>
+        <FormatNumber
+          maximumFractionDigits={1}
+          style="percent"
+          value={usedPercent}
+        />
+      </span>
+      <ContextIcon />
+    </>
+  );
 
   return (
-    <HoverCardTrigger asChild data-slot="context-trigger" {...rest}>
+    <PopoverTrigger asChild data-slot="context-trigger" {...rest}>
       <Button
-        aria-label={`Context used ${formatPercent(usedPercent)}`}
-        className="gap-1.5 font-normal text-muted-foreground"
-        size="sm"
-        type="button"
-        variant="ghost"
+        className="font-normal text-muted-foreground"
+        size={size}
+        variant={variant}
       >
-        <ContextIcon />
-        <span>{formatPercent(usedPercent)}</span>
+        {children ?? content}
       </Button>
-    </HoverCardTrigger>
+    </PopoverTrigger>
   );
 };
 
 export const ContextContent = (
-  props: React.ComponentProps<typeof HoverCardContent>
+  props: React.ComponentProps<typeof PopoverContent>
 ) => {
   const { className, ...rest } = props;
 
   return (
-    <HoverCardContent
-      className={cn("w-72 gap-0 p-0", className)}
+    <PopoverContent
+      className={cn("w-72 gap-0 p-0 [--space:--spacing(2)]", className)}
       data-slot="context-content"
       {...rest}
     />
   );
 };
 
-export const ContextHeader = (props: React.ComponentProps<"div">) => {
-  const { children, className, ...rest } = props;
-  const { maxTokens, usedTokens } = useContextValue();
-  const usedPercent = maxTokens > 0 ? usedTokens / maxTokens : 0;
+interface ContextHeaderProps
+  extends Omit<React.ComponentProps<typeof PopoverHeader>, "title"> {
+  /**
+   * The title of the context panel.
+   */
+  title?: string;
+}
+
+export const ContextHeader = (props: ContextHeaderProps) => {
+  const { title, className, children, ...rest } = props;
 
   return (
-    <div
-      className={cn("flex flex-col gap-2 border-b p-3", className)}
+    <PopoverHeader
+      className={cn("flex flex-col gap-2 border-b", className)}
       data-slot="context-header"
       {...rest}
     >
-      {children ?? (
-        <>
-          <div className="flex items-center justify-between gap-2 text-xs">
-            <span className="font-medium">{formatPercent(usedPercent)}</span>
-            <span className="text-muted-foreground tabular-nums">
-              {formatCompact(usedTokens)} / {formatCompact(maxTokens)}
-            </span>
-          </div>
-          <Progress value={usedPercent * 100} />
-        </>
+      {!!title && <ContextTitle>{title}</ContextTitle>}
+      {!title && typeof children === "string" ? (
+        <ContextTitle>{children}</ContextTitle>
+      ) : (
+        children
       )}
-    </div>
+    </PopoverHeader>
   );
 };
 
-export const ContextBody = (props: React.ComponentProps<"div">) => {
+interface ContextTitleProps extends React.ComponentProps<typeof PopoverTitle> {
+  /**
+   * Show a close button beside the title.
+   *
+   * @default false
+   */
+  showCloseButton?: boolean;
+}
+
+export const ContextTitle = (props: ContextTitleProps) => {
+  const { className, showCloseButton = false, ...rest } = props;
+
+  return (
+    <ark.div
+      className="flex items-center justify-between gap-2"
+      data-slot="context-title"
+    >
+      <PopoverTitle
+        className={cn("font-normal text-muted-foreground text-xs", className)}
+        {...rest}
+      />
+
+      {!!showCloseButton && (
+        <PopoverClose asChild>
+          <Button
+            aria-label="Close"
+            className="text-muted-foreground hover:text-foreground"
+            pill
+            size="icon-xs"
+            type="button"
+            variant="ghost"
+          >
+            <XIcon aria-hidden="true" className="size-3.5" />
+          </Button>
+        </PopoverClose>
+      )}
+    </ark.div>
+  );
+};
+
+export const ContextMeter = (props: React.ComponentProps<typeof ark.div>) => {
+  const { className, ...rest } = props;
+
+  const { maxTokens, usedTokens } = _useContextValue();
+
+  const usedPercent = maxTokens > 0 ? usedTokens / maxTokens : 0;
+
+  return (
+    <ark.div
+      className={cn("flex flex-col gap-2", className)}
+      data-slot="context-meter"
+      {...rest}
+    >
+      <div className="flex items-center justify-between gap-2 text-xs">
+        <span className="font-medium text-muted-foreground">
+          <FormatNumber
+            maximumFractionDigits={1}
+            style="percent"
+            value={usedPercent}
+          />
+        </span>
+        <span className="text-muted-foreground tabular-nums">
+          <FormatNumber notation="compact" value={usedTokens} /> /{" "}
+          <FormatNumber notation="compact" value={maxTokens} />
+        </span>
+      </div>
+      <Progress value={usedPercent * 100} />
+    </ark.div>
+  );
+};
+
+export const ContextBody = (
+  props: React.ComponentProps<typeof PopoverBody>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <div
-      className={cn("flex flex-col gap-2 p-3", className)}
+    <PopoverBody
+      className={cn("flex flex-col gap-2", className)}
       data-slot="context-body"
       {...rest}
     />
   );
 };
 
-export const ContextFooter = (props: React.ComponentProps<"div">) => {
+export const ContextFooter = (
+  props: React.ComponentProps<typeof PopoverFooter>
+) => {
   const { children, className, ...rest } = props;
-  const { costLabel } = useContextValue();
+
+  const { costLabel } = _useContextValue();
 
   return (
-    <div
+    <PopoverFooter
       className={cn(
-        "flex items-center justify-between gap-2 border-t bg-muted/40 px-3 py-2 text-xs",
+        "flex-row items-center justify-between sm:justify-between",
+        "py-(--space)",
+        "text-xs",
         className
       )}
       data-slot="context-footer"
@@ -203,92 +262,43 @@ export const ContextFooter = (props: React.ComponentProps<"div">) => {
     >
       {children ?? (
         <>
-          <span className="text-muted-foreground">Total cost</span>
-          <span className="font-medium tabular-nums">{costLabel ?? "-"}</span>
+          <span className="text-foreground">Total cost</span>
+          <span className="font-medium text-muted-foreground tabular-nums">
+            {costLabel ?? "-"}
+          </span>
         </>
       )}
-    </div>
+    </PopoverFooter>
   );
 };
 
-interface ContextUsageRowProps extends React.ComponentProps<"div"> {
-  label: string;
-  tokens?: number;
+export interface ContextUsageRowProps
+  extends React.ComponentProps<typeof ark.div> {
+  /**
+   * The title of the usage row.
+   */
+  title: string;
+  /**
+   * The number of tokens for the row.
+   */
+  value: number;
 }
 
-const ContextUsageRow = (props: ContextUsageRowProps) => {
-  const { className, label, tokens, ...rest } = props;
-
-  if (tokens === undefined || tokens <= 0) {
-    return null;
-  }
+export const ContextUsageRow = (props: ContextUsageRowProps) => {
+  const { className, title, value, ...rest } = props;
 
   return (
-    <div
+    <ark.div
       className={cn(
         "flex items-center justify-between gap-2 text-xs",
         className
       )}
       {...rest}
     >
-      <span className="text-muted-foreground">{label}</span>
-      <span className="tabular-nums">{formatCompact(tokens)}</span>
-    </div>
-  );
-};
-
-export const ContextInputUsage = (
-  props: Omit<ContextUsageRowProps, "label" | "tokens">
-) => {
-  const { usage } = useContextValue();
-  return (
-    <ContextUsageRow
-      data-slot="context-input-usage"
-      label="Input"
-      tokens={usage?.input}
-      {...props}
-    />
-  );
-};
-
-export const ContextOutputUsage = (
-  props: Omit<ContextUsageRowProps, "label" | "tokens">
-) => {
-  const { usage } = useContextValue();
-  return (
-    <ContextUsageRow
-      data-slot="context-output-usage"
-      label="Output"
-      tokens={usage?.output}
-      {...props}
-    />
-  );
-};
-
-export const ContextReasoningUsage = (
-  props: Omit<ContextUsageRowProps, "label" | "tokens">
-) => {
-  const { usage } = useContextValue();
-  return (
-    <ContextUsageRow
-      data-slot="context-reasoning-usage"
-      label="Reasoning"
-      tokens={usage?.reasoning}
-      {...props}
-    />
-  );
-};
-
-export const ContextCacheUsage = (
-  props: Omit<ContextUsageRowProps, "label" | "tokens">
-) => {
-  const { usage } = useContextValue();
-  return (
-    <ContextUsageRow
-      data-slot="context-cache-usage"
-      label="Cache"
-      tokens={usage?.cache}
-      {...props}
-    />
+      <span className="text-foreground">{title}</span>
+      <span className="text-muted-foreground tabular-nums">
+        <FormatNumber notation="compact" value={value} />
+      </span>
+    </ark.div>
   );
 };

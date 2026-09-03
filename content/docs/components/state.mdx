@@ -1,0 +1,173 @@
+---
+title: State
+description: A composable layout for contextual screen states and next actions.
+---
+
+<ComponentPreview componentName="state" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+<TabsTrigger value="cli">CLI</TabsTrigger>
+<TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @shark/state
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @ark-ui/react tailwind-variants
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource title="components/ui/state.tsx" src="/state.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Anatomy
+
+```text
+State
+├── StateHeader
+│   ├── StateMedia
+│   ├── StateTitle
+│   └── StateDescription
+└── StateContent
+```
+
+## Usage
+
+The following composition also uses [Button](/docs/components/button) and Lucide icons. Install `@shark/button` and `lucide-react` before copying it.
+
+```tsx
+import { FolderCodeIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  State,
+  StateContent,
+  StateDescription,
+  StateHeader,
+  StateMedia,
+  StateTitle,
+} from "@/components/ui/state";
+```
+
+```tsx
+<State>
+  <StateHeader>
+    <StateMedia variant="icon">
+      <FolderCodeIcon aria-hidden="true" />
+    </StateMedia>
+    <StateTitle asChild>
+      <h2>No projects yet</h2>
+    </StateTitle>
+    <StateDescription>Create a project to get started.</StateDescription>
+  </StateHeader>
+  <StateContent>
+    <Button>Create project</Button>
+  </StateContent>
+</State>
+```
+
+## Examples
+
+### Icon
+
+<ComponentPreview componentName="state" fileName="example-icon" />
+
+### Outline
+
+<ComponentPreview componentName="state" fileName="example-outline" />
+
+### Background
+
+<ComponentPreview componentName="state" fileName="example-background" />
+
+### Avatar
+
+<ComponentPreview componentName="state" fileName="example-avatar" />
+
+### Avatar Group
+
+<ComponentPreview componentName="state" fileName="example-avatar-group" />
+
+### Input Group
+
+<ComponentPreview componentName="state" fileName="example-input-group" />
+
+## API Reference
+
+### State
+
+The root layout for a contextual screen state. Wraps `StateHeader` and `StateContent`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### StateHeader
+
+Wraps the state media, title, and description.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### StateMedia
+
+Displays media such as an icon, image, avatar, or custom element.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "icon"` | `"default"` |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### StateTitle
+
+Displays the state title. Use `asChild` to supply the heading level appropriate to the page hierarchy.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### StateDescription
+
+Displays supporting state text.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |
+
+### StateContent
+
+Holds next actions or supporting content such as buttons, inputs, and links.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | - |
+| `asChild` | `boolean` | `false` |

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": [],
+  "description": "Connect a simulated chat to AI SDK or TanStack AI useChat.",
+  "name": "use-chat-simulator",
+  "registryDependencies": [
+    "https://shark.vini.one/r/chat-simulator.json"
+  ],
+  "type": "registry:item"
+}

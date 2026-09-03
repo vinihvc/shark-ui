@@ -25,6 +25,9 @@ export const Listbox: ArkListbox.RootComponent = (props) => {
         className
       )}
       data-slot="listbox"
+      scrollToIndexFn={({ getElement }) =>
+        getElement()?.scrollIntoView({ block: "nearest" })
+      }
       {...rest}
     />
   );
@@ -71,7 +74,7 @@ const listboxItemVariants = tv({
     "relative",
     "flex items-center gap-2",
     "px-2.5 py-2",
-    "rounded-xl",
+    "rounded-lg",
     "select-none text-sm",
     "cursor-pointer",
     "outline-hidden",

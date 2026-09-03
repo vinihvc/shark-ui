@@ -88,7 +88,7 @@ npx shadcn@latest add @shark/shimmer
   @variant dark {
     --_highlight: var(
       --shimmer-color,
-      oklch(from currentColor max(0.8, calc(l + 0.4)) c h / calc(alpha + 0.4))
+      oklch(from currentColor l c h / calc(alpha * 0.45))
     );
   }
 

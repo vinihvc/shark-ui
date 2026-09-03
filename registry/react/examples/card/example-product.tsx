@@ -8,13 +8,18 @@ import {
 
 const Example = () => (
   <div className="w-full max-w-xs">
-    <Card className="overflow-hidden">
+    <Card>
       <CardMedia className="h-32 bg-muted" variant="image">
-        {/* Image hoes here */}
+        <img
+          alt="Green mesh gradient"
+          height={128}
+          src="/images/gradients/green-dark.svg"
+          width={500}
+        />
       </CardMedia>
       <CardHeader
-        description="This sofa is perfect for modern tropical spaces, baroque inspired spaces."
-        title="Living room Sofa"
+        description="A limited abstract print with a deep teal wash on sage."
+        title="Studio print"
       />
 
       <CardFooter className="flex-row-reverse gap-2">

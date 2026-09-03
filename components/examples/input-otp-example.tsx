@@ -31,7 +31,6 @@ export const InputOTPExample = () => (
         <Button
           className="h-auto p-0 text-foreground underline hover:text-primary"
           tabIndex={-1}
-          type="button"
           variant="link"
         >
           Resend

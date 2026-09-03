@@ -29,7 +29,3 @@ yarn-error.log*
 next-env.d.ts
 # next-agents-md
 .next-docs/
-
-# Serwist
-public/sw.js
-public/sw.js.map

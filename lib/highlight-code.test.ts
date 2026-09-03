@@ -25,6 +25,30 @@ describe("packageManagerCommandVariants", () => {
     });
   });
 
+  it("maps every npx line in a multi-command block", () => {
+    const variants = packageManagerCommandVariants(
+      "npx shadcn@latest add @shark/chat-simulator\nnpx shadcn@latest add @shark/use-chat-simulator"
+    );
+    assert.deepEqual(variants, {
+      bun: "bunx --bun shadcn@latest add @shark/chat-simulator\nbunx --bun shadcn@latest add @shark/use-chat-simulator",
+      npm: "npx shadcn@latest add @shark/chat-simulator\nnpx shadcn@latest add @shark/use-chat-simulator",
+      pnpm: "pnpm dlx shadcn@latest add @shark/chat-simulator\npnpm dlx shadcn@latest add @shark/use-chat-simulator",
+      yarn: "yarn shadcn@latest add @shark/chat-simulator\nyarn shadcn@latest add @shark/use-chat-simulator",
+    });
+  });
+
+  it("maps npx followed by npm install to the selected package manager", () => {
+    const variants = packageManagerCommandVariants(
+      "npx shadcn@latest add @shark/chat-simulator && npm install ai @ai-sdk/react"
+    );
+    assert.deepEqual(variants, {
+      bun: "bunx --bun shadcn@latest add @shark/chat-simulator && bun add ai @ai-sdk/react",
+      npm: "npx shadcn@latest add @shark/chat-simulator && npm install ai @ai-sdk/react",
+      pnpm: "pnpm dlx shadcn@latest add @shark/chat-simulator && pnpm add ai @ai-sdk/react",
+      yarn: "yarn shadcn@latest add @shark/chat-simulator && yarn add ai @ai-sdk/react",
+    });
+  });
+
   it("maps npm install to add", () => {
     const variants = packageManagerCommandVariants("npm install next");
     assert.equal(variants?.yarn, "yarn add next");

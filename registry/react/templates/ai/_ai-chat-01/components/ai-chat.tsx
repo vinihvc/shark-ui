@@ -14,14 +14,12 @@ import { Button } from "@/registry/react/components/button";
 import {
   Context,
   ContextBody,
-  ContextCacheUsage,
   ContextContent,
   ContextFooter,
   ContextHeader,
-  ContextInputUsage,
-  ContextOutputUsage,
-  ContextReasoningUsage,
+  ContextMeter,
   ContextTrigger,
+  ContextUsageRow,
 } from "@/registry/react/components/context";
 import {
   Queue,
@@ -62,6 +60,13 @@ const MODEL_OPTIONS = [
   { group: "Agents", label: "Research", value: "agent-research" },
   { group: "Agents", label: "Coding", value: "agent-coding" },
 ] as const;
+
+const CONTEXT_USAGE = [
+  { title: "Input", value: 4200 },
+  { title: "Output", value: 860 },
+  { title: "Reasoning", value: 640 },
+  { title: "Cache", value: 1200 },
+];
 
 const conversations: readonly Conversation[] = [
   {
@@ -326,22 +331,17 @@ export const AIChat = () => {
                 <Context
                   costLabel="$0.042"
                   maxTokens={128_000}
-                  usage={{
-                    cache: 1200,
-                    input: 4200,
-                    output: 860,
-                    reasoning: 640,
-                  }}
                   usedTokens={usedTokens}
                 >
                   <ContextTrigger />
                   <ContextContent>
-                    <ContextHeader />
+                    <ContextHeader>
+                      <ContextMeter />
+                    </ContextHeader>
                     <ContextBody>
-                      <ContextInputUsage />
-                      <ContextOutputUsage />
-                      <ContextReasoningUsage />
-                      <ContextCacheUsage />
+                      {CONTEXT_USAGE.map((usage) => (
+                        <ContextUsageRow key={usage.title} {...usage} />
+                      ))}
                     </ContextBody>
                     <ContextFooter />
                   </ContextContent>
@@ -349,7 +349,6 @@ export const AIChat = () => {
                 <Button
                   aria-label="Conversation options"
                   size="icon-xs"
-                  type="button"
                   variant="ghost"
                 >
                   <EllipsisIcon aria-hidden="true" />

@@ -118,6 +118,18 @@ Control trigger size with the `size` prop on SelectTrigger.
 
 <ComponentPreview componentName="select" fileName="example-size-lg" />
 
+## Variants
+
+Control trigger appearance with the `variant` prop on SelectTrigger.
+
+### Default
+
+<ComponentPreview componentName="select" fileName="example-variant-default" />
+
+### Ghost
+
+<ComponentPreview componentName="select" fileName="example-variant-ghost" />
+
 ## States
 
 ### Disabled
@@ -162,6 +174,12 @@ Use `SelectEmpty` to display a message when the collection has no items.
 
 <ComponentPreview componentName="select" fileName="example-empty" />
 
+### Without trigger
+
+Hide the chevron with `showTrigger={false}`.
+
+<ComponentPreview componentName="select" fileName="example-without-trigger" />
+
 ## API Reference
 
 ### Select
@@ -193,7 +211,9 @@ Opens the dropdown on click. Displays the selected value or placeholder.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` |
+| `variant` | `"default" \| "ghost"` | `"default"` |
 | `showClear` | `boolean` | `false` |
+| `showTrigger` | `boolean` | `true` |
 | `className` | `string` | - |
 | `asChild` | `boolean` | - |
 

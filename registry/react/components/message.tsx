@@ -48,7 +48,9 @@ export const MessageAvatar = (props: React.ComponentProps<typeof ark.div>) => {
   return (
     <ark.div
       className={cn(
-        "flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted group-has-data-[slot=message-footer]/message:-translate-y-8",
+        "flex w-fit min-w-8 shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted",
+        "group-has-data-[slot=message-footer]/message:-translate-y-8",
+        "group-has-[[data-slot=message-bubble-reactions][data-side=bottom]]/message:-translate-y-5",
         className
       )}
       data-slot="message-avatar"
@@ -132,6 +134,7 @@ export const MessageAction = (props: MessageActionProps) => {
   } = props;
 
   const accessibleLabel = label ?? tooltip;
+
   const button = (
     <Button
       aria-label={accessibleLabel}
@@ -151,7 +154,7 @@ export const MessageAction = (props: MessageActionProps) => {
   }
 
   return (
-    <Tooltip>
+    <Tooltip positioning={{ placement: "bottom" }}>
       <TooltipTrigger asChild>{button}</TooltipTrigger>
       <TooltipContent>{tooltip}</TooltipContent>
     </Tooltip>

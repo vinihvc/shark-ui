@@ -1,9 +1,8 @@
 export const DOCS_NEW_ITEMS = [
   "/docs/ai-elements/approval-card",
   "/docs/ai-elements/attachment",
-  "/docs/ai-elements/bubble",
+  "/docs/ai-elements/message-bubble",
   "/docs/ai-elements/code-block",
-  "/docs/ai-elements/confirmation",
   "/docs/ai-elements/context",
   "/docs/ai-elements/diff",
   "/docs/ai-elements/marker",
@@ -29,6 +28,9 @@ export const DOCS_NEW_ITEMS = [
   "/docs/utilities/focus-trap",
   "/docs/utilities/hotkeys",
   "/docs/utilities/shimmer",
+  "/docs/components/icon-tile",
+  "/docs/components/state",
+  "/docs/utilities/chat-simulator",
 ];
 
 export const DOCS_UPDATED_ITEMS = [

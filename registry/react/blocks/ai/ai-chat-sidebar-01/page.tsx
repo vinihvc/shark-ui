@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import React from "react";
 import {
   SidebarInset,
   SidebarProvider,
@@ -21,24 +21,26 @@ const DEMO_CONVERSATIONS: readonly ConversationSummary[] = [
 ];
 
 const SidebarDemo = () => {
-  const [activeConversationId, setActiveConversationId] = useState<
+  const [activeConversationId, setActiveConversationId] = React.useState<
     string | null
   >("launch-plan");
-  const [activeView, setActiveView] = useState<"chat" | "projects">("chat");
+  const [activeView, setActiveView] = React.useState<"chat" | "projects">(
+    "chat"
+  );
 
-  const handleConversationSelect = useCallback((id: string) => {
+  const handleConversationSelect = React.useCallback((id: string) => {
     setActiveConversationId(id);
   }, []);
 
-  const handleNewChat = useCallback(() => {
+  const handleNewChat = React.useCallback(() => {
     setActiveConversationId(null);
   }, []);
 
-  const handleProjectsSelect = useCallback(() => {
+  const handleProjectsSelect = React.useCallback(() => {
     setActiveView("projects");
   }, []);
 
-  const handleViewChange = useCallback((view: "chat" | "projects") => {
+  const handleViewChange = React.useCallback((view: "chat" | "projects") => {
     setActiveView(view);
   }, []);
 

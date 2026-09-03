@@ -1,5 +1,6 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
 import {
   type Column,
   type ColumnDef,
@@ -27,12 +28,7 @@ import {
   EyeOffIcon,
   Settings2Icon,
 } from "lucide-react";
-import {
-  type ChangeEvent,
-  type ComponentProps,
-  type ReactNode,
-  useCallback,
-} from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
@@ -84,11 +80,11 @@ type DataTableOptions<TData extends RowData> = Omit<
 >;
 
 export interface DataTableProps<TData extends RowData>
-  extends Omit<ComponentProps<"div">, "children"> {
+  extends Omit<React.ComponentProps<typeof ark.div>, "children"> {
   /**
    * A concise description of the table for assistive technology.
    */
-  caption?: ReactNode;
+  caption?: React.ReactNode;
   /**
    * Column definitions typed for the included TanStack Table features.
    */
@@ -100,7 +96,7 @@ export interface DataTableProps<TData extends RowData>
   /**
    * Content displayed when no rows match the current table state.
    */
-  emptyMessage?: ReactNode;
+  emptyMessage?: React.ReactNode;
   /**
    * Additional TanStack Table options, excluding data, columns and features.
    */
@@ -128,7 +124,7 @@ export const DataTable = <TData extends RowData>(
   });
 
   return (
-    <div
+    <ark.div
       className={cn("overflow-hidden rounded-md border", className)}
       {...rest}
     >
@@ -174,12 +170,12 @@ export const DataTable = <TData extends RowData>(
           )}
         </TableBody>
       </Table>
-    </div>
+    </ark.div>
   );
 };
 
 interface DataTableColumnHeaderProps<TData extends RowData, TValue>
-  extends ComponentProps<"div"> {
+  extends React.ComponentProps<typeof ark.div> {
   /**
    * The column to render the header for.
    */
@@ -195,24 +191,12 @@ export const DataTableColumnHeader = <TData extends RowData, TValue>(
 ) => {
   const { className, column, title, ...rest } = props;
   const canSort = column.getCanSort();
-  const handleSortAscending = useCallback(
-    () => column.toggleSorting(false),
-    [column]
-  );
-  const handleSortDescending = useCallback(
-    () => column.toggleSorting(true),
-    [column]
-  );
-  const handleHide = useCallback(
-    () => column.toggleVisibility(false),
-    [column]
-  );
 
   if (!canSort) {
     return (
-      <div className={className} {...rest}>
+      <ark.div className={className} {...rest}>
         {title}
-      </div>
+      </ark.div>
     );
   }
 
@@ -227,7 +211,7 @@ export const DataTableColumnHeader = <TData extends RowData, TValue>(
   }
 
   return (
-    <div className={cn("flex items-center gap-2", className)} {...rest}>
+    <ark.div className={cn("flex items-center gap-2", className)} {...rest}>
       <Menu positioning={{ placement: "bottom-start" }}>
         <MenuTrigger asChild>
           <Button className="-ms-2" size="sm" variant="ghost">
@@ -237,18 +221,27 @@ export const DataTableColumnHeader = <TData extends RowData, TValue>(
         </MenuTrigger>
 
         <MenuContent>
-          <MenuItem onClick={handleSortAscending} value="sort-ascending">
+          <MenuItem
+            onClick={() => column.toggleSorting(false)}
+            value="sort-ascending"
+          >
             <ArrowUpIcon aria-hidden />
             Ascending
           </MenuItem>
-          <MenuItem onClick={handleSortDescending} value="sort-descending">
+          <MenuItem
+            onClick={() => column.toggleSorting(true)}
+            value="sort-descending"
+          >
             <ArrowDownIcon aria-hidden />
             Descending
           </MenuItem>
           {column.getCanHide() && (
             <>
               <MenuSeparator />
-              <MenuItem onClick={handleHide} value="hide">
+              <MenuItem
+                onClick={() => column.toggleVisibility(false)}
+                value="hide"
+              >
                 <EyeOffIcon aria-hidden />
                 Hide
               </MenuItem>
@@ -256,12 +249,12 @@ export const DataTableColumnHeader = <TData extends RowData, TValue>(
           )}
         </MenuContent>
       </Menu>
-    </div>
+    </ark.div>
   );
 };
 
 export interface DataTablePaginationProps<TData extends RowData>
-  extends ComponentProps<"div"> {
+  extends React.ComponentProps<typeof ark.div> {
   /**
    * The table instance to render the pagination for.
    */
@@ -276,21 +269,9 @@ export const DataTablePagination = <TData extends RowData>(
   const pageCount = table.getPageCount();
   const { pageIndex, pageSize } = table.state.pagination;
   const filteredRowCount = table.getFilteredRowModel().rows.length;
-  const handlePageSizeChange = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      table.setPageSize(Number(event.target.value));
-    },
-    [table]
-  );
-  const handlePageChange = useCallback(
-    (details: { page: number }) => {
-      table.setPageIndex(details.page - 1);
-    },
-    [table]
-  );
 
   return (
-    <div
+    <ark.div
       className={cn(
         "flex flex-wrap items-center justify-between gap-4 px-2",
         className
@@ -308,7 +289,9 @@ export const DataTablePagination = <TData extends RowData>(
           <span className="sr-only sm:not-sr-only">Rows per page</span>
           <NativeSelect
             aria-label="Rows per page"
-            onChange={handlePageSizeChange}
+            onChange={(event) => {
+              table.setPageSize(Number(event.target.value));
+            }}
             size="sm"
             value={pageSize}
           >
@@ -327,7 +310,9 @@ export const DataTablePagination = <TData extends RowData>(
         <Pagination
           className="mx-0 w-auto justify-start gap-1"
           count={filteredRowCount}
-          onPageChange={handlePageChange}
+          onPageChange={(details) => {
+            table.setPageIndex(details.page - 1);
+          }}
           page={pageIndex + 1}
           pageSize={pageSize}
         >
@@ -339,12 +324,15 @@ export const DataTablePagination = <TData extends RowData>(
           <PaginationNext size="icon-sm" variant="outline" withLabel={false} />
         </Pagination>
       </div>
-    </div>
+    </ark.div>
   );
 };
 
 export interface DataTableViewOptionsProps<TData extends RowData>
-  extends ComponentProps<typeof Button> {
+  extends React.ComponentProps<typeof Button> {
+  /**
+   *
+   */
   table: ReactTable<DataTableFeatures, TData>;
 }
 
@@ -352,6 +340,7 @@ export const DataTableViewOptions = <TData extends RowData>(
   props: DataTableViewOptionsProps<TData>
 ) => {
   const { className, table, ...rest } = props;
+
   const columns = table.getAllColumns().filter((column) => column.getCanHide());
 
   if (columns.length === 0) {
@@ -386,17 +375,13 @@ const DataTableViewOption = <TData extends RowData>(
   props: DataTableViewOptionProps<TData>
 ) => {
   const { column } = props;
-  const handleCheckedChange = useCallback(
-    (checked: boolean) => column.toggleVisibility(checked),
-    [column]
-  );
 
   return (
     <MenuCheckboxItem
       checked={column.getIsVisible()}
       className="capitalize"
       closeOnSelect={false}
-      onCheckedChange={handleCheckedChange}
+      onCheckedChange={(checked) => column.toggleVisibility(checked)}
       value={column.id}
     >
       {column.id}

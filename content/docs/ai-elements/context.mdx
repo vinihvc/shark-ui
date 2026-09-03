@@ -3,6 +3,13 @@ title: Context
 description: A usage meter for context window tokens with breakdown and cost.
 ---
 
+<Alert>
+  <InfoIcon />
+  <AlertDescription>
+  Context is built on top of the [Popover](/docs/components/popover) component. Check it out for more examples.
+  </AlertDescription>
+</Alert>
+
 <ComponentPreview componentName="context" />
 
 ## Installation
@@ -26,7 +33,7 @@ npx shadcn@latest add @shark/context
 
 <Steps>
 
-<Step>This component depends on [Hover Card](/docs/components/hover-card). Install required dependencies first if you haven&apos;t already.</Step>
+<Step>This component depends on [Popover](/docs/components/popover), [Circular Progress](/docs/components/circular-progress), and [Format](/docs/utilities/format). Install required dependencies first if you haven&apos;t already.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -45,13 +52,13 @@ npx shadcn@latest add @shark/context
 ```text
 Context
 ├── ContextTrigger
+│   └── ContextIcon
 └── ContextContent
     ├── ContextHeader
+    │   ├── ContextTitle
+    │   └── ContextMeter
     ├── ContextBody
-    │   ├── ContextInputUsage
-    │   ├── ContextOutputUsage
-    │   ├── ContextReasoningUsage
-    │   └── ContextCacheUsage
+    │   └── ContextUsageRow
     └── ContextFooter
 ```
 
@@ -64,9 +71,10 @@ import {
   ContextContent,
   ContextFooter,
   ContextHeader,
-  ContextInputUsage,
-  ContextOutputUsage,
+  ContextMeter,
+  ContextTitle,
   ContextTrigger,
+  ContextUsageRow,
 } from "@/components/ui/context";
 ```
 
@@ -74,44 +82,100 @@ import {
 <Context maxTokens={128000} usedTokens={18420} costLabel="$0.042">
   <ContextTrigger />
   <ContextContent>
-    <ContextHeader />
+    <ContextHeader title="Context Usage">
+      <ContextMeter />
+    </ContextHeader>
     <ContextBody>
-      <ContextInputUsage />
-      <ContextOutputUsage />
+      <ContextUsageRow title="Input" value={4200} />
+      <ContextUsageRow title="Output" value={860} />
     </ContextBody>
     <ContextFooter />
   </ContextContent>
 </Context>
 ```
 
-Pass numeric `usedTokens` and `maxTokens`. Optional `usage` breaks down input, output, reasoning, and cache. Optional `costLabel` is display-only.
+## Title
+
+`ContextHeader` supports two title patterns:
+
+### Using props
+
+Pass the `title` prop directly to `ContextHeader`.
+
+```tsx showLineNumbers
+<ContextHeader title="Context Usage">
+  <ContextMeter />
+</ContextHeader>
+```
+
+> This approach does not require the `ContextTitle` component.
+
+### Using components
+
+Use `ContextTitle` as a child when you need more control, such as a close
+button.
+
+```tsx showLineNumbers
+<ContextHeader>
+  <ContextTitle showCloseButton>Context Usage</ContextTitle>
+  <ContextMeter />
+</ContextHeader>
+```
+
+## Examples
+
+### Without cost
+
+<ComponentPreview componentName="context" fileName="example-without-cost" />
+
+### Icon-only trigger
+
+<ComponentPreview componentName="context" fileName="example-icon-only-trigger" />
+
+### Title and close button
+
+Use with `showCloseButton` for an identifiable, dismissible
+context panel.
+
+<ComponentPreview componentName="context" fileName="example-title-close-button" />
+
+### Tooltip
+
+<ComponentPreview componentName="context" fileName="example-tooltip" />
 
 ## API Reference
 
 ### Context
 
-Root [Hover Card](/docs/components/hover-card). Provides token usage to child parts.
+Root [Popover](/docs/components/popover). Provides token usage to child parts.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `usedTokens` | `number` | **required** |
 | `maxTokens` | `number` | **required** |
-| `usage` | `ContextUsage` | `-` |
 | `costLabel` | `string` | `-` |
 | `className` | `string` | `-` |
 
 ### ContextTrigger
 
-Shows the hover card. Default children are a usage ring and percent label.
+Opens the popover on click. Default children are a usage ring and percent label.
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `asChild` | `boolean` | `-` |
 | `className` | `string` | `-` |
 
+### ContextIcon
+
+Displays context usage as a circular progress icon.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | `-` |
+
 ### ContextContent
 
-Holds the usage panel. Forwards [HoverCardContent](/docs/components/hover-card) props.
+Holds the usage panel. Forwards [PopoverContent](/docs/components/popover) props.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -120,7 +184,25 @@ Holds the usage panel. Forwards [HoverCardContent](/docs/components/hover-card) 
 
 ### ContextHeader
 
-Header with percent used and a progress bar. Children replace the default meter.
+Layout container for `ContextTitle` and `ContextMeter`.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `title` | `string` | `-` |
+| `className` | `string` | `-` |
+
+### ContextTitle
+
+Title for the context panel.
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `showCloseButton` | `boolean` | `false` |
+| `className` | `string` | `-` |
+
+### ContextMeter
+
+Displays the percentage, token count, and progress bar.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -142,36 +224,12 @@ Footer with total cost. Children replace the default `costLabel` row.
 | --- | --- | --- |
 | `className` | `string` | `-` |
 
-### ContextInputUsage
+### ContextUsageRow
 
-Input token row. Hidden when `usage.input` is missing or zero.
-
-| Prop | Type | Default |
-| --- | --- | --- |
-| `className` | `string` | `-` |
-
-### ContextOutputUsage
-
-Output token row. Hidden when `usage.output` is missing or zero.
+Usage row with a user-defined title and value.
 
 | Prop | Type | Default |
 | --- | --- | --- |
+| `title` | `string` | **required** |
+| `value` | `number` | **required** |
 | `className` | `string` | `-` |
-
-### ContextReasoningUsage
-
-Reasoning token row. Hidden when `usage.reasoning` is missing or zero.
-
-| Prop | Type | Default |
-| --- | --- | --- |
-| `className` | `string` | `-` |
-
-### ContextCacheUsage
-
-Cache token row. Hidden when `usage.cache` is missing or zero.
-
-| Prop | Type | Default |
-| --- | --- | --- |
-| `className` | `string` | `-` |
-
-

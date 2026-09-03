@@ -516,6 +516,10 @@
   }
 }
 
+@utility step-keep {
+  counter-increment: step 0;
+}
+
 @layer components {
   [data-rehype-pretty-code-figure] {
     position: relative;

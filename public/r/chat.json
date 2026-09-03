@@ -5,10 +5,9 @@
   "name": "chat",
   "registryDependencies": [
     "https://shark.vini.one/r/attachment.json",
-    "https://shark.vini.one/r/bubble.json",
-    "https://shark.vini.one/r/confirmation.json",
     "https://shark.vini.one/r/marker.json",
     "https://shark.vini.one/r/message.json",
+    "https://shark.vini.one/r/message-bubble.json",
     "https://shark.vini.one/r/message-scroller.json",
     "https://shark.vini.one/r/prompt-input.json",
     "https://shark.vini.one/r/reasoning.json",

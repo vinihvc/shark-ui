@@ -1,215 +1,250 @@
 "use client";
 
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { Combobox as ArkCombobox } from "@ark-ui/react/combobox";
+import { ark } from "@ark-ui/react/factory";
+import { Portal } from "@ark-ui/react/portal";
+import { ChevronsUpDownIcon, SearchIcon } from "lucide-react";
 import type React from "react";
-import { createContext, useCallback, useContext } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  usePopover,
-} from "@/registry/react/components/popover";
+  Combobox,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxGroupLabel,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxPositioner,
+  comboboxContentVariants,
+  useCombobox,
+} from "@/registry/react/components/combobox";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/react/components/input-group";
 
-interface ModelSelectorValue {
-  onOpenChange?: (open: boolean) => void;
-  onValueChange?: (value: string) => void;
-  open?: boolean;
-  value?: string;
-}
-
-const ModelSelectorContext = createContext<ModelSelectorValue>({});
-
-const useModelSelector = () => useContext(ModelSelectorContext);
-
-interface ModelSelectorProps extends React.ComponentProps<typeof Popover> {
-  onValueChange?: (value: string) => void;
-  value?: string;
-}
-
-export const ModelSelector = (props: ModelSelectorProps) => {
-  const { children, onOpenChange, onValueChange, open, value, ...rest } = props;
+export const ModelSelector: ArkCombobox.RootComponent = (props) => {
+  const { positioning, selectionBehavior = "replace", ...rest } = props;
 
   return (
-    <ModelSelectorContext.Provider
-      value={{ onOpenChange, onValueChange, open, value }}
-    >
-      <Popover
-        data-slot="model-selector"
-        onOpenChange={onOpenChange}
-        open={open}
-        {...rest}
-      >
-        {children}
-      </Popover>
-    </ModelSelectorContext.Provider>
+    <Combobox
+      positioning={{
+        placement: "top-start",
+        sameWidth: false,
+        ...positioning,
+      }}
+      selectionBehavior={selectionBehavior}
+      {...rest}
+      data-slot="model-selector"
+    />
   );
 };
 
-export const ModelSelectorTrigger = (
-  props: React.ComponentProps<typeof Button>
-) => {
-  const { children, className, ...rest } = props;
+interface ModelSelectorTriggerProps
+  extends Omit<React.ComponentProps<typeof Button>, "variant"> {
+  /**
+   * Whether to show the chevron icon.
+   *
+   * @default false
+   */
+  showTrigger?: boolean;
+  /**
+   * @default "outline"
+   */
+  variant?: "outline" | "ghost";
+}
+
+export const ModelSelectorTrigger = (props: ModelSelectorTriggerProps) => {
+  const {
+    showTrigger = false,
+    size = "sm",
+    variant = "outline",
+    className,
+    children,
+    ...rest
+  } = props;
+
+  const { hasSelectedItems, valueAsString } = useCombobox();
+
+  const label = children ?? (hasSelectedItems ? valueAsString : "Select model");
+
+  const ariaLabel =
+    rest["aria-label"] ?? (typeof label === "string" ? label : "Select model");
 
   return (
-    <PopoverTrigger asChild>
+    <ArkCombobox.Trigger asChild focusable>
       <Button
         className={cn(
-          "min-w-0 max-w-56 justify-between gap-2 font-normal",
+          "min-w-0 max-w-64",
+          showTrigger && "justify-between",
           className
         )}
         data-slot="model-selector-trigger"
-        size="sm"
-        type="button"
-        variant="outline"
+        size={size}
+        variant={variant}
         {...rest}
+        aria-label={ariaLabel}
       >
-        <span className="truncate">{children}</span>
-        <ChevronsUpDownIcon
-          aria-hidden="true"
-          className="size-3.5 shrink-0 opacity-64"
-        />
+        <span
+          className={cn(
+            "min-w-0",
+            "flex flex-1 items-center gap-2",
+            "not-has-data-[slot=model-selector-name]:truncate"
+          )}
+        >
+          {label}
+        </span>
+        {showTrigger ? (
+          <ChevronsUpDownIcon
+            aria-hidden="true"
+            className="size-3.5 shrink-0 opacity-64"
+          />
+        ) : null}
       </Button>
-    </PopoverTrigger>
+    </ArkCombobox.Trigger>
   );
 };
 
 export const ModelSelectorContent = (
-  props: React.ComponentProps<typeof PopoverContent>
+  props: React.ComponentProps<typeof ArkCombobox.Content>
+) => {
+  const { className, children, ...rest } = props;
+
+  return (
+    <Portal>
+      <ComboboxPositioner>
+        <ArkCombobox.Content
+          className={cn(comboboxContentVariants(), "w-52 p-2", className)}
+          data-slot="model-selector-content"
+          {...rest}
+        >
+          {children}
+        </ArkCombobox.Content>
+      </ComboboxPositioner>
+    </Portal>
+  );
+};
+
+export const ModelSelectorInput = (
+  props: React.ComponentProps<typeof ArkCombobox.Input>
 ) => {
   const { className, ...rest } = props;
 
   return (
-    <PopoverContent
-      align="start"
-      className={cn("w-64 gap-0 p-1", className)}
-      data-slot="model-selector-content"
-      {...rest}
-    />
+    <InputGroup
+      className={cn("mb-2 rounded-xl bg-input/32", className)}
+      data-slot="model-selector-input-group"
+      size="md"
+    >
+      <InputGroupAddon>
+        <SearchIcon aria-hidden="true" className="opacity-64" />
+      </InputGroupAddon>
+      <ArkCombobox.Input asChild {...rest}>
+        <InputGroupInput
+          aria-label="Search models"
+          data-slot="model-selector-input"
+        />
+      </ArkCombobox.Input>
+    </InputGroup>
   );
 };
 
-export const ModelSelectorInput = (props: React.ComponentProps<"input">) => {
+export const ModelSelectorList = (
+  props: React.ComponentProps<typeof ComboboxList>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <input
-      className={cn(
-        "mb-1 h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/32",
-        className
-      )}
-      data-slot="model-selector-input"
-      type="search"
-      {...rest}
-    />
-  );
-};
-
-export const ModelSelectorList = (props: React.ComponentProps<"div">) => {
-  const { className, ...rest } = props;
-
-  return (
-    <div
-      className={cn("flex max-h-64 flex-col gap-1 overflow-y-auto", className)}
+    <ComboboxList
+      className={cn("flex max-h-72 flex-col overflow-y-auto", className)}
       data-slot="model-selector-list"
-      role="listbox"
       {...rest}
     />
   );
 };
 
-export const ModelSelectorEmpty = (props: React.ComponentProps<"div">) => {
-  const { className, children = "No models found.", ...rest } = props;
+export const ModelSelectorEmpty = (
+  props: React.ComponentProps<typeof ComboboxEmpty>
+) => {
+  const { className, children, ...rest } = props;
 
   return (
-    <div
-      className={cn(
-        "px-2 py-6 text-center text-muted-foreground text-sm",
-        className
-      )}
+    <ComboboxEmpty
+      className={cn("py-6", className)}
       data-slot="model-selector-empty"
       {...rest}
     >
-      {children}
-    </div>
+      {children || "No models found."}
+    </ComboboxEmpty>
   );
 };
 
-export const ModelSelectorGroup = (props: React.ComponentProps<"fieldset">) => {
+export const ModelSelectorGroup = (
+  props: React.ComponentProps<typeof ComboboxGroup>
+) => <ComboboxGroup data-slot="model-selector-group" {...props} />;
+
+export const ModelSelectorLabel = (
+  props: React.ComponentProps<typeof ComboboxGroupLabel>
+) => <ComboboxGroupLabel data-slot="model-selector-label" {...props} />;
+
+export const ModelSelectorName = (
+  props: React.ComponentProps<typeof ark.span>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <fieldset
-      className={cn("m-0 flex flex-col gap-0.5 border-0 p-0", className)}
-      data-slot="model-selector-group"
+    <ark.span
+      className={cn("min-w-0 truncate text-sm", className)}
+      data-slot="model-selector-name"
       {...rest}
     />
   );
 };
 
-export const ModelSelectorLabel = (props: React.ComponentProps<"legend">) => {
+export const ModelSelectorDescription = (
+  props: React.ComponentProps<typeof ark.span>
+) => {
   const { className, ...rest } = props;
 
   return (
-    <legend
+    <ark.span
       className={cn(
-        "px-2 py-1.5 font-medium text-muted-foreground text-xs",
+        "min-w-0",
+        "truncate text-muted-foreground text-xs",
         className
       )}
-      data-slot="model-selector-label"
+      data-slot="model-selector-description"
       {...rest}
     />
   );
 };
 
-interface ModelSelectorItemProps
-  extends Omit<React.ComponentProps<"button">, "value"> {
-  value: string;
-}
-
-const ModelSelectorItemButton = (props: ModelSelectorItemProps) => {
-  const { children, className, onClick, value, ...rest } = props;
-  const { onOpenChange, onValueChange, value: selected } = useModelSelector();
-  const popover = usePopover();
-  const isSelected = selected === value;
-
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      onValueChange?.(value);
-      popover.setOpen(false);
-      onOpenChange?.(false);
-      onClick?.(event);
-    },
-    [onClick, onOpenChange, onValueChange, popover, value]
-  );
+export const ModelSelectorItem = (
+  props: React.ComponentProps<typeof ComboboxItem>
+) => {
+  const { className, children, ...rest } = props;
 
   return (
-    <button
-      aria-selected={isSelected}
+    <ComboboxItem
       className={cn(
-        "flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-start text-sm outline-none hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground",
-        isSelected && "bg-accent/60",
+        "has-data-[slot=model-selector-description]:py-2",
         className
       )}
       data-slot="model-selector-item"
-      onClick={handleClick}
-      role="option"
-      type="button"
       {...rest}
     >
-      <span className="min-w-0 flex-1 truncate">{children}</span>
-      <CheckIcon
-        aria-hidden="true"
+      <span
         className={cn(
-          "size-3.5 shrink-0",
-          isSelected ? "opacity-100" : "opacity-0"
+          "min-w-0 flex-1 text-start",
+          "has-data-[slot=model-selector-name]:flex",
+          "has-data-[slot=model-selector-name]:flex-col",
+          "has-data-[slot=model-selector-description]:gap-y-0.5",
+          "not-has-data-[slot=model-selector-name]:truncate"
         )}
-      />
-    </button>
+      >
+        {children}
+      </span>
+    </ComboboxItem>
   );
 };
-
-export const ModelSelectorItem = (props: ModelSelectorItemProps) => (
-  <ModelSelectorItemButton {...props} />
-);

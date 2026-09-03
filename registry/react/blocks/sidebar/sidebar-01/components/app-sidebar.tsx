@@ -8,6 +8,7 @@ import {
   Settings2Icon,
   ShapesIcon,
 } from "lucide-react";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   Sidebar,
   SidebarContent,
@@ -48,9 +49,14 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton className="font-semibold" size="lg">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <IconTile
+                aria-hidden="true"
+                className="border-transparent bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
+                size="sm"
+                variant="primary"
+              >
                 S
-              </span>
+              </IconTile>
               <span>Shark UI</span>
             </SidebarMenuButton>
           </SidebarMenuItem>

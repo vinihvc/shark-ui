@@ -9,14 +9,7 @@ import {
   SmartphoneIcon,
   TabletIcon,
 } from "lucide-react";
-import {
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React from "react";
 import { packageManagerIcons } from "@/components/icons/package-managers";
 import { CompositionCodeViewer } from "@/components/registry-compositions/composition-code-viewer";
 import {
@@ -72,10 +65,10 @@ const installCopyCommands = {
 } as const;
 
 const packageManagers = [
-  "bun",
-  "npm",
   "pnpm",
+  "npm",
   "yarn",
+  "bun",
 ] as const satisfies readonly PackageManager[];
 
 export const CompositionViewer = ({
@@ -86,23 +79,29 @@ export const CompositionViewer = ({
   showDescription = false,
   tree,
 }: CompositionViewerProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [config, setConfig] = useConfig();
   const { resolvedTheme } = useTheme();
   const { borderRadius, grayColor, primaryColor } = useThemes();
-  const [config, setConfig] = useConfig();
-  const [viewport, setViewport] = useState<Viewport>("desktop");
-  const [shouldLoad, setShouldLoad] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const [frameKey, setFrameKey] = useState(0);
+
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+
+  const [viewport, setViewport] = React.useState<Viewport>("desktop");
+  const [shouldLoad, setShouldLoad] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
+  const [failed, setFailed] = React.useState(false);
+  const [frameKey, setFrameKey] = React.useState(0);
+
   const previewUrl = `/view/${kind}/${item.category}/${item.name}`;
+
   const installDisplayCommand = installCommandBody(item.name);
-  const installCopyCommand = useMemo(
+
+  const installCopyCommand = React.useMemo(
     () => installCopyCommands[config.packageManager](item.name),
     [config.packageManager, item.name]
   );
-  const installItems = useMemo(
+
+  const installItems = React.useMemo(
     () =>
       packageManagers.map((manager) => {
         const Icon = packageManagerIcons[manager];
@@ -118,7 +117,7 @@ export const CompositionViewer = ({
   );
   const label = kind === "blocks" ? "Block" : "Template";
   const Heading = headingLevel;
-  let description: ReactNode = null;
+  let description: React.ReactNode = null;
   if (showDescription) {
     description = (
       <p className="w-full text-muted-foreground text-sm">{item.description}</p>
@@ -126,7 +125,7 @@ export const CompositionViewer = ({
   } else if (!compact) {
     description = <p className="sr-only">{item.description}</p>;
   }
-  const handlePackageManagerChange = useCallback(
+  const handlePackageManagerChange = React.useCallback(
     (value: string) => {
       setConfig({
         ...config,
@@ -136,7 +135,7 @@ export const CompositionViewer = ({
     [config, setConfig]
   );
 
-  const sendTheme = useCallback(() => {
+  const sendTheme = React.useCallback(() => {
     if (!iframeRef.current?.contentWindow) {
       return;
     }
@@ -155,7 +154,7 @@ export const CompositionViewer = ({
     );
   }, [borderRadius, grayColor, primaryColor, resolvedTheme]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const container = containerRef.current;
     // biome-ignore lint/suspicious/noUnnecessaryConditions: React refs remain nullable at runtime before the element mounts.
     if (!container) {
@@ -179,13 +178,13 @@ export const CompositionViewer = ({
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (loaded) {
       sendTheme();
     }
   }, [loaded, sendTheme]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!(shouldLoad && !loaded && !failed)) {
       return;
     }
@@ -198,10 +197,10 @@ export const CompositionViewer = ({
     setLoaded(false);
     setFrameKey((key) => key + 1);
   };
-  const showDesktop = useCallback(() => setViewport("desktop"), []);
-  const showTablet = useCallback(() => setViewport("tablet"), []);
-  const showMobile = useCallback(() => setViewport("mobile"), []);
-  const handleFrameLoad = useCallback(() => {
+  const showDesktop = React.useCallback(() => setViewport("desktop"), []);
+  const showTablet = React.useCallback(() => setViewport("tablet"), []);
+  const showMobile = React.useCallback(() => setViewport("mobile"), []);
+  const handleFrameLoad = React.useCallback(() => {
     setFailed(false);
     setLoaded(true);
     sendTheme();
@@ -303,7 +302,7 @@ export const CompositionViewer = ({
             <div
               className={cn(
                 "relative max-w-full overflow-hidden rounded-lg border bg-background shadow-sm",
-                "lg:[resize:horizontal]"
+                "lg:resize-x"
               )}
               style={{
                 height: item.meta.previewHeight,

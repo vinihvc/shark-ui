@@ -1,7 +1,10 @@
 import { CopyButton } from "@/components/copy-button";
 import { highlightCode } from "@/lib/highlight-code";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
-import { getIconForLanguageExtension } from "@/utils/file-extension";
+import {
+  getIconForLanguageExtension,
+  languageFromFileName,
+} from "@/utils/file-extension";
 
 export interface CodeBlockProps extends React.ComponentProps<"figure"> {
   /**
@@ -48,7 +51,7 @@ export const CodeBlock = async (props: CodeBlockProps) => {
           data-rehype-pretty-code-title=""
           data-slot="code-block-title"
         >
-          {getIconForLanguageExtension(lang)}
+          {getIconForLanguageExtension(languageFromFileName(title) ?? lang)}
           {title}
         </figcaption>
       )}

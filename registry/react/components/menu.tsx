@@ -18,6 +18,7 @@ export const useMenu = useMenuContext;
 export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
   const {
     lazyMount = true,
+    onHighlightChange,
     positioning = { placement: "bottom-end" },
     unmountOnExit = true,
     ...rest
@@ -27,6 +28,16 @@ export const Menu = (props: React.ComponentProps<typeof ArkMenu.Root>) => {
     <ArkMenu.Root
       data-slot="menu"
       lazyMount={lazyMount}
+      onHighlightChange={(details) => {
+        onHighlightChange?.(details);
+        requestAnimationFrame(() => {
+          for (const item of document.querySelectorAll(
+            "[data-slot=menu-content] [data-highlighted], [data-slot=menu-sub-content] [data-highlighted]"
+          )) {
+            item.scrollIntoView({ block: "nearest" });
+          }
+        });
+      }}
       positioning={positioning}
       unmountOnExit={unmountOnExit}
       {...rest}
@@ -85,7 +96,7 @@ export const MenuContent = (props: MenuContentProps) => {
           data-slot="menu-content"
           {...rest}
         >
-          <ScrollArea className="min-h-0 flex-1">
+          <ScrollArea className="min-h-0 flex-1" scrollFade>
             <div className="p-1" data-slot="menu-scroll">
               {children}
             </div>
@@ -202,14 +213,14 @@ export const MenuCheckboxItem = (
     <ArkMenu.CheckboxItem
       className={cn(
         menuItemVariants({ variant: "default" }),
-        "ps-8",
+        "pe-8",
         className
       )}
       {...rest}
     >
       <ArkMenu.ItemIndicator
         className={cn(
-          "absolute inset-s-2",
+          "absolute inset-e-2",
           "size-3.5",
           "flex items-center justify-center",
           "pointer-events-none"
@@ -271,13 +282,13 @@ export const MenuRadioItem = (
     <ArkMenu.RadioItem
       className={cn(
         menuItemVariants({ variant: "default" }),
-        "ps-8",
+        "pe-8",
         className
       )}
       data-slot="menu-radio-item"
       {...rest}
     >
-      <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center">
+      <ArkMenu.ItemIndicator className="pointer-events-none absolute inset-e-2 flex size-3.5 items-center justify-center">
         <CheckIcon />
       </ArkMenu.ItemIndicator>
 
@@ -305,7 +316,7 @@ export const MenuSubContent = (
           data-slot="menu-sub-content"
           {...rest}
         >
-          <ScrollArea className="min-h-0 flex-1">
+          <ScrollArea className="min-h-0 flex-1" scrollFade>
             <div className="p-1" data-slot="menu-sub-scroll">
               {children}
             </div>

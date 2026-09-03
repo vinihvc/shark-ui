@@ -3,37 +3,42 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/registry/react/components/avatar";
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
 import {
   Message,
   MessageAvatar,
   MessageContent,
   MessageGroup,
 } from "@/registry/react/components/message";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@/registry/react/components/message-bubble";
 
 const Example = () => (
-  <MessageGroup className="w-full max-w-md">
+  <MessageGroup className="w-full max-w-sm">
     <Message>
       <MessageAvatar />
       <MessageContent>
-        <Bubble>
-          <BubbleContent>I checked the registry addresses.</BubbleContent>
-        </Bubble>
+        <MessageBubble variant="secondary">
+          <MessageBubbleContent>
+            I checked the registry addresses.
+          </MessageBubbleContent>
+        </MessageBubble>
       </MessageContent>
     </Message>
     <Message>
       <MessageAvatar>
         <Avatar size="sm">
-          <AvatarImage alt="CN" src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage alt="VV" src="https://github.com/vinihvc.png" />
+          <AvatarFallback>VV</AvatarFallback>
         </Avatar>
       </MessageAvatar>
       <MessageContent>
-        <Bubble>
-          <BubbleContent>
+        <MessageBubble variant="secondary">
+          <MessageBubbleContent>
             The component and example JSON now live under the UI registry.
-          </BubbleContent>
-        </Bubble>
+          </MessageBubbleContent>
+        </MessageBubble>
       </MessageContent>
     </Message>
   </MessageGroup>

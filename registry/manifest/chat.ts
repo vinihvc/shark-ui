@@ -3,10 +3,9 @@ import { absoluteUrl } from "@/lib/url";
 
 const CHAT_BUNDLE = [
   "attachment",
-  "bubble",
-  "confirmation",
   "marker",
   "message",
+  "message-bubble",
   "message-scroller",
   "prompt-input",
   "reasoning",

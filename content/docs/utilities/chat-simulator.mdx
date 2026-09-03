@@ -1,0 +1,179 @@
+---
+title: Chat Simulator
+description: Create deterministic, local conversations for AI SDK and TanStack AI.
+---
+
+<PreviewIframe src="/view/blocks/ai/ai-chat-01" title="AI Chat" className="min-h-[820px]" />
+
+Demo is read-only. Press send to send messages.
+
+Browse the [AI Chat](/blocks/ai/ai-chat-01) block.
+
+This utility provides native adapters for AI SDK and TanStack AI. Both define text conversations in code and stream the assistant reply locally, without a model, API route, network request, or API key.
+
+`useChatSimulator` selects the configured runtime's `useChat`, connects the simulator, and adds `sendNext`, `nextMessage`, and `canSendNext`. Keep the adapter constant for the lifetime of the component.
+
+## Installation
+
+<CodeTabs>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+If you use AI SDK:
+
+```bash
+npx shadcn@latest add @shark/chat-simulator && npm install ai @ai-sdk/react
+```
+
+If you use TanStack AI:
+
+```bash
+npx shadcn@latest add @shark/chat-simulator && npm install @tanstack/ai @tanstack/ai-react @tanstack/ai-openai
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install AI SDK.</Step>
+
+```bash
+npm install ai @ai-sdk/react
+```
+
+<Step className="step-keep!">Install TanStack AI.</Step>
+
+```bash
+npm install @tanstack/ai @tanstack/ai-react @tanstack/ai-openai
+```
+
+<Step>Copy the utility into your project.</Step>
+
+<ComponentSource title="lib/chat-simulator.ts" src="../lib/chat-simulator.ts" />
+
+<Step>Copy the hook into your project.</Step>
+
+<ComponentSource title="hooks/use-chat-simulator.ts" src="../hooks/use-chat-simulator.ts" />
+</Steps>
+
+</TabsContent>
+</CodeTabs>
+
+## Usage
+
+Create the chat once, outside of a component. Prefer `useChatSimulator` in React. You can also start the framework's `useChat` with `get(0)` and send the next simulated user message with `next(messages)`.
+
+### AI SDK
+
+```tsx
+"use client"
+
+import { createChatSimulator } from "@/lib/chat-simulator"
+import { useChatSimulator } from "@/hooks/use-chat-simulator"
+
+const chat = createChatSimulator({ adapter: "ai-sdk" })
+  .user("What changed in this release?")
+  .assistant("Keyboard shortcuts and faster search.")
+
+export function ReleaseChat() {
+  const { canSendNext, sendNext } = useChatSimulator({
+    adapter: "ai-sdk",
+    chat,
+  })
+
+  return (
+    <button disabled={!canSendNext} onClick={() => void sendNext()} type="button">
+      Send
+    </button>
+  )
+}
+```
+
+### TanStack AI
+
+```tsx
+"use client"
+
+import { createChatSimulator } from "@/lib/chat-simulator"
+import { useChatSimulator } from "@/hooks/use-chat-simulator"
+
+const chat = createChatSimulator({ adapter: "tanstack-ai" })
+  .user("What changed in this release?")
+  .assistant("Keyboard shortcuts and faster search.")
+
+export function ReleaseChat() {
+  const { canSendNext, sendNext } = useChatSimulator({
+    adapter: "tanstack-ai",
+    chat,
+  })
+
+  return (
+    <button disabled={!canSendNext} onClick={() => void sendNext()} type="button">
+      Send
+    </button>
+  )
+}
+```
+
+### Transport only
+
+If you already call `useChat` yourself, pass `chat.transport()` and send `chat.next(messages)`.
+
+```tsx
+import { useChat } from "@ai-sdk/react"
+import { createChatSimulator } from "@/lib/chat-simulator"
+
+const chat = createChatSimulator({ adapter: "ai-sdk" })
+  .user("What changed in this release?")
+  .assistant("Keyboard shortcuts and faster search.", { delayMs: 300 })
+
+export function ReleaseChat() {
+  const { messages, sendMessage } = useChat({
+    messages: chat.get(0),
+    transport: chat.transport(),
+  })
+  const nextMessage = chat.next(messages)
+
+  return (
+    <button
+      disabled={!nextMessage}
+      onClick={() => nextMessage && void sendMessage(nextMessage)}
+      type="button"
+    >
+      Send
+    </button>
+  )
+}
+```
+
+## API Reference
+
+### createChatSimulator
+
+Select `adapter: "ai-sdk"` for an AI SDK `ChatTransport`, or `adapter: "tanstack-ai"` for a TanStack `ConnectConnectionAdapter` that replays assistant text as AG-UI events.
+
+Returns a fluent conversation builder.
+
+| Method | Description |
+| --- | --- |
+| `user(text, { id? })` | Adds a predefined user text message. |
+| `assistant(text, { id?, delayMs? })` | Adds the assistant text response that streams after the user message. |
+| `get(count?)` | Returns cloned scripted messages. `get(0)` starts with an empty transcript. |
+| `next(messages)` | Returns the next predefined user message, or `null` when exhausted. |
+| `transport({ delayMs? })` | Creates the framework-native local transport. Chunks default to a 50ms delay. |
+
+Both adapters support text messages only. Use a production transport when a preview needs tools, sources, files, or model output.
+
+### useChatSimulator
+
+| Option | Type | Default |
+| --- | --- | --- |
+| `initialMessageCount` | `number` | `0` |
+| `transport.delayMs` | `number` | `50` |
+
+The hook returns everything from the selected runtime's `useChat`, plus `nextMessage`, `canSendNext`, and `sendNext()`.
+
+Use `adapter: "tanstack-ai"` with a chat created by `createChatSimulator({ adapter: "tanstack-ai" })`.

@@ -67,7 +67,6 @@ export const CodeCollapsibleWrapper = (props: CodeCollapsibleWrapperProps) => {
           aria-expanded={isOpened}
           className="text-muted-foreground"
           onClick={toggle}
-          type="button"
           variant="ghost"
         >
           {isOpened ? "Collapse" : "Expand"}

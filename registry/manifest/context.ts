@@ -8,7 +8,9 @@ const manifest: RegistryItemType = {
   name: "context",
   registryDependencies: [
     absoluteUrl("/r/button.json"),
-    absoluteUrl("/r/hover-card.json"),
+    absoluteUrl("/r/circular-progress.json"),
+    absoluteUrl("/r/format.json"),
+    absoluteUrl("/r/popover.json"),
     absoluteUrl("/r/progress.json"),
   ],
   type: "registry:ui",

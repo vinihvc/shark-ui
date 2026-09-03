@@ -3,8 +3,9 @@
 import { Dialog as ArkDialog, useDialogContext } from "@ark-ui/react/dialog";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
+import { createContext } from "@ark-ui/react/utils";
 import { XIcon } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -21,7 +22,10 @@ interface DialogContextProps {
   modal?: boolean;
 }
 
-const DialogContext = React.createContext({} as DialogContextProps);
+const [DialogModalProvider, _useDialog] = createContext<DialogContextProps>({
+  name: "DialogModalContext",
+  providerName: "Dialog",
+});
 
 export const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {
   const {
@@ -32,14 +36,14 @@ export const Dialog = (props: React.ComponentProps<typeof ArkDialog.Root>) => {
   } = props;
 
   return (
-    <DialogContext.Provider value={{ modal }}>
+    <DialogModalProvider value={{ modal }}>
       <ArkDialog.Root
         lazyMount={lazyMount}
         modal={modal}
         unmountOnExit={unmountOnExit}
         {...rest}
       />
-    </DialogContext.Provider>
+    </DialogModalProvider>
   );
 };
 
@@ -128,6 +132,8 @@ export const dialogContentVariants = tv({
         "max-sm:max-h-[calc(100svh-3rem)]",
         "max-sm:max-w-none",
         "max-sm:rounded-none max-sm:rounded-t-2xl max-sm:border-x-0 max-sm:border-t max-sm:border-b-0",
+        "max-sm:**:data-[slot=dialog-footer]:rounded-none",
+        "max-sm:**:data-[slot=alert-dialog-footer]:rounded-none",
         "max-sm:opacity-[calc(1-min(var(--nested-dialogs),1))]",
         "max-sm:data-[state=closed]:slide-out-to-bottom-5 max-sm:data-[state=open]:slide-in-from-bottom-5",
         "max-sm:data-[state=closed]:zoom-out-100 max-sm:data-[state=open]:zoom-in-100",
@@ -323,7 +329,7 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
       className={cn(
         "shrink-0",
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
+        "rounded-b-[calc(var(--radius-2xl)-1px)]",
         "px-(--space) py-4",
         "bg-muted/48",
         "border-t",
@@ -333,14 +339,4 @@ export const DialogFooter = (props: React.ComponentProps<typeof ark.div>) => {
       {...rest}
     />
   );
-};
-
-const _useDialog = () => {
-  const context = React.useContext(DialogContext);
-
-  if (!context) {
-    throw new Error("useDialog must be used within a DialogProvider");
-  }
-
-  return context;
 };

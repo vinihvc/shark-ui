@@ -1,6 +1,7 @@
 "use client";
 
 import { ark } from "@ark-ui/react/factory";
+import { createContext } from "@ark-ui/react/utils";
 import {
   BanIcon,
   CircleCheckIcon,
@@ -25,11 +26,11 @@ interface ToolResultContextValue {
   status: ToolResultStatus;
 }
 
-const ToolResultContext = React.createContext<ToolResultContextValue>({
-  status: "success",
-});
-
-const useToolResult = () => React.useContext(ToolResultContext);
+const [ToolResultProvider, useToolResult] =
+  createContext<ToolResultContextValue>({
+    name: "ToolResultContext",
+    providerName: "ToolResult",
+  });
 
 const STATUS_LABEL: Record<ToolResultStatus, string> = {
   cancelled: "Cancelled",
@@ -79,7 +80,7 @@ export const ToolResult = (props: ToolResultProps) => {
   const value = React.useMemo(() => ({ status }), [status]);
 
   return (
-    <ToolResultContext.Provider value={value}>
+    <ToolResultProvider value={value}>
       <Collapsible
         aria-busy={status === "running"}
         className={cn("w-full min-w-0 text-sm", className)}
@@ -88,7 +89,7 @@ export const ToolResult = (props: ToolResultProps) => {
         defaultOpen={defaultOpen ?? status === "running"}
         {...rest}
       />
-    </ToolResultContext.Provider>
+    </ToolResultProvider>
   );
 };
 

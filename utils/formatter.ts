@@ -19,4 +19,5 @@ export const replaceContentForCopy = (inputCode: string) => {
 export const replaceRegistryImportsForCopy = (inputCode: string) =>
   inputCode
     .replaceAll("@/registry/react/components", "@/components/ui")
-    .replaceAll("@/registry/react/hooks", "@/hooks");
+    .replaceAll("@/registry/react/hooks", "@/hooks")
+    .replaceAll("@/registry/react/lib", "@/lib");

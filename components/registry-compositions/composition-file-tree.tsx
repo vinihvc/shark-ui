@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronRightIcon, FileCode2Icon, FolderIcon } from "lucide-react";
-import { useCallback } from "react";
+import React from "react";
 import type { CompositionFileTreeNode } from "@/lib/registry";
 import { cn } from "@/lib/utils";
 import {
@@ -36,7 +36,7 @@ const FileButton = ({
   onSelect,
   path,
 }: FileButtonProps) => {
-  const handleClick = useCallback(
+  const handleClick = React.useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       const selectedPath = event.currentTarget.dataset.path;
       if (selectedPath) {

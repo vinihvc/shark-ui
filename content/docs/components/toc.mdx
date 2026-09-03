@@ -92,6 +92,8 @@ import {
 </Toc>
 ```
 
+Pass `scrollEl` when the document scrolls inside a container. Omit it to observe the page viewport; clicks then use native hash navigation.
+
 ## Examples
 
 ### Nested
@@ -110,8 +112,6 @@ Add `TocIndicator` inside `TocList` for a marker that slides to the active item.
 
 ### Rail
 
-Give each item a small SVG offset by `depth`. Where neighbouring items sit at different depths, a bezier joins the two positions so the rail steps rather than breaks.
-
 <ComponentPreview componentName="toc" fileName="example-rail" />
 
 ### Tree View
@@ -127,7 +127,7 @@ Root. Tracks visible headings and owns scroll behavior.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `items` | `TocItemData[]` | `[]` |
-| `scrollEl` | `() => HTMLElement \| null` | `-` |
+| `scrollEl` | `() => HTMLElement \| null` | document / viewport |
 | `activeIds` | `string[]` | `-` |
 | `defaultActiveIds` | `string[]` | `-` |
 | `autoScroll` | `boolean` | `true` |
@@ -149,7 +149,7 @@ Root. Tracks visible headings and owns scroll behavior.
 
 ### TocContent
 
-Scrollable document region observed by the TOC.
+Document region for headings. Observation and click-to-scroll use `scrollEl` on `Toc`, not this part.
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -217,7 +217,7 @@ One TOC entry. Indent follows `--depth` from the item's heading level.
 
 ### TocLink
 
-Anchor to a heading. Sets `aria-current="location"` when active. Clicks scroll inside `TocContent` when present.
+Anchor to a heading. Sets `aria-current="location"` when active. With `scrollEl`, clicks scroll that container and update the hash. Without it, the browser handles the hash.
 
 | Prop | Type | Default |
 | --- | --- | --- |

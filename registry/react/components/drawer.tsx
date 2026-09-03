@@ -7,8 +7,9 @@ import {
 } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
+import { createContext } from "@ark-ui/react/utils";
 import { XIcon } from "lucide-react";
-import React from "react";
+import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/react/components/button";
@@ -25,7 +26,11 @@ interface DrawerModalContextProps {
   modal?: boolean;
 }
 
-const DrawerModalContext = React.createContext({} as DrawerModalContextProps);
+const [DrawerModalProvider, _useDrawerModal] =
+  createContext<DrawerModalContextProps>({
+    name: "DrawerModalContext",
+    providerName: "Drawer",
+  });
 
 export const DrawerProvider = (
   props: React.ComponentProps<typeof ArkDrawer.Indent>
@@ -74,7 +79,7 @@ export const Drawer = (props: React.ComponentProps<typeof ArkDrawer.Root>) => {
   } = props;
 
   return (
-    <DrawerModalContext.Provider value={{ modal }}>
+    <DrawerModalProvider value={{ modal }}>
       <ArkDrawer.Root
         data-slot="drawer"
         lazyMount={lazyMount}
@@ -82,7 +87,7 @@ export const Drawer = (props: React.ComponentProps<typeof ArkDrawer.Root>) => {
         unmountOnExit={unmountOnExit}
         {...rest}
       />
-    </DrawerModalContext.Provider>
+    </DrawerModalProvider>
   );
 };
 
@@ -496,14 +501,4 @@ export const DrawerFooter = (props: DrawerFooterProps) => {
       {...rest}
     />
   );
-};
-
-const _useDrawerModal = () => {
-  const context = React.useContext(DrawerModalContext);
-
-  if (!context) {
-    throw new Error("useDrawerModal must be used within a Drawer");
-  }
-
-  return context;
 };

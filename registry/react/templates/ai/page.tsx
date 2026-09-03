@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
 import { Button } from "@/registry/react/components/button";
 import { Card, CardHeader } from "@/registry/react/components/card";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   SidebarContent,
   SidebarFooter,
@@ -51,9 +52,14 @@ const AITemplatePage = () => (
     >
       <SidebarHeader className="border-b">
         <div className="flex items-center gap-2 px-2 py-2">
-          <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+          <IconTile
+            aria-hidden="true"
+            className="rounded-md border-transparent shadow-none"
+            size="xs"
+            variant="primary"
+          >
             <MessageSquareIcon aria-hidden className="size-4" />
-          </div>
+          </IconTile>
           <span className="font-semibold">New chat</span>
         </div>
       </SidebarHeader>

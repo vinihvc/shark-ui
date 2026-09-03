@@ -1,0 +1,39 @@
+<svg
+  fill="none"
+  height="500"
+  viewBox="0 0 800 500"
+  width="800"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <filter height="200%" id="blur" width="200%" x="-50%" y="-50%">
+      <feGaussianBlur stdDeviation="64" />
+    </filter>
+    <filter id="grain">
+      <feTurbulence
+        baseFrequency="0.85"
+        numOctaves="4"
+        stitchTiles="stitch"
+        type="fractalNoise"
+      />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA slope="0.08" type="linear" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect fill="#edd4dc" height="500" width="800" />
+  <g filter="url(#blur)">
+    <circle cx="400" cy="290" fill="#9f1239" r="240" />
+    <circle cx="300" cy="200" fill="#e11d48" opacity="0.8" r="150" />
+    <ellipse cx="430" cy="90" fill="#f8e8ee" opacity="0.9" rx="180" ry="110" />
+    <circle cx="560" cy="360" fill="#881337" opacity="0.5" r="90" />
+  </g>
+  <rect
+    filter="url(#grain)"
+    height="500"
+    opacity="0.45"
+    style="mix-blend-mode:overlay"
+    width="800"
+  />
+</svg>

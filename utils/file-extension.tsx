@@ -1,6 +1,28 @@
 import { Brackets, Folder, Palette } from "lucide-react";
 import { TypeScriptIcon } from "@/components/icons/typescript";
 
+const KNOWN_ICON_EXTENSIONS = new Set([
+  "json",
+  "css",
+  "js",
+  "jsx",
+  "ts",
+  "tsx",
+  "typescript",
+]);
+
+export const languageFromFileName = (fileName: string | undefined) => {
+  if (!fileName?.includes(".")) {
+    return;
+  }
+
+  const extension = fileName.split(".").pop()?.toLowerCase();
+
+  if (extension && KNOWN_ICON_EXTENSIONS.has(extension)) {
+    return extension;
+  }
+};
+
 export const getIconForLanguageExtension = (language: string) => {
   switch (language) {
     case "json":

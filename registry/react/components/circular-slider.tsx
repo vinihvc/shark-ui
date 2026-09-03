@@ -4,6 +4,7 @@ import {
   AngleSlider as ArkAngleSlider,
   useAngleSliderContext,
 } from "@ark-ui/react/angle-slider";
+import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { FieldLabel } from "@/registry/react/components/field";
@@ -18,9 +19,11 @@ interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-const CircularSliderContext = React.createContext(
-  {} as CircularSliderContextValue
-);
+const [CircularSliderContextProvider, _useCircularSlider] =
+  createContext<CircularSliderContextValue>({
+    name: "CircularSliderContext",
+    providerName: "CircularSlider",
+  });
 
 export interface CircularSliderProps
   extends React.ComponentProps<typeof ArkAngleSlider.Root>,
@@ -65,7 +68,7 @@ export const CircularSlider = (props: CircularSliderProps) => {
   );
 
   return (
-    <CircularSliderContext.Provider value={values}>
+    <CircularSliderContextProvider value={values}>
       <ArkAngleSlider.Root
         className={cn(
           "relative",
@@ -103,7 +106,7 @@ export const CircularSlider = (props: CircularSliderProps) => {
 
         <ArkAngleSlider.HiddenInput />
       </ArkAngleSlider.Root>
-    </CircularSliderContext.Provider>
+    </CircularSliderContextProvider>
   );
 };
 
@@ -297,13 +300,3 @@ export const CircularSliderMarker = (
 };
 
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
-
-const _useCircularSlider = () => {
-  const context = React.useContext(CircularSliderContext);
-
-  if (!context?.ringRadius) {
-    throw new Error("useCircularSlider must be used within a CircularSlider");
-  }
-
-  return context;
-};

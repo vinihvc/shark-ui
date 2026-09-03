@@ -12,6 +12,7 @@ import {
   WavesIcon,
 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   Sidebar,
   SidebarContent,
@@ -48,9 +49,14 @@ export const AppSidebar = () => (
             className="font-semibold text-foreground"
             size="lg"
           >
-            <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+            <IconTile
+              aria-hidden="true"
+              className="border-transparent bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
+              size="sm"
+              variant="primary"
+            >
               <WavesIcon aria-hidden="true" className="size-4" />
-            </span>
+            </IconTile>
             <span>Northstar</span>
           </SidebarMenuButton>
         </SidebarMenuItem>

@@ -26,8 +26,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Tests
+        run: pnpm test
+
       - name: Registry build
         run: pnpm run registry:build
+
+      - name: Registry drift
+        run: |
+          git add public/r
+          git diff --cached --exit-code -- public/r
 
       - name: Typecheck
         run: pnpm run typecheck

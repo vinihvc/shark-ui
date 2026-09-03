@@ -4,7 +4,7 @@ import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/registry/react/components/button";
+import { Button, type ButtonProps } from "@/registry/react/components/button";
 import { Input } from "@/registry/react/components/input";
 import { Textarea } from "@/registry/react/components/textarea";
 
@@ -81,25 +81,29 @@ const inputGroupAddonVariants = tv({
     align: {
       "block-end": [
         "[--input-group-inset:--spacing(3)]",
-        "order-last w-full justify-start px-3 pb-3",
+        "order-last w-full justify-start px-[calc(--spacing(3)-1px)] pb-[calc(--spacing(3)-1px)]",
         "group-has-[>input]/input-group:pb-2.5",
-        "[.border-t]:pt-3",
+        "[.border-t]:pt-[calc(--spacing(3)-1px)]",
+        "in-data-[size=sm]:px-[calc(--spacing(2.5)-1px)]",
       ],
       "block-start": [
         "[--input-group-inset:--spacing(3)]",
-        "order-first w-full justify-start px-3 pt-3",
+        "order-first w-full justify-start px-[calc(--spacing(3)-1px)] pt-[calc(--spacing(3)-1px)]",
         "group-has-[>input]/input-group:pt-2.5",
-        "[.border-b]:pb-3",
+        "[.border-b]:pb-[calc(--spacing(3)-1px)]",
+        "in-data-[size=sm]:px-[calc(--spacing(2.5)-1px)]",
       ],
       "inline-end": [
-        "order-last pe-3",
+        "order-last pe-[calc(--spacing(3)-1px)]",
         "has-[>button]:me-[-0.45rem]",
         "has-[>kbd]:me-[-0.35rem]",
+        "in-data-[size=sm]:pe-[calc(--spacing(2.5)-1px)]",
       ],
       "inline-start": [
-        "order-first ps-3",
+        "order-first ps-[calc(--spacing(3)-1px)]",
         "has-[>button]:ms-[-0.45rem]",
         "has-[>kbd]:ms-[-0.35rem]",
+        "in-data-[size=sm]:ps-[calc(--spacing(2.5)-1px)]",
       ],
     },
   },
@@ -132,37 +136,15 @@ export const InputGroupAddon = (props: InputGroupAddonProps) => {
 const inputGroupButtonVariants = tv({
   base: [
     "relative",
-    "flex items-center gap-2",
     "text-sm",
     "shadow-none",
     "[--input-group-inner-radius:max(0px,calc(var(--radius)-var(--input-group-inset)))]",
     "rounded-(--input-group-inner-radius)",
     "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
   ],
-  defaultVariants: {
-    size: "xs",
-  },
-  variants: {
-    size: {
-      "icon-sm": ["size-8", "p-0", "has-[>svg]:p-0"],
-      "icon-xs": ["size-6", "p-0", "has-[>svg]:p-0"],
-      sm: ["h-8", "gap-1.5", "px-2.5", "has-[>svg]:px-2.5"],
-      xs: [
-        "h-6",
-        "gap-1",
-        "px-2",
-        "has-[>svg]:px-2",
-        "[&_svg:not([class*='size-'])]:size-3.5",
-      ],
-    },
-  },
 });
 
-interface InputGroupButtonProps
-  extends Omit<React.ComponentProps<typeof Button>, "size">,
-    VariantProps<typeof inputGroupButtonVariants> {}
-
-export const InputGroupButton = (props: InputGroupButtonProps) => {
+export const InputGroupButton = (props: ButtonProps) => {
   const {
     className,
     type = "button",
@@ -173,9 +155,9 @@ export const InputGroupButton = (props: InputGroupButtonProps) => {
 
   return (
     <Button
-      className={cn(inputGroupButtonVariants({ size }), className)}
-      data-size={size}
+      className={cn(inputGroupButtonVariants(), className)}
       data-slot="input-group-button"
+      size={size}
       type={type}
       variant={variant}
       {...rest}

@@ -9,7 +9,7 @@ export const inputVariants = tv({
   base: [
     "peer",
     "w-full min-w-0",
-    "px-3",
+    "px-[calc(--spacing(3)-1px)]",
     "bg-transparent dark:bg-input/30",
     "text-base md:text-sm",
     "border border-input shadow-xs/5",
@@ -37,7 +37,7 @@ export const inputVariants = tv({
     size: {
       lg: ["h-9"],
       md: ["h-8"],
-      sm: ["h-7"],
+      sm: ["h-7", "px-[calc(--spacing(2.5)-1px)]"],
     },
   },
 });

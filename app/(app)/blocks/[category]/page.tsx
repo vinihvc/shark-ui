@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import React from "react";
 import { createBlockFileTree, getPublishedBlocks } from "@/lib/blocks";
 import { createMetadata } from "@/lib/metadata";
 import { BLOCK_CATEGORIES } from "@/registry/react/blocks/_categories";
@@ -18,6 +18,7 @@ export const generateMetadata = async (
   props: PageProps<"/blocks/[category]">
 ): Promise<Metadata> => {
   const { category: slug } = await props.params;
+
   const category = BLOCK_CATEGORIES.find((item) => item.slug === slug);
 
   return category
@@ -31,7 +32,9 @@ export const generateMetadata = async (
 
 const BlocksCategoryPage = async (props: PageProps<"/blocks/[category]">) => {
   const { category: slug } = await props.params;
+
   const category = BLOCK_CATEGORIES.find((item) => item.slug === slug);
+
   if (!category) {
     notFound();
   }
@@ -43,13 +46,15 @@ const BlocksCategoryPage = async (props: PageProps<"/blocks/[category]">) => {
   }));
 
   return (
-    <Suspense fallback={<Skeleton className="container h-[900px] w-full" />}>
+    <React.Suspense
+      fallback={<Skeleton className="container h-[900px] w-full" />}
+    >
       <BlocksBrowser
         blocks={browserBlocks}
         categories={BLOCK_CATEGORIES}
         categorySlug={category.slug}
       />
-    </Suspense>
+    </React.Suspense>
   );
 };
 

@@ -36,7 +36,7 @@ const css = {
     "-webkit-text-fill-color": "var(--shimmer-text-fill, transparent)",
     "@variant dark": {
       "--_highlight":
-        "var(--shimmer-color, oklch(from currentColor max(0.8, calc(l + 0.4)) c h / calc(alpha + 0.4)))",
+        "var(--shimmer-color, oklch(from currentColor l c h / calc(alpha * 0.45)))",
     },
     '&:where([dir="rtl"], [dir="rtl"] *)': {
       "animation-direction": "reverse",

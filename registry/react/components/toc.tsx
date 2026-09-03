@@ -6,7 +6,6 @@ import {
   useTocContext as useArkTocContext,
 } from "@ark-ui/react/toc";
 import type React from "react";
-import { useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 export const useToc = useArkToc;
@@ -139,43 +138,8 @@ export const TocItem = (props: React.ComponentProps<typeof ArkToc.Item>) => {
   );
 };
 
-const scrollHashIntoTocContent = (
-  event: React.MouseEvent<HTMLAnchorElement>
-) => {
-  if (event.defaultPrevented) {
-    return;
-  }
-
-  const href = event.currentTarget.getAttribute("href");
-  const hash = href?.startsWith("#") ? href.slice(1) : undefined;
-  if (!hash) {
-    return;
-  }
-
-  const heading = event.currentTarget.ownerDocument.getElementById(hash);
-  const container = heading?.closest("[data-slot=toc-content]");
-  if (!(heading instanceof HTMLElement && container instanceof HTMLElement)) {
-    return;
-  }
-
-  event.preventDefault();
-  const top =
-    heading.getBoundingClientRect().top -
-    container.getBoundingClientRect().top +
-    container.scrollTop;
-  container.scrollTo({ behavior: "smooth", top });
-};
-
 export const TocLink = (props: React.ComponentProps<typeof ArkToc.Link>) => {
-  const { className, onClick, ...rest } = props;
-
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement>) => {
-      onClick?.(event);
-      scrollHashIntoTocContent(event);
-    },
-    [onClick]
-  );
+  const { className, ...rest } = props;
 
   return (
     <ArkToc.Link
@@ -188,7 +152,6 @@ export const TocLink = (props: React.ComponentProps<typeof ArkToc.Link>) => {
         className
       )}
       data-slot="toc-link"
-      onClick={handleClick}
       {...rest}
     />
   );

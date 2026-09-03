@@ -1,92 +1,144 @@
 "use client";
 
-import { MessageCircleQuestionIcon } from "lucide-react";
-import React, { type SubmitEvent } from "react";
+import { CornerDownLeftIcon, MessageCircleQuestionIcon } from "lucide-react";
+import type React from "react";
 import {
   ApprovalCard,
-  ApprovalCardActions,
-  ApprovalCardApprove,
+  ApprovalCardAction,
+  ApprovalCardChoice,
+  ApprovalCardChoiceShortcut,
+  ApprovalCardChoices,
   ApprovalCardContent,
   ApprovalCardFooter,
   ApprovalCardHeader,
-  ApprovalCardIcon,
-  ApprovalCardReject,
+  ApprovalCardItem,
+  ApprovalCardItemDescription,
+  ApprovalCardItemTitle,
+  ApprovalCardNext,
+  ApprovalCardPrevious,
+  ApprovalCardProgress,
+  ApprovalCardSkip,
+  ApprovalCardSubmit,
   ApprovalCardTitle,
 } from "@/registry/react/components/approval-card";
-import {
-  QuestionnaireChoice,
-  QuestionnaireChoiceShortcut,
-  QuestionnaireChoices,
-  QuestionnaireError,
-  QuestionnaireItem,
-  QuestionnaireNext,
-  QuestionnairePrevious,
-  QuestionnaireProgress,
-  QuestionnaireTitle,
-} from "@/registry/react/components/questionnaire";
+import { toast } from "@/registry/react/components/toast";
 
 const ApprovalCardDemo = () => {
-  const [result, setResult] = React.useState<string>();
-
-  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const answers = new FormData(event.currentTarget);
-    setResult(String(answers.get("format") ?? "Approved"));
+
+    const formData = new FormData(event.currentTarget);
+
+    const answers = {
+      direction: formData.get("direction"),
+      signals: formData.getAll("signals"),
+      timing: formData.get("timing"),
+    };
+
+    toast.create({
+      description: `${answers.direction} · ${answers.signals.length} signals · ${answers.timing}`,
+      title: "Handoff approved",
+      type: "success",
+    });
   };
 
-  const handleReject = () => setResult("Rejected");
-
   return (
-    <div className="flex w-full max-w-md flex-col gap-3">
-      <ApprovalCard
-        items={items}
-        onReject={handleReject}
-        onSubmit={handleSubmit}
-        shortcuts="letters"
-      >
+    <div className="w-full max-w-lg">
+      <ApprovalCard items={items} onSubmit={handleSubmit} shortcuts="letters">
         <ApprovalCardHeader>
-          <ApprovalCardIcon>
-            <MessageCircleQuestionIcon aria-hidden="true" />
-          </ApprovalCardIcon>
-          <ApprovalCardTitle>Choose a handoff format</ApprovalCardTitle>
+          <MessageCircleQuestionIcon aria-hidden="true" />
+          <ApprovalCardTitle>Prepare the handoff</ApprovalCardTitle>
+          <ApprovalCardAction>
+            <ApprovalCardProgress />
+          </ApprovalCardAction>
         </ApprovalCardHeader>
         <ApprovalCardContent>
-          <QuestionnaireProgress />
-          <QuestionnaireItem className="mt-3" name="format">
-            <QuestionnaireTitle>
-              How should we share the update?
-            </QuestionnaireTitle>
-            <QuestionnaireChoices className="mt-3">
-              <QuestionnaireChoice value="summary">
-                Short summary
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-              <QuestionnaireChoice value="brief">
-                Detailed brief
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-              <QuestionnaireChoice value="slides">
-                Slide deck
-                <QuestionnaireChoiceShortcut />
-              </QuestionnaireChoice>
-            </QuestionnaireChoices>
-            <QuestionnaireError className="mt-2" />
-          </QuestionnaireItem>
+          {items.map((item) => (
+            <ApprovalCardItem key={item.name} name={item.name}>
+              <ApprovalCardItemTitle>{item.title}</ApprovalCardItemTitle>
+              <ApprovalCardItemDescription>
+                {item.description}
+              </ApprovalCardItemDescription>
+              <ApprovalCardChoices>
+                {item.choices.map((choice) => (
+                  <ApprovalCardChoice key={choice.value} value={choice.value}>
+                    {choice.label}
+                    <ApprovalCardChoiceShortcut />
+                  </ApprovalCardChoice>
+                ))}
+              </ApprovalCardChoices>
+            </ApprovalCardItem>
+          ))}
         </ApprovalCardContent>
         <ApprovalCardFooter>
-          <QuestionnairePrevious />
-          <ApprovalCardActions>
-            <ApprovalCardReject>Skip</ApprovalCardReject>
-            <QuestionnaireNext />
-            <ApprovalCardApprove>Approve format</ApprovalCardApprove>
-          </ApprovalCardActions>
+          <ApprovalCardPrevious />
+          <ApprovalCardSkip />
+          <ApprovalCardNext>
+            Next
+            <CornerDownLeftIcon />
+          </ApprovalCardNext>
+          <ApprovalCardSubmit>
+            Approve handoff
+            <CornerDownLeftIcon />
+          </ApprovalCardSubmit>
         </ApprovalCardFooter>
       </ApprovalCard>
-      {result ? <p aria-live="polite">{result}</p> : null}
     </div>
   );
 };
 
-const items = [{ name: "format", required: true }] as const;
+const items = [
+  {
+    choices: [
+      {
+        description: "Show what the agent ran and what came back.",
+        label: "Tool call timeline",
+        value: "tool-calls",
+      },
+      {
+        description: "Ask before sensitive or destructive actions.",
+        label: "Approval checkpoints",
+        value: "approvals",
+      },
+      {
+        description: "Make delegated work and results easier to follow.",
+        label: "Sub-agent handoffs",
+        value: "handoffs",
+      },
+    ],
+    description: "Choose a direction or describe another task.",
+    input: {
+      label: "Another agent feature",
+      placeholder: "Describe another feature…",
+    },
+    name: "direction",
+    required: true,
+    title: "What should the agent build next?",
+  },
+  {
+    choices: [
+      { label: "Progress", value: "progress" },
+      { label: "Decisions", value: "decisions" },
+      { label: "Risks", value: "risks" },
+      { label: "Next step", value: "next-step" },
+    ],
+    description: "Select all that apply, or skip this question.",
+    multiple: true,
+    name: "signals",
+    required: false,
+    title: "What should every progress update include?",
+  },
+  {
+    choices: [
+      { label: "Start now", value: "now" },
+      { label: "Next development cycle", value: "next-cycle" },
+      { label: "Add it to the backlog", value: "backlog" },
+    ],
+    description: "Choose when the agent should begin the work.",
+    name: "timing",
+    required: true,
+    title: "When should work begin?",
+  },
+] as const;
 
 export default ApprovalCardDemo;

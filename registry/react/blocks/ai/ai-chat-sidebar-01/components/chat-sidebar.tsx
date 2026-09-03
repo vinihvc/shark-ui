@@ -9,10 +9,10 @@ import {
   PlusIcon,
   SearchIcon,
 } from "lucide-react";
-import type React from "react";
-import { useCallback, useMemo, useState } from "react";
+import React from "react";
 import { Avatar, AvatarFallback } from "@/registry/react/components/avatar";
 import { Badge } from "@/registry/react/components/badge";
+import { IconTile } from "@/registry/react/components/icon-tile";
 import {
   InputGroup,
   InputGroupAddon,
@@ -66,9 +66,9 @@ export const ChatSidebar = ({
   onProjectsSelect,
   onViewChange,
 }: ChatSidebarProps) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = React.useState("");
 
-  const filtered = useMemo(() => {
+  const filtered = React.useMemo(() => {
     const needle = query.trim().toLowerCase();
     if (!needle) {
       return conversations;
@@ -78,7 +78,7 @@ export const ChatSidebar = ({
     );
   }, [conversations, query]);
 
-  const groups = useMemo(() => {
+  const groups = React.useMemo(() => {
     const order: string[] = [];
     const map = new Map<string, ConversationSummary[]>();
     for (const conversation of filtered) {
@@ -94,7 +94,7 @@ export const ChatSidebar = ({
     }));
   }, [filtered]);
 
-  const handleConversationClick = useCallback(
+  const handleConversationClick = React.useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       const { conversationId } = event.currentTarget.dataset;
       if (conversationId) {
@@ -105,23 +105,23 @@ export const ChatSidebar = ({
     [onConversationSelect, onViewChange]
   );
 
-  const handleQueryChange = useCallback(
+  const handleQueryChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setQuery(event.target.value);
     },
     []
   );
 
-  const handleNewChatClick = useCallback(() => {
+  const handleNewChatClick = React.useCallback(() => {
     onViewChange("chat");
     onNewChat();
   }, [onNewChat, onViewChange]);
 
-  const handleProjectsClick = useCallback(() => {
+  const handleProjectsClick = React.useCallback(() => {
     onProjectsSelect();
   }, [onProjectsSelect]);
 
-  const handleLibraryClick = useCallback(() => {
+  const handleLibraryClick = React.useCallback(() => {
     onViewChange("chat");
   }, [onViewChange]);
 
@@ -135,9 +135,14 @@ export const ChatSidebar = ({
               size="lg"
               tooltip="Shark Assistant"
             >
-              <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground">
+              <IconTile
+                aria-hidden="true"
+                className="border-transparent shadow-none"
+                size="sm"
+                variant="primary"
+              >
                 <BotIcon aria-hidden="true" className="size-4" />
-              </span>
+              </IconTile>
               <span>Shark Assistant</span>
             </SidebarMenuButton>
           </SidebarMenuItem>

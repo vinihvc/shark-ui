@@ -1,5 +1,7 @@
 "use client";
 
+import { ark } from "@ark-ui/react/factory";
+import { createContext } from "@ark-ui/react/utils";
 import React from "react";
 import {
   Legend,
@@ -71,9 +73,13 @@ interface ChartContextProps {
   config: ChartConfig;
 }
 
-const ChartContext = React.createContext<ChartContextProps | null>(null);
+const [ChartProvider, _useChart] = createContext<ChartContextProps>({
+  hookName: "useChart",
+  name: "ChartContext",
+  providerName: "ChartContainer",
+});
 
-interface ChartContainerProps extends React.ComponentProps<"div"> {
+interface ChartContainerProps extends React.ComponentProps<typeof ark.div> {
   children: React.ComponentProps<typeof ResponsiveContainer>["children"];
   config: ChartConfig;
 }
@@ -85,8 +91,8 @@ export const ChartContainer = (props: ChartContainerProps) => {
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
 
   return (
-    <ChartContext.Provider value={{ config }}>
-      <div
+    <ChartProvider value={{ config }}>
+      <ark.div
         className={cn(
           "flex justify-center",
           "aspect-video",
@@ -107,8 +113,8 @@ export const ChartContainer = (props: ChartContainerProps) => {
       >
         <ChartStyle config={config} id={chartId} />
         <ResponsiveContainer>{children}</ResponsiveContainer>
-      </div>
-    </ChartContext.Provider>
+      </ark.div>
+    </ChartProvider>
   );
 };
 
@@ -392,12 +398,4 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
     : config[key as keyof typeof config];
 };
 
-export const _useChart = () => {
-  const context = React.useContext(ChartContext);
-
-  if (!context) {
-    throw new Error("useChart must be used within a <ChartContainer />");
-  }
-
-  return context;
-};
+export { _useChart };

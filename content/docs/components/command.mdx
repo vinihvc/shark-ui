@@ -112,11 +112,31 @@ const { collection, filter } = useListCollection({
 </Command>
 ```
 
+## Controlled
+
+Control the selected command with `value` and `onValueChange`.
+
+<ComponentPreview componentName="command" fileName="example-controlled" />
+
+## States
+
+### Disabled
+
+Use the `disabled` prop to disable the command palette.
+
+<ComponentPreview componentName="command" fileName="example-disabled" />
+
 ## Examples
 
 ### With Dialog
 
 <ComponentPreview componentName="command" fileName="example-dialog" />
+
+### Inset Variant
+
+Use the `variant="inset"` prop to add padding. The command palette appears as a floating card.
+
+<ComponentPreview componentName="command" fileName="example-inset" />
 
 ### Groups
 
@@ -187,6 +207,7 @@ Container for the command palette inside the dialog.
 | Prop | Type | Default |
 | --- | --- | --- |
 | `size` | `"sm" \| "md" \| "lg" \| "xl" \| "fullscreen"` | `"lg"` |
+| `variant` | `"default" \| "inset"` | `"default"` |
 | `title` | `string` | `"Command Palette"` |
 | `description` | `string` | `"Search for a command to run..."` |
 | `className` | `string` | - |

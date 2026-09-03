@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+import React from "react";
 import {
   createBlockFileTree,
   getPublishedBlock,
@@ -58,7 +58,9 @@ const BlockPage = async (props: PageProps<"/blocks/[category]/[block]">) => {
   }));
 
   return (
-    <Suspense fallback={<Skeleton className="container h-[900px] w-full" />}>
+    <React.Suspense
+      fallback={<Skeleton className="container h-[900px] w-full" />}
+    >
       <BlocksBrowser
         activeBlockName={item.name}
         blocks={browserBlocks}
@@ -66,7 +68,7 @@ const BlockPage = async (props: PageProps<"/blocks/[category]/[block]">) => {
         categorySlug={category.slug}
         isDetailPage
       />
-    </Suspense>
+    </React.Suspense>
   );
 };
 

@@ -27,7 +27,7 @@ Requires **Node.js 26+** (`engines` in `package.json`).
 | Command               | Description                                              |
 | --------------------- | -------------------------------------------------------- |
 | `pnpm dev`            | Start docs site (`next dev`)                             |
-| `pnpm build`          | Production Next.js build plus Serwist                    |
+| `pnpm build`          | `registry:build` then production Next.js build           |
 | `pnpm typecheck`      | Production Next.js build (includes typecheck). Slow.     |
 | `pnpm test`           | Node test runner (`tsx --test`) for lib helpers          |
 | `pnpm lint:check`     | Run lint (Ultracite/Biome)                               |
@@ -40,6 +40,7 @@ Requires **Node.js 26+** (`engines` in `package.json`).
 - Run `pnpm test`.
 - Run `pnpm typecheck` to ensure the project compiles.
 - Run `pnpm build` to verify the production build.
+- If you changed registry source or `registry/manifest`, run `pnpm registry:build` and commit `public/r` so GitHub Actions does not fail the drift check. Vercel regenerates JSON on deploy regardless.
 
 ## Project Structure
 

@@ -19,9 +19,9 @@ export const toggleVariants = tv({
   },
   variants: {
     size: {
-      lg: "h-9 min-w-9 px-2.5",
-      md: "h-8 min-w-8 px-2",
-      sm: "h-7 min-w-7 px-1.5",
+      lg: "min-w-9",
+      md: "min-w-8",
+      sm: "min-w-7",
     },
   },
 });
@@ -53,7 +53,7 @@ export const Toggle = (props: ToggleProps) => {
   return (
     <ArkToggle.Root
       className={cn(
-        buttonVariants({ clickEffect: false, pill, variant }),
+        buttonVariants({ clickEffect: false, pill, size, variant }),
         toggleVariants({ size }),
         className
       )}

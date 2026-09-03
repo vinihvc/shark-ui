@@ -22,7 +22,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/react/components/tabs";
-import { getIconForLanguageExtension } from "@/utils/file-extension";
+import {
+  getIconForLanguageExtension,
+  languageFromFileName,
+} from "@/utils/file-extension";
 import { CopyButton } from "./components/copy-button";
 import {
   Table,
@@ -143,10 +146,19 @@ export const mdxComponents = {
     children,
     ...props
   }: React.ComponentProps<"figcaption">) => {
-    const iconExtension =
+    const dataLanguage =
       "data-language" in props && typeof props["data-language"] === "string"
-        ? getIconForLanguageExtension(props["data-language"])
-        : null;
+        ? props["data-language"]
+        : undefined;
+
+    const iconLanguage =
+      languageFromFileName(
+        typeof children === "string" ? children : undefined
+      ) ?? dataLanguage;
+
+    const iconExtension = iconLanguage
+      ? getIconForLanguageExtension(iconLanguage)
+      : null;
 
     return (
       <figcaption

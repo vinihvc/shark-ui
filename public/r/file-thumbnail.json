@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "cssVars": {
+    "dark": {
+      "destructive": "var(--color-red-600)",
+      "destructive-foreground": "var(--color-red-400)",
+      "info": "var(--color-blue-500)",
+      "info-foreground": "var(--color-blue-400)",
+      "success": "var(--color-emerald-500)",
+      "success-foreground": "var(--color-emerald-400)",
+      "warning": "var(--color-amber-500)",
+      "warning-foreground": "var(--color-amber-400)"
+    },
+    "light": {
+      "destructive": "var(--color-red-600)",
+      "destructive-foreground": "var(--color-red-700)",
+      "info": "var(--color-blue-500)",
+      "info-foreground": "var(--color-blue-700)",
+      "success": "var(--color-emerald-500)",
+      "success-foreground": "var(--color-emerald-700)",
+      "warning": "var(--color-amber-500)",
+      "warning-foreground": "var(--color-amber-700)"
+    }
+  },
+  "dependencies": [
+    "tailwind-variants"
+  ],
+  "description": "A compact visual identifier for a file format.",
+  "name": "file-thumbnail",
+  "type": "registry:ui",
+  "files": [
+    {
+      "content": "import { ark } from \"@ark-ui/react/factory\";\nimport type React from \"react\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\nimport { cn } from \"@/lib/utils\";\n\nexport type FileThumbnailTone = NonNullable<\n  VariantProps<typeof fileThumbnailVariants>[\"tone\"]\n>;\n\nexport const fileThumbnailVariants = tv({\n  defaultVariants: {\n    size: \"md\",\n    tone: \"default\",\n  },\n  slots: {\n    badge: [\n      \"absolute\",\n      \"select-none whitespace-nowrap font-medium uppercase leading-none\",\n      \"rounded-[0.35em] border-t shadow-xs/5\",\n    ],\n    sheet: \"rounded-md border border-border bg-white\",\n  },\n  variants: {\n    size: {\n      lg: {\n        badge: [\"-inset-s-2 bottom-2\", \"text-[11px]\", \"px-1.5 py-0.5\"],\n        sheet: \"h-14 w-11\",\n      },\n      md: {\n        badge: [\"-inset-s-1.5 bottom-1.5\", \"text-[10px]\", \"px-1 py-px\"],\n        sheet: \"h-10 w-8\",\n      },\n      sm: {\n        badge: [\"-inset-s-1 bottom-1\", \"text-[9px]\", \"px-1 py-px\"],\n        sheet: \"h-8 w-6.5\",\n      },\n    },\n    tone: {\n      default: {\n        badge: [\n          \"bg-secondary text-secondary-foreground\",\n          \"border-t-secondary-foreground/35 shadow-secondary-foreground/25\",\n        ],\n      },\n      destructive: {\n        badge: [\n          \"bg-destructive text-white\",\n          \"border-t-destructive-foreground shadow-destructive/35\",\n        ],\n      },\n      info: {\n        badge: [\n          \"bg-info text-white\",\n          \"border-t-info-foreground shadow-info/35\",\n        ],\n      },\n      primary: {\n        badge: [\n          \"bg-primary text-white\",\n          \"border-t-primary-foreground/30 shadow-primary/35\",\n        ],\n      },\n      success: {\n        badge: [\n          \"bg-success text-white\",\n          \"border-t-success-foreground shadow-success/35\",\n        ],\n      },\n      warning: {\n        badge: [\n          \"bg-warning text-white\",\n          \"border-t-warning-foreground shadow-warning/35\",\n        ],\n      },\n    },\n  },\n});\n\nexport interface FileThumbnailProps\n  extends React.ComponentProps<typeof ark.div>,\n    VariantProps<typeof fileThumbnailVariants> {\n  /**\n   * The format of the file.\n   */\n  format?: string;\n}\n\nexport const FileThumbnail = (props: FileThumbnailProps) => {\n  const { format, size, tone, className, ...rest } = props;\n\n  const label = format ?? \"FILE\";\n\n  const { badge, sheet } = fileThumbnailVariants({\n    size,\n    tone: tone ?? (format ? toneForFormat(format) : \"default\"),\n  });\n\n  return (\n    <ark.div\n      className={cn(\"relative inline-block size-fit\", className)}\n      data-slot=\"file-thumbnail\"\n      {...rest}\n    >\n      <span className={badge()} data-slot=\"file-thumbnail-badge\">\n        {label}\n      </span>\n      <div className={sheet()} data-slot=\"file-thumbnail-sheet\" />\n    </ark.div>\n  );\n};\n\nconst LEADING_DOT_RE = /^\\./;\n\nconst toneForFormat = (format: string): FileThumbnailTone =>\n  FORMAT_TONES[format.trim().toLowerCase().replace(LEADING_DOT_RE, \"\")] ??\n  \"default\";\n\nconst FORMATS_BY_TONE = {\n  destructive: [\n    \"3g2\",\n    \"3gp\",\n    \"aac\",\n    \"aiff\",\n    \"avi\",\n    \"css\",\n    \"djv\",\n    \"djvu\",\n    \"f4v\",\n    \"flac\",\n    \"flv\",\n    \"htm\",\n    \"html\",\n    \"java\",\n    \"m2ts\",\n    \"m4a\",\n    \"m4v\",\n    \"mid\",\n    \"midi\",\n    \"mkv\",\n    \"mov\",\n    \"mp3\",\n    \"mp4\",\n    \"mpeg\",\n    \"mpg\",\n    \"oga\",\n    \"ogg\",\n    \"ogv\",\n    \"opus\",\n    \"oxps\",\n    \"pdf\",\n    \"rb\",\n    \"rs\",\n    \"sass\",\n    \"scss\",\n    \"wav\",\n    \"webm\",\n    \"wma\",\n    \"wmv\",\n    \"xps\",\n  ],\n  info: [\n    \"c\",\n    \"cpp\",\n    \"cxx\",\n    \"d.ts\",\n    \"doc\",\n    \"docm\",\n    \"docx\",\n    \"epub\",\n    \"go\",\n    \"h\",\n    \"hpp\",\n    \"json\",\n    \"md\",\n    \"odt\",\n    \"rtf\",\n    \"tex\",\n    \"ts\",\n    \"tsx\",\n    \"txt\",\n  ],\n  primary: [\n    \"apng\",\n    \"avif\",\n    \"bmp\",\n    \"cs\",\n    \"gif\",\n    \"heic\",\n    \"ico\",\n    \"jpeg\",\n    \"jpg\",\n    \"php\",\n    \"png\",\n    \"svg\",\n    \"tif\",\n    \"tiff\",\n    \"webp\",\n  ],\n  success: [\n    \"7z\",\n    \"bz2\",\n    \"cab\",\n    \"csv\",\n    \"gz\",\n    \"ods\",\n    \"py\",\n    \"pyw\",\n    \"rar\",\n    \"tar\",\n    \"tgz\",\n    \"tsv\",\n    \"xls\",\n    \"xlsb\",\n    \"xlsm\",\n    \"xlsx\",\n    \"xz\",\n    \"zip\",\n    \"zst\",\n  ],\n  warning: [\n    \"cjs\",\n    \"js\",\n    \"jsx\",\n    \"key\",\n    \"mjs\",\n    \"odp\",\n    \"pot\",\n    \"potx\",\n    \"pps\",\n    \"ppsx\",\n    \"ppt\",\n    \"pptm\",\n    \"pptx\",\n    \"swift\",\n  ],\n} as const satisfies Partial<Record<FileThumbnailTone, readonly string[]>>;\n\nconst FORMAT_TONES: Record<string, FileThumbnailTone> = Object.fromEntries(\n  Object.entries(FORMATS_BY_TONE).flatMap(([tone, formats]) =>\n    formats.map((format) => [format, tone as FileThumbnailTone])\n  )\n);\n",
+      "path": "registry/react/components/file-thumbnail.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

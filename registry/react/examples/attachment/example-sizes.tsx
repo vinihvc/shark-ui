@@ -9,6 +9,15 @@ import {
 
 const Example = () => (
   <div className="flex w-full max-w-sm flex-col gap-3">
+    <Attachment size="lg">
+      <AttachmentMedia>
+        <FileTextIcon aria-hidden="true" />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>Large attachment</AttachmentTitle>
+        <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
+      </AttachmentContent>
+    </Attachment>
     <Attachment>
       <AttachmentMedia>
         <FileTextIcon aria-hidden="true" />

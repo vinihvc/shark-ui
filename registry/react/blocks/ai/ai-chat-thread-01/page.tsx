@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback } from "react";
+import React from "react";
 import { ChatThread } from "./components/chat-thread";
 import { LAUNCH_PLAN_MESSAGES } from "./demo-messages";
 
 const ThreadDemo = () => {
-  const handleSuggestion = useCallback(() => undefined, []);
+  const handleSuggestion = React.useCallback(() => undefined, []);
 
   return (
     <main className="flex min-h-svh flex-col bg-background">

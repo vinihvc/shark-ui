@@ -5,9 +5,8 @@ import { ark } from "@ark-ui/react/factory";
 import { Select as ArkSelect, useSelectContext } from "@ark-ui/react/select";
 import { CheckIcon, ChevronsUpDownIcon, XIcon } from "lucide-react";
 import type React from "react";
-import type { VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
-import { inputVariants } from "@/registry/react/components/input";
 import { ScrollArea } from "@/registry/react/components/scroll-area";
 import { Separator } from "@/registry/react/components/separator";
 
@@ -22,6 +21,9 @@ export const Select: ArkSelect.RootComponent = (props) => {
     <ArkSelect.Root
       data-slot="select"
       lazyMount={lazyMount}
+      scrollToIndexFn={({ getElement }) =>
+        getElement()?.scrollIntoView({ block: "nearest" })
+      }
       unmountOnExit={unmountOnExit}
       {...rest}
     >
@@ -32,54 +34,104 @@ export const Select: ArkSelect.RootComponent = (props) => {
   );
 };
 
+export const selectTriggerVariants = tv({
+  base: [
+    "w-fit min-w-0",
+    "flex items-center gap-2",
+    "px-[calc(--spacing(3)-1px)]",
+    "text-sm",
+    "outline-none",
+    "transition-[color,box-shadow]",
+    "data-placeholder-shown:text-muted-foreground/64",
+    "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
+    "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
+    "motion-reduce:transition-none!",
+  ],
+  defaultVariants: {
+    size: "md",
+    variant: "default",
+  },
+  variants: {
+    size: {
+      lg: ["h-9"],
+      md: ["h-8"],
+      sm: ["h-7", "px-[calc(--spacing(2.5)-1px)]"],
+    },
+    variant: {
+      default: [
+        "rounded-lg",
+        "bg-transparent dark:bg-input/30",
+        "border border-input shadow-xs/5",
+        "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+        "data-[state=open]:border-primary data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32",
+        "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
+        "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24",
+        "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/40",
+        "dark:data-invalid:border-destructive-foreground dark:data-invalid:text-destructive-foreground dark:data-invalid:ring-destructive-foreground/40",
+      ],
+      ghost: [
+        "rounded-lg",
+        "border border-transparent",
+        "hover:bg-accent hover:text-accent-foreground",
+        "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      ],
+    },
+  },
+});
+
 interface SelectTriggerProps
-  extends React.ComponentProps<typeof ArkSelect.Trigger>,
-    VariantProps<typeof inputVariants> {
+  extends Omit<React.ComponentProps<typeof ArkSelect.Trigger>, "size">,
+    VariantProps<typeof selectTriggerVariants> {
   /**
    * Show clear trigger
    *
    * @default false
    */
   showClear?: boolean;
+  /**
+   * Show the chevron indicator
+   *
+   * @default true
+   */
+  showTrigger?: boolean;
 }
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
   const {
     showClear = false,
+    showTrigger = true,
     size = "md",
+    variant = "default",
     className,
     children,
     ...rest
   } = props;
 
+  const showTrailing = showClear || showTrigger;
+
   return (
     <ArkSelect.Control data-slot="select-control">
       <ArkSelect.Trigger
-        className={cn(
-          inputVariants({ size }),
-          "w-fit",
-          "flex items-center gap-2",
-          "text-sm",
-          "data-placeholder-shown:text-muted-foreground/64",
-          "data-[state=open]:border-primary data-[state=open]:ring-[3px] data-[state=open]:ring-ring/32",
-          "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
-          className
-        )}
+        className={cn(selectTriggerVariants({ size, variant }), className)}
         data-slot="select-trigger"
         {...rest}
       >
         {children}
 
-        <div className="ms-auto flex items-center gap-1 rtl:me-auto">
-          {showClear && (
-            <SelectClearTrigger>
-              <XIcon />
-            </SelectClearTrigger>
-          )}
-          <ArkSelect.Indicator data-slot="select-indicator">
-            <ChevronsUpDownIcon className="size-4" />
-          </ArkSelect.Indicator>
-        </div>
+        {showTrailing ? (
+          <div className="ms-auto flex items-center gap-1 rtl:me-auto">
+            {showClear ? (
+              <SelectClearTrigger>
+                <XIcon />
+              </SelectClearTrigger>
+            ) : null}
+            {showTrigger ? (
+              <ArkSelect.Indicator data-slot="select-indicator">
+                <ChevronsUpDownIcon className="size-4" />
+              </ArkSelect.Indicator>
+            ) : null}
+          </div>
+        ) : null}
       </ArkSelect.Trigger>
     </ArkSelect.Control>
   );
@@ -150,7 +202,7 @@ export const SelectContent = (
           data-slot="select-content"
           {...rest}
         >
-          <ScrollArea className="min-h-0 flex-1">
+          <ScrollArea className="min-h-0 flex-1" scrollFade>
             <div className="p-1" data-slot="select-scroll">
               {children}
             </div>

@@ -98,6 +98,26 @@ import {
 </FileUpload>
 ```
 
+## States
+
+### Disabled
+
+Use the `disabled` prop to prevent uploading.
+
+<ComponentPreview componentName="file-upload" fileName="example-disabled" />
+
+### Invalid
+
+Use the `invalid` prop to mark the uploader as invalid.
+
+<ComponentPreview componentName="file-upload" fileName="example-invalid" />
+
+### Read-only
+
+Use the `readOnly` prop to show files without allowing changes.
+
+<ComponentPreview componentName="file-upload" fileName="example-readonly" />
+
 ## Examples
 
 ### Multiple Files
@@ -152,7 +172,7 @@ Use the `capture` prop to capture and upload media directly from the device came
 
 <Alert variant="warning">
 <InfoIcon />
-<AlertTitle>The capture prop is only supported on mobile devices.</AlertTitle>
+<AlertTitle>The capture prop is only supported on mobile devices. It will open file selector on desktop devices.</AlertTitle>
 </Alert>
 
 ### Directory Upload
@@ -213,6 +233,7 @@ Root component. Manages file state and wraps the upload UI.
 | `onFileAccept` | `(details: FileAcceptDetails) => void` | `-` |
 | `onFileChange` | `(details: FileChangeDetails) => void` | `-` |
 | `onFileReject` | `(details: FileRejectDetails) => void` | `-` |
+| `preventDocumentDrop` | `boolean` | `true` |
 | `readOnly` | `boolean` | `-` |
 | `required` | `boolean` | `-` |
 | `transformFiles` | `(files: File[]) => Promise<File[]>` | `-` |

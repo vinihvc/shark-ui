@@ -81,7 +81,7 @@ The `asChild` prop renders another element with link overlay styling.
 
 ### Article
 
-A blog-style article with metadata, heading, description, and an inner link that stays clickable above the overlay.
+Article card with an inner link that stays clickable.
 
 <ComponentPreview componentName="link-overlay" fileName="example-article" />
 
@@ -89,7 +89,7 @@ A blog-style article with metadata, heading, description, and an inner link that
 
 By default the `LinkOverlay` component will render an `a` tag.
 
-To use the Next.js (or any other) `Link` component, make the following updates to `link-overlay.tsx`.
+To use the `Link` component from your framework of choice, make the following updates to `link-overlay.tsx`.
 
 ```diff tsx title="components/ui/link-overlay.tsx" showLineNumbers
 + import Link from "next/link"
@@ -118,6 +118,6 @@ To use the Next.js (or any other) `Link` component, make the following updates t
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `href` | `string` | required |
+| `href` | `string` | `-` |
 | `className` | `string` | - |
 | `asChild` | `boolean` | `false` |

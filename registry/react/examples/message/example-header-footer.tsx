@@ -1,4 +1,7 @@
-import { Bubble, BubbleContent } from "@/registry/react/components/bubble";
+import {
+  MessageBubble,
+  MessageBubbleContent,
+} from "@registry/react/components/message-bubble";
 import {
   Message,
   MessageContent,
@@ -11,18 +14,20 @@ const Example = () => (
     <Message>
       <MessageContent>
         <MessageHeader>Olivia</MessageHeader>
-        <Bubble>
-          <BubbleContent>I already checked the logs.</BubbleContent>
-        </Bubble>
+        <MessageBubble>
+          <MessageBubbleContent>
+            I already checked the logs.
+          </MessageBubbleContent>
+        </MessageBubble>
       </MessageContent>
     </Message>
     <Message align="end">
       <MessageContent>
-        <Bubble align="end" variant="secondary">
-          <BubbleContent>
+        <MessageBubble align="end" variant="secondary">
+          <MessageBubbleContent>
             Send the report to the team. Ping @shadcn if you need help.
-          </BubbleContent>
-        </Bubble>
+          </MessageBubbleContent>
+        </MessageBubble>
         <MessageFooter>Read Yesterday</MessageFooter>
       </MessageContent>
     </Message>

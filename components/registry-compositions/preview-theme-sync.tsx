@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import React from "react";
 import {
   applyBodyThemeClasses,
   isManagedThemeClass,
@@ -8,7 +8,7 @@ import {
 } from "@/lib/preview-theme";
 
 export const PreviewThemeSync = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     const onMessage = (event: MessageEvent<unknown>) => {
       if (
         event.origin !== window.location.origin ||

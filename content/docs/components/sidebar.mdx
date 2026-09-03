@@ -89,7 +89,7 @@ Piecing a `Sidebar` together usually means:
 - `<SidebarProvider>`: owns open/collapsed state, mobile sheet state, and keyboard shortcut handling.
 - `<Sidebar>`: fixed (or sheet) column: `placement`, `variant`, and `collapsible` behavior.
 - `<SidebarHeader>` / `<SidebarFooter>`: pin content to the top or bottom of the column.
-- `<SidebarContent>`: scrollable middle; optional `scrollFade` on the inner scroll area.
+- `<SidebarContent>`: scrollable middle; edge fade on overflow by default (`scrollFade={false}` to disable).
 - `<SidebarGroup>`: labeled section inside the scroll region.
 - `<SidebarTrigger>`: icon/control wired to `useSidebar().toggleSidebar`.
 - `<SidebarInset>`: main document column beside the sidebar (required for `variant="inset"`).
@@ -336,7 +336,7 @@ Sticky bottom slot: profile, settings entry, sign-out, etc.
 
 ### SidebarContent
 
-Wraps scrollable groups. Pass **`scrollFade`** when you want a fade on vertical overflow (see component props in source).
+Wraps scrollable groups. Fades the edges when the content overflows. Pass **`scrollFade={false}`** to disable.
 
 ```tsx
 <Sidebar>

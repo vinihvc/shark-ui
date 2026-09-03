@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import React from "react";
 import { ChatComposer } from "./components/chat-composer";
 
 const MODEL_OPTIONS = [
@@ -10,10 +10,10 @@ const MODEL_OPTIONS = [
 ] as const;
 
 const ComposerDemo = () => {
-  const [model, setModel] = useState("gpt-4");
-  const [thinkMode, setThinkMode] = useState(true);
+  const [model, setModel] = React.useState("gpt-4");
+  const [thinkMode, setThinkMode] = React.useState(true);
 
-  const handleSend = useCallback(() => undefined, []);
+  const handleSend = React.useCallback(() => undefined, []);
 
   return (
     <main className="grid min-h-svh place-items-center bg-background p-6">
